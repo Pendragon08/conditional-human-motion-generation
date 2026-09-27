@@ -17,7 +17,8 @@ trap 'rc=$?; if (( rc != 0 )); then echo "BLOCKED queue_exit=$rc see_task_state_
 python3 - "$GATE" <<'PY'
 import json, pathlib, sys
 g = json.loads(pathlib.Path(sys.argv[1]).read_text())
-assert g['status'] == 'passed' and g['user_confirmed'] is True
+assert g['status'] in ('passed', 'authorized_after_preflight')
+assert g['user_authorized_start'] is True
 assert g['view'] == 'actual_training_simulation'
 assert g['first_task'] == 'Punch'
 PY
@@ -27,7 +28,8 @@ export TMPDIR="$ROOT/cache/r3_tmp" PIP_CACHE_DIR="$ROOT/cache/r3_pip"
 export XDG_CACHE_HOME="$ROOT/cache/r3_xdg" MPLCONFIGDIR="$ROOT/cache/r3_matplotlib"
 export PUBLIC_IP=10.147.17.32 WANDB_MODE=disabled WANDB_SILENT=true HYDRA_FULL_ERROR=1
 export PYTHONPATH="$ROOT/envs/dreamcontrol-r3/site-packages:$TRAIN/source/isaaclab:$TRAIN/source/isaaclab_assets:$TRAIN/source/isaaclab_tasks:$TRAIN/source/isaaclab_rl:$TRAIN/isaac_utils:$TRAIN/scripts/reinforcement_learning/rsl_rl${PYTHONPATH:+:$PYTHONPATH}"
-unset CUDA_VISIBLE_DEVICES DREAMCONTROL_KICK_REF_PATH
+export CUDA_VISIBLE_DEVICES=0
+unset DREAMCONTROL_KICK_REF_PATH
 mkdir -p "$TMPDIR" "$PIP_CACHE_DIR" "$XDG_CACHE_HOME" "$MPLCONFIGDIR"
 python3 "$ROOT/scripts/build_dreamcontrol_livestream_entry.py"
 
@@ -67,9 +69,41 @@ for i in "${!tasks[@]}"; do
     "$ROOT/third_party/isaacsim-4.5.0/python.sh" -u \
     "$ROOT/scripts/r3_dreamcontrol_train_livestream.py" \
     --task="$task_id" --device=cuda:0 --num_envs=8192 \
-    --max_iterations=2000 --seed=42 --livestream=2 > "$train_log" 2>&1
+    --max_iterations=2000 --seed=42 --livestream=2 \
+    --kit_args="--portable-root $ROOT/cache/r3_official_kit --/renderer/multiGpu/enabled=false" \
+    > "$train_log" 2>&1
   train_rc=$?
   set -e
+  # Isaac Sim's python.sh wrapper can leave its Kit child running after a
+  # timeout. Clean only this task's exact child, never CLoSD or other jobs.
+  orphan_count="$(python3 - "$ROOT" "$task_id" <<'PY'
+import os, signal, sys, time
+root, task = sys.argv[1:]
+target = (root + '/scripts/r3_dreamcontrol_train_livestream.py').encode()
+task_arg = ('--task=' + task).encode()
+found = []
+for name in os.listdir('/proc'):
+    if not name.isdigit() or int(name) == os.getpid():
+        continue
+    try:
+        argv = open('/proc/' + name + '/cmdline', 'rb').read().split(b'\0')
+    except (OSError, PermissionError):
+        continue
+    if target in argv and task_arg in argv:
+        found.append(int(name))
+for pid in found:
+    try: os.kill(pid, signal.SIGTERM)
+    except ProcessLookupError: pass
+time.sleep(2 if found else 0)
+for pid in found:
+    try: os.kill(pid, signal.SIGKILL)
+    except ProcessLookupError: pass
+print(len(found))
+PY
+)"
+  if (( orphan_count != 0 )); then
+    echo "BLOCKED task=$task orphan_train_cleaned=$orphan_count train_exit=$train_rc log=$train_log" > "$state"; exit 1
+  fi
   if (( train_rc != 0 )) || ! grep -q 'Learning iteration 1999/2000' "$train_log"; then
     echo "BLOCKED task=$task train_exit=$train_rc log=$train_log" > "$state"; exit 1
   fi
