@@ -19,10 +19,11 @@
 - `configs/`：项目本地的版本化环境规格；上游 Isaac Sim、Isaac Gym、DreamControl 和 CLoSD 均由各自官方来源获取。
 - `scripts/`：复现、资产核验、条件动作生成、质量审计、训练／评估与监控脚本。
 - `results/`：机器可读的实验口径与结果索引。
+- `reports/03_dreamcontrol_multitask_baselines.md`：其余十任务的参考数据、严格复现口径与当前阶段状态。
 - `media/`：已完成评估的小型视频。
 - `checkpoints/`：DreamControl 实验的控制策略检查点，使用 Git LFS；**不含**受单独许可约束的 CLoSD、SMPL、AMASS 或 HumanML3D 资产。
 
-DreamControl 官方代码固定提交 `ec28b508313d6837de52c68247fbc8cf81fe4935`；CLoSD 官方代码固定提交 `d8950bdb78312fcd2844f336b3fc079e7368c87f`。本仓库的脚本原来在服务器路径 `/data/code/ouyanghao/oyh/humanoid-combat-motion` 中运行；这是迁移前的**运行目录名称**，不表示本仓库仍研究格斗。当前 CLoSD 训练会保持原路径直到完成，避免移动文件中断进程。新的实验结果统一进入本仓库。
+DreamControl 官方代码固定提交 `ec28b508313d6837de52c68247fbc8cf81fe4935`；CLoSD 官方代码固定提交 `d8950bdb78312fcd2844f336b3fc079e7368c87f`。新任务的服务器工作目录为 `/data/code/ouyanghao/oyh/conditional-human-motion-generation`，DreamControl 源码、参考动作和后续日志独立保存；通用 Isaac Sim 安装与 Python 依赖仍作为只读共享工具使用。此前运行的 CLoSD 训练保持原路径 `/data/code/ouyanghao/oyh/humanoid-combat-motion` 直到完成，避免移动文件中断进程；其结果再归档到本仓库。
 
 官方 DreamControl 的论文报告 11 种任务。其余十项任务的公开参考轨迹已逐文件校验，哈希见 `results/official_other_tasks_assets_manifest.json`；这只表示输入数据就绪，**不是训练完成**。`scripts/r3_dreamcontrol_official_other_tasks_queue.sh` 为顺序训练／评估队列，必须先通过本地查看真实训练仿真的图形 Gate 才能启动。每项任务独立核验正式训练预算、成功率和视频，不能用 Kick 的结果代表其余任务。[论文与任务表](https://genrobo.github.io/DreamControl/static/paper/DreamControl_arxiv.pdf)。
 
