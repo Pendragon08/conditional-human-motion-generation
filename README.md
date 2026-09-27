@@ -24,7 +24,7 @@
 
 DreamControl 官方代码固定提交 `ec28b508313d6837de52c68247fbc8cf81fe4935`；CLoSD 官方代码固定提交 `d8950bdb78312fcd2844f336b3fc079e7368c87f`。本仓库的脚本原来在服务器路径 `/data/code/ouyanghao/oyh/humanoid-combat-motion` 中运行；这是迁移前的**运行目录名称**，不表示本仓库仍研究格斗。当前 CLoSD 训练会保持原路径直到完成，避免移动文件中断进程。新的实验结果统一进入本仓库。
 
-官方 DreamControl 的论文报告 11 种任务。这里先复现与课题评估相关的跨动作基线；每项任务均需独立核验参考轨迹、正式训练预算、图形可见性、成功率和视频，不能用 Kick 的结果代表其余任务。[论文与任务表](https://genrobo.github.io/DreamControl/static/paper/DreamControl_arxiv.pdf)。
+官方 DreamControl 的论文报告 11 种任务。其余十项任务的公开参考轨迹已逐文件校验，哈希见 `results/official_other_tasks_assets_manifest.json`；这只表示输入数据就绪，**不是训练完成**。`scripts/r3_dreamcontrol_official_other_tasks_queue.sh` 为顺序训练／评估队列，必须先通过本地查看真实训练仿真的图形 Gate 才能启动。每项任务独立核验正式训练预算、成功率和视频，不能用 Kick 的结果代表其余任务。[论文与任务表](https://genrobo.github.io/DreamControl/static/paper/DreamControl_arxiv.pdf)。
 
 ## 数据与许可
 
