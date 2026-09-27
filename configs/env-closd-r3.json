@@ -1,0 +1,47 @@
+{
+  "purpose": "CLoSD official-code baseline preflight for generic conditional human motion generation",
+  "provider": "ssh:ouyanghao@10.147.17.32",
+  "base": {
+    "python": ".venv-pbhc-training/bin/python",
+    "python_version": "3.8.20",
+    "torch": "1.13.1+cu117",
+    "isaac_gym": "Preview 4 already installed in frozen base environment",
+    "policy": "Base environment is read-only; all new Python packages go into envs/closd-r3/site-packages"
+  },
+  "source": {
+    "path": "third_party/CLoSD",
+    "commit": "d8950bdb78312fcd2844f336b3fc079e7368c87f",
+    "pytorch3d_rotations": "Official PyTorch3D v0.3.0 pure-Python rotation_conversions.py only; staged by scripts/stage_closd_pytorch3d_rotations.sh because CLoSD imports only euler_angles_to_matrix and matrix_to_quaternion"
+  },
+  "pip_phases": [
+    ["rl-games==1.1.4", "huggingface-hub==0.23.4", "transformers==4.38.2"],
+    ["spacy==3.7.5", "human_body_prior==0.8.5.0", "blobfile==3.0.0"],
+    ["smplx @ git+https://github.com/ZhengyiLuo/smplx.git@a5b8e4ac14f79f3f33fd2cf2a16e6f507146b813"],
+    ["filelock==3.15.4", "fsspec==2024.6.1", "regex==2024.5.15", "tokenizers==0.15.2", "safetensors==0.4.3", "pycryptodomex==3.21.0"],
+    ["gym==0.26.2", "ray==2.10.0", "tensorboardX==2.6.2.2", "setproctitle==1.3.3", "psutil==6.0.0"],
+    ["spacy-legacy==3.0.12", "spacy-loggers==1.0.5", "murmurhash==1.0.10", "cymem==2.0.8", "preshed==3.0.9", "thinc==8.2.3", "wasabi==0.10.1", "srsly==2.4.8", "catalogue==2.0.10", "weasel==0.4.1", "langcodes==3.4.0", "blis==0.7.11", "confection==0.1.5", "cloudpathlib==0.18.1", "smart-open==7.0.4", "language_data==1.2.0", "marisa-trie==1.2.0"],
+    ["torchgeometry", "scikit-image==0.21.0", "configer==1.3.1", "transforms3d==0.4.2", "trimesh==4.4.3", "pyrender==0.1.45", "chumpy==0.70", "freetype-py==2.4.0", "pyglet==2.0.15"],
+    ["ninja==1.11.1.1"],
+    ["numpy==1.23.5"],
+    ["vtk==9.3.1"],
+    ["aiohttp==3.9.5"],
+    ["multidict==6.0.5", "yarl==1.9.4", "frozenlist==1.4.1", "aiosignal==1.3.1", "async-timeout==4.0.3"],
+    ["lazy_loader==0.4", "tifffile==2023.7.10", "networkx==3.1"],
+    ["clip @ https://codeload.github.com/openai/CLIP/tar.gz/dcba3cb2e2827b402d2701e7e1c7d9fed8a20ef1"],
+    ["ftfy==6.2.0"],
+    ["moviepy==1.0.3", "decorator==4.4.2", "imageio-ffmpeg==0.5.1", "proglog==0.1.10"],
+    ["msgpack==1.0.8"]
+  ],
+  "assets": {
+    "CLoSD_HF_snapshot": "NOT_STAGED",
+    "HF_revision": "de7106b947b6f70700b5320d1cd61fef4a9ebc9b",
+    "SMPL": "USER_CONFIRMED_LICENCE_2026-09-26",
+    "AMASS": "USER_CONFIRMED_LICENCE_2026-09-26",
+    "HumanML3D": "USER_CONFIRMED_LICENCE_2026-09-26"
+  },
+  "smoke": {
+    "import_names": ["rl_games", "transformers", "spacy", "smplx", "clip", "pytorch3d.transforms"],
+    "gpu_tests": [{"cmd": "CUDA_VISIBLE_DEVICES=1 PYTHONPATH=envs/closd-r3/site-packages .venv-pbhc-training/bin/python scripts/r3_closd_env_witness.py", "expect": "^CLOSD_R3_GPU_WITNESS \\(8, 8\\) \\(1, 4\\) NVIDIA RTX A6000"}]
+  },
+  "gate": "Do not run data-dependent inference or training until asset licences, complete assets, and GPU memory checks are verified"
+}

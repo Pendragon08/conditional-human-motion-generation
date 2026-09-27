@@ -1,0 +1,45 @@
+{
+  "base": "Existing Isaac Sim standalone 4.5.0 bundled Python 3.10 and Torch 2.5.1+cu118 on nlp03",
+  "source": {
+    "repository": "https://github.com/GenRobo/DreamControl",
+    "commit": "ec28b508313d6837de52c68247fbc8cf81fe4935",
+    "training_tree": "third_party/DreamControl/Training",
+    "task": "Isaac-Motion-Tracking-Kick-v0"
+  },
+  "provider_shape": "direct SSH host; project-local PYTHONPATH overlay on existing Isaac Sim bundled interpreter",
+  "pip_phases": [
+    ["joblib==1.4.2", "easydict==1.13", "loguru==0.7.3", "pytorch-kinematics==0.7.5", "arm-pytorch-utilities==0.4.3", "pytorch-seed==0.2.0", "rich==13.9.4", "markdown-it-py==3.0.0", "mdurl==0.1.2", "Pygments==2.19.2", "jaxlie==1.5.0", "jax==0.4.35", "jaxlib==0.4.35", "jax-dataclasses==1.6.2", "tyro==0.9.35", "opt-einsum==3.4.0", "docstring-parser==0.16", "typeguard==4.4.4"]
+  ],
+  "env": {
+    "PYTHONPATH": "envs/dreamcontrol-r3/site-packages:third_party/DreamControl/Training/source/isaaclab:third_party/DreamControl/Training/source/isaaclab_assets:third_party/DreamControl/Training/source/isaaclab_tasks:third_party/DreamControl/Training/source/isaaclab_rl:third_party/DreamControl/Training/isaac_utils",
+    "TMPDIR": "cache/r3_tmp",
+    "PIP_CACHE_DIR": "cache/r3_pip",
+    "XDG_CACHE_HOME": "cache/r3_xdg",
+    "PUBLIC_IP": "10.147.17.32",
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4"
+  },
+  "weight_dirs": {
+    "kick_reference": {
+      "path": "third_party/DreamControl/TrajGen/sample/Kick_sim2",
+      "source": "official repository samples",
+      "gated": false,
+      "verified_lfs_objects": 66
+    },
+    "robot_usd": {
+      "path": "third_party/DreamControl/Training/HumanoidVerse/humanoidverse/data/robots/g1/g1_27dof_with_hands_min_collisions_flat_white.usd",
+      "sha256": "64b9760776de44c3c5b3045693e4115a0e8ca6505b59094bdd0e8db8a64aa2c6"
+    }
+  },
+  "smoke": {
+    "import_names": ["torch", "joblib", "isaaclab", "jaxlie"],
+    "gpu_tests": [
+      {
+      "cmd": "third_party/isaacsim-4.5.0/python.sh -c 'import torch; torch.manual_seed(123); x=torch.randn(8,8,device=\"cuda:0\"); y=x@x; print(\"DREAMCONTROL_R3_GPU_WITNESS\", tuple(y.shape), torch.cuda.get_device_name(0), float(y.abs().sum()))'",
+        "expect": "DREAMCONTROL_R3_GPU_WITNESS (8, 8) NVIDIA RTX A6000"
+      }
+    ]
+  },
+  "state": "dependency/GPU witness passed; official Kick task 1024-env one-iteration smoke passed; full baseline still pending"
+}

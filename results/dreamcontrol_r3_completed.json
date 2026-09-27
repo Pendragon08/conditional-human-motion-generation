@@ -1,0 +1,64 @@
+{
+  "project": "conditional-human-motion-generation",
+  "recorded_utc": "2026-09-27T06:08:30Z",
+  "upstream": {
+    "name": "DreamControl",
+    "git_commit": "ec28b508313d6837de52c68247fbc8cf81fe4935",
+    "paper": "https://genrobo.github.io/DreamControl/static/paper/DreamControl_arxiv.pdf"
+  },
+  "experiments": [
+    {
+      "id": "kick_official66_8192_seed42",
+      "task": "Isaac-Motion-Tracking-Kick-v0",
+      "reference_count": 66,
+      "train_envs": 8192,
+      "train_iterations": 2000,
+      "seed": 42,
+      "checkpoint": "checkpoints/dreamcontrol_kick_official66_8192_seed42_model1999.pt",
+      "checkpoint_sha256": "e3c50fb6f36f59f89d1b4e788b1ba74cf1ff0cdde3dceff34a9d7765235f65c0",
+      "eval_envs": 1000,
+      "eval_frames": 500,
+      "eval_reference_set": "official Kick_sim2",
+      "success_percent": 85.30000448226929,
+      "video": "media/r3_official_kick_8192_eval.mp4",
+      "video_sha256": "901d4010fbd7568519a2331e611b98406221a592ffc881ac2705db5dc0e3725f",
+      "server_run": "third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_03-19-31-Kick-a",
+      "server_train_state": "artifacts/monitoring/r3_dreamcontrol_official_kick_8192_2000.state",
+      "server_eval_state": "artifacts/monitoring/r3_dreamcontrol_official_kick_8192_eval.state"
+    },
+    {
+      "id": "kick_official66_1024_heldout32",
+      "task": "Isaac-Motion-Tracking-Kick-v0",
+      "reference_count": 66,
+      "train_envs": 1024,
+      "train_iterations": 2000,
+      "checkpoint": "checkpoints/dreamcontrol_kick_official66_1024_model1999.pt",
+      "checkpoint_sha256": "bd9be1e2afae09b66c1732c3f56e5d059b0b09e6ee833f34f2012f04efd0f6d6",
+      "eval_envs": 1000,
+      "eval_frames": 500,
+      "eval_reference_set": "32 independently held-out generated seed42 motions",
+      "success_percent": 0.0,
+      "video": "media/dreamcontrol_base66_heldout32.mp4",
+      "video_sha256": "d02038c6305ddefc905e916564bc8ddc7b126abc65ea47799155303c2ee67250"
+    },
+    {
+      "id": "kick_aug98_1024_seed123_heldout32",
+      "task": "Isaac-Motion-Tracking-Kick-v0",
+      "reference_count": 98,
+      "reference_composition": "official 66 + generated seed42 train split 32",
+      "train_envs": 1024,
+      "train_iterations": 2000,
+      "seed": 123,
+      "checkpoint": "checkpoints/dreamcontrol_kick_aug98_1024_seed123_model1999.pt",
+      "checkpoint_sha256": "1a6d5ab8efcd4af2ab322708bb5456a4eae995f82a3a57ec1b0292fc80d7189e",
+      "eval_envs": 1000,
+      "eval_frames": 500,
+      "eval_reference_set": "same 32 independently held-out generated seed42 motions",
+      "success_percent": 0.0,
+      "video": "media/dreamcontrol_aug98_heldout32.mp4",
+      "video_sha256": "3f36712b7fe65f52b5d22f2a8568725ae4f16834fad2cbafaf532387d8d1827c",
+      "server_run": "third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_01-57-11-Kick-a"
+    }
+  ],
+  "comparison_warning": "The 85.3% official-reference evaluation and the two held-out-set 0% results use different reference sets and training budgets. Do not treat their difference as a data-augmentation effect."
+}
