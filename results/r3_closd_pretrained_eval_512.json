@@ -1,0 +1,28 @@
+{
+  "experiment": "CLoSD official no-finetune checkpoint matched evaluation",
+  "status": "complete",
+  "model": "CLoSD_no_finetune/Humanoid.pth",
+  "model_sha256": "a47bc0716ce0c40ffdbf1b093952e07182d47bf645123852df05c8c91faa68c2",
+  "model_uploaded": false,
+  "configuration": {
+    "num_envs": 512,
+    "episode_length_frames": 500,
+    "dip_classifier_free_guidance": 7.5,
+    "seed": 0,
+    "closd_eval": true,
+    "minimum_resets_per_state": 1000
+  },
+  "success_rate_rounded_as_logged": {
+    "REACH": 1.00,
+    "STRIKE_KICK": 0.87,
+    "STRIKE_PUNCH": 0.87,
+    "SIT": 0.77,
+    "GET_UP": 0.56
+  },
+  "interpretation": "Compared under the same evaluator with the epoch-66000 pilot fine-tune, the official no-finetune checkpoint scores higher on reach, pooled strike, and sit, but lower on get-up. The upstream evaluator pools kick and punch outcomes into shared strike counters. This is a 512-environment pilot, not the paper's 4096-environment configuration.",
+  "evidence": {
+    "server_state": "artifacts/monitoring/r3_closd_pretrained_eval_512.state",
+    "server_log": "artifacts/monitoring/r3_closd_pretrained_eval_512.log",
+    "completion_marker": "Collected enough data (1000 per task) success rates; Eval plot ended"
+  }
+}
