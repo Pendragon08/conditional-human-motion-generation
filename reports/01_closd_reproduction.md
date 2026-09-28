@@ -1,6 +1,6 @@
 # R3 CLoSD 基线：资产、环境、推理与训练状态
 
-更新：2026-09-26。**官方资产已齐；缩容的无界面多任务推理诊断已运行，但正式训练及论文指标 Gate 未通过。** 下述早期 GPU witness 和命令行检查只证明部分环境可用，不能代替论文指标。
+更新：2026-09-28。**512 环境正式缩容微调已达到目标 epoch 66000 并保存检查点；正式多任务成功率评估正在独立运行，论文指标 Gate 尚未通过。** 训练进程在最终保存之后以退出码 139 结束，不能将该退出码或训练期间的即时成功率当作正式评估结论。下述早期 GPU witness 和命令行检查仅记录准备过程。
 
 ## 官方来源与资源
 
@@ -79,3 +79,9 @@ GPU 0 是 DreamControl 的 1024 环境增强组续训；GPU 1 同时运行 Dream
 正式 512 环境训练在约 epoch 62110 的画面发送中出现 `R3_CLOSD_SCENE_MONITOR_FAILED_SIM_CONTINUES: Again('Resource temporarily unavailable')`。fail-open 钩子随即关闭该进程后续绘图请求；MeshCat 网页与本地 SSH 隧道仍可连接，但显示的训练场景变为旧帧。训练日志此后继续超过 epoch 62230，故**网页可打开不代表实时训练画面仍在更新**，而画面故障也未阻断 GPU 训练。本次运行不能只靠重连浏览器、重启网页服务或切换视频协议重新获取已停止发送的训练帧；不为修复画面而中断正式训练。
 
 作为补充观察，`scripts/r3_closd_checkpoint_preview.sh` 在独立进程和 GPU 0 上复制最近完整的正式训练检查点，用官方 CLoSD 多任务推理及 Isaac Gym/浏览器场景展示动作，不修改 GPU 1 的正式训练。首次快照为 epoch 62200；状态和日志在 `artifacts/monitoring/r3_closd_checkpoint_preview.*`。本地 `http://127.0.0.1:7001/static/` 已重新显示可变化的机器人画面。`scripts/r3_closd_checkpoint_preview_supervisor.sh` 等待首次预览结束后负责短时故障重试和定期加载更新的检查点。**这只是带有检查点延迟的独立演示，不是正在训练的 512 环境逐帧直播，也不构成新的性能评估。** 原 DreamControl 的 NVIDIA WebRTC 串流属于 Isaac Sim/Kit，不能直接绑定到 CLoSD 的 Isaac Gym 场景；若要 WebRTC，需要另行建立独立的视频编码与信令桥，不能把换协议说成恢复了原训练帧。
+
+### 2026-09-28：目标检查点已保存，正式评估独立进行
+
+- v2 日志已记录 epoch 66000 和 66001，且 `Humanoid_00066000.pth` 在进程退出前保存成功；文件大小 216,577,317 字节，SHA-256 为 `4c3eb7fa77b0a29743ff21d25fc65ba3d9f2b40d9e9b1e499289707b25add5df`。退出时出现 `MAX EPOCHS NUM!`，随后进程以 139 退出，状态文件仍如实保留为 `FAILED train_exit=139`。这说明目标轮次与检查点已达到，但正常退出验收未通过；不得把它当成完整论文复现。
+- `scripts/r3_closd_final_eval_512.sh` 从该固定检查点复制评估专用副本，使用官方 `closd_eval=True` 多任务统计逻辑，在 GPU 1 上独立评估。评估设置为 512 环境、单回合 500 帧、DiP CFG 7.5；官方论文表 1 使用 4096 环境，因此本次是显存受限的缩容评估，不能直接宣称论文同配置复现。状态与逐任务输出分别在 `artifacts/monitoring/r3_closd_final_eval_512.state` 和 `.log`，启动时为 `RUNNING`。
+- 只有评估日志出现各任务至少 1000 次重置后的逐任务成功率，并核对进程退出与结果完整性，才填写最终数值。在此之前，训练日志中每轮的 `succ_rate` 是即时统计，不能替代固定检查点的正式测试。受许可约束的原始数据和模型权重保留在服务器，不上传 GitHub；仓库只保存脚本、配置、哈希和经核实的指标。
