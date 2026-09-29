@@ -10,8 +10,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import socket
 import time
+from pathlib import Path
 
 from isaaclab.app import AppLauncher
 
@@ -20,6 +22,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--telemetry-port", type=int, default=40123)
 parser.add_argument("--status-path", type=str, required=True)
 parser.add_argument("--timeout-seconds", type=int, default=0)
+parser.add_argument("--self-test", action="store_true",
+                    help="Move a synthetic pose to test the renderer; never label as training.")
 AppLauncher.add_app_launcher_args(parser)
 args = parser.parse_args()
 launcher = AppLauncher(args)
@@ -38,10 +42,13 @@ def main() -> None:
     env = gym.make("Isaac-Motion-Tracking-Kick-v0", cfg=cfg)
     raw = env.unwrapped
     robot = raw.scene["robot"]
-    obj = raw.scene["object"]
+    try:
+        obj = raw.scene["object"]
+    except KeyError:
+        obj = None
     names = list(robot.data.joint_names)
     device = raw.device
-    status = __import__("pathlib").Path(args.status_path)
+    status = Path(args.status_path)
     udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     udp.bind(("127.0.0.1", args.telemetry_port))
     udp.setblocking(False)
@@ -49,6 +56,7 @@ def main() -> None:
     start = time.monotonic()
     last_step = -1
     last_at = 0.0
+    self_test_step = 0
     try:
         while simulation_app.is_running():
             if args.timeout_seconds and time.monotonic() - start > args.timeout_seconds:
@@ -62,9 +70,24 @@ def main() -> None:
                     break
                 except (ValueError, OSError):
                     break
+            if newest is None and args.self_test:
+                self_test_step += 1
+                root = robot.data.default_root_state[0, :7].detach().cpu().float().tolist()
+                root[2] += 0.08 * math.sin(self_test_step / 20)
+                q = robot.data.default_joint_pos[0].detach().cpu().float().tolist()
+                if q:
+                    q[0] += 0.18 * math.sin(self_test_step / 15)
+                newest = {
+                    "source": "viewer_self_test",
+                    "robot_root_pose_wxyz": root,
+                    "joint_names": names,
+                    "joint_position_rad": q,
+                    "scene_object_position_xyz_m": [2.1, 0.0, 0.67],
+                    "env_step": self_test_step,
+                }
             if newest is not None:
                 try:
-                    if newest["source"] != "actual_training_simulation_sample":
+                    if newest["source"] != ("viewer_self_test" if args.self_test else "actual_training_simulation_sample"):
                         raise ValueError("Unexpected telemetry source")
                     if list(newest["joint_names"]) != names:
                         raise ValueError("Joint order mismatch")
@@ -73,14 +96,18 @@ def main() -> None:
                     robot.write_root_pose_to_sim(root)
                     robot.write_root_velocity_to_sim(torch.zeros((1, 6), device=device))
                     robot.write_joint_state_to_sim(q, torch.zeros_like(q))
-                    xyz = newest["scene_object_position_xyz_m"]
-                    obj_pose = torch.tensor([[*xyz, 1.0, 0.0, 0.0, 0.0]], device=device)
-                    obj.write_root_pose_to_sim(obj_pose)
-                    obj.write_root_velocity_to_sim(torch.zeros((1, 6), device=device))
+                    xyz = newest.get("scene_object_position_xyz_m")
+                    if obj is not None and xyz is not None:
+                        obj_pose = torch.tensor([[*xyz, 1.0, 0.0, 0.0, 0.0]], device=device)
+                        obj.write_root_pose_to_sim(obj_pose)
+                        obj.write_root_velocity_to_sim(torch.zeros((1, 6), device=device))
                     last_step = int(newest["env_step"])
                     last_at = time.time()
+                    if last_step == 1:
+                        print(f"R3_VIEWER_APPLIED_POSE mode={newest['source']}", flush=True)
+                    mode = "synthetic_self_test_not_training" if args.self_test else "sampled_actual_training_pose"
                     status.write_text(
-                        f"LIVE mode=sampled_actual_training_pose step={last_step} "
+                        f"LIVE mode={mode} step={last_step} "
                         f"packet_age_s=0 training_unaffected=true\n"
                     )
                 except (KeyError, TypeError, ValueError, RuntimeError) as exc:
@@ -92,7 +119,7 @@ def main() -> None:
                 )
             raw.sim.render()
             simulation_app.update()
-            time.sleep(0.02)
+            time.sleep(0.05)
     finally:
         udp.close()
         env.close()
