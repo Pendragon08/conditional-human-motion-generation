@@ -1,0 +1,979 @@
+{
+  "status": "component_pilot_only",
+  "method": "right-leg constrained IK on raw G1 retarget references; fixed human motion",
+  "parameterization": "window_smooth",
+  "max_joint_change_cap_rad": 1.0,
+  "external_target": "saved pre-generation right-foot hint, never robot kick_pos",
+  "sample_selection": "first N available raw retarget files sorted by integer id; no tuning on other samples",
+  "steps": 80,
+  "source_npy_sha256": "16f04daf433a513fd09844d1da16ca160a04ff991f924057627f522bc04889e0",
+  "mean_before_error_m": 0.4070041202940047,
+  "mean_after_error_m": 0.12968454242218286,
+  "rows": [
+    {
+      "sample": 2,
+      "source_sha256": "2bf68830c65e8ce52926231280bef2108f987f0d2f267dd741abe6ad0f05dc9c",
+      "before_error_m": 0.49634668231010437,
+      "after_error_m": 0.13687385618686676,
+      "max_joint_change_rad": 0.7661452293395996,
+      "max_speed_change_rad_per_frame": 0.16185960173606873,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 2.053541461005807,
+      "exported_reference": {
+        "name": "2.pkl",
+        "sha256": "441003a2e3d52aa1668956cbb1283ae5e29a4a2c797ddaf06db9cd22ae7ef5a8"
+      }
+    },
+    {
+      "sample": 3,
+      "source_sha256": "80e86d9c4b8ea29e6535daf917718ffbebacffe161c6d90283ff626193bba127",
+      "before_error_m": 0.44655629992485046,
+      "after_error_m": 0.07606232166290283,
+      "max_joint_change_rad": 0.7720562219619751,
+      "max_speed_change_rad_per_frame": 0.08235931396484375,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7335753310471773,
+      "exported_reference": {
+        "name": "3.pkl",
+        "sha256": "37968df8e6b4c9e7430ea0c74c460bfc4999aaa922edf20c271effbfac3a85a8"
+      }
+    },
+    {
+      "sample": 4,
+      "source_sha256": "e78636209b871868289706f8770b583ed57ce1d7034e9729759a854373cecf6f",
+      "before_error_m": 0.5025348663330078,
+      "after_error_m": 0.09142396599054337,
+      "max_joint_change_rad": 0.7768633365631104,
+      "max_speed_change_rad_per_frame": 0.06691080331802368,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7331188768148422,
+      "exported_reference": {
+        "name": "4.pkl",
+        "sha256": "a5529d6e81eef41a2d69749105a3e1f28eaf6bbac3e8321ee8e9d989811a417e"
+      }
+    },
+    {
+      "sample": 5,
+      "source_sha256": "2ca3283407ad523a631c3851a60f22cebd25bd252602c6cf468c797360d0f261",
+      "before_error_m": 0.3807581067085266,
+      "after_error_m": 0.03857690468430519,
+      "max_joint_change_rad": 0.4794574975967407,
+      "max_speed_change_rad_per_frame": 0.035839490592479706,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7313445769250393,
+      "exported_reference": {
+        "name": "5.pkl",
+        "sha256": "b7724dce7bec0cbd1687a5eafb731011d7b0378d83a8c3878e5366d012ea8047"
+      }
+    },
+    {
+      "sample": 6,
+      "source_sha256": "f65c712cbf9de0a8309e426c8dd65e2fcab9b52443dd4f8537cfafa97b5b89a4",
+      "before_error_m": 0.31295180320739746,
+      "after_error_m": 0.2624121308326721,
+      "max_joint_change_rad": 0.838715672492981,
+      "max_speed_change_rad_per_frame": 0.11446315050125122,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.731845011934638,
+      "exported_reference": {
+        "name": "6.pkl",
+        "sha256": "68b85c5b96ec6d47080688d1214f5edf06d875812779c37ab32fb6169ecd06c9"
+      }
+    },
+    {
+      "sample": 7,
+      "source_sha256": "a51752689b53b31fddccd9363c7221e71c1f8c42a713ec7b848b01b6dc6a7af8",
+      "before_error_m": 0.31140732765197754,
+      "after_error_m": 0.14364327490329742,
+      "max_joint_change_rad": 0.7685739994049072,
+      "max_speed_change_rad_per_frame": 0.05745093151926994,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7309635728597641,
+      "exported_reference": {
+        "name": "7.pkl",
+        "sha256": "1c339618f45bd832015cd09f4d19aa4351cde105bc72c9829ba1aab40a1b3dfc"
+      }
+    },
+    {
+      "sample": 8,
+      "source_sha256": "42bdbfe50a70c7b423fb4fe971e73b006f0d339ecc4c7abb6b8450f943c4efbb",
+      "before_error_m": 0.4321226179599762,
+      "after_error_m": 0.22160102427005768,
+      "max_joint_change_rad": 0.896273136138916,
+      "max_speed_change_rad_per_frame": 0.06699644029140472,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7293478958308697,
+      "exported_reference": {
+        "name": "8.pkl",
+        "sha256": "495bebbbf52c9939592d24ae7331dfcdae29a7fe7e051a99426839cc218f2987"
+      }
+    },
+    {
+      "sample": 9,
+      "source_sha256": "55607a273b8a3201dc78f5cf9ae440df6c441b8dd2973b02c64d163d3db12a66",
+      "before_error_m": 0.42521610856056213,
+      "after_error_m": 0.1766377091407776,
+      "max_joint_change_rad": 0.6340900659561157,
+      "max_speed_change_rad_per_frame": 0.047398269176483154,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7303183954209089,
+      "exported_reference": {
+        "name": "9.pkl",
+        "sha256": "6073adc479689321727384eafa5364aa6f88d5fecf0d97ac747ef495e7b94a03"
+      }
+    },
+    {
+      "sample": 10,
+      "source_sha256": "baf40a3d95c6a3256406084f2bb3fbd811c8dbfc3774ef702d717f184c9523db",
+      "before_error_m": 0.3032200336456299,
+      "after_error_m": 0.047685038298368454,
+      "max_joint_change_rad": 0.5536847710609436,
+      "max_speed_change_rad_per_frame": 0.041387975215911865,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7295843176543713,
+      "exported_reference": {
+        "name": "10.pkl",
+        "sha256": "e5375f323bf8d7abd1459ec53586b5996eacac353c66d5cb1195735d2948ca8e"
+      }
+    },
+    {
+      "sample": 11,
+      "source_sha256": "146d77fc73065b09c31b0223c85834579aae516c928c96d38fe9b618ada4827a",
+      "before_error_m": 0.48420998454093933,
+      "after_error_m": 0.2660367488861084,
+      "max_joint_change_rad": 0.9260547161102295,
+      "max_speed_change_rad_per_frame": 0.1402503252029419,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7274150680750608,
+      "exported_reference": {
+        "name": "11.pkl",
+        "sha256": "77ad4ec6c78be478f0cccf67cc4b7fc26a2c781d467be8d185617c2c97876cfd"
+      }
+    },
+    {
+      "sample": 12,
+      "source_sha256": "94df911dede7615ed203753f1379635f611617b44eda3026a224bdf1671d430f",
+      "before_error_m": 0.46732598543167114,
+      "after_error_m": 0.0892074927687645,
+      "max_joint_change_rad": 0.7406084537506104,
+      "max_speed_change_rad_per_frame": 0.055360496044158936,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7269693519920111,
+      "exported_reference": {
+        "name": "12.pkl",
+        "sha256": "14899de99b3dd65a6c3afc5e7b4252047e8be2727ba5e5bfd9380ae3b2fcca9f"
+      }
+    },
+    {
+      "sample": 15,
+      "source_sha256": "2310adc1351e783ceabdea19ddc75cefaa4f38e204ab6009aef3a398d71c7057",
+      "before_error_m": 0.4169232249259949,
+      "after_error_m": 0.09200606495141983,
+      "max_joint_change_rad": 0.7919268608093262,
+      "max_speed_change_rad_per_frame": 0.15806898474693298,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7291937749832869,
+      "exported_reference": {
+        "name": "15.pkl",
+        "sha256": "140f57e2ae815ee6331f9e0fe1ed6c4002f3852d065b4542e20ed2305169b326"
+      }
+    },
+    {
+      "sample": 16,
+      "source_sha256": "e2fdac2fceb4c958e20e5b63e03909f26fd186a350c9b7d34dfc94d929095a90",
+      "before_error_m": 0.4022487699985504,
+      "after_error_m": 0.14997628331184387,
+      "max_joint_change_rad": 0.795804500579834,
+      "max_speed_change_rad_per_frame": 0.05948641151189804,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7289770040661097,
+      "exported_reference": {
+        "name": "16.pkl",
+        "sha256": "9fd654304e193d6b5ee973cccae713b406cdd2f7250c9de5f9bd53107994c18e"
+      }
+    },
+    {
+      "sample": 18,
+      "source_sha256": "416a9d27dd9036dcea10e67b6fea78bda1cf8344b31a027490016517c84042f5",
+      "before_error_m": 0.49102839827537537,
+      "after_error_m": 0.18551009893417358,
+      "max_joint_change_rad": 0.7658179998397827,
+      "max_speed_change_rad_per_frame": 0.20335397124290466,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7264470960944891,
+      "exported_reference": {
+        "name": "18.pkl",
+        "sha256": "1b74396b5a29f186411983d0227155bbc5b4cbe16c2e40a33f9c2ea6686db894"
+      }
+    },
+    {
+      "sample": 19,
+      "source_sha256": "0ddb6870dd859d401e7f87212b3ea9fadbc682639f487a617506bfa987d6195e",
+      "before_error_m": 0.40960362553596497,
+      "after_error_m": 0.18064042925834656,
+      "max_joint_change_rad": 0.7733180522918701,
+      "max_speed_change_rad_per_frame": 0.05780554562807083,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7276521027088165,
+      "exported_reference": {
+        "name": "19.pkl",
+        "sha256": "8df6c5c43b22d746d81b4cea3df16463885ed917cf5c1730df379605d10aaba2"
+      }
+    },
+    {
+      "sample": 21,
+      "source_sha256": "d55c28223ebba362b9488b55e9f8dcac83af1ff1fb7f5c7c5d61bd6fea298bbd",
+      "before_error_m": 0.5076059103012085,
+      "after_error_m": 0.06145260110497475,
+      "max_joint_change_rad": 0.6128404140472412,
+      "max_speed_change_rad_per_frame": 0.13166813552379608,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7285936139523983,
+      "exported_reference": {
+        "name": "21.pkl",
+        "sha256": "83aeadf9e5f66e7cff55f15a57b592b6f258f67e44d8a86631dab624cfcbbb9f"
+      }
+    },
+    {
+      "sample": 22,
+      "source_sha256": "f8e9fb6e7bf7a61d0efd0d6fe70d7bcb222953dd73211f94c7d3d1ff995ed106",
+      "before_error_m": 0.3097774386405945,
+      "after_error_m": 0.05058949068188667,
+      "max_joint_change_rad": 0.5671588182449341,
+      "max_speed_change_rad_per_frame": 0.042395155876874924,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.729369405657053,
+      "exported_reference": {
+        "name": "22.pkl",
+        "sha256": "379f24806d993a4bd4662a7d201309a063a3f6ea52c090dd48a94b017a2a8e8e"
+      }
+    },
+    {
+      "sample": 23,
+      "source_sha256": "10e98a4033fbcdfbe4710d1ee8ea2667229aaabb8da940767268c779ecd6a870",
+      "before_error_m": 0.47069084644317627,
+      "after_error_m": 0.05626105144619942,
+      "max_joint_change_rad": 0.8934874534606934,
+      "max_speed_change_rad_per_frame": 0.06678824126720428,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7304533701390028,
+      "exported_reference": {
+        "name": "23.pkl",
+        "sha256": "9fe910a5d9c470236614aab18dfdb1e9cfae49dccce1d772cd75f4537b41665b"
+      }
+    },
+    {
+      "sample": 24,
+      "source_sha256": "e5e792f6ba9a14a6e867ac3be57c24ae041525e4e0e8cf45df0ba4eee81d65d3",
+      "before_error_m": 0.47573545575141907,
+      "after_error_m": 0.13293325901031494,
+      "max_joint_change_rad": 0.7946405410766602,
+      "max_speed_change_rad_per_frame": 0.05939939618110657,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7312052454799414,
+      "exported_reference": {
+        "name": "24.pkl",
+        "sha256": "394ea32c4f311ae5ef6d35cb2a220476a4c1eb04c50a873f8947890b7d21162d"
+      }
+    },
+    {
+      "sample": 26,
+      "source_sha256": "06027343d614da079659ae1f211637c3073e97c38f54b79423e42eaac886bfd3",
+      "before_error_m": 0.2581307291984558,
+      "after_error_m": 0.06825476139783859,
+      "max_joint_change_rad": 0.4893033504486084,
+      "max_speed_change_rad_per_frame": 0.03657543659210205,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7311945110559464,
+      "exported_reference": {
+        "name": "26.pkl",
+        "sha256": "165945ec788187838836b1bdc8425d85f3169f0bf7c3d3d466a85c2524e2f76b"
+      }
+    },
+    {
+      "sample": 29,
+      "source_sha256": "4d95d4fe3e16a3cc2184386b900b5cd29d1b8fd7b767a25d9fdd0dc80187aff7",
+      "before_error_m": 0.4380432069301605,
+      "after_error_m": 0.3004860281944275,
+      "max_joint_change_rad": 0.9696029424667358,
+      "max_speed_change_rad_per_frame": 0.07247786223888397,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7284981813281775,
+      "exported_reference": {
+        "name": "29.pkl",
+        "sha256": "2f987466ffd717308b794e4dfd73d2b62bf677cafb7c5b0d50024596594dc986"
+      }
+    },
+    {
+      "sample": 30,
+      "source_sha256": "ce97a35a81511a1a3f6dc43f50d30dfcc654306c8e553a342f943c719d1d5746",
+      "before_error_m": 0.37893760204315186,
+      "after_error_m": 0.15308554470539093,
+      "max_joint_change_rad": 0.9368215203285217,
+      "max_speed_change_rad_per_frame": 0.1534271389245987,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7277641501277685,
+      "exported_reference": {
+        "name": "30.pkl",
+        "sha256": "169a2bd1e717e5b3af82a3c4e69c6c995b8d2cbca14907e06e07220de63bdaf5"
+      }
+    },
+    {
+      "sample": 33,
+      "source_sha256": "636e0739840dbe23f761246db5cbb2ff42c7f9274099d659251fdeb8fa6f7d24",
+      "before_error_m": 0.48208099603652954,
+      "after_error_m": 0.20383989810943604,
+      "max_joint_change_rad": 0.8826797008514404,
+      "max_speed_change_rad_per_frame": 0.11270119249820709,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.728978430852294,
+      "exported_reference": {
+        "name": "33.pkl",
+        "sha256": "8f5ecc7d7bfb00cac74beabcc881963a4e0574d0b46496799bc140e669591c48"
+      }
+    },
+    {
+      "sample": 34,
+      "source_sha256": "8e64208a1ba986db807ecd6a6ac4c397b2432cd4512c67afa284530d82fa3841",
+      "before_error_m": 0.37104424834251404,
+      "after_error_m": 0.28326648473739624,
+      "max_joint_change_rad": 0.9895812273025513,
+      "max_speed_change_rad_per_frame": 0.12183952331542969,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.730337455868721,
+      "exported_reference": {
+        "name": "34.pkl",
+        "sha256": "9866863f9e31a1fe6794e1ecc965d9ec9fa529b0f6185c4dfa200beb6b8d6a23"
+      }
+    },
+    {
+      "sample": 35,
+      "source_sha256": "d2a3808354f65d9d8efde7ef0d786cf89ff80253c06ea9238344016d4c2a8f92",
+      "before_error_m": 0.48324891924858093,
+      "after_error_m": 0.09002719819545746,
+      "max_joint_change_rad": 0.8113620281219482,
+      "max_speed_change_rad_per_frame": 0.06064935028553009,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.74239781498909,
+      "exported_reference": {
+        "name": "35.pkl",
+        "sha256": "dcc9daad6311bde2aedf9c3789ad0bbebae89db3f64c943ac2f7e6f5b071931b"
+      }
+    },
+    {
+      "sample": 36,
+      "source_sha256": "8b5c2460c34463ef386c42397c3314ded31476534523dd54bb7cd89c3746efdd",
+      "before_error_m": 0.5501355528831482,
+      "after_error_m": 0.04367122799158096,
+      "max_joint_change_rad": 0.7361922860145569,
+      "max_speed_change_rad_per_frame": 0.05503040552139282,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.724254384636879,
+      "exported_reference": {
+        "name": "36.pkl",
+        "sha256": "a5bf6341ac92ca279847273a8c0a536c2ab3c5aa9c7a8a1acd52ac45d2c97ee5"
+      }
+    },
+    {
+      "sample": 37,
+      "source_sha256": "8ed44701b005dbfbfadb04151174215cf26b1825120406647a0ab666778be205",
+      "before_error_m": 0.3920517861843109,
+      "after_error_m": 0.25565287470817566,
+      "max_joint_change_rad": 0.9226019382476807,
+      "max_speed_change_rad_per_frame": 0.06896451115608215,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7202316708862782,
+      "exported_reference": {
+        "name": "37.pkl",
+        "sha256": "8168a2b23ad42e9a57568411a6992b7a80361dd6855f0d663661134b10782716"
+      }
+    },
+    {
+      "sample": 40,
+      "source_sha256": "1a2d102417a5befb986b4b6a29e8bd6539cea651577a9f0e0ce915f8684838f7",
+      "before_error_m": 0.4540518522262573,
+      "after_error_m": 0.1298331767320633,
+      "max_joint_change_rad": 0.6540924310684204,
+      "max_speed_change_rad_per_frame": 0.08580276370048523,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7199533078819513,
+      "exported_reference": {
+        "name": "40.pkl",
+        "sha256": "6e4870ef7f144c9b43a0ce5cff5d1db7b7fffcde35647543516e96696b159cc1"
+      }
+    },
+    {
+      "sample": 41,
+      "source_sha256": "cd95580a9ccfddae3c62867644f8a274819f2fa35ae6a70b7fc3d5ed8734ba2f",
+      "before_error_m": 0.21701744198799133,
+      "after_error_m": 0.17160536348819733,
+      "max_joint_change_rad": 0.6087255477905273,
+      "max_speed_change_rad_per_frame": 0.16755938529968262,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7203345280140638,
+      "exported_reference": {
+        "name": "41.pkl",
+        "sha256": "6c7d48da10d723dacc6ba2ca007fc465466faa58b0fe510fe88a9287c5b39695"
+      }
+    },
+    {
+      "sample": 44,
+      "source_sha256": "bcd30b8766e7d15c73fcd669ca4f4893d2c12fa2ec56a6616b1a077b8d01a18a",
+      "before_error_m": 0.36620616912841797,
+      "after_error_m": 0.09162415564060211,
+      "max_joint_change_rad": 0.755280077457428,
+      "max_speed_change_rad_per_frame": 0.05645722523331642,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7202621530741453,
+      "exported_reference": {
+        "name": "44.pkl",
+        "sha256": "f9e7dec6524c6cca5c24da669a09008aad3a654be0cb7161e8f45a0de0a3b49c"
+      }
+    },
+    {
+      "sample": 46,
+      "source_sha256": "57a2219e3e3ee8b9386c7c5aae2c76d099860d83a43fca848d6347dc8b840b17",
+      "before_error_m": 0.3439840078353882,
+      "after_error_m": 0.18176665902137756,
+      "max_joint_change_rad": 0.8044081926345825,
+      "max_speed_change_rad_per_frame": 0.06012953817844391,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7252820264548063,
+      "exported_reference": {
+        "name": "46.pkl",
+        "sha256": "a6c76af54ba389ee956c6ce3abf796d2dbf48a48289e739b4c0bb89b88124bf2"
+      }
+    },
+    {
+      "sample": 47,
+      "source_sha256": "9f504d47fb3e00840af719d3720dbcb6f84e72b3f3071adf89c380c99f71b84d",
+      "before_error_m": 0.4463996887207031,
+      "after_error_m": 0.07918453216552734,
+      "max_joint_change_rad": 0.7800243496894836,
+      "max_speed_change_rad_per_frame": 0.05830684304237366,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7254921775311232,
+      "exported_reference": {
+        "name": "47.pkl",
+        "sha256": "c1ac0cbf369b0ae2379d61f20fc271dd26433d5627a66e2c179784b0cb563c35"
+      }
+    },
+    {
+      "sample": 50,
+      "source_sha256": "3ee6193264b2c03b97d610f6a4bc0f8b79d5780e69f352302208c20da07417a3",
+      "before_error_m": 0.331694632768631,
+      "after_error_m": 0.1414821445941925,
+      "max_joint_change_rad": 0.7553284764289856,
+      "max_speed_change_rad_per_frame": 0.056460849940776825,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7245983388274908,
+      "exported_reference": {
+        "name": "50.pkl",
+        "sha256": "0e88e1ccabb9b1c8f203fdcdcf4abaa80935abf2d124504cb2a9235e51a86028"
+      }
+    },
+    {
+      "sample": 51,
+      "source_sha256": "08621a5b62286a7edab9e387b985e80dba719879cab0057644be19f12ff78f08",
+      "before_error_m": 0.45667433738708496,
+      "after_error_m": 0.12861014902591705,
+      "max_joint_change_rad": 0.7057967185974121,
+      "max_speed_change_rad_per_frame": 0.0527583546936512,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7237542327493429,
+      "exported_reference": {
+        "name": "51.pkl",
+        "sha256": "59f48197658cb43b7d9be1c4ac11ea6f2befcd2ca94d57bb9bc0521e75513d05"
+      }
+    },
+    {
+      "sample": 52,
+      "source_sha256": "750e17edc22af6c8f52c205cf14b2884e06678977b37a3e5b78336e72672d7c4",
+      "before_error_m": 0.31588003039360046,
+      "after_error_m": 0.15056997537612915,
+      "max_joint_change_rad": 0.6269489526748657,
+      "max_speed_change_rad_per_frame": 0.04686447232961655,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7182594519108534,
+      "exported_reference": {
+        "name": "52.pkl",
+        "sha256": "0f3abb162cf2664c0df212e383babe65f036e2a6c1b8f1230b530160dcd69e61"
+      }
+    },
+    {
+      "sample": 53,
+      "source_sha256": "70c5dd1ffeb56efedbb416179889179e381352a1154f01f7aaecb859d6302cc7",
+      "before_error_m": 0.35698479413986206,
+      "after_error_m": 0.08038296550512314,
+      "max_joint_change_rad": 0.6903787851333618,
+      "max_speed_change_rad_per_frame": 0.051605820655822754,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7219491079449654,
+      "exported_reference": {
+        "name": "53.pkl",
+        "sha256": "d8cc2a0cb4c9e61334af58475e1ef89d8ceb7a605543777f82aa9f4137a94ba4"
+      }
+    },
+    {
+      "sample": 54,
+      "source_sha256": "d42248560c25ead1845d5e0d9e08764719bf4ef8fdcf72f205ab0c34e4c31200",
+      "before_error_m": 0.36990633606910706,
+      "after_error_m": 0.10233748704195023,
+      "max_joint_change_rad": 0.7034233212471008,
+      "max_speed_change_rad_per_frame": 0.05258093774318695,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7228644862771034,
+      "exported_reference": {
+        "name": "54.pkl",
+        "sha256": "8c92bbf9e5b2ffd8c9bd0a922a8e75aa7953b64e84b20c73f8620b0488e7c870"
+      }
+    },
+    {
+      "sample": 55,
+      "source_sha256": "24dfa1be34b94b36367153e2103b89ec94c650c7561b251e6bdf8f230ef52821",
+      "before_error_m": 0.4379897713661194,
+      "after_error_m": 0.05013313516974449,
+      "max_joint_change_rad": 0.6853076219558716,
+      "max_speed_change_rad_per_frame": 0.05122677609324455,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7202615421265364,
+      "exported_reference": {
+        "name": "55.pkl",
+        "sha256": "022e7490b2291c4dbc4cb4bdf1f2aaffceccf2218aff688cea033f4db90c1d4c"
+      }
+    },
+    {
+      "sample": 56,
+      "source_sha256": "47726fbd72752d37169dc8e1903187c657a7e02097c6ba2dcd225e6d2d1b0a03",
+      "before_error_m": 0.40798187255859375,
+      "after_error_m": 0.05318720266222954,
+      "max_joint_change_rad": 0.711641788482666,
+      "max_speed_change_rad_per_frame": 0.05319524556398392,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7206064742058516,
+      "exported_reference": {
+        "name": "56.pkl",
+        "sha256": "63a2ab1e507d04adfd34a6fd46ddaae3a31db0cd27ef3e437240287e9c9ae993"
+      }
+    },
+    {
+      "sample": 57,
+      "source_sha256": "895943c7e4fd6a0a5e941e192d2865d7ab4657dad2687ccf0fff95bdaa4c1732",
+      "before_error_m": 0.521134078502655,
+      "after_error_m": 0.25354430079460144,
+      "max_joint_change_rad": 0.9835687279701233,
+      "max_speed_change_rad_per_frame": 0.4321599006652832,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7207212429493666,
+      "exported_reference": {
+        "name": "57.pkl",
+        "sha256": "99d22769df5dd68cb293a18e03939736a96989c6cc4744f07918dfea097a3f29"
+      }
+    },
+    {
+      "sample": 61,
+      "source_sha256": "302763aabadc4d7338183131ab84df4045a0fb15255c8c54c5d5f752e13987f8",
+      "before_error_m": 0.40753239393234253,
+      "after_error_m": 0.11236780881881714,
+      "max_joint_change_rad": 0.6095089912414551,
+      "max_speed_change_rad_per_frame": 0.0832848995923996,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7195807937532663,
+      "exported_reference": {
+        "name": "61.pkl",
+        "sha256": "25e6367e575986cc796039f69505dd695c00e8d6a6437dbb6e5ff97e08127223"
+      }
+    },
+    {
+      "sample": 62,
+      "source_sha256": "7b05285f70f504d82526b09e55d5d6766729a07b43abf83e8f41414a2036e780",
+      "before_error_m": 0.4346674084663391,
+      "after_error_m": 0.11572490632534027,
+      "max_joint_change_rad": 0.8805696368217468,
+      "max_speed_change_rad_per_frame": 0.06582261621952057,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7204762231558561,
+      "exported_reference": {
+        "name": "62.pkl",
+        "sha256": "fe2c31252b6cb8bc9666afa8598589cfa3019808765e557f51b4400d8a7c599c"
+      }
+    },
+    {
+      "sample": 63,
+      "source_sha256": "274efdebc3129e4d062e03ca1ed5028f8c0e97b0e532d724316822dbef054a03",
+      "before_error_m": 0.37055185437202454,
+      "after_error_m": 0.12827594578266144,
+      "max_joint_change_rad": 0.8083735704421997,
+      "max_speed_change_rad_per_frame": 0.07566750049591064,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.721899501979351,
+      "exported_reference": {
+        "name": "63.pkl",
+        "sha256": "70a223efcd7b44d27f29f6f42c4972f10d7ff989b2bffabb76d24a8795b121c0"
+      }
+    },
+    {
+      "sample": 64,
+      "source_sha256": "34b4042c2a4e7e1c2a13259f6518bf0c863d781743ac586d34e014c099b2c4ac",
+      "before_error_m": 0.3003990650177002,
+      "after_error_m": 0.05068071559071541,
+      "max_joint_change_rad": 0.5624040365219116,
+      "max_speed_change_rad_per_frame": 0.04203971475362778,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.720734816044569,
+      "exported_reference": {
+        "name": "64.pkl",
+        "sha256": "41f7140d0f9ee1dcf08d2e7437d0224cbc1200ef3eea6666c70cea1aaf8927f6"
+      }
+    },
+    {
+      "sample": 69,
+      "source_sha256": "435d598820256f5b988eb1cde112fee6d2bfe1ee3755c8035e3c5711d35fc511",
+      "before_error_m": 0.3100161850452423,
+      "after_error_m": 0.1179337203502655,
+      "max_joint_change_rad": 0.8343919515609741,
+      "max_speed_change_rad_per_frame": 0.11493942141532898,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7236403916031122,
+      "exported_reference": {
+        "name": "69.pkl",
+        "sha256": "eda9acba23481af88ce4ae99e77fe4c0bcc26ad77961ae97117c0a820208b266"
+      }
+    },
+    {
+      "sample": 70,
+      "source_sha256": "a7e3fb83183afdb236ac6768df3be2383056071cba096b2592a65dc885afc6bb",
+      "before_error_m": 0.42110276222229004,
+      "after_error_m": 0.07350291311740875,
+      "max_joint_change_rad": 0.784491777420044,
+      "max_speed_change_rad_per_frame": 0.05864083766937256,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7261398192495108,
+      "exported_reference": {
+        "name": "70.pkl",
+        "sha256": "81872ed219f464ff2cf0497de9a77e7557ce835bc3b1846b4ca1f79f6ff364cf"
+      }
+    },
+    {
+      "sample": 71,
+      "source_sha256": "4d3b2bda246098e3e19e520b9b553a464892a29c2cd6edb62b5fd8a3d8e7e532",
+      "before_error_m": 0.396570086479187,
+      "after_error_m": 0.13528703153133392,
+      "max_joint_change_rad": 0.9483730792999268,
+      "max_speed_change_rad_per_frame": 0.27776217460632324,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.727872570976615,
+      "exported_reference": {
+        "name": "71.pkl",
+        "sha256": "07ce802b9f150d393b5f6ad5650ac961771be9cce99f0601d382231839ef43da"
+      }
+    },
+    {
+      "sample": 73,
+      "source_sha256": "bcfb7363a42c3803224e2c9bf66786a29c17ffce3b18210dc31b3eab15050711",
+      "before_error_m": 0.366669625043869,
+      "after_error_m": 0.1682705134153366,
+      "max_joint_change_rad": 0.8346469402313232,
+      "max_speed_change_rad_per_frame": 0.062389880418777466,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7301725335419178,
+      "exported_reference": {
+        "name": "73.pkl",
+        "sha256": "23401624c1e012488e536559ef9856c06076670124fb64537bc6f0a0da711dfc"
+      }
+    },
+    {
+      "sample": 74,
+      "source_sha256": "a77aff6aba0625845628c514a33cbfd04860ceca8e0fe2d2f66d79a1aed181df",
+      "before_error_m": 0.4520629048347473,
+      "after_error_m": 0.05655156448483467,
+      "max_joint_change_rad": 0.7790231704711914,
+      "max_speed_change_rad_per_frame": 0.09354384243488312,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7325164116919041,
+      "exported_reference": {
+        "name": "74.pkl",
+        "sha256": "9833dbd6b90834ff8f40f41ea45688944ab646869ba19830b20b2d212a82eaa4"
+      }
+    },
+    {
+      "sample": 75,
+      "source_sha256": "078320b89872fc4c386a3f0cca6e2516ab8f3aa4e739ddb15b9abd78bf5f1596",
+      "before_error_m": 0.49726593494415283,
+      "after_error_m": 0.23407576978206635,
+      "max_joint_change_rad": 0.9566932916641235,
+      "max_speed_change_rad_per_frame": 0.1503700464963913,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7321904469281435,
+      "exported_reference": {
+        "name": "75.pkl",
+        "sha256": "021e155399c1355227f9511952e29c6468e64aa269a37dfe83a7613ad6374d67"
+      }
+    },
+    {
+      "sample": 77,
+      "source_sha256": "5126fa7602d8ee5ebadb1097489fe9b02f2151941d161a1f445ee6b635def353",
+      "before_error_m": 0.3491939902305603,
+      "after_error_m": 0.12586520612239838,
+      "max_joint_change_rad": 0.798011064529419,
+      "max_speed_change_rad_per_frame": 0.05965135619044304,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7301851157099009,
+      "exported_reference": {
+        "name": "77.pkl",
+        "sha256": "6e1f6d91d82827c41eaf9267b72b0bfd48148cb7a75c30ff79d18818c9656aec"
+      }
+    },
+    {
+      "sample": 78,
+      "source_sha256": "3136d63ced1f810665e1b32e88ea58aa457b61019e128e61a8f5e338554aa3b9",
+      "before_error_m": 0.475279837846756,
+      "after_error_m": 0.10944252461194992,
+      "max_joint_change_rad": 0.8005317449569702,
+      "max_speed_change_rad_per_frame": 0.05983978509902954,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7256129831075668,
+      "exported_reference": {
+        "name": "78.pkl",
+        "sha256": "c99a83500474978e4c63ae68a804b244c7b6fe45c4e2a1361d25fd1d9dba9b87"
+      }
+    },
+    {
+      "sample": 81,
+      "source_sha256": "c64f977e164a83347d1e2bf2a48357b6cefe229a0e3a2fbfa425d4a969c75472",
+      "before_error_m": 0.49572592973709106,
+      "after_error_m": 0.2044726461172104,
+      "max_joint_change_rad": 0.7767903804779053,
+      "max_speed_change_rad_per_frame": 0.07718975841999054,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7210517283529043,
+      "exported_reference": {
+        "name": "81.pkl",
+        "sha256": "1786e1de5353d6aebb6a98a52f59bbdc68c960530a0502661d9a77a40e070019"
+      }
+    },
+    {
+      "sample": 82,
+      "source_sha256": "c8b76b4a50281e015a6160b7458957cae07676de3d37fdf082084d190483317f",
+      "before_error_m": 0.36997851729393005,
+      "after_error_m": 0.28948405385017395,
+      "max_joint_change_rad": 0.9904532432556152,
+      "max_speed_change_rad_per_frame": 0.1630624532699585,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7227576989680529,
+      "exported_reference": {
+        "name": "82.pkl",
+        "sha256": "29018975ddfff363e21f97108be42c8bad5d4341d210d80ef4d540f9e2d46b9a"
+      }
+    },
+    {
+      "sample": 83,
+      "source_sha256": "7e4a581681430ff98ce012e85230c2ed2b6884b303e3de36227bbefee733199a",
+      "before_error_m": 0.524563193321228,
+      "after_error_m": 0.0502353236079216,
+      "max_joint_change_rad": 0.9327703714370728,
+      "max_speed_change_rad_per_frame": 0.07793310284614563,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7229615841060877,
+      "exported_reference": {
+        "name": "83.pkl",
+        "sha256": "12549afeb6fc2b680fe46f75ce3cc01c6d34611d93b2dba21864b976d43e2b20"
+      }
+    },
+    {
+      "sample": 84,
+      "source_sha256": "9fc732c27c864965761b428007e4bcd7df68263aad798e5855cfa2b5023e927b",
+      "before_error_m": 0.49857810139656067,
+      "after_error_m": 0.09472329914569855,
+      "max_joint_change_rad": 0.6982549428939819,
+      "max_speed_change_rad_per_frame": 0.05219459533691406,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7211492322385311,
+      "exported_reference": {
+        "name": "84.pkl",
+        "sha256": "726835bd796a4155d274a2406d16d66804874187368588027d5992f290a9b6c5"
+      }
+    },
+    {
+      "sample": 89,
+      "source_sha256": "6d6922331728a9dadcfa078f1e1c3cf41f8c336c03af9e68256215a89bd69019",
+      "before_error_m": 0.39413025975227356,
+      "after_error_m": 0.13307392597198486,
+      "max_joint_change_rad": 0.8021689653396606,
+      "max_speed_change_rad_per_frame": 0.05996216833591461,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7226355355232954,
+      "exported_reference": {
+        "name": "89.pkl",
+        "sha256": "254e3dfa5e10c6785ef0a777a20479b1c1886930aae78bc1fd9180dff7f2de55"
+      }
+    },
+    {
+      "sample": 90,
+      "source_sha256": "34045df8736b915de5651c66eabf4894001bd98f6523105319f14e97346a99d0",
+      "before_error_m": 0.5084227919578552,
+      "after_error_m": 0.10102730989456177,
+      "max_joint_change_rad": 0.7754786014556885,
+      "max_speed_change_rad_per_frame": 0.15227490663528442,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.731633372604847,
+      "exported_reference": {
+        "name": "90.pkl",
+        "sha256": "b5dceda9eba3308109bd627762874a7b763cb462c98beb3203cce4a78c238c9b"
+      }
+    },
+    {
+      "sample": 91,
+      "source_sha256": "1bdbfdc19680f5a4f9c03bb033f66ac2614cb832ee579dc34ee858de84701766",
+      "before_error_m": 0.348637193441391,
+      "after_error_m": 0.051518626511096954,
+      "max_joint_change_rad": 0.7806313633918762,
+      "max_speed_change_rad_per_frame": 0.13653412461280823,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.730333998799324,
+      "exported_reference": {
+        "name": "91.pkl",
+        "sha256": "dff10a3e961c4721b2e5e82a4e5f48e59e87020690190cf5315566140629c2e2"
+      }
+    },
+    {
+      "sample": 92,
+      "source_sha256": "99447a1786fc900db3467e524b3672e589079e13cbaf0a30fd4e93e60e963adf",
+      "before_error_m": 0.3144604563713074,
+      "after_error_m": 0.08919623494148254,
+      "max_joint_change_rad": 0.7885583639144897,
+      "max_speed_change_rad_per_frame": 0.05894477665424347,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7268008347600698,
+      "exported_reference": {
+        "name": "92.pkl",
+        "sha256": "0e26f0eaf05d010b492e70eb7a9db274bb8af02adab48ee6a8e1942a1291ee7b"
+      }
+    },
+    {
+      "sample": 93,
+      "source_sha256": "c772f8468110cc2197bc868dc552b6687817ce829bfce634b5a28ee707924ef2",
+      "before_error_m": 0.31248757243156433,
+      "after_error_m": 0.0402977354824543,
+      "max_joint_change_rad": 0.4078494906425476,
+      "max_speed_change_rad_per_frame": 0.030486762523651123,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7236462235450745,
+      "exported_reference": {
+        "name": "93.pkl",
+        "sha256": "9b4b2424e6f198ba018abfd05450266d692db6a77062f3341af9af7b546278e3"
+      }
+    },
+    {
+      "sample": 94,
+      "source_sha256": "2fa129c4c0fc54a55cb4a627466c05c06517b6529161fff5ed3d61f5324ecf3b",
+      "before_error_m": 0.32280462980270386,
+      "after_error_m": 0.10770916193723679,
+      "max_joint_change_rad": 0.7169859409332275,
+      "max_speed_change_rad_per_frame": 0.053594719618558884,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7219436131417751,
+      "exported_reference": {
+        "name": "94.pkl",
+        "sha256": "78ebbcd58c72d206f433a86ca27a89e74f47a0142c3c1ea7c46e72cedc1462ad"
+      }
+    },
+    {
+      "sample": 96,
+      "source_sha256": "46ca2740841ec89098ca2a52c574c98e8fa4b5e0b48c2cec3a4fe0ade51e1060",
+      "before_error_m": 0.4190562665462494,
+      "after_error_m": 0.10151678323745728,
+      "max_joint_change_rad": 0.8624701499938965,
+      "max_speed_change_rad_per_frame": 0.06446968019008636,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.7227771449834108,
+      "exported_reference": {
+        "name": "96.pkl",
+        "sha256": "13b4214450eb74dbb18b7e8fa5ece16990b6b645860b68d2f59dd60632026470"
+      }
+    },
+    {
+      "sample": 98,
+      "source_sha256": "f54c9a8cb4749a73f2b25aca16ddc27ab649f2a6a8a2147b75ec6e9e98083c82",
+      "before_error_m": 0.3322651982307434,
+      "after_error_m": 0.1365019828081131,
+      "max_joint_change_rad": 0.6153684854507446,
+      "max_speed_change_rad_per_frame": 0.04599881172180176,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true,
+      "optimization_wall_time_s": 0.726765675470233,
+      "exported_reference": {
+        "name": "98.pkl",
+        "sha256": "6e7b52deac61475c172a7cc249cf68ad83ffa4f1d9b3242286b2490a3cc3b240"
+      }
+    }
+  ],
+  "limitations": [
+    "kinematics only: no contact forces, collisions, dynamics, semantics, or RL execution measured",
+    "right ankle link is a proxy for the SMPL right-foot joint",
+    "initial hyperparameters and sample size are exploratory, not held-out I1 Gate evidence"
+  ]
+}

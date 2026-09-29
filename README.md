@@ -9,9 +9,10 @@
 | DreamControl 官方 Kick 基线 | 官方 66 条轨迹，8192 环境，2000 轮，seed 42 | 官方 `play_eval.py`，1000 环境、500 帧 | **85.3%** |
 | 旧 66 条策略在新动作留出集 | 1024 环境训练；32 条 seed42 留出轨迹 | 1000 环境、500 帧 | **0%** |
 | 98 条增强组在同一留出集 | 原 66＋新增 32 条，1024 环境，seed 123 | 同一 32 条留出、1000 环境、500 帧 | **0%** |
-| CLoSD 多任务闭环微调 | 官方预训练控制器，512 环境，计划增加 4000 epoch | 尚在训练，最终多任务评估未出 | **进行中** |
+| CLoSD 多任务闭环微调 | 官方预训练控制器，512 环境，增加 4000 epoch 后保存检查点 | 同口径微调前／后评估 | REACH 100%→0%、共用 STRIKE 87%→5%、SIT 77%→7%、GET_UP 56%→69%；训练在保存后异常退出 |
+| I1 脚部约束后处理诊断 | 同一组 100 个 Kick 约束，生成种子 42/43/44；仅修改成功重定向轨迹的右腿 | 外部目标几何误差、固定策略仿真、接触与耗时 | 几何误差下降，但修正后跟踪显著退化；**完整 I1 Gate 未通过** |
 
-**85.3% 与两个 0% 不能直接比较数据增益**：训练环境数、种子和测试动作不同。增强组的同口径留出集实验尚未显示成功率收益。完整 DreamControl 上游生成—重定向—修正流程和 CLoSD 最终 Gate 仍需分别核验。准确的时间线、失败尝试与限制见 [DreamControl 记录](reports/02_dreamcontrol_reproduction.md)和 [CLoSD 记录](reports/01_closd_reproduction.md)。
+**85.3% 与两个 0% 不能直接比较数据增益**：训练环境数、种子和测试动作不同。增强组的同口径留出集实验尚未显示成功率收益。CLoSD 512 环境缩容微调并非论文 4096 环境的严格同配置复现；Kick 与 I1 的单动作类别结果也不能代表通用生成。准确的时间线、失败尝试与限制见 [DreamControl 记录](reports/02_dreamcontrol_reproduction.md)、[CLoSD 记录](reports/01_closd_reproduction.md)及 [I1 执行与质量诊断](reports/05_I1_dynamics_contact_semantics_efficiency.md)。
 
 ## 内容
 
@@ -19,13 +20,14 @@
 - `configs/`：项目本地的版本化环境规格；上游 Isaac Sim、Isaac Gym、DreamControl 和 CLoSD 均由各自官方来源获取。
 - `scripts/`：复现、资产核验、条件动作生成、质量审计、训练／评估与监控脚本。
 - `results/`：机器可读的实验口径与结果索引。
+- `reports/04_I1_feasibility.md`、`reports/05_I1_dynamics_contact_semantics_efficiency.md`：空间条件、机器人运动学、固定策略仿真、接触代理、语义代理及生成耗时的阶段证据；均未宣称完整 I1 成立。
 - `reports/03_dreamcontrol_multitask_baselines.md`：其余十任务的参考数据、严格复现口径与当前阶段状态。
 - `media/`：已完成评估的小型视频。
 - `checkpoints/`：DreamControl 实验的控制策略检查点，使用 Git LFS；**不含**受单独许可约束的 CLoSD、SMPL、AMASS 或 HumanML3D 资产。
 
-DreamControl 官方代码固定提交 `ec28b508313d6837de52c68247fbc8cf81fe4935`；CLoSD 官方代码固定提交 `d8950bdb78312fcd2844f336b3fc079e7368c87f`。新任务的服务器工作目录为 `/data/code/ouyanghao/oyh/conditional-human-motion-generation`，DreamControl 源码、参考动作和后续日志独立保存；通用 Isaac Sim 安装与 Python 依赖仍作为只读共享工具使用。此前运行的 CLoSD 训练保持原路径 `/data/code/ouyanghao/oyh/humanoid-combat-motion` 直到完成，避免移动文件中断进程；其结果再归档到本仓库。
+DreamControl 官方代码来源记录为提交 `ec28b508313d6837de52c68247fbc8cf81fe4935`，但当前服务器的 `third_party/DreamControl` 目录不是独立 Git checkout，不能仅凭该目录再次证明完整代码版本；本轮关键源文件哈希见 `results/r3_i1_provenance_manifest_v2.json`。CLoSD 官方代码来源记录为提交 `d8950bdb78312fcd2844f336b3fc079e7368c87f`。新任务的服务器工作目录为 `/data/code/ouyanghao/oyh/conditional-human-motion-generation`，DreamControl 源码、参考动作和后续日志独立保存；通用 Isaac Sim 安装与 Python 依赖仍作为只读共享工具使用。此前运行的 CLoSD 训练保持原路径 `/data/code/ouyanghao/oyh/humanoid-combat-motion` 直到完成，避免移动文件中断进程；其结果再归档到本仓库。
 
-官方 DreamControl 的论文报告 11 种任务。其余十项任务的公开参考轨迹已逐文件校验，哈希见 `results/official_other_tasks_assets_manifest.json`；这只表示输入数据就绪，**不是训练完成**。`scripts/r3_dreamcontrol_official_other_tasks_queue.sh` 为顺序训练／评估队列，必须先通过本地查看真实训练仿真的图形 Gate 才能启动。每项任务独立核验正式训练预算、成功率和视频，不能用 Kick 的结果代表其余任务。[论文与任务表](https://genrobo.github.io/DreamControl/static/paper/DreamControl_arxiv.pdf)。
+官方 DreamControl 的论文报告 11 种任务。其余十项任务的公开参考轨迹已逐文件校验，哈希见 `results/official_other_tasks_assets_manifest.json`；这只表示输入数据就绪，**不是训练完成**。顺序队列的首项 Punch 在第 1618 轮因图形串流故障停止，已保留第 1600 轮检查点，尚无正式评估；后续九项未启动。需在不让串流阻塞训练的前提下续训并逐项核验成功率与视频，不能用 Kick 的结果代表其余任务。[论文与任务表](https://genrobo.github.io/DreamControl/static/paper/DreamControl_arxiv.pdf)。
 
 ## 数据与许可
 

@@ -1,0 +1,148 @@
+{
+  "status": "complete_diagnostics_i1_gate_not_passed",
+  "evaluation_types": [
+    "simulation_only_fixed_tracker",
+    "semantic_kinematic_proxy",
+    "wall_time_component_timing"
+  ],
+  "generated_per_seed": 100,
+  "paired_seed_rows": [
+    {
+      "generation_seed": 42,
+      "retargeted_pairs": 64,
+      "official_goal_proximity_success_percent_raw": 80.078125,
+      "official_goal_proximity_success_percent_corrected": 0.0,
+      "joint_mae_rad_raw": 0.04066677156642631,
+      "joint_mae_rad_corrected": 0.18275967187793166,
+      "early_resets_per_environment_raw": 0.07421875,
+      "early_resets_per_environment_corrected": 6.0,
+      "right_ankle_contact_frame_fraction_raw": 0.7514453125,
+      "right_ankle_contact_frame_fraction_corrected": 0.2694609375,
+      "kick_event_proxy_retained_count": 58,
+      "mean_peak_added_abs_velocity_rad_s": 0.8863459681106178
+    },
+    {
+      "generation_seed": 43,
+      "retargeted_pairs": 64,
+      "official_goal_proximity_success_percent_raw": 83.984375,
+      "official_goal_proximity_success_percent_corrected": 0.0,
+      "joint_mae_rad_raw": 0.04001255103835353,
+      "joint_mae_rad_corrected": 0.1664163536363178,
+      "early_resets_per_environment_raw": 0.06640625,
+      "early_resets_per_environment_corrected": 5.58984375,
+      "right_ankle_contact_frame_fraction_raw": 0.7545703125,
+      "right_ankle_contact_frame_fraction_corrected": 0.31025,
+      "kick_event_proxy_retained_count": 61,
+      "mean_peak_added_abs_velocity_rad_s": 0.7621440112961864
+    },
+    {
+      "generation_seed": 44,
+      "retargeted_pairs": 63,
+      "official_goal_proximity_success_percent_raw": 93.359375,
+      "official_goal_proximity_success_percent_corrected": 6.25,
+      "joint_mae_rad_raw": 0.041279301789071826,
+      "joint_mae_rad_corrected": 0.15372648132288896,
+      "early_resets_per_environment_raw": 0.1796875,
+      "early_resets_per_environment_corrected": 4.9609375,
+      "right_ankle_contact_frame_fraction_raw": 0.7455390625,
+      "right_ankle_contact_frame_fraction_corrected": 0.32509375,
+      "kick_event_proxy_retained_count": 55,
+      "mean_peak_added_abs_velocity_rad_s": 0.821869611289234
+    }
+  ],
+  "frozen_raw_goal_seed42": {
+    "raw": {
+      "official_goal_proximity_success_percent": 81.25,
+      "joint_mae_rad": 0.04187214700380961,
+      "early_resets_per_environment": 0.0703125,
+      "left_ankle_contact_frame_fraction": 0.903328125,
+      "right_ankle_contact_frame_fraction": 0.74875
+    },
+    "cap025": {
+      "official_goal_proximity_success_percent": 9.375,
+      "joint_mae_rad": 0.18200206907148714,
+      "early_resets_per_environment": 6.59765625,
+      "left_ankle_contact_frame_fraction": 0.64584375,
+      "right_ankle_contact_frame_fraction": 0.14515625
+    },
+    "cap050": {
+      "official_goal_proximity_success_percent": 0.0,
+      "joint_mae_rad": 0.19126610120137533,
+      "early_resets_per_environment": 6.4921875,
+      "left_ankle_contact_frame_fraction": 0.7103046875,
+      "right_ankle_contact_frame_fraction": 0.269390625
+    },
+    "cap100": {
+      "official_goal_proximity_success_percent": 18.75,
+      "joint_mae_rad": 0.18126311691160554,
+      "early_resets_per_environment": 5.91015625,
+      "left_ankle_contact_frame_fraction": 0.6880625,
+      "right_ankle_contact_frame_fraction": 0.276
+    }
+  },
+  "efficiency_rows": [
+    {
+      "seed": 42,
+      "generated": 100,
+      "retargeted_and_ik_corrected": 64,
+      "official_denoising_steps": 1000,
+      "sampler_progress_bar_seconds_for_100": 413,
+      "sampler_amortized_seconds_per_generated_motion": 4.13,
+      "added_ik_adam_steps_per_retained_motion": 80,
+      "added_ik_wall_seconds_mean_per_retained_motion": 0.747084209258901,
+      "added_ik_wall_seconds_median_per_retained_motion": 0.7267832551151514,
+      "added_ik_wall_seconds_p90_per_retained_motion": 0.731633372604847,
+      "added_ik_wall_seconds_total": 47.81338939256966
+    },
+    {
+      "seed": 43,
+      "generated": 100,
+      "retargeted_and_ik_corrected": 64,
+      "official_denoising_steps": 1000,
+      "sampler_progress_bar_seconds_for_100": 415,
+      "sampler_amortized_seconds_per_generated_motion": 4.15,
+      "added_ik_adam_steps_per_retained_motion": 80,
+      "added_ik_wall_seconds_mean_per_retained_motion": 0.7548421177198179,
+      "added_ik_wall_seconds_median_per_retained_motion": 0.7349213687703013,
+      "added_ik_wall_seconds_p90_per_retained_motion": 0.7384681664407253,
+      "added_ik_wall_seconds_total": 48.309895534068346
+    },
+    {
+      "seed": 44,
+      "generated": 100,
+      "retargeted_and_ik_corrected": 63,
+      "official_denoising_steps": 1000,
+      "sampler_progress_bar_seconds_for_100": 415,
+      "sampler_amortized_seconds_per_generated_motion": 4.15,
+      "added_ik_adam_steps_per_retained_motion": 80,
+      "added_ik_wall_seconds_mean_per_retained_motion": 0.7626801547963941,
+      "added_ik_wall_seconds_median_per_retained_motion": 0.7420180644840002,
+      "added_ik_wall_seconds_p90_per_retained_motion": 0.7443222161382437,
+      "added_ik_wall_seconds_total": 48.04884975217283
+    }
+  ],
+  "external_pre_generation_goal_frozen_in_simulation": false,
+  "target_impact_contact_measured": false,
+  "multi_text_semantic_benchmark_measured": false,
+  "motor_torque_or_hardware_feasibility_measured": false,
+  "same_budget_full_i1_ablation_completed": false,
+  "input_result_sha256": {
+    "r3_i1_physics_seed42_raw.json": "3e900557f3e419d1a61ed22851ec2e9a2ccf25ad12021b0a03b5931c192240da",
+    "r3_i1_physics_seed42_corrected.json": "478c24b497b290ae3e0f25409a8f62be079fa835a9aa5aaeaa961b8bdd16699e",
+    "r3_i1_semantic_contact_proxy_seed42.json": "ead20ec9d45618f07588fbc163977e59018eda764b68ebd4c9ace695e67e4950",
+    "r3_i1_temporal_quality_seed42.json": "3d7f436565e20bb370dc2c2a51345bf372759a02d07f7111339695078784e2e5",
+    "r3_i1_physics_seed43_raw.json": "e7ca61cb74204152197146ff66df9224484b4522190f2a8b51578cd43acfdd41",
+    "r3_i1_physics_seed43_corrected.json": "5ca8dd95c21210f3600c2e2078fa02aa49d0470722b60fe3b7cf6507cec0ecdc",
+    "r3_i1_semantic_contact_proxy_seed43.json": "10f79ce2d9d197d5bf113d52bb8b583241cc5323135fd90dafb53307d8023db6",
+    "r3_i1_temporal_quality_seed43.json": "b87e2d671617e993b71eedcea7a820bc2a1690a2b1ed583ff7bcf5a537ab81d0",
+    "r3_i1_physics_seed44_raw.json": "7c88c4c82191ce0a321e77533d84bf2620c4c16a79db7aeaf32eaf63a0aca05a",
+    "r3_i1_physics_seed44_corrected.json": "f690185e011cde6e2a3653734b67d534b04949a85b95e6ae699b96e3a908a62e",
+    "r3_i1_semantic_contact_proxy_seed44.json": "8c0d24f4f13f6ce7622de109ec3473d2a979ed835f84380e5f3596cf68c839c0",
+    "r3_i1_temporal_quality_seed44.json": "2648622e21d729bb6cbe8513eb4ef15222464c2df44ec04527844d106580bc1a",
+    "r3_i1_frozen_goal_seed42_raw.json": "f8d1a151e94fcfe5eac134fc61bd012c6cccca2e10f38faeb424ddfe4312f0d7",
+    "r3_i1_frozen_goal_seed42_cap025.json": "7a1d08f8df8ebe2a1fbb6d655e5397a16ccdd6fc0e1907c82e05548b27805183",
+    "r3_i1_frozen_goal_seed42_cap050.json": "34fe1bc59c86f51971b45382614981c8485241b6074c45aa0654f07e5d68357a",
+    "r3_i1_frozen_goal_seed42_cap100.json": "5be5be6e7e3d494d8cdcbf09677a524dcbd0a7ad38cc5a7809b074009b940b94",
+    "r3_i1_efficiency_audit.json": "04f9c127452a244d65c0cdb9a12cfcb8494a4ca07bb9e91d21ab470f2a10f788"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "status": "measured_additional_cost_not_efficiency_gain",
+  "hardware": "server GPU 1 NVIDIA RTX A6000 for diffusion; CPU for constrained IK",
+  "same_100_fixed_hints_per_seed": true,
+  "rows": [
+    {
+      "seed": 42,
+      "generated": 100,
+      "retargeted_and_ik_corrected": 64,
+      "official_denoising_steps": 1000,
+      "sampler_progress_bar_seconds_for_100": 413,
+      "sampler_amortized_seconds_per_generated_motion": 4.13,
+      "added_ik_adam_steps_per_retained_motion": 80,
+      "added_ik_wall_seconds_mean_per_retained_motion": 0.747084209258901,
+      "added_ik_wall_seconds_median_per_retained_motion": 0.7267832551151514,
+      "added_ik_wall_seconds_p90_per_retained_motion": 0.731633372604847,
+      "added_ik_wall_seconds_total": 47.81338939256966
+    },
+    {
+      "seed": 43,
+      "generated": 100,
+      "retargeted_and_ik_corrected": 64,
+      "official_denoising_steps": 1000,
+      "sampler_progress_bar_seconds_for_100": 415,
+      "sampler_amortized_seconds_per_generated_motion": 4.15,
+      "added_ik_adam_steps_per_retained_motion": 80,
+      "added_ik_wall_seconds_mean_per_retained_motion": 0.7548421177198179,
+      "added_ik_wall_seconds_median_per_retained_motion": 0.7349213687703013,
+      "added_ik_wall_seconds_p90_per_retained_motion": 0.7384681664407253,
+      "added_ik_wall_seconds_total": 48.309895534068346
+    },
+    {
+      "seed": 44,
+      "generated": 100,
+      "retargeted_and_ik_corrected": 63,
+      "official_denoising_steps": 1000,
+      "sampler_progress_bar_seconds_for_100": 415,
+      "sampler_amortized_seconds_per_generated_motion": 4.15,
+      "added_ik_adam_steps_per_retained_motion": 80,
+      "added_ik_wall_seconds_mean_per_retained_motion": 0.7626801547963941,
+      "added_ik_wall_seconds_median_per_retained_motion": 0.7420180644840002,
+      "added_ik_wall_seconds_p90_per_retained_motion": 0.7443222161382437,
+      "added_ik_wall_seconds_total": 48.04884975217283
+    }
+  ],
+  "limitations": [
+    "Sampler duration is tqdm denoising-loop time, not full application wall time.",
+    "IK timer includes per-motion file loading and forward kinematics; it was measured sequentially on CPU.",
+    "Retargeting, model load, and simulator inference are outside this cost comparison.",
+    "The current correction adds 80 optimization steps per retained motion; no inference-efficiency improvement is established."
+  ]
+}

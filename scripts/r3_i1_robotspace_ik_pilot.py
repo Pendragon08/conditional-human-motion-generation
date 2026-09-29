@@ -13,6 +13,7 @@ import hashlib
 import json
 import pickle
 import re
+import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -47,10 +48,15 @@ def main() -> None:
     parser.add_argument("--mode", choices=("dense", "window_smooth"), default="window_smooth")
     parser.add_argument("--max-joint-change-rad", type=float, default=1.0,
                         help="Window mode: positive cap; 0 reproduces uncapped exploratory run")
+    parser.add_argument("--export-dir", type=Path,
+                        help="Optional new directory for corrected G1 references; never overwrites an existing file")
     args = parser.parse_args()
     if args.max_samples < 1 or args.steps < 1:
         raise ValueError("Positive max-samples and steps required")
     stage = args.stage.resolve()
+    export_dir = args.export_dir.resolve() if args.export_dir else None
+    if export_dir is not None:
+        export_dir.mkdir(parents=True, exist_ok=True)
     source = (stage / "Kick_sim/results.npy").resolve()
     data = np.load(source, allow_pickle=True).item()
     hints = np.asarray(data["hint"])
@@ -71,6 +77,7 @@ def main() -> None:
     paths = sorted((stage / "Kick_sim1").glob("*.pkl"), key=lambda p: int(p.stem))
     rows = []
     for path in paths[: args.max_samples]:
+        started = time.perf_counter()
         index = int(path.stem)
         with path.open("rb") as stream:
             robot = pickle.load(stream)
@@ -129,6 +136,18 @@ def main() -> None:
             max_change = float(torch.abs(corrected_leg - q0[:, leg_indices]).max())
             max_speed_change = float(torch.abs((corrected_leg[1:] - corrected_leg[:-1]) - (q0[1:, leg_indices] - q0[:-1, leg_indices])).max())
             limit_violations = int(((corrected_leg < lower - 1e-4) | (corrected_leg > upper + 1e-4)).sum())
+            corrected = q0.clone()
+            corrected[:, leg_indices] = corrected_leg
+        exported = None
+        if export_dir is not None:
+            destination = export_dir / path.name
+            if destination.exists():
+                raise FileExistsError(f"Refusing to replace corrected reference: {destination}")
+            revised = dict(robot)
+            revised["joints"] = corrected.cpu().numpy().astype(np.asarray(robot["joints"]).dtype, copy=False)
+            with destination.open("xb") as stream:
+                pickle.dump(revised, stream, protocol=pickle.HIGHEST_PROTOCOL)
+            exported = {"name": destination.name, "sha256": sha256(destination)}
         rows.append({
             "sample": index,
             "source_sha256": sha256(path),
@@ -138,6 +157,8 @@ def main() -> None:
             "max_speed_change_rad_per_frame": max_speed_change,
             "joint_limit_violations": limit_violations,
             "support_leg_and_root_unchanged_by_design": True,
+            "optimization_wall_time_s": time.perf_counter() - started,
+            "exported_reference": exported,
         })
         print(f"sample {index}: {before:.3f} -> {after:.3f} m", flush=True)
     result = {

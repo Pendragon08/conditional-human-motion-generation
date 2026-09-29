@@ -1,0 +1,125 @@
+{
+  "status": "simulation_only_fixed_tracker_diagnostic",
+  "rows": [
+    {
+      "generation_seed": 42,
+      "same_initial_motion_ids": true,
+      "same_motion_id_counts": false,
+      "motion_library_size": 64,
+      "policy_checkpoint": "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_03-19-31-Kick-a/model_1999.pt",
+      "raw_metrics_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/r3_i1_physics_seed42_raw.json",
+      "corrected_metrics_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/r3_i1_physics_seed42_corrected.json",
+      "official_goal_proximity_success_percent": {
+        "raw": 80.078125,
+        "corrected": 0.0
+      },
+      "joint_mae_rad": {
+        "raw": 0.04066677156642631,
+        "corrected": 0.18275967187793166
+      },
+      "root_mean_error_m": {
+        "raw": 0.025967174766585232,
+        "corrected": 0.14082634469866753
+      },
+      "early_resets_per_environment": {
+        "raw": 0.07421875,
+        "corrected": 6.0
+      },
+      "root_below_0_3_fraction": {
+        "raw": 0.0,
+        "corrected": 0.0
+      },
+      "left_ankle_contact_frame_fraction": {
+        "raw": 0.9058671875,
+        "corrected": 0.6848046875
+      },
+      "right_ankle_contact_frame_fraction": {
+        "raw": 0.7514453125,
+        "corrected": 0.2694609375
+      }
+    },
+    {
+      "generation_seed": 43,
+      "same_initial_motion_ids": true,
+      "same_motion_id_counts": false,
+      "motion_library_size": 64,
+      "policy_checkpoint": "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_03-19-31-Kick-a/model_1999.pt",
+      "raw_metrics_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/r3_i1_physics_seed43_raw.json",
+      "corrected_metrics_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/r3_i1_physics_seed43_corrected.json",
+      "official_goal_proximity_success_percent": {
+        "raw": 83.984375,
+        "corrected": 0.0
+      },
+      "joint_mae_rad": {
+        "raw": 0.04001255103835353,
+        "corrected": 0.1664163536363178
+      },
+      "root_mean_error_m": {
+        "raw": 0.025897724879905583,
+        "corrected": 0.12461062191426754
+      },
+      "early_resets_per_environment": {
+        "raw": 0.06640625,
+        "corrected": 5.58984375
+      },
+      "root_below_0_3_fraction": {
+        "raw": 0.0,
+        "corrected": 0.0
+      },
+      "left_ankle_contact_frame_fraction": {
+        "raw": 0.9088125,
+        "corrected": 0.7224375
+      },
+      "right_ankle_contact_frame_fraction": {
+        "raw": 0.7545703125,
+        "corrected": 0.31025
+      }
+    },
+    {
+      "generation_seed": 44,
+      "same_initial_motion_ids": true,
+      "same_motion_id_counts": false,
+      "motion_library_size": 63,
+      "policy_checkpoint": "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_03-19-31-Kick-a/model_1999.pt",
+      "raw_metrics_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/r3_i1_physics_seed44_raw.json",
+      "corrected_metrics_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/r3_i1_physics_seed44_corrected.json",
+      "official_goal_proximity_success_percent": {
+        "raw": 93.359375,
+        "corrected": 6.25
+      },
+      "joint_mae_rad": {
+        "raw": 0.041279301789071826,
+        "corrected": 0.15372648132288896
+      },
+      "root_mean_error_m": {
+        "raw": 0.02703812306560576,
+        "corrected": 0.12634721171855925
+      },
+      "early_resets_per_environment": {
+        "raw": 0.1796875,
+        "corrected": 4.9609375
+      },
+      "root_below_0_3_fraction": {
+        "raw": 0.0,
+        "corrected": 0.0
+      },
+      "left_ankle_contact_frame_fraction": {
+        "raw": 0.9065859375,
+        "corrected": 0.7172109375
+      },
+      "right_ankle_contact_frame_fraction": {
+        "raw": 0.7455390625,
+        "corrected": 0.32509375
+      }
+    }
+  ],
+  "all_pairs_same_initial_motion_ids": true,
+  "all_pairs_same_motion_id_counts": false,
+  "target_impact_contact_measured": false,
+  "limitations": [
+    "Kick goal success is geometric proximity, not impact force.",
+    "Ankle contact sensors do not separate ground from target contact.",
+    "Fixed controller success/failure measures execution under this policy; it is not a proof of mechanical feasibility or impossibility.",
+    "Only the retargeted subsets are in the Isaac rollouts; original generation rejections are counted separately in I1 end-to-end rates."
+  ]
+}

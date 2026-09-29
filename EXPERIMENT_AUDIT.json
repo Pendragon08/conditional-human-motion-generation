@@ -1,0 +1,31 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-09-29",
+  "project": "conditional-human-motion-generation",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "overall_verdict": "WARN",
+  "integrity_status": "warn",
+  "checks": {
+    "gt_provenance": "WARN",
+    "score_normalization": "PASS",
+    "result_existence": "WARN",
+    "dead_code": "PASS",
+    "scope": "WARN",
+    "eval_type": "simulation_only plus kinematic and semantic proxies"
+  },
+  "post_review_remediation": [
+    "Field-by-field equality audit for all 191 raw/corrected references",
+    "Asset, script, checkpoint, state and log hash receipts"
+  ],
+  "claims": [
+    {"id": "I1_kinematic_target_error_reduction", "impact": "supported_for_one_kick_condition"},
+    {"id": "I1_improves_fixed_tracker_execution", "impact": "contradicted_by_current_simulation"},
+    {"id": "I1_target_impact_contact", "impact": "unsupported_not_measured"},
+    {"id": "I1_general_text_semantics", "impact": "unsupported_one_text_proxy_only"},
+    {"id": "I1_generation_efficiency_gain", "impact": "unsupported_added_cpu_cost"}
+  ],
+  "trace_path": ".aris/traces/experiment-audit/2026-09-29_run01/"
+}
