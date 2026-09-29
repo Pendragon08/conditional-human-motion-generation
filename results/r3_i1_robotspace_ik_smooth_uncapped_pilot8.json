@@ -1,0 +1,98 @@
+{
+  "status": "component_pilot_only",
+  "method": "right-leg constrained IK on raw G1 retarget references; fixed human motion",
+  "parameterization": "window_smooth",
+  "external_target": "saved pre-generation right-foot hint, never robot kick_pos",
+  "sample_selection": "first N available raw retarget files sorted by integer id; no tuning on other samples",
+  "steps": 80,
+  "source_npy_sha256": "89f454f38288d98e586ac7fc4e70220db9787812d56d1184e86683f2a1b9e8ec",
+  "mean_before_error_m": 0.41931190714240074,
+  "mean_after_error_m": 0.13425213797017932,
+  "rows": [
+    {
+      "sample": 3,
+      "source_sha256": "b1444e32545573f58dcd9505b0e809a53aef81cf16e2c839151924aca47d44e4",
+      "before_error_m": 0.4274330139160156,
+      "after_error_m": 0.18817806243896484,
+      "max_joint_change_rad": 2.3704347610473633,
+      "max_speed_change_rad_per_frame": 0.23194780945777893,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true
+    },
+    {
+      "sample": 4,
+      "source_sha256": "6fd5ed5a0668402fd5648af477e4629210192f93ca5e7e273c41ef1e7ef73081",
+      "before_error_m": 0.4275793731212616,
+      "after_error_m": 0.07035825401544571,
+      "max_joint_change_rad": 0.7992314100265503,
+      "max_speed_change_rad_per_frame": 0.05974258482456207,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true
+    },
+    {
+      "sample": 5,
+      "source_sha256": "f68161701ddc875399e6a748d724016ac48b3d84695ce52f3e905d4c89c57cf3",
+      "before_error_m": 0.36224833130836487,
+      "after_error_m": 0.03467446193099022,
+      "max_joint_change_rad": 0.49136364459991455,
+      "max_speed_change_rad_per_frame": 0.03672957420349121,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true
+    },
+    {
+      "sample": 6,
+      "source_sha256": "6fb7c52fc5b189023088aefc6bbc8da348844d2606a5d9f01281dd123266c7d2",
+      "before_error_m": 0.33989787101745605,
+      "after_error_m": 0.2178247720003128,
+      "max_joint_change_rad": 2.542295217514038,
+      "max_speed_change_rad_per_frame": 0.28115081787109375,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true
+    },
+    {
+      "sample": 7,
+      "source_sha256": "9f8eb7d83bbe345a003412bf5c49b2bef9c05da67a4fd0bffd475dd611044b60",
+      "before_error_m": 0.3302571773529053,
+      "after_error_m": 0.137580007314682,
+      "max_joint_change_rad": 0.9905828237533569,
+      "max_speed_change_rad_per_frame": 0.07404611259698868,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true
+    },
+    {
+      "sample": 8,
+      "source_sha256": "36ca19d0a2f5561b0239550e8c2916fc14097c7e475df945ce0ae9bb06950331",
+      "before_error_m": 0.5238738059997559,
+      "after_error_m": 0.15334796905517578,
+      "max_joint_change_rad": 1.2334535121917725,
+      "max_speed_change_rad_per_frame": 0.09220069646835327,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true
+    },
+    {
+      "sample": 10,
+      "source_sha256": "402663b1ade5b43a7ba392f3e77e7546132f8324cdd62a499a59d075af5bc180",
+      "before_error_m": 0.5467764139175415,
+      "after_error_m": 0.07168712466955185,
+      "max_joint_change_rad": 1.008549690246582,
+      "max_speed_change_rad_per_frame": 0.14564096927642822,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true
+    },
+    {
+      "sample": 11,
+      "source_sha256": "843fffadc375b6ae56283ca3f5ade9fbd1e8c8bc18e3b60e34a4aedf4d4ccead",
+      "before_error_m": 0.39642927050590515,
+      "after_error_m": 0.20036645233631134,
+      "max_joint_change_rad": 2.3134872913360596,
+      "max_speed_change_rad_per_frame": 0.199143648147583,
+      "joint_limit_violations": 0,
+      "support_leg_and_root_unchanged_by_design": true
+    }
+  ],
+  "limitations": [
+    "kinematics only: no contact forces, collisions, dynamics, semantics, or RL execution measured",
+    "right ankle link is a proxy for the SMPL right-foot joint",
+    "initial hyperparameters and sample size are exploratory, not held-out I1 Gate evidence"
+  ]
+}
