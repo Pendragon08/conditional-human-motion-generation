@@ -50,6 +50,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--stage", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--constraint-source", type=Path,
+                        help="Use this pre-generation baseline hint for every paired arm")
     args = parser.parse_args()
     stage = args.stage.resolve()
     source = (stage / "Kick_sim" / "results.npy").resolve()
@@ -60,7 +62,15 @@ def main() -> None:
     chain = pk.build_chain_from_urdf(urdf.read_text())
     data = np.load(source, allow_pickle=True).item()
     motions = np.asarray(data["motion"]).transpose(0, 3, 1, 2)
-    hints = np.asarray(data["hint"])
+    if args.constraint_source:
+        constraint_data = np.load(args.constraint_source, allow_pickle=True).item()
+        if constraint_data["text"] != data["text"]:
+            raise ValueError("Constraint-source text differs from evaluated motions")
+        hints = np.asarray(constraint_data["hint"])
+        if hints.shape != np.asarray(data["hint"]).shape:
+            raise ValueError("Constraint-source hint shape differs")
+    else:
+        hints = np.asarray(data["hint"])
     rows = []
     example_count = 0
     for index, motion in enumerate(motions):
@@ -124,6 +134,7 @@ def main() -> None:
     result = {
         "status": "observational_baseline_only",
         "source_npy_sha256": sha256(source),
+        "constraint_source_sha256": sha256(args.constraint_source) if args.constraint_source else sha256(source),
         "retarget_source_sha256": sha256(retarget_source),
         "target_origin": "saved pre-generation right-foot hint, not output-derived kick_pos/grab_pos",
         "coordinate_map": "source xyz -> G1 (z,x,y), same as official retarget.py",
