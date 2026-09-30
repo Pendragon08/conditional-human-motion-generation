@@ -22,3 +22,9 @@ The full 37 I1 run logs, nine state receipts and two exact server-side evaluatio
 Remaining actions before a full claim: (1) a fixed pre-generation external target in the simulator; (2) synchronized per-trajectory execution or an explicitly matched rollout schedule; (3) a collidable target with contact-pair and impulse recording; (4) controller training/actuator-load assessment if claiming physical executability; (5) multiple text/action classes and repeated full-pipeline latency measurements; (6) same-budget Base/module/Full I1 comparison. Until then the correct result is **I1 Gate not passed**.
 
 Audit type: same-family provisional. Raw reviewer trace is kept locally under `.aris/traces/experiment-audit/2026-09-29_run01/` and is not published with the repository.
+
+## 2026-09-30 matched-control completion receipt
+
+Primary-agent verification (not an independent reviewer pass): both arms completed 2000 iterations / 393,216,000 timesteps. Saved PPO agent YAML is identical; environment YAML differs only by paired reference-library path. Two final checkpoint hashes, eight video hashes/decodable streams and all log/state success rates were verified. Source receipt: `results/r3_i1_matched_completed.json`.
+
+All four same-reference comparisons favor Base: candidate minus Base = -10.6, -1.3, -3.3 and -3.1 percentage points. The candidate does not demonstrate downstream success-rate utility in this single-training-seed Kick experiment. **Full I1 Gate remains not passed.** Matched Base-versus-candidate controller training is now complete, but per-module ablations, original external target preservation, physical contact, multiple text classes, multiple control-training seeds and sim-to-sim remain unverified. No I2/I3 stage was started.

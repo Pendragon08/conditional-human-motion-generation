@@ -33,8 +33,8 @@ const status=document.querySelector('#status'),frame=document.querySelector('#fr
 let displayedCapture=null, displayedStep=null;
 function show(s,age){
  status.textContent='训练：'+s.queue+' ｜ 最新轮次：'+(s.iteration??'等待初始化')+
-   ' / 2000 ｜ 画面帧编号：'+(displayedStep??'等待')+' ｜ 显示画面：'+(age===null?'等待加载':age>8?'已暂停（'+age.toFixed(1)+' 秒前）':'实时（'+age.toFixed(1)+' 秒前）');
- status.style.background=age!==null&&age<8?'#194336':'#644021';
+   ' / 2000 ｜ 画面帧编号：'+(displayedStep??'等待')+' ｜ 显示画面：'+(s.queue.startsWith('COMPLETE')?'训练与评估已完成，显示末次训练状态':age===null?'等待加载':age>8?'已暂停（'+age.toFixed(1)+' 秒前）':'实时（'+age.toFixed(1)+' 秒前）');
+ status.style.background=s.queue.startsWith('COMPLETE')?'#25324a':age!==null&&age<8?'#194336':'#644021';
 }
 async function update(){
  try{
@@ -63,6 +63,19 @@ def read_text(path):
         return path.read_text().strip()
     except OSError:
         return "Unavailable"
+
+
+def capture_ages(meta):
+    now = time.time()
+    capture = meta.get("captured_at_unix")
+    telemetry = meta.get("telemetry_wall_time")
+    render_age = max(0, now-capture) if capture else None
+    telemetry_age = max(0, now-telemetry) if telemetry else None
+    # Re-rendering the last pose is not a fresh training state.
+    return {"render_capture_age_seconds": round(render_age, 1) if render_age is not None else None,
+            "telemetry_age_seconds": round(telemetry_age, 1) if telemetry_age is not None else None,
+            "frame_age_seconds": round(max(render_age, telemetry_age), 1)
+                if render_age is not None and telemetry_age is not None else None}
 
 
 def compressed_snapshot():
@@ -100,7 +113,7 @@ class Handler(BaseHTTPRequestHandler):
             except (OSError, ValueError):
                 meta = {}
             queue = read_text(MON / "r3_i1_matched_official_queue.state")
-            arm = "candidate" if "arm=candidate" in queue else "baseline"
+            arm = "candidate" if ("arm=candidate" in queue or queue.startswith("COMPLETE")) else "baseline"
             log = MON / f"r3_i1_matched_{arm}_8192_2000.log"
             try:
                 with log.open("rb") as stream:
@@ -113,7 +126,7 @@ class Handler(BaseHTTPRequestHandler):
             captured = meta.get("captured_at_unix")
             payload = {"queue": queue, "iteration": iteration,
                        "capture_time": captured,
-                       "frame_age_seconds": round(time.time()-captured, 1) if captured else None,
+                       **capture_ages(meta),
                        "sampled_env_step": meta.get("sampled_env_step"),
                        "source": meta.get("source"),
                        "viewer": read_text(MON / "r3_i1_live_viewer.state")}
@@ -122,7 +135,7 @@ class Handler(BaseHTTPRequestHandler):
                     image, meta = compressed_snapshot()
                     payload.update(capture_time=meta.get("captured_at_unix"),
                                    sampled_env_step=meta.get("sampled_env_step"),
-                                   frame_age_seconds=round(time.time()-meta["captured_at_unix"], 1),
+                                   **capture_ages(meta),
                                    image_base64=base64.b64encode(image).decode())
                 except (OSError, ValueError, subprocess.SubprocessError):
                     self.send_error(503, "Capture temporarily unavailable")

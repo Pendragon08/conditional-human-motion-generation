@@ -1,0 +1,311 @@
+{
+  "audited_at_utc": "2026-09-30T08:16:30Z",
+  "status": "both_training_and_eight_evaluations_completed",
+  "science_gate_passed": false,
+  "trainings": [
+    {
+      "policy": "baseline",
+      "seed": 42,
+      "num_envs": 8192,
+      "iterations": 2000,
+      "final_iteration": 1999,
+      "reference_count": 61,
+      "checkpoint_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_02-42-12-Kick-a/model_1999.pt",
+      "checkpoint_size_bytes": 12565922,
+      "checkpoint_sha256": "a2831047e9174c76f1cc35f97eaa693cd1c6347dd35db1f1651a5292b8c2d52a",
+      "log_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_matched_baseline_8192_2000.log",
+      "log_sha256": "6d62caa638bf557ff97b9932b79fd1d48e298acb7167581cc678754c366c6fd2",
+      "saved_configs": {
+        "third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_02-42-12-Kick-a/params/agent.pkl": "dc2db1313e6a9853ffa189a697d01c7d484ee9dff612873b132616650efaeef8",
+        "third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_02-42-12-Kick-a/params/agent.yaml": "c2ad613f76c9560a5cfc201e46c703a2a0c9a5b6ad28d4f53c18297f2ddf7123",
+        "third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_02-42-12-Kick-a/params/env.pkl": "1a50907cb6b9f61904b713d4fbb877bb1a0fde9e3d22a4aa44719568e8eb1fb6",
+        "third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_02-42-12-Kick-a/params/env.yaml": "0f336986253a4c876c18caa38f278b7e31af6a11eccf3db9b229c1fd2f1b5cfd"
+      }
+    },
+    {
+      "policy": "candidate",
+      "seed": 42,
+      "num_envs": 8192,
+      "iterations": 2000,
+      "final_iteration": 1999,
+      "reference_count": 61,
+      "checkpoint_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_05-20-54-Kick-a/model_1999.pt",
+      "checkpoint_size_bytes": 12565922,
+      "checkpoint_sha256": "b8a39d410377bf61e2578d164335a8e3b5263998b64c37f6e6f7446a73f9c0a4",
+      "log_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_matched_candidate_8192_2000.log",
+      "log_sha256": "0651b6487a03f4ce249b58e84225a2dd56b2678de14df744e4e18c789eec2c08",
+      "saved_configs": {
+        "third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_05-20-54-Kick-a/params/agent.pkl": "dc2db1313e6a9853ffa189a697d01c7d484ee9dff612873b132616650efaeef8",
+        "third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_05-20-54-Kick-a/params/agent.yaml": "c2ad613f76c9560a5cfc201e46c703a2a0c9a5b6ad28d4f53c18297f2ddf7123",
+        "third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_05-20-54-Kick-a/params/env.pkl": "8b8bfa3844e526640aa57c73a1bf1420c395ac166854cde751196e213e845bad",
+        "third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_05-20-54-Kick-a/params/env.yaml": "5399b079d3f2768812fbb17e566ec5f4801064e4d392bdd9fea2469beb1acb9a"
+      }
+    }
+  ],
+  "evaluations": [
+    {
+      "policy": "baseline",
+      "test_seed": 43,
+      "reference_arm": "baseline",
+      "success_percent": 97.70000576972961,
+      "heldout_reference_count": 62,
+      "eval_num_envs": 1000,
+      "eval_frames": 500,
+      "video_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_02-42-12-Kick-a/videos/play/eval_a_r3_i1_baseline_seed43_baseline-step-0.mp4",
+      "video_size_bytes": 1504185,
+      "video_sha256": "60f3ed934b386c00295f19f727ce2c047e10d954515b5d0f56ff2085965ddfae",
+      "video_probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "nb_frames": "501"
+          }
+        ],
+        "format": {
+          "duration": "10.020000"
+        }
+      },
+      "log_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_matched_baseline_eval_seed43_baseline.log",
+      "log_sha256": "2bd93a1b9e73566d287a1ab54f6618565af4674040c88e111ad3376cf1ebb89a",
+      "state": "COMPLETE policy=baseline seed=43 refs=baseline success_percent=97.70000576972961 video=/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_02-42-12-Kick-a/videos/play/eval_a_r3_i1_baseline_seed43_baseline-step-0.mp4 video_sha256=60f3ed934b386c00295f19f727ce2c047e10d954515b5d0f56ff2085965ddfae"
+    },
+    {
+      "policy": "baseline",
+      "test_seed": 43,
+      "reference_arm": "candidate",
+      "success_percent": 100.0,
+      "heldout_reference_count": 62,
+      "eval_num_envs": 1000,
+      "eval_frames": 500,
+      "video_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_02-42-12-Kick-a/videos/play/eval_a_r3_i1_baseline_seed43_candidate-step-0.mp4",
+      "video_size_bytes": 1458461,
+      "video_sha256": "028a2a24f9e070f3e51aaeb3830562e4724d66aa6a365582c3d1627b007563dd",
+      "video_probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "nb_frames": "501"
+          }
+        ],
+        "format": {
+          "duration": "10.020000"
+        }
+      },
+      "log_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_matched_baseline_eval_seed43_candidate.log",
+      "log_sha256": "edfb54191e1fa67db63812ca6eed5e1e78a824be1562d7c2716db9dce5eccbfb",
+      "state": "COMPLETE policy=baseline seed=43 refs=candidate success_percent=100.0 video=/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_02-42-12-Kick-a/videos/play/eval_a_r3_i1_baseline_seed43_candidate-step-0.mp4 video_sha256=028a2a24f9e070f3e51aaeb3830562e4724d66aa6a365582c3d1627b007563dd"
+    },
+    {
+      "policy": "baseline",
+      "test_seed": 44,
+      "reference_arm": "baseline",
+      "success_percent": 94.20000314712524,
+      "heldout_reference_count": 59,
+      "eval_num_envs": 1000,
+      "eval_frames": 500,
+      "video_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_02-42-12-Kick-a/videos/play/eval_a_r3_i1_baseline_seed44_baseline-step-0.mp4",
+      "video_size_bytes": 1532533,
+      "video_sha256": "4a1b8aeb0917961a2edd53f6280b8602ee69b7f5abca1c9291aa57cf03e16ccb",
+      "video_probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "nb_frames": "501"
+          }
+        ],
+        "format": {
+          "duration": "10.020000"
+        }
+      },
+      "log_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_matched_baseline_eval_seed44_baseline.log",
+      "log_sha256": "187fb4e0f4efbc0d1f57b7ab219f764b200f7ef1c11f3a51b683e9cb0e316e92",
+      "state": "COMPLETE policy=baseline seed=44 refs=baseline success_percent=94.20000314712524 video=/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_02-42-12-Kick-a/videos/play/eval_a_r3_i1_baseline_seed44_baseline-step-0.mp4 video_sha256=4a1b8aeb0917961a2edd53f6280b8602ee69b7f5abca1c9291aa57cf03e16ccb"
+    },
+    {
+      "policy": "baseline",
+      "test_seed": 44,
+      "reference_arm": "candidate",
+      "success_percent": 97.60000705718994,
+      "heldout_reference_count": 59,
+      "eval_num_envs": 1000,
+      "eval_frames": 500,
+      "video_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_02-42-12-Kick-a/videos/play/eval_a_r3_i1_baseline_seed44_candidate-step-0.mp4",
+      "video_size_bytes": 1516594,
+      "video_sha256": "bddf7de3336fccc8d62c5f2c968020142ec42fbc5ded142ed8668f3334db8305",
+      "video_probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "nb_frames": "501"
+          }
+        ],
+        "format": {
+          "duration": "10.020000"
+        }
+      },
+      "log_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_matched_baseline_eval_seed44_candidate.log",
+      "log_sha256": "b1e105b4ef66153feb008ecaef0dadc6df4997c8b0b15be52a0ffa5074f2b1f2",
+      "state": "COMPLETE policy=baseline seed=44 refs=candidate success_percent=97.60000705718994 video=/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_02-42-12-Kick-a/videos/play/eval_a_r3_i1_baseline_seed44_candidate-step-0.mp4 video_sha256=bddf7de3336fccc8d62c5f2c968020142ec42fbc5ded142ed8668f3334db8305"
+    },
+    {
+      "policy": "candidate",
+      "test_seed": 43,
+      "reference_arm": "baseline",
+      "success_percent": 87.10000514984131,
+      "heldout_reference_count": 62,
+      "eval_num_envs": 1000,
+      "eval_frames": 500,
+      "video_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_05-20-54-Kick-a/videos/play/eval_a_r3_i1_candidate_seed43_baseline-step-0.mp4",
+      "video_size_bytes": 1521268,
+      "video_sha256": "e2476730302cbac629aeb0ec2c60d3dda278232ff1e881c784e42a75a981f4e5",
+      "video_probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "nb_frames": "501"
+          }
+        ],
+        "format": {
+          "duration": "10.020000"
+        }
+      },
+      "log_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_matched_candidate_eval_seed43_baseline.log",
+      "log_sha256": "8f79776445c130cc27227c3fc094dc3e71c387d9d8aa60234922320dcc91d381",
+      "state": "COMPLETE policy=candidate seed=43 refs=baseline success_percent=87.10000514984131 video=/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_05-20-54-Kick-a/videos/play/eval_a_r3_i1_candidate_seed43_baseline-step-0.mp4 video_sha256=e2476730302cbac629aeb0ec2c60d3dda278232ff1e881c784e42a75a981f4e5"
+    },
+    {
+      "policy": "candidate",
+      "test_seed": 43,
+      "reference_arm": "candidate",
+      "success_percent": 98.7000048160553,
+      "heldout_reference_count": 62,
+      "eval_num_envs": 1000,
+      "eval_frames": 500,
+      "video_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_05-20-54-Kick-a/videos/play/eval_a_r3_i1_candidate_seed43_candidate-step-0.mp4",
+      "video_size_bytes": 1439442,
+      "video_sha256": "6faaaa6fa93c75f6200a7725a09e4b92d2e4b35cfc53f3a91f6d5616480da832",
+      "video_probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "nb_frames": "501"
+          }
+        ],
+        "format": {
+          "duration": "10.020000"
+        }
+      },
+      "log_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_matched_candidate_eval_seed43_candidate.log",
+      "log_sha256": "3f73ee619676a16a105c42cab7e06cdc1428fcdf6ac502c77c3b2b4a836615fe",
+      "state": "COMPLETE policy=candidate seed=43 refs=candidate success_percent=98.7000048160553 video=/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_05-20-54-Kick-a/videos/play/eval_a_r3_i1_candidate_seed43_candidate-step-0.mp4 video_sha256=6faaaa6fa93c75f6200a7725a09e4b92d2e4b35cfc53f3a91f6d5616480da832"
+    },
+    {
+      "policy": "candidate",
+      "test_seed": 44,
+      "reference_arm": "baseline",
+      "success_percent": 90.9000039100647,
+      "heldout_reference_count": 59,
+      "eval_num_envs": 1000,
+      "eval_frames": 500,
+      "video_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_05-20-54-Kick-a/videos/play/eval_a_r3_i1_candidate_seed44_baseline-step-0.mp4",
+      "video_size_bytes": 1495677,
+      "video_sha256": "0123915c7f640344a085b0914b8adaaf33dfd76cca2fa8d1bb1b82c70dd1bb1e",
+      "video_probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "nb_frames": "501"
+          }
+        ],
+        "format": {
+          "duration": "10.020000"
+        }
+      },
+      "log_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_matched_candidate_eval_seed44_baseline.log",
+      "log_sha256": "389f736157ddca8d85de146d59f562b0794f129342b811406b2b8e01095d30b4",
+      "state": "COMPLETE policy=candidate seed=44 refs=baseline success_percent=90.9000039100647 video=/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_05-20-54-Kick-a/videos/play/eval_a_r3_i1_candidate_seed44_baseline-step-0.mp4 video_sha256=0123915c7f640344a085b0914b8adaaf33dfd76cca2fa8d1bb1b82c70dd1bb1e"
+    },
+    {
+      "policy": "candidate",
+      "test_seed": 44,
+      "reference_arm": "candidate",
+      "success_percent": 94.50000524520874,
+      "heldout_reference_count": 59,
+      "eval_num_envs": 1000,
+      "eval_frames": 500,
+      "video_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_05-20-54-Kick-a/videos/play/eval_a_r3_i1_candidate_seed44_candidate-step-0.mp4",
+      "video_size_bytes": 1486139,
+      "video_sha256": "a9333047a28266178d255d2ec75f1a554e6a97264eb10e7425a467056c922eb8",
+      "video_probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "nb_frames": "501"
+          }
+        ],
+        "format": {
+          "duration": "10.020000"
+        }
+      },
+      "log_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_matched_candidate_eval_seed44_candidate.log",
+      "log_sha256": "d5128c4ae3c6f35e0aa4e45a0ccf9a4f2bcec2daae6dc5b4bbbe8b40b2165d8a",
+      "state": "COMPLETE policy=candidate seed=44 refs=candidate success_percent=94.50000524520874 video=/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-30_05-20-54-Kick-a/videos/play/eval_a_r3_i1_candidate_seed44_candidate-step-0.mp4 video_sha256=a9333047a28266178d255d2ec75f1a554e6a97264eb10e7425a467056c922eb8"
+    }
+  ],
+  "matched_comparisons": [
+    {
+      "test_seed": 43,
+      "reference_arm": "baseline",
+      "baseline_success_percent": 97.70000576972961,
+      "candidate_success_percent": 87.10000514984131,
+      "candidate_minus_baseline_percentage_points": -10.600000619888306
+    },
+    {
+      "test_seed": 43,
+      "reference_arm": "candidate",
+      "baseline_success_percent": 100.0,
+      "candidate_success_percent": 98.7000048160553,
+      "candidate_minus_baseline_percentage_points": -1.2999951839447021
+    },
+    {
+      "test_seed": 44,
+      "reference_arm": "baseline",
+      "baseline_success_percent": 94.20000314712524,
+      "candidate_success_percent": 90.9000039100647,
+      "candidate_minus_baseline_percentage_points": -3.299999237060547
+    },
+    {
+      "test_seed": 44,
+      "reference_arm": "candidate",
+      "baseline_success_percent": 97.60000705718994,
+      "candidate_success_percent": 94.50000524520874,
+      "candidate_minus_baseline_percentage_points": -3.100001811981201
+    }
+  ],
+  "conclusion": "No downstream success-rate gain from candidate generation in this single-training-seed matched Kick experiment; all four same-reference comparisons are worse. Not a statistically replicated cross-training-seed conclusion.",
+  "metric_scope": "Official original Kick task, reference-derived virtual goal; not original external target or physical collision success. No sim-to-sim validation.",
+  "provenance": {
+    "results/r3_i1_joint_v2_paired_seed42_manifest.json": "c3cff6736f4db9189f44749c7ca750e4e5d75592e7d8d845c31a8d8028eee8d8",
+    "scripts/r3_i1_matched_official_train_eval_queue.sh": "bf72108e4be40de4a6d8eaefa121643a628a46d031d65b29d8f7d2b47d380daa",
+    "scripts/r3_i1_matched_official_eval.sh": "c6021ac31d208a788ac2b57afd4150a2b4b6d21ee1ef40fa28ed3db879453172",
+    "scripts/r3_i1_train_matched.py": "07ee49c1cc39b7435ff488e87558570a053e0422bcecdb9cece2096b19af1ebc"
+  },
+  "saved_config_comparison": {
+    "agent.yaml": {
+      "identical": true,
+      "diff": ""
+    },
+    "env.yaml": {
+      "identical": false,
+      "diff": "--- baseline\n+++ candidate\n@@ -1289,4 +1289,4 @@\n     time_out: false\n curriculum: null\n commands: {}\n-ref_motions_path: /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/i1_joint_v2_official_paired_seed42/baseline\n+ref_motions_path: /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/i1_joint_v2_official_paired_seed42/candidate\n"
+    }
+  }
+}
