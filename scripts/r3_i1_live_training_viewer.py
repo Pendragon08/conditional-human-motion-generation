@@ -9,6 +9,7 @@ one training environment, not every frame of all parallel environments.
 from __future__ import annotations
 
 import argparse
+import asyncio
 import json
 import math
 import socket
@@ -24,6 +25,8 @@ parser.add_argument("--status-path", type=str, required=True)
 parser.add_argument("--timeout-seconds", type=int, default=0)
 parser.add_argument("--self-test", action="store_true",
                     help="Move a synthetic pose to test the renderer; never label as training.")
+parser.add_argument("--snapshot-path", default="",
+                    help="Optional viewport capture for independent video diagnostics.")
 AppLauncher.add_app_launcher_args(parser)
 args = parser.parse_args()
 launcher = AppLauncher(args)
@@ -37,8 +40,8 @@ from isaaclab_tasks.utils import parse_env_cfg  # noqa: E402
 
 def main() -> None:
     cfg = parse_env_cfg("Isaac-Motion-Tracking-Kick-v0", device=args.device, num_envs=1)
-    cfg.viewer.eye = (2.5, -5.0, 4.0)
-    cfg.viewer.lookat = (2.0, 0.0, 0.7)
+    cfg.viewer.eye = (3.0, -4.0, 2.4)
+    cfg.viewer.lookat = (0.0, 0.0, 0.8)
     env = gym.make("Isaac-Motion-Tracking-Kick-v0", cfg=cfg)
     raw = env.unwrapped
     robot = raw.scene["robot"]
@@ -57,6 +60,36 @@ def main() -> None:
     last_step = -1
     last_at = 0.0
     self_test_step = 0
+    capture_task = None
+    next_capture = 0.0
+    last_packet = None
+
+    async def publish_snapshot(packet):
+        from omni.kit.viewport.utility import get_active_viewport, capture_viewport_to_file
+
+        target = Path(args.snapshot_path)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        temporary = target.with_name("next-frame.png")
+        viewport = get_active_viewport()
+        if viewport is None:
+            raise RuntimeError("No active viewport for capture")
+        capture = capture_viewport_to_file(viewport, str(temporary))
+        await capture.wait_for_result()
+        if not temporary.is_file() or temporary.stat().st_size == 0:
+            raise RuntimeError("Viewport capture produced no image")
+        temporary.replace(target)
+        metadata = {
+            "captured_at_unix": time.time(),
+            "source": packet["source"],
+            "sampled_env_step": packet["env_step"],
+            "telemetry_wall_time": packet.get("wall_time"),
+            "robot_root_pose_wxyz": packet["robot_root_pose_wxyz"],
+            "joint_position_rad": packet["joint_position_rad"],
+            "description": "Rendered Isaac Sim viewport of actual training state sample; not every training frame.",
+        }
+        temp_meta = target.with_suffix(".next.json")
+        temp_meta.write_text(json.dumps(metadata) + "\n")
+        temp_meta.replace(target.with_suffix(".json"))
     try:
         while simulation_app.is_running():
             if args.timeout_seconds and time.monotonic() - start > args.timeout_seconds:
@@ -103,6 +136,7 @@ def main() -> None:
                         obj.write_root_velocity_to_sim(torch.zeros((1, 6), device=device))
                     last_step = int(newest["env_step"])
                     last_at = time.time()
+                    last_packet = newest
                     if last_step == 1:
                         print(f"R3_VIEWER_APPLIED_POSE mode={newest['source']}", flush=True)
                     mode = "synthetic_self_test_not_training" if args.self_test else "sampled_actual_training_pose"
@@ -117,8 +151,23 @@ def main() -> None:
                     f"STALE mode=sampled_actual_training_pose last_step={last_step} "
                     f"age_s={time.time()-last_at:.1f} training_unaffected=true\n"
                 )
-            raw.sim.render()
+            # Flush the received articulation state before Hydra rendering.
+            # Do not advance the independent world's physics: a second generic
+            # app.update() can run its default actuators and replace the
+            # sampled training pose with the viewer's idle pose.
+            raw.sim.forward()
+            raw.sim.set_setting("/app/player/playSimulations", False)
             simulation_app.update()
+            raw.sim.set_setting("/app/player/playSimulations", True)
+            if args.snapshot_path and last_packet is not None and time.monotonic() >= next_capture:
+                if capture_task is None or capture_task.done():
+                    if capture_task is not None:
+                        try:
+                            capture_task.result()
+                        except Exception as exc:
+                            print(f"R3_VIEWPORT_CAPTURE_ERROR {type(exc).__name__}: {exc}", flush=True)
+                    capture_task = asyncio.ensure_future(publish_snapshot(dict(last_packet)))
+                    next_capture = time.monotonic() + 1.0
             time.sleep(0.05)
     finally:
         udp.close()
