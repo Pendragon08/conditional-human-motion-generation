@@ -15,3 +15,5 @@ CLoSD旧512环境运行保存epoch66000后异常退出139；并非没有训练�
 - 正式成绩逐项汇入报告01/03和results；检查点/资源保留服务器，不上传许可受限文件。
 
 源文献：[DreamControl原文](https://genrobo.github.io/DreamControl/static/paper/DreamControl_arxiv.pdf)、[CLoSD官方复现说明](https://github.com/GuyTevet/CLoSD#train-your-own-closd)。
+
+14:38 UTC 更新：CLoSD3072环境诊断已正常完成，保存epoch62003且显式Gym清理完成，证据见 `results/r3_closd_capacity3072_20261001.json`。队列已自动进入官方微调模型的4096环境正式评估；之后是未微调模型同口径评估。短程更新不计为4000轮微调完成，仍不确定旧139的具体原因。DreamControl Jump最新已核对到第462/2000轮。自动跟进只在完成、失败、停滞或需可视验收时通知，正常推进安静。
