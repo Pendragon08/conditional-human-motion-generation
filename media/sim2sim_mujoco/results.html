@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kick / Punch · MuJoCo sim-to-sim</title>
+<style>body{font:16px/1.6 system-ui;background:#111827;color:#e5e7eb;max-width:1100px;margin:32px auto;padding:0 20px}h1{font-size:28px}a{color:#93c5fd}table{width:100%;border-collapse:collapse;background:#1f2937}th,td{text-align:left;padding:12px;border-bottom:1px solid #374151}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}.card{padding:16px;background:#1f2937;border-radius:10px}video{width:100%;background:#000;border-radius:6px}.note{padding:14px;border-left:4px solid #f59e0b;background:#292524}small{color:#cbd5e1}</style>
+<h1>Kick / Punch：Isaac Lab → MuJoCo</h1><p>2026-10-01 · 已完成的冻结策略 · 真实浮动底座物理仿真 · 无重新训练、无额外 IK</p>
+<table><tr><th>任务</th><th>到达虚拟目标</th><th>到达目标且 10 秒不摔倒</th><th>摔倒</th></tr><tr><td>Kick</td><td>54/66（81.8%）</td><td>48/66（72.7%）</td><td>9/66</td></tr><tr><td>Punch</td><td>42/100（42.0%）</td><td>33/100（33.0%）</td><td>26/100</td></tr></table>
+<p class="note">每条原参考动作单独测试，最多 10 秒，失败仍计入分母。红点是无碰撞的空间目标，不是沙袋。测试口径与官方 Isaac 1000 环境自动重置评估不同，不能直接比较两个百分比。本轮尚未证明扰动鲁棒性或实机可用。</p>
+<h2>固定编号的视频</h2><p>提前固定录制各任务参考编号 0、1；没有只挑成功片段。下面全部由 MuJoCo 根据策略力矩运行，非参考轨迹播放。</p>
+<div class="grid">
+<div class="card"><h3>Kick · 参考 0</h3><video controls preload="metadata" poster="Kick_reference_000.jpg" src="Kick_reference_000.mp4"></video><small>原时长 10 秒</small></div>
+<div class="card"><h3>Kick · 参考 1</h3><video controls preload="metadata" src="Kick_reference_001.mp4"></video><small>摔倒后结束，保留失败片段</small></div>
+<div class="card"><h3>Punch · 参考 0</h3><video controls preload="metadata" poster="Punch_reference_000.jpg" src="Punch_reference_000.mp4"></video><small>原时长 10 秒</small></div>
+<div class="card"><h3>Punch · 参考 1</h3><video controls preload="metadata" src="Punch_reference_001.mp4"></video><small>摔倒后结束，保留失败片段</small></div>
+</div><p>CPU 物理步长 0.005 秒，CUDA 策略控制 50 Hz，NVIDIA EGL 渲染。两个策略的 626 维观测、29 维动作及原归一化器已核对。</p>
+<p><a href="../../reports/10_Kick_Punch_MuJoCo_sim2sim_20261001.md">详细实验报告</a> · <a href="../../results/sim2sim_mujoco/Kick_zero_shot.json">Kick 逐条结果</a> · <a href="../../results/sim2sim_mujoco/Punch_zero_shot.json">Punch 逐条结果</a></p>
+</html>

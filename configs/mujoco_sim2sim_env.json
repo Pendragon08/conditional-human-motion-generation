@@ -1,0 +1,10 @@
+{
+  "base": "existing Linux venv Python 3.8.20; no packages installed or upgraded",
+  "python": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python",
+  "pip_phases": [],
+  "versions": {"mujoco": "3.2.3", "torch": "1.13.1+cu117", "numpy": "1.24.4", "imageio": "2.35.1"},
+  "env": {"MUJOCO_GL": "egl", "MUJOCO_EGL_DEVICE_ID": "0", "OMP_NUM_THREADS": "2", "OPENBLAS_NUM_THREADS": "2"},
+  "physics": "native MuJoCo CPU; frozen policy CUDA; EGL GPU rendering",
+  "assets": "existing official DreamControl Sim2Real G1 27dof with hands scene_full.xml",
+  "smoke": {"cmd": "bash scripts/r3_sim2sim_mujoco.sh witness", "expect": "SIM2SIM_ENV_WITNESS"}
+}

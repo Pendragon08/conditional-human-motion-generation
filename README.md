@@ -4,6 +4,8 @@
 
 2026-10-01：用户决定暂不继续创新点验证，先完成 DreamControl 与 CLoSD 原论文复现。已完成 DreamControl 的 Kick、Punch 两个控制任务，其余九项未启动；CLoSD 已完成缩容评估，尚未完整复现。当前服务器没有正式训练或评估在运行。完整验收边界与下一步顺序见[基线复现进度](reports/03_baseline_summary.md)。
 
+同日新增两项冻结策略的 **Isaac Lab → MuJoCo 首轮 sim-to-sim**：Kick 到达虚拟目标 54/66（81.8%），到达且完整 10 秒不摔倒 48/66（72.7%）；Punch 对应 42/100（42.0%）、33/100（33.0%）。无重新训练或额外 IK，两个策略的观测/动作与原检查点已核对。每条参考单独测试，口径不同于官方自动重置评估，尚未通过扰动鲁棒性或实机验收。见[报告](reports/10_Kick_Punch_MuJoCo_sim2sim_20261001.md)与[真实 MuJoCo 视频](media/sim2sim_mujoco/results.html)。
+
 ## 当前可核查结果
 
 | 实验 | 数据与预算 | 评估口径 | 当前结果 |
