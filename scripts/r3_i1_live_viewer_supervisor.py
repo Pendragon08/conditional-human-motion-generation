@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import fcntl
+import json
 import os
 import signal
 import subprocess
@@ -83,13 +84,17 @@ def main() -> None:
         command = [
             str(ROOT / "third_party/isaacsim-4.5.0/python.sh"), "-u",
             str(ROOT / "scripts/r3_i1_live_training_viewer.py"),
-            "--device=cuda:0", "--livestream=2", "--telemetry-port=40123",
+            "--device=cuda:" + env.get("R3_VIEWER_GPU", "0"), "--livestream=2", "--telemetry-port=40123",
             f"--status-path={VIEW_STATE}",
             f"--snapshot-path={MON / 'r3_i1_live_frame.png'}",
             f"--kit_args=--portable-root {ROOT / 'cache/r3_i1_live_viewer/kit'} --/renderer/multiGpu/enabled=false",
         ]
         attempt = 0
         while not STOP:
+            active_path = MON / 'r3_active_dreamcontrol_training.json'
+            active = json.loads(active_path.read_text()) if active_path.exists() else {}
+            task_id = active.get('task_id', 'Isaac-Motion-Tracking-Kick-v0')
+            task_command = command + ['--task=' + task_id]
             attempt += 1
             VIEW_STATE.write_text("STARTING mode=sampled_actual_training_pose\n")
             if LOG.exists():
@@ -97,14 +102,18 @@ def main() -> None:
                 archive.write_bytes(LOG.read_bytes())
             with LOG.open("wb") as output:
                 run_started = time.time()
-                proc = subprocess.Popen(command, cwd=TRAIN, env=env, stdout=output,
+                proc = subprocess.Popen(task_command, cwd=TRAIN, env=env, stdout=output,
                                         stderr=subprocess.STDOUT, start_new_session=True,
                                         preexec_fn=viewer_process_limits)
-                STATE.write_text(f"RUNNING attempt={attempt} pid={proc.pid} gpu=0 training_unaffected=true\n")
+                STATE.write_text(f"RUNNING attempt={attempt} pid={proc.pid} gpu={env.get('R3_VIEWER_GPU', '0')} training_unaffected=true\n")
                 offset = 0
                 last_ready = time.monotonic()
                 while not STOP and proc.poll() is None:
                     time.sleep(10)
+                    current = json.loads(active_path.read_text()) if active_path.exists() else {}
+                    if current.get('task_id', 'Isaac-Motion-Tracking-Kick-v0') != task_id:
+                        STATE.write_text('RESTARTING reason=training_task_changed training_unaffected=true\n')
+                        break
                     with LOG.open("rb") as current:
                         current.seek(offset)
                         data = current.read()

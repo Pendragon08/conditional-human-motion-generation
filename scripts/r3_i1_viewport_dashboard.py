@@ -115,6 +115,11 @@ class Handler(BaseHTTPRequestHandler):
             queue = read_text(MON / "r3_i1_matched_official_queue.state")
             arm = "candidate" if ("arm=candidate" in queue or queue.startswith("COMPLETE")) else "baseline"
             log = MON / f"r3_i1_matched_{arm}_8192_2000.log"
+            active_path = MON / 'r3_active_dreamcontrol_training.json'
+            if active_path.exists():
+                active = json.loads(active_path.read_text())
+                queue = read_text(Path(active['queue_state']))
+                log = Path(active['log'])
             try:
                 with log.open("rb") as stream:
                     stream.seek(max(0, log.stat().st_size - 65536))

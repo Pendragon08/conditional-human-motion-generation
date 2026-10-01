@@ -20,6 +20,7 @@ from isaaclab.app import AppLauncher
 
 
 parser = argparse.ArgumentParser()
+parser.add_argument("--task", default="Isaac-Motion-Tracking-Kick-v0")
 parser.add_argument("--telemetry-port", type=int, default=40123)
 parser.add_argument("--status-path", type=str, required=True)
 parser.add_argument("--timeout-seconds", type=int, default=0)
@@ -39,10 +40,10 @@ from isaaclab_tasks.utils import parse_env_cfg  # noqa: E402
 
 
 def main() -> None:
-    cfg = parse_env_cfg("Isaac-Motion-Tracking-Kick-v0", device=args.device, num_envs=1)
+    cfg = parse_env_cfg(args.task, device=args.device, num_envs=1)
     cfg.viewer.eye = (3.0, -4.0, 2.4)
     cfg.viewer.lookat = (0.0, 0.0, 0.8)
-    env = gym.make("Isaac-Motion-Tracking-Kick-v0", cfg=cfg)
+    env = gym.make(args.task, cfg=cfg)
     raw = env.unwrapped
     robot = raw.scene["robot"]
     try:
