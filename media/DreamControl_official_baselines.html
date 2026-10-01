@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DreamControl 官方任务基线结果</title>
+<style>body{font:17px/1.7 system-ui,sans-serif;background:#f3f5f8;color:#192433;max-width:1080px;margin:36px auto;padding:0 20px}h1{font-size:29px}section{background:white;border-radius:14px;padding:22px;margin:24px 0}video{width:100%;max-height:610px;background:#111;border-radius:8px}table{border-collapse:collapse;width:100%}th,td{padding:10px;border-bottom:1px solid #dce2ea;text-align:left}.note{color:#526377;font-size:15px}</style>
+<h1>DreamControl 官方任务基线结果</h1>
+<p>截至北京时间 2026-10-02 01:44，正式完成 3 / 11 项。视频来自 Isaac Lab 官方任务评估，不是 MuJoCo 测试或创新方案结果。</p>
+<section><table><tr><th>任务</th><th>训练</th><th>官方评估成功率</th></tr><tr><td>Kick 踢击</td><td>8192 环境 · 2000 轮 · seed42</td><td>85.3%</td></tr><tr><td>Punch 出拳</td><td>8192 环境 · 2000 轮 · seed42</td><td>87.2%</td></tr><tr><td>Jump 跳跃</td><td>8192 环境 · 2000 轮 · seed42</td><td>100.0%</td></tr></table><p class="note">每项按官方 1000 环境、500 帧口径评估。Jump 原始参考仅一条动作；100% 不代表所有未知跳跃条件都能成功。Sit 正在训练，其余七项已排队。</p></section>
+<section><h2>Jump 跳跃 · 100.0%</h2><video controls preload="metadata" src="r3_official_jump_8192_eval.mp4"></video><p class="note">最终第 1999 轮模型；10.02 秒、501 帧。按官方任务判据统计，未作外部目标、扰动或跨仿真扩展验证。</p></section>
+<section><h2>Kick 踢击 · 85.3%</h2><video controls preload="metadata" src="r3_official_kick_8192_eval.mp4"></video></section>
+<section><h2>Punch 出拳 · 87.2%</h2><video controls preload="metadata" src="r3_official_punch_8192_eval.mp4"></video></section>
+<p><a href="../reports/03_dreamcontrol_multitask_baselines.md">完整执行报告</a> · <a href="../results/r3_dreamcontrol_official_Jump_8192_eval.json">Jump 指标与哈希</a></p>
+</html>
