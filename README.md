@@ -2,6 +2,8 @@
 
 本仓库记录**条件驱动人体运动生成**课题的可复现实验。研究流程是条件输入 → 生成人体运动 → 物理／接触修正 → 机器人参考动作 → 固定下游执行与反馈。机器人跟踪用于检验生成动作是否可执行，并非本课题的唯一研究对象。本仓库与原人形机器人格斗项目分开。
 
+2026-10-01：用户决定暂不继续创新点验证，先完成 DreamControl 与 CLoSD 原论文复现。已完成 DreamControl 的 Kick、Punch 两个控制任务，其余九项未启动；CLoSD 已完成缩容评估，尚未完整复现。当前服务器没有正式训练或评估在运行。完整验收边界与下一步顺序见[基线复现进度](reports/03_baseline_summary.md)。
+
 ## 当前可核查结果
 
 | 实验 | 数据与预算 | 评估口径 | 当前结果 |
@@ -27,7 +29,7 @@
 
 DreamControl 官方代码来源记录为提交 `ec28b508313d6837de52c68247fbc8cf81fe4935`，但当前服务器的 `third_party/DreamControl` 目录不是独立 Git checkout，不能仅凭该目录再次证明完整代码版本；本轮关键源文件哈希见 `results/r3_i1_provenance_manifest_v2.json`。CLoSD 官方代码来源记录为提交 `d8950bdb78312fcd2844f336b3fc079e7368c87f`。新任务的服务器工作目录为 `/data/code/ouyanghao/oyh/conditional-human-motion-generation`，DreamControl 源码、参考动作和后续日志独立保存；通用 Isaac Sim 安装与 Python 依赖仍作为只读共享工具使用。此前运行的 CLoSD 训练保持原路径 `/data/code/ouyanghao/oyh/humanoid-combat-motion` 直到完成，避免移动文件中断进程；其结果再归档到本仓库。
 
-官方 DreamControl 的论文报告 11 种任务。其余十项任务的公开参考轨迹已逐文件校验，哈希见 `results/official_other_tasks_assets_manifest.json`；这只表示输入数据就绪，**不是训练完成**。顺序队列的首项 Punch 在第 1618 轮因图形串流故障停止，已保留第 1600 轮检查点，尚无正式评估；后续九项未启动。需在不让串流阻塞训练的前提下续训并逐项核验成功率与视频，不能用 Kick 的结果代表其余任务。[论文与任务表](https://genrobo.github.io/DreamControl/static/paper/DreamControl_arxiv.pdf)。
+官方 DreamControl 的论文报告 11 种任务。其余十项任务的公开参考轨迹已逐文件校验，哈希见 `results/official_other_tasks_assets_manifest.json`；这只表示输入数据就绪，**不是训练完成**。首项 Punch 在第 1618 轮因图形串流故障停止，后来从第 1600 轮检查点续训至第 1999/2000 轮并完成正式评估，成功率为 87.2%。旧顺序队列未接续其余九项；需用训练与画面监控分离的入口恢复剩余任务。不能用 Kick 或 Punch 的结果代表其余任务。[论文与任务表](https://genrobo.github.io/DreamControl/static/paper/DreamControl_arxiv.pdf)。
 
 ## 数据与许可
 
