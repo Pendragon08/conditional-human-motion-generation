@@ -1,0 +1,1305 @@
+{
+  "protocol": {
+    "protocol_id": "r3_frozen_kick_punch_robust_contact_v2",
+    "revision_reason": "V1 floor-only 0.5 yielded effective contact friction 1.0 due to MuJoCo max combination. V2 sets floor and robot sliding friction together, asserts actual contacts, and restores subtree mass caches between conditions. V1 retained as diagnostics; thresholds/policies unchanged.",
+    "floor_friction": "equal-priority floor and robot geoms receive the same sliding friction; every actual floor contact is checked against the condition value",
+    "date": "2026-10-01",
+    "policy_frozen": true,
+    "learning": false,
+    "references": {
+      "Kick": 66,
+      "Punch": 100
+    },
+    "control_dt_s": 0.02,
+    "physics_dt_s": 0.005,
+    "max_control_steps": 500,
+    "episode": "one start-at-zero trial per reference per condition; no autoreset; retain failures",
+    "push": {
+      "body": "pelvis",
+      "frame": "world",
+      "duration_s": 0.2,
+      "start": "max(0.2, official_reference_event_transition_time - 0.2)"
+    },
+    "pad": {
+      "type": "fixed kinematic box with real collision response; not a simulated opponent or calibrated punching bag",
+      "half_size_m": [
+        0.025,
+        0.12,
+        0.12
+      ],
+      "front_face": "original virtual goal; normal = normalized horizontal vector from initial pelvis to goal",
+      "friction": [
+        0.8,
+        0.005,
+        0.0001
+      ],
+      "solref": [
+        0.02,
+        1.0
+      ],
+      "solimp": [
+        0.9,
+        0.95,
+        0.001
+      ],
+      "Kick_allowed_bodies": [
+        "right_ankle_roll_link"
+      ],
+      "Punch_allowed_bodies": "right_wrist_yaw_link and descendants (right hand)",
+      "contact_window_half_width_s": 0.3,
+      "valid_strike": "correct effector contacts pad in window, pad-front normal alignment >=0.5, normal force >=10N, preceding-step nominal striking-point approach velocity >=0.1m/s",
+      "reported_force_thresholds_n": [
+        5,
+        10,
+        20
+      ],
+      "velocity_note": "nominal striking point before the physics step; a proxy, not exact material-point impact velocity",
+      "initial_penetration_limit_m": 0.001
+    },
+    "conditions": [
+      {
+        "id": "nominal"
+      },
+      {
+        "id": "friction_low",
+        "floor_friction": 0.5
+      },
+      {
+        "id": "friction_high",
+        "floor_friction": 1.5
+      },
+      {
+        "id": "nominal_mass_constants_refresh",
+        "refresh_mass_constants": true
+      },
+      {
+        "id": "mass_low",
+        "robot_mass_scale": 0.9
+      },
+      {
+        "id": "mass_high",
+        "robot_mass_scale": 1.1
+      },
+      {
+        "id": "strength_low",
+        "torque_limit_scale": 0.9
+      },
+      {
+        "id": "push_left_20",
+        "push_force_world_n": [
+          0,
+          20,
+          0
+        ]
+      },
+      {
+        "id": "push_right_20",
+        "push_force_world_n": [
+          0,
+          -20,
+          0
+        ]
+      },
+      {
+        "id": "push_left_40",
+        "push_force_world_n": [
+          0,
+          40,
+          0
+        ]
+      },
+      {
+        "id": "push_right_40",
+        "push_force_world_n": [
+          0,
+          -40,
+          0
+        ]
+      },
+      {
+        "id": "pad_nominal",
+        "pad": true
+      },
+      {
+        "id": "pad_y_plus_5cm",
+        "pad": true,
+        "pad_shift_world_m": [
+          0,
+          0.05,
+          0
+        ]
+      },
+      {
+        "id": "pad_y_minus_5cm",
+        "pad": true,
+        "pad_shift_world_m": [
+          0,
+          -0.05,
+          0
+        ]
+      }
+    ],
+    "mass_comparison_baseline": "nominal_mass_constants_refresh; both mass conditions and this control call mj_setConst after runtime armature assignment",
+    "video_reference_ids": [
+      0,
+      1
+    ],
+    "video_conditions": [
+      "nominal",
+      "push_left_40",
+      "pad_nominal"
+    ],
+    "claims": "bounded zero-shot stress/contact test of two checkpoints; no universal robustness, force-calibrated hardware, or novel-model claim"
+  },
+  "tasks": {
+    "Kick": {
+      "n_references": 66,
+      "trials": 924,
+      "conditions": [
+        {
+          "condition": "nominal",
+          "n": 66,
+          "paired_control": "nominal",
+          "valid_initialization": 66,
+          "virtual_goal_reached": 54,
+          "stable_goal_success": 48,
+          "fallen": 9,
+          "survived_horizon": 57,
+          "push_exposed": 0,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.7272727272727273,
+          "paired_stable_goal_lost": 0,
+          "paired_stable_goal_gained": 0,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "friction_low",
+          "n": 66,
+          "paired_control": "nominal",
+          "valid_initialization": 66,
+          "virtual_goal_reached": 56,
+          "stable_goal_success": 56,
+          "fallen": 0,
+          "survived_horizon": 66,
+          "push_exposed": 0,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.8484848484848485,
+          "paired_stable_goal_lost": 1,
+          "paired_stable_goal_gained": 9,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            0.5
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "friction_high",
+          "n": 66,
+          "paired_control": "nominal",
+          "valid_initialization": 66,
+          "virtual_goal_reached": 46,
+          "stable_goal_success": 8,
+          "fallen": 56,
+          "survived_horizon": 10,
+          "push_exposed": 0,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.12121212121212122,
+          "paired_stable_goal_lost": 41,
+          "paired_stable_goal_gained": 1,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.5
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "nominal_mass_constants_refresh",
+          "n": 66,
+          "paired_control": "nominal",
+          "valid_initialization": 66,
+          "virtual_goal_reached": 52,
+          "stable_goal_success": 49,
+          "fallen": 9,
+          "survived_horizon": 57,
+          "push_exposed": 0,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.7424242424242424,
+          "paired_stable_goal_lost": 4,
+          "paired_stable_goal_gained": 5,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "mass_low",
+          "n": 66,
+          "paired_control": "nominal_mass_constants_refresh",
+          "valid_initialization": 66,
+          "virtual_goal_reached": 53,
+          "stable_goal_success": 47,
+          "fallen": 8,
+          "survived_horizon": 58,
+          "push_exposed": 0,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.7121212121212122,
+          "paired_stable_goal_lost": 5,
+          "paired_stable_goal_gained": 3,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "mass_high",
+          "n": 66,
+          "paired_control": "nominal_mass_constants_refresh",
+          "valid_initialization": 66,
+          "virtual_goal_reached": 54,
+          "stable_goal_success": 40,
+          "fallen": 16,
+          "survived_horizon": 50,
+          "push_exposed": 0,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.6060606060606061,
+          "paired_stable_goal_lost": 12,
+          "paired_stable_goal_gained": 3,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "strength_low",
+          "n": 66,
+          "paired_control": "nominal",
+          "valid_initialization": 66,
+          "virtual_goal_reached": 53,
+          "stable_goal_success": 47,
+          "fallen": 9,
+          "survived_horizon": 57,
+          "push_exposed": 0,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.7121212121212122,
+          "paired_stable_goal_lost": 7,
+          "paired_stable_goal_gained": 6,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "push_left_20",
+          "n": 66,
+          "paired_control": "nominal",
+          "valid_initialization": 66,
+          "virtual_goal_reached": 54,
+          "stable_goal_success": 48,
+          "fallen": 10,
+          "survived_horizon": 56,
+          "push_exposed": 66,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.7272727272727273,
+          "paired_stable_goal_lost": 3,
+          "paired_stable_goal_gained": 3,
+          "push_impulse_norm_ns_unique": [
+            1.7,
+            4.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "push_right_20",
+          "n": 66,
+          "paired_control": "nominal",
+          "valid_initialization": 66,
+          "virtual_goal_reached": 52,
+          "stable_goal_success": 45,
+          "fallen": 10,
+          "survived_horizon": 56,
+          "push_exposed": 66,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.6818181818181818,
+          "paired_stable_goal_lost": 5,
+          "paired_stable_goal_gained": 2,
+          "push_impulse_norm_ns_unique": [
+            1.7,
+            4.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "push_left_40",
+          "n": 66,
+          "paired_control": "nominal",
+          "valid_initialization": 66,
+          "virtual_goal_reached": 55,
+          "stable_goal_success": 43,
+          "fallen": 16,
+          "survived_horizon": 50,
+          "push_exposed": 66,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.6515151515151515,
+          "paired_stable_goal_lost": 8,
+          "paired_stable_goal_gained": 3,
+          "push_impulse_norm_ns_unique": [
+            3.4,
+            8.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "push_right_40",
+          "n": 66,
+          "paired_control": "nominal",
+          "valid_initialization": 66,
+          "virtual_goal_reached": 52,
+          "stable_goal_success": 38,
+          "fallen": 22,
+          "survived_horizon": 44,
+          "push_exposed": 66,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.5757575757575758,
+          "paired_stable_goal_lost": 12,
+          "paired_stable_goal_gained": 2,
+          "push_impulse_norm_ns_unique": [
+            3.4,
+            8.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "pad_nominal",
+          "n": 66,
+          "paired_control": "nominal",
+          "valid_initialization": 66,
+          "virtual_goal_reached": 5,
+          "stable_goal_success": 3,
+          "fallen": 41,
+          "survived_horizon": 25,
+          "push_exposed": 0,
+          "any_contact": 59,
+          "correct_effector_contact": 58,
+          "window_correct_contact": 57,
+          "window_front_contact": 39,
+          "valid_strike_5n": 39,
+          "valid_strike_10n": 39,
+          "valid_strike_20n": 39,
+          "stable_strike_success": 9,
+          "stable_goal_rate": 0.045454545454545456,
+          "paired_stable_goal_lost": 46,
+          "paired_stable_goal_gained": 1,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": 263.5174057706509,
+          "correct_contact_impulse_median_ns": 35.14341790375504,
+          "force_stat_denominator_correct_contact": 58
+        },
+        {
+          "condition": "pad_y_plus_5cm",
+          "n": 66,
+          "paired_control": "nominal",
+          "valid_initialization": 66,
+          "virtual_goal_reached": 5,
+          "stable_goal_success": 2,
+          "fallen": 44,
+          "survived_horizon": 22,
+          "push_exposed": 0,
+          "any_contact": 58,
+          "correct_effector_contact": 57,
+          "window_correct_contact": 56,
+          "window_front_contact": 38,
+          "valid_strike_5n": 38,
+          "valid_strike_10n": 38,
+          "valid_strike_20n": 38,
+          "stable_strike_success": 8,
+          "stable_goal_rate": 0.030303030303030304,
+          "paired_stable_goal_lost": 47,
+          "paired_stable_goal_gained": 1,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": 263.58358018670805,
+          "correct_contact_impulse_median_ns": 36.40648107298544,
+          "force_stat_denominator_correct_contact": 57
+        },
+        {
+          "condition": "pad_y_minus_5cm",
+          "n": 66,
+          "paired_control": "nominal",
+          "valid_initialization": 66,
+          "virtual_goal_reached": 5,
+          "stable_goal_success": 2,
+          "fallen": 41,
+          "survived_horizon": 25,
+          "push_exposed": 0,
+          "any_contact": 59,
+          "correct_effector_contact": 58,
+          "window_correct_contact": 56,
+          "window_front_contact": 40,
+          "valid_strike_5n": 40,
+          "valid_strike_10n": 40,
+          "valid_strike_20n": 40,
+          "stable_strike_success": 9,
+          "stable_goal_rate": 0.030303030303030304,
+          "paired_stable_goal_lost": 46,
+          "paired_stable_goal_gained": 0,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": 257.89088910245096,
+          "correct_contact_impulse_median_ns": 32.75481216158664,
+          "force_stat_denominator_correct_contact": 58
+        }
+      ],
+      "provenance": {
+        "checkpoint": "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_03-19-31-Kick-a/model_1999.pt",
+        "checkpoint_sha256": "e3c50fb6f36f59f89d1b4e788b1ba74cf1ff0cdde3dceff34a9d7765235f65c0",
+        "actor_tensor_equal_to_checkpoint": true,
+        "normalizer_tensor_equal_to_checkpoint": true,
+        "adapter_sha256": "f9ece57f150e876cd4206a38a7360f780765cbb86d91b4f93c8dd26b35d4a8e0",
+        "official_slerp_source_sha256": "3f44c185a08364c0591fc7809032b23937fd9a2f695d5375ac99e6802d95f4ce",
+        "stress_adapter_sha256": "dad0dbd13feaed251b187c3ce6260a49b5dc6e326fbfe7208fe054136d120024",
+        "protocol_sha256": "2cb0a429de2c18b5eeb86cdaf6f46c4407ed52993fb27bbfd4747ce13664348e"
+      },
+      "nominal_disagreements_with_previous": [],
+      "reference_npz_sha256": "5831c298e9005997e8a7063f9ab5725b0536b3c1068483a9173cdbcb7f222b24",
+      "policy_sha256": "61b760f62c8d057bbe5217a57304051fdacec2aa93617f910a3d6a19aaf818b1",
+      "sum_worker_wall_s": 651.3701883517206,
+      "previous_nominal_result_sha256": "8231b4b90f444927dd42409a76bc8514f735e3db235abcc4ae505b6d57422e2b"
+    },
+    "Punch": {
+      "n_references": 100,
+      "trials": 1400,
+      "conditions": [
+        {
+          "condition": "nominal",
+          "n": 100,
+          "paired_control": "nominal",
+          "valid_initialization": 100,
+          "virtual_goal_reached": 42,
+          "stable_goal_success": 33,
+          "fallen": 26,
+          "survived_horizon": 74,
+          "push_exposed": 0,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.33,
+          "paired_stable_goal_lost": 0,
+          "paired_stable_goal_gained": 0,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "friction_low",
+          "n": 100,
+          "paired_control": "nominal",
+          "valid_initialization": 100,
+          "virtual_goal_reached": 35,
+          "stable_goal_success": 35,
+          "fallen": 19,
+          "survived_horizon": 81,
+          "push_exposed": 0,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.35,
+          "paired_stable_goal_lost": 12,
+          "paired_stable_goal_gained": 14,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            0.5
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "friction_high",
+          "n": 100,
+          "paired_control": "nominal",
+          "valid_initialization": 100,
+          "virtual_goal_reached": 46,
+          "stable_goal_success": 10,
+          "fallen": 84,
+          "survived_horizon": 16,
+          "push_exposed": 0,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.1,
+          "paired_stable_goal_lost": 25,
+          "paired_stable_goal_gained": 2,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.5
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "nominal_mass_constants_refresh",
+          "n": 100,
+          "paired_control": "nominal",
+          "valid_initialization": 100,
+          "virtual_goal_reached": 42,
+          "stable_goal_success": 34,
+          "fallen": 29,
+          "survived_horizon": 71,
+          "push_exposed": 0,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.34,
+          "paired_stable_goal_lost": 9,
+          "paired_stable_goal_gained": 10,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "mass_low",
+          "n": 100,
+          "paired_control": "nominal_mass_constants_refresh",
+          "valid_initialization": 100,
+          "virtual_goal_reached": 43,
+          "stable_goal_success": 38,
+          "fallen": 15,
+          "survived_horizon": 85,
+          "push_exposed": 0,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.38,
+          "paired_stable_goal_lost": 9,
+          "paired_stable_goal_gained": 13,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "mass_high",
+          "n": 100,
+          "paired_control": "nominal_mass_constants_refresh",
+          "valid_initialization": 100,
+          "virtual_goal_reached": 40,
+          "stable_goal_success": 27,
+          "fallen": 45,
+          "survived_horizon": 55,
+          "push_exposed": 0,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.27,
+          "paired_stable_goal_lost": 15,
+          "paired_stable_goal_gained": 8,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "strength_low",
+          "n": 100,
+          "paired_control": "nominal",
+          "valid_initialization": 100,
+          "virtual_goal_reached": 42,
+          "stable_goal_success": 32,
+          "fallen": 31,
+          "survived_horizon": 69,
+          "push_exposed": 0,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.32,
+          "paired_stable_goal_lost": 11,
+          "paired_stable_goal_gained": 10,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "push_left_20",
+          "n": 100,
+          "paired_control": "nominal",
+          "valid_initialization": 100,
+          "virtual_goal_reached": 45,
+          "stable_goal_success": 34,
+          "fallen": 32,
+          "survived_horizon": 68,
+          "push_exposed": 99,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.34,
+          "paired_stable_goal_lost": 5,
+          "paired_stable_goal_gained": 6,
+          "push_impulse_norm_ns_unique": [
+            0.0,
+            0.1,
+            1.2,
+            4.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "push_right_20",
+          "n": 100,
+          "paired_control": "nominal",
+          "valid_initialization": 100,
+          "virtual_goal_reached": 42,
+          "stable_goal_success": 34,
+          "fallen": 29,
+          "survived_horizon": 71,
+          "push_exposed": 99,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.34,
+          "paired_stable_goal_lost": 4,
+          "paired_stable_goal_gained": 5,
+          "push_impulse_norm_ns_unique": [
+            0.0,
+            0.1,
+            1.2,
+            4.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "push_left_40",
+          "n": 100,
+          "paired_control": "nominal",
+          "valid_initialization": 100,
+          "virtual_goal_reached": 53,
+          "stable_goal_success": 40,
+          "fallen": 31,
+          "survived_horizon": 69,
+          "push_exposed": 99,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.4,
+          "paired_stable_goal_lost": 4,
+          "paired_stable_goal_gained": 11,
+          "push_impulse_norm_ns_unique": [
+            0.0,
+            0.2,
+            2.4,
+            8.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "push_right_40",
+          "n": 100,
+          "paired_control": "nominal",
+          "valid_initialization": 100,
+          "virtual_goal_reached": 38,
+          "stable_goal_success": 29,
+          "fallen": 30,
+          "survived_horizon": 70,
+          "push_exposed": 99,
+          "any_contact": 0,
+          "correct_effector_contact": 0,
+          "window_correct_contact": 0,
+          "window_front_contact": 0,
+          "valid_strike_5n": 0,
+          "valid_strike_10n": 0,
+          "valid_strike_20n": 0,
+          "stable_strike_success": 0,
+          "stable_goal_rate": 0.29,
+          "paired_stable_goal_lost": 9,
+          "paired_stable_goal_gained": 5,
+          "push_impulse_norm_ns_unique": [
+            0.0,
+            0.2,
+            2.4,
+            8.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": null,
+          "correct_contact_impulse_median_ns": null,
+          "force_stat_denominator_correct_contact": 0
+        },
+        {
+          "condition": "pad_nominal",
+          "n": 100,
+          "paired_control": "nominal",
+          "valid_initialization": 100,
+          "virtual_goal_reached": 39,
+          "stable_goal_success": 30,
+          "fallen": 28,
+          "survived_horizon": 72,
+          "push_exposed": 0,
+          "any_contact": 51,
+          "correct_effector_contact": 49,
+          "window_correct_contact": 46,
+          "window_front_contact": 44,
+          "valid_strike_5n": 42,
+          "valid_strike_10n": 42,
+          "valid_strike_20n": 41,
+          "stable_strike_success": 33,
+          "stable_goal_rate": 0.3,
+          "paired_stable_goal_lost": 6,
+          "paired_stable_goal_gained": 3,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": 266.41422421541023,
+          "correct_contact_impulse_median_ns": 8.459716647082946,
+          "force_stat_denominator_correct_contact": 49
+        },
+        {
+          "condition": "pad_y_plus_5cm",
+          "n": 100,
+          "paired_control": "nominal",
+          "valid_initialization": 100,
+          "virtual_goal_reached": 37,
+          "stable_goal_success": 29,
+          "fallen": 33,
+          "survived_horizon": 67,
+          "push_exposed": 0,
+          "any_contact": 54,
+          "correct_effector_contact": 52,
+          "window_correct_contact": 50,
+          "window_front_contact": 46,
+          "valid_strike_5n": 43,
+          "valid_strike_10n": 43,
+          "valid_strike_20n": 41,
+          "stable_strike_success": 34,
+          "stable_goal_rate": 0.29,
+          "paired_stable_goal_lost": 7,
+          "paired_stable_goal_gained": 3,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": 259.7252388462448,
+          "correct_contact_impulse_median_ns": 7.3797690765487705,
+          "force_stat_denominator_correct_contact": 52
+        },
+        {
+          "condition": "pad_y_minus_5cm",
+          "n": 100,
+          "paired_control": "nominal",
+          "valid_initialization": 100,
+          "virtual_goal_reached": 39,
+          "stable_goal_success": 27,
+          "fallen": 30,
+          "survived_horizon": 70,
+          "push_exposed": 0,
+          "any_contact": 47,
+          "correct_effector_contact": 46,
+          "window_correct_contact": 44,
+          "window_front_contact": 41,
+          "valid_strike_5n": 39,
+          "valid_strike_10n": 39,
+          "valid_strike_20n": 39,
+          "stable_strike_success": 29,
+          "stable_goal_rate": 0.27,
+          "paired_stable_goal_lost": 7,
+          "paired_stable_goal_gained": 1,
+          "push_impulse_norm_ns_unique": [
+            0.0
+          ],
+          "observed_floor_contact_friction": [
+            1.0
+          ],
+          "correct_contact_peak_force_median_n": 273.34733432469864,
+          "correct_contact_impulse_median_ns": 8.511730034459434,
+          "force_stat_denominator_correct_contact": 46
+        }
+      ],
+      "provenance": {
+        "checkpoint": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-29_12-37-46-Punch-a/model_1999.pt",
+        "checkpoint_sha256": "c4b479007434d061b0329a74dee5ed5c9408be7f9d60b15487978f44a9aa0b4d",
+        "actor_tensor_equal_to_checkpoint": true,
+        "normalizer_tensor_equal_to_checkpoint": true,
+        "adapter_sha256": "f9ece57f150e876cd4206a38a7360f780765cbb86d91b4f93c8dd26b35d4a8e0",
+        "official_slerp_source_sha256": "3f44c185a08364c0591fc7809032b23937fd9a2f695d5375ac99e6802d95f4ce",
+        "stress_adapter_sha256": "dad0dbd13feaed251b187c3ce6260a49b5dc6e326fbfe7208fe054136d120024",
+        "protocol_sha256": "2cb0a429de2c18b5eeb86cdaf6f46c4407ed52993fb27bbfd4747ce13664348e"
+      },
+      "nominal_disagreements_with_previous": [
+        16,
+        90
+      ],
+      "reference_npz_sha256": "f58c6fd5aecf9f2398df89f22a806c206c12802173f7ab1289e1d5c8f8714fe0",
+      "policy_sha256": "ce0bceedd278c4470cae28b8fffa7bb67c3699a2552c196b352b29ebeed0a06c",
+      "sum_worker_wall_s": 1027.731432005763,
+      "previous_nominal_result_sha256": "8af584f21b59dfc8d62d840a38374926a4496bd372b55af92f547bdff80505c5"
+    }
+  },
+  "videos": [
+    {
+      "path": "media/mujoco_robust_contact/Kick_nominal_ref_000.mp4",
+      "bytes": 359805,
+      "sha256": "84acd4a83e3435db0fa0f303da5e1407be613b0525a6c35d273db1569d638716",
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "nb_frames": "250"
+          }
+        ],
+        "format": {
+          "duration": "10.000000"
+        }
+      }
+    },
+    {
+      "path": "media/mujoco_robust_contact/Kick_nominal_ref_001.mp4",
+      "bytes": 351792,
+      "sha256": "cee3e3d01eb67caaf7aec3779b4e0b0bdfa2079e7da9b4ed8f241b6b946e0d9d",
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "nb_frames": "127"
+          }
+        ],
+        "format": {
+          "duration": "5.080000"
+        }
+      }
+    },
+    {
+      "path": "media/mujoco_robust_contact/Kick_pad_nominal_ref_000.mp4",
+      "bytes": 165243,
+      "sha256": "da31156fa8037de26ddc4c59a439f4f0dae705e1d91f86d017b212096bdf78d3",
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "nb_frames": "55"
+          }
+        ],
+        "format": {
+          "duration": "2.200000"
+        }
+      }
+    },
+    {
+      "path": "media/mujoco_robust_contact/Kick_pad_nominal_ref_001.mp4",
+      "bytes": 367879,
+      "sha256": "eff701fe1f0ef5c773b465268f7745f17d1cebf5dc2c4f5527bfe13d5108c04d",
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "nb_frames": "126"
+          }
+        ],
+        "format": {
+          "duration": "5.040000"
+        }
+      }
+    },
+    {
+      "path": "media/mujoco_robust_contact/Kick_push_left_40_ref_000.mp4",
+      "bytes": 386975,
+      "sha256": "70ba453e1caa5b8a09c656a6582cdeab592c85ee55b4c8797a2277a3b7d02c57",
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "nb_frames": "250"
+          }
+        ],
+        "format": {
+          "duration": "10.000000"
+        }
+      }
+    },
+    {
+      "path": "media/mujoco_robust_contact/Kick_push_left_40_ref_001.mp4",
+      "bytes": 420207,
+      "sha256": "aacca0a3e2088ebb6367f7bba8a5b2eb963c60a9ec8e2e2c5f5805fc004784af",
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "nb_frames": "250"
+          }
+        ],
+        "format": {
+          "duration": "10.000000"
+        }
+      }
+    },
+    {
+      "path": "media/mujoco_robust_contact/Punch_nominal_ref_000.mp4",
+      "bytes": 403473,
+      "sha256": "f635055522eee3e5be8d49d769ea821cb958a47e95ee56a2b19a5f511cb46435",
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "nb_frames": "250"
+          }
+        ],
+        "format": {
+          "duration": "10.000000"
+        }
+      }
+    },
+    {
+      "path": "media/mujoco_robust_contact/Punch_nominal_ref_001.mp4",
+      "bytes": 349168,
+      "sha256": "36c4a81c2a4d45fda9b34936ba0f59bda3cbd006ee21030fdf211e0041c73fb5",
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "nb_frames": "250"
+          }
+        ],
+        "format": {
+          "duration": "10.000000"
+        }
+      }
+    },
+    {
+      "path": "media/mujoco_robust_contact/Punch_pad_nominal_ref_000.mp4",
+      "bytes": 404763,
+      "sha256": "49e64db8a8ee752d6f6bda8fede92f23461b09f0abad364d477ce64f3daea9ec",
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "nb_frames": "250"
+          }
+        ],
+        "format": {
+          "duration": "10.000000"
+        }
+      }
+    },
+    {
+      "path": "media/mujoco_robust_contact/Punch_pad_nominal_ref_001.mp4",
+      "bytes": 351284,
+      "sha256": "5b1c018448361579671cbbd9d4c34de9a900dc0c9efafd9cfde8dbf24a369b02",
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "nb_frames": "250"
+          }
+        ],
+        "format": {
+          "duration": "10.000000"
+        }
+      }
+    },
+    {
+      "path": "media/mujoco_robust_contact/Punch_push_left_40_ref_000.mp4",
+      "bytes": 404701,
+      "sha256": "4deaca3ca1ded4c3155d941da4b2855bee9293a268b9f5d2fab24b102e67e07f",
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "nb_frames": "250"
+          }
+        ],
+        "format": {
+          "duration": "10.000000"
+        }
+      }
+    },
+    {
+      "path": "media/mujoco_robust_contact/Punch_push_left_40_ref_001.mp4",
+      "bytes": 355601,
+      "sha256": "dcdfbe7bfba86c7ba2b45d3afabd2a5a78e7f8f6991c7e0ee3bc196aa5b99b64",
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "nb_frames": "250"
+          }
+        ],
+        "format": {
+          "duration": "10.000000"
+        }
+      }
+    }
+  ],
+  "status": "COMPLETE",
+  "total_trials": 2324
+}
