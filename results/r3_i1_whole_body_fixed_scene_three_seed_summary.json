@@ -1,0 +1,62 @@
+{
+  "status": "fixed_scene_kinematic_validation_only",
+  "definition": "one fixed morphology-scaled pre-generation goal per motion; rejected retarget inputs remain in each 100-motion denominator",
+  "thresholds_are_exploratory": true,
+  "seeds": {
+    "42": {
+      "generated_inputs": 100,
+      "official_retarget_accepted": 64,
+      "official_retarget_rejected": 36,
+      "raw_mapped_target_error_mean_m": 0.2714896365068853,
+      "refined_mapped_target_error_mean_m": 0.19072871492244303,
+      "improved_paired_motions": 64,
+      "raw_target_le_0_15_m_per_100": 0,
+      "refined_target_le_0_15_m_per_100": 16,
+      "refined_all_proxy_checks_per_100": 14,
+      "left_stance_drift_mean_m": 0.0008273785206256434,
+      "max_added_joint_delta_per_frame_rad": 0.10435732454061508,
+      "peak_shift_le_5_frames": 61,
+      "amplitude_retention_ge_0_8": 64,
+      "joint_limit_violations": 0,
+      "optimization_time_mean_s": 2.2972667854628526
+    },
+    "43": {
+      "generated_inputs": 100,
+      "official_retarget_accepted": 64,
+      "official_retarget_rejected": 36,
+      "raw_mapped_target_error_mean_m": 0.2766344239935279,
+      "refined_mapped_target_error_mean_m": 0.1950175118399784,
+      "improved_paired_motions": 64,
+      "raw_target_le_0_15_m_per_100": 0,
+      "refined_target_le_0_15_m_per_100": 10,
+      "refined_all_proxy_checks_per_100": 9,
+      "left_stance_drift_mean_m": 0.000853314010782924,
+      "max_added_joint_delta_per_frame_rad": 0.10497380048036575,
+      "peak_shift_le_5_frames": 63,
+      "amplitude_retention_ge_0_8": 64,
+      "joint_limit_violations": 0,
+      "optimization_time_mean_s": 2.9981662855425384
+    },
+    "44": {
+      "generated_inputs": 100,
+      "official_retarget_accepted": 63,
+      "official_retarget_rejected": 37,
+      "raw_mapped_target_error_mean_m": 0.25974405166648684,
+      "refined_mapped_target_error_mean_m": 0.1771342329799183,
+      "improved_paired_motions": 63,
+      "raw_target_le_0_15_m_per_100": 0,
+      "refined_target_le_0_15_m_per_100": 19,
+      "refined_all_proxy_checks_per_100": 16,
+      "left_stance_drift_mean_m": 0.0008252884431313428,
+      "max_added_joint_delta_per_frame_rad": 0.10064033418893814,
+      "peak_shift_le_5_frames": 56,
+      "amplitude_retention_ge_0_8": 63,
+      "joint_limit_violations": 0,
+      "optimization_time_mean_s": 3.481665243261627
+    }
+  },
+  "limitations": [
+    "No independent multi-text result, target collision force, or matched-budget PPO yet",
+    "The seed42 pilot was used for weight selection; seeds43/44 are fixed-hyperparameter checks"
+  ]
+}

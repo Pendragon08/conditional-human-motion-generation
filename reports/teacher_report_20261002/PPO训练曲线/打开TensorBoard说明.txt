@@ -1,0 +1,5 @@
+此目录保存原始TensorBoard事件文件，并已导出无需服务即可观看的训练曲线总览.html、PNG/SVG和CSV。
+若本机已有TensorBoard，可运行：tensorboard --logdir "D:\具身智能\通用条件人体运动生成_已完成实验结果_20260929\PPO训练曲线" --port 6020 --host 127.0.0.1
+浏览器地址：http://127.0.0.1:6020/
+此说明不代表6020服务已启动。Punch必须区分初次与恢复两个run；初次1600—1618属于恢复前回滚段，合并CSV/图已去掉重复段。
+Train/mean_reward/time的横轴为各run累计秒数，不是PPO迭代；iteration_scalars.csv仅使用迭代轴指标。

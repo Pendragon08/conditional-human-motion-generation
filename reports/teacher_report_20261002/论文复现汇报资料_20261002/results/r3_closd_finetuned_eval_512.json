@@ -1,0 +1,29 @@
+{
+  "experiment": "CLoSD multi-task pilot fine-tune evaluation",
+  "status": "complete",
+  "model": "r3_CLoSD_multitask_finetune_512_full_scene_v2/Humanoid_00066000.pth",
+  "model_sha256": "4c3eb7fa77b0a29743ff21d25fc65ba3d9f2b40d9e9b1e499289707b25add5df",
+  "model_uploaded": false,
+  "configuration": {
+    "num_envs": 512,
+    "episode_length_frames": 500,
+    "dip_classifier_free_guidance": 7.5,
+    "seed": 0,
+    "closd_eval": true,
+    "minimum_resets_per_state": 1000
+  },
+  "success_rate_rounded_as_logged": {
+    "REACH": 0.00,
+    "STRIKE_KICK": 0.05,
+    "STRIKE_PUNCH": 0.05,
+    "SIT": 0.07,
+    "GET_UP": 0.69
+  },
+  "interpretation": "The upstream evaluator pools kick and punch outcomes through shared strike counters, so their identical 0.05 values are not independent task estimates. The 512-environment pilot is not the paper's 4096-environment configuration.",
+  "evidence": {
+    "server_state": "artifacts/monitoring/r3_closd_final_eval_512.state",
+    "server_log": "artifacts/monitoring/r3_closd_final_eval_512.log",
+    "completion_marker": "Collected enough data (1000 per task) success rates; Eval plot ended",
+    "training_exit": "139 after epoch-66000 checkpoint was saved"
+  }
+}

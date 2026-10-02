@@ -1,5 +1,9 @@
 # Conditional Human Motion Generation
 
+**最新汇报归档（2026-10-02）**：[HTML报告与本地视频/曲线](reports/teacher_report_20261002/README.md) · [报告入口](reports/teacher_report_20261002/实验结果汇报.html) · [PPO曲线解读和策略文件格式](reports/16_PPO_training_interpretation_and_policy_formats_20261002.md)。下载仓库后用浏览器打开HTML；GitHub文件页本身不会播放整个报告。正文保持论文基线汇报范围，原始许可资产和模型权重不随此报告包上传。
+
+当前已归档DreamControl控制任务为 **7/11**：Kick85.3%、Punch87.2%、Jump100%、Sit100%、Pick93.9%、Bimanual-Pick99.9%、Ground-Pick38.1%。这是保存的评估结果，不是服务器实时状态或整篇论文完成比例；Ground-Pick尚无MuJoCo验证。历史阶段快照在下文保留，任务时间线以[多任务基线报告](reports/03_dreamcontrol_multitask_baselines.md)为准。
+
 本仓库记录**条件驱动人体运动生成**课题的可复现实验。研究流程是条件输入 → 生成人体运动 → 物理／接触修正 → 机器人参考动作 → 固定下游执行与反馈。机器人跟踪用于检验生成动作是否可执行，并非本课题的唯一研究对象。本仓库与原人形机器人格斗项目分开。
 
 2026-10-02 04:55 UTC（北京时间10月2日12:55）：用户决定暂不继续创新点验证，先完成 DreamControl 与 CLoSD 原论文复现。DreamControl已完成 **6/11** 个控制任务：Kick85.3%、Punch87.2%、Jump100.0%、Sit100.0%、Pick93.9%、Bimanual-Pick99.9%（Sit与Bimanual-Pick使用官方USD I/O显示适配，失败记录保留）；Ground-Pick已自动开始，后续四项排队。CLoSD两组官方已发布权重的4096环境评估已正常完成，新的3072环境4000轮微调仍等待当前实际场景的本地可视确认。完整验收边界见[基线复现进度](reports/03_baseline_summary.md)，已完成控制器的[结果视频](media/DreamControl_official_baselines.html)。
@@ -18,6 +22,7 @@
 | DreamControl 官方 Sit 基线 | 官方1条参考，8192环境，2000轮，seed42 | 官方1000环境500帧，--disable_fabric显示适配 | **100.0%**；仅官方目标判据，不等于自然坐姿验收 |
 | DreamControl 官方 Pick 基线 | 官方67条参考，8192环境，2000轮，seed42 | 官方1000环境500帧，默认显示路径 | **93.9%**，正常退出，模型/视频已核验 |
 | DreamControl 官方 Bimanual-Pick 基线 | 官方1条参考，8192环境，2000轮，seed42 | 官方1000环境500帧，USD显示适配 | **99.9%**，正常退出，视频/模型已核验 |
+| DreamControl 官方 Ground-Pick 基线 | 官方1条参考，8192环境，2000轮，seed42 | 官方1000环境500帧，USD显示适配 | **38.1%**，正常退出，视频/模型已核验；未做MuJoCo验证 |
 | CLoSD 官方已发布权重评估 | 4096环境、500帧、CFG7.5、seed0，每状态至少1000次重置 | 未微调与已发布微调模型同口径 | 触达100%→100%、共用STRIKE85%→94%、坐下76%→89%、起身56%→97%；不是我们新微调成绩 |
 | 旧 66 条策略在新动作留出集 | 1024 环境训练；32 条 seed42 留出轨迹 | 1000 环境、500 帧 | **0%** |
 | 98 条增强组在同一留出集 | 原 66＋新增 32 条，1024 环境，seed 123 | 同一 32 条留出、1000 环境、500 帧 | **0%** |

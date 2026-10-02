@@ -1,0 +1,71 @@
+{
+  "task": "Kick",
+  "status": "COMPLETE",
+  "protocol": "one deterministic start-at-zero episode per reference; no autoreset; 500 control frames maximum",
+  "policy_frozen": true,
+  "learning": false,
+  "extra_ik": false,
+  "num_references": 3,
+  "policy_sha256": "61b760f62c8d057bbe5217a57304051fdacec2aa93617f910a3d6a19aaf818b1",
+  "reference_npz_sha256": "5831c298e9005997e8a7063f9ab5725b0536b3c1068483a9173cdbcb7f222b24",
+  "success_count": 2,
+  "success_rate": 0.6666666666666666,
+  "fall_count": 1,
+  "survive_full_horizon_count": 2,
+  "elapsed_wall_s": 3.3513010181486607,
+  "physics_dt_s": 0.005,
+  "policy_dt_s": 0.02,
+  "controller": "explicit torque PD at 200Hz, training runtime gains/defaults/effort limits, clamp torque",
+  "model": "official floating-base G1 27 body + 14 hand joints; XML inertias/colliders retained",
+  "model_overrides": {
+    "gravity": -9.81,
+    "floor_sliding_friction": 1.0,
+    "self_collision": false,
+    "integrator": "implicitfast",
+    "armature_and_torque_limits": "actual Isaac runtime"
+  },
+  "limitations": [
+    "Isaac USD and MuJoCo MJCF inertias/collision meshes not yet proven identical",
+    "explicit PD differs from Isaac implicit joint drives",
+    "virtual target event only; no physical punching bag or opponent",
+    "trial-level metric differs from Isaac 1000-env 500-frame autoreset evaluation"
+  ],
+  "trials": [
+    {
+      "reference_index": 0,
+      "task_success_virtual_target": true,
+      "fallen": false,
+      "executed_steps": 500,
+      "survival_s": 10.0,
+      "min_goal_distance_m": 0.07355050023108446,
+      "event_window_min_distance_m": 0.07355050023108446,
+      "joint_tracking_rmse_rad": 0.08054394950871194,
+      "max_unclipped_pd_torque_excess_nm": 26.7179622239708,
+      "video": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_mujoco/Kick_reference_000.mp4"
+    },
+    {
+      "reference_index": 1,
+      "task_success_virtual_target": false,
+      "fallen": true,
+      "executed_steps": 225,
+      "survival_s": 4.5,
+      "min_goal_distance_m": 0.10098274945249583,
+      "event_window_min_distance_m": 0.10098274945249583,
+      "joint_tracking_rmse_rad": 0.14334381239231317,
+      "max_unclipped_pd_torque_excess_nm": 421.69534032994886,
+      "video": null
+    },
+    {
+      "reference_index": 2,
+      "task_success_virtual_target": true,
+      "fallen": false,
+      "executed_steps": 500,
+      "survival_s": 10.0,
+      "min_goal_distance_m": 0.022201908061558327,
+      "event_window_min_distance_m": 0.03341995000146876,
+      "joint_tracking_rmse_rad": 0.08857576870139533,
+      "max_unclipped_pd_torque_excess_nm": 66.8448909769862,
+      "video": null
+    }
+  ]
+}

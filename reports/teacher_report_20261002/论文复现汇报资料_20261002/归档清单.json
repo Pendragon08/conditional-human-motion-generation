@@ -1,0 +1,754 @@
+{
+  "report": "实验结果汇报.html",
+  "generated_at_local": "2026-10-02T16:45:09.813581",
+  "source_git_commit": "b533cbd1f549022faeafca2ae6ea8d7952025864",
+  "data_cutoff_beijing": "2026-10-02 16:04",
+  "baseline_tasks_completed": 6,
+  "baseline_tasks_total": 11,
+  "human_motion_videos": 6,
+  "new_sim2sim_references": 70,
+  "robust_contact_trials": 2324,
+  "video_count": 33,
+  "files": [
+    {
+      "path": "results/configs/DreamControl_Bimanual-Pick/agent.yaml",
+      "bytes": 844,
+      "sha256": "c2ad613f76c9560a5cfc201e46c703a2a0c9a5b6ad28d4f53c18297f2ddf7123",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/configs/DreamControl_Bimanual-Pick/env.yaml",
+      "bytes": 47103,
+      "sha256": "15cb6e78a585fb18b1f107ca443dbff163d25569b88aa670e79ce68de0ca1756",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/configs/DreamControl_Jump/agent.yaml",
+      "bytes": 844,
+      "sha256": "c2ad613f76c9560a5cfc201e46c703a2a0c9a5b6ad28d4f53c18297f2ddf7123",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/configs/DreamControl_Jump/env.yaml",
+      "bytes": 35697,
+      "sha256": "785ec36cab01aa6fc51a77918a5bacba73583019b6e2abda650447ec7e963eac",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/configs/DreamControl_Pick/agent.yaml",
+      "bytes": 844,
+      "sha256": "c2ad613f76c9560a5cfc201e46c703a2a0c9a5b6ad28d4f53c18297f2ddf7123",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/configs/DreamControl_Pick/env.yaml",
+      "bytes": 46266,
+      "sha256": "0c0c8894a82d67d8f476a8b6a0dde83db051ab19b7559489c5c1553478191cca",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/configs/DreamControl_Sit/agent.yaml",
+      "bytes": 844,
+      "sha256": "c2ad613f76c9560a5cfc201e46c703a2a0c9a5b6ad28d4f53c18297f2ddf7123",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/configs/DreamControl_Sit/env.yaml",
+      "bytes": 38041,
+      "sha256": "ece51d9140d21fe069cfcc8361093f3a2b9d528e5a99d567052bc4eb033c28e5",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/dreamcontrol_paper_task_matrix.csv",
+      "bytes": 1084,
+      "sha256": "0cf9bdd57368014e379f464ba5e1e8a165034a0057bd458b1d89f1d5164da6b2",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/execution_logs/r3_mujoco_robust_contact_v2_Kick_shard0.log",
+      "bytes": 20782,
+      "sha256": "4c425cc7253a0c3110250f1371c730ef0a3840c3b5ac4847fb99ced568508a90",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/execution_logs/r3_mujoco_robust_contact_v2_Kick_shard0.state",
+      "bytes": 61,
+      "sha256": "53a428be57a4655cc82e512c18caf812262fa1d55c36aa291ef712bc52f24ba2",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/execution_logs/r3_mujoco_robust_contact_v2_Kick_shard1.log",
+      "bytes": 20793,
+      "sha256": "8bfab45f8e0acb684d648b3ab19196c2fbbea5468029aec37acb1f9f65b6b3fe",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/execution_logs/r3_mujoco_robust_contact_v2_Kick_shard1.state",
+      "bytes": 61,
+      "sha256": "c87d5e03aac97e2a5f58c03ebf2ed45e2cf2329a70a326408279c9f098d08b10",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/execution_logs/r3_mujoco_robust_contact_v2_Punch_shard0.log",
+      "bytes": 32311,
+      "sha256": "6f1cdadebc4f83f64048c59c44c8161c5123bf0806292960a8a6aa78ed787801",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/execution_logs/r3_mujoco_robust_contact_v2_Punch_shard0.state",
+      "bytes": 62,
+      "sha256": "1ba0d4d64db5d5b8362fc33fb3b22db177561fbfab558a178d448ad3aaf1e155",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/execution_logs/r3_mujoco_robust_contact_v2_Punch_shard1.log",
+      "bytes": 32331,
+      "sha256": "5f058eb573af08ff82c9f1f693e6caeaba5070b37ba62699af10a6868a8e3457",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/execution_logs/r3_mujoco_robust_contact_v2_Punch_shard1.state",
+      "bytes": 62,
+      "sha256": "8593c3f430dd4d05caa8f2f3cc695f1fa8b2d1953b671cacd08723eb6b0bb25e",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/execution_logs/r3_mujoco_robust_contact_v2_summary.log",
+      "bytes": 26097,
+      "sha256": "0708ac2ae284c89f5d312e8eec396edc3652e5c87e9723b78fe9415fa88fb3a2",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/execution_manifest.json",
+      "bytes": 3734,
+      "sha256": "55bac44b83d26d8eb01d697e4247677cb5406ea8d5d02d8aa5f8facdcc460e69",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/Kick_extension_witness.json",
+      "bytes": 2361,
+      "sha256": "0caee0943238fedc462a58fda5d400273cb2433d65eeebc751acf89a0b7e3b07",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/Kick_shard_0.json",
+      "bytes": 579089,
+      "sha256": "65e719f8859f13d715670665343eecbd523a302dc69f73388f9722df68484fcd",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/Kick_shard_1.json",
+      "bytes": 578408,
+      "sha256": "97e56aefe272dc77d13cd8f313e0006911294c335b98dff680895ba1ac6e6136",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/Punch_extension_witness.json",
+      "bytes": 2372,
+      "sha256": "d026d56f40be9e48c5e10ae6455426a9d92b9dd4db16e8074caf7bac0ce158fa",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/Punch_shard_0.json",
+      "bytes": 869160,
+      "sha256": "c82117d85ba1769de82e79acaa5769ec634fd3a6c55592781a26609cd27fd377",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/Punch_shard_1.json",
+      "bytes": 868670,
+      "sha256": "0e600d7a5022c26a0ae71b9d0e09926a7b5f1e209955b04ab8197cb74fb4c5ae",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/summary.json",
+      "bytes": 41753,
+      "sha256": "279f6059a8f968e713c8bc88fbb0cd85862ad9b1866f8bde3ab82e205db67868",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/mujoco_robust_contact/v2_configuration_witness.json",
+      "bytes": 436,
+      "sha256": "22896819107324bb20357b33214dbcec33b6359ac495c0be520d008e910e3f1f",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/official_other_tasks_assets_manifest.json",
+      "bytes": 255901,
+      "sha256": "db34e38a8b53b696f8bc8ecf1948120511925065177f5f4c3d01763d7294e039",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/r3_closd_capacity3072_20261001.json",
+      "bytes": 614,
+      "sha256": "4bf8a6709cc688a40c9c185ccd96c4327cfe49806229072f3d128cd4d65d3c2d",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/r3_closd_CLoSD_multitask_finetune_official_eval4096_20261001.json",
+      "bytes": 885,
+      "sha256": "12db503472b85924a85e83c508a9205c1e5fdcf6284f745e234487232b7fbc53",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/r3_closd_CLoSD_no_finetune_official_eval4096_20261001.json",
+      "bytes": 878,
+      "sha256": "e7160a189d3bde2180441a3a07149d21c14a9955c2172820efc5a20cbb579ad2",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/r3_closd_finetuned_eval_512.json",
+      "bytes": 1212,
+      "sha256": "8b37ea6b41f152526c07d4faba4b74d54cc6352c837a03268eb8028ed11db66d",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/r3_closd_official_eval4096_20261001_summary.json",
+      "bytes": 1868,
+      "sha256": "10c5268040d00a813f43000fa33c4d2dbc1bdae4e19e5906f2c9278330645edc",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/r3_closd_pretrained_eval_512.json",
+      "bytes": 1242,
+      "sha256": "6cd6fe0a6c4a22c9a1926476987ee50e404e03c32f3744ec8414a7373ad18cad",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/r3_dreamcontrol_Bimanual-Pick_eval_failure_20261002.json",
+      "bytes": 1055,
+      "sha256": "d90d6919d85ffb5e7c9862b61709a8f7e93f8693510e04f46e6389e7cd249765",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/r3_dreamcontrol_official_Bimanual-Pick_8192_eval.json",
+      "bytes": 2715,
+      "sha256": "3ef2f0738094f414999623d61a9ac41ec5aceabb7982843c33ea8a6391b82aa5",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/r3_dreamcontrol_official_Jump_8192_eval.json",
+      "bytes": 2016,
+      "sha256": "6d0af5872c0c32e099f2087c72aa074d01219e2dd81e3843e9b0b881965d365c",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/r3_dreamcontrol_official_Pick_8192_eval.json",
+      "bytes": 1948,
+      "sha256": "6e913c5ddc8443f52134eeffe8c7c655a49757514f5f99b327d22e7add3be443",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/r3_dreamcontrol_official_punch_8192_eval.json",
+      "bytes": 1132,
+      "sha256": "47ceb98d2d7189535422b295b96b75ce4606a678c310195d26649ffe9c24de60",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/r3_dreamcontrol_official_Sit_8192_eval.json",
+      "bytes": 2855,
+      "sha256": "09d67f4626d2da7a6c1d762939fd35f04f5485f54d9675dfc18872f25300d82d",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/r3_dreamcontrol_remaining_manifest.json",
+      "bytes": 135327,
+      "sha256": "b23ac2c432c16aafa939706fef928a5b6de19c746b0d6d83b5233ef0ee8e2d55",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/r3_dreamcontrol_Sit_eval_failure_20261001.json",
+      "bytes": 1003,
+      "sha256": "4a3030c9af8e96b63ff2e566701c9426444d312d2e7b09634710a3cac4ffcc74",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/Bimanual-Pick_environment_witness.json",
+      "bytes": 1687,
+      "sha256": "62f71859fb8e009e37fdd94baf82c6a70e432380a762ee2ff6d457d49d12e383",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/Bimanual-Pick_interface_parity.json",
+      "bytes": 5197,
+      "sha256": "8cf1d173729ef2a581eafc5e89a6944a2db0a178c8510515296c5c66b7d8bdb8",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/Bimanual-Pick_zero_shot.json",
+      "bytes": 4157,
+      "sha256": "f309dc3e6acb63177bc8a706979f69dd974f81a9ea92822a04b252574572a354",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/contact_detector_fixtures.json",
+      "bytes": 835,
+      "sha256": "ce9d6507056b51799638945b708005b2af3ec47516cfa35e6952d8fba68f8e56",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/Jump_environment_witness.json",
+      "bytes": 1669,
+      "sha256": "21801b90eaffc3eac0b193c865ea08a4dd0b6b52930f582ae6ac8cfae83ddb85",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/Jump_interface_parity.json",
+      "bytes": 5213,
+      "sha256": "8d1237b5f474ce8bb78d704bd9fd41a68fdf9f7dc05f4e16511bc4973b26d433",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/Jump_zero_shot.json",
+      "bytes": 3490,
+      "sha256": "781a1e1a49396fcc5b2fa4090428ed24c4a1f2b3c5e31de10d9a753a23d256dc",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/local_archive_receipt.json",
+      "bytes": 1324,
+      "sha256": "308c217ee5d7d1fb90304dd9b6882e2774b9671c2a3d7235e1a3642e9aaf9a30",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/Pick_environment_witness.json",
+      "bytes": 1951,
+      "sha256": "8ec6bdcabb6df0027b1ecbb3bb8831df1935bd9b7fbd9de498445d25c3a91775",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/Pick_interface_parity.json",
+      "bytes": 5202,
+      "sha256": "706ec847c61f621f74c811bb5d9d6888322c4f2a7fe6df224787f7b32205a35a",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/Pick_zero_shot.json",
+      "bytes": 53164,
+      "sha256": "5e73a184ef0e4df184f5a5173520a5f24534017bf87bc1080229db00ddf90963",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/reference_interpolation_audit.json",
+      "bytes": 1547,
+      "sha256": "e42f7a8b657ae537b61f7c1440f1cf5d889fc3872c2b2c22be4d508f7e89eec2",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/Sit_environment_witness.json",
+      "bytes": 1667,
+      "sha256": "ef276aa626b1857b447ebb9683f7ab54bb0b19febe9a871377e2d8cb978b5cd0",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/Sit_interface_parity.json",
+      "bytes": 5225,
+      "sha256": "864fe93ea80efa19d63e74c93a3ad5590682667d17af598f3ac3ab86ceeae4d4",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/Sit_zero_shot.json",
+      "bytes": 3797,
+      "sha256": "31c2e57ffa5f43cd3f48c62f4573d8655fa6051bab2d4bcc67ea66f7e05e8415",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/summary.json",
+      "bytes": 80167,
+      "sha256": "6841f9afe0539630132d01e827324b57044decefc1fa36bfa4be92fa1e3e3db8",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_mujoco/Kick_environment_witness.json",
+      "bytes": 1211,
+      "sha256": "1a32daf1e1c5e6ac4816ee656a3116f1e04fd226024232efd9a73298d455feec",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_mujoco/Kick_interface_parity.json",
+      "bytes": 910,
+      "sha256": "38b776ae250b2a639ae406b3d463b489d00b5ee5f4fe58bea7ead06842e133e3",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_mujoco/Kick_zero_shot.json",
+      "bytes": 29148,
+      "sha256": "8231b4b90f444927dd42409a76bc8514f735e3db235abcc4ae505b6d57422e2b",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_mujoco/Punch_environment_witness.json",
+      "bytes": 1226,
+      "sha256": "872daeadf9397718f55b02d09ebd4e9df49934026bbed727b5c3f2a01c05788e",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_mujoco/Punch_interface_parity.json",
+      "bytes": 906,
+      "sha256": "ad0831f646c72c41ffc3a2b950b33d1c9b8a461bf936d38633158534bb1ff696",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_mujoco/Punch_zero_shot.json",
+      "bytes": 43061,
+      "sha256": "8af584f21b59dfc8d62d840a38374926a4496bd372b55af92f547bdff80505c5",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_mujoco/reference_interpolation_audit.json",
+      "bytes": 793,
+      "sha256": "4122e4c7a65fc666ad30d8369d6bd28aac1a430ad5dfd289cf8cc1a9e24e0ee4",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "results/sim2sim_mujoco/video_manifest.json",
+      "bytes": 1827,
+      "sha256": "274f1b11edca08db92a11029c6556690a07ec889b9317d166c0dc1fd11c20cdd",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "reports/03_dreamcontrol_multitask_baselines.md",
+      "bytes": 17202,
+      "sha256": "7593235601d52360754de78c8e9d257e3da2ed88de95b3e4c3c595056ef64fa9",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "reports/10_Kick_Punch_MuJoCo_sim2sim_20261001.md",
+      "bytes": 7620,
+      "sha256": "1ed13564a814b76a0eea69d5069ccd53e00c812653e53b97cb3acd1ec568dcd3",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "reports/11_Kick_Punch_robustness_contact_20261001.md",
+      "bytes": 10327,
+      "sha256": "5cee18e5d9cee4db803fe246b321f5a3a6a7ffd703956965c7dbf3bb56eb90d9",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "reports/12_baseline_reproduction_queue_20261001.md",
+      "bytes": 2609,
+      "sha256": "ea9cbbf366a4528408e8f18b05632d2a550b085fb2434cab5d3dc378227257e4",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "reports/13_CLoSD_official_checkpoint_eval_20261001.md",
+      "bytes": 1243,
+      "sha256": "1e16180264421d1d54f0abe4f218a7f0ec14f4e80be236ef8caca9ec26ce30a4",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "reports/14_Completed_tasks_MuJoCo_sim2sim_20261002.md",
+      "bytes": 5905,
+      "sha256": "eaaa7547e84ae2ea7969bf4ca6495444a480f09f3eacb80c8f3e1fc6ffe4132d",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/mujoco_robust_contact/Kick_nominal_ref_000.mp4",
+      "bytes": 359805,
+      "sha256": "84acd4a83e3435db0fa0f303da5e1407be613b0525a6c35d273db1569d638716",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/mujoco_robust_contact/Kick_nominal_ref_001.mp4",
+      "bytes": 351792,
+      "sha256": "cee3e3d01eb67caaf7aec3779b4e0b0bdfa2079e7da9b4ed8f241b6b946e0d9d",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/mujoco_robust_contact/Kick_pad_nominal_ref_000.jpg",
+      "bytes": 21906,
+      "sha256": "e5c69cdebeae70ea8003c1606446c5654f763b679604770ccaab0cb94d812662",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/mujoco_robust_contact/Kick_pad_nominal_ref_000.mp4",
+      "bytes": 165243,
+      "sha256": "da31156fa8037de26ddc4c59a439f4f0dae705e1d91f86d017b212096bdf78d3",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/mujoco_robust_contact/Kick_pad_nominal_ref_001.mp4",
+      "bytes": 367879,
+      "sha256": "eff701fe1f0ef5c773b465268f7745f17d1cebf5dc2c4f5527bfe13d5108c04d",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/mujoco_robust_contact/Kick_push_left_40_ref_000.mp4",
+      "bytes": 386975,
+      "sha256": "70ba453e1caa5b8a09c656a6582cdeab592c85ee55b4c8797a2277a3b7d02c57",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/mujoco_robust_contact/Kick_push_left_40_ref_001.mp4",
+      "bytes": 420207,
+      "sha256": "aacca0a3e2088ebb6367f7bba8a5b2eb963c60a9ec8e2e2c5f5805fc004784af",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/mujoco_robust_contact/Punch_nominal_ref_000.mp4",
+      "bytes": 403473,
+      "sha256": "f635055522eee3e5be8d49d769ea821cb958a47e95ee56a2b19a5f511cb46435",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/mujoco_robust_contact/Punch_nominal_ref_001.mp4",
+      "bytes": 349168,
+      "sha256": "36c4a81c2a4d45fda9b34936ba0f59bda3cbd006ee21030fdf211e0041c73fb5",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/mujoco_robust_contact/Punch_pad_nominal_ref_000.mp4",
+      "bytes": 404763,
+      "sha256": "49e64db8a8ee752d6f6bda8fede92f23461b09f0abad364d477ce64f3daea9ec",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/mujoco_robust_contact/Punch_pad_nominal_ref_001.mp4",
+      "bytes": 351284,
+      "sha256": "5b1c018448361579671cbbd9d4c34de9a900dc0c9efafd9cfde8dbf24a369b02",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/mujoco_robust_contact/Punch_push_left_40_ref_000.mp4",
+      "bytes": 404701,
+      "sha256": "4deaca3ca1ded4c3155d941da4b2855bee9293a268b9f5d2fab24b102e67e07f",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/mujoco_robust_contact/Punch_push_left_40_ref_001.mp4",
+      "bytes": 355601,
+      "sha256": "dcdfbe7bfba86c7ba2b45d3afabd2a5a78e7f8f6991c7e0ee3bc196aa5b99b64",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/mujoco_robust_contact/results.html",
+      "bytes": 9212,
+      "sha256": "6c95a179053451cc2a6881e514c9367bb2b3062ea583a6d58915a26df132b85c",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/original_human_generation_20261002/Kick_seed10_sample000.jpg",
+      "bytes": 84218,
+      "sha256": "aa8066a4a675fcc9e65a5d8dd1f70d702c11f72bf6be9831b4f04cac72d05b03",
+      "tracked_in_source_git": false
+    },
+    {
+      "path": "media/original_human_generation_20261002/Kick_seed10_sample000.mp4",
+      "bytes": 838709,
+      "sha256": "82ae7fe65664fbc201befa3a9384488162a86276191fa98900e64b2540b92305",
+      "tracked_in_source_git": false
+    },
+    {
+      "path": "media/original_human_generation_20261002/Kick_seed10_sample001.jpg",
+      "bytes": 84267,
+      "sha256": "48dbd434971ee428dcc45b74dc9dd42ee5844a35a2bd1888d785feacd97f1e4b",
+      "tracked_in_source_git": false
+    },
+    {
+      "path": "media/original_human_generation_20261002/Kick_seed10_sample001.mp4",
+      "bytes": 913225,
+      "sha256": "476c772f565366c0604d155179986ad4896feb86c6198ceb0d25168939c9ad4a",
+      "tracked_in_source_git": false
+    },
+    {
+      "path": "media/original_human_generation_20261002/Kick_seed10_sample002.jpg",
+      "bytes": 84090,
+      "sha256": "b547a69ef9fd97e06f318a31a7cada9fda04e7dfaa019c2919687c108d4b44b2",
+      "tracked_in_source_git": false
+    },
+    {
+      "path": "media/original_human_generation_20261002/Kick_seed10_sample002.mp4",
+      "bytes": 823214,
+      "sha256": "9bb06861f957a185a0be9e4c290e2acf0666efd8f2e69cb75ad084da3e3d4eeb",
+      "tracked_in_source_git": false
+    },
+    {
+      "path": "media/original_human_generation_20261002/Kick_seed42_sample000.jpg",
+      "bytes": 84334,
+      "sha256": "5597958f20ec79e085eafe1cb683142eadd41c5eafb3ef0829918407d60bfef4",
+      "tracked_in_source_git": false
+    },
+    {
+      "path": "media/original_human_generation_20261002/Kick_seed42_sample000.mp4",
+      "bytes": 727590,
+      "sha256": "7b3029fc668f1bc7798ac0fc03edf904415228ff29cb153aff6f38d7afe638dd",
+      "tracked_in_source_git": false
+    },
+    {
+      "path": "media/original_human_generation_20261002/Kick_seed42_sample001.jpg",
+      "bytes": 85129,
+      "sha256": "a66bde4472fed11c4c1fc5f50ae6911fb5f281b3f2fd37a0f2e2f90901d40c08",
+      "tracked_in_source_git": false
+    },
+    {
+      "path": "media/original_human_generation_20261002/Kick_seed42_sample001.mp4",
+      "bytes": 779317,
+      "sha256": "816994a19b3b1353899d6c5187f1b6d58c35522ca019f63cbd2de168fe9e718c",
+      "tracked_in_source_git": false
+    },
+    {
+      "path": "media/original_human_generation_20261002/Kick_seed42_sample002.jpg",
+      "bytes": 84861,
+      "sha256": "b320d875f552ac2b9cf798b656059cc11196164d63f6318c09bbffb8c67ab882",
+      "tracked_in_source_git": false
+    },
+    {
+      "path": "media/original_human_generation_20261002/Kick_seed42_sample002.mp4",
+      "bytes": 866441,
+      "sha256": "447db356d67b4fde18e36242f85d54bd4a049d9ea0952f489a3f0f662c2fe22a",
+      "tracked_in_source_git": false
+    },
+    {
+      "path": "media/original_human_generation_20261002/manifest.json",
+      "bytes": 7387,
+      "sha256": "2c8634574a3424103d4b3b829f6323a49ec2ce05ed75a291ea0c65894bb0dcb2",
+      "tracked_in_source_git": false
+    },
+    {
+      "path": "media/r3_official_bimanual_pick_8192_eval.mp4",
+      "bytes": 1171662,
+      "sha256": "87dbb8ec200dba90726fc5edee91287c0fbf09079fddf1178de1095b8201d088",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/r3_official_jump_8192_eval.mp4",
+      "bytes": 1854598,
+      "sha256": "323c3283f5e82b2e05c5a3d59472bc57cf0349e4aa2f74502ccb3b3be914670b",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/r3_official_kick_8192_eval.mp4",
+      "bytes": 1613524,
+      "sha256": "901d4010fbd7568519a2331e611b98406221a592ffc881ac2705db5dc0e3725f",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/r3_official_pick_8192_eval.mp4",
+      "bytes": 1420105,
+      "sha256": "0941418de47a28b9bd9814189c5cd41abe7cb12f9cd07ce6694237145fae4b2a",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/r3_official_punch_8192_eval.mp4",
+      "bytes": 1637751,
+      "sha256": "90a9258c9a9fe14369139f1ff2b347113312071d06d4a149892dbb25b248e215",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/r3_official_sit_8192_eval.mp4",
+      "bytes": 729611,
+      "sha256": "4bc23e77d53e2e793ba70c20d2f74a7dec68c4c3cb07f287a2d7026a9cb1afe1",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_completed_20261002/Bimanual-Pick_reference_000.jpg",
+      "bytes": 17876,
+      "sha256": "5984305f9aa93bc8d00ff4fc5ab9edf47ea6591b61809720d7e8498b0793f4a8",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_completed_20261002/Bimanual-Pick_reference_000.mp4",
+      "bytes": 276134,
+      "sha256": "8fcc73baec90032b015ff59355bf352a8ebb3220584edb3f4631ef7e86ef1bc0",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_completed_20261002/Jump_reference_000.jpg",
+      "bytes": 20865,
+      "sha256": "a8b66fc0d8a5ee54a0574a56376e0c9ac24ae71545c6604b9fce78da5b3d4067",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_completed_20261002/Jump_reference_000.mp4",
+      "bytes": 197292,
+      "sha256": "3a5633707ad8d94a617535bf00e0b8f1254f6fe6bf9bd89d981856c99de5a8bc",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_completed_20261002/Pick_reference_000.jpg",
+      "bytes": 14745,
+      "sha256": "617f4ae386cb5bada2460d296f700af5b8cf4c16b85bd8d90349c01507f7f441",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_completed_20261002/Pick_reference_000.mp4",
+      "bytes": 297589,
+      "sha256": "29fb2d9882bd51907a8e7325e7ccf5bad069ff26be2e05afb6f9311f62361861",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_completed_20261002/Pick_reference_001.jpg",
+      "bytes": 14733,
+      "sha256": "4995ac0bec9f8f1630a8ebdd3f0b22a25fd290386ca38394efb94577cee10984",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_completed_20261002/Pick_reference_001.mp4",
+      "bytes": 250312,
+      "sha256": "fe0dfcb36683368fdd3ce45f7b38cb74a1752f734404efaa451d213de6c9e5c7",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_completed_20261002/results.html",
+      "bytes": 3392,
+      "sha256": "eef22e685fe373e90d7348f89ce5458b64e93004368f9e671049c21eb979aa5c",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_completed_20261002/Sit_reference_000.jpg",
+      "bytes": 21955,
+      "sha256": "f2df6ddb87c08c4ce8c5524a865bf224f8dd348dac8cd5cffaf6e3acbae23728",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_completed_20261002/Sit_reference_000.mp4",
+      "bytes": 392400,
+      "sha256": "c2f37e78f9d255b99562d0dec3ca3cb3e2be8e567c167af9e4a4d354138002d6",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_mujoco/Kick_reference_000.jpg",
+      "bytes": 21422,
+      "sha256": "ebbe97bb9b1e3a8d8ada57ffb92fc2725d3f279772e6959f88d7461bc75316e8",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_mujoco/Kick_reference_000.mp4",
+      "bytes": 356247,
+      "sha256": "4f5ae116c1082c16a4fb0f3919aac1f9765721e1cdc35ffb28f40c39bceeb06f",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_mujoco/Kick_reference_001.mp4",
+      "bytes": 345908,
+      "sha256": "46ffd4c3cf927d54f88a5380afef928ddeaa6b9812160e745101387133dc9c0b",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_mujoco/Punch_reference_000.jpg",
+      "bytes": 20654,
+      "sha256": "e3d7a85ec83057956971276e18089a20418fca39eff93d889467629bad0f1fb0",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_mujoco/Punch_reference_000.mp4",
+      "bytes": 400733,
+      "sha256": "fb7bd253b5cf15ba423ad9fe3a7e017634355541c27f867b7452c2f993a3ecf7",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_mujoco/Punch_reference_001.mp4",
+      "bytes": 344378,
+      "sha256": "136de6e9121c4dbce784186633199a686e4664dc47a90f85a8806aeee962a3ee",
+      "tracked_in_source_git": true
+    },
+    {
+      "path": "media/sim2sim_mujoco/results.html",
+      "bytes": 2862,
+      "sha256": "06c27641e35ef5d9b34e10cea70151926a8e49f7e02278fee154a27bdef23275",
+      "tracked_in_source_git": true
+    }
+  ],
+  "report_scope": "baseline reproduction and original human generation; research comparison experiments excluded",
+  "copy_hashes_all_verified": true
+}

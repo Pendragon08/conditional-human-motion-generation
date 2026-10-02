@@ -1,0 +1,49 @@
+{
+  "url": "https://genrobo.github.io/DreamControl/static/paper/DreamControl_arxiv.pdf",
+  "local_pdf_sha256": "8312ac214279a418f55b52ec280210f1d273b7f4d4ee49122b225223fcc43a04",
+  "references": [
+    "III-A, printed page 4",
+    "IX-B, printed pages 13-14",
+    "Table XI, printed page 14"
+  ],
+  "filtering_stage": "G1 post-retargeting, before RL tracking",
+  "filter_conditions": [
+    "torso x-axis angle relative to world x-axis exceeds task threshold",
+    "pelvis height below task threshold",
+    "body collision with scene"
+  ],
+  "table_XI": [
+    {
+      "task": "Pick",
+      "before": 100,
+      "after": 67,
+      "torso_threshold_degrees": 45,
+      "pelvis_height_threshold_m": 0.6
+    },
+    {
+      "task": "Precise Punch",
+      "before": 100,
+      "after": 100,
+      "torso_threshold_degrees": 45,
+      "pelvis_height_threshold_m": 0.6
+    },
+    {
+      "task": "Precise Kick",
+      "before": 100,
+      "after": 66,
+      "torso_threshold_degrees": 90,
+      "pelvis_height_threshold_m": 0.5
+    },
+    {
+      "task": "Press Button",
+      "before": 100,
+      "after": 96,
+      "torso_threshold_degrees": 60,
+      "pelvis_height_threshold_m": 0.5
+    }
+  ],
+  "other_tasks": "One trajectory manually selected except Open Drawer/Open Door; not an automatic all-sample physics acceptance rate.",
+  "not_claimed": "Paper describes heuristic selection, not full per-trajectory torque/contact-force/friction/stability certification.",
+  "reported_paper_counts_not_recomputed": true,
+  "new_human_proxy_audit_is_not_the_paper_filter": true
+}

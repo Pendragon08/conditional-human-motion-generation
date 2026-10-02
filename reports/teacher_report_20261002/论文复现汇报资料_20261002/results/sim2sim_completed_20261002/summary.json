@@ -1,0 +1,2198 @@
+{
+  "status": "COMPLETE",
+  "date": "2026-10-02",
+  "scope": "four newly completed frozen baselines; Kick/Punch excluded from rerun",
+  "reference_count": 70,
+  "learning": false,
+  "physics": "native MuJoCo3.2.3 CPU; CUDA policy/NVIDIA EGL GPU0",
+  "tasks": [
+    {
+      "task": "Jump",
+      "status": "COMPLETE",
+      "policy_frozen": true,
+      "learning": false,
+      "extra_ik": false,
+      "num_references": 1,
+      "protocol": "one deterministic start-at-zero episode per original reference; 500 control steps; no autoreset; failures remain denominator",
+      "official_proxy_success_count": 0,
+      "additional_task_check_success_count": 0,
+      "fall_count": 1,
+      "full_horizon_survival_count": 0,
+      "elapsed_wall_s": 1.0709137488156557,
+      "physics_dt_s": 0.005,
+      "policy_dt_s": 0.02,
+      "reference_npz_sha256": "25737debd31bf150b429f3b616018e8d67ebde7f3fe18ae6f99d13e6f585ff09",
+      "provenance": {
+        "checkpoint": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_14-01-43-Jump-a/model_1999.pt",
+        "checkpoint_sha256": "21b2525f2eab462a3514653b7e6c389b10ebf768c1aa154dd487640011e143aa",
+        "actor_tensor_equal_to_checkpoint": true,
+        "normalizer_tensor_equal_to_checkpoint": true,
+        "adapter_sha256": "f9ece57f150e876cd4206a38a7360f780765cbb86d91b4f93c8dd26b35d4a8e0",
+        "official_slerp_source_sha256": "3f44c185a08364c0591fc7809032b23937fd9a2f695d5375ac99e6802d95f4ce",
+        "completed_adapter_sha256": "b33d2fd5ae29430783fd1b5d5e0c773e2987f8593e609a36faa6e46ca6792cdc",
+        "observation_function_sources": {
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py": "3849a5774f22837b41ae3d9deaef56a062a744d1f52fead567564b6c1fe24c7b",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/utils/math.py": "8508938001046c51086219f58a22cb89388e810abcee772c02b3a6584d102005"
+        },
+        "task_scene_sha256": "9774834708b1c47bd9d161adb6a4dffab18546a52f01700d56f6e73b3f162775"
+      },
+      "task_scene": {
+        "statics": [],
+        "object": null
+      },
+      "limitations": [
+        "MJCF and USD robot inertias/collision shapes not proven identical; explicit PD differs from Isaac implicit drives",
+        "trial protocol differs from Isaac 1000-env autoreset evaluation; not directly comparable success percentages",
+        "primitive training task colliders used, not photorealistic play assets",
+        "one seed0 sampled object mass held fixed; no domain-randomization distribution evaluation",
+        "official pickup absolute-height criterion may already hold at reset; separate contact-plus-relative-lift test reported",
+        "single-reference tasks have n=1, not a population success estimate"
+      ],
+      "trials": [
+        {
+          "reference_index": 0,
+          "official_criterion_proxy_success": false,
+          "fallen": true,
+          "steps": 145,
+          "survival_s": 2.9,
+          "full_horizon_survival": false,
+          "joint_tracking_rmse_rad": 0.5140509331875992,
+          "min_goal_distance_m": 0.29159801728831763,
+          "airborne_control_frames": 42,
+          "post_initial_ground_contact_airborne_frames": 34,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": null,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 0,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Jump_reference_000.mp4",
+          "additional_task_check_success": false
+        }
+      ],
+      "archive_verification": {
+        "eval_exit": 0,
+        "model_hash_verified": true,
+        "interface_parity_passed": true,
+        "video_verified": true,
+        "local_video_selection": "fixed reference indices0 and1; no outcome selection"
+      }
+    },
+    {
+      "task": "Sit",
+      "status": "COMPLETE",
+      "policy_frozen": true,
+      "learning": false,
+      "extra_ik": false,
+      "num_references": 1,
+      "protocol": "one deterministic start-at-zero episode per original reference; 500 control steps; no autoreset; failures remain denominator",
+      "official_proxy_success_count": 1,
+      "additional_task_check_success_count": 0,
+      "fall_count": 0,
+      "full_horizon_survival_count": 1,
+      "elapsed_wall_s": 3.1419134754687548,
+      "physics_dt_s": 0.005,
+      "policy_dt_s": 0.02,
+      "reference_npz_sha256": "635226ed325e0dc8c03a7a2f80fe462c42ac591092e293c3439201322f917de2",
+      "provenance": {
+        "checkpoint": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_16-54-27-Sit-a/model_1999.pt",
+        "checkpoint_sha256": "4302e29fe6376452a21fe93351e616fb23ec5bb83206eb015df3b5be4bea85c7",
+        "actor_tensor_equal_to_checkpoint": true,
+        "normalizer_tensor_equal_to_checkpoint": true,
+        "adapter_sha256": "f9ece57f150e876cd4206a38a7360f780765cbb86d91b4f93c8dd26b35d4a8e0",
+        "official_slerp_source_sha256": "3f44c185a08364c0591fc7809032b23937fd9a2f695d5375ac99e6802d95f4ce",
+        "completed_adapter_sha256": "b33d2fd5ae29430783fd1b5d5e0c773e2987f8593e609a36faa6e46ca6792cdc",
+        "observation_function_sources": {
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py": "3849a5774f22837b41ae3d9deaef56a062a744d1f52fead567564b6c1fe24c7b",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/utils/math.py": "8508938001046c51086219f58a22cb89388e810abcee772c02b3a6584d102005"
+        },
+        "task_scene_sha256": "8ef2c2f38de69a66bb2ef76aaa988d7c0c7352845f8033fcb2937d523e743ccc"
+      },
+      "task_scene": {
+        "statics": [
+          {
+            "name": "seat",
+            "size": [
+              0.35,
+              0.35,
+              0.42
+            ],
+            "position": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "quat": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "friction": 0.9
+          }
+        ],
+        "object": null
+      },
+      "limitations": [
+        "MJCF and USD robot inertias/collision shapes not proven identical; explicit PD differs from Isaac implicit drives",
+        "trial protocol differs from Isaac 1000-env autoreset evaluation; not directly comparable success percentages",
+        "primitive training task colliders used, not photorealistic play assets",
+        "one seed0 sampled object mass held fixed; no domain-randomization distribution evaluation",
+        "official pickup absolute-height criterion may already hold at reset; separate contact-plus-relative-lift test reported",
+        "single-reference tasks have n=1, not a population success estimate"
+      ],
+      "trials": [
+        {
+          "reference_index": 0,
+          "official_criterion_proxy_success": true,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.09327938756749139,
+          "min_goal_distance_m": 0.019967820226241793,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": null,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 0,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Sit_reference_000.mp4",
+          "additional_task_check_success": false
+        }
+      ],
+      "archive_verification": {
+        "eval_exit": 0,
+        "model_hash_verified": true,
+        "interface_parity_passed": true,
+        "video_verified": true,
+        "local_video_selection": "fixed reference indices0 and1; no outcome selection"
+      }
+    },
+    {
+      "task": "Pick",
+      "status": "COMPLETE",
+      "policy_frozen": true,
+      "learning": false,
+      "extra_ik": false,
+      "num_references": 67,
+      "protocol": "one deterministic start-at-zero episode per original reference; 500 control steps; no autoreset; failures remain denominator",
+      "official_proxy_success_count": 0,
+      "additional_task_check_success_count": 0,
+      "fall_count": 0,
+      "full_horizon_survival_count": 67,
+      "elapsed_wall_s": 249.4155647046864,
+      "physics_dt_s": 0.005,
+      "policy_dt_s": 0.02,
+      "reference_npz_sha256": "0866e43e384054993259251f6cc6538edcaecdd5b70c870f5fe04b18cbd7cf17",
+      "provenance": {
+        "checkpoint": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_19-59-36-Pick-a/model_1999.pt",
+        "checkpoint_sha256": "d3f34ca02946e7a56fec95f113e6646724c0dc8fc219437b95bbafcd31e8dcb4",
+        "actor_tensor_equal_to_checkpoint": true,
+        "normalizer_tensor_equal_to_checkpoint": true,
+        "adapter_sha256": "f9ece57f150e876cd4206a38a7360f780765cbb86d91b4f93c8dd26b35d4a8e0",
+        "official_slerp_source_sha256": "3f44c185a08364c0591fc7809032b23937fd9a2f695d5375ac99e6802d95f4ce",
+        "completed_adapter_sha256": "b33d2fd5ae29430783fd1b5d5e0c773e2987f8593e609a36faa6e46ca6792cdc",
+        "observation_function_sources": {
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_pick_env.py": "e94216cf391f74fcaffb4d783e1a3e6e6b6ff99048c5fbbd326dbac5652bc147",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py": "3849a5774f22837b41ae3d9deaef56a062a744d1f52fead567564b6c1fe24c7b",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/utils/math.py": "8508938001046c51086219f58a22cb89388e810abcee772c02b3a6584d102005"
+        },
+        "task_scene_sha256": "319cada2913dfdf9eaff9792c5fca68771aa630d393a66a0822bb1ff8ed4f262"
+      },
+      "task_scene": {
+        "statics": [
+          {
+            "name": "kitchen",
+            "size": [
+              1.0,
+              2.0,
+              0.8
+            ],
+            "position": [
+              2.55,
+              0,
+              0.4
+            ],
+            "quat": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "friction": 0.9
+          }
+        ],
+        "object": {
+          "size": [
+            0.05,
+            0.05,
+            0.2
+          ],
+          "mass": 0.12667801976203918,
+          "friction": 1.2,
+          "reset_height": 1.0,
+          "reset_offset": [
+            0.0,
+            0.0
+          ],
+          "startup_mass_randomization": "seed0 runtime actual mass; held fixed for every MuJoCo trial",
+          "success_height": 0.95
+        }
+      },
+      "limitations": [
+        "MJCF and USD robot inertias/collision shapes not proven identical; explicit PD differs from Isaac implicit drives",
+        "trial protocol differs from Isaac 1000-env autoreset evaluation; not directly comparable success percentages",
+        "primitive training task colliders used, not photorealistic play assets",
+        "one seed0 sampled object mass held fixed; no domain-randomization distribution evaluation",
+        "official pickup absolute-height criterion may already hold at reset; separate contact-plus-relative-lift test reported",
+        "single-reference tasks have n=1, not a population success estimate"
+      ],
+      "trials": [
+        {
+          "reference_index": 0,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3967968507017762,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 9,
+          "post_initial_ground_contact_airborne_frames": 1,
+          "landing_stability_s": 0.4,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 6,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Pick_reference_000.mp4",
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 1,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3715708800478358,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 4,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Pick_reference_001.mp4",
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 2,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.39532444598417715,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 7,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 3,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38607780111109324,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 7,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 4,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3874573190264685,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 15,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 5,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.37502512654655096,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 10,
+          "post_initial_ground_contact_airborne_frames": 2,
+          "landing_stability_s": 8.3,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 3,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 6,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38135569431353117,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 4,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 7,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3742843247811546,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 9,
+          "post_initial_ground_contact_airborne_frames": 1,
+          "landing_stability_s": 7.88,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 23,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 8,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.39097070586477284,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 6,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 9,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.37059421617693156,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 9,
+          "post_initial_ground_contact_airborne_frames": 1,
+          "landing_stability_s": 9.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 10,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3674996980498731,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 40,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 11,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38113554178097486,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 0,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 12,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3908199046465746,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 13,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3770907785723537,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 3,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 14,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3680618412827998,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 9,
+          "post_initial_ground_contact_airborne_frames": 1,
+          "landing_stability_s": 8.92,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 27,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 15,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.34041521728374635,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 5,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 16,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.36637005000761785,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 15,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 17,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3882765157767877,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 5,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 18,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3844828804566555,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 9,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 19,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.39429608216806583,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 2,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 20,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38059117255613645,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 21,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.403786576030037,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 2,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 22,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3663743609597802,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 2,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 23,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38568370133884067,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 4,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 24,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3867020895755927,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 25,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3963602878769487,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 9,
+          "post_initial_ground_contact_airborne_frames": 1,
+          "landing_stability_s": 9.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 2,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 26,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38629153946211875,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 32,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 27,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3692962379503525,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 9,
+          "post_initial_ground_contact_airborne_frames": 1,
+          "landing_stability_s": 7.640000000000001,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 9,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 28,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38312944332557286,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 9,
+          "post_initial_ground_contact_airborne_frames": 1,
+          "landing_stability_s": 7.48,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 41,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 29,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38645013354239294,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 6,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 30,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.37544945866656465,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 31,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3811954261881915,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 0,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 32,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38801515389798347,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 9,
+          "post_initial_ground_contact_airborne_frames": 1,
+          "landing_stability_s": 8.36,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 5,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 33,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3926265773575933,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 16,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 34,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3941634916179255,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 9,
+          "post_initial_ground_contact_airborne_frames": 1,
+          "landing_stability_s": 9.06,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 4,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 35,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.37285284491835663,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 12,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 36,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3837544908652527,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 22,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 37,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3953194247766553,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 10,
+          "post_initial_ground_contact_airborne_frames": 2,
+          "landing_stability_s": 7.92,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 38,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38604628636329424,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 39,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3873454030564939,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 40,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3892348359310989,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 0,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 41,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3600724566803518,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 9,
+          "post_initial_ground_contact_airborne_frames": 1,
+          "landing_stability_s": 8.1,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 42,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.39175207442796983,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 0,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 43,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3332252684137454,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 21,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 44,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3840258802918466,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 2,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 45,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38540362074205975,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 2,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 46,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3808626924592074,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 2,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 47,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38337215537307573,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 48,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.37266324853439975,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 16,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 49,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.37411106949443895,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 50,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.39156527832920784,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 11,
+          "post_initial_ground_contact_airborne_frames": 3,
+          "landing_stability_s": 0.44,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 51,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3945972755295054,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 52,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3730896118066298,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 53,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38409249218115893,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 10,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 54,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.36150175279029684,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 12,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 55,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38015379832728474,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 9,
+          "post_initial_ground_contact_airborne_frames": 1,
+          "landing_stability_s": 8.5,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 3,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 56,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38915458390774715,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 15,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 57,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.36666957889240054,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 9,
+          "post_initial_ground_contact_airborne_frames": 1,
+          "landing_stability_s": 8.88,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 56,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 58,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.362808740244762,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 17,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 59,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3896398373998915,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 6,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 60,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.38367398694461224,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 2,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 61,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.36584933635350675,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 16,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 62,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.41081643077715985,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 2,
+            "right": 6,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 63,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3905663622164346,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 13,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 64,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3669186187016941,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 7,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 65,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.34500444334519337,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 9,
+          "post_initial_ground_contact_airborne_frames": 1,
+          "landing_stability_s": 9.08,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 1,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        },
+        {
+          "reference_index": 66,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.36967952358535394,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 1.0,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 0,
+            "right": 5,
+            "both": 0
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": null,
+          "additional_task_check_success": false
+        }
+      ],
+      "archive_verification": {
+        "eval_exit": 0,
+        "model_hash_verified": true,
+        "interface_parity_passed": true,
+        "video_verified": true,
+        "local_video_selection": "fixed reference indices0 and1; no outcome selection"
+      }
+    },
+    {
+      "task": "Bimanual-Pick",
+      "status": "COMPLETE",
+      "policy_frozen": true,
+      "learning": false,
+      "extra_ik": false,
+      "num_references": 1,
+      "protocol": "one deterministic start-at-zero episode per original reference; 500 control steps; no autoreset; failures remain denominator",
+      "official_proxy_success_count": 0,
+      "additional_task_check_success_count": 0,
+      "fall_count": 0,
+      "full_horizon_survival_count": 1,
+      "elapsed_wall_s": 4.279329786077142,
+      "physics_dt_s": 0.005,
+      "policy_dt_s": 0.02,
+      "reference_npz_sha256": "d53a0b932c92337f15118dc7a5b788acf46faa0219c06ed9de4d4b47d9247805",
+      "provenance": {
+        "checkpoint": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-02_00-21-24-Bimanual-Pick-a/model_1999.pt",
+        "checkpoint_sha256": "70d025af972fb3b1a3bb9534dbb938f838484b4233111045b53cc09061c9c1ab",
+        "actor_tensor_equal_to_checkpoint": true,
+        "normalizer_tensor_equal_to_checkpoint": true,
+        "adapter_sha256": "f9ece57f150e876cd4206a38a7360f780765cbb86d91b4f93c8dd26b35d4a8e0",
+        "official_slerp_source_sha256": "3f44c185a08364c0591fc7809032b23937fd9a2f695d5375ac99e6802d95f4ce",
+        "completed_adapter_sha256": "b33d2fd5ae29430783fd1b5d5e0c773e2987f8593e609a36faa6e46ca6792cdc",
+        "observation_function_sources": {
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py": "3849a5774f22837b41ae3d9deaef56a062a744d1f52fead567564b6c1fe24c7b",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/utils/math.py": "8508938001046c51086219f58a22cb89388e810abcee772c02b3a6584d102005"
+        },
+        "task_scene_sha256": "4a90feb8d2f166eaa194ca87d52a919e9b3ae77af88abb29c1bd306e4734da55"
+      },
+      "task_scene": {
+        "statics": [
+          {
+            "name": "platform",
+            "size": [
+              1.0,
+              2.0,
+              0.5
+            ],
+            "position": [
+              2.5,
+              0,
+              0.25
+            ],
+            "quat": [
+              1,
+              0,
+              0,
+              0
+            ],
+            "friction": 0.9
+          }
+        ],
+        "object": {
+          "size": [
+            0.2,
+            0.3,
+            0.3
+          ],
+          "mass": 0.5600255131721497,
+          "friction": 1.2,
+          "reset_height": 0.67,
+          "reset_offset": [
+            0.06,
+            -0.01
+          ],
+          "startup_mass_randomization": "seed0 runtime actual mass; held fixed for every MuJoCo trial",
+          "success_height": 0.7
+        }
+      },
+      "limitations": [
+        "MJCF and USD robot inertias/collision shapes not proven identical; explicit PD differs from Isaac implicit drives",
+        "trial protocol differs from Isaac 1000-env autoreset evaluation; not directly comparable success percentages",
+        "primitive training task colliders used, not photorealistic play assets",
+        "one seed0 sampled object mass held fixed; no domain-randomization distribution evaluation",
+        "official pickup absolute-height criterion may already hold at reset; separate contact-plus-relative-lift test reported",
+        "single-reference tasks have n=1, not a population success estimate"
+      ],
+      "trials": [
+        {
+          "reference_index": 0,
+          "official_criterion_proxy_success": false,
+          "fallen": false,
+          "steps": 500,
+          "survival_s": 10.0,
+          "full_horizon_survival": true,
+          "joint_tracking_rmse_rad": 0.3644113832713707,
+          "min_goal_distance_m": null,
+          "airborne_control_frames": 8,
+          "post_initial_ground_contact_airborne_frames": 0,
+          "landing_stability_s": 0.0,
+          "seat_contact_max_hold_s": 0.0,
+          "initial_object_height_m": 0.6700000166893005,
+          "max_object_lift_from_reset_m": 0,
+          "hand_object_contact_frames": {
+            "left": 7,
+            "right": 55,
+            "both": 1
+          },
+          "contact_lift_max_hold_s": 0.0,
+          "video": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Bimanual-Pick_reference_000.mp4",
+          "additional_task_check_success": false
+        }
+      ],
+      "archive_verification": {
+        "eval_exit": 0,
+        "model_hash_verified": true,
+        "interface_parity_passed": true,
+        "video_verified": true,
+        "local_video_selection": "fixed reference indices0 and1; no outcome selection"
+      }
+    }
+  ],
+  "videos": [
+    {
+      "task": "Jump",
+      "reference_index": 0,
+      "file": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Jump_reference_000.mp4",
+      "sha256": "3a5633707ad8d94a617535bf00e0b8f1254f6fe6bf9bd89d981856c99de5a8bc",
+      "bytes": 197292,
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "r_frame_rate": "25/1",
+            "nb_frames": "73"
+          }
+        ],
+        "format": {
+          "duration": "2.920000"
+        }
+      },
+      "representative_frame": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Jump_reference_000.jpg"
+    },
+    {
+      "task": "Sit",
+      "reference_index": 0,
+      "file": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Sit_reference_000.mp4",
+      "sha256": "c2f37e78f9d255b99562d0dec3ca3cb3e2be8e567c167af9e4a4d354138002d6",
+      "bytes": 392400,
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "r_frame_rate": "25/1",
+            "nb_frames": "250"
+          }
+        ],
+        "format": {
+          "duration": "10.000000"
+        }
+      },
+      "representative_frame": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Sit_reference_000.jpg"
+    },
+    {
+      "task": "Pick",
+      "reference_index": 0,
+      "file": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Pick_reference_000.mp4",
+      "sha256": "29fb2d9882bd51907a8e7325e7ccf5bad069ff26be2e05afb6f9311f62361861",
+      "bytes": 297589,
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "r_frame_rate": "25/1",
+            "nb_frames": "250"
+          }
+        ],
+        "format": {
+          "duration": "10.000000"
+        }
+      },
+      "representative_frame": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Pick_reference_000.jpg"
+    },
+    {
+      "task": "Pick",
+      "reference_index": 1,
+      "file": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Pick_reference_001.mp4",
+      "sha256": "fe0dfcb36683368fdd3ce45f7b38cb74a1752f734404efaa451d213de6c9e5c7",
+      "bytes": 250312,
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "r_frame_rate": "25/1",
+            "nb_frames": "250"
+          }
+        ],
+        "format": {
+          "duration": "10.000000"
+        }
+      },
+      "representative_frame": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Pick_reference_001.jpg"
+    },
+    {
+      "task": "Bimanual-Pick",
+      "reference_index": 0,
+      "file": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Bimanual-Pick_reference_000.mp4",
+      "sha256": "8fcc73baec90032b015ff59355bf352a8ebb3220584edb3f4631ef7e86ef1bc0",
+      "bytes": 276134,
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "width": 640,
+            "height": 480,
+            "r_frame_rate": "25/1",
+            "nb_frames": "250"
+          }
+        ],
+        "format": {
+          "duration": "10.000000"
+        }
+      },
+      "representative_frame": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Bimanual-Pick_reference_000.jpg"
+    }
+  ],
+  "reference_audit": {
+    "rows": [
+      {
+        "task": "Jump",
+        "reference_count": 1,
+        "times_per_reference": 16,
+        "maximum_absolute_errors": {
+          "pos": 5.960464477539063e-08,
+          "quat": 5.960464477539063e-08,
+          "joints": 2.384185791015625e-07,
+          "keypts": 2.384185791015625e-07,
+          "goal": 0.0
+        },
+        "event_phase_mismatches": 0,
+        "passed": true
+      },
+      {
+        "task": "Sit",
+        "reference_count": 1,
+        "times_per_reference": 16,
+        "maximum_absolute_errors": {
+          "pos": 2.384185791015625e-07,
+          "quat": 5.960464477539063e-08,
+          "joints": 1.1920928955078125e-07,
+          "keypts": 2.384185791015625e-07,
+          "goal": 0.0
+        },
+        "event_phase_mismatches": 0,
+        "passed": true
+      },
+      {
+        "task": "Pick",
+        "reference_count": 67,
+        "times_per_reference": 16,
+        "maximum_absolute_errors": {
+          "pos": 1.1920928955078125e-07,
+          "quat": 1.1920928955078125e-07,
+          "joints": 4.76837158203125e-07,
+          "keypts": 4.76837158203125e-07,
+          "goal": 0.0
+        },
+        "event_phase_mismatches": 0,
+        "passed": true
+      },
+      {
+        "task": "Bimanual-Pick",
+        "reference_count": 1,
+        "times_per_reference": 16,
+        "maximum_absolute_errors": {
+          "pos": 5.960464477539063e-08,
+          "quat": 8.940696716308594e-08,
+          "joints": 3.5762786865234375e-07,
+          "keypts": 2.384185791015625e-07,
+          "goal": 0.0
+        },
+        "event_phase_mismatches": 0,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "contact_detector_fixtures": {
+    "rows": [
+      {
+        "task": "Sit",
+        "seat_overlap_detected": true,
+        "distant_pelvis_no_seat_contact": true,
+        "score_episodes_modified": false,
+        "passed": true
+      },
+      {
+        "task": "Pick",
+        "free_joint": true,
+        "mass_matches_actual_isaac_sample": true,
+        "right_hand_overlap_detected": true,
+        "distant_object_no_hand_contact": true,
+        "object_floor_collision_detected": true,
+        "score_episodes_modified": false,
+        "passed": true
+      },
+      {
+        "task": "Bimanual-Pick",
+        "free_joint": true,
+        "mass_matches_actual_isaac_sample": true,
+        "right_hand_overlap_detected": true,
+        "distant_object_no_hand_contact": true,
+        "object_floor_collision_detected": true,
+        "score_episodes_modified": false,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "evaluation_video_verified": true
+}
