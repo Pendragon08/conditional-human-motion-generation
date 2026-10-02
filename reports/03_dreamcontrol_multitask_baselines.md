@@ -82,3 +82,4 @@ Bimanual-Pick已正常到第1999/2000轮，官方1条参考、8192环境、2000�
 成绩按官方任务判据统计，只使用1条原参考。代表画面有机器人位于桌面附近/上方，不能仅凭99.9%断言真实双手抓握稳定、物体搬运或全部姿态语义质量通过。本次没有新增MuJoCo sim-to-sim、未知条件生成或创新点验证。
 
 当前正式完成 **6/11** 项控制任务（Sit和Bimanual-Pick明确记录USD I/O适配）。原唯一队列已自动进入Ground-Pick，核对第3/2000轮；后续Ground-Pick-Top、Button-Press、Open-Drawer、Open-Door四项等待。新恢复启动器 `scripts/r3_dreamcontrol_completed_eval_recovery.py` 完成评估后调用原未修改调度器，stdout为 `artifacts/monitoring/r3_Bimanual-Pick_usd_eval_recovery_20261002_queue.log`，锁和task状态前缀仍 `r3_dreamcontrol_remaining_20261001`。CLoSD正式3072微调等待此前的本地可视确认，不重复询问。
+2026-10-02：已补完 Jump、Sit、Pick、Bimanual-Pick 的冻结策略 MuJoCo sim-to-sim，共70条参考、5段视频。Jump摔倒；Sit达参考目标但无持续座椅接触；Pick与Bimanual均未完成相对抬升5厘米。测试执行完成不等于任务迁移通过，单参考任务也没有泛化成功率结论。原Isaac自动重置成绩与本次单参考无重置口径不能直接比较。真实接触检测的正负夹具检查、原策略张量/观测接口核验均通过，但不能替代任务指标；Sit沿用训练座椅位置，与参考目标并未对齐。见[跨仿真报告](14_Completed_tasks_MuJoCo_sim2sim_20261002.md)。

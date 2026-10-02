@@ -1,0 +1,69 @@
+{
+  "task": "Jump",
+  "status": "COMPLETE",
+  "policy_frozen": true,
+  "learning": false,
+  "extra_ik": false,
+  "num_references": 1,
+  "protocol": "one deterministic start-at-zero episode per original reference; 500 control steps; no autoreset; failures remain denominator",
+  "official_proxy_success_count": 0,
+  "additional_task_check_success_count": 0,
+  "fall_count": 1,
+  "full_horizon_survival_count": 0,
+  "elapsed_wall_s": 1.0709137488156557,
+  "physics_dt_s": 0.005,
+  "policy_dt_s": 0.02,
+  "reference_npz_sha256": "25737debd31bf150b429f3b616018e8d67ebde7f3fe18ae6f99d13e6f585ff09",
+  "provenance": {
+    "checkpoint": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_14-01-43-Jump-a/model_1999.pt",
+    "checkpoint_sha256": "21b2525f2eab462a3514653b7e6c389b10ebf768c1aa154dd487640011e143aa",
+    "actor_tensor_equal_to_checkpoint": true,
+    "normalizer_tensor_equal_to_checkpoint": true,
+    "adapter_sha256": "f9ece57f150e876cd4206a38a7360f780765cbb86d91b4f93c8dd26b35d4a8e0",
+    "official_slerp_source_sha256": "3f44c185a08364c0591fc7809032b23937fd9a2f695d5375ac99e6802d95f4ce",
+    "completed_adapter_sha256": "b33d2fd5ae29430783fd1b5d5e0c773e2987f8593e609a36faa6e46ca6792cdc",
+    "observation_function_sources": {
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py": "3849a5774f22837b41ae3d9deaef56a062a744d1f52fead567564b6c1fe24c7b",
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/utils/math.py": "8508938001046c51086219f58a22cb89388e810abcee772c02b3a6584d102005"
+    },
+    "task_scene_sha256": "9774834708b1c47bd9d161adb6a4dffab18546a52f01700d56f6e73b3f162775"
+  },
+  "task_scene": {
+    "statics": [],
+    "object": null
+  },
+  "limitations": [
+    "MJCF and USD robot inertias/collision shapes not proven identical; explicit PD differs from Isaac implicit drives",
+    "trial protocol differs from Isaac 1000-env autoreset evaluation; not directly comparable success percentages",
+    "primitive training task colliders used, not photorealistic play assets",
+    "one seed0 sampled object mass held fixed; no domain-randomization distribution evaluation",
+    "official pickup absolute-height criterion may already hold at reset; separate contact-plus-relative-lift test reported",
+    "single-reference tasks have n=1, not a population success estimate"
+  ],
+  "trials": [
+    {
+      "reference_index": 0,
+      "official_criterion_proxy_success": false,
+      "fallen": true,
+      "steps": 145,
+      "survival_s": 2.9,
+      "full_horizon_survival": false,
+      "joint_tracking_rmse_rad": 0.5140509331875992,
+      "min_goal_distance_m": 0.29159801728831763,
+      "airborne_control_frames": 42,
+      "post_initial_ground_contact_airborne_frames": 34,
+      "landing_stability_s": 0.0,
+      "seat_contact_max_hold_s": 0.0,
+      "initial_object_height_m": null,
+      "max_object_lift_from_reset_m": 0,
+      "hand_object_contact_frames": {
+        "left": 0,
+        "right": 0,
+        "both": 0
+      },
+      "contact_lift_max_hold_s": 0.0,
+      "video": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/media/sim2sim_completed_20261002/Jump_reference_000.mp4",
+      "additional_task_check_success": false
+    }
+  ]
+}
