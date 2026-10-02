@@ -68,3 +68,17 @@ Run为 `2026-10-01_19-59-36-Pick-a`，最终模型SHA-256 `d3f34ca02946e7a56fec9
 视频本地 `media/r3_official_pick_8192_eval.mp4` 为1280×720、50fps、501帧、10.02秒，1420105字节，SHA-256 `0941418de47a28b9bd9814189c5cd41abe7cb12f9cd07ce6694237145fae4b2a`，服务器与本地一致。中段帧可见机器人、桌面和物体，非空白。评估日志SHA-256 `b786c0a8725efb905e9274a59138ef10825129455746f5cf5eb3bb609a0b8f68` 已归档。成绩为官方任务判据，不能扩展为未知文本/空间条件生成、实机抓取或MuJoCo迁移通过。
 
 已完成 **5/11** 项控制任务：Kick85.3%、Punch87.2%、Jump100%、Sit100%（显式USD显示适配）、Pick93.9%。同一唯一队列自动启动Bimanual-Pick，00:46UTC核对第207/2000轮，日志和实际监控连续更新；随后Ground-Pick、Ground-Pick-Top、Button-Press、Open-Drawer、Open-Door五项等待。CLoSD的新3072正式微调仍待此前已询问的可视确认，未启动或重复询问。
+## 2026-10-02 04:49 UTC（北京时间12:49）：双手拾取训练完成，默认视频评估异常
+
+Bimanual-Pick已正常到第1999/2000轮，官方1条参考、8192环境、2000轮、seed42，run `2026-10-02_00-21-24-Bimanual-Pick-a`。最终模型SHA-256 `70d025af972fb3b1a3bb9534dbb938f838484b4233111045b53cc09061c9c1ab`，训练日志SHA-256 `d42f1d44ddc1b4098424fb649ed5438f23a9756975aefe17f4b1869e4e25cba3`。默认视频评估在仿真初始化时native `malloc(): invalid size (unsorted)`，退出1，尚无成功率；不能记为0%或正式任务完成。失败日志SHA-256 `14aabfb7c0578697c11cf8d7555f4a9a8bf7b71ab3de70053e2f82a2b875e01b` 已留档。
+
+宿主可用内存238GiB、GPU显存有余量，底层错误具体根因尚未证实。队列按失败保护停止，后五项未启动。依据Sit的既有可复查恢复经验，新的通用评估恢复脚本只做一次官方 `--disable_fabric` USD显示读写适配，保持模型、物理/奖励/参考和1000环境500帧预算，不重训或缩容；最终模型和原日志/阻塞状态备份并验hash。独立文档前置检查exit0，不能替代真正的仿真评估。文档 `docs/bimanual_eval_recovery_20261002.md`，状态 `artifacts/monitoring/r3_Bimanual-Pick_usd_eval_recovery_20261002.state`。
+## 2026-10-02 04:55 UTC（北京时间12:55）：双手拾取评估恢复，地面拾取接续
+
+同一Bimanual-Pick最终模型使用官方 `play_eval.py --disable_fabric` 的USD场景读写，1000环境、500帧，正常退出0，官方成功率 **99.9%**（原始浮点99.9000072479248）。未重训、未改PPO/奖励/参考/物理预算，但必须注明相对默认Fabric路径存在运行适配，不能称完全相同运行配置。第一轮native初始化错误具体原因仍未证实。
+
+最终模型与备份的SHA一致；视频 `media/r3_official_bimanual_pick_8192_eval.mp4` 为1280×720、50fps、501帧、10.02秒、1171662字节，SHA-256 `87dbb8ec200dba90726fc5edee91287c0fbf09079fddf1178de1095b8201d088`，本地/服务器一致。代表帧可见机器人、桌面与物体，非空白。正式日志SHA-256 `9aa691e78d102da5832ee5fb9f52d4176369f4aea57a5897c73ceb506a9d8ee6`。结果及原始训练配置在 `results/r3_dreamcontrol_official_Bimanual-Pick_8192_eval.json`、`results/configs/DreamControl_Bimanual-Pick/`；失败记录单独留档，模型与原始日志备份在服务器。
+
+成绩按官方任务判据统计，只使用1条原参考。代表画面有机器人位于桌面附近/上方，不能仅凭99.9%断言真实双手抓握稳定、物体搬运或全部姿态语义质量通过。本次没有新增MuJoCo sim-to-sim、未知条件生成或创新点验证。
+
+当前正式完成 **6/11** 项控制任务（Sit和Bimanual-Pick明确记录USD I/O适配）。原唯一队列已自动进入Ground-Pick，核对第3/2000轮；后续Ground-Pick-Top、Button-Press、Open-Drawer、Open-Door四项等待。新恢复启动器 `scripts/r3_dreamcontrol_completed_eval_recovery.py` 完成评估后调用原未修改调度器，stdout为 `artifacts/monitoring/r3_Bimanual-Pick_usd_eval_recovery_20261002_queue.log`，锁和task状态前缀仍 `r3_dreamcontrol_remaining_20261001`。CLoSD正式3072微调等待此前的本地可视确认，不重复询问。
