@@ -1,11 +1,16 @@
 """Read-only export of completed baseline TensorBoard events for teacher report."""
 from pathlib import Path
+import argparse
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--task',nargs='+',default=['Kick','Punch','Jump','Sit','Pick','Bimanual-Pick'])
+parser.add_argument('--output-root',default='/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/report_training_20261002')
+args=parser.parse_args()
 import os
 os.environ['OMP_NUM_THREADS']='1'
 os.environ['OPENBLAS_NUM_THREADS']='1'
 R=Path('/data/code/ouyanghao/oyh/conditional-human-motion-generation')
 O=Path('/data/code/ouyanghao/oyh/humanoid-combat-motion')
-OUT=R/'artifacts/report_training_20261002';OUT.mkdir(exist_ok=True)
+OUT=Path(args.output_root);OUT.mkdir(parents=True,exist_ok=True)
 os.environ['MPLCONFIGDIR']=str(OUT/'mpl_cache')
 import json,hashlib,csv,gzip,shutil,datetime,statistics
 from tensorboard.backend.event_processing.event_accumulator import EventAccumulator
@@ -20,7 +25,11 @@ jobs={
 'Jump':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_14-01-43-Jump-a',0,1999)],
 'Sit':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_16-54-27-Sit-a',0,1999)],
 'Pick':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_19-59-36-Pick-a',0,1999)],
-'Bimanual-Pick':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-02_00-21-24-Bimanual-Pick-a',0,1999)]}
+'Bimanual-Pick':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-02_00-21-24-Bimanual-Pick-a',0,1999)],
+'Ground-Pick':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-02_04-54-43-Ground-Pick-a',0,1999)],
+'Ground-Pick-Top':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-02_09-51-55-Ground-Pick-Top-a',0,1999)]}
+assert set(args.task)<=set(jobs),'Unknown task; never use active training events'
+jobs={task:jobs[task] for task in args.task}
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 all_summary=[]
 for task,parts in jobs.items():
@@ -65,5 +74,5 @@ for task,parts in jobs.items():
     summary={'task':task,'status':'completed_baseline_training','iterations':2000,'num_envs':8192,'steps_range':[0,1999],'seed':42,'source_events':provenance,'metrics':metrics,'smoothing':'Raw data retained; trailing 50-iteration mean shown separately, split at Punch iteration1600 resume','aggregation':'Punch initial steps0..1599 plus resumed1600..1999; discarded rolled-back initial1600..1618 from combined curves; original event and raw CSV retained','interpretation':'Training reward and loss are logger statistics, not evaluation success or physical quality; reward scales differ across tasks'}
     (td/'summary.json').write_text(json.dumps(summary,indent=2));all_summary.append(summary)
     print('LOGGER_EXPORT_COMPLETE',task,metrics['Train/mean_reward']['first100_mean'],metrics['Train/mean_reward']['last100_mean'],flush=True)
-(OUT/'summary.json').write_text(json.dumps({'status':'COMPLETE','exported_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'tasks':all_summary,'scope':'six official completed baselines only, no research comparison or active training logs'},indent=2))
+(OUT/'summary.json').write_text(json.dumps({'status':'COMPLETE','exported_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'tasks':all_summary,'scope':'selected official completed baselines only, no research comparison or active training logs'},indent=2))
 print('TRAINING_REPORT_EXPORT_COMPLETE',len(all_summary),flush=True)

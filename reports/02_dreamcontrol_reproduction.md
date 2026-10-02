@@ -205,3 +205,7 @@ TensorBoard 的 6009 服务已切换到新的 resume200 run，本地 SSH 隧道�
 原 66 条参考动作、8192 个并行环境、2000 轮、seed 42 的独立基线已完成至 **1999/2000**，最终检查点为 `third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_03-19-31-Kick-a/model_1999.pt`（12,565,922 字节）。队列随即以官方 `play_eval.py` 在 **1000 环境、500 帧**的口径评估，日志报告 **Success rate: 85.30000448226929%**。状态文件 `artifacts/monitoring/r3_dreamcontrol_official_kick_8192_2000.state`、`r3_dreamcontrol_official_kick_8192_eval.state` 和队列状态均为 `COMPLETE`。评估视频 `third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_03-19-31-Kick-a/videos/play/eval_a_r3_official_kick_8192_eval-step-0.mp4` 非空（1,613,524 字节）。这是**官方 66 条训练动作上的基线评估**，与论文表 II 的 98.6% 尚有差距；seed、硬件、代码版本和评估细节均应记录后再分析差异。
 
 先前 1024 环境的 66 条基线与 98 条增强组在另一个固定的 32 条新增动作留出集上都得到 0%。**85.3% 不能与那两个 0% 直接作为数据增强收益对比**：训练环境数、随机种子及评估动作集合不同。下一步应使用本次 8192 环境基线检查点在同一 32 条留出集上补做评估，再以匹配的环境数和训练预算重训增强组，才能判断生成数据是否改善泛化。
+
+## 2026-10-02：第八项控制任务归档
+
+Ground-Pick-Top官方1条参考、8192环境2000轮seed42训练及1000环境500帧官方默认Fabric评估均正常退出0，成功率0.0%。已核验1999模型及501帧10.02秒视频，原始指标与核验回执已保存。该结果不表示效果复现通过，也不记为初始化故障。当前8/11控制任务已有正式归档，Button-Press仍在唯一队列训练；详见[多任务时间线](03_dreamcontrol_multitask_baselines.md)。

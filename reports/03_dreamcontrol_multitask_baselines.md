@@ -97,3 +97,13 @@ Ground-Pick的官方1条参考、8192环境、2000轮、seed42训练已正常完
 视频 `media/r3_official_ground_pick_8192_eval.mp4` 为1280×720、50fps、501帧、10.02秒，SHA256 `b310a2806d730d80fc5f33c6d0443a856514b85da6feea2c2b48abc9470cdfba`。正式评估日志SHA256 `96be836556d517e4278caf650c0932666312943be317155a07569d984aed6eb6`；原失败日志和备份仍保留。结构化指标见 `results/r3_dreamcontrol_official_Ground-Pick_8192_eval.json`，训练配置另存 `results/configs/DreamControl_Ground-Pick/`。最终模型SHA256仍为 `0b853c6700957045cda3cb768f7d4ffc2ca7cfa67e79fc5fe33d8574f602e699`。
 
 当前已完成 **7/11** 控制任务：Kick85.3%、Punch87.2%、Jump100%、Sit100%、Pick93.9%、Bimanual-Pick99.9%、Ground-Pick38.1%。Sit、Bimanual-Pick、Ground-Pick均注明默认视频路径失败后使用官方USD I/O适配，不将native初始化失败记成0%。原唯一队列自动接续Ground-Pick-Top（09:51核对已加载Actor/Critic，尚未据此声称PPO迭代推进），其后Button-Press、Open-Drawer、Open-Door。调度stdout改为 `artifacts/monitoring/r3_Ground-Pick_usd_eval_recovery_20261002_queue.log`，原调度器与单锁未改动，CLoSD正式3072仍未启动。
+
+## 2026-10-02 14:18 UTC（北京时间22:18）：Ground-Pick-Top完成，官方成绩0%
+
+官方1条参考、8192环境、2000迭代、seed42，从零训练至1999，训练和官方默认Fabric路径1000环境500帧视频评估均正常退出0。成功率 **0.0%** 是真实任务失败成绩，不是初始化异常；不重训或重试已正常完成的评估，不宣称效果复现通过。具体原因尚未完成行为诊断。
+
+最终模型SHA256 `8e24d4d55329e1c2e0ccdad5f093d80106fa1748abc8d002c7273cd3642e94a4`；视频 `media/r3_official_ground_pick_top_8192_eval.mp4`，501帧、50fps、10.02秒，SHA256 `929e7d263c2ecd025bc7966b861c49d9a285bab059336c16f94b03162f1a74a5`。模型/日志/配置/视频均独立核验，回执 `results/completed_task_receipts/Ground-Pick-Top_20261002.json`；正式结果 `results/r3_dreamcontrol_official_Ground-Pick-Top_8192_eval.json`。模型仅保留服务器，不随报告上传。
+
+Ground-Pick与Ground-Pick-Top的TensorBoard原始events、全量CSV和曲线已导出本地。前/末100轮平均reward分别−10.108→4.805、−9.759→8.051；末期平均回合约499步；value loss分别0.828871→0.003858、0.737016→0.001828。这支持部分存活/训练奖励改善，但不能代替38.1%/0%官方任务成绩，更不能证明自然抓取与碰撞接触成功。两项均尚无MuJoCo测试。
+
+当前归档 **8/11** 控制任务；原唯一队列已自动进入Button-Press，14:18 UTC核对443/2000轮，随后Open-Drawer、Open-Door。未启动重复队列或修改、中断现有训练。CLoSD新3072正式微调仍等待此前已询问的本地实际场景确认，不重复询问。
