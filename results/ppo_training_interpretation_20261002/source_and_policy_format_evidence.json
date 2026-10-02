@@ -1,0 +1,921 @@
+{
+  "sources": {
+    "algorithms/ppo.py": {
+      "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/lib/python3.10/site-packages/rsl_rl/algorithms/ppo.py",
+      "sha256": "ec0286fdbdd30360b21f2bea314f676058793f9241649d30545d656a961a22a2"
+    },
+    "storage/rollout_storage.py": {
+      "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/lib/python3.10/site-packages/rsl_rl/storage/rollout_storage.py",
+      "sha256": "456450bbba03f9f5818f9ec43d2f3bd5d14d2d27f4bf2308838dd580f32ffcf0"
+    },
+    "runners/on_policy_runner.py": {
+      "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/lib/python3.10/site-packages/rsl_rl/runners/on_policy_runner.py",
+      "sha256": "2f00052c1088f8d13f1b106f25981dc95ff081b2a23841413cca3a7896e0b262"
+    },
+    "modules/actor_critic.py": {
+      "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/lib/python3.10/site-packages/rsl_rl/modules/actor_critic.py",
+      "sha256": "51ce8c6504a7434f86e5188ccb11e9fc981e46f764c00e32be3e8febe7112ae2"
+    },
+    "exporter.py": {
+      "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_rl/isaaclab_rl/rsl_rl/exporter.py",
+      "sha256": "8a7b995d79653a8e9f3ad8cb780d1b59fe308c843a7d3eda744988296e00c7da"
+    },
+    "play_eval.py": {
+      "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/scripts/reinforcement_learning/rsl_rl/play_eval.py",
+      "sha256": "892e39efdaf1c2844286014f508ed4771d16474f12c413a45d0678584fdbc781"
+    }
+  },
+  "exports": {
+    "Kick": {
+      "run": "2026-09-27_03-19-31-Kick-a",
+      "files": {
+        "model_1999.pt": {
+          "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_03-19-31-Kick-a/model_1999.pt",
+          "bytes": 12565922,
+          "sha256": "e3c50fb6f36f59f89d1b4e788b1ba74cf1ff0cdde3dceff34a9d7765235f65c0"
+        },
+        "exported/policy.pt": {
+          "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_03-19-31-Kick-a/exported/policy.pt",
+          "bytes": 2124760,
+          "sha256": "61b760f62c8d057bbe5217a57304051fdacec2aa93617f910a3d6a19aaf818b1"
+        },
+        "exported/policy.onnx": {
+          "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_03-19-31-Kick-a/exported/policy.onnx",
+          "bytes": 2108897,
+          "sha256": "fbc5d2e16901a3308ac9af0a4ec4a8faa4679877eb154e95d736cadabcc2bfd2"
+        }
+      },
+      "interface": {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/sim2sim_mujoco/interfaces/Kick_interface.json",
+        "sha256": "87b5a3aa3b3116808cb36ba8a7edf2883f141a9137d85d4b710bf320ee7077f7",
+        "obs_dim": 626,
+        "obs_terms": [
+          "base_lin_vel",
+          "base_ang_vel",
+          "projected_gravity",
+          "joint_pos",
+          "joint_vel",
+          "actions",
+          "target_ref_curr",
+          "target_ref_next",
+          "target_ref_next_next"
+        ],
+        "num_actions": 29,
+        "reference_count": 66,
+        "policy_sha256": "61b760f62c8d057bbe5217a57304051fdacec2aa93617f910a3d6a19aaf818b1",
+        "hand_actions": {}
+      }
+    },
+    "Punch": {
+      "run": "2026-09-29_12-37-46-Punch-a",
+      "files": {
+        "model_1999.pt": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-29_12-37-46-Punch-a/model_1999.pt",
+          "bytes": 12565922,
+          "sha256": "c4b479007434d061b0329a74dee5ed5c9408be7f9d60b15487978f44a9aa0b4d"
+        },
+        "exported/policy.pt": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-29_12-37-46-Punch-a/exported/policy.pt",
+          "bytes": 2124760,
+          "sha256": "ce0bceedd278c4470cae28b8fffa7bb67c3699a2552c196b352b29ebeed0a06c"
+        },
+        "exported/policy.onnx": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-29_12-37-46-Punch-a/exported/policy.onnx",
+          "bytes": 2108897,
+          "sha256": "b04d5c4d78bac631ccabbe2196524c21e385340f61ab3aa2942d25cb6da04f04"
+        }
+      },
+      "interface": {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/sim2sim_mujoco/interfaces/Punch_interface.json",
+        "sha256": "8cfb129049e652a63b69700d99eb45cd2fffed7270e62a4e2beb5797b270a279",
+        "obs_dim": 626,
+        "obs_terms": [
+          "base_lin_vel",
+          "base_ang_vel",
+          "projected_gravity",
+          "joint_pos",
+          "joint_vel",
+          "actions",
+          "target_ref_curr",
+          "target_ref_next",
+          "target_ref_next_next"
+        ],
+        "num_actions": 29,
+        "reference_count": 100,
+        "policy_sha256": "ce0bceedd278c4470cae28b8fffa7bb67c3699a2552c196b352b29ebeed0a06c",
+        "hand_actions": {}
+      }
+    },
+    "Jump": {
+      "run": "2026-10-01_14-01-43-Jump-a",
+      "files": {
+        "model_1999.pt": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_14-01-43-Jump-a/model_1999.pt",
+          "bytes": 12651938,
+          "sha256": "21b2525f2eab462a3514653b7e6c389b10ebf768c1aa154dd487640011e143aa"
+        },
+        "exported/policy.pt": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_14-01-43-Jump-a/exported/policy.pt",
+          "bytes": 2139096,
+          "sha256": "27f9920c2a5d0a4d74293636881c20a3dc05d0814fff4465a34605f1cdf33912"
+        },
+        "exported/policy.onnx": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_14-01-43-Jump-a/exported/policy.onnx",
+          "bytes": 2123289,
+          "sha256": "48b63f02455a436f41b8db8bf948c5b59ac81a9afea1d90714a010328938d986"
+        }
+      },
+      "interface": {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/sim2sim_mujoco/interfaces/Jump_interface.json",
+        "sha256": "03e079d0b10f21a3c102a4d19f00b7946f456b9bb4fc791608c61dd4f1fd737b",
+        "obs_dim": 633,
+        "obs_terms": [
+          {
+            "name": "base_lin_vel",
+            "dim": 3,
+            "function": "base_lin_vel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "base_ang_vel",
+            "dim": 3,
+            "function": "base_ang_vel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "projected_gravity",
+            "dim": 3,
+            "function": "projected_gravity",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "joint_pos",
+            "dim": 27,
+            "function": "joint_pos_rel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "joint_vel",
+            "dim": 27,
+            "function": "joint_vel_rel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "actions",
+            "dim": 29,
+            "function": "last_action",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "target_ref_curr",
+            "dim": 178,
+            "function": "target_ref",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/motion_tracking/g1/motion_tracking_env.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "target_ref_next",
+            "dim": 178,
+            "function": "target_ref",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/motion_tracking/g1/motion_tracking_env.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0.2
+          },
+          {
+            "name": "target_ref_next_next",
+            "dim": 178,
+            "function": "target_ref",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/motion_tracking/g1/motion_tracking_env.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0.4
+          },
+          {
+            "name": "rel_pose_target",
+            "dim": 7,
+            "function": "rel_pose_object",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          }
+        ],
+        "num_actions": 29,
+        "reference_count": 1,
+        "policy_sha256": "27f9920c2a5d0a4d74293636881c20a3dc05d0814fff4465a34605f1cdf33912",
+        "hand_actions": {
+          "left_hand_action": {
+            "joint_names": [
+              "left_hand_index_0_joint",
+              "left_hand_middle_0_joint",
+              "left_hand_thumb_0_joint",
+              "left_hand_index_1_joint",
+              "left_hand_middle_1_joint",
+              "left_hand_thumb_1_joint",
+              "left_hand_thumb_2_joint"
+            ],
+            "open": [
+              -1.5707963705062866,
+              -1.5707963705062866,
+              0.0,
+              -1.5707963705062866,
+              -1.5707963705062866,
+              1.0471975803375244,
+              1.5707963705062866
+            ],
+            "close": [
+              -1.5707963705062866,
+              -1.5707963705062866,
+              0.0,
+              -1.5707963705062866,
+              -1.5707963705062866,
+              1.0471975803375244,
+              1.5707963705062866
+            ]
+          },
+          "right_hand_action": {
+            "joint_names": [
+              "right_hand_index_0_joint",
+              "right_hand_middle_0_joint",
+              "right_hand_thumb_0_joint",
+              "right_hand_index_1_joint",
+              "right_hand_middle_1_joint",
+              "right_hand_thumb_1_joint",
+              "right_hand_thumb_2_joint"
+            ],
+            "open": [
+              1.5707963705062866,
+              1.5707963705062866,
+              0.0,
+              1.5707963705062866,
+              1.5707963705062866,
+              -1.0471975803375244,
+              -1.5707963705062866
+            ],
+            "close": [
+              1.5707963705062866,
+              1.5707963705062866,
+              0.0,
+              1.5707963705062866,
+              1.5707963705062866,
+              -1.0471975803375244,
+              -1.5707963705062866
+            ]
+          }
+        }
+      }
+    },
+    "Sit": {
+      "run": "2026-10-01_16-54-27-Sit-a",
+      "files": {
+        "model_1999.pt": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_16-54-27-Sit-a/model_1999.pt",
+          "bytes": 12651938,
+          "sha256": "4302e29fe6376452a21fe93351e616fb23ec5bb83206eb015df3b5be4bea85c7"
+        },
+        "exported/policy.pt": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_16-54-27-Sit-a/exported/policy.pt",
+          "bytes": 2139096,
+          "sha256": "ac88a45b78886d89029302a4912af034476dd05289579b8f75e093b5b0e040fc"
+        },
+        "exported/policy.onnx": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_16-54-27-Sit-a/exported/policy.onnx",
+          "bytes": 2123289,
+          "sha256": "f1c966e8b4c0e5f15bc510d989009f1a73070568ac3ba02ac83ed4061b3862ad"
+        }
+      },
+      "interface": {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/sim2sim_mujoco/interfaces/Sit_interface.json",
+        "sha256": "2e2f68427497c70f89bc5a07ce3deb39980f7c7dc72ed19de367eb4c80c70a23",
+        "obs_dim": 633,
+        "obs_terms": [
+          {
+            "name": "base_lin_vel",
+            "dim": 3,
+            "function": "base_lin_vel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "base_ang_vel",
+            "dim": 3,
+            "function": "base_ang_vel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "projected_gravity",
+            "dim": 3,
+            "function": "projected_gravity",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "joint_pos",
+            "dim": 27,
+            "function": "joint_pos_rel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "joint_vel",
+            "dim": 27,
+            "function": "joint_vel_rel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "actions",
+            "dim": 29,
+            "function": "last_action",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "target_ref_curr",
+            "dim": 178,
+            "function": "target_ref",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/motion_tracking/g1/motion_tracking_env.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "target_ref_next",
+            "dim": 178,
+            "function": "target_ref",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/motion_tracking/g1/motion_tracking_env.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0.2
+          },
+          {
+            "name": "target_ref_next_next",
+            "dim": 178,
+            "function": "target_ref",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/motion_tracking/g1/motion_tracking_env.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0.4
+          },
+          {
+            "name": "rel_pose_object",
+            "dim": 7,
+            "function": "rel_pose_object",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          }
+        ],
+        "num_actions": 29,
+        "reference_count": 1,
+        "policy_sha256": "ac88a45b78886d89029302a4912af034476dd05289579b8f75e093b5b0e040fc",
+        "hand_actions": {
+          "left_hand_action": {
+            "joint_names": [
+              "left_hand_index_0_joint",
+              "left_hand_middle_0_joint",
+              "left_hand_thumb_0_joint",
+              "left_hand_index_1_joint",
+              "left_hand_middle_1_joint",
+              "left_hand_thumb_1_joint",
+              "left_hand_thumb_2_joint"
+            ],
+            "open": [
+              1.5707963705062866,
+              1.5707963705062866,
+              0.0,
+              1.5707963705062866,
+              1.5707963705062866,
+              -1.0471975803375244,
+              -1.5707963705062866
+            ],
+            "close": [
+              1.5707963705062866,
+              1.5707963705062866,
+              0.0,
+              1.5707963705062866,
+              1.5707963705062866,
+              -1.0471975803375244,
+              -1.5707963705062866
+            ]
+          },
+          "right_hand_action": {
+            "joint_names": [
+              "right_hand_index_0_joint",
+              "right_hand_middle_0_joint",
+              "right_hand_thumb_0_joint",
+              "right_hand_index_1_joint",
+              "right_hand_middle_1_joint",
+              "right_hand_thumb_1_joint",
+              "right_hand_thumb_2_joint"
+            ],
+            "open": [
+              1.5707963705062866,
+              1.5707963705062866,
+              0.0,
+              1.5707963705062866,
+              1.5707963705062866,
+              -1.0471975803375244,
+              -1.5707963705062866
+            ],
+            "close": [
+              1.5707963705062866,
+              1.5707963705062866,
+              0.0,
+              1.5707963705062866,
+              1.5707963705062866,
+              -1.0471975803375244,
+              -1.5707963705062866
+            ]
+          }
+        }
+      }
+    },
+    "Pick": {
+      "run": "2026-10-01_19-59-36-Pick-a",
+      "files": {
+        "model_1999.pt": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_19-59-36-Pick-a/model_1999.pt",
+          "bytes": 12910370,
+          "sha256": "d3f34ca02946e7a56fec95f113e6646724c0dc8fc219437b95bbafcd31e8dcb4"
+        },
+        "exported/policy.pt": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_19-59-36-Pick-a/exported/policy.pt",
+          "bytes": 2182296,
+          "sha256": "16ce0e8beb3e5e738eb314be3510ea475be8438695fb7816d378a224ba5b6ee3"
+        },
+        "exported/policy.onnx": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_19-59-36-Pick-a/exported/policy.onnx",
+          "bytes": 2166465,
+          "sha256": "db90d3f0c164aaf114f6ee4b3f66b1ff7ad903183572e37b6f038d8795b932a9"
+        }
+      },
+      "interface": {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/sim2sim_mujoco/interfaces/Pick_interface.json",
+        "sha256": "523d1339b47383b7c10cd1190d5dd1579b71f013ce15fa832c0a59ef70fa08d6",
+        "obs_dim": 654,
+        "obs_terms": [
+          {
+            "name": "base_lin_vel",
+            "dim": 3,
+            "function": "base_lin_vel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "base_ang_vel",
+            "dim": 3,
+            "function": "base_ang_vel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "projected_gravity",
+            "dim": 3,
+            "function": "projected_gravity",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "joint_pos",
+            "dim": 27,
+            "function": "joint_pos_rel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "joint_vel",
+            "dim": 27,
+            "function": "joint_vel_rel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "actions",
+            "dim": 29,
+            "function": "last_action",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "target_ref_curr",
+            "dim": 178,
+            "function": "target_ref",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/motion_tracking/g1/motion_tracking_env.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "target_ref_next",
+            "dim": 178,
+            "function": "target_ref",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/motion_tracking/g1/motion_tracking_env.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0.1
+          },
+          {
+            "name": "target_ref_next_next",
+            "dim": 178,
+            "function": "target_ref",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/motion_tracking/g1/motion_tracking_env.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0.2
+          },
+          {
+            "name": "target_orientation_hand",
+            "dim": 4,
+            "function": "target_orientation",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_pick_env.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "right_hand_state_target_val",
+            "dim": 1,
+            "function": "hand_state_target",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "right_hand_state_target_val_1",
+            "dim": 1,
+            "function": "hand_state_target_1",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "rel_pose_object",
+            "dim": 7,
+            "function": "rel_pose_object",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "rel_pose_object_w_link_val",
+            "dim": 7,
+            "function": "rel_pose_object_w_link",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "right_hand_pose_val",
+            "dim": 7,
+            "function": "hand_pose",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "object_mass",
+            "dim": 1,
+            "function": "rigid_body_mass",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          }
+        ],
+        "num_actions": 29,
+        "reference_count": 67,
+        "policy_sha256": "16ce0e8beb3e5e738eb314be3510ea475be8438695fb7816d378a224ba5b6ee3",
+        "hand_actions": {
+          "left_hand_action": {
+            "joint_names": [
+              "left_hand_index_0_joint",
+              "left_hand_middle_0_joint",
+              "left_hand_thumb_0_joint",
+              "left_hand_index_1_joint",
+              "left_hand_middle_1_joint",
+              "left_hand_thumb_1_joint",
+              "left_hand_thumb_2_joint"
+            ],
+            "open": [
+              -1.5707963705062866,
+              -1.5707963705062866,
+              0.0,
+              -1.5707963705062866,
+              -1.5707963705062866,
+              1.0471975803375244,
+              1.5707963705062866
+            ],
+            "close": [
+              -1.5707963705062866,
+              -1.5707963705062866,
+              0.0,
+              -1.5707963705062866,
+              -1.5707963705062866,
+              1.0471975803375244,
+              1.5707963705062866
+            ]
+          },
+          "right_hand_action": {
+            "joint_names": [
+              "right_hand_index_0_joint",
+              "right_hand_middle_0_joint",
+              "right_hand_thumb_0_joint",
+              "right_hand_index_1_joint",
+              "right_hand_middle_1_joint",
+              "right_hand_thumb_1_joint",
+              "right_hand_thumb_2_joint"
+            ],
+            "open": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "close": [
+              1.5707963705062866,
+              1.5707963705062866,
+              0.0,
+              1.5707963705062866,
+              1.5707963705062866,
+              -1.0471975803375244,
+              -1.5707963705062866
+            ]
+          }
+        }
+      }
+    },
+    "Bimanual-Pick": {
+      "run": "2026-10-02_00-21-24-Bimanual-Pick-a",
+      "files": {
+        "model_1999.pt": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-02_00-21-24-Bimanual-Pick-a/model_1999.pt",
+          "bytes": 12922658,
+          "sha256": "70d025af972fb3b1a3bb9534dbb938f838484b4233111045b53cc09061c9c1ab"
+        },
+        "exported/policy.pt": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-02_00-21-24-Bimanual-Pick-a/exported/policy.pt",
+          "bytes": 2184344,
+          "sha256": "2e66d321cd3107640948ce8a6672a973f48d1b88e3576a94699908dd90d4eec6"
+        },
+        "exported/policy.onnx": {
+          "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-02_00-21-24-Bimanual-Pick-a/exported/policy.onnx",
+          "bytes": 2168521,
+          "sha256": "ef86bd516523dd24dbb46e8ca4677ed074153ba16c3e42f6165594bc9f83c956"
+        }
+      },
+      "interface": {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/sim2sim_mujoco/interfaces/Bimanual-Pick_interface.json",
+        "sha256": "d889e7199159135e805c9445f495715683908147423a555c6768882ef263a2a6",
+        "obs_dim": 655,
+        "obs_terms": [
+          {
+            "name": "base_lin_vel",
+            "dim": 3,
+            "function": "base_lin_vel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "base_ang_vel",
+            "dim": 3,
+            "function": "base_ang_vel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "projected_gravity",
+            "dim": 3,
+            "function": "projected_gravity",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "joint_pos",
+            "dim": 27,
+            "function": "joint_pos_rel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "joint_vel",
+            "dim": 27,
+            "function": "joint_vel_rel",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "actions",
+            "dim": 29,
+            "function": "last_action",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab/isaaclab/envs/mdp/observations.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "target_ref_curr",
+            "dim": 178,
+            "function": "target_ref",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/motion_tracking/g1/motion_tracking_env.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "target_ref_next",
+            "dim": 178,
+            "function": "target_ref",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/motion_tracking/g1/motion_tracking_env.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0.2
+          },
+          {
+            "name": "target_ref_next_next",
+            "dim": 178,
+            "function": "target_ref",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/motion_tracking/g1/motion_tracking_env.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0.4
+          },
+          {
+            "name": "rel_pose_object",
+            "dim": 7,
+            "function": "rel_pose_object",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "right_hand_pose_val",
+            "dim": 7,
+            "function": "hand_pose",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "left_hand_pose_val",
+            "dim": 7,
+            "function": "hand_pose",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "target_orientation_left",
+            "dim": 4,
+            "function": "target_orientation",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          },
+          {
+            "name": "target_orientation_right",
+            "dim": 4,
+            "function": "target_orientation",
+            "source": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/source/isaaclab_tasks/isaaclab_tasks/manager_based/interactive_motion_tracking/g1/motion_tracking_interactive_base.py",
+            "clip": null,
+            "scale": null,
+            "time_offset": 0
+          }
+        ],
+        "num_actions": 29,
+        "reference_count": 1,
+        "policy_sha256": "2e66d321cd3107640948ce8a6672a973f48d1b88e3576a94699908dd90d4eec6",
+        "hand_actions": {
+          "left_hand_action": {
+            "joint_names": [
+              "left_hand_index_0_joint",
+              "left_hand_middle_0_joint",
+              "left_hand_thumb_0_joint",
+              "left_hand_index_1_joint",
+              "left_hand_middle_1_joint",
+              "left_hand_thumb_1_joint",
+              "left_hand_thumb_2_joint"
+            ],
+            "open": [
+              -1.5707963705062866,
+              -1.5707963705062866,
+              0.0,
+              -1.5707963705062866,
+              -1.5707963705062866,
+              1.0471975803375244,
+              1.5707963705062866
+            ],
+            "close": [
+              -1.5707963705062866,
+              -1.5707963705062866,
+              0.0,
+              -1.5707963705062866,
+              -1.5707963705062866,
+              1.0471975803375244,
+              1.5707963705062866
+            ]
+          },
+          "right_hand_action": {
+            "joint_names": [
+              "right_hand_index_0_joint",
+              "right_hand_middle_0_joint",
+              "right_hand_thumb_0_joint",
+              "right_hand_index_1_joint",
+              "right_hand_middle_1_joint",
+              "right_hand_thumb_1_joint",
+              "right_hand_thumb_2_joint"
+            ],
+            "open": [
+              1.5707963705062866,
+              1.5707963705062866,
+              0.0,
+              1.5707963705062866,
+              1.5707963705062866,
+              -1.0471975803375244,
+              -1.5707963705062866
+            ],
+            "close": [
+              1.5707963705062866,
+              1.5707963705062866,
+              0.0,
+              1.5707963705062866,
+              1.5707963705062866,
+              -1.0471975803375244,
+              -1.5707963705062866
+            ]
+          }
+        }
+      }
+    }
+  },
+  "collected_utc": "2026-10-02T11:58:20.679224+00:00"
+}
