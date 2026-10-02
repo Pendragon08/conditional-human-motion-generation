@@ -13,7 +13,7 @@ assert receipt['result']['success_percent']==0 and receipt['result']['eval_exit'
 def parse(p):return BeautifulSoup(p.read_text(encoding='utf-8'),'html.parser')
 def fragment(t):return BeautifulSoup(t,'html.parser')
 def link(p):return quote(str(p).replace('\\','/'),safe='/')
-p=ROOT/'实验结果汇报.html'
+p=ROOT/'DreamControl_实验结果汇报.html' if (ROOT/'DreamControl_实验结果汇报.html').exists() else ROOT/'实验结果汇报.html'
 backup=ROOT/'实验结果汇报_Ground-Pick-Top结果归档前备份.html'
 if not backup.exists():shutil.copy2(p,backup)
 s=parse(p)
