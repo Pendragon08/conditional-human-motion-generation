@@ -83,3 +83,17 @@ Bimanual-Pick已正常到第1999/2000轮，官方1条参考、8192环境、2000�
 
 当前正式完成 **6/11** 项控制任务（Sit和Bimanual-Pick明确记录USD I/O适配）。原唯一队列已自动进入Ground-Pick，核对第3/2000轮；后续Ground-Pick-Top、Button-Press、Open-Drawer、Open-Door四项等待。新恢复启动器 `scripts/r3_dreamcontrol_completed_eval_recovery.py` 完成评估后调用原未修改调度器，stdout为 `artifacts/monitoring/r3_Bimanual-Pick_usd_eval_recovery_20261002_queue.log`，锁和task状态前缀仍 `r3_dreamcontrol_remaining_20261001`。CLoSD正式3072微调等待此前的本地可视确认，不重复询问。
 2026-10-02：已补完 Jump、Sit、Pick、Bimanual-Pick 的冻结策略 MuJoCo sim-to-sim，共70条参考、5段视频。Jump摔倒；Sit达参考目标但无持续座椅接触；Pick与Bimanual均未完成相对抬升5厘米。测试执行完成不等于任务迁移通过，单参考任务也没有泛化成功率结论。原Isaac自动重置成绩与本次单参考无重置口径不能直接比较。真实接触检测的正负夹具检查、原策略张量/观测接口核验均通过，但不能替代任务指标；Sit沿用训练座椅位置，与参考目标并未对齐。见[跨仿真报告](14_Completed_tasks_MuJoCo_sim2sim_20261002.md)。
+
+## 2026-10-02 09:49 UTC（北京时间17:49）：Ground-Pick训练完成，评估恢复中
+
+Ground-Pick的官方1条参考、8192环境、2000轮、seed42训练已正常完成1999/2000，run `2026-10-02_04-54-43-Ground-Pick-a`。最终模型SHA256 `0b853c6700957045cda3cb768f7d4ffc2ca7cfa67e79fc5fe33d8574f602e699`。默认1000环境500帧视频评估于08:33 UTC在仿真初始化报 `malloc(): invalid size (unsorted)`，包装器退出1，未产生成功率；具体native错误根因未证实，不能记0%或正式控制任务完成。训练、原失败日志与阻塞状态已备份至服务器 `artifacts/recovery/Ground-Pick_20261002_final1999` 并核验哈希。
+
+新的任务专用文档为 `docs/ground_pick_eval_recovery_20261002.md`；独立新进程只读检查已exit0，确认模型哈希、旧队列不存在、单锁可获取、实际可视Gate已有确认与适配日志尚不存在。在原唯一tmux会话中仅启动一次既有通用恢复脚本，采用官方 `--disable_fabric` USD场景I/O，保持模型、物理/奖励/参考与1000环境500帧预算不变。此时只是恢复评估正在初始化，尚无最终分数；成功后自动恢复原调度器进入Ground-Pick-Top。若再次失败则停止，不重复重训或无限重试。原失败记录在 `results/r3_dreamcontrol_Ground-Pick_eval_failure_20261002.json`。正式完成仍为6/11，CLoSD新3072训练仍等待之前已询问的本地当前实际画面确认。
+
+## 2026-10-02 09:51 UTC（北京时间17:51）：Ground-Pick完成，Ground-Pick-Top接续
+
+同一Ground-Pick最终模型经上述唯一官方USD I/O适配，1000环境、500帧评估正常退出0，成功率 **38.1%**（原始浮点38.10000121593475）。这是本次保留的控制基线结果，不意味着达到论文效果或可靠地面抓取。原1条参考没有未见动作泛化结论，也没有新增MuJoCo验证。训练8192环境2000轮seed42不变，未缩容/重训/修改物理、PPO、奖励和参考；明确是运行适配，非完全同运行配置。
+
+视频 `media/r3_official_ground_pick_8192_eval.mp4` 为1280×720、50fps、501帧、10.02秒，SHA256 `b310a2806d730d80fc5f33c6d0443a856514b85da6feea2c2b48abc9470cdfba`。正式评估日志SHA256 `96be836556d517e4278caf650c0932666312943be317155a07569d984aed6eb6`；原失败日志和备份仍保留。结构化指标见 `results/r3_dreamcontrol_official_Ground-Pick_8192_eval.json`，训练配置另存 `results/configs/DreamControl_Ground-Pick/`。最终模型SHA256仍为 `0b853c6700957045cda3cb768f7d4ffc2ca7cfa67e79fc5fe33d8574f602e699`。
+
+当前已完成 **7/11** 控制任务：Kick85.3%、Punch87.2%、Jump100%、Sit100%、Pick93.9%、Bimanual-Pick99.9%、Ground-Pick38.1%。Sit、Bimanual-Pick、Ground-Pick均注明默认视频路径失败后使用官方USD I/O适配，不将native初始化失败记成0%。原唯一队列自动接续Ground-Pick-Top（09:51核对已加载Actor/Critic，尚未据此声称PPO迭代推进），其后Button-Press、Open-Drawer、Open-Door。调度stdout改为 `artifacts/monitoring/r3_Ground-Pick_usd_eval_recovery_20261002_queue.log`，原调度器与单锁未改动，CLoSD正式3072仍未启动。
