@@ -1,0 +1,126 @@
+{
+  "fps": 20,
+  "vertical_axis": "y",
+  "ground_reference_m": 0.0,
+  "foot_joint_indices": [
+    10,
+    11
+  ],
+  "foot_penetration_m": -0.03,
+  "penetration_min_consecutive_frames": 3,
+  "near_ground_band_m": [
+    -0.03,
+    0.05
+  ],
+  "slide_planar_speed_m_s": 0.2,
+  "slide_min_consecutive_intervals": 3,
+  "bone_deviation_relative_to_own_median": 0.1,
+  "bone_min_consecutive_frames": 3,
+  "large_joint_displacement_m_per_interval": 0.15,
+  "both_feet_airborne_height_m": 0.1,
+  "airborne_min_consecutive_frames": 6,
+  "sensitivity_slide_speed_m_s": 0.4,
+  "sensitivity_bone_relative_deviation": 0.2,
+  "edges": [
+    [
+      0,
+      2
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      8,
+      11
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      7,
+      10
+    ],
+    [
+      0,
+      3
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      6,
+      9
+    ],
+    [
+      9,
+      12
+    ],
+    [
+      12,
+      15
+    ],
+    [
+      9,
+      14
+    ],
+    [
+      14,
+      17
+    ],
+    [
+      17,
+      19
+    ],
+    [
+      19,
+      21
+    ],
+    [
+      9,
+      13
+    ],
+    [
+      13,
+      16
+    ],
+    [
+      16,
+      18
+    ],
+    [
+      18,
+      20
+    ]
+  ],
+  "status": "exploratory_proxy_thresholds_not_paper_filters",
+  "run_rule": "Consecutive events must persist on the same foot or same bone; do not OR across entities first.",
+  "duration_rule": "k sampled frames span (k-1)/fps seconds; k velocity intervals span k/fps seconds.",
+  "classification": "self_supervised_proxy",
+  "not_verified": [
+    "inverse_dynamics",
+    "torque_limits",
+    "friction_cones",
+    "balance",
+    "mesh_self_collision",
+    "scene_collision",
+    "contact_forces",
+    "text_semantics",
+    "human_judgments"
+  ],
+  "action": "report_only_no_sample_rejection_no_policy_change"
+}
