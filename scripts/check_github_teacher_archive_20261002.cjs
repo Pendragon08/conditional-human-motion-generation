@@ -23,7 +23,7 @@ const root='D:/具身智能/conditional-human-motion-generation/reports/teacher_
   for(const url of refs){if(!url.startsWith('file:'))continue;links++;const p=fileURLToPath(new URL(url.split('#')[0]));if(!fs.existsSync(p))failures.push({page:relative,url})}
   if(relative==='DreamControl_实验结果汇报.html'){
    const counts=await page.evaluate(()=>({human:document.querySelectorAll('#generation video').length,robot:document.querySelectorAll('#videos video').length,hasPPO:!!document.querySelector('#ppo-six-task-interpretation'),curveTasks:document.querySelectorAll('#training details.training-chart').length,hasGroundTop:!!document.querySelector('#task-video-Ground-Pick-Top'),hasFormat:!!document.querySelector('#frozen-policy-file-formats')}));
-   if(counts.human!==18||counts.robot!==29||!counts.hasPPO||!counts.hasFormat||counts.curveTasks!==8||!counts.hasGroundTop)throw Error(JSON.stringify(counts));
+   if(counts.human!==18||counts.robot!==30||!counts.hasPPO||!counts.hasFormat||counts.curveTasks!==9||!counts.hasGroundTop)throw Error(JSON.stringify(counts));
   }
   if(relative==='CLoSD_实验结果汇报.html'){
    const scope=await page.evaluate(()=>({tables:document.querySelectorAll('#closd table').length,dreamBaseline:!!document.querySelector('#baseline'),videos:document.querySelectorAll('video').length}));

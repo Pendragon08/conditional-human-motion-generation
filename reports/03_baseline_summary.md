@@ -59,3 +59,12 @@ DreamControl 原十任务队列状态为 `BLOCKED queue_exit=1`；Punch 单项�
 最新04:55 UTC：Bimanual-Pick训练1999完成，默认评估native初始化失败后，以官方USD显示I/O适配正常评估99.9%；501帧10.02秒视频和模型已核验，失败原始记录保留。Ground-Pick已自动接续，随后四项等待。上述指标不单独验收实际双手抓握搬运或姿态语义质量。
 
 2026-10-02：已补完 Jump、Sit、Pick、Bimanual-Pick 的冻结策略 MuJoCo sim-to-sim，共70条参考、5段视频。Jump摔倒；Sit达参考目标但无持续座椅接触；Pick与Bimanual均未完成相对抬升5厘米。测试执行完成不等于任务迁移通过，单参考任务也没有泛化成功率结论。原Isaac自动重置成绩与本次单参考无重置口径不能直接比较。真实接触检测的正负夹具检查、原策略张量/观测接口核验均通过，但不能替代任务指标；Sit沿用训练座椅位置，与参考目标并未对齐。见[跨仿真报告](14_Completed_tasks_MuJoCo_sim2sim_20261002.md)。
+
+
+2026-10-03最新归档：Button-Press正常完成1999及默认Fabric官方1000环境500帧视频评估，99.9%；模型、日志、501帧10.02秒视频与原始TensorBoard已核验。累计9/11控制任务，非整篇论文完成。Open-Drawer旧正式尝试无PPO更新/模型，因柜体USD仍是Git LFS指针而初始化失败；已水合官方对应17599字节资产，独立16环境一次更新诊断通过。恢复原唯一队列条件与证据见docs/cabinet_asset_recovery_20261003.md；Open-Door尚未完成。CLoSD当前正式微调仍等待既有本地实际场景确认。
+
+
+2026-10-03 02:31 UTC：独立按文档执行的16环境一次PPO更新诊断已通过，官方柜体SHA与原LFS指针一致。审计确认旧Open-Drawer尝试0次PPO、0个模型，并保留原失败日志哈希；原唯一调度器已恢复，同一tmux/锁跳过已完成七项，余下Open-Drawer→Open-Door，仍为8192环境/2000轮/seed42。当前正式过程处于初始化，不能宣称已完成或已推进；结构化回执见results/r3_dreamcontrol_cabinet_recovery_20261003.json。
+
+
+2026-10-03 02:33 UTC核实：Open-Drawer run `2026-10-03_02-31-21-Open-Drawer-a` 已写第4/2000轮，日志02:33:28更新；GPU1 18376MiB、73%计算，唯一正式训练进程仍为8192环境/seed42。实际状态帧sampled_env_step=125与最新遥测step130，捕获时间02:33:34，非检查点回放。尚无最终评估成绩。

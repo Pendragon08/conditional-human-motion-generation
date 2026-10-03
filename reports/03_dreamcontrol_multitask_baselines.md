@@ -107,3 +107,15 @@ Ground-Pick的官方1条参考、8192环境、2000轮、seed42训练已正常完
 Ground-Pick与Ground-Pick-Top的TensorBoard原始events、全量CSV和曲线已导出本地。前/末100轮平均reward分别−10.108→4.805、−9.759→8.051；末期平均回合约499步；value loss分别0.828871→0.003858、0.737016→0.001828。这支持部分存活/训练奖励改善，但不能代替38.1%/0%官方任务成绩，更不能证明自然抓取与碰撞接触成功。两项均尚无MuJoCo测试。
 
 当前归档 **8/11** 控制任务；原唯一队列已自动进入Button-Press，14:18 UTC核对443/2000轮，随后Open-Drawer、Open-Door。未启动重复队列或修改、中断现有训练。CLoSD新3072正式微调仍等待此前已询问的本地实际场景确认，不重复询问。
+
+## 2026-10-03：Button-Press归档；柜体资产初始化阻塞
+
+Button-Press使用官方96条参考、8192环境、2000迭代、seed42。正常完成1999，官方1000环境500帧默认Fabric视频评估退出0，成功率 **99.9%**。模型SHA256 `e1f83e601e6a45f2aaddc40ffec525677b993bdaa75ed647359ed984d1539670`；本地视频 `media/r3_official_button_press_8192_eval.mp4`，50fps、501帧、10.02秒，SHA256 `aa935bd3ebefa54a21049ec27af7a71c3373e605e4308c10e6922039b87f5b5b`。独立回执 `results/completed_task_receipts/Button-Press_20261003.json`。原始TensorBoard事件与逐轮CSV已导出；前/末100轮平均reward −10.537→6.805，value loss 0.774752→0.000655，回合长度87.5→499.7步。surrogate −0.003514→−0.002023不能单独解释为动作质量变好；尚无本任务MuJoCo迁移验证。
+
+已归档 **9/11控制任务**，不是整篇论文复现完成。Open-Drawer的旧尝试在初始化时失败，没有PPO迭代或模型；原柜体USD只有130字节，是Git LFS占位文件。已恢复官方指针对应17599字节对象，SHA256 `30fddfc98008e380fe37d947e995c7875ead6113544b810d0254dc23450b6a7c`。原始失败记录保全；独立场景/一次更新诊断尚待通过。恢复过程、后续唯一队列启动条件见 `docs/cabinet_asset_recovery_20261003.md`。不把初始化错误记为0%，不重训已完成任务。Open-Door等待。CLoSD新正式微调仍受已有未答复的独立画面确认约束。
+
+
+2026-10-03 02:31 UTC：独立按文档执行的16环境一次PPO更新诊断已通过，官方柜体SHA与原LFS指针一致。审计确认旧Open-Drawer尝试0次PPO、0个模型，并保留原失败日志哈希；原唯一调度器已恢复，同一tmux/锁跳过已完成七项，余下Open-Drawer→Open-Door，仍为8192环境/2000轮/seed42。当前正式过程处于初始化，不能宣称已完成或已推进；结构化回执见results/r3_dreamcontrol_cabinet_recovery_20261003.json。
+
+
+2026-10-03 02:33 UTC核实：Open-Drawer run `2026-10-03_02-31-21-Open-Drawer-a` 已写第4/2000轮，日志02:33:28更新；GPU1 18376MiB、73%计算，唯一正式训练进程仍为8192环境/seed42。实际状态帧sampled_env_step=125与最新遥测step130，捕获时间02:33:34，非检查点回放。尚无最终评估成绩。

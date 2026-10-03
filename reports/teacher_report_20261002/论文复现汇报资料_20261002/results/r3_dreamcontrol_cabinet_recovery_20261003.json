@@ -1,0 +1,56 @@
+{
+  "status": "FAILED_INITIALIZATION_RECOVERED",
+  "failed_run": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-02_16-33-03-Open-Drawer-a",
+  "failed_log_sha256": "08ca7b5ab109549c70a0abbdf0f27d3a9e450b6f1e5ae28749fde89b41702020",
+  "failed_formal_ppo_iterations": 0,
+  "failed_formal_models": 0,
+  "cabinet_sha256": "30fddfc98008e380fe37d947e995c7875ead6113544b810d0254dc23450b6a7c",
+  "independent_witness": {
+    "status": "DIAGNOSTIC_PASS",
+    "task": "Open-Drawer",
+    "seed": 42,
+    "num_envs": 16,
+    "iterations": 1,
+    "exit_code": 0,
+    "cabinet_sha256": "30fddfc98008e380fe37d947e995c7875ead6113544b810d0254dc23450b6a7c",
+    "model": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-03_02-26-12-Open-Drawer-a/model_0.pt",
+    "model_sha256": "4de7a6fb2e27f05ac14789658ca734d0b3dfaa786a324152813df406728c04a6",
+    "log": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_cabinet_asset_witness_20261003.log",
+    "log_sha256": "29797821816d769068878fc4a1bb4291ca849203c7143bb125d62b6c5e1d1eb8",
+    "scope": "Asset initialization and one PPO update only; no formal score or full-budget completion"
+  },
+  "skipped_completed_tasks": [
+    "Jump",
+    "Sit",
+    "Pick",
+    "Bimanual-Pick",
+    "Ground-Pick",
+    "Ground-Pick-Top",
+    "Button-Press"
+  ],
+  "remaining": [
+    "Open-Drawer",
+    "Open-Door"
+  ],
+  "formal_envs": 8192,
+  "formal_iterations": 2000,
+  "formal_seed": 42,
+  "restarted_at_utc": "2026-10-03T02:31:15.104357+00:00",
+  "latest_state": "RUNNING task=Open-Drawer stage=train remaining_tasks=9",
+  "latest_iterations": [
+    "2",
+    "3",
+    "4"
+  ],
+  "current_log_mtime": "2026-10-03T02:33:28.926908+00:00",
+  "gpu": "0, 3791 MiB, 0 %\n1, 18376 MiB, 73 %\n",
+  "last_verified_at_utc": "2026-10-03T02:33:34.954004+00:00",
+  "formal_run": "2026-10-03_02-31-21-Open-Drawer-a",
+  "monitor_sample": {
+    "step": 125,
+    "captured_at_unix": 1790994814.4455616,
+    "source": "actual_training_simulation_sample",
+    "live_packet_step": 130,
+    "not_checkpoint_replay": true
+  }
+}

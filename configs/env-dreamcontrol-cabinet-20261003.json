@@ -1,0 +1,19 @@
+{
+  "base_spec": "configs/env-dreamcontrol-r3.json",
+  "base_spec_canonical_sha256": "47f5eb26218254bbe270c3c43b3e7a552cca04c5caa81b6c76b4a6d2d3d2e9d4",
+  "provider": "existing direct SSH Isaac Sim 4.5 / Isaac Lab",
+  "asset": {
+    "path": "third_party/DreamControl/Training/assets/cabinet.usd",
+    "source_commit": "ec28b508313d6837de52c68247fbc8cf81fe4935",
+    "bytes": 17599,
+    "sha256": "30fddfc98008e380fe37d947e995c7875ead6113544b810d0254dc23450b6a7c"
+  },
+  "smoke": {
+    "command": "python3 -u scripts/r3_cabinet_asset_witness_20261003.py",
+    "expect": "CABINET_ASSET_WITNESS_PASS",
+    "environments": 16,
+    "ppo_updates": 1,
+    "seed": 42,
+    "device": "cuda:1"
+  }
+}

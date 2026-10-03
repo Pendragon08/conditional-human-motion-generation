@@ -27,6 +27,7 @@ jobs={
 'Pick':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_19-59-36-Pick-a',0,1999)],
 'Bimanual-Pick':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-02_00-21-24-Bimanual-Pick-a',0,1999)],
 'Ground-Pick':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-02_04-54-43-Ground-Pick-a',0,1999)],
+'Button-Press':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-02_13-39-18-Button-Press-a',0,1999)],
 'Ground-Pick-Top':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-02_09-51-55-Ground-Pick-Top-a',0,1999)]}
 assert set(args.task)<=set(jobs),'Unknown task; never use active training events'
 jobs={task:jobs[task] for task in args.task}
