@@ -119,3 +119,9 @@ Button-Press使用官方96条参考、8192环境、2000迭代、seed42。正常�
 
 
 2026-10-03 02:33 UTC核实：Open-Drawer run `2026-10-03_02-31-21-Open-Drawer-a` 已写第4/2000轮，日志02:33:28更新；GPU1 18376MiB、73%计算，唯一正式训练进程仍为8192环境/seed42。实际状态帧sampled_env_step=125与最新遥测step130，捕获时间02:33:34，非检查点回放。尚无最终评估成绩。
+
+## 2026-10-03 13:53 UTC：Open-Drawer完成，Open-Door已接续
+
+Open-Drawer官方602条参考、8192环境、2000迭代、seed42，run `2026-10-03_02-31-21-Open-Drawer-a` 正常完成1999；官方1000环境500帧默认Fabric视频评估正常退出0，成功率 **100.0%**。模型SHA256 `026f997e5044708fad6889ca10124edb8fc42218ce031dbdaf423150239bb920`；501帧/50fps/10.02秒视频 `media/r3_official_open_drawer_8192_eval.mp4`，SHA256 `426dcefe74ebd27551177a94c072a44d050aa8382a4a119340514f673f7dc889`。独立核验回执 `results/completed_task_receipts/Open-Drawer_20261003.json`，保留原TensorBoard events、逐轮CSV和曲线。原官方柜体LFS占位文件导致的零更新失败已归档，恢复精确官方资产后才成功；不改PPO、奖励、关节配置或预算。
+
+当前 **10/11控制任务归档**；Open-Door由原唯一队列自动启动，run `2026-10-03_11-04-14-Open-Door-a`，13:53 UTC核实747/2000轮，GPU1持续计算、检查点model_700已保存，实际状态帧step17960→17965有姿态变化，无最终成绩。Open-Drawer尚无MuJoCo迁移或独立未见条件/自然抓握验收；100%仅为官方任务判据结果。CLoSD正式微调仍等待既有本地当前场景确认。

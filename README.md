@@ -2,7 +2,7 @@
 
 **最新汇报归档（2026-10-02）**：[HTML报告与本地视频/曲线](reports/teacher_report_20261002/README.md) · [报告入口](reports/teacher_report_20261002/实验结果汇报.html) · [DreamControl独立报告](reports/teacher_report_20261002/DreamControl_实验结果汇报.html) · [CLoSD独立报告](reports/teacher_report_20261002/CLoSD_实验结果汇报.html) · [PPO曲线解读和策略文件格式](reports/16_PPO_training_interpretation_and_policy_formats_20261002.md)。下载仓库后用浏览器打开HTML；GitHub文件页本身不会播放整个报告。正文保持论文基线汇报范围，原始许可资产和模型权重不随此报告包上传。
 
-当前已归档DreamControl控制任务为 **9/11**：Kick85.3%、Punch87.2%、Jump100%、Sit100%、Pick93.9%、Bimanual-Pick99.9%、Ground-Pick38.1%、Ground-Pick-Top0%、Button-Press99.9%。这是保存的评估结果，不是服务器实时状态或整篇论文完成比例；Ground-Pick与Ground-Pick-Top尚无MuJoCo验证；0%保留为正式失败成绩，不代表效果复现通过。历史阶段快照在下文保留，任务时间线以[多任务基线报告](reports/03_dreamcontrol_multitask_baselines.md)为准。
+当前已归档DreamControl控制任务为 **10/11**：Kick85.3%、Punch87.2%、Jump100%、Sit100%、Pick93.9%、Bimanual-Pick99.9%、Ground-Pick38.1%、Ground-Pick-Top0%、Button-Press99.9%、Open-Drawer100%。这是保存的评估结果，不是服务器实时状态或整篇论文完成比例；Ground-Pick与Ground-Pick-Top尚无MuJoCo验证；0%保留为正式失败成绩，不代表效果复现通过。历史阶段快照在下文保留，任务时间线以[多任务基线报告](reports/03_dreamcontrol_multitask_baselines.md)为准。
 
 本仓库记录**条件驱动人体运动生成**课题的可复现实验。研究流程是条件输入 → 生成人体运动 → 物理／接触修正 → 机器人参考动作 → 固定下游执行与反馈。机器人跟踪用于检验生成动作是否可执行，并非本课题的唯一研究对象。本仓库与原人形机器人格斗项目分开。
 
