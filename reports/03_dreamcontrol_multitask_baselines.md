@@ -125,3 +125,9 @@ Button-Press使用官方96条参考、8192环境、2000迭代、seed42。正常�
 Open-Drawer官方602条参考、8192环境、2000迭代、seed42，run `2026-10-03_02-31-21-Open-Drawer-a` 正常完成1999；官方1000环境500帧默认Fabric视频评估正常退出0，成功率 **100.0%**。模型SHA256 `026f997e5044708fad6889ca10124edb8fc42218ce031dbdaf423150239bb920`；501帧/50fps/10.02秒视频 `media/r3_official_open_drawer_8192_eval.mp4`，SHA256 `426dcefe74ebd27551177a94c072a44d050aa8382a4a119340514f673f7dc889`。独立核验回执 `results/completed_task_receipts/Open-Drawer_20261003.json`，保留原TensorBoard events、逐轮CSV和曲线。原官方柜体LFS占位文件导致的零更新失败已归档，恢复精确官方资产后才成功；不改PPO、奖励、关节配置或预算。
 
 当前 **10/11控制任务归档**；Open-Door由原唯一队列自动启动，run `2026-10-03_11-04-14-Open-Door-a`，13:53 UTC核实747/2000轮，GPU1持续计算、检查点model_700已保存，实际状态帧step17960→17965有姿态变化，无最终成绩。Open-Drawer尚无MuJoCo迁移或独立未见条件/自然抓握验收；100%仅为官方任务判据结果。CLoSD正式微调仍等待既有本地当前场景确认。
+
+## 2026-10-04 07:27 UTC：全部11项控制任务训练与评估已归档
+
+Open-Door官方602条参考、8192环境、2000迭代、seed42，run `2026-10-03_11-04-14-Open-Door-a` 正常完成1999；官方1000环境500帧默认Fabric视频评估正常退出0，成功率 **99.0%**。模型SHA256 `b70ffda8e6c4f8e922d924570bc90c851e0ff59da8e70fd8e80883f73ddbcdb3`；501帧/50fps/10.02秒视频 `media/r3_official_open_door_8192_eval.mp4`，SHA256 `cc8907490d91a542bfdf2e44501e16c719a4a5954f49c554e470272930af4ba5`。独立核验回执 `results/completed_task_receipts/Open-Door_20261004.json`，保留原TensorBoard events、逐轮CSV和曲线。唯一九任务队列已正常COMPLETE，没有启动额外训练。
+
+累计11/11控制任务有最终结果，不是整篇论文完整复现或所有任务效果通过：Ground-Pick38.1%，Ground-Pick-Top0%仍是已完成的负面结果。只有六任务已有MuJoCo测试，其他五任务无迁移成绩；当前CLoSD正式微调仍待先前实际场景确认。

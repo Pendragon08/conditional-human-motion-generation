@@ -20,6 +20,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 jobs={
+'Open-Door':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-03_11-04-14-Open-Door-a',0,1999)],
 'Kick':[(O/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_03-19-31-Kick-a',0,1999)],
 'Punch':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_07-24-06-Punch-a',0,1599),(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-29_12-37-46-Punch-a',1600,1999)],
 'Jump':[(R/'third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_14-01-43-Jump-a',0,1999)],
