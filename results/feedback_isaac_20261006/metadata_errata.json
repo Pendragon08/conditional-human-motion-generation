@@ -1,0 +1,40 @@
+{
+  "schema": "superseding_semantic_interpretation_without_raw_artifact_mutation",
+  "diagnostic_only": true,
+  "raw_files_preserved": true,
+  "files": {
+    "capture_summary.json": {
+      "sha256": "08d3dacaca78e6d199250633ed8d5aa88192d1e68881605bff236f3dc4d10d4d",
+      "corrections": {
+        "regenerated_physical_trial_executed_all_rows": false,
+        "capture_data_source": "actual Isaac Lab original-reference physical capture, with bounded80N side push in push arms",
+        "smoke_feedback_source_field_not_evidence_of_actual_context_regeneration": true,
+        "generated_reference_switch_performed": false,
+        "causal_feedback_benefit_tested": false
+      }
+    },
+    "retarget_summary.json": {
+      "sha256": "54913f2782159fb93e71c0834dba74f334258062872f82358167e00ccfd161ac",
+      "interpretation": {
+        "diagnostic_only": true,
+        "pipeline_complete_not_method_success": true,
+        "feedback_retarget_gate": "FAIL",
+        "physical_prefix_gate": "NOT_EVALUATED_IN_RETARGET"
+      }
+    },
+    "smoke_summary.json": {
+      "sha256": "780f081ae9a1aa2c6697b1df1b17ad340f2612c7a4187688a64fcfb03a0e8c61",
+      "interpretation": {
+        "diagnostic_only": true,
+        "pipeline_complete_not_method_success": true,
+        "feedback_retarget_gate": "FAIL",
+        "physical_prefix_equality_gate": "FAIL",
+        "feedback_source": "previous nominal MuJoCo sparse residuals, not current Isaac post-push states",
+        "acceptance_and_goal_denominator": 3,
+        "auc_and_fall_denominator": "eligible-only:2 foractual/shuffled,3 forotherarms",
+        "missing_fallback_not_feedback_success": true
+      }
+    }
+  },
+  "innovation_validated": false
+}

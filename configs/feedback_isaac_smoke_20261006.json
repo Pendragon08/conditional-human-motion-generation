@@ -1,0 +1,16 @@
+{
+  "base_environment_spec": "configs/env-feedback-isaac-20261006.json",
+  "dependencies_changed": false,
+  "invocation": "bash scripts/r3_feedback_isaac_continuation_20261006.sh smoke",
+  "mode": "nominal generated-reference downstream diagnostic",
+  "num_envs": 15, "steps": 500, "step_dt_s": 0.02, "seed": 0,
+  "ppo_updates": 0,
+  "references": [46,47,48],
+  "arms": ["fixed","fixed_duplicate","predicted","actual","shuffled"],
+  "generated_candidates_accepted": {"predicted": 3,"actual": 2,"shuffled": 2},
+  "attempted_per_generated_arm": 3,
+  "missing_candidate_is_failure": true,
+  "candidate_missing_fallback_not_scored_as_feedback_benefit": true,
+  "full_physx_solver_clone_certified": false,
+  "innovation_gate": "NOT_EVALUATED; retarget gate failed"
+}

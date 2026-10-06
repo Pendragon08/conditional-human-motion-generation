@@ -1,0 +1,340 @@
+{
+  "schema": "feedback-isaac-document-witness-v1",
+  "date": "2026-10-06",
+  "independent_agent": "feedback_isaac_capture_doc_witness_20261006",
+  "scope": "Stage1 frozen-policy actual Isaac post-push capture only",
+  "execution": {
+    "documented_command": "bash scripts/r3_feedback_isaac_continuation_20261006.sh capture",
+    "working_directory": "/data/code/ouyanghao/oyh/conditional-human-motion-generation",
+    "ssh_host": "ouyanghao@10.147.17.32",
+    "ssh_bind_address": "10.147.17.250",
+    "ssh_key": "C:/Users/Pende/.ssh/id_ed25519",
+    "batch_mode": true,
+    "invocation_count": 1,
+    "exit_code": 0,
+    "stdout": "ISAAC_FEEDBACK_DOCUMENTED_WITNESS_COMPLETE mode=capture",
+    "state": "COMPLETE mode=capture exit=0 physical_frames=500 formal_feedback_gate=false",
+    "inner_completion_count": 1,
+    "source_edits": 0,
+    "dependency_installs": 0,
+    "retries": 0,
+    "capture_output_preexisting": false,
+    "capture_processes_after_exit": 0
+  },
+  "environment": {
+    "runtime": "third_party/isaacsim-4.5.0/python.sh",
+    "base_spec_canonical_sha256": "47f5eb26218254bbe270c3c43b3e7a552cca04c5caa81b6c76b4a6d2d3d2e9d4",
+    "invocation_spec_canonical_sha256": "eec7b40aba36d29a484fb50977435f21cefce54c5dc55477bea436fcd8d2c22f",
+    "ledger_hashes_match": true,
+    "local_and_remote_script_hashes_match": true,
+    "gpu": 0,
+    "gpu_name": "NVIDIA RTX A6000",
+    "preflight_gpu_memory_mib": 699,
+    "preflight_gpu_utilization_percent": 0,
+    "preflight_memory_explanation": "Two existing Isaac processes explicitly using device cuda:1 retained small graphics allocations on GPU0; their PIDs were 1544969 and 3854248. No retarget or capture job was active. They were left untouched.",
+    "original_retarget_states": {
+      "predicted": "COMPLETE accepted=3/3",
+      "actual": "COMPLETE accepted=2/3",
+      "shuffled": "COMPLETE accepted=2/3"
+    }
+  },
+  "actual_rollout": {
+    "steps": 500,
+    "num_environments": 18,
+    "step_dt_s": 0.02,
+    "simulated_duration_s": 10,
+    "state_rows_recorded_before_each_control_step": true,
+    "recorded_state_time_range_s": [
+      0,
+      9.98
+    ],
+    "references": [
+      49,
+      50,
+      51,
+      52,
+      53,
+      54
+    ],
+    "arms": [
+      "clean",
+      "push",
+      "push_duplicate"
+    ],
+    "seed": 0,
+    "branch_step": 78,
+    "reference_num_frames": [
+      200,
+      200,
+      200,
+      200,
+      200,
+      200
+    ],
+    "reference_lengths_s": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
+    ],
+    "ppo_updates": 0,
+    "extra_ik": false,
+    "video_requested": false,
+    "wall_s_physical_loop": 32.96194672584534,
+    "array_shapes": {
+      "positions": [
+        500,
+        18,
+        3
+      ],
+      "quaternions": [
+        500,
+        18,
+        4
+      ],
+      "joints": [
+        500,
+        18,
+        27
+      ],
+      "velocities": [
+        500,
+        18,
+        33
+      ],
+      "actions": [
+        500,
+        18,
+        29
+      ],
+      "body_xyz": [
+        500,
+        18,
+        3,
+        3
+      ],
+      "reference_body_xyz": [
+        500,
+        18,
+        3,
+        3
+      ],
+      "joint_rmse": [
+        500,
+        18
+      ],
+      "root_error": [
+        500,
+        18
+      ],
+      "fall": [
+        500,
+        18
+      ],
+      "goal_error": [
+        500,
+        18
+      ],
+      "contact_force": [
+        500,
+        18,
+        2
+      ],
+      "reference_joint_delta": [
+        500,
+        18
+      ]
+    },
+    "every_array_has_500_rows": true,
+    "every_array_has_18_environments": true,
+    "array_finite": {
+      "positions": true,
+      "quaternions": true,
+      "joints": true,
+      "velocities": true,
+      "actions": true,
+      "body_xyz": true,
+      "reference_body_xyz": true,
+      "joint_rmse": true,
+      "root_error": true,
+      "fall": true,
+      "goal_error": true,
+      "contact_force": true,
+      "reference_joint_delta": true
+    },
+    "observation_dim": 626,
+    "action_dim": 29,
+    "finite_observations_evidence": "Frozen Python source asserts obs.shape=(18,626) and torch.isfinite(obs).all() before every one of 500 steps. Successful inner completion means these assertions passed; observation vectors themselves are not saved in the NPZ.",
+    "finite_actions_evidence": "Frozen source asserts action.shape=(18,29) and finite actions on every step; independently checked saved actions (500,18,29) all finite.",
+    "no_resets_evidence": "Frozen source removes listed termination terms, asserts episode_length_buf==step, start_motion_times==0, fixed motion_ids and no term/trunc for every step. All assertions passed.",
+    "auto_resets_disabled": [
+      "time_out",
+      "torso_below_threshold",
+      "torso_angle_below_threshold"
+    ],
+    "robot_state_reset_at_branch": false,
+    "recorded_first_fall_steps": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "world_force_N": [
+      0,
+      80,
+      0
+    ],
+    "commanded_force_control_steps_half_open": [
+      50,
+      60
+    ],
+    "commanded_force_control_steps": [
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59
+    ],
+    "force_target": "torso_link on push and push_duplicate rows6:18",
+    "force_frame_evidence": "Source computes quat_apply_inverse(body_quat_w[:,torso], world=[0,80,0]) each control step before set_external_force_and_torque; force is zero outside step50<=step<60.",
+    "force_time_series_saved": false,
+    "original_goal_offset_and_event_preserved": true,
+    "original_library_identity_max_error": 0,
+    "library_identity_scope": "Numerical equality of live original library dof_pos to archived Kick_references.npz, max error0.0; source never substitutes references in capture mode and asserts fixed grab_pos/offsets/switch_idxs unchanged.",
+    "policy_sha256_matches_original_Kick_interface": true,
+    "original_Kick_interface_policy_sha256": "61b760f62c8d057bbe5217a57304051fdacec2aa93617f910a3d6a19aaf818b1",
+    "summary_row_count": 18,
+    "physical_step_log_markers": [
+      "ISAAC_FEEDBACK_PHYSICAL_STEP 0 branch 78",
+      "ISAAC_FEEDBACK_PHYSICAL_STEP 50 branch 78",
+      "ISAAC_FEEDBACK_PHYSICAL_STEP 100 branch 78",
+      "ISAAC_FEEDBACK_PHYSICAL_STEP 150 branch 78",
+      "ISAAC_FEEDBACK_PHYSICAL_STEP 200 branch 78",
+      "ISAAC_FEEDBACK_PHYSICAL_STEP 250 branch 78",
+      "ISAAC_FEEDBACK_PHYSICAL_STEP 300 branch 78",
+      "ISAAC_FEEDBACK_PHYSICAL_STEP 350 branch 78",
+      "ISAAC_FEEDBACK_PHYSICAL_STEP 400 branch 78",
+      "ISAAC_FEEDBACK_PHYSICAL_STEP 450 branch 78"
+    ]
+  },
+  "duplicate_checks": {
+    "comparison": "push rows6:12 versus push_duplicate rows12:18; same reference order49:54",
+    "absolute_max_full_run": {
+      "positions": 0.05563008785247803,
+      "quaternions": 0.10657328367233276,
+      "joints": 0.37762992549687624,
+      "velocities": 32.94409227371216,
+      "actions": 26.58051872253418,
+      "body_xyz": 0.15472161769866943,
+      "reference_body_xyz": 0,
+      "joint_rmse": 0.09994933009147644,
+      "root_error": 0.05684707313776016,
+      "fall": 0,
+      "goal_error": 0.1552867814898491,
+      "contact_force": 2712.872802734375,
+      "reference_joint_delta": 0
+    },
+    "absolute_max_through_branch78_inclusive": {
+      "positions": 0.01607382297515869,
+      "quaternions": 0.03868624567985535,
+      "joints": 0.15148138999938965,
+      "velocities": 32.94409227371216,
+      "actions": 2.314150333404541,
+      "body_xyz": 0.03801274299621582,
+      "reference_body_xyz": 0,
+      "joint_rmse": 0.014279916882514954,
+      "root_error": 0.014295436441898346,
+      "fall": 0,
+      "goal_error": 0.04443562030792236,
+      "contact_force": 2395.088134765625,
+      "reference_joint_delta": 0
+    },
+    "absolute_max_before_force_including_step50": {
+      "positions": 0.0027965307235717773,
+      "quaternions": 0.005446925759315491,
+      "joints": 0.026787787675857544,
+      "velocities": 7.408672332763672,
+      "actions": 0.30820542573928833,
+      "body_xyz": 0.010233163833618164,
+      "contact_force": 1030.87109375
+    },
+    "absolute_max_initial_step0": {
+      "positions": 1.1920928955078125e-7,
+      "quaternions": 0,
+      "joints": 0,
+      "velocities": 0,
+      "actions": 0.0000014007091522216797,
+      "body_xyz": 5.960464477539062e-7,
+      "contact_force": 0
+    },
+    "clean_vs_push_absolute_max_before_force_including_step50": {
+      "positions": 0.0011696815490722656,
+      "quaternions": 0.0035910382866859436,
+      "joints": 0.024364233016967773,
+      "velocities": 7.114567697048187,
+      "actions": 0.27804887294769287,
+      "body_xyz": 0.0068852901458740234
+    },
+    "quaternion_differences_are_raw_components": true,
+    "mixed_velocity_units": "root linear m/s, root angular rad/s, joint rad/s; velocity maximum is a componentwise number",
+    "duplicate_identical_prefix_verified": false,
+    "interpretation": "Exposed duplicate trajectories diverge before the push and through branch78. Capture execution completed, but identical duplicate physical prefixes are not established. No full PhysX contact-solver clone claim."
+  },
+  "outputs": {
+    "remote_output_directory": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/feedback_isaac_20261006/capture",
+    "files": [
+      "summary.json",
+      "physical_rollout.npz"
+    ],
+    "remote_log": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_feedback_isaac_continuation_20261006_capture.log",
+    "remote_state": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_feedback_isaac_continuation_20261006_capture.state",
+    "hashes": {
+      "policy_actual": "61b760f62c8d057bbe5217a57304051fdacec2aa93617f910a3d6a19aaf818b1",
+      "policy_summary": "61b760f62c8d057bbe5217a57304051fdacec2aa93617f910a3d6a19aaf818b1",
+      "reference_archive": "5831c298e9005997e8a7063f9ab5725b0536b3c1068483a9173cdbcb7f222b24",
+      "physical_rollout": "6fea83b9cf29938ddb1c53b6edd5b1a84cf6cac66e7cc457fe77cd5c91f1b280",
+      "physical_rollout_summary": "6fea83b9cf29938ddb1c53b6edd5b1a84cf6cac66e7cc457fe77cd5c91f1b280",
+      "summary": "08d3dacaca78e6d199250633ed8d5aa88192d1e68881605bff236f3dc4d10d4d",
+      "log": "75e9aee6ebadede77b2e2ad2fab1b7cd511eac00a635e2f02ac34fdaa342b7ab",
+      "python_script": "29e5ec0635f8189539f8c5af18bb0b6faf25c3bd882742b24a734b03d49aa114",
+      "shell_script": "0bdbe0908770140930d8b0a8dafe0ac7f04a6206a2fa155c7c790b220016fd1b"
+    },
+    "policy_actual_matches_summary": true,
+    "rollout_actual_matches_summary": true
+  },
+  "conclusion": {
+    "documented_capture_execution_passed": true,
+    "exposed_state_capture_interface_completed": true,
+    "causal_feedback_benefit_evaluated": false,
+    "pause_replan_same_PhysX_state_continuation_executed": false,
+    "full_physx_contact_solver_clone_verified": false,
+    "formal_feedback_control_gate_evaluated": false,
+    "formal_RL_local_view_gate_evaluated": false,
+    "report_limitations": [
+      "No observation or commanded-force time series is stored; finite observations and force timing are witnessed through frozen source runtime assertions/calls and successful completion.",
+      "Generic summary rows label regenerated_physical_trial_executed=true even in capture. Source runs original references throughout capture; this field does not establish regeneration.",
+      "Duplicate numerical differences are material. No identical physical-prefix or solver-clone readiness conclusion is supported."
+    ]
+  }
+}

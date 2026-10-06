@@ -1,0 +1,21 @@
+{
+  "base_spec": "configs/env-dreamcontrol-r3.json",
+  "provider": "warm existing direct SSH Isaac Sim4.5/Isaac Lab",
+  "dependencies_changed": false,
+  "runtime": "third_party/isaacsim-4.5.0/python.sh",
+  "resource": {"gpu": 0, "gpu_type": "NVIDIA RTX A6000", "cpu_threads": 2},
+  "inputs": {
+    "policy": "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_03-19-31-Kick-a/exported/policy.pt",
+    "references": "third_party/DreamControl/TrajGen/sample/Kick_sim2",
+    "reference_identity_witness": "artifacts/sim2sim_mujoco/interfaces/Kick_references.npz"
+  },
+  "smoke": {
+    "command": "bash scripts/r3_feedback_isaac_continuation_20261006.sh capture",
+    "expect": "ISAAC_FEEDBACK_DOCUMENTED_WITNESS_COMPLETE mode=capture",
+    "seed": 0, "num_envs": 18, "control_steps": 500,
+    "control_dt_s": 0.02, "ppo_updates": 0,
+    "world_push_N": [0,80,0], "world_push_step_range": [50,60],
+    "observations": 626, "actions": 29
+  },
+  "scope": "frozen-policy actual Isaac capture; no formal PPO or innovation pass"
+}

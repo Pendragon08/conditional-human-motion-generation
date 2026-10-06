@@ -1,0 +1,110 @@
+{
+  "status": "COMPLETED_DIAGNOSTIC_ONLY",
+  "retarget_gate": "FAIL",
+  "physical_prefix_equality_gate": "FAIL",
+  "innovation_validated": false,
+  "formal_feedback_control_gate_evaluated": false,
+  "ppo_updates": 0,
+  "world_model_ppo_training_started": false,
+  "platform_order": "Isaac Lab method data and training/evaluation first, frozen-policy MuJoCo transfer second",
+  "capture": {
+    "steps": 500,
+    "num_envs": 18,
+    "sim_s": 10.0,
+    "force_N": [
+      0,
+      80,
+      0
+    ],
+    "force_steps": [
+      50,
+      60
+    ],
+    "all_rows_first_fall_none": true,
+    "caution": "Original capture generic regenerated field naming was incorrect; no generation/reference switch occurred."
+  },
+  "smoke": {
+    "steps": 500,
+    "num_envs": 15,
+    "sim_s": 10.0,
+    "no_force_applied": true,
+    "generated_context_source": "previous nominal MuJoCo sparse residuals",
+    "branch_step": 78,
+    "full_exposed_prefix_differences": {
+      "root_xyz_m": 0.014939486980438232,
+      "root_quaternion": 0.028765438124537468,
+      "joint_rad": 0.18532481789588928,
+      "joint_vel_rad_s": 12.34618854522705,
+      "root_vel": 3.4979448318481445,
+      "last_action": 2.9009180068969727,
+      "current_action": 2.9009180068969727
+    },
+    "full_physx_clone": false,
+    "goal_is_virtual_no_entity_contact": true,
+    "arms": [
+      {
+        "arm": "fixed",
+        "attempted": 3,
+        "eligible_physical_trials": 3,
+        "failed_retarget": 0,
+        "virtual_goal_success_count": 2,
+        "goal_denominator": 3,
+        "observed_first_falls_among_eligible": 0,
+        "tracking_auc_eligible_mean_rad_s": 0.13182780901590985,
+        "different_eligible_denominators_not_direct_comparison": true
+      },
+      {
+        "arm": "fixed_duplicate",
+        "attempted": 3,
+        "eligible_physical_trials": 3,
+        "failed_retarget": 0,
+        "virtual_goal_success_count": 2,
+        "goal_denominator": 3,
+        "observed_first_falls_among_eligible": 0,
+        "tracking_auc_eligible_mean_rad_s": 0.13224395751953125,
+        "different_eligible_denominators_not_direct_comparison": true
+      },
+      {
+        "arm": "predicted",
+        "attempted": 3,
+        "eligible_physical_trials": 3,
+        "failed_retarget": 0,
+        "virtual_goal_success_count": 2,
+        "goal_denominator": 3,
+        "observed_first_falls_among_eligible": 0,
+        "tracking_auc_eligible_mean_rad_s": 0.43638437271118163,
+        "different_eligible_denominators_not_direct_comparison": true
+      },
+      {
+        "arm": "actual",
+        "attempted": 3,
+        "eligible_physical_trials": 2,
+        "failed_retarget": 1,
+        "virtual_goal_success_count": 1,
+        "goal_denominator": 3,
+        "observed_first_falls_among_eligible": 0,
+        "tracking_auc_eligible_mean_rad_s": 0.49081514358520506,
+        "different_eligible_denominators_not_direct_comparison": true
+      },
+      {
+        "arm": "shuffled",
+        "attempted": 3,
+        "eligible_physical_trials": 2,
+        "failed_retarget": 1,
+        "virtual_goal_success_count": 0,
+        "goal_denominator": 3,
+        "observed_first_falls_among_eligible": 1,
+        "tracking_auc_eligible_mean_rad_s": 1.55263484954834,
+        "different_eligible_denominators_not_direct_comparison": true
+      }
+    ]
+  },
+  "reproduction_receipts": {
+    "retarget_summary.json": "54913f2782159fb93e71c0834dba74f334258062872f82358167e00ccfd161ac",
+    "capture_summary.json": "08d3dacaca78e6d199250633ed8d5aa88192d1e68881605bff236f3dc4d10d4d",
+    "smoke_summary.json": "780f081ae9a1aa2c6697b1df1b17ad340f2612c7a4187688a64fcfb03a0e8c61"
+  },
+  "next_steps": "Preserve negative result; repair and validate causal G1-to-human feedback mapping and retarget readiness before confirmatory F. Implement/test version-frozen predictive representation for real Isaac rollout PPO before formal training; no imaginary rollout PPO in first phase.",
+  "diagnostic_only": true,
+  "source_semantics_errata": "results/feedback_isaac_20261006/metadata_errata.json"
+}

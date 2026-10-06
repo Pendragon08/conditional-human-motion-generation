@@ -36,3 +36,14 @@
 - Candidatescoringonly:multi5mean72.32ms,max250.00ms,25/2132decisionsexceed100ms(1.17%). Noonline/50Hz/hardwareclaim. Threecoupledmodel-candidateseedresults andtasksplit preserved.
 - Freshread-onlyreviewer confirmed finalgateFAIL andappropriate stop. Cross-run prefixdeterministic reconstruction isnot per-reference bytehashverification; sameexposed WMtestreferences reused inallstages. Proposedfailurecausesremainhypotheses.
 - Stopcurrentinterfaceexpansion; do notstartF×W/formalPPO. Fnominal sparsefeedback only, nofullprefix orphysicalcontrol. Newreports/results/code will becommitted tothenewprivate repository; teacherbaselineHTML remainsunchanged.
+
+
+## 2026-10-06 — Isaac feedback continuation and world-model PPO design
+
+- User explicitly requests continued F verification, W+PPO improvement, Isaac first then MuJoCo. Existing baseline training unchanged.
+- Original upstream retarget/refinement completed once perplanned/actual/shuffled:3/3,2/3,2/3. NoextraIK; retargetgateFAIL.
+- Fresh documented capture once500×18 normalexit0,6originalrefs49–54,80N/0.2s world-y push; allfinite,noreset/nofall. Duplicate maxq0.37763rad allrun and0.15148rad branch; notexactPhysX clone.
+- Fresh revised smoke once500×15 normalexit0; generated outputs frompriornominalMuJoCo sparse contexts, no perturbation. Fixed/planned/actual/shuffled goalhits2/3,2/3,1/3,0/3. Missingref47actual/shuffled keptfailed; wrongref48 fallsstep105. Originaltargets/clockfixed,noatbranchrobotreset. Prefixqmax0.185325rad; formalcausalFnot evaluated.
+- Independentwitness arrays/hashes andpreservedcapture receipts verified. Capturegenericregenerated=true namingbug retained/explicitlycorrected interpretation; revisedsource only afterexit. Independentcandidatepickle analysis tool missingjaxlie preserved; no install.
+- W+PPO reviewerled plan uses version-frozenstop-gradient predictive representations andtrueIsaacreward/done/GAE, fivecontrolledarms/3seeds, notimaginedPPO.98,304,000transitions/run proposed, notexecuted; extra modelcomputeexplicit. NoformalPPO/newviewGate started.
+- Report23/resultscode preservefailure/stoprules, oldMPCFAILuntouched. Innovationnotvalidated; baseline-onlyteacherHTMLunchanged.

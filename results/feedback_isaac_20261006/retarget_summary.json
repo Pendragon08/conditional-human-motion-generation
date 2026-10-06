@@ -1,0 +1,139 @@
+{
+  "status": "COMPLETE",
+  "stage": "original_retarget_and_official_refinement",
+  "original_code_unchanged": true,
+  "no_extra_ik": true,
+  "generation_context_source": "previous nominal MuJoCo execution, not Isaac post-push",
+  "rows": [
+    {
+      "arm": "predicted",
+      "attempted": 3,
+      "accepted": 3,
+      "rejected": 0,
+      "denominator": 3,
+      "state": "COMPLETE arm=predicted accepted=3 denominator=3 no_extra_ik=true formal_control_gate=false",
+      "log_sha256": "556cd9f98f9907fa001f95fee559f2d29e673a679d8ae2db5b96e0abae9c4e5d",
+      "warning_counts": {
+        "forward_after_grabbing": 0,
+        "root_angle": 0
+      },
+      "samples": [
+        {
+          "local_source_index": 0,
+          "original_reference_id": 46,
+          "original_human_sample": 44,
+          "accepted": true,
+          "output_file": "third_party/DreamControl/TrajGen/sample_feedback_v3_isaac_20261006_predicted/Kick_sim2/0_n.pkl",
+          "sha256": "c98fc14862a8adc3825ce9b98a544e48b0897a77518eb128d23ec0a097fd5dcd",
+          "rejection_reason": null
+        },
+        {
+          "local_source_index": 1,
+          "original_reference_id": 47,
+          "original_human_sample": 76,
+          "accepted": true,
+          "output_file": "third_party/DreamControl/TrajGen/sample_feedback_v3_isaac_20261006_predicted/Kick_sim2/1_n.pkl",
+          "sha256": "bfff9aab345b1e99205e72d0eba54345ed11cd85934481dc538751acb43eed63",
+          "rejection_reason": null
+        },
+        {
+          "local_source_index": 2,
+          "original_reference_id": 48,
+          "original_human_sample": 88,
+          "accepted": true,
+          "output_file": "third_party/DreamControl/TrajGen/sample_feedback_v3_isaac_20261006_predicted/Kick_sim2/2_n.pkl",
+          "sha256": "27553c103ff763d82e9283d868c75c149a46cbce845cf06001f03d313f83d33a",
+          "rejection_reason": null
+        }
+      ]
+    },
+    {
+      "arm": "actual",
+      "attempted": 3,
+      "accepted": 2,
+      "rejected": 1,
+      "denominator": 3,
+      "state": "COMPLETE arm=actual accepted=2 denominator=3 no_extra_ik=true formal_control_gate=false",
+      "log_sha256": "b0eb83f6048cb5df32f5d03e3620989fffd38cbbc5868fc936394f3fd34c0e5a",
+      "warning_counts": {
+        "forward_after_grabbing": 1,
+        "root_angle": 0
+      },
+      "samples": [
+        {
+          "local_source_index": 0,
+          "original_reference_id": 46,
+          "original_human_sample": 44,
+          "accepted": true,
+          "output_file": "third_party/DreamControl/TrajGen/sample_feedback_v3_isaac_20261006_actual/Kick_sim2/0_n.pkl",
+          "sha256": "3ab8346a6aba39db87c22153662424fc81a494a7ae26ae13e890f09d1d4d9c6b",
+          "rejection_reason": null
+        },
+        {
+          "local_source_index": 1,
+          "original_reference_id": 47,
+          "original_human_sample": 76,
+          "accepted": false,
+          "output_file": null,
+          "sha256": null,
+          "rejection_reason": "Official retarget heuristic rejected input; log lacks individual structured reason. Inspect preserved warnings, do not call proven physical infeasibility."
+        },
+        {
+          "local_source_index": 2,
+          "original_reference_id": 48,
+          "original_human_sample": 88,
+          "accepted": true,
+          "output_file": "third_party/DreamControl/TrajGen/sample_feedback_v3_isaac_20261006_actual/Kick_sim2/2_n.pkl",
+          "sha256": "e9169b041a2c29e66add6830a5d630a37f3f667f7e319db3b49ba5d91f69896c",
+          "rejection_reason": null
+        }
+      ]
+    },
+    {
+      "arm": "shuffled",
+      "attempted": 3,
+      "accepted": 2,
+      "rejected": 1,
+      "denominator": 3,
+      "state": "COMPLETE arm=shuffled accepted=2 denominator=3 no_extra_ik=true formal_control_gate=false",
+      "log_sha256": "decca086f8741e42b4845f8fce755eb070a8114491979b6c8502af7344a948bd",
+      "warning_counts": {
+        "forward_after_grabbing": 1,
+        "root_angle": 0
+      },
+      "samples": [
+        {
+          "local_source_index": 0,
+          "original_reference_id": 46,
+          "original_human_sample": 44,
+          "accepted": true,
+          "output_file": "third_party/DreamControl/TrajGen/sample_feedback_v3_isaac_20261006_shuffled/Kick_sim2/0_n.pkl",
+          "sha256": "605de09df0bceb22964fec2ffbd3fb83a18dab929b7b44696094fc9f5ea46527",
+          "rejection_reason": null
+        },
+        {
+          "local_source_index": 1,
+          "original_reference_id": 47,
+          "original_human_sample": 76,
+          "accepted": false,
+          "output_file": null,
+          "sha256": null,
+          "rejection_reason": "Official retarget heuristic rejected input; log lacks individual structured reason. Inspect preserved warnings, do not call proven physical infeasibility."
+        },
+        {
+          "local_source_index": 2,
+          "original_reference_id": 48,
+          "original_human_sample": 88,
+          "accepted": true,
+          "output_file": "third_party/DreamControl/TrajGen/sample_feedback_v3_isaac_20261006_shuffled/Kick_sim2/2_n.pkl",
+          "sha256": "7cab3ed4672763e3782b9c68dc023c43c7bab53166ee88ae1cc95678a868361e",
+          "rejection_reason": null
+        }
+      ]
+    }
+  ],
+  "feedback_retarget_gate": "FAIL",
+  "reason": "actual feedback accepted2/3, required3/3",
+  "physical_continuation_evaluated": false,
+  "innovation_validated": false
+}
