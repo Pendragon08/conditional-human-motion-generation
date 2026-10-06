@@ -1,0 +1,200 @@
+{
+  "status": "PASS",
+  "audit_type": "primary outcome verification and post-hoc diagnostics",
+  "all_240_physical_trials_present_and_unique": true,
+  "config_model_and_oracle_hash_receipts_match": true,
+  "formal_gate_preserved": "FAIL",
+  "formal_gate_checks_recomputed": {
+    "AUC_improvement_at_least_10pct_vs_PPO": true,
+    "reference_CI_lower_positive_vs_PPO": false,
+    "reference_CI_lower_positive_vs_simple": false,
+    "virtual_success_drop_at_most_5pp_vs_PPO": true,
+    "fall_rate_not_increased_vs_PPO": false
+  },
+  "comparisons": {
+    "mlp_multi5_vs_ppo": {
+      "relative_AUC_improvement": 0.15209788389021495,
+      "reference_bootstrap95CI": [
+        -0.04719298583499413,
+        0.28334829553543234
+      ]
+    },
+    "mlp_multi5_vs_simple": {
+      "relative_AUC_improvement": 0.010667481689763947,
+      "reference_bootstrap95CI": [
+        -0.16117852091829588,
+        0.13865820710914603
+      ]
+    },
+    "mlp_multi5_vs_oracle": {
+      "relative_AUC_improvement": -0.20543248162273753,
+      "reference_bootstrap95CI": [
+        -0.3407261922255533,
+        -0.09673806263739546
+      ]
+    },
+    "mlp_single_vs_ppo": {
+      "relative_AUC_improvement": 0.12114249867649074,
+      "reference_bootstrap95CI": [
+        -0.03733353831319576,
+        0.23218351921709016
+      ]
+    },
+    "mlp_single_vs_simple": {
+      "relative_AUC_improvement": -0.025451273797328033,
+      "reference_bootstrap95CI": [
+        -0.16413131934213665,
+        0.09847469695213547
+      ]
+    },
+    "mlp_single_vs_oracle": {
+      "relative_AUC_improvement": -0.24944065911021518,
+      "reference_bootstrap95CI": [
+        -0.48324921663831016,
+        -0.06330884790698982
+      ]
+    },
+    "multi5_vs_single": {
+      "relative_AUC_improvement": 0.035222303009426636,
+      "reference_bootstrap95CI": [
+        -0.08759960779783836,
+        0.15600872804880192
+      ]
+    }
+  },
+  "task_breakdown": {
+    "Kick": {
+      "ppo": {
+        "mean_recovery_AUC_rad_s": 0.24377513836338024,
+        "virtual_target_success_rate": 0.5,
+        "fall_rate": 0.4,
+        "physical_trials": 20
+      },
+      "simple": {
+        "mean_recovery_AUC_rad_s": 0.19371221671721067,
+        "virtual_target_success_rate": 0.5,
+        "fall_rate": 0.25,
+        "physical_trials": 20
+      },
+      "oracle": {
+        "mean_recovery_AUC_rad_s": 0.20468393251435793,
+        "virtual_target_success_rate": 0.55,
+        "fall_rate": 0.26666666666666666,
+        "physical_trials": 60
+      },
+      "mlp_multi5": {
+        "mean_recovery_AUC_rad_s": 0.2555978571068411,
+        "virtual_target_success_rate": 0.5333333333333333,
+        "fall_rate": 0.45,
+        "physical_trials": 60
+      },
+      "mlp_single": {
+        "mean_recovery_AUC_rad_s": 0.24655322720609787,
+        "virtual_target_success_rate": 0.55,
+        "fall_rate": 0.36666666666666664,
+        "physical_trials": 60
+      }
+    },
+    "Punch": {
+      "ppo": {
+        "mean_recovery_AUC_rad_s": 0.3945366565389287,
+        "virtual_target_success_rate": 0.35,
+        "fall_rate": 0.4,
+        "physical_trials": 20
+      },
+      "simple": {
+        "mean_recovery_AUC_rad_s": 0.353349475503225,
+        "virtual_target_success_rate": 0.4,
+        "fall_rate": 0.3,
+        "physical_trials": 20
+      },
+      "oracle": {
+        "mean_recovery_AUC_rad_s": 0.24430506511652686,
+        "virtual_target_success_rate": 0.43333333333333335,
+        "fall_rate": 0.36666666666666664,
+        "physical_trials": 60
+      },
+      "mlp_multi5": {
+        "mean_recovery_AUC_rad_s": 0.2856280645286618,
+        "virtual_target_success_rate": 0.4166666666666667,
+        "fall_rate": 0.4,
+        "physical_trials": 60
+      },
+      "mlp_single": {
+        "mean_recovery_AUC_rad_s": 0.3144318819270697,
+        "virtual_target_success_rate": 0.36666666666666664,
+        "fall_rate": 0.3,
+        "physical_trials": 60
+      }
+    }
+  },
+  "coupled_model_candidate_seed_breakdown": {
+    "mlp_multi5": {
+      "42": {
+        "mean_recovery_AUC_rad_s": 0.26421240316620886,
+        "virtual_target_success_rate": 0.4,
+        "fall_rate": 0.45,
+        "physical_trials": 40
+      },
+      "43": {
+        "mean_recovery_AUC_rad_s": 0.26159777370323545,
+        "virtual_target_success_rate": 0.5,
+        "fall_rate": 0.45,
+        "physical_trials": 40
+      },
+      "44": {
+        "mean_recovery_AUC_rad_s": 0.28602870558381005,
+        "virtual_target_success_rate": 0.525,
+        "fall_rate": 0.375,
+        "physical_trials": 40
+      }
+    },
+    "mlp_single": {
+      "42": {
+        "mean_recovery_AUC_rad_s": 0.27804442591460277,
+        "virtual_target_success_rate": 0.525,
+        "fall_rate": 0.375,
+        "physical_trials": 40
+      },
+      "43": {
+        "mean_recovery_AUC_rad_s": 0.287823444734038,
+        "virtual_target_success_rate": 0.425,
+        "fall_rate": 0.275,
+        "physical_trials": 40
+      },
+      "44": {
+        "mean_recovery_AUC_rad_s": 0.27560979305111066,
+        "virtual_target_success_rate": 0.425,
+        "fall_rate": 0.35,
+        "physical_trials": 40
+      }
+    }
+  },
+  "timing": {
+    "mlp_multi5": {
+      "mean_decision_wall_s": 0.07231600434426742,
+      "max_decision_wall_s": 0.24999737739562988,
+      "configured_100ms_deadline_overruns": 25,
+      "decisions": 2132,
+      "timed_scope": "choose_model candidate scoring only; excludes main PPO, physics, communication and hardware I/O",
+      "exact_20ms_overrun_count_unavailable": true,
+      "not_hardware_realtime_proof": true
+    },
+    "mlp_single": {
+      "mean_decision_wall_s": 0.0721799638411578,
+      "max_decision_wall_s": 0.10174107551574707,
+      "configured_100ms_deadline_overruns": 20,
+      "decisions": 2125,
+      "timed_scope": "choose_model candidate scoring only; excludes main PPO, physics, communication and hardware I/O",
+      "exact_20ms_overrun_count_unavailable": true,
+      "not_hardware_realtime_proof": true
+    }
+  },
+  "cross_run_initial_states_reconstructed_with_same_deterministic_prefix_not_byte_hash_verified": true,
+  "reference_bootstrap_averages_bound_model_candidate_seeds": true,
+  "reference_ci_does_not_cover_full_model_candidate_randomness": true,
+  "reuse_of_test_references_means_staged_pilot_not_final_independent_confirmation": true,
+  "virtual_target_not_physical_contact": true,
+  "no_new_model_training_or_control_trials": true,
+  "full_innovation_validated": false
+}

@@ -1,0 +1,21 @@
+{
+  "version": "predictive-ablation-v2-before-first-fit",
+  "inherits_collection": "feedback_world_model_pilot_20261006.json",
+  "models": ["mlp_single", "mlp_multi5", "state_only_multi5", "mlp_notask_multi5"],
+  "causal_action_dimensions": 27,
+  "remaining_two_policy_outputs": "recorded for provenance, always zeroed in all dynamics features",
+  "primary_metric": "H10 body-site FK RMSE on reference-heldout nominal+dither; task/reference/condition macro average",
+  "primary_arm": "mlp_multi5, independent seeds42/43/44; ensemble result secondary only",
+  "simple_baseline_rule": "best of persistence, constant_velocity and ridge; conservative test comparison",
+  "uncertainty_claim": false,
+  "bootstrap_clusters": "task/reference; mean over conditions, mean over three independent model seeds",
+  "bootstrap_repetitions": 2000,
+  "bootstrap_seed": 20261006,
+  "confidence_level": 0.95,
+  "minimum_relative_H10_improvement": 0.10,
+  "required_lower_CI": 0.0,
+  "action_input_advantage": "same H10 FK metric, lower95%CI for action-conditioned improvement over state-only >0",
+  "force_reporting_phases": ["pre_force", "force_onset_crossing", "active_force", "post_force_recovery_60_149", "late_recovery"],
+  "censoring": "retain fall/length records; macroaverage references; flag zero-window references, no success inference",
+  "confirmed_control_benefit": false
+}

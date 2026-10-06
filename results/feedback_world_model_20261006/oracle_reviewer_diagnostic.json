@@ -1,0 +1,77 @@
+{
+  "status": "COMPLETE",
+  "type": "post-hoc reviewer diagnostic, not replacement gate",
+  "original_formal_gate_preserved": "PASS",
+  "relative_oracle_AUC_improvement_vs_simple": 0.17927172745634867,
+  "reference_bootstrap95CI_vs_simple": [
+    0.013198654373596536,
+    0.3093879239777635
+  ],
+  "task_breakdown": [
+    {
+      "task": "Kick",
+      "arm": "ppo",
+      "trials": 20,
+      "mean_recovery_AUC_rad_s": 0.24377513836338024,
+      "virtual_goal_success_rate": 0.5,
+      "fall_rate": 0.4,
+      "mean_abs_action_change": 0.19784074068857574,
+      "mean_oracle_decision_wall_s": null
+    },
+    {
+      "task": "Kick",
+      "arm": "simple",
+      "trials": 20,
+      "mean_recovery_AUC_rad_s": 0.19371221671721067,
+      "virtual_goal_success_rate": 0.5,
+      "fall_rate": 0.25,
+      "mean_abs_action_change": 0.12763573823254848,
+      "mean_oracle_decision_wall_s": null
+    },
+    {
+      "task": "Kick",
+      "arm": "oracle",
+      "trials": 60,
+      "mean_recovery_AUC_rad_s": 0.20468393251435793,
+      "virtual_goal_success_rate": 0.55,
+      "fall_rate": 0.26666666666666666,
+      "mean_abs_action_change": 0.14824762629300633,
+      "mean_oracle_decision_wall_s": 0.13863897395354732
+    },
+    {
+      "task": "Punch",
+      "arm": "ppo",
+      "trials": 20,
+      "mean_recovery_AUC_rad_s": 0.3945366565389287,
+      "virtual_goal_success_rate": 0.35,
+      "fall_rate": 0.4,
+      "mean_abs_action_change": 0.23190125981947934,
+      "mean_oracle_decision_wall_s": null
+    },
+    {
+      "task": "Punch",
+      "arm": "simple",
+      "trials": 20,
+      "mean_recovery_AUC_rad_s": 0.353349475503225,
+      "virtual_goal_success_rate": 0.4,
+      "fall_rate": 0.3,
+      "mean_abs_action_change": 0.18042818389640475,
+      "mean_oracle_decision_wall_s": null
+    },
+    {
+      "task": "Punch",
+      "arm": "oracle",
+      "trials": 60,
+      "mean_recovery_AUC_rad_s": 0.24430506511652686,
+      "virtual_goal_success_rate": 0.43333333333333335,
+      "fall_rate": 0.36666666666666664,
+      "mean_abs_action_change": 0.21246656604871061,
+      "mean_oracle_decision_wall_s": 0.14081072799668964
+    }
+  ],
+  "all200_trials_present_and_unique": true,
+  "candidate_seed_stochasticity_not_fully_covered_by_reference_bootstrap": true,
+  "oracle_scope": "five-candidate fixed-cost simulator oracle; not an upper bound on all world-model control designs",
+  "learned_W_allowed_next": true,
+  "no_full_innovation_claim": true
+}

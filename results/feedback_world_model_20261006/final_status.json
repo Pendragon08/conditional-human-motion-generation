@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-06",
+  "scope": "bounded staged Kick/Punch pilot; no formal PPO, extra IK, full-prefix feedback or physical contact experiment",
+  "F": {
+    "sparse_condition_response_complete": true,
+    "full_HumanML_prefix_implemented": false,
+    "post_regeneration_robot_control_evaluated": false,
+    "online_latency_gate_passed": false,
+    "full_innovation_validated": false
+  },
+  "W": {
+    "recorded_action_prediction_gate": {
+      "status": "PASS",
+      "primary": "H10 reference-macro body-site FK RMSE, nominal+dither test",
+      "test_reference_clusters": 40,
+      "training_transitions": 260076,
+      "data_gate_pass": true,
+      "macro_means_m": {
+        "constant_velocity": 0.06625975251758066,
+        "mlp_multi5_ensemble": 0.017928945411295028,
+        "mlp_multi5_seed42": 0.019519437085513403,
+        "mlp_multi5_seed43": 0.01938756457502222,
+        "mlp_multi5_seed44": 0.019256714135146725,
+        "mlp_notask_multi5_ensemble": 0.018126638321549066,
+        "mlp_notask_multi5_seed42": 0.020372999157048675,
+        "mlp_notask_multi5_seed43": 0.019682246917279995,
+        "mlp_notask_multi5_seed44": 0.019335019039521756,
+        "mlp_single_ensemble": 0.020398477933003836,
+        "mlp_single_seed42": 0.0221581300583071,
+        "mlp_single_seed43": 0.02239026098298024,
+        "mlp_single_seed44": 0.022804202804797266,
+        "persistence": 0.055630548033706796,
+        "ridge": 0.023005788420213846,
+        "state_only_multi5_ensemble": 0.022805044518159675,
+        "state_only_multi5_seed42": 0.02567942429062353,
+        "state_only_multi5_seed43": 0.023886981202153507,
+        "state_only_multi5_seed44": 0.023798191051028074
+      },
+      "relative_improvement_vs_best_simple": 0.15725968999208784,
+      "reference_bootstrap_95ci": [
+        0.12691483394099537,
+        0.1884530533242937
+      ],
+      "relative_improvement_vs_state_only": 0.20719640622635327,
+      "action_bootstrap_95ci": [
+        0.1746844495563359,
+        0.2375136711073592
+      ],
+      "primary_improvement_gate_pass": true,
+      "action_input_gate_pass": true,
+      "ensemble_not_used_for_gate": true,
+      "control_benefit_gate_pass": false,
+      "full_innovation_validated": false
+    },
+    "limited_simulator_oracle_gate": "PASS",
+    "learned_real_control_gate": "FAIL",
+    "control_physical_trials": 440,
+    "learned_completed_trials": 240,
+    "learned_normal_exit": 0,
+    "multi5_relative_AUC_improvement_vs_PPO": 0.15209788389021495,
+    "reference_CI_vs_PPO": [
+      -0.04719298583499413,
+      0.28334829553543234
+    ],
+    "multi5_relative_AUC_improvement_vs_simple": 0.010667481689763947,
+    "reference_CI_vs_simple": [
+      -0.16117852091829588,
+      0.13865820710914603
+    ],
+    "rates": {
+      "mlp_multi5": {
+        "mean_recovery_AUC_rad_s": 0.27061296081775144,
+        "virtual_goal_success_rate": 0.475,
+        "fall_rate": 0.425,
+        "deadline_overrun_rate": 0.01172607879924953
+      },
+      "mlp_single": {
+        "mean_recovery_AUC_rad_s": 0.2804925545665838,
+        "virtual_goal_success_rate": 0.4583333333333333,
+        "fall_rate": 0.3333333333333333,
+        "deadline_overrun_rate": 0.009411764705882352
+      }
+    },
+    "no_formal_PPO_update": true
+  },
+  "stop_current_control_interface_expansion": true,
+  "F_by_W_factorial_not_run": true,
+  "full_innovation_validated": false,
+  "primary_integrity_check_passed_not_scientific_control_passed": true,
+  "same_family_readonly_reviewer_confirmed_control_FAIL": true,
+  "fit_computed_outputs_complete_but_launcher_exit2_and_witness_post_start": true,
+  "data_weights_private_licensed_sources_not_uploaded": true,
+  "result_file_sha256": {
+    "feedback_generation_interface_v3.json": "538ab0a751c7c4d3d6f0ba3e07914d42978913c2951697a124e2dc30dcf79331",
+    "predictive_gate.json": "fa97ed55f2cf968f92129576eac98bdc7506339e01da9262725a3be75f4b4700",
+    "oracle_summary.json": "f997be0eba8ee6bb0216a254f39b768fa9ba4c4fbe916aa8f07b06fdace6795a",
+    "learned_control_summary.json": "af5007b2d426cc91ac8e4cf6b4e68064fcc614f25e9b0d8126e3f055ed51c9c0",
+    "learned_control_reviewer_diagnostic.json": "1d5884150e346000eead1815a6e297a69b2420865450ba5dde05453d195e6e07",
+    "execution_audit.json": "5188b3a9dd6b075fce9542c6615cf3833831c9d1f3642ad143629f23fe7815c3"
+  }
+}

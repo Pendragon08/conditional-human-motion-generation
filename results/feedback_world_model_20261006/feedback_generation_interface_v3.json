@@ -1,0 +1,110 @@
+{
+  "status": "COMPLETE",
+  "same_seed": 42,
+  "same_denoising_budget": true,
+  "same_text_and_future_original_goal": true,
+  "past_hints_are_executed_vs_planned": true,
+  "results": {
+    "predicted": {
+      "finite": true,
+      "generated_samples": 3,
+      "goal_errors_m": [
+        0.1685846745967865,
+        0.21976667642593384,
+        0.13256193697452545
+      ],
+      "mean_original_goal_error_m": 0.1736377626657486,
+      "context_errors_m": [
+        0.074526846408844,
+        0.0055718920193612576,
+        0.008984528481960297
+      ],
+      "mean_condition_error_m": 0.029694422303388517,
+      "errors_to_same_actual_context_m": [
+        0.1258508265018463,
+        0.06342697143554688,
+        0.05667717754840851
+      ],
+      "mean_error_to_same_actual_context_m": 0.08198499182860057,
+      "results_sha256": "ed363090d4ebecf1b9d12bfcfb4aff6b4d79145ba8f5b2ef8202762889dce796",
+      "timing": {
+        "arm": "predicted",
+        "wall_s": 94.6992518901825,
+        "generated_samples": 3,
+        "online_realtime_control_test": false,
+        "full_humanml_prefix": false
+      },
+      "mean_generated_position_change_vs_planned_m": 0.0
+    },
+    "actual": {
+      "finite": true,
+      "generated_samples": 3,
+      "goal_errors_m": [
+        0.17284205555915833,
+        0.1994772106409073,
+        0.134504035115242
+      ],
+      "mean_original_goal_error_m": 0.16894110043843588,
+      "context_errors_m": [
+        0.06933170557022095,
+        0.014728705398738384,
+        0.018964432179927826
+      ],
+      "mean_condition_error_m": 0.034341614382962384,
+      "errors_to_same_actual_context_m": [
+        0.06933170557022095,
+        0.014728705398738384,
+        0.018964432179927826
+      ],
+      "mean_error_to_same_actual_context_m": 0.034341614382962384,
+      "results_sha256": "92ddfd6c49fa3da4ddaeaad0c701996dab87b109ff0a59ac523e09501b280f55",
+      "timing": {
+        "arm": "actual",
+        "wall_s": 107.27010655403137,
+        "generated_samples": 3,
+        "online_realtime_control_test": false,
+        "full_humanml_prefix": false
+      },
+      "mean_generated_position_change_vs_planned_m": 0.034922875463962555
+    },
+    "shuffled": {
+      "finite": true,
+      "generated_samples": 3,
+      "goal_errors_m": [
+        0.17472971975803375,
+        0.18593259155750275,
+        0.10994890332221985
+      ],
+      "mean_original_goal_error_m": 0.1568704048792521,
+      "context_errors_m": [
+        0.014635905623435974,
+        0.014251979067921638,
+        0.06351524591445923
+      ],
+      "mean_condition_error_m": 0.03080104353527228,
+      "errors_to_same_actual_context_m": [
+        0.21675695478916168,
+        0.050689857453107834,
+        0.19171707332134247
+      ],
+      "mean_error_to_same_actual_context_m": 0.153054628521204,
+      "results_sha256": "ec798e8f9628f67d0940255f6a850ad1b2a0ed6b3339ef971eec8a052a84b850",
+      "timing": {
+        "arm": "shuffled",
+        "wall_s": 93.74182486534119,
+        "generated_samples": 3,
+        "online_realtime_control_test": false,
+        "full_humanml_prefix": false
+      },
+      "mean_generated_position_change_vs_planned_m": 0.06453992426395416
+    }
+  },
+  "full_humanml_prefix_verified": false,
+  "saved_hints_match_inputs": true,
+  "zero_residual_identity_and_translation_fixtures": true,
+  "context_accuracy_means_are_condition_fitting_not_physical_execution_accuracy": true,
+  "actual_robot_execution_after_regeneration_evaluated": false,
+  "online_feedback_control_evaluated": false,
+  "full_innovation_validated": false,
+  "scope": "Sparse conditioning response experiment, not a control-success ablation"
+}

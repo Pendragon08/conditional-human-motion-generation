@@ -4,6 +4,8 @@
 
 当前已归档DreamControl控制任务为 **11/11**：Kick85.3%、Punch87.2%、Jump100%、Sit100%、Pick93.9%、Bimanual-Pick99.9%、Ground-Pick38.1%、Ground-Pick-Top0%、Button-Press99.9%、Open-Drawer100%、Open-Door99.0%。这是保存的评估结果，不是服务器实时状态或整篇论文完成比例；Ground-Pick与Ground-Pick-Top尚无MuJoCo验证；0%保留为正式失败成绩，不代表效果复现通过。历史阶段快照在下文保留，任务时间线以[多任务基线报告](reports/03_dreamcontrol_multitask_baselines.md)为准。
 
+2026-10-06用户重新授权研究两项候选：CLoSD式执行反馈F与短时世界模型W。首轮完成：9条人体生成接口对照、1,096回合动力学采集、四神经预测臂×三种子及440回合MuJoCo真实控制对照。F改变生成但尚无在线/执行收益；W的H10预测门和局部仿真器oracle门通过，**学习模型真实控制门FAIL**（恢复AUC点改善15.21%但CI跨零、仅比平滑低1.07%、跌倒40%→42.5%）。不启动F×W或正式PPO，完整创新未验证。已有基线和教师汇报保持原口径。[顶刊/顶会调研](reports/20_execution_feedback_world_model_literature_20261006.md) · [首轮可行性结果与负结果](reports/21_feedback_world_model_feasibility_20261006.md) · [固定消融计划](plans/feedback_world_model_ablation_20261006.md)。不使用原始重定向后的额外机器人IK，不把旧I1结果当本轮验证。
+
 本仓库记录**条件驱动人体运动生成**课题的可复现实验。研究流程是条件输入 → 生成人体运动 → 物理／接触修正 → 机器人参考动作 → 固定下游执行与反馈。机器人跟踪用于检验生成动作是否可执行，并非本课题的唯一研究对象。本仓库与原人形机器人格斗项目分开。
 
 2026-10-02 04:55 UTC（北京时间10月2日12:55）：用户决定暂不继续创新点验证，先完成 DreamControl 与 CLoSD 原论文复现。DreamControl已完成 **6/11** 个控制任务：Kick85.3%、Punch87.2%、Jump100.0%、Sit100.0%、Pick93.9%、Bimanual-Pick99.9%（Sit与Bimanual-Pick使用官方USD I/O显示适配，失败记录保留）；Ground-Pick已自动开始，后续四项排队。CLoSD两组官方已发布权重的4096环境评估已正常完成，新的3072环境4000轮微调仍等待当前实际场景的本地可视确认。完整验收边界见[基线复现进度](reports/03_baseline_summary.md)，已完成控制器的[结果视频](media/DreamControl_official_baselines.html)。

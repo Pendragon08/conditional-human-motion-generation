@@ -1,0 +1,16 @@
+{
+  "protocol": "W-only learned control staged pilot v1, not independent final confirmation",
+  "inherits_candidate_and_cost_config": "feedback_world_oracle_20261006.json",
+  "arms": ["mlp_multi5", "mlp_single"],
+  "state_only_control": "Analytically chooses zero residual: predicted states independent of candidate action, positive residual cost. Validate selection on validation only, reuse PPO outcomes rather than duplicate physical tests.",
+  "model_and_candidate_seeds": [42, 43, 44],
+  "evaluation_references": [46, 66],
+  "validation_witness_reference": 36,
+  "no_model_refit": true,
+  "baseline_oracle_results_reused_not_rerun": true,
+  "same_state_reference_candidate_budget_and_cost": true,
+  "gate": {"minimum_recovery_AUC_improvement_vs_PPO": 0.10, "bootstrap_lower_CI_vs_PPO_positive": true, "bootstrap_lower_CI_vs_simple_positive": true, "maximum_virtual_goal_success_drop": 0.05, "fall_rate_must_not_increase": true},
+  "online_deadline_s": 0.1,
+  "deadline_policy": "offline synchronous feasibility only; log all overruns, do not pretend real-time if exceeded",
+  "scope": "fixed Kick/Punch policy, virtual targets, no extra IK or PPO update or diffusion feedback"
+}
