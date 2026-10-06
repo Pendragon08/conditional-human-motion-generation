@@ -1,0 +1,73 @@
+Importing module 'gym_38' (/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/python/isaacgym/_bindings/linux-x86_64/gym_38.so)
+Setting GYM_USD_PLUG_INFO_PATH to /data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/python/isaacgym/_bindings/linux-x86_64/usd/plugInfo.json
+PyTorch version 1.13.1+cu117
+Device count 1
+/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/python/isaacgym/_bindings/src/gymtorch
+Using /data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd-r3-torch-extensions as PyTorch extensions root...
+Emitting ninja build file /data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd-r3-torch-extensions/gymtorch/build.ninja...
+Building extension module gymtorch...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module gymtorch...
+2026-10-06 03:17:57,777 - INFO - logger - logger initialized
+MOVING MOTION DATA TO GPU, USING CACHE: False
+MOVING MOTION DATA TO GPU, USING CACHE: False
+Importing module 'rlgpu_38' (/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/python/isaacgym/_bindings/linux-x86_64/rlgpu_38.so)
+Data dependencies are cached at [/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b]
+torch_deterministic: False
+Setting seed: 42
+Found checkpoint
+output/CLoSD/CLoSD_multitask_finetune/Humanoid.pth
+Started to play
+Not applying any task filter.
+Not connected to PVD
++++ Using GPU PhysX
+Physics Engine: PhysX
+Physics Device: cuda:0
+GPU Pipeline: enabled
+Using VHACD cache directory '/home/ouyanghao/.isaacgym/vhacd'
+Found existing convex decomposition for mesh 'closd/data/assets/urdf/../mesh/strike/target_full.obj'
+Found existing convex decomposition for mesh 'closd/data/assets/urdf/../mesh/sofa/back_sit.obj'
+Found existing convex decomposition for mesh 'closd/data/assets/urdf/../mesh/sofa/bottom.obj'
+Found existing convex decomposition for mesh 'closd/data/assets/urdf/../mesh/sofa/left.obj'
+Found existing convex decomposition for mesh 'closd/data/assets/urdf/../mesh/sofa/legs.obj'
+Found existing convex decomposition for mesh 'closd/data/assets/urdf/../mesh/sofa/right.obj'
+Found existing convex decomposition for mesh 'closd/data/assets/urdf/../mesh/sofa/sit.obj'
+!!!! Using modified SMPL starting pose !!!!
+
+****************************** Current motion keys ******************************
+Sampling motion: torch.Size([12])_torch.Size([12])_tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0')
+['standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing']
+*********************************************************************************
+
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+  0%|          | 0/12 [00:00<?, ?it/s]100%|██████████| 12/12 [00:00<00:00, 127100.12it/s]
+Loaded 12 motions with a total length of 399.600s and 12000 frames.
+Data dependencies are cached at [/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b]
+Reading closd/diffusion_planner/./dataset/humanml_opt.txt
+Loading dataset t2m ...
+Loading motions from cache file [/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b/data/humanml3d/t2m_test.npy]...
+Pointer Pointing at 0
+MDM dataset size: 4648
+TRANS_DEC init
+EMBED TEXT
+Loading BERT...
+Loading checkpoints from [./closd/diffusion_planner/save/DiP_multi-target_10steps_context20_predict40/model000300000.pt]...
+loading avg model
+Overwriting [context_len, pred_len] to [20, 40] according to the prefix completion MDM parameters.
+RL device:  cuda:0
+12
+69
+574
+0
+{'observation_space': Box(-inf, inf, (574,), float32), 'action_space': Box(-1.0, 1.0, (69,), float32), 'agents': 1, 'value_size': 1}
+RunningMeanStd:  (574,)
+RunningMeanStd:  (1960,)
+=> loading checkpoint 'output/CLoSD/CLoSD_multitask_finetune/Humanoid.pth'
+=> loading checkpoint 'output/CLoSD/CLoSD_multitask_finetune/Humanoid.pth'
+CLOSD_RECORDING_PROGRESS 30
+CLOSD_RECORDING_BOUND_REACHED 30
+CLOSD_NATIVE_CLEANUP_BEGIN
+CLOSD_NATIVE_CLEANUP_COMPLETE
+CLOSD_RECORDING_COMPLETE {"status": "COMPLETE", "kind": "frozen_policy_demonstration", "source": "actual_isaacgym_camera", "checkpoint": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/CLoSD/output/CLoSD/CLoSD_multitask_finetune/Humanoid.pth", "checkpoint_sha256": "7ead3778b95516d8b91b7c5939674e45dd0ad10fcc22da60f9f57d204695f6ac", "experiment": "CLoSD_multitask_finetune", "seed": 42, "num_envs": 12, "frames": 30, "cfg": 7.5, "episode_length": 500, "official_source_commit": "d8950bdb78312fcd2844f336b3fc079e7368c87f", "elapsed_seconds": 25.069276809692383, "normal_exit": true, "evaluation_video_verified": false, "note": "Post-hoc demonstration; not a recording of the completed 4096-env evaluation. SIT includes FSM GET_UP when reached; inspect state trace.", "videos": [{"task": "REACH", "environment_id": 4, "file": "reach.mp4", "fps": 29.999998435378156, "width": 640, "height": 480, "includes_get_up_transition": false, "sha256": "b34eb5be43143028c055cb32e4fd71b905db7b6dc84e30b593eea0650b92acdd", "ffprobe": {"width": 640, "height": 480, "r_frame_rate": "30/1", "duration": "1.000000", "nb_frames": "30"}, "bytes": 38116}, {"task": "STRIKE_KICK", "environment_id": 1, "file": "strike_kick.mp4", "fps": 29.999998435378156, "width": 640, "height": 480, "includes_get_up_transition": false, "sha256": "ded51c804ecccc6e2d7c75dbc46522ca4eb05750a31c37ddc04a6fa805907a7f", "ffprobe": {"width": 640, "height": 480, "r_frame_rate": "30/1", "duration": "1.000000", "nb_frames": "30"}, "bytes": 36634}, {"task": "STRIKE_PUNCH", "environment_id": 2, "file": "strike_punch.mp4", "fps": 29.999998435378156, "width": 640, "height": 480, "includes_get_up_transition": false, "sha256": "33c6bf195ffec94a30b03877fec1aae62423c77cb456aabe259667e4f6009aef", "ffprobe": {"width": 640, "height": 480, "r_frame_rate": "30/1", "duration": "1.000000", "nb_frames": "30"}, "bytes": 35368}, {"task": "SIT", "environment_id": 0, "file": "sit.mp4", "fps": 29.999998435378156, "width": 640, "height": 480, "includes_get_up_transition": true, "sha256": "cb6b2fa3f62539a87f7a4f00156ad93533512330e5986b9ab5a4faa728cb0dbd", "ffprobe": {"width": 640, "height": 480, "r_frame_rate": "30/1", "duration": "1.000000", "nb_frames": "30"}, "bytes": 38264}], "trace_sha256": "c388aacae55044763d81cfe255650d4ab3433352fe84b8f59225c5e21833290f"}
+timeout: the monitored command dumped core

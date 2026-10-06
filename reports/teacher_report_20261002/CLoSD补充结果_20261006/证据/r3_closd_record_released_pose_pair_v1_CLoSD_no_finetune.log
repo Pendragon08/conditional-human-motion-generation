@@ -1,0 +1,109 @@
+Importing module 'gym_38' (/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/python/isaacgym/_bindings/linux-x86_64/gym_38.so)
+Setting GYM_USD_PLUG_INFO_PATH to /data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/python/isaacgym/_bindings/linux-x86_64/usd/plugInfo.json
+PyTorch version 1.13.1+cu117
+Device count 1
+/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/python/isaacgym/_bindings/src/gymtorch
+Using /data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd-r3-torch-extensions as PyTorch extensions root...
+Emitting ninja build file /data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd-r3-torch-extensions/gymtorch/build.ninja...
+Building extension module gymtorch...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module gymtorch...
+2026-10-06 03:33:58,535 - INFO - logger - logger initialized
+MOVING MOTION DATA TO GPU, USING CACHE: False
+MOVING MOTION DATA TO GPU, USING CACHE: False
+Importing module 'rlgpu_38' (/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/python/isaacgym/_bindings/linux-x86_64/rlgpu_38.so)
+Data dependencies are cached at [/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b]
+torch_deterministic: False
+Setting seed: 42
+Found checkpoint
+output/CLoSD/CLoSD_no_finetune/Humanoid.pth
+Started to play
+Not applying any task filter.
+Not connected to PVD
++++ Using GPU PhysX
+Physics Engine: PhysX
+Physics Device: cuda:0
+GPU Pipeline: enabled
+Using VHACD cache directory '/home/ouyanghao/.isaacgym/vhacd'
+Found existing convex decomposition for mesh 'closd/data/assets/urdf/../mesh/strike/target_full.obj'
+Found existing convex decomposition for mesh 'closd/data/assets/urdf/../mesh/sofa/back_sit.obj'
+Found existing convex decomposition for mesh 'closd/data/assets/urdf/../mesh/sofa/bottom.obj'
+Found existing convex decomposition for mesh 'closd/data/assets/urdf/../mesh/sofa/left.obj'
+Found existing convex decomposition for mesh 'closd/data/assets/urdf/../mesh/sofa/legs.obj'
+Found existing convex decomposition for mesh 'closd/data/assets/urdf/../mesh/sofa/right.obj'
+Found existing convex decomposition for mesh 'closd/data/assets/urdf/../mesh/sofa/sit.obj'
+!!!! Using modified SMPL starting pose !!!!
+
+****************************** Current motion keys ******************************
+Sampling motion: torch.Size([12])_torch.Size([12])_tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device='cuda:0')
+['standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing']
+*********************************************************************************
+
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+  0%|          | 0/12 [00:00<?, ?it/s]100%|██████████| 12/12 [00:00<00:00, 141381.03it/s]
+Loaded 12 motions with a total length of 399.600s and 12000 frames.
+Data dependencies are cached at [/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b]
+Reading closd/diffusion_planner/./dataset/humanml_opt.txt
+Loading dataset t2m ...
+Loading motions from cache file [/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b/data/humanml3d/t2m_test.npy]...
+Pointer Pointing at 0
+MDM dataset size: 4648
+TRANS_DEC init
+EMBED TEXT
+Loading BERT...
+Loading checkpoints from [./closd/diffusion_planner/save/DiP_multi-target_10steps_context20_predict40/model000300000.pt]...
+loading avg model
+Overwriting [context_len, pred_len] to [20, 40] according to the prefix completion MDM parameters.
+RL device:  cuda:0
+12
+69
+574
+0
+{'observation_space': Box(-inf, inf, (574,), float32), 'action_space': Box(-1.0, 1.0, (69,), float32), 'agents': 1, 'value_size': 1}
+RunningMeanStd:  (574,)
+RunningMeanStd:  (1960,)
+=> loading checkpoint 'output/CLoSD/CLoSD_no_finetune/Humanoid.pth'
+=> loading checkpoint 'output/CLoSD/CLoSD_no_finetune/Humanoid.pth'
+CLOSD_POSE_PROGRESS 30
+CLOSD_POSE_PROGRESS 60
+CLOSD_POSE_PROGRESS 90
+CLOSD_POSE_PROGRESS 120
+CLOSD_POSE_PROGRESS 150
+CLOSD_POSE_PROGRESS 180
+reward: 63.170814514160156 steps: 181.0
+CLOSD_POSE_PROGRESS 210
+CLOSD_POSE_PROGRESS 240
+CLOSD_POSE_PROGRESS 270
+CLOSD_POSE_PROGRESS 300
+CLOSD_POSE_PROGRESS 330
+CLOSD_POSE_PROGRESS 360
+reward: 70.5733413696289 steps: 193.0
+CLOSD_POSE_PROGRESS 390
+CLOSD_POSE_PROGRESS 420
+CLOSD_POSE_PROGRESS 450
+CLOSD_POSE_PROGRESS 480
+reward: 124.9845303622159 steps: 499.0
+CLOSD_POSE_PROGRESS 510
+CLOSD_POSE_PROGRESS 540
+CLOSD_POSE_PROGRESS 570
+CLOSD_POSE_PROGRESS 600
+CLOSD_POSE_PROGRESS 630
+reward: 51.51697540283203 steps: 157.0
+reward: 34.18800735473633 steps: 158.0
+CLOSD_POSE_PROGRESS 660
+reward: 60.16758346557617 steps: 171.0
+CLOSD_POSE_PROGRESS 690
+CLOSD_POSE_PROGRESS 720
+reward: 56.340660095214844 steps: 225.0
+CLOSD_POSE_PROGRESS 750
+CLOSD_POSE_PROGRESS 780
+CLOSD_POSE_PROGRESS 810
+CLOSD_POSE_PROGRESS 840
+CLOSD_POSE_PROGRESS 870
+reward: 124.94371032714844 steps: 499.0
+CLOSD_POSE_PROGRESS 900
+CLOSD_POSE_BOUND_REACHED 900
+CLOSD_NATIVE_CLEANUP_BEGIN
+CLOSD_NATIVE_CLEANUP_COMPLETE
+CLOSD_RECORDING_COMPLETE

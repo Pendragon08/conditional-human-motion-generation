@@ -27,7 +27,7 @@ const root='D:/具身智能/conditional-human-motion-generation/reports/teacher_
   }
   if(relative==='CLoSD_实验结果汇报.html'){
    const scope=await page.evaluate(()=>({tables:document.querySelectorAll('#closd table').length,dreamBaseline:!!document.querySelector('#baseline'),videos:document.querySelectorAll('video').length}));
-   if(scope.tables!==2||scope.dreamBaseline||scope.videos!==0)throw Error(JSON.stringify(scope));
+   if(scope.tables!==2||scope.dreamBaseline||scope.videos!==9)throw Error(JSON.stringify(scope));
   }
  }
  if(failures.length||errors.length)throw Error(JSON.stringify({failures,errors}));

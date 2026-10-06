@@ -1,0 +1,279 @@
+{
+  "created_at": "2026-10-06T03:47:32.961631+00:00",
+  "kind": "supplementary_frozen_policy_demonstrations",
+  "official_source_commit": "d8950bdb78312fcd2844f336b3fc079e7368c87f",
+  "numeric_official_eval_results_changed": false,
+  "original4096_evaluation_video_verified": false,
+  "supplementary_source": "Actual Isaac Gym rigid-body/object states rendered independently with MeshCat",
+  "physics_frames_interpolated": false,
+  "simulation_engine_changed": false,
+  "ppo_updates": 0,
+  "render_coordinate_convention": "Gym tensors are environment-local; do not subtract environment origin again. MeshCat Z-up scene/camera conversion is rendering only.",
+  "selection": "First fixed environment of each initialized task, no success filtering; GET_UP excerpt is explicitly selected by longest contiguous recorded state interval.",
+  "formal3072_training_started": false,
+  "local_scene_gate_passed": false,
+  "latest_user_local_scene_response": "画面不动或打不开",
+  "models": [
+    {
+      "model": "CLoSD_multitask_finetune",
+      "run": {
+        "status": "COMPLETE",
+        "kind": "frozen_policy_demonstration",
+        "source": "actual_isaacgym_simulation_independent_renderer",
+        "experiment": "CLoSD_multitask_finetune",
+        "checkpoint_sha256": "7ead3778b95516d8b91b7c5939674e45dd0ad10fcc22da60f9f57d204695f6ac",
+        "seed": 42,
+        "num_envs": 12,
+        "frames": 900,
+        "cfg": 7.5,
+        "episode_length": 500,
+        "normal_exit": true,
+        "official_source_commit": "d8950bdb78312fcd2844f336b3fc079e7368c87f",
+        "elapsed_seconds": 51.39035511016846,
+        "pose_sha256": "7617456c44de6d360d4c9a992a77a112acc1cedbdfdcca4126306c6b8ead080c",
+        "evaluation_video_verified": false,
+        "exit_code": 0,
+        "exit_verified_by": "parent_shell_after_process_exit"
+      },
+      "clips": [
+        {
+          "file": "CLoSD_multitask_finetune_REACH.mp4",
+          "bytes": 841774,
+          "sha256": "08bff46a480b5a4a11936eb33d19978bd50df810bcdfe49c4a02caa5395a56ed",
+          "frames": 900,
+          "fps": 30,
+          "duration_seconds": 30.0,
+          "width": 640,
+          "height": 480,
+          "codec": "h264",
+          "full_decode_exit_code": 0,
+          "video_verified": true,
+          "task": "REACH",
+          "clip_kind": "complete_fixed_environment_recording",
+          "first_source_step": 1,
+          "last_source_step": 900
+        },
+        {
+          "file": "CLoSD_multitask_finetune_STRIKE_KICK.mp4",
+          "bytes": 835838,
+          "sha256": "879aa00fea4cad8f3ae45cfc1cb8c812f445e5b9e04027c8f3c7f1146520b52c",
+          "frames": 900,
+          "fps": 30,
+          "duration_seconds": 30.0,
+          "width": 640,
+          "height": 480,
+          "codec": "h264",
+          "full_decode_exit_code": 0,
+          "video_verified": true,
+          "task": "STRIKE_KICK",
+          "clip_kind": "complete_fixed_environment_recording",
+          "first_source_step": 1,
+          "last_source_step": 900
+        },
+        {
+          "file": "CLoSD_multitask_finetune_STRIKE_PUNCH.mp4",
+          "bytes": 1102683,
+          "sha256": "2736f4e592eec07879da1914e57d4977ab9428bce27069e5c20a58e18ef17255",
+          "frames": 900,
+          "fps": 30,
+          "duration_seconds": 30.0,
+          "width": 640,
+          "height": 480,
+          "codec": "h264",
+          "full_decode_exit_code": 0,
+          "video_verified": true,
+          "task": "STRIKE_PUNCH",
+          "clip_kind": "complete_fixed_environment_recording",
+          "first_source_step": 1,
+          "last_source_step": 900
+        },
+        {
+          "file": "CLoSD_multitask_finetune_SIT.mp4",
+          "bytes": 924739,
+          "sha256": "9c33b985ea6841ba0381a4ad3778aa8befa22fcb3b09bcc691d8adbb4bb3aca4",
+          "frames": 900,
+          "fps": 30,
+          "duration_seconds": 30.0,
+          "width": 640,
+          "height": 480,
+          "codec": "h264",
+          "full_decode_exit_code": 0,
+          "video_verified": true,
+          "task": "SIT",
+          "clip_kind": "complete_fixed_environment_recording",
+          "first_source_step": 1,
+          "last_source_step": 900
+        },
+        {
+          "file": "CLoSD_multitask_finetune_GET_UP_excerpt.mp4",
+          "bytes": 239751,
+          "sha256": "a8e233e698407bb0b27afc5e649f02d23ea928a17fe2116a4705fb5547e482d5",
+          "frames": 248,
+          "fps": 30,
+          "duration_seconds": 8.266666666666667,
+          "width": 640,
+          "height": 480,
+          "codec": "h264",
+          "full_decode_exit_code": 0,
+          "video_verified": true,
+          "task": "GET_UP",
+          "clip_kind": "longest_contiguous_state_excerpt",
+          "first_source_step": 653,
+          "last_source_step": 900,
+          "parent_video": "CLoSD_multitask_finetune_SIT.mp4"
+        }
+      ],
+      "state_frame_counts": {
+        "REACH": {
+          "REACH": 900
+        },
+        "STRIKE_KICK": {
+          "STRIKE_KICK": 524,
+          "HALT": 376
+        },
+        "STRIKE_PUNCH": {
+          "STRIKE_PUNCH": 323,
+          "HALT": 577
+        },
+        "SIT": {
+          "SIT": 454,
+          "GET_UP": 446
+        }
+      },
+      "task_environment_ids": {
+        "REACH": 4,
+        "STRIKE_KICK": 1,
+        "STRIKE_PUNCH": 2,
+        "SIT": 0
+      }
+    },
+    {
+      "model": "CLoSD_no_finetune",
+      "run": {
+        "status": "COMPLETE",
+        "kind": "frozen_policy_demonstration",
+        "source": "actual_isaacgym_simulation_independent_renderer",
+        "experiment": "CLoSD_no_finetune",
+        "checkpoint_sha256": "a47bc0716ce0c40ffdbf1b093952e07182d47bf645123852df05c8c91faa68c2",
+        "seed": 42,
+        "num_envs": 12,
+        "frames": 900,
+        "cfg": 7.5,
+        "episode_length": 500,
+        "normal_exit": true,
+        "official_source_commit": "d8950bdb78312fcd2844f336b3fc079e7368c87f",
+        "elapsed_seconds": 51.89063572883606,
+        "pose_sha256": "e3c068e2c54d9c1111733497d787d85d2b2d9c538140b9e46699a51fa8ef1b08",
+        "evaluation_video_verified": false,
+        "exit_code": 0,
+        "exit_verified_by": "parent_shell_after_process_exit"
+      },
+      "clips": [
+        {
+          "file": "CLoSD_no_finetune_REACH.mp4",
+          "bytes": 958515,
+          "sha256": "de34f69ff3780831c4c936e2b8c1a87d493f32f70305c76038720a0ec02d43d8",
+          "frames": 900,
+          "fps": 30,
+          "duration_seconds": 30.0,
+          "width": 640,
+          "height": 480,
+          "codec": "h264",
+          "full_decode_exit_code": 0,
+          "video_verified": true,
+          "task": "REACH",
+          "clip_kind": "complete_fixed_environment_recording",
+          "first_source_step": 1,
+          "last_source_step": 900
+        },
+        {
+          "file": "CLoSD_no_finetune_STRIKE_KICK.mp4",
+          "bytes": 1093911,
+          "sha256": "5bbbd272cbdb538235c68cd59e710db6456310abcdab7d5787752e7811509059",
+          "frames": 900,
+          "fps": 30,
+          "duration_seconds": 30.0,
+          "width": 640,
+          "height": 480,
+          "codec": "h264",
+          "full_decode_exit_code": 0,
+          "video_verified": true,
+          "task": "STRIKE_KICK",
+          "clip_kind": "complete_fixed_environment_recording",
+          "first_source_step": 1,
+          "last_source_step": 900
+        },
+        {
+          "file": "CLoSD_no_finetune_STRIKE_PUNCH.mp4",
+          "bytes": 913284,
+          "sha256": "585dfc737c5cf967c3ae4f4ba53dae2329e54dcb5251cd7a90a91b3c3fb95f64",
+          "frames": 900,
+          "fps": 30,
+          "duration_seconds": 30.0,
+          "width": 640,
+          "height": 480,
+          "codec": "h264",
+          "full_decode_exit_code": 0,
+          "video_verified": true,
+          "task": "STRIKE_PUNCH",
+          "clip_kind": "complete_fixed_environment_recording",
+          "first_source_step": 1,
+          "last_source_step": 900
+        },
+        {
+          "file": "CLoSD_no_finetune_SIT.mp4",
+          "bytes": 1090899,
+          "sha256": "3683b60a96cdbd2b29e2d317a9c1fa31faa6fc121d85cd3275ee6eda374d1b81",
+          "frames": 900,
+          "fps": 30,
+          "duration_seconds": 30.0,
+          "width": 640,
+          "height": 480,
+          "codec": "h264",
+          "full_decode_exit_code": 0,
+          "video_verified": true,
+          "task": "SIT",
+          "clip_kind": "complete_fixed_environment_recording",
+          "first_source_step": 1,
+          "last_source_step": 900
+        }
+      ],
+      "state_frame_counts": {
+        "REACH": {
+          "REACH": 900
+        },
+        "STRIKE_KICK": {
+          "STRIKE_KICK": 367,
+          "HALT": 533
+        },
+        "STRIKE_PUNCH": {
+          "STRIKE_PUNCH": 388,
+          "HALT": 512
+        },
+        "SIT": {
+          "SIT": 900
+        }
+      },
+      "task_environment_ids": {
+        "REACH": 4,
+        "STRIKE_KICK": 1,
+        "STRIKE_PUNCH": 2,
+        "SIT": 0
+      },
+      "get_up_demonstration": "Not triggered in the selected fixed SIT environment during900 frames; do not invent a successful GET_UP clip."
+    }
+  ],
+  "complete_videos": 8,
+  "derived_excerpt_videos": 1,
+  "total_videos": 9,
+  "native_camera_attempts": {
+    "attempts": 3,
+    "actual_exit_codes": [
+      139,
+      139,
+      139
+    ],
+    "full_native_camera_job_started": false,
+    "old512_exit139_root_cause_proven": false
+  }
+}
