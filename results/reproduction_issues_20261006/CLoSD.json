@@ -1,0 +1,205 @@
+{
+  "paper": "CLoSD",
+  "updated": "2026-10-06",
+  "kind": "documentation_of_existing_experiments",
+  "scope": {
+    "official_checkpoint_evaluations": 2,
+    "formal3072_started": false,
+    "current_live_gate_passed": false,
+    "supplementary_videos": 9
+  },
+  "new_training_or_evaluation": false,
+  "issue_count": 9,
+  "issues": [
+    {
+      "id": "CL01",
+      "title": "任务配置和 Hydra 搜索路径导致启动失败",
+      "group": "运行与配置",
+      "status": "启动适配已修复",
+      "cause_certainty": "已定位配置或实现差异",
+      "symptom": "默认配置缺少 env_im；新外部包装器首次又在任何 PPO 更新前因 Hydra 配置目录搜索错误退出。",
+      "cause": "未显式选用 README 的 closd_multitask 任务，或导入入口后配置目录定位不同；属于启动配置错误，不是策略任务失败。",
+      "remedy": "显式使用 env=closd_multitask，按官方绝对配置目录组合配置；固定官方源码 d8950bdb…，保留第一次失败日志与运行环境证据。",
+      "result_and_limits": "配置检查与后续诊断恢复。模型、奖励、PPO 和 DiP 架构未更换；配置检查成功本身不计作论文训练或效果复现。",
+      "evidence": [
+        "reports/01_closd_reproduction.md",
+        "docs/closd_reproduction_20261001.md"
+      ]
+    },
+    {
+      "id": "CL02",
+      "title": "动作库并行加载超时",
+      "group": "运行与配置",
+      "status": "串行加载适配可运行",
+      "cause_certainty": "已定位加载阶段，底层超时原因未证实",
+      "symptom": "早期 9 环境并行推理在动作加载阶段等待 20 分钟后 exit124；debug=True 串行诊断只完成 299 步、均值回报约 108.40。",
+      "cause": "超时发生在动作库加载阶段；未证明是 GPU 显存不足或扩散模型本身算不动。299 步没有完整逐任务统计。",
+      "remedy": "仅在 MotionLib 加载范围临时启用串行路径，加载后恢复 debug 设置；记录配置与退出信息，不将整个 PPO 训练改成调试模式。",
+      "result_and_limits": "随后容量诊断、两组官方权重评估与补录推理可完成。早期 299 步只作诊断，不能替代正式训练、逐任务分数或生成质量验收。",
+      "evidence": [
+        "reports/01_closd_reproduction.md",
+        "docs/closd_reproduction_20261001.md"
+      ]
+    },
+    {
+      "id": "CL03",
+      "title": "续训 4000 轮被误写成总 epoch 上限",
+      "group": "运行与配置",
+      "status": "轮数语义已修正",
+      "cause_certainty": "已定位配置或实现差异",
+      "symptom": "首次 512 环境微调将 max_epochs=4000 作为总上限，而源检查点已是 epoch62000，执行一次更新就触发 MAX EPOCHS NUM，随后退出139。",
+      "cause": "该 runner 使用总 epoch 上限；从 epoch62000 追加约4000轮必须设为目标总 epoch66000。上限错误与随后139的具体原生原因是不同问题。",
+      "remedy": "单独保全 failed_v1，修正总轮数后写入独立 v2 输出；不覆盖旧日志，不把一次更新计成完整4000轮。",
+      "result_and_limits": "v2 保存了 epoch66000 检查点，logger 还记录到66001；但退出仍异常，不能仅凭到达目标轮次称完整验收通过。",
+      "evidence": [
+        "reports/01_closd_reproduction.md"
+      ]
+    },
+    {
+      "id": "CL04",
+      "title": "最终保存后退出139，检查点存在但正常退出未通过",
+      "group": "运行与配置",
+      "status": "检查点保全，根因待查",
+      "cause_certainty": "具体原因未证实",
+      "symptom": "旧 512 环境 v2 在保存 Humanoid_00066000.pth 后出现 MAX EPOCHS NUM，再退出139；原训练状态保留 FAILED。",
+      "cause": "原日志没有完整原生栈，只能怀疑退出清理路径，未定位具体库调用；不能断定显存溢出、论文架构错误或与后续相机崩溃同源。",
+      "remedy": "核验216577317字节检查点与SHA，在独立进程完成固定模型评估；新隔离入口记录官方 runner 返回及显式 Gym 清理。",
+      "result_and_limits": "新3072环境三次更新诊断保存62003并正常退出0，证明短程生命周期可运行；不证明旧139唯一成因，也不证明正式4000轮训练已完成。",
+      "evidence": [
+        "reports/01_closd_reproduction.md",
+        "docs/closd_reproduction_20261001.md",
+        "results/r3_closd_capacity3072_20261001.json"
+      ]
+    },
+    {
+      "id": "CL05",
+      "title": "512 环境缩容微调后，多数任务严重退化",
+      "group": "效果与评价",
+      "status": "退化已确认，成因待查",
+      "cause_certainty": "已定位预算差异，唯一退化原因未证实",
+      "symptom": "匹配512环境评估中，未微调→本地微调：REACH 100%→0%、共用 STRIKE 87%→5%、SIT 77%→7%、GET_UP 56%→69%。",
+      "cause": "官方3072×32=98304帧/更新，缩容512×32=16384，交互预算约少六倍且任务覆盖/小批次结构不同。学习率2e-5核对与官方相同，不能再称已发现学习率错误。",
+      "remedy": "保留退化模型与匹配评估，不重跑同一缩容配置；分别完成官方已发布两组权重的4096环境评估，规划按3072环境复现剩余正式微调。",
+      "result_and_limits": "样本预算、任务分布或遗忘是待验证解释，不是已证实唯一原因。官方已发布微调权重表现好，不等于本地新3072微调成功；该训练尚未启动。",
+      "evidence": [
+        "reports/01_closd_reproduction.md",
+        "results/r3_closd_pretrained_eval_512.json",
+        "results/r3_closd_finetuned_eval_512.json",
+        "reports/13_CLoSD_official_checkpoint_eval_20261001.md"
+      ]
+    },
+    {
+      "id": "CL06",
+      "title": "实时监控停帧与本地可视验收未通过",
+      "group": "可视化与证据边界",
+      "status": "显示独立，当前验收待完成",
+      "cause_certainty": "发送错误已记录，本地显示原因未完全定位",
+      "symptom": "旧训练约epoch62110出现ZMQ EAGAIN，停止发送后PPO仍继续。网页可连接也可能只有旧帧；2026-10-06用户反馈“画面不动或打不开”。",
+      "cause": "训练进程、网页HTTP200或LIVE标签都不能证明本地收到当前运动帧。限时推理预检结束后的STALE只是没有新帧，不是正式训练停滞。",
+      "remedy": "计算与显示分进程，独立非阻塞UDP接收真实Isaac Gym刚体及物体状态；检查capture时间、step和姿态变化。MeshCat不称Isaac Sim WebRTC或原生Viewer。",
+      "result_and_limits": "当前新3072环境、4000轮正式微调尚未启动，本地实时Gate未通过。离线视频、旧确认或检查点回放不能代替本轮真实画面确认。",
+      "evidence": [
+        "reports/01_closd_reproduction.md",
+        "docs/closd_reproduction_20261001.md",
+        "results/r3_closd_local_view_attempt_20261006.json"
+      ]
+    },
+    {
+      "id": "CL07",
+      "title": "原生相机补录三次检查均在退出时139",
+      "group": "运行与配置",
+      "status": "独立状态渲染补录完成",
+      "cause_certainty": "具体原因未证实",
+      "symptom": "三次限定30帧的原生相机检查能产帧，但都在解释器关闭时退出139；显式相机销毁及限制相机数量仍未解决。",
+      "cause": "原生相机退出路径不稳定；现有证据不能证明与旧512训练退出139同源，也不能把部分帧当成功完整录像。",
+      "remedy": "停止完整原生相机路线并保全失败日志；关闭物理进程图形上下文，导出实际Isaac Gym状态，在独立MeshCat进程渲染。",
+      "result_and_limits": "两组冻结官方权重各900帧推理正常退出0、权重SHA不变，得到8段30秒视频和1段8.27秒起身截取。它们不是原生相机录像、原4096评估录像或sim-to-sim。",
+      "evidence": [
+        "docs/closd_independent_recording_20261006.md",
+        "reports/17_CLoSD_supplementary_videos_and_curves_20261006.md",
+        "results/closd_supplementary_20261006/summary.json"
+      ]
+    },
+    {
+      "id": "CL08",
+      "title": "训练 reward 上升、critic loss 下降，但正式成绩退化",
+      "group": "效果与评价",
+      "status": "曲线与效果分开解释",
+      "cause_certainty": "指标边界与退化已核实",
+      "symptom": "旧512日志六项主要曲线各3998点（epoch62004—66001）：前/末100点reward均值32.469→103.851，critic loss 0.03043→0.00723。",
+      "cause": "训练总回报、回合长度和critic拟合误差是代理，不能替代固定模型的分任务成功率；actor/PPO loss也不是越小越好。",
+      "remedy": "导出原TensorBoard 51项标量及六项主曲线，将正式分任务评估与训练代理并列，并明确被评估的是epoch66000检查点。",
+      "result_and_limits": "曲线支持训练目标被优化，但不支持多数任务改善。新3072正式训练没有开始，因此没有该阶段reward或loss曲线；不借用旧512或DreamControl曲线代替。",
+      "evidence": [
+        "results/closd_old512_training_curves_20261006/scalar_summary.json",
+        "reports/17_CLoSD_supplementary_videos_and_curves_20261006.md"
+      ]
+    },
+    {
+      "id": "CL09",
+      "title": "官方分数、共享计数与补录视频的口径不同",
+      "group": "可视化与证据边界",
+      "status": "分组与出处已标注",
+      "cause_certainty": "指标或协议边界已核实",
+      "symptom": "原两组4096环境正式评估未录像；新增12环境、seed42、900帧展示来自独立冻结策略推理。未微调固定SIT环境没有产生GET_UP片段。",
+      "cause": "官方STRIKE_KICK和STRIKE_PUNCH共享成功计数，不能视作两个独立成绩；日志只给两位小数。固定单环境片段不能估计群体成功率。",
+      "remedy": "保留原evaluation_video_verified=false；新增演示另记video_verified=true。用明确来源、条件和缺失占位呈现视频，不挑选补造起身片段。",
+      "result_and_limits": "官方已发布微调/未微调结果分别为100/94/89/97%与100/85/76/56%（REACH/共用STRIKE/SIT/GET_UP）。这是权重评估复现，非本地新训练完成，不能简单平均或据单片段改写成绩。",
+      "evidence": [
+        "reports/13_CLoSD_official_checkpoint_eval_20261001.md",
+        "results/r3_closd_official_eval4096_20261001_summary.json",
+        "results/closd_supplementary_20261006/summary.json"
+      ]
+    }
+  ],
+  "source_files": [
+    {
+      "path": "docs/closd_independent_recording_20261006.md",
+      "sha256": "cf55e45f2d2b2f991adcb4c3b0f24d6fb5b337b3e15afa82cd9a0a44e2bb5615"
+    },
+    {
+      "path": "docs/closd_reproduction_20261001.md",
+      "sha256": "9b4ec3936c01f4f38633457757377e9995398b5088c0c35e407fcd3e7d7acef3"
+    },
+    {
+      "path": "reports/01_closd_reproduction.md",
+      "sha256": "65bef4bb67dd425bdf585909eba7545585cfdb5926ac51a07a66f93798cb67ee"
+    },
+    {
+      "path": "reports/13_CLoSD_official_checkpoint_eval_20261001.md",
+      "sha256": "1e16180264421d1d54f0abe4f218a7f0ec14f4e80be236ef8caca9ec26ce30a4"
+    },
+    {
+      "path": "reports/17_CLoSD_supplementary_videos_and_curves_20261006.md",
+      "sha256": "3b2f04171b0e55a1812158b6606c6b5611e7f5f2328347855630bb380cd0d9a4"
+    },
+    {
+      "path": "results/closd_old512_training_curves_20261006/scalar_summary.json",
+      "sha256": "cc4a5c1967543580e56ca961781fe5520fded9394dcc9e2ff55549aa1de1171d"
+    },
+    {
+      "path": "results/closd_supplementary_20261006/summary.json",
+      "sha256": "227b2a1459d8b24075c01187be5056d57a5769aecc2f626591fafec9edb4a06f"
+    },
+    {
+      "path": "results/r3_closd_capacity3072_20261001.json",
+      "sha256": "4bf8a6709cc688a40c9c185ccd96c4327cfe49806229072f3d128cd4d65d3c2d"
+    },
+    {
+      "path": "results/r3_closd_finetuned_eval_512.json",
+      "sha256": "8b37ea6b41f152526c07d4faba4b74d54cc6352c837a03268eb8028ed11db66d"
+    },
+    {
+      "path": "results/r3_closd_local_view_attempt_20261006.json",
+      "sha256": "5a97503f3a68f531e5d0b72a33a3dd46c5c55b6cec8ce3b145839c548f88fc3e"
+    },
+    {
+      "path": "results/r3_closd_official_eval4096_20261001_summary.json",
+      "sha256": "10c5268040d00a813f43000fa33c4d2dbc1bdae4e19e5906f2c9278330645edc"
+    },
+    {
+      "path": "results/r3_closd_pretrained_eval_512.json",
+      "sha256": "6cd6fe0a6c4a22c9a1926476987ee50e404e03c32f3744ec8414a7373ad18cad"
+    }
+  ]
+}

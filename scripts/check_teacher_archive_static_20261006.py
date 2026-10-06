@@ -27,6 +27,24 @@ assert '画面不动或打不开' in closd.get_text() and '尚未启动' in clos
 dream=BeautifulSoup((root/'DreamControl_实验结果汇报.html').read_text(encoding='utf-8'),'html.parser')
 assert len(dream.select('#generation video'))==18 and len(dream.select('#videos video'))==32
 assert len(dream.select('#training details.training-chart'))==11
+issue_counts={}
+for paper,page,expected in [('DreamControl',dream,10),('CLoSD',closd,9)]:
+    section=page.find(id='failures')
+    assert section['data-issue-summary']==paper
+    issues=section.select('details.reproduction-issue')
+    assert len(issues)==expected
+    register=json.loads((root/f'复现问题汇总_20261006/{paper}/问题清单.json').read_text(encoding='utf-8'))
+    assert register['issue_count']==expected and register['new_training_or_evaluation'] is False
+    assert [i['id'] for i in register['issues']]==[d['id'].removeprefix('issue-') for d in issues]
+    for data in register['issues']:
+        text=section.find(id='issue-'+data['id']).get_text()
+        for field in ['symptom','cause','remedy','result_and_limits','cause_certainty']:
+            assert data[field] in text,(paper,data['id'],field)
+    issue_counts[paper]=expected
+receipt=json.loads((root/'复现问题汇总_20261006/update_receipt.json').read_text(encoding='utf-8'))
+for update in receipt['changes']:
+    assert sha(root/'local_source'/Path(update['report']).name)==update['after_sha256']
+    assert update['unchanged_other_sections'] and update['unchanged_video_elements']
 summary=json.loads((root/'CLoSD补充结果_20261006/证据/summary.json').read_text(encoding='utf-8'))
 for model in summary['models']:
     for clip in model['clips']:
@@ -36,6 +54,7 @@ assert summary['total_videos']==9 and summary['original4096_evaluation_video_ver
 result={'kind':'filesystem_artifact_audit_not_browser_ui','html_pages':html_count,'local_links_checked':links,
  'archive_file_hashes_checked':len(manifest['files']),'missing_files':0,'licensed_raw_assets_included':False,
  'closd_videos':9,'source_video_full_decode_verified':True,'original4096_evaluation_video_verified':False,
- 'formal3072_started':False,'live_gate_passed':False,'dreamcontrol_report_preserved':True}
+ 'formal3072_started':False,'live_gate_passed':False,'dreamcontrol_results_and_media_preserved':True,
+ 'reproduction_issue_counts':issue_counts,'problem_summary_no_new_experiment':True}
 (root/'archive_validation_20261006.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
 print(json.dumps(result))

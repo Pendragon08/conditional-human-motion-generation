@@ -1,0 +1,219 @@
+{
+  "paper": "DreamControl",
+  "updated": "2026-10-06",
+  "kind": "documentation_of_existing_experiments",
+  "scope": {
+    "archived_control_tasks": 11,
+    "tested_mujoco_tasks": 6
+  },
+  "new_training_or_evaluation": false,
+  "issue_count": 10,
+  "issues": [
+    {
+      "id": "DC01",
+      "title": "启动依赖、参数冲突与完成判定",
+      "group": "运行与配置",
+      "status": "已修复",
+      "cause_certainty": "已定位配置或实现差异",
+      "symptom": "独立环境曾缺少 joblib、rich、isaac_utils 路径和 jaxlie；Kit 追加的参数与 Hydra 冲突。旧包装器在 traceback 或未完成训练时也可能返回退出码 0。",
+      "cause": "依赖与入口参数问题有具体报错依据；退出码 0 单独不足以证明 PPO 已运行或训练已结束。",
+      "remedy": "补齐项目环境依赖；派生入口仅在 Kit 启动后清除其追加参数。联合检查实际迭代、最终模型、日志和视频，不只检查进程或退出码。",
+      "result_and_limits": "启动链路恢复。1 次更新诊断只证明能启动；正式控制任务还需第 1999 轮模型和后续官方评估证据。",
+      "evidence": [
+        "reports/02_dreamcontrol_reproduction.md"
+      ]
+    },
+    {
+      "id": "DC02",
+      "title": "早期缩容基线与论文训练预算不同",
+      "group": "运行与配置",
+      "status": "已按论文规模完成",
+      "cause_certainty": "已定位配置或实现差异",
+      "symptom": "早期原 66 条 Kick 参考采用 1024 环境、2000 迭代、seed123，最终官方评估为 0%；不能作为论文默认配置的结果。",
+      "cause": "论文配置为 8192 环境、2000 迭代。同迭代数下，缩容组采样量更少；重新训练还改变了 seed，并非单变量对照。",
+      "remedy": "保留旧结果，使用官方 66 条参考、8192 环境、2000 迭代、seed42 重新完成论文规模控制基线，按官方 1000 环境、500 帧评估。",
+      "result_and_limits": "新 Kick 基线为 85.3%。不能断言旧 0% 只由环境数造成，也不能将旧结果与不同参考集的成绩直接比较。",
+      "evidence": [
+        "reports/02_dreamcontrol_reproduction.md",
+        "reports/03_dreamcontrol_multitask_baselines.md"
+      ]
+    },
+    {
+      "id": "DC03",
+      "title": "WebRTC/GLFW 与训练同进程时出现停滞",
+      "group": "运行与配置",
+      "status": "已分离计算与显示",
+      "cause_certainty": "观测关联，底层原因未证实",
+      "symptom": "早期 Kick 停在第 1319 轮；Punch 首次停在约第 1618 轮。日志长时间不更新，但进程仍占 GPU；仅重连客户端未证明训练恢复。",
+      "cause": "串流超时、GLFW 警告与部分停滞同时出现，支持显示与计算耦合的判断；没有完整原生栈，不把本地关机或断网认定为唯一原因。",
+      "remedy": "保全并验 SHA 的最新检查点，经授权断点续训；改为 headless PPO 与独立渲染进程，使用非阻塞 UDP 传递实际仿真状态抽样。",
+      "result_and_limits": "Punch 从 model_1600.pt 追加 400 轮完成并评估为 87.2%。画面故障不再位于 PPO 计算路径；实际状态抽样、检查点预览和全部环境逐帧直播须分别标注。",
+      "evidence": [
+        "reports/02_dreamcontrol_reproduction.md",
+        "reports/03_dreamcontrol_multitask_baselines.md"
+      ]
+    },
+    {
+      "id": "DC04",
+      "title": "柜体资产仍为 Git LFS 占位文件",
+      "group": "运行与配置",
+      "status": "精确官方资产已恢复",
+      "cause_certainty": "已定位配置或实现差异",
+      "symptom": "Open-Drawer 旧尝试在场景初始化失败：cabinet.usd 仅 130 字节，未产生 PPO 迭代或模型。",
+      "cause": "文件是 Git LFS 指针，不是可加载的 USD 资产；这是输入资产缺失，不是控制策略得分 0%。",
+      "remedy": "保留原指针、状态和失败日志，水合固定官方提交对应的 17599 字节对象并核验 SHA。16 环境 1 次更新诊断后恢复原唯一队列。",
+      "result_and_limits": "不改资产物理、关节配置或奖励。随后 Open-Drawer 与 Open-Door 正常完成训练和评估，分别为 100% 与 99.0%；诊断不单独计作正式成绩。",
+      "evidence": [
+        "docs/cabinet_asset_recovery_20261003.md",
+        "results/r3_dreamcontrol_cabinet_recovery_20261003.json",
+        "reports/03_dreamcontrol_multitask_baselines.md"
+      ]
+    },
+    {
+      "id": "DC05",
+      "title": "已完成训练后的默认视频评估 native malloc 异常",
+      "group": "运行与配置",
+      "status": "评估已恢复，根因待查",
+      "cause_certainty": "具体原因未证实",
+      "symptom": "Sit、Bimanual-Pick、Ground-Pick 已保存最终模型，但默认视频评估在初始化出现 malloc(): invalid size (unsorted)。Sit 同参数重试仍失败。",
+      "cause": "错误发生在原生初始化路径，尚无证据定位到具体库调用或显存不足；未产生正式成功率的尝试不能记为 0%。",
+      "remedy": "备份模型、失败日志和哈希；使用官方 play_eval.py 的 --disable_fabric，以 USD 场景 I/O 替代 Fabric，进行一次明确记录的评估适配。",
+      "result_and_limits": "同一模型、参考、PPO/奖励/物理及 1000 环境、500 帧预算保留，正常退出并得到 100%、99.9%、38.1%及视频。运行路径与默认不同，不能称完全相同运行配置。",
+      "evidence": [
+        "docs/sit_usd_video_eval_20261001.md",
+        "docs/bimanual_eval_recovery_20261002.md",
+        "docs/ground_pick_eval_recovery_20261002.md",
+        "reports/03_dreamcontrol_multitask_baselines.md"
+      ]
+    },
+    {
+      "id": "DC06",
+      "title": "人体生成质量筛查与完整复现范围",
+      "group": "评价与数据边界",
+      "status": "筛查边界已明确",
+      "cause_certainty": "指标或协议边界已核实",
+      "symptom": "六任务展示来自作者发布的人体轨迹：342 条原始轨迹，18 段固定样本视频；下游控制使用官方已处理参考，并非全部重新生成。",
+      "cause": "本次穿地、近地滑动和骨段变化是探索性代理，可重叠；未测接触力、关节力矩或动力学稳定性，不能据此计算完整物理失败率。",
+      "remedy": "六任务统一导出逐样本指标与阈值；说明论文在 G1 重定向后、RL 前还有方向、骨盆高度和场景碰撞等启发式筛选。",
+      "result_and_limits": "342 条结构有效不等于动力学通过。原 66 条 Kick 是生成与处理后的 RL 跟踪参考，不能当成扩散模型的 66 条输入示例；下游控制完成不等于从生成到实机的完整复现。",
+      "evidence": [
+        "reports/15_human_generation_quality_and_paper_filtering_20261002.md",
+        "results/human_generation_quality_20261002/summary.json"
+      ]
+    },
+    {
+      "id": "DC07",
+      "title": "官方高成功率与自然动作、实体接触并非同一指标",
+      "group": "评价与数据边界",
+      "status": "按原判据解释",
+      "cause_certainty": "指标或协议边界已核实",
+      "symptom": "Sit 为 100%、Bimanual-Pick 为 99.9%，但代表画面有机器人位于座椅或桌面上方/上面；仅凭评分不能验收自然坐姿或双手抓握搬运。",
+      "cause": "Kick 按右脚踝在短时窗接近参考目标小于 0.1m 计分；Sit 按交互转换时骨盆距目标小于 0.05m 计分。它们不直接统计持续实体接触。",
+      "remedy": "将官方任务分数与动作语义、持续座椅接触、相对抬物及打击接触分开列示。纠正早期把默认物体高度误当 Kick 目标高度的解释。",
+      "result_and_limits": "Sit、Jump、Bimanual 等单参考任务也不能支持未见动作泛化结论；官方分数保留，未测或未通过的行为判据另列。",
+      "evidence": [
+        "reports/03_dreamcontrol_multitask_baselines.md",
+        "reports/02_dreamcontrol_reproduction.md",
+        "reports/14_Completed_tasks_MuJoCo_sim2sim_20261002.md"
+      ]
+    },
+    {
+      "id": "DC08",
+      "title": "地面取物：训练曲线改善但任务效果不足",
+      "group": "效果与迁移",
+      "status": "有效负面结果已保留",
+      "cause_certainty": "负面结果已核实，成因未定位",
+      "symptom": "Ground-Pick 为 38.1%；Ground-Pick-Top 正常训练和评估后为 0%。后者不是初始化失败，也不是未完成任务。",
+      "cause": "两项 reward 前/末 100 轮均值分别由 −10.108 到 4.805、−9.759 到 8.051；value loss 下降，末期回合约 499 步，仍未说明抓取目标完成。",
+      "remedy": "保留模型、原始 TensorBoard、正式评分和失败视频，联合解释奖励、回合长度与任务指标，不用提高 reward 替代抓取验收。",
+      "result_and_limits": "两项是 11/11 控制任务归档中的低分/失败结果；未定位唯一行为原因，不能称全部任务效果通过，也不为追求高分重复正常完成的试验。",
+      "evidence": [
+        "reports/03_dreamcontrol_multitask_baselines.md"
+      ]
+    },
+    {
+      "id": "DC09",
+      "title": "MuJoCo 接口核验通过，但部分任务迁移失败",
+      "group": "效果与迁移",
+      "status": "迁移局限已保留",
+      "cause_certainty": "负面结果已核实，成因未定位",
+      "symptom": "Jump 约 2.9 秒摔倒；Sit 达参考目标但无持续座椅接触；Pick 67 条与 Bimanual 1 条均完整 10 秒，却未满足相对抬升 5cm。",
+      "cause": "各任务的 30 个观测—动作快照及共 70 条参考插值核验通过。Sit 训练座椅与参考目标不对齐；隐式/显式 PD、惯量/碰撞网格和质量随机化仍有未统一或未完全核实的差异。",
+      "remedy": "冻结原 actor 与 normalizer，保留真实碰撞和正负接触夹具结果；将原判据代理、不摔倒、持续接触及相对抬物分别统计，不脚本带动物体。",
+      "result_and_limits": "接口正确不等于可靠迁移。单参考无自动重置口径不能与 Isaac 的 1000 环境成功率直接比较；仅六任务已有 MuJoCo 测试，其余五任务尚无迁移成绩。",
+      "evidence": [
+        "reports/14_Completed_tasks_MuJoCo_sim2sim_20261002.md",
+        "results/sim2sim_completed_20261002/summary.json"
+      ]
+    },
+    {
+      "id": "DC10",
+      "title": "扰动测试的设定摩擦未实际生效",
+      "group": "运行与配置",
+      "status": "V2 实际接触参数已核验",
+      "cause_certainty": "已定位配置或实现差异",
+      "symptom": "Kick/Punch 扰动测试 V1 只降低地面摩擦，实际接触摩擦仍为 1.0；条件间质量缓存恢复也需修正。",
+      "cause": "该接触组合采用地面与脚部摩擦参数中的较大值，仅改地面数值没有施加预定扰动。",
+      "remedy": "保全 V1，修正双方摩擦与条件间质量恢复后执行 V2；逐接触检查实际摩擦，并保留原冻结策略和评分阈值。",
+      "result_and_limits": "汇报仅使用 V2。摩擦 1.5 时 Kick/Punch 稳定完成为 12.1%/10.0%，不能宣布普遍鲁棒性；固定打击靶也不等于可移动沙袋、对手或实机。",
+      "evidence": [
+        "reports/11_Kick_Punch_robustness_contact_20261001.md",
+        "results/mujoco_robust_contact/summary.json"
+      ]
+    }
+  ],
+  "source_files": [
+    {
+      "path": "docs/bimanual_eval_recovery_20261002.md",
+      "sha256": "638c5cf1686dd29b25cd0bd47d95bbe03b59785db09e5ab222afe3609c86675f"
+    },
+    {
+      "path": "docs/cabinet_asset_recovery_20261003.md",
+      "sha256": "dbb1b3343c30eb9105aeab61475e349854e4dabb988196ecbd78c14fddb09791"
+    },
+    {
+      "path": "docs/ground_pick_eval_recovery_20261002.md",
+      "sha256": "06da3aaf6197a61e8f6efca4619321b8bed2e9017bcbf5d4a6eb7123f3fcbb38"
+    },
+    {
+      "path": "docs/sit_usd_video_eval_20261001.md",
+      "sha256": "d29f31bc51f974d5ddbf9b2224c57d584e9a93bf10d059a9fb834fe6d67a5d51"
+    },
+    {
+      "path": "reports/02_dreamcontrol_reproduction.md",
+      "sha256": "50de1f4f402f271a2f78d0eb5043817906e5b87ead9343510930bb823ab57dfe"
+    },
+    {
+      "path": "reports/03_dreamcontrol_multitask_baselines.md",
+      "sha256": "5ab458698a10132f6d03bb6ef0d78b07c754a358e88a1e6b3bfb90f9a290dbf6"
+    },
+    {
+      "path": "reports/11_Kick_Punch_robustness_contact_20261001.md",
+      "sha256": "5cee18e5d9cee4db803fe246b321f5a3a6a7ffd703956965c7dbf3bb56eb90d9"
+    },
+    {
+      "path": "reports/14_Completed_tasks_MuJoCo_sim2sim_20261002.md",
+      "sha256": "eaaa7547e84ae2ea7969bf4ca6495444a480f09f3eacb80c8f3e1fc6ffe4132d"
+    },
+    {
+      "path": "reports/15_human_generation_quality_and_paper_filtering_20261002.md",
+      "sha256": "ad4e7e8cc6c40f66f172282492ed6cda39d9a2f6006db7936ce9823e8702effe"
+    },
+    {
+      "path": "results/human_generation_quality_20261002/summary.json",
+      "sha256": "34cdc33a7fb153e5c702bfedb8238552f66a6f9e96572239033160e004d7b011"
+    },
+    {
+      "path": "results/mujoco_robust_contact/summary.json",
+      "sha256": "279f6059a8f968e713c8bc88fbb0cd85862ad9b1866f8bde3ab82e205db67868"
+    },
+    {
+      "path": "results/r3_dreamcontrol_cabinet_recovery_20261003.json",
+      "sha256": "6e77a34bbe1aa704aedd12cd79c0b56bc1c4dbe3ba3a8a522bee4fa3fa90020b"
+    },
+    {
+      "path": "results/sim2sim_completed_20261002/summary.json",
+      "sha256": "6841f9afe0539630132d01e827324b57044decefc1fa36bfa4be92fa1e3e3db8"
+    }
+  ]
+}
