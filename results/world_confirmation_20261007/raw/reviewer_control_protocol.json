@@ -1,0 +1,28 @@
+{
+  "reviewer": "/root/world_residual_ppo_ablation_review_20261007",
+  "status": "HOLD_until_prediction_gate_and_local_actual_view",
+  "five_main_arms": [
+    "P0",
+    "P-cap",
+    "P-history",
+    "W-correct",
+    "W-shuffled-original"
+  ],
+  "main_three_seed_real_transitions": 1474560000,
+  "required_if_main_control_PASS": [
+    "W-shuffled-initmatched",
+    "W-pretrained-frozen"
+  ],
+  "seven_arm_possible_real_transitions": 2064384000,
+  "confounds_not_eliminated_by_initial_action_parity": [
+    "warmup_pretraining",
+    "online_aux",
+    "encoder_initialization"
+  ],
+  "timeout": "all arms keep official single gamma*pre-action transition.values bootstrap; no terminalobs provided; explicitly a system approximation",
+  "reference_policy": "66fixed refs; old11retired notvalidation; new11usedpredictorgate/notPPO controlconfirmation notuntouched endtoendtest",
+  "WM_optimizer": "freshAdam common; do not attach final1000optimizer to selectedmodel",
+  "aux_handoff_KL_bound": 0.01,
+  "formal_PPO_started": false,
+  "review_plan": "plans/world_residual_ppo_ablation_review_20261007.md"
+}

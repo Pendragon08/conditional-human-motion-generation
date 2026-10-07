@@ -1,0 +1,318 @@
+{
+  "status": "COMPLETE",
+  "queue_stage": "development_only",
+  "active_seed": null,
+  "queue_updated_unix": 1791353396.9518883,
+  "development_triage": "PROMISING",
+  "formal_PPO_updates": 0,
+  "formal_prediction_gate_passed": false,
+  "innovation_validated": false,
+  "old_v1_prediction_FAIL_preserved": true,
+  "development_wrapper_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "independent_actual_child_exit_codes_verified": false,
+  "actual_child_exit_receipt_limitation": "Executed wrapper captured rc after assignment; only wrapper0+sentinels+complete artifacts independently verified. No repeat.",
+  "old_test_retired_evaluations": 0,
+  "actual_unique_new_transitions": 11796480,
+  "planned_new_transitions": 11796480,
+  "completed_predictor_seed_count": 3,
+  "probe_transitions_diagnostic": 7680,
+  "probe_real_resets": 4,
+  "kernel_CUDA_witness": {
+    "status": "COMPLETE",
+    "device": "NVIDIA RTX A6000",
+    "initial_continuous_matches_ridge": true,
+    "contact_init_probability": 0.5,
+    "future_action_zero_in_both_branches": true,
+    "finite_true_cuda_update": true,
+    "diagnostic_aux_updates": 1,
+    "formal_PPO_updates": 0
+  },
+  "rows": [
+    {
+      "seed": 42,
+      "development_triage": "PROMISING_NEEDS_NEW_CONFIRMATION_REFS",
+      "H10_recovery_FK_mm": {
+        "direct": 12.69720122218132,
+        "residual_correct": 10.469380766153336,
+        "residual_state_only": 28.173841536045074,
+        "residual_shuffled": 13.284847140312195,
+        "ridge_correct": 13.284847140312195,
+        "ridge_state_only": 30.693240463733673
+      },
+      "H10_clean_FK_mm": {
+        "direct": 6.258220877498388,
+        "residual_correct": 5.211431998759508,
+        "residual_state_only": 14.003993012011051,
+        "residual_shuffled": 7.33113894239068,
+        "ridge_correct": 7.33113894239068,
+        "ridge_state_only": 16.452351585030556
+      },
+      "development_comparisons": {
+        "ridge_correct": {
+          "development_relative_gain": 0.2200580887562522,
+          "development_reference_bootstrap_95pct_ci": [
+            0.18979155473326512,
+            0.2503350326998537
+          ]
+        },
+        "direct": {
+          "development_relative_gain": 0.18136452467443798,
+          "development_reference_bootstrap_95pct_ci": [
+            0.15990710425370985,
+            0.20438279178338056
+          ]
+        },
+        "residual_state_only": {
+          "development_relative_gain": 0.6365145044983085,
+          "development_reference_bootstrap_95pct_ci": [
+            0.595413649491226,
+            0.6748191049376862
+          ]
+        },
+        "residual_shuffled": {
+          "development_relative_gain": 0.22005807336316552,
+          "development_reference_bootstrap_95pct_ci": [
+            0.190717841795232,
+            0.2502923285719192
+          ]
+        }
+      },
+      "selection": {
+        "direct": {
+          "update": 1000,
+          "validation_recovery_joint_delta_mse": 0.002028645947575569,
+          "updates_executed": 1000,
+          "initial_parameter_hash": "6a68c4053db216040e907e32656ace8624c9f6c83f9678937947f770af93dd2f",
+          "final_training_parameter_hash": "6ba0041705d364784320231417d0bd927e987fbd3362cf9ad8c54bd4613528b8",
+          "optimizer_step_count": 1000
+        },
+        "residual_correct": {
+          "update": 1000,
+          "validation_recovery_joint_delta_mse": 0.001386874238960445,
+          "updates_executed": 1000,
+          "initial_parameter_hash": "63b1f52859c8b8e314b8f47050f2118137a85f51797cb2f5b36632d53c2afbbf",
+          "final_training_parameter_hash": "4e251ce24a3d2e32a19bebb422ab5473da019583d3322f2bba7cdd215c821417",
+          "optimizer_step_count": 1000
+        },
+        "residual_state_only": {
+          "update": 1000,
+          "validation_recovery_joint_delta_mse": 0.013622842729091644,
+          "updates_executed": 1000,
+          "initial_parameter_hash": "63b1f52859c8b8e314b8f47050f2118137a85f51797cb2f5b36632d53c2afbbf",
+          "final_training_parameter_hash": "37bc493d7084c5d46ca3bf371d1b2a605b720fef9141e688fbe5fbc8704d9b16",
+          "optimizer_step_count": 1000
+        },
+        "residual_shuffled": {
+          "update": 0,
+          "validation_recovery_joint_delta_mse": 0.002261492656543851,
+          "updates_executed": 1000,
+          "initial_parameter_hash": "63b1f52859c8b8e314b8f47050f2118137a85f51797cb2f5b36632d53c2afbbf",
+          "final_training_parameter_hash": "ff0e0d34f0ba8ff63512ffb9d9f174c1efb5f9f720c29aa34772a4d339936d28",
+          "optimizer_step_count": 1000
+        }
+      },
+      "new_transitions": 3932160,
+      "actual_resets": 1726
+    },
+    {
+      "seed": 43,
+      "development_triage": "PROMISING_NEEDS_NEW_CONFIRMATION_REFS",
+      "H10_recovery_FK_mm": {
+        "direct": 12.034042738378048,
+        "residual_correct": 10.23984607309103,
+        "residual_state_only": 28.278620913624763,
+        "residual_shuffled": 13.13585415482521,
+        "ridge_correct": 13.13585415482521,
+        "ridge_state_only": 30.497295781970024
+      },
+      "H10_clean_FK_mm": {
+        "direct": 6.231246516108513,
+        "residual_correct": 5.279697943478823,
+        "residual_state_only": 14.48074635118246,
+        "residual_shuffled": 7.501595187932253,
+        "ridge_correct": 7.50159565359354,
+        "ridge_state_only": 16.7688075453043
+      },
+      "development_comparisons": {
+        "ridge_correct": {
+          "development_relative_gain": 0.22365989884953796,
+          "development_reference_bootstrap_95pct_ci": [
+            0.19763070116411624,
+            0.24585090244194754
+          ]
+        },
+        "direct": {
+          "development_relative_gain": 0.15226491871055825,
+          "development_reference_bootstrap_95pct_ci": [
+            0.11941515085462283,
+            0.18082983460424765
+          ]
+        },
+        "residual_state_only": {
+          "development_relative_gain": 0.6391539582282819,
+          "development_reference_bootstrap_95pct_ci": [
+            0.5922872595570524,
+            0.6784730943182253
+          ]
+        },
+        "residual_shuffled": {
+          "development_relative_gain": 0.22365990396785462,
+          "development_reference_bootstrap_95pct_ci": [
+            0.19783557136452268,
+            0.2452210113309549
+          ]
+        }
+      },
+      "selection": {
+        "direct": {
+          "update": 1000,
+          "validation_recovery_joint_delta_mse": 0.0019094962626695633,
+          "updates_executed": 1000,
+          "initial_parameter_hash": "028244f0c7e4d203a20034141047144001e938ba16410e9a50bd1c9c1d506488",
+          "final_training_parameter_hash": "f12dd199bf4351010abcbaee50a664fe1c9a853ec4e68fec48b01b52e8a832a0",
+          "optimizer_step_count": 1000
+        },
+        "residual_correct": {
+          "update": 1000,
+          "validation_recovery_joint_delta_mse": 0.0013372221728786826,
+          "updates_executed": 1000,
+          "initial_parameter_hash": "f1e72916de3d1b9f88285816c156add9bba2656ec3fa10d80eafdfeee6872682",
+          "final_training_parameter_hash": "7747d00bf13c8b695e629ebc1352620c5feaa1e1ff92e6e63eef4310b7ed087b",
+          "optimizer_step_count": 1000
+        },
+        "residual_state_only": {
+          "update": 800,
+          "validation_recovery_joint_delta_mse": 0.013604293577373028,
+          "updates_executed": 1000,
+          "initial_parameter_hash": "f1e72916de3d1b9f88285816c156add9bba2656ec3fa10d80eafdfeee6872682",
+          "final_training_parameter_hash": "eadc43fc799ea53283738fb2b58c89fb135dc72275edb65f2951cbf53a616dd8",
+          "optimizer_step_count": 1000
+        },
+        "residual_shuffled": {
+          "update": 0,
+          "validation_recovery_joint_delta_mse": 0.002205390715971589,
+          "updates_executed": 1000,
+          "initial_parameter_hash": "f1e72916de3d1b9f88285816c156add9bba2656ec3fa10d80eafdfeee6872682",
+          "final_training_parameter_hash": "7fec68bb8314ac1796ba56e03461da1a08962f3bf3f2cb1b787aaeaf8f2499cb",
+          "optimizer_step_count": 1000
+        }
+      },
+      "new_transitions": 3932160,
+      "actual_resets": 1685
+    },
+    {
+      "seed": 44,
+      "development_triage": "PROMISING_NEEDS_NEW_CONFIRMATION_REFS",
+      "H10_recovery_FK_mm": {
+        "direct": 12.024004943668842,
+        "residual_correct": 9.933370165526867,
+        "residual_state_only": 28.629129752516747,
+        "residual_shuffled": 12.81802449375391,
+        "ridge_correct": 12.81802449375391,
+        "ridge_state_only": 30.766770243644714
+      },
+      "H10_clean_FK_mm": {
+        "direct": 6.0257804580032825,
+        "residual_correct": 5.162146873772144,
+        "residual_state_only": 14.16042260825634,
+        "residual_shuffled": 7.295846939086914,
+        "ridge_correct": 7.295846939086914,
+        "ridge_state_only": 16.343478113412857
+      },
+      "development_comparisons": {
+        "ridge_correct": {
+          "development_relative_gain": 0.22698052908211597,
+          "development_reference_bootstrap_95pct_ci": [
+            0.20784185405681585,
+            0.24506089488242971
+          ]
+        },
+        "direct": {
+          "development_relative_gain": 0.1732011617790099,
+          "development_reference_bootstrap_95pct_ci": [
+            0.15825397197307,
+            0.1872247885702595
+          ]
+        },
+        "residual_state_only": {
+          "development_relative_gain": 0.6533991203193779,
+          "development_reference_bootstrap_95pct_ci": [
+            0.6285714905650519,
+            0.6825318856112346
+          ]
+        },
+        "residual_shuffled": {
+          "development_relative_gain": 0.22698052908211597,
+          "development_reference_bootstrap_95pct_ci": [
+            0.20825345966122757,
+            0.2451219038154295
+          ]
+        }
+      },
+      "selection": {
+        "direct": {
+          "update": 1000,
+          "validation_recovery_joint_delta_mse": 0.0019264789298176765,
+          "updates_executed": 1000,
+          "initial_parameter_hash": "5562dd306aeff8e10c7ef58a8d6395df896eaee0a6f716ea95a00a9200d7891a",
+          "final_training_parameter_hash": "13781ca1370586e47cbd3733abb51933f7a828e95c01ec138dbda1678ef249a7",
+          "optimizer_step_count": 1000
+        },
+        "residual_correct": {
+          "update": 1000,
+          "validation_recovery_joint_delta_mse": 0.00129725004080683,
+          "updates_executed": 1000,
+          "initial_parameter_hash": "bb7aa9edc5a6dc731b0dddf6a21b608af598c80e8e9284b7afc0c858c3854698",
+          "final_training_parameter_hash": "4b7353d5dff2c8b281922eccc028137f3f3707b65175cf5cea4c65fbec0b559d",
+          "optimizer_step_count": 1000
+        },
+        "residual_state_only": {
+          "update": 800,
+          "validation_recovery_joint_delta_mse": 0.01386895589530468,
+          "updates_executed": 1000,
+          "initial_parameter_hash": "bb7aa9edc5a6dc731b0dddf6a21b608af598c80e8e9284b7afc0c858c3854698",
+          "final_training_parameter_hash": "432f52bfe6d141baa0e478c96d0f5cf6ab770f354db2f7bf5b3fbda205b15ded",
+          "optimizer_step_count": 1000
+        },
+        "residual_shuffled": {
+          "update": 0,
+          "validation_recovery_joint_delta_mse": 0.0021697094198316336,
+          "updates_executed": 1000,
+          "initial_parameter_hash": "bb7aa9edc5a6dc731b0dddf6a21b608af598c80e8e9284b7afc0c858c3854698",
+          "final_training_parameter_hash": "37fc13c6d6de4b6eae66da01980f001b53e57dbfbac7ff40595d4c86f2de2a9b",
+          "optimizer_step_count": 1000
+        }
+      },
+      "new_transitions": 3932160,
+      "actual_resets": 1710
+    }
+  ],
+  "limitations": [
+    "Actual development child exit codes not independently retained; wrapper return0, artifacts and sentinels verified.",
+    "Validation selects checkpoint, so improvements and CI are development diagnostics, not independent confirmation.",
+    "Force is scheduled once on torso, ground contact only; no entity strike or general robustness claim.",
+    "Reset-crossing/unmatched windows excluded for all predictors; this is not a control success denominator.",
+    "Only an encoder may later feed PPO; all formal causal control ablations and new sim-to-sim still pending."
+  ],
+  "raw_receipt_hashes": {
+    "collect_seed42_summary.json": "69b67fa4b6c5aad379edc1f3d40b093a877e831872340f06d599d65224ed2967",
+    "collect_seed43_summary.json": "0b5b178833b52323b9a30214b3aa720bef3b8b9bc32227c9e7dc68759eaa4143",
+    "collect_seed44_summary.json": "0d585b6f8ea905fae9a67e190e776048df7dd1a570b1f426538181152b4a8440",
+    "development_doc_witness.json": "1298591472dabc52cfa10b6ebdb1391b3f70b512d9015e16d88865622411b20f",
+    "executed_residual_stage_20261007.sh": "7e6dce0dba6e79ec804946b2bd3e98b4a4cf8452b05cbb1654a6a68f084a9309",
+    "fit_seed42_summary.json": "88c020f22a4d5faf9cadc97a1bc9e4ef3059be957dfd84e3a84bb4d3f55feaa5",
+    "fit_seed43_summary.json": "57f30f5dcd00f8a9759531018d2d755eb843ef6b12b5da8d19aa6dfc9c869820",
+    "fit_seed44_summary.json": "df7219615e5f505ae2fa5fc8428d003a0817213cf320b5bd24a20dbd8c6dbf29",
+    "kernel_witness.json": "27846fcf61db7167c58421794807c08fc13f936f4ef3401c3106e7097cf1b957",
+    "previous_executed_r3_world_ppo_fit_v1.py": "121e27085a78a57e7a632e3a8dd12a8836d8b4ed7e57cb8e4787f688f1a146ab",
+    "probe_summary.json": "da057d648c2493011d2a20a09866d60cf34725af22e081ca460b090acdc02b41",
+    "queue.state": "65837b843b048b3c0fc27742bc8905841d1c2c7e56f4bdccf3d24a9b9b32906f"
+  }
+}

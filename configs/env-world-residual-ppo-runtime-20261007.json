@@ -1,0 +1,14 @@
+{
+  "provider_shape": "direct SSH existing environment, warm reuse",
+  "base_spec": "configs/env-dreamcontrol-r3.json",
+  "base_spec_canonical_sha256": "47f5eb26218254bbe270c3c43b3e7a552cca04c5caa81b6c76b4a6d2d3d2e9d4",
+  "runtime": "Isaac Sim4.5 Python3.10 Torch2.5.1cu118, project-local Isaac Lab overlay",
+  "dependency_changes": [],
+  "compute_gpu": 0,
+  "independent_existing_viewer_gpu": 1,
+  "shared_context_memory_allowance_MiB": 1500,
+  "smoke": {"arms": ["P0", "P-cap", "P-history", "W-correct", "W-shuffled-original"], "environments": 256, "rollout_steps": 24, "PPO_updates": 2, "seed": 42, "aux_updates_per_cycle": 1, "aux_batch": 1024},
+  "bounded_visibility": {"environments": 16, "PPO_updates": 0, "seconds": 1200, "UDP": 40123},
+  "formal_status": "NOT_STARTED_requires_smoke_capacity_and_current_local_scene_gate",
+  "formal_proposed": {"arms": 5, "seeds": [42,43,44], "environments": 8192, "rollout_steps": 24, "PPO_updates": 500, "aux_updates_per_cycle": 1, "aux_batch": 1024}
+}

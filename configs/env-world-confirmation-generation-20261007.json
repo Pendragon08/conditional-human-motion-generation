@@ -1,0 +1,24 @@
+{
+  "provider": "ssh:ouyanghao@10.147.17.32",
+  "install": false,
+  "generation": {
+    "runtime": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python",
+    "python": "3.8.20",
+    "torch": "1.13.1+cu117",
+    "overlay": "/data/code/ouyanghao/oyh/humanoid-combat-motion/envs/closd-r3/site-packages",
+    "checkpoint_sha256": "886b722e95496f4ceafd704c4e1d0578888733d12ce67429677b80a91a9c36d0"
+  },
+  "retarget": {
+    "runtime": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-retarget/bin/python",
+    "python": "3.10.21",
+    "jax": "0.6.2",
+    "jaxlib": "0.6.2",
+    "torch": "2.5.1+cu121",
+    "numpy": "1.26.4",
+    "overlay": "/data/code/ouyanghao/oyh/humanoid-combat-motion/envs/dreamcontrol-retarget",
+    "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+  },
+  "resource": {"gpu": 0, "threads": 2, "preserve_gpu1_monitor": true},
+  "invocation": "scripts/r3_world_confirmation_generation_20261007.sh",
+  "ready_claim": "Requires real inference/retarget receipts and fresh agent following documentation; versions alone are not readiness"
+}

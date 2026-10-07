@@ -1,0 +1,204 @@
+{
+  "status": "COMPLETE",
+  "mode": "collect",
+  "platform": "Isaac Lab / PhysX",
+  "seed": 43,
+  "num_envs": 2048,
+  "steps": 480,
+  "actual_transitions": 983040,
+  "formal_ppo_updates": 0,
+  "diagnostic_ppo_updates": 0,
+  "diagnostic_aux_updates": 0,
+  "task_reward_PD_termination_unchanged": true,
+  "extra_IK": false,
+  "shared_warmup_stochastic_original_policy": true,
+  "policy_checkpoint_sha256": "e3c50fb6f36f59f89d1b4e788b1ba74cf1ff0cdde3dceff34a9d7765235f65c0",
+  "original_jit_equivalence_max_abs": 0.0,
+  "original_library_order_max_abs": 0.0,
+  "reset_count": 653,
+  "schema": {
+    "version": 1,
+    "history": 10,
+    "input": 92,
+    "latent": 128,
+    "input_source": "original noisy policy observation[0:92], no privileged state",
+    "input_order": [
+      "root_linear_velocity_b:3",
+      "root_angular_velocity_b:3",
+      "projected_gravity_b:3",
+      "relative_joint_position:27",
+      "relative_joint_velocity:27",
+      "previous_action:29"
+    ],
+    "targets": [
+      "absolute_motion_joint_position:27",
+      "projected_gravity_b:3",
+      "root_linear_velocity_b:3",
+      "root_angular_velocity_b:3",
+      "two_feet_relative_root_position_b:6",
+      "two_feet_velocity_xy_w:4",
+      "root_height:1",
+      "root_vertical_velocity_w:1",
+      "two_ground_contact:2"
+    ],
+    "target_continuous_delta": true,
+    "contact_force_threshold_N": 5.0,
+    "future_action_in_actor": false,
+    "step_dt_s": 0.02
+  },
+  "schema_hash": "e0ea6ee69b602bbf12eb418525239ea30c7255bec0d6bf4dd2a25d86908b832a",
+  "rollout_versions": [],
+  "losses": [],
+  "wall_s": 62.8386025428772,
+  "reference_manifest_sha256": "9e9da9f517a7b7d8b202fd5259c740df613e6c3174d71c1f5ffa193562f17f55",
+  "fresh_confirmation_references": true,
+  "loaded_reference_files": [
+    "0007_n.pkl",
+    "0009_n.pkl",
+    "0013_n.pkl",
+    "0012_n.pkl",
+    "0010_n.pkl",
+    "0006_n.pkl",
+    "0004_n.pkl",
+    "0000_n.pkl",
+    "0001_n.pkl",
+    "0015_n.pkl",
+    "0002_n.pkl"
+  ],
+  "selected_original_ids": [
+    0,
+    1,
+    2,
+    4,
+    6,
+    7,
+    9,
+    10,
+    12,
+    13,
+    15
+  ],
+  "confirmation_data_not_for_training": true,
+  "disturbance_protocol": {
+    "name": "lateral80",
+    "distribution_changed_from_nominal": true,
+    "force_world_y_N": 80,
+    "force_control_steps": [
+      50,
+      59
+    ],
+    "force_duration_s": 0.2,
+    "cohort": "rank original reference/initial phase; alternating clean/pushed and force signs",
+    "external_force_visible_to_actor": false,
+    "actual_articulation_force_buffer_audit": [
+      {
+        "step": 50,
+        "local_buffer_error": 0.0,
+        "pushed_count": 1024,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 51,
+        "local_buffer_error": 0.0,
+        "pushed_count": 1024,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 52,
+        "local_buffer_error": 0.0,
+        "pushed_count": 1024,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 53,
+        "local_buffer_error": 0.0,
+        "pushed_count": 1024,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 54,
+        "local_buffer_error": 0.0,
+        "pushed_count": 1024,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 55,
+        "local_buffer_error": 0.0,
+        "pushed_count": 1024,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 56,
+        "local_buffer_error": 0.0,
+        "pushed_count": 1024,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 57,
+        "local_buffer_error": 0.0,
+        "pushed_count": 1024,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 58,
+        "local_buffer_error": 0.0,
+        "pushed_count": 1024,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 59,
+        "local_buffer_error": 0.0,
+        "pushed_count": 1024,
+        "force_norm_N_max": 80.00000762939453
+      }
+    ],
+    "reset_during_force_pushed_envs": 0,
+    "reset_60_to_109_pushed_envs": 265
+  },
+  "files": {
+    "push_direction.npy": {
+      "bytes": 2176,
+      "sha256": "82837d6e442192202c8d38709097a6ea099014f1bbc4de85dee0ee32f163ec93"
+    },
+    "observable.npy": {
+      "bytes": 362512512,
+      "sha256": "d0a3d6d72861bd11411cafe072b501fcf27d777fe77b9f07b0522be973977014"
+    },
+    "labels.npy": {
+      "bytes": 197017728,
+      "sha256": "315154280d3fd5b38d24c767ab26b2e96e0b48bf2084b558dbdbd83a51315d9a"
+    },
+    "phase.npy": {
+      "bytes": 3940480,
+      "sha256": "dc30fa55793df3f24da1c4b86e9030d7a1e078e65bf65e2311c06f20ddb2fcd8"
+    },
+    "reward.npy": {
+      "bytes": 3932288,
+      "sha256": "e93830477ac690036c2685e2d5c2cddd8348d9a23bf37950ef5c0ebbd9f5205d"
+    },
+    "done.npy": {
+      "bytes": 983168,
+      "sha256": "18ad4744181d3da16b1174b6341b3b2bfbcc30a55ad37c72e158b4642f31cf65"
+    },
+    "reference.npy": {
+      "bytes": 1970304,
+      "sha256": "5365d450dc69611d19711b8d6c3d316c88d343eed6c767fc470354ce852d6713"
+    },
+    "cohort.npy": {
+      "bytes": 2176,
+      "sha256": "e70a8e0e005790d6bd3d74e968c150bfd7f3cfec9a571db129b264f49bd970c1"
+    },
+    "actions.npy": {
+      "bytes": 114032768,
+      "sha256": "c613f5c3fa716187708717357dbc3dc67463e271a8bf00ed54cef4a676eda1a5"
+    },
+    "episode.npy": {
+      "bytes": 3940480,
+      "sha256": "1d7664d87df3c7ae17016dd6c481bb5e1322eca93b9044b12ccd3ab9d6909a6d"
+    },
+    "push_episode.npy": {
+      "bytes": 8320,
+      "sha256": "8e0d7331aa291c9587b0bef3c7ea54f17c4248e9d41e02c1cf610657a66cce8c"
+    }
+  }
+}

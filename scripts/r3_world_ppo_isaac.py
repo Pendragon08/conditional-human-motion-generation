@@ -15,6 +15,9 @@ p.add_argument('--seed', type=int, default=42)
 p.add_argument('--num_envs', type=int, default=8192)
 p.add_argument('--rollouts', type=int, default=20)
 p.add_argument('--visibility-seconds', type=int, default=1200)
+p.add_argument('--disturbance', choices=['none','lateral80'], default='none')
+p.add_argument('--monitor-prefix', type=Path)
+p.add_argument('--reference-manifest', type=Path)
 AppLauncher.add_app_launcher_args(p)
 a = p.parse_args()
 sys.argv = [sys.argv[0]]
@@ -90,8 +93,20 @@ def main():
     assert 'critic' not in raw.observation_manager.active_terms
     assert int(checkpoint['privileged_obs_norm_state_dict']['count'])==0
     privnorm=norm
-    official=np.load(ROOT/'artifacts/sim2sim_mujoco/interfaces/Kick_references.npz')
-    identity=float(np.max(np.abs(lib.dof_pos.cpu().numpy()-official['dof_pos'])))
+    reference_receipt=None
+    if a.reference_manifest:
+        reference_receipt=json.loads(a.reference_manifest.read_text())
+        assert reference_receipt['status']=='COMPLETE' and reference_receipt['selected_count']==11
+        loaded_paths=[Path(f) for f in lib._motion_data_load]
+        assert {f.name for f in loaded_paths}=={r['file'] for r in reference_receipt['selected']}
+        for row in reference_receipt['selected']:
+            f=Path(reference_receipt['reference_dir'])/row['file']
+            assert sha(f)==row['sha256'] and f.stat().st_size==row['bytes']
+        expected_q=np.concatenate([np.asarray(d['joints'])[:200] for d in lib._motion_data_list])
+        identity=float(np.max(np.abs(lib.dof_pos.cpu().numpy()-expected_q)))
+    else:
+        official=np.load(ROOT/'artifacts/sim2sim_mujoco/interfaces/Kick_references.npz')
+        identity=float(np.max(np.abs(lib.dof_pos.cpu().numpy()-official['dof_pos'])))
     assert identity<1e-6
     with torch.no_grad():
         jit=torch.jit.load(str(JIT),map_location=a.device).eval()
@@ -99,7 +114,7 @@ def main():
         assert initial_error<1e-5
     active=ROOT/'artifacts/monitoring/r3_active_dreamcontrol_training.json'
     run_id=a.output.name[len(f'{a.mode}_seed{a.seed}_'):]
-    prefix=ROOT/f'artifacts/monitoring/r3_world_ppo_{a.mode}_{a.seed}_{run_id}'
+    prefix=a.monitor_prefix or ROOT/f'artifacts/monitoring/r3_world_ppo_{a.mode}_{a.seed}_{run_id}'
     atomic_json(active,{'task_id':'Isaac-Motion-Tracking-Kick-v0', 'stage':a.mode,
                         'is_formal_training':False,'source':'actual_isaaclab_simulation',
                         'output':str(a.output),'seed':a.seed,'num_envs':a.num_envs,
@@ -177,6 +192,17 @@ def main():
                 for k,(s,d) in specs.items()}
     episode=torch.zeros(a.num_envs,dtype=torch.int32,device=a.device)
     losses=[]; resets=0; wm_version=0; last_done=None
+    # New, explicitly separate disturbance development data. No force state is
+    # included in the policy or encoder. Even envs are clean controls; odd envs
+    # receive one signed world-y torso force at controls 50..59 inclusive.
+    order=np.lexsort((np.arange(a.num_envs),
+        np.floor((raw.episode_length_buf*raw.step_dt+raw.start_motion_times).cpu().numpy()/.2),
+        raw.motion_ids.cpu().numpy()))
+    ranks=torch.tensor(np.argsort(order),device=a.device)
+    cohort=ranks%2
+    direction=torch.where((ranks//2)%2==0,1.,-1.)
+    torso=robot.body_names.index('torso_link')
+    push_episode=None; reset_during_push=0; reset_after_push=0; force_audit=[]
     def labels():
         rel=robot.data.body_pos_w[:,feet]-robot.data.root_pos_w[:,None,:]
         qb=robot.data.root_quat_w[:,None,:].expand(-1,2,-1)
@@ -197,6 +223,21 @@ def main():
         arrays['phase'][t]=(raw.episode_length_buf*raw.step_dt+raw.start_motion_times).cpu().numpy()
     if arrays: store_state(0)
     for step in range(steps):
+        if a.disturbance=='lateral80':
+            pulse_step=step%500 if a.mode=='visibility' else step
+            world=torch.zeros(a.num_envs,3,device=a.device)
+            if 50<=pulse_step<60:
+                world[:,1]=80.*cohort*direction
+                if step==50: push_episode=episode.detach().cpu().numpy().copy()
+            local=quat_apply_inverse(robot.data.body_quat_w[:,torso],world)[:,None,:]
+            robot.set_external_force_and_torque(local,torch.zeros_like(local),body_ids=[torso])
+            if 50<=step<60:
+                applied=robot._external_force_b[:,torso]
+                error=float((applied-local[:,0]).abs().max())
+                assert error<1e-6
+                force_audit.append({'step':step,'local_buffer_error':error,
+                    'pushed_count':int((applied.norm(dim=-1)>1).sum()),
+                    'force_norm_N_max':float(applied.norm(dim=-1).max())})
         with torch.inference_mode():
             if smoke_algorithm:
                 latent=wm.encode(history.value)
@@ -210,6 +251,9 @@ def main():
         result=env.step(action)
         nextobs,reward,terminated,truncated,infos=result
         done=terminated|truncated
+        if a.disturbance=='lateral80':
+            if 50<=step<60: reset_during_push+=int(done[cohort.bool()].sum())
+            elif 60<=step<110: reset_after_push+=int(done[cohort.bool()].sum())
         assert torch.isfinite(nextobs['policy']).all() and torch.isfinite(reward).all()
         if arrays:
             arrays['actions'][step]=action.detach().cpu().numpy()
@@ -244,6 +288,11 @@ def main():
             time.sleep(.02)
             if time.time()-started>a.visibility_seconds: break
     for v in arrays.values(): v.flush()
+    if a.disturbance=='lateral80' and arrays:
+        assert push_episode is not None
+        np.save(a.output/'cohort.npy',cohort.cpu().numpy().astype(np.int8))
+        np.save(a.output/'push_direction.npy',direction.cpu().numpy().astype(np.int8))
+        np.save(a.output/'push_episode.npy',push_episode)
     if smoke_algorithm:
         # One CUDA auxiliary gradient update using genuine, reset-free data.
         valid=[]
@@ -277,6 +326,22 @@ def main():
              'original_library_order_max_abs':identity,'reset_count':resets,
              'schema':SCHEMA,'schema_hash':SCHEMA_HASH,'rollout_versions':versions,
              'losses':losses,'wall_s':time.time()-started}
+    if reference_receipt:
+        summary.update(reference_manifest_sha256=sha(a.reference_manifest),
+                       fresh_confirmation_references=True,
+                       loaded_reference_files=[f.name for f in loaded_paths],
+                       selected_original_ids=[r['original_id'] for r in reference_receipt['selected']],
+                       confirmation_data_not_for_training=True)
+    summary['disturbance_protocol']={'name':a.disturbance,
+        'distribution_changed_from_nominal':a.disturbance!='none',
+        'force_world_y_N':80 if a.disturbance=='lateral80' else 0,
+        'force_control_steps':[50,59] if a.disturbance=='lateral80' else [],
+        'force_duration_s':.2 if a.disturbance=='lateral80' else 0.,
+        'cohort':'rank original reference/initial phase; alternating clean/pushed and force signs',
+        'external_force_visible_to_actor':False,
+        'actual_articulation_force_buffer_audit':force_audit,
+        'reset_during_force_pushed_envs':reset_during_push,
+        'reset_60_to_109_pushed_envs':reset_after_push}
     if smoke_algorithm:
         summary.update({'zero_initialized_latent_initial_actor_error':initial_aug_error,
                         'five_arm_initial_function_errors':init_functions,

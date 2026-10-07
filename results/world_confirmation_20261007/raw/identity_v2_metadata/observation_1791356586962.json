@@ -1,0 +1,77 @@
+{
+  "observed_unix": 1791356586.9626966,
+  "session": {
+    "rc": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "log_observation": {
+    "r3_world_confirmation_v2_20261007.log": {
+      "bytes": 0,
+      "mtime": 1791356537.1390376,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sentinels": {
+        "WORLD_PPO_ISAAC_COMPLETE": false,
+        "WORLD_RESIDUAL_NEW_REFERENCE_CONFIRMATION_COMPLETE": false,
+        "WORLD_RESIDUAL_CONFIRMATION_QUEUE_COMPLETE": false
+      },
+      "interesting": [],
+      "tail": ""
+    },
+    "r3_world_confirmation_v2_collect_42_v1.log": {
+      "bytes": 18063,
+      "mtime": 1791356585.6797822,
+      "sha256": "0d07efe656146e4d959f2cfc9b62fe90b3f4caf42d32d1fef3242020b3c855cf",
+      "sentinels": {
+        "WORLD_PPO_ISAAC_COMPLETE": false,
+        "WORLD_RESIDUAL_NEW_REFERENCE_CONFIRMATION_COMPLETE": false,
+        "WORLD_RESIDUAL_CONFIRMATION_QUEUE_COMPLETE": false
+      },
+      "interesting": [
+        "WORLD_PPO_ACTUAL_PHYSICS_STEP 121",
+        "WORLD_PPO_ACTUAL_PHYSICS_STEP 145",
+        "WORLD_PPO_ACTUAL_PHYSICS_STEP 169",
+        "WORLD_PPO_ACTUAL_PHYSICS_STEP 193",
+        "WORLD_PPO_ACTUAL_PHYSICS_STEP 217",
+        "WORLD_PPO_ACTUAL_PHYSICS_STEP 241",
+        "WORLD_PPO_ACTUAL_PHYSICS_STEP 265",
+        "WORLD_PPO_ACTUAL_PHYSICS_STEP 289"
+      ],
+      "tail": "WORLD_PPO_ACTUAL_PHYSICS_STEP 217\nWORLD_PPO_ACTUAL_PHYSICS_STEP 241\nWORLD_PPO_ACTUAL_PHYSICS_STEP 265\nWORLD_PPO_ACTUAL_PHYSICS_STEP 289"
+    }
+  },
+  "processes": {
+    "rc": 0,
+    "stdout": "1589567 3151130   60093 /bin/bash /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/python.sh -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_i1_live_training_viewer.py --device=cuda:1 --livestream=2 --telemetry-port=40123 --status-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_viewer.state --snapshot-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_frame.png --kit_args=--portable-root /data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_live_viewer/kit --/renderer/multiGpu/enabled=false --task=Isaac-Motion-Tracking-Kick-v0\n1589572 1589567   60093 /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_i1_live_training_viewer.py --device=cuda:1 --livestream=2 --telemetry-port=40123 --status-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_viewer.state --snapshot-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_frame.png --kit_args=--portable-root /data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_live_viewer/kit --/renderer/multiGpu/enabled=false --task=Isaac-Motion-Tracking-Kick-v0\n1614052 2310763      50 bash -c cd /data/code/ouyanghao/oyh/conditional-human-motion-generation; /usr/bin/python3 -u scripts/r3_world_confirmation_v2_queue_20261007.py > artifacts/monitoring/r3_world_confirmation_v2_20261007.log 2>&1\n1614054 1614052      50 /usr/bin/python3 -u scripts/r3_world_confirmation_v2_queue_20261007.py\n1614055 1614054      49 bash /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_world_confirmation_v2_stage_20261007.sh collect 42\n1614059 1614055      49 timeout --signal=TERM --kill-after=30s 1800 /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/python.sh -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_world_confirmation_isaac_v2_20261007.py --mode collect --output /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_confirmation_20261007/confirmation_v2/collect_seed42_v1 --seed 42 --num_envs 2048 --rollouts 20 --device cuda:0 --headless --disturbance lateral80 --monitor-prefix /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_confirmation_v2_collect_42_v1 --reference-manifest /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_confirmation_20261007/selection/manifest.json\n1614060 1614059      49 /bin/bash /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/python.sh -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_world_confirmation_isaac_v2_20261007.py --mode collect --output /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_confirmation_20261007/confirmation_v2/collect_seed42_v1 --seed 42 --num_envs 2048 --rollouts 20 --device cuda:0 --headless --disturbance lateral80 --monitor-prefix /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_confirmation_v2_collect_42_v1 --reference-manifest /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_confirmation_20261007/selection/manifest.json\n1614065 1614060      49 /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_world_confirmation_isaac_v2_20261007.py --mode collect --output /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_confirmation_20261007/confirmation_v2/collect_seed42_v1 --seed 42 --num_envs 2048 --rollouts 20 --device cuda:0 --headless --disturbance lateral80 --monitor-prefix /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_confirmation_v2_collect_42_v1 --reference-manifest /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_confirmation_20261007/selection/manifest.json\n3854248       1  472202 /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u scripts/reinforcement_learning/rsl_rl/play_eval.py --task=Isaac-Motion-Tracking-Sit-v0 --device=cuda:1 --num_envs=1000 --path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_16-54-27-Sit-a/model_1999.pt --headless --id=r3_sit_no_camera_init_diagnostic_20261001",
+    "stderr": ""
+  },
+  "gpu": {
+    "rc": 0,
+    "stdout": "0, 4261 MiB, 49140 MiB\n1, 9130 MiB, 49140 MiB\n",
+    "stderr": ""
+  },
+  "progress": {
+    "42": {
+      "stage": "collect",
+      "steps": 289,
+      "wall_s": 43.43225717544556,
+      "actual_transitions": 591872,
+      "formal_ppo_updates": 0,
+      "diagnostic_ppo_updates": 0
+    }
+  },
+  "new_lock": {
+    "sha256": "b25b1fcecd078fc4aa9c1d9c07137944962fd9ea0515f276584ad83e0f5c7df9",
+    "file_count": 39,
+    "hash_mismatches": [],
+    "same_38_common_hashes_as_old": true,
+    "common_file_count": 38,
+    "created_unix_before_collection": 1791356537.2501712,
+    "reference_manifest_sha256": "9e9da9f517a7b7d8b202fd5259c740df613e6c3174d71c1f5ffa193562f17f55"
+  },
+  "receipt_names": [
+    "queue.state",
+    "model_lock.json",
+    "collect_seed42.state"
+  ]
+}

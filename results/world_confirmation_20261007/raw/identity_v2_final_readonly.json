@@ -1,0 +1,167 @@
+{
+  "observed_unix": 1791356938.2025223,
+  "session": {
+    "rc": 1,
+    "stdout": "",
+    "stderr": "can't find session: r3_world_confirmation_v2_20261007\n"
+  },
+  "v2_state_exists": true,
+  "v2_art_exists": true,
+  "v2_stage_state_names": [
+    "r3_world_confirmation_v2_evaluate_44_v1.state",
+    "r3_world_confirmation_v2_collect_42_v1.state",
+    "r3_world_confirmation_v2_evaluate_43_v1.state",
+    "r3_world_confirmation_v2_evaluate_42_v1.state",
+    "r3_world_confirmation_v2_collect_44_v1.state",
+    "r3_world_confirmation_v2_collect_43_v1.state"
+  ],
+  "old_queue_state": {
+    "status": "FAILED",
+    "stage": "collect",
+    "seed": 42,
+    "exit": 1,
+    "preserve": true,
+    "completed": [],
+    "datasets": [],
+    "updated_unix": 1791356151.0498843,
+    "formal_PPO_started": false,
+    "auxiliary_updates": 0,
+    "old_v1_FAIL_preserved": true
+  },
+  "old_collection_files": [],
+  "old_evaluate_exists": false,
+  "old_lock_file_count": 39,
+  "old_lock_hash_mismatches": [],
+  "old_preserved_hashes": {
+    "artifacts/world_confirmation_20261007/model_lock.json": "bdc37a39db1c820b3b39b55d10524e8ef3c171d05f49f85c991142d150c9625b",
+    "artifacts/monitoring/r3_world_confirmation_20261007.state": "f469bd61483d3e3c92c67247aff63296d62eb8b255bdd65bb7e6d4bad2d47aa5",
+    "artifacts/monitoring/r3_world_confirmation_collect_42_v1.log": "803eca3daca9a2cd696a27eaf18d00094705a63a17c2950ff253a5b3e70280a8",
+    "artifacts/monitoring/r3_world_confirmation_collect_42_v1.state": "ee35d0190083407ffb8ddcd2cb6d5140686567c260c15c2357860d58e4e5fe58",
+    "scripts/r3_world_ppo_isaac.py": "ee9ec9317243ea4553da77c8df5bb02de6833d1bf3edba90c91f2915f9cc0add",
+    "scripts/r3_world_confirmation_queue_20261007.py": "c968485d24b97b014d9720c8d57a307751127a231995d14de8b310e7723a8b69",
+    "scripts/r3_world_confirmation_stage_20261007.sh": "a0fd418f20566a924a8081f64bcf7b49c70cbb95b05be9d54ec1e99187538c69"
+  },
+  "gpu0_lock_free": true,
+  "disk_free_GiB": 49.396514892578125,
+  "gpu": {
+    "rc": 0,
+    "stdout": "0, 699 MiB, 49140 MiB\n1, 8904 MiB, 49140 MiB\n",
+    "stderr": ""
+  },
+  "gpu_processes": {
+    "rc": 0,
+    "stdout": "3854248, /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3, 478 MiB\n1589572, /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3, 140 MiB\n3854248, /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3, 3265 MiB\n1589572, /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3, 5539 MiB\n",
+    "stderr": ""
+  },
+  "processes": {
+    "rc": 0,
+    "stdout": "1589567 3151130   60445 /bin/bash /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/python.sh -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_i1_live_training_viewer.py --device=cuda:1 --livestream=2 --telemetry-port=40123 --status-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_viewer.state --snapshot-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_frame.png --kit_args=--portable-root /data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_live_viewer/kit --/renderer/multiGpu/enabled=false --task=Isaac-Motion-Tracking-Kick-v0\n1589572 1589567   60445 /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_i1_live_training_viewer.py --device=cuda:1 --livestream=2 --telemetry-port=40123 --status-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_viewer.state --snapshot-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_frame.png --kit_args=--portable-root /data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_live_viewer/kit --/renderer/multiGpu/enabled=false --task=Isaac-Motion-Tracking-Kick-v0\n3854248       1  472554 /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u scripts/reinforcement_learning/rsl_rl/play_eval.py --task=Isaac-Motion-Tracking-Sit-v0 --device=cuda:1 --num_envs=1000 --path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_16-54-27-Sit-a/model_1999.pt --headless --id=r3_sit_no_camera_init_diagnostic_20261001",
+    "stderr": ""
+  },
+  "canonical_spec_sha256": "47f5eb26218254bbe270c3c43b3e7a552cca04c5caa81b6c76b4a6d2d3d2e9d4",
+  "source_hashes": {
+    "scripts/r3_world_confirmation_isaac_v2_20261007.py": "bf594e968b07d402c000e3c3194aa45c43997332dba0653cec87e954557ad030",
+    "scripts/r3_world_confirmation_v2_queue_20261007.py": "03791432f0765da982438658d0e608f5fba4da2f2bd582837c34b31470d7801b",
+    "scripts/r3_world_confirmation_v2_stage_20261007.sh": "92f2c0cf13d29e85031c43fd0c6fdfb3ca5b52d0dbcd86e944582e64cc3e719b",
+    "scripts/r3_world_ppo_isaac.py": "ee9ec9317243ea4553da77c8df5bb02de6833d1bf3edba90c91f2915f9cc0add",
+    "scripts/r3_world_confirmation_eval_20261007.py": "6d45397a8af9bfc2a5787b0c0a478f15253f6f48201a2741b1cc679294389af0",
+    "plans/world_residual_confirmation_20261007.md": "2134a3d3fece4d667be2f68aed905a4a7b9ff5e43de7b793acacc4ac6d106b23",
+    "docs/world_confirmation_isaac_v2_invocation_20261007.md": "d72301ebcdb46932b8f12a953b3b1a367e77ae737594811bbd7e933944d5c3d5"
+  },
+  "normalized_collector_only_exact_guard_change": true,
+  "normalized_collector_diff": [
+    "--- original\n",
+    "+++ v2\n",
+    "@@ -102,7 +102,8 @@\n",
+    "         for row in reference_receipt['selected']:",
+    "             f=Path(reference_receipt['reference_dir'])/row['file']",
+    "             assert sha(f)==row['sha256'] and f.stat().st_size==row['bytes']",
+    "-        expected_q=np.concatenate([np.asarray(d['joints'])[:200] for d in lib._motion_data_list])",
+    "+        expected_q=np.stack([np.asarray(d['joints'])[:200] for d in lib._motion_data_list])",
+    "+        assert expected_q.shape==tuple(lib.dof_pos.shape)==(11,200,27)",
+    "         identity=float(np.max(np.abs(lib.dof_pos.cpu().numpy()-expected_q)))",
+    "     else:",
+    "         official=np.load(ROOT/'artifacts/sim2sim_mujoco/interfaces/Kick_references.npz')"
+  ],
+  "original_66_branch_unchanged": true,
+  "selected_reference_count": 11,
+  "selected_reference_hashes": [
+    {
+      "file": "0000_n.pkl",
+      "actual_sha256": "f380be390382e1dd4b3b9e39bc41bc5a22742459419b8cabe16de98b7c79aefc",
+      "expected_sha256": "f380be390382e1dd4b3b9e39bc41bc5a22742459419b8cabe16de98b7c79aefc",
+      "bytes_match": true
+    },
+    {
+      "file": "0001_n.pkl",
+      "actual_sha256": "90153875947ea07e546b5c705950ee2124b160fcdc3a75145ad9243afd1e9220",
+      "expected_sha256": "90153875947ea07e546b5c705950ee2124b160fcdc3a75145ad9243afd1e9220",
+      "bytes_match": true
+    },
+    {
+      "file": "0002_n.pkl",
+      "actual_sha256": "8117e0b18eb7730d7deb59fadd00b3f027da519aa208bb1c30c71b1ec87ef71d",
+      "expected_sha256": "8117e0b18eb7730d7deb59fadd00b3f027da519aa208bb1c30c71b1ec87ef71d",
+      "bytes_match": true
+    },
+    {
+      "file": "0004_n.pkl",
+      "actual_sha256": "18a799794deb052e46e82624c33c6ac960061bc3a575c8e647f49978cfb0fe35",
+      "expected_sha256": "18a799794deb052e46e82624c33c6ac960061bc3a575c8e647f49978cfb0fe35",
+      "bytes_match": true
+    },
+    {
+      "file": "0006_n.pkl",
+      "actual_sha256": "c876e1c3eae86dc02f277be5aca572362e9ebd7caa718389dc72be552747911c",
+      "expected_sha256": "c876e1c3eae86dc02f277be5aca572362e9ebd7caa718389dc72be552747911c",
+      "bytes_match": true
+    },
+    {
+      "file": "0007_n.pkl",
+      "actual_sha256": "dba38fb91b249ed6c403e6880f3bb20dafb394cda81988cd98c052caefb3026a",
+      "expected_sha256": "dba38fb91b249ed6c403e6880f3bb20dafb394cda81988cd98c052caefb3026a",
+      "bytes_match": true
+    },
+    {
+      "file": "0009_n.pkl",
+      "actual_sha256": "d5f1b49200a3abc0f5ac779db89aadfb4b3aeab3ac44441fbf85a5a44becb0f8",
+      "expected_sha256": "d5f1b49200a3abc0f5ac779db89aadfb4b3aeab3ac44441fbf85a5a44becb0f8",
+      "bytes_match": true
+    },
+    {
+      "file": "0010_n.pkl",
+      "actual_sha256": "5cde659b3e9c91f06613150a70fd849858cd2bbc55515248edc2a0d9a252bb8c",
+      "expected_sha256": "5cde659b3e9c91f06613150a70fd849858cd2bbc55515248edc2a0d9a252bb8c",
+      "bytes_match": true
+    },
+    {
+      "file": "0012_n.pkl",
+      "actual_sha256": "0b0f28e16f848894c780e403a5fb21a890d0e125525ae94dcdc883efc58adc71",
+      "expected_sha256": "0b0f28e16f848894c780e403a5fb21a890d0e125525ae94dcdc883efc58adc71",
+      "bytes_match": true
+    },
+    {
+      "file": "0013_n.pkl",
+      "actual_sha256": "060d6c878112883ee4be32b86a77d8263108e16b8058b3d7e3b11d14e8a4686d",
+      "expected_sha256": "060d6c878112883ee4be32b86a77d8263108e16b8058b3d7e3b11d14e8a4686d",
+      "bytes_match": true
+    },
+    {
+      "file": "0015_n.pkl",
+      "actual_sha256": "4fba57ebae4bff583fe328fb933a1ef3d50aa9e0833a1be2c928dd764d045d49",
+      "expected_sha256": "4fba57ebae4bff583fe328fb933a1ef3d50aa9e0833a1be2c928dd764d045d49",
+      "bytes_match": true
+    }
+  ],
+  "manifest_sha256": "9e9da9f517a7b7d8b202fd5259c740df613e6c3174d71c1f5ffa193562f17f55",
+  "bash_stage_syntax": {
+    "rc": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "stage_no_CR": true,
+  "remote_AGENTS": {},
+  "old_sources_states_logs_and_lock_exactly_preserved": true,
+  "all_seven_source_doc_plan_hashes_unchanged": true,
+  "all_selected_references_unchanged": true
+}

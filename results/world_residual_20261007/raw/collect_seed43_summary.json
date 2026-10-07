@@ -1,0 +1,175 @@
+{
+  "status": "COMPLETE",
+  "mode": "collect",
+  "platform": "Isaac Lab / PhysX",
+  "seed": 43,
+  "num_envs": 8192,
+  "steps": 480,
+  "actual_transitions": 3932160,
+  "formal_ppo_updates": 0,
+  "diagnostic_ppo_updates": 0,
+  "diagnostic_aux_updates": 0,
+  "task_reward_PD_termination_unchanged": true,
+  "extra_IK": false,
+  "shared_warmup_stochastic_original_policy": true,
+  "policy_checkpoint_sha256": "e3c50fb6f36f59f89d1b4e788b1ba74cf1ff0cdde3dceff34a9d7765235f65c0",
+  "original_jit_equivalence_max_abs": 0.0,
+  "original_library_order_max_abs": 0.0,
+  "reset_count": 1685,
+  "schema": {
+    "version": 1,
+    "history": 10,
+    "input": 92,
+    "latent": 128,
+    "input_source": "original noisy policy observation[0:92], no privileged state",
+    "input_order": [
+      "root_linear_velocity_b:3",
+      "root_angular_velocity_b:3",
+      "projected_gravity_b:3",
+      "relative_joint_position:27",
+      "relative_joint_velocity:27",
+      "previous_action:29"
+    ],
+    "targets": [
+      "absolute_motion_joint_position:27",
+      "projected_gravity_b:3",
+      "root_linear_velocity_b:3",
+      "root_angular_velocity_b:3",
+      "two_feet_relative_root_position_b:6",
+      "two_feet_velocity_xy_w:4",
+      "root_height:1",
+      "root_vertical_velocity_w:1",
+      "two_ground_contact:2"
+    ],
+    "target_continuous_delta": true,
+    "contact_force_threshold_N": 5.0,
+    "future_action_in_actor": false,
+    "step_dt_s": 0.02
+  },
+  "schema_hash": "e0ea6ee69b602bbf12eb418525239ea30c7255bec0d6bf4dd2a25d86908b832a",
+  "rollout_versions": [],
+  "losses": [],
+  "wall_s": 134.510427236557,
+  "disturbance_protocol": {
+    "name": "lateral80",
+    "distribution_changed_from_nominal": true,
+    "force_world_y_N": 80,
+    "force_control_steps": [
+      50,
+      59
+    ],
+    "force_duration_s": 0.2,
+    "cohort": "rank original reference/initial phase; alternating clean/pushed and force signs",
+    "external_force_visible_to_actor": false,
+    "actual_articulation_force_buffer_audit": [
+      {
+        "step": 50,
+        "local_buffer_error": 0.0,
+        "pushed_count": 4096,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 51,
+        "local_buffer_error": 0.0,
+        "pushed_count": 4096,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 52,
+        "local_buffer_error": 0.0,
+        "pushed_count": 4096,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 53,
+        "local_buffer_error": 0.0,
+        "pushed_count": 4096,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 54,
+        "local_buffer_error": 0.0,
+        "pushed_count": 4096,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 55,
+        "local_buffer_error": 0.0,
+        "pushed_count": 4096,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 56,
+        "local_buffer_error": 0.0,
+        "pushed_count": 4096,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 57,
+        "local_buffer_error": 0.0,
+        "pushed_count": 4096,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 58,
+        "local_buffer_error": 0.0,
+        "pushed_count": 4096,
+        "force_norm_N_max": 80.00000762939453
+      },
+      {
+        "step": 59,
+        "local_buffer_error": 0.0,
+        "pushed_count": 4096,
+        "force_norm_N_max": 80.00000762939453
+      }
+    ],
+    "reset_during_force_pushed_envs": 0,
+    "reset_60_to_109_pushed_envs": 966
+  },
+  "files": {
+    "push_direction.npy": {
+      "bytes": 8320,
+      "sha256": "c39f621990f9ecd6c0a125300af732b9ebff9383a12a56ff87183317ac698d70"
+    },
+    "observable.npy": {
+      "bytes": 1450049664,
+      "sha256": "f85e2fb927040a494d28fd1d4057e60d338c0e8307744ddd9f98024351aa72e1"
+    },
+    "labels.npy": {
+      "bytes": 788070528,
+      "sha256": "62f0c895487e887d9dda8fa6b4c5805d7f4c1cf0c2422acb6f83459fc27d2481"
+    },
+    "phase.npy": {
+      "bytes": 15761536,
+      "sha256": "466fb64be1516578e48ee00167357f8c87131ede21a8e2195e3ef55af2181ed9"
+    },
+    "reward.npy": {
+      "bytes": 15728768,
+      "sha256": "cb84dccbf1e36b811879e9efda71bbea10ebcb4200e8f4dcdb519da266596711"
+    },
+    "done.npy": {
+      "bytes": 3932288,
+      "sha256": "fb16fb82789b40aaeceacd10467140cf89d749c7b317ca8ab7d289ba0d041ffd"
+    },
+    "reference.npy": {
+      "bytes": 7880832,
+      "sha256": "b5e63b0c21ac4a26e0d15130490b15b898460c70da1f2adb067b202ce6aa38ee"
+    },
+    "cohort.npy": {
+      "bytes": 8320,
+      "sha256": "2820b35cdc7b251b2e02d7d79a83de881ab614f4f49b4853c12323338abb3333"
+    },
+    "actions.npy": {
+      "bytes": 456130688,
+      "sha256": "249089c84b0e910c573c75055fd041881d00f85647909e251ee978e3fa969673"
+    },
+    "episode.npy": {
+      "bytes": 15761536,
+      "sha256": "8288191dca42e87fabb6b41bc183b8ded185d42e2d71c38d3d72b828d03031aa"
+    },
+    "push_episode.npy": {
+      "bytes": 32896,
+      "sha256": "52584f37ee07024a212e17e847c812a6c0458f9a8155a37b35dcb7c99c19b8c8"
+    }
+  }
+}

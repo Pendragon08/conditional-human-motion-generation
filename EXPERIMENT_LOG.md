@@ -47,3 +47,21 @@
 - Independentwitness arrays/hashes andpreservedcapture receipts verified. Capturegenericregenerated=true namingbug retained/explicitlycorrected interpretation; revisedsource only afterexit. Independentcandidatepickle analysis tool missingjaxlie preserved; no install.
 - W+PPO reviewerled plan uses version-frozenstop-gradient predictive representations andtrueIsaacreward/done/GAE, fivecontrolledarms/3seeds, notimaginedPPO.98,304,000transitions/run proposed, notexecuted; extra modelcomputeexplicit. NoformalPPO/newviewGate started.
 - Report23/resultscode preservefailure/stoprules, oldMPCFAILuntouched. Innovationnotvalidated; baseline-onlyteacherHTMLunchanged.
+
+## 2026-10-07 — World-model PPO prediction stop and residual development
+
+- v1 real Isaac shared warmup completed11,796,480 unique transitions/25resets;9GRU fits plusridge. Three seeds H10root-frameFK failed>=10%improvement vsridge; formal5armPPO never launched. Correctv3 smoke16env48steps really performed2diagnosticPPO/1auxupdates; originalnonprivilegedcritic normalization corrected, oldv1/v2 failures preserved. Archive e55daae pushed.
+- User continued execution. Independent reviewer required direct-GRU, action-zeroinbothbranches,4-reference-fold OOF residualshuffle, oldtestretirement, update0checkpointchoice, and actualgradient/optimizerreceipts. Newboundedstageuses44train/11validation only; noindependenttestorformalPPO claims.
+- Fresh disturbance probe exactly once480x16=7680, exit0,10forcebufferchecks8x80N,error0;4realresets,1recoveryreset.11arrayhashes/size/finite anddone/episodeauditPASS. Wrappermodeprobe/internalsummarycollect distinction explicit; oldprogresslast457doesnotreplacefinal480.
+- Newunique tmux r3_world_residual_development_20261007 started2026-10-07 05:57UTC. Seeded residualCUDA kernelPASS; queueRUNNING collectseed42 observed. Planned3sharedcaptures8192x480,4GRUfits/seed each1000updatesbatch1024. NoWMimaginedPPO, extraIK, orbaseline rerun. Current independentactualscene monitorGPU1; computeGPU0.
+
+- Residual development outputs completed for3seeds:11,796,480transitions/5121resets and12,000CUDA updates; reference-paired development improvement vsRidge22.01/22.37/22.70%. Validation selects checkpoints, not independent proof. Supplemental doc audit:6wrapperreturns0+sentinels, actualchildexitunknown due delayed rc capture; no rerun.
+- Fresh32sample Kick confirmation generation once seed20261007, frozenofficialOmniControl plus byte-identical originalretarget/refine:22staticaccepted,10officialrejects,11first-IDselected+11eligibleunselected, noextraIK. Torchbackward/JAXJIT and independent static/dedup hashes PASS. Predictionconfirmation/PPO gates stillpending.
+
+- Confirmation firstdocument transportattempt blockedbeforequeue: PowerShellpipeCRLF→tmuxredirection;0byte log,no session/state/model_lock/data. Fixed localbase64/subprocess transport preserves originalattempt; second witnessread-only pausedbeforelaunch to correct metricwording. Actualdev+confirmationcode metricalwayssqrt(mean(windowMSE))perreference→referenceequalmean; protocolwording correctedandoldtextarchivedbeforeanyconfirmationdata/result, no code/thresholdchange. Freshtransportv3doc-follow requested.
+
+## 2026-10-07 新动作残差预测确认与PPO准备
+
+新生成32条Kick，原重定向静态接受22，按预注册编号选择11；无追加IK或物理结果选择。三seed42/43/44各983,040真实转移，总2,949,120，reset1,948；六child自然rc0。独立审计复核36输出哈希、67,584窗口逐项重建、bootstrap差异0，clean/recovery全PASS。恢复H10根相对FK预测比动作条件Ridge改善20.26%/19.05%/22.08%。详见报告26与结构化summary。
+
+这是预测确认，0PPO/aux/norm更新，不是控制收益或创新验证成功。旧预测FAIL、旧开发退出码回执缺陷、运输/初始化阻塞均保全，不改阈值重测。主五臂PPO＋两个必要解释臂审查见plans/world_residual_ppo_ablation_review_20261007.md。当前新runner仅进入独立256环境×2更新诊断；正式8192×500×3seed未启动。监控label按实际stage/budget显示，不将预检或预测采集写成训练。正式前须smoke、8192容量及本轮实际场景本地确认。

@@ -32,8 +32,9 @@ small{color:#b8c5d7}</style><main><h2>Isaac Sim 实时训练画面</h2>
 const status=document.querySelector('#status'),frame=document.querySelector('#frame');
 let displayedCapture=null, displayedStep=null;
 function show(s,age){
- status.textContent='训练：'+s.queue+' ｜ 最新轮次：'+(s.iteration??'等待初始化')+
-   ' / 2000 ｜ 画面帧编号：'+(displayedStep??'等待')+' ｜ 显示画面：'+(s.queue.startsWith('COMPLETE')?'训练与评估已完成，显示末次训练状态':age===null?'等待加载':age>8?'已暂停（'+age.toFixed(1)+' 秒前）':'实时（'+age.toFixed(1)+' 秒前）');
+ status.textContent=s.stage_label+'：'+s.queue+
+   (s.is_formal_training?' ｜ PPO更新：'+(s.iteration??'等待初始化')+' / '+(s.budget??'待记录'):'')+
+   ' ｜ 实际仿真步：'+(displayedStep??'等待')+' ｜ 显示画面：'+(s.queue.startsWith('COMPLETE')?'该阶段已结束，显示末次仿真状态':age===null?'等待加载':age>8?'已暂停（'+age.toFixed(1)+' 秒前）':'实时（'+age.toFixed(1)+' 秒前）');
  status.style.background=s.queue.startsWith('COMPLETE')?'#25324a':age!==null&&age<8?'#194336':'#644021';
 }
 async function update(){
@@ -116,6 +117,7 @@ class Handler(BaseHTTPRequestHandler):
             arm = "candidate" if ("arm=candidate" in queue or queue.startswith("COMPLETE")) else "baseline"
             log = MON / f"r3_i1_matched_{arm}_8192_2000.log"
             active_path = MON / 'r3_active_dreamcontrol_training.json'
+            active = {'is_formal_training': True, 'stage': 'training', 'budget': 2000}
             if active_path.exists():
                 active = json.loads(active_path.read_text())
                 queue = read_text(Path(active['queue_state']))
@@ -124,12 +126,19 @@ class Handler(BaseHTTPRequestHandler):
                 with log.open("rb") as stream:
                     stream.seek(max(0, log.stat().st_size - 65536))
                     text = stream.read().decode(errors="replace")
-                matches = re.findall(r"Learning iteration\s+(\d+)/2000", text)
-                iteration = int(matches[-1]) if matches else None
+                matches = re.findall(r"(?:Learning iteration|WORLD_PPO_UPDATE)\s+(\d+)/(\d+)", text)
+                iteration = int(matches[-1][0]) if matches else None
+                budget = int(matches[-1][1]) if matches else active.get('budget')
             except OSError:
                 iteration = None
+                budget = active.get('budget')
             captured = meta.get("captured_at_unix")
-            payload = {"queue": queue, "iteration": iteration,
+            stage_label = ('正式PPO训练' if active.get('is_formal_training') else
+                           {'visibility': '画面预检（仅推理）', 'collect': '预测数据采集（冻结策略）',
+                            'smoke': 'PPO接口诊断（非正式成绩）'}.get(active.get('stage'), '仿真预检'))
+            payload = {"queue": queue, "iteration": iteration, "budget": budget,
+                       "is_formal_training": bool(active.get('is_formal_training')),
+                       "stage_label": stage_label,
                        "capture_time": captured,
                        **capture_ages(meta),
                        "sampled_env_step": meta.get("sampled_env_step"),
