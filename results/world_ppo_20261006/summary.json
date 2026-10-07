@@ -1,0 +1,170 @@
+{
+  "status": "COMPLETE_STAGE_STOPPED_AT_PRE_REGISTERED_GATE",
+  "prediction_gate": "FAIL",
+  "innovation_validated": false,
+  "formal_PPO_updates": 0,
+  "five_arm_control_ablation_executed": false,
+  "new_MuJoCo_transfer_executed": false,
+  "diffusion_references_still_tracking_target": true,
+  "extra_IK": false,
+  "actual_unique_warmup_transitions": 11796480,
+  "actual_warmup_resets": 25,
+  "warmup_seed_count": 3,
+  "prediction_model_count": 9,
+  "aux_updates_per_predictor": 1000,
+  "diagnostic_only_correct_v3": {
+    "envs": 16,
+    "steps": 48,
+    "PPO_updates": 2,
+    "aux_updates": 1,
+    "actual_reset": 0,
+    "reset_and_timeout_fixtures": true,
+    "five_arm_initial_function_error": {
+      "P0": {
+        "action_mean": 0.0,
+        "value": 0.0,
+        "log_probability": 0.0
+      },
+      "P-cap": {
+        "action_mean": 6.407499313354492e-07,
+        "value": 3.5762786865234375e-07,
+        "log_probability": 3.814697265625e-06
+      },
+      "P-history": {
+        "action_mean": 6.407499313354492e-07,
+        "value": 3.5762786865234375e-07,
+        "log_probability": 3.814697265625e-06
+      },
+      "W-correct": {
+        "action_mean": 6.407499313354492e-07,
+        "value": 3.5762786865234375e-07,
+        "log_probability": 3.814697265625e-06
+      },
+      "W-shuffled": {
+        "action_mean": 6.407499313354492e-07,
+        "value": 3.5762786865234375e-07,
+        "log_probability": 3.814697265625e-06
+      }
+    }
+  },
+  "v1_failed_and_v2_critic_mismatch_preserved": true,
+  "parameters": {
+    "base_actor_critic": 1044027,
+    "added_actor_critic_latent_columns": 131072,
+    "encoder": 85248,
+    "three_prediction_heads": 256406,
+    "P_cap_history_deploy_and_PPO": 1260347,
+    "W_deploy": 1260347,
+    "W_PPO": 1175099,
+    "W_aux": 341654,
+    "W_all": 1516753
+  },
+  "rows": [
+    {
+      "seed": 42,
+      "world_H10_body_fk_rmse_mm": 5.763437133282423,
+      "ridge_H10_body_fk_rmse_mm": 5.751221440732479,
+      "state_only_H10_body_fk_rmse_mm": 12.62475922703743,
+      "shuffled_H10_body_fk_rmse_mm": 15.895295888185501,
+      "paired_reference_relative_gain_and_CI": {
+        "ridge": {
+          "paired_reference_relative_improvement": -0.0026689430724569085,
+          "95pct_ci": [
+            -0.040848640805591314,
+            0.03356241954521393
+          ],
+          "n_test_references": 11
+        },
+        "state_only": {
+          "paired_reference_relative_improvement": 0.5432940879295396,
+          "95pct_ci": [
+            0.5347523252002043,
+            0.5516380333429532
+          ],
+          "n_test_references": 11
+        }
+      },
+      "prediction_gate": "FAIL",
+      "actual_resets": 9
+    },
+    {
+      "seed": 43,
+      "world_H10_body_fk_rmse_mm": 5.852178204804659,
+      "ridge_H10_body_fk_rmse_mm": 5.719006061553955,
+      "state_only_H10_body_fk_rmse_mm": 12.783455662429333,
+      "shuffled_H10_body_fk_rmse_mm": 16.07375591993332,
+      "paired_reference_relative_gain_and_CI": {
+        "ridge": {
+          "paired_reference_relative_improvement": -0.024913510307317033,
+          "95pct_ci": [
+            -0.0892934913164553,
+            0.02683211750354057
+          ],
+          "n_test_references": 11
+        },
+        "state_only": {
+          "paired_reference_relative_improvement": 0.542792730151344,
+          "95pct_ci": [
+            0.5329042844335244,
+            0.5526240216601951
+          ],
+          "n_test_references": 11
+        }
+      },
+      "prediction_gate": "FAIL",
+      "actual_resets": 12
+    },
+    {
+      "seed": 44,
+      "world_H10_body_fk_rmse_mm": 5.918378010392189,
+      "ridge_H10_body_fk_rmse_mm": 5.725415423512459,
+      "state_only_H10_body_fk_rmse_mm": 12.99596019089222,
+      "shuffled_H10_body_fk_rmse_mm": 16.065143048763275,
+      "paired_reference_relative_gain_and_CI": {
+        "ridge": {
+          "paired_reference_relative_improvement": -0.031180319559394043,
+          "95pct_ci": [
+            -0.07934680788561402,
+            0.012667811881459141
+          ],
+          "n_test_references": 11
+        },
+        "state_only": {
+          "paired_reference_relative_improvement": 0.5445944985229093,
+          "95pct_ci": [
+            0.5333274001727184,
+            0.5544737357452091
+          ],
+          "n_test_references": 11
+        }
+      },
+      "prediction_gate": "FAIL",
+      "actual_resets": 4
+    }
+  ],
+  "conclusion": "Action-conditioned predictions improve over the future-action-zero model but not the best ridge. Current candidate fails its gate; this does not test or disprove eventual PPO control benefit.",
+  "limitations": [
+    "Old actor already saw all 66 reference motions; grouped predictor testing is not unseen policy generalization.",
+    "H10 FK is root-frame URDF kinematics, not future world pose or entity collision success.",
+    "Contact labels are ground force>5N. AP should be read against per-foot prevalence.",
+    "Legacy raw root_velocity_rmse mixes linear/angular units; do not interpret as m/s. New code separates channels.",
+    "raw eligible_reset_free_windows count metadata corrected separately, metrics unchanged.",
+    "Per-update optimizer/gradient traces not stored in full predictor artifacts; audit used source, progress, finite weights, hashes and completion.",
+    "Only bounded diagnostic PPO updates; no 500-update control outcomes or new sim-to-sim claims."
+  ],
+  "artifact_distribution": "Only code, report, metadata and logs archived. Raw motion/windows/weights remain server-side.",
+  "provenance": {
+    "collect_seed42_summary.json": "91b93cd38773a30751d42a81c3dd1ae9dcef0455234068ea9dd1ad07fe2f7564",
+    "collect_seed43_summary.json": "51b8bf1908a29d7e40b0a31e650d6d709004a5d490eef68f9a4fbf94373fa05f",
+    "collect_seed44_summary.json": "5988b4c8bb3c5a8234af2150649a4d4a6c4517c7248ea8b9a6f981d5ae1ac90e",
+    "fit_seed42_summary.json": "3816f224582d9cd5abee96640a58c8846bedfade9c2e38095f856e4e2ebc5534",
+    "fit_seed43_summary.json": "035e7561c751a4ee236adf6b9456d68d306d55d500ef885760a9b4316323c91b",
+    "fit_seed44_summary.json": "6ee829727a095a67f18e5483010f6d2e958a44f57e7d36cf9efe089ae9abeb35",
+    "r3_world_ppo_prediction_queue.state": "5e1b6597cf8ee7d8016a80862803a829ac27d35604836b53210651fcb8aa80fe",
+    "r3_world_ppo_smoke_42_docwitness_v1.state": "663b7f50e4a44309cdc756b1706253116396cb625c21ef10f8ced183ce338d96",
+    "r3_world_ppo_smoke_42_docwitness_v3.state": "f56801088cf056708544173d86723051dc7abd632027a91405bfbf70b9946ae6",
+    "r3_world_ppo_warmup_queue.state": "e4759627f94ff3fe8209082be2dc5997c2b5ebde5ddc517c6dd7ef9d90eb4789",
+    "smoke_docwitness_v2_summary.json": "99e85f2a6c02be80ff809f6e24d6a5b40de34d36d239723fa26800181ea30971",
+    "smoke_docwitness_v3_summary.json": "9eaf843c6cda32eaaca75f7abfc936d96db4c0de7d9abc350a25745c4fbd4d5d"
+  }
+}

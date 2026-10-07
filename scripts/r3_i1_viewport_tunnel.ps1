@@ -6,6 +6,7 @@ if (-not $taskMutex.WaitOne(0)) { exit }
 try {
     while ($true) {
         & 'C:\Windows\System32\OpenSSH\ssh.exe' -NT `
+            -b '10.147.17.250' `
             -L '127.0.0.1:6013:127.0.0.1:6013' `
             -i 'C:/Users/Pende/.ssh/id_ed25519' `
             -o BatchMode=yes -o ConnectTimeout=20 `

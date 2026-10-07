@@ -1,0 +1,119 @@
+{
+  "status": "COMPLETE",
+  "mode": "smoke",
+  "platform": "Isaac Lab / PhysX",
+  "seed": 42,
+  "num_envs": 16,
+  "steps": 48,
+  "actual_transitions": 768,
+  "formal_ppo_updates": 0,
+  "diagnostic_ppo_updates": 2,
+  "diagnostic_aux_updates": 1,
+  "task_reward_PD_termination_unchanged": true,
+  "extra_IK": false,
+  "shared_warmup_stochastic_original_policy": false,
+  "policy_checkpoint_sha256": "e3c50fb6f36f59f89d1b4e788b1ba74cf1ff0cdde3dceff34a9d7765235f65c0",
+  "original_jit_equivalence_max_abs": 0.0,
+  "original_library_order_max_abs": 0.0,
+  "reset_count": 0,
+  "schema": {
+    "version": 1,
+    "history": 10,
+    "input": 92,
+    "latent": 128,
+    "input_source": "original noisy policy observation[0:92], no privileged state",
+    "input_order": [
+      "root_linear_velocity_b:3",
+      "root_angular_velocity_b:3",
+      "projected_gravity_b:3",
+      "relative_joint_position:27",
+      "relative_joint_velocity:27",
+      "previous_action:29"
+    ],
+    "targets": [
+      "absolute_motion_joint_position:27",
+      "projected_gravity_b:3",
+      "root_linear_velocity_b:3",
+      "root_angular_velocity_b:3",
+      "two_feet_relative_root_position_b:6",
+      "two_feet_velocity_xy_w:4",
+      "root_height:1",
+      "root_vertical_velocity_w:1",
+      "two_ground_contact:2"
+    ],
+    "target_continuous_delta": true,
+    "contact_force_threshold_N": 5.0,
+    "future_action_in_actor": false,
+    "step_dt_s": 0.02
+  },
+  "schema_hash": "e0ea6ee69b602bbf12eb418525239ea30c7255bec0d6bf4dd2a25d86908b832a",
+  "rollout_versions": [
+    {
+      "rollout": 0,
+      "wm_version": 0,
+      "actor_norm_version": "original_frozen",
+      "wm_norm_version": 0,
+      "schema_hash": "e0ea6ee69b602bbf12eb418525239ea30c7255bec0d6bf4dd2a25d86908b832a",
+      "world_model_unchanged_through_ppo_epochs": true
+    },
+    {
+      "rollout": 1,
+      "wm_version": 0,
+      "actor_norm_version": "original_frozen",
+      "wm_norm_version": 0,
+      "schema_hash": "e0ea6ee69b602bbf12eb418525239ea30c7255bec0d6bf4dd2a25d86908b832a",
+      "world_model_unchanged_through_ppo_epochs": true
+    }
+  ],
+  "losses": [
+    {
+      "value_function": 0.3817225365899503,
+      "surrogate": 0.289266409073025,
+      "entropy": 13.985385274887085
+    },
+    {
+      "value_function": 0.16772218979895115,
+      "surrogate": -0.06148510373895988,
+      "entropy": 14.006668996810912
+    }
+  ],
+  "wall_s": 10.61070203781128,
+  "zero_initialized_latent_initial_actor_error": 6.407499313354492e-07,
+  "policy_weights_really_updated": true,
+  "world_weights_really_updated": true,
+  "aux_loss": 0.36797672510147095,
+  "files": {
+    "observable.npy": {
+      "bytes": 288640,
+      "sha256": "57a5d6e5b7611ced82076ad067eaa4e5f88795a8a0f61f6704c41fd9d49cbf27"
+    },
+    "labels.npy": {
+      "bytes": 156928,
+      "sha256": "7bfe665373a7064a431abb05585666931593518e4e81ef041b091889b422032a"
+    },
+    "phase.npy": {
+      "bytes": 3264,
+      "sha256": "3972bc24987a27a205bc6a7b123ff5b2676a6aa4fd8ea3ed7981ee35b06c25bd"
+    },
+    "reward.npy": {
+      "bytes": 3200,
+      "sha256": "d1cf0e7d7a143ece17f3d481ed0d154dd55fc9e87834d80a1370e4bc3ef15f89"
+    },
+    "done.npy": {
+      "bytes": 896,
+      "sha256": "a95554d62834945be42433d9838aba596d97a8359a57a2bf74af56ba59fc9018"
+    },
+    "reference.npy": {
+      "bytes": 1696,
+      "sha256": "81ecea5935c5a3527de70bf44b95216e1f4455c4d6bdef54d25604aef3a1b352"
+    },
+    "actions.npy": {
+      "bytes": 89216,
+      "sha256": "3eff69aea01a32ff6907264507d4b9f96a3425edc4cc8c15c94a343d12da5856"
+    },
+    "episode.npy": {
+      "bytes": 3264,
+      "sha256": "4b6e7c118f2d09a7a0f97d9069270ba9f695058b2b65cad3479377e85da84a45"
+    }
+  }
+}

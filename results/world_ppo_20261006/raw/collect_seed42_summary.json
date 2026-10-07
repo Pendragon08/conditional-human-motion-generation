@@ -1,0 +1,87 @@
+{
+  "status": "COMPLETE",
+  "mode": "collect",
+  "platform": "Isaac Lab / PhysX",
+  "seed": 42,
+  "num_envs": 8192,
+  "steps": 480,
+  "actual_transitions": 3932160,
+  "formal_ppo_updates": 0,
+  "diagnostic_ppo_updates": 0,
+  "diagnostic_aux_updates": 0,
+  "task_reward_PD_termination_unchanged": true,
+  "extra_IK": false,
+  "shared_warmup_stochastic_original_policy": true,
+  "policy_checkpoint_sha256": "e3c50fb6f36f59f89d1b4e788b1ba74cf1ff0cdde3dceff34a9d7765235f65c0",
+  "original_jit_equivalence_max_abs": 0.0,
+  "original_library_order_max_abs": 0.0,
+  "reset_count": 9,
+  "schema": {
+    "version": 1,
+    "history": 10,
+    "input": 92,
+    "latent": 128,
+    "input_source": "original noisy policy observation[0:92], no privileged state",
+    "input_order": [
+      "root_linear_velocity_b:3",
+      "root_angular_velocity_b:3",
+      "projected_gravity_b:3",
+      "relative_joint_position:27",
+      "relative_joint_velocity:27",
+      "previous_action:29"
+    ],
+    "targets": [
+      "absolute_motion_joint_position:27",
+      "projected_gravity_b:3",
+      "root_linear_velocity_b:3",
+      "root_angular_velocity_b:3",
+      "two_feet_relative_root_position_b:6",
+      "two_feet_velocity_xy_w:4",
+      "root_height:1",
+      "root_vertical_velocity_w:1",
+      "two_ground_contact:2"
+    ],
+    "target_continuous_delta": true,
+    "contact_force_threshold_N": 5.0,
+    "future_action_in_actor": false,
+    "step_dt_s": 0.02
+  },
+  "schema_hash": "e0ea6ee69b602bbf12eb418525239ea30c7255bec0d6bf4dd2a25d86908b832a",
+  "rollout_versions": [],
+  "losses": [],
+  "wall_s": 131.80557346343994,
+  "files": {
+    "observable.npy": {
+      "bytes": 1450049664,
+      "sha256": "b1457a0a8f49cd91ee8ca0833efa6ab6552a8b435e7fe136f8c8649f970a00e9"
+    },
+    "labels.npy": {
+      "bytes": 788070528,
+      "sha256": "5222579ff78b6533a7b754aa68220c77195fafb6a786ca6cce93168759c92cc9"
+    },
+    "phase.npy": {
+      "bytes": 15761536,
+      "sha256": "25c1e67e06401a5a062844c491e55ccf168b046881fc029214f99d3e8e27da31"
+    },
+    "reward.npy": {
+      "bytes": 15728768,
+      "sha256": "e81f3aeb5ed546d4cb862fe09a43be5aca871af1b76a6aea18fe2aa59ac1188f"
+    },
+    "done.npy": {
+      "bytes": 3932288,
+      "sha256": "222d3c85c202c6e92379b1bf6bd0e06264cb92ee927c6439e407c4541d899c5c"
+    },
+    "reference.npy": {
+      "bytes": 7880832,
+      "sha256": "6e79e403c41c0fe27f9fdd07620de42c689eae80f816fba3f011200fd1c58276"
+    },
+    "actions.npy": {
+      "bytes": 456130688,
+      "sha256": "b419d51544c261a7785eaa7e6ce40cc9341c9fab8149d6a1b84a15c932d02ef8"
+    },
+    "episode.npy": {
+      "bytes": 15761536,
+      "sha256": "1c1675a97cf244eee5c4220027246adb20484bc45f65bf4b8711270a1271140a"
+    }
+  }
+}
