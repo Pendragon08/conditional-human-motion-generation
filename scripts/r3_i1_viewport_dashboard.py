@@ -59,12 +59,51 @@ async function update(){
 </script></html>"""
 
 DIRECT_HTML = """<!doctype html><html lang="zh"><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>Isaac 实际场景</title>
-<style>body{background:#101722;color:#eef3fa;font:18px system-ui;margin:24px}img{width:100%;max-width:1100px}
-p{max-width:1100px;line-height:1.7}</style><h2>Isaac Lab 实际仿真状态</h2>
-<p>服务器当前实际仿真状态抽样。当前阶段和PPO进度见下方状态页；图像由独立Isaac Sim渲染器发送。</p>
-<img src="/stream.mjpg" alt="连接服务器图像流"><p>连接断开不会中断服务器计算。预检结束后图像不再更新。</p>
-<p><a href="/">返回带状态与步数的页面</a></p></html>"""
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Isaac 实际训练场景</title>
+<style>body{background:#101722;color:#eef3fa;font:18px system-ui;margin:24px}main{max-width:1100px;margin:auto}
+img{width:100%;background:#202b3d;border-radius:10px}p{line-height:1.7}
+#status{padding:14px;background:#25324a;border-radius:8px}button{padding:9px 16px;cursor:pointer}</style>
+<main><h2>Isaac Lab 实际训练场景</h2><div id="status">正在连接服务器…</div>
+<p><button id="reconnect" type="button">重新连接画面</button> <a href="/">查看另一种画面页面</a></p>
+<img id="stream" alt="正在连接服务器图像流">
+<p>显示一个实际仿真环境的低帧率状态抽样。训练与画面监控是独立进程，关闭页面或画面断开不影响学习。
+阶段切换或停止时会标记状态；画面不是检查点回放，也不是全部并行环境的逐帧直播。</p></main>
+<script>
+const stream=document.querySelector('#stream'),status=document.querySelector('#status');
+let retryTimer=null,lastConnect=0;
+function reconnect(){
+ clearTimeout(retryTimer);retryTimer=null;lastConnect=Date.now();
+ stream.src='/stream.mjpg?t='+lastConnect;
+}
+stream.onerror=()=>{
+ status.textContent='图像连接中断，正在自动重连；服务器计算不受影响。';
+ status.style.background='#644021';
+ if(retryTimer===null)retryTimer=setTimeout(reconnect,3000);
+};
+document.querySelector('#reconnect').onclick=reconnect;
+async function refreshStatus(){
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),7000);
+ try{
+  const response=await fetch('/status.json?t='+Date.now(),{cache:'no-store',signal:controller.signal});
+  if(!response.ok)throw new Error('Status unavailable');
+  const s=await response.json(),age=s.frame_age_seconds;
+  const ended=s.queue.startsWith('COMPLETE'),fresh=age!==null&&age<8;
+  status.textContent=s.stage_label+'：'+s.queue+
+   (s.is_formal_training?' ｜ PPO更新：'+(s.iteration??'等待初始化')+' / '+(s.budget??'待记录'):'')+
+   ' ｜ 服务器实际仿真步：'+(s.sampled_env_step??'等待')+
+   ' ｜ 服务器画面：'+(ended?'阶段已结束，末次状态':age===null?'等待加载':fresh?'更新中（'+age.toFixed(1)+'秒前）':'暂停（'+age.toFixed(1)+'秒前）');
+  status.style.background=ended?'#25324a':fresh?'#194336':'#644021';
+  // Browsers can retain the last MJPEG image after a quiet socket close.
+  // Periodically recreate only the image connection, never the simulator.
+  if(Date.now()-lastConnect>30000&&document.visibilityState==='visible')reconnect();
+ }catch(error){
+  status.textContent='与服务器连接中断，正在自动重连；这不代表训练停止。';
+  status.style.background='#644021';
+ }finally{clearTimeout(timer);setTimeout(refreshStatus,1000);}
+}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')reconnect();});
+reconnect();refreshStatus();
+</script></html>"""
 
 
 def read_text(path):

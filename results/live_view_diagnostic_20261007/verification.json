@@ -1,0 +1,79 @@
+{
+  "status": "LOCAL_HTTP_STREAM_EVIDENCE_VALID",
+  "checks": {
+    "source_actual": true,
+    "steps_advance": true,
+    "captures_advance": true,
+    "images_differ": true,
+    "fresh_actual_telemetry": true,
+    "formal_updates_advance": true
+  },
+  "samples": [
+    {
+      "queue": "RUNNING mode=train arm=W-shuffled-original seed=42",
+      "iteration": 261,
+      "budget": 500,
+      "is_formal_training": true,
+      "stage_label": "正式PPO训练",
+      "capture_time": 1791379038.8916624,
+      "render_capture_age_seconds": 0.1,
+      "telemetry_age_seconds": 1.1,
+      "frame_age_seconds": 1.1,
+      "sampled_env_step": 6285,
+      "source": "actual_training_simulation_sample",
+      "viewer": "LIVE mode=sampled_actual_training_pose step=6285 packet_age_s=0 training_unaffected=true",
+      "jpeg_file": "actual_training_frame_1.jpg",
+      "jpeg_bytes": 16683,
+      "jpeg_sha256": "0898ce5fef7f4dd663e4d7760538763e60fb59f5b0a84d7509dc0769dc6f58b2",
+      "checked_unix": 1791379037.149865
+    },
+    {
+      "queue": "RUNNING mode=train arm=W-shuffled-original seed=42",
+      "iteration": 262,
+      "budget": 500,
+      "is_formal_training": true,
+      "stage_label": "正式PPO训练",
+      "capture_time": 1791379041.9320288,
+      "render_capture_age_seconds": 0.1,
+      "telemetry_age_seconds": 0.8,
+      "frame_age_seconds": 0.8,
+      "sampled_env_step": 6300,
+      "source": "actual_training_simulation_sample",
+      "viewer": "LIVE mode=sampled_actual_training_pose step=6300 packet_age_s=0 training_unaffected=true",
+      "jpeg_file": "actual_training_frame_2.jpg",
+      "jpeg_bytes": 16612,
+      "jpeg_sha256": "7916ccbcbecca291fbd5a335ba2bc4c59d8014229c395434d010aa33a6b2d9b2",
+      "checked_unix": 1791379040.209711
+    },
+    {
+      "queue": "RUNNING mode=train arm=W-shuffled-original seed=42",
+      "iteration": 263,
+      "budget": 500,
+      "is_formal_training": true,
+      "stage_label": "正式PPO训练",
+      "capture_time": 1791379043.9682357,
+      "render_capture_age_seconds": 1.0,
+      "telemetry_age_seconds": 1.9,
+      "frame_age_seconds": 1.9,
+      "sampled_env_step": 6310,
+      "source": "actual_training_simulation_sample",
+      "viewer": "LIVE mode=sampled_actual_training_pose step=6315 packet_age_s=0 training_unaffected=true",
+      "jpeg_file": "actual_training_frame_3.jpg",
+      "jpeg_bytes": 16640,
+      "jpeg_sha256": "0f891d64dcd8fdcf957154a0d7ec2bb75d96e37f11871fc23a053e59419c6a11",
+      "checked_unix": 1791379043.1198993
+    }
+  ],
+  "transport": "MJPEG over existing SSH TCP tunnel; not native WebRTC",
+  "native_webrtc_client_connected": false,
+  "native_webrtc_tcp49100_reachable": true,
+  "native_webrtc_udp47998_verified": false,
+  "training_not_restarted": true,
+  "formal_sources_unchanged": 11,
+  "protected_process_start_ticks": {
+    "1832069": "1257524495",
+    "1589572": "1249404823",
+    "3854248": "1208193920"
+  },
+  "display_script_sha256": "56ce0ee84ba812930571f90ea1e4fedff1af7600d717f23048b3742e04055d21"
+}
