@@ -1,0 +1,156 @@
+{
+  "observed_unix": 1791377446.037166,
+  "read_only": true,
+  ".state": {
+    "mtime": 1791375047.8294618,
+    "text": "{\n  \"status\": \"RUNNING\",\n  \"stage\": \"train\",\n  \"arm\": \"W-correct\",\n  \"seed\": 42,\n  \"completed\": [\n    {\n      \"stage\": \"train\",\n      \"arm\": \"P0\",\n      \"seed\": 42,\n      \"output\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/formal/train_P0_seed42_v1\",\n      \"summary_sha256\": \"06b2de0c977263b61e5d8979f642acddecde96f6b959f169296ec0b2b7910710\"\n    },\n    {\n      \"stage\": \"eval\",\n      \"arm\": \"P0\",\n      \"seed\": 42,\n      \"output\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/formal/eval_P0_seed42_v1\",\n      \"summary_sha256\": \"318e19fbc7b1850f344ded10f49cedccd70ec55da32489c55b877b3237699701\"\n    },\n    {\n      \"stage\": \"train\",\n      \"arm\": \"P-cap\",\n      \"seed\": 42,\n      \"output\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/formal/train_P-cap_seed42_v1\",\n      \"summary_sha256\": \"dd5c8e97c22a2908f126b16f2923d544bf94e213783fffdf157211a02ec58245\"\n    },\n    {\n      \"stage\": \"eval\",\n      \"arm\": \"P-cap\",\n      \"seed\": 42,\n      \"output\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/formal/eval_P-cap_seed42_v1\",\n      \"summary_sha256\": \"161d1ecb420efb11a44db656e01b69e6cb266773ffaef7c70f1cb5bd5ac508e9\"\n    },\n    {\n      \"stage\": \"train\",\n      \"arm\": \"P-history\",\n      \"seed\": 42,\n      \"output\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/formal/train_P-history_seed42_v1\",\n      \"summary_sha256\": \"fa01c1adc11705aa0b24451f4eb92b36a14714254e6adaaf5a2ecf18e2aa5b93\"\n    },\n    {\n      \"stage\": \"eval\",\n      \"arm\": \"P-history\",\n      \"seed\": 42,\n      \"output\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/formal/eval_P-history_seed42_v1\",\n      \"summary_sha256\": \"d4f1a074522edafec91f610337413a3820d3a3a685cfde331fffa4c03d34651c\"\n    }\n  ],\n  \"updated_unix\": 1791375047.8327851\n}\n"
+  },
+  ".dispatch.json": {
+    "mtime": 1791365167.4697657,
+    "text": "{\n  \"dispatch_unix\": 1791365167.4729621,\n  \"GPU\": 0,\n  \"independent_viewer_GPU\": 1,\n  \"gate_sha256\": \"cad25cf3d29d76889a4cf19b9d20ec93a71a5c8ceb3788821c1c8baa016753ed\",\n  \"sources\": {\n    \"scripts/r3_world_ppo_control_formal_v3_20261007.py\": \"821bf831a220e74d7ace1ab2817289e1b52d0f177eef5c2e9a3cd4517d07ab5f\",\n    \"scripts/r3_world_ppo_eval_isaac_v3_20261007.py\": \"77789f147a27de3ee3f926f05e649ee35b0d13c6b7c3f0adb0cbb528c8186534\",\n    \"scripts/r3_world_ppo_formal_stage_v3_20261007.sh\": \"e96c1837d1bfa9f65f72c9f23699aeb764b2108c7d8854be5cc4ed6f0d764867\",\n    \"scripts/r3_world_ppo_formal_queue_20261007.py\": \"e01d88e0ab7468c0b3cd0dafc2286d42d19ee0ebd25005855c78f2aefa3192a1\",\n    \"scripts/r3_world_ppo_gate_20261007.py\": \"643d510d289b34d33f4a1e08158ec38de1ae658b813dd266947eee587d1374c5\",\n    \"scripts/launch_world_ppo_formal_20261007.py\": \"ccfa9e2e33156a68e573dc2c3e899324d3137c61840282a41c168e7c83f2befa\",\n    \"scripts/read_world_ppo_formal_status_20261007.py\": \"23f7bad7763d559dc7cc9606f903770143e37c4705c41159d6b400268addbb35\",\n    \"scripts/r3_world_ppo_core.py\": \"c78b181aff14e8513531362a2ae5c458bb7b9235ded42b2a8d621eab1b6f64fb\",\n    \"scripts/r3_world_ppo_residual_core.py\": \"ff2da65efb23463ee1b53452d8dd6dfc7379739dc21989466cf659367e7ea326\",\n    \"scripts/r3_world_ppo_training_core_20261007.py\": \"0cad0890b9fc1519a1e230a086414f013223dcde27fe3053e847b0b5e8ce15d6\",\n    \"plans/world_residual_ppo_control_metrics_20261007.md\": \"6b2b21c9d8076ac48bb653ac18457255296c9fc255c2c31d62d73116ead5f51f\"\n  },\n  \"arms\": 5,\n  \"seeds\": [\n    42,\n    43,\n    44\n  ],\n  \"updates_per_arm_seed\": 500,\n  \"num_envs\": 8192,\n  \"training_transitions_planned\": 1474560000,\n  \"evaluation_transitions_planned\": 15360000,\n  \"PPO_formal_progress_before_dispatch\": 0,\n  \"additional_IK\": false\n}\n"
+  },
+  "stage.state": {
+    "mtime": 1791375047.8334618,
+    "bytes": 41,
+    "latest_update": null,
+    "tail": [
+      "RUNNING mode=train arm=W-correct seed=42"
+    ]
+  },
+  "stage.log": {
+    "mtime": 1791377443.4016557,
+    "bytes": 611662,
+    "latest_update": "WORLD_PPO_UPDATE 466/500 {\"completed_update\": 466, \"actual_transitions\": 91619328, \"formal_PPO_updates\": 466, \"diagnostic_PPO_updates\": 0, \"training_any_reset_success_fraction_cumulative\": 0.0, \"training_success_events_cumulative\": 0, \"world_before_PPO_hash\": \"c0a3c1b014964e53c82b9627ee47f1e7ecbf7dbd6d21cac8c8a8e651e8a00d39\", \"world_after_PPO_hash\": \"c0a3c1b014964e53c82b9627ee47f1e7ecbf7dbd6d21cac8c8a8e651e8a00d39\", \"mean_actual_reward\": 0.009948851501879593, \"true_terminations\": 0, \"timeouts\": 13, \"timeout_bootstrap_maxerror\": 0.0, \"epoch0_ratio_maxerror\": 0.0, \"PPO_loss\": {\"value_function\": 0.001157076278468594, \"surrogate\": -0.0010674952369299716, \"entropy\": 14.133766078948975}, \"learning_rate\": 2.2500000000000005e-05, \"world_version_before_PPO\": 465, \"world_version_after_aux\": 466, \"world_unchanged_through_PPO\": true, \"normalizer_unchanged\": true, \"aux_updates\": 466, \"aux\": [{\"prediction_loss\": 0.13163329660892487, \"gradient_norm\": 0.5233521461486816}], \"handoff_mean_KL\": 5.397114000516012e-05, \"eligible_aux_windows\": 49102, \"matched_aux_windows\": 49026, \"control_rows_excluded\": 0, \"update_wall_s\": 5.261371374130249, \"total_wall_s\": 2390.580580472946, \"cuda_peak_MiB\": 3147.70703125}",
+    "tail": [
+      "WORLD_PPO_UPDATE 455/500 {\"completed_update\": 455, \"actual_transitions\": 89456640, \"formal_PPO_updates\": 455, \"diagnostic_PPO_updates\": 0, \"training_any_reset_success_fraction_cumulative\": 0.0, \"training_success_events_cumulative\": 0, \"world_before_PPO_hash\": \"571cb482451e2fb7e39be09513706bfc6ff032a72e0ba996a3f12f1a5c42c3e3\", \"world_after_PPO_hash\": \"571cb482451e2fb7e39be09513706bfc6ff032a72e0ba996a3f12f1a5c42c3e3\", \"mean_actual_reward\": 0.013437448651529849, \"true_terminations\": 0, \"timeouts\": 1, \"timeout_bootstrap_maxerror\": 0.0, \"epoch0_ratio_maxerror\": 0.0, \"PPO_loss\": {\"value_function\": 6.899609761603642e-05, \"surrogate\": 0.0003928716905647889, \"entropy\": 14.079592037200928}, \"learning_rate\": 3.375000000000001e-05, \"world_version_before_PPO\": 454, \"world_version_after_aux\": 455, \"world_unchanged_through_PPO\": true, \"normalizer_unchanged\": true, \"aux_updates\": 455, \"aux\": [{\"prediction_loss\": 0.04642537236213684, \"gradient_norm\": 0.4292236864566803}], \"handoff_mean_KL\": 0.00017430639127269387, \"eligible_aux_windows\": 49146, \"matched_aux_windows\": 49036, \"control_rows_excluded\": 0, \"update_wall_s\": 4.913953065872192, \"total_wall_s\": 2334.9381749629974, \"cuda_peak_MiB\": 3147.70703125}",
+      "WORLD_PPO_UPDATE 456/500 {\"completed_update\": 456, \"actual_transitions\": 89653248, \"formal_PPO_updates\": 456, \"diagnostic_PPO_updates\": 0, \"training_any_reset_success_fraction_cumulative\": 0.0, \"training_success_events_cumulative\": 0, \"world_before_PPO_hash\": \"f14ec35ddd125dceb196da7de3857196bfb4481f04425a974063c15f81b92935\", \"world_after_PPO_hash\": \"f14ec35ddd125dceb196da7de3857196bfb4481f04425a974063c15f81b92935\", \"mean_actual_reward\": 0.013475084017651776, \"true_terminations\": 0, \"timeouts\": 1, \"timeout_bootstrap_maxerror\": 0.0, \"epoch0_ratio_maxerror\": 0.0, \"PPO_loss\": {\"value_function\": 8.78468927112408e-05, \"surrogate\": 0.0070468528778292235, \"entropy\": 14.049556779861451}, \"learning_rate\": 1e-05, \"world_version_before_PPO\": 455, \"world_version_after_aux\": 456, \"world_unchanged_through_PPO\": true, \"normalizer_unchanged\": true, \"aux_updates\": 456, \"aux\": [{\"prediction_loss\": 0.04523667320609093, \"gradient_norm\": 0.4230821132659912}], \"handoff_mean_KL\": 0.00011867412831634283, \"eligible_aux_windows\": 49146, \"matched_aux_windows\": 49042, \"control_rows_excluded\": 0, \"update_wall_s\": 4.905606508255005, \"total_wall_s\": 2339.8465073108673, \"cuda_peak_MiB\": 3147.70703125}",
+      "WORLD_PPO_UPDATE 457/500 {\"completed_update\": 457, \"actual_transitions\": 89849856, \"formal_PPO_updates\": 457, \"diagnostic_PPO_updates\": 0, \"training_any_reset_success_fraction_cumulative\": 0.0, \"training_success_events_cumulative\": 0, \"world_before_PPO_hash\": \"c244699cbb2c132d177dcb211ed919f5602750cd79887fa32fdd8f8e9c600831\", \"world_after_PPO_hash\": \"c244699cbb2c132d177dcb211ed919f5602750cd79887fa32fdd8f8e9c600831\", \"mean_actual_reward\": 0.013508553461482128, \"true_terminations\": 0, \"timeouts\": 2, \"timeout_bootstrap_maxerror\": 0.0, \"epoch0_ratio_maxerror\": 0.0, \"PPO_loss\": {\"value_function\": 0.00010089560346386861, \"surrogate\": -0.0005022930369705137, \"entropy\": 14.026373195648194}, \"learning_rate\": 3.375000000000001e-05, \"world_version_before_PPO\": 456, \"world_version_after_aux\": 457, \"world_unchanged_through_PPO\": true, \"normalizer_unchanged\": true, \"aux_updates\": 457, \"aux\": [{\"prediction_loss\": 0.04258990287780762, \"gradient_norm\": 0.37892961502075195}], \"handoff_mean_KL\": 4.804808850167319e-05, \"eligible_aux_windows\": 49142, \"matched_aux_windows\": 49022, \"control_rows_excluded\": 0, \"update_wall_s\": 5.012580156326294, \"total_wall_s\": 2344.861629962921, \"cuda_peak_MiB\": 3147.70703125}",
+      "WORLD_PPO_UPDATE 458/500 {\"completed_update\": 458, \"actual_transitions\": 90046464, \"formal_PPO_updates\": 458, \"diagnostic_PPO_updates\": 0, \"training_any_reset_success_fraction_cumulative\": 0.0, \"training_success_events_cumulative\": 0, \"world_before_PPO_hash\": \"17ad23e186887eee17b5e71b0f89c40bf2d4c0094631f6d3a1fd0e3652848ec6\", \"world_after_PPO_hash\": \"17ad23e186887eee17b5e71b0f89c40bf2d4c0094631f6d3a1fd0e3652848ec6\", \"mean_actual_reward\": 0.01350872362187753, \"true_terminations\": 0, \"timeouts\": 4, \"timeout_bootstrap_maxerror\": 0.0, \"epoch0_ratio_maxerror\": 0.0, \"PPO_loss\": {\"value_function\": 6.323017914837692e-05, \"surrogate\": 0.004972594089485938, \"entropy\": 13.99121732711792}, \"learning_rate\": 1.5000000000000002e-05, \"world_version_before_PPO\": 457, \"world_version_after_aux\": 458, \"world_unchanged_through_PPO\": true, \"normalizer_unchanged\": true, \"aux_updates\": 458, \"aux\": [{\"prediction_loss\": 0.04188452288508415, \"gradient_norm\": 0.34472155570983887}], \"handoff_mean_KL\": 8.062330380198546e-06, \"eligible_aux_windows\": 49135, \"matched_aux_windows\": 49037, \"control_rows_excluded\": 0, \"update_wall_s\": 4.977063894271851, \"total_wall_s\": 2349.8413469791412, \"cuda_peak_MiB\": 3147.70703125}",
+      "WORLD_PPO_UPDATE 459/500 {\"completed_update\": 459, \"actual_transitions\": 90243072, \"formal_PPO_updates\": 459, \"diagnostic_PPO_updates\": 0, \"training_any_reset_success_fraction_cumulative\": 0.0, \"training_success_events_cumulative\": 0, \"world_before_PPO_hash\": \"aad9a67e4f634db0e91d18aa18bc0ff330d7197793678daf2baac12063bfa14b\", \"world_after_PPO_hash\": \"aad9a67e4f634db0e91d18aa18bc0ff330d7197793678daf2baac12063bfa14b\", \"mean_actual_reward\": 0.010713248872586215, \"true_terminations\": 0, \"timeouts\": 7967, \"timeout_bootstrap_maxerror\": 0.0, \"epoch0_ratio_maxerror\": 0.0, \"PPO_loss\": {\"value_function\": 0.0013933654699940234, \"surrogate\": -0.0024248450394225075, \"entropy\": 13.980020427703858}, \"learning_rate\": 1.5000000000000004e-05, \"world_version_before_PPO\": 458, \"world_version_after_aux\": 459, \"world_unchanged_through_PPO\": true, \"normalizer_unchanged\": true, \"aux_updates\": 459, \"aux\": [{\"prediction_loss\": 0.055059678852558136, \"gradient_norm\": 0.2795666456222534}], \"handoff_mean_KL\": 2.6972033083438873e-05, \"eligible_aux_windows\": 1354, \"matched_aux_windows\": 1202, \"control_rows_excluded\": 0, \"update_wall_s\": 4.995396614074707, \"total_wall_s\": 2354.8387801647186, \"cuda_peak_MiB\": 3147.70703125}",
+      "WORLD_PPO_UPDATE 460/500 {\"completed_update\": 460, \"actual_transitions\": 90439680, \"formal_PPO_updates\": 460, \"diagnostic_PPO_updates\": 0, \"training_any_reset_success_fraction_cumulative\": 0.0, \"training_success_events_cumulative\": 0, \"world_before_PPO_hash\": \"a81dbdb0c138e62b9ff49781a8f9cf5d41b6e8b04e0e93bf5d3ea71561cfb2e3\", \"world_after_PPO_hash\": \"a81dbdb0c138e62b9ff49781a8f9cf5d41b6e8b04e0e93bf5d3ea71561cfb2e3\", \"mean_actual_reward\": 0.012615021395807465, \"true_terminations\": 1, \"timeouts\": 4, \"timeout_bootstrap_maxerror\": 0.0, \"epoch0_ratio_maxerror\": 0.0, \"PPO_loss\": {\"value_function\": 0.0014814169437158853, \"surrogate\": -0.0030426271106989587, \"entropy\": 13.997356462478638}, \"learning_rate\": 3.375000000000001e-05, \"world_version_before_PPO\": 459, \"world_version_after_aux\": 460, \"world_unchanged_through_PPO\": true, \"normalizer_unchanged\": true, \"aux_updates\": 460, \"aux\": [{\"prediction_loss\": 0.09691425412893295, \"gradient_norm\": 0.3412927985191345}], \"handoff_mean_KL\": 5.899592724745162e-05, \"eligible_aux_windows\": 49124, \"matched_aux_windows\": 48978, \"control_rows_excluded\": 0, \"update_wall_s\": 4.951882839202881, \"total_wall_s\": 2359.7930307388306, \"cuda_peak_MiB\": 3147.70703125}",
+      "WORLD_PPO_UPDATE 461/500 {\"completed_update\": 461, \"actual_transitions\": 90636288, \"formal_PPO_updates\": 461, \"diagnostic_PPO_updates\": 0, \"training_any_reset_success_fraction_cumulative\": 0.0, \"training_success_events_cumulative\": 0, \"world_before_PPO_hash\": \"7a4fb1d5bece8b11eb52acc9433bcf18f23993e016363288bc27e679d4958c6e\", \"world_after_PPO_hash\": \"7a4fb1d5bece8b11eb52acc9433bcf18f23993e016363288bc27e679d4958c6e\", \"mean_actual_reward\": 0.0099077884418269, \"true_terminations\": 0, \"timeouts\": 12, \"timeout_bootstrap_maxerror\": 0.0, \"epoch0_ratio_maxerror\": 0.0, \"PPO_loss\": {\"value_function\": 0.0005513859781785868, \"surrogate\": 0.0007598293159389868, \"entropy\": 13.99515790939331}, \"learning_rate\": 3.375000000000001e-05, \"world_version_before_PPO\": 460, \"world_version_after_aux\": 461, \"world_unchanged_through_PPO\": true, \"normalizer_unchanged\": true, \"aux_updates\": 461, \"aux\": [{\"prediction_loss\": 0.11253558844327927, \"gradient_norm\": 0.3045872151851654}], \"handoff_mean_KL\": 0.00011106854071840644, \"eligible_aux_windows\": 49087, \"matched_aux_windows\": 48986, \"control_rows_excluded\": 0, \"update_wall_s\": 5.112248182296753, \"total_wall_s\": 2364.9470443725586, \"cuda_peak_MiB\": 3147.70703125}",
+      "WORLD_PPO_UPDATE 462/500 {\"completed_update\": 462, \"actual_transitions\": 90832896, \"formal_PPO_updates\": 462, \"diagnostic_PPO_updates\": 0, \"training_any_reset_success_fraction_cumulative\": 0.0, \"training_success_events_cumulative\": 0, \"world_before_PPO_hash\": \"9ae14223228e3839fda50874f844f1826a0178a62b0ee011746d82d20293d458\", \"world_after_PPO_hash\": \"9ae14223228e3839fda50874f844f1826a0178a62b0ee011746d82d20293d458\", \"mean_actual_reward\": 0.007931512780487537, \"true_terminations\": 2, \"timeouts\": 23, \"timeout_bootstrap_maxerror\": 0.0, \"epoch0_ratio_maxerror\": 0.0, \"PPO_loss\": {\"value_function\": 0.005128588725347072, \"surrogate\": -0.0008986008251667954, \"entropy\": 14.00061583518982}, \"learning_rate\": 2.2500000000000005e-05, \"world_version_before_PPO\": 461, \"world_version_after_aux\": 462, \"world_unchanged_through_PPO\": true, \"normalizer_unchanged\": true, \"aux_updates\": 462, \"aux\": [{\"prediction_loss\": 0.12473499029874802, \"gradient_norm\": 0.4607435464859009}], \"handoff_mean_KL\": 0.00021697927149944007, \"eligible_aux_windows\": 49056, \"matched_aux_windows\": 48937, \"control_rows_excluded\": 0, \"update_wall_s\": 5.174261569976807, \"total_wall_s\": 2370.1240644454956, \"cuda_peak_MiB\": 3147.70703125}",
+      "WORLD_PPO_UPDATE 463/500 {\"completed_update\": 463, \"actual_transitions\": 91029504, \"formal_PPO_updates\": 463, \"diagnostic_PPO_updates\": 0, \"training_any_reset_success_fraction_cumulative\": 0.0, \"training_success_events_cumulative\": 0, \"world_before_PPO_hash\": \"0ccd0bb8f27aea11427faa060696c50adabf94674e3dc670f781a94f02d5c3f1\", \"world_after_PPO_hash\": \"0ccd0bb8f27aea11427faa060696c50adabf94674e3dc670f781a94f02d5c3f1\", \"mean_actual_reward\": 0.013164351151014367, \"true_terminations\": 3, \"timeouts\": 35, \"timeout_bootstrap_maxerror\": 0.0, \"epoch0_ratio_maxerror\": 0.0, \"PPO_loss\": {\"value_function\": 0.001987060613464564, \"surrogate\": 0.00019498001856845803, \"entropy\": 14.071820592880249}, \"learning_rate\": 3.375000000000001e-05, \"world_version_before_PPO\": 462, \"world_version_after_aux\": 463, \"world_unchanged_through_PPO\": true, \"normalizer_unchanged\": true, \"aux_updates\": 463, \"aux\": [{\"prediction_loss\": 0.0916096493601799, \"gradient_norm\": 0.3754905164241791}], \"handoff_mean_KL\": 4.2990766814909875e-05, \"eligible_aux_windows\": 48960, \"matched_aux_windows\": 48856, \"control_rows_excluded\": 0, \"update_wall_s\": 5.082939863204956, \"total_wall_s\": 2375.209364414215, \"cuda_peak_MiB\": 3147.70703125}",
+      "WORLD_PPO_UPDATE 464/500 {\"completed_update\": 464, \"actual_transitions\": 91226112, \"formal_PPO_updates\": 464, \"diagnostic_PPO_updates\": 0, \"training_any_reset_success_fraction_cumulative\": 0.0, \"training_success_events_cumulative\": 0, \"world_before_PPO_hash\": \"273518d51ef7f06c036c1729dc6622b626c00812c19e502c763e4ebe98aab311\", \"world_after_PPO_hash\": \"273518d51ef7f06c036c1729dc6622b626c00812c19e502c763e4ebe98aab311\", \"mean_actual_reward\": 0.009562432610740265, \"true_terminations\": 0, \"timeouts\": 12, \"timeout_bootstrap_maxerror\": 0.0, \"epoch0_ratio_maxerror\": 0.0, \"PPO_loss\": {\"value_function\": 0.00043804671004181727, \"surrogate\": 0.00028321427089395, \"entropy\": 14.101947402954101}, \"learning_rate\": 2.2500000000000005e-05, \"world_version_before_PPO\": 463, \"world_version_after_aux\": 464, \"world_unchanged_through_PPO\": true, \"normalizer_unchanged\": true, \"aux_updates\": 464, \"aux\": [{\"prediction_loss\": 0.08165007084608078, \"gradient_norm\": 0.278094083070755}], \"handoff_mean_KL\": 7.872543937992305e-05, \"eligible_aux_windows\": 49093, \"matched_aux_windows\": 48999, \"control_rows_excluded\": 0, \"update_wall_s\": 4.9423627853393555, \"total_wall_s\": 2380.1541464328766, \"cuda_peak_MiB\": 3147.70703125}",
+      "WORLD_PPO_UPDATE 465/500 {\"completed_update\": 465, \"actual_transitions\": 91422720, \"formal_PPO_updates\": 465, \"diagnostic_PPO_updates\": 0, \"training_any_reset_success_fraction_cumulative\": 0.0, \"training_success_events_cumulative\": 0, \"world_before_PPO_hash\": \"eb8508e5102f25ea513f3cdc27873a0c4cf7e47cd1c2393754d076d451612d53\", \"world_after_PPO_hash\": \"eb8508e5102f25ea513f3cdc27873a0c4cf7e47cd1c2393754d076d451612d53\", \"mean_actual_reward\": 0.008985511725768447, \"true_terminations\": 0, \"timeouts\": 10, \"timeout_bootstrap_maxerror\": 0.0, \"epoch0_ratio_maxerror\": 0.0, \"PPO_loss\": {\"value_function\": 0.001739367377012968, \"surrogate\": -0.0013761778012849391, \"entropy\": 14.10585036277771}, \"learning_rate\": 1.5000000000000004e-05, \"world_version_before_PPO\": 464, \"world_version_after_aux\": 465, \"world_unchanged_through_PPO\": true, \"normalizer_unchanged\": true, \"aux_updates\": 465, \"aux\": [{\"prediction_loss\": 0.08142000436782837, \"gradient_norm\": 0.2182615101337433}], \"handoff_mean_KL\": 8.571302896598354e-05, \"eligible_aux_windows\": 49110, \"matched_aux_windows\": 48180, \"control_rows_excluded\": 0, \"update_wall_s\": 5.159945249557495, \"total_wall_s\": 2385.31663107872, \"cuda_peak_MiB\": 3147.70703125}",
+      "WORLD_PPO_UPDATE 466/500 {\"completed_update\": 466, \"actual_transitions\": 91619328, \"formal_PPO_updates\": 466, \"diagnostic_PPO_updates\": 0, \"training_any_reset_success_fraction_cumulative\": 0.0, \"training_success_events_cumulative\": 0, \"world_before_PPO_hash\": \"c0a3c1b014964e53c82b9627ee47f1e7ecbf7dbd6d21cac8c8a8e651e8a00d39\", \"world_after_PPO_hash\": \"c0a3c1b014964e53c82b9627ee47f1e7ecbf7dbd6d21cac8c8a8e651e8a00d39\", \"mean_actual_reward\": 0.009948851501879593, \"true_terminations\": 0, \"timeouts\": 13, \"timeout_bootstrap_maxerror\": 0.0, \"epoch0_ratio_maxerror\": 0.0, \"PPO_loss\": {\"value_function\": 0.001157076278468594, \"surrogate\": -0.0010674952369299716, \"entropy\": 14.133766078948975}, \"learning_rate\": 2.2500000000000005e-05, \"world_version_before_PPO\": 465, \"world_version_after_aux\": 466, \"world_unchanged_through_PPO\": true, \"normalizer_unchanged\": true, \"aux_updates\": 466, \"aux\": [{\"prediction_loss\": 0.13163329660892487, \"gradient_norm\": 0.5233521461486816}], \"handoff_mean_KL\": 5.397114000516012e-05, \"eligible_aux_windows\": 49102, \"matched_aux_windows\": 49026, \"control_rows_excluded\": 0, \"update_wall_s\": 5.261371374130249, \"total_wall_s\": 2390.580580472946, \"cuda_peak_MiB\": 3147.70703125}"
+    ]
+  },
+  "progress": {
+    "completed_update": 466,
+    "actual_transitions": 91619328,
+    "formal_PPO_updates": 466,
+    "diagnostic_PPO_updates": 0,
+    "training_any_reset_success_fraction_cumulative": 0.0,
+    "training_success_events_cumulative": 0,
+    "world_before_PPO_hash": "c0a3c1b014964e53c82b9627ee47f1e7ecbf7dbd6d21cac8c8a8e651e8a00d39",
+    "world_after_PPO_hash": "c0a3c1b014964e53c82b9627ee47f1e7ecbf7dbd6d21cac8c8a8e651e8a00d39",
+    "mean_actual_reward": 0.009948851501879593,
+    "true_terminations": 0,
+    "timeouts": 13,
+    "timeout_bootstrap_maxerror": 0.0,
+    "epoch0_ratio_maxerror": 0.0,
+    "PPO_loss": {
+      "value_function": 0.001157076278468594,
+      "surrogate": -0.0010674952369299716,
+      "entropy": 14.133766078948975
+    },
+    "learning_rate": 2.2500000000000005e-05,
+    "world_version_before_PPO": 465,
+    "world_version_after_aux": 466,
+    "world_unchanged_through_PPO": true,
+    "normalizer_unchanged": true,
+    "aux_updates": 466,
+    "aux": [
+      {
+        "prediction_loss": 0.13163329660892487,
+        "gradient_norm": 0.5233521461486816
+      }
+    ],
+    "handoff_mean_KL": 5.397114000516012e-05,
+    "eligible_aux_windows": 49102,
+    "matched_aux_windows": 49026,
+    "control_rows_excluded": 0,
+    "update_wall_s": 5.261371374130249,
+    "total_wall_s": 2390.580580472946,
+    "cuda_peak_MiB": 3147.70703125
+  },
+  "checkpoints": [
+    {
+      "name": "model_update0050.pt",
+      "size": 18899704,
+      "mtime": 1791375344.6254349
+    },
+    {
+      "name": "model_update0100.pt",
+      "size": 18899704,
+      "mtime": 1791375594.757975
+    },
+    {
+      "name": "model_update0150.pt",
+      "size": 18899704,
+      "mtime": 1791375846.6111703
+    },
+    {
+      "name": "model_update0200.pt",
+      "size": 18899704,
+      "mtime": 1791376099.271263
+    },
+    {
+      "name": "model_update0250.pt",
+      "size": 18899704,
+      "mtime": 1791376352.593137
+    },
+    {
+      "name": "model_update0300.pt",
+      "size": 18899704,
+      "mtime": 1791376606.7561028
+    },
+    {
+      "name": "model_update0350.pt",
+      "size": 18899704,
+      "mtime": 1791376858.6317396
+    },
+    {
+      "name": "model_update0400.pt",
+      "size": 18899704,
+      "mtime": 1791377110.5437784
+    },
+    {
+      "name": "model_update0450.pt",
+      "size": 18899704,
+      "mtime": 1791377362.6389837
+    }
+  ],
+  "r3_i1_live_viewer.state": {
+    "mtime": 1791377445.521819,
+    "text": "LIVE mode=sampled_actual_training_pose step=11195 packet_age_s=0 training_unaffected=true\n"
+  },
+  "r3_i1_live_frame.json": {
+    "mtime": 1791377445.6218266,
+    "text": "{\"captured_at_unix\": 1791377445.6263049, \"source\": \"actual_training_simulation_sample\", \"sampled_env_step\": 11190, \"telemetry_wall_time\": 1791377444.516583, \"robot_root_pose_wxyz\": [1.293426513671875, -0.109588623046875, 0.7854301333427429, 0.9927513599395752, 0.0020950918551534414, 0.04576021805405617, -0.11111344397068024], \"joint_position_rad\": [-0.29719001054763794, -0.09495021402835846, 0.07387083768844604, 0.08125321567058563, -0.026894191280007362, -0.03740067034959793, -0.0004271975776646286, 0.3167691230773926, 0.19301718473434448, 0.34138813614845276, 0.34582388401031494, -0.1678101271390915, -0.19004733860492706, 0.26369932293891907, -0.3081035017967224, -0.08860397338867188, 0.05006280168890953, -0.12310529500246048, 0.05551247298717499, 0.7689573764801025, 0.6460666060447693, 0.07323811203241348, 0.03913642838597298, 0.3129234313964844, 0.2547554075717926, -0.15564770996570587, 0.10647472739219666, -1.5615975856781006, -1.5611103773117065, 0.0009630586137063801, 1.5629358291625977, 1.5628857612609863, 0.004689132794737816, -1.5707626342773438, -1.5707513093948364, 1.0469071865081787, 1.5703011751174927, 1.5703974962234497, -1.0453357696533203, 1.56934654712677, -1.5693352222442627], \"description\": \"Rendered Isaac Sim viewport of actual training state sample; not every training frame.\"}\n"
+  },
+  "r3_active_dreamcontrol_training.json": {
+    "mtime": 1791375094.194243,
+    "text": "{\n  \"task_id\": \"Isaac-Motion-Tracking-Kick-v0\",\n  \"stage\": \"training\",\n  \"is_formal_training\": true,\n  \"source\": \"actual_isaaclab_simulation\",\n  \"budget\": 500,\n  \"arm\": \"W-correct\",\n  \"output\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/formal/train_W-correct_seed42_v1\",\n  \"seed\": 42,\n  \"num_envs\": 8192,\n  \"queue_state\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_ppo_train_W-correct_42_20261007.state\",\n  \"log\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_ppo_train_W-correct_42_20261007.log\"\n}\n"
+  },
+  "gpu": "0, 10987, 49140, 13\n1, 9130, 49140, 17\n",
+  "tmux": "r3_closd_actual_scene_receiver: 1 windows (created Thu Oct  1 14:12:28 2026)\nr3_closd_live_dashboard: 1 windows (created Sun Sep 27 04:09:58 2026)\nr3_closd_meshcat: 1 windows (created Sun Sep 27 03:50:15 2026)\nr3_dreamcontrol_tensorboard_resume: 1 windows (created Sat Sep 26 00:10:24 2026)\nr3_i1_live_viewer_supervisor: 1 windows (created Thu Oct  1 14:12:28 2026)\nr3_i1_viewport_dashboard: 1 windows (created Wed Oct  7 08:17:12 2026)\nr3_live_curves: 1 windows (created Fri Sep 25 08:42:18 2026)\nr3_tensorboard_probe: 1 windows (created Fri Sep 25 02:06:34 2026)\nr3_tensorboard_resume200: 1 windows (created Sun Sep 27 02:02:30 2026)\nr3_world_ppo_formal_20261007: 1 windows (created Wed Oct  7 09:26:07 2026)\n",
+  "processes": [
+    "1589567 3151130   80952  0.0 SNs  /bin/bash /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/python.sh -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_i1_live_training_viewer.py --device=cuda:1 --livestream=2 --telemetry-port=40123 --status-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_viewer.state --snapshot-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_frame.png --kit_args=--portable-root /data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_live_viewer/kit --/renderer/multiGpu/enabled=false --task=Isaac-Motion-Tracking-Kick-v0",
+    "1589572 1589567   80952 83.6 SNl  /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_i1_live_training_viewer.py --device=cuda:1 --livestream=2 --telemetry-port=40123 --status-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_viewer.state --snapshot-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_frame.png --kit_args=--portable-root /data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_live_viewer/kit --/renderer/multiGpu/enabled=false --task=Isaac-Motion-Tracking-Kick-v0",
+    "1741788 2310763   12278  0.0 Ss+  bash -c cd /data/code/ouyanghao/oyh/conditional-human-motion-generation && /usr/bin/python3 -u scripts/r3_world_ppo_formal_queue_20261007.py > /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_ppo_formal_20261007.queue.log 2>&1",
+    "1741790 1741788   12278  0.0 S+   /usr/bin/python3 -u scripts/r3_world_ppo_formal_queue_20261007.py",
+    "1831150 1831146    2398  0.0 S    timeout --signal=TERM --kill-after=60s 86400 /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/python.sh -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_world_ppo_control_formal_v3_20261007.py --mode formal --arm W-correct --seed 42 --output /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/formal/train_W-correct_seed42_v1 --num_envs 8192 --updates 500 --aux-updates 1 --aux-batch 1024 --monitor-prefix /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_ppo_train_W-correct_42_20261007 --device cuda:0 --headless",
+    "1831151 1831150    2398  0.0 S    /bin/bash /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/python.sh -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_world_ppo_control_formal_v3_20261007.py --mode formal --arm W-correct --seed 42 --output /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/formal/train_W-correct_seed42_v1 --num_envs 8192 --updates 500 --aux-updates 1 --aux-batch 1024 --monitor-prefix /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_ppo_train_W-correct_42_20261007 --device cuda:0 --headless",
+    "1831156 1831151    2398  185 Rl   /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_world_ppo_control_formal_v3_20261007.py --mode formal --arm W-correct --seed 42 --output /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/formal/train_W-correct_seed42_v1 --num_envs 8192 --updates 500 --aux-updates 1 --aux-batch 1024 --monitor-prefix /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_ppo_train_W-correct_42_20261007 --device cuda:0 --headless"
+  ],
+  "viewer_pid_1589572": {
+    "exists": true,
+    "start_ticks": "1249404823"
+  },
+  "viewer_pid_3854248": {
+    "exists": true,
+    "start_ticks": "1208193920"
+  }
+}

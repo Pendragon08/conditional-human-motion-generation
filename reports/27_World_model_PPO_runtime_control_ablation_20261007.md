@@ -50,3 +50,16 @@ v3只以精确文件名将固定清单ID映射至原MotionLib索引；初始refe
 任务成功仍是官方虚拟脚踝目标，不代表实体打击接触；结论仅覆盖Kick、固定phase0、无传感器噪声设置。原生场景trace不是视频。主门PASS后还要执行两项预注册解释消融，再冻结策略至MuJoCo；主门FAIL停止当前候选。源权重和许可数组留服务器，只代码/协议/日志/元数据进新私有GitHub，DreamControl与CLoSD教师基线报告保持独立。
 
 关键记录：results/world_residual_ppo_20261007/raw/local_view_gate.json、runtime_doc_witness.json、capacity/fresh_doc_witness_receipt_20261007.json、capacity/fresh_saved_tensor_audit.json，以及plans/world_residual_ppo_control_metrics_20261007.md。
+
+## 2026-10-07T20:58:47.368137+08:00 本轮进度与阶段结果
+已完成4/15组训练及最终评估（seed42的P0、P-cap、P-history、W-correct），当前W-shuffled-original seed42已核实38/500更新。每已完成组均500条连续更新记录、98,304,000训练转移；实际child0、唯一哨兵、最终检查点SHA与评估源SHA匹配。每评价1,024,000转移、0PPO/aux/norm，11参考等权宏统计已从保存JSON逐行重算。此轮只检查元数据/标量，未对全部正式npz进行新的独立几何重建。
+|组（seed42）|首回合成功|首回合失效|受扰恢复RMSE积分 rad·s↓|无扰恢复RMSE rad↓|
+|---|---:|---:|---:|---:|
+|P0|0.0%|24.46%|0.297032|0.084895|
+|P-cap|0.0%|32.09%|0.405105|0.085142|
+|P-history|0.0%|31.11%|0.265221|0.081010|
+|W-correct|0.0%|27.44%|0.330720|0.079632|
+
+W-correct的受扰恢复积分比P0高11.34%，比P-history高24.70%，当前seed42没有显示主恢复指标优势；首回合失效也较P0增加2.98百分点。无扰误差略低不能抵消恢复/任务失败。四组首回合及官方任意reset成功统计均0，说明新参考协议下任务未达成，非native退出错误。不能与旧官方66参考85.3%直接比较，也不能凭预测Gate通过宣布创新有效。
+
+所有分数为中途公开记录，不用于改预算、奖励、模型、数据或阈值；依预注册协议收齐15组后再计算完整控制Gate。当前无正式主门结论，评价视频未核验，原生场景trace不是视频。结构化结果见results/world_residual_ppo_20261007/partial_control_results.json，原始元数据及检查快照见raw/monitoring。

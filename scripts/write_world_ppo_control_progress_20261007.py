@@ -28,6 +28,15 @@ arms=[('P0','原PPO','原626维观测，保留参考动作与原策略起点'),
  ('W-shuffled-original','错配监督对照','保持辅助预算，分层错配未来残差目标')]
 rows=''.join('<tr>'+''.join('<td>'+html.escape(x)+'</td>' for x in row)+'</tr>' for row in arms)
 status=html.escape(value['formal_training_status'])
+partial_path=ROOT/'results/world_residual_ppo_20261007/partial_control_results.json'
+partial_section=''
+if partial_path.exists():
+ partial=json.loads(partial_path.read_text(encoding='utf-8'))
+ partial_rows=''.join(f"<tr><td>{html.escape(x['arm'])}</td><td>{x['seed']}</td><td>{100*x['first_episode_success']:.1f}%</td><td>{100*x['first_episode_failure']:.2f}%</td><td>{x['recovery_RMSE_AUC_rad_s']:.4f}</td><td>{x['clean_recovery_RMSE_rad']:.4f}</td></tr>" for x in partial['rows'])
+ partial_section=f'''<section><h2>当前已完成结果 · 尚未作最终判断</h2><p>已完成训练{partial['completed_train_runs']}/15组、最终评估{partial['completed_eval_runs']}/15组。北京时间快照：{html.escape(partial['observed_beijing'])}。</p>
+<table><thead><tr><th>组别</th><th>种子</th><th>首回合成功</th><th>首回合失效</th><th>受扰恢复积分<br>rad·s，越低越好</th><th>无扰恢复误差<br>rad，越低越好</th></tr></thead><tbody>{partial_rows}</tbody></table>
+<p>全部为500追加更新后的固定新11参考评估；各参考等权，首回合失效后的帧使用预定2rad插补。0%表示本协议下任务未达成，不能把正常退出记成执行故障；误差较低也不能单独证明踢击任务完成。</p>
+<p>本次包含新参考、固定初始phase与受扰分组，与旧官方66参考85.3%不是同配置。三种子和错配对照尚未齐全，未进行最终控制Gate判定，不据中途成绩调整预算、方法或阈值。当前产物包含场景轨迹，尚非已核验的最终评估视频。</p></section>'''
 body=f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>世界模型＋PPO · 控制消融进度</title><style>
 *{{box-sizing:border-box}}body{{margin:0;background:#f1f4f8;color:#16263e;font:16px/1.7 system-ui,sans-serif}}
@@ -49,6 +58,7 @@ a{{color:#12619b}}header a{{color:#bde5ff}}small,.muted{{color:#587086}}.flow{{b
 <section><h2>五臂同预算比较</h2><table><thead><tr><th>臂</th><th>作用</th><th>接口与监督</th></tr></thead><tbody>{rows}</tbody></table>
 <p>seed42/43/44，各8192环境 × 24步 × 500追加PPO更新；15项共14.746亿真实训练转移。所有臂恢复同一原Kick2000轮模型、Adam状态和学习率，使用原66参考。属于匹配微调实验，不是从零完整论文复现。</p>
 <p>只评最后update500；固定新11参考，每项2048环境 × 500帧，共1536万评价转移。无测试反馈调参或模型挑选。此11参考已做预测Gate，不称端到端完全未见测试。</p></section>
+{partial_section}
 <section><h2>如何判定控制收益</h2><p>受扰组在第50–59步受到躯干世界Y方向±80N推力。主指标为第60–109步27关节RMSE积分；先按参考汇总，再11参考等权。首episode结束后的帧插补固定2rad，所有初始环境计入分母，自动重置不能掩盖失败。</p>
 <p>三个种子各自要求：W相对原PPO、容量、历史对照恢复改善至少10%且95%置信区间下界大于0；优于错配监督；无扰动误差非劣、任务成功保持、跌倒比例不增加。配对bootstrap以参考为单位，不以并行环境伪造样本量。</p>
 <p>主门通过后还需两项解释消融，然后冻结到MuJoCo。主门失败则停止当前候选。Kick虚拟目标成功不能替代实体打击接触或跨动作语义结论。</p></section>
@@ -57,6 +67,6 @@ a{{color:#12619b}}header a{{color:#bde5ff}}small,.muted{{color:#587086}}.flow{{b
 <tr><td>summary.json / control_gate.json</td><td>固定最终统计及三种子控制门，保留失败结果</td></tr></table>
 <p>系统预检与失败日志保存在results/world_residual_ppo_20261007/raw。首次评估异常被清理遮蔽并卡住；v2打印出固定清单与目录加载顺序不一致。v3只按文件名映射索引，未重排动作或修改科学设置，两臂各64×120接口已自然完成，19项独立轨迹检查和逐参考统计重算通过。</p>
 <p>接口核验保留证据范围：完整力张量、逐帧参数哈希、成功事件增量，以及未发生的timeout/root失败路径未获全量独立实证。失败预检不记0分，接口通过不等于控制效果通过。</p></section>
-<p class="muted">更新UTC：{html.escape(value['updated_utc'])} · 单独的创新探索页，DreamControl与CLoSD教师基线报告保持独立。</p></main></html>'''
+<p class="muted">状态为检查时快照 · 单独的创新探索页，DreamControl与CLoSD教师基线报告保持独立。</p></main></html>'''
 path=ROOT/'media/World_model_PPO_控制消融进度.html';path.write_text(body,encoding='utf-8')
 print(json.dumps({'page':str(path),'status':value['formal_training_status']},ensure_ascii=True))
