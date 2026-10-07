@@ -1,0 +1,31 @@
+{
+  "observed_unix": 1791365061.7313244,
+  "read_only": true,
+  "r3_i1_live_viewer.state": {
+    "mtime": 1791365061.7142506,
+    "text": "STALE mode=sampled_actual_training_pose last_step=120 age_s=1039.7 training_unaffected=true\n"
+  },
+  "r3_i1_live_frame.json": {
+    "mtime": 1791365060.8582914,
+    "text": "{\"captured_at_unix\": 1791365060.8617034, \"source\": \"actual_training_simulation_sample\", \"sampled_env_step\": 120, \"telemetry_wall_time\": 1791364021.9584055, \"robot_root_pose_wxyz\": [1.4989910125732422, 0.2433938980102539, 0.8008468151092529, 0.8717241883277893, -0.26898398995399475, -0.268456369638443, 0.30931490659713745], \"joint_position_rad\": [-0.058333493769168854, -0.9758288860321045, -0.33119288086891174, 0.7829174995422363, -0.23639491200447083, 0.01683049649000168, -0.08922076970338821, 0.5856029987335205, 1.541534662246704, -0.7164504528045654, 0.33763986825942993, -0.28490933775901794, -0.0679808109998703, 0.919862687587738, -0.6448187232017517, 0.01867617852985859, 0.2617996037006378, -0.6458451747894287, -0.08075683563947678, -0.32980459928512573, 0.6345595121383667, 0.018565893173217773, -0.020747607573866844, -0.0095476433634758, 0.2094988077878952, -0.18756341934204102, 0.17144857347011566, -1.5708016157150269, -1.5708006620407104, 0.0003950847312808037, 1.5682768821716309, 1.5678483247756958, 0.0007020324701443315, -1.5702646970748901, -1.5704089403152466, 1.0424965620040894, 1.5700644254684448, 1.570160150527954, -1.0444269180297852, 1.5712690353393555, -1.5700480937957764], \"description\": \"Rendered Isaac Sim viewport of actual training state sample; not every training frame.\"}\n"
+  },
+  "r3_active_dreamcontrol_training.json": {
+    "mtime": 1791364014.165112,
+    "text": "{\n  \"task_id\": \"Isaac-Motion-Tracking-Kick-v0\",\n  \"stage\": \"evaluation\",\n  \"is_formal_training\": false,\n  \"source\": \"actual_isaaclab_simulation\",\n  \"output\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/eval_interface_v3/eval-diagnostic_W-correct_seed42_v1\",\n  \"arm\": \"W-correct\",\n  \"seed\": 42,\n  \"queue_state\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_ppo_eval-diagnostic_W-correct_42_20261007_v3.state\",\n  \"log\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_ppo_eval-diagnostic_W-correct_42_20261007_v3.log\"\n}\n"
+  },
+  "gpu": "0, 699, 49140, 0\n1, 8905, 49140, 3\n",
+  "tmux": "r3_closd_actual_scene_receiver: 1 windows (created Thu Oct  1 14:12:28 2026)\nr3_closd_live_dashboard: 1 windows (created Sun Sep 27 04:09:58 2026)\nr3_closd_meshcat: 1 windows (created Sun Sep 27 03:50:15 2026)\nr3_dreamcontrol_tensorboard_resume: 1 windows (created Sat Sep 26 00:10:24 2026)\nr3_i1_live_viewer_supervisor: 1 windows (created Thu Oct  1 14:12:28 2026)\nr3_i1_viewport_dashboard: 1 windows (created Wed Oct  7 08:17:12 2026)\nr3_live_curves: 1 windows (created Fri Sep 25 08:42:18 2026)\nr3_tensorboard_probe: 1 windows (created Fri Sep 25 02:06:34 2026)\nr3_tensorboard_resume200: 1 windows (created Sun Sep 27 02:02:30 2026)\n",
+  "processes": [
+    "1589567 3151130   68568  0.0 SNs  /bin/bash /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/python.sh -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_i1_live_training_viewer.py --device=cuda:1 --livestream=2 --telemetry-port=40123 --status-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_viewer.state --snapshot-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_frame.png --kit_args=--portable-root /data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_live_viewer/kit --/renderer/multiGpu/enabled=false --task=Isaac-Motion-Tracking-Kick-v0",
+    "1589572 1589567   68568 80.5 SNl  /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_i1_live_training_viewer.py --device=cuda:1 --livestream=2 --telemetry-port=40123 --status-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_viewer.state --snapshot-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_frame.png --kit_args=--portable-root /data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_live_viewer/kit --/renderer/multiGpu/enabled=false --task=Isaac-Motion-Tracking-Kick-v0"
+  ],
+  "viewer_pid_1589572": {
+    "exists": true,
+    "start_ticks": "1249404823"
+  },
+  "viewer_pid_3854248": {
+    "exists": true,
+    "start_ticks": "1208193920"
+  }
+}
+

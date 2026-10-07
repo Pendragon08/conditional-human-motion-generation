@@ -1,0 +1,52 @@
+# 世界模型＋PPO：实际控制消融与运行验收（2026-10-07）
+
+本轮仍跟踪官方OmniControl生成、原PyRoki重定向的Kick参考动作。世界模型从实际执行历史学习短时状态与接触预测，编码历史后给PPO策略提供128维特征；PPO只用真实Isaac Lab奖励和转移更新，不使用想象奖励。无额外IK、不改原reward、PD或termination。预测准确性已通过三种子新参考确认，**实际控制收益尚待同预算消融，创新点未验证**。
+
+## 本地画面验收
+
+用户明确回复“能看到机器人持续运动”，对应http://127.0.0.1:6013/live。Gate文件：artifacts/monitoring/r3_world_residual_ppo_local_view_gate_20261007.json。这是独立Isaac Sim渲染器收到实际Isaac Lab姿态抽样后输出的SSH TCP MJPEG页面，不能称已修复原生WebRTC。原主页面打不开的反馈保留。验收阶段为冻结策略画面预检，0PPO，不当正式训练成绩。
+
+服务器GPU0计算、GPU1渲染两个独立进程，经本机非阻塞UDP40123传递抽样姿态。监控崩溃、浏览器关闭或本地关机不阻塞训练。预检结束后停止发包，STALE表示没有新帧；正式队列启动前不能把旧帧称当前训练。
+
+## 已完成的系统与容量验证
+
+五臂256环境×24步×2更新诊断均自然childrc0、哨兵/产物齐全，共61,440真实转移、10次诊断PPO、4次W辅助更新。原checkpoint17组Adam状态恢复、normalizer冻结、初始均值/价值/std/logprob等价、历史顺序、分层错配索引已独立核验。CUDA/cuDNN同后端重建两W臂初始cached latent误差0；CPU后端差异保留。原39保护文件及36确认数组身份未改变。
+
+此初轮缺少部分过程边界张量，回执状态为COMPLETE_WITH_INDEPENDENT_EVIDENCE_LIMITS，不能称全量独立证明。随后保存并独立重算零PPO/零仿真CUDA系统fixture：timeout只增加一次原动作前value×gamma，真实终止不bootstrap，reset切断旧历史、未reset历史保持顺序。
+
+8192环境容量阶段：
+
+|臂|真实转移|诊断PPO/aux|Torch峰值分配|主体更新耗时|实际退出|
+|---|---:|---:|---:|---:|---|
+|P-history|393,216|2/0|13,582.77MiB|56.37秒|0|
+|W-correct|393,216|2/2|3,142.21MiB|52.34秒|0|
+
+独立saved-tensor审计43项全部PASS，原参数各增加40次Adam step，P-history encoder各40次，W辅助参数各2次；Ridge/归一化不变。W交接KL为0.000111816和0.000149115，低于预锁0.01。两容量臂自然reset/timeout均0，系统fixture不是物理成功证据；Torch峰值不是进程总显存。过程冻结还依靠实际执行的相等断言，未保存每个minibatch梯度。正式v3仅补入PPO世界模型边界快照、原clip_actions=None检查和只读计数，不改算法。
+
+## 冻结评估接口问题
+
+首次64环境P-history接口诊断在环境初始化/首次reset后进入app.close清理卡住，未写trace、summary或完成哨兵。原异常尚被finally清理遮蔽，不能断言具体根因。父代理保全日志、精确PID与空输出后仅终止这个失败诊断；实际子链返回0但stage退出1、队列FAILED，不能当正常完成、自然超时或0分。W-correct阶段没有启动。
+
+v2保存原源码和原输出，只加入初始化围栏、原异常在清理前打印及未进入主try的环境关闭，随后自然结束并暴露文件顺序不一致的AssertionError。MotionLib使用目录glob，实际顺序为[0007,0009,0013,0012,0010,0006,0004,0000,0001,0015,0002]，不是固定清单顺序。v2仍无评价转移产物或分数，不是方法效果失败。
+
+v3只以精确文件名将固定清单ID映射至原MotionLib索引；初始reference/domain/sign分配与原姿态规则保持，后续自动reset仍官方方法，不重排库、不改变权重、物理或评分。trace额外保存库/清单两个索引及文件名供独立重建。三个源版本/失败输出均保留；诊断最长300秒+30秒。
+
+新fresh doc-follow代理按文档只调用一次启动器，P-history/W-correct各64×120=7,680实际评价转移、实际child0、完成哨兵一次，队列COMPLETE。每臂33项运行/身份检查以及19项独立保存trace检查通过，11参考逐行与宏统计重建误差0，初始reference/domain/方向/root/joints完全相同。核验只用于接口身份和统计正确性，不依据诊断分数挑方法或改阈值。回执results/world_residual_ppo_20261007/raw/eval_interface_v3/eval_doc_witness.json，状态PASS_WITH_EVIDENCE_LIMITS。
+
+证据限制保留：逐步成功计数增量、所有环境完整力张量及姿态、运行时参数前后实际哈希字符串/逐帧哈希未保存；只有执行过的端点相等断言和冻结推理源码，不能把CPU检查点身份当逐帧冻结证明。120步未出现自然timeout或root阈值失败；实际angle失败和首done后的2rad插补已核验。只保存四环境完整场景姿态，64环境误差汇总可重算，但全量几何到RMSE重算证据不足。正式评估继续保留这些范围，不以启动Ready替代科学控制Gate。
+
+正式Ready封存第一次只发生Windows路径分隔符传输错误：六个JSON被作为POSIX含反斜线文件名保存，源码/训练未启动。原字节和失败记录保全后只恢复规范路径与逐文件SHA，正式启动器未重复。见raw/readiness/metadata_path_repair.json。
+
+## 已锁定的正式比较
+
+2026-10-07 09:26 UTC，fresh doc-follow代理原样调用唯一启动器一次，实际本地返回0及dispatch哨兵；tmux r3_world_ppo_formal_20261007在服务器后台串行执行。首组P0 seed42已独立核实推进至WORLD_PPO_UPDATE 60/500、11,796,480真实转移、已观察34条更新记录均有限、model_update0050.pt（12,559,606字节）已保存、0辅助更新，当前训练画面step从初始化旧帧继续增加，既有GPU1 viewer两个PID/start ticks未变。此为启动和推进证据，不是500轮已完成或方法收益；正式完整队列尚在运行。回执与原始状态存results/world_residual_ppo_20261007/raw/formal_launch。
+
+五臂：P0原PPO、P-cap当前输入容量控制、P-history有序历史无预测监督、W-correct正确残差预测、W-shuffled-original分层错配残差预测。seed42/43/44逐臂串行，各8192环境×24步×500追加更新，共1,474,560,000真实训练转移。全部从同一原Kick2000轮模型及Adam/LR继续，是匹配微调实验，不能称从零2000轮论文复现。仅W臂每轮PPO之后增加1次1024样本辅助更新；世界模型在整个PPO轮内冻结，交接KL超过0.01则保全失败、不临时调参救结果。
+
+每臂只冻结最后update500，2048环境×500帧，新11参考按reference/clean-push/方向固定分配，三seed共15,360,000评估转移。step50–59 torso世界Y±80N扰动；主指标是push组60–109步27关节RMSE积分，每参考平均、11参考等权。首episode终止后固定2rad失效插补，不把自动重置后的容易帧拼回原轨迹，所有初始环境为分母；2rad不是合法误差上界，附失败比例及存活时间解释偏差。
+
+每seed独立reference配对bootstrap10000次：W相对三个主要对照恢复改善≥10%且95%CI下界>0；相对错配臂CI下界>0；clean误差比三个主要对照CI上界≤1.05；首episode成功下降≤5百分点、失败比例不增加。三seed各通过，无池化救结果、挑checkpoint或测试反馈调参。新11参考已用于预测Gate，不称端到端完全未见测试。
+
+任务成功仍是官方虚拟脚踝目标，不代表实体打击接触；结论仅覆盖Kick、固定phase0、无传感器噪声设置。原生场景trace不是视频。主门PASS后还要执行两项预注册解释消融，再冻结策略至MuJoCo；主门FAIL停止当前候选。源权重和许可数组留服务器，只代码/协议/日志/元数据进新私有GitHub，DreamControl与CLoSD教师基线报告保持独立。
+
+关键记录：results/world_residual_ppo_20261007/raw/local_view_gate.json、runtime_doc_witness.json、capacity/fresh_doc_witness_receipt_20261007.json、capacity/fresh_saved_tensor_audit.json，以及plans/world_residual_ppo_control_metrics_20261007.md。

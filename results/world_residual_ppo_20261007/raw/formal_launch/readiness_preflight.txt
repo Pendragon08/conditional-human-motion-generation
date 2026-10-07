@@ -1,0 +1,225 @@
+LOCAL_READINESS {"runtime": {"exists": true, "sha256": "907533f84b24bf3634fedb3d3b2b9207f01b661957cc137e32ea7c92b2faeed3", "expected_sha256": "907533f84b24bf3634fedb3d3b2b9207f01b661957cc137e32ea7c92b2faeed3", "hash_match": true, "status": "COMPLETE_WITH_INDEPENDENT_EVIDENCE_LIMITS", "queue_state": null, "all_independent_checks_pass": null}, "capacity": {"exists": true, "sha256": "55871b63c9055d3e571a4884c0f0cf4bb794b5e23986ec2b190316e3debd19f4", "expected_sha256": "55871b63c9055d3e571a4884c0f0cf4bb794b5e23986ec2b190316e3debd19f4", "hash_match": true, "status": null, "queue_state": "COMPLETE fixture_exit=0 P-history_exit=0 W-correct_exit=0 formal=false", "all_independent_checks_pass": true}, "eval_interface": {"exists": true, "sha256": "89aef18dc7b1dbe1170f8d708912543742d1a48b406982a4da9e51f55a3ab030", "expected_sha256": "89aef18dc7b1dbe1170f8d708912543742d1a48b406982a4da9e51f55a3ab030", "hash_match": true, "status": "PASS_WITH_EVIDENCE_LIMITS", "queue_state": "COMPLETE P-history_exit=0 W-correct_exit=0 diagnostic=true formal=false", "all_independent_checks_pass": null}}
+{
+  "runtime": {
+    "sha256": "6d096d7be95dc01288ff6929b897cb458a759c65084f3f77dd81f5fc649de49b",
+    "data": {
+      "ready_for_formal": true,
+      "formal_PPO_launched": false,
+      "at_creation_utc": "2026-10-07T09:21:36.259624+00:00",
+      "scope": "Five-arm diagnostic invariants with saved CUDA fixture supplementation; not control benefit",
+      "receipt": "results/world_residual_ppo_20261007/raw/runtime_doc_witness.json",
+      "receipt_sha256": "907533f84b24bf3634fedb3d3b2b9207f01b661957cc137e32ea7c92b2faeed3",
+      "supplemental_fixture_audit_sha256": "a312251af42d0e96febc6861502c6b5de9971e7f7f3b978261cfbf7782944ae5",
+      "v1_evidence_limits_preserved": true,
+      "formal_v3_boundary_snapshots_required": true,
+      "not_proven": [
+        "Per-minibatch gradient traces",
+        "Natural timeout semantics examples in 2-update diagnostics",
+        "500-update completion"
+      ]
+    }
+  },
+  "capacity": {
+    "sha256": "1c091ab444e01de3b7b83ed5315a0e1c877020eb9643449373ad2c81868f461c",
+    "data": {
+      "ready_for_formal": true,
+      "formal_PPO_launched": false,
+      "at_creation_utc": "2026-10-07T09:21:36.259624+00:00",
+      "receipt": "results/world_residual_ppo_20261007/raw/capacity/fresh_doc_witness_receipt_20261007.json",
+      "receipt_sha256": "55871b63c9055d3e571a4884c0f0cf4bb794b5e23986ec2b190316e3debd19f4",
+      "saved_tensor_audit_sha256": "a312251af42d0e96febc6861502c6b5de9971e7f7f3b978261cfbf7782944ae5",
+      "checks_passed": 43,
+      "real_transitions": 786432,
+      "natural_timeouts": 0,
+      "not_control_gate": true,
+      "Torch_peak_is_not_total_driver_memory": true
+    }
+  },
+  "eval_interface": {
+    "sha256": "e8bb769f3aa9443f7c0235655ba5e115b90905c49ea8b840d12c08fe09be7912",
+    "data": {
+      "ready_for_formal": true,
+      "formal_PPO_launched": false,
+      "at_creation_utc": "2026-10-07T09:21:36.259624+00:00",
+      "receipt": "results/world_residual_ppo_20261007/raw/eval_interface_v3/eval_doc_witness.json",
+      "receipt_sha256": "89aef18dc7b1dbe1170f8d708912543742d1a48b406982a4da9e51f55a3ab030",
+      "source_revision": "v3_manifest_to_library_filename_mapping",
+      "native_trace_is_not_video": true,
+      "scope": "64x120 frozen capacity interface, not final scientific control score",
+      "PPO_updates": 0,
+      "aux_updates": 0,
+      "previous_v1_v2_failures_preserved": true,
+      "independent_trace_checks_per_arm": 19,
+      "real_transitions": 15360,
+      "evidence_limits": {
+        "P-history": {
+          "success_event_occurrence": {
+            "status": "LIMITED",
+            "detail": "Saved flag aggregated per reference; per-step success counter deltas absent, so success occurrence cannot be independently reconstructed."
+          },
+          "full_force_reconstruction": {
+            "status": "LIMITED",
+            "detail": "Ten runtime force-buffer error records are zero and locked step/N/count match. Trace lacks force tensors/quaternions for all environments, so full world-to-local force reconstruction is unavailable."
+          },
+          "independent_runtime_module_before_after_digests": {
+            "status": "LIMITED",
+            "detail": "Completed runtime source compares before/after policy/norm/world tensor hashes and asserts equality; summary boolean true. Actual before/after digest strings and per-frame hashes absent. CPU checkpoint module hashes are identity evidence, not independent in-memory freeze evidence."
+          },
+          "per_frame_freeze": {
+            "status": "LIMITED",
+            "detail": "Per-frame policy/normalizer/world parameter hashes were not persisted. Only executed endpoint equality assertion and immutable inference source evidence are available."
+          },
+          "natural_timeout_path": {
+            "status": "LIMITED",
+            "detail": "No natural timeout event in 120 steps; timeout handling structurally verified only."
+          },
+          "natural_root_threshold_failure_path": {
+            "status": "LIMITED",
+            "detail": "No natural root-below event occurred; saved root reason channel and termination OR consistency are structurally checked, while actual failures were angle-below events."
+          },
+          "joint_error_full_geometry_reconstruction": {
+            "status": "LIMITED",
+            "detail": "Statistics and failure penalties are reconstructed from full saved unpenalized RMSE; only four environments have scene joint/body poses, so full 64-environment raw geometry-to-RMSE reconstruction is not available."
+          }
+        },
+        "W-correct": {
+          "success_event_occurrence": {
+            "status": "LIMITED",
+            "detail": "Saved flag aggregated per reference; per-step success counter deltas absent, so success occurrence cannot be independently reconstructed."
+          },
+          "full_force_reconstruction": {
+            "status": "LIMITED",
+            "detail": "Ten runtime force-buffer error records are zero and locked step/N/count match. Trace lacks force tensors/quaternions for all environments, so full world-to-local force reconstruction is unavailable."
+          },
+          "independent_runtime_module_before_after_digests": {
+            "status": "LIMITED",
+            "detail": "Completed runtime source compares before/after policy/norm/world tensor hashes and asserts equality; summary boolean true. Actual before/after digest strings and per-frame hashes absent. CPU checkpoint module hashes are identity evidence, not independent in-memory freeze evidence."
+          },
+          "per_frame_freeze": {
+            "status": "LIMITED",
+            "detail": "Per-frame policy/normalizer/world parameter hashes were not persisted. Only executed endpoint equality assertion and immutable inference source evidence are available."
+          },
+          "natural_timeout_path": {
+            "status": "LIMITED",
+            "detail": "No natural timeout event in 120 steps; timeout handling structurally verified only."
+          },
+          "natural_root_threshold_failure_path": {
+            "status": "LIMITED",
+            "detail": "No natural root-below event occurred; saved root reason channel and termination OR consistency are structurally checked, while actual failures were angle-below events."
+          },
+          "joint_error_full_geometry_reconstruction": {
+            "status": "LIMITED",
+            "detail": "Statistics and failure penalties are reconstructed from full saved unpenalized RMSE; only four environments have scene joint/body poses, so full 64-environment raw geometry-to-RMSE reconstruction is not available."
+          }
+        }
+      },
+      "runtime_endpoint_assertion_not_independent_digest_proof": true
+    }
+  },
+  "scene_gate": {
+    "sha256": "cad25cf3d29d76889a4cf19b9d20ec93a71a5c8ceb3788821c1c8baa016753ed",
+    "data": {
+      "user_confirmed_local_stream": true,
+      "source": "actual_isaaclab_simulation",
+      "local_url": "http://127.0.0.1:6013/live",
+      "transport": "SSH TCP MJPEG, not WebRTC",
+      "user_answer": "\u80fd\u770b\u5230\u673a\u5668\u4eba\u6301\u7eed\u8fd0\u52a8",
+      "prior_answer": "\u753b\u9762\u4e0d\u52a8\u6216\u6253\u4e0d\u5f00",
+      "prior_main_page_passed": false,
+      "confirmed_stage": "frozen_policy_visibility_preflight; zero PPO",
+      "captured_frame_metadata": {
+        "captured_at_unix": 1791361461.3721244,
+        "source": "actual_training_simulation_sample",
+        "sampled_env_step": 11260,
+        "telemetry_wall_time": 1791361460.9586985,
+        "robot_root_pose_wxyz": [
+          1.1276283264160156,
+          0.19224095344543457,
+          0.7868832349777222,
+          0.9956507682800293,
+          -0.0029526865109801292,
+          0.03971844166517258,
+          0.08422046899795532
+        ],
+        "joint_position_rad": [
+          -0.15999601781368256,
+          -0.13179010152816772,
+          -0.09260198473930359,
+          -0.06396905332803726,
+          -0.0646422803401947,
+          -0.028474457561969757,
+          -0.0002719435724429786,
+          0.22700145840644836,
+          0.19419877231121063,
+          0.10253992676734924,
+          0.08321524411439896,
+          -0.14066383242607117,
+          -0.1416277140378952,
+          0.23723921179771423,
+          -0.1853562891483307,
+          0.05425698310136795,
+          0.059942178428173065,
+          -0.3818245828151703,
+          0.3195871412754059,
+          0.8492562174797058,
+          0.7931861281394958,
+          0.07404173910617828,
+          0.006500822026282549,
+          0.24821573495864868,
+          0.24014095962047577,
+          0.050018973648548126,
+          -0.0380597859621048,
+          -1.562175989151001,
+          -1.5612833499908447,
+          0.0012813422363251448,
+          1.5617057085037231,
+          1.5612412691116333,
+          0.0007761402521282434,
+          -1.5705773830413818,
+          -1.5705535411834717,
+          1.0468945503234863,
+          1.5705726146697998,
+          1.570644497871399,
+          -1.0465893745422363,
+          1.5693151950836182,
+          -1.5693024396896362
+        ],
+        "description": "Rendered Isaac Sim viewport of actual training state sample; not every training frame."
+      },
+      "active_stage_metadata": {
+        "task_id": "Isaac-Motion-Tracking-Kick-v0",
+        "stage": "visibility",
+        "is_formal_training": false,
+        "source": "actual_isaaclab_simulation",
+        "output": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/visibility_seed42_v1",
+        "seed": 42,
+        "num_envs": 16,
+        "queue_state": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_residual_visibility_20261007.state",
+        "log": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_residual_visibility_20261007.log"
+      },
+      "recorded_unix": 1791361461.7296946,
+      "confirmation_origin": "direct human asynchronous reply",
+      "formal_launch_still_requires_runtime_and_capacity": true
+    }
+  },
+  "prediction_gates": {
+    "42": {
+      "sha256": "141a6f57d5ebab0ec94e30d2c8d4da6fe3c8ac01f486060bc4c37ffd85b95c8f",
+      "formal_prediction_gate_passed": true,
+      "status": "COMPLETE"
+    },
+    "43": {
+      "sha256": "39009c0fa938553d818f7af7b4c9802ae17be4c708eaddc0265b406f7f473f33",
+      "formal_prediction_gate_passed": true,
+      "status": "COMPLETE"
+    },
+    "44": {
+      "sha256": "71ae1c191d8509fcff2ffd5e8533a97923d3e17ff26e8090f02564866d791ad2",
+      "formal_prediction_gate_passed": true,
+      "status": "COMPLETE"
+    }
+  },
+  "GPU0_lock_free": true
+}
+
+

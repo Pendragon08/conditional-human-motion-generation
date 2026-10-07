@@ -58,6 +58,14 @@ async function update(){
 } update();
 </script></html>"""
 
+DIRECT_HTML = """<!doctype html><html lang="zh"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Isaac 实际场景</title>
+<style>body{background:#101722;color:#eef3fa;font:18px system-ui;margin:24px}img{width:100%;max-width:1100px}
+p{max-width:1100px;line-height:1.7}</style><h2>Isaac Lab 实际仿真状态</h2>
+<p>服务器当前实际仿真状态抽样。当前阶段和PPO进度见下方状态页；图像由独立Isaac Sim渲染器发送。</p>
+<img src="/stream.mjpg" alt="连接服务器图像流"><p>连接断开不会中断服务器计算。预检结束后图像不再更新。</p>
+<p><a href="/">返回带状态与步数的页面</a></p></html>"""
+
 
 def read_text(path):
     try:
@@ -101,6 +109,29 @@ class Handler(BaseHTTPRequestHandler):
         route = self.path.split("?", 1)[0]
         if route == "/":
             data, mime = HTML.encode(), "text/html; charset=utf-8"
+        elif route == '/live':
+            data, mime = DIRECT_HTML.encode(), 'text/html; charset=utf-8'
+        elif route == '/stream.mjpg':
+            # Native browser image stream avoids JavaScript/base64 rendering.
+            self.send_response(200)
+            self.send_header('Content-Type','multipart/x-mixed-replace; boundary=isaacframe')
+            self.send_header('Cache-Control','no-store')
+            self.send_header('Connection','close')
+            self.end_headers()
+            self.close_connection=True
+            last=None
+            try:
+                while True:
+                    image,meta=compressed_snapshot()
+                    stamp=meta.get('captured_at_unix')
+                    if stamp!=last:
+                        self.wfile.write(b'--isaacframe\r\nContent-Type: image/jpeg\r\nContent-Length: '+
+                                         str(len(image)).encode()+b'\r\n\r\n'+image+b'\r\n')
+                        self.wfile.flush();last=stamp
+                    time.sleep(.25)
+            except (OSError,ValueError,subprocess.SubprocessError):
+                pass
+            return
         elif route in ("/frame.png", "/frame.jpg"):
             try:
                 data, _ = compressed_snapshot()

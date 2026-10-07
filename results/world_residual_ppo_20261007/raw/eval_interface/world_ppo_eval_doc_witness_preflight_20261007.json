@@ -1,0 +1,65 @@
+{
+  "witness": "world_ppo_eval_doc_witness_20261007",
+  "recorded_at": "2026-10-07T16:41:43.9538027+08:00",
+  "status": "PRELAUNCH_PREFLIGHT_INTERRUPTED",
+  "launcher_invocation_count": 0,
+  "scientific_evaluation_transitions": 0,
+  "ppo_updates": 0,
+  "auxiliary_updates": 0,
+  "normalization_updates": 0,
+  "repair_attempts": 0,
+  "package_installations": 0,
+  "formal_training_started": false,
+  "remote_host": "ouyanghao@10.147.17.32",
+  "documented_launcher": "C:/Users/Pende/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe scripts/launch_world_ppo_eval_interface_20261007.py",
+  "documented_working_directory": "D:/具身智能/conditional-human-motion-generation",
+  "initially_read_documents": [
+    {
+      "path": "C:/Users/Pende/.codex/skills/run-experiment/SKILL.md",
+      "sha256": "8325128eab14c7f82213d44c8e78e98f44ca680baa9c78f3bee8766f8e9f464a"
+    },
+    {
+      "path": "D:/具身智能/conditional-human-motion-generation/docs/dreamcontrol_ssh_environment_ledger.md",
+      "sha256": "a906ab16305e3c9a4b63cc79ea30c445565fc7887d5a133706cdc61b589e1795"
+    },
+    {
+      "path": "D:/具身智能/conditional-human-motion-generation/docs/world_ppo_eval_invocation_20261007.md",
+      "sha256": "44ce82ee651401e8534dcf8c96e4a78c4d03c236a78a51fbd050dfde9b533cfb"
+    }
+  ],
+  "gpu_preflight": {
+    "ssh_exit_code": 0,
+    "gpu_memory_used_mib": [
+      699,
+      8904
+    ],
+    "gpu_memory_total_mib": [
+      49140,
+      49140
+    ],
+    "gpu0_existing_processes": [
+      {
+        "pid": 3854248,
+        "memory_mib": 478,
+        "role": "Existing GPU1 sit evaluator with GPU0 context"
+      },
+      {
+        "pid": 1589572,
+        "memory_mib": 140,
+        "role": "Existing GPU1 live viewer with GPU0 context"
+      }
+    ],
+    "new_world_ppo_process_observed": false
+  },
+  "lock_and_capacity_state_preflight": {
+    "command": "ssh -o BatchMode=yes -o ConnectTimeout=15 ouyanghao@10.147.17.32 [read-only find artifacts for GPU0 locks and capacity/world PPO states]",
+    "ssh_exit_code": 1,
+    "exact_stderr": "ssh: connect to host 10.147.17.32 port 22: Connection timed out",
+    "compute_lock_free_verified": false,
+    "capacity_child_exit_codes_independently_verified": false
+  },
+  "document_divergence": "Invocation document does not identify the GPU compute-lock location/check command. Read-only remote path discovery was interrupted by an SSH connection timeout before launcher invocation.",
+  "trace_audit_status": "NOT_AVAILABLE_BEFORE_LAUNCH",
+  "evaluation_video_verified": false,
+  "data_or_weights_uploaded": false
+}

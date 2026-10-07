@@ -1,0 +1,185 @@
+{
+  "base_spec_canonical_sha256": "47f5eb26218254bbe270c3c43b3e7a552cca04c5caa81b6c76b4a6d2d3d2e9d4",
+  "dependencies_unchanged": true,
+  "resource_change_only": true,
+  "GPU": 0,
+  "independent_renderer_GPU": 1,
+  "shared_idle_context_allowance_MiB": 1500,
+  "max_stage_training_s": 86400,
+  "max_stage_eval_s": 1800,
+  "tmux": "r3_world_ppo_formal_20261007",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "arms": [
+    "P0",
+    "P-cap",
+    "P-history",
+    "W-correct",
+    "W-shuffled-original"
+  ],
+  "training": {
+    "warm_start_updates": 2000,
+    "reference_count": 66,
+    "num_envs": 8192,
+    "rollout_steps": 24,
+    "additional_PPO_updates": 500,
+    "W_aux_updates_per_PPO_cycle": 1,
+    "aux_batch": 1024,
+    "real_transitions_per_arm_seed": 98304000,
+    "real_transitions_total": 1474560000,
+    "imagined_transitions": 0,
+    "PPO_reward_PD_termination_unchanged": true
+  },
+  "evaluation": {
+    "num_envs": 2048,
+    "steps": 500,
+    "reference_count": 11,
+    "initial_phase": 0,
+    "reference_manifest_sha256": "9e9da9f517a7b7d8b202fd5259c740df613e6c3174d71c1f5ffa193562f17f55",
+    "manifest_to_library_filename_mapping": true,
+    "corruption": false,
+    "actor": "deterministic",
+    "PPO_aux_norm_updates": 0,
+    "transitions_total": 15360000,
+    "checkpoint_selection": "final_update500_only",
+    "first_episode_failure_penalty_rad": 2,
+    "push_force_world_Y_N": 80,
+    "push_steps": [
+      50,
+      59
+    ],
+    "recovery_steps_inclusive": [
+      60,
+      109
+    ],
+    "trace_is_not_video": true
+  },
+  "explanation_arms_auto_launch": false,
+  "MuJoCo_auto_launch": false,
+  "innovation_validated": false,
+  "source_hashes": {
+    "scripts/r3_world_ppo_control_formal_v3_20261007.py": "821bf831a220e74d7ace1ab2817289e1b52d0f177eef5c2e9a3cd4517d07ab5f",
+    "scripts/r3_world_ppo_eval_isaac_v3_20261007.py": "77789f147a27de3ee3f926f05e649ee35b0d13c6b7c3f0adb0cbb528c8186534",
+    "scripts/r3_world_ppo_formal_stage_v3_20261007.sh": "e96c1837d1bfa9f65f72c9f23699aeb764b2108c7d8854be5cc4ed6f0d764867",
+    "scripts/r3_world_ppo_formal_queue_20261007.py": "e01d88e0ab7468c0b3cd0dafc2286d42d19ee0ebd25005855c78f2aefa3192a1",
+    "scripts/r3_world_ppo_gate_20261007.py": "643d510d289b34d33f4a1e08158ec38de1ae658b813dd266947eee587d1374c5",
+    "scripts/launch_world_ppo_formal_20261007.py": "ccfa9e2e33156a68e573dc2c3e899324d3137c61840282a41c168e7c83f2befa",
+    "scripts/read_world_ppo_formal_status_20261007.py": "23f7bad7763d559dc7cc9606f903770143e37c4705c41159d6b400268addbb35",
+    "scripts/r3_world_ppo_core.py": "c78b181aff14e8513531362a2ae5c458bb7b9235ded42b2a8d621eab1b6f64fb",
+    "scripts/r3_world_ppo_residual_core.py": "ff2da65efb23463ee1b53452d8dd6dfc7379739dc21989466cf659367e7ea326",
+    "scripts/r3_world_ppo_training_core_20261007.py": "0cad0890b9fc1519a1e230a086414f013223dcde27fe3053e847b0b5e8ce15d6",
+    "plans/world_residual_ppo_control_metrics_20261007.md": "6b2b21c9d8076ac48bb653ac18457255296c9fc255c2c31d62d73116ead5f51f"
+  },
+  "readiness_receipts": {
+    "runtime": {
+      "ready_for_formal": true,
+      "formal_PPO_launched": false,
+      "at_creation_utc": "2026-10-07T09:21:36.259624+00:00",
+      "scope": "Five-arm diagnostic invariants with saved CUDA fixture supplementation; not control benefit",
+      "receipt": "results/world_residual_ppo_20261007/raw/runtime_doc_witness.json",
+      "receipt_sha256": "907533f84b24bf3634fedb3d3b2b9207f01b661957cc137e32ea7c92b2faeed3",
+      "supplemental_fixture_audit_sha256": "a312251af42d0e96febc6861502c6b5de9971e7f7f3b978261cfbf7782944ae5",
+      "v1_evidence_limits_preserved": true,
+      "formal_v3_boundary_snapshots_required": true,
+      "not_proven": [
+        "Per-minibatch gradient traces",
+        "Natural timeout semantics examples in 2-update diagnostics",
+        "500-update completion"
+      ]
+    },
+    "capacity": {
+      "ready_for_formal": true,
+      "formal_PPO_launched": false,
+      "at_creation_utc": "2026-10-07T09:21:36.259624+00:00",
+      "receipt": "results/world_residual_ppo_20261007/raw/capacity/fresh_doc_witness_receipt_20261007.json",
+      "receipt_sha256": "55871b63c9055d3e571a4884c0f0cf4bb794b5e23986ec2b190316e3debd19f4",
+      "saved_tensor_audit_sha256": "a312251af42d0e96febc6861502c6b5de9971e7f7f3b978261cfbf7782944ae5",
+      "checks_passed": 43,
+      "real_transitions": 786432,
+      "natural_timeouts": 0,
+      "not_control_gate": true,
+      "Torch_peak_is_not_total_driver_memory": true
+    },
+    "eval_interface": {
+      "ready_for_formal": true,
+      "formal_PPO_launched": false,
+      "at_creation_utc": "2026-10-07T09:21:36.259624+00:00",
+      "receipt": "results/world_residual_ppo_20261007/raw/eval_interface_v3/eval_doc_witness.json",
+      "receipt_sha256": "89aef18dc7b1dbe1170f8d708912543742d1a48b406982a4da9e51f55a3ab030",
+      "source_revision": "v3_manifest_to_library_filename_mapping",
+      "native_trace_is_not_video": true,
+      "scope": "64x120 frozen capacity interface, not final scientific control score",
+      "PPO_updates": 0,
+      "aux_updates": 0,
+      "previous_v1_v2_failures_preserved": true,
+      "independent_trace_checks_per_arm": 19,
+      "real_transitions": 15360,
+      "evidence_limits": {
+        "P-history": {
+          "success_event_occurrence": {
+            "status": "LIMITED",
+            "detail": "Saved flag aggregated per reference; per-step success counter deltas absent, so success occurrence cannot be independently reconstructed."
+          },
+          "full_force_reconstruction": {
+            "status": "LIMITED",
+            "detail": "Ten runtime force-buffer error records are zero and locked step/N/count match. Trace lacks force tensors/quaternions for all environments, so full world-to-local force reconstruction is unavailable."
+          },
+          "independent_runtime_module_before_after_digests": {
+            "status": "LIMITED",
+            "detail": "Completed runtime source compares before/after policy/norm/world tensor hashes and asserts equality; summary boolean true. Actual before/after digest strings and per-frame hashes absent. CPU checkpoint module hashes are identity evidence, not independent in-memory freeze evidence."
+          },
+          "per_frame_freeze": {
+            "status": "LIMITED",
+            "detail": "Per-frame policy/normalizer/world parameter hashes were not persisted. Only executed endpoint equality assertion and immutable inference source evidence are available."
+          },
+          "natural_timeout_path": {
+            "status": "LIMITED",
+            "detail": "No natural timeout event in 120 steps; timeout handling structurally verified only."
+          },
+          "natural_root_threshold_failure_path": {
+            "status": "LIMITED",
+            "detail": "No natural root-below event occurred; saved root reason channel and termination OR consistency are structurally checked, while actual failures were angle-below events."
+          },
+          "joint_error_full_geometry_reconstruction": {
+            "status": "LIMITED",
+            "detail": "Statistics and failure penalties are reconstructed from full saved unpenalized RMSE; only four environments have scene joint/body poses, so full 64-environment raw geometry-to-RMSE reconstruction is not available."
+          }
+        },
+        "W-correct": {
+          "success_event_occurrence": {
+            "status": "LIMITED",
+            "detail": "Saved flag aggregated per reference; per-step success counter deltas absent, so success occurrence cannot be independently reconstructed."
+          },
+          "full_force_reconstruction": {
+            "status": "LIMITED",
+            "detail": "Ten runtime force-buffer error records are zero and locked step/N/count match. Trace lacks force tensors/quaternions for all environments, so full world-to-local force reconstruction is unavailable."
+          },
+          "independent_runtime_module_before_after_digests": {
+            "status": "LIMITED",
+            "detail": "Completed runtime source compares before/after policy/norm/world tensor hashes and asserts equality; summary boolean true. Actual before/after digest strings and per-frame hashes absent. CPU checkpoint module hashes are identity evidence, not independent in-memory freeze evidence."
+          },
+          "per_frame_freeze": {
+            "status": "LIMITED",
+            "detail": "Per-frame policy/normalizer/world parameter hashes were not persisted. Only executed endpoint equality assertion and immutable inference source evidence are available."
+          },
+          "natural_timeout_path": {
+            "status": "LIMITED",
+            "detail": "No natural timeout event in 120 steps; timeout handling structurally verified only."
+          },
+          "natural_root_threshold_failure_path": {
+            "status": "LIMITED",
+            "detail": "No natural root-below event occurred; saved root reason channel and termination OR consistency are structurally checked, while actual failures were angle-below events."
+          },
+          "joint_error_full_geometry_reconstruction": {
+            "status": "LIMITED",
+            "detail": "Statistics and failure penalties are reconstructed from full saved unpenalized RMSE; only four environments have scene joint/body poses, so full 64-environment raw geometry-to-RMSE reconstruction is not available."
+          }
+        }
+      },
+      "runtime_endpoint_assertion_not_independent_digest_proof": true
+    }
+  }
+}

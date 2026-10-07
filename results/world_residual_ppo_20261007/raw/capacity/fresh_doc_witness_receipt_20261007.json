@@ -1,0 +1,288 @@
+{
+  "witness": "world_ppo_capacity_doc_witness_20261007",
+  "completed_utc": "2026-10-07T08:42:41.054356+00:00",
+  "initial_context": "Only run-experiment skill, given SSH ledger and capacity document; no parent-run conclusions",
+  "launcher_command": "C:/Users/Pende/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe scripts/launch_world_ppo_capacity_20261007.py",
+  "launcher_invocations": 1,
+  "launcher_exit": 0,
+  "launcher_stdout": "WORLD_PPO_CAPACITY_DISPATCHED",
+  "queue_state": "COMPLETE fixture_exit=0 P-history_exit=0 W-correct_exit=0 formal=false",
+  "scientific_child_exit": {
+    "CUDA_fixture": 0,
+    "P-history": 0,
+    "W-correct": 0
+  },
+  "childrc_capture": "immediately after timeout, before sentinel tests",
+  "sentinels": {
+    "CUDA_fixture": true,
+    "P-history": true,
+    "W-correct": true
+  },
+  "queue_sentinel": true,
+  "tmux_after_exit": 1,
+  "saved_audit_child_exit": 0,
+  "independent_checks": 43,
+  "all_independent_checks_pass": true,
+  "fixture": {
+    "sha256": "4818fbab4679c601cdc91fd1fb422a77c358970e09267c3189c4b7c98842c409",
+    "timeout_max_abs_error": 0.0,
+    "tensor_metadata": {
+      "pre_action_values": {
+        "shape": [
+          4,
+          1
+        ],
+        "dtype": "torch.float32"
+      },
+      "actual_reward": {
+        "shape": [
+          4
+        ],
+        "dtype": "torch.float32"
+      },
+      "timeout": {
+        "shape": [
+          4
+        ],
+        "dtype": "torch.float32"
+      },
+      "done": {
+        "shape": [
+          4
+        ],
+        "dtype": "torch.bool"
+      },
+      "stored_reward": {
+        "shape": [
+          4
+        ],
+        "dtype": "torch.float32"
+      },
+      "expected_reward": {
+        "shape": [
+          4
+        ],
+        "dtype": "torch.float32"
+      },
+      "history_initial_obs": {
+        "shape": [
+          4,
+          626
+        ],
+        "dtype": "torch.float32"
+      },
+      "history_next_obs": {
+        "shape": [
+          4,
+          626
+        ],
+        "dtype": "torch.float32"
+      },
+      "history_last_obs": {
+        "shape": [
+          4,
+          626
+        ],
+        "dtype": "torch.float32"
+      },
+      "history_before_reset": {
+        "shape": [
+          4,
+          10,
+          92
+        ],
+        "dtype": "torch.float32"
+      },
+      "history_after_reset": {
+        "shape": [
+          4,
+          10,
+          92
+        ],
+        "dtype": "torch.float32"
+      },
+      "reset_mask": {
+        "shape": [
+          4
+        ],
+        "dtype": "torch.bool"
+      }
+    },
+    "PPO_updates": 0,
+    "simulation_steps": 0
+  },
+  "arms": {
+    "P-history": {
+      "timeout_fixture_max_abs_error": 0.0,
+      "original_Adam_step_increments": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "Adam_group_option_equal": {
+        "betas": true,
+        "eps": true,
+        "weight_decay": true,
+        "amsgrad": true,
+        "maximize": true,
+        "foreach": true,
+        "capturable": true,
+        "differentiable": true,
+        "fused": true
+      },
+      "policy_input_shape": [
+        512,
+        754
+      ],
+      "peak_Torch_allocated_MiB": 13582.7666015625,
+      "wall_s": 56.36523222923279,
+      "natural_resets": 0,
+      "natural_timeouts": 0,
+      "handoff_KL": [
+        0.0,
+        0.0
+      ],
+      "history_encoder_optimizer_steps": [
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ]
+    },
+    "W-correct": {
+      "timeout_fixture_max_abs_error": 0.0,
+      "original_Adam_step_increments": [
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "Adam_group_option_equal": {
+        "betas": true,
+        "eps": true,
+        "weight_decay": true,
+        "amsgrad": true,
+        "maximize": true,
+        "foreach": true,
+        "capturable": true,
+        "differentiable": true,
+        "fused": true
+      },
+      "policy_input_shape": [
+        512,
+        754
+      ],
+      "peak_Torch_allocated_MiB": 3142.2119140625,
+      "wall_s": 52.33504939079285,
+      "natural_resets": 0,
+      "natural_timeouts": 0,
+      "handoff_KL": [
+        0.00011181633453816175,
+        0.00014911497419234365
+      ],
+      "aux_parameter_steps": [
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "frozen_buffer_count": 7,
+      "initial_world_sha256": "7c04b9d8e18e216bb209638707ac045d3f5ee2fec94896eafbe8a30824e61829"
+    }
+  },
+  "source_hash_checks": {
+    "scripts/r3_world_ppo_invariant_witness_20261007.py": true,
+    "scripts/r3_world_ppo_control_capacity_v2_20261007.py": true,
+    "scripts/r3_world_ppo_capacity_20261007.sh": true,
+    "scripts/r3_world_ppo_core.py": true,
+    "scripts/r3_world_ppo_residual_core.py": true,
+    "scripts/r3_world_ppo_training_core_20261007.py": true
+  },
+  "original_checkpoint_sha256": "e3c50fb6f36f59f89d1b4e788b1ba74cf1ff0cdde3dceff34a9d7765235f65c0",
+  "references_evidence": "Both real-scene logs loaded66 motions; v2 runtime exact original reference comparison summary reference_maxerror0. No MotionLib snapshot saved for independent post-run comparison.",
+  "formal_started": false,
+  "formal_updates": 0,
+  "scientific_repairs": 0,
+  "scientific_retries": 0,
+  "installs": 0,
+  "tensor_downloads": 0,
+  "CPU_audit_only": true,
+  "gpu_after": "0, 699 MiB, 49140 MiB\n1, 8904 MiB, 49140 MiB\n",
+  "metadata_export": "15 text summary/progress/updates/state/log files downloaded; byte identity to raw server logs unclaimed due text newline handling; original remote files preserved",
+  "metadata_export_failure": {
+    "action": "Additional byte-exact metadata export only; no simulator/training invocation",
+    "attempt_count": 1,
+    "local_process_exit": 1,
+    "SSH_child_exit": "unavailable: execute() reports stderr but does not expose returncode",
+    "stdout": "",
+    "error": "ssh: connect to host 10.147.17.32 port 22: Connection timed out",
+    "transport_exception": "RuntimeError from r3_world_ssh_transport.execute",
+    "retry": false,
+    "alternate_route": false,
+    "original_server_outputs_modified": false
+  },
+  "local_receipt_encoding_failure": {
+    "action": "local metadata receipt serialization only",
+    "exit": 1,
+    "error": "UnicodeDecodeError: 'gbk' codec can't decode byte 0x8d in position18275: illegal multibyte sequence",
+    "scientific_invocation": false,
+    "original_output_mutated": false
+  },
+  "doc_vs_reality": [
+    "Exact single launcher succeeded; all stages, childrc0, sentinel and COMPLETE state agree.",
+    "No repo-root AGENTS.md; explicit ledger/launcher provided environment.",
+    "Ledger duplicates capacity section.",
+    "Doc names metadata paths but gives no exact status/export/tensor-audit commands; read-only commands derived from launcher/transport/wrapper.",
+    "Output-existence guards are per stage, not complete all-output preflight. All actual stages were fresh.",
+    "Launcher assertions verified GPU0<1500MiB and free lock; pre-launch telemetry not saved."
+  ],
+  "evidence_boundaries": [
+    "Both capacity arms had zero natural timeout/reset; saved timeout/reset fixtures are isolated nonphysical system tests.",
+    "Final checkpoint tensors independently verify normalizer/Ridge buffers and optimizer step counts; per-PPO world freeze and per-aux actor freeze rely on executed source equality assertions, because no per-boundary snapshots are saved.",
+    "Capacity saves no full rollout/storage tensor snapshot. The 8192/24 storage and 5x4 minibatch execution are supported by pinned code, real-scene logs, transition counts, and 40 Adam-step increments.",
+    "Finite PPO assertions check each PPO-cycle aggregate losses and final retained gradients; the installed PPO has no per-minibatch finite-gradient trace.",
+    "Torch cuda_peak_MiB measures allocated tensors, not total GPU process/driver memory.",
+    "This validates capacity and system semantics only, never 500-update control benefit or innovation."
+  ],
+  "PPO_locked_recipe": "5epochs x4minibatches; clip.2/gamma.99/lambda.95/value1/entropy.008/nominalLR.001/gradclip1/adaptiveKL.01. Original Adam moments and LR1.5e-5 restored; final LR2.25e-5 from unchanged adaptive scheduling.",
+  "assessment": "PASS bounded8192 capacity and saved system fixtures; final additional byte-export failed without retry; no500-update control-effect or innovation validation"
+}

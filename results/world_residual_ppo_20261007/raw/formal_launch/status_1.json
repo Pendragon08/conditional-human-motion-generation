@@ -1,0 +1,72 @@
+{
+  "observed_unix": 1791365197.8859117,
+  "read_only": true,
+  ".state": {
+    "mtime": 1791365167.5097642,
+    "text": "{\n  \"status\": \"RUNNING\",\n  \"stage\": \"train\",\n  \"arm\": \"P0\",\n  \"seed\": 42,\n  \"completed\": [],\n  \"updated_unix\": 1791365167.5144715\n}\n"
+  },
+  ".dispatch.json": {
+    "mtime": 1791365167.4697657,
+    "text": "{\n  \"dispatch_unix\": 1791365167.4729621,\n  \"GPU\": 0,\n  \"independent_viewer_GPU\": 1,\n  \"gate_sha256\": \"cad25cf3d29d76889a4cf19b9d20ec93a71a5c8ceb3788821c1c8baa016753ed\",\n  \"sources\": {\n    \"scripts/r3_world_ppo_control_formal_v3_20261007.py\": \"821bf831a220e74d7ace1ab2817289e1b52d0f177eef5c2e9a3cd4517d07ab5f\",\n    \"scripts/r3_world_ppo_eval_isaac_v3_20261007.py\": \"77789f147a27de3ee3f926f05e649ee35b0d13c6b7c3f0adb0cbb528c8186534\",\n    \"scripts/r3_world_ppo_formal_stage_v3_20261007.sh\": \"e96c1837d1bfa9f65f72c9f23699aeb764b2108c7d8854be5cc4ed6f0d764867\",\n    \"scripts/r3_world_ppo_formal_queue_20261007.py\": \"e01d88e0ab7468c0b3cd0dafc2286d42d19ee0ebd25005855c78f2aefa3192a1\",\n    \"scripts/r3_world_ppo_gate_20261007.py\": \"643d510d289b34d33f4a1e08158ec38de1ae658b813dd266947eee587d1374c5\",\n    \"scripts/launch_world_ppo_formal_20261007.py\": \"ccfa9e2e33156a68e573dc2c3e899324d3137c61840282a41c168e7c83f2befa\",\n    \"scripts/read_world_ppo_formal_status_20261007.py\": \"23f7bad7763d559dc7cc9606f903770143e37c4705c41159d6b400268addbb35\",\n    \"scripts/r3_world_ppo_core.py\": \"c78b181aff14e8513531362a2ae5c458bb7b9235ded42b2a8d621eab1b6f64fb\",\n    \"scripts/r3_world_ppo_residual_core.py\": \"ff2da65efb23463ee1b53452d8dd6dfc7379739dc21989466cf659367e7ea326\",\n    \"scripts/r3_world_ppo_training_core_20261007.py\": \"0cad0890b9fc1519a1e230a086414f013223dcde27fe3053e847b0b5e8ce15d6\",\n    \"plans/world_residual_ppo_control_metrics_20261007.md\": \"6b2b21c9d8076ac48bb653ac18457255296c9fc255c2c31d62d73116ead5f51f\"\n  },\n  \"arms\": 5,\n  \"seeds\": [\n    42,\n    43,\n    44\n  ],\n  \"updates_per_arm_seed\": 500,\n  \"num_envs\": 8192,\n  \"training_transitions_planned\": 1474560000,\n  \"evaluation_transitions_planned\": 15360000,\n  \"PPO_formal_progress_before_dispatch\": 0,\n  \"additional_IK\": false\n}\n"
+  },
+  "stage.state": {
+    "mtime": 1791365167.5177639,
+    "bytes": 34,
+    "latest_update": null,
+    "tail": [
+      "RUNNING mode=train arm=P0 seed=42"
+    ]
+  },
+  "stage.log": {
+    "mtime": 1791365188.8769872,
+    "bytes": 9440,
+    "latest_update": null,
+    "tail": [
+      "\tEnvironment spacing   : 2.5",
+      "\tSource prim name      : /World/envs/env_0",
+      "\tGlobal prim paths     : ['/World/ground']",
+      "\tReplicate physics     : True",
+      "[INFO]: Starting the simulation. This may take a few seconds. Please wait...",
+      "2026-10-07 09:26:27 [19,360ms] [Warning] [isaaclab.actuators.actuator_pd] The <ImplicitActuatorCfg> object has a value for 'effort_limit'. This parameter will be removed in the future. To set the effort limit, please use 'effort_limit_sim' instead.",
+      "2026-10-07 09:26:27 [19,360ms] [Warning] [isaaclab.actuators.actuator_pd] The <ImplicitActuatorCfg> object has a value for 'velocity_limit'. Previously, although this value was specified, it was not getting used by implicit actuators. Since this parameter affects the simulation behavior, we continue to not use it. This parameter will be removed in the future. To set the velocity limit, please use 'velocity_limit_sim' instead.",
+      "2026-10-07 09:26:27 [19,959ms] [Warning] [isaaclab.actuators.actuator_pd] The <ImplicitActuatorCfg> object has a value for 'effort_limit'. This parameter will be removed in the future. To set the effort limit, please use 'effort_limit_sim' instead.",
+      "2026-10-07 09:26:28 [20,541ms] [Warning] [isaaclab.actuators.actuator_pd] The <ImplicitActuatorCfg> object has a value for 'effort_limit'. This parameter will be removed in the future. To set the effort limit, please use 'effort_limit_sim' instead.",
+      "2026-10-07 09:26:28 [20,541ms] [Warning] [isaaclab.actuators.actuator_pd] The <ImplicitActuatorCfg> object has a value for 'velocity_limit'. Previously, although this value was specified, it was not getting used by implicit actuators. Since this parameter affects the simulation behavior, we continue to not use it. This parameter will be removed in the future. To set the velocity limit, please use 'velocity_limit_sim' instead.",
+      "2026-10-07 09:26:28 [21,190ms] [Warning] [isaaclab.actuators.actuator_pd] The <ImplicitActuatorCfg> object has a value for 'effort_limit'. This parameter will be removed in the future. To set the effort limit, please use 'effort_limit_sim' instead.",
+      "2026-10-07 09:26:28 [21,190ms] [Warning] [isaaclab.actuators.actuator_pd] The <ImplicitActuatorCfg> object has a value for 'velocity_limit'. Previously, although this value was specified, it was not getting used by implicit actuators. Since this parameter affects the simulation behavior, we continue to not use it. This parameter will be removed in the future. To set the velocity limit, please use 'velocity_limit_sim' instead."
+    ]
+  },
+  "checkpoints": [],
+  "r3_i1_live_viewer.state": {
+    "mtime": 1791365197.8726718,
+    "text": "STALE mode=sampled_actual_training_pose last_step=120 age_s=1175.9 training_unaffected=true\n"
+  },
+  "r3_i1_live_frame.json": {
+    "mtime": 1791365197.8806715,
+    "text": "{\"captured_at_unix\": 1791365197.8845081, \"source\": \"actual_training_simulation_sample\", \"sampled_env_step\": 120, \"telemetry_wall_time\": 1791364021.9584055, \"robot_root_pose_wxyz\": [1.4989910125732422, 0.2433938980102539, 0.8008468151092529, 0.8717241883277893, -0.26898398995399475, -0.268456369638443, 0.30931490659713745], \"joint_position_rad\": [-0.058333493769168854, -0.9758288860321045, -0.33119288086891174, 0.7829174995422363, -0.23639491200447083, 0.01683049649000168, -0.08922076970338821, 0.5856029987335205, 1.541534662246704, -0.7164504528045654, 0.33763986825942993, -0.28490933775901794, -0.0679808109998703, 0.919862687587738, -0.6448187232017517, 0.01867617852985859, 0.2617996037006378, -0.6458451747894287, -0.08075683563947678, -0.32980459928512573, 0.6345595121383667, 0.018565893173217773, -0.020747607573866844, -0.0095476433634758, 0.2094988077878952, -0.18756341934204102, 0.17144857347011566, -1.5708016157150269, -1.5708006620407104, 0.0003950847312808037, 1.5682768821716309, 1.5678483247756958, 0.0007020324701443315, -1.5702646970748901, -1.5704089403152466, 1.0424965620040894, 1.5700644254684448, 1.570160150527954, -1.0444269180297852, 1.5712690353393555, -1.5700480937957764], \"description\": \"Rendered Isaac Sim viewport of actual training state sample; not every training frame.\"}\n"
+  },
+  "r3_active_dreamcontrol_training.json": {
+    "mtime": 1791364014.165112,
+    "text": "{\n  \"task_id\": \"Isaac-Motion-Tracking-Kick-v0\",\n  \"stage\": \"evaluation\",\n  \"is_formal_training\": false,\n  \"source\": \"actual_isaaclab_simulation\",\n  \"output\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/eval_interface_v3/eval-diagnostic_W-correct_seed42_v1\",\n  \"arm\": \"W-correct\",\n  \"seed\": 42,\n  \"queue_state\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_ppo_eval-diagnostic_W-correct_42_20261007_v3.state\",\n  \"log\": \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_ppo_eval-diagnostic_W-correct_42_20261007_v3.log\"\n}\n"
+  },
+  "gpu": "0, 7761, 49140, 0\n1, 8905, 49140, 2\n",
+  "tmux": "r3_closd_actual_scene_receiver: 1 windows (created Thu Oct  1 14:12:28 2026)\nr3_closd_live_dashboard: 1 windows (created Sun Sep 27 04:09:58 2026)\nr3_closd_meshcat: 1 windows (created Sun Sep 27 03:50:15 2026)\nr3_dreamcontrol_tensorboard_resume: 1 windows (created Sat Sep 26 00:10:24 2026)\nr3_i1_live_viewer_supervisor: 1 windows (created Thu Oct  1 14:12:28 2026)\nr3_i1_viewport_dashboard: 1 windows (created Wed Oct  7 08:17:12 2026)\nr3_live_curves: 1 windows (created Fri Sep 25 08:42:18 2026)\nr3_tensorboard_probe: 1 windows (created Fri Sep 25 02:06:34 2026)\nr3_tensorboard_resume200: 1 windows (created Sun Sep 27 02:02:30 2026)\nr3_world_ppo_formal_20261007: 1 windows (created Wed Oct  7 09:26:07 2026)\n",
+  "processes": [
+    "1589567 3151130   68704  0.0 SNs  /bin/bash /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/python.sh -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_i1_live_training_viewer.py --device=cuda:1 --livestream=2 --telemetry-port=40123 --status-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_viewer.state --snapshot-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_frame.png --kit_args=--portable-root /data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_live_viewer/kit --/renderer/multiGpu/enabled=false --task=Isaac-Motion-Tracking-Kick-v0",
+    "1589572 1589567   68704 80.5 SNl  /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_i1_live_training_viewer.py --device=cuda:1 --livestream=2 --telemetry-port=40123 --status-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_viewer.state --snapshot-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_frame.png --kit_args=--portable-root /data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_live_viewer/kit --/renderer/multiGpu/enabled=false --task=Isaac-Motion-Tracking-Kick-v0",
+    "1741788 2310763      30  0.0 Ss+  bash -c cd /data/code/ouyanghao/oyh/conditional-human-motion-generation && /usr/bin/python3 -u scripts/r3_world_ppo_formal_queue_20261007.py > /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_ppo_formal_20261007.queue.log 2>&1",
+    "1741790 1741788      30  0.1 S+   /usr/bin/python3 -u scripts/r3_world_ppo_formal_queue_20261007.py",
+    "1741795 1741791      30  0.0 S    timeout --signal=TERM --kill-after=60s 86400 /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/python.sh -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_world_ppo_control_formal_v3_20261007.py --mode formal --arm P0 --seed 42 --output /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/formal/train_P0_seed42_v1 --num_envs 8192 --updates 500 --aux-updates 1 --aux-batch 1024 --monitor-prefix /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_ppo_train_P0_42_20261007 --device cuda:0 --headless",
+    "1741796 1741795      30  0.0 S    /bin/bash /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/python.sh -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_world_ppo_control_formal_v3_20261007.py --mode formal --arm P0 --seed 42 --output /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/formal/train_P0_seed42_v1 --num_envs 8192 --updates 500 --aux-updates 1 --aux-batch 1024 --monitor-prefix /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_ppo_train_P0_42_20261007 --device cuda:0 --headless",
+    "1741801 1741796      30  321 Rl   /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_world_ppo_control_formal_v3_20261007.py --mode formal --arm P0 --seed 42 --output /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/formal/train_P0_seed42_v1 --num_envs 8192 --updates 500 --aux-updates 1 --aux-batch 1024 --monitor-prefix /data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_ppo_train_P0_42_20261007 --device cuda:0 --headless"
+  ],
+  "viewer_pid_1589572": {
+    "exists": true,
+    "start_ticks": "1249404823"
+  },
+  "viewer_pid_3854248": {
+    "exists": true,
+    "start_ticks": "1208193920"
+  }
+}
+

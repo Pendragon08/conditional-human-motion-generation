@@ -1,0 +1,985 @@
+{
+  "witness_role": "fresh independent agent-follows-doc witness",
+  "witness_id": "world_residual_ppo_runtime_doc_witness_20261007",
+  "status": "COMPLETE_WITH_INDEPENDENT_EVIDENCE_LIMITS",
+  "created_utc": "2026-10-07T08:22:48.744731+00:00",
+  "entry_documents": {
+    "C:\\Users\\Pende\\.codex\\skills\\run-experiment\\SKILL.md": "8325128eab14c7f82213d44c8e78e98f44ca680baa9c78f3bee8766f8e9f464a",
+    "D:\\具身智能\\conditional-human-motion-generation\\docs\\dreamcontrol_ssh_environment_ledger.md": "e2a70f379503bf9ca8f4e9bbf88fa544bbd62ab3e8a031f4cbd20ab12067242c",
+    "D:\\具身智能\\conditional-human-motion-generation\\docs\\world_residual_ppo_runtime_invocation_20261007.md": "8e323c78cb2bfa17c0c1d077f30e6cfb7c42f8014469402c794eef16518a406d"
+  },
+  "invocation": {
+    "cwd": "D:\\具身智能\\conditional-human-motion-generation",
+    "verbatim_command": "C:/Users/Pende/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe scripts/launch_world_residual_ppo_smoke_20261007.py",
+    "launcher_calls": 1,
+    "launcher_exit_code": 0,
+    "stdout_sentinel": "WORLD_RESIDUAL_PPO_DIAGNOSTIC_DISPATCHED",
+    "no_repeat": true,
+    "preexisting_diagnostic_output_or_state_before_invocation": false,
+    "ssh_host": "ouyanghao@10.147.17.32",
+    "ssh_source_ip": "10.147.17.250",
+    "compute_gpu": 0,
+    "preflight_gpu0_used_MiB": 699,
+    "preflight_gpu1_used_MiB": 8904,
+    "diagnostic_tmux": "r3_world_residual_ppo_smoke_20261007"
+  },
+  "arm_completion": {
+    "P-cap": {
+      "status": "COMPLETE",
+      "child_exit": 0,
+      "child_state": "COMPLETE arm=P-cap child_exit=0 formal=false diagnostic_updates=2",
+      "complete_sentinel_count": 1,
+      "num_envs": 256,
+      "rollout_steps": 24,
+      "updates": 2,
+      "actual_transitions": 12288,
+      "diagnostic_PPO_updates": 2,
+      "formal_PPO_updates": 0,
+      "aux_updates": 0,
+      "wall_s": 13.330173015594482,
+      "peak_torch_cuda_MiB": 443.60302734375,
+      "checkpoint_policy_changed": true
+    },
+    "P-history": {
+      "status": "COMPLETE",
+      "child_exit": 0,
+      "child_state": "COMPLETE arm=P-history child_exit=0 formal=false diagnostic_updates=2",
+      "complete_sentinel_count": 1,
+      "num_envs": 256,
+      "rollout_steps": 24,
+      "updates": 2,
+      "actual_transitions": 12288,
+      "diagnostic_PPO_updates": 2,
+      "formal_PPO_updates": 0,
+      "aux_updates": 0,
+      "wall_s": 14.618809223175049,
+      "peak_torch_cuda_MiB": 503.67578125,
+      "checkpoint_policy_changed": true
+    },
+    "P0": {
+      "status": "COMPLETE",
+      "child_exit": 0,
+      "child_state": "COMPLETE arm=P0 child_exit=0 formal=false diagnostic_updates=2",
+      "complete_sentinel_count": 1,
+      "num_envs": 256,
+      "rollout_steps": 24,
+      "updates": 2,
+      "actual_transitions": 12288,
+      "diagnostic_PPO_updates": 2,
+      "formal_PPO_updates": 0,
+      "aux_updates": 0,
+      "wall_s": 12.985719919204712,
+      "peak_torch_cuda_MiB": 147.43701171875,
+      "checkpoint_policy_changed": true
+    },
+    "W-correct": {
+      "status": "COMPLETE",
+      "child_exit": 0,
+      "child_state": "COMPLETE arm=W-correct child_exit=0 formal=false diagnostic_updates=2",
+      "complete_sentinel_count": 1,
+      "num_envs": 256,
+      "rollout_steps": 24,
+      "updates": 2,
+      "actual_transitions": 12288,
+      "diagnostic_PPO_updates": 2,
+      "formal_PPO_updates": 0,
+      "aux_updates": 2,
+      "wall_s": 13.152713060379028,
+      "peak_torch_cuda_MiB": 318.9677734375,
+      "checkpoint_policy_changed": true
+    },
+    "W-shuffled-original": {
+      "status": "COMPLETE",
+      "child_exit": 0,
+      "child_state": "COMPLETE arm=W-shuffled-original child_exit=0 formal=false diagnostic_updates=2",
+      "complete_sentinel_count": 1,
+      "num_envs": 256,
+      "rollout_steps": 24,
+      "updates": 2,
+      "actual_transitions": 12288,
+      "diagnostic_PPO_updates": 2,
+      "formal_PPO_updates": 0,
+      "aux_updates": 2,
+      "wall_s": 13.100060939788818,
+      "peak_torch_cuda_MiB": 320.8984375,
+      "checkpoint_policy_changed": true
+    }
+  },
+  "total_actual_diagnostic_transitions": 61440,
+  "total_diagnostic_PPO_updates": 10,
+  "formal_PPO_updates": 0,
+  "criteria": {
+    "1_summary_exits_distribution_reference": {
+      "status": "RUNTIME_COMPLETE_AND_TENSOR_EQUIVALENCE_CHECKED",
+      "reported_reference_maxerror": {
+        "P-cap": 0.0,
+        "P-history": 0.0,
+        "P0": 0.0,
+        "W-correct": 0.0,
+        "W-shuffled-original": 0.0
+      },
+      "reported_initial_mean_value_std_logprob_maxerrors": {
+        "P-cap": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "P-history": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "P0": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "W-correct": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "W-shuffled-original": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "initial_original_policy_logprob_CPU_maxerror": 1.52587890625e-05,
+      "raw_loaded_MotionLib_tensor_snapshot": "not retained; reference identity is runtime assertion and summary evidence"
+    },
+    "2_original_Adam_and_norm": {
+      "status": "EXACT_TENSOR_CHECKS_COMPLETE",
+      "original_named_parameters": 17,
+      "original_moments_and_steps_equal_each_arm": true,
+      "new_actor_critic_128_columns_moments_zero": true,
+      "new_GRU_initial_optimizer_state_absent": true,
+      "original_unused_critic_norm_count": 0,
+      "original_actor_norm_exact_initial_and_final_all_arms": true,
+      "restored_initial_optimizer_lr": 1.5000000000000004e-05,
+      "algorithm_lr_restore": "source assignment and runtime summary; no separately retained initial scalar tensor",
+      "final_alg_and_optimizer_lr_exact": true,
+      "critic_actor_share_frozen_original_norm": "read-only source and same-value PPO inputs; final tensor normalizer equality"
+    },
+    "3_ordered_history_and_causality": {
+      "status": "ORDERED_HISTORY_AND_SOURCE_BOUNDARIES_CHECKED_WITH_LIMITS",
+      "P_history_both_rollouts_history_maxerror": 0.0,
+      "P_history_update_boundary_carries_history": true,
+      "zero_padding_before_first_frame": true,
+      "Pcap_Phistory_initial_GRU_exact_equal": true,
+      "Pcap_raw_current_input_matches_exactly": true,
+      "Pcap_previous_action_masking": "source confirms normalized previous_action29=0 repeated for 10-frame cap input; raw stored tail intentionally includes previous action before masking",
+      "W_actor_read_only_h": "read-only encode(history).detach(), no future action branch at actor inference",
+      "epoch0_ratio_summary_maxerror": 0.0,
+      "initial_epoch0_ratio_independent_CPU_maxerror": 1.52587890625e-05,
+      "W_update0_cached_h_CPU_reconstruction": {
+        "W-correct": {
+          "RMSE": 0.00016647741722408682,
+          "backend_difference": "CPU reader vs CUDA/cuDNN execution; not an exact CUDA reproduction",
+          "max_abs_error": 0.0012055039405822754,
+          "update1": "not reconstructable without retained world_version1 tensor snapshot; source/runtime assertions only"
+        },
+        "W-shuffled-original": {
+          "RMSE": 0.0002606540219858289,
+          "backend_difference": "CPU reader vs CUDA/cuDNN execution; not an exact CUDA reproduction",
+          "max_abs_error": 0.0014283359050750732,
+          "update1": "not reconstructable without retained world_version1 tensor snapshot; source/runtime assertions only"
+        }
+      },
+      "reset_boundary_independent_fixture": "not retained; no natural reset in this diagnostic; source-only boundary implementation",
+      "W_update0_cached_h_CUDA_reconstruction": {
+        "W-correct": {
+          "cudnn_tf32_false_matmul_false": {
+            "RMSE": 0.0001664766314206645,
+            "all_finite": true,
+            "exact_equal": false,
+            "expected_at_max": 0.2562379539012909,
+            "max_abs_error": 0.0012055933475494385,
+            "max_error_row": [
+              7,
+              29,
+              126
+            ],
+            "recomputed_at_max": 0.25744354724884033
+          },
+          "cudnn_tf32_true_matmul_true": {
+            "RMSE": 0.0,
+            "all_finite": true,
+            "exact_equal": true,
+            "expected_at_max": 0.369412899017334,
+            "max_abs_error": 0.0,
+            "max_error_row": [
+              0,
+              0,
+              0
+            ],
+            "recomputed_at_max": 0.369412899017334
+          },
+          "default_cudnn_tf32_true_matmul_false": {
+            "RMSE": 0.0,
+            "all_finite": true,
+            "exact_equal": true,
+            "expected_at_max": 0.369412899017334,
+            "max_abs_error": 0.0,
+            "max_error_row": [
+              0,
+              0,
+              0
+            ],
+            "recomputed_at_max": 0.369412899017334
+          }
+        },
+        "W-shuffled-original": {
+          "cudnn_tf32_false_matmul_false": {
+            "RMSE": 0.0002606545458547771,
+            "all_finite": true,
+            "exact_equal": false,
+            "expected_at_max": 0.3885248601436615,
+            "max_abs_error": 0.0014283955097198486,
+            "max_error_row": [
+              8,
+              136,
+              110
+            ],
+            "recomputed_at_max": 0.38995325565338135
+          },
+          "cudnn_tf32_true_matmul_true": {
+            "RMSE": 0.0,
+            "all_finite": true,
+            "exact_equal": true,
+            "expected_at_max": 1.5791912078857422,
+            "max_abs_error": 0.0,
+            "max_error_row": [
+              0,
+              0,
+              0
+            ],
+            "recomputed_at_max": 1.5791912078857422
+          },
+          "default_cudnn_tf32_true_matmul_false": {
+            "RMSE": 0.0,
+            "all_finite": true,
+            "exact_equal": true,
+            "expected_at_max": 1.5791912078857422,
+            "max_abs_error": 0.0,
+            "max_error_row": [
+              0,
+              0,
+              0
+            ],
+            "recomputed_at_max": 1.5791912078857422
+          }
+        }
+      },
+      "W_update0_CUDA_exact_reproduction_all": true
+    },
+    "4_timeout_bootstrap": {
+      "status": "INSUFFICIENT_INDEPENDENT_RAW_FIXTURE_EVIDENCE",
+      "isolated_fixture_source_assert": "executed assertion in successful arm source; distinguishes env0 timeout and env1 true termination; tensors not retained",
+      "natural_timeouts": 0,
+      "natural_resets": 0,
+      "reported_single_pre_action_value_bootstrap_maxerror": 0.0,
+      "saved_rollout_pre_action_values": "not retained",
+      "exact_terminal_state_value_bootstrap_claimed": false
+    },
+    "5_aux_windows_and_shuffle": {
+      "status": "ARRAY_WINDOW_DONOR_CHECKS_COMPLETE_SOURCE_TARGET_FORMULA_CHECKED",
+      "window_audits": {
+        "W-correct": [
+          {
+            "clean_sign_all_zero": true,
+            "common_aux_excluded": 1,
+            "contact_stratum_exact": true,
+            "control_excluded": 0,
+            "different_env_episode_identity": true,
+            "different_reference": true,
+            "donor_exact_bijection": true,
+            "donor_history_future_overlap_rows": 0,
+            "donor_same_stratum": true,
+            "eligible": 1536,
+            "episode_labels_exact": true,
+            "full_history10_future10_reset_free": true,
+            "local_t_unique": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ],
+            "matched": 1535,
+            "phase_stratum_exact": true,
+            "reference_labels_exact": true,
+            "update": 0
+          },
+          {
+            "clean_sign_all_zero": true,
+            "common_aux_excluded": 0,
+            "contact_stratum_exact": true,
+            "control_excluded": 0,
+            "different_env_episode_identity": true,
+            "different_reference": true,
+            "donor_exact_bijection": true,
+            "donor_history_future_overlap_rows": 0,
+            "donor_same_stratum": true,
+            "eligible": 1536,
+            "episode_labels_exact": true,
+            "full_history10_future10_reset_free": true,
+            "local_t_unique": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ],
+            "matched": 1536,
+            "phase_stratum_exact": true,
+            "reference_labels_exact": true,
+            "update": 1
+          }
+        ],
+        "W-shuffled-original": [
+          {
+            "clean_sign_all_zero": true,
+            "common_aux_excluded": 1,
+            "contact_stratum_exact": true,
+            "control_excluded": 0,
+            "different_env_episode_identity": true,
+            "different_reference": true,
+            "donor_exact_bijection": true,
+            "donor_history_future_overlap_rows": 0,
+            "donor_same_stratum": true,
+            "eligible": 1536,
+            "episode_labels_exact": true,
+            "full_history10_future10_reset_free": true,
+            "local_t_unique": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ],
+            "matched": 1535,
+            "phase_stratum_exact": true,
+            "reference_labels_exact": true,
+            "update": 0
+          },
+          {
+            "clean_sign_all_zero": true,
+            "common_aux_excluded": 0,
+            "contact_stratum_exact": true,
+            "control_excluded": 0,
+            "different_env_episode_identity": true,
+            "different_reference": true,
+            "donor_exact_bijection": true,
+            "donor_history_future_overlap_rows": 0,
+            "donor_same_stratum": true,
+            "eligible": 1536,
+            "episode_labels_exact": true,
+            "full_history10_future10_reset_free": true,
+            "local_t_unique": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14
+            ],
+            "matched": 1536,
+            "phase_stratum_exact": true,
+            "reference_labels_exact": true,
+            "update": 1
+          }
+        ]
+      },
+      "continuous_formula": "current Ridge prior + donor continuous delta - donor Ridge prior; read-only source verified",
+      "contact_formula": "donor contacts selected separately from continuous residual; same donor bijection; no continuous residual formula applied to contacts",
+      "aux_batch1024": "fixed invocation and source; sampled minibatch indices not separately retained",
+      "control_rows_excluded_all": 0,
+      "future_history_overlap_donor_rows_all": 0,
+      "online_targets_and_aux_minibatch_raw_tensors": "not retained; structural raw data and source formula audited"
+    },
+    "6_aux_freeze_and_versions": {
+      "status": "FINAL_TENSOR_AND_RUNTIME_ASSERTS_CHECKED",
+      "selected_world_initial_exact": {
+        "W-correct": true,
+        "W-shuffled-original": true
+      },
+      "selected_checkpoints_updates": {
+        "W-correct": 1000,
+        "W-shuffled-original": 0
+      },
+      "fresh_aux_Adam_final_steps_all": 2,
+      "Ridge_and_world_norm_exact_unchanged": true,
+      "original_policy_normalizer_exact_unchanged": true,
+      "max_handoff_KL": 0.0002880585961975157,
+      "W_unchanged_through_PPO_and_policy_unchanged_through_aux": "successful runtime tensor assertions in hashed source; no per-boundary snapshot retained",
+      "world_version1_raw_state": "not retained, cachedh rollout1 cannot independently reconstruct exact selected tensors"
+    },
+    "7_true_updates_and_budget": {
+      "status": "ACTUAL_OUTPUT_BUDGETS_CHECKED",
+      "policy_changed_all": true,
+      "all_saved_policy_and_rollout_numeric_finite": true,
+      "all_reported_losses_finite": true,
+      "W_aux_gradient_norms_finite": true,
+      "PPO_gradient_raw_metadata": "not saved; finite updated policy and PPO losses verified; gradient tensors cannot be independently examined",
+      "checkpoint_and_tensorboard_exist_all": true,
+      "scientific_control_benefit_validated": false,
+      "8192_capacity_validated": false,
+      "500_update_completion_validated": false
+    },
+    "8_provenance_and_scope": {
+      "status": "HASHES_AND_PROCESS_IDENTITIES_CHECKED",
+      "source_manifest_matches": 8,
+      "protected_lock_files_checked": 39,
+      "protected_lock_failures": 0,
+      "protected_confirmation_arrays_checked": 36,
+      "protected_confirmation_array_failures": 0,
+      "original_checkpoint_matches_expected": true,
+      "original_reference_npz_observed_sha256": "5831c298e9005997e8a7063f9ab5725b0536b3c1068483a9173cdbcb7f222b24",
+      "prelaunch_reference_file_sha": "not present in entry documents; current hash recorded and runtime identity0 verified",
+      "GPU1_preserved_PIDs": [
+        3854248,
+        1589572
+      ],
+      "GPU1_process_metadata": {
+        "1589572": {
+          "cmdline": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_i1_live_training_viewer.py --device=cuda:1 --livestream=2 --telemetry-port=40123 --status-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_viewer.state --snapshot-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_frame.png --kit_args=--portable-root /data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_live_viewer/kit --/renderer/multiGpu/enabled=false --task=Isaac-Motion-Tracking-Kick-v0 ",
+          "exists": true,
+          "proc_start_ticks": "1249404823"
+        },
+        "3854248": {
+          "cmdline": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u scripts/reinforcement_learning/rsl_rl/play_eval.py --task=Isaac-Motion-Tracking-Sit-v0 --device=cuda:1 --num_envs=1000 --path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_16-54-27-Sit-a/model_1999.pt --headless --id=r3_sit_no_camera_init_diagnostic_20261001 ",
+          "exists": true,
+          "proc_start_ticks": "1208193920"
+        }
+      },
+      "viewer_source_observed_sha256": "ebb1c1164de7c639cf0bba5842cb0f0975b83298952ade8ee9cb76d5528f1eb0",
+      "dependencies_installed": false,
+      "extra_IK": false,
+      "imagined_transitions": 0,
+      "private_arrays_or_weights_transferred": false,
+      "original_invocation_sources_unchanged_after_completion": {
+        "scripts/r3_world_confirmation_isaac_v2_20261007.py": true,
+        "scripts/r3_world_ppo_control_isaac_20261007.py": true,
+        "scripts/r3_world_ppo_core.py": true,
+        "scripts/r3_world_ppo_residual_core.py": true,
+        "scripts/r3_world_ppo_training_core_20261007.py": true,
+        "scripts/r3_world_residual_ppo_diagnostic_queue_20261007.py": true,
+        "scripts/r3_world_residual_ppo_smoke_20261007.sh": true,
+        "scripts/r3_world_residual_visibility_20261007.sh": true
+      },
+      "GPU1_PID_start_and_cmdline_unchanged": true,
+      "viewer_source_hash_unchanged_between_independent_reads": true
+    }
+  },
+  "visibility": {
+    "status": "COMPLETE",
+    "expected_duration_s": 1200,
+    "num_envs": 16,
+    "frozen_original_policy": true,
+    "PPO_updates": 0,
+    "server_metadata": {
+      "active": {
+        "is_formal_training": false,
+        "log": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_residual_visibility_20261007.log",
+        "num_envs": 16,
+        "output": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/world_residual_ppo_20261007/visibility_seed42_v1",
+        "queue_state": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_world_residual_visibility_20261007.state",
+        "seed": 42,
+        "source": "actual_isaaclab_simulation",
+        "stage": "visibility",
+        "task_id": "Isaac-Motion-Tracking-Kick-v0"
+      },
+      "captured_unix": 1791361276.5844352,
+      "dashboard_snapshot": {
+        "budget": null,
+        "capture_time": 1791361276.5251863,
+        "frame_age_seconds": 0.8,
+        "image_base64_length": 22236,
+        "is_formal_training": false,
+        "iteration": null,
+        "queue": "RUNNING mode=visibility formal=false frozen_policy=true",
+        "render_capture_age_seconds": 0.2,
+        "sampled_env_step": 8785,
+        "source": "actual_training_simulation_sample",
+        "stage_label": "画面预检（仅推理）",
+        "telemetry_age_seconds": 0.8,
+        "viewer": "LIVE mode=sampled_actual_training_pose step=8790 packet_age_s=0 training_unaffected=true"
+      },
+      "gpu1_viewer_source_sha256": "ebb1c1164de7c639cf0bba5842cb0f0975b83298952ade8ee9cb76d5528f1eb0",
+      "preserved_processes": {
+        "1589572": {
+          "cmdline": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_i1_live_training_viewer.py --device=cuda:1 --livestream=2 --telemetry-port=40123 --status-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_viewer.state --snapshot-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_frame.png --kit_args=--portable-root /data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_live_viewer/kit --/renderer/multiGpu/enabled=false --task=Isaac-Motion-Tracking-Kick-v0 ",
+          "exists": true,
+          "proc_start_ticks": "1249404823"
+        },
+        "3854248": {
+          "cmdline": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u scripts/reinforcement_learning/rsl_rl/play_eval.py --task=Isaac-Motion-Tracking-Sit-v0 --device=cuda:1 --num_envs=1000 --path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_16-54-27-Sit-a/model_1999.pt --headless --id=r3_sit_no_camera_init_diagnostic_20261001 ",
+          "exists": true,
+          "proc_start_ticks": "1208193920"
+        }
+      },
+      "queue": {
+        "completed": [
+          "P0",
+          "P-cap",
+          "P-history",
+          "W-correct",
+          "W-shuffled-original"
+        ],
+        "formal": false,
+        "stage": "visibility",
+        "status": "COMPLETE_DIAGNOSTICS",
+        "updated_unix": 1791360609.5761569
+      },
+      "viewer": "LIVE mode=sampled_actual_training_pose step=8790 packet_age_s=0 training_unaffected=true\n",
+      "visibility_state": "RUNNING mode=visibility formal=false frozen_policy=true\n"
+    },
+    "stage_label": "画面预检（仅推理）",
+    "local_user_scene_confirmed": true,
+    "formal_gate_created": "outside this independent witness; primary owns any gate from direct user confirmation",
+    "server_snapshot_is_not_local_human_confirmation": true,
+    "user_report_from_primary": "Latest primary message reports direct user positive confirmation of 6013/live continuous movement; earlier stalled/unopenable report superseded by that later confirmation.",
+    "local_user_confirmation_provenance": "Primary agent relayed direct user positive confirmation: 6013/live keeps moving. This independent witness did not observe or fabricate a local screen confirmation.",
+    "formal_gate_created_by_this_witness": false,
+    "child_exit_code": 0,
+    "wrapper_exit_code": 0,
+    "complete_sentinel_count": 1,
+    "actual_summary": {
+      "actual_transitions": 255888,
+      "diagnostic_aux_updates": 0,
+      "diagnostic_ppo_updates": 0,
+      "disturbance_protocol": {
+        "actual_articulation_force_buffer_audit": [],
+        "cohort": "rank original reference/initial phase; alternating clean/pushed and force signs",
+        "distribution_changed_from_nominal": false,
+        "external_force_visible_to_actor": false,
+        "force_control_steps": [],
+        "force_duration_s": 0.0,
+        "force_world_y_N": 0,
+        "name": "none",
+        "reset_60_to_109_pushed_envs": 0,
+        "reset_during_force_pushed_envs": 0
+      },
+      "extra_IK": false,
+      "files": {},
+      "formal_ppo_updates": 0,
+      "losses": [],
+      "mode": "visibility",
+      "num_envs": 16,
+      "original_jit_equivalence_max_abs": 0.0,
+      "original_library_order_max_abs": 0.0,
+      "platform": "Isaac Lab / PhysX",
+      "policy_checkpoint_sha256": "e3c50fb6f36f59f89d1b4e788b1ba74cf1ff0cdde3dceff34a9d7765235f65c0",
+      "reset_count": 496,
+      "rollout_versions": [],
+      "schema": {
+        "contact_force_threshold_N": 5.0,
+        "future_action_in_actor": false,
+        "history": 10,
+        "input": 92,
+        "input_order": [
+          "root_linear_velocity_b:3",
+          "root_angular_velocity_b:3",
+          "projected_gravity_b:3",
+          "relative_joint_position:27",
+          "relative_joint_velocity:27",
+          "previous_action:29"
+        ],
+        "input_source": "original noisy policy observation[0:92], no privileged state",
+        "latent": 128,
+        "step_dt_s": 0.02,
+        "target_continuous_delta": true,
+        "targets": [
+          "absolute_motion_joint_position:27",
+          "projected_gravity_b:3",
+          "root_linear_velocity_b:3",
+          "root_angular_velocity_b:3",
+          "two_feet_relative_root_position_b:6",
+          "two_feet_velocity_xy_w:4",
+          "root_height:1",
+          "root_vertical_velocity_w:1",
+          "two_ground_contact:2"
+        ],
+        "version": 1
+      },
+      "schema_hash": "e0ea6ee69b602bbf12eb418525239ea30c7255bec0d6bf4dd2a25d86908b832a",
+      "seed": 42,
+      "shared_warmup_stochastic_original_policy": false,
+      "status": "COMPLETE",
+      "steps": 15993,
+      "task_reward_PD_termination_unchanged": true,
+      "wall_s": 1200.0358209609985
+    },
+    "final_server_metadata": {
+      "captured_unix": 1791361908.8288863,
+      "dashboard_snapshot_after_original_visibility": {
+        "budget": null,
+        "capture_time": 1791361908.8074098,
+        "frame_age_seconds": 94.5,
+        "image_sha256": "89b05eb76981d529234d11debe0afe1dbfabf7f3b64e6b070b5e6983ac8cd7e1",
+        "is_formal_training": false,
+        "iteration": null,
+        "queue": "COMPLETE mode=visibility child_exit=0 formal=false",
+        "render_capture_age_seconds": 0.1,
+        "sampled_env_step": 15990,
+        "source": "actual_training_simulation_sample",
+        "stage_label": "画面预检（仅推理）",
+        "telemetry_age_seconds": 94.5,
+        "viewer": "STALE mode=sampled_actual_training_pose last_step=15990 age_s=94.4 training_unaffected=true"
+      },
+      "monitor_hashes": {
+        "artifacts/monitoring/r3_world_residual_ppo_smoke_20261007.log": {
+          "bytes": 294,
+          "sha256": "1147f9c10feb86593e95532aaf1dada352db8f470fb512e6a8a7f76218870090"
+        },
+        "artifacts/monitoring/r3_world_residual_ppo_smoke_20261007.state": {
+          "bytes": 255,
+          "sha256": "af3da87e2acfd3a559cead7ba78624abb97487f5ef9730a8f12fbbb0dde545fe"
+        },
+        "artifacts/monitoring/r3_world_residual_ppo_smoke_P-cap_20261007.log": {
+          "bytes": 20138,
+          "sha256": "f6c10102a1c1eef08a76de56fd1229999b248824dbce6ddc6978867efac96489"
+        },
+        "artifacts/monitoring/r3_world_residual_ppo_smoke_P-cap_20261007.state": {
+          "bytes": 66,
+          "sha256": "d3a426f9590f5e6e29431f3abdb7127fe9d620075663ff87db024b5a1b5339ae"
+        },
+        "artifacts/monitoring/r3_world_residual_ppo_smoke_P-history_20261007.log": {
+          "bytes": 20128,
+          "sha256": "2b4e7eae261d38be1ec828566033355625cbf54d4e27543a2cfd20c43ca4d5ba"
+        },
+        "artifacts/monitoring/r3_world_residual_ppo_smoke_P-history_20261007.state": {
+          "bytes": 70,
+          "sha256": "8e70a09b022a5ad48970cbbb7665fcd4eed87e1241e2207eb61fd8d3fd15c6b2"
+        },
+        "artifacts/monitoring/r3_world_residual_ppo_smoke_P0_20261007.log": {
+          "bytes": 20153,
+          "sha256": "15a56027c19dc120ce499db3d1a69c6f11dec7ac6c520a027634223b60381b8e"
+        },
+        "artifacts/monitoring/r3_world_residual_ppo_smoke_P0_20261007.state": {
+          "bytes": 63,
+          "sha256": "e6e4f32ddccb8a481f11e61bdb95ca1348a19701df357529e778b348e5211f4f"
+        },
+        "artifacts/monitoring/r3_world_residual_ppo_smoke_W-correct_20261007.log": {
+          "bytes": 20328,
+          "sha256": "c39c3b9dfbd4b769c90aef1918e2f2d853d23bc3be6d279a3c600b087bf0e9bd"
+        },
+        "artifacts/monitoring/r3_world_residual_ppo_smoke_W-correct_20261007.state": {
+          "bytes": 70,
+          "sha256": "5cddee918d437954f34c6397556ed6daf3130c9cec310f168003003fa65c3fbc"
+        },
+        "artifacts/monitoring/r3_world_residual_ppo_smoke_W-shuffled-original_20261007.log": {
+          "bytes": 20369,
+          "sha256": "d76c254b78543218f42f09ec67ba667b4689f1f1b86e49ab92c54f471f21bb68"
+        },
+        "artifacts/monitoring/r3_world_residual_ppo_smoke_W-shuffled-original_20261007.state": {
+          "bytes": 80,
+          "sha256": "127b424c163cab9597705602547a2e534114621b6b45fa57825e49b679799be9"
+        },
+        "artifacts/monitoring/r3_world_residual_visibility_20261007.log": {
+          "bytes": 56137,
+          "sha256": "1d88cfc58bb46e47ea9832c376aa9a9c616a8afa822b4812dfc16835d22478db"
+        },
+        "artifacts/monitoring/r3_world_residual_visibility_20261007.state": {
+          "bytes": 51,
+          "sha256": "66607c0aea415ece083852f8a64d406b287d4894b6a977c68b0c0356709b37a6"
+        }
+      },
+      "original_invocation_sources_unchanged": {
+        "scripts/r3_world_confirmation_isaac_v2_20261007.py": true,
+        "scripts/r3_world_ppo_control_isaac_20261007.py": true,
+        "scripts/r3_world_ppo_core.py": true,
+        "scripts/r3_world_ppo_residual_core.py": true,
+        "scripts/r3_world_ppo_training_core_20261007.py": true,
+        "scripts/r3_world_residual_ppo_diagnostic_queue_20261007.py": true,
+        "scripts/r3_world_residual_ppo_smoke_20261007.sh": true,
+        "scripts/r3_world_residual_visibility_20261007.sh": true
+      },
+      "preserved_processes": {
+        "1589572": {
+          "cmdline": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_i1_live_training_viewer.py --device=cuda:1 --livestream=2 --telemetry-port=40123 --status-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_viewer.state --snapshot-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_frame.png --kit_args=--portable-root /data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_live_viewer/kit --/renderer/multiGpu/enabled=false --task=Isaac-Motion-Tracking-Kick-v0 ",
+          "exists": true,
+          "proc_start_ticks": "1249404823"
+        },
+        "3854248": {
+          "cmdline": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u scripts/reinforcement_learning/rsl_rl/play_eval.py --task=Isaac-Motion-Tracking-Sit-v0 --device=cuda:1 --num_envs=1000 --path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_16-54-27-Sit-a/model_1999.pt --headless --id=r3_sit_no_camera_init_diagnostic_20261001 ",
+          "exists": true,
+          "proc_start_ticks": "1208193920"
+        }
+      },
+      "queue_state": {
+        "completed": [
+          "P0",
+          "P-cap",
+          "P-history",
+          "W-correct",
+          "W-shuffled-original"
+        ],
+        "formal": false,
+        "formal_launch": "NOT_STARTED_REQUIRES_LOCAL_GATE_AND_RUNTIME_AUDIT",
+        "status": "COMPLETE",
+        "visibility_wrapper_exit": 0
+      },
+      "viewer_source_sha256": "ebb1c1164de7c639cf0bba5842cb0f0975b83298952ade8ee9cb76d5528f1eb0",
+      "visibility_file_hashes": {
+        "artifacts/world_residual_ppo_20261007/visibility_seed42_v1/progress.json": {
+          "bytes": 168,
+          "sha256": "fd00ca9e919e1cdfbda8a5a823e71879f7a4075aa24f30a1bd158eacb162bb31"
+        },
+        "artifacts/world_residual_ppo_20261007/visibility_seed42_v1/summary.json": {
+          "bytes": 2086,
+          "sha256": "079d046fa9fc5b6d5f27e952bcd16da7aa3da211f7135376f4d4ff49c22fdc23"
+        }
+      },
+      "visibility_sentinel_count": 1,
+      "visibility_state": "COMPLETE mode=visibility child_exit=0 formal=false\n",
+      "visibility_summary": {
+        "actual_transitions": 255888,
+        "diagnostic_aux_updates": 0,
+        "diagnostic_ppo_updates": 0,
+        "disturbance_protocol": {
+          "actual_articulation_force_buffer_audit": [],
+          "cohort": "rank original reference/initial phase; alternating clean/pushed and force signs",
+          "distribution_changed_from_nominal": false,
+          "external_force_visible_to_actor": false,
+          "force_control_steps": [],
+          "force_duration_s": 0.0,
+          "force_world_y_N": 0,
+          "name": "none",
+          "reset_60_to_109_pushed_envs": 0,
+          "reset_during_force_pushed_envs": 0
+        },
+        "extra_IK": false,
+        "files": {},
+        "formal_ppo_updates": 0,
+        "losses": [],
+        "mode": "visibility",
+        "num_envs": 16,
+        "original_jit_equivalence_max_abs": 0.0,
+        "original_library_order_max_abs": 0.0,
+        "platform": "Isaac Lab / PhysX",
+        "policy_checkpoint_sha256": "e3c50fb6f36f59f89d1b4e788b1ba74cf1ff0cdde3dceff34a9d7765235f65c0",
+        "reset_count": 496,
+        "rollout_versions": [],
+        "schema": {
+          "contact_force_threshold_N": 5.0,
+          "future_action_in_actor": false,
+          "history": 10,
+          "input": 92,
+          "input_order": [
+            "root_linear_velocity_b:3",
+            "root_angular_velocity_b:3",
+            "projected_gravity_b:3",
+            "relative_joint_position:27",
+            "relative_joint_velocity:27",
+            "previous_action:29"
+          ],
+          "input_source": "original noisy policy observation[0:92], no privileged state",
+          "latent": 128,
+          "step_dt_s": 0.02,
+          "target_continuous_delta": true,
+          "targets": [
+            "absolute_motion_joint_position:27",
+            "projected_gravity_b:3",
+            "root_linear_velocity_b:3",
+            "root_angular_velocity_b:3",
+            "two_feet_relative_root_position_b:6",
+            "two_feet_velocity_xy_w:4",
+            "root_height:1",
+            "root_vertical_velocity_w:1",
+            "two_ground_contact:2"
+          ],
+          "version": 1
+        },
+        "schema_hash": "e0ea6ee69b602bbf12eb418525239ea30c7255bec0d6bf4dd2a25d86908b832a",
+        "seed": 42,
+        "shared_warmup_stochastic_original_policy": false,
+        "status": "COMPLETE",
+        "steps": 15993,
+        "task_reward_PD_termination_unchanged": true,
+        "wall_s": 1200.0358209609985
+      }
+    },
+    "actual_steps": 15993,
+    "actual_transitions": 255888,
+    "actual_wall_s": 1200.0358209609985,
+    "actual_reset_count": 496,
+    "aux_updates": 0,
+    "post_exit_STALE": "expected after original bounded inference ends; dashboard still correctly labels only inference"
+  },
+  "document_or_evidence_differences": [
+    "Entry invocation lacks original private checkpoint and Kick_references.npz paths; primary supplied them after invocation for independent tensor/hash audit.",
+    "Isolated reset/timeout fixture raw tensors not retained. Natural 2-update diagnostics had no resets or timeouts. These conditions are not independently certified by this receipt.",
+    "Intermediate W version1 state and PPO gradient raw tensors not retained. Per-boundary freezing uses hashed-source assertions; final Ridge/normalizer equality independently checked.",
+    "CPU reconstruction of cached CUDA h has max1.2055e-3(correct)/1.4283e-3(shuffle), RMSE1.6648e-4/2.6065e-4. Recorded as backend reproduction difference, with no source changes or repeated scientific arm.",
+    "GPU0 shared pre-existing viewer context699MiB satisfies documented allowance, so physical exclusive-memory=0 condition was not applied.",
+    "Post-exit read-only CUDA verification exactly reproduces W version0 cached h with cuDNN TF32 enabled, and turning TF32 off reproduces the CPU-scale differences. The earlier CPU discrepancy remains recorded, with this numerical explanation and all backend outputs preserved.",
+    "The bounded inference preflight has 496 natural resets, but retains no raw PPO history/bootstrap fixture tensors and has PPO0; these inference resets do not supply the missing PPO reset/timeout invariants."
+  ],
+  "scope_limits": [
+    "not a control benefit gate",
+    "not 8192 capacity evidence",
+    "not 500-update formal completion",
+    "no failed arm repair or repeat",
+    "independent witness itself is not the local human visual confirmation; primary reports later positive direct user evidence"
+  ],
+  "metadata_evidence_files": {
+    "runtime_tensor_audit_metadata.json": {
+      "path": "D:\\具身智能\\conditional-human-motion-generation\\results\\world_residual_ppo_20261007\\raw\\runtime_tensor_audit_metadata.json",
+      "sha256": "c6d467394f6e646326f041140bfe0ddbfbd4b55dcd1ef087932e898e4fb4c2ea"
+    },
+    "runtime_protected_hashes_readonly.json": {
+      "path": "D:\\具身智能\\conditional-human-motion-generation\\results\\world_residual_ppo_20261007\\raw\\runtime_protected_hashes_readonly.json",
+      "sha256": "5626212aab07f1c9815c16b09541e06af0c4166f8a2caa23cdec5658229b87ba"
+    },
+    "runtime_visibility_metadata_initial.json": {
+      "path": "D:\\具身智能\\conditional-human-motion-generation\\results\\world_residual_ppo_20261007\\raw\\runtime_visibility_metadata_initial.json",
+      "sha256": "afd2bfda1df73bddc6380e57df0585b9c11f84d1754fabae7128d3b782a01c5c"
+    },
+    "runtime_visibility_snapshot_metadata_2.json": {
+      "path": "D:\\具身智能\\conditional-human-motion-generation\\results\\world_residual_ppo_20261007\\raw\\runtime_visibility_snapshot_metadata_2.json",
+      "sha256": "a393fe5b1569d6b8c5442aa298b01a28a63187dc549576db899e53da4488c7fb"
+    },
+    "runtime_cached_h_cuda_readonly_audit.json": {
+      "path": "D:\\具身智能\\conditional-human-motion-generation\\results\\world_residual_ppo_20261007\\raw\\runtime_cached_h_cuda_readonly_audit.json",
+      "sha256": "e3ee279ce2b419e13eabc44e9b9a7975ce9dcf0246354cad62065434aada2b58"
+    },
+    "runtime_visibility_metadata_final.json": {
+      "path": "D:\\具身智能\\conditional-human-motion-generation\\results\\world_residual_ppo_20261007\\raw\\runtime_visibility_metadata_final.json",
+      "sha256": "375d9c7c1a98ba7fbcf49775395a92f60bcd2b55332a70852b1e94c4a6e7aee1"
+    }
+  },
+  "updated_utc": "2026-10-07T08:24:41.149045+00:00",
+  "completed_utc": "2026-10-07T08:32:57.054016+00:00",
+  "scientific_source_or_arm_repeated": false,
+  "read_only_CUDA_verification": {
+    "exit_code": 0,
+    "GPU0_serial_lock": "artifacts/monitoring/r3_world_ppo_gpu0.lock",
+    "physical_scene_or_training_rerun": false,
+    "metadata": {
+      "arm_results": {
+        "W-correct": {
+          "cudnn_tf32_false_matmul_false": {
+            "RMSE": 0.0001664766314206645,
+            "all_finite": true,
+            "exact_equal": false,
+            "expected_at_max": 0.2562379539012909,
+            "max_abs_error": 0.0012055933475494385,
+            "max_error_row": [
+              7,
+              29,
+              126
+            ],
+            "recomputed_at_max": 0.25744354724884033
+          },
+          "cudnn_tf32_true_matmul_true": {
+            "RMSE": 0.0,
+            "all_finite": true,
+            "exact_equal": true,
+            "expected_at_max": 0.369412899017334,
+            "max_abs_error": 0.0,
+            "max_error_row": [
+              0,
+              0,
+              0
+            ],
+            "recomputed_at_max": 0.369412899017334
+          },
+          "default_cudnn_tf32_true_matmul_false": {
+            "RMSE": 0.0,
+            "all_finite": true,
+            "exact_equal": true,
+            "expected_at_max": 0.369412899017334,
+            "max_abs_error": 0.0,
+            "max_error_row": [
+              0,
+              0,
+              0
+            ],
+            "recomputed_at_max": 0.369412899017334
+          }
+        },
+        "W-shuffled-original": {
+          "cudnn_tf32_false_matmul_false": {
+            "RMSE": 0.0002606545458547771,
+            "all_finite": true,
+            "exact_equal": false,
+            "expected_at_max": 0.3885248601436615,
+            "max_abs_error": 0.0014283955097198486,
+            "max_error_row": [
+              8,
+              136,
+              110
+            ],
+            "recomputed_at_max": 0.38995325565338135
+          },
+          "cudnn_tf32_true_matmul_true": {
+            "RMSE": 0.0,
+            "all_finite": true,
+            "exact_equal": true,
+            "expected_at_max": 1.5791912078857422,
+            "max_abs_error": 0.0,
+            "max_error_row": [
+              0,
+              0,
+              0
+            ],
+            "recomputed_at_max": 1.5791912078857422
+          },
+          "default_cudnn_tf32_true_matmul_false": {
+            "RMSE": 0.0,
+            "all_finite": true,
+            "exact_equal": true,
+            "expected_at_max": 1.5791912078857422,
+            "max_abs_error": 0.0,
+            "max_error_row": [
+              0,
+              0,
+              0
+            ],
+            "recomputed_at_max": 1.5791912078857422
+          }
+        }
+      },
+      "backend_cases": {
+        "cudnn_tf32_false_matmul_false": {
+          "cudnn_allow_tf32": false,
+          "cudnn_benchmark": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "matmul_allow_tf32": false
+        },
+        "cudnn_tf32_true_matmul_true": {
+          "cudnn_allow_tf32": true,
+          "cudnn_benchmark": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "matmul_allow_tf32": true
+        },
+        "default_cudnn_tf32_true_matmul_false": {
+          "cudnn_allow_tf32": true,
+          "cudnn_benchmark": false,
+          "cudnn_deterministic": false,
+          "cudnn_enabled": true,
+          "matmul_allow_tf32": false
+        }
+      },
+      "batch_per_step": 256,
+      "captured_unix": 1791361863.445434,
+      "device": "NVIDIA RTX A6000",
+      "peak_cuda_allocated_MiB": 35.544921875,
+      "purpose": "read-only recomputation of saved world_version0 cached h; no scientific source execution, simulation rollout, backward, optimizer step, policy update or repeated arm",
+      "torch": "2.5.1+cu118"
+    },
+    "conclusion": "Both arms cached world_version0 h exactly reproduced, maxerror0, on the original CUDA/cuDNN TF32-enabled backend. Disabling cuDNN TF32 reproduces CPU-scale differences. All backend cases retained; no scientific source or data changed. World_version1 snapshot remains unavailable."
+  }
+}

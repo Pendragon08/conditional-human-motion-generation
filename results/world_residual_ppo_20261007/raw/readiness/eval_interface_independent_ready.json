@@ -1,0 +1,78 @@
+{
+  "ready_for_formal": true,
+  "formal_PPO_launched": false,
+  "at_creation_utc": "2026-10-07T09:21:36.259624+00:00",
+  "receipt": "results/world_residual_ppo_20261007/raw/eval_interface_v3/eval_doc_witness.json",
+  "receipt_sha256": "89aef18dc7b1dbe1170f8d708912543742d1a48b406982a4da9e51f55a3ab030",
+  "source_revision": "v3_manifest_to_library_filename_mapping",
+  "native_trace_is_not_video": true,
+  "scope": "64x120 frozen capacity interface, not final scientific control score",
+  "PPO_updates": 0,
+  "aux_updates": 0,
+  "previous_v1_v2_failures_preserved": true,
+  "independent_trace_checks_per_arm": 19,
+  "real_transitions": 15360,
+  "evidence_limits": {
+    "P-history": {
+      "success_event_occurrence": {
+        "status": "LIMITED",
+        "detail": "Saved flag aggregated per reference; per-step success counter deltas absent, so success occurrence cannot be independently reconstructed."
+      },
+      "full_force_reconstruction": {
+        "status": "LIMITED",
+        "detail": "Ten runtime force-buffer error records are zero and locked step/N/count match. Trace lacks force tensors/quaternions for all environments, so full world-to-local force reconstruction is unavailable."
+      },
+      "independent_runtime_module_before_after_digests": {
+        "status": "LIMITED",
+        "detail": "Completed runtime source compares before/after policy/norm/world tensor hashes and asserts equality; summary boolean true. Actual before/after digest strings and per-frame hashes absent. CPU checkpoint module hashes are identity evidence, not independent in-memory freeze evidence."
+      },
+      "per_frame_freeze": {
+        "status": "LIMITED",
+        "detail": "Per-frame policy/normalizer/world parameter hashes were not persisted. Only executed endpoint equality assertion and immutable inference source evidence are available."
+      },
+      "natural_timeout_path": {
+        "status": "LIMITED",
+        "detail": "No natural timeout event in 120 steps; timeout handling structurally verified only."
+      },
+      "natural_root_threshold_failure_path": {
+        "status": "LIMITED",
+        "detail": "No natural root-below event occurred; saved root reason channel and termination OR consistency are structurally checked, while actual failures were angle-below events."
+      },
+      "joint_error_full_geometry_reconstruction": {
+        "status": "LIMITED",
+        "detail": "Statistics and failure penalties are reconstructed from full saved unpenalized RMSE; only four environments have scene joint/body poses, so full 64-environment raw geometry-to-RMSE reconstruction is not available."
+      }
+    },
+    "W-correct": {
+      "success_event_occurrence": {
+        "status": "LIMITED",
+        "detail": "Saved flag aggregated per reference; per-step success counter deltas absent, so success occurrence cannot be independently reconstructed."
+      },
+      "full_force_reconstruction": {
+        "status": "LIMITED",
+        "detail": "Ten runtime force-buffer error records are zero and locked step/N/count match. Trace lacks force tensors/quaternions for all environments, so full world-to-local force reconstruction is unavailable."
+      },
+      "independent_runtime_module_before_after_digests": {
+        "status": "LIMITED",
+        "detail": "Completed runtime source compares before/after policy/norm/world tensor hashes and asserts equality; summary boolean true. Actual before/after digest strings and per-frame hashes absent. CPU checkpoint module hashes are identity evidence, not independent in-memory freeze evidence."
+      },
+      "per_frame_freeze": {
+        "status": "LIMITED",
+        "detail": "Per-frame policy/normalizer/world parameter hashes were not persisted. Only executed endpoint equality assertion and immutable inference source evidence are available."
+      },
+      "natural_timeout_path": {
+        "status": "LIMITED",
+        "detail": "No natural timeout event in 120 steps; timeout handling structurally verified only."
+      },
+      "natural_root_threshold_failure_path": {
+        "status": "LIMITED",
+        "detail": "No natural root-below event occurred; saved root reason channel and termination OR consistency are structurally checked, while actual failures were angle-below events."
+      },
+      "joint_error_full_geometry_reconstruction": {
+        "status": "LIMITED",
+        "detail": "Statistics and failure penalties are reconstructed from full saved unpenalized RMSE; only four environments have scene joint/body poses, so full 64-environment raw geometry-to-RMSE reconstruction is not available."
+      }
+    }
+  },
+  "runtime_endpoint_assertion_not_independent_digest_proof": true
+}

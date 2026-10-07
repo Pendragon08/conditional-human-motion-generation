@@ -41,3 +41,19 @@ v2 later completed once: six natural child rc0 with sentinels, 2,949,120 transfe
 ## 2026-10-07 residual PPO runtime integration
 
 Spec configs/env-world-residual-ppo-runtime-20261007.json reuses base canonical47f5eb26 without dependency installation. GPU0 serial diagnostic, GPU1 original independent viewer preserved; shared idle viewer context allowance<1500MiB plus free compute lock, not exclusive physical GPU memory=0. New code integration is not certified by import/compile. docs/world_residual_ppo_runtime_invocation_20261007.md defines fresh-doc invocation: five256-env×2-update diagnostic arms then bounded16-env actual-scene preflight. Formal500-update×8192×3seed queue NOT_STARTED; requires runtime invariants, separate8192 capacity and new actual-scene local Gate. One aux step1024batch after each W PPO cycle is prelocked before any control score; same training data and original PPO reward/done/PD. Fresh diagnostic witness pending.
+
+## 2026-10-07 full-size capacity and saved CUDA fixtures
+
+User explicitly confirmed6013/live actual moving robot. New gate records direct human answer; main page failure preserved. Warm dependency spec unchanged; configs/env-world-ppo-capacity-20261007.json specifies zero-PPO/zero-sim CUDA tensors and two8192-env×2-update capacity stages. Preserves v1 five smokes, no formal auto-launch. Fresh doc invocation docs/world_ppo_capacity_invocation_20261007.md; all capacity readiness remains pending actual invocation and saved-tensor audit.
+
+## 2026-10-07 full-size capacity and saved CUDA fixtures
+
+User explicitly confirmed6013/live actual moving robot. New gate records direct human answer; main page failure preserved. Warm dependency spec unchanged; configs/env-world-ppo-capacity-20261007.json specifies zero-PPO/zero-sim CUDA tensors and two8192-env×2-update capacity stages. Preserves v1 five smokes, no formal auto-launch. Fresh doc invocation docs/world_ppo_capacity_invocation_20261007.md; all capacity readiness remains pending actual invocation and saved-tensor audit.
+
+## 2026-10-07 frozen control-evaluation interface
+
+configs/env-world-ppo-eval-interface-20261007.json is a resource delta only, no packages/rebuild. New control metrics locked in plans/world_residual_ppo_control_metrics_20261007.md before final scores. Fresh invocation docs/world_ppo_eval_invocation_20261007.md tests64×120 frozen capacity checkpoints, 0PPO/aux/norm, separately from formal500×8192. Balanced initialreference event is an explicit evaluation adaptation. Native scene traces are not videos. Actual interface readiness pending independent documented invocation.
+
+## 2026-10-07 formal control-ablation launch contract
+
+Warm dependencies unchanged. Runtime five arms and saved43 tensor/8192 capacity checks completed; original process-proof limitations retained. Frozen evaluator v1 failed before any control trace with its error obscured by teardown; v2 exposed directoryglob order differing from manifestorder. Failures preserved. v3 maps fixed manifestID by filename to unchanged MotionLib index. Fresh independent audit is PASS_WITH_EVIDENCE_LIMITS: 19 trace checks per arm and 11-row/macro reconstructions passed, while full force/success-event/per-frame module-hash reconstruction and natural timeout/root failure examples remain limited. configs/env-world-ppo-formal-20261007.json locks fivearms×three seeds,8192×24×500 warm-start PPO,15 real frozen2048×500 evaluations. No imagined reward, extraIK, deployment or reward/PD changes. Source SHA lock configs/world_ppo_formal_sources_20261007.json. Formal readiness is not control benefit; actual first launch still requires fresh agent-follows-doc invocation docs/world_ppo_formal_invocation_20261007.md.
