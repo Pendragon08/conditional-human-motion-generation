@@ -1,0 +1,13 @@
+{
+  "provider": "direct SSH 10.147.17.32 warm reuse",
+  "base_spec": "configs/env-dreamcontrol-r3.json",
+  "base_canonical_sha256": "47f5eb26218254bbe270c3c43b3e7a552cca04c5caa81b6c76b4a6d2d3d2e9d4",
+  "dependencies_changed": false,
+  "resource": {"gpu": 1,"nice": 10,"cpu_threads": 2,"gpu_min_free_mib": 14000,"gpu_running_reserve_mib": 8000,"disk_reserve_gib": 10},
+  "physics_runtime": "third_party/isaacsim-4.5.0/python.sh (Python3.10 / Torch2.5.1+cu118)",
+  "generation_and_analysis_runtime": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python with existing closd-r3 overlay for generation",
+  "retarget_runtime": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-retarget/bin/python with existing dreamcontrol-retarget overlay, PyRoki/JAXLS",
+  "coordinator_runtime": "/usr/bin/python3 (stdlib only; system NumPy unavailable)",
+  "validation": {"seed": 42,"witness_environments": 24,"witness_steps": 90,"observations": 626,"actions": 29,"expected": "FEEDBACK_PAUSED_ISAAC_COMPLETE / WITNESS_ONLY / normal exit0"},
+  "scope": "Frozen-policy offline pause-and-replan; no new formal PPO"
+}

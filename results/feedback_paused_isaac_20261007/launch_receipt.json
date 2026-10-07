@@ -1,0 +1,1260 @@
+{
+  "utc": "2026-10-07T14:05:37Z",
+  "queue_state": {
+    "status": "RUNNING",
+    "stage": "generate",
+    "seed": 42,
+    "arm": "planned",
+    "gpu": 1,
+    "updated_unix": 1791381831.516381
+  },
+  "launch": {
+    "time_unix": 1791381801.210587,
+    "sources": {
+      "scripts/r3_feedback_paused_isaac_20261007.py": "21ba9993cc13ddd97d896cc452c180b418f06a817d473e91684c95aab71ef799",
+      "scripts/r3_feedback_paused_generation_20261007.py": "1d4dd7eaddd7113751bd447e16bf3dd22476142a0bb6052514fd20026f8bb499",
+      "scripts/r3_feedback_paused_queue_20261007.py": "0a3a931741a15f877d02f06725e51a26e955a76ee81e653d78145afa77664b9c",
+      "scripts/r3_feedback_paused_stage_20261007.sh": "5f53ddf4b2815f2327547e22e391b1b0ab61ea91985cae3693a61f4de3bf9e2f",
+      "configs/feedback_paused_isaac_20261007.json": "7e647946d78f7bfe631370c5775e07e64f3d88e145fc8bf22552a97c83f2ae08",
+      "configs/env-feedback-paused-20261007.json": "d149abd77bd5b6b345d55d10074037cdf6738095830cdc1b352824ddb5d295a5",
+      "docs/feedback_paused_isaac_invocation_20261007.md": "f596bfeac1ce39e69adf90017a342ff7b65e039e2f6af192ecc5b28e0014e345",
+      "third_party/DreamControl/TrajGen/sample/Kick_sim/retarget.py": "2717df4f24e0281fdcaf33f9061f116d297a950631bc232e26c52441eb6b1f92",
+      "third_party/DreamControl/TrajGen/sample/Kick_sim1/refine_motions.py": "ea20139e1782cfdb3fa27a1959ce453d78f1fdce57451a38aa6a0a4330ba2e45",
+      "third_party/DreamControl/TrajGen/utils/parser_util.py": "6469c40fef6a2816214100127df1c77a3e44a9cdd8975ee6d81ff3a9fcc99df9",
+      "third_party/DreamControl/TrajGen/utils/model_util.py": "190c7ec4f7327c0861865a1fcf74d97e639e6afd28df00da9000ee37b35aff67",
+      "third_party/DreamControl/TrajGen/save/omnicontrol_ckpt/model_humanml3d.pt": "886b722e95496f4ceafd704c4e1d0578888733d12ce67429677b80a91a9c36d0",
+      "artifacts/feedback_world_model_20261006/sources/sparse_bridge_v2.npz": "1132e2659526a72c519bc7b58e51b804e481eb87be0b2dc5fbeb917373bd720a",
+      "artifacts/feedback_world_model_20261006/sources/Kick_official_results.npy": "98d40fae4e8436ee5018ff83fbb589a176f81dd025faf92ee5a8eb2296436396",
+      "artifacts/feedback_world_model_20261006/sources/mapping.json": "388281524c8710c2751caeddf84f8884be11314439563537af8faf5b6702da21",
+      "artifacts/sim2sim_mujoco/interfaces/Kick_references.npz": "5831c298e9005997e8a7063f9ab5725b0536b3c1068483a9173cdbcb7f222b24",
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-09-27_03-19-31-Kick-a/exported/policy.pt": "61b760f62c8d057bbe5217a57304051fdacec2aa93617f910a3d6a19aaf818b1",
+      "scripts/r3_feedback_paused_witness_dispatch_20261007.py": "738fe762356d2aab8372c3d281b9d34d673f1787a4d3f66c5cf5c8b46d6fc4b5"
+    },
+    "protocol": {
+      "experiment": "feedback_paused_isaac_20261007",
+      "scope": "Exploratory randomized reference-block offline pause-and-replan test; not realtime and not generalization confirmation",
+      "gpu": 1,
+      "references": [
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65
+      ],
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "arms": [
+        "fixed",
+        "repeat",
+        "planned",
+        "alignment",
+        "actual",
+        "shuffled"
+      ],
+      "domains": [
+        "clean",
+        "push"
+      ],
+      "steps": 500,
+      "control_dt_s": 0.02,
+      "world_push_N": 80,
+      "push_steps": [
+        50,
+        60
+      ],
+      "human_context_frames": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "blend_s": 0.2,
+      "ddpm_steps": 1000,
+      "generation_batch_size": 22,
+      "generation_arms": [
+        "planned",
+        "actual",
+        "shuffled"
+      ],
+      "gpu_min_free_mib": 14000,
+      "gpu_reserve_mib": 8000,
+      "disk_min_free_gib": 10,
+      "max_stage_s": {
+        "physics": 18000,
+        "generation": 1800,
+        "retarget": 3600,
+        "refine": 600
+      },
+      "primary": "Original-reference joint-RMSE AUC from branch through 1.8 simulated seconds, 2rad padding after first fall or missing retarget",
+      "gates": {
+        "retarget_acceptance": 1.0,
+        "relative_auc_improvement": 0.1,
+        "cluster_bootstrap_lower_bound": 0.0,
+        "success_loss_pp": 5,
+        "fall_increase_pp": 0,
+        "clean_rmse_worsening_fraction": 0.05,
+        "switch_spike_worsening_fraction": 0.1
+      },
+      "extra_IK": false,
+      "PPO_updates": 0,
+      "future_original_goal_fixed": true,
+      "robot_state_reset_at_branch": false,
+      "exact_physx_prefix_clone_claimed": false,
+      "randomization": "Each seed permutes physical environment slots for all arm/reference/domain blocks before the episode; preserve realized prefix covariates",
+      "failures": "Never replace rejected samples. Goal=false and primary AUC=full-window 2rad penalty. Report eligible-only metrics separately.",
+      "mapping_scope": "Existing frozen sparse root/ankle residual bridge; calibrated on reference FK, not full HumanML execution inverse",
+      "reference_exposure": "All original 66 references have been exposed previously; no unseen-reference or independent generalization claim",
+      "feedback_source": "This same ongoing Isaac Lab episode up to branch; pause without reset while external generation and retargeting finish",
+      "contact_scope": "Virtual Kick target; no entity strike-contact claim"
+    },
+    "witness_sha256": "eda8720ca3eb4101221b670c35ceefc4bac6da5e4fd8465cf26d8dfa8dc2a368",
+    "GPU1_free_MiB": 39419,
+    "existing_training_untouched": true
+  },
+  "branch": {
+    "status": "BRANCH_READY",
+    "seed": 42,
+    "trials": [
+      {
+        "arm": "actual",
+        "reference": 55,
+        "domain": "clean",
+        "env": 0
+      },
+      {
+        "arm": "fixed",
+        "reference": 55,
+        "domain": "clean",
+        "env": 1
+      },
+      {
+        "arm": "shuffled",
+        "reference": 59,
+        "domain": "push",
+        "env": 2
+      },
+      {
+        "arm": "repeat",
+        "reference": 64,
+        "domain": "clean",
+        "env": 3
+      },
+      {
+        "arm": "planned",
+        "reference": 58,
+        "domain": "clean",
+        "env": 4
+      },
+      {
+        "arm": "planned",
+        "reference": 64,
+        "domain": "push",
+        "env": 5
+      },
+      {
+        "arm": "planned",
+        "reference": 55,
+        "domain": "clean",
+        "env": 6
+      },
+      {
+        "arm": "fixed",
+        "reference": 63,
+        "domain": "clean",
+        "env": 7
+      },
+      {
+        "arm": "repeat",
+        "reference": 58,
+        "domain": "clean",
+        "env": 8
+      },
+      {
+        "arm": "actual",
+        "reference": 57,
+        "domain": "clean",
+        "env": 9
+      },
+      {
+        "arm": "planned",
+        "reference": 56,
+        "domain": "push",
+        "env": 10
+      },
+      {
+        "arm": "planned",
+        "reference": 63,
+        "domain": "push",
+        "env": 11
+      },
+      {
+        "arm": "alignment",
+        "reference": 55,
+        "domain": "clean",
+        "env": 12
+      },
+      {
+        "arm": "planned",
+        "reference": 63,
+        "domain": "clean",
+        "env": 13
+      },
+      {
+        "arm": "planned",
+        "reference": 60,
+        "domain": "push",
+        "env": 14
+      },
+      {
+        "arm": "planned",
+        "reference": 62,
+        "domain": "clean",
+        "env": 15
+      },
+      {
+        "arm": "shuffled",
+        "reference": 62,
+        "domain": "push",
+        "env": 16
+      },
+      {
+        "arm": "actual",
+        "reference": 60,
+        "domain": "push",
+        "env": 17
+      },
+      {
+        "arm": "shuffled",
+        "reference": 60,
+        "domain": "push",
+        "env": 18
+      },
+      {
+        "arm": "planned",
+        "reference": 59,
+        "domain": "clean",
+        "env": 19
+      },
+      {
+        "arm": "fixed",
+        "reference": 57,
+        "domain": "clean",
+        "env": 20
+      },
+      {
+        "arm": "actual",
+        "reference": 63,
+        "domain": "push",
+        "env": 21
+      },
+      {
+        "arm": "repeat",
+        "reference": 57,
+        "domain": "clean",
+        "env": 22
+      },
+      {
+        "arm": "fixed",
+        "reference": 56,
+        "domain": "clean",
+        "env": 23
+      },
+      {
+        "arm": "repeat",
+        "reference": 61,
+        "domain": "clean",
+        "env": 24
+      },
+      {
+        "arm": "actual",
+        "reference": 61,
+        "domain": "push",
+        "env": 25
+      },
+      {
+        "arm": "planned",
+        "reference": 61,
+        "domain": "push",
+        "env": 26
+      },
+      {
+        "arm": "actual",
+        "reference": 63,
+        "domain": "clean",
+        "env": 27
+      },
+      {
+        "arm": "actual",
+        "reference": 65,
+        "domain": "clean",
+        "env": 28
+      },
+      {
+        "arm": "actual",
+        "reference": 61,
+        "domain": "clean",
+        "env": 29
+      },
+      {
+        "arm": "repeat",
+        "reference": 56,
+        "domain": "clean",
+        "env": 30
+      },
+      {
+        "arm": "alignment",
+        "reference": 57,
+        "domain": "push",
+        "env": 31
+      },
+      {
+        "arm": "planned",
+        "reference": 59,
+        "domain": "push",
+        "env": 32
+      },
+      {
+        "arm": "fixed",
+        "reference": 62,
+        "domain": "push",
+        "env": 33
+      },
+      {
+        "arm": "fixed",
+        "reference": 56,
+        "domain": "push",
+        "env": 34
+      },
+      {
+        "arm": "fixed",
+        "reference": 61,
+        "domain": "clean",
+        "env": 35
+      },
+      {
+        "arm": "alignment",
+        "reference": 62,
+        "domain": "clean",
+        "env": 36
+      },
+      {
+        "arm": "actual",
+        "reference": 58,
+        "domain": "push",
+        "env": 37
+      },
+      {
+        "arm": "planned",
+        "reference": 55,
+        "domain": "push",
+        "env": 38
+      },
+      {
+        "arm": "repeat",
+        "reference": 62,
+        "domain": "clean",
+        "env": 39
+      },
+      {
+        "arm": "alignment",
+        "reference": 57,
+        "domain": "clean",
+        "env": 40
+      },
+      {
+        "arm": "actual",
+        "reference": 62,
+        "domain": "push",
+        "env": 41
+      },
+      {
+        "arm": "alignment",
+        "reference": 63,
+        "domain": "push",
+        "env": 42
+      },
+      {
+        "arm": "alignment",
+        "reference": 59,
+        "domain": "clean",
+        "env": 43
+      },
+      {
+        "arm": "alignment",
+        "reference": 56,
+        "domain": "push",
+        "env": 44
+      },
+      {
+        "arm": "shuffled",
+        "reference": 65,
+        "domain": "push",
+        "env": 45
+      },
+      {
+        "arm": "fixed",
+        "reference": 60,
+        "domain": "push",
+        "env": 46
+      },
+      {
+        "arm": "fixed",
+        "reference": 61,
+        "domain": "push",
+        "env": 47
+      },
+      {
+        "arm": "fixed",
+        "reference": 64,
+        "domain": "push",
+        "env": 48
+      },
+      {
+        "arm": "alignment",
+        "reference": 58,
+        "domain": "push",
+        "env": 49
+      },
+      {
+        "arm": "planned",
+        "reference": 65,
+        "domain": "push",
+        "env": 50
+      },
+      {
+        "arm": "alignment",
+        "reference": 61,
+        "domain": "clean",
+        "env": 51
+      },
+      {
+        "arm": "actual",
+        "reference": 64,
+        "domain": "clean",
+        "env": 52
+      },
+      {
+        "arm": "repeat",
+        "reference": 55,
+        "domain": "push",
+        "env": 53
+      },
+      {
+        "arm": "planned",
+        "reference": 62,
+        "domain": "push",
+        "env": 54
+      },
+      {
+        "arm": "shuffled",
+        "reference": 55,
+        "domain": "clean",
+        "env": 55
+      },
+      {
+        "arm": "planned",
+        "reference": 57,
+        "domain": "clean",
+        "env": 56
+      },
+      {
+        "arm": "planned",
+        "reference": 65,
+        "domain": "clean",
+        "env": 57
+      },
+      {
+        "arm": "repeat",
+        "reference": 64,
+        "domain": "push",
+        "env": 58
+      },
+      {
+        "arm": "shuffled",
+        "reference": 62,
+        "domain": "clean",
+        "env": 59
+      },
+      {
+        "arm": "alignment",
+        "reference": 65,
+        "domain": "clean",
+        "env": 60
+      },
+      {
+        "arm": "shuffled",
+        "reference": 60,
+        "domain": "clean",
+        "env": 61
+      },
+      {
+        "arm": "fixed",
+        "reference": 65,
+        "domain": "push",
+        "env": 62
+      },
+      {
+        "arm": "actual",
+        "reference": 59,
+        "domain": "clean",
+        "env": 63
+      },
+      {
+        "arm": "actual",
+        "reference": 55,
+        "domain": "push",
+        "env": 64
+      },
+      {
+        "arm": "alignment",
+        "reference": 64,
+        "domain": "clean",
+        "env": 65
+      },
+      {
+        "arm": "shuffled",
+        "reference": 57,
+        "domain": "clean",
+        "env": 66
+      },
+      {
+        "arm": "alignment",
+        "reference": 60,
+        "domain": "clean",
+        "env": 67
+      },
+      {
+        "arm": "repeat",
+        "reference": 59,
+        "domain": "push",
+        "env": 68
+      },
+      {
+        "arm": "repeat",
+        "reference": 61,
+        "domain": "push",
+        "env": 69
+      },
+      {
+        "arm": "fixed",
+        "reference": 58,
+        "domain": "push",
+        "env": 70
+      },
+      {
+        "arm": "shuffled",
+        "reference": 56,
+        "domain": "clean",
+        "env": 71
+      },
+      {
+        "arm": "alignment",
+        "reference": 58,
+        "domain": "clean",
+        "env": 72
+      },
+      {
+        "arm": "fixed",
+        "reference": 65,
+        "domain": "clean",
+        "env": 73
+      },
+      {
+        "arm": "shuffled",
+        "reference": 59,
+        "domain": "clean",
+        "env": 74
+      },
+      {
+        "arm": "repeat",
+        "reference": 62,
+        "domain": "push",
+        "env": 75
+      },
+      {
+        "arm": "actual",
+        "reference": 58,
+        "domain": "clean",
+        "env": 76
+      },
+      {
+        "arm": "alignment",
+        "reference": 60,
+        "domain": "push",
+        "env": 77
+      },
+      {
+        "arm": "shuffled",
+        "reference": 63,
+        "domain": "clean",
+        "env": 78
+      },
+      {
+        "arm": "repeat",
+        "reference": 55,
+        "domain": "clean",
+        "env": 79
+      },
+      {
+        "arm": "alignment",
+        "reference": 61,
+        "domain": "push",
+        "env": 80
+      },
+      {
+        "arm": "actual",
+        "reference": 62,
+        "domain": "clean",
+        "env": 81
+      },
+      {
+        "arm": "alignment",
+        "reference": 64,
+        "domain": "push",
+        "env": 82
+      },
+      {
+        "arm": "shuffled",
+        "reference": 64,
+        "domain": "push",
+        "env": 83
+      },
+      {
+        "arm": "alignment",
+        "reference": 65,
+        "domain": "push",
+        "env": 84
+      },
+      {
+        "arm": "fixed",
+        "reference": 62,
+        "domain": "clean",
+        "env": 85
+      },
+      {
+        "arm": "shuffled",
+        "reference": 61,
+        "domain": "push",
+        "env": 86
+      },
+      {
+        "arm": "repeat",
+        "reference": 58,
+        "domain": "push",
+        "env": 87
+      },
+      {
+        "arm": "fixed",
+        "reference": 64,
+        "domain": "clean",
+        "env": 88
+      },
+      {
+        "arm": "planned",
+        "reference": 57,
+        "domain": "push",
+        "env": 89
+      },
+      {
+        "arm": "repeat",
+        "reference": 60,
+        "domain": "clean",
+        "env": 90
+      },
+      {
+        "arm": "alignment",
+        "reference": 59,
+        "domain": "push",
+        "env": 91
+      },
+      {
+        "arm": "alignment",
+        "reference": 62,
+        "domain": "push",
+        "env": 92
+      },
+      {
+        "arm": "shuffled",
+        "reference": 56,
+        "domain": "push",
+        "env": 93
+      },
+      {
+        "arm": "actual",
+        "reference": 65,
+        "domain": "push",
+        "env": 94
+      },
+      {
+        "arm": "repeat",
+        "reference": 63,
+        "domain": "push",
+        "env": 95
+      },
+      {
+        "arm": "alignment",
+        "reference": 56,
+        "domain": "clean",
+        "env": 96
+      },
+      {
+        "arm": "fixed",
+        "reference": 59,
+        "domain": "clean",
+        "env": 97
+      },
+      {
+        "arm": "fixed",
+        "reference": 60,
+        "domain": "clean",
+        "env": 98
+      },
+      {
+        "arm": "alignment",
+        "reference": 55,
+        "domain": "push",
+        "env": 99
+      },
+      {
+        "arm": "planned",
+        "reference": 60,
+        "domain": "clean",
+        "env": 100
+      },
+      {
+        "arm": "repeat",
+        "reference": 57,
+        "domain": "push",
+        "env": 101
+      },
+      {
+        "arm": "shuffled",
+        "reference": 63,
+        "domain": "push",
+        "env": 102
+      },
+      {
+        "arm": "actual",
+        "reference": 56,
+        "domain": "clean",
+        "env": 103
+      },
+      {
+        "arm": "planned",
+        "reference": 58,
+        "domain": "push",
+        "env": 104
+      },
+      {
+        "arm": "alignment",
+        "reference": 63,
+        "domain": "clean",
+        "env": 105
+      },
+      {
+        "arm": "actual",
+        "reference": 64,
+        "domain": "push",
+        "env": 106
+      },
+      {
+        "arm": "repeat",
+        "reference": 60,
+        "domain": "push",
+        "env": 107
+      },
+      {
+        "arm": "actual",
+        "reference": 57,
+        "domain": "push",
+        "env": 108
+      },
+      {
+        "arm": "fixed",
+        "reference": 57,
+        "domain": "push",
+        "env": 109
+      },
+      {
+        "arm": "actual",
+        "reference": 59,
+        "domain": "push",
+        "env": 110
+      },
+      {
+        "arm": "planned",
+        "reference": 61,
+        "domain": "clean",
+        "env": 111
+      },
+      {
+        "arm": "shuffled",
+        "reference": 65,
+        "domain": "clean",
+        "env": 112
+      },
+      {
+        "arm": "shuffled",
+        "reference": 61,
+        "domain": "clean",
+        "env": 113
+      },
+      {
+        "arm": "fixed",
+        "reference": 59,
+        "domain": "push",
+        "env": 114
+      },
+      {
+        "arm": "repeat",
+        "reference": 59,
+        "domain": "clean",
+        "env": 115
+      },
+      {
+        "arm": "fixed",
+        "reference": 55,
+        "domain": "push",
+        "env": 116
+      },
+      {
+        "arm": "fixed",
+        "reference": 63,
+        "domain": "push",
+        "env": 117
+      },
+      {
+        "arm": "repeat",
+        "reference": 65,
+        "domain": "push",
+        "env": 118
+      },
+      {
+        "arm": "shuffled",
+        "reference": 55,
+        "domain": "push",
+        "env": 119
+      },
+      {
+        "arm": "repeat",
+        "reference": 65,
+        "domain": "clean",
+        "env": 120
+      },
+      {
+        "arm": "shuffled",
+        "reference": 58,
+        "domain": "clean",
+        "env": 121
+      },
+      {
+        "arm": "planned",
+        "reference": 64,
+        "domain": "clean",
+        "env": 122
+      },
+      {
+        "arm": "actual",
+        "reference": 56,
+        "domain": "push",
+        "env": 123
+      },
+      {
+        "arm": "repeat",
+        "reference": 56,
+        "domain": "push",
+        "env": 124
+      },
+      {
+        "arm": "shuffled",
+        "reference": 57,
+        "domain": "push",
+        "env": 125
+      },
+      {
+        "arm": "actual",
+        "reference": 60,
+        "domain": "clean",
+        "env": 126
+      },
+      {
+        "arm": "shuffled",
+        "reference": 58,
+        "domain": "push",
+        "env": 127
+      },
+      {
+        "arm": "shuffled",
+        "reference": 64,
+        "domain": "clean",
+        "env": 128
+      },
+      {
+        "arm": "planned",
+        "reference": 56,
+        "domain": "clean",
+        "env": 129
+      },
+      {
+        "arm": "fixed",
+        "reference": 58,
+        "domain": "clean",
+        "env": 130
+      },
+      {
+        "arm": "repeat",
+        "reference": 63,
+        "domain": "clean",
+        "env": 131
+      }
+    ],
+    "references": [
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65
+    ],
+    "branch_step": 78,
+    "context_steps": [
+      50,
+      53,
+      55,
+      58,
+      60,
+      63,
+      65,
+      68,
+      70,
+      73,
+      75,
+      78
+    ],
+    "context_human_frames": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "policy_sha256": "61b760f62c8d057bbe5217a57304051fdacec2aa93617f910a3d6a19aaf818b1",
+    "original_reference_identity_max_abs_error": 0.0,
+    "prefix_sha256": "da53b8f52c7f063591248dcc0a81980fcace8acda5822663f53a24b4ad05920a",
+    "protocol_sha256": "7e647946d78f7bfe631370c5775e07e64f3d88e145fc8bf22552a97c83f2ae08",
+    "feedback_source": "same ongoing actual Isaac Lab episode",
+    "no_PPO_updates": true,
+    "no_branch_reset": true,
+    "randomized_physical_slots": true,
+    "exact_cross_arm_solver_clone": false,
+    "world_goal_sha256": "8b4602891c641097f8f98f1abcac8c5ef3dd944b14ca8bb8c0fb865e3dea1e8b",
+    "world_goal_count": 132,
+    "original_event_s_sha256": "9d7a9d44db228285b036367f10b10d56c9d728b1eb94babf86cddb664db5fcdb",
+    "original_event_s_count": 132
+  },
+  "generation_inputs": {
+    "status": "PASS",
+    "seed": 42,
+    "pairs": [
+      {
+        "reference": 55,
+        "domain": "clean"
+      },
+      {
+        "reference": 55,
+        "domain": "push"
+      },
+      {
+        "reference": 56,
+        "domain": "clean"
+      },
+      {
+        "reference": 56,
+        "domain": "push"
+      },
+      {
+        "reference": 57,
+        "domain": "clean"
+      },
+      {
+        "reference": 57,
+        "domain": "push"
+      },
+      {
+        "reference": 58,
+        "domain": "clean"
+      },
+      {
+        "reference": 58,
+        "domain": "push"
+      },
+      {
+        "reference": 59,
+        "domain": "clean"
+      },
+      {
+        "reference": 59,
+        "domain": "push"
+      },
+      {
+        "reference": 60,
+        "domain": "clean"
+      },
+      {
+        "reference": 60,
+        "domain": "push"
+      },
+      {
+        "reference": 61,
+        "domain": "clean"
+      },
+      {
+        "reference": 61,
+        "domain": "push"
+      },
+      {
+        "reference": 62,
+        "domain": "clean"
+      },
+      {
+        "reference": 62,
+        "domain": "push"
+      },
+      {
+        "reference": 63,
+        "domain": "clean"
+      },
+      {
+        "reference": 63,
+        "domain": "push"
+      },
+      {
+        "reference": 64,
+        "domain": "clean"
+      },
+      {
+        "reference": 64,
+        "domain": "push"
+      },
+      {
+        "reference": 65,
+        "domain": "clean"
+      },
+      {
+        "reference": 65,
+        "domain": "push"
+      }
+    ],
+    "samples": [
+      {
+        "reference": 55,
+        "domain": "clean",
+        "actual_source_environment": 0,
+        "human_sample": 48,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 55,
+        "domain": "push",
+        "actual_source_environment": 64,
+        "human_sample": 48,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 56,
+        "domain": "clean",
+        "actual_source_environment": 103,
+        "human_sample": 66,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 56,
+        "domain": "push",
+        "actual_source_environment": 123,
+        "human_sample": 66,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 57,
+        "domain": "clean",
+        "actual_source_environment": 9,
+        "human_sample": 50,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 57,
+        "domain": "push",
+        "actual_source_environment": 108,
+        "human_sample": 50,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 58,
+        "domain": "clean",
+        "actual_source_environment": 76,
+        "human_sample": 15,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 58,
+        "domain": "push",
+        "actual_source_environment": 37,
+        "human_sample": 15,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 59,
+        "domain": "clean",
+        "actual_source_environment": 63,
+        "human_sample": 54,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 59,
+        "domain": "push",
+        "actual_source_environment": 110,
+        "human_sample": 54,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 60,
+        "domain": "clean",
+        "actual_source_environment": 126,
+        "human_sample": 34,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 60,
+        "domain": "push",
+        "actual_source_environment": 17,
+        "human_sample": 34,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 61,
+        "domain": "clean",
+        "actual_source_environment": 29,
+        "human_sample": 68,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 61,
+        "domain": "push",
+        "actual_source_environment": 25,
+        "human_sample": 68,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 62,
+        "domain": "clean",
+        "actual_source_environment": 81,
+        "human_sample": 33,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 62,
+        "domain": "push",
+        "actual_source_environment": 41,
+        "human_sample": 33,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 63,
+        "domain": "clean",
+        "actual_source_environment": 27,
+        "human_sample": 82,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 63,
+        "domain": "push",
+        "actual_source_environment": 21,
+        "human_sample": 82,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 64,
+        "domain": "clean",
+        "actual_source_environment": 52,
+        "human_sample": 83,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 64,
+        "domain": "push",
+        "actual_source_environment": 106,
+        "human_sample": 83,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 65,
+        "domain": "clean",
+        "actual_source_environment": 28,
+        "human_sample": 92,
+        "first_prefix_fall_step": null
+      },
+      {
+        "reference": 65,
+        "domain": "push",
+        "actual_source_environment": 94,
+        "human_sample": 92,
+        "first_prefix_fall_step": null
+      }
+    ],
+    "branch_ready_sha256": "0f225d9655b11a95a6bead5300fccbe4581efe42b0a563613cd554e6eee94930",
+    "prefix_sha256": "da53b8f52c7f063591248dcc0a81980fcace8acda5822663f53a24b4ad05920a",
+    "hints_sha256": "70663a50d73a84ff769b3b459cbefb8f43acc972a6ee12223967d25b41011828",
+    "bridge_sha256": "1132e2659526a72c519bc7b58e51b804e481eb87be0b2dc5fbeb917373bd720a",
+    "official_human_sha256": "98d40fae4e8436ee5018ff83fbb589a176f81dd025faf92ee5a8eb2296436396",
+    "feedback_source": "current paused actual Isaac Lab episode",
+    "future_goal_bitwise_preserved": true,
+    "sparse_context_joints": [
+      0,
+      7,
+      8
+    ],
+    "past_only": true,
+    "zero_residual_identity": true,
+    "translation_equivariance": true,
+    "no_extra_IK": true,
+    "full_HumanML_prefix": false,
+    "innovation_validated": false
+  },
+  "GPU": "0, NVIDIA RTX A6000, 10447 MiB, 38105 MiB, 49140 MiB, 51 %\n1, NVIDIA RTX A6000, 13464 MiB, 35086 MiB, 49140 MiB, 93 %\n",
+  "world_queue": {
+    "status": "RUNNING",
+    "stage": "train",
+    "arm": "P0",
+    "seed": 43,
+    "updated_unix": 1791380316.2645397
+  }
+}

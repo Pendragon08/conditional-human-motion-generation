@@ -1,0 +1,57 @@
+{
+  "status": "FAIL",
+  "stage": "dispatch_envelope_before_native_log",
+  "checked_utc": "2026-10-07T13:56:34.735086+00:00",
+  "protocol_sha256": "7e647946d78f7bfe631370c5775e07e64f3d88e145fc8bf22552a97c83f2ae08",
+  "isaac_source_sha256": "21ba9993cc13ddd97d896cc452c180b418f06a817d473e91684c95aab71ef799",
+  "wrapper_sha256": "5f53ddf4b2815f2327547e22e391b1b0ab61ea91985cae3693a61f4de3bf9e2f",
+  "exit_code": null,
+  "dispatch_tmux_exit_code": 0,
+  "summary_sha256": null,
+  "source_vs_doc_review": "PASS_with_scope_limitations",
+  "actual_shape_checks": {
+    "performed": false,
+    "reason": "No native log, summary, receipt or output exists; session exited before observable native process."
+  },
+  "source_review_limitations": [
+    "Witness does not test diffusion generation, retarget acceptance, candidate reference switching or feedback usefulness.",
+    "Applied torso-local push transformation is verified by source review, but raw trace does not record actual force vectors.",
+    "The source does not claim exact cross-arm PhysX prefix identity."
+  ],
+  "failure": "Background dispatch envelope exited before native log/physics output creation. Cause not captured; multi-layer command parsing is suspected, not established. Native script has no observed execution. No autonomous retry.",
+  "no_PPO_updates_observed": true,
+  "innovation_validated": false,
+  "check_evidence": {
+    "artifacts/feedback_paused_witness_20261007": {
+      "exists": false
+    },
+    "artifacts/monitoring/r3_feedback_paused_witness_20261007.log": {
+      "exists": false
+    },
+    "artifacts/monitoring/r3_feedback_paused_witness_20261007.exit.json": {
+      "exists": false
+    },
+    "tmux": {
+      "exit": 1,
+      "stderr": "can't find session: r3_feedback_paused_witness_20261007\n"
+    },
+    "process": {
+      "exit": 1,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "readonly_precheck": {
+    "remote_local_hashes_equal": true,
+    "gpu1_free_mib": 39419,
+    "disk_free_gib": 48.02577209472656,
+    "output_absent_before_dispatch": true
+  },
+  "requested_invocation": [
+    "bash",
+    "scripts/r3_feedback_paused_stage_20261007.sh",
+    "witness",
+    "42",
+    "/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/feedback_paused_witness_20261007"
+  ]
+}

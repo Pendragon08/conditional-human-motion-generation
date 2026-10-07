@@ -1,0 +1,104 @@
+{
+  "status": "PASS",
+  "witness": "fresh_agent_follows_revised_document_v2",
+  "verified_at_utc": "2026-10-07T14:01:54.655559+00:00",
+  "scope": "Same-family independent source/invocation kernel witness only; not independent laboratory reproduction or innovation effectiveness",
+  "document": "docs/feedback_paused_isaac_invocation_20261007.md",
+  "document_sha256": "f596bfeac1ce39e69adf90017a342ff7b65e039e2f6af192ecc5b28e0014e345",
+  "protocol_sha256": "7e647946d78f7bfe631370c5775e07e64f3d88e145fc8bf22552a97c83f2ae08",
+  "isaac_source_sha256": "21ba9993cc13ddd97d896cc452c180b418f06a817d473e91684c95aab71ef799",
+  "wrapper_sha256": "5f53ddf4b2815f2327547e22e391b1b0ab61ea91985cae3693a61f4de3bf9e2f",
+  "dispatcher_sha256": "738fe762356d2aab8372c3d281b9d34d673f1787a4d3f66c5cf5c8b46d6fc4b5",
+  "exact_documented_command": "/usr/bin/python3 scripts/r3_feedback_paused_witness_dispatch_20261007.py",
+  "physics_invocations": 1,
+  "exit_code": 0,
+  "summary_sha256": "52ae27950d3b9dd595b130e2c8e8f4aaadaad7c15070068b731a5107965b3af1",
+  "summary_scope": "WITNESS_ONLY",
+  "native_log_sha256": "78d70295dbdf7064574434ef702d2129dea3d292e6b277e6d27885ee41894151",
+  "rollout_sha256": "7dbae53c993f32fe882acc093789c2f2796027f211f37fd662aa369731f548ed",
+  "prefix_sha256": "1128bf376942a4e3c17b1517d16fe73101ae07b96fbc72fe99abef89285cc161",
+  "branch_sha256": "f5faba9e6b12a53e5f8dc7e89718e81c5741a1efe3c11a56c96d3635bc108dbc",
+  "frozen_policy_sha256": "61b760f62c8d057bbe5217a57304051fdacec2aa93617f910a3d6a19aaf818b1",
+  "num_envs": 24,
+  "steps": 90,
+  "branch_step": 78,
+  "checks": {
+    "source_hashes_match_local_server": true,
+    "old_session_output_log_exit_and_child_absent_before_dispatch": true,
+    "native_progress_0_25_50_75_and_complete_sentinel": true,
+    "normal_child_exit0": true,
+    "finite_prefix_and_rollout": true,
+    "prefix_matches_first78_rollout_frames_bitwise": true,
+    "branch_inclusive_context_last_frame_matches_actual_step78_bitwise": true,
+    "branch_reference_context_matches_step78_bitwise": true,
+    "original_reference_identity_max_abs_error": 0.0,
+    "original_goal_event_identity_preserved": true,
+    "references": [
+      55,
+      56
+    ],
+    "domains": [
+      "clean",
+      "push"
+    ],
+    "arms": [
+      "fixed",
+      "repeat",
+      "planned",
+      "alignment",
+      "actual",
+      "shuffled"
+    ],
+    "actor_observation_dimension_kernel_asserted": 626,
+    "actor_action_shape": [
+      90,
+      24,
+      29
+    ],
+    "tracked_reference_joint_shape": [
+      90,
+      24,
+      27
+    ],
+    "actual_body_shape": [
+      90,
+      24,
+      3,
+      3
+    ],
+    "prefix_actual_body_shape": [
+      78,
+      24,
+      3,
+      3
+    ],
+    "branch_inclusive_context_shape": [
+      79,
+      24,
+      3,
+      3
+    ],
+    "body_max_temporal_delta_m": 0.07906067371368408,
+    "action_max_temporal_delta": 2.753209352493286,
+    "no_PPO_updates": true,
+    "no_extra_IK": true,
+    "no_branch_reset": true,
+    "no_viewer_UDP": true
+  },
+  "source_review": {
+    "world_push": "Source converts configured world +y 80N push to torso-local frame with quat_apply_inverse before external force API, steps50:60 only for push domain",
+    "clock_and_goal": "Assertions enforce fixed IDs, original clock, preserved lib grab_pos/offsets/switch_idxs; no automatic resets",
+    "dimensions": "29 actor actions; MotionLib original tracks27 reference joints, not all29 robot joints",
+    "review_limitations": [
+      "Witness bypasses diffusion, retarget, candidate reference switching, and long pause awaiting candidates; full pilot must separately validate those stages.",
+      "No claim of exact cross-arm PhysX prefix clone or causal effect of feedback.",
+      "Only2 previously exposed refs,1 seed,90 steps; no task-generalization or entity-contact result.",
+      "Initial read-only inspector incorrectly asserted29 reference joints; corrected to observed/source27; no physics rerun.",
+      "Previous nested launcher failure preserved separately in independent_witness_dispatch_v1.json."
+    ]
+  },
+  "innovation_validated": false,
+  "existing_jobs_modified": false,
+  "stage_wall_s": 9.214304685592651,
+  "gpu_snapshot_after_witness_csv": "0, 10433, 49140, 38118\n1, 9130, 49140, 39419\n"
+}
