@@ -33,10 +33,13 @@ partial_section=''
 if partial_path.exists():
  partial=json.loads(partial_path.read_text(encoding='utf-8'))
  partial_rows=''.join(f"<tr><td>{html.escape(x['arm'])}</td><td>{x['seed']}</td><td>{100*x['first_episode_success']:.1f}%</td><td>{100*x['first_episode_failure']:.2f}%</td><td>{x['recovery_RMSE_AUC_rad_s']:.4f}</td><td>{x['clean_recovery_RMSE_rad']:.4f}</td></tr>" for x in partial['rows'])
- partial_section=f'''<section><h2>当前已完成结果 · 尚未作最终判断</h2><p>已完成训练{partial['completed_train_runs']}/15组、最终评估{partial['completed_eval_runs']}/15组。北京时间快照：{html.escape(partial['observed_beijing'])}。</p>
+ stopped_notice=''
+ if partial.get('queue_status')=='FAILED':
+  stopped_notice='<p><strong>队列已停止，没有正式PPO正在运行。</strong>W-correct seed44最后写到41/500轮，未产生最终检查点或完成哨兵；错配监督seed44未启动。子链退出码0不能替代完成证据，具体提前退出原因尚待诊断。画面停留在最后训练姿态，持续截图不等于训练继续。</p>'
+ partial_section=f'''<section><h2>当前已完成结果 · 尚未作最终判断</h2><p>已完成训练{partial['completed_train_runs']}/15组、最终评估{partial['completed_eval_runs']}/15组。北京时间快照：{html.escape(partial['observed_beijing'])}。</p>{stopped_notice}
 <table><thead><tr><th>组别</th><th>种子</th><th>首回合成功</th><th>首回合失效</th><th>受扰恢复积分<br>rad·s，越低越好</th><th>无扰恢复误差<br>rad，越低越好</th></tr></thead><tbody>{partial_rows}</tbody></table>
 <p>全部为500追加更新后的固定新11参考评估；各参考等权，首回合失效后的帧使用预定2rad插补。0%表示本协议下任务未达成，不能把正常退出记成执行故障；误差较低也不能单独证明踢击任务完成。</p>
-<p>本次包含新参考、固定初始phase与受扰分组，与旧官方66参考85.3%不是同配置。三种子和错配对照尚未齐全，未进行最终控制Gate判定，不据中途成绩调整预算、方法或阈值。当前产物包含场景轨迹，尚非已核验的最终评估视频。</p></section>'''
+<p>本次包含新参考、固定初始phase与受扰分组，与旧官方66参考85.3%不是同配置。三种子和错配对照尚未齐全，未进行最终控制Gate判定，不据中途成绩调整预算、方法或阈值。应先审计新协议的0成功及中断原因。当前产物包含场景轨迹，尚非已核验的最终评估视频。</p></section>'''
 body=f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>世界模型＋PPO · 控制消融进度</title><style>
 *{{box-sizing:border-box}}body{{margin:0;background:#f1f4f8;color:#16263e;font:16px/1.7 system-ui,sans-serif}}
