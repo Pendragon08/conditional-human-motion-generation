@@ -1,4 +1,5 @@
 """Export small evidence files; licensed motion arrays remain server-local."""
+import argparse
 import tarfile
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
@@ -9,12 +10,19 @@ names=['contact_sampling_v6_20261011','contact_sampling_v7_20261011',
        'contact_point_human_v17_20261012','contact_point_analysis_v18_20261012','velocity_reference_fixture_v19_20261012',
        'contact_point_human_v20_20261012','contact_com_metric_v21_20261012','articulated_contact_fixture_v22_20261012','contact_com_validation_v24_20261012',
        'metric_runtime_diagnostic_v25_20261012','contact_com_runtime_v26_20261012','fixed_reference_com_v27_20261012','condition_feedback_formal_v28_20261012','condition_feedback_components_v32_20261012','mocap_reference_control_v33_20261012']
-archive=root/'results/contact_diagnostics_public_v10_20261011.tar.gz'
+parser=argparse.ArgumentParser()
+parser.add_argument('--exclude',action='append',default=[])
+parser.add_argument('--output',default='contact_diagnostics_public_v10_20261011.tar.gz')
+args=parser.parse_args()
+assert Path(args.output).name==args.output and args.output.endswith('.tar.gz')
+archive=root/'results'/args.output
+assert not archive.exists(), 'Preserve previous evidence archives; select a new output name'
 with tarfile.open(archive,'w:gz') as tar:
     for name in names:
+        if name in args.exclude: continue
         directory=root/'results'/name
         for path in sorted(directory.rglob('*')):
-            if not path.is_file() or path.suffix not in ('.json','.yaml','.csv','.md','.log'):
+            if not path.is_file() or path.suffix not in ('.json','.yaml','.csv','.md','.log','.html'):
                 continue
             if path.name in ('source_manifest.json','measurement_manifest.json'):
                 continue

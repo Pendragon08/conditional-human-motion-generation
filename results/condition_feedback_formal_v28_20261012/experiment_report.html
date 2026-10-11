@@ -1,0 +1,25 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>物理引导条件动作生成实验</title>
+<style>body{font:16px/1.7 system-ui,sans-serif;max-width:1200px;margin:36px auto;padding:0 20px;color:#203040}
+table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #ccd4dd;padding:8px;text-align:left}
+th{background:#eef4fa}.note{background:#fff4da;padding:18px;border-left:5px solid #c98200}a{color:#175ea2}
+@media print{body{margin:0;max-width:none}table{break-inside:auto}tr{break-inside:avoid}}</style>
+<h1>物理引导条件动作生成：对比与消融</h1><p>2026-10-11 · 冻结生成器与控制器 · 仅仿真</p>
+<div class="note"><strong>阶段结论：</strong>Joint-pass gain, confidence interval, or three-seed direction failed; Original-condition error non-regression failed。当前不能宣称论文创新成立。
+G1和下游训练只有通过人体门槛才继续。</div>
+<h2>任务与公平设置</h2><p>48个原始MoCap来源，跳跃/舞蹈各24个；三个世界目标偏移、三个生成种子，
+每组432个首轮尝试。镜像与切片按原始source_path分组。本轮测试独立于本轮训练来源，但不保证未被发布权重预训练见过。
+未提前终止不等于合格；构建失败、回放失败均保留分母。</p>
+<h2>独立参考回放结果</h2><table><tr><th>方法</th><th>尝试</th><th>联合合格</th><th>合格率</th><th>回放完成</th>
+<th>终点误差(m)</th><th>提前终止</th></tr><tr><td>raw</td><td>432</td><td>0</td><td>0.00%</td><td>411</td><td>0.332</td><td>21</td></tr><tr><td>ordinary</td><td>432</td><td>0</td><td>0.00%</td><td>413</td><td>0.350</td><td>19</td></tr><tr><td>random_best</td><td>432</td><td>0</td><td>0.00%</td><td>413</td><td>0.318</td><td>19</td></tr><tr><td>native_single</td><td>432</td><td>0</td><td>0.00%</td><td>417</td><td>0.360</td><td>15</td></tr><tr><td>native_best</td><td>432</td><td>0</td><td>0.00%</td><td>418</td><td>0.315</td><td>14</td></tr><tr><td>proposed</td><td>432</td><td>0</td><td>0.00%</td><td>420</td><td>0.292</td><td>12</td></tr><tr><td>no_feedback</td><td>432</td><td>0</td><td>0.00%</td><td>417</td><td>0.360</td><td>15</td></tr><tr><td>shuffled</td><td>432</td><td>0</td><td>0.00%</td><td>423</td><td>0.319</td><td>9</td></tr><tr><td>planned_prefix</td><td>432</td><td>0</td><td>0.00%</td><td>414</td><td>0.305</td><td>18</td></tr><tr><td>tracking_only</td><td>432</td><td>0</td><td>0.00%</td><td>419</td><td>0.312</td><td>13</td></tr></table>
+<h2>候选方法相对基线的提升</h2><table><tr><th>基线</th><th>提升(百分点)</th><th>按来源聚类95%CI</th><th>三种子提升</th></tr><tr><td>ordinary</td><td>0.00</td><td>[0.00, 0.00]</td><td>{&#x27;11&#x27;: 0.0, &#x27;12&#x27;: 0.0, &#x27;13&#x27;: 0.0}</td></tr><tr><td>random_best</td><td>0.00</td><td>[0.00, 0.00]</td><td>{&#x27;11&#x27;: 0.0, &#x27;12&#x27;: 0.0, &#x27;13&#x27;: 0.0}</td></tr><tr><td>native_best</td><td>0.00</td><td>[0.00, 0.00]</td><td>{&#x27;11&#x27;: 0.0, &#x27;12&#x27;: 0.0, &#x27;13&#x27;: 0.0}</td></tr><tr><td>no_feedback</td><td>0.00</td><td>[0.00, 0.00]</td><td>{&#x27;11&#x27;: 0.0, &#x27;12&#x27;: 0.0, &#x27;13&#x27;: 0.0}</td></tr><tr><td>shuffled</td><td>0.00</td><td>[0.00, 0.00]</td><td>{&#x27;11&#x27;: 0.0, &#x27;12&#x27;: 0.0, &#x27;13&#x27;: 0.0}</td></tr><tr><td>planned_prefix</td><td>0.00</td><td>[0.00, 0.00]</td><td>{&#x27;11&#x27;: 0.0, &#x27;12&#x27;: 0.0, &#x27;13&#x27;: 0.0}</td></tr><tr><td>tracking_only</td><td>0.00</td><td>[0.00, 0.00]</td><td>{&#x27;11&#x27;: 0.0, &#x27;12&#x27;: 0.0, &#x27;13&#x27;: 0.0}</td></tr></table>
+<h2>消融解释</h2><p>random_best：相同候选预算下随机生成并筛选；native_best：使用实际执行前缀及坐标锚点；
+proposed：实际执行前缀及实际锚点、相同噪声、有界条件误差修正；no_feedback：计算预算相同但不修正条件；shuffled：打乱反馈来源；
+planned_prefix：同时替换为计划前缀和计划锚点；tracking_only：仅按跟踪表现选择。同一固定外部目标用于所有评价。</p>
+<h2>证据边界</h2><ul><li>足部滑移使用碰撞表面与刚体接触力代理，非实测接触点真值。</li>
+<li>原始运动、物理精化运动都重新提交固定跟踪器回放，未将精化输出直接当作执行成功。</li>
+<li>主表为适配后的CLoSD组件实验，不是Morph、PhysDiff或CLAIMS完整复现。</li>
+<li>没有音乐条件、接触力生成、真实机器人实验或未执行的下游训练分数。</li></ul>
+<p>参考：<a href="https://guytevet.github.io/CLoSD-page/">CLoSD</a>、
+<a href="https://xbpeng.github.io/projects/PARC/index.html">PARC</a>、
+<a href="https://github.com/WesleyXu224/CLAIMS_Official">CLAIMS</a>。</p>
+<p>完整配置、逐尝试结果与预算见同目录JSON/CSV；原始动作受上游许可约束，保留服务器。</p></html>
