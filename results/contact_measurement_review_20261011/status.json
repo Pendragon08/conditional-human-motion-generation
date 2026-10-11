@@ -144,11 +144,412 @@
     },
     "box_buffer_hypothesis_supported": false
   },
+  "box_v3": {
+    "known_physics_checks_both_pass": true,
+    "repeat_maximum_differences": {
+      "state": 0.0,
+      "net_contact_force": 0.0,
+      "constraint_force_sensor": 0.0
+    },
+    "original_state_and_sensor_differences": {
+      "repeat_a": {
+        "state": 0.0,
+        "constraint_force_sensor": 0.0
+      },
+      "repeat_b": {
+        "state": 0.0,
+        "constraint_force_sensor": 0.0
+      }
+    },
+    "state_and_sensor_unchanged": true,
+    "net_contact_repeatable_at_1mN": true,
+    "human_measurement_validated": false,
+    "method_efficacy_test": false,
+    "thresholds_changed": false,
+    "overleaf_results_sync": false,
+    "source_sha256": "4539bea6e0b05205b957751e5fa424fe4a4ec5c7a71ef445aea381212d7c8929",
+    "input_hashes": {
+      "original/repeat_a": "7ee565053a0c1424b1466a676be7b4dc5081b62473384fbb00ddfc31a9aec722",
+      "original/repeat_b": "f1f34e3554e2f907524bfb5aeb7fa6782db727b238760ca9cd91feb01372e5e3",
+      "cleared/repeat_a": "9d16ec394f9aa5aa5a508638d7da9d35f4066b6b7e580dcdbde81629f5e86ef7",
+      "cleared/repeat_b": "9d16ec394f9aa5aa5a508638d7da9d35f4066b6b7e580dcdbde81629f5e86ef7"
+    },
+    "cpu_export_hypothesis_supported": true
+  },
+  "v11": {
+    "actual": 0.0,
+    "reference": 0.0,
+    "quaternion": 0.0,
+    "linvel": 0.0,
+    "angvel": 0.0,
+    "contact_force": 0.0,
+    "maximum_surface_slip_fraction_difference": 0.0,
+    "classifications_equal": true,
+    "force_sampling_repeatable_at_1mN": true,
+    "status": "TIMING_WITNESS_ONLY",
+    "synchronized_producer_streams_before_read": true,
+    "explicit_physics_completion_fence": true,
+    "fence_calls": [
+      242,
+      242
+    ],
+    "reward_contact_mutation_max_N": [
+      0.0,
+      0.0
+    ],
+    "net_all_body_force_max_difference_N": 0.0,
+    "passive_sensor_diagnostics": {
+      "sensor": 0.0,
+      "root": 0.0,
+      "dof_pos": 0.0,
+      "dof_vel": 0.0,
+      "action": 0.0
+    },
+    "sensor_repeatable_at_1mN": true,
+    "passive_sensors_are_contact_ground_truth": false,
+    "cpu_export_vs_v10_state_max": {
+      "actual": 0.23990154266357422,
+      "reference": 0.1712254285812378,
+      "quaternion": 0.5831713676452637,
+      "linvel": 4.103732585906982,
+      "angvel": 20.47869873046875
+    },
+    "cpu_export_vs_v10_policy_max": {
+      "sensor": 98.27851104736328,
+      "root": 4.53726053237915,
+      "dof_pos": 0.7298330068588257,
+      "dof_vel": 20.438491821289062,
+      "action": 0.8627351522445679
+    },
+    "thresholds_changed": false,
+    "overleaf_results_sync": false
+  },
+  "quality11": {
+    "component_pass_counts": {
+      "condition_pass": 4,
+      "penetration_pass": 12,
+      "surface_slip_proxy_pass": 0,
+      "continuity_pass": 7,
+      "tracking_pass": 12,
+      "joint_pass": 0
+    },
+    "inputs": 12,
+    "components": [
+      {
+        "case_id": "008349:-0.15",
+        "condition_pass": true,
+        "penetration_pass": true,
+        "surface_slip_proxy_pass": false,
+        "continuity_pass": true,
+        "slip_proxy_fraction": 0.24719101123595505,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 328.50226440429645,
+        "tracking_pass": true,
+        "joint_pass": false
+      },
+      {
+        "case_id": "008349:0.0",
+        "condition_pass": true,
+        "penetration_pass": true,
+        "surface_slip_proxy_pass": false,
+        "continuity_pass": true,
+        "slip_proxy_fraction": 0.4144736842105263,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 538.5974822998045,
+        "tracking_pass": true,
+        "joint_pass": false
+      },
+      {
+        "case_id": "008349:0.15",
+        "condition_pass": true,
+        "penetration_pass": true,
+        "surface_slip_proxy_pass": false,
+        "continuity_pass": true,
+        "slip_proxy_fraction": 0.47019867549668876,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 671.9359436035155,
+        "tracking_pass": true,
+        "joint_pass": false
+      },
+      {
+        "case_id": "010957:-0.15",
+        "condition_pass": false,
+        "penetration_pass": true,
+        "surface_slip_proxy_pass": false,
+        "continuity_pass": true,
+        "slip_proxy_fraction": 0.45454545454545453,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 844.481881713867,
+        "tracking_pass": true,
+        "joint_pass": false
+      },
+      {
+        "case_id": "010957:0.0",
+        "condition_pass": false,
+        "penetration_pass": true,
+        "surface_slip_proxy_pass": false,
+        "continuity_pass": true,
+        "slip_proxy_fraction": 0.34444444444444444,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 731.404357910156,
+        "tracking_pass": true,
+        "joint_pass": false
+      },
+      {
+        "case_id": "010957:0.15",
+        "condition_pass": true,
+        "penetration_pass": true,
+        "surface_slip_proxy_pass": false,
+        "continuity_pass": true,
+        "slip_proxy_fraction": 0.5732484076433121,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 986.4832733154294,
+        "tracking_pass": true,
+        "joint_pass": false
+      },
+      {
+        "case_id": "008203:-0.15",
+        "condition_pass": false,
+        "penetration_pass": true,
+        "surface_slip_proxy_pass": false,
+        "continuity_pass": true,
+        "slip_proxy_fraction": 0.33727810650887574,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 412.2854782104482,
+        "tracking_pass": true,
+        "joint_pass": false
+      },
+      {
+        "case_id": "008203:0.0",
+        "condition_pass": false,
+        "penetration_pass": true,
+        "surface_slip_proxy_pass": false,
+        "continuity_pass": false,
+        "slip_proxy_fraction": 0.37662337662337664,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 1135.382409667968,
+        "tracking_pass": true,
+        "joint_pass": false
+      },
+      {
+        "case_id": "008203:0.15",
+        "condition_pass": false,
+        "penetration_pass": true,
+        "surface_slip_proxy_pass": false,
+        "continuity_pass": false,
+        "slip_proxy_fraction": 0.379746835443038,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 1152.9391418457028,
+        "tracking_pass": true,
+        "joint_pass": false
+      },
+      {
+        "case_id": "003483:-0.15",
+        "condition_pass": false,
+        "penetration_pass": true,
+        "surface_slip_proxy_pass": false,
+        "continuity_pass": false,
+        "slip_proxy_fraction": 0.5182481751824818,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 1379.9995422363281,
+        "tracking_pass": true,
+        "joint_pass": false
+      },
+      {
+        "case_id": "003483:0.0",
+        "condition_pass": false,
+        "penetration_pass": true,
+        "surface_slip_proxy_pass": false,
+        "continuity_pass": false,
+        "slip_proxy_fraction": 0.363013698630137,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 1114.5343688964842,
+        "tracking_pass": true,
+        "joint_pass": false
+      },
+      {
+        "case_id": "003483:0.15",
+        "condition_pass": false,
+        "penetration_pass": true,
+        "surface_slip_proxy_pass": false,
+        "continuity_pass": false,
+        "slip_proxy_fraction": 0.46710526315789475,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 1361.4590820312494,
+        "tracking_pass": true,
+        "joint_pass": false
+      }
+    ],
+    "airborne_net_force_diagnostic": [
+      {
+        "body": "L_Ankle",
+        "clear_geometric_separation_observations": 14,
+        "maximum_net_contact_norm_N": 98.02484130859375,
+        "positive_vertical_above_frozen10N": 0,
+        "note": "Clear ground separation diagnostic; self/other-body contacts not ruled out; not a replacement ground truth label."
+      },
+      {
+        "body": "L_Toe",
+        "clear_geometric_separation_observations": 5,
+        "maximum_net_contact_norm_N": 12.315078735351562,
+        "positive_vertical_above_frozen10N": 0,
+        "note": "Clear ground separation diagnostic; self/other-body contacts not ruled out; not a replacement ground truth label."
+      },
+      {
+        "body": "R_Ankle",
+        "clear_geometric_separation_observations": 16,
+        "maximum_net_contact_norm_N": 98.02484130859375,
+        "positive_vertical_above_frozen10N": 1,
+        "note": "Clear ground separation diagnostic; self/other-body contacts not ruled out; not a replacement ground truth label."
+      },
+      {
+        "body": "R_Toe",
+        "clear_geometric_separation_observations": 11,
+        "maximum_net_contact_norm_N": 0.0,
+        "positive_vertical_above_frozen10N": 0,
+        "note": "Clear ground separation diagnostic; self/other-body contacts not ruled out; not a replacement ground truth label."
+      }
+    ],
+    "thresholds_changed": false,
+    "route_comparisons_must_be_rerun": true,
+    "full_measurement_gate_passed": false,
+    "innovation_confirmed": false,
+    "qualification": "Stable exports and reset consistency pass; generated-motion quality still has a floor. Does not validate positive/negative humanoid quality discrimination or semantic retention.",
+    "input_hashes": {
+      "metadata.json": "bf3a69af8fd2c0974a262f0b63114d91c0dec5dc7d5b321c69365e3cbbb6af59",
+      "metrics.json": "c0eeca3675970a2a0fe8e4bbcfdc03a4540b5018a77585f09bbe1086cf1d5002",
+      "trajectories.npz": "3e41b4ed172ab25776ce9ba53a64447bef60af10114e1ab6bc6056ee6b282363"
+    }
+  },
+  "validation12": {
+    "entries": [
+      {
+        "seed": 11,
+        "mode": "planned",
+        "inputs": 72,
+        "completed": 70,
+        "condition_pass": 23,
+        "physical_pass": 0,
+        "tracking_pass": 53,
+        "joint_pass": 0,
+        "slip_proxy_pass": 0,
+        "penetration_pass": 72,
+        "continuity_pass": 27,
+        "original_goal_sha256": "d008fae01d78f5f8f752aa4791b824540aec5791fd36173306881bcb09584809",
+        "noise_sha256": "f6dfdb66a3401923ac10e0f05ce3c18155647222726d1a408dc1d37cf2aeec38",
+        "reset_gate_pass": true,
+        "metadata_sha256": "e2cb0c23e88710661ee9f19b941a00305cc2316904b1c424c5c9436674bde7bb",
+        "metrics_sha256": "5cdddd123b3faaf59a2977f82bb7e1758da94dd526118568d8a6913c014dbeab"
+      },
+      {
+        "seed": 11,
+        "mode": "native",
+        "inputs": 72,
+        "completed": 70,
+        "condition_pass": 13,
+        "physical_pass": 0,
+        "tracking_pass": 52,
+        "joint_pass": 0,
+        "slip_proxy_pass": 0,
+        "penetration_pass": 72,
+        "continuity_pass": 28,
+        "original_goal_sha256": "d008fae01d78f5f8f752aa4791b824540aec5791fd36173306881bcb09584809",
+        "noise_sha256": "f6dfdb66a3401923ac10e0f05ce3c18155647222726d1a408dc1d37cf2aeec38",
+        "reset_gate_pass": true,
+        "metadata_sha256": "adb93390a59b4bb96aced0818f93c6575dffb867de53416500fced80ef27ea45",
+        "metrics_sha256": "d6600f2aaf39674529b45b6d65e86a156ef963a01c63f98e1ac15c7b12ee2d23"
+      },
+      {
+        "seed": 12,
+        "mode": "planned",
+        "inputs": 72,
+        "completed": 70,
+        "condition_pass": 23,
+        "physical_pass": 0,
+        "tracking_pass": 53,
+        "joint_pass": 0,
+        "slip_proxy_pass": 0,
+        "penetration_pass": 72,
+        "continuity_pass": 24,
+        "original_goal_sha256": "d008fae01d78f5f8f752aa4791b824540aec5791fd36173306881bcb09584809",
+        "noise_sha256": "ee47b5bc94a0f2208a0498e24a8be6350af55ff26a1cd053432d6867583ab47f",
+        "reset_gate_pass": true,
+        "metadata_sha256": "858521f9f38373e2f7a4bd6903d5aedd39f4bbc80a6823f6c94c181e824a1b79",
+        "metrics_sha256": "c607bfec16bf505fbf0e8bb74567e8fec19309624b62ca0e098232e1a924972c"
+      },
+      {
+        "seed": 12,
+        "mode": "native",
+        "inputs": 72,
+        "completed": 70,
+        "condition_pass": 18,
+        "physical_pass": 0,
+        "tracking_pass": 54,
+        "joint_pass": 0,
+        "slip_proxy_pass": 0,
+        "penetration_pass": 72,
+        "continuity_pass": 20,
+        "original_goal_sha256": "d008fae01d78f5f8f752aa4791b824540aec5791fd36173306881bcb09584809",
+        "noise_sha256": "ee47b5bc94a0f2208a0498e24a8be6350af55ff26a1cd053432d6867583ab47f",
+        "reset_gate_pass": true,
+        "metadata_sha256": "a2ff8785aff47853233a6ae352131e0c3f371d59b254315e69a8972aa9e3287e",
+        "metrics_sha256": "349798b4a822fa26a882166cffc388017738a78cf183229be19c1a307239c598"
+      },
+      {
+        "seed": 13,
+        "mode": "planned",
+        "inputs": 72,
+        "completed": 70,
+        "condition_pass": 21,
+        "physical_pass": 0,
+        "tracking_pass": 52,
+        "joint_pass": 0,
+        "slip_proxy_pass": 0,
+        "penetration_pass": 72,
+        "continuity_pass": 28,
+        "original_goal_sha256": "d008fae01d78f5f8f752aa4791b824540aec5791fd36173306881bcb09584809",
+        "noise_sha256": "9e344303b9a5c856230f1d1ab4edc203547ed87b509ab9217c4ee3feae005f63",
+        "reset_gate_pass": true,
+        "metadata_sha256": "df2db815a34aa15c3b8dbf1f16084899c0f42184f6682b0c445908416195de12",
+        "metrics_sha256": "6cd2c5d5b9a245e71d3fa0921d8619b4b2f811fcf7fff083bde137f65180c385"
+      },
+      {
+        "seed": 13,
+        "mode": "native",
+        "inputs": 72,
+        "completed": 69,
+        "condition_pass": 16,
+        "physical_pass": 0,
+        "tracking_pass": 54,
+        "joint_pass": 0,
+        "slip_proxy_pass": 0,
+        "penetration_pass": 72,
+        "continuity_pass": 24,
+        "original_goal_sha256": "d008fae01d78f5f8f752aa4791b824540aec5791fd36173306881bcb09584809",
+        "noise_sha256": "9e344303b9a5c856230f1d1ab4edc203547ed87b509ab9217c4ee3feae005f63",
+        "reset_gate_pass": true,
+        "metadata_sha256": "70e7f94d79bf91da5997330b52d4d68a72d124290abc1f1f3cf010a6eeb8e4e2",
+        "metrics_sha256": "b8898baefc0cd9d59d94d17eb907ecfc9953d62026c3d2645332a24b0835a2e9"
+      }
+    ],
+    "attempts": 432,
+    "full_quality_floor": true,
+    "decision": "STOP_CONDITION_FEEDBACK_ROUTE_PENDING_PHYSICAL_QUALITY_DIAGNOSIS",
+    "thresholds_changed": false,
+    "confirmatory": false,
+    "innovation_confirmed": false,
+    "overleaf_results_sync": false,
+    "qualification": "New fixed CPU-export setting; no pooling with old route. Does not constitute innovation efficacy, known-good humanoid quality discrimination or downstream training."
+  },
   "input_hashes": {
     "results\\contact_sampling_v8_20261011\\sampling_summary.json": "0946153182349e0dc860ffa46caf36d4652f35cc4de0d5c5348ffb41cee84a47",
     "results\\contact_force_fixture_20261011\\repeat_comparison.json": "526fee07bf214dcd8ea878279c6619e36c81b0d87637a477b704ca780d9403fb",
     "results\\contact_sensor_v10_20261011\\sampling_summary.json": "df0672b347808b7b6bab90f284f0d21a0a8148b1258691dc832d0f030070c314",
     "results\\contact_force_fixture_v2_20261011\\repeat_comparison.json": "a9914175fd5371854d5c39109ed44bc895f3616bbf5c0812a617fdef50e7d689",
+    "results\\contact_force_fixture_v3_20261012\\repeat_comparison.json": "23a7195169bc1ecc2c1a6dd921287fef901d14a495a2a4f37d0b451b34831021",
+    "results\\contact_cpu_export_v11_20261012\\sampling_summary.json": "131f7b5b253df139247872354ea2a528970562099a852afc8b0ad894c4665dae",
+    "results\\contact_cpu_export_v11_20261012\\quality_diagnostic.json": "34ed5fe65c69f1881ecaf0bce985f805f5def24ed331e04d2c5ec057bf267ed4",
+    "results\\contact_cpu_validation_v12_20261012\\validation_summary.json": "6cfe8863a5f4f9c8be00fed370687a014017c70ee1fafafae4811fbfa43ed4dc",
     "results\\condition_feedback_probe_v2_20261011\\probe_summary.json": "583922e0a9d95c8610b499fdd439a970c6dc762881d02a4b701461e2ce7ae6b4"
   }
 }

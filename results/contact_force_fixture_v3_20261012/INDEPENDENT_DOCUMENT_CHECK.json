@@ -1,0 +1,90 @@
+{
+  "verdict": "PASS",
+  "checks": {
+    "frictionless_horizontal_net_force_below_1N": true,
+    "settled_stationary_height_within_1cm": true,
+    "settled_stationary_speed_below_2cm_s": true,
+    "net_force_weight_relative_error_below_10pct": true,
+    "sensor_force_weight_relative_error_below_10pct": true,
+    "sliding_velocity_retained_within_2cm_s": true,
+    "high_airborne_initial_force_below_1N": true,
+    "high_airborne_initial_sensor_below_1N": true,
+    "high_airborne_initial_height_above_ground": true
+  },
+  "metrics": {
+    "frictionless_horizontal_net_force_max_N": 0.0002561692672315985,
+    "settled_stationary_height_max_error_from_0_05m_m": 0.002000507712364194,
+    "settled_stationary_max_linear_speed_m_s": 0.0012658286616647925,
+    "settled_net_support_max_relative_error": 0.0001430375374298605,
+    "settled_sensor_support_max_relative_error": 0.00028154876740087224,
+    "sliding_velocity_max_vector_error_from_0_2m_s": 0.0012659566512264802,
+    "first20_airborne_max_net_force_N": 0.0,
+    "first20_airborne_max_sensor_force_N": 0.0,
+    "first20_airborne_min_height_m": 1.4134434461593628
+  },
+  "conventions": {
+    "settled_frames": "60:120, zero based; doc does not specify",
+    "expected_grounded_center_m": 0.05,
+    "stationary_fixture_index": 0,
+    "sliding_fixture_index": 1,
+    "airborne_fixture_index": 2,
+    "sliding_test": "all120 frames, full 3D velocity norm error",
+    "horizontal_test": "all120 frames, all4 fixtures, XY force norm"
+  },
+  "raw_sha256": "9d16ec394f9aa5aa5a508638d7da9d35f4066b6b7e580dcdbde81629f5e86ef7",
+  "raw_hash_matches_summary": true,
+  "arrays_finite": {
+    "state": true,
+    "net_contact_force": true,
+    "constraint_force_sensor": true
+  },
+  "shapes": {
+    "state": [
+      120,
+      4,
+      13
+    ],
+    "net_contact_force": [
+      120,
+      4,
+      3
+    ],
+    "constraint_force_sensor": [
+      120,
+      4,
+      6
+    ]
+  },
+  "checks_match_summary": true,
+  "bound_hashes": {
+    "scripts/contact_force_fixture_v3_20261012.py": "291f6c9ca8430a2ace6212ba305946c012986f8926540170b07093d503f85ea8",
+    "scripts/run_contact_force_fixture_v3_20261012.py": "02e54bb8c0b7a2e2b60cc1cbf7be160853b81f6cb4a90fb508953052b5608915",
+    "scripts/run_reset_alignment_checks_v4.py": "5d0a961b6ce9903fd666fdbae56736a68eddd1402ddf72793fc000ee0dea98d2",
+    "configs/env-closd-baseline-20261010.json": "e5f9e6b711b7c6221cfb01e3deab404c5849e521ec08a3d25dca1820a279fcf6",
+    "docs/contact_force_fixture_v3_20261012.md": "ae1156f166a182dbce1d7839fee4ef892fee82640750d3028bd17d5457ba77d4"
+  },
+  "current_remote_hashes": {
+    "scripts/contact_force_fixture_v3_20261012.py": "291f6c9ca8430a2ace6212ba305946c012986f8926540170b07093d503f85ea8",
+    "scripts/run_contact_force_fixture_v3_20261012.py": "02e54bb8c0b7a2e2b60cc1cbf7be160853b81f6cb4a90fb508953052b5608915",
+    "scripts/run_reset_alignment_checks_v4.py": "5d0a961b6ce9903fd666fdbae56736a68eddd1402ddf72793fc000ee0dea98d2",
+    "configs/env-closd-baseline-20261010.json": "e5f9e6b711b7c6221cfb01e3deab404c5849e521ec08a3d25dca1820a279fcf6",
+    "docs/contact_force_fixture_v3_20261012.md": "ae1156f166a182dbce1d7839fee4ef892fee82640750d3028bd17d5457ba77d4"
+  },
+  "canonical_env_sha256": "81bdf764e312bcc92e4969e5eb9d2d6d6043f14c037e5a588dabbd564871f780",
+  "current_local_hashes": {
+    "scripts/contact_force_fixture_v3_20261012.py": "291f6c9ca8430a2ace6212ba305946c012986f8926540170b07093d503f85ea8",
+    "scripts/run_contact_force_fixture_v3_20261012.py": "02e54bb8c0b7a2e2b60cc1cbf7be160853b81f6cb4a90fb508953052b5608915",
+    "scripts/run_reset_alignment_checks_v4.py": "5d0a961b6ce9903fd666fdbae56736a68eddd1402ddf72793fc000ee0dea98d2",
+    "configs/env-closd-baseline-20261010.json": "e5f9e6b711b7c6221cfb01e3deab404c5849e521ec08a3d25dca1820a279fcf6",
+    "docs/contact_force_fixture_v3_20261012.md": "ae1156f166a182dbce1d7839fee4ef892fee82640750d3028bd17d5457ba77d4"
+  },
+  "bound5files_current_remote_local_match": {
+    "scripts/contact_force_fixture_v3_20261012.py": true,
+    "scripts/run_contact_force_fixture_v3_20261012.py": true,
+    "scripts/run_reset_alignment_checks_v4.py": true,
+    "configs/env-closd-baseline-20261010.json": true,
+    "docs/contact_force_fixture_v3_20261012.md": true
+  },
+  "downloaded_raw_sha256": "9d16ec394f9aa5aa5a508638d7da9d35f4066b6b7e580dcdbde81629f5e86ef7",
+  "downloaded_raw_matches_remote": true
+}

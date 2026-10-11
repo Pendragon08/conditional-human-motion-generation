@@ -4,7 +4,7 @@ from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 names=['contact_sampling_v6_20261011','contact_sampling_v7_20261011',
        'contact_sampling_v8_20261011','contact_sensor_v9_20261011','contact_sensor_v10_20261011',
-       'contact_geometry_calibration_20261011','contact_force_fixture_20261011','contact_force_fixture_v2_20261011']
+       'contact_geometry_calibration_20261011','contact_force_fixture_20261011','contact_force_fixture_v2_20261011','contact_force_fixture_v3_20261012','contact_cpu_export_v11_20261012','contact_cpu_validation_v12_20261012']
 archive=root/'results/contact_diagnostics_public_v9_20261011.tar.gz'
 with tarfile.open(archive,'w:gz') as tar:
     for name in names:

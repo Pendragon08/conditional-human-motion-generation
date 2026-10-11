@@ -1,0 +1,397 @@
+{
+  "arrays": {
+    "actual": {
+      "shape": [
+        120,
+        12,
+        24,
+        3
+      ],
+      "dtype": "float32",
+      "finite": true
+    },
+    "reference": {
+      "shape": [
+        120,
+        12,
+        24,
+        3
+      ],
+      "dtype": "float32",
+      "finite": true
+    },
+    "quaternion": {
+      "shape": [
+        120,
+        12,
+        24,
+        4
+      ],
+      "dtype": "float32",
+      "finite": true
+    },
+    "linvel": {
+      "shape": [
+        120,
+        12,
+        24,
+        3
+      ],
+      "dtype": "float32",
+      "finite": true
+    },
+    "angvel": {
+      "shape": [
+        120,
+        12,
+        24,
+        3
+      ],
+      "dtype": "float32",
+      "finite": true
+    },
+    "contact_force": {
+      "shape": [
+        120,
+        12,
+        24,
+        3
+      ],
+      "dtype": "float32",
+      "finite": true
+    },
+    "valid": {
+      "shape": [
+        120,
+        12
+      ],
+      "dtype": "bool",
+      "finite": true
+    },
+    "terminated": {
+      "shape": [
+        12
+      ],
+      "dtype": "bool",
+      "finite": true
+    },
+    "reference_frame": {
+      "shape": [
+        120
+      ],
+      "dtype": "int32",
+      "finite": true
+    }
+  },
+  "reference_clock_exact_0_119": true,
+  "valid_samples": 1440,
+  "valid_lengths": [
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120,
+    120
+  ],
+  "terminated": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "reset_comparisons": {
+    "__humanoid_root_states": {
+      "equal": true,
+      "max_difference": 0.0,
+      "bootstrap_hash_matches": true,
+      "first_action_hash_matches": true
+    },
+    "__dof_pos": {
+      "equal": true,
+      "max_difference": 0.0,
+      "bootstrap_hash_matches": true,
+      "first_action_hash_matches": true
+    },
+    "__dof_vel": {
+      "equal": true,
+      "max_difference": 0.0,
+      "bootstrap_hash_matches": true,
+      "first_action_hash_matches": true
+    },
+    "__rigid_body_pos": {
+      "equal": true,
+      "max_difference": 0.0,
+      "bootstrap_hash_matches": true,
+      "first_action_hash_matches": true
+    },
+    "__rigid_body_rot": {
+      "equal": true,
+      "max_difference": 0.0,
+      "bootstrap_hash_matches": true,
+      "first_action_hash_matches": true
+    },
+    "__rigid_body_vel": {
+      "equal": true,
+      "max_difference": 0.0,
+      "bootstrap_hash_matches": true,
+      "first_action_hash_matches": true
+    },
+    "__rigid_body_ang_vel": {
+      "equal": true,
+      "max_difference": 0.0,
+      "bootstrap_hash_matches": true,
+      "first_action_hash_matches": true
+    }
+  },
+  "sensor_arrays": {
+    "sensor": {
+      "shape": [
+        120,
+        12,
+        4,
+        6
+      ],
+      "finite": true
+    },
+    "root": {
+      "shape": [
+        120,
+        12,
+        13
+      ],
+      "finite": true
+    },
+    "dof_pos": {
+      "shape": [
+        120,
+        12,
+        69
+      ],
+      "finite": true
+    },
+    "dof_vel": {
+      "shape": [
+        120,
+        12,
+        69
+      ],
+      "finite": true
+    },
+    "action": {
+      "shape": [
+        120,
+        12,
+        69
+      ],
+      "finite": true
+    }
+  },
+  "metadata": {
+    "sim_params": {
+      "dt": 0.01666666753590107,
+      "substeps": 2,
+      "use_gpu_pipeline": false,
+      "contact_collection": 2,
+      "physx_use_gpu": true
+    },
+    "bridge_buffers": {
+      "actor_root_state": {
+        "native_device": "cpu",
+        "policy_device": "cuda:0",
+        "shape": [
+          12,
+          13
+        ]
+      },
+      "dof_state": {
+        "native_device": "cpu",
+        "policy_device": "cuda:0",
+        "shape": [
+          828,
+          2
+        ]
+      },
+      "force_sensor": {
+        "native_device": "cpu",
+        "policy_device": "cuda:0",
+        "shape": [
+          48,
+          6
+        ]
+      },
+      "rigid_body_state": {
+        "native_device": "cpu",
+        "policy_device": "cuda:0",
+        "shape": [
+          288,
+          13
+        ]
+      },
+      "net_contact_force": {
+        "native_device": "cpu",
+        "policy_device": "cuda:0",
+        "shape": [
+          288,
+          3
+        ]
+      },
+      "dof_force": {
+        "native_device": "cpu",
+        "policy_device": "cuda:0",
+        "shape": [
+          828
+        ]
+      }
+    },
+    "bridge_calls": {
+      "refresh_dof_state_tensor": 125,
+      "refresh_actor_root_state_tensor": 125,
+      "refresh_rigid_body_state_tensor": 125,
+      "refresh_net_contact_force_tensor": 125,
+      "set_actor_root_state_tensor_indexed": 4,
+      "set_dof_state_tensor_indexed": 4,
+      "refresh_force_sensor_tensor": 124,
+      "refresh_dof_force_tensor": 124,
+      "set_dof_position_target_tensor": 120
+    },
+    "policy_observation_mode": 1,
+    "policy_observation_size": 574,
+    "sensor_metrics_used_for_selection": false,
+    "passive_sensor_bodies": [
+      "L_Ankle",
+      "L_Toe",
+      "R_Ankle",
+      "R_Toe"
+    ],
+    "passive_sensor_scope": "solver constraints only, world frame; articulated internal constraints may contribute; not ground-truth contact",
+    "completion_fence_calls": 242,
+    "completion_fence_protocol": "fetch_results(True) immediately after every native simulate including reset warmup; no extra simulate or tensor refresh",
+    "initial_reset_gate_pass": true,
+    "initial_rigid_cache_consistency": {
+      "_rigid_body_pos": 0.0,
+      "_rigid_body_rot": 0.0,
+      "_rigid_body_vel": 0.0,
+      "_rigid_body_ang_vel": 0.0
+    },
+    "body_coordinate_roundtrip_max_m": 0.0,
+    "target_world_roundtrip_max_m": 5.960464477539063e-08,
+    "generation_batch_calls": 1,
+    "total_diffusion_calls_including_warmup": 1,
+    "upstream_warmup_diffusion_calls": 0,
+    "generation_noise_sha256": "1a13fe432251f25e4aa92decf9dc07e208ed82a979948e32b82868b6c21b0ec1",
+    "generation_prefix_sha256": "f6779ae5bfb4440d83e63ec178940f7b01070b3a30ba133d71b44c2eb4f54a96",
+    "full_reset_calls_before_first_action": 3
+  },
+  "file_hashes": {
+    "versions.json": "f01b6b30bc873b6b67ec4f8a2cb5e80b74d5341757e61d93ff7a58a561ced2e5",
+    "frozen_thresholds.json": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "source_manifest.json": "a7065f535ee7adbc8bac95c5be2bc527cf740d43eabe3a40105ce6c471bf95de",
+    "requests/repeat_a.json": "92f6a5f8ae4e595effe378512274948a1ab335b68a661b8b7ffec7b81d852727",
+    "raw/repeat_a/metrics.json": "c0eeca3675970a2a0fe8e4bbcfdc03a4540b5018a77585f09bbe1086cf1d5002",
+    "raw/repeat_a/initial_states.npz": "866765c4e3c965f532efae1502cd2200c52bca9271ec41d195c52fa26740abed",
+    "raw/repeat_a/lineage.json": "74d397486ca5c668aad9f7d91ad13f8c9f12ce70f0e8b09ffb86f5ed4b3b0ae0",
+    "raw/repeat_a/metric_numerics.json": "b6ec6e1486b295fd7217cbdae1dabf448d454a7e9fbfb7416d846575cc410922",
+    "raw/repeat_a/resolved_config.yaml": "7892b948f8e96cf15acda7f37b72505164e49b8c4ef076f1f39871c89a0958ea",
+    "raw/repeat_a/metadata.json": "bf3a69af8fd2c0974a262f0b63114d91c0dec5dc7d5b321c69365e3cbbb6af59",
+    "raw/repeat_a/receipt.json": "e5a46d201389fae8e3e5b69be8f7782d5bbc4f86d279f99c4715d96a8d2ace76",
+    "raw/repeat_a/sensor_diagnostic.npz": "c7b153dc074767a2be89c6dc91bb92f9582af55a8dc20af594f2b00c2a674f9c",
+    "raw/repeat_a/trajectories.npz": "3e41b4ed172ab25776ce9ba53a64447bef60af10114e1ab6bc6056ee6b282363"
+  },
+  "frozen_file_checks": {
+    "scripts/reset_aligned_collect_v4.py": true,
+    "scripts/physics_guided_collect.py": true,
+    "scripts/physics_guided_core.py": true,
+    "scripts/physics_guided_queue.py": true,
+    "scripts/physics_guided_lineage.py": true,
+    "scripts/r3_closd_isolated_entry.py": true,
+    "scripts/run_reset_alignment_checks_v4.py": true,
+    "scripts/run_contact_cpu_export_v11_20261012.py": true,
+    "scripts/contact_cpu_export_collect_v11.py": true,
+    "scripts/contact_sampling_collect_v5.py": true,
+    "scripts/contact_sampling_collect_v8.py": true,
+    "scripts/contact_sensor_collect_v10.py": true,
+    "scripts/closd_cpu_export_bridge.py": true,
+    "scripts/metric_numeric_equivalence.py": true,
+    "scripts/physics_guided_numeric_lineage.py": true,
+    "configs/physics_guided_20261011.json": true,
+    "configs/env-closd-baseline-20261010.json": true,
+    "docs/contact_cpu_export_v11_20261012.md": true
+  },
+  "lineage_output_checks": {
+    "metadata.json": true,
+    "metrics.json": true,
+    "trajectories.npz": true
+  },
+  "models": {
+    "generator_weights_sha256": {
+      "resolved": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/blobs/3ca68ae54975946b3fe5c6cd64a6eafc439b5fc43c166bc9a98d1c43aeef6618",
+      "sha256": "3ca68ae54975946b3fe5c6cd64a6eafc439b5fc43c166bc9a98d1c43aeef6618",
+      "matches": true
+    },
+    "controller_weights_sha256": {
+      "resolved": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/blobs/7ead3778b95516d8b91b7c5939674e45dd0ad10fcc22da60f9f57d204695f6ac",
+      "sha256": "7ead3778b95516d8b91b7c5939674e45dd0ad10fcc22da60f9f57d204695f6ac",
+      "matches": true
+    }
+  },
+  "external_input_checks": {
+    "external_motion_inputs": {
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/blobs/a16b386a2b7d357a088c7568b97f6ab0954a508465b1a5d9d0faf29e9e8552fd": true,
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/blobs/c4fa34cf78516e5893f7fbecb47056e358478a2003fa18d518c3412ecf23ddb2": true,
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b/data/dataset/HumanML3D/Mean.npy": true,
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b/data/dataset/HumanML3D/Std.npy": true
+    },
+    "external_semantic_inputs": {
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/CLoSD/closd/diffusion_planner/dataset/t2m_mean.npy": true,
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/CLoSD/closd/diffusion_planner/dataset/t2m_std.npy": true,
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b/glove/our_vab_data.npy": true,
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b/glove/our_vab_idx.pkl": true,
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b/glove/our_vab_words.pkl": true
+    }
+  },
+  "canonical_env_hash": "81bdf764e312bcc92e4969e5eb9d2d6d6043f14c037e5a588dabbd564871f780",
+  "thresholds_equal_v10": true,
+  "thresholds_equal_original": true,
+  "upstream_head": "d8950bdb78312fcd2844f336b3fc079e7368c87f",
+  "upstream_tracked_changes": [],
+  "receipt": {
+    "status": "complete",
+    "cases": 12,
+    "completed": 12,
+    "joint_pass": 0,
+    "elapsed_seconds": 29.76735782623291,
+    "trajectories_sha256": "3e41b4ed172ab25776ce9ba53a64447bef60af10114e1ab6bc6056ee6b282363"
+  },
+  "ledger": [
+    {
+      "stage": "measurement",
+      "label": "repeat_a",
+      "seconds": 32.5031938329339,
+      "exit_code": 0
+    },
+    {
+      "stage": "measurement",
+      "label": "repeat_b",
+      "seconds": 32.09640143252909,
+      "exit_code": 0
+    }
+  ],
+  "state": {
+    "status": "COMPLETE_CONTACT_SAMPLING_WITNESS",
+    "time": 1791735433.5540028
+  }
+}

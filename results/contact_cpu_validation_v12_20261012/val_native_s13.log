@@ -1,0 +1,68 @@
+Importing module 'gym_38' (/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/python/isaacgym/_bindings/linux-x86_64/gym_38.so)
+Setting GYM_USD_PLUG_INFO_PATH to /data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/python/isaacgym/_bindings/linux-x86_64/usd/plugInfo.json
+PyTorch version 1.13.1+cu117
+Device count 1
+/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/python/isaacgym/_bindings/src/gymtorch
+Using /data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd-r3-torch-extensions as PyTorch extensions root...
+Emitting ninja build file /data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd-r3-torch-extensions/gymtorch/build.ninja...
+Building extension module gymtorch...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module gymtorch...
+2026-10-11 16:34:03,607 - INFO - logger - logger initialized
+MOVING MOTION DATA TO GPU, USING CACHE: False
+MOVING MOTION DATA TO GPU, USING CACHE: False
+Importing module 'rlgpu_38' (/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/python/isaacgym/_bindings/linux-x86_64/rlgpu_38.so)
+Data dependencies are cached at [/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b]
+torch_deterministic: False
+Setting seed: 11
+Found checkpoint
+output/CLoSD/CLoSD_multitask_finetune/Humanoid.pth
+Started to play
+Not connected to PVD
++++ Using GPU PhysX
+Physics Engine: PhysX
+Physics Device: cuda:0
+GPU Pipeline: disabled
+!!!! Using modified SMPL starting pose !!!!
+
+****************************** Current motion keys ******************************
+Sampling motion: torch.Size([30])_torch.Size([30])_tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0], device='cuda:0')
+['standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing' 'standing']
+*********************************************************************************
+
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+  0%|          | 0/72 [00:00<?, ?it/s]100%|██████████| 72/72 [00:00<00:00, 301989.89it/s]
+Loaded 72 motions with a total length of 2397.602s and 72000 frames.
+Data dependencies are cached at [/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b]
+Reading closd/diffusion_planner/./dataset/humanml_opt.txt
+Loading dataset t2m ...
+Loading motions from cache file [/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b/data/humanml3d/t2m_test.npy]...
+Pointer Pointing at 0
+MDM dataset size: 4648
+TRANS_DEC init
+EMBED TEXT
+Loading BERT...
+Loading checkpoints from [closd/diffusion_planner/save/DiP_multi-target_10steps_context20_predict40/model000300000.pt]...
+loading avg model
+Overwriting [context_len, pred_len] to [20, 40] according to the prefix completion MDM parameters.
+RL device:  cuda:0
+72
+69
+574
+0
+{'observation_space': Box(-inf, inf, (574,), float32), 'action_space': Box(-1.0, 1.0, (69,), float32), 'agents': 1, 'value_size': 1}
+RunningMeanStd:  (574,)
+RunningMeanStd:  (1960,)
+=> loading checkpoint 'output/CLoSD/CLoSD_multitask_finetune/Humanoid.pth'
+=> loading checkpoint 'output/CLoSD/CLoSD_multitask_finetune/Humanoid.pth'
+PHYSICS_GUIDED_PROGRESS 30 0 41.48
+PHYSICS_GUIDED_PROGRESS 60 0 42.87
+PHYSICS_GUIDED_PROGRESS 90 0 43.77
+reward: 11.04367733001709 steps: 96.0
+reward: 11.396597862243652 steps: 98.0
+reward: 10.519692420959473 steps: 111.0
+PHYSICS_GUIDED_PROGRESS 120 72 44.85
+PHYSICS_GUIDED_NATIVE_CLEANUP
+PHYSICS_GUIDED_COLLECTION_PASS 72 0

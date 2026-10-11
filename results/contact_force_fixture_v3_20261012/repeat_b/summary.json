@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "checks": {
+    "frictionless_horizontal_net_force_below_1N": true,
+    "settled_stationary_height_within_1cm": true,
+    "settled_stationary_speed_below_2cm_s": true,
+    "net_force_weight_relative_error_below_10pct": true,
+    "sensor_force_weight_relative_error_below_10pct": true,
+    "sliding_velocity_retained_within_2cm_s": true,
+    "high_airborne_initial_force_below_1N": true,
+    "high_airborne_initial_sensor_below_1N": true,
+    "high_airborne_initial_height_above_ground": true
+  },
+  "fixtures": [
+    "stationary_grounded",
+    "frictionless_slide",
+    "high_airborne_drop",
+    "upward_takeoff"
+  ],
+  "masses_kg": [
+    5.0,
+    5.0,
+    5.0,
+    5.0
+  ],
+  "weights_N": [
+    49.050000000000004,
+    49.050000000000004,
+    49.050000000000004,
+    49.050000000000004
+  ],
+  "dt": 0.01666666753590107,
+  "steps": 120,
+  "substeps": 2,
+  "contact_collection": 2,
+  "generator_used": false,
+  "controller_used": false,
+  "thresholds_preregistered": true,
+  "export_buffer_cleared_before_each_simulate": false,
+  "use_gpu_pipeline": false,
+  "physx_use_gpu": true,
+  "clearing_scope": "No clearing; CPU tensor export with unchanged GPU PhysX solver",
+  "simulator_force_sensor_is_not_real_force_ground_truth": true,
+  "interpretation": "Known box/plane physics fixture; does not certify humanoid contact points, articulation sensors or slip proxy.",
+  "stationary_net_force_range_N": [
+    49.04329299926758,
+    49.056922912597656
+  ],
+  "stationary_sensor_force_range_N": [
+    49.036190032958984,
+    49.063514709472656
+  ],
+  "source_sha256": "291f6c9ca8430a2ace6212ba305946c012986f8926540170b07093d503f85ea8",
+  "arrays_sha256": "9d16ec394f9aa5aa5a508638d7da9d35f4066b6b7e580dcdbde81629f5e86ef7",
+  "elapsed_seconds": 0.790364682674408
+}

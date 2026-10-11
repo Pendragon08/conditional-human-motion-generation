@@ -1,5 +1,7 @@
 # Conditional Human Motion Generation
 
+**2026-10-12 当前状态：3个候选机制，1个初测、2个未测试，0个确认创新。** 固定CPU导出设置内，人体重置、运动、接触力与策略输出两次重复一致；与旧导出设置的闭环轨迹存在数值放大差异，结果不混用。全24验证来源、3生成种子、计划/实际前缀共432次尝试已完成，所有失败保留；物理代理和联合合格均为0/432，主要受脚滑代理限制。按预设停止条件暂不继续条件补偿效力实验、G1或下游训练，先诊断人体物理质量判据与已知正负例。测量修复不计入创新，本轮不写Overleaf实验结果。[完整验证](results/contact_cpu_validation_v12_20261012/validation_summary.json) · [独立记录见证](results/contact_cpu_validation_v12_20261012/DOCUMENT_WITNESS.md) · [最新HTML](results/contact_measurement_review_20261011/measurement_review.html)。
+
 **2026-10-11 当前验证进展：3个候选机制，1个初测、2个未测试，0个确认创新。** 新增两轮人体完成等待复核和被动足部传感器复核：运动学及策略输入重复一致，净接触力读数仍不稳定；足部约束传感器可重复，但包含内部关节反力，尚未替换接触指标。5kg物体/平面校准两次通过，仍不等于人体测量门通过。完整失败与独立审计保留，继续测量修复；正式创新验证、G1和下游训练由原方案门控，本轮不写Overleaf实验结果。[最新HTML](results/contact_measurement_review_20261011/measurement_review.html) · [结果状态](results/contact_measurement_review_20261011/status.json) · [候选机制与最近邻方法](docs/candidate_mechanisms_20261011.md) · [V8独立审计](results/contact_sampling_v8_20261011/EXPERIMENT_AUDIT.md)。
 
 **2026-10-11 前一阶段：接触测量门未通过。** 216次导出重置缓存/坐标检查完成，初始导出状态一致；四臂等预算诊断完成108次构建＋48次选出参考回放。反馈组目标误差10.80cm、随机筛选14.35cm，但物理/联合合格均为0。额外24次同步采样复核仍出现相同运动学、不同接触力的现象，**不能确认创新有效性或完整测量已修复**。仅4个自定义诊断来源/1种子，不作官方独立效能结论。保留全部失败；正式测试、G1和下游训练暂停，本轮不写Overleaf。见[最新结果表](results/condition_feedback_probe_v2_20261011/RESULTS.md)、[216次校验及边界](results/reset_alignment_v4_20261011/RESULTS.md)、[接触复核](results/contact_sampling_v5_20261011/RESULTS.md)和[HTML报告](results/reset_alignment_v4_20261011/measurement_report.html)。
