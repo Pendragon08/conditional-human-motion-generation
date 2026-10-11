@@ -3,6 +3,7 @@ from pathlib import Path
 import hashlib
 import html
 import json
+from replay_report_certificate_v30_20261012 import certify
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'results/contact_measurement_review_20261011'
@@ -31,6 +32,10 @@ numerics25=read('results/metric_runtime_diagnostic_v25_20261012/diagnostic.json'
 runtime26=read('results/contact_com_runtime_v26_20261012/runtime_check.json')
 replay27=read('results/fixed_reference_com_v27_20261012/replay_summary.json')
 formal28=read('results/condition_feedback_formal_v28_20261012/queue_state.json')
+replay_certificate=certify(ROOT,replay27)
+cached_guard=read('results/fixed_reference_com_v27_20261012/cached_guard_recheck_v30_20261012.json')
+cached_guard_pass=(cached_guard is not None and cached_guard.get('status')=='PASS' and len(cached_guard.get('entries',[]))==8 and all(row.get('pass') is True for row in cached_guard['entries']) and cached_guard.get('source_sha256')==hashlib.sha256((ROOT/'scripts/verify_cached_measurement_guards_v30_20261012.py').read_bytes()).hexdigest())
+replay_interface_pass=(replay_certificate['status']=='PASS' and cached_guard_pass and runtime26 is not None and runtime26.get('status')=='PASS' and velocity19 is not None and velocity19.get('status')=='PASS' and articulated22 is not None and articulated22.get('status')=='PASS')
 probe=read('results/condition_feedback_probe_v2_20261011/probe_summary.json')
 inputs=[ROOT/name for name in ('results/contact_sampling_v8_20261011/sampling_summary.json',
  'results/contact_force_fixture_20261011/repeat_comparison.json',
@@ -51,10 +56,13 @@ inputs=[ROOT/name for name in ('results/contact_sampling_v8_20261011/sampling_su
  'results/metric_runtime_diagnostic_v25_20261012/diagnostic.json',
  'results/contact_com_runtime_v26_20261012/runtime_check.json',
  'results/fixed_reference_com_v27_20261012/replay_summary.json',
+ 'results/fixed_reference_com_v27_20261012/cached_guard_recheck_v30_20261012.json',
  'results/condition_feedback_formal_v28_20261012/queue_state.json',
  'results/condition_feedback_probe_v2_20261011/probe_summary.json') if (ROOT/name).exists()]
 status=dict(innovation_candidates=3,preliminarily_tested=1,not_yet_experimentally_tested=2,
- confirmed_innovations=0,measurement_gate='CALIBRATED_PROXY_AND_FIXED_REPLAY_PASS' if replay27 else 'FIXED_REPLAY_PENDING',g1='NOT_STARTED_BY_GATE',
+ confirmed_innovations=0,measurement_gate='CALIBRATED_PROXY_AND_FIXED_REPLAY_PASS' if replay_interface_pass else 'FIXED_REPLAY_NOT_CERTIFIED',g1='NOT_STARTED_BY_GATE',
+ replay_export_certificate=replay_certificate,
+ cached_guard_recheck=cached_guard,
  formal_comparison_snapshot=formal28,
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
  slip13=slip13,point16=point16,point17=point17,velocity19=velocity19,point20=point20,com21=com21,articulated22=articulated22,validation24=validation24,numerics25=numerics25,runtime26=runtime26,replay27=replay27,
@@ -99,7 +107,7 @@ measurement_text='已知正负对照通过，固定参考回放尚待完成。'
 formal_text='<p>C1完整对比尚未启动。</p>'
 if formal28:
     formal_text='<p>服务器采集状态快照：'+html.escape(formal28['status'])+'；批次：'+html.escape(formal28.get('label','未提供'))+'。完整协议包含10个对比与消融配置，每配置432测试输入。状态快照不代替实时进程检查，也不是完成结果；尚无新的效力结论。</p>'
-if replay27:
+if replay_interface_pass:
     measurement_text='重置、坐标、时间、数值复算、已知正负对照及固定参考回放接口已通过。足部指标仍是碰撞表面滑移代理，不能称为真实接触力或所有滚动接触的真值。人体物理质量与候选效力另行判断。'
 document=f'''<!doctype html><html lang="zh-CN"><meta charset="UTF-8"><title>条件动作生成：接触测量复核与候选机制</title>
 <style>body{{max-width:1100px;margin:32px auto;padding:0 24px;font:16px/1.75 system-ui;color:#172635}}h1,h2{{color:#153c5a}}table{{border-collapse:collapse;width:100%;margin:18px 0}}th,td{{border:1px solid #cbd5df;padding:10px;text-align:left}}th{{background:#eaf1f7}}.notice{{padding:16px;background:#fff2d8;border-left:5px solid #b67500}}a{{color:#126496}}@media print{{body{{max-width:none;margin:0}}tr{{break-inside:avoid}}}}</style>

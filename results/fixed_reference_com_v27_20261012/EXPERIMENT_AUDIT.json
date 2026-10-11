@@ -1,0 +1,340 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "reason_code": "brittle_report_gate_cached_guard_bypass_and_dead_code",
+  "summary": "Current V24/V26/V27 files, counts, classifications, fixed targets, clock, failure denominators, replay arrays, and request bindings are coherent. WARN is issued because the report pass gate tests only replay-JSON truthiness, cached V24 results bypass several new-batch guards, and unused helpers/imports could be mistaken for exercised logic. A prior stale-config-hash finding was retracted after distinguishing raw-byte from canonical parsed-JSON digests.",
+  "trace_path": null,
+  "trace_status": "Reviewer wrote only the two requested audit reports; trace persistence remains the parent executor's responsibility.",
+  "agent_id": "/root/com_replay_integrity_audit",
+  "verdict_id": "/root/com_replay_integrity_audit",
+  "executor_model": "parent-codex-runtime-not-exposed",
+  "executor_family": "openai",
+  "reviewer_model": "codex-runtime-not-exposed",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "fresh read-only adversarial integrity audit",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "acceptance_decision": "accept_with_warnings",
+  "generated_at": "2026-10-12T02:20:10+08:00",
+  "date": "2026-10-12",
+  "auditor": "fresh-codex-read-only-agent",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "repository_commit": "02a2ed646abf7e0eb7dca636e994124d3f91dcae",
+  "no_experiment_rerun": true,
+  "implementation_edits": false,
+  "supplemental_correction": {
+    "applied_at": "2026-10-12T02:25:59+08:00",
+    "finding_retracted": "The f7e06e... embedded config_sha256 was incorrectly described as stale.",
+    "independent_recheck": "The same config has raw-byte SHA-256 2d8fd0... and sorted parsed-JSON SHA-256 f7e06e.... physics_guided_queue.py:185-193 creates and asserts the parsed-JSON digest; requests/versions separately bind the raw-byte digest. This is not a config mismatch.",
+    "effect": "same_configuration changed from warn to pass; overall WARN is unchanged for unrelated findings.",
+    "superseded_audit_sha256": {
+      "EXPERIMENT_AUDIT.md": "sha256:d590ff100d6025be011b3728a2f91cdabf1ceac97ecd6003fcbfa9c03703346e",
+      "EXPERIMENT_AUDIT.json": "sha256:34fcaa91f580b165351228121895cd6669b14f2b41cd777e5bcda1965f5acd28"
+    }
+  },
+  "audit_scope": {
+    "included": [
+      "V24 COM validation metric, collector lineage, six public metric batches, summaries, and denominators",
+      "V26 cached numeric-runtime repair evidence",
+      "V27 raw and refined fixed-reference replay selection, arrays, metrics, summaries, and report claims",
+      "Current V24/V27 claims in README and measurement_review.html"
+    ],
+    "excluded": [
+      "V28 live-process status, queue progress, and any eventual formal-comparison result",
+      "Broad re-audit of historical V8-V22 claims except where they are transitive calibration evidence",
+      "Candidate efficacy, downstream training, semantic quality, human evaluation, and real-robot validity"
+    ]
+  },
+  "checks": {
+    "gt_provenance": {
+      "status": "pass",
+      "details": "Endpoint/heading conditions are decoded from dataset motion and frozen before generation. V24 tracking and both V27 replay references are explicitly synthetic proxies in simulation. The COM surface measure is explicitly labelled a calibrated body-force/collision-surface proxy, not true contact force or arbitrary rolling-contact truth.",
+      "evidence": [
+        "scripts/physics_guided_collect.py:94-139",
+        "scripts/physics_guided_metric_v23_20261012.py:71-123",
+        "scripts/run_fixed_reference_com_v27_20261012.py:63-88",
+        "results/fixed_reference_com_v27_20261012/replay_summary.json:31-40",
+        "results/velocity_reference_fixture_v19_20261012/first_attempt/summary.json:2-10,31-36",
+        "results/articulated_contact_fixture_v22_20261012/first_attempt/summary.json:2-40,90-94"
+      ]
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "Inputs use pinned dataset Mean/Std. Reported values are raw SI quantities or direct fractions against fixed thresholds. No reported score uses prediction-derived max/min/mean normalization. Threshold-normalized rank terms are ordering-only and are not live in V23 for this path.",
+      "evidence": [
+        "scripts/physics_guided_collect.py:56-63",
+        "scripts/physics_guided_metric_v23_20261012.py:148-171",
+        "results/contact_com_validation_v24_20261012/frozen_thresholds.json:2-17"
+      ]
+    },
+    "result_existence": {
+      "status": "warn",
+      "details": "All current files, hashes, numbers, and 576 pass classifications match. WARN: the HTML/report pass gate checks only whether replay27 is truthy; it does not require the completion status or validate entry counts before declaring the interface passed.",
+      "evidence": [
+        "results/contact_com_validation_v24_20261012/validation_summary.json:4-119",
+        "results/contact_com_validation_v24_20261012/quality_diagnosis.json:8-645",
+        "results/contact_com_runtime_v26_20261012/runtime_check.json:2-29",
+        "results/fixed_reference_com_v27_20261012/replay_summary.json:2-40",
+        "scripts/build_contact_measurement_report_20261011.py:29-63,95-103"
+      ]
+    },
+    "dead_code": {
+      "status": "warn",
+      "details": "The result-producing metrics and proxy outputs are live, but V23 bounded_update/rank_candidate/unit_witness and V24 correction/select/load imports are not used by this path. Several stored surface fields are diagnostic and do not enter physical_pass. Native contacts and passive sensors are diagnostic-only.",
+      "evidence": [
+        "scripts/physics_guided_metric_v23_20261012.py:26-34,93-100,148-178",
+        "scripts/run_contact_com_validation_v24_20261012.py:12",
+        "scripts/physics_guided_queue.py:138-171"
+      ]
+    },
+    "scope": {
+      "status": "pass",
+      "details": "Claims are appropriately bounded. V24 is 24 distinct project-validation sources x 3 offsets x 3 generation-noise seeds x 2 prefix modes. V27 is the same 24 sources x 3 offsets, one generation seed, one construction candidate, and one shared V24 base batch. Current text explicitly denies efficacy/contact-truth claims.",
+      "evidence": [
+        "configs/physics_guided_20261011.json:5-11",
+        "scripts/run_contact_com_validation_v24_20261012.py:144-167",
+        "scripts/run_fixed_reference_com_v27_20261012.py:63-88",
+        "results/contact_com_validation_v24_20261012/validation_summary.json:115-119",
+        "README.md:5"
+      ]
+    },
+    "eval_type": [
+      "simulation_only",
+      "real_gt_dataset_conditions_with_synthetic_offsets",
+      "synthetic_proxy_generated_plan_tracking",
+      "synthetic_proxy_fixed_generated_reference_replay",
+      "synthetic_proxy_fixed_simulation_trajectory_replay",
+      "simulation_only_calibrated_COM_surface_proxy"
+    ],
+    "reset_and_clock": {
+      "status": "pass",
+      "details": "The collector asserts the applied reference frame before physics, saves an exact 0..119 reference clock, retains early termination, and requires reset state/cache equality before the first action. Public metadata and read-only binary inspection agree.",
+      "evidence": [
+        "scripts/physics_guided_collect.py:190-211,226-241,274-280",
+        "scripts/reset_aligned_collect_v4.py:25-41,55-79",
+        "results/fixed_reference_com_v27_20261012/public/raw/val_raw_replay_s11/metadata.json:18173-18183,18777-18795"
+      ]
+    },
+    "failure_denominators": {
+      "status": "pass",
+      "details": "All 13 V24 early terminations remain in 432 attempts. Both V27 arms retain 72 attempts, and construction-incomplete choices remain combined failures after terminal padding.",
+      "evidence": [
+        "scripts/physics_guided_metric_v23_20261012.py:103-117",
+        "scripts/physics_guided_queue.py:146-151",
+        "scripts/run_fixed_reference_com_v27_20261012.py:73-83"
+      ]
+    },
+    "same_configuration": {
+      "status": "pass",
+      "details": "All six V24 and two V27 resolved configs are byte-identical; requests bind the current config, manifest, thresholds, versions, and replay motion; original goals and critical metadata match. Raw-byte SHA-256 is 2d8fd0..., while frozen_thresholds/source_manifest intentionally use the sorted parsed-JSON SHA-256 f7e06e.... Both recompute from the same config and are asserted by their respective producers.",
+      "evidence": [
+        "scripts/physics_guided_com_lineage_v24_20261012.py:28-40",
+        "scripts/physics_guided_collect.py:289-299",
+        "scripts/physics_guided_queue.py:185-193",
+        "results/contact_com_validation_v24_20261012/frozen_thresholds.json:19-20",
+        "results/contact_com_validation_v24_20261012/versions.json:46",
+        "results/fixed_reference_com_v27_20261012/requests/val_raw_replay_s11.json:2-11"
+      ]
+    },
+    "cache_verification_coverage": {
+      "status": "warn",
+      "details": "The V24 cached-receipt branch returns after certify_cached and before the new-batch completion-fence, sensor, CPU-export, native-contact, and reset guards. Current artifacts satisfy those fields under direct inspection, but cache reuse does not enforce the same guard set.",
+      "evidence": [
+        "scripts/run_contact_com_validation_v24_20261012.py:90-93,128-139"
+      ]
+    }
+  },
+  "observed_counts": {
+    "v24": {
+      "distinct_sources": 24,
+      "offsets_per_source": 3,
+      "generation_noise_seeds": [11, 12, 13],
+      "environment_seeds": [11],
+      "prefix_modes": ["planned", "native"],
+      "attempted": 432,
+      "completed": 419,
+      "condition_pass": 114,
+      "physical_pass": 1,
+      "tracking_pass": 318,
+      "joint_pass": 1,
+      "terminated": 13,
+      "slip_proxy_pass": 1,
+      "penetration_pass": 432,
+      "continuity_pass": 151
+    },
+    "v27_raw": {
+      "attempted": 72,
+      "completed": 71,
+      "condition_pass": 23,
+      "physical_pass": 0,
+      "tracking_pass": 54,
+      "joint_pass": 0,
+      "combined_construction_replay_joint_pass": 0,
+      "replay_terminated": 1,
+      "construction_terminated": 2
+    },
+    "v27_refined": {
+      "attempted": 72,
+      "completed": 70,
+      "condition_pass": 14,
+      "physical_pass": 0,
+      "tracking_pass": 68,
+      "joint_pass": 0,
+      "combined_construction_replay_joint_pass": 0,
+      "replay_terminated": 2,
+      "construction_terminated": 2
+    },
+    "classification_rows_checked": 576,
+    "classification_mismatches": 0
+  },
+  "fixed_condition_evidence": {
+    "original_goal_sha256": "d008fae01d78f5f8f752aa4791b824540aec5791fd36173306881bcb09584809",
+    "resolved_config_sha256_all_eight": "b3eddac41eda4da9d0839c8d9de5aa98dbb608d9962a939958195a491c173218",
+    "thresholds_sha256_v24_v27": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "reference_clock": "exact integer sequence 0..119 in both replay archives",
+    "reset_state_max_differences": "all seven exported fields equal zero",
+    "reset_cache_max_differences": "all four recorded fields equal zero",
+    "generation_batch_calls_v27": 0,
+    "diffusion_calls_v27": 0
+  },
+  "remote_read_only_array_checks": {
+    "server_root": "/data/code/ouyanghao/oyh/conditional-human-motion-generation",
+    "simulations_run": 0,
+    "selected_shapes": {
+      "raw_reference": [120, 72, 24, 3],
+      "refined_reference": [120, 72, 24, 3]
+    },
+    "selected_arrays_reconstructed_from_v24_base_max_abs_error": 0.0,
+    "raw_replay_selected_reference_max_abs_error": 0.0,
+    "refined_replay_untransformed_max_abs_error_m": 5.960464477539063e-08,
+    "refined_replay_upstream_canonical_max_abs_error_m": 0.0,
+    "raw_request_motion_hash": "e570f591ddc30606c49156ba260e2e30d61cb5abf9fd5b50f3a607e9cb7dff3f",
+    "refined_request_motion_hash": "15602590194517214fef0ade9fd8f8a849fb98c07853d1015ce5112d56e5b838",
+    "upstream_closd_source_sha256": "dff1ca9bfb15c3058914c326cba83a07f69cd91952cd4e03ecfe1ad3d391e394",
+    "upstream_closd_source_lines": "third_party/CLoSD/closd/env/tasks/closd.py:651-704"
+  },
+  "remote_binary_sha256": {
+    "results/contact_com_validation_v24_20261012/raw/val_planned_s11/trajectories.npz": "sha256:45486979e705ce28f3e5e10976814ce901f3008ea902e5e23d326a5c0a4311bd",
+    "results/fixed_reference_com_v27_20261012/selected/raw_reference.npz": "sha256:80ba430d1cb6f108a860aacbcca6dd948b92ddeabce2d19f8cb5474858b468f2",
+    "results/fixed_reference_com_v27_20261012/selected/refined_reference.npz": "sha256:7794442ba3cd0a65bd70da9f71c4f7ae883fb4b71cbe158ced309284d028a057",
+    "results/fixed_reference_com_v27_20261012/raw/val_raw_replay_s11/trajectories.npz": "sha256:4f55270f61a6348ce803cc4b2632f04813e27d5c1317615e3d5bad20ec0cf054",
+    "results/fixed_reference_com_v27_20261012/raw/val_refined_replay_s11/trajectories.npz": "sha256:960149fc8c5f07ce3a65573bc048aeb7044522857e2d2b46039280ddde12b0fa"
+  },
+  "concurrent_input_change": {
+    "observed": true,
+    "initial_commit_content": "09fea5ea6aed9795aad6f4f0169cdda1c4878640",
+    "final_commit": "02a2ed646abf7e0eb7dca636e994124d3f91dcae",
+    "scope": "V28 progress-only report/README/HTML additions; no V24/V27 metric, collector, validation-summary, runtime-check, or replay-summary change",
+    "initial_on_disk_sha256": {
+      "scripts/build_contact_measurement_report_20261011.py": "sha256:c283de078dd038990a385abbdce99d5a83cd46f8efad075847afd4de4733b4c8",
+      "README.md": "sha256:8a557c70a8c9ae67a4445b2d2963958ac4028a5cf081f8e5bb26c1e2c998a0ca",
+      "results/contact_measurement_review_20261011/measurement_review.html": "sha256:50306bc3a53a4bd3524a1e4f4e2e9a3774b5703954e7e6fcd431bc19ab5475d9"
+    },
+    "final_on_disk_sha256": {
+      "scripts/build_contact_measurement_report_20261011.py": "sha256:a1de5cf5724ccff5d4296c108c1fbc0d5cbb5261b45764dbe77a43c3313017d2",
+      "README.md": "sha256:da1577e5d5c69dd4807ff6f69fc7a73e7ddd48f23beb76f053083bc73ddfd5be",
+      "results/contact_measurement_review_20261011/measurement_review.html": "sha256:6a914159ba970e0c2f5ff5d3e24f6526691ead510ce0baebd9561122fdc5208e"
+    }
+  },
+  "post_audit_mutations": [
+    {
+      "observed_at": "2026-10-12T02:27:09+08:00",
+      "path": "scripts/build_contact_measurement_report_20261011.py",
+      "audited_sha256": "sha256:a1de5cf5724ccff5d4296c108c1fbc0d5cbb5261b45764dbe77a43c3313017d2",
+      "later_observed_sha256": "sha256:bfadc5761d74d8a46fd3bd29a7e302676f25c3cf8e89446b491c8ae4eed94682",
+      "scope": "Separate report-gate remediation after verdict formation; not evaluated by this audit and not substituted into audited_input_hashes.",
+      "bound_experimental_inputs_changed": false
+    }
+  ],
+  "claims": [
+    {
+      "id": "V24_DIAGNOSTIC_COUNTS",
+      "impact": "supported"
+    },
+    {
+      "id": "V26_NUMERIC_RUNTIME_REPAIR",
+      "impact": "supported_narrow_cached_reproduction_only"
+    },
+    {
+      "id": "V27_FIXED_TARGET_CLOCK_AND_DENOMINATOR",
+      "impact": "supported_with_one_seed_same_base_proxy_qualifier"
+    },
+    {
+      "id": "COM_SURFACE_PROXY_CALIBRATION",
+      "impact": "supported_for_archived_controls_and_fixed_replay_only"
+    },
+    {
+      "id": "TRUE_CONTACT_OR_ARBITRARY_ROLLING_TRUTH",
+      "impact": "unsupported_and_current_text_correctly_disclaims"
+    },
+    {
+      "id": "CANDIDATE_EFFICACY_OR_GENERALIZATION",
+      "impact": "unsupported_and_not_claimed"
+    },
+    {
+      "id": "V28_PROGRESS_OR_FORMAL_RESULT",
+      "impact": "outside_audit_scope"
+    }
+  ],
+  "action_items": [
+    "Require exact V27 completion status, expected entries/counts, bound hashes, and diagnostic scope before report pass rendering.",
+    "Run or verify equivalent completion-fence/sensor/contact/reset guards on cached V24 reuse.",
+    "Keep raw-byte versus sorted parsed-JSON config digest representations explicitly labelled; no config mismatch was found.",
+    "Mark/remove unused helpers and imports and distinguish diagnostic fields from gate inputs.",
+    "Preserve failure denominators, generation-seed wording, custom-validation split, calibrated-proxy language, and no-efficacy limitations."
+  ],
+  "audited_input_hashes": {
+    "configs/physics_guided_20261011.json": "sha256:2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+    "scripts/physics_guided_metric_v23_20261012.py": "sha256:b05b6ed8053ac037432471dabdf8608da383c76d4d2375ce10823e003f232c69",
+    "scripts/physics_guided_com_lineage_v24_20261012.py": "sha256:ee440b92415ccc9646c29d1f300d2e0acd67daa9a369ce3c54816e01d4d2c850",
+    "scripts/contact_com_collect_v24_20261012.py": "sha256:b3609d8a62aca242b77ec150262bac01d32b728c668b9a2a4912e468146aec11",
+    "scripts/run_contact_com_validation_v24_20261012.py": "sha256:7e572184b0d341b607dbc67a624af17cf724e846e64045111804170c30e71d58",
+    "scripts/run_contact_com_runtime_v26_20261012.py": "sha256:432051e1bb7510f8a37fb917f8da55348660843f002becb07885d79af6f863da",
+    "scripts/run_fixed_reference_com_v27_20261012.py": "sha256:e1c83d0d621d48fad0e184fb6bec673c2474c96d7e4ddb547a3c8389c63d95e6",
+    "scripts/build_contact_measurement_report_20261011.py": "sha256:a1de5cf5724ccff5d4296c108c1fbc0d5cbb5261b45764dbe77a43c3313017d2",
+    "results/contact_com_validation_v24_20261012/validation_summary.json": "sha256:eab3c0c619748e0dcd7b1fde9de514aae868d973bcc8292576c8ad2187a49be8",
+    "results/contact_com_validation_v24_20261012/quality_diagnosis.json": "sha256:9241401f2af15f3794597e63607c397a6a350149c44f6992e6523dd8e82e5c23",
+    "results/contact_com_runtime_v26_20261012/runtime_check.json": "sha256:a17323fc1964255ec8f3644ae79a267b05b36c980a4e5d46d798d918c3f5129e",
+    "results/fixed_reference_com_v27_20261012/replay_summary.json": "sha256:23971b708747128d476d0af7cb555dbd52cc3a7b901116817fb522c4c32db1e1",
+    "results/contact_measurement_review_20261011/measurement_review.html": "sha256:6a914159ba970e0c2f5ff5d3e24f6526691ead510ce0baebd9561122fdc5208e",
+    "README.md": "sha256:da1577e5d5c69dd4807ff6f69fc7a73e7ddd48f23beb76f053083bc73ddfd5be"
+  },
+  "verified_transitive_hashes": {
+    "scripts/physics_guided_collect.py": "sha256:a5d426cf942ecf0b3ac121b389aad5dd6459ce8ea34047c5d5a88b0b1cc77d43",
+    "scripts/physics_guided_queue.py": "sha256:349266a29d56806b9f081fdc0ec69c7788746849f8ff50035248ef25c8602cf8",
+    "scripts/metric_numeric_equivalence.py": "sha256:fa84c42cc2c894adb4458413ddbac16abf760a4ded71449ee467c1c8451cc8b5",
+    "scripts/reset_aligned_collect_v4.py": "sha256:f2ecbb37e4fd15de8433b97b386ed6b13af1b343a83a4685e9888f77c7a762be",
+    "scripts/physics_guided_prepare.py": "sha256:9a99f0e177b0ca9b52290df5653586603270428f6f22b77f9216c1ab8872aedb",
+    "scripts/contact_sampling_collect_v5.py": "sha256:651bbaf6cd0a2ba675fdbd5d735d66ee5a3aeecab755060aa2b5628be8d328a4",
+    "scripts/contact_sampling_collect_v8.py": "sha256:8373f5301e1022d7414c9415305edf08855db2e0a8d3efe000fa0b4dff861109",
+    "scripts/contact_sensor_collect_v10.py": "sha256:9d76cc05fd82391f1a1c9f1b1485d0a4a5ca59eef0f559895d8c1f3a69148d9a",
+    "scripts/contact_cpu_export_collect_v11.py": "sha256:cc50d100f1fa2f96221e742b8bc43148f1a7c0e9e6d88ab452c452b8369e8a1c",
+    "scripts/closd_cpu_export_bridge.py": "sha256:e65c204df3a2099abc661e1c0b5fe8b99e657375cec1275215d90c3a50d13269",
+    "scripts/contact_point_collect_v20_20261012.py": "sha256:b4f3097f0fab4da0ac9b8fb07ca1d0f356c9bba61d7dfda57843748016c721d3",
+    "scripts/native_contact_diagnostic.py": "sha256:37d0420ae3f952acececc855063ad465535c7a96b637297d8d5457248ea121e8",
+    "results/contact_com_validation_v24_20261012/frozen_thresholds.json": "sha256:451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "results/contact_com_validation_v24_20261012/versions.json": "sha256:07bcf4822997ea17cb8b9ce3bfeb9a20116d28916104a687df7f38414e6ff97a",
+    "results/contact_com_validation_v24_20261012/public/raw/val_planned_s11/metadata.json": "sha256:b8675a3e6acc1ac83c2f71c7aef802f1e51e35513036e2c243e159cc06b4ec33",
+    "results/contact_com_validation_v24_20261012/public/raw/val_planned_s11/metrics.json": "sha256:565a08acfcd9741f0da1c16362fe72d8ee9eae99f80dbee7986a6f660f65fb93",
+    "results/contact_com_validation_v24_20261012/public/raw/val_native_s13/metrics.json": "sha256:aaaa28da3a9f0cd83c11b841e8d0a75d4e346ce9020fb76e6ab06c5524d714f8",
+    "scripts/run_velocity_reference_fixture_v19_20261012.py": "sha256:ad2ff0180d6547db0efa138088c77d686c86a1b3c09697a78129f66d9966ae4d",
+    "results/velocity_reference_fixture_v19_20261012/first_attempt/summary.json": "sha256:5e1d40497ad66e653e376596b07c3f98b68197010fdd0c4306d09fea4a0e5738",
+    "scripts/run_articulated_contact_fixture_v22_20261012.py": "sha256:b4e9c5a2522591ec274490416ebdb7d0060df979659e36fd177c3340a8fbac0a",
+    "results/articulated_contact_fixture_v22_20261012/first_attempt/summary.json": "sha256:129c19b6a3b781432676f20c0ed558725e43353b5cfd2177fc38453d1e644227",
+    "results/fixed_reference_com_v27_20261012/frozen_thresholds.json": "sha256:451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "results/fixed_reference_com_v27_20261012/versions.json": "sha256:be4ff427f2d1e3ab1dacd210357d67836b33d18d0683e2c6699292c561fa7593",
+    "results/fixed_reference_com_v27_20261012/selected/raw_reference.json": "sha256:e2def7512cc6ae15106925c053e5f9856a425365351b9b63b4ba510dab3e0d0d",
+    "results/fixed_reference_com_v27_20261012/selected/raw_reference.lineage.json": "sha256:530a41842df22acdaec1f3165802a88ddf09ac67df15f536ddb3719292a9868c",
+    "results/fixed_reference_com_v27_20261012/selected/refined_reference.json": "sha256:8234a1d5780a567b8a71a063c8e6a87032d6a483450b5fa61692f83645ea60d5",
+    "results/fixed_reference_com_v27_20261012/selected/refined_reference.lineage.json": "sha256:03aa03beaf056a9fc15465e1491264f99b1f1f40d71e2d391b74e7a5c23e7bc0",
+    "results/fixed_reference_com_v27_20261012/requests/val_raw_replay_s11.json": "sha256:c481464500be618a4b38f6b931c0f5c84594bf1c0aa796a242693098b2cc0cb4",
+    "results/fixed_reference_com_v27_20261012/requests/val_refined_replay_s11.json": "sha256:6b57e85ccb2bd885147e4297ab676732c00b3c686724a53bbf52d81025a9d183",
+    "results/fixed_reference_com_v27_20261012/public/raw/val_raw_replay_s11/metadata.json": "sha256:25314c9b6239c684fa5ce59153de03ddc513ba196d1352dfe34d87a43e41aaad",
+    "results/fixed_reference_com_v27_20261012/public/raw/val_raw_replay_s11/metrics.json": "sha256:f08a639dd6d7a05f079fb103a62caf2aeb44141449d0e6758f8ce24537e1d088",
+    "results/fixed_reference_com_v27_20261012/public/raw/val_refined_replay_s11/metadata.json": "sha256:f384a7356d979c30848d3395cc97d1e8c2b7e685a58e311f3b1ce49ec3af8f1f",
+    "results/fixed_reference_com_v27_20261012/public/raw/val_refined_replay_s11/metrics.json": "sha256:e2d1c423ea64ae1716f55a0e7fd870199b6b40e91e0988ceaf4d5475157f5ad4",
+    "results/fixed_reference_com_v27_20261012/DOCUMENT_WITNESS.md": "sha256:864362011d5fc167f7e6a06e44e8f8adf1b8452171181fb38b9f1aee6c5f211e",
+    "results/contact_com_runtime_v26_20261012/DOCUMENT_WITNESS.md": "sha256:2568c7c418270cafafc32a243f70841a4d939765b69712c260f633c62eeadfff"
+  }
+}
