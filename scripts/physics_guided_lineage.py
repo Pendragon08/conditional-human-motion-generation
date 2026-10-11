@@ -78,14 +78,22 @@ def certify_cached(root,out,path,expected,kwargs,config):
         if base.exists(): assert meta['generation_noise_sha256']==json.loads(base.read_text())['generation_noise_sha256']
     thresholds=json.loads((out/'frozen_thresholds.json').read_text())['thresholds']
     replay_max_error=None
+    replay_canonical_error=None
     with np.load(path/'trajectories.npz',allow_pickle=False) as archive:
         arrays={key:archive[key] for key in archive.files}
         assert np.array_equal(arrays['reference_frame'],np.arange(config['episode_steps_30hz']))
         if kwargs.get('replay_file'):
             with np.load(kwargs['replay_file'],allow_pickle=False) as replay:
-                actual_ref=arrays['reference'][arrays['valid']]; wanted_ref=replay['reference'][arrays['valid']]
+                actual_ref=arrays['reference'][arrays['valid']]; selected_ref=replay['reference']
+                wanted_ref=selected_ref[arrays['valid']]
                 replay_max_error=float(np.max(np.abs(actual_ref-wanted_ref)))
-                assert np.allclose(actual_ref,wanted_ref,atol=1e-7,rtol=0), 'Stale replay input beyond coordinate roundtrip tolerance'
+                # Upstream _get_state_from_gen_cache (closd.py:657-704)
+                # subtracts and re-adds the root in float32 before converting
+                # coordinates. Reproduce that operation, rather than enlarging
+                # a tolerance on the untransformed selected input.
+                canonical=(selected_ref-selected_ref[:,:,0:1,:])+selected_ref[:,:,0:1,:]
+                replay_canonical_error=float(np.max(np.abs(actual_ref-canonical[arrays['valid']])))
+                assert np.allclose(actual_ref,canonical[arrays['valid']],atol=1e-12,rtol=0), 'Stale replay input beyond upstream canonical transform'
         recomputed=[metrics(arrays,i,meta,thresholds) for i in range(len(saved))]
         assert object_hash(recomputed)==object_hash(saved), 'Cached metrics differ from current measurement implementation'
     binding=path/'lineage.json'
@@ -112,7 +120,9 @@ def certify_cached(root,out,path,expected,kwargs,config):
                 compatibility=dict(original_lineage_sha256=file_hash(binding),original_execution_request=old['request'],
                     current_compatibility_request=expected,certification='exact_array_and_metric_compatibility_after_nonexecution_amendment',
                     amendment_sha256=file_hash(out/'nonexecution_version_amendment.json'),
-                    outputs=old['outputs'],replay_reference_max_error_m=replay_max_error,replay_reference_tolerance_m=1e-7,
+                    outputs=old['outputs'],replay_reference_max_error_m=replay_max_error,
+                    replay_canonical_max_error_m=replay_canonical_error,replay_reference_tolerance_m=1e-12,
+                    replay_reference_comparison='upstream float32 root-centering canonical input',
                     confirmatory=False)
                 (path/'compatibility_after_amendment.json').write_text(json.dumps(compatibility,indent=2))
                 assert old['outputs']=={name:file_hash(path/name) for name in ('metadata.json','metrics.json','trajectories.npz')}
@@ -126,6 +136,9 @@ def certify_cached(root,out,path,expected,kwargs,config):
             records.append(old);history.write_text(json.dumps(records,indent=2))
             old['request']=expected;old['request_role']='retrospective_compatibility_target_not_execution_record'
             old['replay_reference_max_error_m']=replay_max_error
+            old['replay_canonical_max_error_m']=replay_canonical_error
+            old['replay_reference_tolerance_m']=1e-12
+            old['replay_reference_comparison']='upstream float32 root-centering canonical input'
             binding.write_text(json.dumps(old,indent=2))
         assert old['outputs']=={name:file_hash(path/name) for name in ('metadata.json','metrics.json','trajectories.npz')}
     else:
@@ -133,6 +146,8 @@ def certify_cached(root,out,path,expected,kwargs,config):
                     certification='retrospective_exact_array_and_metric_verification',
                     original_request_binding='not_recorded_at_execution',confirmatory=False,
                     request_role='retrospective_compatibility_target_not_execution_record',
-                    replay_reference_max_error_m=replay_max_error,replay_reference_tolerance_m=1e-7)
+                    replay_reference_max_error_m=replay_max_error,replay_canonical_max_error_m=replay_canonical_error,
+                    replay_reference_tolerance_m=1e-12,
+                    replay_reference_comparison='upstream float32 root-centering canonical input')
         binding.write_text(json.dumps(record,indent=2))
     return meta

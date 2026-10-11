@@ -1,0 +1,38 @@
+[
+  {
+    "event": "first_pause",
+    "child_label": "test_planned_s11_r2",
+    "queue_pid": 2589112,
+    "reason": "Align proposed mechanism with actual execution prefix before any proposed candidate run",
+    "evidence": "budget ledger + metadata for proposed candidates",
+    "timestamp_not_recovered": true
+  },
+  {
+    "event": "second_pause",
+    "state": {
+      "status": "RUNNING",
+      "time": 1791709489.985896,
+      "label": "test_eval_random_best_s11",
+      "stage": "comparison",
+      "split": "test"
+    },
+    "queue_pid": 2595065,
+    "time": 1791709502.0868077,
+    "reason": "Second pause during test_eval_random_best_s11 for pre-ablation integrity fixes; proposed_s11_r1/r2 had already completed with actual prefixes. Original wording incorrectly described timing.",
+    "original_journal_preserved": "queue_pause_journal_original.json"
+  },
+  {
+    "event": "third_pause_pinned_semantic_evaluator",
+    "queue_pid": 2609521,
+    "state": {
+      "status": "RUNNING",
+      "time": 1791711574.715438,
+      "label": "test_shuffled_s11_r2",
+      "stage": "ablation_g1",
+      "split": "test"
+    },
+    "time": 1791711638.4409595,
+    "reason": "Explicitly pin and verify the actual semantic evaluator snapshot before its first invocation; separate collection child allowed to finish",
+    "evidence": "semantic_binding_amendment.json and nonexecution_version_amendment.json"
+  }
+]

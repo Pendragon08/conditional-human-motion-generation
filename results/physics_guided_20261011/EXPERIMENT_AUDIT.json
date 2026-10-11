@@ -1,0 +1,371 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "reason_code": "measurement_validity_failed_coordinate_anchor_and_gate_floor",
+  "summary": "The historical package is numerically and procedurally well preserved, but its reference/goal and actual reset states use different world anchors and its joint gate is dominated by a slip-proxy floor. Published counts are reproducible; efficacy, inefficacy, seed, offset, and mechanism claims are unsupported.",
+  "audited_input_hashes": {
+    "input_hash_manifest": "sha256:eccebfb3670a948ae713a76b2660ba225bbb25409b52d952d0f1f560f469e9f4",
+    "results/physics_guided_20261011/summary.json": "sha256:fb3c008d3ac6667d807be726f719967e6ac523ef4d6fbf4b8b7b6977952d5801",
+    "results/physics_guided_20261011/progression_gate.json": "sha256:3fa571c21314fd40ed139309d3341d486d35bcda06a35efc6f1753d61118d7aa",
+    "results/physics_guided_20261011/semantic_diversity_gate.json": "sha256:9d77c70929597ab5ca1c1715e798d487b591f0321a3f5d1f600168fa14ef3f2e",
+    "results/physics_guided_20261011/complete_attempt_register.json": "sha256:7415d98109250c2ae8f7f5cc94d0553a4f1b5f94c7cf639e4b4d7271e5f70dba",
+    "results/physics_guided_20261011/cross_seed_coordinate_checks.json": "sha256:3d2620f7864e5637269ae472fd4e17ce4dbf702d3fef91d625e8e821920166a1",
+    "results/physics_guided_20261011/experiment_report.html": "sha256:714f8193b6302fead025f506ba92f48388d505c6f5bb3079b6cd72c1ab3618e8",
+    "results/physics_guided_20261011/overleaf_experiment_record.tex": "sha256:c516f634ac38e879361ed874248bdc21b78dbf15b80054b20b6c3fb0a0ac2330",
+    "results/physics_guided_20261011/publication_versions.json": "sha256:40b1ae62660feb336deddb996cf34b696d57b839ef8c31dbd18f166ebf236478",
+    "trace/independent_recomputation.json": "sha256:3a7c7eec8113a29b16d440cdc4cba7f551fd42df629c0e96d12b2f45736c3ce0",
+    "trace/historical_coordinate_per_case.json": "sha256:4f5765132e39d0176c81b50ab5ad7c8e9996a1723d07ef45af55cdfe490964ca"
+  },
+  "trace_path": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/.aris/traces/physics_guided_final_audit_20261011/",
+  "agent_id": "/root/physics_guided_integrity_auditor",
+  "verdict_id": "physics_guided_20261011_same_family_provisional_v1",
+  "executor_model": "Codex parent thread; exact deployment identifier unavailable to reviewer",
+  "executor_family": "openai",
+  "reviewer_model": "GPT-6-series Codex; exact deployment identifier unavailable",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "inherited deep audit",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "generated_at": "2026-10-11T11:22:37.1428153Z",
+  "date": "2026-10-11",
+  "auditor": "/root/physics_guided_integrity_auditor",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "record_integrity": "pass_with_warnings",
+  "scientific_validity": "fail",
+  "scope": {
+    "result_family": "results/physics_guided_20261011",
+    "excludes": [
+      "results/reset_alignment_20261011 and all V1/V2/V3 reset-alignment measurements",
+      "any future repaired or rerun result family"
+    ],
+    "read_only": true,
+    "gpu_experiments_run_by_auditor": 0,
+    "experiment_code_or_output_mutated": false
+  },
+  "checks": {
+    "gt_provenance": {
+      "status": "pass_with_qualification",
+      "details": "HumanML motion, text, source path, and endpoint condition are dataset-derived rather than derived from the evaluated model output. The semantic score is explicitly a frozen learned proxy over simulated actual-state motion. The real provenance does not cure the world-anchor defect.",
+      "evidence": [
+        "scripts/physics_guided_prepare.py:31-48",
+        "scripts/physics_guided_prepare.py:46-66",
+        "scripts/physics_guided_prepare.py:70-97",
+        "scripts/physics_guided_collect.py:102-106",
+        "scripts/physics_guided_semantics.py:3",
+        "scripts/physics_guided_semantics.py:33-36",
+        "scripts/physics_guided_semantics.py:54-57",
+        "scripts/physics_guided_semantics.py:87-122"
+      ]
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "No reported metric divides by statistics of the current prediction. Candidate ranking uses fixed frozen thresholds, and raw values remain available.",
+      "evidence": [
+        "configs/physics_guided_20261011.json:17-32",
+        "scripts/physics_guided_core.py:158-165"
+      ]
+    },
+    "result_existence": {
+      "status": "warn",
+      "details": "All required historical files exist and all recomputed counts/gates match exactly. All 74 registered result triplets hash correctly. There are 61 execution-bound and 13 retrospective certifications, all marked non-confirmatory. The HTML title is stale relative to the current publisher source, while its body discloses the diagnostic limitation.",
+      "evidence": [
+        "results/physics_guided_20261011/complete_attempt_register.json",
+        "results/physics_guided_20261011/lineage_register.json",
+        "results/physics_guided_20261011/summary.json",
+        "results/physics_guided_20261011/progression_gate.json",
+        "results/physics_guided_20261011/semantic_diversity_gate.json",
+        "results/physics_guided_20261011/experiment_report.html:2",
+        "results/physics_guided_20261011/experiment_report.html:8",
+        "results/physics_guided_20261011/experiment_report.html:58",
+        "results/physics_guided_20261011/overleaf_experiment_record.tex:10",
+        "results/physics_guided_20261011/overleaf_experiment_record.tex:41",
+        "results/physics_guided_20261011/overleaf_experiment_record.tex:47",
+        "scripts/publish_physics_guided_final.py:203",
+        "trace/independent_recomputation.json"
+      ]
+    },
+    "dead_code": {
+      "status": "pass",
+      "details": "Core measurement checks, collection, analysis, and semantic evaluation are connected to the executed pipeline, and their outputs appear in saved metrics and summaries.",
+      "evidence": [
+        "scripts/physics_guided_run.sh:18-30",
+        "scripts/physics_guided_queue.py:262-280",
+        "results/physics_guided_20261011/component_metrics.json",
+        "results/physics_guided_20261011/summary.json"
+      ]
+    },
+    "scope": {
+      "status": "warn",
+      "details": "The main run covers 10 arms, 48 internal test sources, three diffusion seeds, and 432 attempts per arm, but seed and offset effects are confounded by the world-anchor defect and the joint endpoint is near a complete floor.",
+      "evidence": [
+        "scripts/physics_guided_analyze.py:55-82",
+        "scripts/physics_guided_queue.py:229-260",
+        "docs/physics_guided_20261011.md:25",
+        "trace/independent_recomputation.json",
+        "trace/historical_coordinate_per_case.json"
+      ]
+    },
+    "eval_type": {
+      "status": "warn",
+      "classification": [
+        "real_gt",
+        "synthetic_proxy",
+        "simulation_only",
+        "learned_proxy"
+      ],
+      "details": "Dataset-derived HumanML reference/condition; model-produced motion candidates; Isaac Gym-only physical measurements; frozen learned semantic proxy. No human or real-robot evaluation.",
+      "evidence": [
+        "scripts/physics_guided_prepare.py:31-97",
+        "scripts/physics_guided_core.py:40-154",
+        "scripts/physics_guided_semantics.py:3-122"
+      ]
+    }
+  },
+  "additional_controls": {
+    "source_group_split": {
+      "status": "pass",
+      "counts": {
+        "unique_groups": 200,
+        "train": 128,
+        "validation": 24,
+        "test": 48,
+        "pairwise_overlap": 0,
+        "per_family_train_validation_test": [64, 12, 24]
+      },
+      "limitation": "The internal split does not establish independence from pretrained weights; 41 of 48 study-test sources originate from official HumanML train and 7 from official test."
+    },
+    "immutable_targets": {
+      "status": "pass_within_case_seed_fail_across_seed_and_offset_geometry",
+      "details": "Paired methods within each case and seed share the same original goal and case order. Reference/actual anchors and realized nominal offsets are not comparable across seed runs."
+    },
+    "actual_reference_timestamps": {
+      "status": "pass_with_warning",
+      "details": "Reference frame indices are explicit and validated as 0..119; actions are applied before simulation and actual states are recorded after the step. The old dataset contains no pre-action actual sample and begins with the coordinate mismatch.",
+      "evidence": [
+        "scripts/physics_guided_collect.py:190-243",
+        "scripts/physics_guided_collect.py:278-279"
+      ]
+    },
+    "condition_update_bounds": {
+      "status": "pass",
+      "details": "Total translation <=0.15 m; step translation <=0.05 m; heading step <=5 degrees; total heading <=15 degrees.",
+      "evidence": [
+        "scripts/physics_guided_collect.py:109-118"
+      ]
+    },
+    "candidate_budget_fairness": {
+      "status": "pass_for_declared_primary_gate",
+      "equal_budget_arms": [
+        "random_best",
+        "native_best",
+        "no_feedback",
+        "shuffled",
+        "planned_prefix",
+        "tracking_only"
+      ],
+      "details": "All primary arms use three candidates. One-candidate raw, ordinary, and native_single arms are excluded from the equal-budget numeric gate."
+    },
+    "slip_proxy_geometry": {
+      "status": "warn",
+      "details": "Collision primitives and v+omega-cross-r point velocity are used, support requires body force z>10 N and surface height<2 cm, and penetration uses primitive surface geometry. Net body force cannot localize contact to the selected primitive surface point, and the fixed threshold creates an empirical floor.",
+      "evidence": [
+        "scripts/physics_guided_core.py:40-67",
+        "scripts/physics_guided_core.py:70-97"
+      ]
+    },
+    "gate_logic": {
+      "status": "pass_structurally_fail_inferentially",
+      "details": "The analyzer checks all six equal-budget arms, fixed thresholds, semantic hashes, and downstream stage status. The coordinate-invalid and degenerate inputs prevent scientific interpretation.",
+      "evidence": [
+        "scripts/physics_guided_analyze.py:55-123"
+      ]
+    },
+    "resource_limits": {
+      "status": "pass",
+      "gpu_hours": 1.958902242,
+      "gpu_hour_limit": 72,
+      "output_bytes": 1997173593,
+      "output_limit_bytes": 16106127360,
+      "free_bytes": 43630018560,
+      "minimum_free_bytes": 21474836480
+    }
+  },
+  "findings": [
+    {
+      "id": "F001",
+      "severity": "critical",
+      "title": "Reference/goal and actual episode use different world anchors",
+      "status": "confirmed",
+      "evidence": [
+        "scripts/physics_guided_collect.py:87-105",
+        "third_party/CLoSD/closd/env/tasks/humanoid_im.py:900-968",
+        "third_party/CLoSD/closd/env/tasks/humanoid_im.py:911-924",
+        "third_party/CLoSD/closd/env/tasks/humanoid.py:504-519",
+        "third_party/CLoSD/closd/env/tasks/humanoid.py:552-562",
+        "trace/historical_coordinate_per_case.json"
+      ],
+      "quantification": {
+        "seed11_reference_frame0_vs_actual_xy_median_m": 0.8656091094,
+        "seed11_reference_frame0_vs_actual_xy_max_m": 1.5930603743,
+        "seed12_reference_frame0_vs_actual_xy_median_m": 0.7996194959,
+        "seed12_reference_frame0_vs_actual_xy_max_m": 1.5912988186,
+        "seed13_reference_frame0_vs_actual_xy_median_m": 0.8169107437,
+        "seed13_reference_frame0_vs_actual_xy_max_m": 1.6531080008,
+        "max_requested_vs_realized_world_offset_error_m": 2.535841934,
+        "max_goal_relative_to_actual_offset_error_m": 2.535205324,
+        "offset_records": 288
+      },
+      "claim_impact": "All efficacy, inefficacy, mechanism, seed, offset, and robustness inference from the historical run is unsupported."
+    },
+    {
+      "id": "F002",
+      "severity": "major",
+      "title": "Joint gate is dominated by a slip-proxy floor",
+      "status": "confirmed",
+      "details": "Penetration passes every main attempt, slip passes only 1-5 of 432 per arm, physical passes only 1-2 of 432 per arm, and validation had zero joint passes before threshold freeze.",
+      "claim_impact": "Zero gains and [0,0] intervals do not show equivalence or absence of mechanism effect."
+    },
+    {
+      "id": "F003",
+      "severity": "minor",
+      "title": "Published HTML title is stale relative to current publisher source",
+      "status": "confirmed",
+      "details": "The saved HTML title contains controlled-diagnostic wording. Its body clearly disclaims controlled inference, and publication_versions correctly records the older producer hash."
+    },
+    {
+      "id": "F004",
+      "severity": "informational",
+      "title": "Thirteen result batches use retrospective compatibility certification",
+      "status": "disclosed",
+      "details": "There are 61 execution-bound and 13 retrospective exact-array/metric certifications. All are explicitly non-confirmatory; no original execution-time request hash is falsely claimed."
+    }
+  ],
+  "counts": {
+    "main_arms": 10,
+    "attempts_per_arm": 432,
+    "test_sources_per_arm": 48,
+    "diffusion_seeds": [11, 12, 13],
+    "main_replay_attempts": 4320,
+    "construction_and_replay_csv_rows": 10512,
+    "formal_batch_labels": 74,
+    "formal_batch_statuses": {
+      "complete": 74
+    },
+    "execution_bound_certifications": 61,
+    "retrospective_certifications": 13,
+    "development_or_witness_batches": 6,
+    "known_extra_attempts": 30,
+    "early_failed_batches_with_unknown_attempt_count": 1,
+    "cpu_queue_failures": 5,
+    "amendment_records": 8,
+    "version_snapshots": 9
+  },
+  "numeric_results": {
+    "reported_minus_recomputed": "all checked values exactly zero",
+    "arms": {
+      "raw": {"attempts": 432, "completed": 279, "construction_completed": 276, "joint_pass": 1, "joint_rate": 0.0023148148148148147},
+      "ordinary": {"attempts": 432, "completed": 263, "construction_completed": 276, "joint_pass": 0, "joint_rate": 0.0},
+      "random_best": {"attempts": 432, "completed": 265, "construction_completed": 287, "joint_pass": 0, "joint_rate": 0.0},
+      "native_single": {"attempts": 432, "completed": 280, "construction_completed": 298, "joint_pass": 0, "joint_rate": 0.0},
+      "native_best": {"attempts": 432, "completed": 279, "construction_completed": 313, "joint_pass": 0, "joint_rate": 0.0},
+      "proposed": {"attempts": 432, "completed": 276, "construction_completed": 302, "joint_pass": 0, "joint_rate": 0.0},
+      "no_feedback": {"attempts": 432, "completed": 280, "construction_completed": 298, "joint_pass": 0, "joint_rate": 0.0},
+      "shuffled": {"attempts": 432, "completed": 280, "construction_completed": 303, "joint_pass": 0, "joint_rate": 0.0},
+      "planned_prefix": {"attempts": 432, "completed": 260, "construction_completed": 280, "joint_pass": 0, "joint_rate": 0.0},
+      "tracking_only": {"attempts": 432, "completed": 280, "construction_completed": 302, "joint_pass": 0, "joint_rate": 0.0}
+    },
+    "comparison_gains_pp": {
+      "ordinary": 0.0,
+      "random_best": 0.0,
+      "native_best": 0.0,
+      "no_feedback": 0.0,
+      "shuffled": 0.0,
+      "planned_prefix": 0.0,
+      "tracking_only": 0.0
+    },
+    "all_comparison_ci95_pp": [0.0, 0.0],
+    "numeric_gate": false,
+    "numeric_checks_by_equal_budget_arm": {
+      "random_best": false,
+      "native_best": false,
+      "no_feedback": false,
+      "shuffled": false,
+      "planned_prefix": false,
+      "tracking_only": false
+    },
+    "semantic_proxy": {
+      "arm_seed_entries": 30,
+      "attempts": 4320,
+      "completed": 2743,
+      "proposed": {"matching": 6.6184, "diversity": 5.2923, "multimodality": 4.38723},
+      "random_best": {"matching": 6.7064, "diversity": 5.29525, "multimodality": 4.29587}
+    },
+    "stage_status": {
+      "g1": "not_run",
+      "downstream_training": "not_run",
+      "novelty": "not_established",
+      "conclusion": "unsupported_under_fixed_amended_diagnostic_gate"
+    }
+  },
+  "physical_proxy_floor": {
+    "penetration_pass_per_arm": 432,
+    "slip_pass_range_per_arm": [1, 5],
+    "physical_pass_range_per_arm": [1, 2],
+    "completed_slip_fraction_medians": {
+      "raw": 0.7346938775510204,
+      "ordinary": 0.7441860465116279,
+      "random_best": 0.7486033519553073,
+      "native_single": 0.7557561486132914,
+      "native_best": 0.75,
+      "proposed": 0.7549368828896388,
+      "no_feedback": 0.7574531139419675,
+      "shuffled": 0.7599870889344573,
+      "planned_prefix": 0.7474777157410128,
+      "tracking_only": 0.75
+    }
+  },
+  "lineage": {
+    "registered_batches": 74,
+    "hash_mismatches": 0,
+    "bound_request_at_execution": 61,
+    "retrospective_exact_array_and_metric_verification": 13,
+    "confirmatory_true": 0,
+    "request_roles": {
+      "original_input_bound_with_post_execution_compatibility": 26,
+      "input_bound_execution": 35,
+      "retrospective_compatibility_target": 13
+    },
+    "compatibility_records": 26
+  },
+  "claims": [
+    {"id": "C1", "claim": "The historical package faithfully reports what was run.", "impact": "supported_with_minor_publication_warning"},
+    {"id": "C2", "claim": "The proposed method improves the joint endpoint.", "impact": "unsupported"},
+    {"id": "C3", "claim": "The proposed mechanism is ineffective.", "impact": "unsupported"},
+    {"id": "C4", "claim": "Results are robust across seeds or nominal offsets.", "impact": "unsupported"},
+    {"id": "C5", "claim": "Semantic quality and diversity were evaluated.", "impact": "supported_only_as_frozen_actual_state_learned_proxy"},
+    {"id": "C6", "claim": "G1 or downstream training was completed.", "impact": "not_claimed_and_not_present"}
+  ],
+  "action_items": [
+    "Keep the historical run diagnostic and do not reuse its numbers for efficacy, inefficacy, robustness, seed, offset, or mechanism claims.",
+    "Run any coordinate repair as a new result family with reference, frozen target, and actual reset state aligned before the first action and with a saved pre-action state.",
+    "Calibrate and freeze a physically meaningful slip/contact threshold on a separate validation distribution, then retain component metrics alongside the joint endpoint.",
+    "Preserve execution-time requests and retrospective amendments; keep retrospective records non-confirmatory.",
+    "Regenerate the stale HTML title from the current publisher while retaining the old artifact and producer hash."
+  ],
+  "limitations": [
+    "Same-family Codex review is provisional; no cross-family reviewer acceptance is claimed.",
+    "This audit evaluates the historical physics_guided_20261011 result family only.",
+    "Simulation-only contact and slip proxies are not physical robot validation.",
+    "A later successful reset-aligned experiment would require its own audit and cannot change this verdict retroactively."
+  ],
+  "audit_artifacts": {
+    "markdown": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/.aris/traces/physics_guided_final_audit_20261011/EXPERIMENT_AUDIT.md",
+    "json": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/.aris/traces/physics_guided_final_audit_20261011/EXPERIMENT_AUDIT.json",
+    "hash_manifest": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/.aris/traces/physics_guided_final_audit_20261011/input_hashes.json",
+    "independent_recomputation": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/.aris/traces/physics_guided_final_audit_20261011/independent_recomputation.json",
+    "historical_coordinate_per_case": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/.aris/traces/physics_guided_final_audit_20261011/historical_coordinate_per_case.json",
+    "recompute_published_results": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/.aris/traces/physics_guided_final_audit_20261011/recompute_published_results.py",
+    "recompute_historical_coordinates": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/.aris/traces/physics_guided_final_audit_20261011/recompute_historical_coordinates.py"
+  }
+}

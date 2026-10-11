@@ -1,0 +1,104 @@
+{
+  "study": "independent, incomplete V3 measurement diagnosis",
+  "planned_attempts": 216,
+  "attempts": 12,
+  "completed_cases": 12,
+  "started_batches": 1,
+  "not_started_batches": [
+    "native_s11",
+    "planned_s12",
+    "native_s12",
+    "planned_s13",
+    "native_s13",
+    "full_val_planned_s11",
+    "full_val_native_s11"
+  ],
+  "wrapper_exit_code": 1,
+  "retained_original_state": {
+    "status": "RUNNING",
+    "label": "planned_s11",
+    "time": 1791717904.676374
+  },
+  "state_note": "Wrapper exited at resource guard between batches; retained RUNNING state is stale, not an active experiment",
+  "stop_trigger": "No displacement of another workload resource assertion; no job was displaced",
+  "coordinate_gate_pass": false,
+  "coordinate_errors": [
+    "planned_s11: seven exported kinematic tensors are not identical across resets",
+    "Incomplete coverage: cross-seed, cross-mode and full validation checks were not run"
+  ],
+  "initial_state_checks": [
+    {
+      "label": "planned_s11",
+      "cases": 12,
+      "completed": 12,
+      "initial_xy_max_m": 0.0007125437259674072,
+      "full_state_max_difference": {
+        "_humanoid_root_states": 0.0,
+        "_dof_pos": 0.0,
+        "_dof_vel": 0.0,
+        "_rigid_body_pos": 0.035006970167160034,
+        "_rigid_body_rot": 1.4754348993301392,
+        "_rigid_body_vel": 3.7104039192199707,
+        "_rigid_body_ang_vel": 6.5190958976745605
+      },
+      "exported_tensor_hashes_equal": false,
+      "reference_alignment_invariants": {
+        "relative_pose_max_error_m": 5.960464477539063e-08,
+        "displacement_max_error_m": 5.960464477539063e-08,
+        "z_max_error_m": 0.0
+      }
+    }
+  ],
+  "cross_seed_and_mode_checks": [],
+  "offset_checks": [
+    {
+      "source_id": "./pose_data/MPI_mosh/50004/light_hopping_stiff_poses.npy",
+      "max_absolute_offset_error_m": 2.9593706130925934e-06
+    },
+    {
+      "source_id": "./pose_data/DFaust_67/50007/50007_light_hopping_stiff_poses.npy",
+      "max_absolute_offset_error_m": 2.9221177101079743e-06
+    },
+    {
+      "source_id": "./pose_data/CMU/106/106_15_poses.npy",
+      "max_absolute_offset_error_m": 3.063678741449527e-06
+    },
+    {
+      "source_id": "./pose_data/CMU/61/61_09_poses.npy",
+      "max_absolute_offset_error_m": 2.884864807123355e-06
+    }
+  ],
+  "full_validation_quality": {},
+  "available_fixture_quality": {
+    "planned_s11": {
+      "attempts": 12,
+      "completed": 12,
+      "condition_pass": 4,
+      "physical_pass": 0,
+      "tracking_pass": 12,
+      "joint_pass": 0
+    }
+  },
+  "request_output_bindings": [
+    {
+      "label": "planned_s11",
+      "request_matches": true,
+      "output_hashes_match": true
+    }
+  ],
+  "joint_gate_floor": null,
+  "quality_thresholds_changed": false,
+  "repair_gpu_hours": 0.014452280722222223,
+  "combined_charged_gpu_hours": 1.9887913167262192,
+  "outer_wrapper_overhead_charged_seconds": 20.029804839845873,
+  "independent_witness_sha256": "c84c5338d442a3661ae12681ad49734e5162097436799eaebb5a0dbb1b6e97ff",
+  "state_identity_scope": "Seven exported kinematic tensors; excludes PhysX hidden state, contacts, RNG and policy observations",
+  "next_stage": "STOP_MEASUREMENT_INVALID",
+  "qualification": "Not a completed 216-case validation, not a controlled efficacy comparison; do not pool with historical results",
+  "evidence_sha256": {
+    "state.json": "5ee65da98d0376962a69d0b2b8c240fda304feedd75a96e23f7ddb2e53ea3cba",
+    "budget_ledger.json": "99d08924076b7fa7e3edc580b16937664697ad380d64ef621b10989d1572fa98",
+    "versions_before_execution.json": "f819cb4a67c298dcb0210a2f8bbf0359b171cd952ef1525bb3273a0f6054a758"
+  },
+  "analyzer_sha256": "66a8a5a46370fd5a77962bf537c3f2a0696064f598164cc8ffe731e6fac402ff"
+}

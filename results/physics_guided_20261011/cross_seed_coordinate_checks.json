@@ -1,0 +1,52 @@
+{
+  "checks": [
+    {
+      "seed": 12,
+      "baseline_seed": 11,
+      "absolute_world_goal_max_difference_m": 1.978951334953308,
+      "source_relative_goal_max_difference_m": 1.5497207641601562e-05,
+      "source_relative_prefix_max_difference_m": 1.5974044799804688e-05,
+      "root_height_shift_max_m": 0.0,
+      "actual_initial_max_shift_m": 0.011224750429391861,
+      "goal_relative_to_actual_max_change_m": 2.429033507033212,
+      "heading_max_difference_rad": 8.462780641593781e-06,
+      "metadata_sha256": "e08fab431755ce92fbe3d9bbb9a3a16801a29755fec6777a8ad9232d4f0899a8",
+      "trajectories_sha256": "91e4e51224e9dfe2831651cd2e88f8408c5e84533ee71f4c673f42dfb65e892a"
+    },
+    {
+      "seed": 13,
+      "baseline_seed": 11,
+      "absolute_world_goal_max_difference_m": 1.8839288353919983,
+      "source_relative_goal_max_difference_m": 1.565832644701004e-05,
+      "source_relative_prefix_max_difference_m": 1.627206802368164e-05,
+      "root_height_shift_max_m": 0.0,
+      "actual_initial_max_shift_m": 0.012398666702210903,
+      "goal_relative_to_actual_max_change_m": 2.078817602634573,
+      "heading_max_difference_rad": 1.5542729203232852e-05,
+      "metadata_sha256": "31cceae2b1ad71ba1bc0cf8e938c4a1f645cad3e60d41c9c87184493b3d2ac39",
+      "trajectories_sha256": "1b7dd4a36a1ef55e45671a626e1c636d027ee5a3f85dcf2663d38c4362548e5a"
+    }
+  ],
+  "initial_mismatches": [
+    {
+      "seed": 11,
+      "xy_median_m": 0.8656091094017029,
+      "xy_max_m": 1.5930603742599487,
+      "actual_state_time": "after first physics step; not a recorded pre-action initialization state"
+    },
+    {
+      "seed": 12,
+      "xy_median_m": 0.7996194958686829,
+      "xy_max_m": 1.5912988185882568,
+      "actual_state_time": "after first physics step; not a recorded pre-action initialization state"
+    },
+    {
+      "seed": 13,
+      "xy_median_m": 0.8169107437133789,
+      "xy_max_m": 1.65310800075531,
+      "actual_state_time": "after first physics step; not a recorded pre-action initialization state"
+    }
+  ],
+  "measurement_validity": "FAILED: creation-time reference anchors and episode-reset actual state do not co-translate",
+  "interpretation": "The target remains immutable within each paired (case,seed), but seeds also change task geometry. Offset cases have distinct creation anchors. Source-relative equivalence does not establish equivalence relative to the actual character. Seed robustness and controlled +/-15cm effects cannot be inferred."
+}

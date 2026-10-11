@@ -1,0 +1,2604 @@
+{
+  "schema_version": 2,
+  "role": "fresh_document_following_execution_witness",
+  "status": "FAILED_PRESERVED_NO_RETRY",
+  "final_exit_code": 1,
+  "measurement_invocations": 1,
+  "retries": 0,
+  "exact_command": "ssh -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes ouyanghao@10.147.17.32 /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/run_reset_alignment_checks_v3.py",
+  "execution": {
+    "started_utc": "2026-10-11T11:24:42.3527247Z",
+    "local_ssh_pid": 19432,
+    "exact_command": "ssh -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes ouyanghao@10.147.17.32 /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/run_reset_alignment_checks_v3.py",
+    "measurement_invocations": 1,
+    "retries": 0,
+    "stdout_file": "measurement.stdout.txt",
+    "stderr_file": "measurement.stderr.txt",
+    "ended_utc": "2026-10-11T11:25:34.3809353Z",
+    "exit_code": 1
+  },
+  "exact_stdout": "RESET_ALIGNMENT_BATCH planned_s11 0\n",
+  "exact_stderr": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/run_reset_alignment_checks_v3.py\", line 118, in <module>\n    main()\n  File \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/run_reset_alignment_checks_v3.py\", line 89, in main\n    assert int(gpu[0])<2048 and int(gpu[1])<=5, 'No displacement of another workload'\nAssertionError: No displacement of another workload\n",
+  "stdout_capture": "raw byte stream in measurement.stdout.txt",
+  "stderr_capture": "raw byte stream in measurement.stderr.txt",
+  "documents": [
+    {
+      "path": "D:\\具身智能\\conditional-human-motion-generation\\docs\\reset_alignment_measurement_v3_20261011.md",
+      "sha256": "120b5c1c44056b280c79f1bbc06b33da99185b78a19e4a6429299d1e474d4bb4"
+    },
+    {
+      "path": "D:\\具身智能\\conditional-human-motion-generation\\.aris\\compute\\closd-baseline-20261010.md",
+      "sha256": "44a3fa71cae414c27c1ad2c5cc642f4b69617de0afb097c3c12a79677957e503"
+    }
+  ],
+  "semantic_documents_read": [
+    "docs/reset_alignment_measurement_v3_20261011.md",
+    ".aris/compute/closd-baseline-20261010.md"
+  ],
+  "additional_reads": "Referenced env JSON for canonical hashing; retained output artifacts/budget ledgers for audit; version-listed files as raw bytes for SHA256 only; no source code content inspected",
+  "preflight": {
+    "utc": "2026-10-11T11:23:55Z",
+    "queue_state": {
+      "status": "COMPLETE_GATE_NOT_MET",
+      "time": 1791716391.7571104,
+      "reason": "Joint-pass gain, confidence interval, or three-seed direction failed",
+      "g1": "not_run",
+      "downstream": "not_run"
+    },
+    "new_result_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/reset_alignment_v3_20261011",
+    "new_result_exists": false,
+    "canonical_env_spec_sha256": "81bdf764e312bcc92e4969e5eb9d2d6d6043f14c037e5a588dabbd564871f780",
+    "canonicalization": "json.dumps(sort_keys=True,separators=(comma,colon),ensure_ascii=False), UTF-8",
+    "expected_env_spec_sha256": "81bdf764e312bcc92e4969e5eb9d2d6d6043f14c037e5a588dabbd564871f780",
+    "gpu0": {
+      "index": 0,
+      "uuid": "GPU-f3cc20c6-f613-73c1-b0f9-f54863f22602",
+      "utilization_percent": 0,
+      "memory_used_mib": 699,
+      "compute_processes": [
+        {
+          "gpu_uuid": "GPU-f3cc20c6-f613-73c1-b0f9-f54863f22602",
+          "pid": 3854248,
+          "process_name": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3",
+          "memory_mib": "478",
+          "args": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u scripts/reinforcement_learning/rsl_rl/play_eval.py --task=Isaac-Motion-Tracking-Sit-v0 --device=cuda:1 --num_envs=1000 --path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/DreamControl/Training/logs/rsl_rl/g1/2026-10-01_16-54-27-Sit-a/model_1999.pt --headless --id=r3_sit_no_camera_init_diagnostic_20261001"
+        },
+        {
+          "gpu_uuid": "GPU-f3cc20c6-f613-73c1-b0f9-f54863f22602",
+          "pid": 2013566,
+          "process_name": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3",
+          "memory_mib": "140",
+          "args": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_i1_live_training_viewer.py --device=cuda:1 --livestream=2 --telemetry-port=40123 --status-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_viewer.state --snapshot-path=/data/code/ouyanghao/oyh/conditional-human-motion-generation/artifacts/monitoring/r3_i1_live_frame.png --kit_args=--portable-root /data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_live_viewer/kit --/renderer/multiGpu/enabled=false --task=Isaac-Motion-Tracking-Kick-v0"
+        }
+      ]
+    },
+    "gates": {
+      "old_queue_complete_gate_not_met": true,
+      "new_result_absent": true,
+      "env_spec_hash_match": true,
+      "gpu0_wrapper_limits": true
+    }
+  },
+  "gpu0_no_training_process": true,
+  "environment_policy": "warm reuse; no installs; cached extension loader reported ninja: no work to do",
+  "per_batch_exit_codes": [
+    {
+      "batch": "planned_s11",
+      "launched": true,
+      "completed_cases": 12,
+      "attempted_cases": 12,
+      "expected_frames_per_case": 120,
+      "terminated_cases": 0,
+      "child_exit_code": 0,
+      "ledger_seconds": 31.998405760154128,
+      "combined_child_log": "result_snapshot/planned_s11.log",
+      "child_separate_stdout_stderr_available": false
+    },
+    {
+      "batches": "remaining7",
+      "launched": false,
+      "attempts": 0,
+      "unattempted_document_cases": 204,
+      "child_exit_code": null,
+      "reason": "wrapper resource assertion before next child launch"
+    }
+  ],
+  "batches_launched": 1,
+  "batches_completed": 1,
+  "expected_batches": 8,
+  "attempts": 12,
+  "expected_attempts": 216,
+  "state_file_after_failure": {
+    "status": "RUNNING",
+    "label": "planned_s11",
+    "time": 1791717904.676374
+  },
+  "state_file_interpretation": "RUNNING is retained stale state after outer exit1; it is not evidence of ongoing execution or success",
+  "stop_evidence": {
+    "error": "AssertionError: No displacement of another workload",
+    "location": "run_reset_alignment_checks_v3.py line89",
+    "predicate": "int(gpu[0])<2048 and int(gpu[1])<=5",
+    "sampled_failure_memory_or_utilization": "not emitted in stderr; which bound failed is unknown"
+  },
+  "document_coverage": [
+    {
+      "item": "old queue COMPLETE_GATE_NOT_MET, new V3 directory absent, GPU0 no training",
+      "status": "PASS",
+      "evidence": "preflight.stdout.txt",
+      "limitation": "Existing 699MiB idle diagnostic/viewer processes allowed; no other GPU process operated on"
+    },
+    {
+      "item": "canonical environment JSON hash and warm reuse",
+      "status": "PASS",
+      "evidence": "preflight canonical SHA256 matches environment record; log ninja: no work to do",
+      "limitation": "No install/build command issued by witness; runtime invoked cached gymtorch extension loader with no compilation work"
+    },
+    {
+      "item": "initial actual/reference/reset root XY below 1mm",
+      "status": "PASS_FOR_FIRST_BATCH",
+      "evidence": {
+        "actual_initial_root_vs_reset_reference_root": {
+          "max_absolute_component_m": 0.0007125437259674072,
+          "max_euclidean_m": 0.0007189986346922763,
+          "all_euclidean_below_1mm": true
+        },
+        "actual_initial_root_vs_reset_initial_root": {
+          "max_absolute_component_m": 0.0007125437259674072,
+          "max_euclidean_m": 0.0007189986346922763,
+          "all_euclidean_below_1mm": true
+        },
+        "reset_initial_root_vs_reset_reference_root": {
+          "max_absolute_component_m": 0.0,
+          "max_euclidean_m": 0.0,
+          "all_euclidean_below_1mm": true
+        }
+      },
+      "limitation": "12 planned seed11 cases only"
+    },
+    {
+      "item": "manual bootstrap reset versus first action: seven exported kinematic tensor diagnostics agree",
+      "status": "FAIL",
+      "evidence": {
+        "_humanoid_root_states": {
+          "max_difference": 0.0,
+          "manual_sha256": "f4a76036b5c8bd15503dde058ff8178d6f9471e1615a8b3bcdf0a8efd358a817",
+          "first_action_sha256": "f4a76036b5c8bd15503dde058ff8178d6f9471e1615a8b3bcdf0a8efd358a817",
+          "hash_equal": true,
+          "exact_zero_difference": true
+        },
+        "_dof_pos": {
+          "max_difference": 0.0,
+          "manual_sha256": "c67950ecc2be81e44e31735fc73c76ccdebe5e8e72091b5d055f453ec021af69",
+          "first_action_sha256": "c67950ecc2be81e44e31735fc73c76ccdebe5e8e72091b5d055f453ec021af69",
+          "hash_equal": true,
+          "exact_zero_difference": true
+        },
+        "_dof_vel": {
+          "max_difference": 0.0,
+          "manual_sha256": "976f1cfc280a9691eb48d45880faac482c4603fac6d774e8dd7f2009a18e6f22",
+          "first_action_sha256": "976f1cfc280a9691eb48d45880faac482c4603fac6d774e8dd7f2009a18e6f22",
+          "hash_equal": true,
+          "exact_zero_difference": true
+        },
+        "_rigid_body_pos": {
+          "max_difference": 0.035006970167160034,
+          "manual_sha256": "ce673d0ad9e2c5db94f0fa546a5d5fc74c6781033e4f7ea6f743632e4677d69c",
+          "first_action_sha256": "92704f4bde6b6810e07c3d1936e562d6fd6c2ddac16aa59937a1e860cf8142cc",
+          "hash_equal": false,
+          "exact_zero_difference": false
+        },
+        "_rigid_body_rot": {
+          "max_difference": 1.4754348993301392,
+          "manual_sha256": "2d917218cb918eabb38e28f0e4341ddc07c12aa6e8a56a3fa1f20cfe75937c56",
+          "first_action_sha256": "49bbde143e7b300228d3311c718c1c3ddd3794093513d9356ef3814c79cd7fd4",
+          "hash_equal": false,
+          "exact_zero_difference": false
+        },
+        "_rigid_body_vel": {
+          "max_difference": 3.7104039192199707,
+          "manual_sha256": "29b241cfb4eb2129db7e144cb4e108625f02486bbc5c56359759d04fade1d8e3",
+          "first_action_sha256": "0ee0c7ac0933cd2c9de481994bf578c44ac305c8b99c0baf4b95701bb50c9476",
+          "hash_equal": false,
+          "exact_zero_difference": false
+        },
+        "_rigid_body_ang_vel": {
+          "max_difference": 6.5190958976745605,
+          "manual_sha256": "7e852da9f927bfea1424619a89bc852fa67237c5143e93049ec289ac48393d46",
+          "first_action_sha256": "0ee0c7ac0933cd2c9de481994bf578c44ac305c8b99c0baf4b95701bb50c9476",
+          "hash_equal": false,
+          "exact_zero_difference": false
+        }
+      },
+      "limitation": "Only exported metadata maximum differences and paired tensor SHA256; raw initial seven tensors absent from NPZ; complete PhysX hidden state not inspected or certified"
+    },
+    {
+      "item": "same target and prefix/reference across generation seeds11/12/13; distinct generation noise",
+      "status": "NOT_COVERED",
+      "evidence": {
+        "observed_generation_seed": 11,
+        "original_goal_sha256": "61f125340149451df2f94ec5408ad493fe01a782a83f03f89dafab88edf6726c",
+        "generation_prefix_sha256": "553e3c4fccda00f1a6583756e17ea7f858b476fa48dc6999985a4c974405d84c",
+        "generation_noise_sha256": "1a13fe432251f25e4aa92decf9dc07e208ed82a979948e32b82868b6c21b0ec1"
+      },
+      "limitation": "Seeds12/13 not launched; raw noise/prefix tensors not saved in NPZ"
+    },
+    {
+      "item": "three offsets per source equal predetermined ±15cm, without other random translation",
+      "status": "NUMERIC_DELTAS_RECORDED_NOT_EXACT_CERTIFICATION",
+      "evidence": [
+        {
+          "source_id": "./pose_data/MPI_mosh/50004/light_hopping_stiff_poses.npy",
+          "cases": [
+            {
+              "case_id": "008349:-0.15",
+              "expected_delta_m": [
+                -0.15,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_m": [
+                -0.15000152587890625,
+                1.4901161193847656E-08,
+                0.0
+              ],
+              "absolute_goal_delta_max_deviation_m": 1.5258789062555511E-06,
+              "relative_to_reset_root_goal_delta_m": [
+                -0.15000000596046448,
+                -1.4901161193847656E-08,
+                2.384185791015625E-07
+              ],
+              "relative_to_reset_root_max_deviation_m": 2.384185791015625E-07,
+              "reset_root_delta_m": [
+                -1.519918441772461E-06,
+                2.980232238769531E-08,
+                -2.384185791015625E-07
+              ]
+            },
+            {
+              "case_id": "008349:0.0",
+              "expected_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_max_deviation_m": 0.0,
+              "relative_to_reset_root_goal_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "relative_to_reset_root_max_deviation_m": 0.0,
+              "reset_root_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "case_id": "008349:0.15",
+              "expected_delta_m": [
+                0.15,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_m": [
+                0.1499970406293869,
+                5.960464477539063E-08,
+                0.0
+              ],
+              "absolute_goal_delta_max_deviation_m": 2.9593706130925934E-06,
+              "relative_to_reset_root_goal_delta_m": [
+                0.14999990165233612,
+                2.980232238769531E-08,
+                1.7881393432617188E-07
+              ],
+              "relative_to_reset_root_max_deviation_m": 1.7881393432617188E-07,
+              "reset_root_delta_m": [
+                -2.86102294921875E-06,
+                2.980232238769531E-08,
+                -1.7881393432617188E-07
+              ]
+            }
+          ]
+        },
+        {
+          "source_id": "./pose_data/DFaust_67/50007/50007_light_hopping_stiff_poses.npy",
+          "cases": [
+            {
+              "case_id": "010957:-0.15",
+              "expected_delta_m": [
+                -0.15,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_m": [
+                -0.15000156313180923,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_max_deviation_m": 1.5631318092401703E-06,
+              "relative_to_reset_root_goal_delta_m": [
+                -0.15000002831220627,
+                0.0,
+                0.0
+              ],
+              "relative_to_reset_root_max_deviation_m": 2.8312206273861662E-08,
+              "reset_root_delta_m": [
+                -1.5348196029663086E-06,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "case_id": "010957:0.0",
+              "expected_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_max_deviation_m": 0.0,
+              "relative_to_reset_root_goal_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "relative_to_reset_root_max_deviation_m": 0.0,
+              "reset_root_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "case_id": "010957:0.15",
+              "expected_delta_m": [
+                0.15,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_m": [
+                0.1499970778822899,
+                1.4901161193847656E-08,
+                0.0
+              ],
+              "absolute_goal_delta_max_deviation_m": 2.9221177101079743E-06,
+              "relative_to_reset_root_goal_delta_m": [
+                0.1499999389052391,
+                1.4901161193847656E-08,
+                -1.1920928955078125E-07
+              ],
+              "relative_to_reset_root_max_deviation_m": 1.1920928955078125E-07,
+              "reset_root_delta_m": [
+                -2.86102294921875E-06,
+                0.0,
+                1.1920928955078125E-07
+              ]
+            }
+          ]
+        },
+        {
+          "source_id": "./pose_data/CMU/106/106_15_poses.npy",
+          "cases": [
+            {
+              "case_id": "008203:-0.15",
+              "expected_delta_m": [
+                -0.15,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_m": [
+                -0.15000156313180923,
+                7.264316082000732E-08,
+                0.0
+              ],
+              "absolute_goal_delta_max_deviation_m": 1.5631318092401703E-06,
+              "relative_to_reset_root_goal_delta_m": [
+                -0.15000005811452866,
+                7.264316082000732E-08,
+                0.0
+              ],
+              "relative_to_reset_root_max_deviation_m": 7.264316082000732E-08,
+              "reset_root_delta_m": [
+                -1.5050172805786133E-06,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "case_id": "008203:0.0",
+              "expected_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_max_deviation_m": 0.0,
+              "relative_to_reset_root_goal_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "relative_to_reset_root_max_deviation_m": 0.0,
+              "reset_root_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "case_id": "008203:0.15",
+              "expected_delta_m": [
+                0.15,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_m": [
+                0.14999693632125854,
+                3.073364496231079E-07,
+                0.0
+              ],
+              "absolute_goal_delta_max_deviation_m": 3.063678741449527E-06,
+              "relative_to_reset_root_goal_delta_m": [
+                0.14999979734420776,
+                3.073364496231079E-07,
+                0.0
+              ],
+              "relative_to_reset_root_max_deviation_m": 3.073364496231079E-07,
+              "reset_root_delta_m": [
+                -2.86102294921875E-06,
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        },
+        {
+          "source_id": "./pose_data/CMU/61/61_09_poses.npy",
+          "cases": [
+            {
+              "case_id": "003483:-0.15",
+              "expected_delta_m": [
+                -0.15,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_m": [
+                -0.15000149048864841,
+                4.470348358154297E-08,
+                0.0
+              ],
+              "absolute_goal_delta_max_deviation_m": 1.490488648420163E-06,
+              "relative_to_reset_root_goal_delta_m": [
+                -0.15000000037252903,
+                4.470348358154297E-08,
+                0.0
+              ],
+              "relative_to_reset_root_max_deviation_m": 4.470348358154297E-08,
+              "reset_root_delta_m": [
+                -1.4901161193847656E-06,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "case_id": "003483:0.0",
+              "expected_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_max_deviation_m": 0.0,
+              "relative_to_reset_root_goal_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "relative_to_reset_root_max_deviation_m": 0.0,
+              "reset_root_delta_m": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "case_id": "003483:0.15",
+              "expected_delta_m": [
+                0.15,
+                0.0,
+                0.0
+              ],
+              "absolute_goal_delta_m": [
+                0.14999711513519287,
+                2.384185791015625E-07,
+                0.0
+              ],
+              "absolute_goal_delta_max_deviation_m": 2.884864807123355E-06,
+              "relative_to_reset_root_goal_delta_m": [
+                0.1499999761581421,
+                2.384185791015625E-07,
+                0.0
+              ],
+              "relative_to_reset_root_max_deviation_m": 2.384185791015625E-07,
+              "reset_root_delta_m": [
+                -2.86102294921875E-06,
+                0.0,
+                0.0
+              ]
+            }
+          ]
+        }
+      ],
+      "limitation": "Absolute goal delta deviations up to3.063678741449527e-6m; reset root differences up to2.86102294921875e-6m; relative-to-reset goal deviations up to3.073364496231079e-7m. No new acceptance tolerance is introduced; inability to certify absence of different random translations from this output alone"
+    },
+    {
+      "item": "same original target/prefix/time index traceable across modes",
+      "status": "PARTIAL",
+      "evidence": {
+        "mode": "planned",
+        "original_goal_hash_recomputed": true,
+        "reference_frame_exactly_0_through_119": true,
+        "valid_frames": 1440,
+        "prefix_sha256": "553e3c4fccda00f1a6583756e17ea7f858b476fa48dc6999985a4c974405d84c"
+      },
+      "limitation": "Second prefix mode never launched; raw prefix arrays absent; no cross-mode equality comparison possible"
+    },
+    {
+      "item": "request/output lineage",
+      "status": "PASS_FOR_FIRST_BATCH",
+      "evidence": {
+        "request_equals_bound_request": true,
+        "output_hashes": {
+          "metadata.json": {
+            "recorded": "14dd190dd8d7c4f1aa4309ca20705c1390abc07dbe590ac28a9b9840268fef5d",
+            "actual": "14dd190dd8d7c4f1aa4309ca20705c1390abc07dbe590ac28a9b9840268fef5d",
+            "match": true
+          },
+          "metrics.json": {
+            "recorded": "3075c125ef53ec6357896c5c23e45566914d4ed61e287bde31794915cd1be0aa",
+            "actual": "3075c125ef53ec6357896c5c23e45566914d4ed61e287bde31794915cd1be0aa",
+            "match": true
+          },
+          "trajectories.npz": {
+            "recorded": "453d0d2c4f344e42c71e493a9dad13a4f8cbd5576d701723108898ec9c0b90cc",
+            "actual": "453d0d2c4f344e42c71e493a9dad13a4f8cbd5576d701723108898ec9c0b90cc",
+            "match": true
+          }
+        },
+        "manifest_file_hash_match": true,
+        "request_version_hash_matches_versions_file": true,
+        "request_config_matches_frozen_source_version": true,
+        "request_thresholds_matches_frozen_source_version": true,
+        "all_recorded_version_hashes_still_match": true
+      },
+      "limitation": "Resolved YAML and requested JSON source config are distinct artifacts; their unequal raw hashes do not diagnose a lineage mismatch"
+    },
+    {
+      "item": "8 batches216 attempts; per batch600s; total/measurement/storage budgets",
+      "status": "PARTIAL_RUN_WITHIN_OBSERVED_LIMITS",
+      "evidence": {
+        "recorded_total_seconds": 7139.618935374543,
+        "recorded_total_gpu_hours": 1.983227482048484,
+        "recorded_measurement_seconds": 1987.6664440799505,
+        "recorded_measurement_gpu_hours": 0.5521295677999862,
+        "v3_outer_wall_seconds": 52.0282106,
+        "v3_batch_ledger_seconds": 31.998405760154128,
+        "conservative_outer_charge_total_seconds": 7159.648740214389,
+        "conservative_outer_charge_total_gpu_hours": 1.9887913167262192,
+        "conservative_outer_charge_measurement_seconds": 2007.6962489197963,
+        "conservative_outer_charge_measurement_gpu_hours": 0.5576934024777211,
+        "measurement_under_4_gpu_hours": true,
+        "total_under_72_gpu_hours": true,
+        "batch_under_600_seconds": true,
+        "related_outputs_bytes": 1999984856,
+        "related_outputs_gib": 1.862631045281887,
+        "related_outputs_under_15_gib": true,
+        "data_disk_available_bytes": 43626024960,
+        "data_disk_available_gib": 40.62990188598633,
+        "data_disk_reserve_20gib_satisfied": true,
+        "output_scope_limitation": "Only old physics-guided and reset-alignment result directories counted; broader project cumulative storage is not independently certified",
+        "local_snapshot_hash_checks": [
+          {
+            "file": "budget_ledger.json",
+            "remote_audit_sha256": "99d08924076b7fa7e3edc580b16937664697ad380d64ef621b10989d1572fa98",
+            "local_sha256": "99d08924076b7fa7e3edc580b16937664697ad380d64ef621b10989d1572fa98",
+            "match": true
+          },
+          {
+            "file": "measurement_manifest.json",
+            "remote_audit_sha256": "a7065f535ee7adbc8bac95c5be2bc527cf740d43eabe3a40105ce6c471bf95de",
+            "local_sha256": "a7065f535ee7adbc8bac95c5be2bc527cf740d43eabe3a40105ce6c471bf95de",
+            "match": true
+          },
+          {
+            "file": "planned_s11.log",
+            "remote_audit_sha256": "009f551611f58537483e47ff39e221941d901cf035d7818da6cd86e48ddc0eef",
+            "local_sha256": "009f551611f58537483e47ff39e221941d901cf035d7818da6cd86e48ddc0eef",
+            "match": true
+          },
+          {
+            "file": "planned_s11/lineage.json",
+            "remote_audit_sha256": "9fa6f67a6e0087e0c3cabb8910747b7e31ca0198b510b786fd11017c6db007d7",
+            "local_sha256": "9fa6f67a6e0087e0c3cabb8910747b7e31ca0198b510b786fd11017c6db007d7",
+            "match": true
+          },
+          {
+            "file": "planned_s11/metadata.json",
+            "remote_audit_sha256": "14dd190dd8d7c4f1aa4309ca20705c1390abc07dbe590ac28a9b9840268fef5d",
+            "local_sha256": "14dd190dd8d7c4f1aa4309ca20705c1390abc07dbe590ac28a9b9840268fef5d",
+            "match": true
+          },
+          {
+            "file": "planned_s11/metrics.json",
+            "remote_audit_sha256": "3075c125ef53ec6357896c5c23e45566914d4ed61e287bde31794915cd1be0aa",
+            "local_sha256": "3075c125ef53ec6357896c5c23e45566914d4ed61e287bde31794915cd1be0aa",
+            "match": true
+          },
+          {
+            "file": "planned_s11/receipt.json",
+            "remote_audit_sha256": "fad275500bffa73ae96a09433899991e825f130f28ca3d1fbf05306dea930784",
+            "local_sha256": "fad275500bffa73ae96a09433899991e825f130f28ca3d1fbf05306dea930784",
+            "match": true
+          },
+          {
+            "file": "planned_s11/resolved_config.yaml",
+            "remote_audit_sha256": "7892b948f8e96cf15acda7f37b72505164e49b8c4ef076f1f39871c89a0958ea",
+            "local_sha256": "7892b948f8e96cf15acda7f37b72505164e49b8c4ef076f1f39871c89a0958ea",
+            "match": true
+          },
+          {
+            "file": "planned_s11/trajectories.npz",
+            "remote_audit_sha256": "453d0d2c4f344e42c71e493a9dad13a4f8cbd5576d701723108898ec9c0b90cc",
+            "local_sha256": "453d0d2c4f344e42c71e493a9dad13a4f8cbd5576d701723108898ec9c0b90cc",
+            "match": true
+          },
+          {
+            "file": "planned_s11_execution_request.json",
+            "remote_audit_sha256": "9d75184600cdf6670cac22da0d4fae305c65a1f8e661eb1f7ada7ad137b80a5e",
+            "local_sha256": "9d75184600cdf6670cac22da0d4fae305c65a1f8e661eb1f7ada7ad137b80a5e",
+            "match": true
+          },
+          {
+            "file": "state.json",
+            "remote_audit_sha256": "5ee65da98d0376962a69d0b2b8c240fda304feedd75a96e23f7ddb2e53ea3cba",
+            "local_sha256": "5ee65da98d0376962a69d0b2b8c240fda304feedd75a96e23f7ddb2e53ea3cba",
+            "match": true
+          },
+          {
+            "file": "versions_before_execution.json",
+            "remote_audit_sha256": "f819cb4a67c298dcb0210a2f8bbf0359b171cd952ef1525bb3273a0f6054a758",
+            "local_sha256": "f819cb4a67c298dcb0210a2f8bbf0359b171cd952ef1525bb3273a0f6054a758",
+            "match": true
+          }
+        ]
+      },
+      "limitation": "One batch12 attempts; remaining7 batches204 attempts not launched. Related result storage only; broader project storage is not independently certified"
+    },
+    {
+      "item": "independent initialization/quality gate and stop downstream",
+      "status": "FAIL_STOP",
+      "evidence": "Seven-tensor initialization comparison fails; first-batch joint_pass0/12 in retained receipt",
+      "limitation": "This is an execution/measurement-interface finding only; no paper-mechanism effectiveness conclusion; no G1 or downstream training launched by witness"
+    }
+  ],
+  "tensor_scope": "Seven exported kinematic tensor comparison diagnostics only; not complete PhysX hidden state",
+  "independent_initialization_verdict": "FAIL",
+  "independent_document_witness_verdict": "FAIL_PARTIAL_EXECUTION",
+  "request_output_lineage_verdict": "PASS_FOR_FIRST_BATCH",
+  "npz_sha256": "453d0d2c4f344e42c71e493a9dad13a4f8cbd5576d701723108898ec9c0b90cc",
+  "audit": {
+    "audit_utc": "2026-10-11T11:27:41Z",
+    "audit_operation": "read-only; no measurement invocation or retries",
+    "batch_receipt": {
+      "status": "complete",
+      "cases": 12,
+      "completed": 12,
+      "joint_pass": 0,
+      "elapsed_seconds": 29.26469922065735,
+      "trajectories_sha256": "453d0d2c4f344e42c71e493a9dad13a4f8cbd5576d701723108898ec9c0b90cc"
+    },
+    "state": {
+      "status": "RUNNING",
+      "label": "planned_s11",
+      "time": 1791717904.676374
+    },
+    "new_batch_ledger": [
+      {
+        "stage": "measurement",
+        "label": "planned_s11",
+        "seconds": 31.998405760154128,
+        "exit_code": 0
+      }
+    ],
+    "metric_summary": {
+      "cases": 12,
+      "all_completed": true,
+      "terminated": 0,
+      "lengths": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ],
+      "joint_pass": 0,
+      "status_counts": {
+        "measured": 12
+      }
+    },
+    "npz_shapes": {
+      "actual": {
+        "shape": [
+          120,
+          12,
+          24,
+          3
+        ],
+        "dtype": "float32"
+      },
+      "reference": {
+        "shape": [
+          120,
+          12,
+          24,
+          3
+        ],
+        "dtype": "float32"
+      },
+      "quaternion": {
+        "shape": [
+          120,
+          12,
+          24,
+          4
+        ],
+        "dtype": "float32"
+      },
+      "linvel": {
+        "shape": [
+          120,
+          12,
+          24,
+          3
+        ],
+        "dtype": "float32"
+      },
+      "angvel": {
+        "shape": [
+          120,
+          12,
+          24,
+          3
+        ],
+        "dtype": "float32"
+      },
+      "contact_force": {
+        "shape": [
+          120,
+          12,
+          24,
+          3
+        ],
+        "dtype": "float32"
+      },
+      "valid": {
+        "shape": [
+          120,
+          12
+        ],
+        "dtype": "bool"
+      },
+      "terminated": {
+        "shape": [
+          12
+        ],
+        "dtype": "bool"
+      },
+      "reference_frame": {
+        "shape": [
+          120
+        ],
+        "dtype": "int32"
+      }
+    },
+    "npz_relevant_fields": {
+      "reference": {
+        "shape": [
+          120,
+          12,
+          24,
+          3
+        ],
+        "dtype": "float32",
+        "finite": true,
+        "min": -0.7431737780570984,
+        "max": 1.8299504518508911
+      },
+      "reference_frame": {
+        "shape": [
+          120
+        ],
+        "dtype": "int32",
+        "finite": true,
+        "min": 0.0,
+        "max": 119.0
+      }
+    },
+    "selected_metadata": {
+      "seed": 11,
+      "prefix_feedback": "planned prefix and planned anchor",
+      "time_alignment": "action k uses reference frame k; next observation requests k+1; 120 frames with no duplicate frame0",
+      "environment_seed": 11,
+      "top_level_seed": 11,
+      "learning_seed": 0,
+      "task_config_seed": -1,
+      "generator_config_seed": 10,
+      "initialization_fix": "reset before anchoring; fixed environment seed",
+      "reset_initial_root": [
+        [
+          -0.14435824751853943,
+          -0.2555482089519501,
+          0.9408106207847595
+        ],
+        [
+          -0.14435672760009766,
+          -0.25554823875427246,
+          0.9408108592033386
+        ],
+        [
+          -0.14435958862304688,
+          -0.2555482089519501,
+          0.9408106803894043
+        ],
+        [
+          -0.14435826241970062,
+          -0.25554943084716797,
+          0.9408106803894043
+        ],
+        [
+          -0.14435672760009766,
+          -0.25554943084716797,
+          0.9408106803894043
+        ],
+        [
+          -0.14435958862304688,
+          -0.25554943084716797,
+          0.9408107995986938
+        ],
+        [
+          -0.14435823261737823,
+          -0.25554466247558594,
+          0.9408108592033386
+        ],
+        [
+          -0.14435672760009766,
+          -0.25554466247558594,
+          0.9408108592033386
+        ],
+        [
+          -0.14435958862304688,
+          -0.25554466247558594,
+          0.9408108592033386
+        ],
+        [
+          -0.14435821771621704,
+          -0.25554847717285156,
+          0.9408108592033386
+        ],
+        [
+          -0.14435672760009766,
+          -0.25554847717285156,
+          0.9408108592033386
+        ],
+        [
+          -0.14435958862304688,
+          -0.25554847717285156,
+          0.9408108592033386
+        ]
+      ],
+      "reset_reference_root": [
+        [
+          -0.14435824751853943,
+          -0.2555482089519501,
+          0.9158644676208496
+        ],
+        [
+          -0.14435672760009766,
+          -0.25554823875427246,
+          0.9158644676208496
+        ],
+        [
+          -0.14435958862304688,
+          -0.2555482089519501,
+          0.9158644676208496
+        ],
+        [
+          -0.14435826241970062,
+          -0.25554943084716797,
+          0.9713136553764343
+        ],
+        [
+          -0.14435672760009766,
+          -0.25554943084716797,
+          0.9713136553764343
+        ],
+        [
+          -0.14435958862304688,
+          -0.25554943084716797,
+          0.9713136553764343
+        ],
+        [
+          -0.14435823261737823,
+          -0.25554466247558594,
+          0.9447972774505615
+        ],
+        [
+          -0.14435672760009766,
+          -0.25554466247558594,
+          0.9447972774505615
+        ],
+        [
+          -0.14435958862304688,
+          -0.25554466247558594,
+          0.9447972774505615
+        ],
+        [
+          -0.14435821771621704,
+          -0.25554847717285156,
+          0.9341685175895691
+        ],
+        [
+          -0.14435672760009766,
+          -0.25554847717285156,
+          0.9341685175895691
+        ],
+        [
+          -0.14435958862304688,
+          -0.25554847717285156,
+          0.9341685175895691
+        ]
+      ],
+      "reference_horizontal_alignment_delta_m": [
+        [
+          9.545683860778809E-05,
+          0.00031644105911254883
+        ],
+        [
+          9.548664093017578E-05,
+          0.00031644105911254883
+        ],
+        [
+          9.545683860778809E-05,
+          0.00031644105911254883
+        ],
+        [
+          0.00011432170867919922,
+          0.00015014410018920898
+        ],
+        [
+          0.00011433660984039307,
+          0.00015014410018920898
+        ],
+        [
+          0.00011432170867919922,
+          0.00015014410018920898
+        ],
+        [
+          0.0001892000436782837,
+          3.889203071594238E-05
+        ],
+        [
+          0.00018921494483947754,
+          3.889203071594238E-05
+        ],
+        [
+          0.0001892000436782837,
+          3.889203071594238E-05
+        ],
+        [
+          0.001107245683670044,
+          -0.0011091530323028564
+        ],
+        [
+          0.0011072605848312378,
+          -0.0011091530323028564
+        ],
+        [
+          0.001107245683670044,
+          -0.0011091530323028564
+        ]
+      ],
+      "reference_alignment_invariants": {
+        "relative_pose_max_error_m": 5.960464477539063E-08,
+        "displacement_max_error_m": 5.960464477539063E-08,
+        "z_max_error_m": 0.0
+      },
+      "body_coordinate_roundtrip_max_m": 0.0,
+      "initial_actual_reference_xy_max_m": 0.0007125437259674072,
+      "actual_initial_root": [
+        [
+          -0.14426346123218536,
+          -0.25483688712120056,
+          0.9425722360610962
+        ],
+        [
+          -0.14426346123218536,
+          -0.25483688712120056,
+          0.9425722360610962
+        ],
+        [
+          -0.14426346123218536,
+          -0.25483688712120056,
+          0.9425722360610962
+        ],
+        [
+          -0.14426346123218536,
+          -0.25483688712120056,
+          0.9425722360610962
+        ],
+        [
+          -0.14426346123218536,
+          -0.25483688712120056,
+          0.9425722360610962
+        ],
+        [
+          -0.14426346123218536,
+          -0.25483688712120056,
+          0.9425722360610962
+        ],
+        [
+          -0.14426346123218536,
+          -0.25483688712120056,
+          0.9425722360610962
+        ],
+        [
+          -0.14426346123218536,
+          -0.25483688712120056,
+          0.9425722360610962
+        ],
+        [
+          -0.14426346123218536,
+          -0.25483688712120056,
+          0.9425722360610962
+        ],
+        [
+          -0.14426346123218536,
+          -0.25483688712120056,
+          0.9425722360610962
+        ],
+        [
+          -0.14426346123218536,
+          -0.25483688712120056,
+          0.9425722360610962
+        ],
+        [
+          -0.14426346123218536,
+          -0.25483688712120056,
+          0.9425722360610962
+        ]
+      ],
+      "manual_reset_vs_first_action_state_max_difference": {
+        "_humanoid_root_states": 0.0,
+        "_dof_pos": 0.0,
+        "_dof_vel": 0.0,
+        "_rigid_body_pos": 0.035006970167160034,
+        "_rigid_body_rot": 1.4754348993301392,
+        "_rigid_body_vel": 3.7104039192199707,
+        "_rigid_body_ang_vel": 6.5190958976745605
+      },
+      "full_reset_calls_before_first_action": 3,
+      "progress_before_first_action": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "motion_ids_before_first_action": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "motion_start_times_before_first_action": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "global_offset_before_first_action": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "manual_reset_state_sha256": {
+        "_humanoid_root_states": "f4a76036b5c8bd15503dde058ff8178d6f9471e1615a8b3bcdf0a8efd358a817",
+        "_dof_pos": "c67950ecc2be81e44e31735fc73c76ccdebe5e8e72091b5d055f453ec021af69",
+        "_dof_vel": "976f1cfc280a9691eb48d45880faac482c4603fac6d774e8dd7f2009a18e6f22",
+        "_rigid_body_pos": "ce673d0ad9e2c5db94f0fa546a5d5fc74c6781033e4f7ea6f743632e4677d69c",
+        "_rigid_body_rot": "2d917218cb918eabb38e28f0e4341ddc07c12aa6e8a56a3fa1f20cfe75937c56",
+        "_rigid_body_vel": "29b241cfb4eb2129db7e144cb4e108625f02486bbc5c56359759d04fade1d8e3",
+        "_rigid_body_ang_vel": "7e852da9f927bfea1424619a89bc852fa67237c5143e93049ec289ac48393d46"
+      },
+      "first_action_state_sha256": {
+        "_humanoid_root_states": "f4a76036b5c8bd15503dde058ff8178d6f9471e1615a8b3bcdf0a8efd358a817",
+        "_dof_pos": "c67950ecc2be81e44e31735fc73c76ccdebe5e8e72091b5d055f453ec021af69",
+        "_dof_vel": "976f1cfc280a9691eb48d45880faac482c4603fac6d774e8dd7f2009a18e6f22",
+        "_rigid_body_pos": "92704f4bde6b6810e07c3d1936e562d6fd6c2ddac16aa59937a1e860cf8142cc",
+        "_rigid_body_rot": "49bbde143e7b300228d3311c718c1c3ddd3794093513d9356ef3814c79cd7fd4",
+        "_rigid_body_vel": "0ee0c7ac0933cd2c9de481994bf578c44ac305c8b99c0baf4b95701bb50c9476",
+        "_rigid_body_ang_vel": "0ee0c7ac0933cd2c9de481994bf578c44ac305c8b99c0baf4b95701bb50c9476"
+      },
+      "generation_noise_sha256": "1a13fe432251f25e4aa92decf9dc07e208ed82a979948e32b82868b6c21b0ec1",
+      "generation_prefix_sha256": "553e3c4fccda00f1a6583756e17ea7f858b476fa48dc6999985a4c974405d84c",
+      "target_world_roundtrip_max_m": 5.960464477539063E-08
+    },
+    "xy_checks": {
+      "actual_initial_root_vs_reset_reference_root": {
+        "max_absolute_component_m": 0.0007125437259674072,
+        "max_euclidean_m": 0.0007189986346922763,
+        "all_euclidean_below_1mm": true
+      },
+      "actual_initial_root_vs_reset_initial_root": {
+        "max_absolute_component_m": 0.0007125437259674072,
+        "max_euclidean_m": 0.0007189986346922763,
+        "all_euclidean_below_1mm": true
+      },
+      "reset_initial_root_vs_reset_reference_root": {
+        "max_absolute_component_m": 0.0,
+        "max_euclidean_m": 0.0,
+        "all_euclidean_below_1mm": true
+      }
+    },
+    "seven_exported_kinematic_tensor_checks": {
+      "_humanoid_root_states": {
+        "max_difference": 0.0,
+        "manual_sha256": "f4a76036b5c8bd15503dde058ff8178d6f9471e1615a8b3bcdf0a8efd358a817",
+        "first_action_sha256": "f4a76036b5c8bd15503dde058ff8178d6f9471e1615a8b3bcdf0a8efd358a817",
+        "hash_equal": true,
+        "exact_zero_difference": true
+      },
+      "_dof_pos": {
+        "max_difference": 0.0,
+        "manual_sha256": "c67950ecc2be81e44e31735fc73c76ccdebe5e8e72091b5d055f453ec021af69",
+        "first_action_sha256": "c67950ecc2be81e44e31735fc73c76ccdebe5e8e72091b5d055f453ec021af69",
+        "hash_equal": true,
+        "exact_zero_difference": true
+      },
+      "_dof_vel": {
+        "max_difference": 0.0,
+        "manual_sha256": "976f1cfc280a9691eb48d45880faac482c4603fac6d774e8dd7f2009a18e6f22",
+        "first_action_sha256": "976f1cfc280a9691eb48d45880faac482c4603fac6d774e8dd7f2009a18e6f22",
+        "hash_equal": true,
+        "exact_zero_difference": true
+      },
+      "_rigid_body_pos": {
+        "max_difference": 0.035006970167160034,
+        "manual_sha256": "ce673d0ad9e2c5db94f0fa546a5d5fc74c6781033e4f7ea6f743632e4677d69c",
+        "first_action_sha256": "92704f4bde6b6810e07c3d1936e562d6fd6c2ddac16aa59937a1e860cf8142cc",
+        "hash_equal": false,
+        "exact_zero_difference": false
+      },
+      "_rigid_body_rot": {
+        "max_difference": 1.4754348993301392,
+        "manual_sha256": "2d917218cb918eabb38e28f0e4341ddc07c12aa6e8a56a3fa1f20cfe75937c56",
+        "first_action_sha256": "49bbde143e7b300228d3311c718c1c3ddd3794093513d9356ef3814c79cd7fd4",
+        "hash_equal": false,
+        "exact_zero_difference": false
+      },
+      "_rigid_body_vel": {
+        "max_difference": 3.7104039192199707,
+        "manual_sha256": "29b241cfb4eb2129db7e144cb4e108625f02486bbc5c56359759d04fade1d8e3",
+        "first_action_sha256": "0ee0c7ac0933cd2c9de481994bf578c44ac305c8b99c0baf4b95701bb50c9476",
+        "hash_equal": false,
+        "exact_zero_difference": false
+      },
+      "_rigid_body_ang_vel": {
+        "max_difference": 6.5190958976745605,
+        "manual_sha256": "7e852da9f927bfea1424619a89bc852fa67237c5143e93049ec289ac48393d46",
+        "first_action_sha256": "0ee0c7ac0933cd2c9de481994bf578c44ac305c8b99c0baf4b95701bb50c9476",
+        "hash_equal": false,
+        "exact_zero_difference": false
+      }
+    },
+    "all_seven_exported_tensors_equal": false,
+    "not_complete_physx_hidden_state": true,
+    "offset_checks": [
+      {
+        "source_id": "./pose_data/MPI_mosh/50004/light_hopping_stiff_poses.npy",
+        "cases": [
+          {
+            "case_id": "008349:-0.15",
+            "expected_delta_m": [
+              -0.15,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_m": [
+              -0.15000152587890625,
+              1.4901161193847656E-08,
+              0.0
+            ],
+            "absolute_goal_delta_max_deviation_m": 1.5258789062555511E-06,
+            "relative_to_reset_root_goal_delta_m": [
+              -0.15000000596046448,
+              -1.4901161193847656E-08,
+              2.384185791015625E-07
+            ],
+            "relative_to_reset_root_max_deviation_m": 2.384185791015625E-07,
+            "reset_root_delta_m": [
+              -1.519918441772461E-06,
+              2.980232238769531E-08,
+              -2.384185791015625E-07
+            ]
+          },
+          {
+            "case_id": "008349:0.0",
+            "expected_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_max_deviation_m": 0.0,
+            "relative_to_reset_root_goal_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "relative_to_reset_root_max_deviation_m": 0.0,
+            "reset_root_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "case_id": "008349:0.15",
+            "expected_delta_m": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_m": [
+              0.1499970406293869,
+              5.960464477539063E-08,
+              0.0
+            ],
+            "absolute_goal_delta_max_deviation_m": 2.9593706130925934E-06,
+            "relative_to_reset_root_goal_delta_m": [
+              0.14999990165233612,
+              2.980232238769531E-08,
+              1.7881393432617188E-07
+            ],
+            "relative_to_reset_root_max_deviation_m": 1.7881393432617188E-07,
+            "reset_root_delta_m": [
+              -2.86102294921875E-06,
+              2.980232238769531E-08,
+              -1.7881393432617188E-07
+            ]
+          }
+        ]
+      },
+      {
+        "source_id": "./pose_data/DFaust_67/50007/50007_light_hopping_stiff_poses.npy",
+        "cases": [
+          {
+            "case_id": "010957:-0.15",
+            "expected_delta_m": [
+              -0.15,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_m": [
+              -0.15000156313180923,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_max_deviation_m": 1.5631318092401703E-06,
+            "relative_to_reset_root_goal_delta_m": [
+              -0.15000002831220627,
+              0.0,
+              0.0
+            ],
+            "relative_to_reset_root_max_deviation_m": 2.8312206273861662E-08,
+            "reset_root_delta_m": [
+              -1.5348196029663086E-06,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "case_id": "010957:0.0",
+            "expected_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_max_deviation_m": 0.0,
+            "relative_to_reset_root_goal_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "relative_to_reset_root_max_deviation_m": 0.0,
+            "reset_root_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "case_id": "010957:0.15",
+            "expected_delta_m": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_m": [
+              0.1499970778822899,
+              1.4901161193847656E-08,
+              0.0
+            ],
+            "absolute_goal_delta_max_deviation_m": 2.9221177101079743E-06,
+            "relative_to_reset_root_goal_delta_m": [
+              0.1499999389052391,
+              1.4901161193847656E-08,
+              -1.1920928955078125E-07
+            ],
+            "relative_to_reset_root_max_deviation_m": 1.1920928955078125E-07,
+            "reset_root_delta_m": [
+              -2.86102294921875E-06,
+              0.0,
+              1.1920928955078125E-07
+            ]
+          }
+        ]
+      },
+      {
+        "source_id": "./pose_data/CMU/106/106_15_poses.npy",
+        "cases": [
+          {
+            "case_id": "008203:-0.15",
+            "expected_delta_m": [
+              -0.15,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_m": [
+              -0.15000156313180923,
+              7.264316082000732E-08,
+              0.0
+            ],
+            "absolute_goal_delta_max_deviation_m": 1.5631318092401703E-06,
+            "relative_to_reset_root_goal_delta_m": [
+              -0.15000005811452866,
+              7.264316082000732E-08,
+              0.0
+            ],
+            "relative_to_reset_root_max_deviation_m": 7.264316082000732E-08,
+            "reset_root_delta_m": [
+              -1.5050172805786133E-06,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "case_id": "008203:0.0",
+            "expected_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_max_deviation_m": 0.0,
+            "relative_to_reset_root_goal_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "relative_to_reset_root_max_deviation_m": 0.0,
+            "reset_root_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "case_id": "008203:0.15",
+            "expected_delta_m": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_m": [
+              0.14999693632125854,
+              3.073364496231079E-07,
+              0.0
+            ],
+            "absolute_goal_delta_max_deviation_m": 3.063678741449527E-06,
+            "relative_to_reset_root_goal_delta_m": [
+              0.14999979734420776,
+              3.073364496231079E-07,
+              0.0
+            ],
+            "relative_to_reset_root_max_deviation_m": 3.073364496231079E-07,
+            "reset_root_delta_m": [
+              -2.86102294921875E-06,
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      },
+      {
+        "source_id": "./pose_data/CMU/61/61_09_poses.npy",
+        "cases": [
+          {
+            "case_id": "003483:-0.15",
+            "expected_delta_m": [
+              -0.15,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_m": [
+              -0.15000149048864841,
+              4.470348358154297E-08,
+              0.0
+            ],
+            "absolute_goal_delta_max_deviation_m": 1.490488648420163E-06,
+            "relative_to_reset_root_goal_delta_m": [
+              -0.15000000037252903,
+              4.470348358154297E-08,
+              0.0
+            ],
+            "relative_to_reset_root_max_deviation_m": 4.470348358154297E-08,
+            "reset_root_delta_m": [
+              -1.4901161193847656E-06,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "case_id": "003483:0.0",
+            "expected_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_max_deviation_m": 0.0,
+            "relative_to_reset_root_goal_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "relative_to_reset_root_max_deviation_m": 0.0,
+            "reset_root_delta_m": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "case_id": "003483:0.15",
+            "expected_delta_m": [
+              0.15,
+              0.0,
+              0.0
+            ],
+            "absolute_goal_delta_m": [
+              0.14999711513519287,
+              2.384185791015625E-07,
+              0.0
+            ],
+            "absolute_goal_delta_max_deviation_m": 2.884864807123355E-06,
+            "relative_to_reset_root_goal_delta_m": [
+              0.1499999761581421,
+              2.384185791015625E-07,
+              0.0
+            ],
+            "relative_to_reset_root_max_deviation_m": 2.384185791015625E-07,
+            "reset_root_delta_m": [
+              -2.86102294921875E-06,
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      }
+    ],
+    "lineage_checks": {
+      "request_equals_bound_request": true,
+      "output_hashes": {
+        "metadata.json": {
+          "recorded": "14dd190dd8d7c4f1aa4309ca20705c1390abc07dbe590ac28a9b9840268fef5d",
+          "actual": "14dd190dd8d7c4f1aa4309ca20705c1390abc07dbe590ac28a9b9840268fef5d",
+          "match": true
+        },
+        "metrics.json": {
+          "recorded": "3075c125ef53ec6357896c5c23e45566914d4ed61e287bde31794915cd1be0aa",
+          "actual": "3075c125ef53ec6357896c5c23e45566914d4ed61e287bde31794915cd1be0aa",
+          "match": true
+        },
+        "trajectories.npz": {
+          "recorded": "453d0d2c4f344e42c71e493a9dad13a4f8cbd5576d701723108898ec9c0b90cc",
+          "actual": "453d0d2c4f344e42c71e493a9dad13a4f8cbd5576d701723108898ec9c0b90cc",
+          "match": true
+        }
+      },
+      "manifest_file_hash_match": true,
+      "resolved_config_raw_hash": "7892b948f8e96cf15acda7f37b72505164e49b8c4ef076f1f39871c89a0958ea",
+      "resolved_config_request_hash_match": false,
+      "versions_before_execution": {
+        "time": 1791717904.5885727,
+        "hashes": {
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/reset_aligned_collect_v3.py": "ba4cd2c7293613e4e537f1736faa2f6e36cc54660d27c95b1c53ebc64ccd4559",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/analyze_reset_alignment_v3.py": "2f5a6b790b31bea3aacb94054ae25055c1a39747b0b947ec76673d24d019ceb8",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/run_reset_alignment_checks_v3.py": "608f115f2a12b8f9f6ef3583a9651f3d1a1d0ca5a5bca3ddec2e6f0d0d293fa4",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/physics_guided_collect.py": "a5d426cf942ecf0b3ac121b389aad5dd6459ce8ea34047c5d5a88b0b1cc77d43",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/physics_guided_core.py": "e6be20aa8a060bad20881cb81bab4e3328282a163b0d3e9571c7c590443436ed",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/physics_guided_lineage.py": "da4365d425dfe91397f7651d0a8e873dabf289ba2d30a63f84c6b19d68778ef6",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_closd_isolated_entry.py": "601fd5557b71a8259d12575beb3848f206795a7c9f7cefd02e538e8c97d280e6",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/configs/physics_guided_20261011.json": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/configs/env-closd-baseline-20261010.json": "e5f9e6b711b7c6221cfb01e3deab404c5849e521ec08a3d25dca1820a279fcf6",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/physics_guided_20261011/versions.json": "586f7b3ce1b34b631b0e1dde18979f16f8b8a0ceb7c72f019ff0d1d43dda4b60",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/physics_guided_20261011/frozen_thresholds.json": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/physics_guided_20261011/source_manifest.json": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/reset_alignment_v3_20261011/measurement_manifest.json": "a7065f535ee7adbc8bac95c5be2bc527cf740d43eabe3a40105ce6c471bf95de"
+        },
+        "generator_weights_sha256": "3ca68ae54975946b3fe5c6cd64a6eafc439b5fc43c166bc9a98d1c43aeef6618",
+        "controller_weights_sha256": "7ead3778b95516d8b91b7c5939674e45dd0ad10fcc22da60f9f57d204695f6ac",
+        "external_motion_inputs": {
+          "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/blobs/a16b386a2b7d357a088c7568b97f6ab0954a508465b1a5d9d0faf29e9e8552fd": "a16b386a2b7d357a088c7568b97f6ab0954a508465b1a5d9d0faf29e9e8552fd",
+          "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/blobs/c4fa34cf78516e5893f7fbecb47056e358478a2003fa18d518c3412ecf23ddb2": "c4fa34cf78516e5893f7fbecb47056e358478a2003fa18d518c3412ecf23ddb2",
+          "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b/data/dataset/HumanML3D/Mean.npy": "26e136555dab04c94a129d446c26e6b9939cbf045fbf77bcf5462c1fb5a2001c",
+          "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b/data/dataset/HumanML3D/Std.npy": "6565a65ed9b31e23c328829a309e1c482be8b85fd23b43d65451a9b19a917f40"
+        },
+        "upstream_commit": "d8950bdb78312fcd2844f336b3fc079e7368c87f",
+        "upstream_worktree_status": "",
+        "study": "independent measurement repair; never pooled with historical test results",
+        "selections": "first two validation sources in each family; all three offsets",
+        "coordinate_fixture_cases_per_batch": 12,
+        "coordinate_fixture_batches": 6,
+        "full_validation_cases_per_batch": 72,
+        "full_validation_batches": 2,
+        "total_expected_attempts": 216,
+        "top_level_environment_seed": 11,
+        "generation_seeds": [
+          11,
+          12,
+          13
+        ],
+        "initialization": "bootstrap reset skips only observation generation before conditions exist; restore before formal player reset; original physics reset unchanged",
+        "preceding_failed_attempt_budget_sha256": "c57be1ad460d7627b27ef786c77ca5acbe062092ae1202a99430a211874c29f6",
+        "preceding_failed_attempt_state_sha256": "f7cc6d6e9b18c92101b6dca83c83cb9b7743e3f64d818247efc2c7ff5abdc8a6",
+        "preceding_failed_v2_budget_sha256": "2a70f4957beb46415d242d437e0953eb5ad2146c0b90a2892e376eb7d8648bbb",
+        "reference_anchor": "uniform reference XY translation before immutable targets are constructed; actual state and reference relative poses unchanged"
+      }
+    },
+    "budget_ledgers": {
+      "results/physics_guided_20261011/budget_ledger.json": [
+        {
+          "stage": "measurement",
+          "label": "initial_development_and_doc_checks",
+          "seconds": 1800,
+          "status": "conservative_reserved_debit",
+          "note": "Includes early development failures and independent witness"
+        },
+        {
+          "stage": "measurement",
+          "label": "val_planned_s11_r0",
+          "seconds": 50.044768411666155,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "measurement",
+          "label": "val_native_s11_r0",
+          "seconds": 50.05081312917173,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_planned_s11_r0",
+          "seconds": 80.0828328114003,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_planned_s11_r1",
+          "seconds": 70.07146250270307,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_planned_s11_r2",
+          "seconds": 67.1004090309143,
+          "exit_code": 0,
+          "status": "conservative_wall_debit_after_queue_pause"
+        },
+        {
+          "stage": "comparison",
+          "label": "test_native_s11_r0",
+          "seconds": 70.07578698173165,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_native_s11_r1",
+          "seconds": 70.07539819739759,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_native_s11_r2",
+          "seconds": 70.07744044065475,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_proposed_s11_r1",
+          "seconds": 70.08503284864128,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_proposed_s11_r2",
+          "seconds": 70.0753891095519,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_raw_s11",
+          "seconds": 70.07570351846516,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_ordinary_s11",
+          "seconds": 70.0755739286542,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_random_best_s11",
+          "seconds": 82.59809160232544,
+          "exit_code": 0,
+          "status": "conservative_wall_debit_after_queue_pause"
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_native_single_s11",
+          "seconds": 70.1025593392551,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_native_best_s11",
+          "seconds": 70.10559046082199,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_proposed_s11",
+          "seconds": 70.10255734063685,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_no_feedback_s11_r1",
+          "seconds": 70.10099028795958,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_no_feedback_s11_r2",
+          "seconds": 70.10640732571483,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_eval_no_feedback_s11",
+          "seconds": 70.10848777741194,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_shuffled_s11_r1",
+          "seconds": 70.11312622576952,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_shuffled_s11_r2",
+          "seconds": 110.73919653892517,
+          "exit_code": 0,
+          "status": "conservative_wall_debit_after_queue_pause"
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_eval_shuffled_s11",
+          "seconds": 70.10663568601012,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_planned_prefix_s11_r1",
+          "seconds": 70.10008572041988,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_planned_prefix_s11_r2",
+          "seconds": 70.11051365733147,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_eval_planned_prefix_s11",
+          "seconds": 70.11722151190042,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_eval_tracking_only_s11",
+          "seconds": 70.10692545585334,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_planned_s12_r0",
+          "seconds": 70.12203525193036,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_planned_s12_r1",
+          "seconds": 70.10170231945813,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_planned_s12_r2",
+          "seconds": 70.11885573156178,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_native_s12_r0",
+          "seconds": 70.101263621822,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_native_s12_r1",
+          "seconds": 70.13270862028003,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_native_s12_r2",
+          "seconds": 70.12902719527483,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_proposed_s12_r1",
+          "seconds": 70.13682973384857,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_proposed_s12_r2",
+          "seconds": 70.12553178146482,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_raw_s12",
+          "seconds": 70.13516370765865,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_ordinary_s12",
+          "seconds": 70.1204380709678,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_random_best_s12",
+          "seconds": 70.13226324506104,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_native_single_s12",
+          "seconds": 70.1403221283108,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_native_best_s12",
+          "seconds": 70.14323838800192,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_proposed_s12",
+          "seconds": 70.15051989071071,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_no_feedback_s12_r1",
+          "seconds": 70.13231769390404,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_no_feedback_s12_r2",
+          "seconds": 70.15014968439937,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_eval_no_feedback_s12",
+          "seconds": 70.13678028061986,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_shuffled_s12_r1",
+          "seconds": 70.15029282681644,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_shuffled_s12_r2",
+          "seconds": 70.1259089987725,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_eval_shuffled_s12",
+          "seconds": 70.11656753346324,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_planned_prefix_s12_r1",
+          "seconds": 80.16660248488188,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_planned_prefix_s12_r2",
+          "seconds": 70.12593740411103,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_eval_planned_prefix_s12",
+          "seconds": 70.1582222469151,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_eval_tracking_only_s12",
+          "seconds": 70.141072422266,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_planned_s13_r0",
+          "seconds": 80.16400451399386,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_planned_s13_r1",
+          "seconds": 70.15113891474903,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_planned_s13_r2",
+          "seconds": 80.17560157366097,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_native_s13_r0",
+          "seconds": 70.14824151620269,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_native_s13_r1",
+          "seconds": 70.15993288718164,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_native_s13_r2",
+          "seconds": 70.15606315992773,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_proposed_s13_r1",
+          "seconds": 70.16829729266465,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_proposed_s13_r2",
+          "seconds": 70.14349221996963,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_raw_s13",
+          "seconds": 70.15574118681252,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_ordinary_s13",
+          "seconds": 70.13898842409253,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_random_best_s13",
+          "seconds": 70.15321260131896,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_native_single_s13",
+          "seconds": 70.15323873981833,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_native_best_s13",
+          "seconds": 70.1531297788024,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "test_eval_proposed_s13",
+          "seconds": 70.15799950622022,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_no_feedback_s13_r1",
+          "seconds": 70.1680324357003,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_no_feedback_s13_r2",
+          "seconds": 70.15682312473655,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_eval_no_feedback_s13",
+          "seconds": 70.17306844890118,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_shuffled_s13_r1",
+          "seconds": 70.17050179466605,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_shuffled_s13_r2",
+          "seconds": 70.15983121283352,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_eval_shuffled_s13",
+          "seconds": 70.15980453975499,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_planned_prefix_s13_r1",
+          "seconds": 70.16201419197023,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_planned_prefix_s13_r2",
+          "seconds": 70.1631169654429,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_eval_planned_prefix_s13",
+          "seconds": 70.17675044387579,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "ablation_g1",
+          "label": "test_eval_tracking_only_s13",
+          "seconds": 70.1757563110441,
+          "exit_code": 0,
+          "stop_reason": null
+        },
+        {
+          "stage": "comparison",
+          "label": "independent_semantic_diversity_proxy",
+          "seconds": 12.50053994730115,
+          "status": "attempt_retained"
+        }
+      ],
+      "results/reset_alignment_20261011/budget_ledger.json": [
+        {
+          "stage": "measurement",
+          "label": "planned_s11",
+          "seconds": 27.184939824044704,
+          "exit_code": 1
+        }
+      ],
+      "results/reset_alignment_v2_20261011/budget_ledger.json": [
+        {
+          "stage": "measurement",
+          "label": "planned_s11",
+          "seconds": 28.387516954913735,
+          "exit_code": 1
+        }
+      ],
+      "results/reset_alignment_v3_20261011/budget_ledger.json": [
+        {
+          "stage": "measurement",
+          "label": "planned_s11",
+          "seconds": 31.998405760154128,
+          "exit_code": 0
+        }
+      ]
+    },
+    "usage": {
+      "new_v3_total_bytes": 2090634,
+      "data_disk": "Filesystem         1B-blocks          Used       Avail Mounted on\n/dev/sda       1967847137280 1824184389632 43626024960 /data\n",
+      "old_and_reset_output_directories": {
+        "results/physics_guided_20261011": 1997835561,
+        "results/reset_alignment_20261011": 30663,
+        "results/reset_alignment_v2_20261011": 27998,
+        "results/reset_alignment_v3_20261011": 2090634
+      }
+    },
+    "all_snapshot_file_hashes": {
+      "budget_ledger.json": "99d08924076b7fa7e3edc580b16937664697ad380d64ef621b10989d1572fa98",
+      "measurement_manifest.json": "a7065f535ee7adbc8bac95c5be2bc527cf740d43eabe3a40105ce6c471bf95de",
+      "planned_s11.log": "009f551611f58537483e47ff39e221941d901cf035d7818da6cd86e48ddc0eef",
+      "planned_s11/lineage.json": "9fa6f67a6e0087e0c3cabb8910747b7e31ca0198b510b786fd11017c6db007d7",
+      "planned_s11/metadata.json": "14dd190dd8d7c4f1aa4309ca20705c1390abc07dbe590ac28a9b9840268fef5d",
+      "planned_s11/metrics.json": "3075c125ef53ec6357896c5c23e45566914d4ed61e287bde31794915cd1be0aa",
+      "planned_s11/receipt.json": "fad275500bffa73ae96a09433899991e825f130f28ca3d1fbf05306dea930784",
+      "planned_s11/resolved_config.yaml": "7892b948f8e96cf15acda7f37b72505164e49b8c4ef076f1f39871c89a0958ea",
+      "planned_s11/trajectories.npz": "453d0d2c4f344e42c71e493a9dad13a4f8cbd5576d701723108898ec9c0b90cc",
+      "planned_s11_execution_request.json": "9d75184600cdf6670cac22da0d4fae305c65a1f8e661eb1f7ada7ad137b80a5e",
+      "state.json": "5ee65da98d0376962a69d0b2b8c240fda304feedd75a96e23f7ddb2e53ea3cba",
+      "versions_before_execution.json": "f819cb4a67c298dcb0210a2f8bbf0359b171cd952ef1525bb3273a0f6054a758"
+    }
+  },
+  "completion_audit": {
+    "reference_frame_exactly_0_through_119": true,
+    "reference_frame_values": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119
+    ],
+    "valid_count": 1440,
+    "valid_expected_1440": true,
+    "npz_terminated_count": 0,
+    "original_goal_float32_bytes_sha256": "61f125340149451df2f94ec5408ad493fe01a782a83f03f89dafab88edf6726c",
+    "original_goal_sha256_matches": true,
+    "request_version_hash_matches_versions_file": true,
+    "request_config_matches_frozen_source_version": true,
+    "request_thresholds_matches_frozen_source_version": true,
+    "version_files_read_only_hash_checks": {
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/reset_aligned_collect_v3.py": {
+        "recorded": "ba4cd2c7293613e4e537f1736faa2f6e36cc54660d27c95b1c53ebc64ccd4559",
+        "current": "ba4cd2c7293613e4e537f1736faa2f6e36cc54660d27c95b1c53ebc64ccd4559",
+        "match": true
+      },
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/analyze_reset_alignment_v3.py": {
+        "recorded": "2f5a6b790b31bea3aacb94054ae25055c1a39747b0b947ec76673d24d019ceb8",
+        "current": "2f5a6b790b31bea3aacb94054ae25055c1a39747b0b947ec76673d24d019ceb8",
+        "match": true
+      },
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/run_reset_alignment_checks_v3.py": {
+        "recorded": "608f115f2a12b8f9f6ef3583a9651f3d1a1d0ca5a5bca3ddec2e6f0d0d293fa4",
+        "current": "608f115f2a12b8f9f6ef3583a9651f3d1a1d0ca5a5bca3ddec2e6f0d0d293fa4",
+        "match": true
+      },
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/physics_guided_collect.py": {
+        "recorded": "a5d426cf942ecf0b3ac121b389aad5dd6459ce8ea34047c5d5a88b0b1cc77d43",
+        "current": "a5d426cf942ecf0b3ac121b389aad5dd6459ce8ea34047c5d5a88b0b1cc77d43",
+        "match": true
+      },
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/physics_guided_core.py": {
+        "recorded": "e6be20aa8a060bad20881cb81bab4e3328282a163b0d3e9571c7c590443436ed",
+        "current": "e6be20aa8a060bad20881cb81bab4e3328282a163b0d3e9571c7c590443436ed",
+        "match": true
+      },
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/physics_guided_lineage.py": {
+        "recorded": "da4365d425dfe91397f7651d0a8e873dabf289ba2d30a63f84c6b19d68778ef6",
+        "current": "da4365d425dfe91397f7651d0a8e873dabf289ba2d30a63f84c6b19d68778ef6",
+        "match": true
+      },
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/r3_closd_isolated_entry.py": {
+        "recorded": "601fd5557b71a8259d12575beb3848f206795a7c9f7cefd02e538e8c97d280e6",
+        "current": "601fd5557b71a8259d12575beb3848f206795a7c9f7cefd02e538e8c97d280e6",
+        "match": true
+      },
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/configs/physics_guided_20261011.json": {
+        "recorded": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+        "current": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+        "match": true
+      },
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/configs/env-closd-baseline-20261010.json": {
+        "recorded": "e5f9e6b711b7c6221cfb01e3deab404c5849e521ec08a3d25dca1820a279fcf6",
+        "current": "e5f9e6b711b7c6221cfb01e3deab404c5849e521ec08a3d25dca1820a279fcf6",
+        "match": true
+      },
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/physics_guided_20261011/versions.json": {
+        "recorded": "586f7b3ce1b34b631b0e1dde18979f16f8b8a0ceb7c72f019ff0d1d43dda4b60",
+        "current": "586f7b3ce1b34b631b0e1dde18979f16f8b8a0ceb7c72f019ff0d1d43dda4b60",
+        "match": true
+      },
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/physics_guided_20261011/frozen_thresholds.json": {
+        "recorded": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+        "current": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+        "match": true
+      },
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/physics_guided_20261011/source_manifest.json": {
+        "recorded": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+        "current": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+        "match": true
+      },
+      "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/reset_alignment_v3_20261011/measurement_manifest.json": {
+        "recorded": "a7065f535ee7adbc8bac95c5be2bc527cf740d43eabe3a40105ce6c471bf95de",
+        "current": "a7065f535ee7adbc8bac95c5be2bc527cf740d43eabe3a40105ce6c471bf95de",
+        "match": true
+      }
+    },
+    "all_recorded_version_hashes_still_match": true,
+    "raw_initial_seven_tensors_saved_in_npz": false,
+    "seven_tensor_comparison_provenance": "exported metadata diagnostics: maximum differences and paired tensor SHA256; complete tensor arrays are not in trajectories.npz",
+    "raw_generator_noise_saved_in_npz": false,
+    "raw_generator_prefix_saved_in_npz": false,
+    "npz_finite_numeric_fields": {
+      "actual": true,
+      "reference": true,
+      "quaternion": true,
+      "linvel": true,
+      "angvel": true,
+      "contact_force": true,
+      "valid": true,
+      "terminated": true,
+      "reference_frame": true
+    },
+    "all_metadata_case_seeds_11": true
+  },
+  "accounting": {
+    "recorded_total_seconds": 7139.618935374543,
+    "recorded_total_gpu_hours": 1.983227482048484,
+    "recorded_measurement_seconds": 1987.6664440799505,
+    "recorded_measurement_gpu_hours": 0.5521295677999862,
+    "v3_outer_wall_seconds": 52.0282106,
+    "v3_batch_ledger_seconds": 31.998405760154128,
+    "conservative_outer_charge_total_seconds": 7159.648740214389,
+    "conservative_outer_charge_total_gpu_hours": 1.9887913167262192,
+    "conservative_outer_charge_measurement_seconds": 2007.6962489197963,
+    "conservative_outer_charge_measurement_gpu_hours": 0.5576934024777211,
+    "measurement_under_4_gpu_hours": true,
+    "total_under_72_gpu_hours": true,
+    "batch_under_600_seconds": true,
+    "related_outputs_bytes": 1999984856,
+    "related_outputs_gib": 1.862631045281887,
+    "related_outputs_under_15_gib": true,
+    "data_disk_available_bytes": 43626024960,
+    "data_disk_available_gib": 40.62990188598633,
+    "data_disk_reserve_20gib_satisfied": true,
+    "output_scope_limitation": "Only old physics-guided and reset-alignment result directories counted; broader project cumulative storage is not independently certified",
+    "local_snapshot_hash_checks": [
+      {
+        "file": "budget_ledger.json",
+        "remote_audit_sha256": "99d08924076b7fa7e3edc580b16937664697ad380d64ef621b10989d1572fa98",
+        "local_sha256": "99d08924076b7fa7e3edc580b16937664697ad380d64ef621b10989d1572fa98",
+        "match": true
+      },
+      {
+        "file": "measurement_manifest.json",
+        "remote_audit_sha256": "a7065f535ee7adbc8bac95c5be2bc527cf740d43eabe3a40105ce6c471bf95de",
+        "local_sha256": "a7065f535ee7adbc8bac95c5be2bc527cf740d43eabe3a40105ce6c471bf95de",
+        "match": true
+      },
+      {
+        "file": "planned_s11.log",
+        "remote_audit_sha256": "009f551611f58537483e47ff39e221941d901cf035d7818da6cd86e48ddc0eef",
+        "local_sha256": "009f551611f58537483e47ff39e221941d901cf035d7818da6cd86e48ddc0eef",
+        "match": true
+      },
+      {
+        "file": "planned_s11/lineage.json",
+        "remote_audit_sha256": "9fa6f67a6e0087e0c3cabb8910747b7e31ca0198b510b786fd11017c6db007d7",
+        "local_sha256": "9fa6f67a6e0087e0c3cabb8910747b7e31ca0198b510b786fd11017c6db007d7",
+        "match": true
+      },
+      {
+        "file": "planned_s11/metadata.json",
+        "remote_audit_sha256": "14dd190dd8d7c4f1aa4309ca20705c1390abc07dbe590ac28a9b9840268fef5d",
+        "local_sha256": "14dd190dd8d7c4f1aa4309ca20705c1390abc07dbe590ac28a9b9840268fef5d",
+        "match": true
+      },
+      {
+        "file": "planned_s11/metrics.json",
+        "remote_audit_sha256": "3075c125ef53ec6357896c5c23e45566914d4ed61e287bde31794915cd1be0aa",
+        "local_sha256": "3075c125ef53ec6357896c5c23e45566914d4ed61e287bde31794915cd1be0aa",
+        "match": true
+      },
+      {
+        "file": "planned_s11/receipt.json",
+        "remote_audit_sha256": "fad275500bffa73ae96a09433899991e825f130f28ca3d1fbf05306dea930784",
+        "local_sha256": "fad275500bffa73ae96a09433899991e825f130f28ca3d1fbf05306dea930784",
+        "match": true
+      },
+      {
+        "file": "planned_s11/resolved_config.yaml",
+        "remote_audit_sha256": "7892b948f8e96cf15acda7f37b72505164e49b8c4ef076f1f39871c89a0958ea",
+        "local_sha256": "7892b948f8e96cf15acda7f37b72505164e49b8c4ef076f1f39871c89a0958ea",
+        "match": true
+      },
+      {
+        "file": "planned_s11/trajectories.npz",
+        "remote_audit_sha256": "453d0d2c4f344e42c71e493a9dad13a4f8cbd5576d701723108898ec9c0b90cc",
+        "local_sha256": "453d0d2c4f344e42c71e493a9dad13a4f8cbd5576d701723108898ec9c0b90cc",
+        "match": true
+      },
+      {
+        "file": "planned_s11_execution_request.json",
+        "remote_audit_sha256": "9d75184600cdf6670cac22da0d4fae305c65a1f8e661eb1f7ada7ad137b80a5e",
+        "local_sha256": "9d75184600cdf6670cac22da0d4fae305c65a1f8e661eb1f7ada7ad137b80a5e",
+        "match": true
+      },
+      {
+        "file": "state.json",
+        "remote_audit_sha256": "5ee65da98d0376962a69d0b2b8c240fda304feedd75a96e23f7ddb2e53ea3cba",
+        "local_sha256": "5ee65da98d0376962a69d0b2b8c240fda304feedd75a96e23f7ddb2e53ea3cba",
+        "match": true
+      },
+      {
+        "file": "versions_before_execution.json",
+        "remote_audit_sha256": "f819cb4a67c298dcb0210a2f8bbf0359b171cd952ef1525bb3273a0f6054a758",
+        "local_sha256": "f819cb4a67c298dcb0210a2f8bbf0359b171cd952ef1525bb3273a0f6054a758",
+        "match": true
+      }
+    ]
+  },
+  "raw_result_snapshot": "result_snapshot",
+  "preservation": "Original old/V1/V2/V3 result directories and code unmodified by witness; only local trace records and read-only copies created",
+  "recommendations_per_document": "Stop subsequent G1/downstream training; do not pool with old results; do not relax thresholds; do not rerun V3 because output directory now exists",
+  "paper_mechanism_effectiveness_conclusion": "NOT_PROVIDED",
+  "completed_utc": "2026-10-11T11:31:36.9558874Z"
+}

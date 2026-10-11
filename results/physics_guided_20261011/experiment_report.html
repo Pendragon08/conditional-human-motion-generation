@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>物理引导条件动作生成：经过修订的诊断实验</title><style>
+:root{--ink:#203449;--blue:#185f89;--soft:#edf4f8}body{font:16px/1.75 system-ui,"Microsoft YaHei",sans-serif;color:var(--ink);max-width:1320px;margin:30px auto;padding:0 24px}
+h1{font-size:30px}h2{margin-top:36px;border-bottom:2px solid var(--soft);padding-bottom:6px}a{color:var(--blue)}.warning{background:#fff0eb;border:2px solid #b44025;padding:16px}.notice{background:#fff4d9;border-left:5px solid #bd7900;padding:16px 22px}
+nav{background:var(--soft);padding:16px 22px}table{border-collapse:collapse;width:100%;font-size:13px;margin:16px 0}td,th{border:1px solid #cbd6df;padding:7px;text-align:left}th{background:var(--soft)}
+.scroll{overflow-x:auto}pre{white-space:pre-wrap;background:var(--soft);padding:16px;font-size:13px}video{max-width:100%;width:900px}code{font-size:13px}
+@media print{body{margin:0;max-width:none;padding:0}nav,video{display:none}h2{break-after:avoid}tr,figure{break-inside:avoid}a{color:inherit}details>div{display:block}}
+</style></head><body><p class="warning"><strong>坐标测量校验未通过：本轮结果保留作调试记录，不构成候选机制有效或无效的确认性证据。G1和下游训练未开展。</strong></p><h1>物理引导条件动作生成：对比与消融诊断实验</h1><p>2026-10-11 · 冻结DiP生成器与CLoSD人体跟踪器 · 仅物理仿真</p>
+<nav>目录：<a href="#result">结论</a> · <a href="#method">方法与公平设置</a> · <a href="#comparison">主对比</a> · <a href="#ablation">消融</a> · <a href="#components">失败分解</a> · <a href="#cost">成本</a> · <a href="#limits">证据边界</a> · <a href="#audit">审计</a></nav>
+<h2 id="result">实验结论</h2><div class="notice">Joint-pass gain, confidence interval, or three-seed direction failed。<strong>当前不支持将候选机制作为论文创新。</strong>
+本轮是在实现复核中发生过修正、保留并逐条核验早期有效输出的诊断实验，不能称为未经调整的确认性实验。</div>
+<p>人体门槛未通过，因此依照停止规则不开展G1验证和下游九组训练。没有填写未执行的分数。</p>
+<p>结论分类：<strong>“未获支持”</strong>适用于本轮候选条件反馈机制。CLoSD执行状态反馈、物理精化与数据回流属于已有机制；
+本轮未建立“有效且有技术差异”的机制，也不能由零联合合格率断言这些已有路线在所有场景均无效。</p>
+<h2 id="method">方法与公平设置</h2><p>跳跃和舞蹈各64个训练来源、12个验证来源、24个测试来源；镜像与切片按官方原始MoCap source_path分组。
+本轮测试48个原始来源×3个水平目标偏移（−15/0/+15cm）×3个种子（11/12/13），每方法432次首轮尝试，所有失败保留。
+训练来源仅预留给后续数据效用验证；当前没有重训生成器或跟踪器。发布权重可能预训练见过这些人体来源，本轮分组独立不等于预训练未暴露。</p>
+<p>4秒动作：2秒已有动作前缀，DiP接收最后1秒上下文并生成2秒动作；人体物理控制30Hz。
+跳跃条件为骨盆终点，舞蹈条件为右手腕终点，使用发布模型的目标位置与朝向接口。
+只有片段文本标签用于任务筛选，未证实4秒截取片段一定包含完整跳跃或舞蹈事件；这不是完整舞蹈/跳跃专项基准。</p>
+<ol><li>在生成前固定数据集终点、偏移目标、朝向与目标时刻。</li><li>冻结生成权重与跟踪器，构造最多三个候选；候选方法使用实际执行前缀与实际坐标锚点。
+根据相对于原始目标的误差修正下一轮生成条件，位置每次≤5cm、累计≤15cm；朝向每次≤5°，保持文本、长度与目标时刻不变。</li>
+<li>随机筛选、原生状态反馈与消融采用相同三候选构建预算。原始评价目标不随修正变化。</li>
+<li>所有选出的参考动作重新交给同一冻结策略独立回放；构建失败与回放失败均纳入分母。</li></ol>
+<h2 id="comparison">独立回放主对比</h2><div class="scroll"><table><thead><tr><th>方法</th><th>尝试</th><th>联合合格</th><th>合格率</th><th>回放完成</th><th>目标位置误差(m)</th><th>朝向误差(°)</th><th>跟踪均值(m)</th><th>提前终止</th></tr></thead><tbody><tr><td>未精化生成参考</td><td>432</td><td>1</td><td>0.23%</td><td>279</td><td>0.874</td><td>34.7</td><td>0.768</td><td>153</td></tr><tr><td>普通物理精化</td><td>432</td><td>0</td><td>0.00%</td><td>263</td><td>0.954</td><td>37.8</td><td>0.187</td><td>169</td></tr><tr><td>等预算随机候选筛选</td><td>432</td><td>0</td><td>0.00%</td><td>265</td><td>0.936</td><td>35.2</td><td>0.184</td><td>167</td></tr><tr><td>原生执行前缀反馈（单候选）</td><td>432</td><td>0</td><td>0.00%</td><td>280</td><td>0.948</td><td>38.5</td><td>0.182</td><td>152</td></tr><tr><td>原生执行前缀反馈（等预算筛选）</td><td>432</td><td>0</td><td>0.00%</td><td>279</td><td>0.922</td><td>35.7</td><td>0.181</td><td>153</td></tr><tr><td>候选方法：执行前缀＋有界条件反馈</td><td>432</td><td>0</td><td>0.00%</td><td>276</td><td>0.918</td><td>35.8</td><td>0.183</td><td>156</td></tr><tr><td>消融：去除条件误差反馈</td><td>432</td><td>0</td><td>0.00%</td><td>280</td><td>0.947</td><td>38.5</td><td>0.182</td><td>152</td></tr><tr><td>消融：打乱原始来源反馈</td><td>432</td><td>0</td><td>0.00%</td><td>280</td><td>0.940</td><td>36.7</td><td>0.181</td><td>152</td></tr><tr><td>消融：计划前缀＋计划锚点</td><td>432</td><td>0</td><td>0.00%</td><td>260</td><td>0.929</td><td>35.6</td><td>0.186</td><td>172</td></tr><tr><td>消融：仅按跟踪表现筛选</td><td>432</td><td>0</td><td>0.00%</td><td>280</td><td>0.929</td><td>37.3</td><td>0.182</td><td>152</td></tr></tbody></table></div>
+<p>回放完成表示达到120帧且未触发提前终止，并不等于动作合格；提前终止受跟踪失败等终止条件影响，不能全部称为跌倒。
+目标时刻是固定终点的几何接近时刻代理，并非真实接触事件时刻。未设定音乐条件、接触力目标或任意关键帧接口。</p>
+<h2 id="ablation">配对比较与消融</h2><table><thead><tr><th>对照</th><th>候选方法提升(百分点)</th><th>原始来源聚类95%CI</th><th>三个种子提升</th></tr></thead><tbody><tr><td>普通物理精化</td><td>0.00</td><td>[0.00, 0.00]</td><td>{&#x27;11&#x27;: 0.0, &#x27;12&#x27;: 0.0, &#x27;13&#x27;: 0.0}</td></tr><tr><td>等预算随机候选筛选</td><td>0.00</td><td>[0.00, 0.00]</td><td>{&#x27;11&#x27;: 0.0, &#x27;12&#x27;: 0.0, &#x27;13&#x27;: 0.0}</td></tr><tr><td>原生执行前缀反馈（等预算筛选）</td><td>0.00</td><td>[0.00, 0.00]</td><td>{&#x27;11&#x27;: 0.0, &#x27;12&#x27;: 0.0, &#x27;13&#x27;: 0.0}</td></tr><tr><td>消融：去除条件误差反馈</td><td>0.00</td><td>[0.00, 0.00]</td><td>{&#x27;11&#x27;: 0.0, &#x27;12&#x27;: 0.0, &#x27;13&#x27;: 0.0}</td></tr><tr><td>消融：打乱原始来源反馈</td><td>0.00</td><td>[0.00, 0.00]</td><td>{&#x27;11&#x27;: 0.0, &#x27;12&#x27;: 0.0, &#x27;13&#x27;: 0.0}</td></tr><tr><td>消融：计划前缀＋计划锚点</td><td>0.00</td><td>[0.00, 0.00]</td><td>{&#x27;11&#x27;: 0.0, &#x27;12&#x27;: 0.0, &#x27;13&#x27;: 0.0}</td></tr><tr><td>消融：仅按跟踪表现筛选</td><td>0.00</td><td>[0.00, 0.00]</td><td>{&#x27;11&#x27;: 0.0, &#x27;12&#x27;: 0.0, &#x27;13&#x27;: 0.0}</td></tr></tbody></table>
+<p>每个原始来源包含三个偏移和三个种子。按来源聚类、跳跃/舞蹈分层进行5000次自助抽样。
+进入后续阶段需相对每个等预算对照至少提高10个百分点、置信区间排除零、三个种子同向，且条件、语义和多样性未超过5%退化。</p>
+<ul><li>无反馈：保留实际前缀与计算预算，条件误差修正置零。</li><li>打乱反馈：整个原始来源组之间置换，保持目标偏移对应；不是同一来源内部三个目标互换。</li>
+<li>计划前缀：同时替换前缀和坐标锚点，避免残留实际执行信息。</li><li>仅跟踪筛选：采用同组候选，仅按完成/跟踪表现选择，不用原始条件误差排序。</li></ul>
+<h2 id="components">联合门槛的失败分解</h2><p>以下为432次回放中的单项合格次数；即使单项通过，构建失败、提前终止或其他单项失败仍使联合判据不通过。
+足部滑移按支撑状态、足部碰撞表面和角速度计算，是滑移代理，不能解释为接触点真值。
+生成窗口全程无支撑时，足部滑移记为不可测量，不能通过支撑质量验收；腾空本身不判为漂浮。</p>
+<div class="scroll"><table><thead><tr><th>方法</th><th>完成</th><th>条件</th><th>物理代理</th><th>跟踪</th><th>位置</th><th>朝向</th><th>时刻</th><th>穿透</th><th>滑移代理</th><th>连续性</th></tr></thead><tbody><tr><td>未精化生成参考</td><td>279</td><td>28</td><td>2</td><td>126</td><td>57</td><td>185</td><td>136</td><td>432</td><td>2</td><td>126</td></tr><tr><td>普通物理精化</td><td>263</td><td>20</td><td>1</td><td>205</td><td>45</td><td>160</td><td>117</td><td>432</td><td>1</td><td>96</td></tr><tr><td>等预算随机候选筛选</td><td>265</td><td>30</td><td>1</td><td>210</td><td>56</td><td>183</td><td>132</td><td>432</td><td>3</td><td>95</td></tr><tr><td>原生执行前缀反馈（单候选）</td><td>280</td><td>19</td><td>1</td><td>203</td><td>42</td><td>149</td><td>117</td><td>432</td><td>2</td><td>84</td></tr><tr><td>原生执行前缀反馈（等预算筛选）</td><td>279</td><td>26</td><td>1</td><td>208</td><td>57</td><td>174</td><td>125</td><td>432</td><td>2</td><td>86</td></tr><tr><td>候选方法：执行前缀＋有界条件反馈</td><td>276</td><td>43</td><td>1</td><td>203</td><td>79</td><td>184</td><td>142</td><td>432</td><td>2</td><td>83</td></tr><tr><td>消融：去除条件误差反馈</td><td>280</td><td>19</td><td>2</td><td>203</td><td>42</td><td>149</td><td>118</td><td>432</td><td>4</td><td>84</td></tr><tr><td>消融：打乱原始来源反馈</td><td>280</td><td>22</td><td>2</td><td>205</td><td>50</td><td>165</td><td>123</td><td>432</td><td>5</td><td>86</td></tr><tr><td>消融：计划前缀＋计划锚点</td><td>260</td><td>46</td><td>1</td><td>205</td><td>81</td><td>189</td><td>141</td><td>432</td><td>2</td><td>96</td></tr><tr><td>消融：仅按跟踪表现筛选</td><td>280</td><td>31</td><td>1</td><td>204</td><td>60</td><td>167</td><td>141</td><td>432</td><td>3</td><td>82</td></tr></tbody></table></div>
+<p><strong>阈值地板风险：</strong>验证集已有零联合合格率，提示多个判据的交集可能过严或任务适配不足。
+数值判据在验证之前写入文件，验证用于测量有效性而未按分布重新校准，这与原计划存在程序偏差。
+测试后不放宽阈值；本轮只能报告在该固定判据下未通过，不能据此普遍否定反馈方法。后续若重设判据，须先独立验证并冻结，再开始新测试。</p>
+<h2>语义与多样性保护</h2><p>状态：pass。
+以独立回放的实际状态计算缓存HumanML3D文本—动作评价模型的嵌入距离、跨来源多样性和跨种子多模态性；这不是生成参考本身的独立语义验收；是学习型代理，不是人工语义真值。失败动作补最后有效姿态，保留全部尝试。</p>
+<table><thead><tr><th>方法</th><th>匹配距离↓</th><th>跨来源多样性</th><th>跨种子多模态性</th></tr></thead><tbody><tr><td>等预算随机候选筛选</td><td>6.7064</td><td>5.2952</td><td>4.2959</td></tr><tr><td>消融：仅按跟踪表现筛选</td><td>6.6317</td><td>5.2868</td><td>4.3658</td></tr><tr><td>候选方法：执行前缀＋有界条件反馈</td><td>6.6184</td><td>5.2923</td><td>4.3872</td></tr><tr><td>未精化生成参考</td><td>6.3717</td><td>5.1798</td><td>4.1210</td></tr><tr><td>消融：打乱原始来源反馈</td><td>6.6216</td><td>5.2936</td><td>4.3750</td></tr><tr><td>原生执行前缀反馈（等预算筛选）</td><td>6.6180</td><td>5.2937</td><td>4.4141</td></tr><tr><td>普通物理精化</td><td>6.7271</td><td>5.3249</td><td>4.3115</td></tr><tr><td>消融：去除条件误差反馈</td><td>6.6130</td><td>5.2914</td><td>4.3799</td></tr><tr><td>消融：计划前缀＋计划锚点</td><td>6.7073</td><td>5.3211</td><td>4.2832</td></tr><tr><td>原生执行前缀反馈（单候选）</td><td>6.6133</td><td>5.2901</td><td>4.3782</td></tr></tbody></table>
+<h2>代表回放</h2><figure><video controls preload="metadata" src="previews/jump_comparison.mp4"></video><figcaption>jump / 005714:0.0：预先确定的首个来源，种子11，零偏移；记录状态的骨架回放。</figcaption></figure><figure><video controls preload="metadata" src="previews/dance_comparison.mp4"></video><figcaption>dance / 001367:0.0：预先确定的首个来源，种子11，零偏移；记录状态的骨架回放。</figcaption></figure>
+<h2 id="cost">资源与生成成本</h2><p>实际保守计费GPU时间：<strong>1.959小时</strong> / 72小时；本轮输出：1.860GiB；数据盘剩余：40.63GiB。
+已保留失败运行与队列修正记录，没有删除旧项目，也没有付费模型调用。</p><table><thead><tr><th>方法</th><th>每输入构建候选</th><th>构建GPU墙钟秒</th><th>独立回放秒</th><th>每条联合合格参考成本</th></tr></thead><tbody><tr><td>未精化生成参考</td><td>1</td><td>201.5</td><td>197.1</td><td>398.6s</td></tr><tr><td>普通物理精化</td><td>1</td><td>201.5</td><td>198.8</td><td>不可估计（无合格动作）</td></tr><tr><td>等预算随机候选筛选</td><td>3</td><td>601.1</td><td>197.6</td><td>不可估计（无合格动作）</td></tr><tr><td>原生执行前缀反馈（单候选）</td><td>1</td><td>197.5</td><td>198.2</td><td>不可估计（无合格动作）</td></tr><tr><td>原生执行前缀反馈（等预算筛选）</td><td>3</td><td>593.8</td><td>197.4</td><td>不可估计（无合格动作）</td></tr><tr><td>候选方法：执行前缀＋有界条件反馈</td><td>3</td><td>594.5</td><td>199.1</td><td>不可估计（无合格动作）</td></tr><tr><td>消融：去除条件误差反馈</td><td>3</td><td>595.8</td><td>197.2</td><td>不可估计（无合格动作）</td></tr><tr><td>消融：打乱原始来源反馈</td><td>3</td><td>593.7</td><td>197.0</td><td>不可估计（无合格动作）</td></tr><tr><td>消融：计划前缀＋计划锚点</td><td>3</td><td>602.1</td><td>197.8</td><td>不可估计（无合格动作）</td></tr><tr><td>消融：仅按跟踪表现筛选</td><td>3</td><td>594.5</td><td>197.9</td><td>不可估计（无合格动作）</td></tr></tbody></table>
+<p>单方法成本为等价独立运行成本，包含未选候选；共享的初始候选在各方法中分别计入，不可将各行相加当作服务器总消耗。总消耗以预算账本为准。</p>
+<h2 id="limits">证据边界与后续处理</h2><ul><li>本轮是冻结的CLoSD组件适配和参考数据诊断，不是PhysDiff、Morph、CLAIMS完整复现，也不将不同控制检查点视为独立算法。</li>
+<li>旧有效输出仅通过当前清单、目标、噪声对应关系、完整参考数组及指标重算确认兼容。缺少最初执行时的请求绑定，不能追溯补造。早期协议文本未完整保存，当前协议和修订说明均保留。</li>
+<li>物理精化、状态反馈、闭环数据扩增本身已有研究；有限次条件纠偏只有效果、归因与实质技术差异均获支持后，才能作为创新候选。</li>
+<li>未通过人体门槛，未运行G1与下游训练，因此尚不能回答改善机器人模仿学习或跨条件泛化的问题。</li>
+<li>所有人体原始/派生轨迹留在服务器；公开代码、数值、来源散列和权重散列，许可限制不通过上传动作数组绕过。</li></ul>
+<h2 id="audit">独立复核</h2><details><summary>展开审计记录（同模型家族，暂定审核）</summary><pre># Physics-Guided Experiment Audit Report
+
+**Date:** 2026-10-11  
+**Auditor:** `/root/physics_guided_integrity_auditor` (fresh Codex reviewer, read-only)  
+**Review class:** same-family, provisional  
+**Project:** `conditional-human-motion-generation`  
+**Audited result family:** historical run `results/physics_guided_20261011` only  
+**Overall verdict:** **WARN**  
+**Record integrity:** **PASS WITH WARNINGS**  
+**Scientific validity of efficacy, mechanism, seed, and offset conclusions:** **FAIL / unsupported**
+
+The historical result package is unusually complete and candid. Every published count and gate value that I recomputed matches its source data, all 74 registered batches exist and hash correctly, resource accounting is within the stated limits, and the report explicitly says that G1 and downstream training were not run. I found no fabricated result, phantom G1 result, self-normalized score, or hidden failed gate.
+
+The old experiment nevertheless cannot support efficacy or mechanism conclusions. The collector builds each reference trajectory and goal from the simulator state present after actor creation, while later episode resets place the controlled character at a different world anchor. The error is large: reference frame 0 versus the actual post-step pelvis differs by a median of 0.80–0.87 m and by as much as 1.65 m. A separate 288-record offset recomputation finds a maximum intended-versus-realized world-offset error of 2.53584 m. The joint gate is also at a near-total floor because the slip proxy rejects almost every completed attempt. These defects make the all-zero gain and confidence intervals descriptive outputs of this amended diagnostic run, not evidence that the proposed mechanism works or does not work.
+
+Later reset-alignment V1, V2, or V3 scripts and results are outside this audit. They cannot retroactively validate the historical run; any repaired measurement must be judged as a new result family.
+
+## Critical finding: reference and actual states use different world anchors
+
+`scripts/physics_guided_collect.py:87-105` constructs `dataset_sim`, `reference`, and the endpoint goal from `_rigid_body_pos` before the evaluated episode reset. The upstream environment assigns random actor-creation XY positions in `third_party/CLoSD/closd/env/tasks/humanoid_im.py:911-924`; later episode resets follow the fixed reset path in `third_party/CLoSD/closd/env/tasks/humanoid_im.py:900-968` and `third_party/CLoSD/closd/env/tasks/humanoid.py:504-519,552-562`. The reference and actual episode therefore do not receive the same world translation.
+
+Independent recomputation from saved arrays gives:
+
+| Seed | Median reference-frame0/actual XY error | Maximum error |
+|---:|---:|---:|
+| 11 | 0.865609 m | 1.593060 m |
+| 12 | 0.799619 m | 1.591299 m |
+| 13 | 0.816911 m | 1.653108 m |
+
+Cross-seed world goals differ substantially: seed 12 versus 11 has a 1.978951 m maximum absolute difference and seed 13 versus 11 has a 1.883929 m maximum. Removing each source&#x27;s reference-frame0 pelvis makes the source-relative goal and prefix nearly equal (roughly 1.6e-5 m), but this does not repair evaluation geometry because the actual reset state did not receive the same translation. Goal relative to the actual initial state changes by up to 2.429034 m for seed 12 and 2.078818 m for seed 13. Thus the world difference is not validly described as a harmless global translation.
+
+Across 288 nonzero-offset records, the maximum norm between the requested +/-0.15 m offset and the realized world goal difference is 2.535842 m; the corresponding maximum after expressing the goal relative to the actual initial state is 2.535205 m. The detailed per-case evidence is in `historical_coordinate_per_case.json`, reproduced by `recompute_historical_coordinates.py`.
+
+Within a fixed `(case, seed)` pair, every compared method uses the same saved original goal and case order. That preserves descriptive paired counts within that pair. It does not make seeds or nominal offsets controlled replicates, and it does not rescue causal or mechanism interpretation.
+
+## A. Ground-truth provenance: PASS WITH QUALIFICATION
+
+- `scripts/physics_guided_prepare.py:31-48` loads cached HumanML data and links clips to dataset indices; `scripts/physics_guided_prepare.py:46-66` retains source path and text provenance.
+- `scripts/physics_guided_prepare.py:70-97` groups by original `source_path` and constructs a deterministic internal train/validation/test split. I independently counted 200 unique source groups: 128 train, 24 validation, and 48 test, with zero pairwise source overlap. Each of the three motion families contributes 64/12/24 groups.
+- The 48 study-test sources include 41 items whose official HumanML origin is train and 7 whose origin is official test. The internal source-group split is sound for this study, but it does not establish independence from the pretrained generator or policy.
+- The condition target comes from the dataset-derived reference endpoint plus a requested offset (`scripts/physics_guided_collect.py:102-106`). The evaluated motion is the simulated actual state, and the semantic metric is a frozen learned proxy over those states (`scripts/physics_guided_semantics.py:3,33-36,54-57,87-122`).
+- This passes the anti-fake-ground-truth check: the target is not manufactured from the evaluated model&#x27;s output. The coordinate-anchor defect above invalidates the physical comparison even though provenance is genuine.
+
+## B. Own-output normalization: PASS
+
+- The SI-unit thresholds are fixed in `configs/physics_guided_20261011.json:17-32` and frozen in `frozen_thresholds.json`.
+- Candidate ranking in `scripts/physics_guided_core.py:158-165` divides errors by fixed thresholds; it never divides by the current prediction&#x27;s maximum, minimum, or mean.
+- Raw metric values and pass indicators are both retained. No audited metric uses output-dependent normalization, and no suspicious near-one score is manufactured by renormalization.
+
+## C. Claimed versus existing results: WARN
+
+- Every required historical summary artifact exists: `summary.json`, `progression_gate.json`, `semantic_diversity_gate.json`, `complete_attempt_register.json`, `lineage_register.json`, `cross_seed_coordinate_checks.json`, `resource_summary.json`, `failure_case_catalog.json`, `per_family_summary.json`, `publication_versions.json`, `experiment_report.html`, `overleaf_experiment_record.tex`, and `all_construction_and_replay_attempts.csv`.
+- Independent recomputation from `per_attempt.csv` reproduces every published arm count, point estimate, per-seed joint-pass rate, comparison gain, confidence interval, and numeric-gate Boolean exactly. There are 10,512 construction/replay CSV rows, 74 registered complete labels, and 4,320 main replay attempts.
+- A read-only hash scan of all 74 registered `metadata.json`, `metrics.json`, and trajectory files found zero register or lineage mismatches.
+- The report does not claim G1 or downstream training: `results/physics_guided_20261011/experiment_report.html:8,58`; `results/physics_guided_20261011/overleaf_experiment_record.tex:10,41,47,54`. `progression_gate.json` records `g1=not_run`, `downstream_training=not_run`, and `novelty=not_established`.
+- Lineage is mixed but disclosed: 61 batches were request-bound at execution and 13 were certified retrospectively by exact-array and metric replay. Every lineage record is marked `confirmatory=false`; retrospective certification is compatibility evidence, not contemporaneous request provenance.
+- Minor publication mismatch: the saved HTML snapshot still uses a stale title containing “受控诊断实验” at `experiment_report.html:2`, although its body clearly disclaims controlled inference. The current publisher source changes the title at `scripts/publish_physics_guided_final.py:203`; the already-published HTML has not been regenerated from that source. The audited `publication_versions.json` correctly binds the older publisher hash, so this is a stale artifact, not a concealed rewrite.
+
+## D. Dead metric code: PASS
+
+- The core witness and measurement checks are invoked in `scripts/physics_guided_run.sh:18-23`.
+- The collector is called by the check, collection, and queue paths in `scripts/physics_guided_run.sh:22-30`.
+- The main analyzer and semantic evaluator are invoked by `scripts/physics_guided_queue.py:262-280`.
+- Outputs from the condition, physical, tracking, penetration, slip, semantic, and joint metrics appear in the batch metrics and published summary/component files. I found no main reported metric implemented only as dead code.
+
+## E. Scope, seeds, failures, and statistical support: WARN
+
+- Main scope: 10 arms, 48 test clips, 3 diffusion seeds (11, 12, 13), and 432 attempts per arm. Six equal-budget three-candidate arms enter the primary numeric gate: `random_best`, `native_best`, `no_feedback`, `shuffled`, `planned_prefix`, and `tracking_only` (`scripts/physics_guided_analyze.py:74-82`; queue construction in `scripts/physics_guided_queue.py:229-260`).
+- The analysis uses a source-clustered, family-stratified bootstrap (`scripts/physics_guided_analyze.py:55-73`). That is structurally appropriate for the planned unit of resampling.
+- The run records six development/witness batches, 30 known extra attempts, one early failed batch with unknown attempt count, five CPU queue failures, eight amendment records, and nine version snapshots. These are retained rather than silently discarded.
+- Scope does not repair the coordinate confound: diffusion seed also changes the reference world anchor, and nominal offset does not equal realized goal-relative-to-actual displacement.
+- The gate has a severe floor. Validation already had zero joint passes, yet thresholds were frozen before validation-distribution calibration; the protocol discloses this deviation at `docs/physics_guided_20261011.md:25`. Across main arms, penetration passes 432/432, slip passes only 1-5/432, physical passes only 1-2/432, and all equal-budget comparisons have 0.0 percentage-point gain with a `[0.0, 0.0]` interval. A degenerate conjunction cannot distinguish methods.
+
+## F. Evaluation type: WARN — mixed
+
+- **real_gt:** HumanML source motion/text and endpoint condition provenance.
+- **synthetic_proxy:** model-produced candidate motions and their replayed simulation traces.
+- **simulation_only:** all physical success, completion, contact-force, penetration, and slip measurements occur in Isaac Gym simulation.
+- **learned proxy:** the semantic/diversity evaluation embeds simulated actual-state motion using frozen HumanML evaluator assets.
+- **human evaluation:** none.
+- **real-robot evaluation:** none.
+
+The semantic gate is correctly labeled as a proxy. It cannot substitute for independent semantic acceptance of the generation reference, and it does not make the physical gate valid.
+
+## Additional integrity controls
+
+| Control | Status | Evidence and limitation |
+|---|---|---|
+| Source-group split | PASS | `physics_guided_prepare.py:70-97`; 128/24/48 groups, zero overlap. Pretrained-weight independence is not established. |
+| Immutable targets | PASS within case/seed; FAIL across seeds/offset geometry | Original target/hash checks in `physics_guided_collect.py:109,114,126`; paired methods share targets. World anchors and realized offset geometry differ as quantified above. |
+| Actual/reference timestamps | PASS structurally, WARN semantically | Explicit `reference_frame`; action is applied before physics and state recorded after the step (`physics_guided_collect.py:190-243`); saved indices must be 0..119 (`:278-279`). Old data lacks a pre-action state and begins from the anchor mismatch. |
+| Condition-update bounds | PASS | Total translation &lt;=0.15 m, per-update translation &lt;=0.05 m, heading step &lt;=5 degrees and total &lt;=15 degrees (`physics_guided_collect.py:109-118`). |
+| Candidate-budget fairness | PASS for declared primary gate | Six primary comparison arms receive the same three-candidate budget. One-candidate raw/ordinary/native-single arms are excluded from the equal-budget numeric gate. |
+| Slip proxy geometry | WARN | Exact collision primitives are parsed (`physics_guided_core.py:40-67`); point velocity uses `v + omega x r`, force/height define support, and surface geometry defines penetration (`:70-97`). Body-level net force does not localize contact to the selected surface point, and the resulting proxy is at a floor. |
+| Gate logic | PASS structurally; FAIL inferentially | All equal-budget arms, fixed thresholds, semantic asset hashes, and no invented downstream stage are checked (`physics_guided_analyze.py:74-123`). The inputs do not satisfy coordinate comparability and the joint endpoint is degenerate. |
+| Resource limits | PASS | GPU time 1.958902242 h &lt;72 h; output 1,997,173,593 bytes &lt;15 GiB; free space 43,630,018,560 bytes &gt;20 GiB. |
+
+## Independently reproduced results
+
+| Arm | Attempts | Completed | Construction-completed | Joint pass | Joint rate |
+|---|---:|---:|---:|---:|---:|
+| raw | 432 | 279 | 276 | 1 | 0.0023148 |
+| ordinary | 432 | 263 | 276 | 0 | 0 |
+| random_best | 432 | 265 | 287 | 0 | 0 |
+| native_single | 432 | 280 | 298 | 0 | 0 |
+| native_best | 432 | 279 | 313 | 0 | 0 |
+| proposed | 432 | 276 | 302 | 0 | 0 |
+| no_feedback | 432 | 280 | 298 | 0 | 0 |
+| shuffled | 432 | 280 | 303 | 0 | 0 |
+| planned_prefix | 432 | 260 | 280 | 0 | 0 |
+| tracking_only | 432 | 280 | 302 | 0 | 0 |
+
+All seven published comparisons against `proposed` have 0.0 percentage-point joint-rate gain, a `[0.0, 0.0]` clustered interval, and zero per-seed gain. The primary numeric gate is false for all six equal-budget arms.
+
+The physical-component recomputation shows the floor directly:
+
+| Arm | Physical pass | Slip pass | Penetration pass | Median completed slip fraction |
+|---|---:|---:|---:|---:|
+| raw | 2/432 | 2/432 | 432/432 | 0.734694 |
+| ordinary | 1/432 | 1/432 | 432/432 | 0.744186 |
+| random_best | 1/432 | 3/432 | 432/432 | 0.748603 |
+| native_single | 1/432 | 2/432 | 432/432 | 0.755756 |
+| native_best | 1/432 | 2/432 | 432/432 | 0.750000 |
+| proposed | 1/432 | 2/432 | 432/432 | 0.754937 |
+| no_feedback | 2/432 | 4/432 | 432/432 | 0.757453 |
+| shuffled | 2/432 | 5/432 | 432/432 | 0.759987 |
+| planned_prefix | 1/432 | 2/432 | 432/432 | 0.747478 |
+| tracking_only | 1/432 | 3/432 | 432/432 | 0.750000 |
+
+Semantic evaluation contains 30 arm-by-seed entries, 4,320 attempts, and 2,743 completed traces. For the disclosed proxy, `proposed` versus `random_best` has matching 6.6184 versus 6.7064, diversity 5.2923 versus 5.29525, and multimodality 4.38723 versus 4.29587. Evaluator assets and input groups are hash-bound, but these are diagnostic learned-proxy values.
+
+## Claim impact
+
+- **“The historical package faithfully reports what was run.” — supported with a minor publication-version warning.** Counts, hashes, statuses, failures, resource use, and gate outputs reproduce.
+- **“The proposed method improves the joint physical-condition-tracking endpoint.” — unsupported.** The numeric gate is false, the coordinate frame is invalid, and the endpoint is at a floor.
+- **“The proposed mechanism is ineffective.” — unsupported.** An invalid and degenerate measurement cannot establish absence of an effect.
+- **“Results are robust across three seeds or +/-0.15 m offsets.” — unsupported.** Seeds and nominal offsets are confounded with meter-scale world-anchor changes.
+- **“Semantic quality/diversity was evaluated.” — supported only as a frozen actual-state learned proxy.** It is not independent semantic ground truth.
+- **“G1 or downstream training was completed.” — not claimed and not present.** The record correctly marks both stages not run.
+
+## Required actions before scientific use
+
+1. Do not reuse the historical numbers as evidence for efficacy, inefficacy, robustness, seed effects, or offset effects. Retain them only as an amended diagnostic record.
+2. Any repaired run must place reference, target, and actual reset state in one frozen coordinate frame before the first action, save the pre-action actual state, verify the mapping per case, and use a new result directory and lineage chain.
+3. Calibrate and freeze a physically meaningful slip/contact threshold on a separate validation set. Report component outcomes as well as the joint conjunction so a floor cannot masquerade as equivalence.
+4. Preserve all execution-time requests and retrospective amendments. Keep retrospective compatibility records explicitly non-confirmatory.
+5. Regenerate the public HTML title from the current publisher if the stale “controlled” title remains visible, while preserving the historical producer hash and prior artifact.
+
+## Audit artifacts and hashes
+
+- `input_hashes.json` — SHA-256 `eccebfb3670a948ae713a76b2660ba225bbb25409b52d952d0f1f560f469e9f4`
+- `independent_recomputation.json` — SHA-256 `3a7c7eec8113a29b16d440cdc4cba7f551fd42df629c0e96d12b2f45736c3ce0`
+- `recompute_published_results.py` — SHA-256 `56f28744e338cca59f18518867bb1122ada5138aace0982b424e56f77e0837fa`
+- `historical_coordinate_per_case.json` — SHA-256 `4f5765132e39d0176c81b50ab5ad7c8e9996a1723d07ef45af55cdfe490964ca`
+- `recompute_historical_coordinates.py` — SHA-256 `3d4bb5467c7be0a51c9cdc0296217b1393804c7c7ba378eaa85a3210d3a4f327`
+
+This audit was read-only with respect to experiment code and outputs. It ran no GPU experiment and changed no historical result. The only files written are the independent audit trace artifacts under this audit directory.
+</pre></details>
+<h2>文件与参考</h2><p><a href="per_attempt.csv">每方法逐次回放</a> · <a href="all_construction_and_replay_attempts.csv">全部构建与回放尝试</a> ·
+<a href="attempt_register.json">尝试登记与散列</a> · <a href="resource_summary.json">成本明细</a> · <a href="versions.json">版本</a> · <a href="protocol_snapshot.md">协议快照</a> · <a href="progression_gate.json">后续阶段门槛</a></p>
+<p>相关路线：<a href="https://guytevet.github.io/CLoSD-page/">CLoSD：扩散与执行状态反馈</a>；
+<a href="https://xbpeng.github.io/projects/PARC/index.html">PARC：物理动作与数据构建</a>；
+<a href="https://github.com/WesleyXu224/CLAIMS_Official">CLAIMS：迭代闭环合成与控制扩展</a>。</p>
+<p><a href="https://github.com/Pendragon08/conditional-human-motion-generation">现有GitHub项目</a></p><h2 id="records">完整尝试与版本修订</h2><p>正式实验共74个批次、10512次构建或回放首轮尝试，其中独立回放4320次。此外单独登记开发、文档见证和失败的队列校验；无完成凭据的早期失败不补造样本数量或成绩。</p><table><thead><tr><th>开发/见证批次</th><th>状态</th><th>已知尝试</th><th>正式比较</th></tr></thead><tbody><tr><td>development_v1</td><td>failed_or_incomplete_retained</td><td>不可恢复</td><td>否</td></tr><tr><td>development_v2</td><td>complete</td><td>6</td><td>否</td></tr><tr><td>witness_doc_v1</td><td>complete</td><td>6</td><td>否</td></tr><tr><td>witness_doc_v2</td><td>complete</td><td>6</td><td>否</td></tr><tr><td>witness_doc_v3</td><td>complete</td><td>6</td><td>否</td></tr><tr><td>witness_doc_v4</td><td>complete</td><td>6</td><td>否</td></tr></tbody></table><p>运行中修正包括：参考时钟与状态读取、候选前缀、旧输出兼容性、NPZ解压性能、评价器版本绑定和单精度输入校验。原执行请求、版本快照与修正历史保留。它们不构成事先注册的确认性证据。</p><p>回放输入核验复算上游单精度根中心减/加，原始坐标误差另行保存；规范化简式允许固定旋转矩阵的机器精度余项，其容差为10⁻¹²米。该核验修正没有改变收集、指标计算或动作质量阈值。</p><p><strong>主要有效性缺陷：参考锚点在创建角色时构造，随后仿真重置了实际角色；二者没有共同平移。</strong>同一案例及种子内的方法共用目标，但不同种子同时改变随机噪声和目标相对实际角色的位置；三个偏移案例也受不同随机锚点影响。因此不能将本轮解释为纯生成种子重复，或受控的±15厘米实验；前缀反馈机制的比较也可能受初始化错位影响。仅减去参考骨盆位置的相对一致性不足以排除此问题。此测量失败与判据地板效应共同阻止有效性结论。<a href="cross_seed_coordinate_checks.json">跨种子坐标复核</a></p><p><a href="complete_attempt_register.json">完整尝试登记</a> · <a href="per_family_summary.json">按动作族分解</a> · <a href="lineage_register.json">输入与输出溯源</a></p><h3>失败阶段分解</h3><p>区分构建失败、已有动作前缀终止、生成段之后终止，以及完整回放后的条件或物理代理失败。前缀终止不能直接归因于生成器，也不全部等于跌倒。每类例子取按编号排序的首条，不挑选表现最好样本。</p><table><thead><tr><th>方法</th><th>候选构建未完成</th><th>回放在前缀段终止</th><th>回放在生成边界后终止</th><th>完整回放但原条件失败</th><th>条件合格但物理代理失败</th><th>条件/物理代理合格但跟踪失败</th><th>联合合格</th></tr></thead><tbody><tr><td>未精化生成参考</td><td>156</td><td>0</td><td>6</td><td>242</td><td>27</td><td>0</td><td>1</td></tr><tr><td>普通物理精化</td><td>156</td><td>1</td><td>34</td><td>221</td><td>20</td><td>0</td><td>0</td></tr><tr><td>等预算随机候选筛选</td><td>145</td><td>1</td><td>41</td><td>215</td><td>30</td><td>0</td><td>0</td></tr><tr><td>原生执行前缀反馈（单候选）</td><td>134</td><td>4</td><td>35</td><td>240</td><td>19</td><td>0</td><td>0</td></tr><tr><td>原生执行前缀反馈（等预算筛选）</td><td>119</td><td>5</td><td>47</td><td>235</td><td>26</td><td>0</td><td>0</td></tr><tr><td>候选方法：执行前缀＋有界条件反馈</td><td>130</td><td>4</td><td>41</td><td>214</td><td>43</td><td>0</td><td>0</td></tr><tr><td>消融：去除条件误差反馈</td><td>134</td><td>4</td><td>35</td><td>240</td><td>19</td><td>0</td><td>0</td></tr><tr><td>消融：打乱原始来源反馈</td><td>129</td><td>4</td><td>38</td><td>239</td><td>22</td><td>0</td><td>0</td></tr><tr><td>消融：计划前缀＋计划锚点</td><td>152</td><td>1</td><td>41</td><td>192</td><td>46</td><td>0</td><td>0</td></tr><tr><td>消融：仅按跟踪表现筛选</td><td>130</td><td>4</td><td>38</td><td>229</td><td>31</td><td>0</td><td>0</td></tr></tbody></table><p><a href="failure_case_catalog.json">分类计数与可追溯失败例子</a></p><p>数值进入门槛对每个等预算对照分别检查，避免最高分对照的并列顺序影响判定。展示的“最强对照”是观察后选出的描述性对象；其单个置信区间不解释为经过对照选择校正的确认性区间。条件与语义保护采用预先固定的点估计容差。</p><p>历史生成次数仅计入适配器显式调用；上游初始化的扩散预热未逐次计数，不能称为完整调用次数。各运行墙钟计费包含初始化时间；独立初始化复核另行记录预热和总调用次数。阶段名ablation_g1在本轮实际只包含人体消融，未执行G1。</p>
+<!-- RESET_REPAIR_20261011_START --><section id="reset-repair"><h2>独立初始化修复与停止依据</h2><p>独立初始化复核计划216例，实际启动12例、完成12例，测量校验未通过。首动作前实际与参考根节点的最大XY分量误差为 0.00071254373 米，引导重置与首动作前的刚体位置最大分量差为 0.03500697 米；其余导出状态逐项差异见摘要，不能将不同单位的差异合为一个误差指标。已运行来源的三个目标偏移最大误差为 3.0636787e-06 米。跨种子、跨模式和完整验证未运行。外层进程在下一批前触发保护其他工作负载的资源断言，退出码为1；原始状态文件残留RUNNING，不代表仍在运行。具体失败项见独立测量摘要，不据此开展机制有效性比较。本复核不改变质量阈值，不与旧轮合并，不包含候选反馈的完整对比或下游训练；G1及九组策略训练按停止条件未启动。</p><table><thead><tr><th>模式</th><th>尝试</th><th>完成</th><th>条件合格</th><th>物理代理合格</th><th>跟踪合格</th><th>联合合格</th></tr></thead><tbody><tr><td>计划前缀（部分测量）</td><td>12</td><td>12</td><td>4</td><td>0</td><td>12</td><td>0</td></tr></tbody></table><p>前两次初始化修复均在控制开始前失败，全部日志、请求和耗时保留。V3在原目标冻结前统一参考坐标，保留相对动作；XY锚点改善不等于完整初始状态校验通过。首批7项导出运动学状态中刚体位置、旋转及速度仍不同，后续批次没有启动。旧轮与三次复核保守合计 1.989 GPU小时。此范围不包括真实机器人或G1验证。</p><p><a href="../reset_alignment_v3_20261011/measurement_repair_summary.json">独立测量摘要</a> · <a href="../reset_alignment_v3_20261011/EXPERIMENT_AUDIT.md">独立审计</a></p></section><!-- RESET_REPAIR_20261011_END -->
+</body></html>

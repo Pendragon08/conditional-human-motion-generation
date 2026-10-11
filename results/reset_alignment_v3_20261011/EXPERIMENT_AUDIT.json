@@ -1,0 +1,323 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "FAIL",
+  "reason_code": "partial_execution_and_failed_initialization_identity_gate",
+  "summary": "V3 preserved one completed 12-case planned/seed11 fixture, then the outer launcher stopped at its inter-batch GPU resource guard. Seven later batches and 204 attempts did not start. The first-batch XY/offset registration passes, but four rigid-body tensor diagnostics differ between bootstrap reset and first action, so the retained family is measurement-invalid and cannot support an efficacy or inefficacy conclusion.",
+  "agent_id": "/root/physics_guided_integrity_auditor",
+  "verdict_id": "reset_alignment_v3_20261011_same_family_provisional_v1",
+  "executor_model": "Codex parent thread; exact deployment identifier unavailable to reviewer",
+  "executor_family": "openai",
+  "reviewer_model": "GPT-6-series Codex; exact deployment identifier unavailable",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "inherited deep audit",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "generated_at": "2026-10-11T11:35:09.0710610Z",
+  "date": "2026-10-11",
+  "auditor": "/root/physics_guided_integrity_auditor",
+  "overall_verdict": "fail",
+  "integrity_status": "fail",
+  "record_integrity": "pass_with_warnings",
+  "scientific_validity": "fail",
+  "trace_path": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/.aris/traces/reset_alignment_v3_final_audit_20261011/",
+  "scope": {
+    "result_family": "results/reset_alignment_v3_20261011",
+    "separate_from_historical_run": true,
+    "historical_results_merged": false,
+    "read_only_remote_audit": true,
+    "gpu_runs_by_auditor": 0,
+    "retries_by_auditor": 0,
+    "execution_records_mutated": false
+  },
+  "audited_input_hashes": {
+    "measurement_manifest.json": "sha256:a7065f535ee7adbc8bac95c5be2bc527cf740d43eabe3a40105ce6c471bf95de",
+    "planned_s11_execution_request.json": "sha256:9d75184600cdf6670cac22da0d4fae305c65a1f8e661eb1f7ada7ad137b80a5e",
+    "planned_s11/lineage.json": "sha256:9fa6f67a6e0087e0c3cabb8910747b7e31ca0198b510b786fd11017c6db007d7",
+    "planned_s11/metadata.json": "sha256:14dd190dd8d7c4f1aa4309ca20705c1390abc07dbe590ac28a9b9840268fef5d",
+    "planned_s11/metrics.json": "sha256:3075c125ef53ec6357896c5c23e45566914d4ed61e287bde31794915cd1be0aa",
+    "planned_s11/receipt.json": "sha256:fad275500bffa73ae96a09433899991e825f130f28ca3d1fbf05306dea930784",
+    "planned_s11/trajectories.npz": "sha256:453d0d2c4f344e42c71e493a9dad13a4f8cbd5576d701723108898ec9c0b90cc",
+    "budget_ledger.json": "sha256:99d08924076b7fa7e3edc580b16937664697ad380d64ef621b10989d1572fa98",
+    "state.json": "sha256:5ee65da98d0376962a69d0b2b8c240fda304feedd75a96e23f7ddb2e53ea3cba",
+    "versions_before_execution.json": "sha256:f819cb4a67c298dcb0210a2f8bbf0359b171cd952ef1525bb3273a0f6054a758",
+    "measurement_repair_summary.json": "sha256:09bfaaa424d643eaa8ad64d42145f0a6156ddd722e5d90d2f92a6a8587e9c146",
+    "document_witness/witness.json": "sha256:c84c5338d442a3661ae12681ad49734e5162097436799eaebb5a0dbb1b6e97ff",
+    "trace/independent_recomputation.json": "sha256:b69e4e3390d37559b67cb2db2537a43c95c3d006864267c37cda7c897d18199d"
+  },
+  "checks": {
+    "gt_provenance": {
+      "status": "pass_with_qualification",
+      "details": "Four HumanML validation sources were preselected by manifest order before execution. References and endpoint targets are dataset-derived. Generated semantic quality was not independently evaluated.",
+      "evidence": [
+        "scripts/run_reset_alignment_checks_v3.py:34-42",
+        "results/reset_alignment_v3_20261011/measurement_manifest.json",
+        "results/reset_alignment_v3_20261011/planned_s11/metadata.json"
+      ]
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "The execution request binds the unchanged frozen threshold file. No audited metric is normalized by the evaluated output's own extrema or moments.",
+      "evidence": [
+        "results/reset_alignment_v3_20261011/planned_s11_execution_request.json",
+        "results/physics_guided_20261011/frozen_thresholds.json"
+      ]
+    },
+    "result_existence": {
+      "status": "pass_with_warnings",
+      "details": "Exactly one requested batch and its output files exist. All request/output hashes match. The state file remains RUNNING after the outer exit and is stale; the derived summary and witness explicitly explain this.",
+      "evidence": [
+        "results/reset_alignment_v3_20261011/state.json",
+        "results/reset_alignment_v3_20261011/planned_s11/receipt.json",
+        "results/reset_alignment_v3_20261011/planned_s11/lineage.json",
+        "results/reset_alignment_v3_20261011/measurement_repair_summary.json",
+        ".aris/traces/reset_alignment_v3_doc_witness_20261011/witness.json"
+      ]
+    },
+    "dead_code": {
+      "status": "pass_with_qualification",
+      "details": "Collector metrics were produced for all 12 retained attempts. The complete-run analyzer was appropriately not invoked because collection never reached its required complete state; the CPU-only incomplete-run analyzer produced the failure summary.",
+      "evidence": [
+        "scripts/analyze_reset_alignment_v3.py:9-12",
+        "scripts/analyze_incomplete_reset_measurement.py:13-96"
+      ]
+    },
+    "scope": {
+      "status": "fail",
+      "details": "Only 12 of 216 attempts and one of eight batches ran. Only planned seed11 is observed. Cross-seed, cross-mode, and full-validation checks are absent, and the one batch fails the initialization identity gate.",
+      "evidence": [
+        "scripts/run_reset_alignment_checks_v3.py:62-64",
+        "scripts/run_reset_alignment_checks_v3.py:78-113",
+        "results/reset_alignment_v3_20261011/measurement_repair_summary.json"
+      ]
+    },
+    "eval_type": {
+      "status": "warn",
+      "classification": [
+        "real_gt",
+        "simulation_only",
+        "synthetic_proxy"
+      ],
+      "details": "Dataset-derived HumanML conditions are measured through generated motion and Isaac Gym physical proxies. There is no human or real-robot evaluation."
+    }
+  },
+  "execution": {
+    "measurement_invocations": 1,
+    "retries": 0,
+    "started_utc": "2026-10-11T11:24:42.3527247Z",
+    "ended_utc": "2026-10-11T11:25:34.3809353Z",
+    "outer_exit_code": 1,
+    "child_batches": [
+      {
+        "label": "planned_s11",
+        "launched": true,
+        "child_exit_code": 0,
+        "attempts": 12,
+        "completed": 12,
+        "terminated": 0,
+        "frames_per_case": 120,
+        "ledger_seconds": 31.998405760154128
+      }
+    ],
+    "unstarted_batches": [
+      "native_s11",
+      "planned_s12",
+      "native_s12",
+      "planned_s13",
+      "native_s13",
+      "full_val_planned_s11",
+      "full_val_native_s11"
+    ],
+    "unstarted_attempts": 204,
+    "stop": {
+      "location": "scripts/run_reset_alignment_checks_v3.py:89",
+      "exception": "AssertionError: No displacement of another workload",
+      "predicate": "int(gpu[0]) < 2048 and int(gpu[1]) <= 5",
+      "failure_sample_values_logged": false,
+      "which_bound_failed": "unknown",
+      "next_child_launched": false,
+      "v3_process_observed_after_exit": false
+    },
+    "stale_state": {
+      "recorded": {"status": "RUNNING", "label": "planned_s11", "time": 1791717904.676374},
+      "interpretation": "stale after outer exit1; not an active or successful run",
+      "cause_in_code": "state is written before launch at runner line93; an inter-batch assertion bypasses the child-failure update at lines111-113"
+    }
+  },
+  "coverage": {
+    "planned_batches": 8,
+    "started_batches": 1,
+    "planned_attempts": 216,
+    "actual_attempts": 12,
+    "actual_fraction": 0.05555555555555555,
+    "completed": 12,
+    "terminated": 0,
+    "seeds": [11],
+    "modes": ["planned"],
+    "sources": 4,
+    "families": ["jump", "dance"],
+    "offsets_m": [-0.15, 0.0, 0.15],
+    "cross_seed_checked": false,
+    "cross_mode_checked": false,
+    "full_validation_checked": false
+  },
+  "quality_counts": {
+    "attempts": 12,
+    "completed": 12,
+    "condition_pass": 4,
+    "physical_pass": 0,
+    "tracking_pass": 12,
+    "joint_pass": 0,
+    "interpretation": "descriptive retained batch only; no mechanism conclusion"
+  },
+  "coordinate_checks": {
+    "xy_anchor": {
+      "status": "pass_for_first_batch",
+      "actual_reference_max_component_m": 0.0007125437259674072,
+      "actual_reference_max_euclidean_m": 0.0007189986346922763,
+      "reset_reference_max_euclidean_m": 0.0,
+      "threshold_m": 0.001
+    },
+    "reference_translation_invariants": {
+      "status": "pass_for_first_batch",
+      "relative_pose_max_error_m": 5.960464477539063e-08,
+      "displacement_max_error_m": 5.960464477539063e-08,
+      "z_max_error_m": 0.0
+    },
+    "offsets": {
+      "status": "pass_for_first_batch",
+      "max_absolute_goal_offset_error_m": 3.063678741449527e-06,
+      "max_goal_relative_to_reset_root_error_m": 3.073364496231079e-07,
+      "max_reset_root_difference_within_source_m": 2.86102294921875e-06,
+      "limitation": "No seed12/13 or native batch exists; absence of other random translation cannot be certified across planned coverage."
+    }
+  },
+  "initialization_identity": {
+    "status": "fail",
+    "declared_threshold": 1e-05,
+    "full_reset_calls_before_first_action": 3,
+    "tensor_diagnostics": {
+      "_humanoid_root_states": {"max_difference": 0.0, "sha256_equal": true},
+      "_dof_pos": {"max_difference": 0.0, "sha256_equal": true},
+      "_dof_vel": {"max_difference": 0.0, "sha256_equal": true},
+      "_rigid_body_pos": {"max_difference": 0.035006970167160034, "sha256_equal": false},
+      "_rigid_body_rot": {"max_difference": 1.4754348993301392, "sha256_equal": false},
+      "_rigid_body_vel": {"max_difference": 3.7104039192199707, "sha256_equal": false},
+      "_rigid_body_ang_vel": {"max_difference": 6.5190958976745605, "sha256_equal": false}
+    },
+    "raw_initial_tensor_arrays_saved": false,
+    "scope_limitation": "The seven diagnostics exclude PhysX hidden state, contacts, RNG, and policy observations. Recorded differences/hashes are verifiable, but raw before/after arrays cannot be independently recomputed or localized."
+  },
+  "lineage": {
+    "request_matches_embedded_lineage": true,
+    "request_version_matches_versions_file": true,
+    "request_manifest_matches": true,
+    "metadata_hash_matches": true,
+    "metrics_hash_matches": true,
+    "trajectory_hash_matches": true,
+    "all_13_recorded_project_version_hashes_still_match": true,
+    "certification": "bound_request_at_execution",
+    "confirmatory": false,
+    "study_status": "amended diagnostic run; thresholds retained"
+  },
+  "trajectory_archive": {
+    "reference_frame_exactly_0_through_119": true,
+    "valid_frames": 1440,
+    "expected_valid_frames": 1440,
+    "terminated_cases": 0,
+    "all_numeric_arrays_finite": true,
+    "original_goal_float32_hash_matches": true,
+    "raw_initial_seven_tensors_present": false,
+    "raw_generation_noise_present": false,
+    "raw_generation_prefix_present": false
+  },
+  "resource_accounting": {
+    "v3_child_ledger_seconds": 31.998405760154128,
+    "v3_outer_wall_seconds": 52.0282106,
+    "outer_wrapper_overhead_seconds": 20.029804839845873,
+    "ledger_only_combined_seconds": 7139.618935374543,
+    "ledger_only_combined_hours": 1.983227482048484,
+    "conservative_combined_seconds": 7159.648740214389,
+    "conservative_combined_hours": 1.9887913167262192,
+    "total_limit_hours": 72,
+    "measurement_limit_hours": 4,
+    "total_limit_pass": true,
+    "measurement_limit_pass": true,
+    "related_output_gib_witnessed": 1.862631045281887,
+    "output_limit_gib": 15,
+    "free_gib_witnessed": 40.62990188598633,
+    "minimum_free_gib": 20,
+    "note": "Charged wall time is a conservative budget measure, not measured GPU kernel occupancy. The updated summary includes outer wrapper overhead."
+  },
+  "derived_summary_audit": {
+    "status": "pass_with_limitation",
+    "sha256": "09bfaaa424d643eaa8ad64d42145f0a6156ddd722e5d90d2f92a6a8587e9c146",
+    "counts_match": true,
+    "unstarted_batch_list_matches": true,
+    "offset_values_match": true,
+    "lineage_bindings_match": true,
+    "coordinate_gate_false_supported": true,
+    "stop_measurement_invalid_supported": true,
+    "outer_overhead_included": true,
+    "limitation": "The resource assertion's sampled memory/utilization values were not logged, so the failed predicate component is unknown."
+  },
+  "findings": [
+    {
+      "id": "V3-F001",
+      "severity": "critical",
+      "title": "Four rigid-body initialization tensor diagnostics differ",
+      "impact": "The result family fails its own initialization-validity gate."
+    },
+    {
+      "id": "V3-F002",
+      "severity": "critical",
+      "title": "Only 12 of 216 attempts and one of eight batches ran",
+      "impact": "Cross-seed, cross-mode, and full-validation conclusions are unavailable."
+    },
+    {
+      "id": "V3-F003",
+      "severity": "major",
+      "title": "state.json remains RUNNING after the outer process exited",
+      "impact": "State must be interpreted with the execution witness and failure summary; it is not an active-process indicator."
+    },
+    {
+      "id": "V3-F004",
+      "severity": "minor",
+      "title": "Failure-time GPU sample was not logged",
+      "impact": "The guard and stop are verified, but the failed bound cannot be identified."
+    },
+    {
+      "id": "V3-F005",
+      "severity": "resolved_in_derived_summary",
+      "title": "Child-only resource total omitted 20.0298 s wrapper overhead",
+      "impact": "The current derived summary charges the overhead and reports the conservative 1.988791317 h total."
+    }
+  ],
+  "claims": [
+    {"id": "C1", "claim": "V3 completed 216 attempts.", "impact": "false"},
+    {"id": "C2", "claim": "V3 establishes cross-seed or cross-mode coordinate consistency.", "impact": "unsupported"},
+    {"id": "C3", "claim": "The first-batch XY anchor and nominal offsets are aligned.", "impact": "supported_for_four_retained_sources_only"},
+    {"id": "C4", "claim": "Bootstrap and first-action initialization states are identical.", "impact": "contradicted_by_four_exported_rigid_body_diagnostics"},
+    {"id": "C5", "claim": "Joint pass 0/12 shows the mechanism is ineffective.", "impact": "unsupported"},
+    {"id": "C6", "claim": "The launcher stopped before the next child started.", "impact": "supported"}
+  ],
+  "required_handling": [
+    "Preserve V3 as a failed non-confirmatory attempt and do not rerun into the same directory.",
+    "Do not pool the 12 rows with historical results or use joint pass 0/12 for a causal or mechanism conclusion.",
+    "Use a new result family for any next repair and save raw before/after initialization tensors and the failure-time GPU sample.",
+    "Carry forward the conservative 1.9887913167262192 hour cumulative charge."
+  ],
+  "limitations": [
+    "Same-family Codex review is provisional.",
+    "Raw before/after seven-tensor arrays are not present, so recorded max differences cannot be recomputed from raw initial tensors.",
+    "Only planned seed11 exists; cross-seed, cross-mode, full-validation, and distinct-noise checks are unavailable.",
+    "No human or real-robot evaluation exists.",
+    "The exact GPU memory/utilization values at the failed resource check were not emitted."
+  ],
+  "audit_artifacts": {
+    "markdown": "D:/具身智能/conditional-human-motion-generation/results/reset_alignment_v3_20261011/EXPERIMENT_AUDIT.md",
+    "json": "D:/具身智能/conditional-human-motion-generation/results/reset_alignment_v3_20261011/EXPERIMENT_AUDIT.json",
+    "independent_recomputation": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/.aris/traces/reset_alignment_v3_final_audit_20261011/independent_recomputation.json",
+    "recomputation_script": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/.aris/traces/reset_alignment_v3_final_audit_20261011/recompute_v3_failure.py",
+    "document_witness": "D:/具身智能/conditional-human-motion-generation/.aris/traces/reset_alignment_v3_doc_witness_20261011/witness.json"
+  }
+}
