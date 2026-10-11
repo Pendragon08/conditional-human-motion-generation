@@ -30,6 +30,7 @@ validation24=read('results/contact_com_validation_v24_20261012/validation_summar
 numerics25=read('results/metric_runtime_diagnostic_v25_20261012/diagnostic.json')
 runtime26=read('results/contact_com_runtime_v26_20261012/runtime_check.json')
 replay27=read('results/fixed_reference_com_v27_20261012/replay_summary.json')
+formal28=read('results/condition_feedback_formal_v28_20261012/queue_state.json')
 probe=read('results/condition_feedback_probe_v2_20261011/probe_summary.json')
 inputs=[ROOT/name for name in ('results/contact_sampling_v8_20261011/sampling_summary.json',
  'results/contact_force_fixture_20261011/repeat_comparison.json',
@@ -50,9 +51,11 @@ inputs=[ROOT/name for name in ('results/contact_sampling_v8_20261011/sampling_su
  'results/metric_runtime_diagnostic_v25_20261012/diagnostic.json',
  'results/contact_com_runtime_v26_20261012/runtime_check.json',
  'results/fixed_reference_com_v27_20261012/replay_summary.json',
+ 'results/condition_feedback_formal_v28_20261012/queue_state.json',
  'results/condition_feedback_probe_v2_20261011/probe_summary.json') if (ROOT/name).exists()]
 status=dict(innovation_candidates=3,preliminarily_tested=1,not_yet_experimentally_tested=2,
  confirmed_innovations=0,measurement_gate='CALIBRATED_PROXY_AND_FIXED_REPLAY_PASS' if replay27 else 'FIXED_REPLAY_PENDING',g1='NOT_STARTED_BY_GATE',
+ formal_comparison_snapshot=formal28,
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
  slip13=slip13,point16=point16,point17=point17,velocity19=velocity19,point20=point20,com21=com21,articulated22=articulated22,validation24=validation24,numerics25=numerics25,runtime26=runtime26,replay27=replay27,
  v8=v8,box=box,v10=v10,box_v2=box_v2,box_v3=box_v3,v11=v11,quality11=quality11,validation12=validation12,
@@ -93,13 +96,16 @@ if replay27:
     replay_rows=''.join('<tr>'+''.join('<td>'+html.escape(str(row[key]))+'</td>' for key in ('reference','attempted','completed','condition_pass','physical_pass','tracking_pass','combined_construction_replay_joint_pass','construction_terminated'))+'</tr>' for row in replay27['entries'])
     replay_text='<table><tr><th>固定参考</th><th>尝试</th><th>完成</th><th>条件合格</th><th>物理代理合格</th><th>跟踪合格</th><th>构建＋回放联合合格</th><th>构建终止</th></tr>'+replay_rows+'</table><p>所有72输入都保留。构建终止后补齐的序列不能因回放成功而恢复联合成功资格。这是单种子接口与质量诊断，不是新算法对比。</p>'
 measurement_text='已知正负对照通过，固定参考回放尚待完成。'
+formal_text='<p>C1完整对比尚未启动。</p>'
+if formal28:
+    formal_text='<p>服务器采集状态快照：'+html.escape(formal28['status'])+'；批次：'+html.escape(formal28.get('label','未提供'))+'。完整协议包含10个对比与消融配置，每配置432测试输入。状态快照不代替实时进程检查，也不是完成结果；尚无新的效力结论。</p>'
 if replay27:
     measurement_text='重置、坐标、时间、数值复算、已知正负对照及固定参考回放接口已通过。足部指标仍是碰撞表面滑移代理，不能称为真实接触力或所有滚动接触的真值。人体物理质量与候选效力另行判断。'
 document=f'''<!doctype html><html lang="zh-CN"><meta charset="UTF-8"><title>条件动作生成：接触测量复核与候选机制</title>
 <style>body{{max-width:1100px;margin:32px auto;padding:0 24px;font:16px/1.75 system-ui;color:#172635}}h1,h2{{color:#153c5a}}table{{border-collapse:collapse;width:100%;margin:18px 0}}th,td{{border:1px solid #cbd5df;padding:10px;text-align:left}}th{{background:#eaf1f7}}.notice{{padding:16px;background:#fff2d8;border-left:5px solid #b67500}}a{{color:#126496}}@media print{{body{{max-width:none;margin:0}}tr{{break-inside:avoid}}}}</style>
 <h1>条件动作生成：测量复核与候选机制</h1><p>2026-10-12 · 冻结生成模型和人体跟踪器 · 仅仿真 · 实验结果暂不写入Overleaf</p>
 <div class="notice"><strong>3个候选、1个已初测、2个未测试、0个确认创新。</strong>{measurement_text}程序修复、传感器记录、文档执行见证均不作为论文创新。</div>
-<h2>本轮测量证据</h2><table><tr><th>试验</th><th>状态</th><th>实际证据与边界</th></tr>{table}</table>
+<h2>C1完整对比进度</h2>{formal_text}<h2>本轮测量证据</h2><table><tr><th>试验</th><th>状态</th><th>实际证据与边界</th></tr>{table}</table>
 <p>简单物体测试采用5公斤箱体、平面、已知重力和无摩擦滑动。稳定支撑力接近49.05N，初始腾空接触力接近零。约束力传感器重复一致，但关节系统中的传感器还可能包含内部约束反力，因此不能将箱体结果推广为人体接触测量通过。</p>
 <p>V11只证明固定新设置内的重复性，不能将其解释为行为不变的修复。初始七项状态与旧设置一致，第一步微小数值差异随后由闭环放大。原阈值保持不变；小样本穿透12/12通过、连续性7/12通过、脚滑代理0/12通过，联合0/12。</p><h2>全来源验证诊断</h2>{validation_text}<h2>速度计算修正与验证边界</h2><p>V19确认原计算将质心线速度当作刚体原点线速度，脚底材料点速度需要扣除旋转后的质心偏移。已单独修正并完成已知静止/滑动/腾空箱体和旋转材料点校验。V21的12条人体输入仍未达到原物理判据，因此计算错误不能解释全部质量问题。历史V12的432次评分没有覆盖正确速度约定，暂不作为正式有效性结论；V24修正后的结果见上表。所有阈值与原始目标保持不变。</p><h2>固定参考回放</h2>{replay_text}<h2>C1的既有初步结果（旧导出设置）</h2><table><tr><th>方法</th><th>输入数</th><th>平均目标误差(cm)</th><th>条件合格</th><th>物理代理合格</th><th>联合合格</th></tr>{probe_table}</table>
 <p>仅4个动作来源、3种偏移、1个生成种子，每臂最多3候选。条件改善是探索性信号；物理代理尚不可靠，联合结果不能证明方法有效或普遍无效。原始目标、失败和阈值均保留。并非原计划432输入的正式验证。</p>

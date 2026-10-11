@@ -1,5 +1,7 @@
 # Conditional Human Motion Generation
 
+**2026-10-12 C1完整对比已启动，结果尚未完成。** V28独立文档见证的60项检查通过，72条校验轨迹、传感器、策略动作与V24逐字节相同，评分一致。当前运行使用原始固定目标、3生成种子、48个测试来源、3种目标偏移，10个对比与消融配置各432输入。首次启动已确认实际父进程及采集进程存活，进度文件只作采集快照；不以启动或校验通过声称创新有效。原有预算、失败记录和后续阶段门槛保留。[独立见证](results/condition_feedback_formal_v28_20261012/DOCUMENT_WITNESS.md) · [协议与复现入口](docs/condition_feedback_formal_v28_20261012.md)。
+
 **2026-10-12 当前状态：3个候选机制，1个初测、2个未测试，0个确认创新。** 重置、坐标、参考时钟、质心速度、已知静止/滑动/腾空对照和数值复算已校验。修正后的V24验证完成432次尝试：419次完整执行、114次条件合格、318次跟踪合格，物理与联合合格均为1次。V27固定参考回放各72次：原生成参考条件合格23、跟踪合格54；物理轨迹参考条件合格14、跟踪合格68；两者联合均为0。这些是验证集基线诊断，不是创新有效性结果。历史未修正评分与所有失败保留，不与新评分混用。原始目标、判据、冻结生成器和跟踪器不变。足部滑移仍为经过校准的表面速度代理；不作为所有滚动接触或真实接触力的真值。G1和下游训练尚未开始，本轮不写Overleaf结果。[数值环境修复见证](results/contact_com_runtime_v26_20261012/DOCUMENT_WITNESS.md) · [432次验证](results/contact_com_validation_v24_20261012/validation_summary.json) · [固定参考回放](results/fixed_reference_com_v27_20261012/replay_summary.json) · [最新HTML](results/contact_measurement_review_20261011/measurement_review.html)。
 
 **2026-10-11 当前验证进展：3个候选机制，1个初测、2个未测试，0个确认创新。** 新增两轮人体完成等待复核和被动足部传感器复核：运动学及策略输入重复一致，净接触力读数仍不稳定；足部约束传感器可重复，但包含内部关节反力，尚未替换接触指标。5kg物体/平面校准两次通过，仍不等于人体测量门通过。完整失败与独立审计保留，继续测量修复；正式创新验证、G1和下游训练由原方案门控，本轮不写Overleaf实验结果。[最新HTML](results/contact_measurement_review_20261011/measurement_review.html) · [结果状态](results/contact_measurement_review_20261011/status.json) · [候选机制与最近邻方法](docs/candidate_mechanisms_20261011.md) · [V8独立审计](results/contact_sampling_v8_20261011/EXPERIMENT_AUDIT.md)。
