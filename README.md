@@ -1,5 +1,7 @@
 # Conditional Human Motion Generation
 
+**2026-10-11 最新状态：接触测量门未通过。** 216次导出重置缓存/坐标检查完成，初始导出状态一致；四臂等预算诊断完成108次构建＋48次选出参考回放。反馈组目标误差10.80cm、随机筛选14.35cm，但物理/联合合格均为0。额外24次同步采样复核仍出现相同运动学、不同接触力的现象，**不能确认创新有效性或完整测量已修复**。仅4个自定义诊断来源/1种子，不作官方独立效能结论。保留全部失败；正式测试、G1和下游训练暂停，本轮不写Overleaf。见[最新结果表](results/condition_feedback_probe_v2_20261011/RESULTS.md)、[216次校验及边界](results/reset_alignment_v4_20261011/RESULTS.md)、[接触复核](results/contact_sampling_v5_20261011/RESULTS.md)和[HTML报告](results/reset_alignment_v4_20261011/measurement_report.html)。
+
 **2026-10-11 实验结果入口**：[GitHub 可直接阅读的结果汇总表](results/physics_guided_20261011/RESULTS.md) · [公开结果文件与散列索引](results/physics_guided_20261011/artifact_index.csv)。完整数值、消融、失败与审计均已归档；本轮因测量校验未通过停止，G1 和下游训练未执行。
 
 **2026-10-11：物理引导条件反馈诊断已归档，测量门未通过。** 冻结DiP和CLoSD跟踪器，实现10个对比/消融配置，各432次独立回放。独立审计发现创建锚点与实际重置坐标错位，旧轮不具备受控效力。三次独立初始化复核保留失败：V3计划216例、实际12例；首批XY对齐改善，但4项导出刚体状态不一致，随后资源保护断言停止。按方案未开展G1或下游训练，不能宣称候选机制有效或无效。保守累计约1.989 GPU小时，无旧实验删除。[HTML报告](results/physics_guided_20261011/experiment_report.html) · [旧轮独立审计](results/physics_guided_20261011/EXPERIMENT_AUDIT.md) · [V3复核与停止依据](results/reset_alignment_v3_20261011/EXPERIMENT_AUDIT.md)。

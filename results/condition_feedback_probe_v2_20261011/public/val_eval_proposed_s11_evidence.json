@@ -1,0 +1,65 @@
+{
+  "label": "val_eval_proposed_s11",
+  "directory": "condition_feedback_probe_v2_20261011",
+  "attempts": 12,
+  "completed": 12,
+  "condition_pass": 4,
+  "physical_pass": 0,
+  "tracking_pass": 12,
+  "joint_pass": 0,
+  "reset_gate": true,
+  "initial_state_difference": {
+    "_humanoid_root_states": 0.0,
+    "_dof_pos": 0.0,
+    "_dof_vel": 0.0,
+    "_rigid_body_pos": 0.0,
+    "_rigid_body_rot": 0.0,
+    "_rigid_body_vel": 0.0,
+    "_rigid_body_ang_vel": 0.0
+  },
+  "initial_xy_max_m": 0.0,
+  "mode": "replay",
+  "seed": 11,
+  "round": 0,
+  "original_goal_sha256": "74b8ca3ee31aa96c4a1271dd38510f3cd0f1b573b2e09c4758ce8ec43d6de70b",
+  "generation_calls": 0,
+  "seconds": 29.785011053085327,
+  "outputs": {
+    "metadata.json": "8e5187350d0a3a355e77468ba173664506f5fafc5ad57f23d5704b9493a3ba7c",
+    "metrics.json": "d7771793dcf3e9711c4944c7e75231460126cc8f3733f6899f3d0bf529e9f26f",
+    "receipt.json": "7ed35cf574117187d5af72051d3c723dcae450cdd761b6ecff2a3b871bf7c199",
+    "lineage.json": "4f14b4381796e29dc1746dcf6059c43ca891e38c3ac61dedf0b18dc69eea9b9e",
+    "initial_states.npz": "866765c4e3c965f532efae1502cd2200c52bca9271ec41d195c52fa26740abed",
+    "trajectories.npz": "f26fda8805ffa0573fe68e43e989e608db17c8c43c6ef23cfa546fe9f5825f49"
+  },
+  "metric_numeric_recomputation": {
+    "status": "PASS_ROUNDOFF_ONLY",
+    "float64_epsilon": 2.220446049250313e-16,
+    "tolerance_rule": "32 * float64_epsilon * max(1, abs(saved), abs(recomputed))",
+    "differences": [
+      {
+        "path": "metrics[7].heading_error_rad",
+        "saved": 0.14025247817835407,
+        "recomputed": 0.14025247817835362,
+        "absolute_difference": 4.440892098500626e-16,
+        "tolerance": 7.105427357601002e-15
+      },
+      {
+        "path": "metrics[7].heading_error_signed_rad",
+        "saved": -0.14025247817835407,
+        "recomputed": -0.14025247817835362,
+        "absolute_difference": 4.440892098500626e-16,
+        "tolerance": 7.105427357601002e-15
+      }
+    ],
+    "changed_floating_values": 2,
+    "maximum_absolute_difference": 4.440892098500626e-16,
+    "classifications_identical": true,
+    "thresholds_changed": false,
+    "saved_scores_unchanged": true,
+    "scope": "Numeric recomputation only; lineage verifies other inputs separately.",
+    "saved_metrics_sha256": "d7771793dcf3e9711c4944c7e75231460126cc8f3733f6899f3d0bf529e9f26f",
+    "recomputed_metrics_object_sha256": "76762b53fb8f3d02a9fad71c5e2699adb18cb514b4c8d7912f5edcf378bec82b",
+    "saved_metrics_object_sha256": "c75b2b90fe7695c77b1306c3ee7bc485afb0b64f3a9eec2bba31e56dd1adf534"
+  }
+}

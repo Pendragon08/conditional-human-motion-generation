@@ -9,3 +9,17 @@ configs/*world*20261007* -text whitespace=cr-at-eol
 docs/world_ppo_*20261007.md -text whitespace=cr-at-eol
 docs/dreamcontrol_ssh_environment_ledger.md -text whitespace=cr-at-eol
 results/world_residual_ppo_20261007/** -text whitespace=cr-at-eol
+
+# Preserve the byte-level hashes of the 2026-10-11 measurement witnesses.
+configs/env-closd-baseline-20261010.json -text whitespace=cr-at-eol
+scripts/reset_aligned_collect_v4.py -text whitespace=cr-at-eol
+scripts/analyze_reset_alignment_v4.py -text whitespace=cr-at-eol
+scripts/contact_sampling_collect_v5.py -text whitespace=cr-at-eol
+docs/reset_alignment_v4_20261011.md -text whitespace=cr-at-eol
+results/reset_alignment_v4_20261011/** -text whitespace=cr-at-eol
+results/condition_feedback_probe_20261011/** -text whitespace=cr-at-eol
+results/condition_feedback_probe_v2_20261011/** -text whitespace=cr-at-eol
+results/contact_sampling_v5_20261011/** -text whitespace=cr-at-eol
+# Audit originals retain intentional Markdown line breaks and exact report hashes.
+results/*/EXPERIMENT_AUDIT.md whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+results/*/DOCUMENT_WITNESS.md whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol

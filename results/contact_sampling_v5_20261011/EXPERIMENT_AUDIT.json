@@ -1,0 +1,172 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-10-11",
+  "generated_at": "2026-10-11T13:36:50Z",
+  "agent_id": "/root/contact_sampling_v5_integrity_audit",
+  "auditor": "fresh Codex audit agent",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "mode": "read-only remote inspection and CPU recomputation; collector not rerun",
+  "overall_verdict": "WARN",
+  "integrity_status": "WARN",
+  "reason_codes": [
+    "force_slip_measurement_not_repeatable",
+    "derived_repeatability_summary_not_lineage_bound",
+    "mixed_reference_provenance",
+    "raw_generation_noise_and_prefix_not_archived"
+  ],
+  "summary": "Core execution artifacts and saved metrics are internally consistent, but force-derived support/slip remains non-repeatable after synchronization. The archived negative timing-witness claim is supported; force/slip validity and efficacy claims are not.",
+  "separate_verdicts": {
+    "core_execution_artifact_integrity": "PASS",
+    "derived_summary_traceability": "WARN",
+    "supporting_force_slip_measurement_validity": "FAIL"
+  },
+  "checks": {
+    "A_ground_truth_provenance": {
+      "status": "WARN",
+      "details": "Original endpoint goals are dataset-derived and fixed before generation. Tracking after frame 60 is adherence to the generated plan, not independent motion GT. Contact/slip is an explicitly labeled simulation proxy with no actual contact-point truth."
+    },
+    "B_score_normalization": {
+      "status": "PASS",
+      "details": "No score uses model-output max/min/mean normalization. Dataset mean/std is input preprocessing; metrics remain raw SI values, fractions, counts, and fixed-threshold decisions."
+    },
+    "C_result_existence_and_reproduction": {
+      "status": "WARN",
+      "details": "All requested V5 files exist and all bound hashes/counts match. All saved metrics and repeatability comparisons reproduced. The repeat analyzer and repeatability_summary are not version/lineage bound."
+    },
+    "D_dead_code": {
+      "status": "PASS",
+      "details": "Every metric and comparison function that contributes to reported V5 values is called by collection, numeric certification, or repeat analysis."
+    },
+    "E_scope": {
+      "status": "PASS",
+      "details": "Actual scope is 4 internal sources, 12 offset-expanded cases, one generation seed, two construction batches, and no independent replay. Documentation states these limits and disclaims efficacy/generalization."
+    },
+    "F_evaluation_type": {
+      "status": "PASS",
+      "classification": [
+        "real_dataset_reference_for_fixed_goal_and_prefix",
+        "self_supervised_control_reference_proxy_for_plan_tracking",
+        "simulation_only_proxy_for_force_slip",
+        "simulation_only_repeatability_diagnostic"
+      ]
+    }
+  },
+  "frozen_conditions": {
+    "generator_weights": {
+      "status": "PASS",
+      "sha256": "3ca68ae54975946b3fe5c6cd64a6eafc439b5fc43c166bc9a98d1c43aeef6618"
+    },
+    "controller_weights": {
+      "status": "PASS",
+      "sha256": "7ead3778b95516d8b91b7c5939674e45dd0ad10fcc22da60f9f57d204695f6ac"
+    },
+    "text_motion_evaluator_weights": {
+      "status": "PASS",
+      "sha256": "43e43d198f07b7e080749d1709326783d2bfb5810f56ed0c56c68951ee961d0d"
+    },
+    "resolved_config_identical": true,
+    "resolved_config_sha256": "7892b948f8e96cf15acda7f37b72505164e49b8c4ef076f1f39871c89a0958ea",
+    "cases_exactly_equal": true,
+    "original_goals_exactly_equal": true,
+    "original_headings_exactly_equal": true,
+    "initial_archives_bitwise_equal": true,
+    "generation_reference_arrays_bitwise_equal": true,
+    "recorded_generation_noise_sha256": "1a13fe432251f25e4aa92decf9dc07e208ed82a979948e32b82868b6c21b0ec1",
+    "recorded_generation_prefix_sha256": "f446cdc60658dd0336b02596256b18401341fe7101d12906dbd0b1ae3aa0f681",
+    "noise_prefix_limitation": "Raw noise and prefix tensors were not archived; equality is verified through bound metadata hashes plus bitwise-identical generated reference arrays."
+  },
+  "runtime_code_delta": {
+    "status": "PASS",
+    "v4_runtime_source_sha256": "b0ea5f5186a1947e3948434fc676d61da7827f25215558ed5eddac641faa05e3",
+    "v5_runtime_source_sha256": "eec69e8975c193c21c58d50654ec4b3d8e9f05557783f487471b4062c8fcff8a",
+    "executable_changes": [
+      "insert torch.cuda.synchronize() after reward refresh and before state tensor copies"
+    ]
+  },
+  "independent_repeatability_recomputation": {
+    "full_array_frames": 120,
+    "cases": 12,
+    "support_labels_per_pair": 5760,
+    "valid_frame_cases_per_pair": 1440,
+    "unsynchronized": {
+      "kinematic_reference_max_abs_difference": 0.0,
+      "contact_force_max_abs_difference_n": 744.8496704101562,
+      "support_jaccard": 0.8430458430458431,
+      "support_label_disagreements": 808,
+      "frame_case_support_disagreements": 656,
+      "max_surface_slip_fraction_difference": 0.035011263395018866,
+      "classification_flips": 0
+    },
+    "synchronized": {
+      "kinematic_reference_max_abs_difference": 0.0,
+      "contact_force_max_abs_difference_n": 719.0886840820312,
+      "support_jaccard": 0.8536632891660172,
+      "support_label_disagreements": 751,
+      "frame_case_support_disagreements": 624,
+      "max_surface_slip_fraction_difference": 0.044688917894213365,
+      "classification_flips": 0,
+      "frames_with_contact_force_difference": 120,
+      "frame_cases_with_contact_force_difference": 1427,
+      "scalar_contact_force_elements_different": 10899,
+      "scalar_contact_force_elements_total": 103680
+    }
+  },
+  "numeric_reproduction": {
+    "repeat_a": {
+      "status": "PASS_ROUNDOFF_ONLY",
+      "changed_floating_values": 0,
+      "maximum_absolute_difference": 0.0,
+      "metrics_object_sha256": "e1c32e71c378824adcd1d0ca2d7e9f454e419e43733ec7543c04e721cb03efb7"
+    },
+    "repeat_b": {
+      "status": "PASS_ROUNDOFF_ONLY",
+      "changed_floating_values": 0,
+      "maximum_absolute_difference": 0.0,
+      "metrics_object_sha256": "3e27dba6ca1c8ed03ecba8dbe586c3e8cba2d00ff2dda284012815cc98fb05e6"
+    }
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "V5 is a synchronization-only collector timing change",
+      "impact": "supported_at_runtime_source_level"
+    },
+    {
+      "id": "C2",
+      "claim": "Kinematic/reference trajectories are repeatable in this 12-case configuration",
+      "impact": "supported"
+    },
+    {
+      "id": "C3",
+      "claim": "Synchronization repairs contact-force sampling at 1 mN",
+      "impact": "refuted"
+    },
+    {
+      "id": "C4",
+      "claim": "Force-derived support/slip is valid for physical-quality or efficacy gating",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C5",
+      "claim": "Synchronization alone is insufficient in this configuration",
+      "impact": "supported"
+    }
+  ],
+  "audited_input_hashes": {
+    "results/contact_sampling_v5_20261011/versions.json": "sha256:c1045db727f215eda61e66f737e9c1107141a1f450226befcfc9957b3b83db48",
+    "configs/physics_guided_20261011.json": "sha256:2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+    "results/contact_sampling_v5_20261011/source_manifest.json": "sha256:a7065f535ee7adbc8bac95c5be2bc527cf740d43eabe3a40105ce6c471bf95de",
+    "results/contact_sampling_v5_20261011/frozen_thresholds.json": "sha256:451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "scripts/contact_sampling_collect_v5.py": "sha256:651bbaf6cd0a2ba675fdbd5d735d66ee5a3aeecab755060aa2b5628be8d328a4",
+    "scripts/reset_aligned_collect_v4.py": "sha256:f2ecbb37e4fd15de8433b97b386ed6b13af1b343a83a4685e9888f77c7a762be",
+    "scripts/physics_guided_collect.py": "sha256:a5d426cf942ecf0b3ac121b389aad5dd6459ce8ea34047c5d5a88b0b1cc77d43",
+    "scripts/physics_guided_core.py": "sha256:e6be20aa8a060bad20881cb81bab4e3328282a163b0d3e9571c7c590443436ed",
+    "scripts/analyze_contact_repeats_20261011.py": "sha256:8cdd2ea795cad2c16e0d9ee736568ab2c700dcdb7ce84c1d7f5e68be8d60aa22",
+    "results/contact_sampling_v5_20261011/raw/repeat_a/trajectories.npz": "sha256:abaebaf9260916e4ccaa6c2e8ba9d2d99231514d40379ca7cb6c9c1269cd3695",
+    "results/contact_sampling_v5_20261011/raw/repeat_b/trajectories.npz": "sha256:fb895c38fe434823f478f3d8b2a5a21db189d96aff61e09ac1e8f5bbe295dfdf",
+    "results/condition_feedback_probe_20261011/raw/val_native_s11_r0/trajectories.npz": "sha256:a3ddc14c4323f2d398f3ae7d56934c46ecd5ec0318d5f015fb6b18c0ed36d569",
+    "results/condition_feedback_probe_v2_20261011/raw/val_native_s11_r0/trajectories.npz": "sha256:7ed29031c2a5c4b19965b5e6e23372e4d9c51609c2bb5505b0998c26267469bf"
+  },
+  "trace_path": "D:/具身智能/conditional-human-motion-generation/.aris/traces/contact-sampling-v5-integrity-audit-20261011/"
+}

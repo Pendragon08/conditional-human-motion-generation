@@ -1,0 +1,65 @@
+{
+  "label": "val_native_s11_r1",
+  "directory": "condition_feedback_probe_v2_20261011",
+  "attempts": 12,
+  "completed": 12,
+  "condition_pass": 1,
+  "physical_pass": 0,
+  "tracking_pass": 10,
+  "joint_pass": 0,
+  "reset_gate": true,
+  "initial_state_difference": {
+    "_humanoid_root_states": 0.0,
+    "_dof_pos": 0.0,
+    "_dof_vel": 0.0,
+    "_rigid_body_pos": 0.0,
+    "_rigid_body_rot": 0.0,
+    "_rigid_body_vel": 0.0,
+    "_rigid_body_ang_vel": 0.0
+  },
+  "initial_xy_max_m": 0.0,
+  "mode": "native",
+  "seed": 11,
+  "round": 1,
+  "original_goal_sha256": "74b8ca3ee31aa96c4a1271dd38510f3cd0f1b573b2e09c4758ce8ec43d6de70b",
+  "generation_calls": 1,
+  "seconds": 29.72182536125183,
+  "outputs": {
+    "metadata.json": "7f97bf61d69a7d3f7b5e3acee0601af580f68399b0c2a2cd8631eb546eaddd71",
+    "metrics.json": "e6c1c44c312d05472080636a23e8b6126a7d3173662a9cddb142f67c157ccd39",
+    "receipt.json": "053d5c95ce34f807696b8900680eaa09661def611f9e35e98ae07e540c77d3ee",
+    "lineage.json": "409d44a40122021cb309f562236620099d96ea3c7906948f15ebd9f5fcf84e5c",
+    "initial_states.npz": "866765c4e3c965f532efae1502cd2200c52bca9271ec41d195c52fa26740abed",
+    "trajectories.npz": "e482f72e2cc558cd7ff871140a9b9562ae049e76f6d19863960d656188db2f30"
+  },
+  "metric_numeric_recomputation": {
+    "status": "PASS_ROUNDOFF_ONLY",
+    "float64_epsilon": 2.220446049250313e-16,
+    "tolerance_rule": "32 * float64_epsilon * max(1, abs(saved), abs(recomputed))",
+    "differences": [
+      {
+        "path": "metrics[1].heading_error_rad",
+        "saved": 0.07121248986374962,
+        "recomputed": 0.07121248986375006,
+        "absolute_difference": 4.440892098500626e-16,
+        "tolerance": 7.105427357601002e-15
+      },
+      {
+        "path": "metrics[1].heading_error_signed_rad",
+        "saved": 0.07121248986374962,
+        "recomputed": 0.07121248986375006,
+        "absolute_difference": 4.440892098500626e-16,
+        "tolerance": 7.105427357601002e-15
+      }
+    ],
+    "changed_floating_values": 2,
+    "maximum_absolute_difference": 4.440892098500626e-16,
+    "classifications_identical": true,
+    "thresholds_changed": false,
+    "saved_scores_unchanged": true,
+    "scope": "Numeric recomputation only; lineage verifies other inputs separately.",
+    "saved_metrics_sha256": "e6c1c44c312d05472080636a23e8b6126a7d3173662a9cddb142f67c157ccd39",
+    "recomputed_metrics_object_sha256": "093018d149dc1c2d41eb0c4a3eb2d9c0166e192b1294dce91388c5f4dcb5fe56",
+    "saved_metrics_object_sha256": "cd4c002052beb6ca3799b0ee65973d8fcfba4da5d2aaa6df148094af3948332a"
+  }
+}

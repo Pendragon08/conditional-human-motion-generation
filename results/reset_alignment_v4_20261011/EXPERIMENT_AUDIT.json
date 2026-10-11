@@ -1,0 +1,307 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "reason_code": "artifact_integrity_verified_but_contact_proxy_invalid",
+  "summary": "The frozen reset-cache v4 artifacts, counts, lineage, clocks, and metric recomputation are internally consistent. The initial-state claim is valid only for seven exported tensors and reset caches. A paired server-side diagnostic found non-repeatable net-contact forces and support labels under bitwise-identical explicit kinematics, so the contact-gated physical proxy and all efficacy interpretations fail validation.",
+  "trace_path": ".aris/traces/reset-cache-v4-integrity-audit-20261011",
+  "agent_id": "/root/reset_cache_v4_integrity_audit",
+  "verdict_id": "reset-cache-v4-integrity-audit-20261011",
+  "executor_model": "gpt-6",
+  "executor_family": "openai",
+  "reviewer_model": "gpt-6",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "not_exposed",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "generated_at": "2026-10-11T13:13:59.460Z",
+  "date": "2026-10-11",
+  "auditor": "fresh read-only Codex subagent",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "measurement_readiness": "fail",
+  "efficacy_claim_status": "unsupported",
+  "checks": {
+    "gt_provenance": {
+      "status": "warn",
+      "details": "Endpoint goal and heading are derived from cached dataset motion before generation. Frames 0-59 use the dataset-derived reference; frames 60-119 use a model-generated continuation. Tracking is therefore a mixed dataset/model-reference controller-adherence proxy, not real ground truth. Semantics are explicitly unverified.",
+      "evidence": [
+        "scripts/physics_guided_collect.py:57-62",
+        "scripts/physics_guided_collect.py:94-105",
+        "scripts/physics_guided_collect.py:129-139",
+        "scripts/physics_guided_collect.py:147-204",
+        "scripts/physics_guided_core.py:100-141",
+        "results/reset_alignment_v4_20261011/full_val_planned_s11/metadata.json:2785-2788"
+      ]
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "Input normalization uses dataset Mean.npy and Std.npy. Raw SI-unit metrics are compared against frozen absolute thresholds. No metric denominator is taken from the evaluated prediction distribution. The endpoint-time rule is a construct-validity concern but is not self-normalization.",
+      "evidence": [
+        "scripts/physics_guided_collect.py:56-62",
+        "scripts/physics_guided_core.py:100-155",
+        "scripts/physics_guided_core.py:121-130",
+        "configs/physics_guided_20261011.json:17-32"
+      ]
+    },
+    "result_existence": {
+      "status": "pass",
+      "details": "All eight child directories contain metadata, metrics, receipt, lineage, initial-state NPZ, and trajectory NPZ files. All 216 rows exist. Recorded source, input, weight, request, output, archive, receipt, and trajectory hashes matched. Metrics recomputed exactly under the execution NumPy environment.",
+      "evidence": [
+        ".aris/traces/reset-cache-v4-integrity-audit-20261011/remote_verify.py:65-85",
+        ".aris/traces/reset-cache-v4-integrity-audit-20261011/remote_verify.py:92-205",
+        ".aris/traces/reset-cache-v4-integrity-audit-20261011/remote_verify.py:317-351",
+        "results/reset_alignment_v4_20261011/measurement_repair_summary.json:3-4",
+        "results/reset_alignment_v4_20261011/measurement_repair_summary.json:557-583",
+        "results/reset_alignment_v4_20261011/measurement_repair_summary.json:585-633"
+      ]
+    },
+    "dead_code": {
+      "status": "pass",
+      "details": "The collector calls physics_guided_core.metrics for every case and writes its outputs. The audit independently recomputed every row exactly. physics_guided_lineage.certify_cached contains a separate recomputation path but was not invoked by the v4 runner; no claim is based on that unused certification path.",
+      "evidence": [
+        "scripts/physics_guided_collect.py:275-299",
+        "scripts/physics_guided_collect.py:284",
+        "scripts/physics_guided_lineage.py:44-153",
+        ".aris/traces/reset-cache-v4-integrity-audit-20261011/remote_verify.py:126-131"
+      ]
+    },
+    "scope": {
+      "status": "warn",
+      "details": "Six 12-case mini batches cover three generator seeds and two modes, while the two 72-case full custom-validation batches use only seed 11. The custom validation set is internally disjoint from the custom train/test sets, but 19 of its 24 sources are official HumanML3D train and 5 are official test. It is not an official held-out validation split.",
+      "evidence": [
+        "scripts/run_reset_alignment_checks_v4.py:73-80",
+        "scripts/run_reset_alignment_checks_v4.py:155-173",
+        ".aris/traces/reset-cache-v4-integrity-audit-20261011/remote_verify.py:276-315",
+        "results/reset_alignment_v4_20261011/planned_s11/metadata.json:13-20",
+        "results/reset_alignment_v4_20261011/planned_s11/metadata.json:82-89",
+        "docs/reset_alignment_v4_20261011.md:15-19"
+      ]
+    },
+    "eval_type": {
+      "status": "warn",
+      "classification": [
+        "real_gt_dataset_endpoint_target",
+        "synthetic_proxy_generated_continuation_reference",
+        "self_supervised_proxy_controller_tracking",
+        "simulation_only_contact_and_geometry_proxy"
+      ],
+      "human_eval": false,
+      "details": "The evaluation is hybrid. Dataset-derived endpoint targets are real dataset references, generated-continuation tracking is a model-reference proxy, and physical checks are simulation-only proxies. There is no independent semantic or human evaluation.",
+      "evidence": [
+        "scripts/physics_guided_collect.py:129-139",
+        "scripts/physics_guided_core.py:70-98",
+        "scripts/physics_guided_core.py:131-154"
+      ]
+    },
+    "reset_cache_semantics": {
+      "status": "warn",
+      "details": "The bootstrap/first-action equality is real for seven exported tensors, but four rigid-body fields are deliberately overwritten once from motion-library reset caches after a simulator refresh. This does not certify hidden PhysX state, contacts, RNG, policy observations, or simulator forward-kinematics identity. task.reset returns with _state_reset_happened false. The first real post-step rigid-body trajectory sample is refreshed from PhysX and is not overwritten by the reset cache.",
+      "evidence": [
+        "scripts/reset_aligned_collect_v4.py:25-41",
+        "scripts/reset_aligned_collect_v4.py:55-81",
+        "closd/env/tasks/humanoid.py:562-577",
+        "closd/env/tasks/humanoid.py:610-643",
+        "closd/env/tasks/humanoid.py:1355-1369",
+        "closd/env/tasks/humanoid_amp.py:328-335",
+        "closd/env/tasks/humanoid_amp.py:574-613",
+        "results/reset_alignment_v4_20261011/measurement_repair_summary.json:4",
+        "results/reset_alignment_v4_20261011/versions_before_execution.json:26-28"
+      ]
+    },
+    "clock_targets_offsets_seeds": {
+      "status": "pass",
+      "details": "The adapter supplies an explicit frame clock, asserts reference/physics alignment, and the audit found reference_frame exactly 0..119 in all eight archives. Mini-batch original goals, headings, initial roots, and the first 60 reference frames match across seeds and modes; generator-noise hashes differ across seeds; requested offsets are preserved. Environment seed is fixed at 11 while generation seeds are 11, 12, and 13.",
+      "evidence": [
+        "scripts/physics_guided_collect.py:190-212",
+        "scripts/reset_aligned_collect_v4.py:13-24",
+        "scripts/reset_aligned_collect_v4.py:42-54",
+        "scripts/analyze_reset_alignment_v4.py:56-78",
+        ".aris/traces/reset-cache-v4-integrity-audit-20261011/remote_verify.py:242-274",
+        "results/reset_alignment_v4_20261011/versions_before_execution.json:28-35"
+      ]
+    },
+    "physical_proxy_construct_validity": {
+      "status": "fail",
+      "details": "The slip proxy gates foot samples on net contact force >10 N and near-ground geometry. Across each planned/native same-seed mini pair, the first 60 frames have bitwise-identical positions, rotations, linear velocities, angular velocities, references, and valid masks, yet net contact forces differ on every frame. The derived binary support masks have Jaccard about 0.85 and hundreds of differing frame-case labels. This demonstrates that the force-gated support selector is not repeatable under equivalent explicit kinematics. The published metric uses frames 60 onward, so this diagnostic does not prove a particular saved full-batch value is numerically wrong; it does invalidate comparative physical-gate and efficacy interpretations until repeatability is repaired.",
+      "evidence": [
+        "scripts/physics_guided_core.py:70-98",
+        "scripts/physics_guided_core.py:131-149",
+        "configs/physics_guided_20261011.json:23-29",
+        "scripts/physics_guided_collect.py:213-224",
+        "closd/env/tasks/humanoid.py:214-230",
+        "closd/env/tasks/humanoid.py:1355-1369",
+        "closd/env/tasks/humanoid_amp.py:594-613",
+        ".aris/traces/reset-cache-v4-integrity-audit-20261011/contact_pair_diagnostic.py:36-58",
+        ".aris/traces/reset-cache-v4-integrity-audit-20261011/contact_pair_diagnostic.py:66-100",
+        ".aris/traces/reset-cache-v4-integrity-audit-20261011/contact_pair_diagnostic.py:111-185"
+      ]
+    }
+  },
+  "contact_repeatability_diagnostic": {
+    "scope": "server-side aggregate comparison of the first 60 frames in six 12-case mini archives; raw licensed arrays were not downloaded",
+    "all_six_runs_bitwise_equal_first60": [
+      "actual",
+      "quaternion",
+      "linvel",
+      "angvel",
+      "reference",
+      "reference_frame",
+      "valid"
+    ],
+    "distinct_archive_files": true,
+    "simple_contact_time_shift_explains_difference": false,
+    "pairs": [
+      {
+        "pair": "planned_s11/native_s11",
+        "contact_force_different_frames": 60,
+        "contact_force_max_abs_n": 656.9429931640625,
+        "contact_force_mean_abs_n": 5.726834774017334,
+        "support_jaccard": 0.8494868871151653,
+        "frame_case_labels_with_any_support_difference": 329,
+        "frame_case_label_denominator": 720,
+        "support_observation_differences": 396,
+        "max_case_slip_fraction_abs_difference": 0.01561936801634023
+      },
+      {
+        "pair": "planned_s12/native_s12",
+        "contact_force_different_frames": 60,
+        "contact_force_max_abs_n": 614.9677734375,
+        "contact_force_mean_abs_n": 5.734299182891846,
+        "support_jaccard": 0.8530193695404482,
+        "frame_case_labels_with_any_support_difference": 322,
+        "frame_case_label_denominator": 720,
+        "support_observation_differences": 387,
+        "max_case_slip_fraction_abs_difference": 0.03376256281407031
+      },
+      {
+        "pair": "planned_s13/native_s13",
+        "contact_force_different_frames": 60,
+        "contact_force_max_abs_n": 693.7843017578125,
+        "contact_force_mean_abs_n": 5.721104145050049,
+        "support_jaccard": 0.8486816965991594,
+        "frame_case_labels_with_any_support_difference": 323,
+        "frame_case_label_denominator": 720,
+        "support_observation_differences": 396,
+        "max_case_slip_fraction_abs_difference": 0.03604540591941047
+      }
+    ],
+    "capture_order_judgment": "post-step PhysX refresh including net contact -> reward reads rigid state -> collector copies body/contact tensors -> reset/observation; no reward or observation cache overwrite explains the discrepancy",
+    "likely_unresolved_class": "PhysX contact manifold or solver-history nondeterminism, or contact-output sampling semantics; requires a new synchronized repeatability witness",
+    "current_metric_impact": "fail construct validity and comparative reliability; do not infer efficacy"
+  },
+  "independent_verification": {
+    "artifact_directories": 8,
+    "attempts": 216,
+    "mini_cases_per_run": 12,
+    "full_cases_per_run": 72,
+    "metrics_recomputed_exact_all_runs": true,
+    "all_reference_frames_exact_0_to_119": true,
+    "all_numeric_trajectory_arrays_finite": true,
+    "all_requests_equal_bound_lineage": true,
+    "all_recorded_output_hashes_match": true,
+    "all_initial_archives_match_metadata_hash": true,
+    "all_seven_bootstrap_first_action_pairs_bitwise_equal": true,
+    "full_quality_recomputed_exact": true,
+    "reported_joint_gate_floor": true,
+    "recomputed_joint_gate_floor": true,
+    "full_planned_physical_passes": 0,
+    "full_native_physical_passes": 0,
+    "summary_next_stage": "STOP_NONDISCRIMINATING_JOINT_GATE"
+  },
+  "source_split_audit": {
+    "custom_split_overlap_by_clip_source_cache_key": false,
+    "custom_train": {
+      "official_train": 113,
+      "official_test": 15
+    },
+    "custom_val": {
+      "official_train": 19,
+      "official_test": 5
+    },
+    "custom_test": {
+      "official_train": 41,
+      "official_test": 7
+    },
+    "mini_measurement_sources": {
+      "official_train": 2,
+      "official_test": 2
+    },
+    "classification": "custom validation diagnostic, not official held-out evaluation"
+  },
+  "audited_input_hashes": {
+    "scripts/reset_aligned_collect_v4.py": "sha256:f2ecbb37e4fd15de8433b97b386ed6b13af1b343a83a4685e9888f77c7a762be",
+    "scripts/run_reset_alignment_checks_v4.py": "sha256:5d0a961b6ce9903fd666fdbae56736a68eddd1402ddf72793fc000ee0dea98d2",
+    "scripts/analyze_reset_alignment_v4.py": "sha256:820031edb3e1e91d33ea2d8adb96cca5bfe1dd1570bac2f5c27eb2d35c93da7d",
+    "scripts/physics_guided_collect.py": "sha256:a5d426cf942ecf0b3ac121b389aad5dd6459ce8ea34047c5d5a88b0b1cc77d43",
+    "scripts/physics_guided_core.py": "sha256:e6be20aa8a060bad20881cb81bab4e3328282a163b0d3e9571c7c590443436ed",
+    "scripts/physics_guided_lineage.py": "sha256:da4365d425dfe91397f7651d0a8e873dabf289ba2d30a63f84c6b19d68778ef6",
+    "configs/physics_guided_20261011.json": "sha256:2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+    "configs/env-closd-baseline-20261010.json": "sha256:e5f9e6b711b7c6221cfb01e3deab404c5849e521ec08a3d25dca1820a279fcf6",
+    "docs/reset_alignment_v4_20261011.md": "sha256:a881fa93118bae16645495da762bc55a13714c90180ad0db9986fbe31272e767",
+    "results/physics_guided_20261011/source_manifest.json": "sha256:63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+    "results/physics_guided_20261011/frozen_thresholds.json": "sha256:451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "results/reset_alignment_v4_20261011/measurement_manifest.json": "sha256:a7065f535ee7adbc8bac95c5be2bc527cf740d43eabe3a40105ce6c471bf95de",
+    "results/reset_alignment_v4_20261011/state.json": "sha256:cd3f3040ccb5822a6caabf80e91ff3cc42fd471933fa13a729d3f80741c2a3ad",
+    "results/reset_alignment_v4_20261011/measurement_repair_summary.json": "sha256:3fb7e0140738e2d68adb65fd1680816b51ca463c6e29ac8900fe791cfaface83",
+    "results/reset_alignment_v4_20261011/versions_before_execution.json": "sha256:b81c2ae385879ea5b5c46e4b1816c8a73f3fcaa09ff50a9150706bcf293a7cf8",
+    "results/reset_alignment_v4_20261011/budget_ledger.json": "sha256:c2d5ae3ffa31b455cb8f9c283134a06069290f0ab53b000da33fb00463e466b6",
+    "results/reset_alignment_v4_20261011/planned_s11/trajectories.npz": "sha256:b13cf6a5a57c2c1c6c26fbbda1e890e2cb50b526dfbbfd7b1474490de1c19ba8",
+    "results/reset_alignment_v4_20261011/native_s11/trajectories.npz": "sha256:e1f038c8efbcdd65bb8022fd8b8df8c85963177bcd07e4ad635cb5c42ec463ef",
+    "results/reset_alignment_v4_20261011/planned_s12/trajectories.npz": "sha256:9280b99393c8458222b8302739e287193ecc3aa84f99ee409c936d8869a325c7",
+    "results/reset_alignment_v4_20261011/native_s12/trajectories.npz": "sha256:ae0ddfa33a49c44a4bb7438b6bcb9c53c7ef4408c5d37919f3697eb87c5635d3",
+    "results/reset_alignment_v4_20261011/planned_s13/trajectories.npz": "sha256:859ad9eb1facee2d8cd4dfaa32c0bb8035727edce60bba6225552dd742b9f51a",
+    "results/reset_alignment_v4_20261011/native_s13/trajectories.npz": "sha256:afc907b0ee4dde971a65e992c07cbbd41066cc20a471fc72bc4f680b4126dd20",
+    "results/reset_alignment_v4_20261011/full_val_planned_s11/trajectories.npz": "sha256:e66fd512e0d542f9ab1cd02622d04156a0e8fdded636c140e345f16df4e15252",
+    "results/reset_alignment_v4_20261011/full_val_native_s11/trajectories.npz": "sha256:ee8485f95edf8549ef844a61fed205f42c4edca9581566175063d5cfef47f554"
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "The seven exported tensors are identical between the manual reset snapshot and first action in all eight runs.",
+      "impact": "supported",
+      "qualification": "Exported tensors and reset caches only."
+    },
+    {
+      "id": "C2",
+      "claim": "The reset snapshots prove complete simulator-state identity.",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C3",
+      "claim": "Post-step rigid-body trajectory tensors are PhysX-refreshed and are not overwritten by the one-shot reset cache.",
+      "impact": "supported"
+    },
+    {
+      "id": "C4",
+      "claim": "The force-gated support/slip physical proxy is repeatable and suitable for comparing modes.",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C5",
+      "claim": "The custom validation results are official held-out evaluation.",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C6",
+      "claim": "The reported 216 diagnostic attempts, child outputs, hashes, and metric rows exist and match the frozen implementation.",
+      "impact": "supported"
+    },
+    {
+      "id": "C7",
+      "claim": "The planned/native results establish efficacy or a physical-quality advantage.",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C8",
+      "claim": "The generated motions have independently verified semantic fidelity.",
+      "impact": "unsupported"
+    }
+  ],
+  "necessary_next_checks": [
+    "Run a synchronized same-arm repeatability witness that captures rigid state, net contact tensor, and foot force sensors at explicitly labeled points before and after refresh/reward, with contact_collection and solver settings recorded.",
+    "Compare motion-library reset caches with a simulator-derived rigid-body snapshot obtained after applying root/DOF state and a fetch/refresh path with cache overwrite disabled; include contacts, observations, RNG, and relevant hidden-state qualifications before any full-state claim.",
+    "Calibrate or replace the force-gated support/slip proxy against repeatable simulation signals or external labels, then predeclare thresholds and demonstrate nonzero discrimination.",
+    "Use the official held-out split for efficacy work, or retain the explicit custom-diagnostic label and exclude official-train sources.",
+    "Run full multi-seed evaluation only after the physical gate and split are construct-valid."
+  ]
+}

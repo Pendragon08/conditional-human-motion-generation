@@ -1,0 +1,161 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "reason_code": "simulation_only_physical_proxy_not_validated",
+  "summary": "The V2 artifacts, lineage, numeric recomputation, pairing, selection, replay, and budgets are internally consistent. Physical-proxy repeat validity is unsupported, and the four-source one-seed simulator scope cannot support efficacy or novelty.",
+  "trace_path": "D:/具身智能/conditional-human-motion-generation/.aris/traces/condition-probe-v2-integrity-audit-20261011",
+  "agent_id": "/root/condition_probe_v2_integrity_audit",
+  "verdict_id": "/root/condition_probe_v2_integrity_audit",
+  "executor_family": "openai",
+  "reviewer_model": "codex-session-model",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "inherited",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "generated_at": "2026-10-11T21:20:06.6412652+08:00",
+  "date": "2026-10-11",
+  "auditor": "fresh Codex reviewer, read-only",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "remote_repository_head": "e1ef719d6702d15a5ab211db0e55be438b2d1c88",
+  "audited_input_hashes": {
+    "results/condition_feedback_probe_v2_20261011/versions.json": "sha256:c033abf3fc80d41c5711a52cf65644c25c8bc83e3b523f0671d0f957e4fb910d",
+    "results/condition_feedback_probe_v2_20261011/source_manifest.json": "sha256:a7065f535ee7adbc8bac95c5be2bc527cf740d43eabe3a40105ce6c471bf95de",
+    "results/condition_feedback_probe_v2_20261011/frozen_thresholds.json": "sha256:451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "results/condition_feedback_probe_20261011/state.json": "sha256:3b131cbfd14b7719aa31da7c0aeff3d1ab4b57c6f3780da386603336972f8391",
+    "results/reset_alignment_v4_20261011/measurement_repair_summary.json": "sha256:3fb7e0140738e2d68adb65fd1680816b51ca463c6e29ac8900fe791cfaface83",
+    "scripts/run_condition_feedback_probe_v2_20261011.py": "sha256:7cbf27a8e7674a22ba449d80744b7268f501e01116483d7b19369aea46cd5bce",
+    "scripts/metric_numeric_equivalence.py": "sha256:fa84c42cc2c894adb4458413ddbac16abf760a4ded71449ee467c1c8451cc8b5",
+    "scripts/physics_guided_numeric_lineage.py": "sha256:5cff8cd9fbf2eded3f3ec503c2b6afb8005f463963744b8f326c3a0c2a7a0512"
+  },
+  "checks": {
+    "gt_provenance": {
+      "status": "warn",
+      "details": "Goals are dataset-derived and fixed before generation, but the internal val set contains two official-train and two official-test clips; replay tracking uses a selected generated/simulated reference. No fake-ground-truth failure found."
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "Raw SI metrics and direct fractions are used. Candidate ranking uses fixed thresholds; no denominator is derived from prediction statistics."
+    },
+    "result_existence": {
+      "status": "pass",
+      "details": "All 13 requests/raw batches/receipts/lineages/certificates exist and bind exact outputs. All summaries recompute exactly."
+    },
+    "dead_code": {
+      "status": "pass",
+      "details": "Metric, surface, ranking, collector, and numeric certification paths are live."
+    },
+    "scope": {
+      "status": "warn",
+      "details": "Four preselected sources, three offsets, one generation seed, 108 construction attempts, and 48 replay attempts. Saved claims are appropriately qualified, but efficacy/generalization remains unsupported."
+    },
+    "eval_type": {
+      "status": "warn",
+      "overall": "simulation_only",
+      "condition_target": "dataset-derived fixed goal with predeclared offsets",
+      "tracking": "synthetic_proxy",
+      "physical": "simulation_only proxy; repeat validity unsupported",
+      "semantic": "not_evaluated",
+      "human_eval": false,
+      "real_robot": false
+    }
+  },
+  "verified_invariants": {
+    "versioned_files_match": true,
+    "weights_and_external_inputs_match": true,
+    "manifest_hash_matches": true,
+    "thresholds_exactly_unchanged": true,
+    "original_goal_hash_identical_across_13_batches": true,
+    "case_order_identical_across_13_batches": true,
+    "reset_gates_pass_across_13_batches": true,
+    "paired_noise_matches_for_6_feedback_batches": true,
+    "feedback_payloads_recomputed": 6,
+    "shuffled_recipient_donor_pairs_verified": 24,
+    "no_feedback_batches_are_real_computations": true,
+    "three_real_candidates_per_arm": true,
+    "selection_choices_verified": 48,
+    "replay_canonical_max_error": 0.0,
+    "summary_exactly_reproduced": true,
+    "differences_exactly_reproduced": true,
+    "historical_failure_and_budget_retained": true,
+    "overleaf_touched": false
+  },
+  "numeric_audit": {
+    "batches_recomputed": 13,
+    "nonzero_float_differences": 36,
+    "maximum_absolute_difference": 4.440892098500626e-16,
+    "representative_allowed_tolerance": 7.105427357601002e-15,
+    "representative_saved": 0.052539165201152205,
+    "representative_recomputed": 0.05253916520115265,
+    "historical_v1_saved": 0.07121248986374962,
+    "historical_v1_recomputed": 0.07121248986375006,
+    "category_flip_rejected": true,
+    "beyond_tolerance_metric_change_rejected": true,
+    "threshold_mutation_rejected_by_exact_hash": true,
+    "classifications_identical": true,
+    "saved_scores_unchanged": true
+  },
+  "scope_counts": {
+    "sources": 4,
+    "official_train_sources": 2,
+    "official_test_sources": 2,
+    "offsets": 3,
+    "generation_seeds": [11],
+    "construction_batches": 9,
+    "construction_attempts": 108,
+    "construction_incomplete": 0,
+    "replay_batches": 4,
+    "replay_attempts": 48,
+    "candidates_per_input_per_arm": 3
+  },
+  "budgets": {
+    "v1_preserved_seconds": 65.8949820175767,
+    "v2_seconds": 427.6622204128653,
+    "v2_charged_gpu_hours": 0.11879506122579592,
+    "v2_ledger_entries": 13,
+    "v2_all_exit_zero": true
+  },
+  "physical_proxy_repeat_check": {
+    "comparison": "V1 and V2 val_native_s11_r0",
+    "initial_states_identical": true,
+    "goal_noise_prefix_adapter_identical": true,
+    "kinematic_arrays_bit_identical": true,
+    "contact_force_arrays_identical": false,
+    "contact_force_max_absolute_difference_n": 744.8496704101562,
+    "support_observation_cases_changed": 10,
+    "surface_slip_proxy_fraction_cases_changed": 12,
+    "surface_slip_proxy_mean_cases_changed": 12,
+    "physical_classification_flips": 0,
+    "interpretation": "Physical-proxy continuous values are not repeat-stable even with identical motion; zero classification flips occur only because every case already fails the physical gate."
+  },
+  "claims": [
+    {
+      "id": "artifact_integrity",
+      "impact": "supported"
+    },
+    {
+      "id": "descriptive_condition_error_reduction_in_scoped_probe",
+      "impact": "supported_with_qualification"
+    },
+    {
+      "id": "physical_quality_or_efficacy",
+      "impact": "unsupported"
+    },
+    {
+      "id": "semantic_preservation_or_diversity",
+      "impact": "unsupported"
+    },
+    {
+      "id": "general_efficacy_robustness_real_world_or_novelty",
+      "impact": "unsupported"
+    }
+  ],
+  "blocking_issues": [
+    "Physical proxy validity and repeat stability are not established.",
+    "All four arms have zero physical and joint passes.",
+    "Independent semantic verification was not run.",
+    "The probe uses four preselected sources and one generation seed.",
+    "The internal val label mixes official train and official test sources."
+  ],
+  "blocking_scope": "Blocks efficacy, physical-validity, semantic, generalization, and novelty claims; does not block retaining this artifact as an exploratory diagnostic."
+}
