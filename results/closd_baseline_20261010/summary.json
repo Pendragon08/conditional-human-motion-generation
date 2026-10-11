@@ -1,0 +1,129 @@
+{
+  "baseline": "CLoSD / ICLR 2025",
+  "released_eval": {
+    "complete_summary": true,
+    "metrics": {
+      "Matching Score": {
+        "mean": 3.6474,
+        "ci95": 0.0009
+      },
+      "R@1": {
+        "mean": 0.3847,
+        "ci95": 0.0031
+      },
+      "R@2": {
+        "mean": 0.5786,
+        "ci95": 0.0035
+      },
+      "R@3": {
+        "mean": 0.6926,
+        "ci95": 0.0026
+      },
+      "FID": {
+        "mean": 1.7533,
+        "ci95": 0.005
+      },
+      "Diversity": {
+        "mean": 8.2266,
+        "ci95": 0.0927
+      },
+      "skate_ratio": {
+        "mean": 0.0329,
+        "ci95": 0.0
+      },
+      "mean_penetration": {
+        "mean": 1731.8714,
+        "ci95": 0.0
+      },
+      "penetration": {
+        "mean": 0.0208,
+        "ci95": 0.0
+      },
+      "floating": {
+        "mean": 20.1195,
+        "ci95": 0.0
+      },
+      "skating": {
+        "mean": 0.0012,
+        "ci95": 0.0
+      }
+    },
+    "replications": 10,
+    "log": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/closd_baseline_20261010/released_evaluation/eval.log"
+  },
+  "fresh_eval": {
+    "complete_summary": true,
+    "metrics": {
+      "Matching Score": {
+        "mean": 3.612,
+        "ci95": 0.0087
+      },
+      "R@1": {
+        "mean": 0.3806,
+        "ci95": 0.0024
+      },
+      "R@2": {
+        "mean": 0.5729,
+        "ci95": 0.002
+      },
+      "R@3": {
+        "mean": 0.6908,
+        "ci95": 0.0035
+      },
+      "FID": {
+        "mean": 1.2972,
+        "ci95": 0.018
+      },
+      "Diversity": {
+        "mean": 8.3587,
+        "ci95": 0.096
+      },
+      "skate_ratio": {
+        "mean": 0.0276,
+        "ci95": 0.0002
+      },
+      "mean_penetration": {
+        "mean": 2049.5367,
+        "ci95": 244.9857
+      },
+      "penetration": {
+        "mean": 0.0235,
+        "ci95": 0.0034
+      },
+      "floating": {
+        "mean": 19.807,
+        "ci95": 0.0161
+      },
+      "skating": {
+        "mean": 0.0007,
+        "ci95": 0.0001
+      }
+    },
+    "replications": 10,
+    "log": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/closd_baseline_20261010/fresh_generation/eval.log"
+  },
+  "pipeline_state": "COMPLETE released_eval_and_fresh_generation_and_eval",
+  "generation": {
+    "steps": 1785,
+    "reset_events": 22391,
+    "termination_events": 2390,
+    "full_valid_events": 20001,
+    "saved_episodes": 20000,
+    "status": "complete",
+    "elapsed_seconds": 8113.665749311447,
+    "output_bytes": 4214142864,
+    "sha256": "d2157b3a41681aa74472ec23beb0ec50843c6d1e10b66a4904ae05a49eafd05c",
+    "seed": 10,
+    "environments": 4096,
+    "source_commit": "d8950bdb78312fcd2844f336b3fc079e7368c87f",
+    "checkpoint": "official released CLoSD_t2m_finetune",
+    "training_performed": false,
+    "selection": "Official full non-terminated episode filter; not an unconditional success rate",
+    "adaptations": [
+      "serial reference loading",
+      "bounded stop after official save",
+      "read-only event counters",
+      "explicit native resource cleanup"
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "status": "complete",
+  "seed": 11,
+  "environments": 4,
+  "steps": 299,
+  "dt": 0.03333333507180214,
+  "horizon": 60,
+  "body_names": [
+    "Pelvis",
+    "L_Hip",
+    "L_Knee",
+    "L_Ankle",
+    "L_Toe",
+    "R_Hip",
+    "R_Knee",
+    "R_Ankle",
+    "R_Toe",
+    "Torso",
+    "Spine",
+    "Chest",
+    "Neck",
+    "Head",
+    "L_Thorax",
+    "L_Shoulder",
+    "L_Elbow",
+    "L_Wrist",
+    "L_Hand",
+    "R_Thorax",
+    "R_Shoulder",
+    "R_Elbow",
+    "R_Wrist",
+    "R_Hand"
+  ],
+  "prompts": [
+    "a person walking one way and then increasing pace running back",
+    "the sim is standing at a crouch, shaking both arms in front of them in a defensive position.",
+    "a person walking forward agressivly",
+    "character is standing at an angular position making the motion as to be swinging a baseball bat."
+  ],
+  "db_keys": [
+    "M001617",
+    "W_005676",
+    "N_011284",
+    "P_M010441"
+  ],
+  "terminated": 0,
+  "completed_without_termination": 4,
+  "seconds": 22.568608283996582,
+  "bytes": 669027,
+  "sha256": "7072a0303d31c82af973043fba336e4f247b1781e1055578f592204b27ec54f3",
+  "source_commit": "d8950bdb78312fcd2844f336b3fc079e7368c87f",
+  "checkpoint": "official CLoSD_t2m_finetune; released DiP_no-target",
+  "model_updated": false,
+  "policy_updated": false,
+  "all_first_attempts_saved": true,
+  "alignment": "v3: generated observation reference captured BEFORE action; actual AFTER same physics step",
+  "limitations": [
+    "SMPL simulated character, not a hardware-constrained humanoid robot",
+    "Text-to-motion seeded by official HumanML prefix; no spatial target inputs",
+    "Net foot-body contact forces do not give exact surface contact points"
+  ]
+}

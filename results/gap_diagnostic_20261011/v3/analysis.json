@@ -1,0 +1,87 @@
+{
+  "protocol": "frozen thresholds; v3 observation/action-aligned diagnostic; all first attempts; no source/model/policy changes",
+  "scope": "CLoSD SMPL character T2M; not real robot certification or explicit target retention",
+  "thresholds": {
+    "mean_gmpjpe_mm": 100,
+    "p95_gmpjpe_mm": 200,
+    "force_n": 10,
+    "speed_mps": 0.5,
+    "max_proxy_rate": 0.05
+  },
+  "per_seed": {
+    "11": {
+      "n": 64,
+      "completed_without_termination": 59,
+      "terminated": 5,
+      "adequate_quality_records": 63,
+      "tracking_gate_accepted": 54,
+      "quality_proxy_gate_accepted": 29,
+      "survivors_rejected_by_tracking": 5,
+      "survivors_rejected_by_combined_gate": 30,
+      "mean_gmpjpe_mm": 74.90300823393322,
+      "mean_p95_gmpjpe_mm": 138.2634463476756,
+      "survivor_mean_gmpjpe_mm": 50.29701297566042,
+      "survivor_mean_contact_speed_proxy_rate": 0.07045125885555818,
+      "reference_boundary_minus_internal_speed_mps": 1.593356745978517,
+      "actual_boundary_minus_internal_speed_mps": 0.042991466760154695,
+      "boundary_minus_internal_gmpjpe_mm": -24.51696269742904
+    },
+    "12": {
+      "n": 64,
+      "completed_without_termination": 57,
+      "terminated": 7,
+      "adequate_quality_records": 64,
+      "tracking_gate_accepted": 52,
+      "quality_proxy_gate_accepted": 29,
+      "survivors_rejected_by_tracking": 5,
+      "survivors_rejected_by_combined_gate": 28,
+      "mean_gmpjpe_mm": 105.342569231987,
+      "mean_p95_gmpjpe_mm": 212.5465073108673,
+      "survivor_mean_gmpjpe_mm": 53.94873675965426,
+      "survivor_mean_contact_speed_proxy_rate": 0.0703745000145589,
+      "reference_boundary_minus_internal_speed_mps": 2.474851859613292,
+      "actual_boundary_minus_internal_speed_mps": 0.08406744575909068,
+      "boundary_minus_internal_gmpjpe_mm": -41.07667935279108
+    },
+    "13": {
+      "n": 64,
+      "completed_without_termination": 58,
+      "terminated": 6,
+      "adequate_quality_records": 64,
+      "tracking_gate_accepted": 53,
+      "quality_proxy_gate_accepted": 27,
+      "survivors_rejected_by_tracking": 5,
+      "survivors_rejected_by_combined_gate": 31,
+      "mean_gmpjpe_mm": 80.5448686182499,
+      "mean_p95_gmpjpe_mm": 166.41613675355907,
+      "survivor_mean_gmpjpe_mm": 56.2013468577944,
+      "survivor_mean_contact_speed_proxy_rate": 0.07631333693127357,
+      "reference_boundary_minus_internal_speed_mps": 2.526100645714905,
+      "actual_boundary_minus_internal_speed_mps": 0.04807319198152982,
+      "boundary_minus_internal_gmpjpe_mm": -38.219409078359604
+    }
+  },
+  "pooled": {
+    "n": 192,
+    "completed_without_termination": 174,
+    "terminated": 18,
+    "adequate_quality_records": 191,
+    "tracking_gate_accepted": 159,
+    "quality_proxy_gate_accepted": 85,
+    "survivors_rejected_by_tracking": 15,
+    "survivors_rejected_by_combined_gate": 89,
+    "mean_gmpjpe_mm": 86.99311801650761,
+    "mean_p95_gmpjpe_mm": 172.5874677488317,
+    "survivor_mean_gmpjpe_mm": 53.46137861273755,
+    "survivor_mean_contact_speed_proxy_rate": 0.0723801397432279,
+    "reference_boundary_minus_internal_speed_mps": 2.2015924195342875,
+    "actual_boundary_minus_internal_speed_mps": 0.05826774927133575,
+    "boundary_minus_internal_gmpjpe_mm": -34.64280844749288
+  },
+  "warnings": [
+    "Contact rigid-body center speed is a proxy, not surface slip ground truth",
+    "Operational thresholds are predeclared diagnostic choices, not a universal benchmark",
+    "Boundary/internal association does not establish causality",
+    "No measured text success, hard robot torque guarantee or downstream policy gain"
+  ]
+}
