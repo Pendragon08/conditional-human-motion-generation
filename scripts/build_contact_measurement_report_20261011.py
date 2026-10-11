@@ -32,6 +32,11 @@ numerics25=read('results/metric_runtime_diagnostic_v25_20261012/diagnostic.json'
 runtime26=read('results/contact_com_runtime_v26_20261012/runtime_check.json')
 replay27=read('results/fixed_reference_com_v27_20261012/replay_summary.json')
 formal28=read('results/condition_feedback_formal_v28_20261012/queue_state.json')
+progress_paths=sorted((ROOT/'results/condition_feedback_formal_v28_20261012').glob('progress_snapshot_*.json'))
+formal_progress=read(str(progress_paths[-1].relative_to(ROOT))) if progress_paths else None
+if formal_progress:
+    assert formal_progress['source_sha256']==hashlib.sha256((ROOT/'scripts/snapshot_condition_feedback_v28_20261012.py').read_bytes()).hexdigest()
+    assert formal_progress['final_gate'] is False and formal_progress['innovation_confirmed'] is False
 replay_certificate=certify(ROOT,replay27)
 cached_guard=read('results/fixed_reference_com_v27_20261012/cached_guard_recheck_v30_20261012.json')
 cached_guard_pass=(cached_guard is not None and cached_guard.get('status')=='PASS' and len(cached_guard.get('entries',[]))==8 and all(row.get('pass') is True for row in cached_guard['entries']) and cached_guard.get('source_sha256')==hashlib.sha256((ROOT/'scripts/verify_cached_measurement_guards_v30_20261012.py').read_bytes()).hexdigest())
@@ -64,6 +69,7 @@ status=dict(innovation_candidates=3,preliminarily_tested=1,not_yet_experimentall
  replay_export_certificate=replay_certificate,
  cached_guard_recheck=cached_guard,
  formal_comparison_snapshot=formal28,
+ formal_completed_arm_snapshot=formal_progress,
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
  slip13=slip13,point16=point16,point17=point17,velocity19=velocity19,point20=point20,com21=com21,articulated22=articulated22,validation24=validation24,numerics25=numerics25,runtime26=runtime26,replay27=replay27,
  v8=v8,box=box,v10=v10,box_v2=box_v2,box_v3=box_v3,v11=v11,quality11=quality11,validation12=validation12,
@@ -107,6 +113,11 @@ measurement_text='已知正负对照通过，固定参考回放尚待完成。'
 formal_text='<p>C1完整对比尚未启动。</p>'
 if formal28:
     formal_text='<p>服务器采集状态快照：'+html.escape(formal28['status'])+'；批次：'+html.escape(formal28.get('label','未提供'))+'。完整协议包含10个对比与消融配置，每配置432测试输入。状态快照不代替实时进程检查，也不是完成结果；尚无新的效力结论。</p>'
+if formal_progress:
+    snapshot_rows=''.join('<tr>'+''.join('<td>'+html.escape(str(row[k]))+'</td>' for k in
+        ('arm','seed','attempts','condition_pass','physical_pass','joint_pass','early_terminated'))+'</tr>'
+        for row in formal_progress['entries'])
+    formal_text='<p>已完成回放批次：'+str(formal_progress['complete_replay_arm_seed_batches'])+'/'+str(formal_progress['expected_replay_arm_seed_batches'])+'。快照采集时已核实原进程存在，正在运行 '+html.escape(formal_progress['queue_state'].get('label','未提供'))+'。这是带时间戳的部分结果，不表示打开报告时仍在该批次，也不是正式结论。</p><table><tr><th>方法</th><th>种子</th><th>输入</th><th>条件合格</th><th>物理代理合格</th><th>联合合格</th><th>提前终止</th></tr>'+snapshot_rows+'</table><p>当前已完成的第一个种子中，误差补偿的条件合格为34/144，native_best为24/144；但二者联合合格均为0/144。因此条件改善不能当作物理质量或训练价值改善。其余种子尚待完成；所有判据保持不变。</p>'
 if replay_interface_pass:
     measurement_text='重置、坐标、时间、数值复算、已知正负对照及固定参考回放接口已通过。足部指标仍是碰撞表面滑移代理，不能称为真实接触力或所有滚动接触的真值。人体物理质量与候选效力另行判断。'
 document=f'''<!doctype html><html lang="zh-CN"><meta charset="UTF-8"><title>条件动作生成：接触测量复核与候选机制</title>
@@ -117,7 +128,7 @@ document=f'''<!doctype html><html lang="zh-CN"><meta charset="UTF-8"><title>条�
 <p>简单物体测试采用5公斤箱体、平面、已知重力和无摩擦滑动。稳定支撑力接近49.05N，初始腾空接触力接近零。约束力传感器重复一致，但关节系统中的传感器还可能包含内部约束反力，因此不能将箱体结果推广为人体接触测量通过。</p>
 <p>V11只证明固定新设置内的重复性，不能将其解释为行为不变的修复。初始七项状态与旧设置一致，第一步微小数值差异随后由闭环放大。原阈值保持不变；小样本穿透12/12通过、连续性7/12通过、脚滑代理0/12通过，联合0/12。</p><h2>全来源验证诊断</h2>{validation_text}<h2>速度计算修正与验证边界</h2><p>V19确认原计算将质心线速度当作刚体原点线速度，脚底材料点速度需要扣除旋转后的质心偏移。已单独修正并完成已知静止/滑动/腾空箱体和旋转材料点校验。V21的12条人体输入仍未达到原物理判据，因此计算错误不能解释全部质量问题。历史V12的432次评分没有覆盖正确速度约定，暂不作为正式有效性结论；V24修正后的结果见上表。所有阈值与原始目标保持不变。</p><h2>固定参考回放</h2>{replay_text}<h2>C1的既有初步结果（旧导出设置）</h2><table><tr><th>方法</th><th>输入数</th><th>平均目标误差(cm)</th><th>条件合格</th><th>物理代理合格</th><th>联合合格</th></tr>{probe_table}</table>
 <p>仅4个动作来源、3种偏移、1个生成种子，每臂最多3候选。条件改善是探索性信号；物理代理尚不可靠，联合结果不能证明方法有效或普遍无效。原始目标、失败和阈值均保留。并非原计划432输入的正式验证。</p>
-<h2>三个候选机制</h2><ol><li><strong>C1：有界条件误差补偿。</strong>按实际执行误差有限调整下一轮生成条件。已初测，尚未通过正式效力及新颖性门。</li><li><strong>C2：可靠反馈与质量守护。</strong>估计反馈可靠性，避免不可靠分量驱动更新，拒绝使条件或物理质量恶化的候选。尚未实验。</li><li><strong>C3：按修复价值分配预算。</strong>区分参考缺陷与控制器困难，按单位成本的预计合格增益与来源覆盖分配候选。尚未实验。</li></ol>
+<h2>三个候选机制</h2><ol><li><strong>C1：有界条件误差补偿。</strong>按实际执行误差有限调整下一轮生成条件。已初测，正式对比正在运行，尚未通过效力及新颖性门。</li><li><strong>C2：可靠反馈与质量守护。</strong>估计反馈可靠性，避免不可靠分量驱动更新，拒绝使条件或物理质量恶化的候选。核心、仿真入口和配对分析已实现，数值检查通过；尚未完成独立运行见证或仿真效力试验。重复执行计入三次预算；若C1最终全部联合合格为零，先诊断，不自动运行。</li><li><strong>C3：按修复价值分配预算。</strong>区分参考缺陷与控制器困难，按单位成本的预计合格增益与来源覆盖分配候选。尚未实验。</li></ol>
 <p>物理精化、执行反馈、闭环数据扩增已有前人路线。以上具体机制还需最近邻方法核查和等预算消融；不能直接写成论文贡献。</p>
 <h2>进入正式验证的条件</h2><p>接触和时间对齐测量校验通过后，补齐独立来源、3生成种子和缺失消融。联合合格率相对最强等预算基线至少提高10个百分点，来源聚类95%置信区间排除零，并满足语义与多样性护栏，才能进入G1验证。下游收益还需相同训练预算、3训练种子与独立测试集。</p>
 <h2>记录与复现</h2><ul><li><a href="../contact_force_fixture_20261011/repeat_comparison.json">物理箱体重复比较</a> · <a href="../contact_force_fixture_20261011/DOCUMENT_WITNESS.md">独立文档见证</a></li><li><a href="../contact_sampling_v8_20261011/sampling_summary.json">V8结果</a> · <a href="../contact_sampling_v8_20261011/EXPERIMENT_AUDIT.md">V8独立审计</a></li><li><a href="../../docs/candidate_mechanisms_20261011.md">候选机制与验证边界</a></li><li><a href="status.json">当前状态及证据哈希</a> · <a href="https://github.com/Pendragon08/conditional-human-motion-generation">代码与实验记录仓库</a></li></ul></html>'''

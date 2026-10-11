@@ -1,0 +1,23 @@
+# C2 simulation invocation and boundaries
+
+Prepared implementation only. **Do not run while V28 is live.** The launcher refuses execution until V28 is terminal, its complete comparison/semantic artifacts exist, and at least one arm has a joint-pass example. A total joint-quality floor stops this candidate efficacy route; do not relax criteria to proceed.
+
+Warm runtime and frozen models are those in `.aris/compute/closd-baseline-20261010.md`; no installs, downloads, weight updates or upstream edits. Original manifest, case order, goals, noise, timing, calibration and thresholds are reused. All failures and rejected candidates stay in the denominator. GPU0 is used only with spare capacity; cumulative disk/time limits include V28 and earlier failures.
+
+Every arm spends three construction calls: native initial, identical-condition/identical-noise repeat, one correction. The repeat costs one call. Four variants: agreement plus quality guard; no agreement (repeat still charged); no quality guard; source-shuffled agreement labels. Correct error magnitudes are not shuffled for the last variant. Missing or incomplete local feedback cannot be licensed by another source's label. Three generation seeds and all 48 preselected test sources are used. Each selected refined reference is independently replayed with no generation. C1/native-best/random-best from the completed V28 experiment provide matched three-call controls, with shared execution costs disclosed rather than hidden or called free.
+
+The witness runs three actual 72-input validation calls plus selection. It records repeat equality rather than requiring equality: deterministic repeats may make the reliability mechanism vacuous. This is a negative finding if no-agreement behaves identically, not a reason to add noise post hoc. Rejected candidates and ties remain recorded.
+
+## Fresh document-following check, exactly once, after V28 finishes
+
+```powershell
+ssh -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=15 ouyanghao@10.147.17.32 /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/run_condition_feedback_guard_v31_20261012.py --check
+```
+
+Expected exit0 and `CONDITION_FEEDBACK_GUARD_DOCUMENT_CHECK_PASS`. Inspect three complete bound receipts, 72 cases each, unchanged original goals and noise, calibrated COM and reset/fence evidence, 120-frame clock, correction bounds, stored guard choices, paid measurement ledger entries, and source/doc hashes. The check is not efficacy and does not trigger G1/downstream. Save the independent report and machine verdict under this result directory as `DOCUMENT_WITNESS.md` and `DOCUMENT_WITNESS_AUDIT.json`, with top-level `verdict: PASS` only if all checks pass. Witness must not fix, retry, improvise or overwrite failed outputs.
+
+After independent PASS, the executor may invoke the same command with `--run`. It runs 30 test batches (6 construction and 4 replay batches per seed), retains all attempts, and ends `COMPLETE_PENDING_PAIRED_ANALYSIS`. This terminal state is deliberately not a success gate. Paired source-cluster analysis, semantic/diversity checks, costs, component ablations, independent audit and technical-difference review remain required. No Overleaf writes, VLM API, G1 or downstream training is performed by this launcher.
+
+After the terminal run, invoke `analyze_condition_feedback_guard_v31_20261012.py --output /data/code/ouyanghao/oyh/conditional-human-motion-generation/results/condition_feedback_guard_v31_20261012` with the frozen runtime Python. It re-executes into the overlay. The analysis binds all actual replay arrays and choices, merges the completed V28 controls without relaunching them, retains construction failures and calculates source-cluster confidence intervals. It does not write a local or cloud LaTeX file. Initially semantics is not verified; the independent existing `physics_guided_semantics.py` must be invoked with the same frozen overlay and charged to the ledger before re-analysis. Missing semantics cannot pass the gate. Analysis is not automatically triggered by the launcher, avoiding any inference from receipts alone.
+
+Current status: launcher and paired analyzer prepared; not independently witnessed; simulation efficacy not tested. The numeric core check is separate and cannot substitute for this witness. The V31 cached path checks reset, clock, COM, device and diagnostic bindings on every reuse; this does not change the historical V24/V28 verifier or repair its earlier guard omissions retrospectively.
