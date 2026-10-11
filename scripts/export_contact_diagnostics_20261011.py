@@ -8,8 +8,8 @@ names=['contact_sampling_v6_20261011','contact_sampling_v7_20261011',
        'contact_slip_diagnostic_v13_20261012','contact_point_fixture_v14_20261012','contact_point_fixture_v15_20261012','contact_point_fixture_v16_20261012',
        'contact_point_human_v17_20261012','contact_point_analysis_v18_20261012','velocity_reference_fixture_v19_20261012',
        'contact_point_human_v20_20261012','contact_com_metric_v21_20261012','articulated_contact_fixture_v22_20261012','contact_com_validation_v24_20261012',
-       'metric_runtime_diagnostic_v25_20261012','contact_com_runtime_v26_20261012','fixed_reference_com_v27_20261012','condition_feedback_formal_v28_20261012']
-archive=root/'results/contact_diagnostics_public_v9_20261011.tar.gz'
+       'metric_runtime_diagnostic_v25_20261012','contact_com_runtime_v26_20261012','fixed_reference_com_v27_20261012','condition_feedback_formal_v28_20261012','condition_feedback_components_v32_20261012','mocap_reference_control_v33_20261012']
+archive=root/'results/contact_diagnostics_public_v10_20261011.tar.gz'
 with tarfile.open(archive,'w:gz') as tar:
     for name in names:
         directory=root/'results'/name
@@ -18,7 +18,7 @@ with tarfile.open(archive,'w:gz') as tar:
                 continue
             if path.name in ('source_manifest.json','measurement_manifest.json'):
                 continue
-            if path.name=='native_contacts.json' and name.startswith(('contact_point_human','contact_com_validation','fixed_reference_com','condition_feedback_formal')):
+            if path.name=='native_contacts.json' and name.startswith(('contact_point_human','contact_com_validation','fixed_reference_com','condition_feedback_formal','mocap_reference_control')):
                 continue  # Dense native human manifolds stay server-local.
             relative=path.relative_to(directory)
             if relative.parts[0]=='raw': relative=Path('public')/relative

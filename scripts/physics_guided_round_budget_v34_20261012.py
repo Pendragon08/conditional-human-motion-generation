@@ -14,7 +14,7 @@ PREFIXES=('physics_guided_20261011','reset_alignment','condition_feedback_probe'
     'articulated_contact_fixture','contact_com_validation','contact_com_runtime',
     'metric_runtime_diagnostic','fixed_reference_com','condition_feedback_formal',
     'condition_feedback_guard','condition_feedback_components','mocap_reference_control',
-    'mocap_reference_assembly')
+    'mocap_reference_assembly','feedback_repeatability_diagnostic','contact_measurement_review','contact_com_metric')
 
 
 def snapshot(root,exclude):

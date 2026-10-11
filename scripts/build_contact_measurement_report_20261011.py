@@ -44,6 +44,20 @@ if components:
     assert components['live_pipeline_mutated'] is False and components['thresholds_changed'] is False
     assert components['simulation_calls']==0 and components['generation_calls']==0
     assert components['innovation_confirmed'] is False
+repeat_paths=sorted((ROOT/'results/feedback_repeatability_diagnostic_20261012').glob('diagnostic_*.json'))
+repeat_diagnostic=read(str(repeat_paths[-1].relative_to(ROOT))) if repeat_paths else None
+if repeat_diagnostic:
+    assert repeat_diagnostic['source_sha256']==hashlib.sha256((ROOT/'scripts/diagnose_feedback_repeatability_20261012.py').read_bytes()).hexdigest()
+    assert repeat_diagnostic['simulation_calls']==0 and repeat_diagnostic['c2_simulation_efficacy_tested'] is False
+formal_summary=read('results/condition_feedback_formal_v28_20261012/summary.json')
+formal_gate=read('results/condition_feedback_formal_v28_20261012/progression_gate.json')
+formal_audit=read('results/condition_feedback_formal_v28_20261012/EXPERIMENT_AUDIT.json')
+if formal_summary:
+    assert formal_gate==formal_summary['gate']
+    assert len(formal_summary['summary'])==10
+    assert all(row['attempts']==432 and row['sources']==48 for row in formal_summary['summary'].values())
+    version=read('results/condition_feedback_formal_v28_20261012/versions.json')
+    assert version['files']['scripts/physics_guided_analyze.py']==hashlib.sha256((ROOT/'scripts/physics_guided_analyze.py').read_bytes()).hexdigest()
 replay_certificate=certify(ROOT,replay27)
 cached_guard=read('results/fixed_reference_com_v27_20261012/cached_guard_recheck_v30_20261012.json')
 cached_guard_pass=(cached_guard is not None and cached_guard.get('status')=='PASS' and len(cached_guard.get('entries',[]))==8 and all(row.get('pass') is True for row in cached_guard['entries']) and cached_guard.get('source_sha256')==hashlib.sha256((ROOT/'scripts/verify_cached_measurement_guards_v30_20261012.py').read_bytes()).hexdigest())
@@ -72,6 +86,10 @@ inputs=[ROOT/name for name in ('results/contact_sampling_v8_20261011/sampling_su
  'results/condition_feedback_formal_v28_20261012/queue_state.json',
  'results/condition_feedback_probe_v2_20261011/probe_summary.json') if (ROOT/name).exists()]
 if component_paths: inputs.append(component_paths[-1])
+if repeat_paths: inputs.append(repeat_paths[-1])
+for name in ('summary.json','progression_gate.json','versions.json','EXPERIMENT_AUDIT.json'):
+    path=ROOT/'results/condition_feedback_formal_v28_20261012'/name
+    if path.exists(): inputs.append(path)
 status=dict(innovation_candidates=3,preliminarily_tested=1,not_yet_experimentally_tested=2,
  confirmed_innovations=0,measurement_gate='CALIBRATED_PROXY_AND_FIXED_REPLAY_PASS' if replay_interface_pass else 'FIXED_REPLAY_NOT_CERTIFIED',g1='NOT_STARTED_BY_GATE',
  replay_export_certificate=replay_certificate,
@@ -79,6 +97,8 @@ status=dict(innovation_candidates=3,preliminarily_tested=1,not_yet_experimentall
  formal_comparison_snapshot=formal28,
  formal_completed_arm_snapshot=formal_progress,
  failure_component_diagnostic=components,
+ formal_analysis=formal_summary,formal_integrity_audit=formal_audit,
+ repeat_feedback_diagnostic=repeat_diagnostic,
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
  slip13=slip13,point16=point16,point17=point17,velocity19=velocity19,point20=point20,com21=com21,articulated22=articulated22,validation24=validation24,numerics25=numerics25,runtime26=runtime26,replay27=replay27,
  v8=v8,box=box,v10=v10,box_v2=box_v2,box_v3=box_v3,v11=v11,quality11=quality11,validation12=validation12,
@@ -135,13 +155,24 @@ if components:
          row['physical_pass_but_construction_failed'],row['component_pass_counts']['joint']))+'</tr>'
         for row in components['entries'] if row['arm'] in ('native_best','proposed','planned_prefix'))
     component_text='<p>只读核对了'+str(components['completed_arm_seed_batches'])+'/30个完成回放批次和'+str(len(components['construction_batches']))+'个候选构建批次；各批次均绑定输入、选择记录及轨迹哈希，不改阈值或运行中的队列。</p><table><tr><th>方法</th><th>种子</th><th>输入</th><th>条件合格</th><th>回放物理代理合格</th><th>构建与回放均完成且物理合格</th><th>物理合格但构建失败</th><th>联合合格</th></tr>'+selected_rows+'</table><p>物理代理合格数可能包含构建失败后补齐的参考，不能把这类样本计为有效生成。首个种子的三个物理代理合格案例均属于构建失败；第二个种子的计划前缀消融出现一个构建与回放均完成的物理合格案例，但未同时满足全部条件与跟踪判据。</p><p>前两个种子中，误差补偿的条件合格数分别为34/144和33/144，native_best分别为24/144和23/144；计划前缀消融分别为33/144和33/144。所有观察到的联合合格数仍为零。因此仅有终点改善不足以支持创新，且实际执行前缀的额外作用目前没有得到支持。第三个种子与最终统计尚待完成。</p><p>另已准备原始MoCap参考直接回放对照，用于检查跟踪器、表示转换与滑移代理是否也对真实参考产生质量下限；该对照尚未运行，不作为第四个创新点。</p>'
+repeat_text='<p>重复执行前提尚未核对。</p>'
+if repeat_diagnostic:
+    rows_repeat=''.join('<tr>'+''.join('<td>'+html.escape(str(v))+'</td>' for v in
+        (row['seed'],row['repeat'],row['all_arrays_equal'],row['repeated_complete'],row['position_agreement'],row['heading_agreement'],row['completed_cases_goal_changes'],row['completed_cases_heading_changes']))+'</tr>'
+        for row in repeat_diagnostic['entries'])
+    repeat_text='<p>以下核对使用已完成C1零更新对照，不新增仿真。原始目标和噪声相同，提议朝向存在约5.92×10⁻⁸ rad记录差异，不称为新的严格同输入C2重复实验。</p><table><tr><th>种子</th><th>对照</th><th>保存轨迹完全一致</th><th>重复均完成</th><th>位置一致性通过</th><th>朝向一致性通过</th><th>完整案例门控改变位置</th><th>完整案例门控改变朝向</th></tr>'+rows_repeat+'</table><p>目前完整案例中的一致性门控全部接受，有无门控产生的更新相同；差异仅在未完成案例。重复一致不能证明系统误差正确。C2质量守护及新增候选效力尚未测试，不增加已验证创新数量。</p>'
+if formal_summary:
+    complete_rows=''.join('<tr>'+''.join('<td>'+html.escape(str(v))+'</td>' for v in
+        (arm,row['attempts'],row['joint_pass'],row['completed'],round(row['endpoint_error_m'],4),row['early_terminated']))+'</tr>'
+        for arm,row in formal_summary['summary'].items())
+    formal_text='<p>完整分析已生成：10个方法配置，每配置432输入、48原始来源、3生成种子。所有构建失败和回放失败均保留。独立完整性审计状态：'+html.escape(str(formal_audit.get('verdict','未提供') if formal_audit else '尚未完成'))+'。分析文件的产生不等于创新验收通过。</p><table><tr><th>方法</th><th>输入</th><th>联合合格</th><th>回放完成</th><th>平均终点误差(m)</th><th>提前终止</th></tr>'+complete_rows+'</table><p>验收：'+html.escape(formal_gate['reason'])+'。G1和下游训练仍须遵守原有门槛；不得用部分条件改善代替联合质量收益。</p><p><a href="../condition_feedback_formal_v28_20261012/experiment_report.html">完整对比与消融报告</a> · <a href="../condition_feedback_formal_v28_20261012/summary.json">配对来源统计</a></p>'
 if replay_interface_pass:
     measurement_text='重置、坐标、时间、数值复算、已知正负对照及固定参考回放接口已通过。足部指标仍是碰撞表面滑移代理，不能称为真实接触力或所有滚动接触的真值。人体物理质量与候选效力另行判断。'
 document=f'''<!doctype html><html lang="zh-CN"><meta charset="UTF-8"><title>条件动作生成：接触测量复核与候选机制</title>
 <style>body{{max-width:1100px;margin:32px auto;padding:0 24px;font:16px/1.75 system-ui;color:#172635}}h1,h2{{color:#153c5a}}table{{border-collapse:collapse;width:100%;margin:18px 0}}th,td{{border:1px solid #cbd5df;padding:10px;text-align:left}}th{{background:#eaf1f7}}.notice{{padding:16px;background:#fff2d8;border-left:5px solid #b67500}}a{{color:#126496}}@media print{{body{{max-width:none;margin:0}}tr{{break-inside:avoid}}}}</style>
 <h1>条件动作生成：测量复核与候选机制</h1><p>2026-10-12 · 冻结生成模型和人体跟踪器 · 仅仿真 · 实验结果暂不写入Overleaf</p>
 <div class="notice"><strong>3个候选、1个已初测、2个未测试、0个确认创新。</strong>{measurement_text}程序修复、传感器记录、文档执行见证均不作为论文创新。</div>
-<h2>C1完整对比进度</h2>{formal_text}<h2>失败分量与消融证据</h2>{component_text}<h2>本轮测量证据</h2><table><tr><th>试验</th><th>状态</th><th>实际证据与边界</th></tr>{table}</table>
+<h2>C1完整对比进度</h2>{formal_text}<h2>失败分量与消融证据</h2>{component_text}<h2>C2重复反馈前提诊断</h2>{repeat_text}<h2>本轮测量证据</h2><table><tr><th>试验</th><th>状态</th><th>实际证据与边界</th></tr>{table}</table>
 <p>简单物体测试采用5公斤箱体、平面、已知重力和无摩擦滑动。稳定支撑力接近49.05N，初始腾空接触力接近零。约束力传感器重复一致，但关节系统中的传感器还可能包含内部约束反力，因此不能将箱体结果推广为人体接触测量通过。</p>
 <p>V11只证明固定新设置内的重复性，不能将其解释为行为不变的修复。初始七项状态与旧设置一致，第一步微小数值差异随后由闭环放大。原阈值保持不变；小样本穿透12/12通过、连续性7/12通过、脚滑代理0/12通过，联合0/12。</p><h2>全来源验证诊断</h2>{validation_text}<h2>速度计算修正与验证边界</h2><p>V19确认原计算将质心线速度当作刚体原点线速度，脚底材料点速度需要扣除旋转后的质心偏移。已单独修正并完成已知静止/滑动/腾空箱体和旋转材料点校验。V21的12条人体输入仍未达到原物理判据，因此计算错误不能解释全部质量问题。历史V12的432次评分没有覆盖正确速度约定，暂不作为正式有效性结论；V24修正后的结果见上表。所有阈值与原始目标保持不变。</p><h2>固定参考回放</h2>{replay_text}<h2>C1的既有初步结果（旧导出设置）</h2><table><tr><th>方法</th><th>输入数</th><th>平均目标误差(cm)</th><th>条件合格</th><th>物理代理合格</th><th>联合合格</th></tr>{probe_table}</table>
 <p>仅4个动作来源、3种偏移、1个生成种子，每臂最多3候选。条件改善是探索性信号；物理代理尚不可靠，联合结果不能证明方法有效或普遍无效。原始目标、失败和阈值均保留。并非原计划432输入的正式验证。</p>
