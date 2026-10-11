@@ -277,18 +277,18 @@
     "split": "test"
   },
   "formal_completed_arm_snapshot": {
-    "time": 1791744235.1609573,
+    "time": 1791745768.5285196,
     "pid": 2770614,
     "process_alive": true,
     "verified_command": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python -u /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/run_condition_feedback_formal_v28_20261012.py --run --inside ",
     "queue_state": {
       "status": "RUNNING",
-      "time": 1791744185.7305162,
-      "label": "test_proposed_s12_r2",
+      "time": 1791745752.3672202,
+      "label": "test_native_s13_r2",
       "stage": "comparison",
       "split": "test"
     },
-    "complete_replay_arm_seed_batches": 10,
+    "complete_replay_arm_seed_batches": 20,
     "expected_replay_arm_seed_batches": 30,
     "entries": [
       {
@@ -450,6 +450,166 @@
         "endpoint_measured_count": 144,
         "metadata_sha256": "8f4056b5d1f858889948d2c5196af956a3f51cad6b7b56464f148d439dffd90f",
         "metrics_sha256": "f22309c71a36c774d45ec076e701548a633ec469213e60c0c366552c9d4fe139"
+      },
+      {
+        "arm": "raw",
+        "seed": 12,
+        "attempts": 144,
+        "completed": 137,
+        "construction_completed": 137,
+        "condition_pass": 23,
+        "physical_pass": 1,
+        "tracking_pass": 81,
+        "joint_pass": 0,
+        "early_terminated": 7,
+        "endpoint_error_mean_m": 0.32364428545198426,
+        "endpoint_measured_count": 144,
+        "metadata_sha256": "3fdefdfe0ea22ae444498614210f1dfb51242e3c98c0bd79c6f7288790e916b4",
+        "metrics_sha256": "f8a38064d92d06e02372db43a957591e7261a895d5e22d834245e1615fa59e84"
+      },
+      {
+        "arm": "ordinary",
+        "seed": 12,
+        "attempts": 144,
+        "completed": 137,
+        "construction_completed": 137,
+        "condition_pass": 11,
+        "physical_pass": 3,
+        "tracking_pass": 122,
+        "joint_pass": 0,
+        "early_terminated": 7,
+        "endpoint_error_mean_m": 0.3583663818488564,
+        "endpoint_measured_count": 144,
+        "metadata_sha256": "63be09e0a7ff6b3abb8f67bc8ef0f30d86443fa828b5591f63fafb476cf794b8",
+        "metrics_sha256": "a98b5effd8c5a10b4c91162771652f88e763741d7e2f32e60da1ad3625bcbe91"
+      },
+      {
+        "arm": "random_best",
+        "seed": 12,
+        "attempts": 144,
+        "completed": 138,
+        "construction_completed": 138,
+        "condition_pass": 20,
+        "physical_pass": 3,
+        "tracking_pass": 124,
+        "joint_pass": 0,
+        "early_terminated": 6,
+        "endpoint_error_mean_m": 0.3155972349649556,
+        "endpoint_measured_count": 144,
+        "metadata_sha256": "5691790a1c98ec9b694e84c1bf14321d5c656620a749d778f5aff52b08e4d676",
+        "metrics_sha256": "217c438724c5dcbb7c19ae20d79d1bbb82b52253ca05947478560751c5dd1635"
+      },
+      {
+        "arm": "native_single",
+        "seed": 12,
+        "attempts": 144,
+        "completed": 140,
+        "construction_completed": 138,
+        "condition_pass": 11,
+        "physical_pass": 3,
+        "tracking_pass": 115,
+        "joint_pass": 0,
+        "early_terminated": 4,
+        "endpoint_error_mean_m": 0.3768726351692796,
+        "endpoint_measured_count": 144,
+        "metadata_sha256": "c556f5171b601980c6713698d2c61ac51582108ac49fcc9d43ea860b5f5905e2",
+        "metrics_sha256": "b9c5d71d869f22534a7698a4d182da824dfa600f4209bb18d74375074be16e4e"
+      },
+      {
+        "arm": "native_best",
+        "seed": 12,
+        "attempts": 144,
+        "completed": 139,
+        "construction_completed": 140,
+        "condition_pass": 23,
+        "physical_pass": 3,
+        "tracking_pass": 118,
+        "joint_pass": 0,
+        "early_terminated": 5,
+        "endpoint_error_mean_m": 0.31779626274467865,
+        "endpoint_measured_count": 144,
+        "metadata_sha256": "d8937a3d8c7ce2c8a2e75f6a8e4650d87078c564b51ea7c3c0ba4a6574ece379",
+        "metrics_sha256": "ce451c37eff196268cf74eae473c7e6a175fa5614ba2cb060a3614e2b2f18a04"
+      },
+      {
+        "arm": "proposed",
+        "seed": 12,
+        "attempts": 144,
+        "completed": 140,
+        "construction_completed": 139,
+        "condition_pass": 33,
+        "physical_pass": 3,
+        "tracking_pass": 117,
+        "joint_pass": 0,
+        "early_terminated": 4,
+        "endpoint_error_mean_m": 0.29787159861656537,
+        "endpoint_measured_count": 144,
+        "metadata_sha256": "95acac9ece93b5d78b410bef95aff212a86e585db6ee7b215d64326d04b44750",
+        "metrics_sha256": "9c35d6a1d9af42f74ed8484415b98063196784168833d8bf8938d61e07108ab1"
+      },
+      {
+        "arm": "no_feedback",
+        "seed": 12,
+        "attempts": 144,
+        "completed": 140,
+        "construction_completed": 138,
+        "condition_pass": 11,
+        "physical_pass": 3,
+        "tracking_pass": 115,
+        "joint_pass": 0,
+        "early_terminated": 4,
+        "endpoint_error_mean_m": 0.3768726351692796,
+        "endpoint_measured_count": 144,
+        "metadata_sha256": "8bd2c1fe01a0b81422b5de2626a209c6afb931ae8d60d1c5e6d285eebeb452e4",
+        "metrics_sha256": "b9c5d71d869f22534a7698a4d182da824dfa600f4209bb18d74375074be16e4e"
+      },
+      {
+        "arm": "shuffled",
+        "seed": 12,
+        "attempts": 144,
+        "completed": 141,
+        "construction_completed": 139,
+        "condition_pass": 13,
+        "physical_pass": 3,
+        "tracking_pass": 117,
+        "joint_pass": 0,
+        "early_terminated": 3,
+        "endpoint_error_mean_m": 0.33336071827703,
+        "endpoint_measured_count": 144,
+        "metadata_sha256": "e0f7821d183b459f0dc59918d6c43b59094a9bb00d8be57659e6674cd15121f6",
+        "metrics_sha256": "c082343d831be634d6ada4fbc5ae67a1487d0dc15d3c14fea4b0b479d645c4d4"
+      },
+      {
+        "arm": "planned_prefix",
+        "seed": 12,
+        "attempts": 144,
+        "completed": 137,
+        "construction_completed": 137,
+        "condition_pass": 33,
+        "physical_pass": 4,
+        "tracking_pass": 121,
+        "joint_pass": 0,
+        "early_terminated": 7,
+        "endpoint_error_mean_m": 0.32236692669781974,
+        "endpoint_measured_count": 144,
+        "metadata_sha256": "e0fdc1478128667db354db470614b64867dca17d763ab13990a18f59f1ed2a10",
+        "metrics_sha256": "7e0af6438fdeaddcfcbb5155fe4ac819624a750cdc8bd59b50ce34ba53d80ec7"
+      },
+      {
+        "arm": "tracking_only",
+        "seed": 12,
+        "attempts": 144,
+        "completed": 140,
+        "construction_completed": 139,
+        "condition_pass": 21,
+        "physical_pass": 3,
+        "tracking_pass": 116,
+        "joint_pass": 0,
+        "early_terminated": 4,
+        "endpoint_error_mean_m": 0.32103547165095486,
+        "endpoint_measured_count": 144,
+        "metadata_sha256": "30f65364a07ce55195a4b644715d5c8451e62803cd422d94dad5a04e8ac4522a",
+        "metrics_sha256": "13ffc61ad1f6a5b68f23cf8e55c720b8a077cab39e262b6126dbd2f2d6f070f1"
       }
     ],
     "final_gate": false,
@@ -457,6 +617,3433 @@
     "semantic_diversity_not_assessed_here": true,
     "qualification": "Partial completed-arm snapshot; no changes to live execution or thresholds",
     "source_sha256": "677720a2114fd63acf666a4652a0cb55d5e8be6515a3ef095b70344c3f79bd54"
+  },
+  "failure_component_diagnostic": {
+    "time": 1791745679.1288338,
+    "entries": [
+      {
+        "arm": "raw",
+        "seed": 11,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 43,
+          "heading": 95,
+          "timing": 71,
+          "surface_slip_proxy": 1,
+          "penetration": 144,
+          "continuity": 31,
+          "tracking_mean": 76,
+          "tracking_p95": 88,
+          "construction_complete": 136,
+          "replay_complete": 137,
+          "condition": 21,
+          "physical": 1,
+          "tracking": 73,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 3,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 10,
+          "surface_slip_proxy": 9,
+          "timing,surface_slip_proxy": 6,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95": 3,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 4,
+          "timing,surface_slip_proxy,continuity": 7,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 7,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 9,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 5,
+          "position,timing,surface_slip_proxy,continuity": 12,
+          "surface_slip_proxy,tracking_mean": 2,
+          "position,surface_slip_proxy": 3,
+          "timing,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean": 3,
+          "surface_slip_proxy,continuity": 5,
+          "timing,surface_slip_proxy,continuity,tracking_p95": 1,
+          "position,timing,surface_slip_proxy,continuity,tracking_p95": 2,
+          "timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "surface_slip_proxy,continuity,tracking_mean,tracking_p95": 4,
+          "heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,timing,surface_slip_proxy": 3,
+          "surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean": 2,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 5,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete": 1,
+          "heading,surface_slip_proxy,continuity": 2,
+          "position,heading,surface_slip_proxy,continuity": 6,
+          "position,heading,timing,surface_slip_proxy,continuity": 5,
+          "position,timing": 1,
+          "position,surface_slip_proxy,continuity": 14,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 4,
+          "position,surface_slip_proxy,continuity,tracking_mean": 2
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "007213:0.15",
+            "source_id": "./pose_data/CMU/27/27_03_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 0.10974942992594074,
+            "heading_error_rad": 0.10705972277654752,
+            "endpoint_time_error_s": 0.5333333611488342,
+            "remaining_failures": [
+              "position",
+              "timing"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 1,
+        "physical_pass_but_construction_failed": 0,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 9,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "ordinary",
+        "seed": 11,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 35,
+          "heading": 82,
+          "timing": 68,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 22,
+          "tracking_mean": 121,
+          "tracking_p95": 126,
+          "construction_complete": 136,
+          "replay_complete": 139,
+          "condition": 14,
+          "physical": 3,
+          "tracking": 121,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,surface_slip_proxy,continuity": 23,
+          "heading,timing,surface_slip_proxy,continuity": 5,
+          "position,timing,surface_slip_proxy,continuity": 27,
+          "surface_slip_proxy": 5,
+          "timing,surface_slip_proxy": 3,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 2,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 1,
+          "position,heading,timing,surface_slip_proxy,continuity": 18,
+          "heading,surface_slip_proxy,continuity": 6,
+          "timing,surface_slip_proxy,continuity": 6,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,construction_complete,replay_complete": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 2,
+          "position,heading,surface_slip_proxy,continuity": 14,
+          "surface_slip_proxy,continuity": 8,
+          "position,timing,surface_slip_proxy": 4,
+          "position,surface_slip_proxy": 2,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,replay_complete": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 2,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete": 1,
+          "surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete": 1,
+          "heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 2,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95": 2
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 5,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "random_best",
+        "seed": 11,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 41,
+          "heading": 95,
+          "timing": 76,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 25,
+          "tracking_mean": 122,
+          "tracking_p95": 126,
+          "construction_complete": 138,
+          "replay_complete": 138,
+          "condition": 21,
+          "physical": 3,
+          "tracking": 122,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,heading,surface_slip_proxy,continuity": 11,
+          "timing,surface_slip_proxy,continuity": 9,
+          "position,timing,surface_slip_proxy,continuity": 25,
+          "surface_slip_proxy": 5,
+          "timing,surface_slip_proxy": 3,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 2,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95": 2,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 1,
+          "surface_slip_proxy,continuity": 15,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,construction_complete,replay_complete": 2,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 1,
+          "position,surface_slip_proxy,continuity": 26,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 2,
+          "position,timing,surface_slip_proxy": 5,
+          "position,surface_slip_proxy": 3,
+          "position,heading,timing,surface_slip_proxy,continuity": 12,
+          "heading,timing,surface_slip_proxy,continuity": 2,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,replay_complete": 2,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "surface_slip_proxy,continuity,tracking_mean": 1,
+          "heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "heading,surface_slip_proxy,continuity": 5,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,heading,surface_slip_proxy": 1,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 2
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 5,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "native_single",
+        "seed": 11,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 28,
+          "heading": 71,
+          "timing": 64,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 12,
+          "tracking_mean": 119,
+          "tracking_p95": 123,
+          "construction_complete": 139,
+          "replay_complete": 138,
+          "condition": 11,
+          "physical": 3,
+          "tracking": 119,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,timing,surface_slip_proxy,continuity": 32,
+          "surface_slip_proxy": 5,
+          "timing,surface_slip_proxy,continuity": 4,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,replay_complete": 3,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 1,
+          "timing,surface_slip_proxy": 1,
+          "position,heading,timing,surface_slip_proxy,continuity": 20,
+          "surface_slip_proxy,continuity": 6,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 2,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 3,
+          "position,surface_slip_proxy,continuity": 20,
+          "position,heading,surface_slip_proxy,continuity": 19,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 2,
+          "heading,timing,surface_slip_proxy,continuity": 5,
+          "heading,surface_slip_proxy,continuity": 7,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean": 3,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 4,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95": 1,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 1
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 5,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "native_best",
+        "seed": 11,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 42,
+          "heading": 91,
+          "timing": 77,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 13,
+          "tracking_mean": 118,
+          "tracking_p95": 119,
+          "construction_complete": 139,
+          "replay_complete": 139,
+          "condition": 24,
+          "physical": 3,
+          "tracking": 116,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,timing,surface_slip_proxy,continuity": 34,
+          "timing,surface_slip_proxy,continuity": 6,
+          "surface_slip_proxy,continuity": 19,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,replay_complete": 2,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 1,
+          "surface_slip_proxy": 4,
+          "timing,surface_slip_proxy": 2,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 2,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 3,
+          "position,surface_slip_proxy,continuity": 20,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 2,
+          "position,heading,surface_slip_proxy,continuity": 14,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 3,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_p95": 2,
+          "heading,timing,surface_slip_proxy,continuity": 2,
+          "heading,surface_slip_proxy,continuity": 8,
+          "position,surface_slip_proxy": 1,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 5,
+          "surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,surface_slip_proxy,continuity": 6,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95": 1
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 4,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "proposed",
+        "seed": 11,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 54,
+          "heading": 94,
+          "timing": 85,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 13,
+          "tracking_mean": 117,
+          "tracking_p95": 124,
+          "construction_complete": 140,
+          "replay_complete": 140,
+          "condition": 34,
+          "physical": 3,
+          "tracking": 117,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,timing,surface_slip_proxy,continuity": 25,
+          "surface_slip_proxy": 5,
+          "surface_slip_proxy,continuity": 29,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,replay_complete": 2,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95": 3,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 1,
+          "timing,surface_slip_proxy": 1,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 4,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 1,
+          "position,surface_slip_proxy,continuity": 26,
+          "position,heading,surface_slip_proxy,continuity": 7,
+          "position,heading,timing,surface_slip_proxy,continuity": 7,
+          "timing,surface_slip_proxy,continuity": 7,
+          "heading,timing,surface_slip_proxy,continuity": 2,
+          "heading,surface_slip_proxy,continuity": 8,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean": 1,
+          "heading,surface_slip_proxy,continuity,tracking_mean": 2,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 3,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 6,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 5,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "no_feedback",
+        "seed": 11,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 28,
+          "heading": 71,
+          "timing": 64,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 12,
+          "tracking_mean": 119,
+          "tracking_p95": 123,
+          "construction_complete": 139,
+          "replay_complete": 138,
+          "condition": 11,
+          "physical": 3,
+          "tracking": 119,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,timing,surface_slip_proxy,continuity": 32,
+          "surface_slip_proxy": 5,
+          "timing,surface_slip_proxy,continuity": 4,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,replay_complete": 3,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 1,
+          "timing,surface_slip_proxy": 1,
+          "position,heading,timing,surface_slip_proxy,continuity": 20,
+          "surface_slip_proxy,continuity": 6,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 2,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 3,
+          "position,surface_slip_proxy,continuity": 20,
+          "position,heading,surface_slip_proxy,continuity": 19,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 2,
+          "heading,timing,surface_slip_proxy,continuity": 5,
+          "heading,surface_slip_proxy,continuity": 7,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean": 3,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 4,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95": 1,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 1
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 5,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "shuffled",
+        "seed": 11,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 36,
+          "heading": 82,
+          "timing": 74,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 13,
+          "tracking_mean": 119,
+          "tracking_p95": 125,
+          "construction_complete": 141,
+          "replay_complete": 141,
+          "condition": 17,
+          "physical": 3,
+          "tracking": 119,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,timing,surface_slip_proxy,continuity": 30,
+          "surface_slip_proxy": 5,
+          "timing,surface_slip_proxy,continuity": 7,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 2,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 1,
+          "timing,surface_slip_proxy": 1,
+          "position,heading,timing,surface_slip_proxy,continuity": 17,
+          "surface_slip_proxy,continuity": 12,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 4,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 3,
+          "position,surface_slip_proxy,continuity": 23,
+          "position,heading,surface_slip_proxy,continuity": 13,
+          "heading,timing,surface_slip_proxy,continuity": 3,
+          "heading,surface_slip_proxy,continuity": 8,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,replay_complete": 2,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 4,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 2,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95": 1
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 5,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "planned_prefix",
+        "seed": 11,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 53,
+          "heading": 98,
+          "timing": 86,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 20,
+          "tracking_mean": 120,
+          "tracking_p95": 128,
+          "construction_complete": 136,
+          "replay_complete": 139,
+          "condition": 33,
+          "physical": 3,
+          "tracking": 120,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,surface_slip_proxy,continuity": 24,
+          "heading,timing,surface_slip_proxy,continuity": 2,
+          "position,timing,surface_slip_proxy,continuity": 20,
+          "surface_slip_proxy": 8,
+          "timing,surface_slip_proxy": 3,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 2,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 1,
+          "surface_slip_proxy,continuity": 24,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,construction_complete,replay_complete": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 2,
+          "position,surface_slip_proxy,continuity,tracking_mean": 4,
+          "position,heading,surface_slip_proxy,continuity": 13,
+          "timing,surface_slip_proxy,continuity": 9,
+          "position,surface_slip_proxy": 1,
+          "heading,surface_slip_proxy,continuity": 5,
+          "position,heading,timing,surface_slip_proxy,continuity": 11,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,replay_complete": 1,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete": 1,
+          "surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 1,
+          "heading,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95": 2
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 8,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "tracking_only",
+        "seed": 11,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 42,
+          "heading": 89,
+          "timing": 78,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 13,
+          "tracking_mean": 117,
+          "tracking_p95": 121,
+          "construction_complete": 140,
+          "replay_complete": 139,
+          "condition": 20,
+          "physical": 3,
+          "tracking": 117,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,timing,surface_slip_proxy,continuity": 33,
+          "timing,surface_slip_proxy": 2,
+          "surface_slip_proxy,continuity": 16,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,replay_complete": 3,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 1,
+          "surface_slip_proxy": 4,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 2,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 1,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 3,
+          "position,surface_slip_proxy,continuity": 27,
+          "heading,surface_slip_proxy,continuity": 9,
+          "heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95": 2,
+          "heading,timing,surface_slip_proxy,continuity": 4,
+          "timing,surface_slip_proxy,continuity": 5,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 6,
+          "heading,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,surface_slip_proxy,continuity": 5,
+          "position,heading,surface_slip_proxy,continuity": 12,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 4,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "raw",
+        "seed": 12,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 42,
+          "heading": 104,
+          "timing": 69,
+          "surface_slip_proxy": 1,
+          "penetration": 144,
+          "continuity": 31,
+          "tracking_mean": 85,
+          "tracking_p95": 94,
+          "construction_complete": 137,
+          "replay_complete": 137,
+          "condition": 23,
+          "physical": 1,
+          "tracking": 81,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 4,
+          "heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 12,
+          "surface_slip_proxy": 8,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95": 4,
+          "timing,surface_slip_proxy": 5,
+          "surface_slip_proxy,continuity": 10,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 7,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 8,
+          "position,surface_slip_proxy,continuity,tracking_mean": 3,
+          "position,timing,surface_slip_proxy,continuity": 16,
+          "surface_slip_proxy,continuity,tracking_mean": 3,
+          "position,surface_slip_proxy": 3,
+          "surface_slip_proxy,continuity,tracking_mean,tracking_p95": 2,
+          "timing,surface_slip_proxy,continuity,tracking_mean": 2,
+          "timing,surface_slip_proxy,continuity": 3,
+          "position,timing,surface_slip_proxy": 5,
+          "timing,surface_slip_proxy,continuity,tracking_p95": 2,
+          "position,timing,surface_slip_proxy,continuity,tracking_p95": 2,
+          "heading,timing,surface_slip_proxy,continuity": 2,
+          "heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 4,
+          "timing": 1,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean": 2,
+          "position,surface_slip_proxy,tracking_mean": 1,
+          "position,surface_slip_proxy,continuity": 16,
+          "position,heading,timing,surface_slip_proxy,continuity": 6,
+          "position,heading,surface_slip_proxy,continuity": 3,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 2,
+          "heading,surface_slip_proxy,continuity": 2,
+          "position,heading,timing,surface_slip_proxy": 1,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 3
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "011264:0.0",
+            "source_id": "./pose_data/KIT/441/synchron02_poses.npy",
+            "family": "jump",
+            "endpoint_error_m": 0.037138163232529775,
+            "heading_error_rad": 0.058352260192725325,
+            "endpoint_time_error_s": 0.4333333559334278,
+            "remaining_failures": [
+              "timing"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 1,
+        "physical_pass_but_construction_failed": 0,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 1,
+          "surface_slip_proxy": 8,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "ordinary",
+        "seed": 12,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 32,
+          "heading": 85,
+          "timing": 63,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 22,
+          "tracking_mean": 122,
+          "tracking_p95": 126,
+          "construction_complete": 137,
+          "replay_complete": 137,
+          "condition": 11,
+          "physical": 3,
+          "tracking": 122,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "heading,surface_slip_proxy,continuity": 5,
+          "position,heading,timing,surface_slip_proxy,continuity": 15,
+          "surface_slip_proxy": 4,
+          "timing,surface_slip_proxy": 5,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 4,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 1,
+          "position,timing,surface_slip_proxy,continuity": 34,
+          "surface_slip_proxy,continuity": 7,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,construction_complete,replay_complete": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 3,
+          "position,surface_slip_proxy,continuity": 20,
+          "position,heading,surface_slip_proxy,continuity": 16,
+          "timing,surface_slip_proxy,continuity": 7,
+          "heading,timing,surface_slip_proxy,continuity": 3,
+          "position,surface_slip_proxy": 3,
+          "position,timing,surface_slip_proxy": 2,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,replay_complete": 2,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,surface_slip_proxy,continuity,tracking_mean": 2,
+          "heading,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,heading,surface_slip_proxy": 1,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 2
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 4,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "random_best",
+        "seed": 12,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 39,
+          "heading": 97,
+          "timing": 75,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 23,
+          "tracking_mean": 124,
+          "tracking_p95": 129,
+          "construction_complete": 138,
+          "replay_complete": 138,
+          "condition": 20,
+          "physical": 3,
+          "tracking": 124,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,timing,surface_slip_proxy,continuity": 28,
+          "timing,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,surface_slip_proxy,continuity": 14,
+          "surface_slip_proxy": 7,
+          "timing,surface_slip_proxy": 4,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 3,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 2,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 1,
+          "timing,surface_slip_proxy,continuity": 9,
+          "surface_slip_proxy,continuity": 12,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,construction_complete,replay_complete": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 2,
+          "position,surface_slip_proxy,continuity": 29,
+          "position,heading,surface_slip_proxy,continuity": 11,
+          "position,surface_slip_proxy": 4,
+          "heading,surface_slip_proxy,continuity": 3,
+          "heading,timing,surface_slip_proxy,continuity": 2,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,replay_complete": 2,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 2,
+          "surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,timing,surface_slip_proxy": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 7,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "native_single",
+        "seed": 12,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 24,
+          "heading": 76,
+          "timing": 70,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 12,
+          "tracking_mean": 116,
+          "tracking_p95": 120,
+          "construction_complete": 138,
+          "replay_complete": 140,
+          "condition": 11,
+          "physical": 3,
+          "tracking": 115,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,timing,surface_slip_proxy,continuity": 31,
+          "position,heading,timing,surface_slip_proxy,continuity": 15,
+          "position,timing,surface_slip_proxy": 2,
+          "surface_slip_proxy,continuity": 9,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 2,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 2,
+          "surface_slip_proxy": 2,
+          "timing,surface_slip_proxy": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 2,
+          "position,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,surface_slip_proxy,continuity": 24,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 4,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_p95": 1,
+          "heading,timing,surface_slip_proxy,continuity": 2,
+          "position,heading,surface_slip_proxy,continuity": 19,
+          "timing,surface_slip_proxy,continuity": 5,
+          "heading,surface_slip_proxy,continuity": 5,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 8,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 3,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 2,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "native_best",
+        "seed": 12,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 37,
+          "heading": 94,
+          "timing": 76,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 13,
+          "tracking_mean": 118,
+          "tracking_p95": 123,
+          "construction_complete": 140,
+          "replay_complete": 139,
+          "condition": 23,
+          "physical": 3,
+          "tracking": 118,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,timing,surface_slip_proxy,continuity": 30,
+          "position,heading,timing,surface_slip_proxy,continuity": 10,
+          "timing,surface_slip_proxy,continuity": 8,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 2,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 2,
+          "timing,surface_slip_proxy": 2,
+          "surface_slip_proxy": 3,
+          "surface_slip_proxy,continuity": 19,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 7,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 1,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 3,
+          "position,surface_slip_proxy,continuity": 28,
+          "heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "heading,surface_slip_proxy,continuity": 2,
+          "heading,timing,surface_slip_proxy,continuity": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,replay_complete": 2,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,surface_slip_proxy,continuity": 15,
+          "position,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95": 1,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean": 1,
+          "surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 3,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "proposed",
+        "seed": 12,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 52,
+          "heading": 102,
+          "timing": 92,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 13,
+          "tracking_mean": 117,
+          "tracking_p95": 123,
+          "construction_complete": 139,
+          "replay_complete": 140,
+          "condition": 33,
+          "physical": 3,
+          "tracking": 117,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "timing,surface_slip_proxy,continuity": 10,
+          "position,timing,surface_slip_proxy,continuity": 20,
+          "surface_slip_proxy": 4,
+          "surface_slip_proxy,continuity": 27,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 2,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 1,
+          "position,surface_slip_proxy,continuity": 30,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 1,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 3,
+          "position,surface_slip_proxy,continuity,tracking_mean": 3,
+          "surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,surface_slip_proxy,continuity": 9,
+          "heading,surface_slip_proxy,continuity": 8,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 5,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,surface_slip_proxy": 1,
+          "heading,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,surface_slip_proxy,continuity": 7,
+          "position,timing,surface_slip_proxy": 1,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 2,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95": 1,
+          "surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 4,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "no_feedback",
+        "seed": 12,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 24,
+          "heading": 76,
+          "timing": 70,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 12,
+          "tracking_mean": 116,
+          "tracking_p95": 120,
+          "construction_complete": 138,
+          "replay_complete": 140,
+          "condition": 11,
+          "physical": 3,
+          "tracking": 115,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,timing,surface_slip_proxy,continuity": 31,
+          "position,heading,timing,surface_slip_proxy,continuity": 15,
+          "position,timing,surface_slip_proxy": 2,
+          "surface_slip_proxy,continuity": 9,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 2,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 2,
+          "surface_slip_proxy": 2,
+          "timing,surface_slip_proxy": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 2,
+          "position,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,surface_slip_proxy,continuity": 24,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 4,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_p95": 1,
+          "heading,timing,surface_slip_proxy,continuity": 2,
+          "position,heading,surface_slip_proxy,continuity": 19,
+          "timing,surface_slip_proxy,continuity": 5,
+          "heading,surface_slip_proxy,continuity": 5,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 8,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 3,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 2,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "shuffled",
+        "seed": 12,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 25,
+          "heading": 85,
+          "timing": 73,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 12,
+          "tracking_mean": 118,
+          "tracking_p95": 122,
+          "construction_complete": 139,
+          "replay_complete": 141,
+          "condition": 13,
+          "physical": 3,
+          "tracking": 117,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,timing,surface_slip_proxy,continuity": 36,
+          "position,timing,surface_slip_proxy": 2,
+          "surface_slip_proxy,continuity": 10,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 2,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 2,
+          "surface_slip_proxy": 3,
+          "position,heading,timing,surface_slip_proxy,continuity": 14,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 1,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 4,
+          "position,surface_slip_proxy,continuity,tracking_mean": 2,
+          "position,surface_slip_proxy,continuity": 24,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,surface_slip_proxy,continuity": 17,
+          "position,timing,surface_slip_proxy,continuity,tracking_p95": 1,
+          "heading,timing,surface_slip_proxy,continuity": 1,
+          "timing,surface_slip_proxy,continuity": 4,
+          "heading,surface_slip_proxy,continuity": 6,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 4,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 2,
+          "heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 2,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 3,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "planned_prefix",
+        "seed": 12,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 57,
+          "heading": 98,
+          "timing": 84,
+          "surface_slip_proxy": 4,
+          "penetration": 144,
+          "continuity": 21,
+          "tracking_mean": 121,
+          "tracking_p95": 124,
+          "construction_complete": 137,
+          "replay_complete": 137,
+          "condition": 33,
+          "physical": 4,
+          "tracking": 121,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,timing,surface_slip_proxy,continuity": 23,
+          "timing,surface_slip_proxy,continuity": 14,
+          "surface_slip_proxy": 9,
+          "timing,surface_slip_proxy": 3,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 4,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 3,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 1,
+          "surface_slip_proxy,continuity": 24,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 4,
+          "position,surface_slip_proxy,continuity": 21,
+          "position,heading,surface_slip_proxy,continuity": 12,
+          "position,surface_slip_proxy": 2,
+          "heading,surface_slip_proxy,continuity": 6,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,replay_complete": 2,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "heading,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,surface_slip_proxy,continuity": 6,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1,
+          "position,heading,surface_slip_proxy": 1,
+          "position,heading,timing,tracking_mean,tracking_p95": 1,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 1
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "000629:-0.15",
+            "source_id": "./pose_data/CMU/105/105_22_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 1.2358355446791887,
+            "heading_error_rad": 2.247990828536821,
+            "endpoint_time_error_s": 0.8000000417232513,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 1,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 9,
+          "continuity": 0
+        }
+      },
+      {
+        "arm": "tracking_only",
+        "seed": 12,
+        "attempts": 144,
+        "component_pass_counts": {
+          "position": 36,
+          "heading": 89,
+          "timing": 82,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 14,
+          "tracking_mean": 116,
+          "tracking_p95": 121,
+          "construction_complete": 139,
+          "replay_complete": 140,
+          "condition": 21,
+          "physical": 3,
+          "tracking": 116,
+          "joint": 0
+        },
+        "failure_signatures": {
+          "position,timing,surface_slip_proxy,continuity": 26,
+          "position,heading,timing,surface_slip_proxy,continuity": 12,
+          "surface_slip_proxy": 4,
+          "position,timing,surface_slip_proxy": 2,
+          "position,heading,timing,surface_slip_proxy,tracking_mean,tracking_p95,replay_complete": 2,
+          "position,heading,surface_slip_proxy,tracking_mean,tracking_p95": 2,
+          "timing,surface_slip_proxy": 1,
+          "surface_slip_proxy,continuity": 16,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 1,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 3,
+          "position,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,surface_slip_proxy,continuity": 28,
+          "position,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 2,
+          "surface_slip_proxy,continuity,tracking_mean": 1,
+          "timing,surface_slip_proxy,continuity": 6,
+          "heading,surface_slip_proxy,continuity": 7,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95,construction_complete,replay_complete": 1,
+          "position,heading,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 8,
+          "position,timing,surface_slip_proxy,continuity,tracking_mean,tracking_p95": 1,
+          "position,heading,surface_slip_proxy,continuity": 14,
+          "position,heading,surface_slip_proxy,continuity,tracking_mean": 2,
+          "heading,surface_slip_proxy,continuity,tracking_mean": 1,
+          "position,heading,timing,tracking_mean,tracking_p95,construction_complete": 2,
+          "position,heading,tracking_mean,tracking_p95,construction_complete": 1
+        },
+        "physical_pass_cases": [
+          {
+            "case_id": "006921:-0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3020929630748856,
+            "heading_error_rad": 1.0183356098510075,
+            "endpoint_time_error_s": 0.46666669100522995,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.0",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.3799767730002825,
+            "heading_error_rad": 1.0357754210064876,
+            "endpoint_time_error_s": 0.06666667014360428,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          },
+          {
+            "case_id": "006921:0.15",
+            "source_id": "./pose_data/MPI_HDM05/bk/HDM_bk_01-04_01_120_poses.npy",
+            "family": "dance",
+            "endpoint_error_m": 2.4961146436421364,
+            "heading_error_rad": 1.1103247986819191,
+            "endpoint_time_error_s": 1.4000000730156898,
+            "remaining_failures": [
+              "position",
+              "heading",
+              "timing",
+              "tracking_mean",
+              "tracking_p95",
+              "construction_complete"
+            ]
+          }
+        ],
+        "complete_construction_and_replay_physical_pass": 0,
+        "physical_pass_but_construction_failed": 3,
+        "single_component_near_misses": {
+          "position": 0,
+          "heading": 0,
+          "timing": 0,
+          "surface_slip_proxy": 4,
+          "continuity": 0
+        }
+      }
+    ],
+    "paired_component_changes": [
+      {
+        "seed": 11,
+        "baseline": "ordinary",
+        "condition_repaired": 24,
+        "condition_regressed": 4,
+        "physical_repaired": 0,
+        "physical_regressed": 0,
+        "physically_passed_same_cases": true,
+        "joint_repaired": 0
+      },
+      {
+        "seed": 11,
+        "baseline": "random_best",
+        "condition_repaired": 19,
+        "condition_regressed": 6,
+        "physical_repaired": 0,
+        "physical_regressed": 0,
+        "physically_passed_same_cases": true,
+        "joint_repaired": 0
+      },
+      {
+        "seed": 11,
+        "baseline": "native_best",
+        "condition_repaired": 14,
+        "condition_regressed": 4,
+        "physical_repaired": 0,
+        "physical_regressed": 0,
+        "physically_passed_same_cases": true,
+        "joint_repaired": 0
+      },
+      {
+        "seed": 11,
+        "baseline": "no_feedback",
+        "condition_repaired": 23,
+        "condition_regressed": 0,
+        "physical_repaired": 0,
+        "physical_regressed": 0,
+        "physically_passed_same_cases": true,
+        "joint_repaired": 0
+      },
+      {
+        "seed": 11,
+        "baseline": "shuffled",
+        "condition_repaired": 19,
+        "condition_regressed": 2,
+        "physical_repaired": 0,
+        "physical_regressed": 0,
+        "physically_passed_same_cases": true,
+        "joint_repaired": 0
+      },
+      {
+        "seed": 11,
+        "baseline": "planned_prefix",
+        "condition_repaired": 14,
+        "condition_regressed": 13,
+        "physical_repaired": 0,
+        "physical_regressed": 0,
+        "physically_passed_same_cases": true,
+        "joint_repaired": 0
+      },
+      {
+        "seed": 11,
+        "baseline": "tracking_only",
+        "condition_repaired": 14,
+        "condition_regressed": 0,
+        "physical_repaired": 0,
+        "physical_regressed": 0,
+        "physically_passed_same_cases": true,
+        "joint_repaired": 0
+      },
+      {
+        "seed": 12,
+        "baseline": "ordinary",
+        "condition_repaired": 26,
+        "condition_regressed": 4,
+        "physical_repaired": 0,
+        "physical_regressed": 0,
+        "physically_passed_same_cases": true,
+        "joint_repaired": 0
+      },
+      {
+        "seed": 12,
+        "baseline": "random_best",
+        "condition_repaired": 23,
+        "condition_regressed": 10,
+        "physical_repaired": 0,
+        "physical_regressed": 0,
+        "physically_passed_same_cases": true,
+        "joint_repaired": 0
+      },
+      {
+        "seed": 12,
+        "baseline": "native_best",
+        "condition_repaired": 18,
+        "condition_regressed": 8,
+        "physical_repaired": 0,
+        "physical_regressed": 0,
+        "physically_passed_same_cases": true,
+        "joint_repaired": 0
+      },
+      {
+        "seed": 12,
+        "baseline": "no_feedback",
+        "condition_repaired": 24,
+        "condition_regressed": 2,
+        "physical_repaired": 0,
+        "physical_regressed": 0,
+        "physically_passed_same_cases": true,
+        "joint_repaired": 0
+      },
+      {
+        "seed": 12,
+        "baseline": "shuffled",
+        "condition_repaired": 23,
+        "condition_regressed": 3,
+        "physical_repaired": 0,
+        "physical_regressed": 0,
+        "physically_passed_same_cases": true,
+        "joint_repaired": 0
+      },
+      {
+        "seed": 12,
+        "baseline": "planned_prefix",
+        "condition_repaired": 15,
+        "condition_regressed": 15,
+        "physical_repaired": 0,
+        "physical_regressed": 1,
+        "physically_passed_same_cases": false,
+        "joint_repaired": 0
+      },
+      {
+        "seed": 12,
+        "baseline": "tracking_only",
+        "condition_repaired": 15,
+        "condition_regressed": 3,
+        "physical_repaired": 0,
+        "physical_regressed": 0,
+        "physically_passed_same_cases": true,
+        "joint_repaired": 0
+      }
+    ],
+    "construction_batches": [
+      {
+        "label": "test_native_s11_r0",
+        "seed": 11,
+        "round": 0,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 139,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 32,
+          "heading": 98,
+          "timing": 76,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 29,
+          "tracking_mean": 80,
+          "tracking_p95": 96,
+          "construction_complete": 139,
+          "replay_complete": 139,
+          "condition": 18,
+          "physical": 0,
+          "tracking": 75,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "11ade967dddec968b9f12543316a9ad1829734fc4cf42489846e932546d51e69",
+          "metrics.json": "e631f17695deb17670cc21ccab71174c5688f2dda3d9b78ee1b9993f7d9f7db4",
+          "trajectories.npz": "f6b0558052d58be5f2fdf48a93de59529cf949b6e990a52ada951409ade291eb"
+        }
+      },
+      {
+        "label": "test_native_s11_r1",
+        "seed": 11,
+        "round": 1,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 138,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 31,
+          "heading": 100,
+          "timing": 77,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 30,
+          "tracking_mean": 91,
+          "tracking_p95": 98,
+          "construction_complete": 138,
+          "replay_complete": 138,
+          "condition": 16,
+          "physical": 0,
+          "tracking": 85,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "18aa63efb9269aa6cf405d1d2e5dfb2f5301a2e53c02e1a220532c3025d7ccdc",
+          "metrics.json": "b4208b153c49c09cd9ad6d3f372187b1769f740774500c7303ede2cfe3e48abd",
+          "trajectories.npz": "dded5457549d37658c3d6af3c8597387497369b37a9cc7967da4efcb1e0618ee"
+        }
+      },
+      {
+        "label": "test_native_s11_r2",
+        "seed": 11,
+        "round": 2,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 139,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 33,
+          "heading": 99,
+          "timing": 79,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 23,
+          "tracking_mean": 87,
+          "tracking_p95": 93,
+          "construction_complete": 139,
+          "replay_complete": 139,
+          "condition": 19,
+          "physical": 0,
+          "tracking": 80,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "00902d368a64f56304269f98d186c5193281d9c99990bcafe1ade942f5d03cb1",
+          "metrics.json": "22cb25a780e7f43e23b01040e3b972a516a88922386bc05242faf8caa21f862d",
+          "trajectories.npz": "6f43e323050ff43a6ec45e78c39ab1c89cd31b7d048d8b26555d56d4f95fbb0f"
+        }
+      },
+      {
+        "label": "test_native_s12_r0",
+        "seed": 12,
+        "round": 0,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 138,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 33,
+          "heading": 93,
+          "timing": 77,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 32,
+          "tracking_mean": 95,
+          "tracking_p95": 94,
+          "construction_complete": 138,
+          "replay_complete": 138,
+          "condition": 19,
+          "physical": 0,
+          "tracking": 87,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "2d6d5a4574623abffb7e63c272aae4909d576db21ef20d3300c9407cf3d1a19e",
+          "metrics.json": "5a63a6175068093b3ebb280ddefd6157f2d952f7c312a5442fdf3ea54fc521ef",
+          "trajectories.npz": "80ae2dcc3e093a0d51f93aa498b456447b48a1411e10aea9b7dc3aafbd9a313f"
+        }
+      },
+      {
+        "label": "test_native_s12_r1",
+        "seed": 12,
+        "round": 1,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 139,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 33,
+          "heading": 98,
+          "timing": 84,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 28,
+          "tracking_mean": 90,
+          "tracking_p95": 101,
+          "construction_complete": 139,
+          "replay_complete": 139,
+          "condition": 24,
+          "physical": 0,
+          "tracking": 85,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "c0492cd1469eaf72fc8889b7748330840bae0e73b9b29f22f9ab6e9487fb6840",
+          "metrics.json": "dd4aa7c8755ee03f0b7353d661b87d81f0a90c47d7cdf8810195eceff8348b39",
+          "trajectories.npz": "569e8394a11cd375d46f24f4b7343ee2d2284eccb180154f7b90b07b04ee2a28"
+        }
+      },
+      {
+        "label": "test_native_s12_r2",
+        "seed": 12,
+        "round": 2,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 139,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 36,
+          "heading": 98,
+          "timing": 76,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 28,
+          "tracking_mean": 96,
+          "tracking_p95": 97,
+          "construction_complete": 139,
+          "replay_complete": 139,
+          "condition": 19,
+          "physical": 0,
+          "tracking": 86,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "fd7e97ce0e602566d1e305c5f5ad88c2e68ca823fba9f5f969a4f177a309a58b",
+          "metrics.json": "e25b8b0361714a34bb06b3e27925b8473004d86887208d1b3fbb91710d28d06e",
+          "trajectories.npz": "cac1c84c05b9239020c3a0bf134b4913436cb5ed503949924746d4282bb92e31"
+        }
+      },
+      {
+        "label": "test_native_s13_r0",
+        "seed": 13,
+        "round": 0,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 138,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 39,
+          "heading": 94,
+          "timing": 79,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 21,
+          "tracking_mean": 92,
+          "tracking_p95": 94,
+          "construction_complete": 138,
+          "replay_complete": 138,
+          "condition": 23,
+          "physical": 0,
+          "tracking": 86,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "8e2cd770875a753c0101b2dd0f948356b3318c92a8aa4e50f4e148831206cab9",
+          "metrics.json": "d098a6ca4d115b4211e50c6e731755746abdce812df439918d02cb43a511dab1",
+          "trajectories.npz": "212a4dfa0e92c2706e9e76416a1b9884278913b030a43097069ad5e9d67f8db9"
+        }
+      },
+      {
+        "label": "test_no_feedback_s11_r1",
+        "seed": 11,
+        "round": 1,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 139,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 32,
+          "heading": 98,
+          "timing": 76,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 29,
+          "tracking_mean": 80,
+          "tracking_p95": 96,
+          "construction_complete": 139,
+          "replay_complete": 139,
+          "condition": 18,
+          "physical": 0,
+          "tracking": 75,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "db5618035fbf2971bf7af1df0b0d94abad6ed100d1d93f4f15922d9748b5ddc5",
+          "metrics.json": "384803cbdcb09f7c0c1dfacef6426af934112b5949eaddb2b6aa09a87eb5158c",
+          "trajectories.npz": "f6b0558052d58be5f2fdf48a93de59529cf949b6e990a52ada951409ade291eb"
+        }
+      },
+      {
+        "label": "test_no_feedback_s11_r2",
+        "seed": 11,
+        "round": 2,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 139,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 32,
+          "heading": 98,
+          "timing": 76,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 29,
+          "tracking_mean": 80,
+          "tracking_p95": 96,
+          "construction_complete": 139,
+          "replay_complete": 139,
+          "condition": 18,
+          "physical": 0,
+          "tracking": 75,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "5164b5d266974befbda0e57436b4da9ed68af092be1f4f99549bc87a8040c01f",
+          "metrics.json": "fc442f15a88376634f5bd192ee0277bf1b412125ff1ffd67902938f60dd55368",
+          "trajectories.npz": "f6b0558052d58be5f2fdf48a93de59529cf949b6e990a52ada951409ade291eb"
+        }
+      },
+      {
+        "label": "test_no_feedback_s12_r1",
+        "seed": 12,
+        "round": 1,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 138,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 33,
+          "heading": 93,
+          "timing": 77,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 32,
+          "tracking_mean": 95,
+          "tracking_p95": 94,
+          "construction_complete": 138,
+          "replay_complete": 138,
+          "condition": 19,
+          "physical": 0,
+          "tracking": 87,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "086414ca3adc067ecb316d6cd2ef24f6e53397e59131f06f19c6595282bad495",
+          "metrics.json": "3b867dd14f55abd202fee5e2ec1da6cd71f627a10a2aef4972c7e336cc16b5ff",
+          "trajectories.npz": "80ae2dcc3e093a0d51f93aa498b456447b48a1411e10aea9b7dc3aafbd9a313f"
+        }
+      },
+      {
+        "label": "test_no_feedback_s12_r2",
+        "seed": 12,
+        "round": 2,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 138,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 33,
+          "heading": 93,
+          "timing": 77,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 32,
+          "tracking_mean": 95,
+          "tracking_p95": 94,
+          "construction_complete": 138,
+          "replay_complete": 138,
+          "condition": 19,
+          "physical": 0,
+          "tracking": 87,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "58b2457de89d2d00bb4174ad71acf2a1e384012b6f1d10a2622c2195775dc99a",
+          "metrics.json": "392c8d269dd7e2d32455f580f8cb6d140e9e8ab660d1bc839aa48592594de814",
+          "trajectories.npz": "80ae2dcc3e093a0d51f93aa498b456447b48a1411e10aea9b7dc3aafbd9a313f"
+        }
+      },
+      {
+        "label": "test_planned_prefix_s11_r1",
+        "seed": 11,
+        "round": 1,
+        "mode": "planned",
+        "attempts": 144,
+        "completed": 136,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 60,
+          "heading": 104,
+          "timing": 95,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 29,
+          "tracking_mean": 76,
+          "tracking_p95": 88,
+          "construction_complete": 136,
+          "replay_complete": 136,
+          "condition": 42,
+          "physical": 0,
+          "tracking": 73,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "33a9b00e3c43b7665868577c2e57633aa19c040a2e8bb3fa765a3c9188aa540c",
+          "metrics.json": "30c15026cfcb0d66296a8ef9e436fb6056d842f06a2675fb74ad200de296b00c",
+          "trajectories.npz": "5feb5dbc5b401ce872168e766c4a0b875ca0564f686131cd08f564564a15bb83"
+        }
+      },
+      {
+        "label": "test_planned_prefix_s11_r2",
+        "seed": 11,
+        "round": 2,
+        "mode": "planned",
+        "attempts": 144,
+        "completed": 135,
+        "physical_pass": 2,
+        "completed_physical_pass": 2,
+        "joint_pass": 1,
+        "component_pass_counts": {
+          "position": 74,
+          "heading": 109,
+          "timing": 96,
+          "surface_slip_proxy": 2,
+          "penetration": 144,
+          "continuity": 28,
+          "tracking_mean": 81,
+          "tracking_p95": 89,
+          "construction_complete": 135,
+          "replay_complete": 135,
+          "condition": 52,
+          "physical": 2,
+          "tracking": 78,
+          "joint": 1
+        },
+        "output_bindings": {
+          "metadata.json": "abb4b03062d52967e5c307db94036e7d12fa4d97cfb2f6a71d30b0f2b4bed5c6",
+          "metrics.json": "133d1e566fa49244f96211d5a138a8ce8b300b60d7b2e155028df5e531957f5f",
+          "trajectories.npz": "6a2408b11794f49f88323d931282f14d17e9b3478e7423587eaee2518781ff6f"
+        }
+      },
+      {
+        "label": "test_planned_prefix_s12_r1",
+        "seed": 12,
+        "round": 1,
+        "mode": "planned",
+        "attempts": 144,
+        "completed": 136,
+        "physical_pass": 1,
+        "completed_physical_pass": 1,
+        "joint_pass": 1,
+        "component_pass_counts": {
+          "position": 59,
+          "heading": 105,
+          "timing": 84,
+          "surface_slip_proxy": 1,
+          "penetration": 144,
+          "continuity": 34,
+          "tracking_mean": 77,
+          "tracking_p95": 95,
+          "construction_complete": 136,
+          "replay_complete": 136,
+          "condition": 34,
+          "physical": 1,
+          "tracking": 75,
+          "joint": 1
+        },
+        "output_bindings": {
+          "metadata.json": "cb6236d18a5f9aed7a25dca31a6b8e667f6aef535532d550747630ac8521d1e3",
+          "metrics.json": "38537bfa8bd0fe65e96dbfa5fd77e0c902aab99e366611876163289ddee60cbb",
+          "trajectories.npz": "951034e7b06f4c8d15c08e7dcf32a39fc0dc787f744a28c564745e891a19976a"
+        }
+      },
+      {
+        "label": "test_planned_prefix_s12_r2",
+        "seed": 12,
+        "round": 2,
+        "mode": "planned",
+        "attempts": 144,
+        "completed": 136,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 73,
+          "heading": 110,
+          "timing": 99,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 34,
+          "tracking_mean": 79,
+          "tracking_p95": 94,
+          "construction_complete": 136,
+          "replay_complete": 136,
+          "condition": 51,
+          "physical": 0,
+          "tracking": 76,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "c529388586f2a7d1dec82198ce3b1d1ea08cb9fe6b972eab5ab67e31aadd7b0f",
+          "metrics.json": "d8010c65ccbd71ab4f2ded1ff1925073fce2cbdb96ed21d59449739846078d8c",
+          "trajectories.npz": "486bb8d74439efdec8078d2fc407784d27d1a4a54762116423b243ab0c71a698"
+        }
+      },
+      {
+        "label": "test_planned_s11_r0",
+        "seed": 11,
+        "round": 0,
+        "mode": "planned",
+        "attempts": 144,
+        "completed": 136,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 45,
+          "heading": 100,
+          "timing": 69,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 30,
+          "tracking_mean": 80,
+          "tracking_p95": 91,
+          "construction_complete": 136,
+          "replay_complete": 136,
+          "condition": 21,
+          "physical": 0,
+          "tracking": 77,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "93fd4c3491d1f1469a8e390010785462b77af28244e08de9aa432c33c39ee77c",
+          "metrics.json": "7c1d8f0029224e7dc437d782ed537b576c371439faa5406ce984a00833d031ef",
+          "trajectories.npz": "f437737b0aaed16f0d8406a7f913b2b8762cca380f3d5a64ae15bb83866f1f8e"
+        }
+      },
+      {
+        "label": "test_planned_s11_r1",
+        "seed": 11,
+        "round": 1,
+        "mode": "planned",
+        "attempts": 144,
+        "completed": 137,
+        "physical_pass": 5,
+        "completed_physical_pass": 5,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 40,
+          "heading": 96,
+          "timing": 82,
+          "surface_slip_proxy": 5,
+          "penetration": 144,
+          "continuity": 38,
+          "tracking_mean": 81,
+          "tracking_p95": 90,
+          "construction_complete": 137,
+          "replay_complete": 137,
+          "condition": 22,
+          "physical": 5,
+          "tracking": 75,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "9088a706f5f7c05474cf40a68d72014e4142293bc5942ceead57f8d647cd0523",
+          "metrics.json": "b052e5cf934908e4584f98e4edc2a2224d693a1ed314b4172279cf6c909a5297",
+          "trajectories.npz": "f3c240bf27a4d5bdb65f339602f3e0768eb019937a34660f6ee3b61b37a5017f"
+        }
+      },
+      {
+        "label": "test_planned_s11_r2",
+        "seed": 11,
+        "round": 2,
+        "mode": "planned",
+        "attempts": 144,
+        "completed": 138,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 41,
+          "heading": 95,
+          "timing": 85,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 37,
+          "tracking_mean": 77,
+          "tracking_p95": 96,
+          "construction_complete": 138,
+          "replay_complete": 138,
+          "condition": 24,
+          "physical": 0,
+          "tracking": 75,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "bcfb3ff184cbec148ca8442b8cccea7782573e9381d117999e743d03375e5900",
+          "metrics.json": "651f4f00a0c97b828ce60a224daadadf1c2d11e7b63266a60361c2c66a7c81d5",
+          "trajectories.npz": "baca1bcb08fd57c6253fa1368ea9bfd978b35ba338be6b9e273b59b56f5b6fd6"
+        }
+      },
+      {
+        "label": "test_planned_s12_r0",
+        "seed": 12,
+        "round": 0,
+        "mode": "planned",
+        "attempts": 144,
+        "completed": 137,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 42,
+          "heading": 95,
+          "timing": 71,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 32,
+          "tracking_mean": 79,
+          "tracking_p95": 95,
+          "construction_complete": 137,
+          "replay_complete": 137,
+          "condition": 18,
+          "physical": 0,
+          "tracking": 75,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "55605661079df06eb3ed1e971486d1877c0e789a52c1285541d8d81a1470b1bc",
+          "metrics.json": "212e61e2d4dadf72f004c6bdd1f236d3c4409c0ff98f935d2ac41e9cdd4966c2",
+          "trajectories.npz": "d74eacea50937df4639d9467f7a39375520fe8d2d6ffae73bd598de9288216ae"
+        }
+      },
+      {
+        "label": "test_planned_s12_r1",
+        "seed": 12,
+        "round": 1,
+        "mode": "planned",
+        "attempts": 144,
+        "completed": 137,
+        "physical_pass": 3,
+        "completed_physical_pass": 3,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 45,
+          "heading": 95,
+          "timing": 75,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 37,
+          "tracking_mean": 83,
+          "tracking_p95": 93,
+          "construction_complete": 137,
+          "replay_complete": 137,
+          "condition": 22,
+          "physical": 3,
+          "tracking": 80,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "2b1bab36ae6297f70c29e8646dcc612f1661c2e976f079496f7bb706f6fe763b",
+          "metrics.json": "9831528efe740f3c1bc43ed2f7482b8b0f55095738c21ced5c390d25bfc23ebc",
+          "trajectories.npz": "214d62b051d7d739848550e363a5af187209eb28840af5c73ecb25602c8dfbbc"
+        }
+      },
+      {
+        "label": "test_planned_s12_r2",
+        "seed": 12,
+        "round": 2,
+        "mode": "planned",
+        "attempts": 144,
+        "completed": 138,
+        "physical_pass": 3,
+        "completed_physical_pass": 3,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 49,
+          "heading": 94,
+          "timing": 80,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 38,
+          "tracking_mean": 84,
+          "tracking_p95": 95,
+          "construction_complete": 138,
+          "replay_complete": 138,
+          "condition": 22,
+          "physical": 3,
+          "tracking": 82,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "764eddc7c77dcc7a05f7c1166e5a8a1e841060b28d26d343b6c2a1b0044a4aa2",
+          "metrics.json": "01dad07a4dee6d08910bd5656caeff332b1e27ce3e61fcc6423a6b40849fccee",
+          "trajectories.npz": "6d1124169a351cb89d26bd91f8c4afa79f53290d2c11bb79a2b03d07b1eb6af2"
+        }
+      },
+      {
+        "label": "test_planned_s13_r0",
+        "seed": 13,
+        "round": 0,
+        "mode": "planned",
+        "attempts": 144,
+        "completed": 136,
+        "physical_pass": 3,
+        "completed_physical_pass": 3,
+        "joint_pass": 1,
+        "component_pass_counts": {
+          "position": 46,
+          "heading": 95,
+          "timing": 78,
+          "surface_slip_proxy": 3,
+          "penetration": 144,
+          "continuity": 33,
+          "tracking_mean": 81,
+          "tracking_p95": 93,
+          "construction_complete": 136,
+          "replay_complete": 136,
+          "condition": 23,
+          "physical": 3,
+          "tracking": 77,
+          "joint": 1
+        },
+        "output_bindings": {
+          "metadata.json": "cfe775442968fc7f3a229c2812a935b4c82f7b2cd3079e8eeae1f8f508c14795",
+          "metrics.json": "ca2ff1095e284b8e1ef4327d90723e1a7a91976a42a9f42c26cbfec282aa1bb5",
+          "trajectories.npz": "a662936d020328c181606561b1619f3c8919ddcba1ad47112ad4b086b5797969"
+        }
+      },
+      {
+        "label": "test_planned_s13_r1",
+        "seed": 13,
+        "round": 1,
+        "mode": "planned",
+        "attempts": 144,
+        "completed": 137,
+        "physical_pass": 2,
+        "completed_physical_pass": 2,
+        "joint_pass": 1,
+        "component_pass_counts": {
+          "position": 48,
+          "heading": 91,
+          "timing": 76,
+          "surface_slip_proxy": 2,
+          "penetration": 144,
+          "continuity": 32,
+          "tracking_mean": 78,
+          "tracking_p95": 92,
+          "construction_complete": 137,
+          "replay_complete": 137,
+          "condition": 21,
+          "physical": 2,
+          "tracking": 75,
+          "joint": 1
+        },
+        "output_bindings": {
+          "metadata.json": "b23250a023d97eafc99e34c14a9997db0dc0b1d5513765522743bb408b3af3ae",
+          "metrics.json": "13ce3af2332155525b4b4519c91af91aac201b4427f0631d7671871071d66740",
+          "trajectories.npz": "b8f184f08697aed4c3201a52cdb3a032bcde6d109cd33703d078e98725f6410d"
+        }
+      },
+      {
+        "label": "test_planned_s13_r2",
+        "seed": 13,
+        "round": 2,
+        "mode": "planned",
+        "attempts": 144,
+        "completed": 138,
+        "physical_pass": 1,
+        "completed_physical_pass": 1,
+        "joint_pass": 1,
+        "component_pass_counts": {
+          "position": 41,
+          "heading": 90,
+          "timing": 78,
+          "surface_slip_proxy": 1,
+          "penetration": 144,
+          "continuity": 33,
+          "tracking_mean": 79,
+          "tracking_p95": 92,
+          "construction_complete": 138,
+          "replay_complete": 138,
+          "condition": 21,
+          "physical": 1,
+          "tracking": 76,
+          "joint": 1
+        },
+        "output_bindings": {
+          "metadata.json": "258cdbb098427d749f9c8922c600de2fbd796c494e64f8f0fc27beefd78c4e0a",
+          "metrics.json": "4065a522281587242032b0a8478be68ab6d54e248fd88ad432d1975b41edfa03",
+          "trajectories.npz": "2ac222ed207932d001b37e64f9a95695293c7920089fa7d7cfbf3c1777405f73"
+        }
+      },
+      {
+        "label": "test_proposed_s11_r1",
+        "seed": 11,
+        "round": 1,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 139,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 58,
+          "heading": 113,
+          "timing": 95,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 29,
+          "tracking_mean": 89,
+          "tracking_p95": 92,
+          "construction_complete": 139,
+          "replay_complete": 139,
+          "condition": 43,
+          "physical": 0,
+          "tracking": 80,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "8a3046fd13597918717415bc2e97e8c1e6434fcf3c9b750dfd3cccd359b6d832",
+          "metrics.json": "d88d1a5a9e21a545df01119a147ceaaeebe89b09060068f6adeaace38158198b",
+          "trajectories.npz": "444cdbd0b2b2b425f2b29be47cfcf6ce1e537ff98368f0a94bc2855ac60e2a3b"
+        }
+      },
+      {
+        "label": "test_proposed_s11_r2",
+        "seed": 11,
+        "round": 2,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 138,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 70,
+          "heading": 118,
+          "timing": 102,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 29,
+          "tracking_mean": 87,
+          "tracking_p95": 90,
+          "construction_complete": 138,
+          "replay_complete": 138,
+          "condition": 58,
+          "physical": 0,
+          "tracking": 75,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "a029bf5c85814b847e25d600a4eb5d6cbf42d399fa0474c15c87018f007b7493",
+          "metrics.json": "37f4257d25b891692574af63fcb6026dadcdb651012ccdc5c6079d143d4b9959",
+          "trajectories.npz": "f26aacfa1f8447c43db99c7e72f9d3a2d7c9d5ce6729ac8c994e2f7cb8712e46"
+        }
+      },
+      {
+        "label": "test_proposed_s12_r1",
+        "seed": 12,
+        "round": 1,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 138,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 50,
+          "heading": 111,
+          "timing": 93,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 28,
+          "tracking_mean": 94,
+          "tracking_p95": 97,
+          "construction_complete": 138,
+          "replay_complete": 138,
+          "condition": 40,
+          "physical": 0,
+          "tracking": 84,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "c59c88e18899909e13e66bf884cd24f5316ff69e2f8834b21d8343ff5ab47135",
+          "metrics.json": "b43de76e25aa784cf86f3580f3680f236f3f1c300aa4f7867f7c4407366b5f5f",
+          "trajectories.npz": "744cca5a5873a91f352619d28f003ec271a9bbc6a5f3e67fdacf6c4940bc5560"
+        }
+      },
+      {
+        "label": "test_proposed_s12_r2",
+        "seed": 12,
+        "round": 2,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 136,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 66,
+          "heading": 113,
+          "timing": 98,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 27,
+          "tracking_mean": 94,
+          "tracking_p95": 91,
+          "construction_complete": 136,
+          "replay_complete": 136,
+          "condition": 54,
+          "physical": 0,
+          "tracking": 81,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "9adae8c5863764c5ff3475cc61c037245c820bd0b2ff2f11d539d997f75c813d",
+          "metrics.json": "62fe63ecd9493047643f4f531eca6077afacecad0e0f5979b7f729d47173069d",
+          "trajectories.npz": "441c2a1c317910902de8c3c99fff79adc527dbe7f965450bdc7f86cbf14a9705"
+        }
+      },
+      {
+        "label": "test_shuffled_s11_r1",
+        "seed": 11,
+        "round": 1,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 140,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 33,
+          "heading": 87,
+          "timing": 81,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 29,
+          "tracking_mean": 91,
+          "tracking_p95": 94,
+          "construction_complete": 140,
+          "replay_complete": 140,
+          "condition": 16,
+          "physical": 0,
+          "tracking": 81,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "bcecb94449bf00f97ac0046694a3fc348b7266710269f0a315a8ded554faed5f",
+          "metrics.json": "34249361f6184c5f83d23fef190a5c959e9d4d48b6fbf40a95d0cbc0c0ff4e18",
+          "trajectories.npz": "da3dc9b50c69c104b63edc913d0aec5633b1062585eb75514e3dfc7d19b38b35"
+        }
+      },
+      {
+        "label": "test_shuffled_s11_r2",
+        "seed": 11,
+        "round": 2,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 138,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 29,
+          "heading": 84,
+          "timing": 79,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 31,
+          "tracking_mean": 90,
+          "tracking_p95": 93,
+          "construction_complete": 138,
+          "replay_complete": 138,
+          "condition": 14,
+          "physical": 0,
+          "tracking": 80,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "805a7da993b9b8a6f09ec1cf35adfb7668fbf5f9cda5bdaf2383c1f135974b44",
+          "metrics.json": "566120ea78f0ff344a35e763dc697e32cd37eaf5623a9e3a6d5c731042a4a981",
+          "trajectories.npz": "abfd018bc4559bec7bab735704e9b81802166430f82a59ac4cddf1592cfccb9b"
+        }
+      },
+      {
+        "label": "test_shuffled_s12_r1",
+        "seed": 12,
+        "round": 1,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 139,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 25,
+          "heading": 92,
+          "timing": 79,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 31,
+          "tracking_mean": 95,
+          "tracking_p95": 97,
+          "construction_complete": 139,
+          "replay_complete": 139,
+          "condition": 11,
+          "physical": 0,
+          "tracking": 85,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "0575e29dc264c72743b1a14f883f7754d17a4213bf78e3e840604f3c8e513585",
+          "metrics.json": "51b92b573c85184b42d50ba2f4703d7095d6570a343e798b44b55c7f39e8d3ab",
+          "trajectories.npz": "1c76e532606b4c431e6fb4267eaedae1bb33e6b27dcb72faa0f9b511e7bae1ed"
+        }
+      },
+      {
+        "label": "test_shuffled_s12_r2",
+        "seed": 12,
+        "round": 2,
+        "mode": "native",
+        "attempts": 144,
+        "completed": 138,
+        "physical_pass": 0,
+        "completed_physical_pass": 0,
+        "joint_pass": 0,
+        "component_pass_counts": {
+          "position": 24,
+          "heading": 76,
+          "timing": 67,
+          "surface_slip_proxy": 0,
+          "penetration": 144,
+          "continuity": 29,
+          "tracking_mean": 93,
+          "tracking_p95": 98,
+          "construction_complete": 138,
+          "replay_complete": 138,
+          "condition": 8,
+          "physical": 0,
+          "tracking": 86,
+          "joint": 0
+        },
+        "output_bindings": {
+          "metadata.json": "2660b115f5823cc8c613d39451bcaf07ab2c334512d64fe322445bc7aab5ebfb",
+          "metrics.json": "dabb619b97543d3b395bfd0f40cc9b0477ea8675ffe21e572f37ea533f88e074",
+          "trajectories.npz": "6a7413b45be78806ec4b3d3a7b011deb250627510bed786ada4758865f0453bb"
+        }
+      }
+    ],
+    "construction_and_replay_not_pooled": true,
+    "completed_arm_seed_batches": 20,
+    "expected_arm_seed_batches": 30,
+    "all_replays_finished": false,
+    "all_observed_joint_zero": true,
+    "thresholds_sha256": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "input_bindings": {
+      "raw:11": {
+        "outputs": {
+          "metadata.json": "5d3fe40e19f11e8ff187fbb5c85a49d189242b71fe6aac388fe449442694d0c5",
+          "metrics.json": "97109a742b0878b795293a8d9405947fe26f92dcb8fc32b8f34906ebc2506ab5",
+          "trajectories.npz": "ef9a03b73238dedfa32448b053553b3d9c935a6d748db998348034c858930169"
+        },
+        "selection_sha256": "85c9e9029d97517a119759e47a59e38e0096c549c74730265b7b43de772e037d"
+      },
+      "ordinary:11": {
+        "outputs": {
+          "metadata.json": "7e47449c7bf8b3c4d45fc81ea7e009a2462aaa73983bad4391d09b0715849ce7",
+          "metrics.json": "30536f849593c23803cf077fc055e3f6139f254dafe3417b661128c4efcccb0e",
+          "trajectories.npz": "1ce527b31eef5e3b2e14ec816735a06d142b7ff33058789a2fc2146525df3af5"
+        },
+        "selection_sha256": "bb15bbbddfa5ee9e319562cac206e1f898c8020df3bd0fd3195a3a89d45f79c4"
+      },
+      "random_best:11": {
+        "outputs": {
+          "metadata.json": "90558fdd013352f659f520c1529c87d41e2c9f5c1379946cd43a1d82c8984b07",
+          "metrics.json": "875e73bcbd9094414938b57239367ff16b1ebb94320a12b2bfbcffbdbe8f8639",
+          "trajectories.npz": "bbb1a9fa50098fbec434f6dbda26b1a208035cfbc1b591076520f34c74dbac36"
+        },
+        "selection_sha256": "97b251e42cf1100ff936439063939fc9ceba9f8dcefa4e317dea2d2601b4e14d"
+      },
+      "native_single:11": {
+        "outputs": {
+          "metadata.json": "1ea5c20be120339d7c04d3fe58a707fbca78fbb2fbea4681776bce17ed0de4c9",
+          "metrics.json": "6dedcda48bb43466e7e2c2c947c687a565c4cddb1e3b6b3c01e66277a85a40b4",
+          "trajectories.npz": "e66fd7f9d1b878c3c35461a486bed81e20520bc6edf5ff2b7e6f5db182fa6841"
+        },
+        "selection_sha256": "6848e18b87d57a8e9ada4e47dc3ebf81e4f26821222489849792dfb982746d06"
+      },
+      "native_best:11": {
+        "outputs": {
+          "metadata.json": "949844d54a8b38db993586851080a21966ccefae10699e500aa3c40e3f596792",
+          "metrics.json": "987b62f44ce11ce90c17c00b19b0ce049b07011b9caae280097a93289c8dfb0e",
+          "trajectories.npz": "e793e56f62e8d1a9b467f75a25d8ca7568ca0be14181c9b2d1961343ac756855"
+        },
+        "selection_sha256": "33471e1e5c41a3397f0bf5624070c92e3385078f4d0e4e58bc64e42676c26f2d"
+      },
+      "proposed:11": {
+        "outputs": {
+          "metadata.json": "05fb5dfd2285014c7341eb6ccef9c4167e6af3d5b1f065033b73b0ef747e4106",
+          "metrics.json": "5b62712216a7bd5eeacb3fed0579a2b2c739459d26fbfe89958182a8f64a5fe0",
+          "trajectories.npz": "89b35f83fdb36c2dcf0a75a243f83460f8e34dcc80b8dc2a27c4bc31857a143b"
+        },
+        "selection_sha256": "1b02f3d04f8982af26d4cecd2a82f66dcad0b2f2a113e17e144da5f570552d50"
+      },
+      "no_feedback:11": {
+        "outputs": {
+          "metadata.json": "8fbf0581bfb29434766cd8bb64d5ec76d6a8737c1a9e8728342145187d43ec37",
+          "metrics.json": "6dedcda48bb43466e7e2c2c947c687a565c4cddb1e3b6b3c01e66277a85a40b4",
+          "trajectories.npz": "e66fd7f9d1b878c3c35461a486bed81e20520bc6edf5ff2b7e6f5db182fa6841"
+        },
+        "selection_sha256": "094cbf12bef41ea4ac6d87c385cb4bbc9ca86742993518df95edcba961cd53d2"
+      },
+      "shuffled:11": {
+        "outputs": {
+          "metadata.json": "074dadd234923e4069adcb84e67e1109e1a24d9f90813d2c36513d99c8dd2adf",
+          "metrics.json": "e35f3935072f4a989c53e7ca9ffd088f2e451c6b4ec3873b19f666dd32ec6223",
+          "trajectories.npz": "7717d2a6abcc811def990c85f77252ee7bff26cecd72750329fe957e8444a139"
+        },
+        "selection_sha256": "c29eb137b4458086eb7e600160b488fcb35bed03f54186b93f1424e543b00865"
+      },
+      "planned_prefix:11": {
+        "outputs": {
+          "metadata.json": "77a46d915f62b50bc7e75c2f3a0642669f0286816edc8630f88e1ffb2a21f0dc",
+          "metrics.json": "4041010c447e2d27e0a978de275967040f99775bb94c51b7e1e451f142079a03",
+          "trajectories.npz": "d9434ca5c87c883630d046d67ac000dee28d2b4a20b769bf0cefeeefe1c5fbe7"
+        },
+        "selection_sha256": "62ad90ba8008577f0a1caa288c6fdf95e6e50458f04695837a5ef2a63998ae3c"
+      },
+      "tracking_only:11": {
+        "outputs": {
+          "metadata.json": "8f4056b5d1f858889948d2c5196af956a3f51cad6b7b56464f148d439dffd90f",
+          "metrics.json": "f22309c71a36c774d45ec076e701548a633ec469213e60c0c366552c9d4fe139",
+          "trajectories.npz": "9a1a6bce536a44fb3e31937ae43af33244bb032d39bcb2aba67872ab61d67826"
+        },
+        "selection_sha256": "2c61046b629301db2bc8d866c1f9ee6658680fbdcd83cd6bf5e8bc15af3c532d"
+      },
+      "raw:12": {
+        "outputs": {
+          "metadata.json": "3fdefdfe0ea22ae444498614210f1dfb51242e3c98c0bd79c6f7288790e916b4",
+          "metrics.json": "f8a38064d92d06e02372db43a957591e7261a895d5e22d834245e1615fa59e84",
+          "trajectories.npz": "b8bea381cfffa3d9d7a940810a061c8d18264205a4dbe8679f1eb9299c34c30b"
+        },
+        "selection_sha256": "4478d4ad0612d0086a62e742226c89308ab8c7a4ffbe14626ce00fa28a6aba40"
+      },
+      "ordinary:12": {
+        "outputs": {
+          "metadata.json": "63be09e0a7ff6b3abb8f67bc8ef0f30d86443fa828b5591f63fafb476cf794b8",
+          "metrics.json": "a98b5effd8c5a10b4c91162771652f88e763741d7e2f32e60da1ad3625bcbe91",
+          "trajectories.npz": "7cb9eb4b4dbf47145d7728648e276cadddf4cfcb9da5241d95f12f5587246224"
+        },
+        "selection_sha256": "fe995a9a0b02e95426a918ed30e3d5038b343437e9c1afbf3f1e72f734a4345a"
+      },
+      "random_best:12": {
+        "outputs": {
+          "metadata.json": "5691790a1c98ec9b694e84c1bf14321d5c656620a749d778f5aff52b08e4d676",
+          "metrics.json": "217c438724c5dcbb7c19ae20d79d1bbb82b52253ca05947478560751c5dd1635",
+          "trajectories.npz": "097720509ac2ecc5426f67109dfe55c8a34aea77a64c15debe4d95499866b8d9"
+        },
+        "selection_sha256": "2adb6ec9707141231ace43705ba454d75ec3a4dd6d852b1da6b79e61239d9a1c"
+      },
+      "native_single:12": {
+        "outputs": {
+          "metadata.json": "c556f5171b601980c6713698d2c61ac51582108ac49fcc9d43ea860b5f5905e2",
+          "metrics.json": "b9c5d71d869f22534a7698a4d182da824dfa600f4209bb18d74375074be16e4e",
+          "trajectories.npz": "4cb5c68174581f7b009e0f14e032e3682539240619433fcc9ff7613538d28c63"
+        },
+        "selection_sha256": "2b7bef5ba87cb6c2b3323d8aff549f3c871576e1dbfcf5f37bc7ec47518bb352"
+      },
+      "native_best:12": {
+        "outputs": {
+          "metadata.json": "d8937a3d8c7ce2c8a2e75f6a8e4650d87078c564b51ea7c3c0ba4a6574ece379",
+          "metrics.json": "ce451c37eff196268cf74eae473c7e6a175fa5614ba2cb060a3614e2b2f18a04",
+          "trajectories.npz": "05eba643904be5cad88f4d87b77ffa29c11f22deaeb9b1241ec3ef7bbedff4eb"
+        },
+        "selection_sha256": "6fd5d257182743947918a781b20da2c83fd0d21f19279f1162899252c15945fd"
+      },
+      "proposed:12": {
+        "outputs": {
+          "metadata.json": "95acac9ece93b5d78b410bef95aff212a86e585db6ee7b215d64326d04b44750",
+          "metrics.json": "9c35d6a1d9af42f74ed8484415b98063196784168833d8bf8938d61e07108ab1",
+          "trajectories.npz": "88e44f50b5969e723fa4755acdf1ab860f2254c9ff846dbad30b1271f6752dbb"
+        },
+        "selection_sha256": "26458503dfece5a91daba08ff78c92239f7ce839b732eae006ae1159e1c90489"
+      },
+      "no_feedback:12": {
+        "outputs": {
+          "metadata.json": "8bd2c1fe01a0b81422b5de2626a209c6afb931ae8d60d1c5e6d285eebeb452e4",
+          "metrics.json": "b9c5d71d869f22534a7698a4d182da824dfa600f4209bb18d74375074be16e4e",
+          "trajectories.npz": "4cb5c68174581f7b009e0f14e032e3682539240619433fcc9ff7613538d28c63"
+        },
+        "selection_sha256": "4cf7474ee5c787479818b183f8fa054885b945237aec6498a93e98c688a71358"
+      },
+      "shuffled:12": {
+        "outputs": {
+          "metadata.json": "e0f7821d183b459f0dc59918d6c43b59094a9bb00d8be57659e6674cd15121f6",
+          "metrics.json": "c082343d831be634d6ada4fbc5ae67a1487d0dc15d3c14fea4b0b479d645c4d4",
+          "trajectories.npz": "e842cb24f0c3475f4c87c1091368ffda760c349787439fc52c9c09395f11a450"
+        },
+        "selection_sha256": "cfd4525606ef7f08b80720851b840f8beb24a9895851bd16ee043c33ffab708d"
+      },
+      "planned_prefix:12": {
+        "outputs": {
+          "metadata.json": "e0fdc1478128667db354db470614b64867dca17d763ab13990a18f59f1ed2a10",
+          "metrics.json": "7e0af6438fdeaddcfcbb5155fe4ac819624a750cdc8bd59b50ce34ba53d80ec7",
+          "trajectories.npz": "f617464c9abe5567aa503fae199e174493db69016d1be4d8cc246bb4eb5f98de"
+        },
+        "selection_sha256": "3693680cf36170ed0477b2313ab4b96fa41ad3a26ac814e9a0fe1c258f84db98"
+      },
+      "tracking_only:12": {
+        "outputs": {
+          "metadata.json": "30f65364a07ce55195a4b644715d5c8451e62803cd422d94dad5a04e8ac4522a",
+          "metrics.json": "13ffc61ad1f6a5b68f23cf8e55c720b8a077cab39e262b6126dbd2f2d6f070f1",
+          "trajectories.npz": "284b77c7f9a1a7a7fcebd75a18556b86430091f211bb678ddbbc87d1aa58ee71"
+        },
+        "selection_sha256": "3659ee68302468dd7c11923146742cf6632c4099905c2c034b3a8483b9ed8e8a"
+      }
+    },
+    "source_sha256": "715806f8fe7d5c584246b789c06b9e1b0ded0e8d284a87153872a79cb9b5a5c6",
+    "live_pipeline_mutated": false,
+    "thresholds_changed": false,
+    "simulation_calls": 0,
+    "generation_calls": 0,
+    "innovation_confirmed": false,
+    "scope": "Observed frozen-predicate component attribution, not causal or controller-independent diagnosis",
+    "next_action": "Finish paired seeds; if final joint floor persists, retain negative evidence and diagnose before C2/G1/downstream"
   },
   "downstream": "NOT_STARTED_BY_GATE",
   "overleaf_results_sync": false,
@@ -41324,6 +44911,7 @@
     "results\\fixed_reference_com_v27_20261012\\replay_summary.json": "23971b708747128d476d0af7cb555dbd52cc3a7b901116817fb522c4c32db1e1",
     "results\\fixed_reference_com_v27_20261012\\cached_guard_recheck_v30_20261012.json": "c660679ade01f06052b8004a68ec440e27ddcca2c6b69e90843d0e52fb17e8ea",
     "results\\condition_feedback_formal_v28_20261012\\queue_state.json": "c061acfa6872c7095cf6a774386a16302e74f2872bd89241161a25684ca59da6",
-    "results\\condition_feedback_probe_v2_20261011\\probe_summary.json": "583922e0a9d95c8610b499fdd439a970c6dc762881d02a4b701461e2ce7ae6b4"
+    "results\\condition_feedback_probe_v2_20261011\\probe_summary.json": "583922e0a9d95c8610b499fdd439a970c6dc762881d02a4b701461e2ce7ae6b4",
+    "results\\condition_feedback_components_v32_20261012\\diagnostic_1791745679129012451.json": "86c722a2916ca943917d702514b682f8a2eb3ed7e0870f2582985b4f0fb43708"
   }
 }

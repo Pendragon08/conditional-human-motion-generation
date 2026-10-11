@@ -45,16 +45,14 @@ def prepare():
     OUT.mkdir()
     for name in ('source_manifest.json', 'frozen_thresholds.json'):
         shutil.copyfile(BASE/name, OUT/name)
-    prior = read(BASE/'prior_budget_snapshot.json')
-    prior['entries'] += [dict(directory=BASE.name, **r) for r in read(BASE/'budget_ledger.json')]
-    prior['directories'] = sorted(set(prior['directories']+[str(BASE.relative_to(ROOT))]))
-    prior['output_bytes'] = sum(p.stat().st_size for d in prior['directories']
-        for p in (ROOT/d).rglob('*') if p.is_file())
+    from physics_guided_round_budget_v34_20261012 import snapshot
+    prior = snapshot(ROOT,OUT)
     save(OUT/'prior_budget_snapshot.json', prior)
     version = copy.deepcopy(read(BASE/'versions.json'))
     for name in ('scripts/run_condition_feedback_guard_v31_20261012.py',
         'scripts/physics_guided_run_v31_20261012.sh',
         'scripts/condition_feedback_guard_core_v29_20261012.py',
+        'scripts/physics_guided_round_budget_v34_20261012.py',
         'scripts/analyze_condition_feedback_guard_v31_20261012.py', str(DOC.relative_to(ROOT))):
         version['files'][name] = runtime.sha(ROOT/name)
     version.update(role='C2 repeat agreement and quality guard, not established innovation',
