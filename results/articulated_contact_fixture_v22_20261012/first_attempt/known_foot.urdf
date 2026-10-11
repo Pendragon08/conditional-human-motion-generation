@@ -1,0 +1,7 @@
+<robot name="known_articulated_foot">
+<link name="base"><inertial><mass value="1"/><inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/></inertial></link>
+<link name="foot"><inertial><origin xyz="0.03 0 0"/><mass value="5"/><inertia ixx="0.020833333" ixy="0" ixz="0" iyy="0.020833333" iyz="0" izz="0.033333333"/></inertial><collision><geometry><box size="0.2 0.2 0.1"/></geometry></collision><visual><geometry><box size="0.2 0.2 0.1"/></geometry></visual></link>
+<link name="carrier"><inertial><mass value="0.1"/><inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/></inertial></link>
+<joint name="slider_x" type="prismatic"><parent link="base"/><child link="carrier"/><origin xyz="0 0 -0.95"/><axis xyz="1 0 0"/><limit lower="-10" upper="10" effort="10000" velocity="1"/></joint>
+<joint name="support_z" type="prismatic"><parent link="carrier"/><child link="foot"/><axis xyz="0 0 1"/><limit lower="-0.03" upper="0.03" effort="10000" velocity="1"/></joint>
+</robot>

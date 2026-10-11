@@ -1,12 +1,12 @@
 {
-  "charged_wall_hours_one_gpu_per_job": 2.375440156968414,
+  "charged_wall_hours_one_gpu_per_job": 2.576212592197375,
   "stage_hours": {
     "ablation_g1": 0.5985497614534365,
     "comparison": 0.9696473756924064,
-    "measurement": 0.807243019822571
+    "measurement": 1.0080154550515321
   },
-  "attempt_ledger_entries": 125,
-  "failure_entries": 4,
+  "attempt_ledger_entries": 140,
+  "failure_entries": 5,
   "limits_hours": {
     "total": 72,
     "measurement": 4,
@@ -16,28 +16,44 @@
     "reserve": 8
   },
   "note": "Includes original conservative reserved debit; CPU fixture wall times also charged. Running attempt omitted until its terminal ledger entry exists.",
-  "output_bytes": 2211079272,
+  "output_bytes": 3897408378,
   "directories": [
+    "results/articulated_contact_fixture_v22_20261012",
     "results/condition_feedback_probe_20261011",
     "results/condition_feedback_probe_v2_20261011",
+    "results/contact_com_validation_v24_20261012",
     "results/contact_cpu_export_v11_20261012",
     "results/contact_cpu_validation_v12_20261012",
     "results/contact_force_fixture_20261011",
     "results/contact_force_fixture_v2_20261011",
     "results/contact_force_fixture_v3_20261012",
+    "results/contact_point_fixture_v14_20261012",
+    "results/contact_point_fixture_v15_20261012",
+    "results/contact_point_fixture_v16_20261012",
+    "results/contact_point_human_v17_20261012",
+    "results/contact_point_human_v20_20261012",
     "results/contact_sampling_v5_20261011",
     "results/contact_sampling_v6_20261011",
     "results/contact_sampling_v7_20261011",
     "results/contact_sampling_v8_20261011",
     "results/contact_sensor_v10_20261011",
     "results/contact_sensor_v9_20261011",
+    "results/fixed_reference_com_v27_20261012",
     "results/physics_guided_20261011",
     "results/reset_alignment_20261011",
     "results/reset_alignment_v2_20261011",
     "results/reset_alignment_v3_20261011",
-    "results/reset_alignment_v4_20261011"
+    "results/reset_alignment_v4_20261011",
+    "results/velocity_reference_fixture_v19_20261012"
   ],
   "entries": [
+    {
+      "directory": "articulated_contact_fixture_v22_20261012",
+      "stage": "measurement",
+      "label": "first_attempt",
+      "seconds": 2.0705752931535244,
+      "exit_code": 0
+    },
     {
       "directory": "condition_feedback_probe_20261011",
       "stage": "comparison",
@@ -144,6 +160,48 @@
       "exit_code": 0
     },
     {
+      "directory": "contact_com_validation_v24_20261012",
+      "stage": "measurement",
+      "label": "val_planned_s11",
+      "seconds": 79.80916035920382,
+      "exit_code": 0
+    },
+    {
+      "directory": "contact_com_validation_v24_20261012",
+      "stage": "measurement",
+      "label": "val_native_s11",
+      "seconds": 79.8526636660099,
+      "exit_code": 0
+    },
+    {
+      "directory": "contact_com_validation_v24_20261012",
+      "stage": "measurement",
+      "label": "val_planned_s12",
+      "seconds": 78.70667253248394,
+      "exit_code": 0
+    },
+    {
+      "directory": "contact_com_validation_v24_20261012",
+      "stage": "measurement",
+      "label": "val_native_s12",
+      "seconds": 77.9481555763632,
+      "exit_code": 0
+    },
+    {
+      "directory": "contact_com_validation_v24_20261012",
+      "stage": "measurement",
+      "label": "val_planned_s13",
+      "seconds": 79.70464272424579,
+      "exit_code": 0
+    },
+    {
+      "directory": "contact_com_validation_v24_20261012",
+      "stage": "measurement",
+      "label": "val_native_s13",
+      "seconds": 79.80477776005864,
+      "exit_code": 0
+    },
+    {
       "directory": "contact_cpu_export_v11_20261012",
       "stage": "measurement",
       "label": "repeat_a",
@@ -242,6 +300,41 @@
       "exit_code": 0
     },
     {
+      "directory": "contact_point_fixture_v14_20261012",
+      "stage": "measurement",
+      "label": "first_attempt",
+      "seconds": 2.522087898105383,
+      "exit_code": 1
+    },
+    {
+      "directory": "contact_point_fixture_v15_20261012",
+      "stage": "measurement",
+      "label": "first_attempt",
+      "seconds": 2.621633481234312,
+      "exit_code": 0
+    },
+    {
+      "directory": "contact_point_fixture_v16_20261012",
+      "stage": "measurement",
+      "label": "first_attempt",
+      "seconds": 2.8739501368254423,
+      "exit_code": 0
+    },
+    {
+      "directory": "contact_point_human_v17_20261012",
+      "stage": "measurement",
+      "label": "repeat_a",
+      "seconds": 39.16408449411392,
+      "exit_code": 0
+    },
+    {
+      "directory": "contact_point_human_v20_20261012",
+      "stage": "measurement",
+      "label": "repeat_a",
+      "seconds": 38.7164987064898,
+      "exit_code": 0
+    },
+    {
       "directory": "contact_sampling_v5_20261011",
       "stage": "measurement",
       "label": "repeat_a",
@@ -303,6 +396,20 @@
       "label": "repeat_a",
       "seconds": 0.06615031138062477,
       "exit_code": 1
+    },
+    {
+      "directory": "fixed_reference_com_v27_20261012",
+      "stage": "measurement",
+      "label": "val_raw_replay_s11",
+      "seconds": 77.50075539387763,
+      "exit_code": 0
+    },
+    {
+      "directory": "fixed_reference_com_v27_20261012",
+      "stage": "measurement",
+      "label": "val_refined_replay_s11",
+      "seconds": 79.41489684581757,
+      "exit_code": 0
     },
     {
       "directory": "physics_guided_20261011",
@@ -986,6 +1093,13 @@
       "stage": "measurement",
       "label": "full_val_native_s11",
       "seconds": 47.93712877295911,
+      "exit_code": 0
+    },
+    {
+      "directory": "velocity_reference_fixture_v19_20261012",
+      "stage": "measurement",
+      "label": "first_attempt",
+      "seconds": 2.0702119562774897,
       "exit_code": 0
     }
   ]

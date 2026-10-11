@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "checks": {
+    "native_parser_no_errors": true,
+    "native_static_ground_contact": true,
+    "native_sliding_ground_contact": true,
+    "native_airborne_no_ground_contact": true,
+    "static_surface_proxy_not_sliding": true,
+    "controlled_slider_surface_proxy_sliding": true,
+    "airborne_has_no_support": true,
+    "commanded_slide_measured_within_2cm_s": true
+  },
+  "rows": [
+    {
+      "surface_slip_proxy_mean_m_s": 2.2609458601626406e-09,
+      "surface_slip_proxy_fraction": 0.0,
+      "support_observations": 60,
+      "penetration_fraction": 0.0,
+      "penetration_depth_p95_m": 0.0,
+      "airborne_fraction": 0.0,
+      "contact_metric_type": "COM velocity corrected body-force and collision-primitive surface proxy"
+    },
+    {
+      "surface_slip_proxy_mean_m_s": 0.20000000298023224,
+      "surface_slip_proxy_fraction": 1.0,
+      "support_observations": 60,
+      "penetration_fraction": 0.0,
+      "penetration_depth_p95_m": 0.0,
+      "airborne_fraction": 0.0,
+      "contact_metric_type": "COM velocity corrected body-force and collision-primitive surface proxy"
+    },
+    {
+      "surface_slip_proxy_mean_m_s": null,
+      "surface_slip_proxy_fraction": null,
+      "support_observations": 0,
+      "penetration_fraction": 0.0,
+      "penetration_depth_p95_m": 0.0,
+      "airborne_fraction": 1.0,
+      "contact_metric_type": "COM velocity corrected body-force and collision-primitive surface proxy"
+    }
+  ],
+  "body_names": [
+    "base",
+    "carrier",
+    "foot"
+  ],
+  "ground_counts": [
+    720,
+    720,
+    0
+  ],
+  "native_errors": [],
+  "native_dtype_fields": [
+    [
+      "env0",
+      "env1",
+      "body0",
+      "body1",
+      "localPos0",
+      "localPos1",
+      "minDist",
+      "initialOverlap",
+      "normal",
+      "offset0",
+      "offset1",
+      "lambda",
+      "lambdaFriction",
+      "friction",
+      "torsionFriction",
+      "rollingFriction"
+    ]
+  ],
+  "com_local": [
+    [
+      0.029999999329447746,
+      0.0,
+      0.0
+    ],
+    [
+      0.029999999329447746,
+      0.0,
+      0.0
+    ],
+    [
+      0.029999999329447746,
+      0.0,
+      0.0
+    ]
+  ],
+  "thresholds_changed": false,
+  "innovation_confirmed": false,
+  "scope": "Known translational articulated foot; does not certify arbitrary rolling contacts or real forces",
+  "source_sha256": "8fb12c074fed97a216f95ae5371e94af89890abbdb2b6234161a900b32e58af7",
+  "arrays_sha256": "56fc69a2ac9999d5e4bc348388eb5c0e36f42e46ce14489a7722959ab67b6418"
+}

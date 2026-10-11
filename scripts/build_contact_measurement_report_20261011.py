@@ -19,6 +19,17 @@ box_v3=read('results/contact_force_fixture_v3_20261012/repeat_comparison.json')
 v11=read('results/contact_cpu_export_v11_20261012/sampling_summary.json')
 quality11=read('results/contact_cpu_export_v11_20261012/quality_diagnostic.json')
 validation12=read('results/contact_cpu_validation_v12_20261012/validation_summary.json')
+slip13=read('results/contact_slip_diagnostic_v13_20261012/diagnostic.json')
+point16=read('results/contact_point_fixture_v16_20261012/first_attempt/summary.json')
+point17=read('results/contact_point_human_v17_20261012/state.json')
+velocity19=read('results/velocity_reference_fixture_v19_20261012/first_attempt/summary.json')
+point20=read('results/contact_point_human_v20_20261012/state.json')
+com21=read('results/contact_com_metric_v21_20261012/diagnostic.json')
+articulated22=read('results/articulated_contact_fixture_v22_20261012/first_attempt/summary.json')
+validation24=read('results/contact_com_validation_v24_20261012/validation_summary.json')
+numerics25=read('results/metric_runtime_diagnostic_v25_20261012/diagnostic.json')
+runtime26=read('results/contact_com_runtime_v26_20261012/runtime_check.json')
+replay27=read('results/fixed_reference_com_v27_20261012/replay_summary.json')
 probe=read('results/condition_feedback_probe_v2_20261011/probe_summary.json')
 inputs=[ROOT/name for name in ('results/contact_sampling_v8_20261011/sampling_summary.json',
  'results/contact_force_fixture_20261011/repeat_comparison.json',
@@ -28,10 +39,22 @@ inputs=[ROOT/name for name in ('results/contact_sampling_v8_20261011/sampling_su
  'results/contact_cpu_export_v11_20261012/sampling_summary.json',
  'results/contact_cpu_export_v11_20261012/quality_diagnostic.json',
  'results/contact_cpu_validation_v12_20261012/validation_summary.json',
+ 'results/contact_slip_diagnostic_v13_20261012/diagnostic.json',
+ 'results/contact_point_fixture_v16_20261012/first_attempt/summary.json',
+ 'results/contact_point_human_v17_20261012/state.json',
+ 'results/velocity_reference_fixture_v19_20261012/first_attempt/summary.json',
+ 'results/contact_point_human_v20_20261012/state.json',
+ 'results/contact_com_metric_v21_20261012/diagnostic.json',
+ 'results/articulated_contact_fixture_v22_20261012/first_attempt/summary.json',
+ 'results/contact_com_validation_v24_20261012/validation_summary.json',
+ 'results/metric_runtime_diagnostic_v25_20261012/diagnostic.json',
+ 'results/contact_com_runtime_v26_20261012/runtime_check.json',
+ 'results/fixed_reference_com_v27_20261012/replay_summary.json',
  'results/condition_feedback_probe_v2_20261011/probe_summary.json') if (ROOT/name).exists()]
 status=dict(innovation_candidates=3,preliminarily_tested=1,not_yet_experimentally_tested=2,
- confirmed_innovations=0,measurement_gate='NOT_PASSED',g1='NOT_STARTED_BY_GATE',
+ confirmed_innovations=0,measurement_gate='CALIBRATED_PROXY_AND_FIXED_REPLAY_PASS' if replay27 else 'FIXED_REPLAY_PENDING',g1='NOT_STARTED_BY_GATE',
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
+ slip13=slip13,point16=point16,point17=point17,velocity19=velocity19,point20=point20,com21=com21,articulated22=articulated22,validation24=validation24,numerics25=numerics25,runtime26=runtime26,replay27=replay27,
  v8=v8,box=box,v10=v10,box_v2=box_v2,box_v3=box_v3,v11=v11,quality11=quality11,validation12=validation12,
  input_hashes={str(path.relative_to(ROOT)):hashlib.sha256(path.read_bytes()).hexdigest() for path in inputs})
 (OUT/'status.json').write_text(json.dumps(status,indent=2,ensure_ascii=False),encoding='utf8')
@@ -46,20 +69,39 @@ rows=[('V11 CPU导出人体重复','新设置重复性通过，质量尚不通�
  ('箱体V3 CPU导出','箱体校验和重复性通过',f"状态和传感器相对原版本不变，重复净接触力差{box_v3['repeat_maximum_differences']['net_contact_force']:.6f}N；尚未验证人体环境" if box_v3 else '结果未同步'),
  ('V9','保留首次失败','适配器字符串断言失败，仿真和传感器校验没有执行'),
  ('V10','人体被动传感器记录复核',('传感器重复性：'+str(v10.get('sensor_repeatable_at_1mN'))+'；不等于真实接触力') if v10 else '尚未得到完整两次复核结果')]
+rows.extend([
+ ('V13 432次离线几何诊断','不支持最低角点是主要原因','原指标精确重算；诊断性选择附近最慢角点也仅1/432过线，不替代评分。'),
+ ('V14/V15 接触接口适配','保留两次失败','V14变量覆盖；V15字段命名不匹配。失败并不证明API不可用。'),
+ ('V16 接触接口物体校准','已通过' if point16 else '未同步','3312条原生接触、0错误；已知箱体状态/力/传感器与V3完全一致。'),
+ ('V17 人体接触记录','采集完成，校验程序失败' if point17 else '未同步','新增绑定键与旧校验器不兼容；独立核查53764条接触0错误、所有状态/动作与V11一致。'),
+ ('V19 速度参考位置','独立校准通过' if velocity19 else '未同步','线速度对应质心；6cm偏置、3rad/s旋转时，原点解释误差0.18006m/s，质心解释误差0.0000703m/s。'),
+ ('V20 人体记录接口修复',point20['status'] if point20 else '未同步','保留三键绑定；密集接触文件另由元信息哈希绑定；原阈值与物理不变。'),
+ ('V21 质心速度修正','离线计算修正完成' if com21 else '未同步','修正旋转杠杆臂；12输入仍脚滑代理0/12、联合0/12。旧评分保留，不算创新。'),
+ ('V22 已知关节体支撑/滑动/腾空',articulated22['status'] if articulated22 else '待复核','使用原判据验证正确静止、明确滑动和腾空，结果不能推广为所有滚动接触或真实力。'),
+ ('V25 数值环境差异','原因确认' if numerics25 else '待同步','保存时使用NumPy 1.23.5，旧复算使用1.24.4；统一到采集环境后，72条指标差异为0，分类不变。'),
+ ('V26 复算环境修复',runtime26['status'] if runtime26 else '待同步','独立见证保留旧失败及11个输出绑定，复用已完成72条，无新仿真、阈值或容差修改。'),
+ ('V27 固定参考回放',replay27['status'] if replay27 else '待完成','回放相同输入的原生成参考及物理轨迹参考，所有来源与构建失败保留；非候选效力实验。')])
 table=''.join('<tr>'+''.join('<td>'+html.escape(str(value))+'</td>' for value in row)+'</tr>' for row in rows)
 p=probe['summary'] if probe else {}
 probe_table=''.join(f'<tr><td>{html.escape(name)}</td><td>{row["attempts"]}</td><td>{row["endpoint_error_m"]*100:.2f}</td><td>{row["condition_pass"]}</td><td>{row["physical_pass"]}</td><td>{row["joint_pass"]}</td></tr>' for name,row in p.items())
-validation_text='全24验证来源、3生成种子、两种前缀的验证尚未完成。'
-if validation12:
-    validation_rows=''.join('<tr>'+''.join('<td>'+html.escape(str(row[key]))+'</td>' for key in ('mode','seed','inputs','completed','condition_pass','physical_pass','joint_pass'))+'</tr>' for row in validation12['entries'])
-    validation_text='<p>新固定设置已完成全部432次验证尝试，原始目标与阈值不变，失败保留。这是测量与质量诊断，不是候选机制有效性实验。</p><table><tr><th>前缀</th><th>种子</th><th>尝试</th><th>完成</th><th>条件合格</th><th>物理代理合格</th><th>联合合格</th></tr>'+validation_rows+'</table><p>阶段决定：'+html.escape(validation12['decision'])+'。未启动G1或下游训练，尚需人体质量指标的正负例校准。</p>'
+validation_text='质心速度修正后的全24验证来源、3生成种子、两种前缀验证尚未完成。'
+if validation24:
+    validation_rows=''.join('<tr>'+''.join('<td>'+html.escape(str(row[key]))+'</td>' for key in ('mode','seed','inputs','completed','condition_pass','physical_pass','joint_pass'))+'</tr>' for row in validation24['entries'])
+    validation_text='<p>质心速度修正后已完成432次验证尝试：24来源×3偏移×3种子×2前缀。它是验证集诊断，不能称为每方法432测试输入的正式实验。原目标、阈值不变，失败保留。</p><table><tr><th>前缀</th><th>种子</th><th>尝试</th><th>完成</th><th>条件合格</th><th>物理代理合格</th><th>联合合格</th></tr>'+validation_rows+'</table><p>阶段决定：'+html.escape(validation24['decision'])+'。物理质量未通过与测量程序未通过是不同问题；此表不证明候选机制无效，更不证明创新有效。</p>'
+replay_text='<p>固定参考回放尚未完成。</p>'
+if replay27:
+    replay_rows=''.join('<tr>'+''.join('<td>'+html.escape(str(row[key]))+'</td>' for key in ('reference','attempted','completed','condition_pass','physical_pass','tracking_pass','combined_construction_replay_joint_pass','construction_terminated'))+'</tr>' for row in replay27['entries'])
+    replay_text='<table><tr><th>固定参考</th><th>尝试</th><th>完成</th><th>条件合格</th><th>物理代理合格</th><th>跟踪合格</th><th>构建＋回放联合合格</th><th>构建终止</th></tr>'+replay_rows+'</table><p>所有72输入都保留。构建终止后补齐的序列不能因回放成功而恢复联合成功资格。这是单种子接口与质量诊断，不是新算法对比。</p>'
+measurement_text='已知正负对照通过，固定参考回放尚待完成。'
+if replay27:
+    measurement_text='重置、坐标、时间、数值复算、已知正负对照及固定参考回放接口已通过。足部指标仍是碰撞表面滑移代理，不能称为真实接触力或所有滚动接触的真值。人体物理质量与候选效力另行判断。'
 document=f'''<!doctype html><html lang="zh-CN"><meta charset="UTF-8"><title>条件动作生成：接触测量复核与候选机制</title>
 <style>body{{max-width:1100px;margin:32px auto;padding:0 24px;font:16px/1.75 system-ui;color:#172635}}h1,h2{{color:#153c5a}}table{{border-collapse:collapse;width:100%;margin:18px 0}}th,td{{border:1px solid #cbd5df;padding:10px;text-align:left}}th{{background:#eaf1f7}}.notice{{padding:16px;background:#fff2d8;border-left:5px solid #b67500}}a{{color:#126496}}@media print{{body{{max-width:none;margin:0}}tr{{break-inside:avoid}}}}</style>
 <h1>条件动作生成：测量复核与候选机制</h1><p>2026-10-12 · 冻结生成模型和人体跟踪器 · 仅仿真 · 实验结果暂不写入Overleaf</p>
-<div class="notice"><strong>3个候选、1个已初测、2个未测试、0个确认创新。</strong>完整接触测量门尚未通过。程序修复、传感器记录、文档执行见证均不作为论文创新。</div>
+<div class="notice"><strong>3个候选、1个已初测、2个未测试、0个确认创新。</strong>{measurement_text}程序修复、传感器记录、文档执行见证均不作为论文创新。</div>
 <h2>本轮测量证据</h2><table><tr><th>试验</th><th>状态</th><th>实际证据与边界</th></tr>{table}</table>
 <p>简单物体测试采用5公斤箱体、平面、已知重力和无摩擦滑动。稳定支撑力接近49.05N，初始腾空接触力接近零。约束力传感器重复一致，但关节系统中的传感器还可能包含内部约束反力，因此不能将箱体结果推广为人体接触测量通过。</p>
-<p>V11只证明固定新设置内的重复性，不能将其解释为行为不变的修复。初始七项状态与旧设置一致，第一步微小数值差异随后由闭环放大。原阈值保持不变；小样本穿透12/12通过、连续性7/12通过、脚滑代理0/12通过，联合0/12。</p><h2>全来源验证诊断</h2>{validation_text}<h2>C1的既有初步结果（旧导出设置）</h2><table><tr><th>方法</th><th>输入数</th><th>平均目标误差(cm)</th><th>条件合格</th><th>物理代理合格</th><th>联合合格</th></tr>{probe_table}</table>
+<p>V11只证明固定新设置内的重复性，不能将其解释为行为不变的修复。初始七项状态与旧设置一致，第一步微小数值差异随后由闭环放大。原阈值保持不变；小样本穿透12/12通过、连续性7/12通过、脚滑代理0/12通过，联合0/12。</p><h2>全来源验证诊断</h2>{validation_text}<h2>速度计算修正与验证边界</h2><p>V19确认原计算将质心线速度当作刚体原点线速度，脚底材料点速度需要扣除旋转后的质心偏移。已单独修正并完成已知静止/滑动/腾空箱体和旋转材料点校验。V21的12条人体输入仍未达到原物理判据，因此计算错误不能解释全部质量问题。历史V12的432次评分没有覆盖正确速度约定，暂不作为正式有效性结论；V24修正后的结果见上表。所有阈值与原始目标保持不变。</p><h2>固定参考回放</h2>{replay_text}<h2>C1的既有初步结果（旧导出设置）</h2><table><tr><th>方法</th><th>输入数</th><th>平均目标误差(cm)</th><th>条件合格</th><th>物理代理合格</th><th>联合合格</th></tr>{probe_table}</table>
 <p>仅4个动作来源、3种偏移、1个生成种子，每臂最多3候选。条件改善是探索性信号；物理代理尚不可靠，联合结果不能证明方法有效或普遍无效。原始目标、失败和阈值均保留。并非原计划432输入的正式验证。</p>
 <h2>三个候选机制</h2><ol><li><strong>C1：有界条件误差补偿。</strong>按实际执行误差有限调整下一轮生成条件。已初测，尚未通过正式效力及新颖性门。</li><li><strong>C2：可靠反馈与质量守护。</strong>估计反馈可靠性，避免不可靠分量驱动更新，拒绝使条件或物理质量恶化的候选。尚未实验。</li><li><strong>C3：按修复价值分配预算。</strong>区分参考缺陷与控制器困难，按单位成本的预计合格增益与来源覆盖分配候选。尚未实验。</li></ol>
 <p>物理精化、执行反馈、闭环数据扩增已有前人路线。以上具体机制还需最近邻方法核查和等预算消融；不能直接写成论文贡献。</p>

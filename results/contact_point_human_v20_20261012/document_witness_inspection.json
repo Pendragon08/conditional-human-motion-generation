@@ -1,0 +1,178 @@
+{
+  "role": "Independent fresh exact-once document witness; recording/invariance only",
+  "invocation_count": 1,
+  "terminal_exit_code": 0,
+  "sentinels": [
+    "CONTACT_SAMPLING_BATCH_PASS repeat_a",
+    "CONTACT_SAMPLING_DOCUMENT_CHECK_PASS"
+  ],
+  "state": {
+    "status": "WITNESS_PASS",
+    "time": 1791738915.151884
+  },
+  "ledger": [
+    {
+      "stage": "measurement",
+      "label": "repeat_a",
+      "seconds": 38.7164987064898,
+      "exit_code": 0
+    }
+  ],
+  "native_record_count": 53764,
+  "native_error_count": 0,
+  "dtype_fields": [
+    [
+      "env0",
+      "env1",
+      "body0",
+      "body1",
+      "localPos0",
+      "localPos1",
+      "minDist",
+      "initialOverlap",
+      "normal",
+      "offset0",
+      "offset1",
+      "lambda",
+      "lambdaFriction",
+      "friction",
+      "torsionFriction",
+      "rollingFriction"
+    ]
+  ],
+  "body_index_min": -1,
+  "body_index_max": 23,
+  "environment_count": 12,
+  "record_steps_count": 120,
+  "record_step_min": 0,
+  "record_step_max": 119,
+  "force_finite": true,
+  "force_min_N": 0.0,
+  "force_max_N": 681.279052734375,
+  "active_force_records": 10759,
+  "ground_contact_records": 43911,
+  "active_ground_contacts": 10189,
+  "body_com_counts": [
+    24,
+    24,
+    24,
+    24,
+    24,
+    24,
+    24,
+    24,
+    24,
+    24,
+    24,
+    24
+  ],
+  "foot_com_environment0": [
+    {
+      "mass": 0.6843680143356323,
+      "com": [
+        0.02419999986886978,
+        0.02329999767243862,
+        -0.023900000378489494
+      ]
+    },
+    {
+      "mass": 0.1605396568775177,
+      "com": [
+        0.024800000712275505,
+        -0.003000000026077032,
+        0.005499999970197678
+      ]
+    },
+    {
+      "mass": 0.6944998502731323,
+      "com": [
+        0.025599999353289604,
+        -0.021199999377131462,
+        -0.017400000244379044
+      ]
+    },
+    {
+      "mass": 0.1662379503250122,
+      "com": [
+        0.022699998691678047,
+        0.00419999985024333,
+        0.0044999998062849045
+      ]
+    }
+  ],
+  "body_properties_identical_across_envs": true,
+  "native_hash_binding": true,
+  "source_bindings": {
+    "scripts/reset_aligned_collect_v4.py": true,
+    "scripts/physics_guided_collect.py": true,
+    "scripts/physics_guided_core.py": true,
+    "scripts/physics_guided_queue.py": true,
+    "scripts/physics_guided_lineage.py": true,
+    "scripts/r3_closd_isolated_entry.py": true,
+    "scripts/run_reset_alignment_checks_v4.py": true,
+    "scripts/run_contact_point_human_v20_20261012.py": true,
+    "scripts/contact_point_collect_v20_20261012.py": true,
+    "scripts/contact_cpu_export_collect_v11.py": true,
+    "scripts/native_contact_diagnostic.py": true,
+    "scripts/contact_sampling_collect_v5.py": true,
+    "scripts/contact_sampling_collect_v8.py": true,
+    "scripts/contact_sensor_collect_v10.py": true,
+    "scripts/closd_cpu_export_bridge.py": true,
+    "scripts/metric_numeric_equivalence.py": true,
+    "scripts/physics_guided_numeric_lineage.py": true,
+    "configs/physics_guided_20261011.json": true,
+    "configs/env-closd-baseline-20261010.json": true,
+    "docs/contact_point_human_v20_20261012.md": true
+  },
+  "manifest_binding": true,
+  "reset_gate": true,
+  "reset_difference": {
+    "_humanoid_root_states": 0.0,
+    "_dof_pos": 0.0,
+    "_dof_vel": 0.0,
+    "_rigid_body_pos": 0.0,
+    "_rigid_body_rot": 0.0,
+    "_rigid_body_vel": 0.0,
+    "_rigid_body_ang_vel": 0.0
+  },
+  "state_vs_v11": {
+    "actual": 0.0,
+    "reference": 0.0,
+    "quaternion": 0.0,
+    "linvel": 0.0,
+    "angvel": 0.0,
+    "contact_force": 0.0,
+    "valid": 0.0,
+    "terminated": 0.0,
+    "reference_frame": 0.0
+  },
+  "sensor_vs_v11": {
+    "sensor": 0.0,
+    "root": 0.0,
+    "dof_pos": 0.0,
+    "dof_vel": 0.0,
+    "action": 0.0
+  },
+  "metric_count": 12,
+  "thresholds_changed": false,
+  "metrics_replaced": false,
+  "innovation_confirmed": false,
+  "fence_calls": 242,
+  "observation_mode": 1,
+  "sim_params": {
+    "dt": 0.01666666753590107,
+    "substeps": 2,
+    "use_gpu_pipeline": false,
+    "contact_collection": 2,
+    "physx_use_gpu": true
+  },
+  "metadata_sha256": "269e42ff2fd4a49004ac7e95c87f5a2bb23f72ea56c9750edd56506188a51714",
+  "native_sha256": "60ea5f42e4fab9b6f93d239396ed9dd3f2aa80654391f6e24c5d2068ae0f5605",
+  "versions_sha256": "4c4512799f11b2ab56635426ffe61aec579624c37e96177fa557b61d4894ae27",
+  "limits": [
+    "No metric replacement or efficacy claim",
+    "No independent articulation/COM velocity calibration",
+    "Native lambda can differ from all-substep tensor temporal aggregation",
+    "Repeat_b not executed by this witness"
+  ]
+}

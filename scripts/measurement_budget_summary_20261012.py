@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-prefixes=('physics_guided_20261011','reset_alignment','condition_feedback_probe','contact_sampling','contact_sensor','contact_force_fixture','contact_cpu_export','contact_cpu_validation')
+prefixes=('physics_guided_20261011','reset_alignment','condition_feedback_probe','contact_sampling','contact_sensor','contact_force_fixture','contact_cpu_export','contact_cpu_validation','contact_point_fixture','contact_point_human','velocity_reference_fixture','articulated_contact_fixture','contact_com_validation','fixed_reference_com','condition_feedback_formal')
 directories=[p for p in (ROOT/'results').iterdir() if p.is_dir() and p.name.startswith(prefixes) and p.name.endswith(('20261011','20261012'))]
 rows=[]
 for directory in sorted(directories):
