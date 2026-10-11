@@ -1,0 +1,170 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "reason_code": "contact_force_nonrepeatable_mixed_proxy_provenance_limited_scope",
+  "summary": "Artifacts and bound core outputs are coherent, but contact-force sampling fails repeatability, force-gated physical metrics are not valid efficacy evidence, and the run has one seed with no comparison arm.",
+  "trace_path": ".aris/traces/experiment-audit/2026-10-11_run01/",
+  "agent_id": "/root/contact_sampling_v8_integrity_audit",
+  "verdict_id": "/root/contact_sampling_v8_integrity_audit",
+  "executor_model": "codex-parent-runtime-not-exposed",
+  "executor_family": "openai",
+  "reviewer_model": "codex-fresh-agent-runtime-not-exposed",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "deep read-only audit",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "generated_at": "2026-10-11T23:49:15+08:00",
+  "date": "2026-10-11",
+  "auditor": "fresh-codex-read-only-agent",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "evidence_class_verdicts": {
+    "artifact_integrity": "pass",
+    "reset_state_reproducibility": "pass_limited",
+    "completion_fence_reconstructability": "warn",
+    "metric_recomputation": "pass",
+    "contact_force_repeatability": "fail",
+    "physical_measurement_validity_for_efficacy": "fail",
+    "method_efficacy": "untested"
+  },
+  "checks": {
+    "gt_provenance": {
+      "status": "warn",
+      "details": "Endpoint and heading are fixed from dataset motion, but generated frames 60-119 are used as the tracking reference. Tracking is a controller-vs-generated-plan proxy and must not be called real GT."
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "Inputs use pinned dataset Mean/Std. Reported metrics are raw SI errors or fractions against fixed thresholds; no metric uses a prediction-derived max/min/mean denominator."
+    },
+    "result_existence": {
+      "status": "pass",
+      "details": "All requested artifacts exist. Both receipts report 12 completed cases and zero joint passes; independent recomputation matches the summary and every classification."
+    },
+    "dead_code": {
+      "status": "pass",
+      "details": "All result-producing metric functions are on the executed path. Unused correction/selection/replay helpers and imports do not produce V8 results."
+    },
+    "scope": {
+      "status": "warn",
+      "details": "Four unique clips, three offsets, two families, seed 11, round 0, one generation draw, repeated in a second process. No baseline/intervention or independent seed."
+    },
+    "eval_type": [
+      "real_gt_dataset_conditions_with_synthetic_offsets",
+      "synthetic_proxy_generated_plan_tracking",
+      "simulation_only_physical_proxy"
+    ],
+    "bindings": {
+      "status": "warn",
+      "details": "Core request/output hashes and current source, weights, external inputs, commit, and asset all match. Resolved config and final summary/state are not in a final output manifest; inherited embedded config hashes differ from the current execution config hash."
+    },
+    "reset_and_fence": {
+      "status": "warn",
+      "details": "Seven archived reset-state pairs recompute exactly to zero difference. Four reset-cache scalars and the 242 fence count lack raw cache/call-trace evidence for independent reconstruction."
+    },
+    "repeatability": {
+      "status": "fail",
+      "details": "Kinematic channels are bit-identical, while contact-force max difference is 728.0305786132812 N and net all-body force max difference is 1591.655029296875 N; force_sampling_repeatable_at_1mN is false."
+    }
+  },
+  "observed_counts": {
+    "unique_clips": 4,
+    "families": 2,
+    "offsets_per_clip": 3,
+    "cases_per_repeat": 12,
+    "repeats": 2,
+    "independent_generation_seeds": 1,
+    "frames_per_case": 120,
+    "completed_per_repeat": 12,
+    "condition_pass_per_repeat": 4,
+    "physical_pass_per_repeat": 0,
+    "tracking_pass_per_repeat": 12,
+    "joint_pass_per_repeat": 0
+  },
+  "verified_binding_hashes": {
+    "upstream_git_commit": "d8950bdb78312fcd2844f336b3fc079e7368c87f",
+    "configs/env-closd-baseline-20261010.json": "sha256:e5f9e6b711b7c6221cfb01e3deab404c5849e521ec08a3d25dca1820a279fcf6",
+    "scripts/r3_closd_isolated_entry.py": "sha256:601fd5557b71a8259d12575beb3848f206795a7c9f7cefd02e538e8c97d280e6",
+    "generator_weights": "sha256:3ca68ae54975946b3fe5c6cd64a6eafc439b5fc43c166bc9a98d1c43aeef6618",
+    "controller_weights": "sha256:7ead3778b95516d8b91b7c5939674e45dd0ad10fcc22da60f9f57d204695f6ac",
+    "foot_asset": "sha256:5cb2b04e824c79c4381c78f6991f385082ba0c0dae351f29e0c4200539c65092",
+    "motion_cache_blob_a": "sha256:a16b386a2b7d357a088c7568b97f6ab0954a508465b1a5d9d0faf29e9e8552fd",
+    "motion_cache_blob_b": "sha256:c4fa34cf78516e5893f7fbecb47056e358478a2003fa18d518c3412ecf23ddb2",
+    "HumanML3D_Mean.npy": "sha256:26e136555dab04c94a129d446c26e6b9939cbf045fbf77bcf5462c1fb5a2001c",
+    "HumanML3D_Std.npy": "sha256:6565a65ed9b31e23c328829a309e1c482be8b85fd23b43d65451a9b19a917f40",
+    "measurement_repair_summary.json": "sha256:3fb7e0140738e2d68adb65fd1680816b51ca463c6e29ac8900fe791cfaface83",
+    "prior_failed_probe_state.json": "sha256:3b131cbfd14b7719aa31da7c0aeff3d1ab4b57c6f3780da386603336972f8391"
+  },
+  "repeatability_numbers": {
+    "actual_max_abs_difference": 0.0,
+    "reference_max_abs_difference": 0.0,
+    "quaternion_max_abs_difference": 0.0,
+    "linvel_max_abs_difference": 0.0,
+    "angvel_max_abs_difference": 0.0,
+    "contact_force_max_abs_difference_N": 728.0305786132812,
+    "net_all_body_force_max_abs_difference_N": 1591.655029296875,
+    "maximum_surface_slip_fraction_difference": 0.025587514744578488,
+    "force_sampling_repeatable_at_1mN": false,
+    "classifications_equal": true
+  },
+  "contradictions": [
+    {
+      "id": "C1",
+      "severity": "warn",
+      "details": "The base collector says generated targets are never evaluation targets, but generated frames 60-119 are the reference for tracking metrics."
+    },
+    {
+      "id": "C2",
+      "severity": "warn",
+      "details": "source_manifest.json and frozen_thresholds.json embed config_sha256 f7e06e..., while execution requests bind current config 2d8fd0.... The files are separately bound, but the embedded hash is inherited/stale."
+    },
+    {
+      "id": "C3",
+      "severity": "fail_for_physical_validity",
+      "details": "The two repeats have identical stored kinematics but very different contact forces. Equal classifications arise because every physical/joint gate fails, not because forces are repeatable."
+    }
+  ],
+  "claims": [
+    {"id": "V8_COMPLETE_BOUND_RUNS", "impact": "supported"},
+    {"id": "SEVEN_RESET_STATE_TENSORS_STABLE", "impact": "supported"},
+    {"id": "FOUR_PRIVATE_RESET_CACHES_STABLE", "impact": "needs_qualifier_metadata_only"},
+    {"id": "COMPLETION_FENCE_CALLS_242", "impact": "needs_qualifier_instrumentation_only"},
+    {"id": "CONTACT_FORCE_REPEATABLE_AT_1MN", "impact": "refuted"},
+    {"id": "PHYSICAL_METRIC_VALIDITY", "impact": "unsupported"},
+    {"id": "METHOD_EFFICACY", "impact": "untested"}
+  ],
+  "audited_input_hashes": {
+    "scripts/contact_sampling_collect_v8.py": "sha256:8373f5301e1022d7414c9415305edf08855db2e0a8d3efe000fa0b4dff861109",
+    "scripts/contact_sampling_collect_v5.py": "sha256:651bbaf6cd0a2ba675fdbd5d735d66ee5a3aeecab755060aa2b5628be8d328a4",
+    "scripts/physics_guided_collect.py": "sha256:a5d426cf942ecf0b3ac121b389aad5dd6459ce8ea34047c5d5a88b0b1cc77d43",
+    "scripts/run_contact_sampling_v8_20261011.py": "sha256:6ec38ba036558e223af12c4b819d32fb183a2d84a1b5b6cd00de2ea65d4dd2cc",
+    "scripts/run_reset_alignment_checks_v4.py": "sha256:5d0a961b6ce9903fd666fdbae56736a68eddd1402ddf72793fc000ee0dea98d2",
+    "scripts/physics_guided_core.py": "sha256:e6be20aa8a060bad20881cb81bab4e3328282a163b0d3e9571c7c590443436ed",
+    "scripts/physics_guided_numeric_lineage.py": "sha256:5cff8cd9fbf2eded3f3ec503c2b6afb8005f463963744b8f326c3a0c2a7a0512",
+    "scripts/metric_numeric_equivalence.py": "sha256:fa84c42cc2c894adb4458413ddbac16abf760a4ded71449ee467c1c8451cc8b5",
+    "configs/physics_guided_20261011.json": "sha256:2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+    "docs/contact_sampling_v8_20261011.md": "sha256:7de595a57b4400069b0bfc238ada5b2deb1f7846574688d0acbe815422743f19",
+    "results/contact_sampling_v8_20261011/versions.json": "sha256:e00bf1d88c3247e79bf4a51165e2ceb644caa5bf698d0e7ea3edaf36d81bb80d",
+    "results/contact_sampling_v8_20261011/state.json": "sha256:b71730db197c75fff7a22987efb8d355dc96d8e03d9eb86f135cb67a8a144e5e",
+    "results/contact_sampling_v8_20261011/sampling_summary.json": "sha256:0946153182349e0dc860ffa46caf36d4652f35cc4de0d5c5348ffb41cee84a47",
+    "results/contact_sampling_v8_20261011/budget_ledger.json": "sha256:c04338e322e58ae1ec6a2b6d789c4413e5c2b3a16d89d4759e110653182b4309",
+    "results/contact_sampling_v8_20261011/frozen_thresholds.json": "sha256:451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "results/contact_sampling_v8_20261011/source_manifest.json": "sha256:a7065f535ee7adbc8bac95c5be2bc527cf740d43eabe3a40105ce6c471bf95de",
+    "results/contact_sampling_v8_20261011/requests/repeat_a.json": "sha256:fc4f817924db669cedd99b5b24e52af0fb2e8d4f0e6d8fe2029d94d1437544ee",
+    "results/contact_sampling_v8_20261011/requests/repeat_b.json": "sha256:fc4f817924db669cedd99b5b24e52af0fb2e8d4f0e6d8fe2029d94d1437544ee",
+    "results/contact_sampling_v8_20261011/raw/repeat_a/metadata.json": "sha256:6aae4b5b1770121d0393f4dc5014b1fec86bfba73130f7dc115b3d3ce9781fbb",
+    "results/contact_sampling_v8_20261011/raw/repeat_a/metrics.json": "sha256:0545a27ae568ff4e1d0642e3cf10aff8a16961ca98ea19915e3dfe01adedf3d2",
+    "results/contact_sampling_v8_20261011/raw/repeat_a/receipt.json": "sha256:a0f8f4f732dfbc9f3acd3599a26cf932924e5928a427b8004b67688de4deefb5",
+    "results/contact_sampling_v8_20261011/raw/repeat_a/lineage.json": "sha256:1048d16b2d4c4a5866d25645b67cd431bc31befd7f64c3b9b5f7389632673249",
+    "results/contact_sampling_v8_20261011/raw/repeat_a/metric_numerics.json": "sha256:9b310b391a1a499ab54fe2854d2153f9f797b3b0d3275fd29fb22cf3cfe6b64a",
+    "results/contact_sampling_v8_20261011/raw/repeat_a/initial_states.npz": "sha256:866765c4e3c965f532efae1502cd2200c52bca9271ec41d195c52fa26740abed",
+    "results/contact_sampling_v8_20261011/raw/repeat_a/trajectories.npz": "sha256:5953136a3d482544acf4fc86f85d1c2a2b296f2b6e490457ee19715092ad1b2d",
+    "results/contact_sampling_v8_20261011/raw/repeat_b/metadata.json": "sha256:de96b4ef11133171cee4d4a8aadc6c822e066adf8682317e14e089a03dd285c7",
+    "results/contact_sampling_v8_20261011/raw/repeat_b/metrics.json": "sha256:f1bf04111aa507362ae09915ed4e95cd784aaabf6c01b2cbab4e77d03ae5a04f",
+    "results/contact_sampling_v8_20261011/raw/repeat_b/receipt.json": "sha256:e9c3f843d2ca9f7f5d570950ccc316844680b19f1164086fb499467e726fbf76",
+    "results/contact_sampling_v8_20261011/raw/repeat_b/lineage.json": "sha256:22ab2281d597d52ebf814caaa3ac4048c0abc93930928d38a0772b2263fe543b",
+    "results/contact_sampling_v8_20261011/raw/repeat_b/metric_numerics.json": "sha256:5b8a13e0c0d120ce86d51e80a43f01fc5eb2dc26d3577e16eff890bc206d8dd6",
+    "results/contact_sampling_v8_20261011/raw/repeat_b/initial_states.npz": "sha256:866765c4e3c965f532efae1502cd2200c52bca9271ec41d195c52fa26740abed",
+    "results/contact_sampling_v8_20261011/raw/repeat_b/trajectories.npz": "sha256:021746a9496a88f6a55480fd06ff03118e1179e4c33d4dae06e835d210845cd1",
+    "local_document_witness": "sha256:e2feafafb392afeb80c2dc5372e5898a94867010fe09bc2c967e4753662fab5b"
+  }
+}

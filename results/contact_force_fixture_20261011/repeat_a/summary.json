@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "checks": {
+    "settled_stationary_height_within_1cm": true,
+    "settled_stationary_speed_below_2cm_s": true,
+    "net_force_weight_relative_error_below_10pct": true,
+    "sensor_force_weight_relative_error_below_10pct": true,
+    "sliding_velocity_retained_within_2cm_s": true,
+    "high_airborne_initial_force_below_1N": true,
+    "high_airborne_initial_sensor_below_1N": true,
+    "high_airborne_initial_height_above_ground": true
+  },
+  "fixtures": [
+    "stationary_grounded",
+    "frictionless_slide",
+    "high_airborne_drop",
+    "upward_takeoff"
+  ],
+  "masses_kg": [
+    5.0,
+    5.0,
+    5.0,
+    5.0
+  ],
+  "weights_N": [
+    49.050000000000004,
+    49.050000000000004,
+    49.050000000000004,
+    49.050000000000004
+  ],
+  "dt": 0.01666666753590107,
+  "steps": 120,
+  "substeps": 2,
+  "contact_collection": 2,
+  "generator_used": false,
+  "controller_used": false,
+  "thresholds_preregistered": true,
+  "simulator_force_sensor_is_not_real_force_ground_truth": true,
+  "interpretation": "Known box/plane physics fixture; does not certify humanoid contact points, articulation sensors or slip proxy.",
+  "stationary_net_force_range_N": [
+    49.043155670166016,
+    49.06352233886719
+  ],
+  "stationary_sensor_force_range_N": [
+    49.036190032958984,
+    49.063514709472656
+  ],
+  "source_sha256": "4b04f7aa4bb7a34425afb9a4f63cf852dd94c3a13598b2d460d12a3bdcefb9c1",
+  "arrays_sha256": "7ee565053a0c1424b1466a676be7b4dc5081b62473384fbb00ddfc31a9aec722",
+  "elapsed_seconds": 0.791958836838603
+}

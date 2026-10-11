@@ -1,0 +1,61 @@
+{
+  "stationary_grounded": {
+    "surface_slip_proxy_mean_m_s": 0.0,
+    "surface_slip_proxy_fraction": 0.0,
+    "support_observations": 240,
+    "penetration_fraction": 0.0,
+    "penetration_depth_p95_m": 0.0,
+    "airborne_fraction": 0.0,
+    "contact_metric_type": "body-force and collision-primitive surface proxy"
+  },
+  "known_horizontal_slide": {
+    "surface_slip_proxy_mean_m_s": 0.20000000000000004,
+    "surface_slip_proxy_fraction": 1.0,
+    "support_observations": 240,
+    "penetration_fraction": 0.0,
+    "penetration_depth_p95_m": 0.0,
+    "airborne_fraction": 0.0,
+    "contact_metric_type": "body-force and collision-primitive surface proxy"
+  },
+  "airborne_no_force": {
+    "surface_slip_proxy_mean_m_s": null,
+    "surface_slip_proxy_fraction": null,
+    "support_observations": 0,
+    "penetration_fraction": 0.0,
+    "penetration_depth_p95_m": 0.0,
+    "airborne_fraction": 1.0,
+    "contact_metric_type": "body-force and collision-primitive surface proxy"
+  },
+  "known_surface_penetration": {
+    "surface_slip_proxy_mean_m_s": 0.0,
+    "surface_slip_proxy_fraction": 0.0,
+    "support_observations": 240,
+    "penetration_fraction": 1.0,
+    "penetration_depth_p95_m": 0.03,
+    "airborne_fraction": 0.0,
+    "contact_metric_type": "body-force and collision-primitive surface proxy"
+  },
+  "rolling_zero_material_point_speed": {
+    "surface_slip_proxy_mean_m_s": 0.0,
+    "surface_slip_proxy_fraction": 0.0,
+    "support_observations": 240,
+    "penetration_fraction": 0.0,
+    "penetration_depth_p95_m": 0.0,
+    "airborne_fraction": 0.0,
+    "contact_metric_type": "body-force and collision-primitive surface proxy"
+  },
+  "status": "PASS_GEOMETRY_ONLY",
+  "thresholds_changed": false,
+  "force_source": "Manually specified analytical fixtures; NOT recorded simulation forces",
+  "limitations": [
+    "Does not calibrate PhysX force reporting or actual contact point truth",
+    "Fixtures are not a feasible humanoid motion dataset",
+    "Airborne is a state label, not a floating-error judgment",
+    "End-to-end measurement and physical thresholds remain unvalidated"
+  ],
+  "inputs_sha256": {
+    "results/contact_sampling_v5_20261011/raw/repeat_a/metadata.json": "1b909fa3951eaae735aca6232f38c2c94f0f2852517cc1e2334812514edec738",
+    "results/contact_sampling_v5_20261011/frozen_thresholds.json": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "scripts/contact_geometry_calibration_20261011.py": "2b0d8a93632304294b9ad1dc067511030c514eb63b8af5445fe66e80bd9c7e74"
+  }
+}
