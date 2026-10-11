@@ -1,5 +1,7 @@
 # Conditional Human Motion Generation
 
+**2026-10-11 实验结果入口**：[GitHub 可直接阅读的结果汇总表](results/physics_guided_20261011/RESULTS.md) · [公开结果文件与散列索引](results/physics_guided_20261011/artifact_index.csv)。完整数值、消融、失败与审计均已归档；本轮因测量校验未通过停止，G1 和下游训练未执行。
+
 **2026-10-11：物理引导条件反馈诊断已归档，测量门未通过。** 冻结DiP和CLoSD跟踪器，实现10个对比/消融配置，各432次独立回放。独立审计发现创建锚点与实际重置坐标错位，旧轮不具备受控效力。三次独立初始化复核保留失败：V3计划216例、实际12例；首批XY对齐改善，但4项导出刚体状态不一致，随后资源保护断言停止。按方案未开展G1或下游训练，不能宣称候选机制有效或无效。保守累计约1.989 GPU小时，无旧实验删除。[HTML报告](results/physics_guided_20261011/experiment_report.html) · [旧轮独立审计](results/physics_guided_20261011/EXPERIMENT_AUDIT.md) · [V3复核与停止依据](results/reset_alignment_v3_20261011/EXPERIMENT_AUDIT.md)。
 
 **最新汇报归档（2026-10-02）**：[HTML报告与本地视频/曲线](reports/teacher_report_20261002/README.md) · [报告入口](reports/teacher_report_20261002/实验结果汇报.html) · [DreamControl独立报告](reports/teacher_report_20261002/DreamControl_实验结果汇报.html) · [CLoSD独立报告](reports/teacher_report_20261002/CLoSD_实验结果汇报.html) · [PPO曲线解读和策略文件格式](reports/16_PPO_training_interpretation_and_policy_formats_20261002.md)。下载仓库后用浏览器打开HTML；GitHub文件页本身不会播放整个报告。正文保持论文基线汇报范围，原始许可资产和模型权重不随此报告包上传。
