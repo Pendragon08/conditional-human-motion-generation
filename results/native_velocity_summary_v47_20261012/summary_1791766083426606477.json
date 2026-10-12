@@ -1,0 +1,341 @@
+{
+  "status": "COMPLETE_READ_ONLY_NATIVE_CONTROL_SUMMARY",
+  "original_launcher_status": "FAILED_KEYERROR_GENERATION_NOISE_IN_REPLAY_METADATA",
+  "original_failure_preserved": true,
+  "source_sha256": "39f19c18908ff911ad172b7f5504a67d1a15039e5c6088b874c3a8edb8eae675",
+  "input_hashes": {
+    "results/native_reference_velocity_v46_20261012/versions.json": "883d7dd07e8d20a45fc355f71750679a80db90f54e4dc36f82934bd9ad9ebcb9",
+    "results/native_reference_velocity_v46_20261012/budget_ledger.json": "02675861a1aa6cadebb2f4137d7feaaa294bd0ed1a3bf5a585525677ac60167c",
+    "results/native_reference_velocity_v46_20261012/frozen_thresholds.json": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "results/reference_velocity_v43_20261012/raw/val_planned_s11/metadata.json": "5e7b8deee2220368c13053c7463681b472c496c8484ef889dfef4f57b33e178e"
+  },
+  "batches": {
+    "native_construction": {
+      "attempts": 72,
+      "completed": 72,
+      "condition_pass": 10,
+      "physical_pass": 0,
+      "tracking_pass": 51,
+      "joint_pass": 0,
+      "slip_proxy_pass": 0,
+      "continuity_pass": 23,
+      "output_hashes": {
+        "metadata.json": "e1e34a7aa4ebcb8dc14585c155184816b47e4e74622b55aee6c1d9e85454a791",
+        "metrics.json": "944e12f600729ebf47e9b97192d2cacf7a7c4901704dff1f839c0ff5634cce81",
+        "trajectories.npz": "e96cb97ad5d12d4c54a3fbf57625d9ab4491e5c38febd800d78ae2a1baecfaaf"
+      }
+    },
+    "native_fixed_reference": {
+      "attempts": 72,
+      "completed": 72,
+      "condition_pass": 10,
+      "physical_pass": 0,
+      "tracking_pass": 51,
+      "joint_pass": 0,
+      "slip_proxy_pass": 0,
+      "continuity_pass": 23,
+      "output_hashes": {
+        "metadata.json": "6a7b69db8f65aa8c1e6c1655f4c3300d8b34fa61dbf561c870b9e33d73c8c533",
+        "metrics.json": "f623a2729b3ac9796be5cd2932e14c7fcbbc21f0a9d73659f63be6282c87c84c",
+        "trajectories.npz": "e96cb97ad5d12d4c54a3fbf57625d9ab4491e5c38febd800d78ae2a1baecfaaf"
+      }
+    },
+    "planned_fixed_reference": {
+      "attempts": 72,
+      "completed": 69,
+      "condition_pass": 27,
+      "physical_pass": 0,
+      "tracking_pass": 54,
+      "joint_pass": 0,
+      "slip_proxy_pass": 0,
+      "continuity_pass": 27,
+      "output_hashes": {
+        "metadata.json": "21cef6a766d19120e03dab0907563a580e5256fd629fca985df868e22f5b8714",
+        "metrics.json": "12f5e5adc6d21a2e189f6790f50f43f7f175be8fcbaf303d1be9d1aefb5fa1b7",
+        "trajectories.npz": "2f2ce526e783ea83fc47b8b1723ddcca34b93e87de84bcdc50823bff539c4cb4"
+      }
+    }
+  },
+  "strict_lineages": {
+    "val_native_s11": {
+      "lineage_sha256": "bb7fe61d872afe31effeb845c05f981084c79af78034ee21b00ef520741dcd2f",
+      "receipt_sha256": "cb6e6a41622bbb46e4fdb8a749d7aaba9983000b9543de5f606228f2fa0be558",
+      "request": {
+        "split": "val",
+        "mode": "native",
+        "seed": 11,
+        "round": 0,
+        "noise_round": 0,
+        "config": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+        "manifest": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+        "thresholds": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+        "versions": "883d7dd07e8d20a45fc355f71750679a80db90f54e4dc36f82934bd9ad9ebcb9"
+      },
+      "output_hashes": {
+        "metadata.json": "e1e34a7aa4ebcb8dc14585c155184816b47e4e74622b55aee6c1d9e85454a791",
+        "metrics.json": "944e12f600729ebf47e9b97192d2cacf7a7c4901704dff1f839c0ff5634cce81",
+        "trajectories.npz": "e96cb97ad5d12d4c54a3fbf57625d9ab4491e5c38febd800d78ae2a1baecfaaf"
+      },
+      "certification": "bound_request_at_execution"
+    },
+    "val_native_replay_s11": {
+      "lineage_sha256": "811c0231ba4ea2fd7f2311ce63f9d90ebe2b641726a39ca63cc7253f4892fa8d",
+      "receipt_sha256": "7cf4e5dbb4b06b7631f8c3b9e645174ae89671c64ebe801a2c4e4a7a92911a2b",
+      "request": {
+        "split": "val",
+        "mode": "replay",
+        "seed": 11,
+        "round": 0,
+        "noise_round": 0,
+        "config": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+        "manifest": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+        "thresholds": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+        "versions": "883d7dd07e8d20a45fc355f71750679a80db90f54e4dc36f82934bd9ad9ebcb9",
+        "replay_motion": "20e5a6362f845ba825d094076face769eee32be0f0703fadf03a983e557d7d2e"
+      },
+      "output_hashes": {
+        "metadata.json": "6a7b69db8f65aa8c1e6c1655f4c3300d8b34fa61dbf561c870b9e33d73c8c533",
+        "metrics.json": "f623a2729b3ac9796be5cd2932e14c7fcbbc21f0a9d73659f63be6282c87c84c",
+        "trajectories.npz": "e96cb97ad5d12d4c54a3fbf57625d9ab4491e5c38febd800d78ae2a1baecfaaf"
+      },
+      "certification": "bound_request_at_execution"
+    }
+  },
+  "interface": {
+    "status": "COMPLETE_REFERENCE_OBSERVATION_DIAGNOSTIC",
+    "attempts": 72,
+    "entries": [
+      {
+        "frame": 0,
+        "common_valid_inputs": 72,
+        "fields": {
+          "ref_position": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_previous": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_velocity": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "task_observation": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          }
+        }
+      },
+      {
+        "frame": 1,
+        "common_valid_inputs": 72,
+        "fields": {
+          "ref_position": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_previous": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_velocity": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "task_observation": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          }
+        }
+      },
+      {
+        "frame": 29,
+        "common_valid_inputs": 72,
+        "fields": {
+          "ref_position": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_previous": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_velocity": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "task_observation": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          }
+        }
+      },
+      {
+        "frame": 58,
+        "common_valid_inputs": 72,
+        "fields": {
+          "ref_position": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_previous": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_velocity": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "task_observation": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          }
+        }
+      },
+      {
+        "frame": 59,
+        "common_valid_inputs": 72,
+        "fields": {
+          "ref_position": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_previous": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_velocity": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "task_observation": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          }
+        }
+      },
+      {
+        "frame": 60,
+        "common_valid_inputs": 72,
+        "fields": {
+          "ref_position": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_previous": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_velocity": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "task_observation": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          }
+        }
+      },
+      {
+        "frame": 61,
+        "common_valid_inputs": 72,
+        "fields": {
+          "ref_position": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_previous": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_velocity": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "task_observation": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          }
+        }
+      },
+      {
+        "frame": 90,
+        "common_valid_inputs": 72,
+        "fields": {
+          "ref_position": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_previous": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_velocity": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "task_observation": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          }
+        }
+      },
+      {
+        "frame": 119,
+        "common_valid_inputs": 72,
+        "fields": {
+          "ref_position": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_previous": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "ref_velocity": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          },
+          "task_observation": {
+            "maximum_absolute_difference": 0.0,
+            "equal": true
+          }
+        }
+      }
+    ],
+    "output_bindings": {
+      "val_native_s11": {
+        "metadata.json": "e1e34a7aa4ebcb8dc14585c155184816b47e4e74622b55aee6c1d9e85454a791",
+        "metrics.json": "944e12f600729ebf47e9b97192d2cacf7a7c4901704dff1f839c0ff5634cce81",
+        "trajectories.npz": "e96cb97ad5d12d4c54a3fbf57625d9ab4491e5c38febd800d78ae2a1baecfaaf",
+        "observation_trace.npz": "482a3c2bebcf5cc4fff1d071fb6d4aa3d7f7edfbf5a0a082a6d89e9c2627f338",
+        "lineage.json": "bb7fe61d872afe31effeb845c05f981084c79af78034ee21b00ef520741dcd2f"
+      },
+      "val_native_replay_s11": {
+        "metadata.json": "6a7b69db8f65aa8c1e6c1655f4c3300d8b34fa61dbf561c870b9e33d73c8c533",
+        "metrics.json": "f623a2729b3ac9796be5cd2932e14c7fcbbc21f0a9d73659f63be6282c87c84c",
+        "trajectories.npz": "e96cb97ad5d12d4c54a3fbf57625d9ab4491e5c38febd800d78ae2a1baecfaaf",
+        "observation_trace.npz": "482a3c2bebcf5cc4fff1d071fb6d4aa3d7f7edfbf5a0a082a6d89e9c2627f338",
+        "lineage.json": "811c0231ba4ea2fd7f2311ce63f9d90ebe2b641726a39ca63cc7253f4892fa8d"
+      }
+    },
+    "source_sha256": "067b2078e091fe3c414fd2604bc27c2b712ae11b4bbcf6898362079e0bac06e7",
+    "thresholds_changed": false,
+    "targets_changed": false,
+    "historical_scores_changed": false,
+    "candidate_efficacy": false,
+    "innovation_confirmed": false,
+    "overleaf_results_sync": false,
+    "scope": "Raw task observation and reference velocity comparison, not normalized policy input or causal proof"
+  },
+  "paired_construction_noise_sha256": "f6dfdb66a3401923ac10e0f05ce3c18155647222726d1a408dc1d37cf2aeec38",
+  "generation_calls": 0,
+  "simulation_calls": 0,
+  "candidate_efficacy": false,
+  "innovation_confirmed": false,
+  "thresholds_changed": false,
+  "historical_scores_changed": false,
+  "overleaf_results_sync": false,
+  "scope": "Read-only summaries of two completed batches after terminal launcher failure; not a successful rerun or formal candidate efficacy. Noise is verified using construction metadata, never invented for replay."
+}

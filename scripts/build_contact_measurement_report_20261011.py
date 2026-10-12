@@ -72,6 +72,27 @@ velocity_trace=read('results/reference_velocity_v43_20261012/summary.json')
 velocity_witness=read('results/reference_velocity_v43_20261012/DOCUMENT_WITNESS.json')
 original_velocity=read('results/original_reference_velocity_v45_20261012/summary.json')
 original_velocity_witness=read('results/original_reference_velocity_v45_20261012/DOCUMENT_WITNESS.json')
+native_paths=sorted((ROOT/'results/native_velocity_summary_v47_20261012').glob('summary_*.json'))
+native_control=read(str(native_paths[-1].relative_to(ROOT))) if native_paths else None
+native_witness=read('results/native_reference_velocity_v46_20261012/DOCUMENT_WITNESS.json')
+support_paths=sorted((ROOT/'results/support_velocity_diagnostic_v49_20261012').glob('diagnostic_*.json'))
+support_diagnostic=read(str(support_paths[-1].relative_to(ROOT))) if support_paths else None
+if support_diagnostic:
+    assert support_diagnostic['source_sha256']==hashlib.sha256((ROOT/'scripts/diagnose_support_velocity_v49_20261012.py').read_bytes()).hexdigest()
+    assert support_diagnostic['parent_source_sha256']==hashlib.sha256((ROOT/'scripts/diagnose_support_velocity_v48_20261012.py').read_bytes()).hexdigest()
+    assert support_diagnostic['simulation_calls']==0 and support_diagnostic['thresholds_changed'] is False
+    assert all(arm['frozen_slip_fractions_exactly_reproduced'] for arm in support_diagnostic['arms'].values())
+if native_control:
+    assert native_control['source_sha256']==hashlib.sha256((ROOT/'scripts/summarize_native_velocity_v47_20261012.py').read_bytes()).hexdigest()
+    assert native_control['simulation_calls']==0 and native_control['original_failure_preserved'] is True
+    assert native_witness and native_witness['status']=='FAIL' and native_witness['documented_launcher_exit_code']==1
+    assert native_witness['checks']['two_successful_charged_measurement_batches'] is True
+    assert native_witness['checks']['all72metrics_exact_under_bound_runtime'] is True
+    for label,batch in (('val_native_s11','native_construction'),('val_native_replay_s11','native_fixed_reference')):
+        for name,digest in native_control['batches'][batch]['output_hashes'].items():
+            if name.endswith('.npz'): continue
+            path=ROOT/'results/native_reference_velocity_v46_20261012/public/raw'/label/name
+            assert hashlib.sha256(path.read_bytes()).hexdigest()==digest
 if original_velocity:
     assert original_velocity['generation_calls']==0 and original_velocity['thresholds_changed'] is False
     assert original_velocity_witness and original_velocity_witness['status']=='PASS'
@@ -179,6 +200,11 @@ for name in ('summary.json','DOCUMENT_WITNESS.json','versions.json','budget_ledg
     path=ROOT/'results/reference_velocity_v43_20261012'/name
     if path.exists(): inputs.append(path)
 if quality_paths: inputs.append(quality_paths[-1])
+if native_paths: inputs.append(native_paths[-1])
+if support_paths: inputs.append(support_paths[-1])
+for name in ('DOCUMENT_WITNESS.json','versions.json','budget_ledger.json','interface_summary.json'):
+    path=ROOT/'results/native_reference_velocity_v46_20261012'/name
+    if path.exists(): inputs.append(path)
 for name in ('summary.json','DOCUMENT_WITNESS.json','versions.json','budget_ledger.json'):
     path=ROOT/'results/original_reference_velocity_v45_20261012'/name
     if path.exists(): inputs.append(path)
@@ -206,6 +232,8 @@ status=dict(innovation_candidates=3,preliminarily_tested=1,not_yet_experimentall
  repaired_interface_failure_breakdown=velocity_quality,
  original_reference_repaired_interface=original_velocity,
  original_reference_repaired_interface_witness=original_velocity_witness,
+ native_corrected_interface_control=native_control,native_corrected_interface_witness=native_witness,
+ support_velocity_diagnostic=support_diagnostic,
  resource_status=resource_status,
  full_efficacy_comparisons_completed=1 if formal_summary else 0,
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
@@ -311,6 +339,12 @@ if velocity_quality:
 if original_velocity:
     c=original_velocity['pass_counts']
     component_text+=f'<h3>原始参考在修复接口下的校准：V45</h3><p>72组原始MoCap派生验证参考，生成器采样0次；完成{c["completed"]}，条件合格{c["condition_pass"]}，物理代理合格{c["physical_pass"]}，跟踪合格{c["tracking_pass"]}，联合合格{c["joint_pass"]}。零偏移24组联合合格1组。原始目标和判据不变，失败全部保留。结果证明这组设置存在非零合格实例，但通过率偏低；原始参考也不是经认证的可执行真值，不能据此单独区分源动作缺陷、控制器限制或代理误判。该校准不计为创新有效性。</p><p><a href="../original_reference_velocity_v45_20261012/summary.json">校准结果</a> · <a href="../original_reference_velocity_v45_20261012/DOCUMENT_WITNESS.md">独立见证</a></p>'
+if native_control:
+    c=native_control['batches']['native_fixed_reference']
+    component_text+=f'<h3>原生CLoSD对照与汇总失败：V46/V47</h3><p>两批仿真各72组均完成，但原V46启动器在汇总阶段错误读取回放元数据中不存在的生成噪声字段，退出1；原文档执行验收为FAIL，历史RUNNING文件为过期状态，不能据此声称进程仍运行。单独的V47只读CPU分析通过构建元数据核对配对噪声，不修改V46、不重复仿真。独立复核确认120帧的轨迹、原始观测与初始状态完全一致，原生构建与回放均条件合格{c["condition_pass"]}、物理合格{c["physical_pass"]}、跟踪合格{c["tracking_pass"]}、联合合格{c["joint_pass"]}。这仍是既有基线的单种子验证校准，不是C2/C3有效性结论。</p><p><a href="../native_reference_velocity_v46_20261012/DOCUMENT_WITNESS.md">原执行失败及批次复核</a> · <a href="../native_velocity_summary_v47_20261012/{native_paths[-1].name}">独立只读汇总</a></p>'
+if support_diagnostic:
+    a=support_diagnostic['arms']['planned'];b=a['angular_bins_rad_s']['0.0-0.25']
+    component_text+=f'<h3>支撑速度代理的探索性分解：V49</h3><p>计划参考回放中共有{a["proxy_violations_total"]}个支撑帧—刚体观测超过冻结速度阈值；其中生成衔接帧60附近±2帧为{a["proxy_violations_near_frame60"]}个。低角速度（小于0.25rad/s）的{b["support_observations"]}个支撑观测中，仅{b["above_frozen_slip_speed"]}个超阈值；高角速度观测中超阈值明显更多。原始MoCap参考也出现相似关联。这是事后描述性分组，未改接受规则；接触点滚动、碰撞表面近似和真实滑移尚不能由该代理分开，不能宣称足部旋转造成滑移或已找到创新收益。V48首次分析遗漏原生质心参数注入而失败，原代码与失败记录保留，V49单独采用逐案例原生质心后精确重现全部原滑移代理分数。后续须在已知接触运动下检查代理的判别边界，再设计物理精化对比。</p><p><a href="../support_velocity_diagnostic_v49_20261012/{support_paths[-1].name}">支撑速度分解</a> · <a href="../support_velocity_diagnostic_v48_20261012/attempt1_failure.json">保留的首次分析失败</a></p>'
 resource_text='<p>累计资源快照尚未同步。</p>'
 if resource_status:
     resource_text=f'<p>累计保守计费{resource_status["charged_wall_hours_one_gpu_per_job"]:.3f} GPU小时，输出{resource_status["output_bytes"]/1024**3:.3f} GiB（含公开导出重复副本），快照时数据盘可用{resource_status["data_free_bytes"]/1024**3:.2f} GiB。总计72小时、阶段上限、输出15GiB和磁盘至少20GiB的检查结果：{html.escape(resource_status["status"])}。阶段ablation_g1包括人体消融计费，不表示已运行G1；下游训练未运行。</p>'
