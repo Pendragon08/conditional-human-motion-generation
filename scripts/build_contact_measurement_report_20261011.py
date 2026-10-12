@@ -109,6 +109,19 @@ remaining_screen=read('results/remaining_candidate_screen_20261012/component_scr
 remaining_screen_audit=read('results/remaining_candidate_screen_20261012/EXPERIMENT_AUDIT.json')
 leg_ik_preflight=read('results/support_leg_ik_20261012/preflight.json')
 leg_ik_witness=read('results/support_leg_ik_20261012/DOCUMENT_WITNESS.json')
+leg_ik_continuation=read('results/support_leg_ik_20261012/CONTINUATION_DOCUMENT_WITNESS.json')
+leg_ik_adjudicated_witness=read('results/support_leg_ik_20261012/ADJUDICATED_DOCUMENT_WITNESS.json')
+leg_ik_summary=read('results/support_leg_ik_20261012/summary.json')
+leg_ik_post_audit=read('results/support_leg_ik_20261012/POST_RUN_AUDIT.json')
+leg_ik_terminal=read('results/support_leg_ik_20261012/EXECUTOR_TERMINAL_OBSERVATION.json')
+leg_ik_velocity_paths=sorted((ROOT/'results/support_leg_ik_20261012').glob('velocity_components_[0-9]*.json'))
+leg_ik_analysis_paths=sorted((ROOT/'results/support_leg_ik_20261012').glob('analysis_[0-9]*.json'))
+leg_ik_analysis=read(str(leg_ik_analysis_paths[-1].relative_to(ROOT))) if leg_ik_analysis_paths else None
+if leg_ik_analysis:
+    if leg_ik_analysis['source_sha256']!=hashlib.sha256((ROOT/'scripts/analyze_support_leg_ik_20261012.py').read_bytes()).hexdigest():
+        raise RuntimeError('Frozen leg IK analyzer changed')
+    if leg_ik_analysis['candidate_efficacy_test'] or leg_ik_analysis['confirmed_innovation']:
+        raise RuntimeError('Engineering diagnosis cannot count as an innovation')
 if remaining_screen:
     if remaining_screen['candidate_efficacy_test'] or remaining_screen['new_simulator_calls'] or remaining_screen['new_generation_calls']:
         raise RuntimeError('Retrospective component screen cannot be promoted to efficacy')
@@ -275,7 +288,7 @@ for directory,names in (
     ('native_manifold_v56_20261012',('summary.json','DOCUMENT_WITNESS.json','runtime_witness.json','budget_ledger.json')),
     ('native_manifold_analysis_v57_20261012',('EXPERIMENT_AUDIT.json',)),
     ('remaining_candidate_screen_20261012',('component_screen.json','EXPERIMENT_AUDIT.json')),
-    ('support_leg_ik_20261012',('preflight.json','DOCUMENT_WITNESS.json','DOCUMENT_WITNESS_FROZEN_ANALYSIS_BINDING.json','preparation.json','versions.json','analysis_plan_lock.json','budget_ledger.json')),
+    ('support_leg_ik_20261012',('preflight.json','DOCUMENT_WITNESS.json','DOCUMENT_WITNESS_FROZEN_ANALYSIS_BINDING.json','preparation.json','versions.json','analysis_plan_lock.json','budget_ledger.json','SCALAR_CONTRACT_DIAGNOSIS.json','continuation_preflight.json','CONTINUATION_DOCUMENT_WITNESS.json','CONTINUATION_CONTRACT_ADDENDUM.json','adjudicated_preflight.json','ADJUDICATED_DOCUMENT_WITNESS.json','summary.json','launch_receipt.json','pipeline_finally_receipt.json','POST_RUN_AUDIT.json')),
     ('support_reference_probe_v63_20261012',('summary.json','DOCUMENT_WITNESS.json','runtime_witness.json','budget_ledger.json','EXPERIMENT_AUDIT.json','NUMERICAL_CONTRACT_ADDENDUM.json','analysis_plan_lock.json','CONTINUATION_DOCUMENT_WITNESS_V65.json','continuation_v65_receipt.json','POST_RUN_AUDIT.json','SCOPE_CLARIFICATION.json','PARENT_EXIT_OBSERVATION.json'))):
     for name in names:
         path=ROOT/'results'/directory/name
@@ -285,6 +298,9 @@ if paired54_paths: inputs.append(paired54_paths[-1])
 if selected55_paths: inputs.append(selected55_paths[-1])
 if native57_paths: inputs.append(native57_paths[-1])
 if support63_paths: inputs.append(support63_paths[-1])
+if leg_ik_analysis_paths: inputs.append(leg_ik_analysis_paths[-1])
+if leg_ik_velocity_paths: inputs.append(leg_ik_velocity_paths[-1])
+if leg_ik_terminal: inputs.append(ROOT/'results/support_leg_ik_20261012/EXECUTOR_TERMINAL_OBSERVATION.json')
 for name in ('DOCUMENT_WITNESS.json','versions.json','budget_ledger.json','interface_summary.json'):
     path=ROOT/'results/native_reference_velocity_v46_20261012'/name
     if path.exists(): inputs.append(path)
@@ -332,6 +348,11 @@ corrected_feedback_readonly_analysis=paired53,corrected_feedback_integrity_audit
  reference_side_support_probe_post_run_audit=support63_post_audit,reference_side_support_probe_scope=support63_scope,
  remaining_candidate_component_screen=remaining_screen,remaining_candidate_component_screen_audit=remaining_screen_audit,
  support_leg_ik_preflight=leg_ik_preflight,support_leg_ik_independent_witness=leg_ik_witness,
+ support_leg_ik_continuation_witness=leg_ik_continuation,support_leg_ik_summary=leg_ik_summary,
+ support_leg_ik_adjudicated_witness=leg_ik_adjudicated_witness,
+ support_leg_ik_raw_analysis=leg_ik_analysis,
+ support_leg_ik_post_run_audit=leg_ik_post_audit,
+ support_leg_ik_external_terminal_observation=leg_ik_terminal,
  resource_status=resource_status,
  full_efficacy_comparisons_completed=1 if formal_summary else 0,
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
@@ -504,7 +525,25 @@ if paired51_state:
     if leg_ik_witness:
         if leg_ik_witness['simulation_calls']!=0 or leg_ik_witness['run_invocations']!=0:
             raise RuntimeError('Preparation witness cannot be presented as a simulation result')
-        component_text+='<h4>腿部位置 IK 诊断：尚未进入仿真</h4><p>这是经典两连杆逆运动学的参考表示诊断，不是第四个创新点。独立见证保留为 '+html.escape(leg_ik_witness['status'])+'：文档中的 CPU 检查退出为零，但逐腿记录的独立数值复核未通过。当前没有新增仿真回放或有效性结论，也未绕过 C2/C3 启动条件。原始目标、前缀与末帧保持检查通过，不等于动力学可执行；后续先解释记录复核差异。<a href="../support_leg_ik_20261012/DOCUMENT_WITNESS.md">完整见证与失败记录</a>。</p>'
+        component_text+='<h4>腿部位置 IK 诊断</h4><p>这是经典两连杆逆运动学的参考表示诊断，不是第四个创新点。原独立见证保留为 '+html.escape(leg_ik_witness['status'])+'：CPU 检查退出为零，但日志距离的逐位相等复核失败。后续独立诊断确认原文档的几何约束均满足，两套参考数组逐项一致，日志距离最大差约 7×10⁻¹⁷ 米；原 FAIL 未覆盖或重写。<a href="../support_leg_ik_20261012/DOCUMENT_WITNESS.md">原见证</a> · <a href="../support_leg_ik_20261012/SCALAR_CONTRACT_DIAGNOSIS.md">独立补充诊断</a>。原目标、前缀与末帧保持不等于动力学可执行，也不绕过 C2/C3 启动条件。</p>'
+        if leg_ik_continuation:
+            component_text+='<p>初次续跑见证保留为 '+html.escape(leg_ik_continuation['status'])+'：核验额外要求整份历史账本等于后续追加两次完成实验的账本。独立补充核对精确复现原基线收费行及历史哈希，并确认新增收费对应已完成的两组父级实验。<a href="../support_leg_ik_20261012/CONTINUATION_DOCUMENT_WITNESS.md">原续跑见证</a> · <a href="../support_leg_ik_20261012/CONTINUATION_CONTRACT_ADDENDUM.md">独立账本核对</a>。冻结参考、模型、评分和分析未改变。</p>'
+        if leg_ik_adjudicated_witness:
+            component_text+='<p>分别绑定原失败和独立补充核验的新入口，其独立文档见证为 '+html.escape(leg_ik_adjudicated_witness['status'])+'。<a href="../support_leg_ik_20261012/ADJUDICATED_DOCUMENT_WITNESS.md">最终入口见证</a>。准备通过不代表执行成功或创新有效。</p>'
+        if leg_ik_analysis:
+            leg_rows=''.join('<tr>'+''.join('<td>'+html.escape(str(v))+'</td>' for v in (arm,r['inputs'],r['counts']['completed'],r['counts']['condition_pass'],r['counts']['physical_pass'],r['counts']['joint_pass'],round(r['means']['surface_slip_proxy_fraction'],5)))+'</tr>' for arm,r in leg_ik_analysis['reports'].items())
+            component_text+='<p>24 个内部验证来源、3 种偏移、种子 11，各组 72 输入，全数保留。原参考复用历史回放，两修正组新增回放；未新增生成或训练。</p><table><tr><th>参考</th><th>输入</th><th>完成</th><th>条件合格</th><th>物理合格</th><th>联合合格</th><th>滑移代理均值</th></tr>'+leg_rows+'</table><p>冻结原始数组分析决策：'+html.escape(leg_ik_analysis['decision'])+'。仅支持此参数化的一种子工程诊断；未检验 G1、下游训练、语义与多样性，也未确认创新。<a href="../support_leg_ik_20261012/'+leg_ik_analysis_paths[-1].name+'">原始分析</a>。</p>'
+        elif leg_ik_summary:
+            component_text+='<p>两次仿真回放已有完成记录，尚待原始数组分析与审计，不作有效性结论。</p>'
+        else:
+            component_text+='<p>尚无两组仿真完成记录，不作有效性结论。</p>'
+        if leg_ik_post_audit:
+            component_text+='<p>事后独立审计：'+html.escape(str(leg_ik_post_audit.get('overall_verdict',leg_ik_post_audit.get('verdict','Not verified'))))+'（同模型家族，暂定）。<a href="../support_leg_ik_20261012/POST_RUN_AUDIT.md">审计全文与适用边界</a>。</p>'
+        else:
+            component_text+='<p>事后独立审计尚未同步，以上为冻结分析器重算结果。</p>'
+        if leg_ik_velocity_paths:
+            component_text+='<p>另保留足部材料点速度的只读分解：质心平移项与角速度项均有贡献，两种位置修正没有消除滑移代理。分解采用支撑观测加权，不能替代上表逐输入均值，也不能证明单独的因果来源。<a href="../support_leg_ik_20261012/'+leg_ik_velocity_paths[-1].name+'">速度分解记录</a>。</p>'
+        component_text+='<p>已核对实际部署的冻结接口：生成参考主要向策略提供身体位置和线速度；不能只新增足部四元数或接触力字段就声称策略会执行它们。位置IK不等于接触动力学修正。<a href="../../docs/remaining_validation_decision_20261012.md">后续验证边界及源代码依据</a>。</p>'
     if paired51_preview:
         assert paired51_preview['source_sha256']==hashlib.sha256((ROOT/'scripts/preview_paired_feedback_v51_20261012.py').read_bytes()).hexdigest()
         component_text+='<h4>固定样本的状态可视化</h4><p>每类第一个零偏移来源、种子11，样本选择不依赖得分。蓝色为保存的实际人体仿真状态，灰色为所选参考；金色叉号是原始目标。这是骨架回放，不是仿真器相机录像、机器人模型录像或实机测试。</p>'
