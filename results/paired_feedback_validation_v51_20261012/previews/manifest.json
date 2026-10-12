@@ -1,0 +1,86 @@
+{
+  "examples": [
+    {
+      "family": "jump",
+      "case": {
+        "clip_id": "008349",
+        "source_id": "./pose_data/MPI_mosh/50004/light_hopping_stiff_poses.npy",
+        "family": "jump",
+        "caption": "a person stands with his two feet apart and light hops in that position 14 times.",
+        "tokens": "a/DET_person/NOUN_stand/VERB_with/ADP_his/DET_two/NUM_foot/NOUN_apart/ADV_and/CCONJ_light/ADJ_hop/NOUN_in/ADP_that/DET_position/NOUN_time/NOUN",
+        "start_frame": 0,
+        "available_frames": 127,
+        "cache_file": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/blobs/a16b386a2b7d357a088c7568b97f6ab0954a508465b1a5d9d0faf29e9e8552fd",
+        "cache_key": "008349",
+        "official_split": "test",
+        "official_source": {
+          "source_path": "./pose_data/MPI_mosh/50004/light_hopping_stiff_poses.npy",
+          "start_frame": "0",
+          "end_frame": "128",
+          "new_name": "008349.npy"
+        },
+        "split": "val",
+        "goal_joint": "pelvis",
+        "offset_m": 0.0,
+        "goal_joint_body": "Pelvis",
+        "case_id": "008349:0.0"
+      },
+      "lengths": {
+        "feedback": 120,
+        "random": 120
+      },
+      "seed": 11,
+      "selection": "First zero-offset source per family, independent of quality",
+      "evaluation_type": "Saved simulation-state skeleton visualization, no new physics or robot execution",
+      "trajectory_hashes": {
+        "feedback": "54e45f61944bd32e11c49185bbf1172432e0781f335e977bb98f3c2844c16bca",
+        "random": "690a975b0675fe51b3341b44d00fcbd92811454bf9c4b7002b24be93db39f1cf"
+      },
+      "video": "jump_paired.mp4",
+      "image": "jump_paired.png"
+    },
+    {
+      "family": "dance",
+      "case": {
+        "clip_id": "008203",
+        "source_id": "./pose_data/CMU/106/106_15_poses.npy",
+        "family": "dance",
+        "caption": "a person is standing, twirling his hands, and then motions hips in a circle; kicks left leg to the left and then kicks right leg to the right dancing to something.",
+        "tokens": "a/DET_person/NOUN_is/AUX_stand/VERB_twirl/VERB_his/DET_hand/NOUN_and/CCONJ_then/ADV_motion/NOUN_hip/NOUN_in/ADP_a/DET_circle/NOUN_kick/NOUN_left/VERB_leg/NOUN_to/ADP_the/DET_left/NOUN_and/CCONJ_then/ADV_kick/VERB_right/ADJ_leg/NOUN_to/ADP_the/DET_right/ADJ_dancing/NOUN_to/ADP_something/PRON",
+        "start_frame": 0,
+        "available_frames": 199,
+        "cache_file": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/blobs/c4fa34cf78516e5893f7fbecb47056e358478a2003fa18d518c3412ecf23ddb2",
+        "cache_key": "008203",
+        "official_split": "train",
+        "official_source": {
+          "source_path": "./pose_data/CMU/106/106_15_poses.npy",
+          "start_frame": "1",
+          "end_frame": "201",
+          "new_name": "008203.npy"
+        },
+        "split": "val",
+        "goal_joint": "right_wrist",
+        "offset_m": 0.0,
+        "goal_joint_body": "R_Wrist",
+        "case_id": "008203:0.0"
+      },
+      "lengths": {
+        "feedback": 120,
+        "random": 120
+      },
+      "seed": 11,
+      "selection": "First zero-offset source per family, independent of quality",
+      "evaluation_type": "Saved simulation-state skeleton visualization, no new physics or robot execution",
+      "trajectory_hashes": {
+        "feedback": "54e45f61944bd32e11c49185bbf1172432e0781f335e977bb98f3c2844c16bca",
+        "random": "690a975b0675fe51b3341b44d00fcbd92811454bf9c4b7002b24be93db39f1cf"
+      },
+      "video": "dance_paired.mp4",
+      "image": "dance_paired.png"
+    }
+  ],
+  "simulation_calls": 0,
+  "generation_calls": 0,
+  "confirmed_innovation": false,
+  "source_sha256": "f1396575c5bb16a7c72c1649b338ed6e81c104ffbb0159f9cd0c23d8eb5a41e5"
+}

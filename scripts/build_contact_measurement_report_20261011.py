@@ -82,6 +82,13 @@ analytical52_witness=read('results/surface_proxy_calibration_v52_20261012/DOCUME
 paired51_summary=read('results/paired_feedback_validation_v51_20261012/summary.json')
 paired51_state=read('results/paired_feedback_validation_v51_20261012/state.json')
 paired51_progress=read('results/paired_feedback_validation_v51_20261012/progress.json')
+paired51_preview=read('results/paired_feedback_validation_v51_20261012/previews/manifest.json')
+paired53_audit=read('results/paired_feedback_analysis_v53_20261012/EXPERIMENT_AUDIT.json')
+paired53_paths=sorted((ROOT/'results/paired_feedback_analysis_v53_20261012').glob('analysis_*.json'))
+paired53=read(str(paired53_paths[-1].relative_to(ROOT))) if paired53_paths else None
+if paired53:
+    assert paired53['source_sha256']==hashlib.sha256((ROOT/'scripts/analyze_paired_feedback_v51_20261012.py').read_bytes()).hexdigest()
+    assert all(hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest for name,digest in paired53['input_hashes'].items())
 if analytical52:
     assert analytical52['status']=='PASS_ANALYTICAL_CONTROLS' and analytical52['checks']==24
     assert all(x['check_pass'] for x in analytical52['cases'])
@@ -218,10 +225,12 @@ if support_paths: inputs.append(support_paths[-1])
 for directory,names in (
     ('surface_proxy_calibration_v50_20261012',('DOCUMENT_WITNESS.json',)),
     ('surface_proxy_calibration_v52_20261012',('first_attempt/summary.json','DOCUMENT_WITNESS.json')),
-    ('paired_feedback_validation_v51_20261012',('summary.json','state.json','progress.json','versions.json','runtime_witness.json','DOCUMENT_WITNESS.json','budget_ledger.json'))):
+    ('paired_feedback_validation_v51_20261012',('summary.json','state.json','progress.json','versions.json','runtime_witness.json','DOCUMENT_WITNESS.json','budget_ledger.json','launcher_receipt.json','previews/manifest.json')),
+    ('paired_feedback_analysis_v53_20261012',('EXPERIMENT_AUDIT.json',))):
     for name in names:
         path=ROOT/'results'/directory/name
         if path.exists(): inputs.append(path)
+if paired53_paths: inputs.append(paired53_paths[-1])
 for name in ('DOCUMENT_WITNESS.json','versions.json','budget_ledger.json','interface_summary.json'):
     path=ROOT/'results/native_reference_velocity_v46_20261012'/name
     if path.exists(): inputs.append(path)
@@ -257,6 +266,7 @@ status=dict(innovation_candidates=3,preliminarily_tested=1,not_yet_experimentall
  analytical_contact_controls=analytical52,analytical_contact_witness=analytical52_witness,
  corrected_feedback_validation_summary=paired51_summary,corrected_feedback_validation_state=paired51_state,
  corrected_feedback_validation_progress=paired51_progress,
+corrected_feedback_readonly_analysis=paired53,corrected_feedback_integrity_audit=paired53_audit,
  resource_status=resource_status,
  full_efficacy_comparisons_completed=1 if formal_summary else 0,
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
@@ -374,6 +384,27 @@ if paired51_state:
     component_text+='<h3>修复接口后的配对反馈验证：V51</h3><p>此轮为验证集阶段，每方法24来源×3偏移×3种子，合计216输入；两方法共用实际前缀与逐候选配对噪声，每输入均为3候选，并独立回放选择出的精化参考。与旧V28协议分开，不混合分数，也不计为第四项创新。最近同步的状态为 '+html.escape(paired51_state['status'])+'；该文件状态不是当前进程存活的证明。</p>'
     if paired51_summary:
         component_text+='<p>完整验证摘要：'+html.escape(json.dumps(paired51_summary['totals'],ensure_ascii=False))+'。只有验证集结果，仍需按独立测试和原验收门判断；不等于有效创新或完成G1／下游实验。</p>'
+    reports=paired51_summary['reports'] if paired51_summary else (paired51_progress or {}).get('reports',{})
+    if reports:
+        paired_rows=''.join('<tr>'+''.join('<td>'+html.escape(str(v))+'</td>' for v in
+            (label,report['cases'],*[report['replay'][k] for k in ('completed','condition_pass','physical_pass','tracking_pass','joint_pass')]))+'</tr>'
+            for label,report in sorted(reports.items()))
+        component_text+='<table><tr><th>方法／种子</th><th>输入</th><th>回放完成</th><th>条件合格</th><th>物理代理合格</th><th>跟踪合格</th><th>回放联合合格</th></tr>'+paired_rows+'</table><p>表中是回放分量计数；构建阶段失败不能因补齐后的回放完成而恢复成功资格，完整端到端结果另作核对。</p>'
+    if paired53:
+        component_text+=f'<p>V53只读分析：端到端联合合格增益{paired53["gain_percentage_points"]:.2f}个百分点；按原始来源聚类的95%区间为{html.escape(str(paired53["source_cluster_95_ci_percentage_points"]))}个百分点。所有构建失败保留在分母。此区间仅适用于24个验证来源；若全部合格为零，退化的[0,0]区间不证明总体效应不存在。</p>'
+        component_text+='<p>独立测试、语义与多样性护栏、G1和下游训练尚未完成，数值分析不认证创新。<a href="../paired_feedback_analysis_v53_20261012/'+paired53_paths[-1].name+'">分析与输入哈希</a></p>'
+        component_rows=''.join('<tr>'+''.join('<td>'+html.escape(str(v))+'</td>' for v in
+            (arm,*[paired53['component_pass_counts'][arm][k] for k in ('position','heading','time','surface_slip_proxy','penetration','continuity','construction_complete')]))+'</tr>' for arm in ('feedback','random'))
+        component_text+='<table><tr><th>方法（各216输入）</th><th>位置</th><th>朝向</th><th>时刻</th><th>滑移代理</th><th>穿透</th><th>连续性</th><th>构建完整</th></tr>'+component_rows+'</table>'
+    component_text+='<p><strong>指标来源说明：</strong>跟踪误差相对于生成／精化的合成参考（synthetic proxy）计算，不是相对于真实MoCap或真实机器人真值。物理质量包含模拟接触代理，跟踪误差降低不单独证明物理可执行性或训练收益。独立审计指出原始跟踪字段的标注不足；原文件和分数保留，新分析明确区分评价来源。<a href="../../docs/paired_feedback_v51_evaluation_provenance_20261012.md">补充说明</a></p>'
+    if paired53_audit:
+        component_text+='<p>独立审计结论：'+html.escape(str(paired53_audit.get('overall_verdict',paired53_audit.get('verdict','Not verified'))))+'（同模型家族、暂定）。<a href="../paired_feedback_analysis_v53_20261012/EXPERIMENT_AUDIT.md">完整审计与原始标注问题</a></p>'
+    if paired51_preview:
+        assert paired51_preview['source_sha256']==hashlib.sha256((ROOT/'scripts/preview_paired_feedback_v51_20261012.py').read_bytes()).hexdigest()
+        component_text+='<h4>固定样本的状态可视化</h4><p>每类第一个零偏移来源、种子11，样本选择不依赖得分。蓝色为保存的实际人体仿真状态，灰色为所选参考；金色叉号是原始目标。这是骨架回放，不是仿真器相机录像、机器人模型录像或实机测试。</p>'
+        for example in paired51_preview['examples']:
+            video='../paired_feedback_validation_v51_20261012/previews/'+example['video']
+            component_text+='<p>'+html.escape(example['family'])+'</p><video controls preload="metadata" style="max-width:100%;width:800px" src="'+video+'"></video>'
 resource_text='<p>累计资源快照尚未同步。</p>'
 if resource_status:
     resource_text=f'<p>累计保守计费{resource_status["charged_wall_hours_one_gpu_per_job"]:.3f} GPU小时，输出{resource_status["output_bytes"]/1024**3:.3f} GiB（含公开导出重复副本），快照时数据盘可用{resource_status["data_free_bytes"]/1024**3:.2f} GiB。总计72小时、阶段上限、输出15GiB和磁盘至少20GiB的检查结果：{html.escape(resource_status["status"])}。阶段ablation_g1包括人体消融计费，不表示已运行G1；下游训练未运行。</p>'
