@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.0",
+  "audit_skill": "experiment-audit",
+  "audit_target": "remaining_candidate_screen_20261012",
+  "date": "2026-10-12",
+  "generated_at": "2026-10-12T03:45:41.4742377Z",
+  "auditor": "Codex fresh reviewer",
+  "agent_id": "/root/remaining_component_screen_audit",
+  "verdict_id": "remaining_candidate_screen_20261012-audit-20261012",
+  "executor_family": "openai",
+  "reviewer_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "verdict": "PASS",
+  "overall_verdict": "pass",
+  "integrity_status": "pass",
+  "reason_code": "component_diagnostic_reproduced_scope_limited",
+  "summary": "The retrospective component screen is hash-bound and exactly reproducible from the specified records. PASS applies only to the integrity of the component diagnostic. It is not evidence of C2 efficacy, a C3 repair-yield fit, acquisition savings, controller benefit, robot transfer, or real-world performance.",
+  "evaluation_type": "simulation_only",
+  "scope_verdict": "PASS_COMPONENT_DIAGNOSTIC_ONLY",
+  "repositories": {
+    "local_root": "D:/具身智能/conditional-human-motion-generation",
+    "local_head": "605c77e6d6adcda291f746671b054d7677438f8d",
+    "remote_root": "/data/code/ouyanghao/oyh/conditional-human-motion-generation",
+    "remote_head": "e1ef719d6702d15a5ab211db0e55be438b2d1c88",
+    "target_files_byte_identical_before_audit": true,
+    "relevant_files_compared": 40,
+    "relevant_file_differences": 0,
+    "provenance_note": "The working trees are dirty and the target artifacts are not commit-addressed. The audit therefore relies on explicit SHA-256 file bindings rather than repository HEAD equality."
+  },
+  "audited_input_hashes": {
+    "results/remaining_candidate_screen_20261012/component_screen.json": "sha256:d30e4d818ec79682fe27827e1babf36f3e8b660eb8035cfdd3371a00f79f7178",
+    "component_screen_bound_input_manifest_canonical_json": "sha256:7e5a549017bd565f57ab2dfdbdd858856d5c140f01b6aa27b0ebebd88a030f4c",
+    "forty_file_audit_manifest_canonical_json": "sha256:216766b14eea5ecc654815f37bf2a1af3201583c8bf3425d0350abe9ef86e1f3",
+    "results/paired_feedback_validation_v51_20261012/summary.json": "sha256:5a05ad6b27aff2043f9e8c7b54f3a54acc242bbb8be7adb8e384b5222c99adca",
+    "results/paired_feedback_validation_v51_20261012/versions.json": "sha256:d866b631cf5eff7480869f75ce4696ed1312524be47e6222cc7c6080d0a91948",
+    "results/paired_feedback_validation_v51_20261012/frozen_thresholds.json": "sha256:451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "results/paired_feedback_validation_v51_20261012/source_manifest.json": "sha256:63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+    "scripts/remaining_candidate_screen_20261012.py": "sha256:b3f77b1262b75a451a239f11ad2cfa110909f1b2f56775d840e0129e27317e3f",
+    "scripts/condition_feedback_guard_core_v29_20261012.py": "sha256:0b7920956265e4ef55966c63bcecc8e6e362d830bbd1e5a34d2d287b98ad140f",
+    "scripts/repair_budget_core_v38_20261012.py": "sha256:2f442d564db1891dfca888289c3c8a797129b46d7e822a9295fe49c045de4002",
+    "docs/condition_feedback_guard_simulation_v31_20261012.md": "sha256:6da81453a1204bd862db0bfaa0ec3600e55e96f5cad5d9917832ded456d01eaa",
+    "docs/repair_budget_candidate_v38_20261012.md": "sha256:246172410947085700c5155fe6e22bc112f48a25260435fa702a5abc4f129a3f"
+  },
+  "provenance": {
+    "component_bound_paths_expected": 37,
+    "component_bound_paths_found": 37,
+    "component_bound_path_set_exact": true,
+    "component_bound_hash_mismatches": 0,
+    "threshold_hash_matches_versions": true,
+    "all_input_metric_files_predate_component_screen": true,
+    "local_remote_pre_audit_match": {
+      "files_checked": 40,
+      "hash_mismatches": 0
+    }
+  },
+  "checks": {
+    "A_ground_truth_provenance": {
+      "status": "PASS",
+      "details": "The screen consumes pre-existing simulation metrics and fixed dataset-motion goals. Across all five audited records per seed, the 72 original goals, headings, case IDs, and source IDs match exactly. No target is derived from a selected model output. The physical criterion remains a simulator/geometry proxy and semantic status is unverified, so this is classified as simulation_only rather than real_gt performance evidence.",
+      "evidence": [
+        "scripts/remaining_candidate_screen_20261012.py:38-57",
+        "scripts/remaining_candidate_screen_20261012.py:72-85",
+        "scripts/physics_guided_core.py:1-4",
+        "raw metadata goal_provenance=dataset motion, fixed before generation"
+      ]
+    },
+    "B_score_normalization": {
+      "status": "PASS",
+      "details": "The guard compares eight raw SI-unit component metrics directly. Pass labels use fixed thresholds whose SHA-256 matches versions.json. No metric is divided by a maximum, minimum, or statistic of the candidate bank or selected outputs. The unused C3 repairs-per-paid-call rate is not part of this screen.",
+      "evidence": [
+        "scripts/condition_feedback_guard_core_v29_20261012.py:80-98",
+        "scripts/physics_guided_core.py:142-154",
+        "scripts/repair_budget_core_v38_20261012.py:21-47"
+      ]
+    },
+    "C_result_existence_and_recomputation": {
+      "status": "PASS",
+      "details": "Every claimed input exists. All 37 component_screen input bindings match current bytes, all 40 relevant pre-audit files match between local and remote copies, all 4,320 independently recomputed pass-label comparisons match, and every report, choice, decision reason, selected row, and replay count matches component_screen.json exactly.",
+      "evidence": [
+        "results/remaining_candidate_screen_20261012/component_screen.json",
+        "results/paired_feedback_validation_v51_20261012/raw/*/metrics.json",
+        "results/paired_feedback_validation_v51_20261012/raw/*/metadata.json"
+      ]
+    },
+    "D_dead_code_and_claimed_execution": {
+      "status": "PASS",
+      "details": "acceptable() is the only component guard function needed by the screen and is called for all 432 decisions. C2 correction functions and the C3 fit/allocator are not called, and the output explicitly marks C2 and C3 as not run. No result is attributed to those unexecuted paths.",
+      "evidence": [
+        "scripts/remaining_candidate_screen_20261012.py:58-71",
+        "scripts/condition_feedback_guard_core_v29_20261012.py:80-117",
+        "scripts/repair_budget_core_v38_20261012.py:21-104",
+        "scripts/remaining_candidate_screen_20261012.py:104-110"
+      ]
+    },
+    "E_scope": {
+      "status": "PASS",
+      "details": "Scope language matches the evidence: 24 internal-validation sources, three offsets, three seeds, 648 observed construction candidates, 432 guard decisions, and six pre-existing replay batches. The 24 internal-validation sources contain 19 official HumanML3D train sources and 5 official test sources, so the result is not held-out upstream evaluation. The artifact states this limitation.",
+      "evidence": [
+        "scripts/remaining_candidate_screen_20261012.py:96-111",
+        "results/paired_feedback_validation_v51_20261012/source_manifest.json"
+      ]
+    },
+    "F_evaluation_type": {
+      "status": "PASS",
+      "classification": "simulation_only",
+      "details": "Retrospective CPU analysis of pre-existing simulator construction and replay records with dataset-derived fixed targets. It is not a human evaluation, real-world robot evaluation, or prospective acquisition experiment."
+    },
+    "G_pairing": {
+      "status": "PASS",
+      "details": "All 15 metric arrays contain 72 ordered unique identities. Each seed has 24 sources with exactly three offsets per source. Construction rounds 0/1/2 and both replay arms share exact case/source order, metadata case order, original goals, and original headings. The identity sequence is also equal across seeds.",
+      "mismatches": 0
+    },
+    "H_gpu_and_new_calls": {
+      "status": "PASS",
+      "details": "For the audited screen code path, static inspection finds only JSON reads, SHA-256 hashing, scalar comparisons, and output serialization. The imported modules have definition-only top-level code and no simulator, generation, controller-training, subprocess, torch/CUDA, or GPU API call. Every metric input predates the screen output. The zero counters are therefore corroborated for this script path, although no external scheduler or power telemetry was provided to prove absence of unrelated concurrent activity.",
+      "evidence": [
+        "scripts/remaining_candidate_screen_20261012.py:19-114",
+        "scripts/condition_feedback_guard_core_v29_20261012.py:1-117",
+        "scripts/physics_guided_core.py:1-181"
+      ]
+    }
+  },
+  "deterministic_recomputation": {
+    "thresholds": {
+      "goal_position_m": 0.1,
+      "heading_rad": 0.17453292519943295,
+      "goal_time_s": 0.1,
+      "tracking_mean_m": 0.1,
+      "tracking_p95_m": 0.2,
+      "penetration_fraction": 0.02,
+      "sliding_fraction": 0.1,
+      "continuity_jerk_p95_m_s3": 1000.0
+    },
+    "raw_rows": 1080,
+    "label_fields_per_row": 4,
+    "label_comparisons": 4320,
+    "label_mismatches": 0,
+    "summary_count_mismatches": 0,
+    "construction": {
+      "rows": 648,
+      "completed": 634,
+      "condition_pass": 173,
+      "physical_pass": 0,
+      "tracking_pass": 464,
+      "joint_pass": 0,
+      "sliding_threshold_pass": 0,
+      "minimum_surface_slip_proxy_fraction": 0.11059907834101383
+    },
+    "replay": {
+      "rows": 432,
+      "completed": 429,
+      "condition_pass": 102,
+      "physical_pass": 0,
+      "tracking_pass": 404,
+      "joint_pass": 0,
+      "sliding_threshold_pass": 0,
+      "minimum_surface_slip_proxy_fraction": 0.20382165605095542
+    },
+    "guard": {
+      "decisions": 432,
+      "decision_mismatches": 0,
+      "report_mismatches": 0,
+      "replay_evidence_mismatches": 0,
+      "choice_counts": {
+        "candidate_0": 197,
+        "candidate_1": 10,
+        "candidate_2": 9
+      },
+      "decision_reason_classes": {
+        "component_regression": 402,
+        "candidate_not_complete": 10,
+        "completed_construction_replaces_incomplete": 2,
+        "componentwise_nonregression_with_improvement": 18
+      },
+      "candidate_bank_physical_pass": 0,
+      "candidate_bank_joint_pass": 0,
+      "selected_physical_pass": 0,
+      "selected_joint_pass": 0,
+      "reason_counts_digest": "sha256:60e07be27c513c9f9eaeaca4df059e1bd02cdeb1fda66246907f07b31af1ad38",
+      "reports_digest": "sha256:62501b0785b3f6ff55e254d42886c152824a4fbcf75868e0f3fc69bea2f0d7f3",
+      "choices_digest": "sha256:dc1cf659c7e7fcc2c7e94763db0e4847a403226d1e120c9ef46aa66d4a8ac4a6"
+    }
+  },
+  "claim_impact": [
+    {
+      "id": "C1_COMPONENT_DIAGNOSTIC",
+      "impact": "supported",
+      "statement": "The reported finite-bank guard choices, counts, and reasons are exactly reproducible."
+    },
+    {
+      "id": "FINITE_BANK_BOUND",
+      "impact": "supported_with_qualifier",
+      "statement": "No selector can recover a physical-pass or joint-pass candidate from this observed 648-row construction bank because every candidate has both labels false. This bound applies only to this finite bank; unseen candidates may differ."
+    },
+    {
+      "id": "C2_EFFICACY",
+      "impact": "unsupported_not_run",
+      "statement": "The screen did not run the preregistered repeat-plus-correction C2 intervention and did not independently replay the newly guard-selected references. The six replay batches belong to the pre-existing feedback/random arms."
+    },
+    {
+      "id": "C3_REPAIR_YIELD_FIT",
+      "impact": "unsupported_not_run",
+      "statement": "No paired validation fixed-reference before/after repair records were fitted, and no positive joint repair exists in the audited data."
+    },
+    {
+      "id": "C3_ACQUISITION_OR_SAVINGS",
+      "impact": "unsupported_not_run",
+      "statement": "No scarce-budget prospective acquisition schedule, newly paid call comparison, elapsed-cost comparison, or controller outcome was run."
+    },
+    {
+      "id": "ROBOT_OR_REAL_WORLD_TRANSFER",
+      "impact": "unsupported",
+      "statement": "Simulation proxy diagnostics do not establish robot or real-world performance."
+    }
+  ],
+  "stopping_prerequisites": {
+    "current_action": "STOP_C2_AND_C3",
+    "threshold_policy": "Do not relax or retune thresholds to create a positive signal.",
+    "C2": {
+      "status": "NOT_RUN_ORIGINAL_NONZERO_JOINT_PREREQUISITE_UNMET",
+      "unmet": [
+        "At least one eligible parent arm must contain an observed joint-pass example under the frozen criteria.",
+        "A fresh document-following witness must pass before any efficacy invocation.",
+        "Actual selected-reference independent replay and paired analysis remain required for any efficacy claim."
+      ]
+    },
+    "C3": {
+      "status": "NOT_RUN_NO_OBSERVED_NONZERO_JOINT_REPAIR_LABELS",
+      "unmet": [
+        "Resolve measurement semantics.",
+        "Collect paired validation-only fixed-reference before/after repair observations with paid-call counts and at least one positive joint repair.",
+        "Freeze the allocator and a genuinely scarce equal budget before test use.",
+        "Obtain a fresh document-following witness.",
+        "Compare actual newly acquired data, elapsed costs, and frozen-controller downstream outcomes."
+      ]
+    }
+  },
+  "limitations": [
+    "Same-family review is provisional and is not cross-family acceptance.",
+    "The screen is a retrospective component diagnostic, not a counterfactual efficacy experiment.",
+    "The physical label is driven by a simulator/geometry surface-slip proxy; all 1,080 audited rows fail its frozen sliding-fraction threshold.",
+    "Internal validation mixes 19 official upstream train sources with 5 official upstream test sources.",
+    "The repositories are dirty and have different HEAD commits; exact-file hashes, not commit identity, define the audited state.",
+    "Static call-path evidence supports zero new simulator, generation, training, and GPU use by the screen, but no external scheduler telemetry was supplied."
+  ]
+}

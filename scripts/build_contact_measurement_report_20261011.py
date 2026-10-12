@@ -105,6 +105,16 @@ support63_audit=read('results/support_reference_probe_v63_20261012/EXPERIMENT_AU
 support63_addendum=read('results/support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.json')
 support63_post_audit=read('results/support_reference_probe_v63_20261012/POST_RUN_AUDIT.json')
 support63_scope=read('results/support_reference_probe_v63_20261012/SCOPE_CLARIFICATION.json')
+remaining_screen=read('results/remaining_candidate_screen_20261012/component_screen.json')
+remaining_screen_audit=read('results/remaining_candidate_screen_20261012/EXPERIMENT_AUDIT.json')
+leg_ik_preflight=read('results/support_leg_ik_20261012/preflight.json')
+leg_ik_witness=read('results/support_leg_ik_20261012/DOCUMENT_WITNESS.json')
+if remaining_screen:
+    if remaining_screen['candidate_efficacy_test'] or remaining_screen['new_simulator_calls'] or remaining_screen['new_generation_calls']:
+        raise RuntimeError('Retrospective component screen cannot be promoted to efficacy')
+    for name,digest in remaining_screen['input_hashes'].items():
+        if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=digest:
+            raise RuntimeError('Component-screen input binding changed: '+name)
 support63_paths=sorted((ROOT/'results/support_reference_probe_v63_20261012').glob('analysis_[0-9]*.json'))
 support63_analysis=read(str(support63_paths[-1].relative_to(ROOT))) if support63_paths else None
 native57_paths=sorted((ROOT/'results/native_manifold_analysis_v57_20261012').glob('diagnostic_*.json'))
@@ -264,6 +274,8 @@ for directory,names in (
     ('paired_feedback_analysis_v54_20261012',('execution_binding_certificate.json','EXPERIMENT_AUDIT.json')),
     ('native_manifold_v56_20261012',('summary.json','DOCUMENT_WITNESS.json','runtime_witness.json','budget_ledger.json')),
     ('native_manifold_analysis_v57_20261012',('EXPERIMENT_AUDIT.json',)),
+    ('remaining_candidate_screen_20261012',('component_screen.json','EXPERIMENT_AUDIT.json')),
+    ('support_leg_ik_20261012',('preflight.json','DOCUMENT_WITNESS.json','DOCUMENT_WITNESS_FROZEN_ANALYSIS_BINDING.json','preparation.json','versions.json','analysis_plan_lock.json','budget_ledger.json')),
     ('support_reference_probe_v63_20261012',('summary.json','DOCUMENT_WITNESS.json','runtime_witness.json','budget_ledger.json','EXPERIMENT_AUDIT.json','NUMERICAL_CONTRACT_ADDENDUM.json','analysis_plan_lock.json','CONTINUATION_DOCUMENT_WITNESS_V65.json','continuation_v65_receipt.json','POST_RUN_AUDIT.json','SCOPE_CLARIFICATION.json','PARENT_EXIT_OBSERVATION.json'))):
     for name in names:
         path=ROOT/'results'/directory/name
@@ -318,6 +330,8 @@ corrected_feedback_readonly_analysis=paired53,corrected_feedback_integrity_audit
  reference_side_support_probe_analysis=support63_analysis,reference_side_support_probe_audit=support63_audit,
  reference_side_support_probe_numerical_addendum=support63_addendum,
  reference_side_support_probe_post_run_audit=support63_post_audit,reference_side_support_probe_scope=support63_scope,
+ remaining_candidate_component_screen=remaining_screen,remaining_candidate_component_screen_audit=remaining_screen_audit,
+ support_leg_ik_preflight=leg_ik_preflight,support_leg_ik_independent_witness=leg_ik_witness,
  resource_status=resource_status,
  full_efficacy_comparisons_completed=1 if formal_summary else 0,
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
@@ -482,6 +496,15 @@ if paired51_state:
             component_text+='<p>划分边界：本轮是内部验证子集，包含上游HumanML3D官方train的19来源/57输入及官方test的5来源/15输入，未评估本研究内部的独立测试集。不能报告为未触碰的官方test泛化，也未逐源确认预训练模型是否见过这些动作。<a href="../support_reference_probe_v63_20261012/SCOPE_CLARIFICATION.md">划分说明</a></p>'
         if support63_post_audit:
             component_text+='<p>事后独立审计：'+html.escape(str(support63_post_audit.get('overall_verdict',support63_post_audit.get('verdict','Not verified'))))+'（同模型家族，暂定）。原始失败、运行前审计与事后审计分别保留。<a href="../support_reference_probe_v63_20261012/POST_RUN_AUDIT.md">完整事后核查</a>。父进程退出记录来自工具观察，未伪装成服务器自动生成的退出收据。</p>'
+    if remaining_screen:
+        screen_rows=''.join('<tr>'+''.join('<td>'+html.escape(str(x))+'</td>' for x in (r['seed'],r['inputs'],r['construction_candidates_per_input'],r['choices'].get('0',0),sum(v for k,v in r['choices'].items() if k!='0'),r['cases_with_observed_joint_qualified_candidate']))+'</tr>' for r in remaining_screen['reports'])
+        component_text+='<h4>剩余候选机制的已有记录筛查</h4><p>仅在C1既有三候选记录上调用C2的逐分量质量守护，不是C2预注册的“重复执行＋一次修正”实验。未新增生成或仿真，216组输入全数保留。最终197组保留初次候选，19组改选；这说明守护并非完全不动作，但不能证明其提高执行质量。每组已有候选中均无物理或联合合格样本，因此从这个有限候选库重新选择，不能产生联合合格收益；不能据此推断未来新候选也一定无效。</p><table><tr><th>种子</th><th>输入</th><th>已有候选/输入</th><th>保留初次</th><th>改选</th><th>存在联合合格候选的输入</th></tr>'+screen_rows+'</table><p>C2非零联合合格前提仍未满足，C3也没有验证集联合修复收益用于校准；二者正式效力试验仍未运行。不能把本次回顾性筛查算为新仿真实验、预算节约或已验证创新。<a href="../remaining_candidate_screen_20261012/component_screen.json">全部选择和拒绝理由</a>。</p>'
+        if remaining_screen_audit:
+            component_text+='<p>筛查独立审计：'+html.escape(str(remaining_screen_audit.get('overall_verdict',remaining_screen_audit.get('verdict','Not verified'))))+'（同模型家族，暂定）。<a href="../remaining_candidate_screen_20261012/EXPERIMENT_AUDIT.md">审计全文</a>。</p>'
+    if leg_ik_witness:
+        if leg_ik_witness['simulation_calls']!=0 or leg_ik_witness['run_invocations']!=0:
+            raise RuntimeError('Preparation witness cannot be presented as a simulation result')
+        component_text+='<h4>腿部位置 IK 诊断：尚未进入仿真</h4><p>这是经典两连杆逆运动学的参考表示诊断，不是第四个创新点。独立见证保留为 '+html.escape(leg_ik_witness['status'])+'：文档中的 CPU 检查退出为零，但逐腿记录的独立数值复核未通过。当前没有新增仿真回放或有效性结论，也未绕过 C2/C3 启动条件。原始目标、前缀与末帧保持检查通过，不等于动力学可执行；后续先解释记录复核差异。<a href="../support_leg_ik_20261012/DOCUMENT_WITNESS.md">完整见证与失败记录</a>。</p>'
     if paired51_preview:
         assert paired51_preview['source_sha256']==hashlib.sha256((ROOT/'scripts/preview_paired_feedback_v51_20261012.py').read_bytes()).hexdigest()
         component_text+='<h4>固定样本的状态可视化</h4><p>每类第一个零偏移来源、种子11，样本选择不依赖得分。蓝色为保存的实际人体仿真状态，灰色为所选参考；金色叉号是原始目标。这是骨架回放，不是仿真器相机录像、机器人模型录像或实机测试。</p>'
