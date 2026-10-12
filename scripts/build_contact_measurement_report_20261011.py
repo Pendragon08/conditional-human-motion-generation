@@ -113,6 +113,11 @@ leg_ik_continuation=read('results/support_leg_ik_20261012/CONTINUATION_DOCUMENT_
 leg_ik_adjudicated_witness=read('results/support_leg_ik_20261012/ADJUDICATED_DOCUMENT_WITNESS.json')
 leg_ik_summary=read('results/support_leg_ik_20261012/summary.json')
 leg_ik_post_audit=read('results/support_leg_ik_20261012/POST_RUN_AUDIT.json')
+child_binding_check=read('results/child_input_binding_20261012/cpu_checks.json')
+if child_binding_check:
+    assert child_binding_check['candidate_efficacy_test'] is False and child_binding_check['gpu_runtime_ready'] is False
+    for name,digest in child_binding_check['scripts'].items():
+        assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest
 leg_ik_terminal=read('results/support_leg_ik_20261012/EXECUTOR_TERMINAL_OBSERVATION.json')
 leg_ik_velocity_paths=sorted((ROOT/'results/support_leg_ik_20261012').glob('velocity_components_[0-9]*.json'))
 leg_ik_analysis_paths=sorted((ROOT/'results/support_leg_ik_20261012').glob('analysis_[0-9]*.json'))
@@ -301,6 +306,7 @@ if support63_paths: inputs.append(support63_paths[-1])
 if leg_ik_analysis_paths: inputs.append(leg_ik_analysis_paths[-1])
 if leg_ik_velocity_paths: inputs.append(leg_ik_velocity_paths[-1])
 if leg_ik_terminal: inputs.append(ROOT/'results/support_leg_ik_20261012/EXECUTOR_TERMINAL_OBSERVATION.json')
+if child_binding_check: inputs.append(ROOT/'results/child_input_binding_20261012/cpu_checks.json')
 for name in ('DOCUMENT_WITNESS.json','versions.json','budget_ledger.json','interface_summary.json'):
     path=ROOT/'results/native_reference_velocity_v46_20261012'/name
     if path.exists(): inputs.append(path)
@@ -352,6 +358,7 @@ corrected_feedback_readonly_analysis=paired53,corrected_feedback_integrity_audit
  support_leg_ik_adjudicated_witness=leg_ik_adjudicated_witness,
  support_leg_ik_raw_analysis=leg_ik_analysis,
  support_leg_ik_post_run_audit=leg_ik_post_audit,
+ prospective_child_input_binding_check=child_binding_check,
  support_leg_ik_external_terminal_observation=leg_ik_terminal,
  resource_status=resource_status,
  full_efficacy_comparisons_completed=1 if formal_summary else 0,
@@ -544,6 +551,8 @@ if paired51_state:
         if leg_ik_velocity_paths:
             component_text+='<p>另保留足部材料点速度的只读分解：质心平移项与角速度项均有贡献，两种位置修正没有消除滑移代理。分解采用支撑观测加权，不能替代上表逐输入均值，也不能证明单独的因果来源。<a href="../support_leg_ik_20261012/'+leg_ik_velocity_paths[-1].name+'">速度分解记录</a>。</p>'
         component_text+='<p>已核对实际部署的冻结接口：生成参考主要向策略提供身体位置和线速度；不能只新增足部四元数或接触力字段就声称策略会执行它们。位置IK不等于接触动力学修正。<a href="../../docs/remaining_validation_decision_20261012.md">后续验证边界及源代码依据</a>。</p>'
+        if child_binding_check:
+            component_text+='<p>针对子进程输入绑定缺口，另准备实际加载参考与源码核验入口。本机及服务器的明确合成数组检查通过，并拒绝错误哈希、源码改变和参考内容改变。仅为功能检查，未运行新仿真，未获得独立GPU入口见证，不追溯认证旧实验。<a href="../../docs/child_input_binding_20261012.md">修复边界</a> · <a href="../child_input_binding_20261012/cpu_checks.json">检查记录</a>。</p>'
     if paired51_preview:
         assert paired51_preview['source_sha256']==hashlib.sha256((ROOT/'scripts/preview_paired_feedback_v51_20261012.py').read_bytes()).hexdigest()
         component_text+='<h4>固定样本的状态可视化</h4><p>每类第一个零偏移来源、种子11，样本选择不依赖得分。蓝色为保存的实际人体仿真状态，灰色为所选参考；金色叉号是原始目标。这是骨架回放，不是仿真器相机录像、机器人模型录像或实机测试。</p>'

@@ -1,0 +1,79 @@
+{
+  "status": "FAIL",
+  "purpose": "Adjudicate two non-contract false flags retained by independent_recompute.json and verify the applied-reference velocity trace without rerunning any simulator.",
+  "reports": {
+    "baseline": {
+      "checks": {
+        "request_motion_hash_uses_canonical_npz_content": true,
+        "lineage_request_exact": true,
+        "raw_reference_equals_upstream_canonical_transform": false,
+        "trace_position_equals_applied_reference": true,
+        "trace_first_previous_equals_current": true,
+        "trace_subsequent_previous_equals_prior_position": true,
+        "trace_velocity_matches_position_difference": false,
+        "trace_first_velocity_zero": true,
+        "all_reference_frames_valid": true,
+        "metadata_rule_explicit": true
+      },
+      "all_pass": false,
+      "request_replay_motion": "5f0dbd7ce0f1ae340da0120ec99823b12441ceb93b615333ea50312f71d76b83",
+      "recomputed_motion_hash": "5f0dbd7ce0f1ae340da0120ec99823b12441ceb93b615333ea50312f71d76b83",
+      "selected_to_canonical_max_abs_m": 5.960464477539063e-08,
+      "raw_to_selected_max_abs_m": 5.960464477539063e-08,
+      "raw_to_canonical_max_abs_m": 1.866893570624082e-16,
+      "trace_velocity_max_abs_error_m_s": 9.5367431640625e-07
+    },
+    "cartesian": {
+      "checks": {
+        "request_motion_hash_uses_canonical_npz_content": true,
+        "lineage_request_exact": true,
+        "raw_reference_equals_upstream_canonical_transform": false,
+        "trace_position_equals_applied_reference": true,
+        "trace_first_previous_equals_current": true,
+        "trace_subsequent_previous_equals_prior_position": true,
+        "trace_velocity_matches_position_difference": false,
+        "trace_first_velocity_zero": true,
+        "all_reference_frames_valid": true,
+        "metadata_rule_explicit": true
+      },
+      "all_pass": false,
+      "request_replay_motion": "f9541c0d3f5fb104ea7599bcaab33e89ab32838054e690bb4a45b6a62e0762c2",
+      "recomputed_motion_hash": "f9541c0d3f5fb104ea7599bcaab33e89ab32838054e690bb4a45b6a62e0762c2",
+      "selected_to_canonical_max_abs_m": 5.960464477539063e-08,
+      "raw_to_selected_max_abs_m": 5.960464477539063e-08,
+      "raw_to_canonical_max_abs_m": 1.866893570624082e-16,
+      "trace_velocity_max_abs_error_m_s": 9.5367431640625e-07
+    },
+    "two_link_ik": {
+      "checks": {
+        "request_motion_hash_uses_canonical_npz_content": true,
+        "lineage_request_exact": true,
+        "raw_reference_equals_upstream_canonical_transform": false,
+        "trace_position_equals_applied_reference": true,
+        "trace_first_previous_equals_current": true,
+        "trace_subsequent_previous_equals_prior_position": true,
+        "trace_velocity_matches_position_difference": false,
+        "trace_first_velocity_zero": true,
+        "all_reference_frames_valid": true,
+        "metadata_rule_explicit": true
+      },
+      "all_pass": false,
+      "request_replay_motion": "de0dfb4945e42542d62a72ef6c12cc7264d59dfe062c1f4703fd63a1cf689289",
+      "recomputed_motion_hash": "de0dfb4945e42542d62a72ef6c12cc7264d59dfe062c1f4703fd63a1cf689289",
+      "selected_to_canonical_max_abs_m": 5.960464477539063e-08,
+      "raw_to_selected_max_abs_m": 5.960464477539063e-08,
+      "raw_to_canonical_max_abs_m": 1.866893570624082e-16,
+      "trace_velocity_max_abs_error_m_s": 9.5367431640625e-07
+    }
+  },
+  "source_construction_checks": {
+    "mode_is_native_construction": true,
+    "scope_is_val_seed11_round0": true,
+    "lineage_request_exact": true,
+    "execution_bound": true
+  },
+  "simulation_calls": 0,
+  "generation_calls": 0,
+  "training_calls": 0,
+  "limitations": "This validates saved-array and request construction semantics only; it is not efficacy evidence."
+}

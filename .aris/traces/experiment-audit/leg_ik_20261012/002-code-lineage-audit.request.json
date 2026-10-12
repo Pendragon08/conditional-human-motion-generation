@@ -1,0 +1,24 @@
+{
+  "call_number": 2,
+  "purpose": "code-lineage-audit",
+  "timestamp": "2026-10-12T12:00:00+08:00",
+  "timestamp_is_approximate": true,
+  "tool": "spawn_agent",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "inherited",
+  "prompt_is_reconstructed_from_dispatch_record": true,
+  "files_referenced": [
+    "scripts/prepare_support_leg_ik_20261012.py",
+    "scripts/support_leg_ik_core_20261012.py",
+    "scripts/run_support_leg_ik_adjudicated_20261012.py",
+    "scripts/analyze_support_leg_ik_20261012.py",
+    "scripts/reference_velocity_collect_v43_20261012.py",
+    "scripts/physics_guided_metric_v23_20261012.py",
+    "scripts/verify_execution_lineage_v39_20261012.py",
+    "scripts/diagnose_leg_ik_velocity_components_20261012.py",
+    "docs/support_leg_ik_20261012.md",
+    "docs/support_leg_ik_adjudicated_20261012.md",
+    "results/support_leg_ik_20261012/"
+  ],
+  "prompt": "Independently audit code paths, provenance, metric dispatch, execution lineage, source/model/reference/analysis locks, ledger semantics, and evaluation labeling for A-F. Start adversarial, read the listed files directly, and report exact file:line evidence. Preserve historical FAIL witnesses and distinguish their extra assumptions from the documented contracts. Do not run simulation, training, installs, or mutate experiment artifacts."
+}

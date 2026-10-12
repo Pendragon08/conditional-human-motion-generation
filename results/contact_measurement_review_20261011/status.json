@@ -64412,7 +64412,456 @@
     "overleaf_results_sync": false,
     "scope": "Classical bounded positional IK; internal val with upstream train/test mix; no G1, downstream training, independent semantics/diversity or novelty acceptance"
   },
-  "support_leg_ik_post_run_audit": null,
+  "support_leg_ik_post_run_audit": {
+    "schema_version": "experiment-audit.post-run.v1",
+    "audit_skill": "experiment-audit",
+    "audit_id": "leg_ik_20261012",
+    "trace_path": ".aris/traces/experiment-audit/leg_ik_20261012/",
+    "agent_id": "/root/leg_ik_post_run_integrity",
+    "verdict_id": "/root/leg_ik_post_run_integrity",
+    "executor_model": "gpt-6.1-sol",
+    "executor_family": "openai",
+    "reviewer_model": "gpt-6.1-sol",
+    "reviewer_family": "openai",
+    "reviewer_reasoning": "inherited",
+    "review_independence": "same-family",
+    "acceptance_status": "provisional",
+    "generated_at": "2026-10-12T12:39:48+08:00",
+    "date": "2026-10-12",
+    "auditor": "gpt-6.1-sol fresh same-family agent",
+    "verdict": "WARN",
+    "overall_verdict": "warn",
+    "reviewer": {
+      "agent": "/root/leg_ik_post_run_integrity",
+      "model_family": "gpt-6",
+      "independence": "same-family",
+      "acceptance_status": "provisional",
+      "stance": "fresh_adversarial_review"
+    },
+    "status": "WARN",
+    "integrity_status": "warn",
+    "integrity_detail_status": "WARN_PROVISIONAL",
+    "reason_code": "execution_binding_and_scope_qualifiers",
+    "summary": "All classifications and frozen outcomes reproduce; child-side replay/upstream runtime binding and one-seed internal proxy scope require qualifiers.",
+    "reason_codes": [
+      "UPSTREAM_RUNTIME_STATE_NOT_EXECUTION_BOUND",
+      "REPLAY_CONTENT_HASH_NOT_CHILD_RECHECKED",
+      "EXTERNAL_TERMINAL_OBSERVATION_NOT_AUTONOMOUS_PARENT_EXIT_RECEIPT",
+      "ONE_SEED_INTERNAL_MIXED_SPLIT_PROXY_SCOPE",
+      "SUMMARY_LEDGER_FIELD_NAME_AMBIGUOUS"
+    ],
+    "headline": "All 216 classifications, frozen analysis metrics, source-cluster bootstrap results, state exports, reference invariants, component counts, costs, and outcome bindings reproduce. The audit is WARN because the child process did not execution-time re-hash the replay content or query the actual upstream checkout state, and because the evidence supports only a one-seed internal simulation/proxy engineering diagnosis.",
+    "frozen_outcome": {
+      "decision": "STOP_THIS_LIMITED_LEG_TRANSLATION_AND_POSITION_IK_PARAMETERIZATION",
+      "decision_reproduced": true,
+      "joint_pass_gain_percentage_points": {
+        "cartesian_vs_baseline": 0.0,
+        "two_link_ik_vs_baseline": 0.0
+      },
+      "source_cluster_bootstrap_95_percent_ci_percentage_points": {
+        "cartesian_vs_baseline": [
+          0.0,
+          0.0
+        ],
+        "two_link_ik_vs_baseline": [
+          0.0,
+          0.0
+        ]
+      },
+      "interpretation": "The zero interval is descriptive for these 24 source clusters and does not prove population equivalence. The decision applies only to this bounded leg-translation and classical positional-IK parameterization."
+    },
+    "checks": {
+      "A_ground_truth_provenance_and_proxy_labeling": {
+        "status": "PASS",
+        "finding": "Endpoint goals are derived from the fixed dataset motion before generation. The replay reference is a prior simulated/model trajectory, tracking is therefore synthetic-proxy tracking, and surface slip is a collision-geometry/body-force proxy. The artifacts label these facts and do not present them as real contact-point truth or real-world ground truth.",
+        "evidence": [
+          "scripts/physics_guided_collect.py:94-105,129-139",
+          "scripts/prepare_support_reference_probe_v63_20261012.py:25-29",
+          "scripts/prepare_support_leg_ik_20261012.py:27-78",
+          "scripts/physics_guided_metric_v23_20261012.py:71-100,118-160",
+          "results/support_leg_ik_20261012/versions.json",
+          "docs/support_leg_ik_20261012.md:3-17"
+        ]
+      },
+      "B_normalization_and_denominators": {
+        "status": "PASS",
+        "finding": "All gates use frozen absolute SI thresholds. No metric divides by a prediction's own maximum, minimum, or mean. All eight reported scalar analysis metrics have 72 finite values and zero missing/nonfinite values in each arm. The component projection divides by material speed only to form a signed projection in m/s; it is not a normalized score. Pooled slip uses total flagged support-body-frame observations over total support observations and is distinct from the equally weighted 72-case mean.",
+        "frozen_thresholds": {
+          "goal_position_m": 0.1,
+          "goal_heading_deg": 10.0,
+          "goal_time_s": 0.1,
+          "tracking_mean_m": 0.1,
+          "tracking_p95_m": 0.2,
+          "penetration_depth_m": 0.01,
+          "penetration_fraction": 0.02,
+          "sliding_speed_m_s": 0.05,
+          "sliding_fraction": 0.1,
+          "contact_force_n": 10.0,
+          "surface_near_ground_m": 0.02,
+          "jerk_p95_m_s3": 1000.0
+        },
+        "finite_denominators_per_arm": 72,
+        "missing_or_nonfinite_per_arm": 0,
+        "evidence": [
+          "results/support_leg_ik_20261012/frozen_thresholds.json",
+          "scripts/physics_guided_metric_v23_20261012.py:103-160",
+          "scripts/analyze_support_leg_ik_20261012.py:39-79",
+          "scripts/diagnose_leg_ik_velocity_components_20261012.py:43-71"
+        ]
+      },
+      "C_files_receipts_terminal_scope_counts_and_numeric_match": {
+        "status": "WARN",
+        "finding": "All required current files exist in the authoritative result set; request/lineage/output/receipt hashes match; each log contains one successful 72-case sentinel; the actual SSH run and analyzer were observed at exit 0; and the frozen counts and outcome metrics reproduce. The warning is about certification strength: the child did not recompute request.replay_motion, the runtime source_commit was copied from configuration rather than queried from the loaded checkout, and no autonomous server parent-exit receipt exists. A later read-only check found the expected clean upstream checkout, but retrospective state is not execution-time state.",
+        "classification_counts": {
+          "baseline": {
+            "completed": 72,
+            "condition_pass": 5,
+            "physical_pass": 0,
+            "tracking_pass": 68,
+            "joint_pass": 0
+          },
+          "cartesian": {
+            "completed": 72,
+            "condition_pass": 7,
+            "physical_pass": 0,
+            "tracking_pass": 68,
+            "joint_pass": 0
+          },
+          "two_link_ik": {
+            "completed": 72,
+            "condition_pass": 6,
+            "physical_pass": 0,
+            "tracking_pass": 68,
+            "joint_pass": 0
+          }
+        },
+        "metric_reproduction": {
+          "classification_or_gate_mismatches": 0,
+          "frozen_analysis_metric_mismatches_under_declared_comparison": 0,
+          "exact_cross_runtime_reduction_differences_retained": {
+            "maximum_analysis_mean_difference": 2.7755575615628914e-17,
+            "maximum_component_weighted_mean_difference_m_s": 2.7989e-11,
+            "maximum_descriptive_surface_slip_proxy_mean_difference_m_s": 6.54324e-10
+          },
+          "secondary_descriptive_reduction_note": "All differences are retained as cross-runtime reduction roundoff. They change no support/slip count, gate, classification, frozen decision, or permitted claim."
+        },
+        "terminal_observation": {
+          "run_exit_code": 0,
+          "run_chunk": "5faa0c",
+          "run_sentinel": "SUPPORT_LEG_IK_ADJUDICATED_COMPLETE",
+          "analysis_exit_code": 0,
+          "analysis_chunk": "028dc7",
+          "scope": "external executor/write_stdin observation; explicitly not an autonomous server parent-exit receipt"
+        },
+        "runtime_binding_warning": {
+          "current_replay_content_matches": true,
+          "current_upstream_checkout_later_verified_expected_and_clean": true,
+          "child_recomputed_replay_content_hash_at_execution": false,
+          "child_queried_upstream_commit_and_dirty_state_at_execution": false,
+          "final_runner_rehashed_model_weights_per_batch": false,
+          "upstream_current_head": "d8950bdb",
+          "native_closd_file_sha256": "dff1ca9bfb15c3058914c326cba83a07f69cd91952cd4e03ecfe1ad3d391e394"
+        },
+        "evidence": [
+          "scripts/verify_execution_lineage_v39_20261012.py:35-52",
+          "scripts/physics_guided_collect.py:121-139,289-299",
+          "scripts/r3_closd_isolated_entry.py:15-24",
+          "scripts/run_support_leg_ik_adjudicated_20261012.py:41-75",
+          "results/support_leg_ik_20261012/EXECUTOR_TERMINAL_OBSERVATION.json",
+          "results/support_leg_ik_20261012/pipeline_finally_receipt.json",
+          "docs/remaining_validation_decision_20261012.md:7-19"
+        ]
+      },
+      "D_metric_code_called": {
+        "status": "PASS",
+        "finding": "The V43 launch adapter chain reaches contact_com_collect_v24, which patches the collector's metrics symbol to physics_guided_metric_v23.metrics. The collector calls that symbol for each saved case. The frozen analyzer imports the same metric and recomputes all 72 rows per arm; the component diagnostic separately reconstructs the slip counts.",
+        "evidence": [
+          "scripts/run_support_reference_probe_v63_20261012.py:42-50",
+          "scripts/contact_com_collect_v24_20261012.py:4-12",
+          "scripts/physics_guided_collect.py:274-288",
+          "scripts/analyze_support_leg_ik_20261012.py:7-9,42-60",
+          "scripts/diagnose_leg_ik_velocity_components_20261012.py:34-63"
+        ]
+      },
+      "E_sources_seeds_prefix_endpoints_targets_budget_bootstrap_and_claims": {
+        "status": "WARN",
+        "finding": "The fixed V51 first construction supplies 72 ordered inputs from 24 sources with three offsets each. All selected inputs are length 120 and complete; the documented incomplete-source preservation branch was not exercised. Prefix frames 0 through 60, frame 119, goals, headings, and non-leg coordinates are unchanged. IK feet exactly match the Cartesian target and preserve segment lengths to float32 tolerance. Source-cluster bootstrap uses 24 clusters, seed 6211, and 5000 resamples. The study has one simulation seed and mixes 19 official train-derived with 5 official test-derived source clusters; pretrained exposure was not independently established. The summary ledger field name is ambiguous because it points to the current three-row append-only parent ledger, not the historical baseline-only snapshot.",
+        "source_scope": {
+          "seed": 11,
+          "inputs_per_arm": 72,
+          "source_clusters": 24,
+          "offsets_per_source": 3,
+          "official_split_clusters": {
+            "train": 19,
+            "test": 5
+          },
+          "official_split_inputs": {
+            "train": 57,
+            "test": 15
+          },
+          "evaluation_role": "internal_validation_not_untouched_test"
+        },
+        "reference_invariants": {
+          "shape": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "prefix_frames_0_through_60_exact": true,
+          "final_frame_exact": true,
+          "goals_and_headings_unchanged": true,
+          "non_leg_coordinates_unchanged": true,
+          "cartesian_max_shift_m": 0.07820509374,
+          "cartesian_max_segment_change_m": 0.0579819083,
+          "two_link_ik_max_segment_error_m": 8.9406967e-08,
+          "two_link_ik_max_knee_shift_m": 0.0596136041
+        },
+        "state_and_cache": {
+          "exported_initial_state_archives_cross_arm_exact": true,
+          "bootstrap_equals_first_action_for_seven_fields": true,
+          "four_recorded_rigid_cache_max_differences": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "hidden_physx_state_identity_established": false
+        },
+        "real_costs_seconds": {
+          "source_construction": 49.1905804593,
+          "cached_baseline_original_charge": 50.4387053065,
+          "cartesian": 49.7906149086,
+          "two_link_ik": 49.8940196168,
+          "new_candidate_total": 99.6846345253,
+          "saved_array_numerical_adjudication": 0.90373248
+        },
+        "ledger_distinction": {
+          "historical_baseline_only_sha256_prefix": "d450a9",
+          "current_append_only_parent_sha256_prefix": "c1a19",
+          "cost_or_row_mismatch": false,
+          "summary_field_semantically_misleading": true
+        },
+        "resource_caps": {
+          "snapshot_sha256": "54dd90d12117ec5ec1e9d1b13c54f211af2dafe00106bc53e14e7e954f496759",
+          "status": "CAPS_PASS",
+          "total_gpu_job_wall_hours": 4.56358397,
+          "comparison_gpu_job_wall_hours": 2.12490853,
+          "output_bytes": 9014172435,
+          "free_bytes": 36603215872
+        },
+        "evidence": [
+          "scripts/prepare_support_leg_ik_20261012.py",
+          "scripts/support_leg_ik_core_20261012.py",
+          "scripts/analyze_support_leg_ik_20261012.py:84-106",
+          "results/support_leg_ik_20261012/references/*.npz",
+          "results/support_leg_ik_20261012/raw/*/initial_states.npz",
+          "results/round_resource_status_20261012/snapshot_1791779138706380976.json"
+        ]
+      },
+      "F_evaluation_type": {
+        "status": "PASS",
+        "classification": [
+          "simulation_only",
+          "synthetic_proxy_tracking",
+          "contact_geometry_body_force_proxy",
+          "read_only_post_hoc_component_diagnosis"
+        ],
+        "finding": "The evaluation is correctly labeled as simulation-only synthetic-proxy tracking against dataset-derived fixed goals. The velocity-component report is a read-only decomposition of the frozen proxy, not an alternate score, new threshold, or new simulator experiment. It does not establish contact-point truth, causality, candidate efficacy, innovation, G1 performance, downstream training benefit, or real-world behavior.",
+        "evidence": [
+          "results/support_leg_ik_20261012/versions.json",
+          "scripts/diagnose_leg_ik_velocity_components_20261012.py:72-76",
+          "results/support_leg_ik_20261012/velocity_components_1791779022398962802.json",
+          "docs/support_leg_ik_adjudicated_20261012.md:16-17"
+        ]
+      }
+    },
+    "recomputed_metrics": {
+      "baseline": {
+        "endpoint_error_m": 0.19590699259873187,
+        "heading_error_rad": 0.21217996437288894,
+        "endpoint_time_error_s": 0.5833333637565374,
+        "surface_slip_proxy_fraction_case_mean": 0.5424111456563213,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 1611.0568736182304,
+        "tracking_mean_m": 0.055011089192703366,
+        "tracking_p95_m": 0.08776933511641498
+      },
+      "cartesian": {
+        "endpoint_error_m": 0.19363780034832206,
+        "heading_error_rad": 0.20698129673981228,
+        "endpoint_time_error_s": 0.5879629936276211,
+        "surface_slip_proxy_fraction_case_mean": 0.5482714445603458,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 1591.9300239774902,
+        "tracking_mean_m": 0.05584558347860972,
+        "tracking_p95_m": 0.08965303973139574
+      },
+      "two_link_ik": {
+        "endpoint_error_m": 0.19679963444813903,
+        "heading_error_rad": 0.20236360651068205,
+        "endpoint_time_error_s": 0.5699074371303949,
+        "surface_slip_proxy_fraction_case_mean": 0.5442295786439408,
+        "penetration_fraction": 0.0,
+        "jerk_p95_m_s3": 1585.0414586597008,
+        "tracking_mean_m": 0.0558980121018572,
+        "tracking_p95_m": 0.09040574701244217
+      }
+    },
+    "component_diagnosis": {
+      "definition": "Pooled numerator is the number of supported body-frame observations whose material-point horizontal speed exceeds the frozen sliding threshold; denominator is every supported body-frame observation. Speed terms are support-weighted magnitudes. Signed projections can cancel and magnitudes are not additive.",
+      "baseline": {
+        "slip": 4650,
+        "support": 8927,
+        "pooled_fraction": 0.5208916769351406,
+        "linear_m_s": 0.1712094153545382,
+        "rotational_m_s": 0.15161218024315692,
+        "material_m_s": 0.1917717596801539
+      },
+      "cartesian": {
+        "slip": 4740,
+        "support": 8990,
+        "pooled_fraction": 0.5272525027808677,
+        "linear_m_s": 0.1720241956841677,
+        "rotational_m_s": 0.15094279243204684,
+        "material_m_s": 0.19341074563851002
+      },
+      "two_link_ik": {
+        "slip": 4715,
+        "support": 8972,
+        "pooled_fraction": 0.52552385198395,
+        "linear_m_s": 0.16909651869905484,
+        "rotational_m_s": 0.15228500184682328,
+        "material_m_s": 0.1893225417266508
+      },
+      "raw_count_mismatches": 0,
+      "maximum_cross_runtime_weighted_mean_difference_m_s": 2.7989e-11,
+      "alternate_score_or_threshold": false,
+      "causal_or_efficacy_test": false
+    },
+    "historical_contracts": {
+      "original_document_witness": {
+        "status_retained": "FAIL",
+        "failures": 117,
+        "distinction": "Exact float64 logged scalar norms were compared with recomputations from saved float32 reference arrays. The independent scalar contract verifies the documented float32/geometric invariants without imposing undocumented exact logged-norm equality."
+      },
+      "continuation_document_witness": {
+        "status_retained": "FAIL",
+        "failures": 1,
+        "distinction": "The failure demanded historical whole-ledger equality after the parent ledger had valid append-only rows. The addendum independently reconstructs the historical baseline-only snapshot and current ledger."
+      },
+      "adjudicated_document_witness": {
+        "status": "PASS",
+        "true_checks": 388,
+        "historical_failures_retained": true
+      }
+    },
+    "binding_summary": {
+      "all_versioned_source_hashes_match": true,
+      "source_manifest_matches_versions": true,
+      "frozen_thresholds_match_versions": true,
+      "analysis_source_and_output_lock_match": true,
+      "controller_weights_sha256": "7ead3778b95516d8b91b7c5939674e45dd0ad10fcc22da60f9f57d204695f6ac",
+      "generator_weights_sha256": "3ca68ae54975946b3fe5c6cd64a6eafc439b5fc43c166bc9a98d1c43aeef6618",
+      "references_current_content_match_requests": true,
+      "raw_output_hashes_match_execution_lineage": true,
+      "receipts_match_bound_trajectory_hashes": true,
+      "analysis_inputs_current": true,
+      "component_inputs_current": true,
+      "state_and_summary_complete": true,
+      "target_or_threshold_change": false
+    },
+    "audited_input_hashes": {
+      "results/support_leg_ik_20261012/summary.json": "sha256:251733ffff5d4d8ba37a18bab9883043470b8ec343e758f572be773896c3f042",
+      "results/support_leg_ik_20261012/analysis_1791778833277260183.json": "sha256:3055a2b7c00fe3e2b7b0ca89d1a9acbc4a8187dd242a6d8505f3d8f00645a77a",
+      "results/support_leg_ik_20261012/versions.json": "sha256:40f9c9ae71efd12177add7df9864817e5cbf06364928a41b1b39c3ce3c7ab5c1",
+      "results/support_leg_ik_20261012/source_manifest.json": "sha256:63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+      "results/support_leg_ik_20261012/frozen_thresholds.json": "sha256:451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+      "results/support_leg_ik_20261012/velocity_components_1791779022398962802.json": "sha256:1953afff0c177cc77abbaaa663edb37b2d06f5f726ed31e0f0b04886338ce24f"
+    },
+    "key_artifact_hashes_sha256": {
+      "summary.json": "251733ffff5d4d8ba37a18bab9883043470b8ec343e758f572be773896c3f042",
+      "state.json": "bbfd2c29618f889eaa9207f34ce7ab6e4c354e385730aaab4a006330ec785981",
+      "analysis_1791778833277260183.json": "3055a2b7c00fe3e2b7b0ca89d1a9acbc4a8187dd242a6d8505f3d8f00645a77a",
+      "analysis_plan_lock.json": "b58de2bd74b0559cef56589ca2f399153baa882425d6e8be4e14ecb9c89bd27d",
+      "preparation.json": "67bfcd7cfc7ea23f4265126df73306eb141b7aedc61b1acce58238b4b3f400f1",
+      "versions.json": "40f9c9ae71efd12177add7df9864817e5cbf06364928a41b1b39c3ce3c7ab5c1",
+      "source_manifest.json": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+      "frozen_thresholds.json": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+      "budget_ledger.json": "5c312c37b47c8afac560ed46b0516bfa944962d8b10497f457debdb82f23720e",
+      "launch_receipt.json": "f24fa9ecf553d025dc600a7c858c426a58e374edb3ada8abf983c4adc0a28eb2",
+      "pipeline_finally_receipt.json": "27609470f40982b2ee683160e3571bcd558df16c2b1c2c61bb792857030a1c53",
+      "EXECUTOR_TERMINAL_OBSERVATION.json": "ad18e2d3d11bb58d2d50eb0915fbfbc0ea1e58bb45243073b0b8186f2ab27df9",
+      "velocity_components_1791779022398962802.json": "1953afff0c177cc77abbaaa663edb37b2d06f5f726ed31e0f0b04886338ce24f",
+      "ADJUDICATED_DOCUMENT_WITNESS.json": "a69184e1410610b3a242f34fe4c4fdb964f5a36e97fd772122851d3605baeccd"
+    },
+    "checker_adjudication": ".aris/traces/experiment-audit/leg_ik_20261012/checker_adjudication.json",
+    "audit_evidence": [
+      ".aris/traces/experiment-audit/leg_ik_20261012/independent_recompute.py",
+      ".aris/traces/experiment-audit/leg_ik_20261012/independent_recompute.json",
+      ".aris/traces/experiment-audit/leg_ik_20261012/reference_trace_audit.py",
+      ".aris/traces/experiment-audit/leg_ik_20261012/reference_trace_audit.json",
+      ".aris/traces/experiment-audit/leg_ik_20261012/independent_leg_ik_artifact_audit_20261012_053900_v2.json",
+      ".aris/traces/experiment-audit/leg_ik_20261012/checker_adjudication.json"
+    ],
+    "permitted_claim": "In this one-seed internal simulation replay over 24 source clusters, neither bounded Cartesian leg translation nor the tested classical two-link positional IK changed joint-pass rate from zero; the source-cluster bootstrap for this observed slice is [0,0] percentage points. This supports stopping only the tested parameterization and records a descriptive proxy decomposition.",
+    "prohibited_inferences": [
+      "population equivalence or general ineffectiveness of IK",
+      "real contact-point slip, force, torque, collision, or full-dynamics correctness",
+      "candidate efficacy, confirmed innovation, novelty, or G1 performance",
+      "downstream training benefit, deployment benefit, or real-world behavior",
+      "untouched-test generalization or absence of pretrained source exposure"
+    ],
+    "action_items": [
+      "Keep the claim ceiling and STOP decision limited to this parameterization and internal proxy slice.",
+      "Prospectively make the child collector recompute replay_motion and versions after loading inputs and bind the actual upstream checkout HEAD/dirty state plus model-weight hashes per batch; do not retroactively certify this run.",
+      "For any confirmatory efficacy study, preregister multiple seeds, genuinely held-out sources with pretraining-exposure accounting, and an independent or real contact evaluator.",
+      "Rename or split the future summary ledger field so the historical baseline-only snapshot and current append-only parent ledger have distinct names.",
+      "Clarify that all 72 selected inputs were complete and the incomplete-source preservation branch was not exercised.",
+      "Keep pooled component statistics separate from the per-case frozen analysis metric and label them descriptive/noncausal.",
+      "Preserve the original and continuation FAIL witnesses, their independent addenda, and the external-observation label."
+    ],
+    "execution_accounting": {
+      "audit_simulation_calls": 0,
+      "audit_training_calls": 0,
+      "audit_generation_calls": 0,
+      "audit_install_calls": 0,
+      "experiment_retries": 0,
+      "source_or_result_rewrites": 0,
+      "new_cpu_read_only_audit_scripts": 2
+    }
+  },
+  "prospective_child_input_binding_check": {
+    "status": "CPU_SYNTHETIC_FIXTURES_PASS",
+    "evaluation_type": "synthetic_functional_checks",
+    "candidate_efficacy_test": false,
+    "gpu_runtime_ready": false,
+    "historical_certification": false,
+    "simulation_calls": 0,
+    "generation_calls": 0,
+    "training_calls": 0,
+    "local_tool_chunk": "d8d81b",
+    "local_observed_exit_code": 0,
+    "remote_tool_chunk": "395309",
+    "remote_observed_exit_code": 0,
+    "sentinel": "CHILD_INPUT_BINDING_FIXTURES_PASS",
+    "scripts": {
+      "scripts/child_input_guard_20261012.py": "15fca4382f081cf98eb76c52b9b3e97b67e9ce4279963a9e54e3257a75c8667f",
+      "scripts/reference_child_binding_collect_20261012.py": "096d76af32cab77c30dde31d2bf8e240f7fa88f1abed615c1aeee4c5ee51a944"
+    },
+    "remote_sha_tool_chunk": "55b04a",
+    "negative_controls": [
+      "incorrect_loaded_motion_hash",
+      "incorrect_versions_hash",
+      "missing_loaded_replay",
+      "generation_mode_with_replay",
+      "changed_version_bound_source",
+      "changed_loaded_replay_content"
+    ],
+    "scope": "Guard library exercised on explicit synthetic arrays only. Prospective collector adapter not launched or independently witnessed. No claims about upstream runtime, model weights, hidden state or efficacy. External tool observations are not automatic server parent receipts."
+  },
   "support_leg_ik_external_terminal_observation": {
     "kind": "external_tool_observation",
     "source": "Codex exec_command/write_stdin tool results",
@@ -66480,7 +66929,7 @@
       "results/surface_proxy_calibration_v52_20261012",
       "results/velocity_reference_fixture_v19_20261012"
     ],
-    "output_bytes": 9014172435,
+    "output_bytes": 9014236092,
     "charged_wall_hours_one_gpu_per_job": 4.563583969931222,
     "stage_hours": {
       "measurement": 1.2360216489734335,
@@ -66513,7 +66962,7 @@
     },
     "total_cap_hours": 72,
     "output_cap_bytes": 16106127360,
-    "data_free_bytes": 36603215872,
+    "data_free_bytes": 36603027456,
     "data_free_floor_bytes": 21474836480,
     "cap_checks": {
       "total": true,
@@ -66527,7 +66976,7 @@
     },
     "status": "CAPS_PASS",
     "source_sha256": "7686f10fb7b7ba27982a7a9f1cb562bda97b9ce64dd54c17c0338347f6054aa9",
-    "time": 1791779138.706369,
+    "time": 1791780482.2114477,
     "gpu_jobs_launched_by_this_script": 0
   },
   "full_efficacy_comparisons_completed": 1,
@@ -107410,7 +107859,7 @@
     "results\\reference_observation_v42_20261012\\DOCUMENT_WITNESS.json": "e68742dc2987a50684a4cfd82237ef9f1014aafdf6b135952fc4bdac6a15ef55",
     "results\\reference_observation_v42_20261012\\versions.json": "00ae3501899a92d524509f7661d91daf23c505434e69ab37c8b2817050e5e54b",
     "results\\reference_observation_v42_20261012\\budget_ledger.json": "fd7a490fa968a402c455f1e7e1f1f3b9ced5528ad23320fa5ea2420f754ee8b5",
-    "results\\round_resource_status_20261012\\snapshot_1791779138706380976.json": "54dd90d12117ec5ec1e9d1b13c54f211af2dafe00106bc53e14e7e954f496759",
+    "results\\round_resource_status_20261012\\snapshot_1791780482211464724.json": "b1f25bde4d19743ef68f4bb5f3d92994e2f304572fcc6d4f0f003f68abfcfcab",
     "results\\reference_velocity_v43_20261012\\summary.json": "c5ded5f5225c66dec3421fd679ba095ce4e64eff1b68a254e861e8f63d152ffd",
     "results\\reference_velocity_v43_20261012\\DOCUMENT_WITNESS.json": "92bfaca03d734699add960a354fff196ff133cc77eb98538102d7e553fd32366",
     "results\\reference_velocity_v43_20261012\\versions.json": "9cc69c6318892df77657c6dac4e38e8f514d5a85c009addbea65d0edfbce1c5a",
@@ -107455,6 +107904,7 @@
     "results\\support_leg_ik_20261012\\summary.json": "251733ffff5d4d8ba37a18bab9883043470b8ec343e758f572be773896c3f042",
     "results\\support_leg_ik_20261012\\launch_receipt.json": "f24fa9ecf553d025dc600a7c858c426a58e374edb3ada8abf983c4adc0a28eb2",
     "results\\support_leg_ik_20261012\\pipeline_finally_receipt.json": "27609470f40982b2ee683160e3571bcd558df16c2b1c2c61bb792857030a1c53",
+    "results\\support_leg_ik_20261012\\POST_RUN_AUDIT.json": "4251dbd4a2d28901a645676269d9ffc94cf27c981349875bdbf8ec49c3e6848d",
     "results\\support_reference_probe_v63_20261012\\summary.json": "a504f56cf37dec79fb46aeace51a80a25fc1dbbb8f4251bd8727ffeb881193b2",
     "results\\support_reference_probe_v63_20261012\\DOCUMENT_WITNESS.json": "c8f320671fba8203c74e91fa46080d3318f678adaf046ceff405ba063076a5f5",
     "results\\support_reference_probe_v63_20261012\\runtime_witness.json": "b88031939051092821ca9592229c27163cf316888aae71bce672093cfa8872aa",
@@ -107475,6 +107925,7 @@
     "results\\support_leg_ik_20261012\\analysis_1791778833277260183.json": "3055a2b7c00fe3e2b7b0ca89d1a9acbc4a8187dd242a6d8505f3d8f00645a77a",
     "results\\support_leg_ik_20261012\\velocity_components_1791779022398962802.json": "1953afff0c177cc77abbaaa663edb37b2d06f5f726ed31e0f0b04886338ce24f",
     "results\\support_leg_ik_20261012\\EXECUTOR_TERMINAL_OBSERVATION.json": "ad18e2d3d11bb58d2d50eb0915fbfbc0ea1e58bb45243073b0b8186f2ab27df9",
+    "results\\child_input_binding_20261012\\cpu_checks.json": "f42c566600c52e8b9cf4c8b4b3678ca76f50e7332f73533c080ff3f88c1d2820",
     "results\\native_reference_velocity_v46_20261012\\DOCUMENT_WITNESS.json": "d869b5e97f9de9fe7754408a17638786072070207393e8d218340c28f0c2bf7b",
     "results\\native_reference_velocity_v46_20261012\\versions.json": "883d7dd07e8d20a45fc355f71750679a80db90f54e4dc36f82934bd9ad9ebcb9",
     "results\\native_reference_velocity_v46_20261012\\budget_ledger.json": "02675861a1aa6cadebb2f4137d7feaaa294bd0ed1a3bf5a585525677ac60167c",

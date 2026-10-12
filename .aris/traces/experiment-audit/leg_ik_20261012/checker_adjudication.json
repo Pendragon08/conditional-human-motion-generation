@@ -1,0 +1,111 @@
+{
+  "status": "COMPLETE_CODE_BACKED_ADJUDICATION",
+  "generated_at": "2026-10-12T12:39:48+08:00",
+  "reviewer": "/root/leg_ik_post_run_integrity",
+  "purpose": "Preserve every automated checker flag and adjudicate only against the documented experiment contracts; no rerun, simulator call, training call, installation, or result rewrite.",
+  "checker_outputs": {
+    "independent_recompute": {
+      "path": ".aris/traces/experiment-audit/leg_ik_20261012/independent_recompute.json",
+      "sha256": "0a9b6a635a39041c4f792d67a86e0841ca8b50646d37f6bc9b75a4bea44a1072",
+      "retained_status": "FAIL_INDEPENDENT_RAW_RECOMPUTATION"
+    },
+    "reference_trace_audit": {
+      "path": ".aris/traces/experiment-audit/leg_ik_20261012/reference_trace_audit.json",
+      "sha256": "fb3c44c2aa6d44f020efcb786063cf422a1ccb401ca42438e38bb514d4918f4f",
+      "retained_status": "FAIL"
+    },
+    "secondary_artifact_audit": {
+      "path": ".aris/traces/experiment-audit/leg_ik_20261012/independent_leg_ik_artifact_audit_20261012_053900_v2.json",
+      "sha256": "a5af3e1a58dce7b9c52ac12d2a71c358773d9d1e959d1b5f7600e0335cadade7",
+      "retained_status": "FAIL_OR_DIVERGENCE"
+    }
+  },
+  "adjudications": [
+    {
+      "checker": "independent_recompute",
+      "flag": "request_reference_hash=false for baseline, cartesian, and two_link_ik",
+      "classification": "CHECKER_CONTRACT_ERROR_WITH_SEPARATE_REAL_TOCTOU_WARNING",
+      "finding": "The checker compared request.replay_motion to the NPZ file-byte SHA-256. The request contract deliberately uses the canonical NPZ-content hash implemented by motion_hash(), including sorted key, dtype, shape, and array bytes. Recomputed content hashes equal all three requests. This removes the alleged current-artifact mismatch, but it does not close the separate execution-time TOCTOU gap: the child collector did not recompute replay_motion after loading the replay file.",
+      "evidence": [
+        "scripts/physics_guided_com_lineage_v24_20261012.py:19-25,28-40",
+        "scripts/physics_guided_collect.py:121-126,289-299",
+        ".aris/traces/experiment-audit/leg_ik_20261012/reference_trace_audit.json"
+      ]
+    },
+    {
+      "checker": "independent_recompute",
+      "flag": "source_construction.execution_lineage=false because request_scope=false",
+      "classification": "CHECKER_EXPECTATION_ERROR",
+      "finding": "The checker hard-coded replay as the source-construction mode. The fixed V51 source construction is natively generated val/seed11/round0 evidence. Its actual request, lineage, seed, scope, case order, source hashes, and 24-by-3 construction all match. No result is reclassified by this adjudication.",
+      "evidence": [
+        "results/paired_feedback_validation_v51_20261012/requests/val_shared_s11_r0.json",
+        "results/paired_feedback_validation_v51_20261012/raw/val_shared_s11_r0/lineage.json",
+        ".aris/traces/experiment-audit/leg_ik_20261012/reference_trace_audit.json"
+      ]
+    },
+    {
+      "checker": "reference_trace_audit",
+      "flag": "raw_reference_equals_upstream_canonical_transform=false",
+      "classification": "UNDOCUMENTED_BITWISE_REQUIREMENT",
+      "finding": "The script required bitwise equality. The effective lineage contract accepts the upstream float32 root subtract/re-add canonical transform at absolute tolerance 1e-12. Across all three arms, raw-to-canonical maximum error is 1.866893570624082e-16 m, while selected-to-canonical and raw-to-selected differences are float32 roundoff at 5.960464477539063e-08 m. The documented invariant passes.",
+      "evidence": [
+        "scripts/physics_guided_com_lineage_v24_20261012.py:85-96",
+        ".aris/traces/experiment-audit/leg_ik_20261012/reference_trace_audit.json"
+      ]
+    },
+    {
+      "checker": "reference_trace_audit",
+      "flag": "trace_velocity_matches_position_difference=false",
+      "classification": "UNDOCUMENTED_BITWISE_REQUIREMENT",
+      "finding": "Trace positions, previous-position recurrence, frame indices, and zero first velocity are exact. A NumPy re-evaluation of the float32 subtraction/division differs by at most 9.5367431640625e-07 m/s for the three arms; the retained same-arithmetic CUDA audit matches all 622080 scalars exactly. No contract requires cross-runtime bitwise equality, and no gate/classification depends on the stricter assertion.",
+      "evidence": [
+        "scripts/reference_velocity_collect_v43_20261012.py",
+        ".aris/traces/experiment-audit/leg_ik_20261012/reference_trace_audit.json",
+        ".aris/traces/experiment-audit/leg_ik_20261012/independent_leg_ik_artifact_audit_20261012_053900_v2.json"
+      ]
+    },
+    {
+      "checker": "secondary_artifact_audit",
+      "flag": "cross-runtime reductions retain differences of 2.7755575615628914e-17 in one analysis mean, up to 2.7989e-11 m/s in component weighted means, and 6.54324e-10 m/s in one descriptive surface_slip_proxy_mean_m_s",
+      "classification": "NUMERIC_REDUCTION_ROUNDOFF_RETAINED",
+      "finding": "Every difference is retained. They affect neither the stored support/slip counts, the per-case surface_slip_proxy_fraction, any pass gate, the 216 classifications, nor the frozen analysis decision. Exact cross-runtime equality of these low-order reductions was not an acceptance contract.",
+      "evidence": [
+        "scripts/physics_guided_metric_v23_20261012.py:71-100",
+        ".aris/traces/experiment-audit/leg_ik_20261012/independent_leg_ik_artifact_audit_20261012_053900_v2.json"
+      ]
+    },
+    {
+      "checker": "historical_document_witness",
+      "flag": "117 exact logged scalar norm failures",
+      "classification": "HISTORICAL_FAIL_RETAINED_CONTRACT_NARROWED_BY_INDEPENDENT_ADDENDUM",
+      "finding": "The original FAIL remains unchanged. Its exact float64 logged-norm comparisons were not the frozen reference invariant. The independent scalar diagnosis confirms saved float32 reference arrays and the documented geometric invariants; float64 logged norms are not claimed bitwise equal to norms recomputed from saved float32 vectors.",
+      "evidence": [
+        "results/support_leg_ik_20261012/DOCUMENT_WITNESS.json",
+        "results/support_leg_ik_20261012/SCALAR_CONTRACT_DIAGNOSIS.json",
+        "results/support_leg_ik_20261012/ADJUDICATED_DOCUMENT_WITNESS.json"
+      ]
+    },
+    {
+      "checker": "historical_continuation_witness",
+      "flag": "historical whole-parent-ledger equality failure",
+      "classification": "HISTORICAL_FAIL_RETAINED_APPEND_ONLY_LEDGER_ADJUDICATED",
+      "finding": "The continuation FAIL remains unchanged. The addendum reconstructs the historical baseline-only ledger hash and independently records the current append-only three-row ledger. Historical full-ledger equality was not required. The summary field named original_baseline_budget_ledger_sha256 actually hashes the current parent ledger and is therefore semantically misleading, although every cost and row matches.",
+      "evidence": [
+        "results/support_leg_ik_20261012/CONTINUATION_DOCUMENT_WITNESS.json",
+        "results/support_leg_ik_20261012/CONTINUATION_CONTRACT_ADDENDUM.json",
+        "results/support_reference_probe_v63_20261012/budget_ledger.json",
+        "results/support_leg_ik_20261012/summary.json"
+      ]
+    }
+  ],
+  "outcome": {
+    "current_artifact_numeric_mismatch_affecting_gate_or_classification": false,
+    "current_reference_content_mismatch": false,
+    "historical_failures_rewritten": false,
+    "remaining_integrity_warnings": [
+      "The child collector did not execution-time re-hash replay_motion or the actual upstream checkout commit/dirty state before certifying the request.",
+      "The external executor record is a tool observation, not an autonomous server parent-exit receipt.",
+      "The summary ledger field name conflates a current append-only ledger with the historical baseline-only snapshot."
+    ]
+  }
+}

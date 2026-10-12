@@ -1,0 +1,24 @@
+{
+  "call_number": 3,
+  "purpose": "artifact-numerical-audit",
+  "timestamp": "2026-10-12T12:00:00+08:00",
+  "timestamp_is_approximate": true,
+  "tool": "spawn_agent",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "inherited",
+  "prompt_is_reconstructed_from_dispatch_record": true,
+  "files_referenced": [
+    "results/support_leg_ik_20261012/references/*.npz",
+    "results/support_leg_ik_20261012/raw/*/metadata.json",
+    "results/support_leg_ik_20261012/raw/*/metrics.json",
+    "results/support_leg_ik_20261012/raw/*/receipt.json",
+    "results/support_leg_ik_20261012/raw/*/lineage.json",
+    "results/support_leg_ik_20261012/raw/*/trajectories.npz",
+    "results/support_leg_ik_20261012/raw/*/initial_states.npz",
+    "results/support_leg_ik_20261012/raw/*/observation_trace.npz",
+    "results/support_leg_ik_20261012/analysis_1791778833277260183.json",
+    "results/support_leg_ik_20261012/velocity_components_1791779022398962802.json",
+    "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/"
+  ],
+  "prompt": "Independently audit the authoritative artifacts and raw saved arrays. Recompute classifications, metrics, finite/missing denominators, 24-source bootstrap, reference invariants, component pooled numerators and denominators, exported initial-state/cache comparisons, ledger costs, and receipt hashes. Preserve all numeric divergences and historical FAIL flags. Do not run simulation, training, installs, or modify experiment results."
+}
