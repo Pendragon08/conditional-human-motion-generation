@@ -118,6 +118,17 @@ controller_state_analysis=read('results/controller_state_diagnosis_v2_20261012/a
 controller_state_audit=read('results/controller_state_diagnosis_v2_20261012/EXPERIMENT_AUDIT.json')
 controller_state_witness=read('results/controller_state_diagnosis_v2_20261012/DOCUMENT_WITNESS.json')
 controller_state_original_failure=read('results/controller_state_diagnosis_20261012/DOCUMENT_WITNESS.json')
+task_matched_witness=read('results/task_matched_feedback_v2_20261012/DOCUMENT_WITNESS.json')
+task_matched_runtime=read('results/task_matched_feedback_v2_20261012/runtime_witness.json')
+task_matched_dispatch=read('results/task_matched_feedback_continue_20261012/DOCUMENT_WITNESS.json')
+task_matched_execution=read('results/task_matched_feedback_continue_20261012/EXECUTOR_RUNTIME_OBSERVATION.json')
+task_matched_summary=read('results/task_matched_feedback_continue_20261012/summary.json')
+if task_matched_witness:
+    base=ROOT/'results/task_matched_feedback_v2_20261012'
+    assert task_matched_witness['status']=='PASS' and task_matched_witness['actual_exit_code']==0
+    assert task_matched_witness['runtime_witness_sha256']==hashlib.sha256((base/'runtime_witness.json').read_bytes()).hexdigest()
+    assert task_matched_witness['versions_sha256']==hashlib.sha256((base/'versions.json').read_bytes()).hexdigest()
+    assert task_matched_runtime['status']=='PASS' and all(task_matched_runtime['exact_same_input_arrays'].values())
 if controller_state_analysis:
     from controller_state_publication_guard_20261012 import verify as verify_controller_publication
     controller_publication = verify_controller_publication(server=False)
@@ -329,6 +340,11 @@ for dirname in ('controller_state_diagnosis_20261012','controller_state_diagnosi
                  'PUBLICATION_BINDING_SERVER.json','failure_components.json'):
         path=ROOT/'results'/dirname/name
         if path.exists():inputs.append(path)
+for dirname in ('task_matched_feedback_v2_20261012','task_matched_feedback_continue_20261012'):
+    for name in ('DOCUMENT_WITNESS.json','versions.json','runtime_witness.json','budget_ledger.json',
+                 'EXECUTOR_RUNTIME_OBSERVATION.json','EXECUTOR_TERMINAL_OBSERVATION.json','summary.json'):
+        path=ROOT/'results'/dirname/name
+        if path.exists(): inputs.append(path)
 for state in ('multitask','t2m','unfinetuned'):
     for name in ('loaded_input_binding.json','loaded_checkpoint_binding.json','metrics.json','metadata.json','lineage.json','receipt.json'):
         path=ROOT/'results/controller_state_diagnosis_v2_20261012/raw'/state/name
@@ -389,6 +405,10 @@ corrected_feedback_readonly_analysis=paired53,corrected_feedback_integrity_audit
  controller_training_state_audit=controller_state_audit,
  controller_training_state_document_witness=controller_state_witness,
  controller_training_state_original_failure=controller_state_original_failure,
+ task_matched_measurement_witness=task_matched_witness,
+ task_matched_dispatch_witness=task_matched_dispatch,
+ task_matched_observed_execution=task_matched_execution,
+ task_matched_validation_summary=task_matched_summary,
  support_leg_ik_external_terminal_observation=leg_ik_terminal,
  resource_status=resource_status,
  full_efficacy_comparisons_completed=1 if formal_summary else 0,
@@ -602,6 +622,16 @@ if controller_state_analysis:
     else:
         component_text+='<p>独立事后审计尚未完成，不作有效性结论。</p>'
     component_text+='<p>审计边界：固定参考来自此前控制器的模拟执行，属于合成代理；时间指标衡量接近自身最小目标距离的时刻，并非首次到达或截止时刻成功。现有指标和零联合合格结果保持不变。<a href="../controller_state_diagnosis_v2_20261012/failure_components.json">冻结判据失败分解</a>。</p>'
+if task_matched_witness:
+    component_text+='<h4>任务匹配的C1复验</h4><p>使用官方文本动作跟踪权重，保持24个内部验证来源、三种偏移、三生成种子和每方法3个候选。三批实际测量均退出0：首轮生成、零条件更新重复生成、固定参考回放。28个导出数组逐元素一致，回放与指定参考在同一时刻吻合；这些检查不认证隐藏仿真状态，也不证明创新有效。<a href="../task_matched_feedback_v2_20261012/DOCUMENT_WITNESS.md">独立测量见证</a>。</p>'
+    if task_matched_dispatch:
+        component_text+='<p>后续调度入口的独立绑定检查为'+html.escape(task_matched_dispatch['status'])+'，仅CPU检查，不新增GPU测量认证。正式对比新增20批，复用已计费首候选，保持两组候选预算相同。<a href="../../docs/task_matched_feedback_continue_20261012.md">协议与预算边界</a>。</p>'
+    if task_matched_summary:
+        component_text+='<p>正式运行已生成终态摘要，尚需独立原始数组复算与审计，不作效力判断：'+html.escape(json.dumps(task_matched_summary['totals'],ensure_ascii=False))+'。</p>'
+    elif task_matched_execution:
+        component_text+='<p>实际进程观察记录时间：'+html.escape(str(task_matched_execution['observed_at_utc']))+'；该次观察中父进程存活：'+html.escape(str(task_matched_execution['process_live']))+'。这是时间点记录，不保证当前仍在运行。尚无完整对比结论。<a href="../task_matched_feedback_continue_20261012/EXECUTOR_RUNTIME_OBSERVATION.json">运行观察</a>。</p>'
+    else:
+        component_text+='<p>尚未同步正式运行的实际进程观察或终态证据，不以准备检查代替效果验证。</p>'
 resource_text='<p>累计资源快照尚未同步。</p>'
 if resource_status:
     resource_text=f'<p>累计保守计费{resource_status["charged_wall_hours_one_gpu_per_job"]:.3f} GPU小时，输出{resource_status["output_bytes"]/1024**3:.3f} GiB（含公开导出重复副本），快照时数据盘可用{resource_status["data_free_bytes"]/1024**3:.2f} GiB。总计72小时、阶段上限、输出15GiB和磁盘至少20GiB的检查结果：{html.escape(resource_status["status"])}。阶段ablation_g1包括人体消融计费，不表示已运行G1；下游训练未运行。</p>'
