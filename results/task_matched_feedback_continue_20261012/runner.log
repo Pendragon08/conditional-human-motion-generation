@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "scripts/task_matched_feedback_continue_20261012.py", line 129, in <module>
+    run.prior.main(False)
+  File "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/run_paired_feedback_validation_v51_20261012.py", line 158, in main
+    random = batch('val_random_s%d_r%d' % (seed, ordinal), 'native', seed, ordinal)
+  File "scripts/task_matched_feedback_continue_20261012.py", line 66, in batch
+    return normal_batch(label, mode, seed, ordinal, correction, replay, stage)
+  File "scripts/task_matched_feedback_continue_20261012.py", line 46, in batch
+    if data['loaded_correction_object_sha256'] != expected.get('correction'):
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/subprocess.py", line 495, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/subprocess.py", line 1028, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/subprocess.py", line 1910, in _communicate
+    self.wait(timeout=self._remaining_time(endtime))
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/subprocess.py", line 1083, in wait
+    return self._wait(timeout=timeout)
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/subprocess.py", line 1816, in _wait
+    time.sleep(delay)
+KeyboardInterrupt
