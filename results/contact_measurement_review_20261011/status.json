@@ -38719,7 +38719,16 @@
     "document_reality_divergences": []
   },
   "corrected_feedback_validation_summary": null,
-  "corrected_feedback_validation_state": null,
+  "corrected_feedback_validation_state": {
+    "status": "RUNNING",
+    "label": "val_feedback_s11_r2",
+    "resources": {
+      "memory_used_mib": 699,
+      "memory_total_mib": 49140,
+      "utilization_percent": 0
+    },
+    "pid": 2851799
+  },
   "corrected_feedback_validation_progress": null,
   "resource_status": {
     "entries": [
@@ -40460,6 +40469,22 @@
         "seconds": 48.89001667127013,
         "exit_code": 0,
         "request_sha256": "fef86fdc6e1c760f057b97c8b1b3733fb10cf5b504f429cc4211fa47e2da046b"
+      },
+      {
+        "directory": "paired_feedback_validation_v51_20261012",
+        "label": "val_shared_s11_r0",
+        "stage": "measurement",
+        "seconds": 49.190580459311604,
+        "exit_code": 0,
+        "request_sha256": "78a25989a0d0887f5504086409332d1dd66c0c0c4924e73c29dc12129492b82d"
+      },
+      {
+        "directory": "paired_feedback_validation_v51_20261012",
+        "label": "val_feedback_s11_r1",
+        "stage": "comparison",
+        "seconds": 50.999300699681044,
+        "exit_code": 0,
+        "request_sha256": "83c8240d6e1713e1eebccc00faa1e257dbadaf9e8b116e3a99d8b76b5ede01b5"
       }
     ],
     "directories": [
@@ -40503,6 +40528,7 @@
       "results/native_velocity_summary_v47_20261012",
       "results/original_reference_attribution_v35_20261012",
       "results/original_reference_velocity_v45_20261012",
+      "results/paired_feedback_validation_v51_20261012",
       "results/physics_guided_20261011",
       "results/raw_replay_state_diagnostic_v41_20261012",
       "results/reference_observation_v42_20261012",
@@ -40520,11 +40546,11 @@
       "results/surface_proxy_calibration_v52_20261012",
       "results/velocity_reference_fixture_v19_20261012"
     ],
-    "output_bytes": 7374242776,
-    "charged_wall_hours_one_gpu_per_job": 4.1569703056870235,
+    "output_bytes": 7460873121,
+    "charged_wall_hours_one_gpu_per_job": 4.184800828231189,
     "stage_hours": {
-      "measurement": 1.1628786384635088,
-      "comparison": 1.791437877973852,
+      "measurement": 1.1765426885910952,
+      "comparison": 1.8056043503904302,
       "ablation_g1": 1.183124713848552,
       "downstream": 0.0,
       "reserve": 0.01952907540111078
@@ -40553,7 +40579,7 @@
     },
     "total_cap_hours": 72,
     "output_cap_bytes": 16106127360,
-    "data_free_bytes": 38245064704,
+    "data_free_bytes": 38158290944,
     "data_free_floor_bytes": 21474836480,
     "cap_checks": {
       "total": true,
@@ -40567,7 +40593,7 @@
     },
     "status": "CAPS_PASS",
     "source_sha256": "e0f876c39d37e719ebf298c8248c4e8b45a38cf1c5c20d24e06fc130e706f4a2",
-    "time": 1791767744.7473357,
+    "time": 1791768419.81816,
     "gpu_jobs_launched_by_this_script": 0
   },
   "full_efficacy_comparisons_completed": 1,
@@ -81450,7 +81476,7 @@
     "results\\reference_observation_v42_20261012\\DOCUMENT_WITNESS.json": "e68742dc2987a50684a4cfd82237ef9f1014aafdf6b135952fc4bdac6a15ef55",
     "results\\reference_observation_v42_20261012\\versions.json": "00ae3501899a92d524509f7661d91daf23c505434e69ab37c8b2817050e5e54b",
     "results\\reference_observation_v42_20261012\\budget_ledger.json": "fd7a490fa968a402c455f1e7e1f1f3b9ced5528ad23320fa5ea2420f754ee8b5",
-    "results\\round_resource_status_20261012\\snapshot_1791767744747348526.json": "adf5926ade81f7a18807932912880cd60a304a0b8586f697b08861cf3327aa1c",
+    "results\\round_resource_status_20261012\\snapshot_1791768419818177672.json": "d7333b91822a939dde8539374d20bf2d8bdcea34b02b35117a090cb7a37b43ff",
     "results\\reference_velocity_v43_20261012\\summary.json": "c5ded5f5225c66dec3421fd679ba095ce4e64eff1b68a254e861e8f63d152ffd",
     "results\\reference_velocity_v43_20261012\\DOCUMENT_WITNESS.json": "92bfaca03d734699add960a354fff196ff133cc77eb98538102d7e553fd32366",
     "results\\reference_velocity_v43_20261012\\versions.json": "9cc69c6318892df77657c6dac4e38e8f514d5a85c009addbea65d0edfbce1c5a",
@@ -81461,6 +81487,11 @@
     "results\\surface_proxy_calibration_v50_20261012\\DOCUMENT_WITNESS.json": "1f11ee53b7f889f6b56b574210d5a0952b8b641f4b6a32df0ae38a1c41ea9dc6",
     "results\\surface_proxy_calibration_v52_20261012\\first_attempt\\summary.json": "333793689b5bdb7912d6966d3a3eb3c356024408500ef1dc512de34961dcce60",
     "results\\surface_proxy_calibration_v52_20261012\\DOCUMENT_WITNESS.json": "18fba16f78e48177c07301c79445f3e2d45004e629548205d33c2066d72352a5",
+    "results\\paired_feedback_validation_v51_20261012\\state.json": "6c42f46d71882e2633c3ab8555af7ed7f0f2c2fa07997382e3495f0fe0eba8f7",
+    "results\\paired_feedback_validation_v51_20261012\\versions.json": "d866b631cf5eff7480869f75ce4696ed1312524be47e6222cc7c6080d0a91948",
+    "results\\paired_feedback_validation_v51_20261012\\runtime_witness.json": "6ad22044c8392a8cc679d03a56b99185dd55ab1be77846c1498fb756ebe379f1",
+    "results\\paired_feedback_validation_v51_20261012\\DOCUMENT_WITNESS.json": "48c0a401bd3c2e25da8d15de826514d59f3c8feb98a2827e94fcec1298f150ed",
+    "results\\paired_feedback_validation_v51_20261012\\budget_ledger.json": "35ab599200bd187775a052c22ebaca49ac2394417cd667d2316eb3233310f0ac",
     "results\\native_reference_velocity_v46_20261012\\DOCUMENT_WITNESS.json": "d869b5e97f9de9fe7754408a17638786072070207393e8d218340c28f0c2bf7b",
     "results\\native_reference_velocity_v46_20261012\\versions.json": "883d7dd07e8d20a45fc355f71750679a80db90f54e4dc36f82934bd9ad9ebcb9",
     "results\\native_reference_velocity_v46_20261012\\budget_ledger.json": "02675861a1aa6cadebb2f4137d7feaaa294bd0ed1a3bf5a585525677ac60167c",
