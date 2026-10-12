@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "scripts/controller_state_diagnosis_20261012.py", line 177, in <module>
+    args=p.parse_args();main(next(m for m in ('prepare','check','run') if getattr(args,m)))
+  File "scripts/controller_state_diagnosis_20261012.py", line 156, in main
+    validate()
+  File "scripts/controller_state_diagnosis_20261012.py", line 68, in validate
+    assert subprocess.check_output(['git','-C',str(ROOT/'third_party/CLoSD'),'rev-parse','HEAD'],text=True).strip()==v['upstream_commit']
+KeyError: 'upstream_commit'

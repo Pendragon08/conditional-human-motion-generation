@@ -1,0 +1,112 @@
+{
+  "status": "DESCRIPTIVE_CRITERION_BREAKDOWN",
+  "reports": {
+    "multitask": {
+      "inputs": 72,
+      "criterion_failure_counts": {
+        "position": 57,
+        "heading": 25,
+        "time_proxy": 40,
+        "penetration_proxy": 0,
+        "surface_slip_proxy": 72,
+        "continuity_proxy": 61,
+        "tracking_mean_proxy": 4,
+        "tracking_p95_proxy": 4
+      },
+      "completion_failures": 0,
+      "physically_passing_rows": []
+    },
+    "t2m": {
+      "inputs": 72,
+      "criterion_failure_counts": {
+        "position": 57,
+        "heading": 18,
+        "time_proxy": 37,
+        "penetration_proxy": 0,
+        "surface_slip_proxy": 70,
+        "continuity_proxy": 54,
+        "tracking_mean_proxy": 2,
+        "tracking_p95_proxy": 2
+      },
+      "completion_failures": 2,
+      "physically_passing_rows": [
+        {
+          "case_id": "002546:-0.15",
+          "source_id": "./pose_data/BMLmovi/Subject_50_F_MoSh/Subject_50_F_6_poses.npy",
+          "failed_frozen_criteria": [
+            "heading",
+            "time_proxy"
+          ],
+          "endpoint_error_m": 0.032921839948518564,
+          "heading_error_rad": 0.19594471101378996,
+          "endpoint_time_error_s": 1.3666667379438877,
+          "joint_pass": false
+        },
+        {
+          "case_id": "002216:0.0",
+          "source_id": "./pose_data/CMU/79/79_26_poses.npy",
+          "failed_frozen_criteria": [
+            "heading",
+            "time_proxy"
+          ],
+          "endpoint_error_m": 0.09290586274970733,
+          "heading_error_rad": 0.17827271566289227,
+          "endpoint_time_error_s": 0.40000002086162567,
+          "joint_pass": false
+        }
+      ]
+    },
+    "unfinetuned": {
+      "inputs": 72,
+      "criterion_failure_counts": {
+        "position": 56,
+        "heading": 12,
+        "time_proxy": 39,
+        "penetration_proxy": 0,
+        "surface_slip_proxy": 70,
+        "continuity_proxy": 48,
+        "tracking_mean_proxy": 2,
+        "tracking_p95_proxy": 2
+      },
+      "completion_failures": 1,
+      "physically_passing_rows": [
+        {
+          "case_id": "002216:0.0",
+          "source_id": "./pose_data/CMU/79/79_26_poses.npy",
+          "failed_frozen_criteria": [
+            "time_proxy"
+          ],
+          "endpoint_error_m": 0.06340356400811638,
+          "heading_error_rad": 0.15520264351814284,
+          "endpoint_time_error_s": 0.4333333559334278,
+          "joint_pass": false
+        },
+        {
+          "case_id": "002216:0.15",
+          "source_id": "./pose_data/CMU/79/79_26_poses.npy",
+          "failed_frozen_criteria": [
+            "position",
+            "time_proxy"
+          ],
+          "endpoint_error_m": 0.14453792163566917,
+          "heading_error_rad": 0.08661947590741681,
+          "endpoint_time_error_s": 1.0333333872258663,
+          "joint_pass": false
+        }
+      ]
+    }
+  },
+  "input_hashes": {
+    "thresholds": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "multitask": "fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",
+    "t2m": "397d8b50249f585c7fdad29dd67a83763ef1e127ee617589b7f226d2a1330975",
+    "unfinetuned": "0e84bc6c2ff0f511450899cf2dbcaebd6baf83ad573faeefbe773f021c782ea5"
+  },
+  "source_sha256": "3bf50c9d59001070cb84bfb89dc67e6dfb0e023239d9ed4122b6b767201fc4ee",
+  "new_simulator_batches": 0,
+  "generation_calls": 0,
+  "thresholds_changed": false,
+  "alternative_success_rule": false,
+  "candidate_efficacy_test": false,
+  "scope": "Overlapping failure counts, frozen endpoint-near-minimum timing and physics proxies; no relaxed gate or causal claim"
+}

@@ -1,0 +1,170 @@
+{
+  "status": "PASS",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "runtime_witness_sha256": "81f2d42777926ef927f35b548c7500e72779684b1449bb79b52616047b4e6e93",
+  "versions_sha256": "e94a000d3260e0993a20151b8b1fff877c4632964febd66c75f72790722da196",
+  "actual_command": "cd /data/code/ouyanghao/oyh/conditional-human-motion-generation\nPYTHONPATH=/data/code/ouyanghao/oyh/humanoid-combat-motion/envs/closd-r3/site-packages /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python scripts/controller_state_diagnosis_v2_20261012.py --check",
+  "terminal_exit_code": 0,
+  "check_invocations": 1,
+  "prepare_invocations_by_witness": 0,
+  "run_invocations_by_witness": 0,
+  "terminal_sentinel_present": true,
+  "tool_evidence": {
+    "exec_session_id": 32917,
+    "launch_chunk_id": "f992fc",
+    "terminal_chunk_id": "155149",
+    "terminal_tool_exit_code": 0,
+    "terminal_transcript": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/.aris/traces/controller_state_diagnosis_v2_20261012/document_witness/terminal_full.txt",
+    "terminal_transcript_sha256": "54530f05d84a1557d94ad20e2113dcc38923e5d842eda5ad907bc180790aee9b",
+    "launch_wrapper": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/.aris/traces/controller_state_diagnosis_v2_20261012/document_witness/documented_check_once.sh",
+    "launch_wrapper_sha256": "b14118c3fcc8a1462220f27a5515ed6ebd09e6b2053d45c030ff21191a8e0468"
+  },
+  "artifact_verifier_correction": {
+    "prior_verifier_attempt_sha256": "9b58edb6c5449b35b79e99c21d6babcfb692c668441458cffbc8f99fb4d95538",
+    "prior_verifier_attempt": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/.aris/traces/controller_state_diagnosis_v2_20261012/document_witness/artifact_verifier_attempt1_DOCUMENT_WITNESS.json",
+    "reason": "Witness verifier initially assumed case axis0; collector source physics_guided_collect.py lines141-142 and metric_v23 line104 document time/case order. Corrected artifact verifier uses axis1. Original terminal check passed; no documented command rerun and no runtime artifact changed."
+  },
+  "scope": "Fresh document-following same-family witness of internal validation fixed replay using released multitask CLoSD training state. Simulated human proxy measurements, not candidate efficacy, innovation, G1, downstream learning, independent final test, or hidden PhysX identity.",
+  "candidate_efficacy_test": false,
+  "innovation_confirmed": false,
+  "hidden_physx_identity_established": false,
+  "checks": {
+    "actual_terminal_exit_and_sentinel": true,
+    "execution_request_lineage_receipt": {
+      "lineage_sha256": "dbc689257a53ee312f55f4d6c436b6f45349333f1902a6db98c2f764cfd075c1",
+      "receipt_sha256": "f9104c76405436639c87e3e7ca0a42d7d6788a6bd8d5441075ccd51e23c5c4e6",
+      "request": {
+        "split": "val",
+        "mode": "replay",
+        "seed": 11,
+        "round": 0,
+        "noise_round": 0,
+        "config": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+        "manifest": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+        "thresholds": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+        "versions": "e94a000d3260e0993a20151b8b1fff877c4632964febd66c75f72790722da196",
+        "replay_motion": "5f0dbd7ce0f1ae340da0120ec99823b12441ceb93b615333ea50312f71d76b83",
+        "controller_state": "multitask",
+        "controller_weights_sha256": "7ead3778b95516d8b91b7c5939674e45dd0ad10fcc22da60f9f57d204695f6ac"
+      },
+      "output_hashes": {
+        "metadata.json": "d8a3c8a583c7f9f9bf93653babfb346d0ea287a7a4e0c6db0760d7e360781e89",
+        "metrics.json": "fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",
+        "trajectories.npz": "7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136"
+      },
+      "certification": "bound_request_at_execution"
+    },
+    "project_version_bound_source_files": 47,
+    "actual_loaded_reference": {
+      "content_sha256": "5f0dbd7ce0f1ae340da0120ec99823b12441ceb93b615333ea50312f71d76b83",
+      "file_sha256": "14dcb4ea715f485547c9abeba294ad3ead67dabee9807a83ebe6c98b2ea4b207",
+      "unchanged_parent_reference": true
+    },
+    "actual_loaded_weight_bytes": {
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/blobs/7ead3778b95516d8b91b7c5939674e45dd0ad10fcc22da60f9f57d204695f6ac": "7ead3778b95516d8b91b7c5939674e45dd0ad10fcc22da60f9f57d204695f6ac",
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/blobs/3ca68ae54975946b3fe5c6cd64a6eafc439b5fc43c166bc9a98d1c43aeef6618": "3ca68ae54975946b3fe5c6cd64a6eafc439b5fc43c166bc9a98d1c43aeef6618"
+    },
+    "upstream_commit_and_clean_closd": "d8950bdb78312fcd2844f336b3fc079e7368c87f",
+    "denominator": {
+      "rows": 72,
+      "sources": 24,
+      "offsets": [
+        -0.15,
+        0.0,
+        0.15
+      ],
+      "all_ordered_cases_retained": true
+    },
+    "generation_batch_calls": 0,
+    "reset_gate": {
+      "initial_reset_gate_pass": true,
+      "rigid_cache_consistency": {
+        "_rigid_body_pos": 0.0,
+        "_rigid_body_rot": 0.0,
+        "_rigid_body_vel": 0.0,
+        "_rigid_body_ang_vel": 0.0
+      },
+      "bootstrap_to_first_action_seven_tensors_exact": true
+    },
+    "actual_array_axes": {
+      "reference_shape": [
+        120,
+        72,
+        24,
+        3
+      ],
+      "valid_shape": [
+        120,
+        72
+      ],
+      "axes": [
+        "time",
+        "cases",
+        "bodies",
+        "xyz"
+      ]
+    },
+    "applied_reference_canonical_error_m": 1.866893570624082e-16,
+    "budget_ledger": [
+      {
+        "label": "multitask",
+        "stage": "measurement",
+        "seconds": 53.14884492568672,
+        "exit_code": 0,
+        "request_sha256": "00d4fbc079aed9439c0fbd5ce690d5adb4f5c06c4e0e8385c58c15c760720b85"
+      }
+    ],
+    "child_parent_return": {
+      "child_returncode": 0,
+      "pid": 2917651,
+      "time": 1791782211.4711652,
+      "command": [
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python",
+        "-u",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/controller_state_collect_20261012.py",
+        "--manifest",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/controller_state_diagnosis_v2_20261012/source_manifest.json",
+        "--split",
+        "val",
+        "--mode",
+        "replay",
+        "--seed",
+        "11",
+        "--round",
+        "0",
+        "--noise-round",
+        "0",
+        "--replay-file",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/controller_state_diagnosis_v2_20261012/references/fixed.npz",
+        "--output",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/controller_state_diagnosis_v2_20261012/raw/multitask",
+        "--thresholds",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/controller_state_diagnosis_v2_20261012/frozen_thresholds.json",
+        "--request-file",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/controller_state_diagnosis_v2_20261012/requests/multitask.json",
+        "--execution-versions",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/controller_state_diagnosis_v2_20261012/versions.json",
+        "--controller-state",
+        "multitask"
+      ],
+      "note": "subprocess return observation; parent program terminal status is separate"
+    }
+  },
+  "artifact_hashes": {
+    "runtime_witness.json": "81f2d42777926ef927f35b548c7500e72779684b1449bb79b52616047b4e6e93",
+    "versions.json": "e94a000d3260e0993a20151b8b1fff877c4632964febd66c75f72790722da196",
+    "preparation.json": "10bde9f7980e62810629154cd3c2dd95a9c7747598808715d9c641a24ef67e58",
+    "state.json": "9bc49e22c17fdc2108150671f2238fd1ed2455e55a0bb36f38811c724c0487b3",
+    "multitask_parent_return.json": "b7e64879f2aefe8ea2b4cbb76d437a396f5ac87dfc9ba5563b1e758255c50b12",
+    "budget_ledger.json": "b908a7b21fb9898c286fb38466544f9f64b04f407e0c32dcb040a892d47f3a24",
+    "raw/multitask/metadata.json": "d8a3c8a583c7f9f9bf93653babfb346d0ea287a7a4e0c6db0760d7e360781e89",
+    "raw/multitask/metrics.json": "fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",
+    "raw/multitask/lineage.json": "dbc689257a53ee312f55f4d6c436b6f45349333f1902a6db98c2f764cfd075c1",
+    "raw/multitask/receipt.json": "f9104c76405436639c87e3e7ca0a42d7d6788a6bd8d5441075ccd51e23c5c4e6",
+    "raw/multitask/loaded_input_binding.json": "c862f6c0dcca1a973c4adb48778f0e0cf7282718cbdddf05804ecb9cd879963c",
+    "raw/multitask/loaded_checkpoint_binding.json": "24ab57f4ba3d0fb628b1eebf8d6ba366fdb984708c75ba3da16ecfdb05bbc327",
+    "raw/multitask/initial_states.npz": "b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+    "raw/multitask/trajectories.npz": "7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136"
+  }
+}
