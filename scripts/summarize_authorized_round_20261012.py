@@ -33,7 +33,7 @@ for name in ('original_reference_attribution_v35_20261012', 'round_resource_stat
              'remaining_candidate_screen_20261012', 'support_leg_ik_20261012',
              'child_input_binding_20261012', 'controller_state_diagnosis_20261012',
              'controller_state_diagnosis_v2_20261012', 'task_matched_feedback_20261012',
-             'task_matched_feedback_v2_20261012'):
+             'task_matched_feedback_v2_20261012', 'task_matched_feedback_continue_20261012'):
     p = ROOT / 'results' / name
     if p.exists() and p not in directories:
         directories.append(p)
