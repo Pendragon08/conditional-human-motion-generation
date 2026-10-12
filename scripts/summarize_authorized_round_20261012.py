@@ -31,7 +31,8 @@ for name in ('original_reference_attribution_v35_20261012', 'round_resource_stat
              'native_manifold_v56_20261012', 'native_manifold_analysis_v57_20261012',
              'support_reference_probe_v62_20261012', 'support_reference_probe_v63_20261012',
              'remaining_candidate_screen_20261012', 'support_leg_ik_20261012',
-             'child_input_binding_20261012', 'controller_state_diagnosis_20261012'):
+             'child_input_binding_20261012', 'controller_state_diagnosis_20261012',
+             'controller_state_diagnosis_v2_20261012'):
     p = ROOT / 'results' / name
     if p.exists() and p not in directories:
         directories.append(p)

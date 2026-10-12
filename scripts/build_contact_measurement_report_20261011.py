@@ -114,6 +114,16 @@ leg_ik_adjudicated_witness=read('results/support_leg_ik_20261012/ADJUDICATED_DOC
 leg_ik_summary=read('results/support_leg_ik_20261012/summary.json')
 leg_ik_post_audit=read('results/support_leg_ik_20261012/POST_RUN_AUDIT.json')
 child_binding_check=read('results/child_input_binding_20261012/cpu_checks.json')
+controller_state_analysis=read('results/controller_state_diagnosis_v2_20261012/analysis.json')
+controller_state_audit=read('results/controller_state_diagnosis_v2_20261012/EXPERIMENT_AUDIT.json')
+controller_state_witness=read('results/controller_state_diagnosis_v2_20261012/DOCUMENT_WITNESS.json')
+controller_state_original_failure=read('results/controller_state_diagnosis_20261012/DOCUMENT_WITNESS.json')
+if controller_state_analysis:
+    assert controller_state_analysis['same_algorithm_different_training_states']
+    assert not controller_state_analysis['candidate_efficacy_test'] and controller_state_analysis['confirmed_innovations']==0
+    controller_versions=read('results/controller_state_diagnosis_v2_20261012/versions.json')
+    for name,digest in controller_versions['files'].items():
+        assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest
 if child_binding_check:
     assert child_binding_check['candidate_efficacy_test'] is False and child_binding_check['gpu_runtime_ready'] is False
     for name,digest in child_binding_check['scripts'].items():
@@ -307,6 +317,15 @@ if leg_ik_analysis_paths: inputs.append(leg_ik_analysis_paths[-1])
 if leg_ik_velocity_paths: inputs.append(leg_ik_velocity_paths[-1])
 if leg_ik_terminal: inputs.append(ROOT/'results/support_leg_ik_20261012/EXECUTOR_TERMINAL_OBSERVATION.json')
 if child_binding_check: inputs.append(ROOT/'results/child_input_binding_20261012/cpu_checks.json')
+for dirname in ('controller_state_diagnosis_20261012','controller_state_diagnosis_v2_20261012'):
+    for name in ('DOCUMENT_WITNESS.json','versions.json','preparation.json','budget_ledger.json','runtime_witness.json',
+                 'analysis.json','EXPERIMENT_AUDIT.json','EXECUTOR_TERMINAL_OBSERVATION.json'):
+        path=ROOT/'results'/dirname/name
+        if path.exists():inputs.append(path)
+for state in ('multitask','t2m','unfinetuned'):
+    for name in ('loaded_input_binding.json','loaded_checkpoint_binding.json','metrics.json','metadata.json','lineage.json','receipt.json'):
+        path=ROOT/'results/controller_state_diagnosis_v2_20261012/raw'/state/name
+        if path.exists():inputs.append(path)
 for name in ('DOCUMENT_WITNESS.json','versions.json','budget_ledger.json','interface_summary.json'):
     path=ROOT/'results/native_reference_velocity_v46_20261012'/name
     if path.exists(): inputs.append(path)
@@ -359,6 +378,10 @@ corrected_feedback_readonly_analysis=paired53,corrected_feedback_integrity_audit
  support_leg_ik_raw_analysis=leg_ik_analysis,
  support_leg_ik_post_run_audit=leg_ik_post_audit,
  prospective_child_input_binding_check=child_binding_check,
+ controller_training_state_diagnosis=controller_state_analysis,
+ controller_training_state_audit=controller_state_audit,
+ controller_training_state_document_witness=controller_state_witness,
+ controller_training_state_original_failure=controller_state_original_failure,
  support_leg_ik_external_terminal_observation=leg_ik_terminal,
  resource_status=resource_status,
  full_efficacy_comparisons_completed=1 if formal_summary else 0,
@@ -559,6 +582,17 @@ if paired51_state:
         for example in paired51_preview['examples']:
             video='../paired_feedback_validation_v51_20261012/previews/'+example['video']
             component_text+='<p>'+html.escape(example['family'])+'</p><video controls preload="metadata" style="max-width:100%;width:800px" src="'+video+'"></video>'
+if controller_state_original_failure:
+    component_text+='<h4>CLoSD官方训练状态敏感性诊断</h4><p>第一入口在仿真前因缺少上游版本字段退出，独立FAIL及空raw目录保留；第二入口单独修复绑定字段，不改变参考、评分或模型。三个已发布检查点属于同一个CLoSD算法的不同训练状态，不能作为三个独立算法或新创新点。<a href="../controller_state_diagnosis_20261012/DOCUMENT_WITNESS.md">原失败</a> · <a href="../../docs/controller_state_diagnosis_v2_20261012.md">新诊断协议</a>。</p>'
+if controller_state_analysis:
+    rows=''.join('<tr>'+''.join('<td>'+html.escape(str(v))+'</td>' for v in
+        (state,72,r['counts']['completed'],r['counts']['condition_pass'],r['counts']['physical_pass'],r['counts']['joint_pass'],round(r['means']['surface_slip_proxy_fraction'],5)))+'</tr>'
+        for state,r in controller_state_analysis['reports'].items())
+    component_text+='<p>同一24个内部验证来源、三种偏移、种子11；同一固定参考，生成采样0次。三组导出的初始状态逐元素一致，实际加载的参考与权重字节已记录。隐藏PhysX状态一致性不因此得到认证。</p><table><tr><th>CLoSD训练状态</th><th>输入</th><th>完成</th><th>条件合格</th><th>物理合格</th><th>联合合格</th><th>滑移代理均值</th></tr>'+rows+'</table><p>此项只诊断控制器训练状态对当前人体仿真代理评分的影响，不证明生成方法创新或机器人下游收益，也不追溯修改C1。<a href="../controller_state_diagnosis_v2_20261012/analysis.json">原始数组分析</a>。</p>'
+    if controller_state_audit:
+        component_text+='<p>独立事后审计：'+html.escape(str(controller_state_audit.get('overall_verdict',controller_state_audit.get('verdict','Not verified'))))+'，同模型家族且暂定。<a href="../controller_state_diagnosis_v2_20261012/EXPERIMENT_AUDIT.md">审计边界</a>。</p>'
+    else:
+        component_text+='<p>独立事后审计尚未完成，不作有效性结论。</p>'
 resource_text='<p>累计资源快照尚未同步。</p>'
 if resource_status:
     resource_text=f'<p>累计保守计费{resource_status["charged_wall_hours_one_gpu_per_job"]:.3f} GPU小时，输出{resource_status["output_bytes"]/1024**3:.3f} GiB（含公开导出重复副本），快照时数据盘可用{resource_status["data_free_bytes"]/1024**3:.2f} GiB。总计72小时、阶段上限、输出15GiB和磁盘至少20GiB的检查结果：{html.escape(resource_status["status"])}。阶段ablation_g1包括人体消融计费，不表示已运行G1；下游训练未运行。</p>'
