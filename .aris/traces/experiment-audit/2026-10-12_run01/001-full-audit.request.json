@@ -1,0 +1,22 @@
+{
+  "call_number": 1,
+  "purpose": "fresh full experiment-integrity review",
+  "timestamp": "2026-10-12T09:31:00+08:00",
+  "tool": "spawn_agent",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "ultra",
+  "files_referenced": [
+    "scripts/run_paired_feedback_validation_v51_20261012.py",
+    "scripts/launch_paired_feedback_v51_20261012.py",
+    "scripts/snapshot_paired_feedback_v51_20261012.py",
+    "scripts/analyze_paired_feedback_v51_20261012.py",
+    "scripts/physics_guided_queue.py",
+    "scripts/physics_guided_metric_v23_20261012.py",
+    "scripts/reference_velocity_collect_v43_20261012.py",
+    "scripts/verify_execution_lineage_v39_20261012.py",
+    "docs/paired_feedback_validation_v51_20261012.md",
+    "results/paired_feedback_validation_v51_20261012/",
+    "configs/physics_guided_20261011.json"
+  ],
+  "prompt": "You are an experiment integrity auditor. Start from the assumption that the evaluation is compromised somewhere—your job is to find where. Be adversarial. Trust nothing the author tells you; verify everything yourself. This is a same-family provisional, read-only audit. Do not launch/check/rerun any experiments, use GPUs, or mutate counters. Do not write Overleaf. You may inspect local and remote files/read-only process state. Remote repo is /data/code/ouyanghao/oyh/conditional-human-motion-generation via ssh ouyanghao@10.147.17.32 with key C:/Users/Pende/.ssh/id_ed25519 and BatchMode=yes. Runtime overlay is /data/code/ouyanghao/oyh/humanoid-combat-motion/envs/closd-r3/site-packages; Python is /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python. Main process PID 2851799 was reportedly live; inspect actual state yourself without mutating it. Read every listed file directly, line by line where applicable, including all requests/raw/selected files and any V53 analysis code/output. Compare relevant remote originals. Audit A ground-truth provenance, B score normalization, C existence/counts, D dead code, E scope, and F evaluation classification. Also verify unchanged original goals; pairing per candidate ordinal; 24×3×3 source/offset/seed design; equal three-candidate budget; construction-completion guards with replay totals distinguished from end-to-end totals; frozen versions/weights lineage; reset/native-velocity observations and absence of legacy reward caches; explicit raw-versus-refined metrics and result scope. Do not infer innovation efficacy or acceptance. Return exact file:line evidence, hashes/counts, overall verdict/reason codes/actions/claim impacts, terminal state, and same-family provisional metadata. Do not write audit files yourself."
+}

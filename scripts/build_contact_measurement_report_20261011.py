@@ -89,6 +89,29 @@ paired53=read(str(paired53_paths[-1].relative_to(ROOT))) if paired53_paths else 
 if paired53:
     assert paired53['source_sha256']==hashlib.sha256((ROOT/'scripts/analyze_paired_feedback_v51_20261012.py').read_bytes()).hexdigest()
     assert all(hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest for name,digest in paired53['input_hashes'].items())
+paired54_paths=sorted((ROOT/'results/paired_feedback_analysis_v54_20261012').glob('analysis_*.json'))
+paired54=read(str(paired54_paths[-1].relative_to(ROOT))) if paired54_paths else None
+paired54_binding=read('results/paired_feedback_analysis_v54_20261012/execution_binding_certificate.json')
+paired54_audit=read('results/paired_feedback_analysis_v54_20261012/EXPERIMENT_AUDIT.json')
+selected55_paths=sorted((ROOT/'results/selected_construction_binding_v55_20261012').glob('certificate_*.json'))
+selected55=read(str(selected55_paths[-1].relative_to(ROOT))) if selected55_paths else None
+native56=read('results/native_manifold_v56_20261012/summary.json')
+native56_witness=read('results/native_manifold_v56_20261012/DOCUMENT_WITNESS.json')
+native61_receipt=read('results/native_manifold_v56_20261012/continuation_receipt_v61.json')
+native57_audit=read('results/native_manifold_analysis_v57_20261012/EXPERIMENT_AUDIT.json')
+native57_paths=sorted((ROOT/'results/native_manifold_analysis_v57_20261012').glob('diagnostic_*.json'))
+native57=read(str(native57_paths[-1].relative_to(ROOT))) if native57_paths else None
+if paired54:
+    assert paired54['source_sha256']==hashlib.sha256((ROOT/'scripts/analyze_paired_feedback_v54_20261012.py').read_bytes()).hexdigest()
+    assert paired54['bootstrap_resamples']==5000
+    assert all(hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest for name,digest in paired54['input_hashes'].items())
+if selected55:
+    assert selected55['source_sha256']==hashlib.sha256((ROOT/'scripts/verify_selected_construction_v55_20261012.py').read_bytes()).hexdigest()
+    assert selected55['simulation_calls']==0 and selected55['original_files_changed'] is False
+    assert all(e['exact_reference_reconstruction'] and e['selection_labels_reconstructed_from_bound_raw'] for e in selected55['entries'])
+if native57:
+    assert native57['source_sha256']==hashlib.sha256((ROOT/'scripts/analyze_native_manifold_v57_20261012.py').read_bytes()).hexdigest()
+    assert native57['metrics_replaced'] is False and native57['simulation_calls']==0
 if analytical52:
     assert analytical52['status']=='PASS_ANALYTICAL_CONTROLS' and analytical52['checks']==24
     assert all(x['check_pass'] for x in analytical52['cases'])
@@ -226,11 +249,16 @@ for directory,names in (
     ('surface_proxy_calibration_v50_20261012',('DOCUMENT_WITNESS.json',)),
     ('surface_proxy_calibration_v52_20261012',('first_attempt/summary.json','DOCUMENT_WITNESS.json')),
     ('paired_feedback_validation_v51_20261012',('summary.json','state.json','progress.json','versions.json','runtime_witness.json','DOCUMENT_WITNESS.json','budget_ledger.json','launcher_receipt.json','previews/manifest.json')),
-    ('paired_feedback_analysis_v53_20261012',('EXPERIMENT_AUDIT.json',))):
+    ('paired_feedback_analysis_v53_20261012',('EXPERIMENT_AUDIT.json',)),
+    ('paired_feedback_analysis_v54_20261012',('execution_binding_certificate.json','EXPERIMENT_AUDIT.json')),
+    ('native_manifold_v56_20261012',('summary.json','DOCUMENT_WITNESS.json','runtime_witness.json','budget_ledger.json'))):
     for name in names:
         path=ROOT/'results'/directory/name
         if path.exists(): inputs.append(path)
 if paired53_paths: inputs.append(paired53_paths[-1])
+if paired54_paths: inputs.append(paired54_paths[-1])
+if selected55_paths: inputs.append(selected55_paths[-1])
+if native57_paths: inputs.append(native57_paths[-1])
 for name in ('DOCUMENT_WITNESS.json','versions.json','budget_ledger.json','interface_summary.json'):
     path=ROOT/'results/native_reference_velocity_v46_20261012'/name
     if path.exists(): inputs.append(path)
@@ -267,6 +295,11 @@ status=dict(innovation_candidates=3,preliminarily_tested=1,not_yet_experimentall
  corrected_feedback_validation_summary=paired51_summary,corrected_feedback_validation_state=paired51_state,
  corrected_feedback_validation_progress=paired51_progress,
 corrected_feedback_readonly_analysis=paired53,corrected_feedback_integrity_audit=paired53_audit,
+ corrected_feedback_analysis_amendment=paired54,current_execution_binding=paired54_binding,
+ current_construction_selection_reconstruction=selected55,analysis_amendment_audit=paired54_audit,
+ passive_native_manifold_summary=native56,passive_native_manifold_witness=native56_witness,
+ native_material_point_diagnostic=native57,
+ native_contact_continuation_receipt=native61_receipt,native_material_point_audit=native57_audit,
  resource_status=resource_status,
  full_efficacy_comparisons_completed=1 if formal_summary else 0,
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
@@ -399,6 +432,24 @@ if paired51_state:
     component_text+='<p><strong>指标来源说明：</strong>跟踪误差相对于生成／精化的合成参考（synthetic proxy）计算，不是相对于真实MoCap或真实机器人真值。物理质量包含模拟接触代理，跟踪误差降低不单独证明物理可执行性或训练收益。独立审计指出原始跟踪字段的标注不足；原文件和分数保留，新分析明确区分评价来源。<a href="../../docs/paired_feedback_v51_evaluation_provenance_20261012.md">补充说明</a></p>'
     if paired53_audit:
         component_text+='<p>独立审计结论：'+html.escape(str(paired53_audit.get('overall_verdict',paired53_audit.get('verdict','Not verified'))))+'（同模型家族、暂定）。<a href="../paired_feedback_analysis_v53_20261012/EXPERIMENT_AUDIT.md">完整审计与原始标注问题</a></p>'
+    if paired54:
+        component_text+='<h4>追加复核与历史审计边界</h4><p>V54按冻结配置使用5000次来源聚类自助采样，核对21个批次的执行请求、输出与观测文件。V55另从执行时绑定的候选原始数据精确重建选择标签及参考，并与回放所用运动哈希核对；当前端到端联合合格仍为0/216和0/216。两份证据应共同引用。它们是追加式复核，不追溯修复原始合成参考标注不足、旧元数据矛盾或历史选择记录绑定缺口，不认证创新。<a href="../paired_feedback_analysis_v54_20261012/'+paired54_paths[-1].name+'">V54分析</a>'
+        if selected55_paths:
+            component_text+=' · <a href="../selected_construction_binding_v55_20261012/'+selected55_paths[-1].name+'">V55选择重建</a>'
+        component_text+='</p>'
+    if paired54_audit:
+        component_text+='<p>独立审计整体结论：'+html.escape(str(paired54_audit.get('overall_verdict',paired54_audit.get('verdict','Not verified'))))+'。整体包含保留的历史问题，不表示当前零收益结果已通过创新验收。<a href="../paired_feedback_analysis_v54_20261012/EXPERIMENT_AUDIT.md">审计全文</a></p>'
+    if native56:
+        component_text+='<h4>原生接触材料点诊断</h4><p>V56首批及独立V61续跑共完成两批各72输入的被动接触导出，与V51对应的33项轨迹、观测、初始状态、传感器数组及原指标完全一致。原V56主入口、V58及V60续跑入口的三次仿真前失败均保留，不能将续跑成功称为原入口成功。此诊断只增加观测，生成器采样零次，不增加已验证创新数。<a href="../native_manifold_v56_20261012/summary.json">一致性证据</a> · <a href="../native_manifold_v56_20261012/continuation_receipt_v61.json">续跑收据</a></p>'
+    if native57:
+        native_rows=''.join('<tr>'+''.join('<td>'+html.escape(str(v))+'</td>' for v in (
+            arm,r['matched_support_bodyframes'],r['proxy_matched_speed']['above_frozen_speed'],
+            r['native_matched_min_speed']['above_frozen_speed'],r['native_matched_max_speed']['above_frozen_speed'],
+            r['proxy_above_but_all_native_points_at_or_below_speed']))+'</tr>' for arm,r in native57['arms'].items())
+        component_text+='<p>V57比较原最低碰撞点代理与同物理时刻的模拟接触材料点速度。下表是相关的身体—时刻观测，不能视为独立试验；不替换原评分，不是真实接触真值。</p><table><tr><th>方法</th><th>配对支撑观测</th><th>原代理超速</th><th>全部接触点超速</th><th>至少一接触点超速</th><th>代理超速但全部接触点未超速</th></tr>'+native_rows+'</table><p><a href="../native_manifold_analysis_v57_20261012/'+native57_paths[-1].name+'">完整逐样本诊断</a>。只有与实际接触一致的观测才能用于定位剩余滑动问题；这些诊断不证明控制器独立不可行，也不能直接作为C2/C3有效性证据。</p>'
+        component_text+='<p>两组约49%的配对支撑观测中，所有报告接触点的水平速度均超过冻结的5厘米/秒阈值。因此最低碰撞点选择差异不足以单独解释当前质量地板；这仍是单种子、模拟环境中的诊断，不将失效归因于某一个模块。</p>'
+        if native57_audit:
+            component_text+='<p>接触诊断独立审计：'+html.escape(str(native57_audit.get('overall_verdict',native57_audit.get('verdict','Not verified'))))+'（同模型家族，暂定）。<a href="../native_manifold_analysis_v57_20261012/EXPERIMENT_AUDIT.md">审计全文与边界</a></p>'
     if paired51_preview:
         assert paired51_preview['source_sha256']==hashlib.sha256((ROOT/'scripts/preview_paired_feedback_v51_20261012.py').read_bytes()).hexdigest()
         component_text+='<h4>固定样本的状态可视化</h4><p>每类第一个零偏移来源、种子11，样本选择不依赖得分。蓝色为保存的实际人体仿真状态，灰色为所选参考；金色叉号是原始目标。这是骨架回放，不是仿真器相机录像、机器人模型录像或实机测试。</p>'

@@ -1,0 +1,225 @@
+{
+  "audit_skill": "experiment-audit",
+  "project": "conditional-human-motion-generation / paired-feedback validation V51 with V53-V55 append-only analyses",
+  "date": "2026-10-12",
+  "generated_at": "2026-10-12T10:04:25+08:00",
+  "verdict": "FAIL",
+  "overall_verdict": "fail",
+  "integrity_status": "fail",
+  "reason_code": "A_V51_SYNTHETIC_REFERENCE_NOT_PROXY_LABELED",
+  "reason_codes": [
+    "A_V51_SYNTHETIC_REFERENCE_NOT_PROXY_LABELED",
+    "D_DEAD_COMPARE_AND_DUPLICATE_RANKER",
+    "E_INHERITED_V28_SCOPE_CONFLICT",
+    "E_CUSTOM_VAL_NOT_OFFICIAL_VAL",
+    "E_V53_BOOTSTRAP_CONFIG_DRIFT_HISTORICAL",
+    "V53_SNAPSHOT_ONLY_LINEAGE_HISTORICAL",
+    "V54_SELECTION_JSON_NOT_EXECUTION_BOUND_HISTORICAL",
+    "V55_CURRENT_SELECTION_RECONSTRUCTED_FROM_BOUND_RAW",
+    "V55_NOT_BOUND_INTO_V54_ANALYSIS",
+    "V55_ASSERT_OPTIMIZATION_UNATTESTED",
+    "V55_REPLAY_ROWS_NOT_JOINED_BY_CASE_ID",
+    "V55_DEPENDENCY_HASHES_NOT_EMITTED",
+    "GIT_REMOTE_HEAD_MISMATCH",
+    "V51_EXISTING_OUTPUT_RESUME_GUARD_INCOMPLETE",
+    "RESULT_ALL_ZERO_JOINT_QUALITY_FLOOR"
+  ],
+  "summary": "The frozen V51 record fails provenance because model/simulator-derived tracking references were not explicitly labeled synthetic proxies. Current V53/V54 disclosures are accurate and V55 independently reconstructs the current selected-construction totals from execution-bound raw candidates, but append-only evidence cannot retroactively repair the original V51 labeling failure. No efficacy or acceptance claim is supported.",
+  "auditor": "gpt-5.6-sol-ultra",
+  "agent_id": "/root/paired_v51_integrity_audit/fresh_integrity_reviewer",
+  "verdict_id": "/root/paired_v51_integrity_audit/fresh_integrity_reviewer",
+  "executor_model": "codex-gpt-6",
+  "executor_family": "openai",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "trace_path": ".aris/traces/experiment-audit/2026-10-12_run01/",
+  "audited_input_hashes": {
+    "path": "results/paired_feedback_analysis_v54_20261012/AUDITED_INPUT_HASHES.json",
+    "sha256": "1ed349cb9ca7b36c7fb3141a28bb4210c73319d6ab444beb72f8f828f321a3f7",
+    "remote_file_count": 276,
+    "remote_total_bytes": 933280909,
+    "canonical_input_set_sha256": "395b8ca4a2cb12e1af6ab67ec5edae711e6676c97eb32294d6854e89608c4d04"
+  },
+  "checks": {
+    "gt_provenance": {
+      "status": "fail",
+      "details": "V51 stores a selected simulator actual trajectory under the name reference and labels it physics_refined, then uses it for tracking_pass and joint_pass without an explicit synthetic_proxy qualifier. The appended provenance document and V53/V54 output correctly disclose the proxy prospectively but do not alter the frozen historical failure.",
+      "evidence": [
+        "scripts/physics_guided_queue.py:144-155",
+        "scripts/run_paired_feedback_validation_v51_20261012.py:161-163",
+        "scripts/physics_guided_metric_v23_20261012.py:118,136-160",
+        "docs/paired_feedback_v51_evaluation_provenance_20261012.md:3,7-15",
+        "scripts/analyze_paired_feedback_v51_20261012.py:117-125"
+      ]
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "Primary binary outcomes use fixed denominators of 216 per method and 72 per seed. No prediction extrema or prediction mean supplies a denominator. Raw counts and finite/missing coverage accompany continuous summaries.",
+      "evidence": [
+        "scripts/analyze_paired_feedback_v51_20261012.py:72-89,106-111",
+        "scripts/physics_guided_metric_v23_20261012.py:164-171"
+      ]
+    },
+    "result_existence": {
+      "status": "pass",
+      "details": "The terminal V51 summary, exactly 21 successful ledger entries, 21 requests, 21 raw directories, 18 selected files, V53/V54 results, V54 execution certificate and invocation log, and V55 certificate all exist. Local/remote hashes match for the fixed audited outputs.",
+      "terminal_summary_present": true,
+      "ledger_entries": 21,
+      "ledger_exit_code_zero": 21,
+      "construction_batches": 15,
+      "replay_batches": 6,
+      "requests": 21,
+      "raw_directories": 21,
+      "remote_raw_files": 210,
+      "remote_selected_files": 18,
+      "final_pid_2851799_present": false,
+      "state": "COMPLETE_VALIDATION_QUALITY_FLOOR"
+    },
+    "dead_code": {
+      "status": "warn",
+      "details": "The V51 runner imports compare but never calls it; the V23-local rank_candidate is not used by the V51 queue path. Live tracking, condition, physical, completion and joint fields do appear in raw outputs.",
+      "evidence": [
+        "scripts/run_paired_feedback_validation_v51_20261012.py:126",
+        "scripts/physics_guided_metric_v23_20261012.py:164-171",
+        "scripts/physics_guided_queue.py:12,144"
+      ]
+    },
+    "scope": {
+      "status": "warn",
+      "details": "The actual scope is one custom validation configuration with 24 sources, three offsets, three seeds, 216 inputs per method, 15 construction batches and six replay batches. versions.json retains conflicting inherited V28 test/44/30 fields; the custom val rows are 19 official-train and five official-test rows, not the official HumanML3D validation split. V53 used 10000 bootstrap samples while the frozen config specifies 5000; V54 corrects the current analysis to 5000.",
+      "evidence": [
+        "docs/paired_feedback_validation_v51_20261012.md:3-7,25",
+        "results/paired_feedback_validation_v51_20261012/versions.json:62,66-68,78,84,87,99-106",
+        "configs/physics_guided_20261011.json:38",
+        "scripts/analyze_paired_feedback_v51_20261012.py:84,114"
+      ]
+    },
+    "eval_type": {
+      "status": "pass",
+      "overall": "simulation_only",
+      "components": {
+        "condition_target": "real_gt only in the narrow dataset-derived-target sense",
+        "tracking": "synthetic_proxy",
+        "feedback_mechanism": "self_supervised_proxy",
+        "physical_metrics": "simulation_only",
+        "composite_joint": "simulation_only",
+        "human_eval": false,
+        "real_robot_eval": false
+      }
+    }
+  },
+  "protocol_invariants": {
+    "original_goals_unchanged": true,
+    "pairing_by_candidate_ordinal": true,
+    "source_offset_seed_design": "24x3x3 per method",
+    "same_three_candidate_budget": true,
+    "main_totals_are_replay_totals": true,
+    "end_to_end_guard_separately_computed": true,
+    "frozen_versions_weights_and_thresholds_present": true,
+    "native_velocity_and_reset_chain_observed": true,
+    "legacy_reward_cache_keys_in_inspected_arrays": false,
+    "raw_vs_refined_explicit": true,
+    "result_scope_explicit": true
+  },
+  "current_results": {
+    "feedback": {
+      "construction_complete": 214,
+      "replay_completed": 215,
+      "condition_pass": 63,
+      "physical_pass": 0,
+      "tracking_pass": 203,
+      "replay_joint_pass": 0,
+      "end_to_end_joint_pass": 0
+    },
+    "random": {
+      "construction_complete": 213,
+      "replay_completed": 214,
+      "condition_pass": 39,
+      "physical_pass": 0,
+      "tracking_pass": 201,
+      "replay_joint_pass": 0,
+      "end_to_end_joint_pass": 0
+    },
+    "gain_percentage_points": 0.0,
+    "source_cluster_95_ci_percentage_points": [0.0, 0.0],
+    "interpretation": "quality-floor observation on these 24 custom validation sources; not evidence of population-level absence of effect"
+  },
+  "analysis_lineage": {
+    "v53": {
+      "status": "historical_warn",
+      "source_sha256": "8f99e1901ca091003dc431f902c525eaa877877736982447311a677278be8eec",
+      "output_sha256": "30d61febbcacf0c7e123bc42d8e1feefd5e4640e890b61ac67ef337849a540db",
+      "finding": "Current-snapshot hashes were emitted, but replay and selection inputs were not compared with execution-time bindings; bootstrap count drifted from config."
+    },
+    "v54": {
+      "status": "partial_remediation",
+      "source_sha256": "8e3762c5c381117461c0d578550148ba3228c78d327b3c3daa1aa2375383b8dc",
+      "output_sha256": "bebec154baf929d372cd30dcfe3d8011a1d57e1b510950004031c28f6a895b80",
+      "certificate_sha256": "e0049f5c7be60a7b06eaf5fe63f91c7a7fe416d973d05331e823af2b8890a9ab",
+      "invocation_log_sha256": "575a90ecdc6c7bd57aa292c6d611a3f3802c3c8d6dfc607d68735d3606e3b28d",
+      "finding": "Execution bindings, scope counts, frozen inputs, and configured bootstrap count are checked, but V54 alone historically trusted mutable selected-lineage JSON for construction labels."
+    },
+    "v55": {
+      "status": "pass_with_qualifications_for_current_state",
+      "source_sha256": "d22c6ce574d458c47f83cb62160ecbca72b66ab28e6a09b7689b8da72897f42d",
+      "certificate_sha256": "7800698a34fdcb58710c81afc0ad17a2814c572b4fd6ffb826081d2939a685b0",
+      "finding": "Current selected motions and construction_complete labels are independently reconstructed from execution-bound candidate artifacts and replay-bound motion without trusting selected lineage. This is current-state evidence and is not bound into V54 or retroactive proof of an original selection-JSON execution hash.",
+      "qualifications": [
+        "assert optimization mode is not attested",
+        "request/config/core dependency hashes are not all emitted",
+        "replay rows are positionally zipped rather than joined by case_id",
+        "common original-goal hash and exact family/offset composition are not reasserted",
+        "source and certificate are Git-untracked"
+      ]
+    }
+  },
+  "git_provenance": {
+    "local_head": "f0e3c4014428dedcc3ce150e6069af4837149cd8",
+    "remote_head": "e1ef719d6702d15a5ab211db0e55be438b2d1c88",
+    "heads_match": false,
+    "remote_deployment": "explicit file copy",
+    "binding_basis": "recorded file hashes, not remote HEAD"
+  },
+  "claims": [
+    {
+      "id": "C1_protocol_mechanics",
+      "impact": "supported",
+      "text": "Paired candidate ordinals, unchanged original goals, equal three-candidate budget, 24x3x3 scope, and 15 construction/6 replay batches are supported."
+    },
+    {
+      "id": "C2_current_totals",
+      "impact": "supported_with_scope_qualifier",
+      "text": "Current 214/213 construction-complete and 0/0 end-to-end joint totals are independently reconstructed for this custom validation pilot."
+    },
+    {
+      "id": "C3_condition_counts",
+      "impact": "descriptive_only",
+      "text": "Feedback has 63 condition passes versus 39 for random on these custom validation rows."
+    },
+    {
+      "id": "C4_efficacy_or_acceptance",
+      "impact": "unsupported",
+      "text": "No accepted efficacy improvement, innovation acceptance, or population-level null effect is established."
+    },
+    {
+      "id": "C5_semantic_physical_downstream",
+      "impact": "unsupported",
+      "text": "Semantic quality, diversity preservation, real physical executability, real contact/slip accuracy, downstream benefit and G1 success are not established."
+    },
+    {
+      "id": "C6_original_tracking_ground_truth",
+      "impact": "unsupported",
+      "text": "The original V51 tracking reference must not be called ground truth or described as adequately proxy-labeled."
+    }
+  ],
+  "action_items": [
+    "Preserve the original V51 provenance failure and frozen files.",
+    "Cite V54 and V55 together for current execution/selection evidence; do not present V54 alone as fully binding the construction guard.",
+    "For any future nonzero result, bind the V55 certificate into the analysis manifest, record optimization mode and an invocation receipt, emit all dependency/request hashes, and join replay rows by case_id.",
+    "Keep the custom-versus-official split, family/offset composition, inherited V28 metadata, and remote Git-head mismatch explicit.",
+    "Keep acceptance false until an appropriately separated test and independent semantic/diversity evaluation exist."
+  ]
+}

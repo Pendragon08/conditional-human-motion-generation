@@ -1,0 +1,86 @@
+# V56 independent document-following witness
+
+**Status:** PASS_DOCUMENT_FOLLOWING_RUNTIME_WITNESS
+
+This witness was produced independently from the V56 code and protocol author. It certifies only the single documented passive --check invocation and current equality evidence. It does not certify efficacy, C2/C3, real contact ground truth, innovation, or a later --run.
+
+## Invocation
+
+```text
+ssh -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=15 ouyanghao@10.147.17.32 env PYTHONPATH=/data/code/ouyanghao/oyh/humanoid-combat-motion/envs/closd-r3/site-packages /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/run_native_manifold_v56_20261012.py --check
+```
+
+- Invocation count: 1
+- Exit code: 0
+- Standard output: NATIVE_MANIFOLD_V56_DOCUMENT_CHECK_PASS
+- Terminal state immediately after check: WITNESS_COMPLETE_PENDING_REVIEW
+
+## Bound hashes
+
+| Artifact | SHA256 | Local/remote equality |
+| --- | --- | --- |
+| results/native_manifold_v56_20261012/runtime_witness.json | 4a8a9a4ea35a479b429922b3d29c523df891cf40703b96b428cf58dcb878ce7a | remote runtime artifact |
+| docs/native_manifold_v56_20261012.md | bca51ca0ee82785f746cc691deb25b05f036726764f8115c6d66fd7e0a2ccb94 | true |
+| scripts/run_native_manifold_v56_20261012.py | 17320c84e7802c0a2bc4cf5d7d616114b8f2ff9903f77b239a91ce0f97bb7bb3 | true |
+
+## Observed checks
+
+- Runtime status: PASS_PASSIVE_EXPORT_EQUALITY
+- All 33 recorded array comparisons: true
+- Frozen/original metrics exactly equal: true
+- Generation calls: 0
+- Native contact records: 288602 (nonzero)
+- Native parser errors: 0
+- Native contact SHA256: a95dcf7b19b7f01272d5ef232d76c2a07bd1f3da4f45fdca8991d0610a612a70
+
+| Exact array | Equal |
+| --- | --- |
+| trajectories.npz:actual | true |
+| trajectories.npz:reference | true |
+| trajectories.npz:quaternion | true |
+| trajectories.npz:linvel | true |
+| trajectories.npz:angvel | true |
+| trajectories.npz:contact_force | true |
+| trajectories.npz:valid | true |
+| trajectories.npz:terminated | true |
+| trajectories.npz:reference_frame | true |
+| observation_trace.npz:ref_position | true |
+| observation_trace.npz:ref_previous | true |
+| observation_trace.npz:ref_velocity | true |
+| observation_trace.npz:task_observation | true |
+| initial_states.npz:bootstrap__humanoid_root_states | true |
+| initial_states.npz:bootstrap__dof_pos | true |
+| initial_states.npz:bootstrap__dof_vel | true |
+| initial_states.npz:bootstrap__rigid_body_pos | true |
+| initial_states.npz:bootstrap__rigid_body_rot | true |
+| initial_states.npz:bootstrap__rigid_body_vel | true |
+| initial_states.npz:bootstrap__rigid_body_ang_vel | true |
+| initial_states.npz:first_action__humanoid_root_states | true |
+| initial_states.npz:first_action__dof_pos | true |
+| initial_states.npz:first_action__dof_vel | true |
+| initial_states.npz:first_action__rigid_body_pos | true |
+| initial_states.npz:first_action__rigid_body_rot | true |
+| initial_states.npz:first_action__rigid_body_vel | true |
+| initial_states.npz:first_action__rigid_body_ang_vel | true |
+| initial_states.npz:first_action_contact_forces | true |
+| sensor_diagnostic.npz:sensor | true |
+| sensor_diagnostic.npz:root | true |
+| sensor_diagnostic.npz:dof_pos | true |
+| sensor_diagnostic.npz:dof_vel | true |
+| sensor_diagnostic.npz:action | true |
+
+## Charged ledger
+
+Exactly one successful measurement charge was observed.
+
+| Label | Stage | Seconds | Exit | Request SHA256 |
+| --- | --- | ---: | ---: | --- |
+| val_feedback_replay_s11 | measurement | 81.4106374699622 | 0 | 15b60540a059fd267c05b392fc0f256418b22b36faca9202655e538625c3895c |
+
+## Subsequent failure retained
+
+- Current remote state: FAILED_RETAINED
+- Error: FileNotFoundError(2, 'No such file or directory')
+- PID recorded by state file: 2867824
+- Root reported that an early --run was invoked before the remote witness copy existed; it failed before its batch and no random batch ran.
+- The witness agent did not invoke --run and made no retry.
