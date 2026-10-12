@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/independent_recompute.py", line 962, in <module>
+    result = main()
+  File ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/independent_recompute.py", line 482, in main
+    support_source_metadata = read_json(support_source_root / "metadata.json")
+  File ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/independent_recompute.py", line 42, in read_json
+    return json.loads(path.read_text(encoding="utf8"))
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/pathlib.py", line 1236, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/pathlib.py", line 1222, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/pathlib.py", line 1078, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/paired_feedback_validation_v51_20261012/raw/val_shared_s11/metadata.json'

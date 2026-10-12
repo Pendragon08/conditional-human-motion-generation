@@ -119,6 +119,12 @@ controller_state_audit=read('results/controller_state_diagnosis_v2_20261012/EXPE
 controller_state_witness=read('results/controller_state_diagnosis_v2_20261012/DOCUMENT_WITNESS.json')
 controller_state_original_failure=read('results/controller_state_diagnosis_20261012/DOCUMENT_WITNESS.json')
 if controller_state_analysis:
+    from controller_state_publication_guard_20261012 import verify as verify_controller_publication
+    controller_publication = verify_controller_publication(server=False)
+    controller_server_binding = read('results/controller_state_diagnosis_v2_20261012/PUBLICATION_BINDING_SERVER.json')
+    assert controller_server_binding['raw_array_bytes_verified'] is True
+    assert controller_server_binding['analysis_sha256']==controller_publication['analysis_sha256']
+    assert controller_server_binding['source_sha256']==hashlib.sha256((ROOT/'scripts/controller_state_publication_guard_20261012.py').read_bytes()).hexdigest()
     assert controller_state_analysis['same_algorithm_different_training_states']
     assert not controller_state_analysis['candidate_efficacy_test'] and controller_state_analysis['confirmed_innovations']==0
     controller_versions=read('results/controller_state_diagnosis_v2_20261012/versions.json')
@@ -319,7 +325,8 @@ if leg_ik_terminal: inputs.append(ROOT/'results/support_leg_ik_20261012/EXECUTOR
 if child_binding_check: inputs.append(ROOT/'results/child_input_binding_20261012/cpu_checks.json')
 for dirname in ('controller_state_diagnosis_20261012','controller_state_diagnosis_v2_20261012'):
     for name in ('DOCUMENT_WITNESS.json','versions.json','preparation.json','budget_ledger.json','runtime_witness.json',
-                 'analysis.json','EXPERIMENT_AUDIT.json','EXECUTOR_TERMINAL_OBSERVATION.json'):
+                 'analysis.json','EXPERIMENT_AUDIT.json','EXECUTOR_TERMINAL_OBSERVATION.json',
+                 'PUBLICATION_BINDING_SERVER.json','failure_components.json'):
         path=ROOT/'results'/dirname/name
         if path.exists():inputs.append(path)
 for state in ('multitask','t2m','unfinetuned'):
@@ -589,10 +596,12 @@ if controller_state_analysis:
         (state,72,r['counts']['completed'],r['counts']['condition_pass'],r['counts']['physical_pass'],r['counts']['joint_pass'],round(r['means']['surface_slip_proxy_fraction'],5)))+'</tr>'
         for state,r in controller_state_analysis['reports'].items())
     component_text+='<p>同一24个内部验证来源、三种偏移、种子11；同一固定参考，生成采样0次。三组导出的初始状态逐元素一致，实际加载的参考与权重字节已记录。隐藏PhysX状态一致性不因此得到认证。</p><table><tr><th>CLoSD训练状态</th><th>输入</th><th>完成</th><th>条件合格</th><th>物理合格</th><th>联合合格</th><th>滑移代理均值</th></tr>'+rows+'</table><p>此项只诊断控制器训练状态对当前人体仿真代理评分的影响，不证明生成方法创新或机器人下游收益，也不追溯修改C1。<a href="../controller_state_diagnosis_v2_20261012/analysis.json">原始数组分析</a>。</p>'
+    component_text+='<p>补充发布检查已逐项核对分析输入、完整分母、请求、执行绑定及初始状态文件哈希。服务器检查包含原始数组字节；本地检查只核对公开文件，不能替代服务器数组复算。<a href="../controller_state_diagnosis_v2_20261012/PUBLICATION_BINDING_SERVER.json">服务器发布绑定记录</a>。</p>'
     if controller_state_audit:
         component_text+='<p>独立事后审计：'+html.escape(str(controller_state_audit.get('overall_verdict',controller_state_audit.get('verdict','Not verified'))))+'，同模型家族且暂定。<a href="../controller_state_diagnosis_v2_20261012/EXPERIMENT_AUDIT.md">审计边界</a>。</p>'
     else:
         component_text+='<p>独立事后审计尚未完成，不作有效性结论。</p>'
+    component_text+='<p>审计边界：固定参考来自此前控制器的模拟执行，属于合成代理；时间指标衡量接近自身最小目标距离的时刻，并非首次到达或截止时刻成功。现有指标和零联合合格结果保持不变。<a href="../controller_state_diagnosis_v2_20261012/failure_components.json">冻结判据失败分解</a>。</p>'
 resource_text='<p>累计资源快照尚未同步。</p>'
 if resource_status:
     resource_text=f'<p>累计保守计费{resource_status["charged_wall_hours_one_gpu_per_job"]:.3f} GPU小时，输出{resource_status["output_bytes"]/1024**3:.3f} GiB（含公开导出重复副本），快照时数据盘可用{resource_status["data_free_bytes"]/1024**3:.2f} GiB。总计72小时、阶段上限、输出15GiB和磁盘至少20GiB的检查结果：{html.escape(resource_status["status"])}。阶段ablation_g1包括人体消融计费，不表示已运行G1；下游训练未运行。</p>'

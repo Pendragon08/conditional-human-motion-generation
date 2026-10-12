@@ -65071,7 +65071,379 @@
     "overleaf_results_sync": false,
     "scope": "Internal validation, upstream train/test mix, simulated human; surface-slip/contact and tracking proxies. Not a new algorithm, innovation efficacy or robot utility result."
   },
-  "controller_training_state_audit": null,
+  "controller_training_state_audit": {
+    "audit_skill": "experiment-audit",
+    "verdict": "WARN",
+    "reason_code": "VALID_ARTIFACTS_REQUIRE_PROXY_SCOPE_AND_ENDPOINT_TIME_QUALIFICATION",
+    "summary": "Independent CPU recomputation reproduced all 216 frozen metric rows, every published count and mean, the frozen criterion breakdown, raw-array hashes, checkpoint/input bindings, reset-visible-state invariants, and resource ledger without a discrepancy. The result remains provisional because tracking uses a controller-derived synthetic replay reference, endpoint_time_error_s is a near-minimum-distance timing proxy rather than target-entry or deadline success, the comparison covers one seed and 24 internal sources across three states of one algorithm, and the final parent termination is documented by an external terminal observation rather than an automatic server receipt.",
+    "audited_input_hashes": {
+      "results/controller_state_diagnosis_v2_20261012/analysis.json": "sha256:97e96310acd6ffcbd562076081e057e7399068914bc3d8945b30b407972ab8e9",
+      "results/controller_state_diagnosis_v2_20261012/versions.json": "sha256:e94a000d3260e0993a20151b8b1fff877c4632964febd66c75f72790722da196",
+      "results/controller_state_diagnosis_v2_20261012/preparation.json": "sha256:10bde9f7980e62810629154cd3c2dd95a9c7747598808715d9c641a24ef67e58",
+      "results/controller_state_diagnosis_v2_20261012/source_manifest.json": "sha256:63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+      "results/controller_state_diagnosis_v2_20261012/frozen_thresholds.json": "sha256:451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+      "results/controller_state_diagnosis_v2_20261012/references/fixed.npz": "sha256:14dcb4ea715f485547c9abeba294ad3ead67dabee9807a83ebe6c98b2ea4b207",
+      "results/controller_state_diagnosis_v2_20261012/raw/multitask/trajectories.npz": "sha256:7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136",
+      "results/controller_state_diagnosis_v2_20261012/raw/t2m/trajectories.npz": "sha256:5d04ae3d0737951d44285a4976be35c3d8cb3a88e585afc25feec8e2dac48e64",
+      "results/controller_state_diagnosis_v2_20261012/raw/unfinetuned/trajectories.npz": "sha256:20b10b4d22abec9460f7cc85bc1fe4cbb6fd7392179fda1247d44073eddfdc54",
+      "results/controller_state_diagnosis_v2_20261012/raw/multitask/initial_states.npz": "sha256:b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+      "results/controller_state_diagnosis_v2_20261012/raw/t2m/initial_states.npz": "sha256:b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+      "results/controller_state_diagnosis_v2_20261012/raw/unfinetuned/initial_states.npz": "sha256:b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+      "results/controller_state_diagnosis_v2_20261012/raw/multitask/metrics.json": "sha256:fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",
+      "results/controller_state_diagnosis_v2_20261012/raw/t2m/metrics.json": "sha256:397d8b50249f585c7fdad29dd67a83763ef1e127ee617589b7f226d2a1330975",
+      "results/controller_state_diagnosis_v2_20261012/raw/unfinetuned/metrics.json": "sha256:0e84bc6c2ff0f511450899cf2dbcaebd6baf83ad573faeefbe773f021c782ea5",
+      "results/controller_state_diagnosis_v2_20261012/failure_components.json": "sha256:b52fad56a973b5e4a203a8c7e0b11de8499c237ddefdd2ae2ae8fb32c3ecabf1",
+      "results/controller_state_diagnosis_v2_20261012/runtime_witness.json": "sha256:81f2d42777926ef927f35b548c7500e72779684b1449bb79b52616047b4e6e93",
+      "results/controller_state_diagnosis_v2_20261012/DOCUMENT_WITNESS.json": "sha256:5dbf4a2a29b838259c9f3002e5c50b2bab637fbd2f84a0c879f989df16648706",
+      "results/controller_state_diagnosis_v2_20261012/EXECUTOR_TERMINAL_OBSERVATION.json": "sha256:6d87131d341b2399da4497806d7f0f4c389c0d994a739b4e577945cead070193",
+      "results/controller_state_diagnosis_v2_20261012/budget_ledger.json": "sha256:081ac4b49c95864cf74cc55979144e8439f26c29fb5e0842ee5264a27c30b70c",
+      "results/controller_state_diagnosis_20261012/DOCUMENT_WITNESS.json": "sha256:63c0e133ecb9aec7fb6313f2b4398016b24bcda5eb4e6e002d571f6205bdddf2",
+      ".aris/traces/controller_state_diagnosis_v2_20261012/document_witness/artifact_verifier_attempt1_DOCUMENT_WITNESS.json": "sha256:9b58edb6c5449b35b79e99c21d6babcfb692c668441458cffbc8f99fb4d95538",
+      "results/support_reference_probe_v63_20261012/references/baseline.npz": "sha256:14dcb4ea715f485547c9abeba294ad3ead67dabee9807a83ebe6c98b2ea4b207",
+      "results/paired_feedback_validation_v51_20261012/raw/val_shared_s11_r0/trajectories.npz": "sha256:e96cb97ad5d12d4c54a3fbf57625d9ab4491e5c38febd800d78ae2a1baecfaaf",
+      "scripts/controller_state_publication_guard_20261012.py": "sha256:f39c2f28425f702447cca5612f7aa9ba0b1e4d0f5aef676eb15d783c4899be65",
+      "results/controller_state_diagnosis_v2_20261012/PUBLICATION_BINDING_SERVER.json": "sha256:ef85b955ba4a73317e453d46a5e3434551ded43e9f1d50af7913fed203de4da8",
+      ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/independent_recompute.json": "sha256:b668e3037a2a92a45488648964f45163591e1f15539002d8619f19794b6c2884",
+      ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/independent_recompute.py": "sha256:5c31341915db941cf73c7e5afb64d494bf72ab4e2600a6073b0fd07bd1d02cb6"
+    },
+    "full_audited_hash_manifest": ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/independent_recompute.json:3-45",
+    "trace_path": ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/",
+    "agent_id": "/root/controller_state_v2_integrity_audit",
+    "verdict_id": "/root/controller_state_v2_integrity_audit",
+    "executor_model": "codex-gpt-6-family",
+    "executor_family": "openai",
+    "reviewer_model": "codex-gpt-6-family",
+    "reviewer_family": "openai",
+    "reviewer_reasoning": "inherited deep read-only audit",
+    "review_independence": "same-family",
+    "acceptance_status": "provisional",
+    "generated_at": "2026-10-12T05:40:22.8812156Z",
+    "date": "2026-10-12",
+    "auditor": "fresh same-family Codex reviewer",
+    "overall_verdict": "warn",
+    "integrity_status": "warn",
+    "experiment_commit": "d2de2d51eb90de3cb59a42d931e50ee2a85b306c",
+    "deterministic_recompute": {
+      "status": "PASS",
+      "method": "Independent NumPy implementation using server-only raw NPZ arrays; original metric module was not imported.",
+      "rows_recomputed": 216,
+      "metric_differences": 0,
+      "binding_failures": 0,
+      "source_hash_mismatches": 0,
+      "publication_guard_read_only_recheck": "PASS",
+      "publication_guard_recheck_exit_code": 0,
+      "evidence": [
+        ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/independent_recompute.json:2-79",
+        ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/independent_recompute.json:950-961",
+        ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/publication_guard_recheck_stdout.json:1",
+        "scripts/controller_state_publication_guard_20261012.py:34-80"
+      ]
+    },
+    "checks": {
+      "A_ground_truth_provenance": {
+        "status": "WARN",
+        "details": "Endpoint position and heading targets are reconstructed from the cached dataset motion and frozen before replay. Tracking is different: fixed.npz is byte-identical to the support-reference baseline, which independently reconstructs exactly from a prior simulated controller trajectory with terminal padding. The tracking metric is therefore a disclosed controller-derived synthetic proxy with incumbent-reference bias, not real ground truth. Contact, slip, penetration, and continuity are simulation proxies.",
+        "classification": "simulation_only + synthetic_proxy tracking; dataset-derived endpoint/heading targets",
+        "evidence": [
+          "scripts/physics_guided_collect.py:57-64",
+          "scripts/physics_guided_collect.py:94-105",
+          "scripts/physics_guided_collect.py:121-138",
+          "scripts/controller_state_diagnosis_20261012.py:35-40",
+          "scripts/prepare_support_reference_probe_v63_20261012.py:19-29",
+          "scripts/prepare_support_reference_probe_v63_20261012.py:63-77",
+          "scripts/physics_guided_metric_v23_20261012.py:108-138",
+          ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/independent_recompute.json:93-109",
+          "results/controller_state_diagnosis_v2_20261012/versions.json:56-58"
+        ]
+      },
+      "B_score_normalization": {
+        "status": "PASS",
+        "details": "No metric is normalized by a maximum, minimum, or mean derived from the evaluated prediction. The mean/std operation is an input representation transform. Published means are plain arithmetic means of finite raw SI-unit/proxy values, with finite and total denominators recorded as 72/72. rank_candidate uses threshold ratios but is not called by this diagnosis and does not contribute a published score. surface_slip_proxy_fraction uses a trajectory-dependent support-observation denominator (observed ranges: multitask 62-180, t2m 34-201, unfinetuned 37-200); this is a disclosed metric-definition caveat, not self-max normalization.",
+        "evidence": [
+          "scripts/physics_guided_collect.py:57-62",
+          "scripts/physics_guided_metric_v23_20261012.py:87-100",
+          "scripts/physics_guided_metric_v23_20261012.py:148-160",
+          "scripts/physics_guided_metric_v23_20261012.py:164-171",
+          "scripts/controller_state_diagnosis_20261012.py:121-142",
+          "results/controller_state_diagnosis_v2_20261012/analysis.json:12-56",
+          "results/controller_state_diagnosis_v2_20261012/analysis.json:67-111",
+          "results/controller_state_diagnosis_v2_20261012/analysis.json:122-166"
+        ]
+      },
+      "C_result_existence_and_numeric_integrity": {
+        "status": "PASS",
+        "details": "All referenced result files and metric keys exist. Independent raw-array recomputation reproduced every per-row metric and Boolean classification, all state summaries, the descriptive failure breakdown, reference provenance, actual loaded checkpoint hashes, request/lineage/receipt bindings, visible reset invariants, and the resource ledger. The first preflight failure and first wrong-axis verifier failure remain preserved. The final parent run is supported by child returns, logs, complete artifacts, and an external exit-0/sentinel observation, but no automatic server parent receipt exists. The criterion-breakdown output is deterministic and exact; its claimed one-time invocation has no separate terminal trace, so only the artifact and recomputation are certified.",
+        "terminal_provenance": "WARN-level limitation inside an otherwise passing result-existence check",
+        "evidence": [
+          "results/controller_state_diagnosis_v2_20261012/analysis.json:2-168",
+          "results/controller_state_diagnosis_v2_20261012/analysis.json:170-208",
+          "results/controller_state_diagnosis_v2_20261012/failure_components.json:2-111",
+          "results/controller_state_diagnosis_20261012/DOCUMENT_WITNESS.json:2-48",
+          ".aris/traces/controller_state_diagnosis_v2_20261012/document_witness/artifact_verifier_attempt1_DOCUMENT_WITNESS.json:2-12",
+          ".aris/traces/controller_state_diagnosis_v2_20261012/document_witness/artifact_verifier_attempt1_DOCUMENT_WITNESS.json:84",
+          "results/controller_state_diagnosis_v2_20261012/DOCUMENT_WITNESS.json:2-28",
+          "results/controller_state_diagnosis_v2_20261012/EXECUTOR_TERMINAL_OBSERVATION.json:2-10",
+          "results/controller_state_diagnosis_v2_20261012/budget_ledger.json:3-21",
+          "results/round_resource_status_20261012/snapshot_1791782554748181514.json:1966-1989",
+          "results/round_resource_status_20261012/snapshot_1791782554748181514.json:2075-2120",
+          ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/independent_recompute.json:2-79"
+        ]
+      },
+      "D_dead_code_and_metric_call_path": {
+        "status": "PASS",
+        "details": "The collector calls metrics; the V24/V28 adapter chain replaces the base import with physics_guided_metric_v23_20261012 and removes only dense-contact recording. metrics calls surface_metrics and uses endpoint, heading, tracking, surface, penetration, jerk, completion, and pass flags. The controller analysis calls metrics for all 72 rows per state and compare_metrics. bounded_update, rank_candidate, and unit_witness are outside this diagnosis and do not affect the results. endpoint_time_error_s is live but omitted from the state mean table; the post hoc criterion breakdown reports its pass/fail contribution without changing the gate.",
+        "evidence": [
+          "scripts/physics_guided_collect.py:284",
+          "scripts/contact_com_collect_v24_20261012.py:9-12",
+          "scripts/contact_com_collect_v28_20261012.py:4-16",
+          "scripts/physics_guided_metric_v23_20261012.py:103-160",
+          "scripts/controller_state_diagnosis_20261012.py:117-142",
+          "scripts/diagnose_controller_state_failures_20261012.py:10-44"
+        ]
+      },
+      "E_scope_assessment": {
+        "status": "WARN",
+        "details": "The experiment contains 24 internal validation sources (12 jump and 12 dance), three horizontal offsets, one seed, and three released checkpoints that are training states of the same CLoSD algorithm. The source manifest includes 19 upstream-train and 5 upstream-test sources and is not an independent final test. Exact initial exported arrays match across states, but hidden PhysX-state identity is not established. This is a controller-state sensitivity diagnosis, not a comparison of independent algorithms, an efficacy test, a robustness/generalization result, G1/downstream evidence, or a robot result.",
+        "evidence": [
+          "docs/controller_state_diagnosis_20261012.md:3-5",
+          "docs/controller_state_diagnosis_20261012.md:25-29",
+          "docs/controller_state_diagnosis_v2_20261012.md:3-5",
+          "docs/controller_state_diagnosis_v2_20261012.md:21-23",
+          "results/controller_state_diagnosis_v2_20261012/preparation.json:101-113",
+          "results/controller_state_diagnosis_v2_20261012/analysis.json:196-208",
+          "results/controller_state_diagnosis_v2_20261012/versions.json:56-79",
+          ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/independent_recompute.json:132-153"
+        ]
+      },
+      "F_evaluation_type": {
+        "status": "WARN",
+        "primary": "simulation_only",
+        "secondary": [
+          "synthetic_proxy tracking",
+          "dataset-derived endpoint and heading targets",
+          "simulated contact/surface/continuity proxies"
+        ],
+        "excluded": [
+          "real_gt for tracking or physical feasibility",
+          "human_eval",
+          "robot execution",
+          "independent semantic evaluation"
+        ],
+        "details": "The experiment is correctly labeled simulation-only and non-confirmatory. It may support exact statements about this frozen replay setup, not real-world feasibility or semantic correctness.",
+        "evidence": [
+          "results/controller_state_diagnosis_v2_20261012/versions.json:56-60",
+          "scripts/physics_guided_collect.py:135-138",
+          "scripts/physics_guided_metric_v23_20261012.py:100",
+          "scripts/physics_guided_metric_v23_20261012.py:160",
+          "docs/controller_state_diagnosis_20261012.md:29",
+          "scripts/build_contact_measurement_report_20261011.py:460-470",
+          "scripts/build_contact_measurement_report_20261011.py:515"
+        ]
+      }
+    },
+    "endpoint_time_semantics": {
+      "status": "WARN",
+      "actual_definition": "Within the generated segment, find the trajectory's own minimum target distance, keep frames within 1 mm of that minimum, choose the one closest to expected-1, and report its time offset from expected-1.",
+      "not_equivalent_to": [
+        "first entry into the 0.1 m target region",
+        "remaining within the target region at the deadline",
+        "generic arrival lateness"
+      ],
+      "safety_effect": "Final endpoint position and heading are separately required, so passing this time proxy alone cannot create a condition or joint pass. The proxy can reject rows that satisfy final position and heading and therefore materially affects condition decomposition.",
+      "independent_counts": {
+        "multitask": {
+          "entered_position_threshold": 27,
+          "final_position_pass": 15,
+          "near_minimum_time_proxy_pass": 32,
+          "final_position_pass_but_time_proxy_fail": 6,
+          "position_and_heading_pass_but_time_proxy_fail": 3,
+          "time_proxy_pass_but_final_position_fail": 23
+        },
+        "t2m": {
+          "entered_position_threshold": 31,
+          "final_position_pass": 15,
+          "near_minimum_time_proxy_pass": 35,
+          "final_position_pass_but_time_proxy_fail": 6,
+          "position_and_heading_pass_but_time_proxy_fail": 3,
+          "time_proxy_pass_but_final_position_fail": 26
+        },
+        "unfinetuned": {
+          "entered_position_threshold": 33,
+          "final_position_pass": 16,
+          "near_minimum_time_proxy_pass": 33,
+          "final_position_pass_but_time_proxy_fail": 6,
+          "position_and_heading_pass_but_time_proxy_fail": 6,
+          "time_proxy_pass_but_final_position_fail": 23
+        }
+      },
+      "evidence": [
+        "scripts/physics_guided_metric_v23_20261012.py:119-133",
+        "scripts/physics_guided_metric_v23_20261012.py:148-160",
+        "scripts/build_contact_measurement_report_20261011.py:468-470",
+        ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/independent_recompute.json:257-264",
+        ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/independent_recompute.json:520-527",
+        ".aris/traces/controller_state_diagnosis_v2_20261012/integrity_audit/independent_recompute.json:783-790"
+      ]
+    },
+    "verified_results": {
+      "multitask": {
+        "counts": {
+          "completed": 72,
+          "condition_pass": 5,
+          "physical_pass": 0,
+          "tracking_pass": 68,
+          "joint_pass": 0
+        },
+        "means": {
+          "endpoint_error_m": 0.19590699259873187,
+          "heading_error_rad": 0.21217996437288894,
+          "surface_slip_proxy_fraction": 0.5424111456563213,
+          "penetration_fraction": 0.0,
+          "jerk_p95_m_s3": 1611.0568736182304,
+          "tracking_mean_m": 0.055011089192703366
+        },
+        "criterion_failure_counts": {
+          "position": 57,
+          "heading": 25,
+          "time_proxy": 40,
+          "penetration_proxy": 0,
+          "surface_slip_proxy": 72,
+          "continuity_proxy": 61,
+          "tracking_mean_proxy": 4,
+          "tracking_p95_proxy": 4
+        },
+        "completion_failures": 0
+      },
+      "t2m": {
+        "counts": {
+          "completed": 70,
+          "condition_pass": 6,
+          "physical_pass": 2,
+          "tracking_pass": 70,
+          "joint_pass": 0
+        },
+        "means": {
+          "endpoint_error_m": 0.18841727795747953,
+          "heading_error_rad": 0.1706922123692406,
+          "surface_slip_proxy_fraction": 0.38018183460701604,
+          "penetration_fraction": 0.0,
+          "jerk_p95_m_s3": 1336.1418139351726,
+          "tracking_mean_m": 0.044285546289756894
+        },
+        "criterion_failure_counts": {
+          "position": 57,
+          "heading": 18,
+          "time_proxy": 37,
+          "penetration_proxy": 0,
+          "surface_slip_proxy": 70,
+          "continuity_proxy": 54,
+          "tracking_mean_proxy": 2,
+          "tracking_p95_proxy": 2
+        },
+        "completion_failures": 2
+      },
+      "unfinetuned": {
+        "counts": {
+          "completed": 71,
+          "condition_pass": 7,
+          "physical_pass": 2,
+          "tracking_pass": 70,
+          "joint_pass": 0
+        },
+        "means": {
+          "endpoint_error_m": 0.19263817330991667,
+          "heading_error_rad": 0.15487359312462845,
+          "surface_slip_proxy_fraction": 0.33856304579408536,
+          "penetration_fraction": 0.0,
+          "jerk_p95_m_s3": 1198.3600121392135,
+          "tracking_mean_m": 0.04395878886700504
+        },
+        "criterion_failure_counts": {
+          "position": 56,
+          "heading": 12,
+          "time_proxy": 39,
+          "penetration_proxy": 0,
+          "surface_slip_proxy": 70,
+          "continuity_proxy": 48,
+          "tracking_mean_proxy": 2,
+          "tracking_p95_proxy": 2
+        },
+        "completion_failures": 1
+      },
+      "all_numeric_denominators": {
+        "finite": 72,
+        "total": 72
+      },
+      "all_joint_pass_counts_zero": true,
+      "failure_components_are_overlapping": true,
+      "failure_components_changed_original_rules": false
+    },
+    "actual_loaded_weights": {
+      "generator_sha256": "3ca68ae54975946b3fe5c6cd64a6eafc439b5fc43c166bc9a98d1c43aeef6618",
+      "multitask_sha256": "7ead3778b95516d8b91b7c5939674e45dd0ad10fcc22da60f9f57d204695f6ac",
+      "t2m_sha256": "62577dd2d127888108224d50b7a566eca0fdb650553d8564e268f72a80a2da84",
+      "unfinetuned_sha256": "a47bc0716ce0c40ffdbf1b093952e07182d47bf645123852df05c8c91faa68c2",
+      "upstream_commit": "d8950bdb78312fcd2844f336b3fc079e7368c87f",
+      "all_match_versions_and_loaded_checkpoint_bindings": true
+    },
+    "resource_and_reset": {
+      "three_job_seconds": 158.55677541531622,
+      "three_job_cap_seconds": 600,
+      "all_child_exit_codes_zero": true,
+      "resource_snapshot_status": "CAPS_PASS",
+      "identical_initial_archives_across_states": true,
+      "bootstrap_to_first_action_seven_state_tensors_exact": true,
+      "common_valid_reference_max_abs_difference": 0.0,
+      "hidden_physx_identity_established": false
+    },
+    "source_level_limitations_preserved_despite_current_binding_pass": [
+      "The preparation source copies the parent baseline and freezes the new copy's hash but does not itself compare that parent file against the parent's recorded baseline hash. The audit independently verified the current link.",
+      "Initial-state archives are not included in the collector's execution-time lineage output map. Analysis and the supplemental publication guard bind and check the current bytes, but this remains retrospective hardening.",
+      "The upstream cleanliness check covers tracked diffs under closd and does not rule out untracked upstream files or files elsewhere in the checkout.",
+      "Many integrity gates are Python assert statements; the recorded launch did not use optimized Python, but source-level fail-closed behavior would be stronger with explicit exceptions.",
+      "Visible reset tensors and caches match; hidden PhysX state is explicitly outside the certified scope."
+    ],
+    "claims": [
+      {
+        "id": "recorded_frozen_simulation_results",
+        "impact": "supported_with_scope",
+        "text": "Under this frozen simulation replay, the three recorded training states produced the audited counts and means above."
+      },
+      {
+        "id": "criterion_barrier_description",
+        "impact": "supported_descriptive_only",
+        "text": "The frozen criterion breakdown exactly counts overlapping observed failures; it is not a causal analysis or a new acceptance rule."
+      },
+      {
+        "id": "controller_state_sensitivity",
+        "impact": "needs_qualifier",
+        "text": "The numeric differences show sensitivity within one algorithm and one internal seed; they do not establish superiority or robustness."
+      },
+      {
+        "id": "endpoint_arrival_or_deadline",
+        "impact": "unsupported_as_worded",
+        "text": "endpoint_time_error_s must be called a near-minimum-distance timing proxy, not arrival time, first target entry, or lateness."
+      },
+      {
+        "id": "physical_quality_lower_bound_resolved",
+        "impact": "unsupported",
+        "text": "All three states have zero joint passes; changing controller training state did not produce a jointly qualified result in this diagnosis."
+      },
+      {
+        "id": "innovation_algorithm_or_robot_utility",
+        "impact": "unsupported",
+        "text": "The experiment does not support a new-method, independent-algorithm, real-robot, semantic-validity, downstream-learning, or generalization claim."
+      }
+    ],
+    "action_items": [
+      "Keep the labels simulation_only and synthetic_proxy tracking wherever these results are presented.",
+      "Describe endpoint_time_error_s as a near-minimum-distance timing proxy. If arrival semantics are needed later, add and separately freeze a first-threshold-entry or deadline-position event without changing these historical scores.",
+      "Report endpoint_time_error_s and support_observations when comparing states so the live time criterion and support-dependent slip denominator remain visible.",
+      "Limit conclusions to this one-seed, 24-source internal mixed-split diagnosis of training states within one algorithm.",
+      "For future runs, emit an automatic server-side parent completion receipt and a separate terminal trace for post hoc criterion scripts.",
+      "Harden future launchers by explicitly binding the parent reference provenance, initial-state archive, and relevant upstream files at execution time with explicit exceptions rather than assert-only checks."
+    ]
+  },
   "controller_training_state_document_witness": {
     "status": "PASS",
     "review_independence": "same-family",
@@ -67584,9 +67956,11 @@
       "results/support_velocity_diagnostic_v49_20261012",
       "results/surface_proxy_calibration_v50_20261012",
       "results/surface_proxy_calibration_v52_20261012",
+      "results/task_matched_feedback_20261012",
+      "results/task_matched_feedback_v2_20261012",
       "results/velocity_reference_fixture_v19_20261012"
     ],
-    "output_bytes": 9155354341,
+    "output_bytes": 9155851182,
     "charged_wall_hours_one_gpu_per_job": 4.607627518657698,
     "stage_hours": {
       "measurement": 1.2800651976999102,
@@ -67619,7 +67993,7 @@
     },
     "total_cap_hours": 72,
     "output_cap_bytes": 16106127360,
-    "data_free_bytes": 36462063616,
+    "data_free_bytes": 36459765760,
     "data_free_floor_bytes": 21474836480,
     "cap_checks": {
       "total": true,
@@ -67632,8 +68006,8 @@
       "reserve": true
     },
     "status": "CAPS_PASS",
-    "source_sha256": "41b74eefb90560da12d698c493af85893c6eda6ed854490225d6e6bd2ea69c17",
-    "time": 1791782554.748164,
+    "source_sha256": "f6613dc9e68fb3c91268dca642768b30dc4fae1fe37bba184331375953f66ccd",
+    "time": 1791784257.932349,
     "gpu_jobs_launched_by_this_script": 0
   },
   "full_efficacy_comparisons_completed": 1,
@@ -108516,7 +108890,7 @@
     "results\\reference_observation_v42_20261012\\DOCUMENT_WITNESS.json": "e68742dc2987a50684a4cfd82237ef9f1014aafdf6b135952fc4bdac6a15ef55",
     "results\\reference_observation_v42_20261012\\versions.json": "00ae3501899a92d524509f7661d91daf23c505434e69ab37c8b2817050e5e54b",
     "results\\reference_observation_v42_20261012\\budget_ledger.json": "fd7a490fa968a402c455f1e7e1f1f3b9ced5528ad23320fa5ea2420f754ee8b5",
-    "results\\round_resource_status_20261012\\snapshot_1791782554748181514.json": "fec90a1af512e21b44f2365989804d824edb1f0f7b9f1ef4b3e28a93e833bf2a",
+    "results\\round_resource_status_20261012\\snapshot_1791784257932373511.json": "dcff4084424daf08b476d4418080b3ecf80efe7de9cfef07430f7a1e5d0c7783",
     "results\\reference_velocity_v43_20261012\\summary.json": "c5ded5f5225c66dec3421fd679ba095ce4e64eff1b68a254e861e8f63d152ffd",
     "results\\reference_velocity_v43_20261012\\DOCUMENT_WITNESS.json": "92bfaca03d734699add960a354fff196ff133cc77eb98538102d7e553fd32366",
     "results\\reference_velocity_v43_20261012\\versions.json": "9cc69c6318892df77657c6dac4e38e8f514d5a85c009addbea65d0edfbce1c5a",
@@ -108592,7 +108966,10 @@
     "results\\controller_state_diagnosis_v2_20261012\\budget_ledger.json": "081ac4b49c95864cf74cc55979144e8439f26c29fb5e0842ee5264a27c30b70c",
     "results\\controller_state_diagnosis_v2_20261012\\runtime_witness.json": "81f2d42777926ef927f35b548c7500e72779684b1449bb79b52616047b4e6e93",
     "results\\controller_state_diagnosis_v2_20261012\\analysis.json": "97e96310acd6ffcbd562076081e057e7399068914bc3d8945b30b407972ab8e9",
+    "results\\controller_state_diagnosis_v2_20261012\\EXPERIMENT_AUDIT.json": "efb5b468a9c848ce2a79ce5da2bf9ef52b05cadb6edd1d79404c1540f0e1cba8",
     "results\\controller_state_diagnosis_v2_20261012\\EXECUTOR_TERMINAL_OBSERVATION.json": "6d87131d341b2399da4497806d7f0f4c389c0d994a739b4e577945cead070193",
+    "results\\controller_state_diagnosis_v2_20261012\\PUBLICATION_BINDING_SERVER.json": "ef85b955ba4a73317e453d46a5e3434551ded43e9f1d50af7913fed203de4da8",
+    "results\\controller_state_diagnosis_v2_20261012\\failure_components.json": "b52fad56a973b5e4a203a8c7e0b11de8499c237ddefdd2ae2ae8fb32c3ecabf1",
     "results\\controller_state_diagnosis_v2_20261012\\raw\\multitask\\loaded_input_binding.json": "c862f6c0dcca1a973c4adb48778f0e0cf7282718cbdddf05804ecb9cd879963c",
     "results\\controller_state_diagnosis_v2_20261012\\raw\\multitask\\loaded_checkpoint_binding.json": "24ab57f4ba3d0fb628b1eebf8d6ba366fdb984708c75ba3da16ecfdb05bbc327",
     "results\\controller_state_diagnosis_v2_20261012\\raw\\multitask\\metrics.json": "fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",

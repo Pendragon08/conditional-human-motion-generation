@@ -1,0 +1,989 @@
+{
+  "all_metric_differences": [],
+  "audited_hashes": {
+    ".aris/traces/controller_state_diagnosis_v2_20261012/document_witness/artifact_verifier_attempt1_DOCUMENT_WITNESS.json": "9b58edb6c5449b35b79e99c21d6babcfb692c668441458cffbc8f99fb4d95538",
+    "results/controller_state_diagnosis_20261012/DOCUMENT_WITNESS.json": "63c0e133ecb9aec7fb6313f2b4398016b24bcda5eb4e6e002d571f6205bdddf2",
+    "results/controller_state_diagnosis_v2_20261012/DOCUMENT_WITNESS.json": "5dbf4a2a29b838259c9f3002e5c50b2bab637fbd2f84a0c879f989df16648706",
+    "results/controller_state_diagnosis_v2_20261012/EXECUTOR_TERMINAL_OBSERVATION.json": "6d87131d341b2399da4497806d7f0f4c389c0d994a739b4e577945cead070193",
+    "results/controller_state_diagnosis_v2_20261012/analysis.json": "97e96310acd6ffcbd562076081e057e7399068914bc3d8945b30b407972ab8e9",
+    "results/controller_state_diagnosis_v2_20261012/budget_ledger.json": "081ac4b49c95864cf74cc55979144e8439f26c29fb5e0842ee5264a27c30b70c",
+    "results/controller_state_diagnosis_v2_20261012/failure_components.json": "b52fad56a973b5e4a203a8c7e0b11de8499c237ddefdd2ae2ae8fb32c3ecabf1",
+    "results/controller_state_diagnosis_v2_20261012/frozen_thresholds.json": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "results/controller_state_diagnosis_v2_20261012/preparation.json": "10bde9f7980e62810629154cd3c2dd95a9c7747598808715d9c641a24ef67e58",
+    "results/controller_state_diagnosis_v2_20261012/raw/multitask/initial_states.npz": "b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+    "results/controller_state_diagnosis_v2_20261012/raw/multitask/lineage.json": "dbc689257a53ee312f55f4d6c436b6f45349333f1902a6db98c2f764cfd075c1",
+    "results/controller_state_diagnosis_v2_20261012/raw/multitask/loaded_checkpoint_binding.json": "24ab57f4ba3d0fb628b1eebf8d6ba366fdb984708c75ba3da16ecfdb05bbc327",
+    "results/controller_state_diagnosis_v2_20261012/raw/multitask/loaded_input_binding.json": "c862f6c0dcca1a973c4adb48778f0e0cf7282718cbdddf05804ecb9cd879963c",
+    "results/controller_state_diagnosis_v2_20261012/raw/multitask/metadata.json": "d8a3c8a583c7f9f9bf93653babfb346d0ea287a7a4e0c6db0760d7e360781e89",
+    "results/controller_state_diagnosis_v2_20261012/raw/multitask/metrics.json": "fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",
+    "results/controller_state_diagnosis_v2_20261012/raw/multitask/receipt.json": "f9104c76405436639c87e3e7ca0a42d7d6788a6bd8d5441075ccd51e23c5c4e6",
+    "results/controller_state_diagnosis_v2_20261012/raw/multitask/trajectories.npz": "7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136",
+    "results/controller_state_diagnosis_v2_20261012/raw/t2m/initial_states.npz": "b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+    "results/controller_state_diagnosis_v2_20261012/raw/t2m/lineage.json": "d18bcd90d0880bc11669be4c03ffd0264902e41a0a1c780dadbc20d06a829542",
+    "results/controller_state_diagnosis_v2_20261012/raw/t2m/loaded_checkpoint_binding.json": "0c50436f71103ebf5ff66d0964a98c28d87a157449c115343eb807fb9676aab3",
+    "results/controller_state_diagnosis_v2_20261012/raw/t2m/loaded_input_binding.json": "c862f6c0dcca1a973c4adb48778f0e0cf7282718cbdddf05804ecb9cd879963c",
+    "results/controller_state_diagnosis_v2_20261012/raw/t2m/metadata.json": "e275bf30396aa15519bcc5d02fedeb361c4564b934117efc97d5b1aa104a3b67",
+    "results/controller_state_diagnosis_v2_20261012/raw/t2m/metrics.json": "397d8b50249f585c7fdad29dd67a83763ef1e127ee617589b7f226d2a1330975",
+    "results/controller_state_diagnosis_v2_20261012/raw/t2m/receipt.json": "f32a8a9447e34a606302bb6e32216485ea64fcd7da31e091cc7d66453839a63e",
+    "results/controller_state_diagnosis_v2_20261012/raw/t2m/trajectories.npz": "5d04ae3d0737951d44285a4976be35c3d8cb3a88e585afc25feec8e2dac48e64",
+    "results/controller_state_diagnosis_v2_20261012/raw/unfinetuned/initial_states.npz": "b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+    "results/controller_state_diagnosis_v2_20261012/raw/unfinetuned/lineage.json": "8587192d20131fca191152af1f5f09f09c70de4e09816ad71bd92701b389e426",
+    "results/controller_state_diagnosis_v2_20261012/raw/unfinetuned/loaded_checkpoint_binding.json": "f1c3218bc806e13589daf5be8468af492996e90669019bbba682d9e04867f21c",
+    "results/controller_state_diagnosis_v2_20261012/raw/unfinetuned/loaded_input_binding.json": "c862f6c0dcca1a973c4adb48778f0e0cf7282718cbdddf05804ecb9cd879963c",
+    "results/controller_state_diagnosis_v2_20261012/raw/unfinetuned/metadata.json": "bc7ed3e69872881c50f16adfd42e53f7cd3b5361bc80b4c081af7e6e2134478c",
+    "results/controller_state_diagnosis_v2_20261012/raw/unfinetuned/metrics.json": "0e84bc6c2ff0f511450899cf2dbcaebd6baf83ad573faeefbe773f021c782ea5",
+    "results/controller_state_diagnosis_v2_20261012/raw/unfinetuned/receipt.json": "a25e29ac0efea6fa64f8b30ead63cbd7037a2e23f5276d90e566881eac30f7ac",
+    "results/controller_state_diagnosis_v2_20261012/raw/unfinetuned/trajectories.npz": "20b10b4d22abec9460f7cc85bc1fe4cbb6fd7392179fda1247d44073eddfdc54",
+    "results/controller_state_diagnosis_v2_20261012/references/fixed.npz": "14dcb4ea715f485547c9abeba294ad3ead67dabee9807a83ebe6c98b2ea4b207",
+    "results/controller_state_diagnosis_v2_20261012/runtime_witness.json": "81f2d42777926ef927f35b548c7500e72779684b1449bb79b52616047b4e6e93",
+    "results/controller_state_diagnosis_v2_20261012/source_manifest.json": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+    "results/controller_state_diagnosis_v2_20261012/versions.json": "e94a000d3260e0993a20151b8b1fff877c4632964febd66c75f72790722da196",
+    "results/paired_feedback_validation_v51_20261012/raw/val_shared_s11_r0/metadata.json": "deeaeb58efb8cc4d9a0a2626098de9d1ad308d96da03af757aadd7222de23b89",
+    "results/paired_feedback_validation_v51_20261012/raw/val_shared_s11_r0/trajectories.npz": "e96cb97ad5d12d4c54a3fbf57625d9ab4491e5c38febd800d78ae2a1baecfaaf",
+    "results/support_reference_probe_v63_20261012/preparation.json": "ba4ca14f72136c00c0d127a459e477cdfb91bd91b859170b3d0cab24d1b0ede7",
+    "results/support_reference_probe_v63_20261012/references/baseline.npz": "14dcb4ea715f485547c9abeba294ad3ead67dabee9807a83ebe6c98b2ea4b207"
+  },
+  "binding_failures": [],
+  "cross_state": {
+    "common_valid_reference_max_abs_difference": 0.0,
+    "hidden_physx_identity_established": false,
+    "initial_archives_exact": true,
+    "metadata_equal": {
+      "cases": true,
+      "original_goal": true,
+      "original_heading": true
+    }
+  },
+  "failure_components": {
+    "alternative_success_rule": false,
+    "differences": [],
+    "generation_calls": 0,
+    "input_hashes_match": true,
+    "new_simulator_batches": 0,
+    "source_hash_matches": true,
+    "thresholds_changed": false
+  },
+  "manifest": {
+    "rows": 200,
+    "source_ids_unique": 24,
+    "validation_families": {
+      "dance": 12,
+      "jump": 12
+    },
+    "validation_official_splits": {
+      "test": 5,
+      "train": 19
+    },
+    "validation_sources": 24
+  },
+  "method": "independent NumPy implementation; original metric module not imported",
+  "normalization": {
+    "aggregate_means_are_plain_arithmetic_means": true,
+    "classification_thresholds_source": "frozen_thresholds.json",
+    "note": "rank_candidate threshold ratios are not called by this diagnosis and are not reported metrics",
+    "prediction_statistic_denominator_used": false
+  },
+  "numpy_version": "1.23.5",
+  "preservation": {
+    "original_preflight_failure_hash_matches_versions": true,
+    "original_preflight_failure_status": "FAIL",
+    "wrong_axis_failure_preserved": true,
+    "wrong_axis_failure_status": "FAIL"
+  },
+  "reference": {
+    "content_hash_matches_requests": true,
+    "content_sha256": "5f0dbd7ce0f1ae340da0120ec99823b12441ceb93b615333ea50312f71d76b83",
+    "file_hash_matches_preparation": true,
+    "file_sha256": "14dcb4ea715f485547c9abeba294ad3ead67dabee9807a83ebe6c98b2ea4b207",
+    "keys": [
+      "reference",
+      "original_goal"
+    ],
+    "provenance_checks": {
+      "fixed_file_exactly_matches_support_baseline": true,
+      "parent_declares_no_new_simulation_or_generation_during_reference_preparation": true,
+      "support_baseline_exactly_reconstructs_prior_simulated_actual_with_terminal_padding": true,
+      "support_baseline_goal_matches_prior_simulation_metadata": true,
+      "support_baseline_hash_matches_parent_preparation": true
+    },
+    "provenance_classification": "controller-derived synthetic proxy from a prior simulated trajectory; dataset-derived endpoint and heading targets"
+  },
+  "resource": {
+    "all_exit_zero": true,
+    "cap_checks": {
+      "ablation_g1": true,
+      "comparison": true,
+      "data_free": true,
+      "downstream": true,
+      "measurement": true,
+      "output": true,
+      "reserve": true,
+      "total": true
+    },
+    "charged_wall_hours_one_gpu_per_job": 4.607627518657698,
+    "controller_rows_exact": true,
+    "data_free_bytes": 36462063616,
+    "output_bytes": 9155354341,
+    "own_seconds": 158.55677541531622,
+    "own_seconds_within_600": true,
+    "snapshot_sha256": "fec90a1af512e21b44f2365989804d824edb1f0f7b9f1ef4b3e28a93e833bf2a",
+    "status": "CAPS_PASS"
+  },
+  "scope": {
+    "candidate_efficacy_test": false,
+    "families": [
+      "jump",
+      "dance"
+    ],
+    "generation_calls": 0,
+    "independent_final_test": false,
+    "official_test_sources": 5,
+    "official_train_sources": 19,
+    "offsets": [
+      -0.15,
+      0.0,
+      0.15
+    ],
+    "rows_per_state": 72,
+    "same_algorithm_different_training_states": true,
+    "seed": 11,
+    "simulation_only": true,
+    "sources": 24,
+    "states": 3,
+    "tracking_reference": "fixed replay reference built from a prior simulated controller trajectory and used as a synthetic tracking proxy"
+  },
+  "source_hashes": {
+    "bound_files": 47,
+    "mismatches": {}
+  },
+  "state_reports": {
+    "multitask": {
+      "array_shapes": {
+        "actual": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "angvel": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "contact_force": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "linvel": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "quaternion": [
+          120,
+          72,
+          24,
+          4
+        ],
+        "reference": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "reference_frame": [
+          120
+        ],
+        "terminated": [
+          72
+        ],
+        "valid": [
+          120,
+          72
+        ]
+      },
+      "bindings": {
+        "bootstrap_first_action_exact": true,
+        "lineage_output_hashes_match": true,
+        "loaded_replay_content_hash_matches": true,
+        "loaded_weight_hash_set_matches": true,
+        "metadata_generation_calls_zero": true,
+        "parent_child_return_zero": true,
+        "receipt_matches": true,
+        "request_equals_lineage": true,
+        "request_hash_matches_ledger": true,
+        "request_hash_matches_loaded_checkpoint": true,
+        "reset_gate": true,
+        "rigid_cache_exact": true,
+        "versions_hash_matches_request_and_bindings": true
+      },
+      "counts": {
+        "completed": 72,
+        "condition_pass": 5,
+        "joint_pass": 0,
+        "physical_pass": 0,
+        "tracking_pass": 68
+      },
+      "denominators": {
+        "endpoint_error_m": {
+          "finite": 72,
+          "total": 72
+        },
+        "heading_error_rad": {
+          "finite": 72,
+          "total": 72
+        },
+        "jerk_p95_m_s3": {
+          "finite": 72,
+          "total": 72
+        },
+        "penetration_fraction": {
+          "finite": 72,
+          "total": 72
+        },
+        "surface_slip_proxy_fraction": {
+          "finite": 72,
+          "total": 72
+        },
+        "tracking_mean_m": {
+          "finite": 72,
+          "total": 72
+        }
+      },
+      "endpoint_semantics": {
+        "entered_position_threshold": 27,
+        "final_position_pass": 15,
+        "final_position_pass_but_time_proxy_fail": 6,
+        "heading_pass": 47,
+        "near_minimum_time_proxy_pass": 32,
+        "position_and_heading_pass_but_time_proxy_fail": 3,
+        "time_proxy_pass_but_final_position_fail": 23
+      },
+      "initial_shapes": {
+        "bootstrap__dof_pos": [
+          72,
+          69
+        ],
+        "bootstrap__dof_vel": [
+          72,
+          69
+        ],
+        "bootstrap__humanoid_root_states": [
+          72,
+          13
+        ],
+        "bootstrap__rigid_body_ang_vel": [
+          72,
+          24,
+          3
+        ],
+        "bootstrap__rigid_body_pos": [
+          72,
+          24,
+          3
+        ],
+        "bootstrap__rigid_body_rot": [
+          72,
+          24,
+          4
+        ],
+        "bootstrap__rigid_body_vel": [
+          72,
+          24,
+          3
+        ],
+        "first_action__dof_pos": [
+          72,
+          69
+        ],
+        "first_action__dof_vel": [
+          72,
+          69
+        ],
+        "first_action__humanoid_root_states": [
+          72,
+          13
+        ],
+        "first_action__rigid_body_ang_vel": [
+          72,
+          24,
+          3
+        ],
+        "first_action__rigid_body_pos": [
+          72,
+          24,
+          3
+        ],
+        "first_action__rigid_body_rot": [
+          72,
+          24,
+          4
+        ],
+        "first_action__rigid_body_vel": [
+          72,
+          24,
+          3
+        ],
+        "first_action_contact_forces": [
+          72,
+          24,
+          3
+        ]
+      },
+      "means": {
+        "endpoint_error_m": 0.19590699259873187,
+        "heading_error_rad": 0.21217996437288894,
+        "jerk_p95_m_s3": 1611.0568736182304,
+        "penetration_fraction": 0.0,
+        "surface_slip_proxy_fraction": 0.5424111456563213,
+        "tracking_mean_m": 0.055011089192703366
+      },
+      "metric_rows_exact_within_float64_roundoff": true,
+      "reference_max_abs_error_to_fixed": 5.960464477539063e-08,
+      "terminated_count": 0,
+      "valid_lengths": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    "t2m": {
+      "array_shapes": {
+        "actual": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "angvel": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "contact_force": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "linvel": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "quaternion": [
+          120,
+          72,
+          24,
+          4
+        ],
+        "reference": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "reference_frame": [
+          120
+        ],
+        "terminated": [
+          72
+        ],
+        "valid": [
+          120,
+          72
+        ]
+      },
+      "bindings": {
+        "bootstrap_first_action_exact": true,
+        "lineage_output_hashes_match": true,
+        "loaded_replay_content_hash_matches": true,
+        "loaded_weight_hash_set_matches": true,
+        "metadata_generation_calls_zero": true,
+        "parent_child_return_zero": true,
+        "receipt_matches": true,
+        "request_equals_lineage": true,
+        "request_hash_matches_ledger": true,
+        "request_hash_matches_loaded_checkpoint": true,
+        "reset_gate": true,
+        "rigid_cache_exact": true,
+        "versions_hash_matches_request_and_bindings": true
+      },
+      "counts": {
+        "completed": 70,
+        "condition_pass": 6,
+        "joint_pass": 0,
+        "physical_pass": 2,
+        "tracking_pass": 70
+      },
+      "denominators": {
+        "endpoint_error_m": {
+          "finite": 72,
+          "total": 72
+        },
+        "heading_error_rad": {
+          "finite": 72,
+          "total": 72
+        },
+        "jerk_p95_m_s3": {
+          "finite": 72,
+          "total": 72
+        },
+        "penetration_fraction": {
+          "finite": 72,
+          "total": 72
+        },
+        "surface_slip_proxy_fraction": {
+          "finite": 72,
+          "total": 72
+        },
+        "tracking_mean_m": {
+          "finite": 72,
+          "total": 72
+        }
+      },
+      "endpoint_semantics": {
+        "entered_position_threshold": 31,
+        "final_position_pass": 15,
+        "final_position_pass_but_time_proxy_fail": 6,
+        "heading_pass": 54,
+        "near_minimum_time_proxy_pass": 35,
+        "position_and_heading_pass_but_time_proxy_fail": 3,
+        "time_proxy_pass_but_final_position_fail": 26
+      },
+      "initial_shapes": {
+        "bootstrap__dof_pos": [
+          72,
+          69
+        ],
+        "bootstrap__dof_vel": [
+          72,
+          69
+        ],
+        "bootstrap__humanoid_root_states": [
+          72,
+          13
+        ],
+        "bootstrap__rigid_body_ang_vel": [
+          72,
+          24,
+          3
+        ],
+        "bootstrap__rigid_body_pos": [
+          72,
+          24,
+          3
+        ],
+        "bootstrap__rigid_body_rot": [
+          72,
+          24,
+          4
+        ],
+        "bootstrap__rigid_body_vel": [
+          72,
+          24,
+          3
+        ],
+        "first_action__dof_pos": [
+          72,
+          69
+        ],
+        "first_action__dof_vel": [
+          72,
+          69
+        ],
+        "first_action__humanoid_root_states": [
+          72,
+          13
+        ],
+        "first_action__rigid_body_ang_vel": [
+          72,
+          24,
+          3
+        ],
+        "first_action__rigid_body_pos": [
+          72,
+          24,
+          3
+        ],
+        "first_action__rigid_body_rot": [
+          72,
+          24,
+          4
+        ],
+        "first_action__rigid_body_vel": [
+          72,
+          24,
+          3
+        ],
+        "first_action_contact_forces": [
+          72,
+          24,
+          3
+        ]
+      },
+      "means": {
+        "endpoint_error_m": 0.18841727795747953,
+        "heading_error_rad": 0.1706922123692406,
+        "jerk_p95_m_s3": 1336.1418139351726,
+        "penetration_fraction": 0.0,
+        "surface_slip_proxy_fraction": 0.38018183460701604,
+        "tracking_mean_m": 0.044285546289756894
+      },
+      "metric_rows_exact_within_float64_roundoff": true,
+      "reference_max_abs_error_to_fixed": 5.960464477539063e-08,
+      "terminated_count": 2,
+      "valid_lengths": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        99,
+        104,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    },
+    "unfinetuned": {
+      "array_shapes": {
+        "actual": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "angvel": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "contact_force": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "linvel": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "quaternion": [
+          120,
+          72,
+          24,
+          4
+        ],
+        "reference": [
+          120,
+          72,
+          24,
+          3
+        ],
+        "reference_frame": [
+          120
+        ],
+        "terminated": [
+          72
+        ],
+        "valid": [
+          120,
+          72
+        ]
+      },
+      "bindings": {
+        "bootstrap_first_action_exact": true,
+        "lineage_output_hashes_match": true,
+        "loaded_replay_content_hash_matches": true,
+        "loaded_weight_hash_set_matches": true,
+        "metadata_generation_calls_zero": true,
+        "parent_child_return_zero": true,
+        "receipt_matches": true,
+        "request_equals_lineage": true,
+        "request_hash_matches_ledger": true,
+        "request_hash_matches_loaded_checkpoint": true,
+        "reset_gate": true,
+        "rigid_cache_exact": true,
+        "versions_hash_matches_request_and_bindings": true
+      },
+      "counts": {
+        "completed": 71,
+        "condition_pass": 7,
+        "joint_pass": 0,
+        "physical_pass": 2,
+        "tracking_pass": 70
+      },
+      "denominators": {
+        "endpoint_error_m": {
+          "finite": 72,
+          "total": 72
+        },
+        "heading_error_rad": {
+          "finite": 72,
+          "total": 72
+        },
+        "jerk_p95_m_s3": {
+          "finite": 72,
+          "total": 72
+        },
+        "penetration_fraction": {
+          "finite": 72,
+          "total": 72
+        },
+        "surface_slip_proxy_fraction": {
+          "finite": 72,
+          "total": 72
+        },
+        "tracking_mean_m": {
+          "finite": 72,
+          "total": 72
+        }
+      },
+      "endpoint_semantics": {
+        "entered_position_threshold": 33,
+        "final_position_pass": 16,
+        "final_position_pass_but_time_proxy_fail": 6,
+        "heading_pass": 60,
+        "near_minimum_time_proxy_pass": 33,
+        "position_and_heading_pass_but_time_proxy_fail": 6,
+        "time_proxy_pass_but_final_position_fail": 23
+      },
+      "initial_shapes": {
+        "bootstrap__dof_pos": [
+          72,
+          69
+        ],
+        "bootstrap__dof_vel": [
+          72,
+          69
+        ],
+        "bootstrap__humanoid_root_states": [
+          72,
+          13
+        ],
+        "bootstrap__rigid_body_ang_vel": [
+          72,
+          24,
+          3
+        ],
+        "bootstrap__rigid_body_pos": [
+          72,
+          24,
+          3
+        ],
+        "bootstrap__rigid_body_rot": [
+          72,
+          24,
+          4
+        ],
+        "bootstrap__rigid_body_vel": [
+          72,
+          24,
+          3
+        ],
+        "first_action__dof_pos": [
+          72,
+          69
+        ],
+        "first_action__dof_vel": [
+          72,
+          69
+        ],
+        "first_action__humanoid_root_states": [
+          72,
+          13
+        ],
+        "first_action__rigid_body_ang_vel": [
+          72,
+          24,
+          3
+        ],
+        "first_action__rigid_body_pos": [
+          72,
+          24,
+          3
+        ],
+        "first_action__rigid_body_rot": [
+          72,
+          24,
+          4
+        ],
+        "first_action__rigid_body_vel": [
+          72,
+          24,
+          3
+        ],
+        "first_action_contact_forces": [
+          72,
+          24,
+          3
+        ]
+      },
+      "means": {
+        "endpoint_error_m": 0.19263817330991667,
+        "heading_error_rad": 0.15487359312462845,
+        "jerk_p95_m_s3": 1198.3600121392135,
+        "penetration_fraction": 0.0,
+        "surface_slip_proxy_fraction": 0.33856304579408536,
+        "tracking_mean_m": 0.04395878886700504
+      },
+      "metric_rows_exact_within_float64_roundoff": true,
+      "reference_max_abs_error_to_fixed": 5.960464477539063e-08,
+      "terminated_count": 1,
+      "valid_lengths": [
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        107,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120,
+        120
+      ]
+    }
+  },
+  "status": "PASS",
+  "terminal": {
+    "document_check_exit_zero": true,
+    "document_check_invocations": 1,
+    "document_check_sentinel_present": true,
+    "document_check_transcript_hash_matches": true,
+    "document_witness_status": "PASS",
+    "run_external_observation_exit_zero": true,
+    "run_external_observation_sentinel": "CONTROLLER_STATE_DIAGNOSIS_COMPLETE",
+    "run_external_observation_server_generated": false,
+    "run_external_observation_status": "OBSERVED_EXIT_ZERO"
+  },
+  "upstream": {
+    "commit": "d8950bdb78312fcd2844f336b3fc079e7368c87f",
+    "matches_versions": true,
+    "tracked_closd_diff": ""
+  },
+  "weights": {
+    "generator": {
+      "matches_versions": true,
+      "resolved_path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/blobs/3ca68ae54975946b3fe5c6cd64a6eafc439b5fc43c166bc9a98d1c43aeef6618",
+      "sha256": "3ca68ae54975946b3fe5c6cd64a6eafc439b5fc43c166bc9a98d1c43aeef6618"
+    },
+    "multitask": {
+      "matches_versions": true,
+      "resolved_path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/blobs/7ead3778b95516d8b91b7c5939674e45dd0ad10fcc22da60f9f57d204695f6ac",
+      "sha256": "7ead3778b95516d8b91b7c5939674e45dd0ad10fcc22da60f9f57d204695f6ac"
+    },
+    "t2m": {
+      "matches_versions": true,
+      "resolved_path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/blobs/62577dd2d127888108224d50b7a566eca0fdb650553d8564e268f72a80a2da84",
+      "sha256": "62577dd2d127888108224d50b7a566eca0fdb650553d8564e268f72a80a2da84"
+    },
+    "unfinetuned": {
+      "matches_versions": true,
+      "resolved_path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/blobs/a47bc0716ce0c40ffdbf1b093952e07182d47bf645123852df05c8c91faa68c2",
+      "sha256": "a47bc0716ce0c40ffdbf1b093952e07182d47bf645123852df05c8c91faa68c2"
+    }
+  }
+}
