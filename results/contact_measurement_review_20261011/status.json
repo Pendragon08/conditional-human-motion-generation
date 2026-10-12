@@ -44810,7 +44810,2843 @@
     "generation_calls": 0,
     "simulation_batches_this_invocation": 1
   },
-  "native_material_point_audit": null,
+  "native_material_point_audit": {
+    "audit_skill": "experiment-audit",
+    "audit_scope": "Independent integrity delta for V56 collection, V57 read-only analysis, and V61 continuation only",
+    "verdict": "WARN",
+    "overall_verdict": "warn",
+    "integrity_status": "warn",
+    "reason_code": "reproducibility_untracked_remote_head_divergence",
+    "reason_codes": [
+      "PASS_EXPLICIT_SIMULATION_ONLY_PROVENANCE",
+      "PASS_NO_PREDICTION_NORMALIZED_ACCEPTANCE_SCORE",
+      "PASS_TERMINAL_ARTIFACTS_AND_COUNTS_VERIFIED",
+      "WARN_REMOTE_SOURCES_AND_RESULTS_UNTRACKED",
+      "WARN_LOCAL_REMOTE_GIT_HEADS_DIFFER",
+      "PASS_METRIC_PATHS_EXECUTED",
+      "PASS_SCOPE_WORDING_MATCHES_ONE_SEED_DIAGNOSIS",
+      "PASS_FAILURES_RETAINED",
+      "PASS_EQUAL_FROZEN_STATE",
+      "PASS_CONTACT_FRAME_MAPPING_FOR_CURRENT_ZERO_OFFSETS",
+      "INFO_DEPENDENT_FRAME_AND_POINT_OBSERVATIONS",
+      "INFO_NO_EFFICACY_OR_INNOVATION_ACCEPTANCE"
+    ],
+    "summary": "The V56/V61 passive export and V57 offline diagnostic are internally hash-bound, terminal, complete for the declared one-seed two-arm scope, and explicitly labeled as simulator-only proxy evidence. V57 does not replace frozen scores and its published counts match the diagnostic. The audit is WARN because the local and remote checkouts are at different Git commits and the authoritative remote V56/V57/V61 files are untracked, so commit identity alone cannot reproduce the analyzed state.",
+    "reviewer": {
+      "agent_id": "/root/paired_v51_integrity_audit/fresh_integrity_reviewer",
+      "verdict_id": "native_manifold_v56_v57_v61_20261012_fresh_integrity_reviewer",
+      "reviewer_model": "gpt-5.6-sol",
+      "reviewer_family": "openai",
+      "reviewer_reasoning": "ultra",
+      "review_independence": "same-family",
+      "acceptance_status": "provisional",
+      "mode": "read-only; no GPU, experiment rerun, restart, or counter mutation"
+    },
+    "generated_at": "2026-10-12T10:29:31+08:00",
+    "date": "2026-10-12",
+    "authoritative_remote_root": "/data/code/ouyanghao/oyh/conditional-human-motion-generation",
+    "local_root": "D:/具身智能/conditional-human-motion-generation",
+    "checks": {
+      "A_ground_truth_provenance": {
+        "status": "PASS",
+        "details": "The native manifold comes from Isaac Gym/PhysX get_env_rigid_contacts and is consistently labeled simulation-only rather than real contact or force ground truth. The replay target is a prior model-generated, physics-refined selected trajectory and is explicitly labeled synthetic_proxy. No real_gt or human evaluator is claimed; the official simulator-native contact API is available and used.",
+        "evidence": [
+          "scripts/native_manifold_collect_v56_20261012.py:19-21",
+          "scripts/run_native_manifold_v56_20261012.py:89-94",
+          "scripts/continue_native_manifold_v61_20261012.py:50-53",
+          "scripts/analyze_native_manifold_v57_20261012.py:1-5,44-58,112-115",
+          "docs/native_manifold_v56_20261012.md:3,17",
+          "results/native_manifold_v56_20261012/continuation_manifest_v61.json:$.evaluation_reference_type",
+          "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/docs/api/python/struct_py.html:816-900"
+        ]
+      },
+      "B_score_normalization": {
+        "status": "PASS",
+        "details": "No metric is divided by the prediction maximum, minimum, or mean to create an acceptance score. V57 reports raw observation counts, raw threshold-exceedance counts, quantiles, and fractions against the unchanged 0.05 m/s threshold. The lambda-weighted mean is explicitly a diagnostic contact statistic, appears beside pointwise/min/max statistics, and is not used for acceptance or score replacement.",
+        "evidence": [
+          "scripts/analyze_native_manifold_v57_20261012.py:18-24,56-58,80-86,99-108,112-115",
+          "results/native_manifold_v56_20261012/frozen_thresholds.json:$.thresholds.sliding_speed_m_s",
+          "results/native_manifold_analysis_v57_20261012/diagnostic_1791771577179667295.json:$.arms.feedback.native_point_speed,$.arms.feedback.native_matched_min_speed,$.arms.feedback.native_matched_max_speed,$.arms.random.native_point_speed",
+          "results/native_manifold_analysis_v57_20261012/diagnostic_1791771577179667295.json:$.metrics_replaced,$.thresholds_changed"
+        ]
+      },
+      "C_result_file_existence_and_lineage": {
+        "status": "WARN",
+        "details": "All named scripts, documents, terminal files, four independent witnesses, two raw replay directories, and the V57 diagnostic exist. The V57 input hashes were independently compared with the current remote files and all match. Terminal state is COMPLETE_PASSIVE_NATIVE_CONTACT_DIAGNOSIS; the ledger has exactly two successful measurement rows. The warning is reproducibility-only: local HEAD f0e3c4014428dedcc3ce150e6069af4837149cd8 differs from remote HEAD e1ef719d6702d15a5ab211db0e55be438b2d1c88, and the remote V56/V57/V61 sources/results are untracked.",
+        "evidence": [
+          "results/native_manifold_v56_20261012/state.json:$.status,$.continuation",
+          "results/native_manifold_v56_20261012/summary.json:$.status,$.arms,$.original_main_invocations_failed,$.continuation",
+          "results/native_manifold_v56_20261012/budget_ledger.json:$[0],$[1]",
+          "results/native_manifold_v56_20261012/continuation_receipt_v61.json:$.status,$.exit_code,$.simulation_batches_this_invocation",
+          "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V61.json:$.status,$.ledger_entry_count,$.exactly_two_successful_measurement_charges",
+          "results/native_manifold_analysis_v57_20261012/diagnostic_1791771577179667295.json:$.status,$.input_hashes,$.source_sha256",
+          "git(local):HEAD=f0e3c4014428dedcc3ce150e6069af4837149cd8; audited paths staged-added",
+          "git(remote):HEAD=e1ef719d6702d15a5ab211db0e55be438b2d1c88; audited paths untracked"
+        ]
+      },
+      "D_dead_code": {
+        "status": "PASS",
+        "details": "The V56 adapter invokes read_contacts at the same reward/state capture point, V56 run_batch checks and records all 33 equality fields, V61 invokes the missing random arm through the same executor, and V57 calls quantiles/describe plus the native material-point and frozen proxy paths. Their outputs are present in equality files and the V57 diagnostic. V58 and V60 are not represented as successes: their preflight failures are retained with traces.",
+        "evidence": [
+          "scripts/native_manifold_collect_v56_20261012.py:13-21",
+          "scripts/run_native_manifold_v56_20261012.py:45-94",
+          "scripts/continue_native_manifold_v61_20261012.py:43-66",
+          "scripts/analyze_native_manifold_v57_20261012.py:18-24,33-118",
+          "results/native_manifold_v56_20261012/feedback_equality.json:$.exact_arrays,$.frozen_metrics_exactly_equal",
+          "results/native_manifold_v56_20261012/random_equality.json:$.exact_arrays,$.frozen_metrics_exactly_equal",
+          "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V58.json:$.status,$.failure_stage",
+          "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V60.json:$.status,$.failure_stage"
+        ]
+      },
+      "E_scope": {
+        "status": "PASS",
+        "details": "Observed scope exactly matches the wording: validation split, seed 11, 24 source IDs per arm, three target offsets (-0.15, 0, +0.15 m) per source, 72 cases per arm, two replay arms, and zero generator calls. Both arms contain the same 72 case IDs, 36 dance and 36 jump cases, with 24 cases per offset. All 72 replay cases per arm completed, but original joint_pass is 0/72 in each arm. The documents and output explicitly prohibit efficacy, innovation, real-ground-truth, controller-independent, or multi-seed claims.",
+        "evidence": [
+          "scripts/run_native_manifold_v56_20261012.py:28-35,64-67,89-94,111-113",
+          "docs/native_manifold_v56_20261012.md:3,17",
+          "docs/native_manifold_continuation_v61_20261012.md:3,13",
+          "results/native_manifold_v56_20261012/versions.json:$.split,$.seed,$.cases_per_batch,$.sources,$.expected_replay_batches,$.generation_calls,$.confirmatory",
+          "results/native_manifold_v56_20261012/summary.json:$.sources,$.cases_per_arm,$.seed,$.efficacy_test,$.innovation_confirmed",
+          "results/native_manifold_analysis_v57_20261012/diagnostic_1791771577179667295.json:$.arms.feedback.cases,$.arms.random.cases,$.scope"
+        ]
+      },
+      "F_evaluation_classification": {
+        "status": "PASS",
+        "classification": {
+          "primary": "simulation_only",
+          "reference_tracking": "synthetic_proxy",
+          "contact_manifold": "simulation_only diagnostic",
+          "real_gt": false,
+          "self_supervised_proxy": false,
+          "human_eval": false
+        },
+        "details": "The classification is explicit in runtime and analysis artifacts and agrees with the actual data path.",
+        "evidence": [
+          "results/native_manifold_v56_20261012/summary.json:$.arms.feedback.evaluation_type,$.arms.random.evaluation_type",
+          "results/native_manifold_v56_20261012/continuation_manifest_v61.json:$.evaluation_reference_type",
+          "results/native_manifold_analysis_v57_20261012/diagnostic_1791771577179667295.json:$.evaluation_type,$.scope"
+        ]
+      }
+    },
+    "contact_point_frame_and_com_audit": {
+      "status": "PASS_WITH_LIMIT",
+      "ground_side_mapping": "V57 treats body index -1 as ground and uses the opposite body/local side. This matches Isaac Gym RigidContact documentation.",
+      "point_mapping": "V57 rotates local_pos + offset into world space. Isaac Gym documents local_pos as the normal-force feature point and offset as the local shift to the friction surface. Independent raw-file inspection found offset0 and offset1 exactly zero in all 288602 feedback and 288411 random records, so the distinction does not change this diagnostic.",
+      "frame_alignment": "The adapter queries contacts immediately after the wrapped reward computation and immediately before copying rigid-body position, quaternion, linear velocity, and angular velocity into the same pending step. Recorded steps span 0-119 and environments 0-71 in both arms.",
+      "com_correction": "V57 uses v_point = v_COM + omega x (r_point - r_COM), with the simulator body-space COM rotated by the saved quaternion. This matches the frozen V23 proxy convention and the prior articulated-body calibration. The result remains simulator diagnostic evidence, not real-world force/contact validation.",
+      "lambda_handling": "Only positive simulator contact-force magnitudes enter the foot-ground speed diagnostic. Lambda is used as a within-body-frame weight for one descriptive statistic; no force or control claim is inferred.",
+      "raw_audit": {
+        "feedback": {
+          "records": 288602,
+          "errors": 0,
+          "offset_nonzero_records": 0,
+          "lambda_positive": 53681,
+          "lambda_zero": 234921,
+          "lambda_negative": 0,
+          "ground_records": 241092,
+          "positive_ground_foot_records": 52397
+        },
+        "random": {
+          "records": 288411,
+          "errors": 0,
+          "offset_nonzero_records": 0,
+          "lambda_positive": 53673,
+          "lambda_zero": 234738,
+          "lambda_negative": 0,
+          "ground_records": 240925,
+          "positive_ground_foot_records": 52360
+        }
+      },
+      "evidence": [
+        "scripts/analyze_native_manifold_v57_20261012.py:44-58",
+        "scripts/native_manifold_collect_v56_20261012.py:13-15",
+        "scripts/physics_guided_collect.py:213-238",
+        "scripts/physics_guided_metric_v23_20261012.py:71-100,142-147",
+        "scripts/native_contact_diagnostic.py:16-40",
+        "scripts/articulated_contact_fixture_v22_20261012.py:51-82",
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/docs/api/python/struct_py.html:352-381,816-900"
+      ]
+    },
+    "terminal_and_count_checks": {
+      "v56_v61_terminal": true,
+      "terminal_status": "COMPLETE_PASSIVE_NATIVE_CONTACT_DIAGNOSIS",
+      "continuation": "V61",
+      "ledger_entries": 2,
+      "ledger_labels": [
+        "val_feedback_replay_s11",
+        "val_random_replay_s11"
+      ],
+      "ledger_total_seconds": 162.78181958571076,
+      "successful_measurement_entries": 2,
+      "feedback_cases": 72,
+      "random_cases": 72,
+      "sources_per_arm": 24,
+      "offset_counts_per_arm": {
+        "-0.15": 24,
+        "0.0": 24,
+        "+0.15": 24
+      },
+      "seed": 11,
+      "exact_array_fields_per_arm": 33,
+      "all_exact_arrays": true,
+      "frozen_metrics_exactly_equal": true,
+      "generation_calls": 0,
+      "v61_simulation_batches": 1,
+      "native_records": {
+        "feedback": 288602,
+        "random": 288411
+      },
+      "native_errors": {
+        "feedback": 0,
+        "random": 0
+      },
+      "analysis_cases": {
+        "feedback": 72,
+        "random": 72
+      },
+      "analysis_all_completed": true,
+      "analysis_original_joint_pass": {
+        "feedback": 0,
+        "random": 0
+      },
+      "analysis_same_case_ids_across_arms": true
+    },
+    "v57_values_verified": {
+      "frozen_sliding_speed_m_s": 0.05,
+      "feedback": {
+        "native_point_observations": 24095,
+        "matched_support_bodyframes": 9051,
+        "positive_native_ground_bodyframes": 9216,
+        "proxy_above_speed": 4717,
+        "native_all_points_above_speed": 4470,
+        "native_any_point_above_speed": 5029,
+        "proxy_above_but_all_native_at_or_below": 11,
+        "proxy_support_without_positive_native_ground": 2,
+        "native_min_fraction_above_speed": 0.4938680808750414
+      },
+      "random": {
+        "native_point_observations": 24058,
+        "matched_support_bodyframes": 9099,
+        "positive_native_ground_bodyframes": 9257,
+        "proxy_above_speed": 4729,
+        "native_all_points_above_speed": 4499,
+        "native_any_point_above_speed": 5084,
+        "proxy_above_but_all_native_at_or_below": 5,
+        "proxy_support_without_positive_native_ground": 3,
+        "native_min_fraction_above_speed": 0.4944499395537971
+      }
+    },
+    "failure_preservation": {
+      "status": "PASS",
+      "v56_original_run": "FAILED_RETAINED before random replay because the remote witness copy was absent; generic FileNotFoundError preserved",
+      "v58": "FAILED_RETAINED at preflight assertion; exit 1; random replay not started",
+      "v60": "FAILED_RETAINED at preflight Path/hash error; exit 1; random replay not started",
+      "v61": "One documented continuation invocation completed the missing random replay; it does not relabel the earlier entries as successful",
+      "evidence": [
+        "results/native_manifold_v56_20261012/failed_main_invocation_state.json:$",
+        "results/native_manifold_v56_20261012/DOCUMENT_WITNESS.json:$.subsequent_failure_preserved",
+        "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V58.json:$",
+        "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V60.json:$",
+        "results/native_manifold_v56_20261012/continuation_manifest_v61.json:$.preserved_prebatch_failures,$.original_failed_invocations_not_success",
+        "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V61.json:$.original_failed_invocations_remain_failed"
+      ]
+    },
+    "claim_impacts": [
+      {
+        "claim": "Passive V56/V61 instrumentation left the paired V51 replay states, observations, initial states, sensor arrays, and frozen metrics unchanged.",
+        "impact": "supported_within_declared_two_batch_scope",
+        "basis": "33 exact arrays and exact frozen metrics for each of the feedback and random replay batches"
+      },
+      {
+        "claim": "The lowest collision-primitive point choice alone explains the frozen slip-quality floor.",
+        "impact": "not_supported",
+        "basis": "Only 11/9051 feedback and 5/9099 random matched support body-frames had proxy speed above threshold while every native contact point stayed at or below threshold; however this is one-seed simulator-only dependent data"
+      },
+      {
+        "claim": "The contact-manifold diagnosis proves feedback efficacy or superiority over random selection.",
+        "impact": "unsupported_and_not_tested",
+        "basis": "No efficacy test or source-level inferential comparison was run; both arms have original joint_pass 0/72"
+      },
+      {
+        "claim": "The contact-manifold diagnosis proves real robot feasibility, real contact truth, or force-control validity.",
+        "impact": "unsupported",
+        "basis": "All contact evidence is simulator-native and explicitly labeled simulation_only"
+      },
+      {
+        "claim": "V56, V58, and V60 completed successfully.",
+        "impact": "false",
+        "basis": "Their retained records show one V56 post-check run failure and V58/V60 preflight failures; only the distinct V61 continuation completed the missing arm"
+      },
+      {
+        "claim": "V57 confirms an innovation or changes the frozen acceptance result.",
+        "impact": "unsupported_and_explicitly_disclaimed",
+        "basis": "metrics_replaced=false, thresholds_changed=false, innovation_confirmed=false"
+      }
+    ],
+    "action_items": [
+      "Commit or otherwise immutably snapshot the exact V56/V57/V61 sources and audit-relevant small artifacts, and record the authoritative commit or archive ID; reconcile or explicitly document the local/remote HEAD divergence.",
+      "Keep the contact point named as the simulator friction-surface material point. If future records contain nonzero offsets, report normal-feature-point and friction-surface-point results separately.",
+      "Keep raw counts beside fractions and preserve source-level clustering in any future inference; the current point and body-frame observations are dependent and come from one seed.",
+      "Do not use V57 to claim method efficacy, real contact ground truth, force validation, controller-independent feasibility, or innovation acceptance.",
+      "Continue citing V56/V58/V60 as retained failures and V61 as a separate successful continuation."
+    ],
+    "audited_input_hashes": {
+      "scripts/native_manifold_collect_v56_20261012.py": "sha256:328be60bc936717c5165c90bff8a420f8fb80a4fd7e864cc04654c7ed376c625",
+      "scripts/run_native_manifold_v56_20261012.py": "sha256:17320c84e7802c0a2bc4cf5d7d616114b8f2ff9903f77b239a91ce0f97bb7bb3",
+      "scripts/continue_native_manifold_v58_20261012.py": "sha256:81f97153cde8d1be81452b00e629fc0dc06e897c33407e2901a56c3f7d9f82a0",
+      "scripts/continue_native_manifold_v60_20261012.py": "sha256:1868c969b9a0a75a522f5e9e32e55a7e1f705a9824e341052ba860a5c08331bd",
+      "scripts/continue_native_manifold_v61_20261012.py": "sha256:355511d142bea4bf3b2788bf39da3d2a9284b70ab06e64b23a96a45a1a93923f",
+      "scripts/analyze_native_manifold_v57_20261012.py": "sha256:cd2fb7bafa7f85ee7ac1f903d7e7439accaccb23d9997b14488f37db184fe49b",
+      "docs/native_manifold_v56_20261012.md": "sha256:bca51ca0ee82785f746cc691deb25b05f036726764f8115c6d66fd7e0a2ccb94",
+      "docs/native_manifold_continuation_v61_20261012.md": "sha256:0e0fbfadd9608efdb28d8afbfad992ad15fa9ed9c1dfab501f404649e443781b",
+      "results/native_manifold_v56_20261012/versions.json": "sha256:651b28b3f18936ce050b90b5c4f25e3758b3efec224cc984e6c26a407d1d8033",
+      "results/native_manifold_v56_20261012/summary.json": "sha256:c1c0f3e05f0973fda51e693dde94840d1912e6d4dcd5ae32c1332ea98261846e",
+      "results/native_manifold_v56_20261012/state.json": "sha256:662593ddebfff51913568b908e7cc5640f7676fa79e8ebaba31e4a40e001a2ea",
+      "results/native_manifold_v56_20261012/budget_ledger.json": "sha256:a4f027f83a7c10fe5fffb27229d78aac9988a3778becfd82bda43b9e2ce99c0a",
+      "results/native_manifold_v56_20261012/source_manifest.json": "sha256:63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+      "results/native_manifold_v56_20261012/frozen_thresholds.json": "sha256:451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+      "results/native_manifold_v56_20261012/feedback_equality.json": "sha256:4a8a9a4ea35a479b429922b3d29c523df891cf40703b96b428cf58dcb878ce7a",
+      "results/native_manifold_v56_20261012/random_equality.json": "sha256:4b3b15236c6967867b50649a2921683042c46a199fb8e6144a3b2d8aac1c1cef",
+      "results/native_manifold_v56_20261012/DOCUMENT_WITNESS.json": "sha256:b0c109cd6dd1fd9015fbdf4dbd20b59ccc877edcfa76a5d17bddf4351979f589",
+      "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V58.json": "sha256:881186f774ee2006c8bc3108ea569fc1fbeb5d44ea30388beb0b8890860dfdac",
+      "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V60.json": "sha256:48366f43dfae9819dfcd7fc81aac0ee83c1e72d9a5f09f59c9c2e42c25616b2e",
+      "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V61.json": "sha256:315332419cb45fa4e6dc2f066c1e163e2f9ef1618fa717221541e2edc2da80d2",
+      "results/native_manifold_v56_20261012/continuation_manifest_v61.json": "sha256:66dd45e8e792faade8be526e450c52c68e6d7ce4dac4563cab10a262212c08d0",
+      "results/native_manifold_v56_20261012/continuation_receipt_v61.json": "sha256:24a9269e305e46de378d96660d2abc9388fcaca02d2a88a376997e1742f23725",
+      "results/native_manifold_v56_20261012/preflight_v61_1791771407721849986.json": "sha256:d10eea0cc045ec19d327c05ae6d5053312631d64745966b64abbd3aea0ded3f3",
+      "results/native_manifold_analysis_v57_20261012/diagnostic_1791771577179667295.json": "sha256:621ce100ab331637854571dc8bd74b99571bb9ed326cdf319f62220f849308df"
+    }
+  },
+  "reference_side_support_probe": {
+    "status": "COMPLETE_REFERENCE_SIDE_DIAGNOSIS",
+    "reports": {
+      "baseline": {
+        "arm": "baseline",
+        "binding": {
+          "lineage_sha256": "636008ca2c4aeb256cafb08705b51e827081352ca19d389409e1b25977bca948",
+          "receipt_sha256": "adff58fec670fe947836e424bd605b7cdf16df5ade35da583526ec2054802721",
+          "request": {
+            "split": "val",
+            "mode": "replay",
+            "seed": 11,
+            "round": 0,
+            "noise_round": 0,
+            "config": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+            "manifest": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+            "thresholds": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+            "versions": "aad9d6d0707717f6e851032ab078317cf10849e17dbfd2e2670c6cfd58421fbb",
+            "replay_motion": "5f0dbd7ce0f1ae340da0120ec99823b12441ceb93b615333ea50312f71d76b83"
+          },
+          "output_hashes": {
+            "metadata.json": "2c071d618e08411018346b9ef64dfaaf91e1901a0d88959f3ea3cf9467aef696",
+            "metrics.json": "fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",
+            "trajectories.npz": "7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136"
+          },
+          "certification": "bound_request_at_execution"
+        },
+        "counts": {
+          "completed": 72,
+          "condition_pass": 5,
+          "physical_pass": 0,
+          "tracking_pass": 68,
+          "joint_pass": 0
+        },
+        "cases": 72
+      },
+      "unconstrained": {
+        "arm": "unconstrained",
+        "binding": {
+          "lineage_sha256": "c41aa2b714a26e781daa8a5a65b93246d7da30d817965f07970b9e04483e56ba",
+          "receipt_sha256": "fb7861c086a96b31cc09a006b5d91dc3ae34f59a537f253190a5063d143f0ae5",
+          "request": {
+            "split": "val",
+            "mode": "replay",
+            "seed": 11,
+            "round": 0,
+            "noise_round": 0,
+            "config": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+            "manifest": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+            "thresholds": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+            "versions": "aad9d6d0707717f6e851032ab078317cf10849e17dbfd2e2670c6cfd58421fbb",
+            "replay_motion": "82940ec4d6366ab009c36962baad74686f385c939621bae93cc8fe4d3f166103"
+          },
+          "output_hashes": {
+            "metadata.json": "992a5ef3932b8eefa79920b200ebd805b50aa2d1f829918ee4bcb284d5052bf6",
+            "metrics.json": "9e318a0744ff693441e25607f6af892d6eebe65b6f390530d98834620c8f4165",
+            "trajectories.npz": "67876934b5cea2e96fc7bb5927e8ad8fd8465dddc921413097d97086195a5098"
+          },
+          "certification": "bound_request_at_execution"
+        },
+        "counts": {
+          "completed": 72,
+          "condition_pass": 6,
+          "physical_pass": 0,
+          "tracking_pass": 67,
+          "joint_pass": 0
+        },
+        "cases": 72
+      },
+      "endpoint_preserved": {
+        "arm": "endpoint_preserved",
+        "binding": {
+          "lineage_sha256": "77a92a3e07f7e5540e177343400e477dd0d3aa5f18cb7fe72726b2c25dab70f5",
+          "receipt_sha256": "0b3e1285db2c29171370d3d1ce6f4716cafa4c029558ef0b463f4f509896cf28",
+          "request": {
+            "split": "val",
+            "mode": "replay",
+            "seed": 11,
+            "round": 0,
+            "noise_round": 0,
+            "config": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+            "manifest": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+            "thresholds": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+            "versions": "aad9d6d0707717f6e851032ab078317cf10849e17dbfd2e2670c6cfd58421fbb",
+            "replay_motion": "d1df6099e8c7c07493a46f5ce4c90638288ecc372fb09b1ce54aed0a79529b17"
+          },
+          "output_hashes": {
+            "metadata.json": "199b91ba56247bd2d31f7a8c07f0f440f62e548b5082cbb82872a06e8bc3099b",
+            "metrics.json": "dcdc1ba2850f9f5779f9ae470a289e0feb2a8f782041ff4dad15bdb0c1845f1e",
+            "trajectories.npz": "c7371a9b5556578bd6f8d726a35155415f3b4f9b94a09d257f3f6fad8b971f1d"
+          },
+          "certification": "bound_request_at_execution"
+        },
+        "counts": {
+          "completed": 72,
+          "condition_pass": 4,
+          "physical_pass": 0,
+          "tracking_pass": 67,
+          "joint_pass": 0
+        },
+        "cases": 72
+      }
+    },
+    "seed": 11,
+    "sources": 24,
+    "inputs_per_arm": 72,
+    "generator_calls": 0,
+    "simulator_batches": 3,
+    "thresholds_changed": false,
+    "original_targets_changed": false,
+    "innovation_confirmed": false,
+    "confirmatory": false,
+    "overleaf_results_sync": false,
+    "g1_or_downstream_run": false,
+    "original_document_verdict": "FAIL_RETAINED",
+    "continuation_evidence": {
+      "original_witness_sha256": "c8f320671fba8203c74e91fa46080d3318f678adaf046ceff405ba063076a5f5",
+      "adjudication_sha256": "fc990207cb3dc7c9c5c353394692d562d46a58f5ea4065c19a7798d9d49f8775",
+      "runtime_witness_sha256": "b88031939051092821ca9592229c27163cf316888aae71bce672093cfa8872aa",
+      "versions_sha256": "aad9d6d0707717f6e851032ab078317cf10849e17dbfd2e2670c6cfd58421fbb",
+      "preparation_sha256": "ba4ca14f72136c00c0d127a459e477cdfb91bd91b859170b3d0cab24d1b0ede7",
+      "numerical_budget_sha256": "ebc5171f61bfa1b346ee9e9641267f5e4e41e0fd6927247c65b93ec3731b6e71"
+    }
+  },
+  "reference_side_support_probe_witness": {
+    "status": "FAIL",
+    "independent_witness": true,
+    "time_utc": "2026-10-12T02:47:56Z",
+    "witness_agent": "/root/support_reference_v63_document_witness",
+    "document": "docs/support_reference_probe_v63_20261012.md",
+    "invocation": "ssh -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=15 ouyanghao@10.147.17.32 env PYTHONPATH=/data/code/ouyanghao/oyh/humanoid-combat-motion/envs/closd-r3/site-packages /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/run_support_reference_probe_v63_20261012.py --check",
+    "documented_invocation_count": 1,
+    "prepare_invocations": 0,
+    "run_invocations": 0,
+    "retries": 0,
+    "source_fixes": 0,
+    "actual_invocation": {
+      "exit_code": 0,
+      "sentinel": "SUPPORT_REFERENCE_V63_DOCUMENT_CHECK_PASS",
+      "local_exec_session": 77898
+    },
+    "observed_processes": {
+      "launcher_pid": 2881291,
+      "collector_pid": 2881314,
+      "collector_child_pid": 2881344,
+      "launcher_parent_pid": 2881290,
+      "launcher_started_utc": "2026-10-12 02:43:39",
+      "collector_started_utc": "2026-10-12 02:43:39",
+      "collector_child_started_utc": "2026-10-12 02:43:53",
+      "state_time_unix": 1791773019.7298582,
+      "state_status": "RUNNING",
+      "arm": "baseline",
+      "resource_admission": {
+        "memory_used_mib": 699,
+        "memory_total_mib": 49140,
+        "utilization_percent": 0
+      },
+      "evidence": "Live ps PID/PPID/lstart/args and RUNNING state observed during invocation; complete receipt and execution-time binding checked after exit."
+    },
+    "scope": "Document execution and reference/data/runtime integrity only; synthetic simulation proxy, no efficacy, novelty, downstream or G1 conclusion.",
+    "training_calls": 0,
+    "api_calls": 0,
+    "overleaf_results_sync": false,
+    "checks": {
+      "frozen_source_hashes": true,
+      "source_manifest_hash": true,
+      "thresholds_hash": true,
+      "parent_versions_hash": true,
+      "all_reference_hashes": true,
+      "warm_runtime_spec_hash": true,
+      "frozen_model_weights": true,
+      "source_execution_binding": true,
+      "source_metrics_hash": true,
+      "source_denominator": true,
+      "source_order_frozen": true,
+      "three_offsets_per_source": true,
+      "source_text_case_target_joint_order": true,
+      "source_valid_prefix_0": true,
+      "source_valid_prefix_1": true,
+      "source_valid_prefix_2": true,
+      "source_valid_prefix_3": true,
+      "source_valid_prefix_4": true,
+      "source_valid_prefix_5": true,
+      "source_valid_prefix_6": true,
+      "source_valid_prefix_7": true,
+      "source_valid_prefix_8": true,
+      "source_valid_prefix_9": true,
+      "source_valid_prefix_10": true,
+      "source_valid_prefix_11": true,
+      "source_valid_prefix_12": true,
+      "source_valid_prefix_13": true,
+      "source_valid_prefix_14": true,
+      "source_valid_prefix_15": true,
+      "source_valid_prefix_16": true,
+      "source_valid_prefix_17": true,
+      "source_valid_prefix_18": true,
+      "source_valid_prefix_19": true,
+      "source_valid_prefix_20": true,
+      "source_valid_prefix_21": true,
+      "source_valid_prefix_22": true,
+      "source_valid_prefix_23": true,
+      "source_valid_prefix_24": true,
+      "source_valid_prefix_25": true,
+      "source_valid_prefix_26": true,
+      "source_valid_prefix_27": true,
+      "source_valid_prefix_28": true,
+      "source_valid_prefix_29": true,
+      "source_valid_prefix_30": true,
+      "source_valid_prefix_31": true,
+      "source_valid_prefix_32": true,
+      "source_valid_prefix_33": true,
+      "source_valid_prefix_34": true,
+      "source_valid_prefix_35": true,
+      "source_valid_prefix_36": true,
+      "source_valid_prefix_37": true,
+      "source_valid_prefix_38": true,
+      "source_valid_prefix_39": true,
+      "source_valid_prefix_40": true,
+      "source_valid_prefix_41": true,
+      "source_valid_prefix_42": true,
+      "source_valid_prefix_43": true,
+      "source_valid_prefix_44": true,
+      "source_valid_prefix_45": true,
+      "source_valid_prefix_46": true,
+      "source_valid_prefix_47": true,
+      "source_valid_prefix_48": true,
+      "source_valid_prefix_49": true,
+      "source_valid_prefix_50": true,
+      "source_valid_prefix_51": true,
+      "source_valid_prefix_52": true,
+      "source_valid_prefix_53": true,
+      "source_valid_prefix_54": true,
+      "source_valid_prefix_55": true,
+      "source_valid_prefix_56": true,
+      "source_valid_prefix_57": true,
+      "source_valid_prefix_58": true,
+      "source_valid_prefix_59": true,
+      "source_valid_prefix_60": true,
+      "source_valid_prefix_61": true,
+      "source_valid_prefix_62": true,
+      "source_valid_prefix_63": true,
+      "source_valid_prefix_64": true,
+      "source_valid_prefix_65": true,
+      "source_valid_prefix_66": true,
+      "source_valid_prefix_67": true,
+      "source_valid_prefix_68": true,
+      "source_valid_prefix_69": true,
+      "source_valid_prefix_70": true,
+      "source_valid_prefix_71": true,
+      "baseline_is_first_simulated_actual_with_padding": true,
+      "original_goal_hash": true,
+      "baseline_shape_finite": true,
+      "baseline_target_exact": true,
+      "baseline_first_61_frames_exact": true,
+      "baseline_height_exact": true,
+      "baseline_uniform_horizontal_translation": true,
+      "baseline_bounded_10cm": true,
+      "baseline_relative_pose": true,
+      "baseline_heading_roundoff": true,
+      "baseline_incomplete_inputs_unchanged": true,
+      "baseline_endpoint_exact": true,
+      "unconstrained_shape_finite": true,
+      "unconstrained_target_exact": true,
+      "unconstrained_first_61_frames_exact": true,
+      "unconstrained_height_exact": true,
+      "unconstrained_uniform_horizontal_translation": true,
+      "unconstrained_bounded_10cm": true,
+      "unconstrained_relative_pose": true,
+      "unconstrained_heading_roundoff": true,
+      "unconstrained_incomplete_inputs_unchanged": true,
+      "endpoint_preserved_shape_finite": true,
+      "endpoint_preserved_target_exact": true,
+      "endpoint_preserved_first_61_frames_exact": true,
+      "endpoint_preserved_height_exact": true,
+      "endpoint_preserved_uniform_horizontal_translation": true,
+      "endpoint_preserved_bounded_10cm": true,
+      "endpoint_preserved_relative_pose": true,
+      "endpoint_preserved_heading_roundoff": true,
+      "endpoint_preserved_incomplete_inputs_unchanged": true,
+      "endpoint_preserved_endpoint_exact": true,
+      "actual_request": true,
+      "runtime_baseline_binding": true,
+      "baseline_complete_denominator": true,
+      "baseline_case_text_source_order": true,
+      "baseline_original_goal_exact": true,
+      "baseline_original_heading_exact": true,
+      "baseline_target_and_heading_not_redefined": true,
+      "baseline_no_generation": true,
+      "reset_archive_hash": true,
+      "seven_exported_reset_states_exact": true,
+      "native_reset_cache_gate": true,
+      "initial_anchor": true,
+      "120_frame_clock": true,
+      "applied_reference_canonical_exact": false,
+      "observation_trace_hash": true,
+      "reference_trace_same_applied_clock": true,
+      "reference_previous_successive_exact": true,
+      "reference_velocity_successive_exact": false,
+      "raw_task_interface": true,
+      "physx_cuda_cpu_export_completion_fence": true,
+      "same_clock_actual_state_shape": true,
+      "single_charged_attempt": true,
+      "source_build_charged_not_zero": true,
+      "own_600_second_cap": true,
+      "global_72_gpu_hour_cap": true,
+      "global_15gib_disk_cap": true
+    },
+    "frozen_runtime": {
+      "spec_sha256": "81bdf764e312bcc92e4969e5eb9d2d6d6043f14c037e5a588dabbd564871f780",
+      "python": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python",
+      "overlay": "/data/code/ouyanghao/oyh/humanoid-combat-motion/envs/closd-r3/site-packages",
+      "base": "Warm Python3.8.20 + Torch1.13.1+cu117 + IsaacGym Preview4",
+      "packages_installed": 0
+    },
+    "reference_invariants": {
+      "baseline": {
+        "max_horizontal_translation_m": 0.0,
+        "endpoint_translation_max_m": 0.0,
+        "relative_pose_roundoff_max_m": 0.0,
+        "heading_roundoff_max_rad": 0.0,
+        "first_61_frames_exact": true,
+        "height_exact": true,
+        "all_72_targets_exact": true,
+        "incomplete_inputs_unchanged": true
+      },
+      "unconstrained": {
+        "max_horizontal_translation_m": 0.06075378566656608,
+        "endpoint_translation_max_m": 0.041090362839793386,
+        "relative_pose_roundoff_max_m": 1.1920928955078125e-07,
+        "heading_roundoff_max_rad": 1.7268110763524191e-07,
+        "first_61_frames_exact": true,
+        "height_exact": true,
+        "all_72_targets_exact": true,
+        "incomplete_inputs_unchanged": true
+      },
+      "endpoint_preserved": {
+        "max_horizontal_translation_m": 0.06075203301512327,
+        "endpoint_translation_max_m": 0.0,
+        "relative_pose_roundoff_max_m": 5.960464477539063e-08,
+        "heading_roundoff_max_rad": 2.0513898491003602e-07,
+        "first_61_frames_exact": true,
+        "height_exact": true,
+        "all_72_targets_exact": true,
+        "incomplete_inputs_unchanged": true
+      }
+    },
+    "failure": "AssertionError('applied_reference_canonical_exact')",
+    "failure_detail": {
+      "check": "applied_reference_canonical_exact",
+      "required_max_error_m": 0.0,
+      "actual_max_error_m": 1.866893570624082e-16,
+      "raw_input_max_error_m": 5.960464477539063e-08,
+      "max_error_index": [
+        3,
+        63,
+        23,
+        1
+      ],
+      "frozen_reference_value": 0.0,
+      "canonical_reference_value": 0.0,
+      "actual_applied_reference_value": -1.866893570624082e-16,
+      "different_scalar_count": 1,
+      "total_scalars": 622080,
+      "initial_failure_json_sha256": "1c22b6291edd93bde408d18b5c41f546b1f002debb98dbd8839534b8ec30216a",
+      "initial_failure_md_sha256": "548d57ea478815175734f15868a5476017f61816e898beac3c0fc9d484a8f787",
+      "no_tolerance_relaxation": true,
+      "no_rerun_or_source_fix": true
+    },
+    "budget": {
+      "charged_baseline_ledger": [
+        {
+          "label": "val_baseline_s11",
+          "stage": "measurement",
+          "seconds": 50.4387053065002,
+          "exit_code": 0,
+          "request_sha256": "a076366a7bdf104d60cb45d9224cf2dd53e2007df7e55bf7a9a5e46e54b905e9"
+        }
+      ],
+      "shared_source_native_generation_and_first_build_ledger": [
+        {
+          "label": "val_shared_s11_r0",
+          "stage": "measurement",
+          "seconds": 49.190580459311604,
+          "exit_code": 0,
+          "request_sha256": "78a25989a0d0887f5504086409332d1dd66c0c0c4924e73c29dc12129492b82d"
+        }
+      ],
+      "shared_source_generation_batch_calls": 1,
+      "shared_source_cost_reused_not_zero": true,
+      "own_charged_seconds": 50.4387053065002,
+      "own_remaining_seconds": 549.5612946934998,
+      "global_charged_seconds": 16227.973373092711,
+      "global_cap_seconds": 259200,
+      "tracked_bytes_plus_archive": 8817661547,
+      "disk_cap_bytes": 16106127360,
+      "new_generation_calls": 0,
+      "new_simulator_batches_observed": 1,
+      "remaining_documented_batches_not_authorized_after_FAIL": 2
+    },
+    "denominators": {
+      "source_cases": 72,
+      "source_clusters": 24,
+      "offsets_per_source": 3,
+      "source_complete_inputs": 72,
+      "source_incomplete_inputs": 0,
+      "source_completed": 72,
+      "baseline_cases": 72,
+      "baseline_sources": 24,
+      "baseline_completed": 72,
+      "baseline_terminated": 0,
+      "baseline_joint_pass": 0,
+      "all_cases_retained": true
+    },
+    "runtime_integrity": {
+      "initial_reset_gate_pass": true,
+      "initial_anchor_error_m": 0.0,
+      "canonical_reference_error_m": 1.866893570624082e-16,
+      "reference_velocity_error_m_s": 9.5367431640625e-07,
+      "policy_observation_shape": [
+        120,
+        72,
+        574
+      ],
+      "reference_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119
+      ],
+      "clock_contract": "At action k reference k and observation k are recorded before action; actual k is recorded after that action completes. Next observation requests k+1. Same transition index is verified, not simultaneous pre-action reference/actual states.",
+      "original_endpoint_frame": 119,
+      "original_endpoint_time_contract": "dataset motion, fixed before generation, endpoint at 4 seconds",
+      "reference_velocity_rule": "Successive applied canonical positions / s_dt; first frame zero; repeated query preserves previous; diagnostic amendment, not innovation",
+      "completion_fence_protocol": "fetch_results(True) immediately after every native simulate including reset warmup; no extra simulate or tensor refresh",
+      "reset_scope": "Seven exported kinematic tensors and four authoritative rigid-body caches; not hidden PhysX state."
+    },
+    "bindings": {
+      "source": {
+        "lineage_sha256": "31285d8deacf990a7d7716dac55c5e073f7ce2cf72886865550ce35f2a6e6805",
+        "receipt_sha256": "f2559f2d3d610d59be818cda05dcf9965a1e803dc5f5c3bab9958704418fb682",
+        "request": {
+          "split": "val",
+          "mode": "native",
+          "seed": 11,
+          "round": 0,
+          "noise_round": 0,
+          "config": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+          "manifest": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+          "thresholds": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+          "versions": "d866b631cf5eff7480869f75ce4696ed1312524be47e6222cc7c6080d0a91948"
+        },
+        "output_hashes": {
+          "metadata.json": "deeaeb58efb8cc4d9a0a2626098de9d1ad308d96da03af757aadd7222de23b89",
+          "metrics.json": "944e12f600729ebf47e9b97192d2cacf7a7c4901704dff1f839c0ff5634cce81",
+          "trajectories.npz": "e96cb97ad5d12d4c54a3fbf57625d9ab4491e5c38febd800d78ae2a1baecfaaf"
+        },
+        "certification": "bound_request_at_execution"
+      },
+      "baseline": {
+        "lineage_sha256": "636008ca2c4aeb256cafb08705b51e827081352ca19d389409e1b25977bca948",
+        "receipt_sha256": "adff58fec670fe947836e424bd605b7cdf16df5ade35da583526ec2054802721",
+        "request": {
+          "split": "val",
+          "mode": "replay",
+          "seed": 11,
+          "round": 0,
+          "noise_round": 0,
+          "config": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+          "manifest": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+          "thresholds": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+          "versions": "aad9d6d0707717f6e851032ab078317cf10849e17dbfd2e2670c6cfd58421fbb",
+          "replay_motion": "5f0dbd7ce0f1ae340da0120ec99823b12441ceb93b615333ea50312f71d76b83"
+        },
+        "output_hashes": {
+          "metadata.json": "2c071d618e08411018346b9ef64dfaaf91e1901a0d88959f3ea3cf9467aef696",
+          "metrics.json": "fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",
+          "trajectories.npz": "7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136"
+        },
+        "certification": "bound_request_at_execution"
+      },
+      "receipt": {
+        "status": "complete",
+        "cases": 72,
+        "completed": 72,
+        "joint_pass": 0,
+        "elapsed_seconds": 47.52426338195801,
+        "trajectories_sha256": "7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136"
+      },
+      "observed_launcher_runtime_witness_sha256": "b88031939051092821ca9592229c27163cf316888aae71bce672093cfa8872aa",
+      "versions_sha256": "aad9d6d0707717f6e851032ab078317cf10849e17dbfd2e2670c6cfd58421fbb",
+      "preparation_sha256": "ba4ca14f72136c00c0d127a459e477cdfb91bd91b859170b3d0cab24d1b0ede7",
+      "source_original_goal_sha256": "d008fae01d78f5f8f752aa4791b824540aec5791fd36173306881bcb09584809",
+      "reference_hashes": {
+        "baseline": "14dcb4ea715f485547c9abeba294ad3ead67dabee9807a83ebe6c98b2ea4b207",
+        "unconstrained": "db994bd95e96ad0df218d7157cf4074dd1c03f44d43f99abff9288d3cf1bf91a",
+        "endpoint_preserved": "abbe9fe449784445960e17d23dd4cbec020d8358a10aad51bd57e776e94ae95d"
+      },
+      "source_case_order": [
+        "008349:-0.15",
+        "008349:0.0",
+        "008349:0.15",
+        "010957:-0.15",
+        "010957:0.0",
+        "010957:0.15",
+        "008845:-0.15",
+        "008845:0.0",
+        "008845:0.15",
+        "010218:-0.15",
+        "010218:0.0",
+        "010218:0.15",
+        "010623:-0.15",
+        "010623:0.0",
+        "010623:0.15",
+        "007780:-0.15",
+        "007780:0.0",
+        "007780:0.15",
+        "006600:-0.15",
+        "006600:0.0",
+        "006600:0.15",
+        "010299:-0.15",
+        "010299:0.0",
+        "010299:0.15",
+        "002546:-0.15",
+        "002546:0.0",
+        "002546:0.15",
+        "004741:-0.15",
+        "004741:0.0",
+        "004741:0.15",
+        "002454:-0.15",
+        "002454:0.0",
+        "002454:0.15",
+        "008862:-0.15",
+        "008862:0.0",
+        "008862:0.15",
+        "008203:-0.15",
+        "008203:0.0",
+        "008203:0.15",
+        "003483:-0.15",
+        "003483:0.0",
+        "003483:0.15",
+        "014057:-0.15",
+        "014057:0.0",
+        "014057:0.15",
+        "004115:-0.15",
+        "004115:0.0",
+        "004115:0.15",
+        "008658:-0.15",
+        "008658:0.0",
+        "008658:0.15",
+        "002216:-0.15",
+        "002216:0.0",
+        "002216:0.15",
+        "011283:-0.15",
+        "011283:0.0",
+        "011283:0.15",
+        "008162:-0.15",
+        "008162:0.0",
+        "008162:0.15",
+        "006092:-0.15",
+        "006092:0.0",
+        "006092:0.15",
+        "005471:-0.15",
+        "005471:0.0",
+        "005471:0.15",
+        "012647:-0.15",
+        "012647:0.0",
+        "012647:0.15",
+        "014455:-0.15",
+        "014455:0.0",
+        "014455:0.15"
+      ]
+    },
+    "all_failed_checks": [
+      "applied_reference_canonical_exact",
+      "reference_velocity_successive_exact"
+    ]
+  },
+  "reference_side_support_probe_analysis": {
+    "status": "COMPLETE_REFERENCE_SIDE_PAIRED_DIAGNOSIS",
+    "reports": {
+      "baseline": {
+        "inputs": 72,
+        "counts": {
+          "completed": 72,
+          "condition_pass": 5,
+          "physical_pass": 0,
+          "tracking_pass": 68,
+          "joint_pass": 0
+        },
+        "available_metric_means": {
+          "endpoint_error_m": 0.19590699259873187,
+          "heading_error_rad": 0.21217996437288894,
+          "endpoint_time_error_s": 0.5833333637565374,
+          "surface_slip_proxy_fraction": 0.5424111456563213,
+          "penetration_fraction": 0.0,
+          "jerk_p95_m_s3": 1611.0568736182304,
+          "tracking_mean_m": 0.055011089192703366
+        },
+        "metric_denominators": {
+          "endpoint_error_m": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "heading_error_rad": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "endpoint_time_error_s": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "surface_slip_proxy_fraction": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "penetration_fraction": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "jerk_p95_m_s3": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "tracking_mean_m": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          }
+        },
+        "evaluation_type": "simulation_only; synthetic_proxy reference fidelity"
+      },
+      "unconstrained": {
+        "inputs": 72,
+        "counts": {
+          "completed": 72,
+          "condition_pass": 6,
+          "physical_pass": 0,
+          "tracking_pass": 67,
+          "joint_pass": 0
+        },
+        "available_metric_means": {
+          "endpoint_error_m": 0.19407599141037654,
+          "heading_error_rad": 0.2071223756885066,
+          "endpoint_time_error_s": 0.5606481773882277,
+          "surface_slip_proxy_fraction": 0.5544018713356693,
+          "penetration_fraction": 0.0,
+          "jerk_p95_m_s3": 1607.752568054198,
+          "tracking_mean_m": 0.05676227368207441
+        },
+        "metric_denominators": {
+          "endpoint_error_m": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "heading_error_rad": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "endpoint_time_error_s": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "surface_slip_proxy_fraction": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "penetration_fraction": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "jerk_p95_m_s3": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "tracking_mean_m": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          }
+        },
+        "evaluation_type": "simulation_only; synthetic_proxy reference fidelity"
+      },
+      "endpoint_preserved": {
+        "inputs": 72,
+        "counts": {
+          "completed": 72,
+          "condition_pass": 4,
+          "physical_pass": 0,
+          "tracking_pass": 67,
+          "joint_pass": 0
+        },
+        "available_metric_means": {
+          "endpoint_error_m": 0.19491562526292364,
+          "heading_error_rad": 0.20396860496870717,
+          "endpoint_time_error_s": 0.5370370650457011,
+          "surface_slip_proxy_fraction": 0.5538484308965637,
+          "penetration_fraction": 0.0,
+          "jerk_p95_m_s3": 1599.076190863714,
+          "tracking_mean_m": 0.05682036547093756
+        },
+        "metric_denominators": {
+          "endpoint_error_m": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "heading_error_rad": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "endpoint_time_error_s": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "surface_slip_proxy_fraction": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "penetration_fraction": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "jerk_p95_m_s3": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          },
+          "tracking_mean_m": {
+            "finite": 72,
+            "missing_or_nonfinite": 0,
+            "total": 72
+          }
+        },
+        "evaluation_type": "simulation_only; synthetic_proxy reference fidelity"
+      }
+    },
+    "paired": {
+      "unconstrained": {
+        "source_count": 24,
+        "joint_gain_pp": 0.0,
+        "source_cluster_95ci_pp": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_resamples": 5000,
+        "note": "One validation seed, exploratory; an all-zero interval does not prove population equivalence"
+      },
+      "endpoint_preserved": {
+        "source_count": 24,
+        "joint_gain_pp": 0.0,
+        "source_cluster_95ci_pp": [
+          0.0,
+          0.0
+        ],
+        "bootstrap_resamples": 5000,
+        "note": "One validation seed, exploratory; an all-zero interval does not prove population equivalence"
+      }
+    },
+    "decision": "STOP_THIS_ROOT_TRANSLATION_PARAMETERIZATION_NO_PHYSICAL_OR_JOINT_GAIN",
+    "reset_checks": {
+      "baseline": {
+        "exported_initial_states_exact_to_baseline": true,
+        "reset_cache_gate": true,
+        "scope": "Exported kinematic tensors and cache consistency; does not establish hidden PhysX-state equality"
+      },
+      "unconstrained": {
+        "exported_initial_states_exact_to_baseline": true,
+        "reset_cache_gate": true,
+        "scope": "Exported kinematic tensors and cache consistency; does not establish hidden PhysX-state equality"
+      },
+      "endpoint_preserved": {
+        "exported_initial_states_exact_to_baseline": true,
+        "reset_cache_gate": true,
+        "scope": "Exported kinematic tensors and cache consistency; does not establish hidden PhysX-state equality"
+      }
+    },
+    "inputs_per_arm": 72,
+    "sources": 24,
+    "seed": 11,
+    "input_hashes": {
+      "results/support_reference_probe_v63_20261012/summary.json": "a504f56cf37dec79fb46aeace51a80a25fc1dbbb8f4251bd8727ffeb881193b2",
+      "results/support_reference_probe_v63_20261012/versions.json": "aad9d6d0707717f6e851032ab078317cf10849e17dbfd2e2670c6cfd58421fbb",
+      "results/support_reference_probe_v63_20261012/analysis_plan_lock.json": "0452de2471d4804226bf7913c3de356483d9784aa16db2fac5afc87beb6c8b27",
+      "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/metadata.json": "2c071d618e08411018346b9ef64dfaaf91e1901a0d88959f3ea3cf9467aef696",
+      "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/metrics.json": "fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",
+      "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/lineage.json": "636008ca2c4aeb256cafb08705b51e827081352ca19d389409e1b25977bca948",
+      "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/trajectories.npz": "7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136",
+      "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/observation_trace.npz": "503f3bd356f54e8fdfc54099ac1873938ac6d8fd075ca2aae2e9ec170287dbe1",
+      "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/initial_states.npz": "b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+      "results/support_reference_probe_v63_20261012/requests/val_baseline_s11.json": "a076366a7bdf104d60cb45d9224cf2dd53e2007df7e55bf7a9a5e46e54b905e9",
+      "results/support_reference_probe_v63_20261012/raw/val_unconstrained_s11/metadata.json": "992a5ef3932b8eefa79920b200ebd805b50aa2d1f829918ee4bcb284d5052bf6",
+      "results/support_reference_probe_v63_20261012/raw/val_unconstrained_s11/metrics.json": "9e318a0744ff693441e25607f6af892d6eebe65b6f390530d98834620c8f4165",
+      "results/support_reference_probe_v63_20261012/raw/val_unconstrained_s11/lineage.json": "c41aa2b714a26e781daa8a5a65b93246d7da30d817965f07970b9e04483e56ba",
+      "results/support_reference_probe_v63_20261012/raw/val_unconstrained_s11/trajectories.npz": "67876934b5cea2e96fc7bb5927e8ad8fd8465dddc921413097d97086195a5098",
+      "results/support_reference_probe_v63_20261012/raw/val_unconstrained_s11/observation_trace.npz": "8a82506abf6575e70fd2f06f4a37276e76a7bab6643eb85935af77c33b6d8e5f",
+      "results/support_reference_probe_v63_20261012/raw/val_unconstrained_s11/initial_states.npz": "b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+      "results/support_reference_probe_v63_20261012/requests/val_unconstrained_s11.json": "bbb11813fbc4e585e37cce245fb0c1306071de5966574b78da8098cafd66ec96",
+      "results/support_reference_probe_v63_20261012/raw/val_endpoint_preserved_s11/metadata.json": "199b91ba56247bd2d31f7a8c07f0f440f62e548b5082cbb82872a06e8bc3099b",
+      "results/support_reference_probe_v63_20261012/raw/val_endpoint_preserved_s11/metrics.json": "dcdc1ba2850f9f5779f9ae470a289e0feb2a8f782041ff4dad15bdb0c1845f1e",
+      "results/support_reference_probe_v63_20261012/raw/val_endpoint_preserved_s11/lineage.json": "77a92a3e07f7e5540e177343400e477dd0d3aa5f18cb7fe72726b2c25dab70f5",
+      "results/support_reference_probe_v63_20261012/raw/val_endpoint_preserved_s11/trajectories.npz": "c7371a9b5556578bd6f8d726a35155415f3b4f9b94a09d257f3f6fad8b971f1d",
+      "results/support_reference_probe_v63_20261012/raw/val_endpoint_preserved_s11/observation_trace.npz": "6783d5a991dbcc4a5f0922137ee89bf6e9a141f615211f1f8ff25e2c1648e367",
+      "results/support_reference_probe_v63_20261012/raw/val_endpoint_preserved_s11/initial_states.npz": "b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+      "results/support_reference_probe_v63_20261012/requests/val_endpoint_preserved_s11.json": "60da83b0fa039040b80d86ac58328876b184f39763a58d1186f54713cc500944"
+    },
+    "source_sha256": "2a76407d53b7f8fe7dfe823eebb327a5b98b7da746d40dec73e4905150ddc11d",
+    "generation_calls": 0,
+    "simulation_calls": 0,
+    "thresholds_changed": false,
+    "original_targets_changed": false,
+    "confirmed_innovation": false,
+    "overleaf_results_sync": false,
+    "scope": "Three deterministic reference variants from one common cached construction; diagnostic only. Common construction acquisition costs are shared, not free. Endpoint pose preservation is not executed endpoint accuracy. Original-source clustering; no test data, G1, training or semantics/diversity gate.",
+    "time": 1791774541.4530327
+  },
+  "reference_side_support_probe_audit": {
+    "schema_version": "experiment-audit/v1",
+    "audit_skill": "experiment-audit",
+    "experiment": "support_reference_probe_v63_20261012",
+    "date": "2026-10-12",
+    "generated_at": "2026-10-12T03:06:30Z",
+    "audit_cutoff": "V65 preflight/witness complete; before V65 --run",
+    "verdict": "FAIL",
+    "overall_verdict": "fail",
+    "integrity_status": "fail",
+    "reason_code": "V63_ORIGINAL_WITNESS_FAIL_AND_THREE_ARM_RESULT_INCOMPLETE",
+    "reviewer": {
+      "agent_id": "/root/paired_v51_integrity_audit/fresh_integrity_reviewer",
+      "model": "gpt-5.6-sol",
+      "family": "openai",
+      "reasoning": "ultra",
+      "review_independence": "same-family",
+      "acceptance_status": "provisional",
+      "mode": "read-only except requested append-only audit outputs"
+    },
+    "executed_scope": {
+      "evaluation_type": [
+        "simulation_only",
+        "synthetic_proxy"
+      ],
+      "split": "validation",
+      "seed": 11,
+      "sources": 24,
+      "offsets_per_source": 3,
+      "cases_per_arm": 72,
+      "planned_arms": 3,
+      "executed_arms": 1,
+      "executed_arm_names": [
+        "baseline"
+      ],
+      "new_generation_calls": 0,
+      "new_simulator_batches": 1,
+      "comparison_arms_launched": false,
+      "summary_exists": false,
+      "analysis_exists": false,
+      "live_worker_observed_at_audit_cutoff": false
+    },
+    "terminal_evidence": {
+      "state_json_status": "WITNESS_COMPLETE_PENDING_REVIEW",
+      "document_witness_status": "FAIL",
+      "document_witness_failure": "AssertionError('applied_reference_canonical_exact')",
+      "document_witness_failed_checks": [
+        "applied_reference_canonical_exact",
+        "reference_velocity_successive_exact"
+      ],
+      "original_witness_preserved": true,
+      "numerical_contract_addendum_status": "PASS",
+      "numerical_contract_addendum_scope": "Separate saved-array numerical adjudication only; it does not rewrite the original witness or supply treatment-arm results.",
+      "baseline_ledger_entries": 1,
+      "baseline_ledger_seconds": 50.4387053065002,
+      "baseline_receipt": {
+        "status": "complete",
+        "cases": 72,
+        "completed": 72,
+        "joint_pass": 0,
+        "elapsed_seconds": 47.52426338195801
+      },
+      "baseline_counts": {
+        "completed": 72,
+        "condition_pass": 5,
+        "physical_pass": 0,
+        "tracking_pass": 68,
+        "joint_pass": 0
+      },
+      "source_denominator": {
+        "cases": 72,
+        "sources": 24,
+        "offsets_per_source": 3,
+        "complete_inputs": 72,
+        "incomplete_inputs": 0,
+        "completed": 72
+      }
+    },
+    "checks": {
+      "A_ground_truth_provenance": {
+        "status": "PASS",
+        "details": "The baseline reference is reconstructed from the cached simulated actual trajectory of V51 val_shared_s11_r0; both repair references are deterministic horizontal translations derived from simulated velocities, force/geometry support proxies, and that same cached trajectory. The documentation, versions metadata, and analyzer explicitly label the evaluation simulation-only and synthetic-proxy. It is not real MoCap or robot ground truth.",
+        "evidence": [
+          "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:19-29",
+          "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:30-49",
+          "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:69-73",
+          "D:/具身智能/conditional-human-motion-generation/docs/support_reference_probe_v63_20261012.md:3-9",
+          "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:42-48"
+        ]
+      },
+      "B_score_normalization": {
+        "status": "PASS",
+        "details": "No reported metric is divided by a maximum, minimum, or mean of the evaluated predictions. The optimizer eigenvalue is only a gradient-step scale, and its 0.10 m projection is a declared intervention bound. The current unexecuted analyzer reports raw finite-value means, explicit finite/missing/total denominators, raw pass counts, and paired percentage-point changes.",
+        "evidence": [
+          "D:/具身智能/conditional-human-motion-generation/scripts/support_reference_repair_core_v63_20261012.py:16-36",
+          "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:42-48",
+          "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:52-64"
+        ]
+      },
+      "C_result_existence_and_lineage": {
+        "status": "FAIL",
+        "details": "Only the baseline request/raw directory and one ledger row exist. Both treatment requests/raw directories, summary.json, and analysis_*.json are absent. The original independent witness remains FAIL. Its separate numerical addendum validates the pre-existing 1e-12 root-mapping contract and the exact CUDA 1/30 velocity expression on saved arrays, but it cannot retroactively make DOCUMENT_WITNESS PASS or complete the three-arm study. The original V63 runner also did not bind current versions/preparation/reference hashes to the exact witnessed snapshot before treatment arms. The new V65 continuation closes that prelaunch hole; its CPU-only preflight and independent continuation witness are PASS, but --run has not been invoked. Equal post-reset state across all arms therefore remains unobserved.",
+        "evidence": [
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json:$.status",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json:$.all_failed_checks",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json:$.denominators",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/budget_ledger.json:$[0]",
+          "D:/具身智能/conditional-human-motion-generation/scripts/run_support_reference_probe_v63_20261012.py:19-24",
+          "D:/具身智能/conditional-human-motion-generation/scripts/run_support_reference_probe_v63_20261012.py:63-81",
+          "D:/具身智能/conditional-human-motion-generation/scripts/continue_support_reference_probe_v65_20261012.py:15-48",
+          "D:/具身智能/conditional-human-motion-generation/scripts/continue_support_reference_probe_v65_20261012.py:51-89"
+        ]
+      },
+      "D_dead_code_and_execution": {
+        "status": "WARN",
+        "details": "The core numeric checks, preparation, and baseline --check branch executed and are represented in artifacts. The comparison branch and analyzer have not executed because the witness stopped the study. The analyzer is omitted from versions.json, but the current source is bound by the pre-arm remote analysis_plan_lock.json and will reject a different self-hash. The current analyzer fixes the earlier unexecuted decision/denominator defects and adds exact cross-arm exported-reset checks; neither repaired path has executed.",
+        "evidence": [
+          "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:15-18",
+          "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:64-73",
+          "D:/具身智能/conditional-human-motion-generation/scripts/run_support_reference_probe_v63_20261012.py:68-82",
+          "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:12-20",
+          "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:74-84",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/analysis_plan_lock.json:$"
+        ]
+      },
+      "E_scope_and_fairness": {
+        "status": "PASS",
+        "details": "The current protocol and current analyzer restrict interpretation to one validation seed, 24 sources x 3 fixed offsets, one shared cached construction, unchanged goals/thresholds, and a diagnostic decision about this root-translation parameterization. They expressly exclude innovation, efficacy acceptance, C1/C2/C3 replacement, G1, downstream training, held-out test, semantics, and diversity claims. The current analyzer now bases continuation wording on positive paired joint gain or physical-pass improvement versus baseline. Because only baseline exists, no treatment conclusion is available.",
+        "evidence": [
+          "D:/具身智能/conditional-human-motion-generation/docs/support_reference_probe_v63_20261012.md:3-9",
+          "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:52-78",
+          "D:/具身智能/conditional-human-motion-generation/docs/support_reference_continuation_v65_20261012.md:3-5",
+          "D:/具身智能/conditional-human-motion-generation/docs/support_reference_continuation_v65_20261012.md:17-21"
+        ]
+      },
+      "F_evaluation_classification": {
+        "status": "PASS",
+        "classification": [
+          "simulation_only",
+          "synthetic_proxy"
+        ],
+        "real_gt": false,
+        "human_eval": false,
+        "self_supervised_proxy": false,
+        "details": "The tracking target is a model/simulator-derived synthetic reference, and physical quantities are simulator/geometry proxies. No human evaluation or real-world ground truth is present."
+      }
+    },
+    "invariant_findings": {
+      "source_and_body_order": {
+        "status": "PASS_WITH_STATIC_WARNING",
+        "details": "The independent witness verified the manifest-derived case/text/target-joint order, 72 metrics/cases, 24 sources with three offsets each, and a contiguous valid prefix for every case. Preparation resolves each foot by body name before indexing. Preparation itself should have asserted case/trajectory/body-axis alignment before writing references rather than relying on the later witness.",
+        "evidence": [
+          "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/witness_independent_audit.py:53-79",
+          "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:24-44"
+        ]
+      },
+      "contact_frame_com": {
+        "status": "PASS_WITH_PROXY_BOUNDARY",
+        "details": "Collision primitives are read in body-local coordinates, rotated to world coordinates, lowered by primitive radius, and the lowest surface proxy is selected. V19-established COM linear velocity is converted to the selected point velocity using v_COM + omega x (point - COM). Support uses simulated vertical body force and surface height. This is internally consistent for the declared simulator/geometry proxy; it is not a measured contact-manifold or real-contact truth.",
+        "evidence": [
+          "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:1-5",
+          "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:36-68",
+          "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:71-100",
+          "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:34-49"
+        ]
+      },
+      "reference_geometry": {
+        "status": "PASS_FOR_PREPARED_FILES",
+        "details": "All three references are finite 120x72x24x3 arrays with identical targets. Frames 0-60 and all Z coordinates are exact. Horizontal translation is shared across bodies and bounded below 0.10 m. Maximum shifts are 0.0607537857 m (unconstrained) and 0.0607520330 m (endpoint-preserved); endpoint-preserved final translation is exactly zero. All 72 inputs were complete, so the declared incomplete-case rule was not exercised in this run.",
+        "evidence": [
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json:$.reference_invariants",
+          "D:/具身智能/conditional-human-motion-generation/scripts/support_reference_repair_core_v63_20261012.py:10-37",
+          "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:45-58"
+        ]
+      },
+      "original_goals": {
+        "status": "PASS_FOR_PREPARATION_AND_BASELINE",
+        "details": "Each reference archive carries the same original-goal array; the baseline execution goal hash and case order match the frozen source. Treatment-arm execution has not occurred.",
+        "evidence": [
+          "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:60-77",
+          "D:/具身智能/conditional-human-motion-generation/scripts/run_support_reference_probe_v63_20261012.py:55-60",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json:$.checks.baseline_original_goal_exact"
+        ]
+      },
+      "reset_and_time_alignment": {
+        "status": "PASS_FOR_BASELINE_ONLY",
+        "details": "The baseline initial reset gate passed; seven exported reset tensors and four named rigid-body cache checks matched; the initial XY anchor error was zero; frames were exactly 0..119. The temporal claim is limited to a shared transition index: reference/observation k is recorded before action k, while actual k is recorded after that action. This is not simultaneous pre-action reference/actual sensing. Equal reset state across three arms is not yet testable.",
+        "evidence": [
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json:$.runtime_integrity",
+          "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.md:21-25",
+          "D:/具身智能/conditional-human-motion-generation/docs/support_reference_continuation_v65_20261012.md:19"
+        ]
+      }
+    },
+    "numerical_contract_addendum": {
+      "status": "PASS_SEPARATE_EVIDENCE",
+      "original_witness_status_unchanged": "FAIL",
+      "root_mapping": {
+        "actual_max_error_m": 1.866893570624082e-16,
+        "different_scalars_under_bitwise_test": 1,
+        "tested_scalars": 622080,
+        "preexisting_absolute_tolerance_m": 1e-12,
+        "relative_tolerance": 0,
+        "passes_preexisting_contract": true
+      },
+      "velocity": {
+        "executed_expression": "(current-previous)/(1/30)",
+        "dtype": "torch.float32",
+        "exact_same_cuda_arithmetic": true,
+        "max_abs_error_m_s": 0.0,
+        "original_numpy_float32_dt_max_error_m_s": 9.5367431640625e-07,
+        "first_frame_zero": true
+      },
+      "input_hashes_unchanged": true,
+      "simulation_rerun": false,
+      "generation_calls": 0,
+      "training_calls": 0,
+      "gpu_saved_array_arithmetic_seconds": 0.9037324842065573,
+      "constraint_note": "The addendum used CUDA saved-array arithmetic despite the audit assignment's no-GPU instruction. It ran no simulator, generator, or training. This is disclosed as a protocol-scope warning and does not alter the numerical result or the original witness verdict.",
+      "evidence": [
+        "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.json:$.root_mapping",
+        "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.json:$.velocity",
+        "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.json:$.charged_budget",
+        "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/numerical_contract_addendum_audit.py:40-72",
+        "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/numerical_contract_addendum_audit.py:73-94"
+      ]
+    },
+    "prospective_v65_status": {
+      "status": "PREFLIGHT_AND_INDEPENDENT_WITNESS_PASS_NOT_RUN_AT_AUDIT_CUTOFF",
+      "source_sha256": "a801b76906368300b1f4aff021385be931e1d031ed0850c8b3aa6b330f39dbc6",
+      "document_sha256": "eb5db0676772205d8d8709595e5196d96be25faf8f9b750fea20c145effd83b5",
+      "local_remote_byte_identical": true,
+      "preflight_exists": true,
+      "preflight_status": "PASS",
+      "preflight_sha256": "4e75b64dd6e2e732f6e31968818f2198e1ac7fa4568a1373784285643b66f2d2",
+      "continuation_witness_exists": true,
+      "continuation_witness_status": "PASS",
+      "continuation_witness_sha256": "8722339893465e8bd4dfe1db1106dd47363c7db1fd2751850e73d86286784fbd",
+      "continuation_witness_documented_check_invocations": 1,
+      "continuation_witness_run_invocations": 0,
+      "continuation_receipt_exists": false,
+      "comparison_arms_exist": false,
+      "closed_items": [
+        "Binds the original FAIL witness, numerical addendum, runtime witness, versions, preparation, all three references, baseline output hashes, lineage, and receipt before each comparison arm.",
+        "Counts the separate numerical-adjudication charge against the 600-second local budget.",
+        "Preserves the original FAIL and baseline rather than rerunning them."
+      ],
+      "remaining_items": [
+        "The preflight and continuation witness certify only frozen inputs and readiness; they contain zero treatment simulation calls and no result evidence.",
+        "No post-execution equality check yet exists for initial_states/reset caches/body ordering across all three arms.",
+        "The analyzer is omitted from versions.json; a separate pre-arm analysis_plan_lock.json (SHA-256 0452de2471d4804226bf7913c3de356483d9784aa16db2fac5afc87beb6c8b27) now binds the exact current analyzer, and the analyzer self-checks it, but the lock is not itself part of V65 preflight.",
+        "The separate numerical charge is not incorporated into the original runner's global/stage ledger arithmetic, although current headroom is large."
+      ]
+    },
+    "post_cutoff_note": {
+      "event": "A V65 --run was launched after this audit's pre-run cutoff.",
+      "audited_here": false,
+      "impact": "No later output, completion state, or efficacy interpretation is covered by this report. A separate post-run append-only audit is required."
+    },
+    "historical_unexecuted_source_finding": {
+      "old_analyzer_sha256": "59f16230a7356c6c5e607bd61ea260baf1b83b0b01483f6ebbac02547b389af5",
+      "current_analyzer_sha256": "2a76407d53b7f8fe7dfe823eebb327a5b98b7da746d40dec73e4905150ddc11d",
+      "old_issue": "The old analyzer decision ignored computed paired gains and branched only on whether every arm had zero absolute joint-pass count; it also omitted per-metric finite/missing denominators.",
+      "current_static_status": "REMEDIATED_AND_LOCKED_BEFORE_TREATMENT_EXECUTION",
+      "result_impact": "None yet because no analysis output exists."
+    },
+    "v62_failure_preservation": {
+      "status": "PASS",
+      "details": "The V62 CPU fixture assertion failure is retained with zero generation, simulation, and GPU seconds. V63 corrects the fixture expectation without rewriting V62.",
+      "evidence": "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v62_20261012/preparation_failure.json:2-11"
+    },
+    "git_and_deployment": {
+      "status": "WARN",
+      "local_head": "ffadb70f3f4cb7de2537529ba26a66bc6d55ee66",
+      "remote_head": "e1ef719d6702d15a5ab211db0e55be438b2d1c88",
+      "heads_match": false,
+      "audited_v63_v65_files_tracked": false,
+      "details": "The audited files are untracked on both checkouts. Direct hashes establish local/remote parity for the current code and evidence, but neither checkout HEAD reproduces these files."
+    },
+    "reason_codes": [
+      "PASS_SYNTHETIC_PROXY_EXPLICITLY_LABELED",
+      "PASS_NO_PREDICTION_STATISTIC_NORMALIZATION",
+      "FAIL_ORIGINAL_DOCUMENT_WITNESS_RETAINED",
+      "FAIL_ONLY_ONE_OF_THREE_ARMS_EXISTS",
+      "FAIL_SUMMARY_AND_ANALYSIS_ABSENT",
+      "FAIL_ORIGINAL_V63_RUNNER_LACKS_WITNESSED_CROSS_ARM_FREEZE_BINDING",
+      "WARN_V65_PREFLIGHT_PASS_BUT_COMPARISON_AND_ANALYZER_PATHS_UNEXECUTED",
+      "WARN_ANALYZER_OMITTED_FROM_FROZEN_VERSION_MANIFEST_BUT_SEPARATELY_PLAN_LOCKED",
+      "WARN_EQUAL_RESET_STATE_ACROSS_ARMS_NOT_YET_OBSERVED",
+      "WARN_PREPARATION_ORDER_CHECKS_ARE_POSTHOC",
+      "WARN_AUDITED_FILES_UNTRACKED_AND_GIT_HEADS_DIVERGE",
+      "WARN_NUMERICAL_ADDENDUM_USED_CUDA_DESPITE_NO_GPU_AUDIT_SCOPE",
+      "PASS_SEPARATE_NUMERICAL_CONTRACT_ADJUDICATION",
+      "PASS_CURRENT_ANALYZER_DECISION_AND_DENOMINATORS_STATICALLY_REPAIRED",
+      "PASS_V62_FAILURE_RETAINED",
+      "INFO_V65_RUN_LAUNCHED_AFTER_AUDIT_CUTOFF_NOT_AUDITED",
+      "NO_EFFICACY_NOVELTY_OR_G1_CONCLUSION"
+    ],
+    "claim_impacts": [
+      {
+        "claim": "Three prepared references preserve the stated source order, goals, prefix, height, body-relative pose, 10 cm bound, and endpoint constraint.",
+        "impact": "supported_for_prepared_files"
+      },
+      {
+        "claim": "The baseline replay executed once with 72/72 complete cases and joint pass 0/72.",
+        "impact": "supported"
+      },
+      {
+        "claim": "Applied reference is bitwise identical to the root-canonicalized reference and NumPy-float32-dt velocity recomputation.",
+        "impact": "unsupported_by_original_witness"
+      },
+      {
+        "claim": "Applied reference satisfies the pre-existing 1e-12 root-mapping contract and saved velocity exactly matches the executed CUDA 1/30 expression.",
+        "impact": "supported_by_separate_addendum_only"
+      },
+      {
+        "claim": "Unconstrained or endpoint-preserved repair improves physical or joint quality.",
+        "impact": "unsupported_no_treatment_runs"
+      },
+      {
+        "claim": "This root-translation parameterization should continue or stop based on V63 results.",
+        "impact": "unavailable_until_two_arms_run_and_current_analysis_is_independently_audited"
+      },
+      {
+        "claim": "Reference and actual are simultaneous states.",
+        "impact": "unsupported_only_same_transition_index_is_verified"
+      },
+      {
+        "claim": "Innovation, C1/C2/C3 efficacy, G1 readiness, downstream benefit, or population-level effect.",
+        "impact": "unsupported_and_out_of_scope"
+      }
+    ],
+    "action_items": [
+      "Keep the original V63 DOCUMENT_WITNESS FAIL and initial-failure files immutable; cite the numerical addendum separately.",
+      "Do not treat V63 as a completed comparison: summary.json, analysis output, and both treatment arms are absent.",
+      "Preserve the completed V65 preflight and independent continuation witness; if --run is later invoked, require exact source/document/preflight hashes and retain its receipt and all failures.",
+      "After treatment execution, enforce and independently verify the current analyzer's exact initial_states.npz equality and reset/cache gates across all three arms; retain the explicit limitation that hidden PhysX-state equality is not established.",
+      "Preserve and independently bind analysis_plan_lock.json (SHA-256 0452de2471d4804226bf7913c3de356483d9784aa16db2fac5afc87beb6c8b27); retain the analyzer source hash in the result and verify local/remote byte identity.",
+      "Retain per-metric finite, missing/nonfinite, and total denominators in every analysis output.",
+      "Use the current decision rule based on treatment-versus-baseline physical/joint improvement; independently audit the post-cutoff V65 result before any mechanism decision.",
+      "Qualify time alignment as same transition index, not simultaneous pre-action reference/actual state.",
+      "Commit or otherwise archive the untracked audited files against a reproducible revision; record the local/remote HEAD mismatch.",
+      "Do not infer efficacy, novelty, C2/C3 validity, G1 readiness, or downstream benefit from this one-seed diagnostic."
+    ],
+    "audited_input_hashes": {
+      "scripts/support_reference_repair_core_v63_20261012.py": "sha256:376484bd771f653ff6e6132911bf3428b829662ef503a86f19f00519b8f71e26",
+      "scripts/prepare_support_reference_probe_v63_20261012.py": "sha256:bd7b7699dbcbf4d2638130d8c64fbb502eabb90f321bf06c40d2e654d98c9e88",
+      "scripts/run_support_reference_probe_v63_20261012.py": "sha256:416f6a7c233a03db01c44100cbe7d8e260d529c142f36bc00720720c2a828f03",
+      "scripts/analyze_support_reference_probe_v63_20261012.py": "sha256:2a76407d53b7f8fe7dfe823eebb327a5b98b7da746d40dec73e4905150ddc11d",
+      "scripts/continue_support_reference_probe_v65_20261012.py": "sha256:a801b76906368300b1f4aff021385be931e1d031ed0850c8b3aa6b330f39dbc6",
+      "docs/support_reference_probe_v63_20261012.md": "sha256:33fac131739cdc96cf0fda345ad88d091d045808678f963ed6b644d8fa7f765a",
+      "docs/support_reference_continuation_v65_20261012.md": "sha256:eb5db0676772205d8d8709595e5196d96be25faf8f9b750fea20c145effd83b5",
+      "results/support_reference_probe_v62_20261012/preparation_failure.json": "sha256:a0d1fea5fb24c4dd2268dabea3a5ea15d2ade439ce717a448b4631e64df4d535",
+      "results/support_reference_probe_v63_20261012/versions.json": "sha256:aad9d6d0707717f6e851032ab078317cf10849e17dbfd2e2670c6cfd58421fbb",
+      "results/support_reference_probe_v63_20261012/preparation.json": "sha256:ba4ca14f72136c00c0d127a459e477cdfb91bd91b859170b3d0cab24d1b0ede7",
+      "results/support_reference_probe_v63_20261012/runtime_witness.json": "sha256:b88031939051092821ca9592229c27163cf316888aae71bce672093cfa8872aa",
+      "results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json": "sha256:c8f320671fba8203c74e91fa46080d3318f678adaf046ceff405ba063076a5f5",
+      "results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.md": "sha256:64e1e5b3754fce98f3a49aea3ef2b9073503d21c13ea680e6eaf62cca18c7980",
+      "results/support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.json": "sha256:fc990207cb3dc7c9c5c353394692d562d46a58f5ea4065c19a7798d9d49f8775",
+      "results/support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.md": "sha256:dc419d5973f670354eb60b3e6b88048b1500183a96e864144278e4981ecc4f76",
+      "results/support_reference_probe_v63_20261012/analysis_plan_lock.json": "sha256:0452de2471d4804226bf7913c3de356483d9784aa16db2fac5afc87beb6c8b27",
+      "results/support_reference_probe_v63_20261012/continuation_v65_preflight.json": "sha256:4e75b64dd6e2e732f6e31968818f2198e1ac7fa4568a1373784285643b66f2d2",
+      "results/support_reference_probe_v63_20261012/CONTINUATION_DOCUMENT_WITNESS_V65.json": "sha256:8722339893465e8bd4dfe1db1106dd47363c7db1fd2751850e73d86286784fbd",
+      "results/support_reference_probe_v63_20261012/CONTINUATION_DOCUMENT_WITNESS_V65.md": "sha256:0e901e52b45b16e42b0b88fe1bcb5e2b93c7aeb0f0ea0ed03f8e909e2d58b675",
+      "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/lineage.json": "sha256:636008ca2c4aeb256cafb08705b51e827081352ca19d389409e1b25977bca948",
+      "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/metrics.json": "sha256:fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",
+      "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/trajectories.npz": "sha256:7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136",
+      "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/observation_trace.npz": "sha256:503f3bd356f54e8fdfc54099ac1873938ac6d8fd075ca2aae2e9ec170287dbe1"
+    },
+    "local_remote_note": "The requested source files, current analyzer, V65 continuation, protocol documents, witness/addendum files, and audit outputs were checked for byte parity when available. Authoritative runtime arrays remain remote by design."
+  },
+  "reference_side_support_probe_numerical_addendum": {
+    "status": "PASS",
+    "independent_witness_agent": "/root/support_reference_v63_document_witness",
+    "actual_pid": 2887054,
+    "start_time_utc": "2026-10-12T02:56:53Z",
+    "original_FAIL_witness_sha256": "c8f320671fba8203c74e91fa46080d3318f678adaf046ceff405ba063076a5f5",
+    "original_INITIAL_FAIL_witness_sha256": "1c22b6291edd93bde408d18b5c41f546b1f002debb98dbd8839534b8ec30216a",
+    "runtime_witness_sha256": "b88031939051092821ca9592229c27163cf316888aae71bce672093cfa8872aa",
+    "input_hashes": {
+      "DOCUMENT_WITNESS.json": "c8f320671fba8203c74e91fa46080d3318f678adaf046ceff405ba063076a5f5",
+      "DOCUMENT_WITNESS.md": "64e1e5b3754fce98f3a49aea3ef2b9073503d21c13ea680e6eaf62cca18c7980",
+      "DOCUMENT_WITNESS_INITIAL_FAIL.json": "1c22b6291edd93bde408d18b5c41f546b1f002debb98dbd8839534b8ec30216a",
+      "DOCUMENT_WITNESS_INITIAL_FAIL.md": "548d57ea478815175734f15868a5476017f61816e898beac3c0fc9d484a8f787",
+      "versions.json": "aad9d6d0707717f6e851032ab078317cf10849e17dbfd2e2670c6cfd58421fbb",
+      "runtime_witness.json": "b88031939051092821ca9592229c27163cf316888aae71bce672093cfa8872aa",
+      "preparation.json": "ba4ca14f72136c00c0d127a459e477cdfb91bd91b859170b3d0cab24d1b0ede7",
+      "budget_ledger.json": "d450a9aae3183f1fb0214ff8ae8a1b9d82335a49cf2e422f80b44382e8086ea6",
+      "source_manifest.json": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+      "frozen_thresholds.json": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+      "witness_independent_audit.py": "363f885be1f347a7aa3ffd2f701b776dd5e7aceec29c4968bd65ef2c7f400007",
+      "witness_failure_evidence.py": "55dbc6d93b626083bbf3636e915ccf444be8698bc34db07b46d7b66eee9974ac",
+      "raw/val_baseline_s11/metadata.json": "2c071d618e08411018346b9ef64dfaaf91e1901a0d88959f3ea3cf9467aef696",
+      "raw/val_baseline_s11/metrics.json": "fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",
+      "raw/val_baseline_s11/trajectories.npz": "7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136",
+      "raw/val_baseline_s11/observation_trace.npz": "503f3bd356f54e8fdfc54099ac1873938ac6d8fd075ca2aae2e9ec170287dbe1",
+      "raw/val_baseline_s11/initial_states.npz": "b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+      "raw/val_baseline_s11/receipt.json": "adff58fec670fe947836e424bd605b7cdf16df5ade35da583526ec2054802721",
+      "raw/val_baseline_s11/lineage.json": "636008ca2c4aeb256cafb08705b51e827081352ca19d389409e1b25977bca948",
+      "requests/val_baseline_s11.json": "a076366a7bdf104d60cb45d9224cf2dd53e2007df7e55bf7a9a5e46e54b905e9",
+      "references/baseline.npz": "14dcb4ea715f485547c9abeba294ad3ead67dabee9807a83ebe6c98b2ea4b207",
+      "references/unconstrained.npz": "db994bd95e96ad0df218d7157cf4074dd1c03f44d43f99abff9288d3cf1bf91a",
+      "references/endpoint_preserved.npz": "abbe9fe449784445960e17d23dd4cbec020d8358a10aad51bd57e776e94ae95d"
+    },
+    "frozen_source_hashes": {
+      "scripts/reset_aligned_collect_v4.py": "f2ecbb37e4fd15de8433b97b386ed6b13af1b343a83a4685e9888f77c7a762be",
+      "scripts/physics_guided_collect.py": "a5d426cf942ecf0b3ac121b389aad5dd6459ce8ea34047c5d5a88b0b1cc77d43",
+      "scripts/physics_guided_core.py": "e6be20aa8a060bad20881cb81bab4e3328282a163b0d3e9571c7c590443436ed",
+      "scripts/physics_guided_queue.py": "349266a29d56806b9f081fdc0ec69c7788746849f8ff50035248ef25c8602cf8",
+      "scripts/physics_guided_lineage.py": "da4365d425dfe91397f7651d0a8e873dabf289ba2d30a63f84c6b19d68778ef6",
+      "scripts/r3_closd_isolated_entry.py": "601fd5557b71a8259d12575beb3848f206795a7c9f7cefd02e538e8c97d280e6",
+      "scripts/run_reset_alignment_checks_v4.py": "5d0a961b6ce9903fd666fdbae56736a68eddd1402ddf72793fc000ee0dea98d2",
+      "scripts/run_contact_com_validation_v24_20261012.py": "7e572184b0d341b607dbc67a624af17cf724e846e64045111804170c30e71d58",
+      "scripts/contact_cpu_export_collect_v11.py": "cc50d100f1fa2f96221e742b8bc43148f1a7c0e9e6d88ab452c452b8369e8a1c",
+      "scripts/contact_point_collect_v20_20261012.py": "b4f3097f0fab4da0ac9b8fb07ca1d0f356c9bba61d7dfda57843748016c721d3",
+      "scripts/contact_com_collect_v24_20261012.py": "b3609d8a62aca242b77ec150262bac01d32b728c668b9a2a4912e468146aec11",
+      "scripts/native_contact_diagnostic.py": "37d0420ae3f952acececc855063ad465535c7a96b637297d8d5457248ea121e8",
+      "scripts/physics_guided_metric_v23_20261012.py": "b05b6ed8053ac037432471dabdf8608da383c76d4d2375ce10823e003f232c69",
+      "scripts/physics_guided_com_lineage_v24_20261012.py": "ee440b92415ccc9646c29d1f300d2e0acd67daa9a369ce3c54816e01d4d2c850",
+      "scripts/contact_sampling_collect_v5.py": "651bbaf6cd0a2ba675fdbd5d735d66ee5a3aeecab755060aa2b5628be8d328a4",
+      "scripts/contact_sampling_collect_v8.py": "8373f5301e1022d7414c9415305edf08855db2e0a8d3efe000fa0b4dff861109",
+      "scripts/contact_sensor_collect_v10.py": "9d76cc05fd82391f1a1c9f1b1485d0a4a5ca59eef0f559895d8c1f3a69148d9a",
+      "scripts/closd_cpu_export_bridge.py": "e65c204df3a2099abc661e1c0b5fe8b99e657375cec1275215d90c3a50d13269",
+      "scripts/metric_numeric_equivalence.py": "fa84c42cc2c894adb4458413ddbac16abf760a4ded71449ee467c1c8451cc8b5",
+      "scripts/physics_guided_numeric_lineage.py": "5cff8cd9fbf2eded3f3ec503c2b6afb8005f463963744b8f326c3a0c2a7a0512",
+      "configs/physics_guided_20261011.json": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+      "configs/env-closd-baseline-20261010.json": "e5f9e6b711b7c6221cfb01e3deab404c5849e521ec08a3d25dca1820a279fcf6",
+      "docs/contact_com_validation_v24_20261012.md": "3211788bd4f0b608b0e399afedbe6e73da8b7a72fca8fb5f7380d033729429c6",
+      "scripts/contact_com_collect_v28_20261012.py": "044cd83d35b29c4cd1b970def15c282bda9bdb7c8429b5ee5908b83412b4da52",
+      "scripts/physics_guided_run_v28_20261012.sh": "e750cf2416344215edaf966d3ddb884a2ffe77a53ea1401dcb12b9bb8e6810b5",
+      "scripts/run_condition_feedback_formal_v28_20261012.py": "7efa2a06a2c07e7d08570de479e840a5d14dc77f63e566164eb5aa7e273df312",
+      "scripts/physics_guided_analyze.py": "153398079145621ec454e83b83f6140488b75c2c86a960ae07dc2533450ee677",
+      "scripts/physics_guided_semantics.py": "c52e4327b3cebf205bace19cc647cce6beae92772bdcca7b14eb4713fa7094d3",
+      "docs/condition_feedback_formal_v28_20261012.md": "74d232e2b5a4444f8ceceb5436c62e14f1e6d08821d74171d2dc86d50730e2f8",
+      "scripts/run_paired_feedback_validation_v51_20261012.py": "3d1a79143bcff2f041b2ca6c1512e16c4ff1aaa74c0c972926b4210317286597",
+      "scripts/reference_velocity_collect_v43_20261012.py": "dd0498e1356e49bd084374e2111d1d2765733824747d595bfd14a778ba5ecd3c",
+      "scripts/reference_observation_collect_v42_20261012.py": "c0a7d6bd54f92ed2eec93ca69e1cc1cbfdb32fb8b06f7cf7355472bd127026ce",
+      "scripts/run_reference_observation_v42_20261012.py": "4e37d4dd211ff06bf303f5221e9232785aaf66a8c4b3d06b1d667f4e65a5e07d",
+      "scripts/compare_reference_observation_v42_20261012.py": "067b2078e091fe3c414fd2604bc27c2b712ae11b4bbcf6898362079e0bac06e7",
+      "scripts/verify_execution_lineage_v39_20261012.py": "8e7399cd4f3bf0fce095553bc94dea607d29506afbef88dabd06700efcfb2b13",
+      "docs/paired_feedback_validation_v51_20261012.md": "72330c77d4428e9404ee7757a42b5b94d2cedf71ca176be0042648cdf7c4fcb0",
+      "scripts/support_reference_repair_core_v63_20261012.py": "376484bd771f653ff6e6132911bf3428b829662ef503a86f19f00519b8f71e26",
+      "scripts/prepare_support_reference_probe_v63_20261012.py": "bd7b7699dbcbf4d2638130d8c64fbb502eabb90f321bf06c40d2e654d98c9e88",
+      "scripts/run_support_reference_probe_v63_20261012.py": "416f6a7c233a03db01c44100cbe7d8e260d529c142f36bc00720720c2a828f03",
+      "docs/support_reference_probe_v63_20261012.md": "33fac131739cdc96cf0fda345ad88d091d045808678f963ed6b644d8fa7f765a"
+    },
+    "own_audit_script_sha256": "79c890034ff49bbf17c417f7042fd55009b093de245acfdc835fbfaff8ef31f1",
+    "source_changed": false,
+    "thresholds_changed": false,
+    "original_witness_changed": false,
+    "simulation_calls": 0,
+    "generation_calls": 0,
+    "training_calls": 0,
+    "repair_arm_simulation_calls": 0,
+    "api_calls": 0,
+    "overleaf_results_sync": false,
+    "scope": "Numerical contract and complete original execution protocol adjudication; no efficacy or innovation conclusion.",
+    "commands": [
+      {
+        "type": "preflight_read",
+        "remote_shell": "grep -R -n 'self.s_dt =' /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/CLoSD/closd/env/tasks; sha256sum /data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json /data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/runtime_witness.json; nvidia-smi --id=0 --query-gpu=memory.used,memory.total,utilization.gpu --format=csv,noheader,nounits; ps -eo pid,ppid,args | grep -E 'run_support_reference_probe_v63_20261012.py|reference_velocity_collect_v43_20261012.py' | grep -v grep",
+        "note": "Exit1 solely because no baseline process remained; GPU0 699/49140 MiB and 0% utilization."
+      },
+      {
+        "type": "upstream_read",
+        "remote_shell": "sed -n '50,76p' /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/CLoSD/closd/env/tasks/closd.py; sed -n '650,705p' /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/CLoSD/closd/env/tasks/closd.py; git -C /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/CLoSD rev-parse HEAD; git -C /data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/CLoSD diff --name-only HEAD -- closd",
+        "exit_code": 0
+      },
+      {
+        "type": "addendum_invocation",
+        "command": "ssh -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=15 ouyanghao@10.147.17.32 env OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 CUDA_VISIBLE_DEVICES=0 PYTHONPATH=/data/code/ouyanghao/oyh/humanoid-combat-motion/envs/closd-r3/site-packages /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python /data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/numerical_contract_addendum_audit.py"
+      },
+      {
+        "type": "resource_guard",
+        "argv": [
+          "nvidia-smi",
+          "--id=0",
+          "--query-gpu=memory.used,memory.total,utilization.gpu",
+          "--format=csv,noheader,nounits"
+        ]
+      },
+      {
+        "type": "source_commit",
+        "argv": [
+          "git",
+          "-C",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/CLoSD",
+          "rev-parse",
+          "HEAD"
+        ]
+      },
+      {
+        "type": "source_clean",
+        "argv": [
+          "git",
+          "-C",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/third_party/CLoSD",
+          "diff",
+          "--name-only",
+          "HEAD",
+          "--",
+          "closd"
+        ]
+      },
+      {
+        "type": "upload_addendum_audit",
+        "command": "scp -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=15 D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/numerical_contract_addendum_audit.py ouyanghao@10.147.17.32:/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/numerical_contract_addendum_audit.py"
+      },
+      {
+        "type": "schema_only_finalize",
+        "command": "ssh -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=15 ouyanghao@10.147.17.32 /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python /data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/finalize_numerical_addendum_schema.py",
+        "script_sha256": "a3a531de4b3a40d0e0ea4828f6f11c09456bbb52c51ef92875ff50176c1c28aa"
+      },
+      {
+        "type": "sync_final_reports",
+        "command_template": "scp -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=15 ouyanghao@10.147.17.32:/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/<report> D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/<report>",
+        "reports": [
+          "NUMERICAL_CONTRACT_ADDENDUM.json",
+          "NUMERICAL_CONTRACT_ADDENDUM.md",
+          "numerical_adjudication_budget_ledger.json"
+        ]
+      },
+      {
+        "type": "remote_byte_hash_verification",
+        "command": "sha256sum /data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.json /data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.md /data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/numerical_adjudication_budget_ledger.json /data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json /data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.md"
+      }
+    ],
+    "upstream_closd_sha256": "dff1ca9bfb15c3058914c326cba83a07f69cd91952cd4e03ecfe1ad3d391e394",
+    "upstream_commit": "d8950bdb78312fcd2844f336b3fc079e7368c87f",
+    "root_mapping": {
+      "status": "PASS",
+      "canonical_expression": "(selected_ref-selected_ref[:,:,0:1,:])+selected_ref[:,:,0:1,:]",
+      "absolute_tolerance_m": 1e-12,
+      "relative_tolerance": 0,
+      "criterion_source": "scripts/physics_guided_com_lineage_v24_20261012.py:94-96",
+      "actual_max_error_m": 1.866893570624082e-16,
+      "raw_input_difference_m": 5.960464477539063e-08,
+      "new_tolerance_added": false,
+      "explanation": "The pre-existing verifier models float32 root-centering before coordinate conversion. One scalar residual after coordinate mapping is 1.866893570624082e-16 m; the original exact-zero audit criterion was not the frozen contract."
+    },
+    "resource_guard": {
+      "memory_used_mib": 699,
+      "memory_total_mib": 49140,
+      "utilization_percent": 0,
+      "guard_pass": true
+    },
+    "velocity": {
+      "status": "PASS",
+      "expression": "(current-previous)/task.s_dt",
+      "task_s_dt": 0.03333333333333333,
+      "task_s_dt_assignment": "third_party/CLoSD/closd/env/tasks/closd.py:64",
+      "rule_source": "scripts/reference_velocity_collect_v43_20261012.py:15-35",
+      "torch_version": "1.13.1+cu117",
+      "device_name": "NVIDIA RTX A6000",
+      "dtype": "torch.float32",
+      "tested_scalars": 622080,
+      "exact_same_cuda_arithmetic": true,
+      "max_abs_error_m_s": 0.0,
+      "first_frame_zero": true,
+      "previous_frame_exact": true,
+      "trace_applied_reference_exact": true,
+      "original_numpy_comparison_denominator": 0.03333333507180214,
+      "original_numpy_vs_actual_max_error_m_s": 9.5367431640625e-07,
+      "explanation": "Original NumPy audit divided by float32 serialized task.dt=0.0333333350718021, rather than the executed CUDA rule using Python scalar task.s_dt=1/30. Saved runtime velocities are tested against precisely the frozen CUDA expression; no experimental tolerance introduced."
+    },
+    "original_protocol_reverification": {
+      "status": "PASS",
+      "independent_witness": true,
+      "time_utc": "2026-10-12T02:56:55Z",
+      "witness_agent": "/root/support_reference_v63_document_witness",
+      "document": "docs/support_reference_probe_v63_20261012.md",
+      "invocation": "ssh -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=15 ouyanghao@10.147.17.32 env PYTHONPATH=/data/code/ouyanghao/oyh/humanoid-combat-motion/envs/closd-r3/site-packages /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/run_support_reference_probe_v63_20261012.py --check",
+      "documented_invocation_count": 1,
+      "prepare_invocations": 0,
+      "run_invocations": 0,
+      "retries": 0,
+      "source_fixes": 0,
+      "actual_invocation": {
+        "exit_code": 0,
+        "sentinel": "SUPPORT_REFERENCE_V63_DOCUMENT_CHECK_PASS",
+        "local_exec_session": 77898
+      },
+      "observed_processes": {
+        "launcher_pid": 2881291,
+        "collector_pid": 2881314,
+        "collector_child_pid": 2881344,
+        "launcher_parent_pid": 2881290,
+        "launcher_started_utc": "2026-10-12 02:43:39",
+        "collector_started_utc": "2026-10-12 02:43:39",
+        "collector_child_started_utc": "2026-10-12 02:43:53",
+        "state_time_unix": 1791773019.7298582,
+        "state_status": "RUNNING",
+        "arm": "baseline",
+        "resource_admission": {
+          "memory_used_mib": 699,
+          "memory_total_mib": 49140,
+          "utilization_percent": 0
+        },
+        "evidence": "Live ps PID/PPID/lstart/args and RUNNING state observed during invocation; complete receipt and execution-time binding checked after exit."
+      },
+      "scope": "Document execution and reference/data/runtime integrity only; synthetic simulation proxy, no efficacy, novelty, downstream or G1 conclusion.",
+      "training_calls": 0,
+      "api_calls": 0,
+      "overleaf_results_sync": false,
+      "checks": {
+        "frozen_source_hashes": true,
+        "source_manifest_hash": true,
+        "thresholds_hash": true,
+        "parent_versions_hash": true,
+        "all_reference_hashes": true,
+        "warm_runtime_spec_hash": true,
+        "frozen_model_weights": true,
+        "source_execution_binding": true,
+        "source_metrics_hash": true,
+        "source_denominator": true,
+        "source_order_frozen": true,
+        "three_offsets_per_source": true,
+        "source_text_case_target_joint_order": true,
+        "source_valid_prefix_0": true,
+        "source_valid_prefix_1": true,
+        "source_valid_prefix_2": true,
+        "source_valid_prefix_3": true,
+        "source_valid_prefix_4": true,
+        "source_valid_prefix_5": true,
+        "source_valid_prefix_6": true,
+        "source_valid_prefix_7": true,
+        "source_valid_prefix_8": true,
+        "source_valid_prefix_9": true,
+        "source_valid_prefix_10": true,
+        "source_valid_prefix_11": true,
+        "source_valid_prefix_12": true,
+        "source_valid_prefix_13": true,
+        "source_valid_prefix_14": true,
+        "source_valid_prefix_15": true,
+        "source_valid_prefix_16": true,
+        "source_valid_prefix_17": true,
+        "source_valid_prefix_18": true,
+        "source_valid_prefix_19": true,
+        "source_valid_prefix_20": true,
+        "source_valid_prefix_21": true,
+        "source_valid_prefix_22": true,
+        "source_valid_prefix_23": true,
+        "source_valid_prefix_24": true,
+        "source_valid_prefix_25": true,
+        "source_valid_prefix_26": true,
+        "source_valid_prefix_27": true,
+        "source_valid_prefix_28": true,
+        "source_valid_prefix_29": true,
+        "source_valid_prefix_30": true,
+        "source_valid_prefix_31": true,
+        "source_valid_prefix_32": true,
+        "source_valid_prefix_33": true,
+        "source_valid_prefix_34": true,
+        "source_valid_prefix_35": true,
+        "source_valid_prefix_36": true,
+        "source_valid_prefix_37": true,
+        "source_valid_prefix_38": true,
+        "source_valid_prefix_39": true,
+        "source_valid_prefix_40": true,
+        "source_valid_prefix_41": true,
+        "source_valid_prefix_42": true,
+        "source_valid_prefix_43": true,
+        "source_valid_prefix_44": true,
+        "source_valid_prefix_45": true,
+        "source_valid_prefix_46": true,
+        "source_valid_prefix_47": true,
+        "source_valid_prefix_48": true,
+        "source_valid_prefix_49": true,
+        "source_valid_prefix_50": true,
+        "source_valid_prefix_51": true,
+        "source_valid_prefix_52": true,
+        "source_valid_prefix_53": true,
+        "source_valid_prefix_54": true,
+        "source_valid_prefix_55": true,
+        "source_valid_prefix_56": true,
+        "source_valid_prefix_57": true,
+        "source_valid_prefix_58": true,
+        "source_valid_prefix_59": true,
+        "source_valid_prefix_60": true,
+        "source_valid_prefix_61": true,
+        "source_valid_prefix_62": true,
+        "source_valid_prefix_63": true,
+        "source_valid_prefix_64": true,
+        "source_valid_prefix_65": true,
+        "source_valid_prefix_66": true,
+        "source_valid_prefix_67": true,
+        "source_valid_prefix_68": true,
+        "source_valid_prefix_69": true,
+        "source_valid_prefix_70": true,
+        "source_valid_prefix_71": true,
+        "baseline_is_first_simulated_actual_with_padding": true,
+        "original_goal_hash": true,
+        "baseline_shape_finite": true,
+        "baseline_target_exact": true,
+        "baseline_first_61_frames_exact": true,
+        "baseline_height_exact": true,
+        "baseline_uniform_horizontal_translation": true,
+        "baseline_bounded_10cm": true,
+        "baseline_relative_pose": true,
+        "baseline_heading_roundoff": true,
+        "baseline_incomplete_inputs_unchanged": true,
+        "baseline_endpoint_exact": true,
+        "unconstrained_shape_finite": true,
+        "unconstrained_target_exact": true,
+        "unconstrained_first_61_frames_exact": true,
+        "unconstrained_height_exact": true,
+        "unconstrained_uniform_horizontal_translation": true,
+        "unconstrained_bounded_10cm": true,
+        "unconstrained_relative_pose": true,
+        "unconstrained_heading_roundoff": true,
+        "unconstrained_incomplete_inputs_unchanged": true,
+        "endpoint_preserved_shape_finite": true,
+        "endpoint_preserved_target_exact": true,
+        "endpoint_preserved_first_61_frames_exact": true,
+        "endpoint_preserved_height_exact": true,
+        "endpoint_preserved_uniform_horizontal_translation": true,
+        "endpoint_preserved_bounded_10cm": true,
+        "endpoint_preserved_relative_pose": true,
+        "endpoint_preserved_heading_roundoff": true,
+        "endpoint_preserved_incomplete_inputs_unchanged": true,
+        "endpoint_preserved_endpoint_exact": true,
+        "actual_request": true,
+        "runtime_baseline_binding": true,
+        "baseline_complete_denominator": true,
+        "baseline_case_text_source_order": true,
+        "baseline_original_goal_exact": true,
+        "baseline_original_heading_exact": true,
+        "baseline_target_and_heading_not_redefined": true,
+        "baseline_no_generation": true,
+        "reset_archive_hash": true,
+        "seven_exported_reset_states_exact": true,
+        "native_reset_cache_gate": true,
+        "initial_anchor": true,
+        "120_frame_clock": true,
+        "applied_reference_preexisting_frozen_contract": true,
+        "observation_trace_hash": true,
+        "reference_trace_same_applied_clock": true,
+        "reference_previous_successive_exact": true,
+        "reference_velocity_frozen_cuda_expression_exact": true,
+        "raw_task_interface": true,
+        "physx_cuda_cpu_export_completion_fence": true,
+        "same_time_actual_state_shape": true,
+        "single_charged_attempt": true,
+        "source_build_charged_not_zero": true,
+        "own_600_second_cap": true,
+        "global_72_gpu_hour_cap": true,
+        "global_15gib_disk_cap": true
+      },
+      "frozen_runtime": {
+        "spec_sha256": "81bdf764e312bcc92e4969e5eb9d2d6d6043f14c037e5a588dabbd564871f780",
+        "python": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python",
+        "overlay": "/data/code/ouyanghao/oyh/humanoid-combat-motion/envs/closd-r3/site-packages",
+        "base": "Warm Python3.8.20 + Torch1.13.1+cu117 + IsaacGym Preview4",
+        "packages_installed": 0
+      },
+      "reference_invariants": {
+        "baseline": {
+          "max_horizontal_translation_m": 0.0,
+          "endpoint_translation_max_m": 0.0,
+          "relative_pose_roundoff_max_m": 0.0,
+          "heading_roundoff_max_rad": 0.0,
+          "first_61_frames_exact": true,
+          "height_exact": true,
+          "all_72_targets_exact": true,
+          "incomplete_inputs_unchanged": true
+        },
+        "unconstrained": {
+          "max_horizontal_translation_m": 0.06075378566656608,
+          "endpoint_translation_max_m": 0.041090362839793386,
+          "relative_pose_roundoff_max_m": 1.1920928955078125e-07,
+          "heading_roundoff_max_rad": 1.7268110763524191e-07,
+          "first_61_frames_exact": true,
+          "height_exact": true,
+          "all_72_targets_exact": true,
+          "incomplete_inputs_unchanged": true
+        },
+        "endpoint_preserved": {
+          "max_horizontal_translation_m": 0.06075203301512327,
+          "endpoint_translation_max_m": 0.0,
+          "relative_pose_roundoff_max_m": 5.960464477539063e-08,
+          "heading_roundoff_max_rad": 2.0513898491003602e-07,
+          "first_61_frames_exact": true,
+          "height_exact": true,
+          "all_72_targets_exact": true,
+          "incomplete_inputs_unchanged": true
+        }
+      },
+      "runtime_integrity": {
+        "initial_reset_gate_pass": true,
+        "initial_anchor_error_m": 0.0,
+        "canonical_reference_error_m": 1.866893570624082e-16,
+        "reference_velocity_error_m_s": 0.0,
+        "policy_observation_shape": [
+          120,
+          72,
+          574
+        ],
+        "reference_frames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119
+        ],
+        "clock_contract": "At action k, reference k and observation k are recorded before action; actual k is after that action completed, linked to reference k. Next observation requests k+1. Reference and actual do not claim to be simultaneous pre-action states.",
+        "original_endpoint_frame": 119,
+        "original_endpoint_time_contract": "dataset motion, fixed before generation, endpoint at 4 seconds",
+        "reference_velocity_rule": "Successive applied canonical positions / s_dt; first frame zero; repeated query preserves previous; diagnostic amendment, not innovation",
+        "completion_fence_protocol": "fetch_results(True) immediately after every native simulate including reset warmup; no extra simulate or tensor refresh",
+        "reset_scope": "Seven exported kinematic tensors and four authoritative rigid-body caches; does not certify hidden PhysX state."
+      },
+      "budget": {
+        "charged_baseline_ledger": [
+          {
+            "label": "val_baseline_s11",
+            "stage": "measurement",
+            "seconds": 50.4387053065002,
+            "exit_code": 0,
+            "request_sha256": "a076366a7bdf104d60cb45d9224cf2dd53e2007df7e55bf7a9a5e46e54b905e9"
+          }
+        ],
+        "shared_source_native_generation_and_first_build_ledger": [
+          {
+            "label": "val_shared_s11_r0",
+            "stage": "measurement",
+            "seconds": 49.190580459311604,
+            "exit_code": 0,
+            "request_sha256": "78a25989a0d0887f5504086409332d1dd66c0c0c4924e73c29dc12129492b82d"
+          }
+        ],
+        "shared_source_generation_batch_calls": 1,
+        "shared_source_cost_reused_not_zero": true,
+        "own_charged_seconds": 50.4387053065002,
+        "own_remaining_seconds": 549.5612946934998,
+        "global_charged_seconds": 16227.973373092711,
+        "global_cap_seconds": 259200,
+        "tracked_bytes_plus_archive": 8817688176,
+        "disk_cap_bytes": 16106127360,
+        "cpu_audit_does_not_generate_or_simulate": true,
+        "new_generation_calls": 0,
+        "new_simulator_batches_observed": 1,
+        "remaining_documented_batches": 2
+      },
+      "denominators": {
+        "source_cases": 72,
+        "source_clusters": 24,
+        "offsets_per_source": 3,
+        "source_complete_inputs": 72,
+        "source_incomplete_inputs": 0,
+        "source_completed": 72,
+        "baseline_cases": 72,
+        "baseline_sources": 24,
+        "baseline_completed": 72,
+        "baseline_terminated": 0,
+        "baseline_joint_pass": 0,
+        "all_cases_retained": true
+      },
+      "bindings": {
+        "source": {
+          "lineage_sha256": "31285d8deacf990a7d7716dac55c5e073f7ce2cf72886865550ce35f2a6e6805",
+          "receipt_sha256": "f2559f2d3d610d59be818cda05dcf9965a1e803dc5f5c3bab9958704418fb682",
+          "request": {
+            "split": "val",
+            "mode": "native",
+            "seed": 11,
+            "round": 0,
+            "noise_round": 0,
+            "config": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+            "manifest": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+            "thresholds": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+            "versions": "d866b631cf5eff7480869f75ce4696ed1312524be47e6222cc7c6080d0a91948"
+          },
+          "output_hashes": {
+            "metadata.json": "deeaeb58efb8cc4d9a0a2626098de9d1ad308d96da03af757aadd7222de23b89",
+            "metrics.json": "944e12f600729ebf47e9b97192d2cacf7a7c4901704dff1f839c0ff5634cce81",
+            "trajectories.npz": "e96cb97ad5d12d4c54a3fbf57625d9ab4491e5c38febd800d78ae2a1baecfaaf"
+          },
+          "certification": "bound_request_at_execution"
+        },
+        "baseline": {
+          "lineage_sha256": "636008ca2c4aeb256cafb08705b51e827081352ca19d389409e1b25977bca948",
+          "receipt_sha256": "adff58fec670fe947836e424bd605b7cdf16df5ade35da583526ec2054802721",
+          "request": {
+            "split": "val",
+            "mode": "replay",
+            "seed": 11,
+            "round": 0,
+            "noise_round": 0,
+            "config": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+            "manifest": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+            "thresholds": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+            "versions": "aad9d6d0707717f6e851032ab078317cf10849e17dbfd2e2670c6cfd58421fbb",
+            "replay_motion": "5f0dbd7ce0f1ae340da0120ec99823b12441ceb93b615333ea50312f71d76b83"
+          },
+          "output_hashes": {
+            "metadata.json": "2c071d618e08411018346b9ef64dfaaf91e1901a0d88959f3ea3cf9467aef696",
+            "metrics.json": "fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",
+            "trajectories.npz": "7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136"
+          },
+          "certification": "bound_request_at_execution"
+        },
+        "receipt": {
+          "status": "complete",
+          "cases": 72,
+          "completed": 72,
+          "joint_pass": 0,
+          "elapsed_seconds": 47.52426338195801,
+          "trajectories_sha256": "7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136"
+        },
+        "versions_sha256": "aad9d6d0707717f6e851032ab078317cf10849e17dbfd2e2670c6cfd58421fbb",
+        "preparation_sha256": "ba4ca14f72136c00c0d127a459e477cdfb91bd91b859170b3d0cab24d1b0ede7",
+        "source_original_goal_sha256": "d008fae01d78f5f8f752aa4791b824540aec5791fd36173306881bcb09584809",
+        "reference_hashes": {
+          "baseline": "14dcb4ea715f485547c9abeba294ad3ead67dabee9807a83ebe6c98b2ea4b207",
+          "unconstrained": "db994bd95e96ad0df218d7157cf4074dd1c03f44d43f99abff9288d3cf1bf91a",
+          "endpoint_preserved": "abbe9fe449784445960e17d23dd4cbec020d8358a10aad51bd57e776e94ae95d"
+        },
+        "source_case_order": [
+          "008349:-0.15",
+          "008349:0.0",
+          "008349:0.15",
+          "010957:-0.15",
+          "010957:0.0",
+          "010957:0.15",
+          "008845:-0.15",
+          "008845:0.0",
+          "008845:0.15",
+          "010218:-0.15",
+          "010218:0.0",
+          "010218:0.15",
+          "010623:-0.15",
+          "010623:0.0",
+          "010623:0.15",
+          "007780:-0.15",
+          "007780:0.0",
+          "007780:0.15",
+          "006600:-0.15",
+          "006600:0.0",
+          "006600:0.15",
+          "010299:-0.15",
+          "010299:0.0",
+          "010299:0.15",
+          "002546:-0.15",
+          "002546:0.0",
+          "002546:0.15",
+          "004741:-0.15",
+          "004741:0.0",
+          "004741:0.15",
+          "002454:-0.15",
+          "002454:0.0",
+          "002454:0.15",
+          "008862:-0.15",
+          "008862:0.0",
+          "008862:0.15",
+          "008203:-0.15",
+          "008203:0.0",
+          "008203:0.15",
+          "003483:-0.15",
+          "003483:0.0",
+          "003483:0.15",
+          "014057:-0.15",
+          "014057:0.0",
+          "014057:0.15",
+          "004115:-0.15",
+          "004115:0.0",
+          "004115:0.15",
+          "008658:-0.15",
+          "008658:0.0",
+          "008658:0.15",
+          "002216:-0.15",
+          "002216:0.0",
+          "002216:0.15",
+          "011283:-0.15",
+          "011283:0.0",
+          "011283:0.15",
+          "008162:-0.15",
+          "008162:0.0",
+          "008162:0.15",
+          "006092:-0.15",
+          "006092:0.0",
+          "006092:0.15",
+          "005471:-0.15",
+          "005471:0.0",
+          "005471:0.15",
+          "012647:-0.15",
+          "012647:0.0",
+          "012647:0.15",
+          "014455:-0.15",
+          "014455:0.0",
+          "014455:0.15"
+        ]
+      },
+      "runtime_witness_sha256": "b88031939051092821ca9592229c27163cf316888aae71bce672093cfa8872aa"
+    },
+    "read_only_reverification_method": {
+      "source_sha256": "363f885be1f347a7aa3ffd2f701b776dd5e7aceec29c4968bd65ef2c7f400007",
+      "original_report_writes_excluded": true,
+      "modified_in_memory_checks": [
+        "Replace unsupported exact-zero root criterion with frozen verifier atol1e-12/rtol0",
+        "Use exact same CUDA expression on saved current/previous rather than NumPy division by serialized dt"
+      ],
+      "source_files_modified": false
+    },
+    "all_input_hashes_unchanged": true,
+    "charged_budget": {
+      "saved_array_cuda_seconds": 0.9037324842065573,
+      "baseline_plus_addendum_seconds": 51.342437790706754,
+      "own_cap_seconds": 600,
+      "global_prior_seconds": 16227.973373092711,
+      "global_with_addendum_seconds": 16228.877105576918,
+      "global_cap_seconds": 259200,
+      "separate_ledger": "numerical_adjudication_budget_ledger.json",
+      "original_budget_ledger_unchanged": true
+    },
+    "failed_checks": [],
+    "original_witness_sha256": "c8f320671fba8203c74e91fa46080d3318f678adaf046ceff405ba063076a5f5",
+    "versions_sha256": "aad9d6d0707717f6e851032ab078317cf10849e17dbfd2e2670c6cfd58421fbb",
+    "simulation_rerun": false,
+    "experimental_thresholds_changed": false
+  },
+  "reference_side_support_probe_post_run_audit": {
+    "audit_skill": "experiment-audit",
+    "audit_kind": "post_run_addendum",
+    "date": "2026-10-12",
+    "generated_at": "2026-10-12T03:20:11Z",
+    "auditor": "gpt-5.6-sol-ultra",
+    "reviewer_model": "gpt-5.6-sol",
+    "reviewer_family": "openai",
+    "reviewer_reasoning": "ultra",
+    "review_independence": "same-family",
+    "acceptance_status": "provisional",
+    "overall_verdict": "WARN",
+    "integrity_status": "warn",
+    "historical_pre_run_verdict": "FAIL_RETAINED",
+    "current_post_run_evidence_status": "WARN_PROVISIONALLY_VALID_BOUNDED_DIAGNOSTIC",
+    "summary": "The completed V65 continuation and locked V63 analyzer are internally reproducible from the authoritative remote artifacts. Counts, raw means, denominators, execution-bound arm hashes, reset exports, source-cluster bootstrap, budget, and STOP decision all independently match. The original V63 witness remains FAIL. Current evidence remains WARN because the server-created continuation receipt is launch-only, the parent exit record is a later observer transcription, the frozen phrase 'no test data' requires an additive internal-split clarification, the study has one seed and proxy-only simulation, and the audited sources are hash-frozen but untracked under divergent local and remote Git HEADs.",
+    "reason_codes": [
+      "PASS_SYNTHETIC_PROXY_EXPLICITLY_LABELED",
+      "PASS_NO_PREDICTION_STATISTIC_NORMALIZATION",
+      "PASS_THREE_ARMS_EXECUTION_BOUND_AND_RECOMPUTED",
+      "PASS_EXACT_EXPORTED_INITIAL_STATE_EQUALITY",
+      "PASS_PER_METRIC_72_FINITE_0_MISSING_DENOMINATORS",
+      "PASS_SOURCE_CLUSTERED_BOOTSTRAP_REPRODUCED",
+      "PASS_CORRECTED_STOP_DECISION_REPRODUCED",
+      "PASS_BUDGET_UNDER_FROZEN_CAP",
+      "FAIL_ORIGINAL_V63_DOCUMENT_WITNESS_RETAINED",
+      "WARN_PARENT_SERVER_RECEIPT_REMAINS_LAUNCHED",
+      "WARN_PARENT_EXIT_IS_POSTHOC_OBSERVER_TRANSCRIPTION",
+      "WARN_INTERNAL_VAL_CONTAINS_UPSTREAM_OFFICIAL_TEST_MATERIAL",
+      "WARN_SINGLE_SEED_SIMULATION_PROXY_ONLY",
+      "WARN_TRANSITION_INDEX_IS_NOT_SIMULTANEOUS_SENSOR_TRUTH",
+      "WARN_HIDDEN_PHYSX_STATE_EQUALITY_NOT_ESTABLISHED",
+      "WARN_ANALYSIS_SIMULATION_CALLS_ZERO_IS_ANALYZER_SCOPE_NOT_STUDY_TOTAL",
+      "WARN_ANALYSIS_OMITS_RECEIPT_AND_BUDGET_HASH_BINDINGS",
+      "WARN_ANALYSIS_PLAN_LOCK_BINDS_CODE_IDENTITY_ONLY",
+      "WARN_ANALYZER_PHYSICAL_DECISION_TRUSTS_SUMMARY_COUNTS",
+      "WARN_ANALYZER_DOES_NOT_ASSERT_CROSS_ARM_SOURCE_IDENTITY",
+      "WARN_INTEGRITY_GATES_RELY_ON_ASSERT",
+      "WARN_NUMERICAL_LEDGER_OMITTED_FROM_GLOBAL_AND_STAGE_GATE_ARITHMETIC",
+      "WARN_HASH_FROZEN_SOURCES_UNTRACKED_AND_GIT_HEADS_DIVERGE",
+      "WARN_LOCAL_PUBLIC_MIRROR_EXCLUDES_LICENSED_ARRAYS_BY_MANIFEST",
+      "NO_EFFICACY_NOVELTY_ACCEPTANCE_OR_G1_CONCLUSION"
+    ],
+    "preserved_pre_run_audit": {
+      "status": "UNCHANGED",
+      "local_json": "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/EXPERIMENT_AUDIT.json",
+      "local_markdown": "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/EXPERIMENT_AUDIT.md",
+      "remote_json": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/EXPERIMENT_AUDIT.json",
+      "remote_markdown": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/EXPERIMENT_AUDIT.md",
+      "json_sha256": "cfd74d960036300c2fa3c86178b9027364abf13e9c2a9ee1d8c6d2c13400420f",
+      "markdown_sha256": "ac65008a0b96b3d3f4881fc9af10ed55d16ef404e7c611c46f592b16a509f5ab"
+    },
+    "checks": {
+      "A_ground_truth_provenance": {
+        "status": "PASS",
+        "details": "The endpoint target and heading are dataset-motion-derived and fixed before generation. The tracked reference is reconstructed from the prior V51 simulated actual trajectory and the two repairs are deterministic transforms of that model/simulator-derived reference. This is explicitly labeled simulation_only and synthetic_proxy; semantic_status is not_verified_by_independent_evaluator. No official semantic or real-contact evaluator was used.",
+        "evidence": [
+          "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:19-30",
+          "D:/具身智能/conditional-human-motion-generation/docs/support_reference_probe_v63_20261012.md:3-9",
+          "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:103-160",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/raw/val_baseline_s11/metadata.json:$.goal_provenance,$.semantics",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/analysis_1791774541453036805.json:$.reports.*.evaluation_type"
+        ]
+      },
+      "B_score_normalization": {
+        "status": "PASS",
+        "details": "No reported metric is divided by a prediction max, min, or mean. Contact outputs are explicitly named proxy fractions and use fixed frozen thresholds. The analysis reports raw SI-unit means and finite/missing/total counts; independent recomputation found 72 finite and 0 missing for all seven reported metrics in each arm.",
+        "evidence": [
+          "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:71-100",
+          "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:118-160",
+          "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:42-48",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/analysis_1791774541453036805.json:$.reports.*.available_metric_means,$.reports.*.metric_denominators"
+        ]
+      },
+      "C_result_existence_and_lineage": {
+        "status": "WARN",
+        "details": "Authoritative remote state, summary, analysis, three requests, three raw arm directories, three main ledger rows, and one separate numerical-adjudication row exist and cross-bind. All common public files match local bytes, while licensed arrays and references are intentionally remote-only under the export manifest. The original witness remains FAIL. The V65 server receipt remains status LAUNCHED; a later observer file records exit 0 and the completion sentinel, but explicitly is not a server-created terminal receipt. Terminal artifacts and absent PID strongly support completion, but durable parent-exit evidence is secondary. The analysis output hashes raw analysis inputs but omits arm receipts, the continuation receipt, and budget ledgers; this audit checked those separately.",
+        "evidence": [
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/state.json:$.status",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/summary.json:$.status,$.reports,$.original_document_verdict",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/continuation_v65_receipt.json:$.status,$.pid",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/PARENT_EXIT_OBSERVATION.json:$.exit_code,$.output,$.provenance",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/budget_ledger.json:$",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json:$.status,$.all_failed_checks",
+          "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/public_exports/public_export_1791774815260736672.json:$.files,$.excluded"
+        ]
+      },
+      "D_dead_code_and_execution": {
+        "status": "PASS",
+        "details": "The reference translation is invoked during frozen preparation, the comparison arms execute through probe.batch from V65, the shared metric function emits every reported raw field, and the locked analyzer output matches an independent recomputation. The unused direct V63 --run route is historical and not presented as the executed continuation route. The current physical-gain branch reads aggregate counts from summary rather than recomputing them from raw rows, and source-cluster indices reuse baseline source IDs without explicitly asserting cross-arm source-ID equality. Independent recomputation and identity checks match exactly for these artifacts, so these are robustness warnings rather than current numerical mismatches. Integrity gates also rely on assert; the documented invocation did not use optimized Python, but future gates should use explicit exceptions.",
+        "evidence": [
+          "D:/具身智能/conditional-human-motion-generation/scripts/support_reference_repair_core_v63_20261012.py:10-54",
+          "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:30-59",
+          "D:/具身智能/conditional-human-motion-generation/scripts/continue_support_reference_probe_v65_20261012.py:68-91",
+          "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:103-160",
+          "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:14-81",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/analysis_plan_lock.json:$.analysis_source_sha256"
+        ]
+      },
+      "E_scope_and_fairness": {
+        "status": "WARN",
+        "details": "The actual scope is one seed, three deterministic replay arms, 24 source clusters, and three offsets per source. Every arm has identical case/body order, goals, headings, configs, simulator settings, controller weights, exported initial states, and 120 valid transition indices. The source-cluster bootstrap is correctly grouped by 24 source IDs. However, the frozen phrase 'no test data' means no internal held-out test partition; the internal validation set includes 19 upstream-train sources (57 inputs) and 5 upstream-test sources (15 inputs), and pretrained exposure was not verified. The additive clarification is accurate but does not rewrite the frozen analysis. Scope supports only the sample-bound STOP decision.",
+        "evidence": [
+          "D:/具身智能/conditional-human-motion-generation/docs/support_reference_continuation_v65_20261012.md:3-21",
+          "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:52-78",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/raw/val_baseline_s11/metadata.json:$.cases[*].split,$.cases[*].official_split",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/SCOPE_CLARIFICATION.json:$",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/analysis_1791774541453036805.json:$.scope,$.paired"
+        ]
+      },
+      "F_evaluation_classification": {
+        "status": "PASS",
+        "classification": {
+          "overall": [
+            "simulation_only",
+            "synthetic_proxy"
+          ],
+          "endpoint_heading_timing": "simulation_only with dataset-derived target specification; not full-trajectory real_gt",
+          "tracking": "synthetic_proxy against a prior simulated/model-derived trajectory",
+          "contact_penetration_jerk": "simulation_only; collision-geometry/body-force surface proxy",
+          "semantics": "not evaluated by an independent evaluator",
+          "human_eval": false
+        },
+        "details": "No result is classified as real-world contact truth, MoCap trajectory fidelity, official benchmark efficacy, or human evaluation.",
+        "evidence": [
+          "D:/具身智能/conditional-human-motion-generation/scripts/support_reference_repair_core_v63_20261012.py:1-5",
+          "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:1-5",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/versions.json:$.evaluation_type",
+          "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/raw/val_baseline_s11/metrics.json:$[*].contact_metric_type,$[*].semantic_status"
+        ]
+      }
+    },
+    "verified_scope": {
+      "arms": [
+        "baseline",
+        "unconstrained",
+        "endpoint_preserved"
+      ],
+      "seed": 11,
+      "sources": 24,
+      "offsets_m": [
+        -0.15,
+        0.0,
+        0.15
+      ],
+      "inputs_per_arm": 72,
+      "total_metric_rows": 216,
+      "valid_transition_indices_per_arm": 8640,
+      "terminated_per_arm": 0,
+      "internal_partition": "val",
+      "upstream_official_sources": {
+        "train": 19,
+        "test": 5
+      },
+      "upstream_official_inputs": {
+        "train": 57,
+        "test": 15
+      },
+      "pretrained_source_exposure": "not_verified",
+      "controller_training_calls": 0,
+      "generator_calls": 0,
+      "simulator_batches_total": 3,
+      "new_v65_comparison_batches": 2,
+      "baseline_rerun": false
+    },
+    "raw_results": {
+      "baseline": {
+        "counts": {
+          "completed": 72,
+          "condition_pass": 5,
+          "physical_pass": 0,
+          "tracking_pass": 68,
+          "joint_pass": 0
+        },
+        "means": {
+          "endpoint_error_m": 0.19590699259873187,
+          "endpoint_time_error_s": 0.5833333637565374,
+          "heading_error_rad": 0.21217996437288894,
+          "jerk_p95_m_s3": 1611.0568736182304,
+          "penetration_fraction": 0.0,
+          "surface_slip_proxy_fraction": 0.5424111456563213,
+          "tracking_mean_m": 0.055011089192703366
+        },
+        "finite_denominator_each_metric": 72,
+        "missing_or_nonfinite_each_metric": 0,
+        "slip_failures": 72,
+        "jerk_failures": 61
+      },
+      "unconstrained": {
+        "counts": {
+          "completed": 72,
+          "condition_pass": 6,
+          "physical_pass": 0,
+          "tracking_pass": 67,
+          "joint_pass": 0
+        },
+        "means": {
+          "endpoint_error_m": 0.19407599141037654,
+          "endpoint_time_error_s": 0.5606481773882277,
+          "heading_error_rad": 0.2071223756885066,
+          "jerk_p95_m_s3": 1607.752568054198,
+          "penetration_fraction": 0.0,
+          "surface_slip_proxy_fraction": 0.5544018713356693,
+          "tracking_mean_m": 0.05676227368207441
+        },
+        "finite_denominator_each_metric": 72,
+        "missing_or_nonfinite_each_metric": 0,
+        "slip_failures": 72,
+        "jerk_failures": 64
+      },
+      "endpoint_preserved": {
+        "counts": {
+          "completed": 72,
+          "condition_pass": 4,
+          "physical_pass": 0,
+          "tracking_pass": 67,
+          "joint_pass": 0
+        },
+        "means": {
+          "endpoint_error_m": 0.19491562526292364,
+          "endpoint_time_error_s": 0.5370370650457011,
+          "heading_error_rad": 0.20396860496870717,
+          "jerk_p95_m_s3": 1599.076190863714,
+          "penetration_fraction": 0.0,
+          "surface_slip_proxy_fraction": 0.5538484308965637,
+          "tracking_mean_m": 0.05682036547093756
+        },
+        "finite_denominator_each_metric": 72,
+        "missing_or_nonfinite_each_metric": 0,
+        "slip_failures": 72,
+        "jerk_failures": 63
+      }
+    },
+    "paired_analysis": {
+      "unit": "original source cluster",
+      "clusters": 24,
+      "inputs_per_cluster": 3,
+      "bootstrap_seed": 6211,
+      "bootstrap_resamples": 5000,
+      "unconstrained_joint_gain_pp": 0.0,
+      "unconstrained_source_cluster_95ci_pp": [
+        0.0,
+        0.0
+      ],
+      "endpoint_preserved_joint_gain_pp": 0.0,
+      "endpoint_preserved_source_cluster_95ci_pp": [
+        0.0,
+        0.0
+      ],
+      "all_48_arm_source_deltas_zero": true,
+      "decision_reported": "STOP_THIS_ROOT_TRANSLATION_PARAMETERIZATION_NO_PHYSICAL_OR_JOINT_GAIN",
+      "decision_independently_reproduced": true,
+      "interpretation_limit": "The all-zero interval describes this one-seed sample and does not prove population equivalence."
+    },
+    "reset_freeze_and_reference_checks": {
+      "requests_identical_except_replay_motion_hash": true,
+      "case_source_offset_order_equal": true,
+      "body_order_equal": true,
+      "goals_and_headings_equal": true,
+      "configuration_and_simulator_settings_equal": true,
+      "controller_weights_frozen": true,
+      "initial_states_sha256_all_arms": "b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+      "all_exported_initial_state_arrays_exact_across_arms": true,
+      "bootstrap_equals_first_action_for_seven_kinematic_tensors": true,
+      "reset_cache_gate_all_arms": true,
+      "hidden_physx_state_equality_established": false,
+      "reference_prefix_frames_0_through_60_exact": true,
+      "reference_z_exact": true,
+      "endpoint_preserved_final_frame_exact": true,
+      "unconstrained_final_frame_exact": false,
+      "max_horizontal_translation_m": {
+        "unconstrained": 0.06075378507375717,
+        "endpoint_preserved": 0.06075203791260719
+      },
+      "max_relative_pose_roundoff_m": {
+        "unconstrained": 1.1920928955078125e-07,
+        "endpoint_preserved": 5.960464477539063e-08
+      },
+      "time_semantics": "Reference and observation are pre-action and actual is post-action at the same transition index; this is not simultaneous pre-action sensor truth."
+    },
+    "contact_frame_assessment": {
+      "status": "COHERENT_WITHIN_DECLARED_PROXY_SCOPE",
+      "formula": "v_COM + omega cross (lowest collision-surface point minus COM)",
+      "frame_handling": "Body-local collision primitives and body-local COM are rotated to world coordinates before the lever arm is formed.",
+      "support_signal": "Simulated vertical body force plus a lowest-primitive-point ground-proximity threshold.",
+      "limits": [
+        "The force is body-level and does not locate a true contact point.",
+        "The lowest primitive point need not be the physical force-application point.",
+        "The COM-velocity convention relies on the frozen earlier calibration and was not rerun in this audit.",
+        "Transition-index alignment is not simultaneous sensing."
+      ],
+      "frame_mapping_defect_found": false
+    },
+    "analysis_hardening_limits": {
+      "plan_lock_scope": "Binds analyzer source hash only; it is not a complete preregistration of expected inputs or metric specification.",
+      "physical_decision_input": "Uses summary aggregate physical-pass counts; independent raw recomputation matches for the frozen artifacts.",
+      "cross_arm_source_identity_asserted_by_analyzer": false,
+      "cross_arm_source_identity_independently_verified": true,
+      "expected_reset_cache_keys_enforced_by_analyzer": false,
+      "actual_reset_cache_keys_and_zero_values_verified": true,
+      "integrity_gates_use_assert": true,
+      "documented_python_optimized_mode": false
+    },
+    "budget_and_timing": {
+      "main_ledger_rows": 3,
+      "main_wall_seconds": 150.7792569566518,
+      "raw_receipt_simulation_elapsed_seconds": 142.00649547576904,
+      "separate_saved_array_cuda_rows": 1,
+      "separate_saved_array_cuda_seconds": 0.9037324842065573,
+      "combined_charged_seconds": 151.68298944085836,
+      "own_cap_seconds": 600,
+      "under_cap": true,
+      "baseline_receipt_mtime_utc": "2026-10-12T02:44:27.371105+00:00",
+      "v65_launch_receipt_mtime_utc": "2026-10-12T03:07:05.611226+00:00",
+      "unconstrained_receipt_mtime_utc": "2026-10-12T03:07:53.209499+00:00",
+      "endpoint_preserved_receipt_mtime_utc": "2026-10-12T03:08:43.551779+00:00",
+      "summary_mtime_utc": "2026-10-12T03:08:46.419905+00:00",
+      "analysis_mtime_utc": "2026-10-12T03:09:01.452561+00:00",
+      "continuation_pid": 2891330,
+      "continuation_pid_present_at_audit": false,
+      "analysis_field_scope_note": "analysis.simulation_calls=0 and generation_calls=0 describe the read-only analysis invocation; the experiment summary records three simulator batches.",
+      "gate_accounting_limit": "The V65 own-cap reservation includes the separate numerical-adjudication charge, but the inherited global and per-stage gate arithmetic reads only ordinary budget_ledger.json rows. The omitted 0.9037324842 s does not approach either cap here, but the enforcement path is incomplete."
+    },
+    "historical_witness_status": {
+      "original_document_witness": "FAIL_RETAINED",
+      "failed_checks": [
+        "applied_reference_canonical_exact",
+        "reference_velocity_successive_exact"
+      ],
+      "numerical_contract_addendum": "PASS_SEPARATE_NON_RETROACTIVE",
+      "root_mapping_max_error_m": 1.866893570624082e-16,
+      "root_mapping_frozen_atol_m": 1e-12,
+      "original_numpy_velocity_difference_m_s": 9.5367431640625e-07,
+      "executed_cuda_velocity_expression_max_error_m_s": 0.0,
+      "addendum_saved_array_cuda_seconds": 0.9037324842065573,
+      "note": "The addendum does not relabel the original witness PASS and does not establish efficacy."
+    },
+    "artifact_hashes": {
+      "analysis": "b1ed5679b672e7375c8c79ca0e3a76a97943dc142e330ea21431f95505659a7e",
+      "summary": "a504f56cf37dec79fb46aeace51a80a25fc1dbbb8f4251bd8727ffeb881193b2",
+      "state": "c553cd283c296e38e72325a2e2e7c53891b1b2860e22a3c85f0a32da70787991",
+      "budget_ledger": "c1a19bd9200435ff926cf60ef577d7b570946a36b52ee7a3688395d2beeb48c0",
+      "continuation_receipt": "b76e4b3a2081b7a4f96acac14517ebbda73b37e96888d3449fa3f106f4bf1b5b",
+      "parent_exit_observation": "b9ba36d4c1f96534e08262ef32b54363872e57c88e82b336e6f9bbb8cb15e3f3",
+      "scope_clarification_json": "b19376e6db3c2ba865b1d76308b0b432dc6d5a691ee08e5a491d2e616402b981",
+      "scope_clarification_markdown": "b59ac5b6a8f7fb2936aca41413fd8ba5dacd6e6c59eab7b41b6d58aee363293c",
+      "analysis_plan_lock": "0452de2471d4804226bf7913c3de356483d9784aa16db2fac5afc87beb6c8b27",
+      "analyzer_source": "2a76407d53b7f8fe7dfe823eebb327a5b98b7da746d40dec73e4905150ddc11d",
+      "v65_source": "a801b76906368300b1f4aff021385be931e1d031ed0850c8b3aa6b330f39dbc6",
+      "original_witness": "c8f320671fba8203c74e91fa46080d3318f678adaf046ceff405ba063076a5f5",
+      "numerical_addendum": "fc990207cb3dc7c9c5c353394692d562d46a58f5ea4065c19a7798d9d49f8775",
+      "baseline_metrics": "fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",
+      "unconstrained_metrics": "9e318a0744ff693441e25607f6af892d6eebe65b6f390530d98834620c8f4165",
+      "endpoint_preserved_metrics": "dcdc1ba2850f9f5779f9ae470a289e0feb2a8f782041ff4dad15bdb0c1845f1e",
+      "baseline_trajectories": "7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136",
+      "unconstrained_trajectories": "67876934b5cea2e96fc7bb5927e8ad8fd8465dddc921413097d97086195a5098",
+      "endpoint_preserved_trajectories": "c7371a9b5556578bd6f8d726a35155415f3b4f9b94a09d257f3f6fad8b971f1d",
+      "public_export_manifest": "ee712de89711d7694f636e7ff8abbe797ee76de2865f89e7304ce7a9e12e73a4",
+      "public_export_archive": "d0e6be9753e7f8a75e2a334bd7376e795ec57c3dfaa31348b346640ea70be59d"
+    },
+    "reproducibility": {
+      "local_git_head": "ffadb70f3f4cb7de2537529ba26a66bc6d55ee66",
+      "remote_git_head": "e1ef719d6702d15a5ab211db0e55be438b2d1c88",
+      "git_heads_match": false,
+      "audited_v63_v65_sources_tracked": false,
+      "direct_source_hash_parity": true,
+      "local_result_tree_file_count": 53,
+      "remote_result_tree_file_count": 74,
+      "common_repo_relative_file_count": 51,
+      "common_repo_relative_hash_mismatches": 0,
+      "local_only_files": [
+        "baseline_metadata_for_witness.json",
+        "support_probe_public_1791774815260736672.tar.gz"
+      ],
+      "remote_only_deliberately_excluded_authoritative_files": 22,
+      "remote_only_additional_archive_path": "public_exports/support_probe_public_1791774815260736672.tar.gz",
+      "public_manifest_declared_payload_files": 47,
+      "public_archive_member_count": 48,
+      "v63_result_payload_paths_verified_locally": 43,
+      "local_declared_payload_files_hash_verified": 47,
+      "authoritative_arrays_location": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012",
+      "local_public_mirror_scope": "Metadata, metrics, lineage, receipts, logs, summary, analysis, witnesses and audit records; licensed motion/reference/trace arrays excluded by manifest.",
+      "public_archive_path_note": "The local archive is at the result root while the remote archive is under public_exports; bytes match SHA-256."
+    },
+    "claim_impacts": [
+      {
+        "claim": "The frozen three-arm diagnostic completed with 72 cases per arm and no baseline rerun.",
+        "impact": "supported"
+      },
+      {
+        "claim": "All exported initial-state arrays are bitwise identical across arms and reset/cache gates pass.",
+        "impact": "supported_with_hidden_physx_limit"
+      },
+      {
+        "claim": "The reported raw means, denominators, 24-source clustered bootstrap, and STOP decision match primary files.",
+        "impact": "supported"
+      },
+      {
+        "claim": "This root-translation parameterization produced physical or joint improvement in the audited sample.",
+        "impact": "unsupported_and_observed_false_under_frozen_metrics"
+      },
+      {
+        "claim": "The all-zero clustered interval proves population equivalence or generalization.",
+        "impact": "unsupported"
+      },
+      {
+        "claim": "No test material was used.",
+        "impact": "needs_qualification_to_no_internal_held_out_test_partition"
+      },
+      {
+        "claim": "The evaluation establishes real-world contact truth, official benchmark efficacy, semantics, novelty, C2/C3 validity, G1 readiness, or downstream benefit.",
+        "impact": "unsupported"
+      },
+      {
+        "claim": "The original V63 document witness passed.",
+        "impact": "false; original FAIL must remain visible"
+      }
+    ],
+    "action_items": [
+      "Keep EXPERIMENT_AUDIT.json/.md and the original DOCUMENT_WITNESS FAIL immutable; cite this file only as a post-run addendum.",
+      "When reporting completion, cite the terminal state, summary, per-arm receipts and hashes; label PARENT_EXIT_OBSERVATION as a posthoc observer transcription and do not relabel continuation_v65_receipt as complete.",
+      "Replace or qualify 'no test data' as 'no internal held-out test partition evaluated'; disclose the 19/5 upstream train/test source mix and unverified pretraining exposure.",
+      "Always pair analysis.simulation_calls=0 with summary.simulator_batches=3 so analysis-only accounting is not mistaken for experiment cost.",
+      "For future analyzers, bind arm receipts, continuation receipt, and both budget ledgers in input_hashes; recompute pass counts from raw rows; assert cross-arm source/clip/offset identity; require the expected reset-cache keys rather than accepting an empty mapping; include the separate numerical ledger in global and stage gate arithmetic; and replace integrity-critical assert statements with explicit fail-closed checks.",
+      "Keep contact and tracking results labeled simulation_only and synthetic_proxy, and keep same-transition-index timing distinct from simultaneous sensor truth.",
+      "Do not infer efficacy, equivalence, novelty, C2/C3 validity, G1 readiness, downstream benefit, or real-world physical validity from this one-seed diagnostic.",
+      "Archive the untracked hash-frozen sources and record both Git HEADs before treating a checkout revision as sufficient reproduction metadata."
+    ]
+  },
+  "reference_side_support_probe_scope": {
+    "status": "ADDITIVE_SCOPE_CLARIFICATION",
+    "metadata_sha256": "2c071d618e08411018346b9ef64dfaaf91e1901a0d88959f3ea3cf9467aef696",
+    "upstream_official_inputs": {
+      "test": 15,
+      "train": 57
+    },
+    "upstream_official_sources": {
+      "test": 5,
+      "train": 19
+    },
+    "internal_partition": "val",
+    "internal_sources": 24,
+    "inputs": 72,
+    "meaning": "No internal held-out test partition was evaluated. Upstream official-test material is present and was used for diagnosis; this is not a report of untouched HumanML3D official-test generalization.",
+    "pretraining_exposure": "Not verified per source; do not claim all sources unseen by pretrained generator/controller",
+    "original_analysis_unchanged": true,
+    "simulation_calls": 0
+  },
   "resource_status": {
     "entries": [
       {
@@ -46734,6 +49570,44 @@
         "seconds": 81.37118211574852,
         "exit_code": 0,
         "request_sha256": "b6573df8f9a23b33e48306c07f266fa6612bf2d040ed50e0d3ff5bbbbc0a52d5"
+      },
+      {
+        "directory": "support_reference_probe_v63_20261012",
+        "label": "val_baseline_s11",
+        "stage": "measurement",
+        "seconds": 50.4387053065002,
+        "exit_code": 0,
+        "request_sha256": "a076366a7bdf104d60cb45d9224cf2dd53e2007df7e55bf7a9a5e46e54b905e9"
+      },
+      {
+        "directory": "support_reference_probe_v63_20261012",
+        "label": "val_unconstrained_s11",
+        "stage": "comparison",
+        "seconds": 50.19018630683422,
+        "exit_code": 0,
+        "request_sha256": "bbb11813fbc4e585e37cce245fb0c1306071de5966574b78da8098cafd66ec96"
+      },
+      {
+        "directory": "support_reference_probe_v63_20261012",
+        "label": "val_endpoint_preserved_s11",
+        "stage": "comparison",
+        "seconds": 50.15036534331739,
+        "exit_code": 0,
+        "request_sha256": "60da83b0fa039040b80d86ac58328876b184f39763a58d1186f54713cc500944"
+      },
+      {
+        "directory": "support_reference_probe_v63_20261012",
+        "separate_ledger": "numerical_adjudication_budget_ledger.json",
+        "label": "v63_saved_velocity_cuda_numerical_contract_addendum",
+        "stage": "measurement",
+        "seconds": 0.9037324842065573,
+        "exit_code": 0,
+        "simulation_calls": 0,
+        "generation_calls": 0,
+        "actual_pid": 2887054,
+        "kind": "saved-array arithmetic",
+        "torch_version": "1.13.1+cu117",
+        "runtime_witness_sha256": "b88031939051092821ca9592229c27163cf316888aae71bce672093cfa8872aa"
       }
     ],
     "directories": [
@@ -46794,17 +49668,19 @@
       "results/reset_alignment_v4_20261011",
       "results/round_resource_status_20261012",
       "results/selected_construction_binding_v55_20261012",
+      "results/support_reference_probe_v62_20261012",
+      "results/support_reference_probe_v63_20261012",
       "results/support_velocity_diagnostic_v48_20261012",
       "results/support_velocity_diagnostic_v49_20261012",
       "results/surface_proxy_calibration_v50_20261012",
       "results/surface_proxy_calibration_v52_20261012",
       "results/velocity_reference_fixture_v19_20261012"
     ],
-    "output_bytes": 8765393133,
-    "charged_wall_hours_one_gpu_per_job": 4.493759629940614,
+    "output_bytes": 8909611611,
+    "charged_wall_hours_one_gpu_per_job": 4.535893793674186,
     "stage_hours": {
-      "measurement": 1.2217598606982372,
-      "comparison": 2.0693459799927143,
+      "measurement": 1.2360216489734335,
+      "comparison": 2.0972183554510897,
       "ablation_g1": 1.183124713848552,
       "downstream": 0.0,
       "reserve": 0.01952907540111078
@@ -46833,7 +49709,7 @@
     },
     "total_cap_hours": 72,
     "output_cap_bytes": 16106127360,
-    "data_free_bytes": 36852645888,
+    "data_free_bytes": 36708065280,
     "data_free_floor_bytes": 21474836480,
     "cap_checks": {
       "total": true,
@@ -46846,8 +49722,8 @@
       "reserve": true
     },
     "status": "CAPS_PASS",
-    "source_sha256": "c44b0e632d1016d04fbe5ea34d712e6c151a1ebe8cf0dad5b668b0c0749b53cc",
-    "time": 1791772016.64352,
+    "source_sha256": "a5082629a2a6ea85c9f966cfaf61d2ec545bfb00f68b0d9f8109785d1f5af136",
+    "time": 1791775582.9720318,
     "gpu_jobs_launched_by_this_script": 0
   },
   "full_efficacy_comparisons_completed": 1,
@@ -87730,7 +90606,7 @@
     "results\\reference_observation_v42_20261012\\DOCUMENT_WITNESS.json": "e68742dc2987a50684a4cfd82237ef9f1014aafdf6b135952fc4bdac6a15ef55",
     "results\\reference_observation_v42_20261012\\versions.json": "00ae3501899a92d524509f7661d91daf23c505434e69ab37c8b2817050e5e54b",
     "results\\reference_observation_v42_20261012\\budget_ledger.json": "fd7a490fa968a402c455f1e7e1f1f3b9ced5528ad23320fa5ea2420f754ee8b5",
-    "results\\round_resource_status_20261012\\snapshot_1791772016643535776.json": "12c49186f0cae81dfadfa8f17d14aa3fe0f82228445015a25c257c2ffa84c7b2",
+    "results\\round_resource_status_20261012\\snapshot_1791775582972045975.json": "7ffe1cff90bda3af8f694ea287624ad13643e6b58467ed1c2cdb6bfd9392c81d",
     "results\\reference_velocity_v43_20261012\\summary.json": "c5ded5f5225c66dec3421fd679ba095ce4e64eff1b68a254e861e8f63d152ffd",
     "results\\reference_velocity_v43_20261012\\DOCUMENT_WITNESS.json": "92bfaca03d734699add960a354fff196ff133cc77eb98538102d7e553fd32366",
     "results\\reference_velocity_v43_20261012\\versions.json": "9cc69c6318892df77657c6dac4e38e8f514d5a85c009addbea65d0edfbce1c5a",
@@ -87756,10 +90632,24 @@
     "results\\native_manifold_v56_20261012\\DOCUMENT_WITNESS.json": "b0c109cd6dd1fd9015fbdf4dbd20b59ccc877edcfa76a5d17bddf4351979f589",
     "results\\native_manifold_v56_20261012\\runtime_witness.json": "4a8a9a4ea35a479b429922b3d29c523df891cf40703b96b428cf58dcb878ce7a",
     "results\\native_manifold_v56_20261012\\budget_ledger.json": "a4f027f83a7c10fe5fffb27229d78aac9988a3778becfd82bda43b9e2ce99c0a",
+    "results\\native_manifold_analysis_v57_20261012\\EXPERIMENT_AUDIT.json": "d3c0fb4eb301702522fd5916b69ddb21b412737cf0ba07becdf7ebeccab4f0b1",
+    "results\\support_reference_probe_v63_20261012\\summary.json": "a504f56cf37dec79fb46aeace51a80a25fc1dbbb8f4251bd8727ffeb881193b2",
+    "results\\support_reference_probe_v63_20261012\\DOCUMENT_WITNESS.json": "c8f320671fba8203c74e91fa46080d3318f678adaf046ceff405ba063076a5f5",
+    "results\\support_reference_probe_v63_20261012\\runtime_witness.json": "b88031939051092821ca9592229c27163cf316888aae71bce672093cfa8872aa",
+    "results\\support_reference_probe_v63_20261012\\budget_ledger.json": "c1a19bd9200435ff926cf60ef577d7b570946a36b52ee7a3688395d2beeb48c0",
+    "results\\support_reference_probe_v63_20261012\\EXPERIMENT_AUDIT.json": "cfd74d960036300c2fa3c86178b9027364abf13e9c2a9ee1d8c6d2c13400420f",
+    "results\\support_reference_probe_v63_20261012\\NUMERICAL_CONTRACT_ADDENDUM.json": "fc990207cb3dc7c9c5c353394692d562d46a58f5ea4065c19a7798d9d49f8775",
+    "results\\support_reference_probe_v63_20261012\\analysis_plan_lock.json": "0452de2471d4804226bf7913c3de356483d9784aa16db2fac5afc87beb6c8b27",
+    "results\\support_reference_probe_v63_20261012\\CONTINUATION_DOCUMENT_WITNESS_V65.json": "8722339893465e8bd4dfe1db1106dd47363c7db1fd2751850e73d86286784fbd",
+    "results\\support_reference_probe_v63_20261012\\continuation_v65_receipt.json": "b76e4b3a2081b7a4f96acac14517ebbda73b37e96888d3449fa3f106f4bf1b5b",
+    "results\\support_reference_probe_v63_20261012\\POST_RUN_AUDIT.json": "761655650836886077af13073b1377667a8296078c3c33e06a959fd0197877ad",
+    "results\\support_reference_probe_v63_20261012\\SCOPE_CLARIFICATION.json": "b19376e6db3c2ba865b1d76308b0b432dc6d5a691ee08e5a491d2e616402b981",
+    "results\\support_reference_probe_v63_20261012\\PARENT_EXIT_OBSERVATION.json": "b9ba36d4c1f96534e08262ef32b54363872e57c88e82b336e6f9bbb8cb15e3f3",
     "results\\paired_feedback_analysis_v53_20261012\\analysis_1791769436216620065.json": "30d61febbcacf0c7e123bc42d8e1feefd5e4640e890b61ac67ef337849a540db",
     "results\\paired_feedback_analysis_v54_20261012\\analysis_1791770205879251102.json": "bebec154baf929d372cd30dcfe3d8011a1d57e1b510950004031c28f6a895b80",
     "results\\selected_construction_binding_v55_20261012\\certificate_1791770401890678522.json": "7800698a34fdcb58710c81afc0ad17a2814c572b4fd6ffb826081d2939a685b0",
     "results\\native_manifold_analysis_v57_20261012\\diagnostic_1791771577179667295.json": "621ce100ab331637854571dc8bd74b99571bb9ed326cdf319f62220f849308df",
+    "results\\support_reference_probe_v63_20261012\\analysis_1791774541453036805.json": "b1ed5679b672e7375c8c79ca0e3a76a97943dc142e330ea21431f95505659a7e",
     "results\\native_reference_velocity_v46_20261012\\DOCUMENT_WITNESS.json": "d869b5e97f9de9fe7754408a17638786072070207393e8d218340c28f0c2bf7b",
     "results\\native_reference_velocity_v46_20261012\\versions.json": "883d7dd07e8d20a45fc355f71750679a80db90f54e4dc36f82934bd9ad9ebcb9",
     "results\\native_reference_velocity_v46_20261012\\budget_ledger.json": "02675861a1aa6cadebb2f4137d7feaaa294bd0ed1a3bf5a585525677ac60167c",

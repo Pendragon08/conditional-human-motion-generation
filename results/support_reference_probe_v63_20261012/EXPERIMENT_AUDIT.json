@@ -1,0 +1,371 @@
+{
+  "schema_version": "experiment-audit/v1",
+  "audit_skill": "experiment-audit",
+  "experiment": "support_reference_probe_v63_20261012",
+  "date": "2026-10-12",
+  "generated_at": "2026-10-12T03:06:30Z",
+  "audit_cutoff": "V65 preflight/witness complete; before V65 --run",
+  "verdict": "FAIL",
+  "overall_verdict": "fail",
+  "integrity_status": "fail",
+  "reason_code": "V63_ORIGINAL_WITNESS_FAIL_AND_THREE_ARM_RESULT_INCOMPLETE",
+  "reviewer": {
+    "agent_id": "/root/paired_v51_integrity_audit/fresh_integrity_reviewer",
+    "model": "gpt-5.6-sol",
+    "family": "openai",
+    "reasoning": "ultra",
+    "review_independence": "same-family",
+    "acceptance_status": "provisional",
+    "mode": "read-only except requested append-only audit outputs"
+  },
+  "executed_scope": {
+    "evaluation_type": [
+      "simulation_only",
+      "synthetic_proxy"
+    ],
+    "split": "validation",
+    "seed": 11,
+    "sources": 24,
+    "offsets_per_source": 3,
+    "cases_per_arm": 72,
+    "planned_arms": 3,
+    "executed_arms": 1,
+    "executed_arm_names": [
+      "baseline"
+    ],
+    "new_generation_calls": 0,
+    "new_simulator_batches": 1,
+    "comparison_arms_launched": false,
+    "summary_exists": false,
+    "analysis_exists": false,
+    "live_worker_observed_at_audit_cutoff": false
+  },
+  "terminal_evidence": {
+    "state_json_status": "WITNESS_COMPLETE_PENDING_REVIEW",
+    "document_witness_status": "FAIL",
+    "document_witness_failure": "AssertionError('applied_reference_canonical_exact')",
+    "document_witness_failed_checks": [
+      "applied_reference_canonical_exact",
+      "reference_velocity_successive_exact"
+    ],
+    "original_witness_preserved": true,
+    "numerical_contract_addendum_status": "PASS",
+    "numerical_contract_addendum_scope": "Separate saved-array numerical adjudication only; it does not rewrite the original witness or supply treatment-arm results.",
+    "baseline_ledger_entries": 1,
+    "baseline_ledger_seconds": 50.4387053065002,
+    "baseline_receipt": {
+      "status": "complete",
+      "cases": 72,
+      "completed": 72,
+      "joint_pass": 0,
+      "elapsed_seconds": 47.52426338195801
+    },
+    "baseline_counts": {
+      "completed": 72,
+      "condition_pass": 5,
+      "physical_pass": 0,
+      "tracking_pass": 68,
+      "joint_pass": 0
+    },
+    "source_denominator": {
+      "cases": 72,
+      "sources": 24,
+      "offsets_per_source": 3,
+      "complete_inputs": 72,
+      "incomplete_inputs": 0,
+      "completed": 72
+    }
+  },
+  "checks": {
+    "A_ground_truth_provenance": {
+      "status": "PASS",
+      "details": "The baseline reference is reconstructed from the cached simulated actual trajectory of V51 val_shared_s11_r0; both repair references are deterministic horizontal translations derived from simulated velocities, force/geometry support proxies, and that same cached trajectory. The documentation, versions metadata, and analyzer explicitly label the evaluation simulation-only and synthetic-proxy. It is not real MoCap or robot ground truth.",
+      "evidence": [
+        "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:19-29",
+        "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:30-49",
+        "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:69-73",
+        "D:/具身智能/conditional-human-motion-generation/docs/support_reference_probe_v63_20261012.md:3-9",
+        "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:42-48"
+      ]
+    },
+    "B_score_normalization": {
+      "status": "PASS",
+      "details": "No reported metric is divided by a maximum, minimum, or mean of the evaluated predictions. The optimizer eigenvalue is only a gradient-step scale, and its 0.10 m projection is a declared intervention bound. The current unexecuted analyzer reports raw finite-value means, explicit finite/missing/total denominators, raw pass counts, and paired percentage-point changes.",
+      "evidence": [
+        "D:/具身智能/conditional-human-motion-generation/scripts/support_reference_repair_core_v63_20261012.py:16-36",
+        "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:42-48",
+        "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:52-64"
+      ]
+    },
+    "C_result_existence_and_lineage": {
+      "status": "FAIL",
+      "details": "Only the baseline request/raw directory and one ledger row exist. Both treatment requests/raw directories, summary.json, and analysis_*.json are absent. The original independent witness remains FAIL. Its separate numerical addendum validates the pre-existing 1e-12 root-mapping contract and the exact CUDA 1/30 velocity expression on saved arrays, but it cannot retroactively make DOCUMENT_WITNESS PASS or complete the three-arm study. The original V63 runner also did not bind current versions/preparation/reference hashes to the exact witnessed snapshot before treatment arms. The new V65 continuation closes that prelaunch hole; its CPU-only preflight and independent continuation witness are PASS, but --run has not been invoked. Equal post-reset state across all arms therefore remains unobserved.",
+      "evidence": [
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json:$.status",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json:$.all_failed_checks",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json:$.denominators",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/budget_ledger.json:$[0]",
+        "D:/具身智能/conditional-human-motion-generation/scripts/run_support_reference_probe_v63_20261012.py:19-24",
+        "D:/具身智能/conditional-human-motion-generation/scripts/run_support_reference_probe_v63_20261012.py:63-81",
+        "D:/具身智能/conditional-human-motion-generation/scripts/continue_support_reference_probe_v65_20261012.py:15-48",
+        "D:/具身智能/conditional-human-motion-generation/scripts/continue_support_reference_probe_v65_20261012.py:51-89"
+      ]
+    },
+    "D_dead_code_and_execution": {
+      "status": "WARN",
+      "details": "The core numeric checks, preparation, and baseline --check branch executed and are represented in artifacts. The comparison branch and analyzer have not executed because the witness stopped the study. The analyzer is omitted from versions.json, but the current source is bound by the pre-arm remote analysis_plan_lock.json and will reject a different self-hash. The current analyzer fixes the earlier unexecuted decision/denominator defects and adds exact cross-arm exported-reset checks; neither repaired path has executed.",
+      "evidence": [
+        "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:15-18",
+        "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:64-73",
+        "D:/具身智能/conditional-human-motion-generation/scripts/run_support_reference_probe_v63_20261012.py:68-82",
+        "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:12-20",
+        "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:74-84",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/analysis_plan_lock.json:$"
+      ]
+    },
+    "E_scope_and_fairness": {
+      "status": "PASS",
+      "details": "The current protocol and current analyzer restrict interpretation to one validation seed, 24 sources x 3 fixed offsets, one shared cached construction, unchanged goals/thresholds, and a diagnostic decision about this root-translation parameterization. They expressly exclude innovation, efficacy acceptance, C1/C2/C3 replacement, G1, downstream training, held-out test, semantics, and diversity claims. The current analyzer now bases continuation wording on positive paired joint gain or physical-pass improvement versus baseline. Because only baseline exists, no treatment conclusion is available.",
+      "evidence": [
+        "D:/具身智能/conditional-human-motion-generation/docs/support_reference_probe_v63_20261012.md:3-9",
+        "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:52-78",
+        "D:/具身智能/conditional-human-motion-generation/docs/support_reference_continuation_v65_20261012.md:3-5",
+        "D:/具身智能/conditional-human-motion-generation/docs/support_reference_continuation_v65_20261012.md:17-21"
+      ]
+    },
+    "F_evaluation_classification": {
+      "status": "PASS",
+      "classification": [
+        "simulation_only",
+        "synthetic_proxy"
+      ],
+      "real_gt": false,
+      "human_eval": false,
+      "self_supervised_proxy": false,
+      "details": "The tracking target is a model/simulator-derived synthetic reference, and physical quantities are simulator/geometry proxies. No human evaluation or real-world ground truth is present."
+    }
+  },
+  "invariant_findings": {
+    "source_and_body_order": {
+      "status": "PASS_WITH_STATIC_WARNING",
+      "details": "The independent witness verified the manifest-derived case/text/target-joint order, 72 metrics/cases, 24 sources with three offsets each, and a contiguous valid prefix for every case. Preparation resolves each foot by body name before indexing. Preparation itself should have asserted case/trajectory/body-axis alignment before writing references rather than relying on the later witness.",
+      "evidence": [
+        "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/witness_independent_audit.py:53-79",
+        "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:24-44"
+      ]
+    },
+    "contact_frame_com": {
+      "status": "PASS_WITH_PROXY_BOUNDARY",
+      "details": "Collision primitives are read in body-local coordinates, rotated to world coordinates, lowered by primitive radius, and the lowest surface proxy is selected. V19-established COM linear velocity is converted to the selected point velocity using v_COM + omega x (point - COM). Support uses simulated vertical body force and surface height. This is internally consistent for the declared simulator/geometry proxy; it is not a measured contact-manifold or real-contact truth.",
+      "evidence": [
+        "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:1-5",
+        "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:36-68",
+        "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:71-100",
+        "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:34-49"
+      ]
+    },
+    "reference_geometry": {
+      "status": "PASS_FOR_PREPARED_FILES",
+      "details": "All three references are finite 120x72x24x3 arrays with identical targets. Frames 0-60 and all Z coordinates are exact. Horizontal translation is shared across bodies and bounded below 0.10 m. Maximum shifts are 0.0607537857 m (unconstrained) and 0.0607520330 m (endpoint-preserved); endpoint-preserved final translation is exactly zero. All 72 inputs were complete, so the declared incomplete-case rule was not exercised in this run.",
+      "evidence": [
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json:$.reference_invariants",
+        "D:/具身智能/conditional-human-motion-generation/scripts/support_reference_repair_core_v63_20261012.py:10-37",
+        "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:45-58"
+      ]
+    },
+    "original_goals": {
+      "status": "PASS_FOR_PREPARATION_AND_BASELINE",
+      "details": "Each reference archive carries the same original-goal array; the baseline execution goal hash and case order match the frozen source. Treatment-arm execution has not occurred.",
+      "evidence": [
+        "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:60-77",
+        "D:/具身智能/conditional-human-motion-generation/scripts/run_support_reference_probe_v63_20261012.py:55-60",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json:$.checks.baseline_original_goal_exact"
+      ]
+    },
+    "reset_and_time_alignment": {
+      "status": "PASS_FOR_BASELINE_ONLY",
+      "details": "The baseline initial reset gate passed; seven exported reset tensors and four named rigid-body cache checks matched; the initial XY anchor error was zero; frames were exactly 0..119. The temporal claim is limited to a shared transition index: reference/observation k is recorded before action k, while actual k is recorded after that action. This is not simultaneous pre-action reference/actual sensing. Equal reset state across three arms is not yet testable.",
+      "evidence": [
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json:$.runtime_integrity",
+        "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.md:21-25",
+        "D:/具身智能/conditional-human-motion-generation/docs/support_reference_continuation_v65_20261012.md:19"
+      ]
+    }
+  },
+  "numerical_contract_addendum": {
+    "status": "PASS_SEPARATE_EVIDENCE",
+    "original_witness_status_unchanged": "FAIL",
+    "root_mapping": {
+      "actual_max_error_m": 1.866893570624082e-16,
+      "different_scalars_under_bitwise_test": 1,
+      "tested_scalars": 622080,
+      "preexisting_absolute_tolerance_m": 1e-12,
+      "relative_tolerance": 0,
+      "passes_preexisting_contract": true
+    },
+    "velocity": {
+      "executed_expression": "(current-previous)/(1/30)",
+      "dtype": "torch.float32",
+      "exact_same_cuda_arithmetic": true,
+      "max_abs_error_m_s": 0.0,
+      "original_numpy_float32_dt_max_error_m_s": 9.5367431640625e-07,
+      "first_frame_zero": true
+    },
+    "input_hashes_unchanged": true,
+    "simulation_rerun": false,
+    "generation_calls": 0,
+    "training_calls": 0,
+    "gpu_saved_array_arithmetic_seconds": 0.9037324842065573,
+    "constraint_note": "The addendum used CUDA saved-array arithmetic despite the audit assignment's no-GPU instruction. It ran no simulator, generator, or training. This is disclosed as a protocol-scope warning and does not alter the numerical result or the original witness verdict.",
+    "evidence": [
+      "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.json:$.root_mapping",
+      "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.json:$.velocity",
+      "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.json:$.charged_budget",
+      "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/numerical_contract_addendum_audit.py:40-72",
+      "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/numerical_contract_addendum_audit.py:73-94"
+    ]
+  },
+  "prospective_v65_status": {
+    "status": "PREFLIGHT_AND_INDEPENDENT_WITNESS_PASS_NOT_RUN_AT_AUDIT_CUTOFF",
+    "source_sha256": "a801b76906368300b1f4aff021385be931e1d031ed0850c8b3aa6b330f39dbc6",
+    "document_sha256": "eb5db0676772205d8d8709595e5196d96be25faf8f9b750fea20c145effd83b5",
+    "local_remote_byte_identical": true,
+    "preflight_exists": true,
+    "preflight_status": "PASS",
+    "preflight_sha256": "4e75b64dd6e2e732f6e31968818f2198e1ac7fa4568a1373784285643b66f2d2",
+    "continuation_witness_exists": true,
+    "continuation_witness_status": "PASS",
+    "continuation_witness_sha256": "8722339893465e8bd4dfe1db1106dd47363c7db1fd2751850e73d86286784fbd",
+    "continuation_witness_documented_check_invocations": 1,
+    "continuation_witness_run_invocations": 0,
+    "continuation_receipt_exists": false,
+    "comparison_arms_exist": false,
+    "closed_items": [
+      "Binds the original FAIL witness, numerical addendum, runtime witness, versions, preparation, all three references, baseline output hashes, lineage, and receipt before each comparison arm.",
+      "Counts the separate numerical-adjudication charge against the 600-second local budget.",
+      "Preserves the original FAIL and baseline rather than rerunning them."
+    ],
+    "remaining_items": [
+      "The preflight and continuation witness certify only frozen inputs and readiness; they contain zero treatment simulation calls and no result evidence.",
+      "No post-execution equality check yet exists for initial_states/reset caches/body ordering across all three arms.",
+      "The analyzer is omitted from versions.json; a separate pre-arm analysis_plan_lock.json (SHA-256 0452de2471d4804226bf7913c3de356483d9784aa16db2fac5afc87beb6c8b27) now binds the exact current analyzer, and the analyzer self-checks it, but the lock is not itself part of V65 preflight.",
+      "The separate numerical charge is not incorporated into the original runner's global/stage ledger arithmetic, although current headroom is large."
+    ]
+  },
+  "post_cutoff_note": {
+    "event": "A V65 --run was launched after this audit's pre-run cutoff.",
+    "audited_here": false,
+    "impact": "No later output, completion state, or efficacy interpretation is covered by this report. A separate post-run append-only audit is required."
+  },
+  "historical_unexecuted_source_finding": {
+    "old_analyzer_sha256": "59f16230a7356c6c5e607bd61ea260baf1b83b0b01483f6ebbac02547b389af5",
+    "current_analyzer_sha256": "2a76407d53b7f8fe7dfe823eebb327a5b98b7da746d40dec73e4905150ddc11d",
+    "old_issue": "The old analyzer decision ignored computed paired gains and branched only on whether every arm had zero absolute joint-pass count; it also omitted per-metric finite/missing denominators.",
+    "current_static_status": "REMEDIATED_AND_LOCKED_BEFORE_TREATMENT_EXECUTION",
+    "result_impact": "None yet because no analysis output exists."
+  },
+  "v62_failure_preservation": {
+    "status": "PASS",
+    "details": "The V62 CPU fixture assertion failure is retained with zero generation, simulation, and GPU seconds. V63 corrects the fixture expectation without rewriting V62.",
+    "evidence": "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v62_20261012/preparation_failure.json:2-11"
+  },
+  "git_and_deployment": {
+    "status": "WARN",
+    "local_head": "ffadb70f3f4cb7de2537529ba26a66bc6d55ee66",
+    "remote_head": "e1ef719d6702d15a5ab211db0e55be438b2d1c88",
+    "heads_match": false,
+    "audited_v63_v65_files_tracked": false,
+    "details": "The audited files are untracked on both checkouts. Direct hashes establish local/remote parity for the current code and evidence, but neither checkout HEAD reproduces these files."
+  },
+  "reason_codes": [
+    "PASS_SYNTHETIC_PROXY_EXPLICITLY_LABELED",
+    "PASS_NO_PREDICTION_STATISTIC_NORMALIZATION",
+    "FAIL_ORIGINAL_DOCUMENT_WITNESS_RETAINED",
+    "FAIL_ONLY_ONE_OF_THREE_ARMS_EXISTS",
+    "FAIL_SUMMARY_AND_ANALYSIS_ABSENT",
+    "FAIL_ORIGINAL_V63_RUNNER_LACKS_WITNESSED_CROSS_ARM_FREEZE_BINDING",
+    "WARN_V65_PREFLIGHT_PASS_BUT_COMPARISON_AND_ANALYZER_PATHS_UNEXECUTED",
+    "WARN_ANALYZER_OMITTED_FROM_FROZEN_VERSION_MANIFEST_BUT_SEPARATELY_PLAN_LOCKED",
+    "WARN_EQUAL_RESET_STATE_ACROSS_ARMS_NOT_YET_OBSERVED",
+    "WARN_PREPARATION_ORDER_CHECKS_ARE_POSTHOC",
+    "WARN_AUDITED_FILES_UNTRACKED_AND_GIT_HEADS_DIVERGE",
+    "WARN_NUMERICAL_ADDENDUM_USED_CUDA_DESPITE_NO_GPU_AUDIT_SCOPE",
+    "PASS_SEPARATE_NUMERICAL_CONTRACT_ADJUDICATION",
+    "PASS_CURRENT_ANALYZER_DECISION_AND_DENOMINATORS_STATICALLY_REPAIRED",
+    "PASS_V62_FAILURE_RETAINED",
+    "INFO_V65_RUN_LAUNCHED_AFTER_AUDIT_CUTOFF_NOT_AUDITED",
+    "NO_EFFICACY_NOVELTY_OR_G1_CONCLUSION"
+  ],
+  "claim_impacts": [
+    {
+      "claim": "Three prepared references preserve the stated source order, goals, prefix, height, body-relative pose, 10 cm bound, and endpoint constraint.",
+      "impact": "supported_for_prepared_files"
+    },
+    {
+      "claim": "The baseline replay executed once with 72/72 complete cases and joint pass 0/72.",
+      "impact": "supported"
+    },
+    {
+      "claim": "Applied reference is bitwise identical to the root-canonicalized reference and NumPy-float32-dt velocity recomputation.",
+      "impact": "unsupported_by_original_witness"
+    },
+    {
+      "claim": "Applied reference satisfies the pre-existing 1e-12 root-mapping contract and saved velocity exactly matches the executed CUDA 1/30 expression.",
+      "impact": "supported_by_separate_addendum_only"
+    },
+    {
+      "claim": "Unconstrained or endpoint-preserved repair improves physical or joint quality.",
+      "impact": "unsupported_no_treatment_runs"
+    },
+    {
+      "claim": "This root-translation parameterization should continue or stop based on V63 results.",
+      "impact": "unavailable_until_two_arms_run_and_current_analysis_is_independently_audited"
+    },
+    {
+      "claim": "Reference and actual are simultaneous states.",
+      "impact": "unsupported_only_same_transition_index_is_verified"
+    },
+    {
+      "claim": "Innovation, C1/C2/C3 efficacy, G1 readiness, downstream benefit, or population-level effect.",
+      "impact": "unsupported_and_out_of_scope"
+    }
+  ],
+  "action_items": [
+    "Keep the original V63 DOCUMENT_WITNESS FAIL and initial-failure files immutable; cite the numerical addendum separately.",
+    "Do not treat V63 as a completed comparison: summary.json, analysis output, and both treatment arms are absent.",
+    "Preserve the completed V65 preflight and independent continuation witness; if --run is later invoked, require exact source/document/preflight hashes and retain its receipt and all failures.",
+    "After treatment execution, enforce and independently verify the current analyzer's exact initial_states.npz equality and reset/cache gates across all three arms; retain the explicit limitation that hidden PhysX-state equality is not established.",
+    "Preserve and independently bind analysis_plan_lock.json (SHA-256 0452de2471d4804226bf7913c3de356483d9784aa16db2fac5afc87beb6c8b27); retain the analyzer source hash in the result and verify local/remote byte identity.",
+    "Retain per-metric finite, missing/nonfinite, and total denominators in every analysis output.",
+    "Use the current decision rule based on treatment-versus-baseline physical/joint improvement; independently audit the post-cutoff V65 result before any mechanism decision.",
+    "Qualify time alignment as same transition index, not simultaneous pre-action reference/actual state.",
+    "Commit or otherwise archive the untracked audited files against a reproducible revision; record the local/remote HEAD mismatch.",
+    "Do not infer efficacy, novelty, C2/C3 validity, G1 readiness, or downstream benefit from this one-seed diagnostic."
+  ],
+  "audited_input_hashes": {
+    "scripts/support_reference_repair_core_v63_20261012.py": "sha256:376484bd771f653ff6e6132911bf3428b829662ef503a86f19f00519b8f71e26",
+    "scripts/prepare_support_reference_probe_v63_20261012.py": "sha256:bd7b7699dbcbf4d2638130d8c64fbb502eabb90f321bf06c40d2e654d98c9e88",
+    "scripts/run_support_reference_probe_v63_20261012.py": "sha256:416f6a7c233a03db01c44100cbe7d8e260d529c142f36bc00720720c2a828f03",
+    "scripts/analyze_support_reference_probe_v63_20261012.py": "sha256:2a76407d53b7f8fe7dfe823eebb327a5b98b7da746d40dec73e4905150ddc11d",
+    "scripts/continue_support_reference_probe_v65_20261012.py": "sha256:a801b76906368300b1f4aff021385be931e1d031ed0850c8b3aa6b330f39dbc6",
+    "docs/support_reference_probe_v63_20261012.md": "sha256:33fac131739cdc96cf0fda345ad88d091d045808678f963ed6b644d8fa7f765a",
+    "docs/support_reference_continuation_v65_20261012.md": "sha256:eb5db0676772205d8d8709595e5196d96be25faf8f9b750fea20c145effd83b5",
+    "results/support_reference_probe_v62_20261012/preparation_failure.json": "sha256:a0d1fea5fb24c4dd2268dabea3a5ea15d2ade439ce717a448b4631e64df4d535",
+    "results/support_reference_probe_v63_20261012/versions.json": "sha256:aad9d6d0707717f6e851032ab078317cf10849e17dbfd2e2670c6cfd58421fbb",
+    "results/support_reference_probe_v63_20261012/preparation.json": "sha256:ba4ca14f72136c00c0d127a459e477cdfb91bd91b859170b3d0cab24d1b0ede7",
+    "results/support_reference_probe_v63_20261012/runtime_witness.json": "sha256:b88031939051092821ca9592229c27163cf316888aae71bce672093cfa8872aa",
+    "results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json": "sha256:c8f320671fba8203c74e91fa46080d3318f678adaf046ceff405ba063076a5f5",
+    "results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.md": "sha256:64e1e5b3754fce98f3a49aea3ef2b9073503d21c13ea680e6eaf62cca18c7980",
+    "results/support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.json": "sha256:fc990207cb3dc7c9c5c353394692d562d46a58f5ea4065c19a7798d9d49f8775",
+    "results/support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.md": "sha256:dc419d5973f670354eb60b3e6b88048b1500183a96e864144278e4981ecc4f76",
+    "results/support_reference_probe_v63_20261012/analysis_plan_lock.json": "sha256:0452de2471d4804226bf7913c3de356483d9784aa16db2fac5afc87beb6c8b27",
+    "results/support_reference_probe_v63_20261012/continuation_v65_preflight.json": "sha256:4e75b64dd6e2e732f6e31968818f2198e1ac7fa4568a1373784285643b66f2d2",
+    "results/support_reference_probe_v63_20261012/CONTINUATION_DOCUMENT_WITNESS_V65.json": "sha256:8722339893465e8bd4dfe1db1106dd47363c7db1fd2751850e73d86286784fbd",
+    "results/support_reference_probe_v63_20261012/CONTINUATION_DOCUMENT_WITNESS_V65.md": "sha256:0e901e52b45b16e42b0b88fe1bcb5e2b93c7aeb0f0ea0ed03f8e909e2d58b675",
+    "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/lineage.json": "sha256:636008ca2c4aeb256cafb08705b51e827081352ca19d389409e1b25977bca948",
+    "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/metrics.json": "sha256:fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",
+    "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/trajectories.npz": "sha256:7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136",
+    "results/support_reference_probe_v63_20261012/raw/val_baseline_s11/observation_trace.npz": "sha256:503f3bd356f54e8fdfc54099ac1873938ac6d8fd075ca2aae2e9ec170287dbe1"
+  },
+  "local_remote_note": "The requested source files, current analyzer, V65 continuation, protocol documents, witness/addendum files, and audit outputs were checked for byte parity when available. Authoritative runtime arrays remain remote by design."
+}

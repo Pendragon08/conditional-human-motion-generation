@@ -1,0 +1,288 @@
+{
+  "audit_skill": "experiment-audit",
+  "audit_scope": "Independent integrity delta for V56 collection, V57 read-only analysis, and V61 continuation only",
+  "verdict": "WARN",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "reason_code": "reproducibility_untracked_remote_head_divergence",
+  "reason_codes": [
+    "PASS_EXPLICIT_SIMULATION_ONLY_PROVENANCE",
+    "PASS_NO_PREDICTION_NORMALIZED_ACCEPTANCE_SCORE",
+    "PASS_TERMINAL_ARTIFACTS_AND_COUNTS_VERIFIED",
+    "WARN_REMOTE_SOURCES_AND_RESULTS_UNTRACKED",
+    "WARN_LOCAL_REMOTE_GIT_HEADS_DIFFER",
+    "PASS_METRIC_PATHS_EXECUTED",
+    "PASS_SCOPE_WORDING_MATCHES_ONE_SEED_DIAGNOSIS",
+    "PASS_FAILURES_RETAINED",
+    "PASS_EQUAL_FROZEN_STATE",
+    "PASS_CONTACT_FRAME_MAPPING_FOR_CURRENT_ZERO_OFFSETS",
+    "INFO_DEPENDENT_FRAME_AND_POINT_OBSERVATIONS",
+    "INFO_NO_EFFICACY_OR_INNOVATION_ACCEPTANCE"
+  ],
+  "summary": "The V56/V61 passive export and V57 offline diagnostic are internally hash-bound, terminal, complete for the declared one-seed two-arm scope, and explicitly labeled as simulator-only proxy evidence. V57 does not replace frozen scores and its published counts match the diagnostic. The audit is WARN because the local and remote checkouts are at different Git commits and the authoritative remote V56/V57/V61 files are untracked, so commit identity alone cannot reproduce the analyzed state.",
+  "reviewer": {
+    "agent_id": "/root/paired_v51_integrity_audit/fresh_integrity_reviewer",
+    "verdict_id": "native_manifold_v56_v57_v61_20261012_fresh_integrity_reviewer",
+    "reviewer_model": "gpt-5.6-sol",
+    "reviewer_family": "openai",
+    "reviewer_reasoning": "ultra",
+    "review_independence": "same-family",
+    "acceptance_status": "provisional",
+    "mode": "read-only; no GPU, experiment rerun, restart, or counter mutation"
+  },
+  "generated_at": "2026-10-12T10:29:31+08:00",
+  "date": "2026-10-12",
+  "authoritative_remote_root": "/data/code/ouyanghao/oyh/conditional-human-motion-generation",
+  "local_root": "D:/具身智能/conditional-human-motion-generation",
+  "checks": {
+    "A_ground_truth_provenance": {
+      "status": "PASS",
+      "details": "The native manifold comes from Isaac Gym/PhysX get_env_rigid_contacts and is consistently labeled simulation-only rather than real contact or force ground truth. The replay target is a prior model-generated, physics-refined selected trajectory and is explicitly labeled synthetic_proxy. No real_gt or human evaluator is claimed; the official simulator-native contact API is available and used.",
+      "evidence": [
+        "scripts/native_manifold_collect_v56_20261012.py:19-21",
+        "scripts/run_native_manifold_v56_20261012.py:89-94",
+        "scripts/continue_native_manifold_v61_20261012.py:50-53",
+        "scripts/analyze_native_manifold_v57_20261012.py:1-5,44-58,112-115",
+        "docs/native_manifold_v56_20261012.md:3,17",
+        "results/native_manifold_v56_20261012/continuation_manifest_v61.json:$.evaluation_reference_type",
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/docs/api/python/struct_py.html:816-900"
+      ]
+    },
+    "B_score_normalization": {
+      "status": "PASS",
+      "details": "No metric is divided by the prediction maximum, minimum, or mean to create an acceptance score. V57 reports raw observation counts, raw threshold-exceedance counts, quantiles, and fractions against the unchanged 0.05 m/s threshold. The lambda-weighted mean is explicitly a diagnostic contact statistic, appears beside pointwise/min/max statistics, and is not used for acceptance or score replacement.",
+      "evidence": [
+        "scripts/analyze_native_manifold_v57_20261012.py:18-24,56-58,80-86,99-108,112-115",
+        "results/native_manifold_v56_20261012/frozen_thresholds.json:$.thresholds.sliding_speed_m_s",
+        "results/native_manifold_analysis_v57_20261012/diagnostic_1791771577179667295.json:$.arms.feedback.native_point_speed,$.arms.feedback.native_matched_min_speed,$.arms.feedback.native_matched_max_speed,$.arms.random.native_point_speed",
+        "results/native_manifold_analysis_v57_20261012/diagnostic_1791771577179667295.json:$.metrics_replaced,$.thresholds_changed"
+      ]
+    },
+    "C_result_file_existence_and_lineage": {
+      "status": "WARN",
+      "details": "All named scripts, documents, terminal files, four independent witnesses, two raw replay directories, and the V57 diagnostic exist. The V57 input hashes were independently compared with the current remote files and all match. Terminal state is COMPLETE_PASSIVE_NATIVE_CONTACT_DIAGNOSIS; the ledger has exactly two successful measurement rows. The warning is reproducibility-only: local HEAD f0e3c4014428dedcc3ce150e6069af4837149cd8 differs from remote HEAD e1ef719d6702d15a5ab211db0e55be438b2d1c88, and the remote V56/V57/V61 sources/results are untracked.",
+      "evidence": [
+        "results/native_manifold_v56_20261012/state.json:$.status,$.continuation",
+        "results/native_manifold_v56_20261012/summary.json:$.status,$.arms,$.original_main_invocations_failed,$.continuation",
+        "results/native_manifold_v56_20261012/budget_ledger.json:$[0],$[1]",
+        "results/native_manifold_v56_20261012/continuation_receipt_v61.json:$.status,$.exit_code,$.simulation_batches_this_invocation",
+        "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V61.json:$.status,$.ledger_entry_count,$.exactly_two_successful_measurement_charges",
+        "results/native_manifold_analysis_v57_20261012/diagnostic_1791771577179667295.json:$.status,$.input_hashes,$.source_sha256",
+        "git(local):HEAD=f0e3c4014428dedcc3ce150e6069af4837149cd8; audited paths staged-added",
+        "git(remote):HEAD=e1ef719d6702d15a5ab211db0e55be438b2d1c88; audited paths untracked"
+      ]
+    },
+    "D_dead_code": {
+      "status": "PASS",
+      "details": "The V56 adapter invokes read_contacts at the same reward/state capture point, V56 run_batch checks and records all 33 equality fields, V61 invokes the missing random arm through the same executor, and V57 calls quantiles/describe plus the native material-point and frozen proxy paths. Their outputs are present in equality files and the V57 diagnostic. V58 and V60 are not represented as successes: their preflight failures are retained with traces.",
+      "evidence": [
+        "scripts/native_manifold_collect_v56_20261012.py:13-21",
+        "scripts/run_native_manifold_v56_20261012.py:45-94",
+        "scripts/continue_native_manifold_v61_20261012.py:43-66",
+        "scripts/analyze_native_manifold_v57_20261012.py:18-24,33-118",
+        "results/native_manifold_v56_20261012/feedback_equality.json:$.exact_arrays,$.frozen_metrics_exactly_equal",
+        "results/native_manifold_v56_20261012/random_equality.json:$.exact_arrays,$.frozen_metrics_exactly_equal",
+        "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V58.json:$.status,$.failure_stage",
+        "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V60.json:$.status,$.failure_stage"
+      ]
+    },
+    "E_scope": {
+      "status": "PASS",
+      "details": "Observed scope exactly matches the wording: validation split, seed 11, 24 source IDs per arm, three target offsets (-0.15, 0, +0.15 m) per source, 72 cases per arm, two replay arms, and zero generator calls. Both arms contain the same 72 case IDs, 36 dance and 36 jump cases, with 24 cases per offset. All 72 replay cases per arm completed, but original joint_pass is 0/72 in each arm. The documents and output explicitly prohibit efficacy, innovation, real-ground-truth, controller-independent, or multi-seed claims.",
+      "evidence": [
+        "scripts/run_native_manifold_v56_20261012.py:28-35,64-67,89-94,111-113",
+        "docs/native_manifold_v56_20261012.md:3,17",
+        "docs/native_manifold_continuation_v61_20261012.md:3,13",
+        "results/native_manifold_v56_20261012/versions.json:$.split,$.seed,$.cases_per_batch,$.sources,$.expected_replay_batches,$.generation_calls,$.confirmatory",
+        "results/native_manifold_v56_20261012/summary.json:$.sources,$.cases_per_arm,$.seed,$.efficacy_test,$.innovation_confirmed",
+        "results/native_manifold_analysis_v57_20261012/diagnostic_1791771577179667295.json:$.arms.feedback.cases,$.arms.random.cases,$.scope"
+      ]
+    },
+    "F_evaluation_classification": {
+      "status": "PASS",
+      "classification": {
+        "primary": "simulation_only",
+        "reference_tracking": "synthetic_proxy",
+        "contact_manifold": "simulation_only diagnostic",
+        "real_gt": false,
+        "self_supervised_proxy": false,
+        "human_eval": false
+      },
+      "details": "The classification is explicit in runtime and analysis artifacts and agrees with the actual data path.",
+      "evidence": [
+        "results/native_manifold_v56_20261012/summary.json:$.arms.feedback.evaluation_type,$.arms.random.evaluation_type",
+        "results/native_manifold_v56_20261012/continuation_manifest_v61.json:$.evaluation_reference_type",
+        "results/native_manifold_analysis_v57_20261012/diagnostic_1791771577179667295.json:$.evaluation_type,$.scope"
+      ]
+    }
+  },
+  "contact_point_frame_and_com_audit": {
+    "status": "PASS_WITH_LIMIT",
+    "ground_side_mapping": "V57 treats body index -1 as ground and uses the opposite body/local side. This matches Isaac Gym RigidContact documentation.",
+    "point_mapping": "V57 rotates local_pos + offset into world space. Isaac Gym documents local_pos as the normal-force feature point and offset as the local shift to the friction surface. Independent raw-file inspection found offset0 and offset1 exactly zero in all 288602 feedback and 288411 random records, so the distinction does not change this diagnostic.",
+    "frame_alignment": "The adapter queries contacts immediately after the wrapped reward computation and immediately before copying rigid-body position, quaternion, linear velocity, and angular velocity into the same pending step. Recorded steps span 0-119 and environments 0-71 in both arms.",
+    "com_correction": "V57 uses v_point = v_COM + omega x (r_point - r_COM), with the simulator body-space COM rotated by the saved quaternion. This matches the frozen V23 proxy convention and the prior articulated-body calibration. The result remains simulator diagnostic evidence, not real-world force/contact validation.",
+    "lambda_handling": "Only positive simulator contact-force magnitudes enter the foot-ground speed diagnostic. Lambda is used as a within-body-frame weight for one descriptive statistic; no force or control claim is inferred.",
+    "raw_audit": {
+      "feedback": {
+        "records": 288602,
+        "errors": 0,
+        "offset_nonzero_records": 0,
+        "lambda_positive": 53681,
+        "lambda_zero": 234921,
+        "lambda_negative": 0,
+        "ground_records": 241092,
+        "positive_ground_foot_records": 52397
+      },
+      "random": {
+        "records": 288411,
+        "errors": 0,
+        "offset_nonzero_records": 0,
+        "lambda_positive": 53673,
+        "lambda_zero": 234738,
+        "lambda_negative": 0,
+        "ground_records": 240925,
+        "positive_ground_foot_records": 52360
+      }
+    },
+    "evidence": [
+      "scripts/analyze_native_manifold_v57_20261012.py:44-58",
+      "scripts/native_manifold_collect_v56_20261012.py:13-15",
+      "scripts/physics_guided_collect.py:213-238",
+      "scripts/physics_guided_metric_v23_20261012.py:71-100,142-147",
+      "scripts/native_contact_diagnostic.py:16-40",
+      "scripts/articulated_contact_fixture_v22_20261012.py:51-82",
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym/docs/api/python/struct_py.html:352-381,816-900"
+    ]
+  },
+  "terminal_and_count_checks": {
+    "v56_v61_terminal": true,
+    "terminal_status": "COMPLETE_PASSIVE_NATIVE_CONTACT_DIAGNOSIS",
+    "continuation": "V61",
+    "ledger_entries": 2,
+    "ledger_labels": ["val_feedback_replay_s11", "val_random_replay_s11"],
+    "ledger_total_seconds": 162.78181958571076,
+    "successful_measurement_entries": 2,
+    "feedback_cases": 72,
+    "random_cases": 72,
+    "sources_per_arm": 24,
+    "offset_counts_per_arm": {"-0.15": 24, "0.0": 24, "+0.15": 24},
+    "seed": 11,
+    "exact_array_fields_per_arm": 33,
+    "all_exact_arrays": true,
+    "frozen_metrics_exactly_equal": true,
+    "generation_calls": 0,
+    "v61_simulation_batches": 1,
+    "native_records": {"feedback": 288602, "random": 288411},
+    "native_errors": {"feedback": 0, "random": 0},
+    "analysis_cases": {"feedback": 72, "random": 72},
+    "analysis_all_completed": true,
+    "analysis_original_joint_pass": {"feedback": 0, "random": 0},
+    "analysis_same_case_ids_across_arms": true
+  },
+  "v57_values_verified": {
+    "frozen_sliding_speed_m_s": 0.05,
+    "feedback": {
+      "native_point_observations": 24095,
+      "matched_support_bodyframes": 9051,
+      "positive_native_ground_bodyframes": 9216,
+      "proxy_above_speed": 4717,
+      "native_all_points_above_speed": 4470,
+      "native_any_point_above_speed": 5029,
+      "proxy_above_but_all_native_at_or_below": 11,
+      "proxy_support_without_positive_native_ground": 2,
+      "native_min_fraction_above_speed": 0.4938680808750414
+    },
+    "random": {
+      "native_point_observations": 24058,
+      "matched_support_bodyframes": 9099,
+      "positive_native_ground_bodyframes": 9257,
+      "proxy_above_speed": 4729,
+      "native_all_points_above_speed": 4499,
+      "native_any_point_above_speed": 5084,
+      "proxy_above_but_all_native_at_or_below": 5,
+      "proxy_support_without_positive_native_ground": 3,
+      "native_min_fraction_above_speed": 0.4944499395537971
+    }
+  },
+  "failure_preservation": {
+    "status": "PASS",
+    "v56_original_run": "FAILED_RETAINED before random replay because the remote witness copy was absent; generic FileNotFoundError preserved",
+    "v58": "FAILED_RETAINED at preflight assertion; exit 1; random replay not started",
+    "v60": "FAILED_RETAINED at preflight Path/hash error; exit 1; random replay not started",
+    "v61": "One documented continuation invocation completed the missing random replay; it does not relabel the earlier entries as successful",
+    "evidence": [
+      "results/native_manifold_v56_20261012/failed_main_invocation_state.json:$",
+      "results/native_manifold_v56_20261012/DOCUMENT_WITNESS.json:$.subsequent_failure_preserved",
+      "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V58.json:$",
+      "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V60.json:$",
+      "results/native_manifold_v56_20261012/continuation_manifest_v61.json:$.preserved_prebatch_failures,$.original_failed_invocations_not_success",
+      "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V61.json:$.original_failed_invocations_remain_failed"
+    ]
+  },
+  "claim_impacts": [
+    {
+      "claim": "Passive V56/V61 instrumentation left the paired V51 replay states, observations, initial states, sensor arrays, and frozen metrics unchanged.",
+      "impact": "supported_within_declared_two_batch_scope",
+      "basis": "33 exact arrays and exact frozen metrics for each of the feedback and random replay batches"
+    },
+    {
+      "claim": "The lowest collision-primitive point choice alone explains the frozen slip-quality floor.",
+      "impact": "not_supported",
+      "basis": "Only 11/9051 feedback and 5/9099 random matched support body-frames had proxy speed above threshold while every native contact point stayed at or below threshold; however this is one-seed simulator-only dependent data"
+    },
+    {
+      "claim": "The contact-manifold diagnosis proves feedback efficacy or superiority over random selection.",
+      "impact": "unsupported_and_not_tested",
+      "basis": "No efficacy test or source-level inferential comparison was run; both arms have original joint_pass 0/72"
+    },
+    {
+      "claim": "The contact-manifold diagnosis proves real robot feasibility, real contact truth, or force-control validity.",
+      "impact": "unsupported",
+      "basis": "All contact evidence is simulator-native and explicitly labeled simulation_only"
+    },
+    {
+      "claim": "V56, V58, and V60 completed successfully.",
+      "impact": "false",
+      "basis": "Their retained records show one V56 post-check run failure and V58/V60 preflight failures; only the distinct V61 continuation completed the missing arm"
+    },
+    {
+      "claim": "V57 confirms an innovation or changes the frozen acceptance result.",
+      "impact": "unsupported_and_explicitly_disclaimed",
+      "basis": "metrics_replaced=false, thresholds_changed=false, innovation_confirmed=false"
+    }
+  ],
+  "action_items": [
+    "Commit or otherwise immutably snapshot the exact V56/V57/V61 sources and audit-relevant small artifacts, and record the authoritative commit or archive ID; reconcile or explicitly document the local/remote HEAD divergence.",
+    "Keep the contact point named as the simulator friction-surface material point. If future records contain nonzero offsets, report normal-feature-point and friction-surface-point results separately.",
+    "Keep raw counts beside fractions and preserve source-level clustering in any future inference; the current point and body-frame observations are dependent and come from one seed.",
+    "Do not use V57 to claim method efficacy, real contact ground truth, force validation, controller-independent feasibility, or innovation acceptance.",
+    "Continue citing V56/V58/V60 as retained failures and V61 as a separate successful continuation."
+  ],
+  "audited_input_hashes": {
+    "scripts/native_manifold_collect_v56_20261012.py": "sha256:328be60bc936717c5165c90bff8a420f8fb80a4fd7e864cc04654c7ed376c625",
+    "scripts/run_native_manifold_v56_20261012.py": "sha256:17320c84e7802c0a2bc4cf5d7d616114b8f2ff9903f77b239a91ce0f97bb7bb3",
+    "scripts/continue_native_manifold_v58_20261012.py": "sha256:81f97153cde8d1be81452b00e629fc0dc06e897c33407e2901a56c3f7d9f82a0",
+    "scripts/continue_native_manifold_v60_20261012.py": "sha256:1868c969b9a0a75a522f5e9e32e55a7e1f705a9824e341052ba860a5c08331bd",
+    "scripts/continue_native_manifold_v61_20261012.py": "sha256:355511d142bea4bf3b2788bf39da3d2a9284b70ab06e64b23a96a45a1a93923f",
+    "scripts/analyze_native_manifold_v57_20261012.py": "sha256:cd2fb7bafa7f85ee7ac1f903d7e7439accaccb23d9997b14488f37db184fe49b",
+    "docs/native_manifold_v56_20261012.md": "sha256:bca51ca0ee82785f746cc691deb25b05f036726764f8115c6d66fd7e0a2ccb94",
+    "docs/native_manifold_continuation_v61_20261012.md": "sha256:0e0fbfadd9608efdb28d8afbfad992ad15fa9ed9c1dfab501f404649e443781b",
+    "results/native_manifold_v56_20261012/versions.json": "sha256:651b28b3f18936ce050b90b5c4f25e3758b3efec224cc984e6c26a407d1d8033",
+    "results/native_manifold_v56_20261012/summary.json": "sha256:c1c0f3e05f0973fda51e693dde94840d1912e6d4dcd5ae32c1332ea98261846e",
+    "results/native_manifold_v56_20261012/state.json": "sha256:662593ddebfff51913568b908e7cc5640f7676fa79e8ebaba31e4a40e001a2ea",
+    "results/native_manifold_v56_20261012/budget_ledger.json": "sha256:a4f027f83a7c10fe5fffb27229d78aac9988a3778becfd82bda43b9e2ce99c0a",
+    "results/native_manifold_v56_20261012/source_manifest.json": "sha256:63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+    "results/native_manifold_v56_20261012/frozen_thresholds.json": "sha256:451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+    "results/native_manifold_v56_20261012/feedback_equality.json": "sha256:4a8a9a4ea35a479b429922b3d29c523df891cf40703b96b428cf58dcb878ce7a",
+    "results/native_manifold_v56_20261012/random_equality.json": "sha256:4b3b15236c6967867b50649a2921683042c46a199fb8e6144a3b2d8aac1c1cef",
+    "results/native_manifold_v56_20261012/DOCUMENT_WITNESS.json": "sha256:b0c109cd6dd1fd9015fbdf4dbd20b59ccc877edcfa76a5d17bddf4351979f589",
+    "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V58.json": "sha256:881186f774ee2006c8bc3108ea569fc1fbeb5d44ea30388beb0b8890860dfdac",
+    "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V60.json": "sha256:48366f43dfae9819dfcd7fc81aac0ee83c1e72d9a5f09f59c9c2e42c25616b2e",
+    "results/native_manifold_v56_20261012/CONTINUATION_DOCUMENT_WITNESS_V61.json": "sha256:315332419cb45fa4e6dc2f066c1e163e2f9ef1618fa717221541e2edc2da80d2",
+    "results/native_manifold_v56_20261012/continuation_manifest_v61.json": "sha256:66dd45e8e792faade8be526e450c52c68e6d7ce4dac4563cab10a262212c08d0",
+    "results/native_manifold_v56_20261012/continuation_receipt_v61.json": "sha256:24a9269e305e46de378d96660d2abc9388fcaca02d2a88a376997e1742f23725",
+    "results/native_manifold_v56_20261012/preflight_v61_1791771407721849986.json": "sha256:d10eea0cc045ec19d327c05ae6d5053312631d64745966b64abbd3aea0ded3f3",
+    "results/native_manifold_analysis_v57_20261012/diagnostic_1791771577179667295.json": "sha256:621ce100ab331637854571dc8bd74b99571bb9ed326cdf319f62220f849308df"
+  }
+}

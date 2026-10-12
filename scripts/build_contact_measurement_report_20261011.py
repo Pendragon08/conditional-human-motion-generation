@@ -99,6 +99,14 @@ native56=read('results/native_manifold_v56_20261012/summary.json')
 native56_witness=read('results/native_manifold_v56_20261012/DOCUMENT_WITNESS.json')
 native61_receipt=read('results/native_manifold_v56_20261012/continuation_receipt_v61.json')
 native57_audit=read('results/native_manifold_analysis_v57_20261012/EXPERIMENT_AUDIT.json')
+support63=read('results/support_reference_probe_v63_20261012/summary.json')
+support63_witness=read('results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json')
+support63_audit=read('results/support_reference_probe_v63_20261012/EXPERIMENT_AUDIT.json')
+support63_addendum=read('results/support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.json')
+support63_post_audit=read('results/support_reference_probe_v63_20261012/POST_RUN_AUDIT.json')
+support63_scope=read('results/support_reference_probe_v63_20261012/SCOPE_CLARIFICATION.json')
+support63_paths=sorted((ROOT/'results/support_reference_probe_v63_20261012').glob('analysis_[0-9]*.json'))
+support63_analysis=read(str(support63_paths[-1].relative_to(ROOT))) if support63_paths else None
 native57_paths=sorted((ROOT/'results/native_manifold_analysis_v57_20261012').glob('diagnostic_*.json'))
 native57=read(str(native57_paths[-1].relative_to(ROOT))) if native57_paths else None
 if paired54:
@@ -112,6 +120,9 @@ if selected55:
 if native57:
     assert native57['source_sha256']==hashlib.sha256((ROOT/'scripts/analyze_native_manifold_v57_20261012.py').read_bytes()).hexdigest()
     assert native57['metrics_replaced'] is False and native57['simulation_calls']==0
+if support63_analysis:
+    assert support63_analysis['source_sha256']==hashlib.sha256((ROOT/'scripts/analyze_support_reference_probe_v63_20261012.py').read_bytes()).hexdigest()
+    assert support63_analysis['confirmed_innovation'] is False and support63_analysis['thresholds_changed'] is False
 if analytical52:
     assert analytical52['status']=='PASS_ANALYTICAL_CONTROLS' and analytical52['checks']==24
     assert all(x['check_pass'] for x in analytical52['cases'])
@@ -251,7 +262,9 @@ for directory,names in (
     ('paired_feedback_validation_v51_20261012',('summary.json','state.json','progress.json','versions.json','runtime_witness.json','DOCUMENT_WITNESS.json','budget_ledger.json','launcher_receipt.json','previews/manifest.json')),
     ('paired_feedback_analysis_v53_20261012',('EXPERIMENT_AUDIT.json',)),
     ('paired_feedback_analysis_v54_20261012',('execution_binding_certificate.json','EXPERIMENT_AUDIT.json')),
-    ('native_manifold_v56_20261012',('summary.json','DOCUMENT_WITNESS.json','runtime_witness.json','budget_ledger.json'))):
+    ('native_manifold_v56_20261012',('summary.json','DOCUMENT_WITNESS.json','runtime_witness.json','budget_ledger.json')),
+    ('native_manifold_analysis_v57_20261012',('EXPERIMENT_AUDIT.json',)),
+    ('support_reference_probe_v63_20261012',('summary.json','DOCUMENT_WITNESS.json','runtime_witness.json','budget_ledger.json','EXPERIMENT_AUDIT.json','NUMERICAL_CONTRACT_ADDENDUM.json','analysis_plan_lock.json','CONTINUATION_DOCUMENT_WITNESS_V65.json','continuation_v65_receipt.json','POST_RUN_AUDIT.json','SCOPE_CLARIFICATION.json','PARENT_EXIT_OBSERVATION.json'))):
     for name in names:
         path=ROOT/'results'/directory/name
         if path.exists(): inputs.append(path)
@@ -259,6 +272,7 @@ if paired53_paths: inputs.append(paired53_paths[-1])
 if paired54_paths: inputs.append(paired54_paths[-1])
 if selected55_paths: inputs.append(selected55_paths[-1])
 if native57_paths: inputs.append(native57_paths[-1])
+if support63_paths: inputs.append(support63_paths[-1])
 for name in ('DOCUMENT_WITNESS.json','versions.json','budget_ledger.json','interface_summary.json'):
     path=ROOT/'results/native_reference_velocity_v46_20261012'/name
     if path.exists(): inputs.append(path)
@@ -300,6 +314,10 @@ corrected_feedback_readonly_analysis=paired53,corrected_feedback_integrity_audit
  passive_native_manifold_summary=native56,passive_native_manifold_witness=native56_witness,
  native_material_point_diagnostic=native57,
  native_contact_continuation_receipt=native61_receipt,native_material_point_audit=native57_audit,
+ reference_side_support_probe=support63,reference_side_support_probe_witness=support63_witness,
+ reference_side_support_probe_analysis=support63_analysis,reference_side_support_probe_audit=support63_audit,
+ reference_side_support_probe_numerical_addendum=support63_addendum,
+ reference_side_support_probe_post_run_audit=support63_post_audit,reference_side_support_probe_scope=support63_scope,
  resource_status=resource_status,
  full_efficacy_comparisons_completed=1 if formal_summary else 0,
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
@@ -450,6 +468,20 @@ if paired51_state:
         component_text+='<p>两组约49%的配对支撑观测中，所有报告接触点的水平速度均超过冻结的5厘米/秒阈值。因此最低碰撞点选择差异不足以单独解释当前质量地板；这仍是单种子、模拟环境中的诊断，不将失效归因于某一个模块。</p>'
         if native57_audit:
             component_text+='<p>接触诊断独立审计：'+html.escape(str(native57_audit.get('overall_verdict',native57_audit.get('verdict','Not verified'))))+'（同模型家族，暂定）。<a href="../native_manifold_analysis_v57_20261012/EXPERIMENT_AUDIT.md">审计全文与边界</a></p>'
+    if support63_witness:
+        component_text+='<h4>参考修正实验的校验记录</h4><p>原参考回放已完成72输入。初次独立见证为'+html.escape(support63_witness['status'])+'，记录原样保留；后续数值复核状态为'+html.escape(str(support63_addendum.get('status','未完成') if support63_addendum else '未完成'))+'。复核只按此前冻结的参考变换容差和实际CUDA速度表达式核对保存数据，不重跑基线、不修改评分判据。<a href="../support_reference_probe_v63_20261012/DOCUMENT_WITNESS.md">原始见证</a> · <a href="../support_reference_probe_v63_20261012/NUMERICAL_CONTRACT_ADDENDUM.md">独立补充核验</a>。</p>'
+    if support63_analysis:
+        support_rows=''.join('<tr>'+''.join('<td>'+html.escape(str(x))+'</td>' for x in (
+            arm,r['inputs'],r['counts']['completed'],r['counts']['condition_pass'],r['counts']['physical_pass'],r['counts']['joint_pass'],
+            r['available_metric_means'].get('surface_slip_proxy_fraction'),r['available_metric_means'].get('endpoint_error_m')))
+            +'</tr>' for arm,r in support63_analysis['reports'].items())
+        component_text+='<h4>参考侧支撑阶段修正对照</h4><p>固定一个共同构建来源，比较原参考、有限水平根平移修正及加入末帧位姿保持的修正。24验证来源、3原始偏移、单种子，每组72输入；所有失败保留，原始目标、时间、模型及评分不变。新生成零次，各方法各有一次回放；共同构建的实际成本另行保留，不能称为免费。该对照是有限参数化诊断，不增加已确认创新数。</p><table><tr><th>参考</th><th>输入</th><th>完成</th><th>条件合格</th><th>物理合格</th><th>联合合格</th><th>平均滑移代理比例</th><th>平均终点误差(m)</th></tr>'+support_rows+'</table><p>诊断决策：'+html.escape(support63_analysis['decision'])+'。末帧参考位姿保持不等于实际终点准确；根平移不能解决局部关节、足部旋转或完整动力学。<a href="../support_reference_probe_v63_20261012/'+support63_paths[-1].name+'">完整分析</a>。V62的CPU测例失败保留，V63不重写其记录。</p>'
+        if support63_audit:
+            component_text+='<p>运行前独立审计（保留的历史快照）：'+html.escape(str(support63_audit.get('overall_verdict',support63_audit.get('verdict','Not verified'))))+'。<a href="../support_reference_probe_v63_20261012/EXPERIMENT_AUDIT.md">审计记录</a></p>'
+        if support63_scope:
+            component_text+='<p>划分边界：本轮是内部验证子集，包含上游HumanML3D官方train的19来源/57输入及官方test的5来源/15输入，未评估本研究内部的独立测试集。不能报告为未触碰的官方test泛化，也未逐源确认预训练模型是否见过这些动作。<a href="../support_reference_probe_v63_20261012/SCOPE_CLARIFICATION.md">划分说明</a></p>'
+        if support63_post_audit:
+            component_text+='<p>事后独立审计：'+html.escape(str(support63_post_audit.get('overall_verdict',support63_post_audit.get('verdict','Not verified'))))+'（同模型家族，暂定）。原始失败、运行前审计与事后审计分别保留。<a href="../support_reference_probe_v63_20261012/POST_RUN_AUDIT.md">完整事后核查</a>。父进程退出记录来自工具观察，未伪装成服务器自动生成的退出收据。</p>'
     if paired51_preview:
         assert paired51_preview['source_sha256']==hashlib.sha256((ROOT/'scripts/preview_paired_feedback_v51_20261012.py').read_bytes()).hexdigest()
         component_text+='<h4>固定样本的状态可视化</h4><p>每类第一个零偏移来源、种子11，样本选择不依赖得分。蓝色为保存的实际人体仿真状态，灰色为所选参考；金色叉号是原始目标。这是骨架回放，不是仿真器相机录像、机器人模型录像或实机测试。</p>'

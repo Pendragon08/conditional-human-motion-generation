@@ -1,0 +1,330 @@
+{
+  "audit_skill": "experiment-audit",
+  "audit_kind": "post_run_addendum",
+  "date": "2026-10-12",
+  "generated_at": "2026-10-12T03:20:11Z",
+  "auditor": "gpt-5.6-sol-ultra",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "overall_verdict": "WARN",
+  "integrity_status": "warn",
+  "historical_pre_run_verdict": "FAIL_RETAINED",
+  "current_post_run_evidence_status": "WARN_PROVISIONALLY_VALID_BOUNDED_DIAGNOSTIC",
+  "summary": "The completed V65 continuation and locked V63 analyzer are internally reproducible from the authoritative remote artifacts. Counts, raw means, denominators, execution-bound arm hashes, reset exports, source-cluster bootstrap, budget, and STOP decision all independently match. The original V63 witness remains FAIL. Current evidence remains WARN because the server-created continuation receipt is launch-only, the parent exit record is a later observer transcription, the frozen phrase 'no test data' requires an additive internal-split clarification, the study has one seed and proxy-only simulation, and the audited sources are hash-frozen but untracked under divergent local and remote Git HEADs.",
+  "reason_codes": [
+    "PASS_SYNTHETIC_PROXY_EXPLICITLY_LABELED",
+    "PASS_NO_PREDICTION_STATISTIC_NORMALIZATION",
+    "PASS_THREE_ARMS_EXECUTION_BOUND_AND_RECOMPUTED",
+    "PASS_EXACT_EXPORTED_INITIAL_STATE_EQUALITY",
+    "PASS_PER_METRIC_72_FINITE_0_MISSING_DENOMINATORS",
+    "PASS_SOURCE_CLUSTERED_BOOTSTRAP_REPRODUCED",
+    "PASS_CORRECTED_STOP_DECISION_REPRODUCED",
+    "PASS_BUDGET_UNDER_FROZEN_CAP",
+    "FAIL_ORIGINAL_V63_DOCUMENT_WITNESS_RETAINED",
+    "WARN_PARENT_SERVER_RECEIPT_REMAINS_LAUNCHED",
+    "WARN_PARENT_EXIT_IS_POSTHOC_OBSERVER_TRANSCRIPTION",
+    "WARN_INTERNAL_VAL_CONTAINS_UPSTREAM_OFFICIAL_TEST_MATERIAL",
+    "WARN_SINGLE_SEED_SIMULATION_PROXY_ONLY",
+    "WARN_TRANSITION_INDEX_IS_NOT_SIMULTANEOUS_SENSOR_TRUTH",
+    "WARN_HIDDEN_PHYSX_STATE_EQUALITY_NOT_ESTABLISHED",
+    "WARN_ANALYSIS_SIMULATION_CALLS_ZERO_IS_ANALYZER_SCOPE_NOT_STUDY_TOTAL",
+    "WARN_ANALYSIS_OMITS_RECEIPT_AND_BUDGET_HASH_BINDINGS",
+    "WARN_ANALYSIS_PLAN_LOCK_BINDS_CODE_IDENTITY_ONLY",
+    "WARN_ANALYZER_PHYSICAL_DECISION_TRUSTS_SUMMARY_COUNTS",
+    "WARN_ANALYZER_DOES_NOT_ASSERT_CROSS_ARM_SOURCE_IDENTITY",
+    "WARN_INTEGRITY_GATES_RELY_ON_ASSERT",
+    "WARN_NUMERICAL_LEDGER_OMITTED_FROM_GLOBAL_AND_STAGE_GATE_ARITHMETIC",
+    "WARN_HASH_FROZEN_SOURCES_UNTRACKED_AND_GIT_HEADS_DIVERGE",
+    "WARN_LOCAL_PUBLIC_MIRROR_EXCLUDES_LICENSED_ARRAYS_BY_MANIFEST",
+    "NO_EFFICACY_NOVELTY_ACCEPTANCE_OR_G1_CONCLUSION"
+  ],
+  "preserved_pre_run_audit": {
+    "status": "UNCHANGED",
+    "local_json": "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/EXPERIMENT_AUDIT.json",
+    "local_markdown": "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/EXPERIMENT_AUDIT.md",
+    "remote_json": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/EXPERIMENT_AUDIT.json",
+    "remote_markdown": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/EXPERIMENT_AUDIT.md",
+    "json_sha256": "cfd74d960036300c2fa3c86178b9027364abf13e9c2a9ee1d8c6d2c13400420f",
+    "markdown_sha256": "ac65008a0b96b3d3f4881fc9af10ed55d16ef404e7c611c46f592b16a509f5ab"
+  },
+  "checks": {
+    "A_ground_truth_provenance": {
+      "status": "PASS",
+      "details": "The endpoint target and heading are dataset-motion-derived and fixed before generation. The tracked reference is reconstructed from the prior V51 simulated actual trajectory and the two repairs are deterministic transforms of that model/simulator-derived reference. This is explicitly labeled simulation_only and synthetic_proxy; semantic_status is not_verified_by_independent_evaluator. No official semantic or real-contact evaluator was used.",
+      "evidence": [
+        "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:19-30",
+        "D:/具身智能/conditional-human-motion-generation/docs/support_reference_probe_v63_20261012.md:3-9",
+        "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:103-160",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/raw/val_baseline_s11/metadata.json:$.goal_provenance,$.semantics",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/analysis_1791774541453036805.json:$.reports.*.evaluation_type"
+      ]
+    },
+    "B_score_normalization": {
+      "status": "PASS",
+      "details": "No reported metric is divided by a prediction max, min, or mean. Contact outputs are explicitly named proxy fractions and use fixed frozen thresholds. The analysis reports raw SI-unit means and finite/missing/total counts; independent recomputation found 72 finite and 0 missing for all seven reported metrics in each arm.",
+      "evidence": [
+        "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:71-100",
+        "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:118-160",
+        "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:42-48",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/analysis_1791774541453036805.json:$.reports.*.available_metric_means,$.reports.*.metric_denominators"
+      ]
+    },
+    "C_result_existence_and_lineage": {
+      "status": "WARN",
+      "details": "Authoritative remote state, summary, analysis, three requests, three raw arm directories, three main ledger rows, and one separate numerical-adjudication row exist and cross-bind. All common public files match local bytes, while licensed arrays and references are intentionally remote-only under the export manifest. The original witness remains FAIL. The V65 server receipt remains status LAUNCHED; a later observer file records exit 0 and the completion sentinel, but explicitly is not a server-created terminal receipt. Terminal artifacts and absent PID strongly support completion, but durable parent-exit evidence is secondary. The analysis output hashes raw analysis inputs but omits arm receipts, the continuation receipt, and budget ledgers; this audit checked those separately.",
+      "evidence": [
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/state.json:$.status",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/summary.json:$.status,$.reports,$.original_document_verdict",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/continuation_v65_receipt.json:$.status,$.pid",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/PARENT_EXIT_OBSERVATION.json:$.exit_code,$.output,$.provenance",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/budget_ledger.json:$",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/DOCUMENT_WITNESS.json:$.status,$.all_failed_checks",
+        "D:/具身智能/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/public_exports/public_export_1791774815260736672.json:$.files,$.excluded"
+      ]
+    },
+    "D_dead_code_and_execution": {
+      "status": "PASS",
+      "details": "The reference translation is invoked during frozen preparation, the comparison arms execute through probe.batch from V65, the shared metric function emits every reported raw field, and the locked analyzer output matches an independent recomputation. The unused direct V63 --run route is historical and not presented as the executed continuation route. The current physical-gain branch reads aggregate counts from summary rather than recomputing them from raw rows, and source-cluster indices reuse baseline source IDs without explicitly asserting cross-arm source-ID equality. Independent recomputation and identity checks match exactly for these artifacts, so these are robustness warnings rather than current numerical mismatches. Integrity gates also rely on assert; the documented invocation did not use optimized Python, but future gates should use explicit exceptions.",
+      "evidence": [
+        "D:/具身智能/conditional-human-motion-generation/scripts/support_reference_repair_core_v63_20261012.py:10-54",
+        "D:/具身智能/conditional-human-motion-generation/scripts/prepare_support_reference_probe_v63_20261012.py:30-59",
+        "D:/具身智能/conditional-human-motion-generation/scripts/continue_support_reference_probe_v65_20261012.py:68-91",
+        "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:103-160",
+        "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:14-81",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/analysis_plan_lock.json:$.analysis_source_sha256"
+      ]
+    },
+    "E_scope_and_fairness": {
+      "status": "WARN",
+      "details": "The actual scope is one seed, three deterministic replay arms, 24 source clusters, and three offsets per source. Every arm has identical case/body order, goals, headings, configs, simulator settings, controller weights, exported initial states, and 120 valid transition indices. The source-cluster bootstrap is correctly grouped by 24 source IDs. However, the frozen phrase 'no test data' means no internal held-out test partition; the internal validation set includes 19 upstream-train sources (57 inputs) and 5 upstream-test sources (15 inputs), and pretrained exposure was not verified. The additive clarification is accurate but does not rewrite the frozen analysis. Scope supports only the sample-bound STOP decision.",
+      "evidence": [
+        "D:/具身智能/conditional-human-motion-generation/docs/support_reference_continuation_v65_20261012.md:3-21",
+        "D:/具身智能/conditional-human-motion-generation/scripts/analyze_support_reference_probe_v63_20261012.py:52-78",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/raw/val_baseline_s11/metadata.json:$.cases[*].split,$.cases[*].official_split",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/SCOPE_CLARIFICATION.json:$",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/analysis_1791774541453036805.json:$.scope,$.paired"
+      ]
+    },
+    "F_evaluation_classification": {
+      "status": "PASS",
+      "classification": {
+        "overall": ["simulation_only", "synthetic_proxy"],
+        "endpoint_heading_timing": "simulation_only with dataset-derived target specification; not full-trajectory real_gt",
+        "tracking": "synthetic_proxy against a prior simulated/model-derived trajectory",
+        "contact_penetration_jerk": "simulation_only; collision-geometry/body-force surface proxy",
+        "semantics": "not evaluated by an independent evaluator",
+        "human_eval": false
+      },
+      "details": "No result is classified as real-world contact truth, MoCap trajectory fidelity, official benchmark efficacy, or human evaluation.",
+      "evidence": [
+        "D:/具身智能/conditional-human-motion-generation/scripts/support_reference_repair_core_v63_20261012.py:1-5",
+        "D:/具身智能/conditional-human-motion-generation/scripts/physics_guided_metric_v23_20261012.py:1-5",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/versions.json:$.evaluation_type",
+        "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012/raw/val_baseline_s11/metrics.json:$[*].contact_metric_type,$[*].semantic_status"
+      ]
+    }
+  },
+  "verified_scope": {
+    "arms": ["baseline", "unconstrained", "endpoint_preserved"],
+    "seed": 11,
+    "sources": 24,
+    "offsets_m": [-0.15, 0.0, 0.15],
+    "inputs_per_arm": 72,
+    "total_metric_rows": 216,
+    "valid_transition_indices_per_arm": 8640,
+    "terminated_per_arm": 0,
+    "internal_partition": "val",
+    "upstream_official_sources": {"train": 19, "test": 5},
+    "upstream_official_inputs": {"train": 57, "test": 15},
+    "pretrained_source_exposure": "not_verified",
+    "controller_training_calls": 0,
+    "generator_calls": 0,
+    "simulator_batches_total": 3,
+    "new_v65_comparison_batches": 2,
+    "baseline_rerun": false
+  },
+  "raw_results": {
+    "baseline": {
+      "counts": {"completed": 72, "condition_pass": 5, "physical_pass": 0, "tracking_pass": 68, "joint_pass": 0},
+      "means": {"endpoint_error_m": 0.19590699259873187, "endpoint_time_error_s": 0.5833333637565374, "heading_error_rad": 0.21217996437288894, "jerk_p95_m_s3": 1611.0568736182304, "penetration_fraction": 0.0, "surface_slip_proxy_fraction": 0.5424111456563213, "tracking_mean_m": 0.055011089192703366},
+      "finite_denominator_each_metric": 72,
+      "missing_or_nonfinite_each_metric": 0,
+      "slip_failures": 72,
+      "jerk_failures": 61
+    },
+    "unconstrained": {
+      "counts": {"completed": 72, "condition_pass": 6, "physical_pass": 0, "tracking_pass": 67, "joint_pass": 0},
+      "means": {"endpoint_error_m": 0.19407599141037654, "endpoint_time_error_s": 0.5606481773882277, "heading_error_rad": 0.2071223756885066, "jerk_p95_m_s3": 1607.752568054198, "penetration_fraction": 0.0, "surface_slip_proxy_fraction": 0.5544018713356693, "tracking_mean_m": 0.05676227368207441},
+      "finite_denominator_each_metric": 72,
+      "missing_or_nonfinite_each_metric": 0,
+      "slip_failures": 72,
+      "jerk_failures": 64
+    },
+    "endpoint_preserved": {
+      "counts": {"completed": 72, "condition_pass": 4, "physical_pass": 0, "tracking_pass": 67, "joint_pass": 0},
+      "means": {"endpoint_error_m": 0.19491562526292364, "endpoint_time_error_s": 0.5370370650457011, "heading_error_rad": 0.20396860496870717, "jerk_p95_m_s3": 1599.076190863714, "penetration_fraction": 0.0, "surface_slip_proxy_fraction": 0.5538484308965637, "tracking_mean_m": 0.05682036547093756},
+      "finite_denominator_each_metric": 72,
+      "missing_or_nonfinite_each_metric": 0,
+      "slip_failures": 72,
+      "jerk_failures": 63
+    }
+  },
+  "paired_analysis": {
+    "unit": "original source cluster",
+    "clusters": 24,
+    "inputs_per_cluster": 3,
+    "bootstrap_seed": 6211,
+    "bootstrap_resamples": 5000,
+    "unconstrained_joint_gain_pp": 0.0,
+    "unconstrained_source_cluster_95ci_pp": [0.0, 0.0],
+    "endpoint_preserved_joint_gain_pp": 0.0,
+    "endpoint_preserved_source_cluster_95ci_pp": [0.0, 0.0],
+    "all_48_arm_source_deltas_zero": true,
+    "decision_reported": "STOP_THIS_ROOT_TRANSLATION_PARAMETERIZATION_NO_PHYSICAL_OR_JOINT_GAIN",
+    "decision_independently_reproduced": true,
+    "interpretation_limit": "The all-zero interval describes this one-seed sample and does not prove population equivalence."
+  },
+  "reset_freeze_and_reference_checks": {
+    "requests_identical_except_replay_motion_hash": true,
+    "case_source_offset_order_equal": true,
+    "body_order_equal": true,
+    "goals_and_headings_equal": true,
+    "configuration_and_simulator_settings_equal": true,
+    "controller_weights_frozen": true,
+    "initial_states_sha256_all_arms": "b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+    "all_exported_initial_state_arrays_exact_across_arms": true,
+    "bootstrap_equals_first_action_for_seven_kinematic_tensors": true,
+    "reset_cache_gate_all_arms": true,
+    "hidden_physx_state_equality_established": false,
+    "reference_prefix_frames_0_through_60_exact": true,
+    "reference_z_exact": true,
+    "endpoint_preserved_final_frame_exact": true,
+    "unconstrained_final_frame_exact": false,
+    "max_horizontal_translation_m": {"unconstrained": 0.06075378507375717, "endpoint_preserved": 0.06075203791260719},
+    "max_relative_pose_roundoff_m": {"unconstrained": 1.1920928955078125e-07, "endpoint_preserved": 5.960464477539063e-08},
+    "time_semantics": "Reference and observation are pre-action and actual is post-action at the same transition index; this is not simultaneous pre-action sensor truth."
+  },
+  "contact_frame_assessment": {
+    "status": "COHERENT_WITHIN_DECLARED_PROXY_SCOPE",
+    "formula": "v_COM + omega cross (lowest collision-surface point minus COM)",
+    "frame_handling": "Body-local collision primitives and body-local COM are rotated to world coordinates before the lever arm is formed.",
+    "support_signal": "Simulated vertical body force plus a lowest-primitive-point ground-proximity threshold.",
+    "limits": [
+      "The force is body-level and does not locate a true contact point.",
+      "The lowest primitive point need not be the physical force-application point.",
+      "The COM-velocity convention relies on the frozen earlier calibration and was not rerun in this audit.",
+      "Transition-index alignment is not simultaneous sensing."
+    ],
+    "frame_mapping_defect_found": false
+  },
+  "analysis_hardening_limits": {
+    "plan_lock_scope": "Binds analyzer source hash only; it is not a complete preregistration of expected inputs or metric specification.",
+    "physical_decision_input": "Uses summary aggregate physical-pass counts; independent raw recomputation matches for the frozen artifacts.",
+    "cross_arm_source_identity_asserted_by_analyzer": false,
+    "cross_arm_source_identity_independently_verified": true,
+    "expected_reset_cache_keys_enforced_by_analyzer": false,
+    "actual_reset_cache_keys_and_zero_values_verified": true,
+    "integrity_gates_use_assert": true,
+    "documented_python_optimized_mode": false
+  },
+  "budget_and_timing": {
+    "main_ledger_rows": 3,
+    "main_wall_seconds": 150.7792569566518,
+    "raw_receipt_simulation_elapsed_seconds": 142.00649547576904,
+    "separate_saved_array_cuda_rows": 1,
+    "separate_saved_array_cuda_seconds": 0.9037324842065573,
+    "combined_charged_seconds": 151.68298944085836,
+    "own_cap_seconds": 600,
+    "under_cap": true,
+    "baseline_receipt_mtime_utc": "2026-10-12T02:44:27.371105+00:00",
+    "v65_launch_receipt_mtime_utc": "2026-10-12T03:07:05.611226+00:00",
+    "unconstrained_receipt_mtime_utc": "2026-10-12T03:07:53.209499+00:00",
+    "endpoint_preserved_receipt_mtime_utc": "2026-10-12T03:08:43.551779+00:00",
+    "summary_mtime_utc": "2026-10-12T03:08:46.419905+00:00",
+    "analysis_mtime_utc": "2026-10-12T03:09:01.452561+00:00",
+    "continuation_pid": 2891330,
+    "continuation_pid_present_at_audit": false,
+    "analysis_field_scope_note": "analysis.simulation_calls=0 and generation_calls=0 describe the read-only analysis invocation; the experiment summary records three simulator batches.",
+    "gate_accounting_limit": "The V65 own-cap reservation includes the separate numerical-adjudication charge, but the inherited global and per-stage gate arithmetic reads only ordinary budget_ledger.json rows. The omitted 0.9037324842 s does not approach either cap here, but the enforcement path is incomplete."
+  },
+  "historical_witness_status": {
+    "original_document_witness": "FAIL_RETAINED",
+    "failed_checks": ["applied_reference_canonical_exact", "reference_velocity_successive_exact"],
+    "numerical_contract_addendum": "PASS_SEPARATE_NON_RETROACTIVE",
+    "root_mapping_max_error_m": 1.866893570624082e-16,
+    "root_mapping_frozen_atol_m": 1e-12,
+    "original_numpy_velocity_difference_m_s": 9.5367431640625e-07,
+    "executed_cuda_velocity_expression_max_error_m_s": 0.0,
+    "addendum_saved_array_cuda_seconds": 0.9037324842065573,
+    "note": "The addendum does not relabel the original witness PASS and does not establish efficacy."
+  },
+  "artifact_hashes": {
+    "analysis": "b1ed5679b672e7375c8c79ca0e3a76a97943dc142e330ea21431f95505659a7e",
+    "summary": "a504f56cf37dec79fb46aeace51a80a25fc1dbbb8f4251bd8727ffeb881193b2",
+    "state": "c553cd283c296e38e72325a2e2e7c53891b1b2860e22a3c85f0a32da70787991",
+    "budget_ledger": "c1a19bd9200435ff926cf60ef577d7b570946a36b52ee7a3688395d2beeb48c0",
+    "continuation_receipt": "b76e4b3a2081b7a4f96acac14517ebbda73b37e96888d3449fa3f106f4bf1b5b",
+    "parent_exit_observation": "b9ba36d4c1f96534e08262ef32b54363872e57c88e82b336e6f9bbb8cb15e3f3",
+    "scope_clarification_json": "b19376e6db3c2ba865b1d76308b0b432dc6d5a691ee08e5a491d2e616402b981",
+    "scope_clarification_markdown": "b59ac5b6a8f7fb2936aca41413fd8ba5dacd6e6c59eab7b41b6d58aee363293c",
+    "analysis_plan_lock": "0452de2471d4804226bf7913c3de356483d9784aa16db2fac5afc87beb6c8b27",
+    "analyzer_source": "2a76407d53b7f8fe7dfe823eebb327a5b98b7da746d40dec73e4905150ddc11d",
+    "v65_source": "a801b76906368300b1f4aff021385be931e1d031ed0850c8b3aa6b330f39dbc6",
+    "original_witness": "c8f320671fba8203c74e91fa46080d3318f678adaf046ceff405ba063076a5f5",
+    "numerical_addendum": "fc990207cb3dc7c9c5c353394692d562d46a58f5ea4065c19a7798d9d49f8775",
+    "baseline_metrics": "fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",
+    "unconstrained_metrics": "9e318a0744ff693441e25607f6af892d6eebe65b6f390530d98834620c8f4165",
+    "endpoint_preserved_metrics": "dcdc1ba2850f9f5779f9ae470a289e0feb2a8f782041ff4dad15bdb0c1845f1e",
+    "baseline_trajectories": "7802cdb99053d49908d19824be38080881a00a4829ff3aba40aeba6e61d81136",
+    "unconstrained_trajectories": "67876934b5cea2e96fc7bb5927e8ad8fd8465dddc921413097d97086195a5098",
+    "endpoint_preserved_trajectories": "c7371a9b5556578bd6f8d726a35155415f3b4f9b94a09d257f3f6fad8b971f1d",
+    "public_export_manifest": "ee712de89711d7694f636e7ff8abbe797ee76de2865f89e7304ce7a9e12e73a4",
+    "public_export_archive": "d0e6be9753e7f8a75e2a334bd7376e795ec57c3dfaa31348b346640ea70be59d"
+  },
+  "reproducibility": {
+    "local_git_head": "ffadb70f3f4cb7de2537529ba26a66bc6d55ee66",
+    "remote_git_head": "e1ef719d6702d15a5ab211db0e55be438b2d1c88",
+    "git_heads_match": false,
+    "audited_v63_v65_sources_tracked": false,
+    "direct_source_hash_parity": true,
+    "local_result_tree_file_count": 53,
+    "remote_result_tree_file_count": 74,
+    "common_repo_relative_file_count": 51,
+    "common_repo_relative_hash_mismatches": 0,
+    "local_only_files": ["baseline_metadata_for_witness.json", "support_probe_public_1791774815260736672.tar.gz"],
+    "remote_only_deliberately_excluded_authoritative_files": 22,
+    "remote_only_additional_archive_path": "public_exports/support_probe_public_1791774815260736672.tar.gz",
+    "public_manifest_declared_payload_files": 47,
+    "public_archive_member_count": 48,
+    "v63_result_payload_paths_verified_locally": 43,
+    "local_declared_payload_files_hash_verified": 47,
+    "authoritative_arrays_location": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/support_reference_probe_v63_20261012",
+    "local_public_mirror_scope": "Metadata, metrics, lineage, receipts, logs, summary, analysis, witnesses and audit records; licensed motion/reference/trace arrays excluded by manifest.",
+    "public_archive_path_note": "The local archive is at the result root while the remote archive is under public_exports; bytes match SHA-256."
+  },
+  "claim_impacts": [
+    {"claim": "The frozen three-arm diagnostic completed with 72 cases per arm and no baseline rerun.", "impact": "supported"},
+    {"claim": "All exported initial-state arrays are bitwise identical across arms and reset/cache gates pass.", "impact": "supported_with_hidden_physx_limit"},
+    {"claim": "The reported raw means, denominators, 24-source clustered bootstrap, and STOP decision match primary files.", "impact": "supported"},
+    {"claim": "This root-translation parameterization produced physical or joint improvement in the audited sample.", "impact": "unsupported_and_observed_false_under_frozen_metrics"},
+    {"claim": "The all-zero clustered interval proves population equivalence or generalization.", "impact": "unsupported"},
+    {"claim": "No test material was used.", "impact": "needs_qualification_to_no_internal_held_out_test_partition"},
+    {"claim": "The evaluation establishes real-world contact truth, official benchmark efficacy, semantics, novelty, C2/C3 validity, G1 readiness, or downstream benefit.", "impact": "unsupported"},
+    {"claim": "The original V63 document witness passed.", "impact": "false; original FAIL must remain visible"}
+  ],
+  "action_items": [
+    "Keep EXPERIMENT_AUDIT.json/.md and the original DOCUMENT_WITNESS FAIL immutable; cite this file only as a post-run addendum.",
+    "When reporting completion, cite the terminal state, summary, per-arm receipts and hashes; label PARENT_EXIT_OBSERVATION as a posthoc observer transcription and do not relabel continuation_v65_receipt as complete.",
+    "Replace or qualify 'no test data' as 'no internal held-out test partition evaluated'; disclose the 19/5 upstream train/test source mix and unverified pretraining exposure.",
+    "Always pair analysis.simulation_calls=0 with summary.simulator_batches=3 so analysis-only accounting is not mistaken for experiment cost.",
+    "For future analyzers, bind arm receipts, continuation receipt, and both budget ledgers in input_hashes; recompute pass counts from raw rows; assert cross-arm source/clip/offset identity; require the expected reset-cache keys rather than accepting an empty mapping; include the separate numerical ledger in global and stage gate arithmetic; and replace integrity-critical assert statements with explicit fail-closed checks.",
+    "Keep contact and tracking results labeled simulation_only and synthetic_proxy, and keep same-transition-index timing distinct from simultaneous sensor truth.",
+    "Do not infer efficacy, equivalence, novelty, C2/C3 validity, G1 readiness, downstream benefit, or real-world physical validity from this one-seed diagnostic.",
+    "Archive the untracked hash-frozen sources and record both Git HEADs before treating a checkout revision as sufficient reproduction metadata."
+  ]
+}
+
+

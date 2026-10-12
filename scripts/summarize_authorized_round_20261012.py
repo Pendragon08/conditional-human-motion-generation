@@ -28,7 +28,8 @@ for name in ('original_reference_attribution_v35_20261012', 'round_resource_stat
              'surface_proxy_calibration_v50_20261012', 'paired_feedback_validation_v51_20261012',
              'surface_proxy_calibration_v52_20261012', 'paired_feedback_analysis_v53_20261012',
              'paired_feedback_analysis_v54_20261012', 'selected_construction_binding_v55_20261012',
-             'native_manifold_v56_20261012', 'native_manifold_analysis_v57_20261012'):
+             'native_manifold_v56_20261012', 'native_manifold_analysis_v57_20261012',
+             'support_reference_probe_v62_20261012', 'support_reference_probe_v63_20261012'):
     p = ROOT / 'results' / name
     if p.exists() and p not in directories:
         directories.append(p)
@@ -44,6 +45,13 @@ for directory in directories:
         assert isinstance(row['seconds'], (int,float)) and math.isfinite(row['seconds']) and row['seconds'] >= 0
         assert row['stage'] in caps
         result['entries'].append(dict(directory=directory.name, **row))
+result['charged_wall_hours_one_gpu_per_job'] = sum(row['seconds'] for row in result['entries']) / 3600
+numeric_ledger=ROOT/'results/support_reference_probe_v63_20261012/numerical_adjudication_budget_ledger.json'
+if numeric_ledger.exists():
+    extra=json.loads(numeric_ledger.read_text(encoding='utf8'))
+    for row in extra:
+        assert math.isfinite(row['seconds']) and row['seconds']>=0 and row['stage'] in caps
+        result['entries'].append(dict(directory='support_reference_probe_v63_20261012',separate_ledger=numeric_ledger.name,**row))
 result['charged_wall_hours_one_gpu_per_job'] = sum(row['seconds'] for row in result['entries']) / 3600
 result['stage_hours'] = {stage:sum(row['seconds'] for row in result['entries'] if row['stage']==stage) / 3600 for stage in caps}
 result['failed_entries'] = sum(row.get('exit_code',0)!=0 for row in result['entries'])
