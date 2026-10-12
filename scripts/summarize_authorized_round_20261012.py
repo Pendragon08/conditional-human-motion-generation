@@ -16,13 +16,19 @@ OUT = ROOT / 'results/round_resource_status_20261012'
 caps = dict(measurement=4, comparison=12, ablation_g1=12, downstream=36, reserve=8)
 result = snapshot(ROOT, ROOT / 'results/nonexistent_exclude_path')
 directories = [ROOT / name for name in result['directories']]
-for name in ('original_reference_attribution_v35_20261012', 'round_resource_status_20261012'):
+for name in ('original_reference_attribution_v35_20261012', 'round_resource_status_20261012',
+             'mocap_cache_binding_v36_20261012', 'endpoint_event_diagnostic_v37_20261012',
+             'repair_budget_core_v38_20261012', 'execution_lineage_guard_v39_20261012',
+             'construction_replay_transfer_v40_20261012', 'raw_replay_state_diagnostic_v41_20261012'):
     p = ROOT / 'results' / name
     if p.exists() and p not in directories:
         directories.append(p)
 archives = [p for p in (ROOT / 'results').glob('*.tar.gz') if p.name.endswith('20261011.tar.gz') and
             p.name.startswith(('contact_', 'physics_guided_', 'reset_alignment_', 'reset_cache_'))]
 result['output_bytes'] = sum(p.stat().st_size for d in directories for p in d.rglob('*') if p.is_file()) + sum(p.stat().st_size for p in archives)
+sidecars = [ROOT / 'results/endpoint_event_diagnostic_v37_attempt1_failure.json']
+result['output_bytes'] += sum(path.stat().st_size for path in sidecars if path.exists())
+result['included_sidecars'] = [str(path.relative_to(ROOT)) for path in sidecars if path.exists()]
 result['directories'] = [str(p.relative_to(ROOT)) for p in sorted(directories)]
 result['archive_bytes'] = sum(p.stat().st_size for p in archives)
 result['included_archives'] = [str(p.relative_to(ROOT)) for p in archives]
@@ -39,6 +45,7 @@ result['source_sha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest(
 result['time'] = time.time()
 result['gpu_jobs_launched_by_this_script'] = 0
 result['note'] += ' Export archives and original-reference attribution also counted; current-resource receipt is not experiment efficacy.'
+result['note'] += ' V36 cache certificate, V37 event diagnostic and V38 numeric-only budget core are also counted.'
 OUT.mkdir(exist_ok=True)
 destination = OUT / ('snapshot_%d.json' % time.time_ns())
 destination.write_text(json.dumps(result, indent=2), encoding='utf8')

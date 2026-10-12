@@ -1,0 +1,16 @@
+{
+  "call_number": 3,
+  "purpose": "v28-dependency-callgraph-audit",
+  "timestamp": "2026-10-12T03:24:00+08:00",
+  "tool": "spawn_agent",
+  "model": "codex (inherited)",
+  "reasoning_effort": "inherited",
+  "files_referenced": [
+    "results/condition_feedback_formal_v28_20261012/versions.json",
+    "scripts/physics_guided_*.py",
+    "scripts/contact_*",
+    "third_party/CLoSD/**"
+  ],
+  "prompt": "Perform a fresh static/read-only audit of the frozen V28 dependency and call graph. Read recursively bound files and relevant upstream CLoSD sources directly. Establish which metric implementation is actually called, identify dead metric definitions, inspect cached receipt/lineage behavior, endpoint_time_error_s semantics, reset/frame/contact/COM/device/selected-trajectory bindings, and score normalization. Rehash audited sources and give exact file:line evidence. Do not run experiments or change any files."
+}
+

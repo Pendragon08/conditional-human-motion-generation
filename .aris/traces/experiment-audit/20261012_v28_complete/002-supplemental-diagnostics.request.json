@@ -1,0 +1,19 @@
+{
+  "call_number": 2,
+  "purpose": "supplemental-v32-v33-v35-audit",
+  "timestamp": "2026-10-12T03:24:00+08:00",
+  "tool": "spawn_agent",
+  "model": "codex (inherited)",
+  "reasoning_effort": "inherited",
+  "files_referenced": [
+    "scripts/mocap_reference_collect_v33_20261012.py",
+    "scripts/run_mocap_reference_control_v33_20261012.py",
+    "scripts/diagnose_original_reference_quality_v35_20261012.py",
+    "results/mocap_reference_control_v33_20261012/**",
+    "results/original_reference_attribution_v35_20261012/**",
+    "results/condition_feedback_components_v32_20261012/**",
+    "results/feedback_repeatability_diagnostic_20261012/**"
+  ],
+  "prompt": "Perform a fresh read-only adversarial integrity audit of the supplemental V32/V33/V35 diagnostics listed by the parent. Read the files directly on the authoritative server. Check artifact correspondence, provenance/proxy labels, frame/trajectory/reset/device/contact/COM bindings, cached receipt behavior, threshold/source immutability, scope, and whether any diagnostic is promoted to candidate efficacy. Provide exact file:line evidence and SHA-256 for every file audited. Do not modify files, launch experiments, or copy licensed arrays. Keep this assessment separate from the V28 C1 scope."
+}
+

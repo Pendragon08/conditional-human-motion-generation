@@ -56,6 +56,35 @@ mocap_control=read('results/mocap_reference_control_v33_20261012/diagnostic_summ
 mocap_witness=read('results/mocap_reference_control_v33_20261012/DOCUMENT_WITNESS_AUDIT.json')
 attribution_paths=sorted((ROOT/'results/original_reference_attribution_v35_20261012').glob('diagnostic_*.json'))
 original_attribution=read(str(attribution_paths[-1].relative_to(ROOT))) if attribution_paths else None
+binding_paths=sorted((ROOT/'results/mocap_cache_binding_v36_20261012').glob('certificate_*.json'))
+strict_binding=read(str(binding_paths[-1].relative_to(ROOT))) if binding_paths else None
+event_paths=sorted((ROOT/'results/endpoint_event_diagnostic_v37_20261012').glob('diagnostic_*.json'))
+endpoint_event=read(str(event_paths[-1].relative_to(ROOT))) if event_paths else None
+lineage_paths=sorted((ROOT/'results/execution_lineage_guard_v39_20261012').glob('certificate_*.json'))
+strict_lineage=read(str(lineage_paths[-1].relative_to(ROOT))) if lineage_paths else None
+transfer_paths=sorted((ROOT/'results/construction_replay_transfer_v40_20261012').glob('diagnostic_*.json'))
+transfer=read(str(transfer_paths[-1].relative_to(ROOT))) if transfer_paths else None
+state_paths=sorted((ROOT/'results/raw_replay_state_diagnostic_v41_20261012').glob('diagnostic_*.json'))
+replay_state=read(str(state_paths[-1].relative_to(ROOT))) if state_paths else None
+for diagnostic,source in ((transfer,'diagnose_construction_replay_transfer_v40_20261012.py'),
+                          (replay_state,'diagnose_raw_replay_state_v41_20261012.py')):
+    if diagnostic:
+        assert diagnostic['source_sha256']==hashlib.sha256((ROOT/'scripts'/source).read_bytes()).hexdigest()
+        assert diagnostic['simulation_calls']==0 and diagnostic['generation_calls']==0
+        assert diagnostic['historical_scores_changed'] is False and diagnostic['innovation_confirmed'] is False
+if strict_lineage:
+    assert strict_lineage['status']=='PASS' and strict_lineage['checked_batches']==74
+    assert strict_lineage['retroactive_lineages_accepted']==0 and strict_lineage['historical_results_changed'] is False
+    assert strict_lineage['source_sha256']==hashlib.sha256((ROOT/'scripts/verify_execution_lineage_v39_20261012.py').read_bytes()).hexdigest()
+if strict_binding:
+    assert strict_binding['status']=='PASS' and strict_binding['old_scores_changed'] is False
+    assert strict_binding['source_sha256']==hashlib.sha256((ROOT/'scripts/verify_mocap_cache_binding_v36_20261012.py').read_bytes()).hexdigest()
+    assert sum(row['attempts'] for row in strict_binding['batches'].values())==216
+    assert all(row['all_metric_rows_exactly_recomputed'] for row in strict_binding['batches'].values())
+if endpoint_event:
+    assert endpoint_event['source_sha256']==hashlib.sha256((ROOT/'scripts/diagnose_endpoint_event_v37_20261012.py').read_bytes()).hexdigest()
+    assert endpoint_event['historical_scores_changed'] is False and endpoint_event['acceptance_rule_selected'] is False
+    assert endpoint_event['binding_certificate_sha256']==hashlib.sha256(binding_paths[-1].read_bytes()).hexdigest()
 resource_paths=sorted((ROOT/'results/round_resource_status_20261012').glob('snapshot_*.json'))
 resource_status=read(str(resource_paths[-1].relative_to(ROOT))) if resource_paths else None
 if resource_status:
@@ -109,6 +138,11 @@ inputs=[ROOT/name for name in ('results/contact_sampling_v8_20261011/sampling_su
 if component_paths: inputs.append(component_paths[-1])
 if repeat_paths: inputs.append(repeat_paths[-1])
 if attribution_paths: inputs.append(attribution_paths[-1])
+if binding_paths: inputs.append(binding_paths[-1])
+if event_paths: inputs.append(event_paths[-1])
+if lineage_paths: inputs.append(lineage_paths[-1])
+if transfer_paths: inputs.append(transfer_paths[-1])
+if state_paths: inputs.append(state_paths[-1])
 if resource_paths: inputs.append(resource_paths[-1])
 for name in ('diagnostic_summary.json','DOCUMENT_WITNESS_AUDIT.json'):
     path=ROOT/'results/mocap_reference_control_v33_20261012'/name
@@ -126,6 +160,9 @@ status=dict(innovation_candidates=3,preliminarily_tested=1,not_yet_experimentall
  formal_analysis=formal_summary,formal_integrity_audit=formal_audit,
  repeat_feedback_diagnostic=repeat_diagnostic,
  original_reference_control=mocap_control,original_reference_attribution=original_attribution,
+ strict_original_reference_cache_binding=strict_binding,endpoint_event_diagnostic=endpoint_event,
+ strict_execution_lineage_guard=strict_lineage,
+ construction_replay_transfer=transfer,raw_replay_state_diagnostic=replay_state,
  resource_status=resource_status,
  full_efficacy_comparisons_completed=1 if formal_summary else 0,
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
@@ -206,6 +243,19 @@ if original_attribution:
         (row['split'],row['offset'],row['attempts'],row['reference_continuity_pass'],row['component_pass_counts']['continuity'],row['complete_reference_continuity_pass_but_executed_fail']))+'</tr>'
         for row in original_attribution['groups'])
     mocap_text+='<table><tr><th>集合</th><th>偏移范围</th><th>输入</th><th>参考连续性符合旧阈值</th><th>执行连续性合格</th><th>参考合格但完整执行后不合格</th></tr>'+attribute_rows+'</table><p>这只是同一时间窗口的运动学连续性诊断。未把人体参考当作接触力真值，也未新增物理成功标准；足部滑移仍使用原表面代理。应先定位跟踪／表示／代理的影响，再安排C2效力实验及G1、下游训练。</p>'
+if strict_binding:
+    mocap_text+='<p>V36只读严格缓存校验通过：固定独立见证与最终摘要的校验和，核对来源、阈值、模型和数据，并从72验证与144测试轨迹精确重算全部216行指标。重置七项状态与参考时钟一致。此证书补齐当前缓存绑定检查，不修改原V33源文件或历史评分，也不是候选机制的有效性证据。</p><p><a href="../mocap_cache_binding_v36_20261012/'+binding_paths[-1].name+'">缓存绑定与精确复算证书</a></p>'
+if endpoint_event:
+    event_rows=''.join('<tr>'+''.join('<td>'+html.escape(str(row[key]))+'</td>' for key in ('split','offset','attempts','deadline_position_satisfied_but_closest_timing_fails','physically_and_tracking_qualified_subset'))+'</tr>' for row in endpoint_event['groups'])
+    mocap_text+='<h3>到达时刻的事件含义</h3><p>原指标计算生成段内最接近目标的时刻距最终帧的差，并不等同于第一次进入10厘米范围，也不等同于最终时刻是否在目标范围内。三个事件应分别命名，不能把最接近时刻的偏移直接解释为迟到。</p><table><tr><th>集合</th><th>偏移</th><th>输入</th><th>最终位置达标但原时刻判据失败</th><th>其中完成且物理／跟踪合格</th></tr>'+event_rows+'</table><p>零偏移测试的17/48条存在上述差异，其中2条满足原物理与跟踪判据。这是事件定义的诊断，不是新的成功率；没有重算验收、改阈值或选择更有利的事件。历史C1结论保持未获支持。第一次诊断对无生成段的提前终止案例报错，失败记录保留，修复后的诊断包含全部样本。</p><p><a href="../endpoint_event_diagnostic_v37_20261012/'+event_paths[-1].name+'">逐样本事件定义诊断</a></p>'
+if formal_audit:
+    formal_text+='<h3>独立完整性审计</h3><p>原控制实现审计为FAIL：旧启动器允许在缺少执行时来源记录时，对已有完成文件事后补写记录。当前74批数据未触发该缺陷，全部具有执行时绑定，数据与否定结论相符。到达时刻定义另有WARN。审计是同模型家族的独立会话复核，语义结论属于暂定；不能将它写成原协议全部通过。</p><p><a href="../condition_feedback_formal_v28_20261012/EXPERIMENT_AUDIT.md">完整审计与原始证据</a></p>'
+if strict_lineage:
+    formal_text+='<p>V39新增严格只读保护，拒绝缺失、事后生成、请求变更或输出变化的来源记录，锚定两类见证与原版本。隔离正负样例通过；当前74批全部重新核对通过。此保护不修改旧启动器、不改变原审计FAIL或历史成绩；后续新队列必须集成该保护并重新见证后方可运行。</p><p><a href="../execution_lineage_guard_v39_20261012/'+lineage_paths[-1].name+'">74批严格来源校验证书</a></p>'
+if transfer:
+    component_text+='<h3>构建合格不等于参考重放合格</h3><p>测试构建的6048次尝试中有7次满足原联合判据。跨方法选择中有8个构建合格的实例（含同一来源重复选择，不能称为8条独立动作），重放后全部失去联合合格，均未通过物理质量判据。这说明C3的收益校准应采用固定参考重放结果，不能将构建时的合格标签直接当作可训练数据价值。验证构建144次尝试联合合格为0，不能使用测试标签替代缺失的验证校准。</p><p><a href="../construction_replay_transfer_v40_20261012/'+transfer_paths[-1].name+'">构建与重放逐例核对</a></p>'
+if replay_state:
+    component_text+='<h3>重置一致性与数值差异</h3><p>3种子、每种子144输入的原生成与原参考重放配对中，15项初始状态、刚体属性与足部几何均逐元素一致，实际应用的参考位置符合相同的原生坐标变换。首步动作存在最大约2.98×10⁻⁷的差异，首步实际位置最大差约0.267毫米；后续有效帧的差异增大。诊断分别报告共同有效输入数与包含失效槽位的差异，不能把提前终止后的数组用于有效执行比较。尚不能将差异归因于重置、速度接口或生成器；下一步需要记录跟踪器实际接收的参考速度及观测。</p><p><a href="../raw_replay_state_diagnostic_v41_20261012/'+state_paths[-1].name+'">初始状态与有效帧数值诊断</a></p>'
 if replay_interface_pass:
     measurement_text='重置、坐标、时间、数值复算、已知正负对照及固定参考回放接口已通过。足部指标仍是碰撞表面滑移代理，不能称为真实接触力或所有滚动接触的真值。人体物理质量与候选效力另行判断。'
 resource_text='<p>累计资源快照尚未同步。</p>'
@@ -219,7 +269,7 @@ document=f'''<!doctype html><html lang="zh-CN"><meta charset="UTF-8"><title>条�
 <p>简单物体测试采用5公斤箱体、平面、已知重力和无摩擦滑动。稳定支撑力接近49.05N，初始腾空接触力接近零。约束力传感器重复一致，但关节系统中的传感器还可能包含内部约束反力，因此不能将箱体结果推广为人体接触测量通过。</p>
 <p>V11只证明固定新设置内的重复性，不能将其解释为行为不变的修复。初始七项状态与旧设置一致，第一步微小数值差异随后由闭环放大。原阈值保持不变；小样本穿透12/12通过、连续性7/12通过、脚滑代理0/12通过，联合0/12。</p><h2>全来源验证诊断</h2>{validation_text}<h2>速度计算修正与验证边界</h2><p>V19确认原计算将质心线速度当作刚体原点线速度，脚底材料点速度需要扣除旋转后的质心偏移。已单独修正并完成已知静止/滑动/腾空箱体和旋转材料点校验。V21的12条人体输入仍未达到原物理判据，因此计算错误不能解释全部质量问题。历史V12的432次评分没有覆盖正确速度约定，暂不作为正式有效性结论；V24修正后的结果见上表。所有阈值与原始目标保持不变。</p><h2>固定参考回放</h2>{replay_text}<h2>C1的既有初步结果（旧导出设置）</h2><table><tr><th>方法</th><th>输入数</th><th>平均目标误差(cm)</th><th>条件合格</th><th>物理代理合格</th><th>联合合格</th></tr>{probe_table}</table>
 <p>仅4个动作来源、3种偏移、1个生成种子，每臂最多3候选。条件改善是探索性信号；物理代理尚不可靠，联合结果不能证明方法有效或普遍无效。原始目标、失败和阈值均保留。并非原计划432输入的正式验证。</p>
-<h2>三个候选机制</h2><ol><li><strong>C1：有界条件误差补偿。</strong>按实际执行误差有限调整下一轮生成条件。完整3种子对比已结束，未通过联合效力门；新颖性及下游效用均未成立。</li><li><strong>C2：可靠反馈与质量守护。</strong>估计反馈可靠性，拒绝使条件或物理质量恶化的候选。核心、仿真入口和配对分析已实现，数值检查通过；尚未完成仿真效力试验。重复执行计入三次预算；C1联合合格全为零，先诊断跟踪／表示／物理代理，不自动越过预先记录的前提。</li><li><strong>C3：按修复价值分配预算。</strong>区分参考缺陷与控制器困难，按单位成本的预计合格增益与来源覆盖分配候选。尚未实现效力试验。</li></ol>
+<h2>三个候选机制</h2><ol><li><strong>C1：有界条件误差补偿。</strong>按实际执行误差有限调整下一轮生成条件。完整3种子对比已结束，未通过联合效力门；新颖性及下游效用均未成立。</li><li><strong>C2：可靠反馈与质量守护。</strong>估计反馈可靠性，拒绝使条件或物理质量恶化的候选。核心、仿真入口和配对分析已实现，数值检查通过；尚未完成仿真效力试验。重复执行计入三次预算；C1联合合格全为零，先诊断跟踪／表示／物理代理，不自动越过预先记录的前提。</li><li><strong>C3：按修复价值分配预算。</strong>区分参考缺陷与控制器困难，按单位成本的预计合格增益与来源覆盖分配候选。预算分配核心已实现并通过合成数值样例检查，尚未完成验证集收益校准与真实仿真效力对比。总预算若为3N且每输入上限3次，各方法调用分配相同；后续需单独冻结稀缺等预算协议，不能用已评分候选库代替实际获取成本。</li></ol>
 <p>物理精化、执行反馈、闭环数据扩增已有前人路线。以上具体机制还需最近邻方法核查和等预算消融；不能直接写成论文贡献。</p>
 <h2>进入正式验证的条件</h2><p>接触和时间对齐测量校验通过后，补齐独立来源、3生成种子和缺失消融。联合合格率相对最强等预算基线至少提高10个百分点，来源聚类95%置信区间排除零，并满足语义与多样性护栏，才能进入G1验证。下游收益还需相同训练预算、3训练种子与独立测试集。</p>
 <h2>资源边界</h2>{resource_text}<h2>记录与复现</h2><ul><li><a href="../contact_force_fixture_20261011/repeat_comparison.json">物理箱体重复比较</a> · <a href="../contact_force_fixture_20261011/DOCUMENT_WITNESS.md">独立文档见证</a></li><li><a href="../contact_sampling_v8_20261011/sampling_summary.json">V8结果</a> · <a href="../contact_sampling_v8_20261011/EXPERIMENT_AUDIT.md">V8独立审计</a></li><li><a href="../../docs/candidate_mechanisms_20261011.md">候选机制与验证边界</a></li><li><a href="status.json">当前状态及证据哈希</a> · <a href="https://github.com/Pendragon08/conditional-human-motion-generation">代码与实验记录仓库</a></li></ul></html>'''
