@@ -1,0 +1,321 @@
+{
+  "witness": "independent agent follows doc",
+  "status": "FAIL_RETAINED",
+  "date": "2026-10-12",
+  "document": "docs/surface_proxy_calibration_v50_20261012.md",
+  "exact_command": "ssh -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=15 ouyanghao@10.147.17.32 env PYTHONPATH=/data/code/ouyanghao/oyh/humanoid-combat-motion/envs/closd-r3/site-packages /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/calibrate_surface_proxy_v50_20261012.py",
+  "documented_invocation_count": 1,
+  "exit_code": 1,
+  "sentinel_expected": "SURFACE_PROXY_ANALYTICAL_CONTROLS PASS_ANALYTICAL_CONTROLS 24",
+  "sentinel_observed": false,
+  "stdout_stderr": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/calibrate_surface_proxy_v50_20261012.py\", line 86, in <module>\n    main()\n  File \"/data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/calibrate_surface_proxy_v50_20261012.py\", line 27, in main\n    meta = json.loads(meta_path.read_text())\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/pathlib.py\", line 1236, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/pathlib.py\", line 1222, in open\n    return io.open(self, mode, buffering, encoding, errors, newline,\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/pathlib.py\", line 1078, in _opener\n    return self._accessor.open(self, flags, mode)\nFileNotFoundError: [Errno 2] No such file or directory: '/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/native_reference_velocity_v46_20261012/public/raw/val_native_replay_s11/metadata.json'\n",
+  "error_type": "FileNotFoundError",
+  "failure_path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/native_reference_velocity_v46_20261012/public/raw/val_native_replay_s11/metadata.json",
+  "remote_read_only_evidence": {
+    "files": {
+      "scripts/calibrate_surface_proxy_v50_20261012.py": {
+        "exists": true,
+        "sha256": "e31006c9ffdda4db16b1da2fadac47558c674a5f34f4c65687437f90c5a3e826",
+        "bytes": 5607
+      },
+      "results/native_reference_velocity_v46_20261012/public/raw/val_native_replay_s11/metadata.json": {
+        "exists": false,
+        "sha256": null,
+        "bytes": null
+      },
+      "results/native_reference_velocity_v46_20261012/frozen_thresholds.json": {
+        "exists": true,
+        "sha256": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+        "bytes": 732
+      },
+      "scripts/physics_guided_metric_v21_20261012.py": {
+        "exists": true,
+        "sha256": "923ab0f00c0d1cddf005bc4b615e87737bc474376439f5fb1fbe67ff0ff14068",
+        "bytes": 9795
+      },
+      "results/surface_proxy_calibration_v50_20261012/first_attempt/summary.json": {
+        "exists": false,
+        "sha256": null,
+        "bytes": null
+      },
+      "results/surface_proxy_calibration_v50_20261012/first_attempt/analytical_controls.npz": {
+        "exists": false,
+        "sha256": null,
+        "bytes": null
+      }
+    },
+    "first_attempt_exists": true,
+    "first_attempt_files": [],
+    "numpy_version": "1.24.4",
+    "python_version": "3.8.20 (default, Oct  3 2024, 15:24:27) \n[GCC 11.2.0]",
+    "numpy_environment": "bare venv; original hash inspection omitted documented PYTHONPATH, not evidence about documented runtime"
+  },
+  "local_input_metadata_sha256": "6a7b69db8f65aa8c1e6c1655f4c3300d8b34fa61dbf561c870b9e33d73c8c533",
+  "local_remote_hashes_match_for_available_files": true,
+  "document_numpy_version": "1.23.5",
+  "actual_numpy_version": "1.23.5",
+  "numpy_version_matches_document": true,
+  "executed_controls": 0,
+  "planned_controls": 24,
+  "controls": [
+    {
+      "foot": "L_Ankle",
+      "control": "static",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 0,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "L_Ankle",
+      "control": "flat_sliding",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 1,
+      "expected_contact_xy_speed_m_s": 0.2
+    },
+    {
+      "foot": "L_Ankle",
+      "control": "positive_rocking",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 0,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "L_Ankle",
+      "control": "negative_rocking",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 0,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "L_Ankle",
+      "control": "rocking_plus_sliding",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 1,
+      "expected_contact_xy_speed_m_s": 0.2
+    },
+    {
+      "foot": "L_Ankle",
+      "control": "airborne",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 0,
+      "expected_surface_slip_proxy_fraction": null,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "L_Toe",
+      "control": "static",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 0,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "L_Toe",
+      "control": "flat_sliding",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 1,
+      "expected_contact_xy_speed_m_s": 0.2
+    },
+    {
+      "foot": "L_Toe",
+      "control": "positive_rocking",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 0,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "L_Toe",
+      "control": "negative_rocking",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 0,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "L_Toe",
+      "control": "rocking_plus_sliding",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 1,
+      "expected_contact_xy_speed_m_s": 0.2
+    },
+    {
+      "foot": "L_Toe",
+      "control": "airborne",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 0,
+      "expected_surface_slip_proxy_fraction": null,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "R_Ankle",
+      "control": "static",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 0,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "R_Ankle",
+      "control": "flat_sliding",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 1,
+      "expected_contact_xy_speed_m_s": 0.2
+    },
+    {
+      "foot": "R_Ankle",
+      "control": "positive_rocking",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 0,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "R_Ankle",
+      "control": "negative_rocking",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 0,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "R_Ankle",
+      "control": "rocking_plus_sliding",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 1,
+      "expected_contact_xy_speed_m_s": 0.2
+    },
+    {
+      "foot": "R_Ankle",
+      "control": "airborne",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 0,
+      "expected_surface_slip_proxy_fraction": null,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "R_Toe",
+      "control": "static",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 0,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "R_Toe",
+      "control": "flat_sliding",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 1,
+      "expected_contact_xy_speed_m_s": 0.2
+    },
+    {
+      "foot": "R_Toe",
+      "control": "positive_rocking",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 0,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "R_Toe",
+      "control": "negative_rocking",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 0,
+      "expected_contact_xy_speed_m_s": 0
+    },
+    {
+      "foot": "R_Toe",
+      "control": "rocking_plus_sliding",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 60,
+      "expected_surface_slip_proxy_fraction": 1,
+      "expected_contact_xy_speed_m_s": 0.2
+    },
+    {
+      "foot": "R_Toe",
+      "control": "airborne",
+      "execution_status": "NOT_EXECUTED_MISSING_INPUT",
+      "pass": null,
+      "expected_support_observations": 0,
+      "expected_surface_slip_proxy_fraction": null,
+      "expected_contact_xy_speed_m_s": 0
+    }
+  ],
+  "arrays_sha256": null,
+  "summary_sha256": null,
+  "source_review": {
+    "generation_calls": 0,
+    "simulation_calls": 0,
+    "gpu_calls": 0,
+    "force": "prescribed",
+    "angles": "independent instantaneous parameter samples, not integrated trajectory",
+    "same_family_provisional": true,
+    "reason": "Control generation reuses V21 rotate_xyzw while evaluating frozen V21 surface_metrics; no independent contact-ground-truth evaluator. Analytic pivot prescription is separate from metric argmin but full computational independence is not established."
+  },
+  "limitations": [
+    "Missing remote metadata prevented any control construction, metric evaluation, NPZ generation, or summary generation.",
+    "Missing input hash cannot be verified remotely; local metadata existence does not fix the failed documented remote invocation.",
+    "No numerical results exist for the 24 planned controls; static source inspection is not a passing execution.",
+    "No native contact locations, measured force distribution, simulator rolling accuracy, real human sliding, downstream utility, or innovation confirmation can be inferred.",
+    "Witness made no retry, fix, install, GPU/simulator/generator call, threshold edit, previous-score edit, git change, or Overleaf write."
+  ],
+  "retained_failure": {
+    "remote_first_attempt": "results/surface_proxy_calibration_v50_20261012/first_attempt",
+    "directory_exists": true,
+    "contents": [],
+    "untouched": true
+  },
+  "inspection_command": "@'\nimport json,hashlib,sys\nfrom pathlib import Path\nimport numpy as np\nr=Path('/data/code/ouyanghao/oyh/conditional-human-motion-generation')\npaths=['scripts/calibrate_surface_proxy_v50_20261012.py','results/native_reference_velocity_v46_20261012/public/raw/val_native_replay_s11/metadata.json','results/native_reference_velocity_v46_20261012/frozen_thresholds.json','scripts/physics_guided_metric_v21_20261012.py','results/surface_proxy_calibration_v50_20261012/first_attempt/summary.json','results/surface_proxy_calibration_v50_20261012/first_attempt/analytical_controls.npz']\nrecords={}\nfor p in paths:\n q=r/p\n records[p]={'exists':q.exists(),'sha256':hashlib.sha256(q.read_bytes()).hexdigest() if q.is_file() else None,'bytes':q.stat().st_size if q.is_file() else None}\no=r/'results/surface_proxy_calibration_v50_20261012/first_attempt'\nprint(json.dumps({'files':records,'first_attempt_exists':o.exists(),'first_attempt_files':sorted(x.name for x in o.iterdir()) if o.exists() else [],'numpy_version':np.__version__,'python_version':sys.version},indent=2))\nprint('METRIC_SOURCE_BEGIN')\nprint((r/'scripts/physics_guided_metric_v21_20261012.py').read_text())\n'@ | ssh -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=15 ouyanghao@10.147.17.32 /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python -",
+  "inspection_exit_code": 0,
+  "inspection_note": "Read-only evidence collection; no experiment rerun.",
+  "innovation_counts": {
+    "candidates": 3,
+    "first_round_efficacy_comparisons": 1,
+    "incomplete": 2,
+    "confirmed": 0
+  },
+  "bare_venv_numpy_version": "1.24.4",
+  "documented_overlay_environment": {
+    "numpy_version": "1.23.5",
+    "numpy_file": "/data/code/ouyanghao/oyh/humanoid-combat-motion/envs/closd-r3/site-packages/numpy/__init__.py",
+    "python_version": "3.8.20 (default, Oct  3 2024, 15:24:27) \n[GCC 11.2.0]",
+    "command": "@'\nimport json,numpy,sys\nprint(json.dumps({'numpy_version':numpy.__version__,'numpy_file':numpy.__file__,'python_version':sys.version},indent=2))\n'@ | ssh -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=15 ouyanghao@10.147.17.32 env PYTHONPATH=/data/code/ouyanghao/oyh/humanoid-combat-motion/envs/closd-r3/site-packages /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python -",
+    "exit_code": 0,
+    "read_only": true
+  },
+  "provenance_correction": "Original witness incorrectly identified the bare-venv NumPy 1.24.4 probe as the documented runtime. A separate read-only probe with exact documented PYTHONPATH observes 1.23.5 at overlay/numpy/__init__.py, matching the document. The experiment was not rerun; FAIL_RETAINED and 0 controls remain."
+}

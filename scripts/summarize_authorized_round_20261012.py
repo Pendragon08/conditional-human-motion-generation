@@ -24,7 +24,9 @@ for name in ('original_reference_attribution_v35_20261012', 'round_resource_stat
              'reference_observation_v42_20261012', 'reference_velocity_v43_20261012',
              'reference_quality_v44_20261012', 'original_reference_velocity_v45_20261012',
              'native_reference_velocity_v46_20261012', 'native_velocity_summary_v47_20261012',
-             'support_velocity_diagnostic_v48_20261012', 'support_velocity_diagnostic_v49_20261012'):
+             'support_velocity_diagnostic_v48_20261012', 'support_velocity_diagnostic_v49_20261012',
+             'surface_proxy_calibration_v50_20261012', 'paired_feedback_validation_v51_20261012',
+             'surface_proxy_calibration_v52_20261012'):
     p = ROOT / 'results' / name
     if p.exists() and p not in directories:
         directories.append(p)

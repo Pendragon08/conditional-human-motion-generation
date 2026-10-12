@@ -77,6 +77,19 @@ native_control=read(str(native_paths[-1].relative_to(ROOT))) if native_paths els
 native_witness=read('results/native_reference_velocity_v46_20261012/DOCUMENT_WITNESS.json')
 support_paths=sorted((ROOT/'results/support_velocity_diagnostic_v49_20261012').glob('diagnostic_*.json'))
 support_diagnostic=read(str(support_paths[-1].relative_to(ROOT))) if support_paths else None
+analytical52=read('results/surface_proxy_calibration_v52_20261012/first_attempt/summary.json')
+analytical52_witness=read('results/surface_proxy_calibration_v52_20261012/DOCUMENT_WITNESS.json')
+paired51_summary=read('results/paired_feedback_validation_v51_20261012/summary.json')
+paired51_state=read('results/paired_feedback_validation_v51_20261012/state.json')
+paired51_progress=read('results/paired_feedback_validation_v51_20261012/progress.json')
+if analytical52:
+    assert analytical52['status']=='PASS_ANALYTICAL_CONTROLS' and analytical52['checks']==24
+    assert all(x['check_pass'] for x in analytical52['cases'])
+    assert analytical52['source_sha256']==hashlib.sha256((ROOT/'scripts/calibrate_surface_proxy_v52_20261012.py').read_bytes()).hexdigest()
+    assert analytical52['parent_source_sha256']==hashlib.sha256((ROOT/'scripts/calibrate_surface_proxy_v50_20261012.py').read_bytes()).hexdigest()
+    assert analytical52_witness and analytical52_witness['status']=='PASS'
+    assert analytical52_witness['summary_sha256']==hashlib.sha256((ROOT/'results/surface_proxy_calibration_v52_20261012/first_attempt/summary.json').read_bytes()).hexdigest()
+    assert analytical52['simulation_calls']==0 and analytical52['gpu_calls']==0
 if support_diagnostic:
     assert support_diagnostic['source_sha256']==hashlib.sha256((ROOT/'scripts/diagnose_support_velocity_v49_20261012.py').read_bytes()).hexdigest()
     assert support_diagnostic['parent_source_sha256']==hashlib.sha256((ROOT/'scripts/diagnose_support_velocity_v48_20261012.py').read_bytes()).hexdigest()
@@ -202,6 +215,13 @@ for name in ('summary.json','DOCUMENT_WITNESS.json','versions.json','budget_ledg
 if quality_paths: inputs.append(quality_paths[-1])
 if native_paths: inputs.append(native_paths[-1])
 if support_paths: inputs.append(support_paths[-1])
+for directory,names in (
+    ('surface_proxy_calibration_v50_20261012',('DOCUMENT_WITNESS.json',)),
+    ('surface_proxy_calibration_v52_20261012',('first_attempt/summary.json','DOCUMENT_WITNESS.json')),
+    ('paired_feedback_validation_v51_20261012',('summary.json','state.json','progress.json','versions.json','runtime_witness.json','DOCUMENT_WITNESS.json','budget_ledger.json'))):
+    for name in names:
+        path=ROOT/'results'/directory/name
+        if path.exists(): inputs.append(path)
 for name in ('DOCUMENT_WITNESS.json','versions.json','budget_ledger.json','interface_summary.json'):
     path=ROOT/'results/native_reference_velocity_v46_20261012'/name
     if path.exists(): inputs.append(path)
@@ -234,6 +254,9 @@ status=dict(innovation_candidates=3,preliminarily_tested=1,not_yet_experimentall
  original_reference_repaired_interface_witness=original_velocity_witness,
  native_corrected_interface_control=native_control,native_corrected_interface_witness=native_witness,
  support_velocity_diagnostic=support_diagnostic,
+ analytical_contact_controls=analytical52,analytical_contact_witness=analytical52_witness,
+ corrected_feedback_validation_summary=paired51_summary,corrected_feedback_validation_state=paired51_state,
+ corrected_feedback_validation_progress=paired51_progress,
  resource_status=resource_status,
  full_efficacy_comparisons_completed=1 if formal_summary else 0,
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
@@ -345,6 +368,12 @@ if native_control:
 if support_diagnostic:
     a=support_diagnostic['arms']['planned'];b=a['angular_bins_rad_s']['0.0-0.25']
     component_text+=f'<h3>支撑速度代理的探索性分解：V49</h3><p>计划参考回放中共有{a["proxy_violations_total"]}个支撑帧—刚体观测超过冻结速度阈值；其中生成衔接帧60附近±2帧为{a["proxy_violations_near_frame60"]}个。低角速度（小于0.25rad/s）的{b["support_observations"]}个支撑观测中，仅{b["above_frozen_slip_speed"]}个超阈值；高角速度观测中超阈值明显更多。原始MoCap参考也出现相似关联。这是事后描述性分组，未改接受规则；接触点滚动、碰撞表面近似和真实滑移尚不能由该代理分开，不能宣称足部旋转造成滑移或已找到创新收益。V48首次分析遗漏原生质心参数注入而失败，原代码与失败记录保留，V49单独采用逐案例原生质心后精确重现全部原滑移代理分数。后续须在已知接触运动下检查代理的判别边界，再设计物理精化对比。</p><p><a href="../support_velocity_diagnostic_v49_20261012/{support_paths[-1].name}">支撑速度分解</a> · <a href="../support_velocity_diagnostic_v48_20261012/attempt1_failure.json">保留的首次分析失败</a></p>'
+if analytical52:
+    component_text+='<h3>解析接触控制：V52</h3><p>四个实际碰撞盒的24项解析控制通过：静止、正反向理想边缘滚动未被判为滑动，0.2m/s平移及滚动叠加平移被识别，腾空无支撑。独立核对使用显式旋转矩阵与所有并列最低顶点；但输入接触力是假定值，角度是独立参数样本。这是公式级合成控制，不是仿真、真实接触点或人体无滑移的证据。V50首个CPU命令因文件路径错误失败，0项控制执行，失败另行保留。高角速度关联本身不足以推翻原代理，历史分数与阈值不变。</p><p><a href="../surface_proxy_calibration_v52_20261012/DOCUMENT_WITNESS.md">独立解析见证</a> · <a href="../surface_proxy_calibration_v50_20261012/DOCUMENT_WITNESS.md">原路径失败</a></p>'
+if paired51_state:
+    component_text+='<h3>修复接口后的配对反馈验证：V51</h3><p>此轮为验证集阶段，每方法24来源×3偏移×3种子，合计216输入；两方法共用实际前缀与逐候选配对噪声，每输入均为3候选，并独立回放选择出的精化参考。与旧V28协议分开，不混合分数，也不计为第四项创新。最近同步的状态为 '+html.escape(paired51_state['status'])+'；该文件状态不是当前进程存活的证明。</p>'
+    if paired51_summary:
+        component_text+='<p>完整验证摘要：'+html.escape(json.dumps(paired51_summary['totals'],ensure_ascii=False))+'。只有验证集结果，仍需按独立测试和原验收门判断；不等于有效创新或完成G1／下游实验。</p>'
 resource_text='<p>累计资源快照尚未同步。</p>'
 if resource_status:
     resource_text=f'<p>累计保守计费{resource_status["charged_wall_hours_one_gpu_per_job"]:.3f} GPU小时，输出{resource_status["output_bytes"]/1024**3:.3f} GiB（含公开导出重复副本），快照时数据盘可用{resource_status["data_free_bytes"]/1024**3:.2f} GiB。总计72小时、阶段上限、输出15GiB和磁盘至少20GiB的检查结果：{html.escape(resource_status["status"])}。阶段ablation_g1包括人体消融计费，不表示已运行G1；下游训练未运行。</p>'
