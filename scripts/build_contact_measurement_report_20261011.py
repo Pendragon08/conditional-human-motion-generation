@@ -66,6 +66,12 @@ transfer_paths=sorted((ROOT/'results/construction_replay_transfer_v40_20261012')
 transfer=read(str(transfer_paths[-1].relative_to(ROOT))) if transfer_paths else None
 state_paths=sorted((ROOT/'results/raw_replay_state_diagnostic_v41_20261012').glob('diagnostic_*.json'))
 replay_state=read(str(state_paths[-1].relative_to(ROOT))) if state_paths else None
+observation_trace=read('results/reference_observation_v42_20261012/summary.json')
+observation_witness=read('results/reference_observation_v42_20261012/DOCUMENT_WITNESS.json')
+if observation_trace:
+    assert observation_trace['status']=='COMPLETE_REFERENCE_OBSERVATION_DIAGNOSTIC' and observation_trace['attempts']==72
+    assert observation_trace['source_sha256']==hashlib.sha256((ROOT/'scripts/compare_reference_observation_v42_20261012.py').read_bytes()).hexdigest()
+    assert observation_trace['candidate_efficacy'] is False and observation_trace['historical_scores_changed'] is False
 for diagnostic,source in ((transfer,'diagnose_construction_replay_transfer_v40_20261012.py'),
                           (replay_state,'diagnose_raw_replay_state_v41_20261012.py')):
     if diagnostic:
@@ -143,6 +149,9 @@ if event_paths: inputs.append(event_paths[-1])
 if lineage_paths: inputs.append(lineage_paths[-1])
 if transfer_paths: inputs.append(transfer_paths[-1])
 if state_paths: inputs.append(state_paths[-1])
+for name in ('summary.json','DOCUMENT_WITNESS.json','versions.json','budget_ledger.json'):
+    path=ROOT/'results/reference_observation_v42_20261012'/name
+    if path.exists(): inputs.append(path)
 if resource_paths: inputs.append(resource_paths[-1])
 for name in ('diagnostic_summary.json','DOCUMENT_WITNESS_AUDIT.json'):
     path=ROOT/'results/mocap_reference_control_v33_20261012'/name
@@ -163,6 +172,7 @@ status=dict(innovation_candidates=3,preliminarily_tested=1,not_yet_experimentall
  strict_original_reference_cache_binding=strict_binding,endpoint_event_diagnostic=endpoint_event,
  strict_execution_lineage_guard=strict_lineage,
  construction_replay_transfer=transfer,raw_replay_state_diagnostic=replay_state,
+ reference_observation_diagnostic=observation_trace,reference_observation_witness=observation_witness,
  resource_status=resource_status,
  full_efficacy_comparisons_completed=1 if formal_summary else 0,
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
@@ -256,6 +266,8 @@ if transfer:
     component_text+='<h3>构建合格不等于参考重放合格</h3><p>测试构建的6048次尝试中有7次满足原联合判据。跨方法选择中有8个构建合格的实例（含同一来源重复选择，不能称为8条独立动作），重放后全部失去联合合格，均未通过物理质量判据。这说明C3的收益校准应采用固定参考重放结果，不能将构建时的合格标签直接当作可训练数据价值。验证构建144次尝试联合合格为0，不能使用测试标签替代缺失的验证校准。</p><p><a href="../construction_replay_transfer_v40_20261012/'+transfer_paths[-1].name+'">构建与重放逐例核对</a></p>'
 if replay_state:
     component_text+='<h3>重置一致性与数值差异</h3><p>3种子、每种子144输入的原生成与原参考重放配对中，15项初始状态、刚体属性与足部几何均逐元素一致，实际应用的参考位置符合相同的原生坐标变换。首步动作存在最大约2.98×10⁻⁷的差异，首步实际位置最大差约0.267毫米；后续有效帧的差异增大。诊断分别报告共同有效输入数与包含失效槽位的差异，不能把提前终止后的数组用于有效执行比较。尚不能将差异归因于重置、速度接口或生成器；下一步需要记录跟踪器实际接收的参考速度及观测。</p><p><a href="../raw_replay_state_diagnostic_v41_20261012/'+state_paths[-1].name+'">初始状态与有效帧数值诊断</a></p>'
+if observation_trace:
+    component_text+='<h3>实际参考速度与原始观测记录</h3><p>V42新增两批验证集仿真，各保留24原始来源×3目标偏移，共72输入；记录参考前一帧、参考速度与动作前原始任务观测。生成衔接帧（第60帧）的应用位置完全一致，但前一帧最大差0.0741m、参考速度最大差2.2230m/s。第0帧已有约8.94×10⁻⁷m/s速度差，第1帧原始任务观测最大差0.04373；因此不能把后续失效仅归因于衔接帧。原始任务观测不是策略归一化后的输入。生成侧2次提前终止、重放侧1次，均保留在分母。</p><p>独立文档执行见证核对新记录与原V28验证构建的全部9个轨迹数组逐元素一致，说明本次被动记录未改变该批原执行结果；见证仅覆盖当前诊断，不认证C2/C3效力。后续需要单独修复参考速度的时间语义并校验，任何新结果与历史结果分开记录。</p><p><a href="../reference_observation_v42_20261012/summary.json">逐帧接口诊断</a> · <a href="../reference_observation_v42_20261012/DOCUMENT_WITNESS.md">独立执行见证</a></p>'
 if replay_interface_pass:
     measurement_text='重置、坐标、时间、数值复算、已知正负对照及固定参考回放接口已通过。足部指标仍是碰撞表面滑移代理，不能称为真实接触力或所有滚动接触的真值。人体物理质量与候选效力另行判断。'
 resource_text='<p>累计资源快照尚未同步。</p>'

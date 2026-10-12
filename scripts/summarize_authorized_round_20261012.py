@@ -5,6 +5,7 @@ Does not change bound V28/V33 budget helpers or their historical snapshots.
 """
 import hashlib
 import json
+import math
 from pathlib import Path
 import shutil
 import time
@@ -19,10 +20,26 @@ directories = [ROOT / name for name in result['directories']]
 for name in ('original_reference_attribution_v35_20261012', 'round_resource_status_20261012',
              'mocap_cache_binding_v36_20261012', 'endpoint_event_diagnostic_v37_20261012',
              'repair_budget_core_v38_20261012', 'execution_lineage_guard_v39_20261012',
-             'construction_replay_transfer_v40_20261012', 'raw_replay_state_diagnostic_v41_20261012'):
+             'construction_replay_transfer_v40_20261012', 'raw_replay_state_diagnostic_v41_20261012',
+             'reference_observation_v42_20261012'):
     p = ROOT / 'results' / name
     if p.exists() and p not in directories:
         directories.append(p)
+# The frozen V34 helper cannot discover newer directory prefixes. Charge their
+# ledgers as well as their output bytes; retain old receipts without rewriting.
+known = {row['directory'] for row in result['entries']}
+for directory in directories:
+    ledger = directory / 'budget_ledger.json'
+    if directory.name in known or not ledger.exists():
+        continue
+    rows = json.loads(ledger.read_text(encoding='utf8'))
+    for row in rows:
+        assert isinstance(row['seconds'], (int,float)) and math.isfinite(row['seconds']) and row['seconds'] >= 0
+        assert row['stage'] in caps
+        result['entries'].append(dict(directory=directory.name, **row))
+result['charged_wall_hours_one_gpu_per_job'] = sum(row['seconds'] for row in result['entries']) / 3600
+result['stage_hours'] = {stage:sum(row['seconds'] for row in result['entries'] if row['stage']==stage) / 3600 for stage in caps}
+result['failed_entries'] = sum(row.get('exit_code',0)!=0 for row in result['entries'])
 archives = [p for p in (ROOT / 'results').glob('*.tar.gz') if p.name.endswith('20261011.tar.gz') and
             p.name.startswith(('contact_', 'physics_guided_', 'reset_alignment_', 'reset_cache_'))]
 result['output_bytes'] = sum(p.stat().st_size for d in directories for p in d.rglob('*') if p.is_file()) + sum(p.stat().st_size for p in archives)

@@ -1,0 +1,974 @@
+{
+  "status": "PASS",
+  "scope": "Validation-only passive reference velocity/previous-pose/raw task observation measurement interface; no innovation efficacy or causal certification",
+  "command": "ssh -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=15 ouyanghao@10.147.17.32 env PYTHONPATH=/data/code/ouyanghao/oyh/humanoid-combat-motion/envs/closd-r3/site-packages /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/run_reference_observation_v42_20261012.py --run",
+  "documented_invocation_count": 1,
+  "launch_exit_code": 0,
+  "execution_identity": {
+    "local_exec_session_id": 93582,
+    "remote_launcher_pid": 2833056,
+    "remote_launcher_ppid": 2833055,
+    "remote_first_collector_pid": 2833079,
+    "remote_native_child_pid": 2833109,
+    "start_server_local": "Mon Oct 12 00:15:14 2026",
+    "terminal_launcher_absent": true
+  },
+  "gpu_preflight": {
+    "gpu0_memory_used_mib": 699,
+    "gpu0_memory_total_mib": 49140,
+    "gpu1_memory_used_mib": 8842,
+    "gpu1_memory_total_mib": 49140,
+    "launcher_recorded_gpu0_utilization_percent": 0
+  },
+  "doc_vs_reality_divergences": [],
+  "repairs": 0,
+  "relaunches": 0,
+  "other_jobs_touched": false,
+  "thresholds_changed": false,
+  "innovation_confirmed": false,
+  "candidate_efficacy": false,
+  "overleaf_results_sync": false,
+  "local_document_sha256": "967d7e02edd6d9343d1ba17feb72418344bcf402db858dfbf265c39e948442f5",
+  "notes": [
+    "AGENTS.md and assumed .aris/compute/nlp03.md paths absent; actual existing warm runtime ledger found at .aris/compute/closd-baseline-20261010.md. Canonical specification hash matched the existing ledger; no rebuild.",
+    "Two supplemental read-only inspection harness attempts encountered quoting/encoding errors (ReferenceError: btoa is not defined; bash syntax error near unexpected token base64.b64decode). The documented invocation ran once successfully and was never restarted. Subsequent stdin-only read inspection succeeded.",
+    "Trace records raw task observation before the native pre_physics_step; it is not the normalized observation delivered internally to the policy.",
+    "Frame60 reference previous pose/velocity differ, but task observation differs before frame60. Field differences cannot establish a causal effect or validate C2/C3; prior C1 remains negative."
+  ],
+  "assessment": {
+    "terminal_state": {
+      "status": "COMPLETE_INTERFACE_DIAGNOSTIC",
+      "time": 1791764219.3132987
+    },
+    "summary": {
+      "status": "COMPLETE_REFERENCE_OBSERVATION_DIAGNOSTIC",
+      "attempts": 72,
+      "entries": [
+        {
+          "frame": 0,
+          "common_valid_inputs": 72,
+          "fields": {
+            "ref_position": {
+              "maximum_absolute_difference": 0,
+              "equal": true
+            },
+            "ref_previous": {
+              "maximum_absolute_difference": 2.9802322387695312e-8,
+              "equal": false
+            },
+            "ref_velocity": {
+              "maximum_absolute_difference": 8.940696147874405e-7,
+              "equal": false
+            },
+            "task_observation": {
+              "maximum_absolute_difference": 8.940697284742782e-7,
+              "equal": false
+            }
+          }
+        },
+        {
+          "frame": 1,
+          "common_valid_inputs": 72,
+          "fields": {
+            "ref_position": {
+              "maximum_absolute_difference": 0,
+              "equal": true
+            },
+            "ref_previous": {
+              "maximum_absolute_difference": 2.9802322387695312e-8,
+              "equal": false
+            },
+            "ref_velocity": {
+              "maximum_absolute_difference": 8.940696716308594e-7,
+              "equal": false
+            },
+            "task_observation": {
+              "maximum_absolute_difference": 0.043733835220336914,
+              "equal": false
+            }
+          }
+        },
+        {
+          "frame": 29,
+          "common_valid_inputs": 72,
+          "fields": {
+            "ref_position": {
+              "maximum_absolute_difference": 0,
+              "equal": true
+            },
+            "ref_previous": {
+              "maximum_absolute_difference": 2.9802322387695312e-8,
+              "equal": false
+            },
+            "ref_velocity": {
+              "maximum_absolute_difference": 8.940696716308594e-7,
+              "equal": false
+            },
+            "task_observation": {
+              "maximum_absolute_difference": 16.391908645629883,
+              "equal": false
+            }
+          }
+        },
+        {
+          "frame": 58,
+          "common_valid_inputs": 72,
+          "fields": {
+            "ref_position": {
+              "maximum_absolute_difference": 0,
+              "equal": true
+            },
+            "ref_previous": {
+              "maximum_absolute_difference": 2.9802322387695312e-8,
+              "equal": false
+            },
+            "ref_velocity": {
+              "maximum_absolute_difference": 8.940696716308594e-7,
+              "equal": false
+            },
+            "task_observation": {
+              "maximum_absolute_difference": 18.90943145751953,
+              "equal": false
+            }
+          }
+        },
+        {
+          "frame": 59,
+          "common_valid_inputs": 72,
+          "fields": {
+            "ref_position": {
+              "maximum_absolute_difference": 0,
+              "equal": true
+            },
+            "ref_previous": {
+              "maximum_absolute_difference": 2.9802322387695312e-8,
+              "equal": false
+            },
+            "ref_velocity": {
+              "maximum_absolute_difference": 8.940696716308594e-7,
+              "equal": false
+            },
+            "task_observation": {
+              "maximum_absolute_difference": 17.58303451538086,
+              "equal": false
+            }
+          }
+        },
+        {
+          "frame": 60,
+          "common_valid_inputs": 72,
+          "fields": {
+            "ref_position": {
+              "maximum_absolute_difference": 0,
+              "equal": true
+            },
+            "ref_previous": {
+              "maximum_absolute_difference": 0.074100062251091,
+              "equal": false
+            },
+            "ref_velocity": {
+              "maximum_absolute_difference": 2.223001718521118,
+              "equal": false
+            },
+            "task_observation": {
+              "maximum_absolute_difference": 18.6573486328125,
+              "equal": false
+            }
+          }
+        },
+        {
+          "frame": 61,
+          "common_valid_inputs": 72,
+          "fields": {
+            "ref_position": {
+              "maximum_absolute_difference": 0,
+              "equal": true
+            },
+            "ref_previous": {
+              "maximum_absolute_difference": 4.842877388000488e-8,
+              "equal": false
+            },
+            "ref_velocity": {
+              "maximum_absolute_difference": 0.0000014528632164001465,
+              "equal": false
+            },
+            "task_observation": {
+              "maximum_absolute_difference": 16.085268020629883,
+              "equal": false
+            }
+          }
+        },
+        {
+          "frame": 90,
+          "common_valid_inputs": 72,
+          "fields": {
+            "ref_position": {
+              "maximum_absolute_difference": 0,
+              "equal": true
+            },
+            "ref_previous": {
+              "maximum_absolute_difference": 5.960464477539063e-8,
+              "equal": false
+            },
+            "ref_velocity": {
+              "maximum_absolute_difference": 0.0000017881393432617188,
+              "equal": false
+            },
+            "task_observation": {
+              "maximum_absolute_difference": 29.527843475341797,
+              "equal": false
+            }
+          }
+        },
+        {
+          "frame": 119,
+          "common_valid_inputs": 70,
+          "fields": {
+            "ref_position": {
+              "maximum_absolute_difference": 0,
+              "equal": true
+            },
+            "ref_previous": {
+              "maximum_absolute_difference": 5.960464477539063e-8,
+              "equal": false
+            },
+            "ref_velocity": {
+              "maximum_absolute_difference": 0.0000017881393432617188,
+              "equal": false
+            },
+            "task_observation": {
+              "maximum_absolute_difference": 15.073643684387207,
+              "equal": false
+            }
+          }
+        }
+      ],
+      "output_bindings": {
+        "val_planned_s11": {
+          "metadata.json": "3c47b0361802865a6fff0bd992f5930fd80fc7b8eb63f8db9f3cec70ecc8fabe",
+          "metrics.json": "565a08acfcd9741f0da1c16362fe72d8ee9eae99f80dbee7986a6f660f65fb93",
+          "trajectories.npz": "45486979e705ce28f3e5e10976814ce901f3008ea902e5e23d326a5c0a4311bd",
+          "observation_trace.npz": "17b23e41c7c973bab5583c3d8fc073d7e44df5e644ae5a3160f6ae3d5167c638",
+          "lineage.json": "197e2f4f45b31c68ae108847175ce0b6125e488415b8354cd88abc4f67a0b1dc"
+        },
+        "val_replay_s11": {
+          "metadata.json": "19beb2eae2da94998d7856f8fa490bc4021693795e39462c4980523e7de23146",
+          "metrics.json": "12e2efc922c1f20a4f3fae162625a1e47980ae9001350a3d2bf08edb5898d894",
+          "trajectories.npz": "32185a8903dbd413b5bb3d20e1c2f349a3300a258a0c49c7537a3d13e8d58002",
+          "observation_trace.npz": "9033536f0a342935cf5e9bc56fe0431fed016c9121cd741067d9acc5a184578c",
+          "lineage.json": "0bafa38714787b74eab3233071330b4cf126da02ad5e1b444db78c8faba1f666"
+        }
+      },
+      "source_sha256": "067b2078e091fe3c414fd2604bc27c2b712ae11b4bbcf6898362079e0bac06e7",
+      "thresholds_changed": false,
+      "targets_changed": false,
+      "historical_scores_changed": false,
+      "candidate_efficacy": false,
+      "innovation_confirmed": false,
+      "overleaf_results_sync": false,
+      "scope": "Raw task observation and reference velocity comparison, not normalized policy input or causal proof"
+    },
+    "source_checks": {
+      "scripts/reset_aligned_collect_v4.py": {
+        "expected": "f2ecbb37e4fd15de8433b97b386ed6b13af1b343a83a4685e9888f77c7a762be",
+        "actual": "f2ecbb37e4fd15de8433b97b386ed6b13af1b343a83a4685e9888f77c7a762be",
+        "matches": true
+      },
+      "scripts/physics_guided_collect.py": {
+        "expected": "a5d426cf942ecf0b3ac121b389aad5dd6459ce8ea34047c5d5a88b0b1cc77d43",
+        "actual": "a5d426cf942ecf0b3ac121b389aad5dd6459ce8ea34047c5d5a88b0b1cc77d43",
+        "matches": true
+      },
+      "scripts/physics_guided_core.py": {
+        "expected": "e6be20aa8a060bad20881cb81bab4e3328282a163b0d3e9571c7c590443436ed",
+        "actual": "e6be20aa8a060bad20881cb81bab4e3328282a163b0d3e9571c7c590443436ed",
+        "matches": true
+      },
+      "scripts/physics_guided_queue.py": {
+        "expected": "349266a29d56806b9f081fdc0ec69c7788746849f8ff50035248ef25c8602cf8",
+        "actual": "349266a29d56806b9f081fdc0ec69c7788746849f8ff50035248ef25c8602cf8",
+        "matches": true
+      },
+      "scripts/physics_guided_lineage.py": {
+        "expected": "da4365d425dfe91397f7651d0a8e873dabf289ba2d30a63f84c6b19d68778ef6",
+        "actual": "da4365d425dfe91397f7651d0a8e873dabf289ba2d30a63f84c6b19d68778ef6",
+        "matches": true
+      },
+      "scripts/r3_closd_isolated_entry.py": {
+        "expected": "601fd5557b71a8259d12575beb3848f206795a7c9f7cefd02e538e8c97d280e6",
+        "actual": "601fd5557b71a8259d12575beb3848f206795a7c9f7cefd02e538e8c97d280e6",
+        "matches": true
+      },
+      "scripts/run_reset_alignment_checks_v4.py": {
+        "expected": "5d0a961b6ce9903fd666fdbae56736a68eddd1402ddf72793fc000ee0dea98d2",
+        "actual": "5d0a961b6ce9903fd666fdbae56736a68eddd1402ddf72793fc000ee0dea98d2",
+        "matches": true
+      },
+      "scripts/run_contact_com_validation_v24_20261012.py": {
+        "expected": "7e572184b0d341b607dbc67a624af17cf724e846e64045111804170c30e71d58",
+        "actual": "7e572184b0d341b607dbc67a624af17cf724e846e64045111804170c30e71d58",
+        "matches": true
+      },
+      "scripts/contact_cpu_export_collect_v11.py": {
+        "expected": "cc50d100f1fa2f96221e742b8bc43148f1a7c0e9e6d88ab452c452b8369e8a1c",
+        "actual": "cc50d100f1fa2f96221e742b8bc43148f1a7c0e9e6d88ab452c452b8369e8a1c",
+        "matches": true
+      },
+      "scripts/contact_point_collect_v20_20261012.py": {
+        "expected": "b4f3097f0fab4da0ac9b8fb07ca1d0f356c9bba61d7dfda57843748016c721d3",
+        "actual": "b4f3097f0fab4da0ac9b8fb07ca1d0f356c9bba61d7dfda57843748016c721d3",
+        "matches": true
+      },
+      "scripts/contact_com_collect_v24_20261012.py": {
+        "expected": "b3609d8a62aca242b77ec150262bac01d32b728c668b9a2a4912e468146aec11",
+        "actual": "b3609d8a62aca242b77ec150262bac01d32b728c668b9a2a4912e468146aec11",
+        "matches": true
+      },
+      "scripts/native_contact_diagnostic.py": {
+        "expected": "37d0420ae3f952acececc855063ad465535c7a96b637297d8d5457248ea121e8",
+        "actual": "37d0420ae3f952acececc855063ad465535c7a96b637297d8d5457248ea121e8",
+        "matches": true
+      },
+      "scripts/physics_guided_metric_v23_20261012.py": {
+        "expected": "b05b6ed8053ac037432471dabdf8608da383c76d4d2375ce10823e003f232c69",
+        "actual": "b05b6ed8053ac037432471dabdf8608da383c76d4d2375ce10823e003f232c69",
+        "matches": true
+      },
+      "scripts/physics_guided_com_lineage_v24_20261012.py": {
+        "expected": "ee440b92415ccc9646c29d1f300d2e0acd67daa9a369ce3c54816e01d4d2c850",
+        "actual": "ee440b92415ccc9646c29d1f300d2e0acd67daa9a369ce3c54816e01d4d2c850",
+        "matches": true
+      },
+      "scripts/contact_sampling_collect_v5.py": {
+        "expected": "651bbaf6cd0a2ba675fdbd5d735d66ee5a3aeecab755060aa2b5628be8d328a4",
+        "actual": "651bbaf6cd0a2ba675fdbd5d735d66ee5a3aeecab755060aa2b5628be8d328a4",
+        "matches": true
+      },
+      "scripts/contact_sampling_collect_v8.py": {
+        "expected": "8373f5301e1022d7414c9415305edf08855db2e0a8d3efe000fa0b4dff861109",
+        "actual": "8373f5301e1022d7414c9415305edf08855db2e0a8d3efe000fa0b4dff861109",
+        "matches": true
+      },
+      "scripts/contact_sensor_collect_v10.py": {
+        "expected": "9d76cc05fd82391f1a1c9f1b1485d0a4a5ca59eef0f559895d8c1f3a69148d9a",
+        "actual": "9d76cc05fd82391f1a1c9f1b1485d0a4a5ca59eef0f559895d8c1f3a69148d9a",
+        "matches": true
+      },
+      "scripts/closd_cpu_export_bridge.py": {
+        "expected": "e65c204df3a2099abc661e1c0b5fe8b99e657375cec1275215d90c3a50d13269",
+        "actual": "e65c204df3a2099abc661e1c0b5fe8b99e657375cec1275215d90c3a50d13269",
+        "matches": true
+      },
+      "scripts/metric_numeric_equivalence.py": {
+        "expected": "fa84c42cc2c894adb4458413ddbac16abf760a4ded71449ee467c1c8451cc8b5",
+        "actual": "fa84c42cc2c894adb4458413ddbac16abf760a4ded71449ee467c1c8451cc8b5",
+        "matches": true
+      },
+      "scripts/physics_guided_numeric_lineage.py": {
+        "expected": "5cff8cd9fbf2eded3f3ec503c2b6afb8005f463963744b8f326c3a0c2a7a0512",
+        "actual": "5cff8cd9fbf2eded3f3ec503c2b6afb8005f463963744b8f326c3a0c2a7a0512",
+        "matches": true
+      },
+      "configs/physics_guided_20261011.json": {
+        "expected": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+        "actual": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+        "matches": true
+      },
+      "configs/env-closd-baseline-20261010.json": {
+        "expected": "e5f9e6b711b7c6221cfb01e3deab404c5849e521ec08a3d25dca1820a279fcf6",
+        "actual": "e5f9e6b711b7c6221cfb01e3deab404c5849e521ec08a3d25dca1820a279fcf6",
+        "matches": true
+      },
+      "docs/contact_com_validation_v24_20261012.md": {
+        "expected": "3211788bd4f0b608b0e399afedbe6e73da8b7a72fca8fb5f7380d033729429c6",
+        "actual": "3211788bd4f0b608b0e399afedbe6e73da8b7a72fca8fb5f7380d033729429c6",
+        "matches": true
+      },
+      "scripts/contact_com_collect_v28_20261012.py": {
+        "expected": "044cd83d35b29c4cd1b970def15c282bda9bdb7c8429b5ee5908b83412b4da52",
+        "actual": "044cd83d35b29c4cd1b970def15c282bda9bdb7c8429b5ee5908b83412b4da52",
+        "matches": true
+      },
+      "scripts/physics_guided_run_v28_20261012.sh": {
+        "expected": "e750cf2416344215edaf966d3ddb884a2ffe77a53ea1401dcb12b9bb8e6810b5",
+        "actual": "e750cf2416344215edaf966d3ddb884a2ffe77a53ea1401dcb12b9bb8e6810b5",
+        "matches": true
+      },
+      "scripts/run_condition_feedback_formal_v28_20261012.py": {
+        "expected": "7efa2a06a2c07e7d08570de479e840a5d14dc77f63e566164eb5aa7e273df312",
+        "actual": "7efa2a06a2c07e7d08570de479e840a5d14dc77f63e566164eb5aa7e273df312",
+        "matches": true
+      },
+      "scripts/physics_guided_analyze.py": {
+        "expected": "153398079145621ec454e83b83f6140488b75c2c86a960ae07dc2533450ee677",
+        "actual": "153398079145621ec454e83b83f6140488b75c2c86a960ae07dc2533450ee677",
+        "matches": true
+      },
+      "scripts/physics_guided_semantics.py": {
+        "expected": "c52e4327b3cebf205bace19cc647cce6beae92772bdcca7b14eb4713fa7094d3",
+        "actual": "c52e4327b3cebf205bace19cc647cce6beae92772bdcca7b14eb4713fa7094d3",
+        "matches": true
+      },
+      "docs/condition_feedback_formal_v28_20261012.md": {
+        "expected": "74d232e2b5a4444f8ceceb5436c62e14f1e6d08821d74171d2dc86d50730e2f8",
+        "actual": "74d232e2b5a4444f8ceceb5436c62e14f1e6d08821d74171d2dc86d50730e2f8",
+        "matches": true
+      },
+      "scripts/reference_observation_collect_v42_20261012.py": {
+        "expected": "c0a7d6bd54f92ed2eec93ca69e1cc1cbfdb32fb8b06f7cf7355472bd127026ce",
+        "actual": "c0a7d6bd54f92ed2eec93ca69e1cc1cbfdb32fb8b06f7cf7355472bd127026ce",
+        "matches": true
+      },
+      "scripts/run_reference_observation_v42_20261012.py": {
+        "expected": "4e37d4dd211ff06bf303f5221e9232785aaf66a8c4b3d06b1d667f4e65a5e07d",
+        "actual": "4e37d4dd211ff06bf303f5221e9232785aaf66a8c4b3d06b1d667f4e65a5e07d",
+        "matches": true
+      },
+      "scripts/verify_execution_lineage_v39_20261012.py": {
+        "expected": "8e7399cd4f3bf0fce095553bc94dea607d29506afbef88dabd06700efcfb2b13",
+        "actual": "8e7399cd4f3bf0fce095553bc94dea607d29506afbef88dabd06700efcfb2b13",
+        "matches": true
+      },
+      "scripts/compare_reference_observation_v42_20261012.py": {
+        "expected": "067b2078e091fe3c414fd2604bc27c2b712ae11b4bbcf6898362079e0bac06e7",
+        "actual": "067b2078e091fe3c414fd2604bc27c2b712ae11b4bbcf6898362079e0bac06e7",
+        "matches": true
+      },
+      "docs/reference_observation_v42_20261012.md": {
+        "expected": "967d7e02edd6d9343d1ba17feb72418344bcf402db858dfbf265c39e948442f5",
+        "actual": "967d7e02edd6d9343d1ba17feb72418344bcf402db858dfbf265c39e948442f5",
+        "matches": true
+      }
+    },
+    "anchors": {
+      "versions.json": {
+        "expected": "afb2193a00d15a4c9e2fe8addbab5a1968ac122f59d80278670b7f9aa3d9421a",
+        "actual": "afb2193a00d15a4c9e2fe8addbab5a1968ac122f59d80278670b7f9aa3d9421a",
+        "matches": true
+      },
+      "runtime_witness.json": {
+        "expected": "ce07574de3dde3d800b4b6baa567f60b80131f6290fcc45558b6f1c74a9a6468",
+        "actual": "ce07574de3dde3d800b4b6baa567f60b80131f6290fcc45558b6f1c74a9a6468",
+        "matches": true
+      },
+      "DOCUMENT_WITNESS_AUDIT.json": {
+        "expected": "ede8df766bf96092ed6ef7a62159c07024a0e90f857c5ad38414cb25440099a3",
+        "actual": "ede8df766bf96092ed6ef7a62159c07024a0e90f857c5ad38414cb25440099a3",
+        "matches": true
+      },
+      "summary.json": {
+        "expected": "b1628ec89e0de61cb07952e8cbb62354ba31fa657c664434a5de2d46b2068509",
+        "actual": "b1628ec89e0de61cb07952e8cbb62354ba31fa657c664434a5de2d46b2068509",
+        "matches": true
+      }
+    },
+    "val_sources": 24,
+    "offsets": [
+      -0.15,
+      0,
+      0.15
+    ],
+    "expected_inputs": 72,
+    "batches": {
+      "val_planned_s11": {
+        "lineage": {
+          "lineage_sha256": "197e2f4f45b31c68ae108847175ce0b6125e488415b8354cd88abc4f67a0b1dc",
+          "receipt_sha256": "92209fe2993019170b8ea069c4071dd4c0d5053997f93bdd331f597a18cf3058",
+          "request": {
+            "split": "val",
+            "mode": "planned",
+            "seed": 11,
+            "round": 0,
+            "noise_round": 0,
+            "config": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+            "manifest": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+            "thresholds": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+            "versions": "00ae3501899a92d524509f7661d91daf23c505434e69ab37c8b2817050e5e54b"
+          },
+          "output_hashes": {
+            "metadata.json": "3c47b0361802865a6fff0bd992f5930fd80fc7b8eb63f8db9f3cec70ecc8fabe",
+            "metrics.json": "565a08acfcd9741f0da1c16362fe72d8ee9eae99f80dbee7986a6f660f65fb93",
+            "trajectories.npz": "45486979e705ce28f3e5e10976814ce901f3008ea902e5e23d326a5c0a4311bd"
+          },
+          "certification": "bound_request_at_execution"
+        },
+        "request_file_matches": true,
+        "case_count": 72,
+        "metrics_count": 72,
+        "cases_exact_expected": true,
+        "seed": 11,
+        "split": "val",
+        "mode": "planned",
+        "initial_reset_gate_pass": true,
+        "observation_trace_hash_matches": true,
+        "observation_scope": "Raw task obs before action; exact returned reference velocity and previous pose, not normalized policy observation",
+        "trajectory_shapes": {
+          "actual": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "reference": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "quaternion": [
+            120,
+            72,
+            24,
+            4
+          ],
+          "linvel": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "angvel": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "contact_force": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "valid": [
+            120,
+            72
+          ],
+          "terminated": [
+            72
+          ],
+          "reference_frame": [
+            120
+          ]
+        },
+        "trace_shapes": {
+          "ref_position": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "ref_previous": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "ref_velocity": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "task_observation": [
+            120,
+            72,
+            574
+          ]
+        },
+        "trace_finite": true,
+        "reference_clock_exact": true,
+        "trace_reference_exact": true,
+        "all_inputs_have_first_attempt": true,
+        "valid_lengths": [
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          95,
+          120,
+          109,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120
+        ],
+        "terminations": 2,
+        "summary_output_hashes_match": true,
+        "file_hashes": {
+          "metrics.json": "565a08acfcd9741f0da1c16362fe72d8ee9eae99f80dbee7986a6f660f65fb93",
+          "initial_states.npz": "b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+          "lineage.json": "197e2f4f45b31c68ae108847175ce0b6125e488415b8354cd88abc4f67a0b1dc",
+          "resolved_config.yaml": "b3eddac41eda4da9d0839c8d9de5aa98dbb608d9962a939958195a491c173218",
+          "observation_trace.npz": "17b23e41c7c973bab5583c3d8fc073d7e44df5e644ae5a3160f6ae3d5167c638",
+          "metadata.json": "3c47b0361802865a6fff0bd992f5930fd80fc7b8eb63f8db9f3cec70ecc8fabe",
+          "receipt.json": "92209fe2993019170b8ea069c4071dd4c0d5053997f93bdd331f597a18cf3058",
+          "native_contacts.json": "52998c38f5c695ce8255bf7229520b80fac3eed8a2d557bbfda24e2143d5394c",
+          "sensor_diagnostic.npz": "46b69111fe876af5250accb2c3a645005c14de0319e6ee2da158c1566bdee689",
+          "trajectories.npz": "45486979e705ce28f3e5e10976814ce901f3008ea902e5e23d326a5c0a4311bd"
+        }
+      },
+      "val_replay_s11": {
+        "lineage": {
+          "lineage_sha256": "0bafa38714787b74eab3233071330b4cf126da02ad5e1b444db78c8faba1f666",
+          "receipt_sha256": "68612e355b2045d9fb1d1b4dacddf2c72467587f1f16f09dbf0924143f614cac",
+          "request": {
+            "split": "val",
+            "mode": "replay",
+            "seed": 11,
+            "round": 0,
+            "noise_round": 0,
+            "config": "2d8fd0e49ce7ed37393e1962dcd711b5a6e8f26de7e0ca4ef48964a6fd081502",
+            "manifest": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+            "thresholds": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+            "versions": "00ae3501899a92d524509f7661d91daf23c505434e69ab37c8b2817050e5e54b",
+            "replay_motion": "daf83a75447d95734705b45466cd1eb9abec807f46a9945ca7885268342f5152"
+          },
+          "output_hashes": {
+            "metadata.json": "19beb2eae2da94998d7856f8fa490bc4021693795e39462c4980523e7de23146",
+            "metrics.json": "12e2efc922c1f20a4f3fae162625a1e47980ae9001350a3d2bf08edb5898d894",
+            "trajectories.npz": "32185a8903dbd413b5bb3d20e1c2f349a3300a258a0c49c7537a3d13e8d58002"
+          },
+          "certification": "bound_request_at_execution"
+        },
+        "request_file_matches": true,
+        "case_count": 72,
+        "metrics_count": 72,
+        "cases_exact_expected": true,
+        "seed": 11,
+        "split": "val",
+        "mode": "replay",
+        "initial_reset_gate_pass": true,
+        "observation_trace_hash_matches": true,
+        "observation_scope": "Raw task obs before action; exact returned reference velocity and previous pose, not normalized policy observation",
+        "trajectory_shapes": {
+          "actual": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "reference": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "quaternion": [
+            120,
+            72,
+            24,
+            4
+          ],
+          "linvel": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "angvel": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "contact_force": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "valid": [
+            120,
+            72
+          ],
+          "terminated": [
+            72
+          ],
+          "reference_frame": [
+            120
+          ]
+        },
+        "trace_shapes": {
+          "ref_position": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "ref_previous": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "ref_velocity": [
+            120,
+            72,
+            24,
+            3
+          ],
+          "task_observation": [
+            120,
+            72,
+            574
+          ]
+        },
+        "trace_finite": true,
+        "reference_clock_exact": true,
+        "trace_reference_exact": true,
+        "all_inputs_have_first_attempt": true,
+        "valid_lengths": [
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          118,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120,
+          120
+        ],
+        "terminations": 1,
+        "summary_output_hashes_match": true,
+        "file_hashes": {
+          "metrics.json": "12e2efc922c1f20a4f3fae162625a1e47980ae9001350a3d2bf08edb5898d894",
+          "initial_states.npz": "b25404dd3cfb63710078bf7dbb824e3749b1cdebabd68e7719c2f6b3b12617fe",
+          "lineage.json": "0bafa38714787b74eab3233071330b4cf126da02ad5e1b444db78c8faba1f666",
+          "resolved_config.yaml": "b3eddac41eda4da9d0839c8d9de5aa98dbb608d9962a939958195a491c173218",
+          "observation_trace.npz": "9033536f0a342935cf5e9bc56fe0431fed016c9121cd741067d9acc5a184578c",
+          "metadata.json": "19beb2eae2da94998d7856f8fa490bc4021693795e39462c4980523e7de23146",
+          "receipt.json": "68612e355b2045d9fb1d1b4dacddf2c72467587f1f16f09dbf0924143f614cac",
+          "native_contacts.json": "52998c38f5c695ce8255bf7229520b80fac3eed8a2d557bbfda24e2143d5394c",
+          "sensor_diagnostic.npz": "72e2f3a1468656a600d0b4bcacb75e737567561075b6834f09c058a61f21e1e1",
+          "trajectories.npz": "32185a8903dbd413b5bb3d20e1c2f349a3300a258a0c49c7537a3d13e8d58002"
+        },
+        "replay_canonical_max_error_valid": 0
+      }
+    },
+    "passive_trace_historical_comparison": {
+      "historical_sha256": "45486979e705ce28f3e5e10976814ce901f3008ea902e5e23d326a5c0a4311bd",
+      "new_sha256": "45486979e705ce28f3e5e10976814ce901f3008ea902e5e23d326a5c0a4311bd",
+      "cases_equal": true,
+      "generation_noise_equal": true,
+      "fields": {
+        "actual": {
+          "shape_equal": true,
+          "exact_equal": true,
+          "maximum_absolute_difference": 0
+        },
+        "reference": {
+          "shape_equal": true,
+          "exact_equal": true,
+          "maximum_absolute_difference": 0
+        },
+        "quaternion": {
+          "shape_equal": true,
+          "exact_equal": true,
+          "maximum_absolute_difference": 0
+        },
+        "linvel": {
+          "shape_equal": true,
+          "exact_equal": true,
+          "maximum_absolute_difference": 0
+        },
+        "angvel": {
+          "shape_equal": true,
+          "exact_equal": true,
+          "maximum_absolute_difference": 0
+        },
+        "contact_force": {
+          "shape_equal": true,
+          "exact_equal": true,
+          "maximum_absolute_difference": 0
+        },
+        "valid": {
+          "shape_equal": true,
+          "exact_equal": true,
+          "maximum_absolute_difference": 0
+        },
+        "terminated": {
+          "shape_equal": true,
+          "exact_equal": true,
+          "maximum_absolute_difference": 0
+        },
+        "reference_frame": {
+          "shape_equal": true,
+          "exact_equal": true,
+          "maximum_absolute_difference": 0
+        }
+      }
+    },
+    "budget": {
+      "ledger": [
+        {
+          "label": "val_planned_s11",
+          "stage": "measurement",
+          "seconds": 49.492541167885065,
+          "exit_code": 0,
+          "request_sha256": "06ed5e1eb25cff4d5601bd6cc234b0d9d885557299eedc6a2a148b9f21368f24"
+        },
+        {
+          "label": "val_replay_s11",
+          "stage": "measurement",
+          "seconds": 49.89222070388496,
+          "exit_code": 0,
+          "request_sha256": "ec75f7f881a2e46ac74979b1608500060e696b2d25593af785fc39acc36e7014"
+        }
+      ],
+      "measurement_seconds_all_stages": 3878.5646072737873,
+      "total_seconds_all_stages": 14657.29460927844,
+      "measurement_ceiling_seconds": 14400,
+      "total_ceiling_seconds": 259200,
+      "snapshot_sha256": "3138245fa96fecd32afe017d70658e2adacbdf5a08d1ee2920adb1fc35e58bb3",
+      "v42_output_bytes": 88067407
+    },
+    "root_output_hashes": {
+      "val_replay_s11.log": "ffec34821a2712e8b22179eb07cd71cc2f5bcb1e99f1e0c47ac71454a7567a37",
+      "frozen_thresholds.json": "451fae0a2b106dbd0170185d9a22bb6f3fe2583709e77979eb017cc3ce09315b",
+      "raw_reference.npz": "c0d5b4ae9ebeb95bb9187e98b3aed2633f7dcd895f5d086d745f0f80c637254d",
+      "state.json": "b956dffffc157080ae30fb870ab96cf191c07d530b090bff37ecee413ebbbe67",
+      "versions.json": "00ae3501899a92d524509f7661d91daf23c505434e69ab37c8b2817050e5e54b",
+      "val_planned_s11.log": "1e9261a64758f9f18e2246af74298491c7de2f08c5ff007b71dfd69c8590a4dc",
+      "summary.json": "063de9fd2d0bc08cff822dff8e0ee7c95d5ed9c0ef2be059cc33f427f5e7594f",
+      "budget_ledger.json": "fd7a490fa968a402c455f1e7e1f1f3b9ced5528ad23320fa5ea2420f754ee8b5",
+      "source_manifest.json": "63c6766c41a9d6045c30cbe5bf92e76bb25abde7b8a3795be11c40603a725307",
+      "queue.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "requests/val_replay_s11.json": "ec75f7f881a2e46ac74979b1608500060e696b2d25593af785fc39acc36e7014",
+      "requests/val_planned_s11.json": "06ed5e1eb25cff4d5601bd6cc234b0d9d885557299eedc6a2a148b9f21368f24"
+    }
+  },
+  "supplemental": {
+    "all_recorded_outputs_bytes": 7140245471,
+    "output_ceiling_bytes": 16106127360,
+    "data_free_bytes": 38463463424,
+    "minimum_free_bytes": 21474836480,
+    "canonical_env_spec_sha256": "81bdf764e312bcc92e4969e5eb9d2d6d6043f14c037e5a588dabbd564871f780",
+    "all_frame_reference_max_difference_common_valid": 0,
+    "raw_reference_exact_planned": true,
+    "original_goals_equal": true
+  }
+}
