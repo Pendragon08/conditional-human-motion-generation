@@ -66019,8 +66019,51 @@
     "scope": "CPU dispatch binding and carried original execution binding only; actual GPU interfaces rely on preceding independently witnessed three batches",
     "trace_directory": ".aris/traces/task_matched_feedback_continue_20261012/document_witness/"
   },
-  "task_matched_observed_execution": null,
+  "task_matched_observed_execution": {
+    "scope": "Actual process observation; not efficacy or terminal result",
+    "observed_at_utc": "2026-10-12T06:22:53.480691+00:00",
+    "process_live": true,
+    "remote_pid": 2935169,
+    "exec_session_id": 99781,
+    "launch_chunk_id": "48bf2a",
+    "process_observation_chunk_id": "d877e2",
+    "command": "bash /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/launch_task_matched_feedback_continue_20261012.sh",
+    "launches": 1,
+    "retries": 0,
+    "parent_process_line": "2935169 /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python -u scripts/task_matched_feedback_continue_20261012.py --run",
+    "completion_claimed": false,
+    "innovation_confirmed": false
+  },
   "task_matched_validation_summary": null,
+  "task_matched_user_pause": {
+    "user_requested_pause": true,
+    "expected_parent_pid": 2935169,
+    "expected_command_fragment": "scripts/task_matched_feedback_continue_20261012.py --run",
+    "observed_at_utc": "2026-10-12T06:25:14.326562+00:00",
+    "deleted_files": 0,
+    "restarts": 0,
+    "actual_parent_command": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python -u scripts/task_matched_feedback_continue_20261012.py --run ",
+    "terminated_descendant_pids": [
+      2935841
+    ],
+    "parent_exists_after_wait": false,
+    "preserved_ledger": [
+      {
+        "label": "val_feedback_s11_r1",
+        "stage": "comparison",
+        "seconds": 91.79416578821838,
+        "exit_code": 0,
+        "request_sha256": "d3cca3876ae14033de18f2eeb5417a700bfc6e427964e740a06d5bca472ea63f"
+      },
+      {
+        "label": "val_random_s11_r1",
+        "stage": "comparison",
+        "seconds": 20.608467368409038,
+        "exit_code": -1,
+        "request_sha256": "b075012a23b57f5f26579e60ebd9716b6a970773d3918660a6300ed22505dc41"
+      }
+    ]
+  },
   "support_leg_ik_external_terminal_observation": {
     "kind": "external_tool_observation",
     "source": "Codex exec_command/write_stdin tool results",
@@ -68054,6 +68097,22 @@
         "request_sha256": "c9411db7b06368786bee27f4665bd4a5065112d39789e2434205b1ce15cf195a"
       },
       {
+        "directory": "task_matched_feedback_continue_20261012",
+        "label": "val_feedback_s11_r1",
+        "stage": "comparison",
+        "seconds": 91.79416578821838,
+        "exit_code": 0,
+        "request_sha256": "d3cca3876ae14033de18f2eeb5417a700bfc6e427964e740a06d5bca472ea63f"
+      },
+      {
+        "directory": "task_matched_feedback_continue_20261012",
+        "label": "val_random_s11_r1",
+        "stage": "comparison",
+        "seconds": 20.608467368409038,
+        "exit_code": -1,
+        "request_sha256": "b075012a23b57f5f26579e60ebd9716b6a970773d3918660a6300ed22505dc41"
+      },
+      {
         "directory": "support_reference_probe_v63_20261012",
         "separate_ledger": "numerical_adjudication_budget_ledger.json",
         "label": "v63_saved_velocity_cuda_numerical_contract_addendum",
@@ -68142,16 +68201,16 @@
       "results/task_matched_feedback_v2_20261012",
       "results/velocity_reference_fixture_v19_20261012"
     ],
-    "output_bytes": 9286902573,
-    "charged_wall_hours_one_gpu_per_job": 4.684238163467186,
+    "output_bytes": 9330131883,
+    "charged_wall_hours_one_gpu_per_job": 4.715461117121805,
     "stage_hours": {
       "measurement": 1.356675842509398,
-      "comparison": 2.1249085317081255,
+      "comparison": 2.156131485362744,
       "ablation_g1": 1.183124713848552,
       "downstream": 0.0,
       "reserve": 0.01952907540111078
     },
-    "failed_entries": 5,
+    "failed_entries": 6,
     "note": "Current serial-round ledger snapshot, including intervening diagnostics; original conservative debits retained. No live ledger or prior snapshot rewritten. Export archives and original-reference attribution also counted; current-resource receipt is not experiment efficacy. V36 cache certificate, V37 event diagnostic and V38 numeric-only budget core are also counted.",
     "included_sidecars": [
       "results/endpoint_event_diagnostic_v37_attempt1_failure.json"
@@ -68175,7 +68234,7 @@
     },
     "total_cap_hours": 72,
     "output_cap_bytes": 16106127360,
-    "data_free_bytes": 36328456192,
+    "data_free_bytes": 36285063168,
     "data_free_floor_bytes": 21474836480,
     "cap_checks": {
       "total": true,
@@ -68189,7 +68248,7 @@
     },
     "status": "CAPS_PASS",
     "source_sha256": "fa1a2e34dba8b3a3ebdc32577245f813143794959172f0f7a8d2308bcf576424",
-    "time": 1791785518.232938,
+    "time": 1791786385.9109457,
     "gpu_jobs_launched_by_this_script": 0
   },
   "full_efficacy_comparisons_completed": 1,
@@ -109072,7 +109131,7 @@
     "results\\reference_observation_v42_20261012\\DOCUMENT_WITNESS.json": "e68742dc2987a50684a4cfd82237ef9f1014aafdf6b135952fc4bdac6a15ef55",
     "results\\reference_observation_v42_20261012\\versions.json": "00ae3501899a92d524509f7661d91daf23c505434e69ab37c8b2817050e5e54b",
     "results\\reference_observation_v42_20261012\\budget_ledger.json": "fd7a490fa968a402c455f1e7e1f1f3b9ced5528ad23320fa5ea2420f754ee8b5",
-    "results\\round_resource_status_20261012\\snapshot_1791785518232951323.json": "60c798cfe41a89564f205fd69ee3b3355de3447167b90779f858ea4b70db38bb",
+    "results\\round_resource_status_20261012\\snapshot_1791786385910959620.json": "a091d2c6422b9706c39f44c68ad7c90111a494b79e63e152ddada774f4b5a8b8",
     "results\\reference_velocity_v43_20261012\\summary.json": "c5ded5f5225c66dec3421fd679ba095ce4e64eff1b68a254e861e8f63d152ffd",
     "results\\reference_velocity_v43_20261012\\DOCUMENT_WITNESS.json": "92bfaca03d734699add960a354fff196ff133cc77eb98538102d7e553fd32366",
     "results\\reference_velocity_v43_20261012\\versions.json": "9cc69c6318892df77657c6dac4e38e8f514d5a85c009addbea65d0edfbce1c5a",
@@ -109159,7 +109218,10 @@
     "results\\task_matched_feedback_continue_20261012\\DOCUMENT_WITNESS.json": "85fd5419b1d7c99886f15c18f2fb227cc1eec1db0784ca594d35ec13fb607c22",
     "results\\task_matched_feedback_continue_20261012\\versions.json": "4df09dfb4cb634c70be64559b88e662fdf57a49c6ab18095f39cb245aeb23d5c",
     "results\\task_matched_feedback_continue_20261012\\runtime_witness.json": "3fefc0d88d0a44b619c27d46b6695ba3206807c4918ef041f752cbec361beab7",
-    "results\\task_matched_feedback_continue_20261012\\budget_ledger.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "results\\task_matched_feedback_continue_20261012\\budget_ledger.json": "9c1a284998005f223f1c2a004104847db91d5305669160a73b4683d6f5de20cc",
+    "results\\task_matched_feedback_continue_20261012\\EXECUTOR_RUNTIME_OBSERVATION.json": "cf999aa895b066cc4127b60d56cebbdcddd0746e03e31bbdf24caa491f53cc0e",
+    "results\\task_matched_feedback_continue_20261012\\EXECUTOR_TERMINAL_OBSERVATION.json": "1e6f1fbec0829461659ca1a76fdaf4e1b7a31869fb5270b1f1279278440a8b16",
+    "results\\task_matched_feedback_continue_20261012\\USER_PAUSE_1791786314637006847.json": "53977364cd9259d812167c6d3e524db245eca25d636065882fb5a4ed81203cfe",
     "results\\controller_state_diagnosis_v2_20261012\\raw\\multitask\\loaded_input_binding.json": "c862f6c0dcca1a973c4adb48778f0e0cf7282718cbdddf05804ecb9cd879963c",
     "results\\controller_state_diagnosis_v2_20261012\\raw\\multitask\\loaded_checkpoint_binding.json": "24ab57f4ba3d0fb628b1eebf8d6ba366fdb984708c75ba3da16ecfdb05bbc327",
     "results\\controller_state_diagnosis_v2_20261012\\raw\\multitask\\metrics.json": "fb944aefff13d6f6beab1e13ab92bd816620ac9b58a2bec9d03d0e722f99bcba",

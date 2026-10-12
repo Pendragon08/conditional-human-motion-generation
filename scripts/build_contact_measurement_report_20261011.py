@@ -123,6 +123,8 @@ task_matched_runtime=read('results/task_matched_feedback_v2_20261012/runtime_wit
 task_matched_dispatch=read('results/task_matched_feedback_continue_20261012/DOCUMENT_WITNESS.json')
 task_matched_execution=read('results/task_matched_feedback_continue_20261012/EXECUTOR_RUNTIME_OBSERVATION.json')
 task_matched_summary=read('results/task_matched_feedback_continue_20261012/summary.json')
+task_pause_paths=sorted((ROOT/'results/task_matched_feedback_continue_20261012').glob('USER_PAUSE_*.json'))
+task_matched_pause=read(str(task_pause_paths[-1].relative_to(ROOT))) if task_pause_paths else None
 if task_matched_witness:
     base=ROOT/'results/task_matched_feedback_v2_20261012'
     assert task_matched_witness['status']=='PASS' and task_matched_witness['actual_exit_code']==0
@@ -345,6 +347,7 @@ for dirname in ('task_matched_feedback_v2_20261012','task_matched_feedback_conti
                  'EXECUTOR_RUNTIME_OBSERVATION.json','EXECUTOR_TERMINAL_OBSERVATION.json','summary.json'):
         path=ROOT/'results'/dirname/name
         if path.exists(): inputs.append(path)
+if task_pause_paths: inputs.append(task_pause_paths[-1])
 for state in ('multitask','t2m','unfinetuned'):
     for name in ('loaded_input_binding.json','loaded_checkpoint_binding.json','metrics.json','metadata.json','lineage.json','receipt.json'):
         path=ROOT/'results/controller_state_diagnosis_v2_20261012/raw'/state/name
@@ -409,6 +412,7 @@ corrected_feedback_readonly_analysis=paired53,corrected_feedback_integrity_audit
  task_matched_dispatch_witness=task_matched_dispatch,
  task_matched_observed_execution=task_matched_execution,
  task_matched_validation_summary=task_matched_summary,
+ task_matched_user_pause=task_matched_pause,
  support_leg_ik_external_terminal_observation=leg_ik_terminal,
  resource_status=resource_status,
  full_efficacy_comparisons_completed=1 if formal_summary else 0,
@@ -626,7 +630,9 @@ if task_matched_witness:
     component_text+='<h4>任务匹配的C1复验</h4><p>使用官方文本动作跟踪权重，保持24个内部验证来源、三种偏移、三生成种子和每方法3个候选。三批实际测量均退出0：首轮生成、零条件更新重复生成、固定参考回放。28个导出数组逐元素一致，回放与指定参考在同一时刻吻合；这些检查不认证隐藏仿真状态，也不证明创新有效。<a href="../task_matched_feedback_v2_20261012/DOCUMENT_WITNESS.md">独立测量见证</a>。</p>'
     if task_matched_dispatch:
         component_text+='<p>后续调度入口的独立绑定检查为'+html.escape(task_matched_dispatch['status'])+'，仅CPU检查，不新增GPU测量认证。正式对比新增20批，复用已计费首候选，保持两组候选预算相同。<a href="../../docs/task_matched_feedback_continue_20261012.md">协议与预算边界</a>。</p>'
-    if task_matched_summary:
+    if task_matched_pause:
+        component_text+='<p><strong>已按用户要求暂停创新点验证。</strong>暂停记录确认父进程已退出；已完成的一批及中途中止的一批保留并计费，中止不能解释为算法失败。没有三种子完整结果，不作效果结论，也不自动重启。<a href="../task_matched_feedback_continue_20261012/'+task_pause_paths[-1].name+'">用户暂停记录</a>。</p>'
+    elif task_matched_summary:
         component_text+='<p>正式运行已生成终态摘要，尚需独立原始数组复算与审计，不作效力判断：'+html.escape(json.dumps(task_matched_summary['totals'],ensure_ascii=False))+'。</p>'
     elif task_matched_execution:
         component_text+='<p>实际进程观察记录时间：'+html.escape(str(task_matched_execution['observed_at_utc']))+'；该次观察中父进程存活：'+html.escape(str(task_matched_execution['process_live']))+'。这是时间点记录，不保证当前仍在运行。尚无完整对比结论。<a href="../task_matched_feedback_continue_20261012/EXECUTOR_RUNTIME_OBSERVATION.json">运行观察</a>。</p>'
