@@ -68,6 +68,28 @@ state_paths=sorted((ROOT/'results/raw_replay_state_diagnostic_v41_20261012').glo
 replay_state=read(str(state_paths[-1].relative_to(ROOT))) if state_paths else None
 observation_trace=read('results/reference_observation_v42_20261012/summary.json')
 observation_witness=read('results/reference_observation_v42_20261012/DOCUMENT_WITNESS.json')
+velocity_trace=read('results/reference_velocity_v43_20261012/summary.json')
+velocity_witness=read('results/reference_velocity_v43_20261012/DOCUMENT_WITNESS.json')
+original_velocity=read('results/original_reference_velocity_v45_20261012/summary.json')
+original_velocity_witness=read('results/original_reference_velocity_v45_20261012/DOCUMENT_WITNESS.json')
+if original_velocity:
+    assert original_velocity['generation_calls']==0 and original_velocity['thresholds_changed'] is False
+    assert original_velocity_witness and original_velocity_witness['status']=='PASS'
+    for name,digest in original_velocity['output_hashes'].items():
+        if name.endswith('.npz'): continue
+        path=ROOT/'results/original_reference_velocity_v45_20261012/public/raw/val_original_replay_s11'/name
+        assert hashlib.sha256(path.read_bytes()).hexdigest()==digest
+quality_paths=sorted((ROOT/'results/reference_quality_v44_20261012').glob('diagnostic_*.json'))
+velocity_quality=read(str(quality_paths[-1].relative_to(ROOT))) if quality_paths else None
+if velocity_trace:
+    assert velocity_trace['attempts']==72 and velocity_trace['candidate_efficacy'] is False
+    assert velocity_witness and velocity_witness['status']=='PASS' and velocity_witness['efficacy_inferred'] is False
+    version=read('results/reference_velocity_v43_20261012/versions.json')
+    assert all(hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest for name,digest in version['files'].items())
+if velocity_quality:
+    assert velocity_quality['source_sha256']==hashlib.sha256((ROOT/'scripts/diagnose_reference_quality_v44_20261012.py').read_bytes()).hexdigest()
+    assert velocity_quality['simulation_calls']==0 and velocity_quality['thresholds_changed'] is False
+    assert all(hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest for name,digest in velocity_quality['input_hashes'].items())
 if observation_trace:
     assert observation_trace['status']=='COMPLETE_REFERENCE_OBSERVATION_DIAGNOSTIC' and observation_trace['attempts']==72
     assert observation_trace['source_sha256']==hashlib.sha256((ROOT/'scripts/compare_reference_observation_v42_20261012.py').read_bytes()).hexdigest()
@@ -153,6 +175,13 @@ for name in ('summary.json','DOCUMENT_WITNESS.json','versions.json','budget_ledg
     path=ROOT/'results/reference_observation_v42_20261012'/name
     if path.exists(): inputs.append(path)
 if resource_paths: inputs.append(resource_paths[-1])
+for name in ('summary.json','DOCUMENT_WITNESS.json','versions.json','budget_ledger.json'):
+    path=ROOT/'results/reference_velocity_v43_20261012'/name
+    if path.exists(): inputs.append(path)
+if quality_paths: inputs.append(quality_paths[-1])
+for name in ('summary.json','DOCUMENT_WITNESS.json','versions.json','budget_ledger.json'):
+    path=ROOT/'results/original_reference_velocity_v45_20261012'/name
+    if path.exists(): inputs.append(path)
 for name in ('diagnostic_summary.json','DOCUMENT_WITNESS_AUDIT.json'):
     path=ROOT/'results/mocap_reference_control_v33_20261012'/name
     if path.exists(): inputs.append(path)
@@ -173,6 +202,10 @@ status=dict(innovation_candidates=3,preliminarily_tested=1,not_yet_experimentall
  strict_execution_lineage_guard=strict_lineage,
  construction_replay_transfer=transfer,raw_replay_state_diagnostic=replay_state,
  reference_observation_diagnostic=observation_trace,reference_observation_witness=observation_witness,
+ reference_velocity_repair=velocity_trace,reference_velocity_witness=velocity_witness,
+ repaired_interface_failure_breakdown=velocity_quality,
+ original_reference_repaired_interface=original_velocity,
+ original_reference_repaired_interface_witness=original_velocity_witness,
  resource_status=resource_status,
  full_efficacy_comparisons_completed=1 if formal_summary else 0,
  downstream='NOT_STARTED_BY_GATE',overleaf_results_sync=False,
@@ -270,6 +303,14 @@ if observation_trace:
     component_text+='<h3>实际参考速度与原始观测记录</h3><p>V42新增两批验证集仿真，各保留24原始来源×3目标偏移，共72输入；记录参考前一帧、参考速度与动作前原始任务观测。生成衔接帧（第60帧）的应用位置完全一致，但前一帧最大差0.0741m、参考速度最大差2.2230m/s。第0帧已有约8.94×10⁻⁷m/s速度差，第1帧原始任务观测最大差0.04373；因此不能把后续失效仅归因于衔接帧。原始任务观测不是策略归一化后的输入。生成侧2次提前终止、重放侧1次，均保留在分母。</p><p>独立文档执行见证核对新记录与原V28验证构建的全部9个轨迹数组逐元素一致，说明本次被动记录未改变该批原执行结果；见证仅覆盖当前诊断，不认证C2/C3效力。后续需要单独修复参考速度的时间语义并校验，任何新结果与历史结果分开记录。</p><p><a href="../reference_observation_v42_20261012/summary.json">逐帧接口诊断</a> · <a href="../reference_observation_v42_20261012/DOCUMENT_WITNESS.md">独立执行见证</a></p>'
 if replay_interface_pass:
     measurement_text='重置、坐标、时间、数值复算、已知正负对照及固定参考回放接口已通过。足部指标仍是碰撞表面滑移代理，不能称为真实接触力或所有滚动接触的真值。人体物理质量与候选效力另行判断。'
+if velocity_trace:
+    component_text+='<h3>参考速度一致性修复：V43</h3><p>单独使用连续两帧实际送入跟踪器的位置计算参考速度，首帧设为零，保留全部原目标与判据。两批72组验证输入在120帧、8582个共同有效帧—案例对上，参考位置、前一帧、参考速度、原始任务观测与实际轨迹全部逐元素一致；完整数组也一致。生成参考位置与V42完全相同。原生浮点倒数乘法能精确重建保存的速度，CPU直接除法最多约9.54×10⁻⁷的舍入差异已保留记录。本结果只确认当前单种子验证对的接口一致性，不能推广为三种子效力或机器人执行成功。</p><p><a href="../reference_velocity_v43_20261012/DOCUMENT_WITNESS.md">独立完整帧见证</a> · <a href="../reference_velocity_v43_20261012/summary.json">接口结果</a></p>'
+if velocity_quality:
+    q=velocity_quality['batches']['val_planned_s11']; counts=q['pass_counts']
+    component_text+=f'<h3>修复后失败分量：V44</h3><p>72输入中完成{counts["completed"]}，位置判据通过{counts["position"]}，朝向{counts["heading"]}，时刻{counts["time"]}，穿透{counts["penetration"]}，连续性{counts["continuity"]}，跟踪{counts["tracking"]}；足部滑移代理通过{counts["slip_proxy"]}，联合合格{q["joint_pass"]}。27组仅在物理判据中的滑移代理不合格，45组同时不符合滑移代理与连续性。滑移是碰撞表面代理，不是真实接触点滑移；不能从该零分直接认定生成动作普遍不可行。下一项诊断使用原始MoCap派生参考和修复后的接口，不采样生成器，帮助检查质量基线。</p><p><a href="../reference_quality_v44_20261012/{quality_paths[-1].name}">固定判据逐例分解</a></p>'
+if original_velocity:
+    c=original_velocity['pass_counts']
+    component_text+=f'<h3>原始参考在修复接口下的校准：V45</h3><p>72组原始MoCap派生验证参考，生成器采样0次；完成{c["completed"]}，条件合格{c["condition_pass"]}，物理代理合格{c["physical_pass"]}，跟踪合格{c["tracking_pass"]}，联合合格{c["joint_pass"]}。零偏移24组联合合格1组。原始目标和判据不变，失败全部保留。结果证明这组设置存在非零合格实例，但通过率偏低；原始参考也不是经认证的可执行真值，不能据此单独区分源动作缺陷、控制器限制或代理误判。该校准不计为创新有效性。</p><p><a href="../original_reference_velocity_v45_20261012/summary.json">校准结果</a> · <a href="../original_reference_velocity_v45_20261012/DOCUMENT_WITNESS.md">独立见证</a></p>'
 resource_text='<p>累计资源快照尚未同步。</p>'
 if resource_status:
     resource_text=f'<p>累计保守计费{resource_status["charged_wall_hours_one_gpu_per_job"]:.3f} GPU小时，输出{resource_status["output_bytes"]/1024**3:.3f} GiB（含公开导出重复副本），快照时数据盘可用{resource_status["data_free_bytes"]/1024**3:.2f} GiB。总计72小时、阶段上限、输出15GiB和磁盘至少20GiB的检查结果：{html.escape(resource_status["status"])}。阶段ablation_g1包括人体消融计费，不表示已运行G1；下游训练未运行。</p>'

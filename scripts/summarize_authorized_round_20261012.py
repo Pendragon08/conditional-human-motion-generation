@@ -21,7 +21,9 @@ for name in ('original_reference_attribution_v35_20261012', 'round_resource_stat
              'mocap_cache_binding_v36_20261012', 'endpoint_event_diagnostic_v37_20261012',
              'repair_budget_core_v38_20261012', 'execution_lineage_guard_v39_20261012',
              'construction_replay_transfer_v40_20261012', 'raw_replay_state_diagnostic_v41_20261012',
-             'reference_observation_v42_20261012'):
+             'reference_observation_v42_20261012', 'reference_velocity_v43_20261012',
+             'reference_quality_v44_20261012', 'original_reference_velocity_v45_20261012',
+             'native_reference_velocity_v46_20261012'):
     p = ROOT / 'results' / name
     if p.exists() and p not in directories:
         directories.append(p)

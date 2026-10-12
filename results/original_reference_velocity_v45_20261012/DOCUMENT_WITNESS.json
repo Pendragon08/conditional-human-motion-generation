@@ -1,0 +1,203 @@
+{
+  "checks": {
+    "terminal": true,
+    "sources": true,
+    "externals": true,
+    "cases_unchanged": true,
+    "goals_unchanged": true,
+    "val_only": true,
+    "source_offset_scope": true,
+    "zero_generation": true,
+    "versions_request": true,
+    "request_binding": true,
+    "outputs_binding": true,
+    "summary_outputs": true,
+    "trace_binding": true,
+    "original_binding": true,
+    "prior_witness": true,
+    "canonical_positions": true,
+    "trace_applied_ref": true,
+    "clock": true,
+    "previous_exact": true,
+    "velocity_exact": true,
+    "trace_finite": true,
+    "reset_exact": true,
+    "rows_retained": true,
+    "ledger": true,
+    "no_efficacy": true
+  },
+  "details": {
+    "native_control_dt": 0.03333333507180214,
+    "velocity_max_abs_error": 0,
+    "trace_shapes": {
+      "ref_position": [
+        120,
+        72,
+        24,
+        3
+      ],
+      "ref_previous": [
+        120,
+        72,
+        24,
+        3
+      ],
+      "ref_velocity": [
+        120,
+        72,
+        24,
+        3
+      ],
+      "task_observation": [
+        120,
+        72,
+        574
+      ]
+    },
+    "source_count": 24,
+    "cases": 72,
+    "summary": {
+      "status": "COMPLETE_ORIGINAL_REFERENCE_VELOCITY_DIAGNOSTIC",
+      "attempts": 72,
+      "generation_calls": 0,
+      "innovation_confirmed": false,
+      "candidate_efficacy": false,
+      "historical_scores_changed": false,
+      "thresholds_changed": false,
+      "overleaf_results_sync": false,
+      "pass_counts": {
+        "completed": 70,
+        "condition_pass": 11,
+        "physical_pass": 3,
+        "tracking_pass": 58,
+        "joint_pass": 1
+      },
+      "component_pass_counts": {
+        "slip_proxy": 3,
+        "penetration": 72,
+        "continuity": 44
+      },
+      "by_offset": {
+        "-0.15": {
+          "attempts": 24,
+          "completed": 23,
+          "physical_pass": 1,
+          "tracking_pass": 20,
+          "joint_pass": 0
+        },
+        "0.0": {
+          "attempts": 24,
+          "completed": 23,
+          "physical_pass": 1,
+          "tracking_pass": 19,
+          "joint_pass": 1
+        },
+        "0.15": {
+          "attempts": 24,
+          "completed": 24,
+          "physical_pass": 1,
+          "tracking_pass": 19,
+          "joint_pass": 0
+        }
+      },
+      "output_hashes": {
+        "metadata.json": "326de2d7464a70973c538e4e42c8e9f2b345bb1df2fbb8240207adb915523ead",
+        "metrics.json": "fe88acb057da930862af240ab083cc0f671f9b382b350822ba55c880cc0c9d5d",
+        "trajectories.npz": "c6015711a09738153ff6fb92c69e4001b016a5893a32c31cad0f989261767789",
+        "observation_trace.npz": "41bd57ccaef125e39682dc71fd22c6bf1440bf077f822821883112f1e71c77c8"
+      },
+      "scope": "One fixed controller and seed, validation only. Original references are MoCap-derived, not certified executable ground truth; failure cannot distinguish controller limitation from proxy misspecification or source defects."
+    },
+    "receipt": {
+      "status": "complete",
+      "cases": 72,
+      "completed": 70,
+      "joint_pass": 1,
+      "elapsed_seconds": 46.83418297767639,
+      "trajectories_sha256": "c6015711a09738153ff6fb92c69e4001b016a5893a32c31cad0f989261767789"
+    },
+    "ledger": [
+      {
+        "label": "val_original_replay_s11",
+        "stage": "measurement",
+        "seconds": 49.78750575147569,
+        "exit_code": 0,
+        "request_sha256": "5b227a196c742c4ad88a110ceb4bf08dac85c9fd9a79271ab88ca3bb4b31c1fa"
+      },
+      {
+        "label": "witness_saved_velocity_native_float32",
+        "stage": "measurement",
+        "seconds": 60,
+        "exit_code": 0,
+        "device": "cuda:0",
+        "scope": "Read-only native float32 arithmetic on saved trace arrays; zero simulation/generation calls",
+        "timing": "Conservative whole-command charge; exact GPU kernel duration unavailable. Visible tool waits 10.002+2.935 seconds plus orchestration gap and hash reads.",
+        "command": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python /tmp/v45_witness_readonly.py",
+        "tool_session_id": 45585
+      }
+    ],
+    "source_count_bound": 38,
+    "inputs": {
+      "results/original_reference_velocity_v45_20261012/versions.json": "0b59eb2176e8e07b8616bb3089ef9e3043a88d937a866e330a9a4e345ffb3ace",
+      "results/original_reference_velocity_v45_20261012/summary.json": "b8f722ecafa6b973a9d9e9b91c904896cf7b4f614ad0b997cf4a3df4fc28d9f4",
+      "results/original_reference_velocity_v45_20261012/state.json": "61ed564a88b53fe325b1460beac1a469d1420476262743ab7f7633309183c801",
+      "results/original_reference_velocity_v45_20261012/raw/val_original_replay_s11/metadata.json": "326de2d7464a70973c538e4e42c8e9f2b345bb1df2fbb8240207adb915523ead",
+      "results/original_reference_velocity_v45_20261012/raw/val_original_replay_s11/receipt.json": "55443f84b3f674c5cc3779bb0ce2f50330edc20100f55cde06ed80227569354a",
+      "results/original_reference_velocity_v45_20261012/raw/val_original_replay_s11/lineage.json": "84f6e6346e86e13dc63eb3e4ccb6176aa4f50dbe80dfb2a10ddb3f1602c3e8c3",
+      "results/original_reference_velocity_v45_20261012/raw/val_original_replay_s11/trajectories.npz": "c6015711a09738153ff6fb92c69e4001b016a5893a32c31cad0f989261767789",
+      "results/original_reference_velocity_v45_20261012/raw/val_original_replay_s11/observation_trace.npz": "41bd57ccaef125e39682dc71fd22c6bf1440bf077f822821883112f1e71c77c8",
+      "results/original_reference_velocity_v45_20261012/requests/val_original_replay_s11.json": "5b227a196c742c4ad88a110ceb4bf08dac85c9fd9a79271ab88ca3bb4b31c1fa"
+    },
+    "clock_keys": [
+      "actual",
+      "reference",
+      "quaternion",
+      "linvel",
+      "angvel",
+      "contact_force",
+      "valid",
+      "terminated",
+      "reference_frame"
+    ],
+    "measurement_seconds_charged": 109.78750575147569
+  },
+  "status": "PASS",
+  "efficacy_inferred": false,
+  "semantic_quality_inferred": false,
+  "innovation_confirmed": false,
+  "command_attempts": 1,
+  "command_exit_code": 0,
+  "command_session_id": 26220,
+  "launcher_pid": 2839414,
+  "collector_pid": 2839437,
+  "command": "ssh -i C:/Users/Pende/.ssh/id_ed25519 -o BatchMode=yes -o ConnectTimeout=15 ouyanghao@10.147.17.32 env PYTHONPATH=/data/code/ouyanghao/oyh/humanoid-combat-motion/envs/closd-r3/site-packages /data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python /data/code/ouyanghao/oyh/conditional-human-motion-generation/scripts/run_original_reference_velocity_v45_20261012.py --run",
+  "auxiliary_attempts": [
+    {
+      "kind": "process_inventory",
+      "status": "ERROR",
+      "reason": "remote rg unavailable; fallback grep confirmed live process; GPU command not repeated"
+    },
+    {
+      "kind": "artifact_inventory",
+      "status": "ERROR",
+      "reason": "requested execution_receipt.json does not exist; canonical receipt.json located; output truncated; no artifact changed"
+    },
+    {
+      "kind": "cpu_velocity_direct_division",
+      "status": "ROUNDING_DIAGNOSTIC",
+      "max_abs_error": 4.76837158203125e-7,
+      "reason": "NumPy and CPU torch division differ from native CUDA float32 reciprocal multiplication; exact CUDA arithmetic on saved arrays yields zero error"
+    },
+    {
+      "kind": "native_saved_array_arithmetic",
+      "device": "cuda:0",
+      "tool_session_id": 45585,
+      "exit_code": 0,
+      "seconds_charged": 60,
+      "timing": "Conservative whole-command wall charge including hash reads and orchestration gap; exact kernel duration unavailable",
+      "simulator_calls": 0,
+      "generator_calls": 0
+    }
+  ],
+  "scope": "One validation-only fixed-reference diagnostic: 24 sources, 3 offsets, seed 11, 72 cases; interface/input binding only, no semantic or efficacy proof. No thresholds, historical results, Overleaf, generator weights or tracker weights changed."
+}
