@@ -1,0 +1,34 @@
+{
+  "evaluation_type": "simulation_only",
+  "reference_type": "dataset-derived kinematic reference; not model output",
+  "protocol": "first episode from frame 0; pre-reset post-physics state versus current command t; training failure terminations retained",
+  "checkpoint": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_moe_pilot/2026-10-17_11-25-01_extended2000_seed42/model_1999.pt",
+  "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+  "motion_file": "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_test4_tracking_refs/sample_000_actor0.npz",
+  "motion_sha256": "9da670f4a3f4881fa49c73b7a05efcdff8353334f8cf34f5c901ef3668ebc86d",
+  "seed": 2027,
+  "num_envs": 8,
+  "frames": 149,
+  "fps": 50.0,
+  "active_experts": 1,
+  "episodes_completed": 8,
+  "successes": 3,
+  "full_clip_success_fraction": 0.375,
+  "episode_lengths": [
+    126,
+    83,
+    79,
+    64,
+    149,
+    149,
+    149,
+    63
+  ],
+  "steps_evaluated": 862,
+  "metrics": {
+    "mpjpe_m_until_termination": 0.36546245217323303,
+    "mpjae_rad_until_termination": 0.1520146280527115,
+    "mpjve_rad_s_until_termination": 0.7423393726348877
+  },
+  "note": "Errors are censored at failure; compare together with success and episode lengths. No paper-scale or unseen-task claim."
+}

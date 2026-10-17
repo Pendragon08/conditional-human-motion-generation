@@ -1,0 +1,12 @@
+PHYGILE_INDEPENDENT_REPAIRS_ACTIVE {"source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py": {"original_sha256": "b3a35da443de54c303e6b4fd3fb2b9e4153bdbeef7d91f9fb843bd5def3f1e4a", "patched_sha256": "cad7ee14922ed4d5a2ba509bfa4d455cc4b8ee0a1eafa591c4e672a87751b20b"}, "source/whole_body_tracking/whole_body_tracking/utils/my_on_policy_runner.py": {"original_sha256": "c41fa2122f92f9413dc43c8de72a0f8dcaae518021143cc0f37e104f497f701c", "patched_sha256": "e4b73e1e3e4bfdc79c1b23a121d2ed0cfd79afdbff1df98c3cac5cfd93be7409"}, "source/whole_body_tracking/whole_body_tracking/utils/curriculum_manager.py": {"original_sha256": "bd4c3ad52a16559144bb43c4c19d18a846b58a0228b515d5bea811a2909cbdd0", "patched_sha256": "5f1a4cbcce8c85a5b5d96c67bce73d99c4de453822eab6659de932c43c7612d9"}}
+CLOSED_LOOP_STAGE runtime_ready
+CLOSED_LOOP_STAGE snapshot_ready
+CLOSED_LOOP_STAGE first_rollback_rollout
+CLOSED_LOOP_STAGE second_rollback_rollout
+Traceback (most recent call last):
+  File "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/scripts/run_generated_closed_loop.py", line 148, in <module>
+    main()
+  File "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/scripts/run_generated_closed_loop.py", line 66, in main
+    if max(state_delta,body_delta)>5e-4:raise AssertionError(('Exposed-state rollback witness failed',state_delta,body_delta))
+AssertionError: ('Exposed-state rollback witness failed', 4.238388895988464, 0.0018104314804077148)
+There was an error running python

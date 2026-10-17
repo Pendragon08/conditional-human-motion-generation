@@ -1,0 +1,247 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-10-17",
+  "project": "PhyGile released GMT tracking-code pilot",
+  "verdict": "WARN",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "reason_code": "limited_scope_and_metric_semantic_cautions",
+  "summary": "All frozen local training, checkpoint, raw-array, per-step, per-run, aggregate, report, and tracker claims checked are internally consistent. The warning reflects one-seed pilot scope, world-frame and failure-censored metric semantics, and dormant untested curriculum paths; it is not a numerical or provenance failure.",
+  "material_integrity_failure": false,
+  "release_blocker": false,
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "review_mode": "fresh read-only same-family subreviews plus deterministic recomputation",
+  "reviewers": [
+    "/root/phygile_integrity_audit",
+    "/root/phygile_integrity_audit/claim_consistency",
+    "/root/phygile_integrity_audit/reset_semantics"
+  ],
+  "generated_at": "2026-10-17T17:56:20+08:00",
+  "trace_path": "results/integrity_audit/trace/",
+  "trace_distribution": "local_delivery_only; excluded from public Git/release package",
+  "publication_verification": {
+    "status": "pending",
+    "scope": "separate delivery verification; not an experiment-audit blocker",
+    "expected_record": "results/github_delivery_verification.json"
+  },
+  "checks": {
+    "A_reference_provenance": {
+      "status": "PASS",
+      "classification": "processed dataset-derived kinematic reference",
+      "model_output_used_as_reference": false,
+      "measured_robot_ground_truth": false,
+      "evidence": [
+        "results/data_inventory.json:2",
+        "results/data_provenance.json:470-492",
+        "results/data_provenance.json:1046",
+        "scripts/evaluate_pilot.py:72-76",
+        "scripts/evaluate_pilot.py:101",
+        "results/integrity_audit/trace/archive_verification.json"
+      ],
+      "boundary": "Processed inputs and manifests were verified; upstream videos/raw source NPZs and the preprocessing transformation were not replayed."
+    },
+    "B_score_normalization": {
+      "status": "PASS",
+      "self_normalization_detected": false,
+      "evidence": [
+        "scripts/evaluate_pilot.py:96-101",
+        "scripts/summarize_results.py:11-13",
+        "reports/PhyGile复现实验报告.md:69-77"
+      ]
+    },
+    "C_files_numbers_claims": {
+      "status": "PASS",
+      "frozen_local_results_consistent": true,
+      "suite_entries_checked": 16,
+      "raw_bundles_checked": 16,
+      "per_step_csvs_checked": 16,
+      "evaluation_receipts_checked": 16,
+      "evaluation_logs_checked": 16,
+      "evidence": [
+        "results/integrity_audit/trace/final_deterministic_verification.json",
+        "results/pilot_train20_nostate_seed42/receipt.json:76-80",
+        "results/pilot_train20_nostate_seed42/stdout_stderr.log:22200",
+        "results/pilot_train20_nostate_seed42/stdout_stderr.log:22238",
+        "results/evaluation_suite.json:1-3",
+        "results/evaluation_suite.json:358",
+        "results/summary.json:3-42",
+        "results/checkpoint_verification.json:4-72",
+        "EXPERIMENT_TRACKER.md:8-17",
+        "reports/PhyGile复现实验报告.md:81-112"
+      ],
+      "github_delivery": "pending separate verification"
+    },
+    "D_metrics_executed": {
+      "status": "PASS",
+      "all_reported_metrics_executed_and_recomputed": true,
+      "pre_reset_capture_verified": true,
+      "frame_prefixes_verified": true,
+      "success_and_done_counts_verified": true,
+      "cautions": [
+        "MPJPE is raw world-frame and differs from aligned training/body-termination position error.",
+        "Error means are pooled through first failure and are failure-censored/sample-weighted.",
+        "Pilot full-clip success is not the upstream Train/success EMA scalar.",
+        "Evaluation runtime overrides are represented by hashed code plus command rather than a separately serialized resolved evaluation env file.",
+        "Dormant curriculum paths contain defects but were disabled in this run."
+      ],
+      "evidence": [
+        "scripts/evaluate_pilot.py:32-40",
+        "scripts/evaluate_pilot.py:46-101",
+        "scripts/summarize_results.py:7-35",
+        "upstream/source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py:403-405",
+        "upstream/source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py:1512-1522",
+        "upstream/source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/terminations.py:41-48",
+        "results/effective_configuration/env.yaml:931-981",
+        "results/effective_configuration/env.yaml:1035-1075",
+        "reports/PhyGile复现实验报告.md:75-77",
+        "reports/PhyGile复现实验报告.md:123"
+      ]
+    },
+    "E_scope": {
+      "status": "WARN",
+      "training_seeds": 1,
+      "training_clips": 20,
+      "training_source_groups": 7,
+      "test_clips": 4,
+      "test_source_groups": 1,
+      "optimizer_updates": 500,
+      "active_experts": 1,
+      "independent_training_seed_uncertainty": false,
+      "documentation_overclaim_detected": false,
+      "evidence": [
+        "results/summary.json:2",
+        "reports/PhyGile复现实验报告.md:3-11",
+        "reports/PhyGile复现实验报告.md:45-65",
+        "reports/PhyGile复现实验报告.md:115-123",
+        "EXPERIMENT_TRACKER.md:13-17"
+      ]
+    },
+    "F_evaluation_classification": {
+      "status": "PASS",
+      "evaluation_type": "simulation_only",
+      "reference_type": "processed dataset-derived kinematic reference",
+      "evidence": [
+        "scripts/evaluate_pilot.py:101",
+        "reports/PhyGile复现实验报告.md:7",
+        "reports/PhyGile复现实验报告.md:43"
+      ]
+    }
+  },
+  "deterministic_recomputation": {
+    "status": "PASS",
+    "runs": 16,
+    "required_raw_keys_exact": true,
+    "all_raw_arrays_finite": true,
+    "all_raw_metric_means_exact": true,
+    "all_frame_sequences_zero_based_contiguous": true,
+    "all_done_flags_final_only": true,
+    "no_termination_timeout_overlap": true,
+    "all_lengths_successes_and_steps_match": true,
+    "all_per_step_csv_rows_match": true,
+    "all_receipts_completed_exit_zero_and_commands_match": true,
+    "all_logs_have_one_exact_result_and_no_traceback": true,
+    "all_summary_rows_and_groups_match": true,
+    "trace": "results/integrity_audit/trace/final_deterministic_verification.json"
+  },
+  "checkpoint_identity": {
+    "status": "PASS",
+    "iteration_0_optimizer_updates_1": {
+      "file": "release_assets/phygile_initial_expert_1updates_seed42.pt",
+      "sha256": "059cf77f0c528fd727875f5df25c5ef7ae2a0b5538822c9d902d1dc134b7f158",
+      "bytes": 67348310
+    },
+    "iteration_499_optimizer_updates_500": {
+      "file": "release_assets/phygile_initial_expert_500updates_seed42.pt",
+      "sha256": "afad21ce7192dc4ec10e04fd2bc7684e9278f901dbffcb053cf45b8b04bda162",
+      "bytes": 67349178
+    },
+    "all_model_tensors_finite": true,
+    "model_parameter_elements_each": 8366214,
+    "expert_0_changed_tensors": 6,
+    "experts_1_through_11_changed_tensors_each": 0
+  },
+  "reported_groups": [
+    {
+      "updates": 1,
+      "split": "train",
+      "successes": 0,
+      "trials": 128,
+      "success_fraction": 0.0,
+      "mean_duration_s_macro": 0.406875,
+      "mpjpe_m_macro_until_failure": 0.14841188117861748
+    },
+    {
+      "updates": 1,
+      "split": "test",
+      "successes": 0,
+      "trials": 128,
+      "success_fraction": 0.0,
+      "mean_duration_s_macro": 0.45796875000000004,
+      "mpjpe_m_macro_until_failure": 0.15895519219338894
+    },
+    {
+      "updates": 500,
+      "split": "train",
+      "successes": 3,
+      "trials": 128,
+      "success_fraction": 0.0234375,
+      "mean_duration_s_macro": 1.0582812499999998,
+      "mpjpe_m_macro_until_failure": 0.19695928692817688
+    },
+    {
+      "updates": 500,
+      "split": "test",
+      "successes": 2,
+      "trials": 128,
+      "success_fraction": 0.015625,
+      "mean_duration_s_macro": 0.904375,
+      "mpjpe_m_macro_until_failure": 0.17606261000037193
+    }
+  ],
+  "audited_input_hashes": {
+    "results/evaluation_suite.json": "sha256:20fa593237c9ad34cac54c33f6938c239f46f871bff0d0d61157dd6f4cda1898",
+    "results/summary.json": "sha256:d71b11e89f252fcfe1b369448cb67b9a145dee27ae09ddec78ff740590cf5586",
+    "results/evaluation_summary.csv": "sha256:c4ccd3fd4defc075710bc96b0c6e830abc083a5ec316e11669d06efd66ec1f07",
+    "results/learning_curves.json": "sha256:51e405ba51dca77def35356c8de5ed0d2529e9e29aa208bc6b6d90d22bd774fe",
+    "results/checkpoint_verification.json": "sha256:27c11eabe3988792493762ca25ac6a42a445e991bbe8dccce228a7dcc7775e9c",
+    "results/PIPELINE_DONE.json": "sha256:112dfecaa4ed0f10b5a5409fdc9f53f22a602803c4c4e25819828aec538e939e",
+    "results/effective_configuration/env.yaml": "sha256:e4213f9d0d11630a86298755066de7c299cccbdf1a42cba611ad100306bfce21",
+    "results/effective_configuration/agent.yaml": "sha256:2c2b1f6d3bb5796f9a27f18b8f36e8abab8b57e829933dafb5ee048c4c3a22af",
+    "results/effective_configuration/reference_validation.json": "sha256:9133f9a91fd02002a23ef0097ccd0a4f0e879f265812a43df0b6e63a3b389f47",
+    "results/pilot_train20_nostate_seed42/receipt.json": "sha256:fb3ad02ae04f54b7314f7182826dd27e77ee9edc78c3e5033e350f223801c9db",
+    "results/pilot_train20_nostate_seed42/stdout_stderr.log": "sha256:db34c5cb3dc13a6df03790c94438dbb3e7ec22b639d744393a543c5e2539a4b2",
+    "EXPERIMENT_TRACKER.md": "sha256:d105129d965b7f5f29fac1ad7b46b7e502cdd8f5a21bf1a8fe7c01c634ce0702",
+    "reports/PhyGile复现实验报告.md": "sha256:3346a1612871c25c2ff9123e813b1d8323f5d571210a05efd47c52979a5feb20",
+    "release_assets/phygile_pilot_inputs.tar.gz": "sha256:3cac85f442411af44eebcccb259462e1a9f60f6b9558cf58325830e511cc9acd",
+    "release_assets/execution_source_snapshot.tar.gz": "sha256:5b87a6509ceccbd9066de51c9b2912b7f80c64138465db97e0461398dbd4893c",
+    "release_assets/phygile_initial_expert_1updates_seed42.pt": "sha256:059cf77f0c528fd727875f5df25c5ef7ae2a0b5538822c9d902d1dc134b7f158",
+    "release_assets/phygile_initial_expert_500updates_seed42.pt": "sha256:afad21ce7192dc4ec10e04fd2bc7684e9278f901dbffcb053cf45b8b04bda162"
+  },
+  "claims": [
+    {
+      "id": "training_completed",
+      "impact": "supported"
+    },
+    {
+      "id": "sixteen_evaluations_completed",
+      "impact": "supported"
+    },
+    {
+      "id": "final_test_success_2_of_128",
+      "impact": "supported"
+    },
+    {
+      "id": "reliable_tracking_baseline",
+      "impact": "not_achieved; tracker and report are accurate"
+    },
+    {
+      "id": "full_phygile_reproduction_or_generalization",
+      "impact": "unsupported; correctly not claimed"
+    },
+    {
+      "id": "github_asset_published_and_digest_verified",
+      "impact": "pending separate delivery verification"
+    }
+  ]
+}

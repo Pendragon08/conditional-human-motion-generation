@@ -1,0 +1,17 @@
+{
+  "started_utc": "2026-10-17T14:49:20.301037+00:00",
+  "argv": [
+    "C:/Windows/System32/OpenSSH/ssh.exe",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "-p",
+    "22",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "ouyanghao@10.147.17.32",
+    "cd /data/code/ouyanghao/oyh/phygile-reproduction-20261017 && hostname && date -u +%FT%TZ && nvidia-smi --query-gpu=index,name,memory.used,memory.total --format=csv,noheader && printf '\\nTASK_PROCESSES\\n' && (pgrep -af '[v]alidate_terminal_boundary.py|[r]un_generated_closed_loop.py' || true) && printf '\\nOUTPUT_DIRECTORY_EXISTS\\n' && if test -e results/completion_v1/closure_recovery; then printf 'yes\\n'; else printf 'no\\n'; fi"
+  ],
+  "remote_command": "cd /data/code/ouyanghao/oyh/phygile-reproduction-20261017 && hostname && date -u +%FT%TZ && nvidia-smi --query-gpu=index,name,memory.used,memory.total --format=csv,noheader && printf '\\nTASK_PROCESSES\\n' && (pgrep -af '[v]alidate_terminal_boundary.py|[r]un_generated_closed_loop.py' || true) && printf '\\nOUTPUT_DIRECTORY_EXISTS\\n' && if test -e results/completion_v1/closure_recovery; then printf 'yes\\n'; else printf 'no\\n'; fi"
+}
