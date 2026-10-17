@@ -1,0 +1,42 @@
+# G1 任务默认训练配置，可自行修改或通过环境变量 G1_TRAINING_CFG_PATH 指向其他文件。
+
+runner:
+  num_steps_per_env: 24
+  max_iterations: 30000
+  save_interval: 500
+  experiment_name: "g1_flat"
+  empirical_normalization: true
+  upload_models_to_wandb: false
+
+policy:
+  class_name: "EncoderActorCritic"
+  init_noise_std: 1.0
+  actor_hidden_dims: [512, 256, 128]
+  critic_hidden_dims: [512, 256, 128]
+  activation: "elu"
+  encoder_hidden_dims: null
+  share_encoder: null
+
+commands:
+  motion:
+    # 预加载动作可选设备: "cpu"、"cuda:0"、"cuda:1"、"same_as_env"（默认与环境同设备）
+    preload_device: "same_as_env"
+    future_steps: 4
+    file_success_beta: 0.02
+    file_success_weight: 0.25
+    random_static_prob: 0.2
+
+algorithm:
+  value_loss_coef: 1.0
+  use_clipped_value_loss: true
+  clip_param: 0.2
+  entropy_coef: 0.005
+  num_learning_epochs: 5
+  num_mini_batches: 4
+  learning_rate: 0.001
+  schedule: "adaptive"
+  gamma: 0.99
+  lam: 0.95
+  desired_kl: 0.01
+  max_grad_norm: 1.0
+

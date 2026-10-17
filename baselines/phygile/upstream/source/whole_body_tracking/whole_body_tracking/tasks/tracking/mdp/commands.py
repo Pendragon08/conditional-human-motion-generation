@@ -1,0 +1,2252 @@
+from __future__ import annotations
+
+import math
+import numpy as np
+import os
+import time
+import torch
+from collections.abc import Sequence
+from dataclasses import MISSING
+from typing import TYPE_CHECKING, cast
+
+from isaaclab.assets import Articulation
+from isaaclab.managers import CommandTerm, CommandTermCfg
+from isaaclab.markers import VisualizationMarkers, VisualizationMarkersCfg
+from isaaclab.markers.config import FRAME_MARKER_CFG
+from isaaclab.utils import configclass
+from isaaclab.utils.math import (
+    quat_apply,
+    quat_error_magnitude,
+    quat_from_euler_xyz,
+    quat_inv,
+    quat_mul,
+    sample_uniform,
+    yaw_quat,
+)
+
+if TYPE_CHECKING:
+    from isaaclab.envs import ManagerBasedRLEnv
+    from whole_body_tracking.utils.curriculum_manager import CurriculumManager
+
+
+class MotionLoader:
+    def __init__(self, motion_file: str, body_indexes: Sequence[int], device: str = "cpu"):
+        assert os.path.isfile(motion_file), f"Invalid file path: {motion_file}"
+        data = np.load(motion_file)
+        self.fps = data["fps"]
+        self.joint_pos = torch.tensor(data["joint_pos"], dtype=torch.float32, device=device)
+        self.joint_vel = torch.tensor(data["joint_vel"], dtype=torch.float32, device=device)
+        self._body_pos_w = torch.tensor(data["body_pos_w"], dtype=torch.float32, device=device)
+        self._body_quat_w = torch.tensor(data["body_quat_w"], dtype=torch.float32, device=device)
+        self._body_lin_vel_w = torch.tensor(data["body_lin_vel_w"], dtype=torch.float32, device=device)
+        self._body_ang_vel_w = torch.tensor(data["body_ang_vel_w"], dtype=torch.float32, device=device)
+        self._body_indexes = body_indexes
+        self.time_step_total = self.joint_pos.shape[0]
+
+    @property
+    def body_pos_w(self) -> torch.Tensor:
+        return self._body_pos_w[:, self._body_indexes]
+
+    @property
+    def body_quat_w(self) -> torch.Tensor:
+        return self._body_quat_w[:, self._body_indexes]
+
+    @property
+    def body_lin_vel_w(self) -> torch.Tensor:
+        return self._body_lin_vel_w[:, self._body_indexes]
+
+    @property
+    def body_ang_vel_w(self) -> torch.Tensor:
+        return self._body_ang_vel_w[:, self._body_indexes]
+
+
+class MotionCommand(CommandTerm):
+    cfg: MotionCommandCfg
+
+    def __init__(self, cfg: MotionCommandCfg, env: ManagerBasedRLEnv):
+        super().__init__(cfg, env)
+
+        if cfg.asset_name is None:
+            raise ValueError("MotionCommandCfg.asset_name must be specified.")
+        if cfg.anchor_body_name is None:
+            raise ValueError("MotionCommandCfg.anchor_body_name must be specified.")
+        if cfg.body_names is None:
+            raise ValueError("MotionCommandCfg.body_names must be specified.")
+
+        self.robot: Articulation = env.scene[cfg.asset_name]
+        self.robot_anchor_body_index = self.robot.body_names.index(self.cfg.anchor_body_name)
+        self.motion_anchor_body_index = self.cfg.body_names.index(self.cfg.anchor_body_name)
+        self.body_indexes = torch.tensor(
+            self.robot.find_bodies(self.cfg.body_names, preserve_order=True)[0], dtype=torch.long, device=self.device
+        )
+
+        # 日志路径（与 file_sampling_top3 类似，写到运行的 log 目录下的 freeze.txt）
+        self._freeze_log_path = None
+        self._drop_log_path: str | None = None
+        self.set_log_dir(getattr(env, "log_dir", None))
+
+        self.time_steps = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
+        self.static_mask = torch.zeros(self.num_envs, dtype=torch.bool, device=self.device)
+        self.static_ref_steps = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
+        self.body_pos_relative_w = torch.zeros(self.num_envs, len(cfg.body_names), 3, device=self.device)
+        self.body_quat_relative_w = torch.zeros(self.num_envs, len(cfg.body_names), 4, device=self.device)
+        self.body_quat_relative_w[:, :, 0] = 1.0
+        self._body_index_list = self.body_indexes.cpu().tolist()
+
+        default_cat_attrs = (
+            "joint_pos",
+            "joint_vel",
+            "body_pos_w",
+            "body_quat_w",
+            "body_lin_vel_w",
+            "body_ang_vel_w",
+        )
+        self._preload_all_motion = bool(getattr(self.cfg, "preload_all_motion", False))
+        self._use_global_cat = bool(getattr(self.cfg, "use_global_cat", False))
+        self._keep_global_cat_on_preload = bool(getattr(self.cfg, "keep_global_cat_on_preload", False))
+        raw_cat_attrs = getattr(self.cfg, "global_cat_attributes", default_cat_attrs)
+        if not raw_cat_attrs:
+            raw_cat_attrs = default_cat_attrs
+        self._global_cat_attrs = tuple(raw_cat_attrs)
+        self._show_preload_progress = bool(getattr(self.cfg, "preload_progress_bar", True))
+        bar_width = int(getattr(self.cfg, "preload_progress_bar_width", 40))
+        self._progress_bar_width = max(bar_width, 10)
+        self._preload_device = self._resolve_preload_device(getattr(self.cfg, "preload_device", None))
+        self._global_cat: dict[str, torch.Tensor] | None = None
+        self._global_cat_device: torch.device | None = None
+        self._file_offsets: torch.Tensor | None = None
+        self._file_lengths_tensor: torch.Tensor | None = None
+        self.enable_multi_file_bin_sampling = bool(
+            getattr(self.cfg, "enable_multi_file_bin_sampling", False)
+        )
+        kernel_size = max(int(getattr(self.cfg, "adaptive_kernel_size", 1)), 1)
+        self.bin_kernel = torch.tensor(
+            [float(self.cfg.adaptive_lambda) ** i for i in range(kernel_size)], device=self.device
+        )
+        self.bin_kernel = self.bin_kernel / self.bin_kernel.sum()
+        future_steps_cfg = getattr(self.cfg, "future_steps", None)
+        if future_steps_cfg is None or int(future_steps_cfg) <= 0:
+            self._future_sample_count = 0
+            self._future_offsets: torch.Tensor | None = None
+        else:
+            self._future_sample_count = int(future_steps_cfg)
+            self._future_offsets = torch.arange(
+                1, self._future_sample_count + 1, dtype=torch.long, device=self.device
+            )
+        encoder_future_steps_cfg = getattr(self.cfg, "encoder_future_steps", None)
+        if encoder_future_steps_cfg is None or int(encoder_future_steps_cfg) <= 0:
+            self._encoder_future_sample_count = 0
+            self._encoder_future_offsets: torch.Tensor | None = None
+        else:
+            self._encoder_future_sample_count = int(encoder_future_steps_cfg)
+            stride_cfg = getattr(self.cfg, "encoder_future_stride", 1)
+            self._encoder_future_stride = max(int(stride_cfg), 1)
+            indices = torch.arange(
+                self._encoder_future_sample_count, dtype=torch.long, device=self.device
+            )
+            self._encoder_future_offsets = indices * self._encoder_future_stride + 1
+
+        self._prob_eps = 1e-8
+        self.steps_per_second = 1.0 / (env.cfg.decimation * env.cfg.sim.dt)
+        self.base_clip_steps = max(int(math.floor(env.cfg.episode_length_s * self.steps_per_second)), 1)
+        max_clip_seconds = self.cfg.max_clip_seconds if self.cfg.max_clip_seconds is not None else env.cfg.episode_length_s
+        self.max_clip_steps = max(int(math.floor(max_clip_seconds * self.steps_per_second)), 1)
+        jitter_seconds = max(self.cfg.clip_length_jitter_seconds, 0.0)
+        self.clip_jitter_steps = max(int(math.floor(jitter_seconds * self.steps_per_second)), 0)
+
+        self.motion_dir = self.cfg.motion_dir
+        self.multi_file_mode = bool(self.motion_dir) if not isinstance(self.motion_dir, list) else len(self.motion_dir) > 0
+        self._file_sampling_top3_display = ""
+        self._file_sampling_top3_names: list[str] = []
+        self.failed_total_count: float = 0.0
+        self.success_total_count: float = 0.0
+        self._current_failed_total: float = 0.0
+        self._current_success_total: float = 0.0
+        self.file_bin_failed_counts: list[torch.Tensor] = []
+        self.file_bin_success_counts: list[torch.Tensor] = []
+        self.file_bin_counts: list[int] = []
+
+        if self.multi_file_mode:
+            self._setup_multi_file_state()
+        else:
+            if not self.cfg.motion_file:
+                raise ValueError("`motion_file` must be provided when `motion_dir` is not set.")
+            self.motion = MotionLoader(self.cfg.motion_file, self.body_indexes, device=self.device)
+            self.bin_count = int(self.motion.time_step_total // (1 / (env.cfg.decimation * env.cfg.sim.dt))) + 1
+            self.bin_failed_count = torch.zeros(self.bin_count, dtype=torch.float, device=self.device)
+            self.bin_success_count = torch.zeros(self.bin_count, dtype=torch.float, device=self.device)
+            self._current_bin_failed = torch.zeros(self.bin_count, dtype=torch.float, device=self.device)
+            self._current_bin_success = torch.zeros(self.bin_count, dtype=torch.float, device=self.device)
+            self.kernel = torch.tensor(
+                [self.cfg.adaptive_lambda**i for i in range(self.cfg.adaptive_kernel_size)], device=self.device
+            )
+            self.kernel = self.kernel / self.kernel.sum()
+
+        self.metrics["error_anchor_pos"] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics["error_anchor_rot"] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics["error_anchor_lin_vel"] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics["error_anchor_ang_vel"] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics["error_body_pos"] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics["error_body_rot"] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics["error_joint_pos"] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics["error_joint_vel"] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics["sampling_entropy"] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics["sampling_top1_prob"] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics["sampling_top1_bin"] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics["pfail_total"] = torch.zeros(self.num_envs, device=self.device)
+        # 记录刷新次数，用于 file_success_warmup_iters 控制"成功率融合"启用时机
+        self._file_success_refresh_count: int = 0
+
+        # Curriculum learning initialization (必须在 _refresh_file_sampling_distribution 之前)
+        self._curriculum: "CurriculumManager | None" = None
+        self._curriculum_current_level: int = 1
+        self._curriculum_iteration: int = 0
+        if self.cfg.curriculum_enabled and self.multi_file_mode:
+            self._init_curriculum()
+
+        if self.multi_file_mode:
+            self._refresh_file_sampling_distribution()
+
+    @property
+    def command(self) -> torch.Tensor:  # TODO Consider again if this is the best observation
+        parts = [self.joint_pos, self.joint_vel, self.anchor_pos_w, self.anchor_quat_w]
+        if self._future_sample_count > 0 and self._future_offsets is not None:
+            future_joint_pos, future_joint_vel = self._gather_future_joint_states(self._future_offsets)
+            future_anchor_pos, future_anchor_quat = self._gather_future_anchor_states(self._future_offsets)
+            short_horizon = torch.cat(
+                [future_joint_pos, future_joint_vel, future_anchor_pos, future_anchor_quat], dim=-1
+            )
+            parts.append(short_horizon.reshape(self.num_envs, -1))
+        if self._encoder_future_sample_count > 0 and self._encoder_future_offsets is not None:
+            encoder_joint_pos, encoder_joint_vel = self._gather_future_joint_states(self._encoder_future_offsets)
+            encoder_anchor_pos, encoder_anchor_quat = self._gather_future_anchor_states(self._encoder_future_offsets)
+            conv_ready = torch.cat(
+                [encoder_joint_pos, encoder_joint_vel, encoder_anchor_pos, encoder_anchor_quat], dim=-1
+            )
+            parts.append(conv_ready.reshape(self.num_envs, -1))
+        return torch.cat(parts, dim=1)
+
+    @property
+    def joint_pos(self) -> torch.Tensor:
+        if not self.multi_file_mode:
+            return self.motion.joint_pos[self.time_steps]
+        return self._gather_motion_attribute("joint_pos")
+
+    @property
+    def joint_vel(self) -> torch.Tensor:
+        if not self.multi_file_mode:
+            return self.motion.joint_vel[self.time_steps]
+        return self._gather_motion_attribute("joint_vel")
+
+    @property
+    def body_pos_w(self) -> torch.Tensor:
+        if not self.multi_file_mode:
+            return self.motion.body_pos_w[self.time_steps] + self._env.scene.env_origins[:, None, :]
+        body_pos = self._gather_motion_attribute("body_pos_w")
+        return body_pos + self._env.scene.env_origins[:, None, :]
+
+    @property
+    def body_quat_w(self) -> torch.Tensor:
+        if not self.multi_file_mode:
+            return self.motion.body_quat_w[self.time_steps]
+        return self._gather_motion_attribute("body_quat_w")
+
+    @property
+    def body_lin_vel_w(self) -> torch.Tensor:
+        if not self.multi_file_mode:
+            return self.motion.body_lin_vel_w[self.time_steps]
+        return self._gather_motion_attribute("body_lin_vel_w")
+
+    @property
+    def body_ang_vel_w(self) -> torch.Tensor:
+        if not self.multi_file_mode:
+            return self.motion.body_ang_vel_w[self.time_steps]
+        return self._gather_motion_attribute("body_ang_vel_w")
+
+    @property
+    def anchor_pos_w(self) -> torch.Tensor:
+        if not self.multi_file_mode:
+            return self.motion.body_pos_w[self.time_steps, self.motion_anchor_body_index] + self._env.scene.env_origins
+        return self.body_pos_w[:, self.motion_anchor_body_index]
+
+    @property
+    def anchor_quat_w(self) -> torch.Tensor:
+        if not self.multi_file_mode:
+            return self.motion.body_quat_w[self.time_steps, self.motion_anchor_body_index]
+        return self.body_quat_w[:, self.motion_anchor_body_index]
+
+    @property
+    def anchor_lin_vel_w(self) -> torch.Tensor:
+        if not self.multi_file_mode:
+            return self.motion.body_lin_vel_w[self.time_steps, self.motion_anchor_body_index]
+        return self.body_lin_vel_w[:, self.motion_anchor_body_index]
+
+    @property
+    def anchor_ang_vel_w(self) -> torch.Tensor:
+        if not self.multi_file_mode:
+            return self.motion.body_ang_vel_w[self.time_steps, self.motion_anchor_body_index]
+        return self.body_ang_vel_w[:, self.motion_anchor_body_index]
+
+    def _gather_motion_attribute(self, attr: str, indices: torch.Tensor | None = None) -> torch.Tensor:
+        """Gather motion attribute for each environment from the assigned motion file."""
+        indices_tensor = self.time_steps if indices is None else indices
+        if indices_tensor.dim() not in (1, 2):
+            raise ValueError("indices must be 1D or 2D tensor.")
+        if not self.multi_file_mode:
+            source = getattr(self.motion, attr)
+            return source[indices_tensor]
+        if self._global_cat is not None and attr in self._global_cat:
+            return self._gather_from_global_cat(attr, indices_tensor)
+        result: torch.Tensor | None = None
+        unique_files = torch.unique(self.file_indices).tolist()
+        for file_idx in unique_files:
+            env_ids = torch.nonzero(self.file_indices == file_idx, as_tuple=False).squeeze(-1)
+            if env_ids.numel() == 0:
+                continue
+            loader = self._get_motion_loader(int(file_idx))
+            env_indices = indices_tensor[env_ids]
+            loader_attr = getattr(loader, attr)
+            if env_indices.device != loader_attr.device:
+                env_indices_local = env_indices.to(loader_attr.device)
+            else:
+                env_indices_local = env_indices
+            values = loader_attr[env_indices_local]
+            if values.device != self.device:
+                values = values.to(self.device, non_blocking=True)
+            if result is None:
+                result = torch.empty((self.num_envs, *values.shape[1:]), dtype=values.dtype, device=self.device)
+            cast(torch.Tensor, result)[env_ids] = values
+        if result is None:
+            raise RuntimeError("Multi-file motion sampling was requested but no motion data is available.")
+        return result
+
+    def _get_future_indices(self) -> torch.Tensor:
+        if self._future_offsets is None or self._future_sample_count <= 0:
+            raise RuntimeError("Future indices requested but future_steps is not enabled.")
+        return self._compute_future_indices(self._future_offsets)
+
+    def _compute_future_indices(self, offsets: torch.Tensor) -> torch.Tensor:
+        if offsets.device != self.device:
+            offsets = offsets.to(self.device)
+        base = self.time_steps[:, None]
+        future = base + offsets
+        if self.multi_file_mode:
+            cap = torch.clamp(self.clip_end_steps - 1, min=0)
+        else:
+            max_valid = max(int(getattr(self.motion, "time_step_total", 1)) - 1, 0)
+            cap = torch.full_like(self.time_steps, fill_value=max_valid)
+        future = torch.minimum(future, cap[:, None])
+        future = torch.clamp(future, min=0)
+        return future
+
+    def _gather_future_joint_states(self, offsets: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        indices = self._compute_future_indices(offsets)
+        future_joint_pos = self._gather_motion_attribute("joint_pos", indices=indices)
+        future_joint_vel = self._gather_motion_attribute("joint_vel", indices=indices)
+        return future_joint_pos, future_joint_vel
+
+    def _gather_future_anchor_states(self, offsets: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        indices = self._compute_future_indices(offsets)
+        future_body_pos = self._gather_motion_attribute("body_pos_w", indices=indices)
+        future_body_quat = self._gather_motion_attribute("body_quat_w", indices=indices)
+        anchor_idx = self.motion_anchor_body_index
+        future_anchor_pos = future_body_pos[:, :, anchor_idx]
+        future_anchor_quat = future_body_quat[:, :, anchor_idx]
+        return future_anchor_pos, future_anchor_quat
+
+    @property
+    def robot_joint_pos(self) -> torch.Tensor:
+        return self.robot.data.joint_pos
+
+    @property
+    def robot_joint_vel(self) -> torch.Tensor:
+        return self.robot.data.joint_vel
+
+    @property
+    def robot_body_pos_w(self) -> torch.Tensor:
+        return self.robot.data.body_pos_w[:, self.body_indexes]
+
+    @property
+    def robot_body_quat_w(self) -> torch.Tensor:
+        return self.robot.data.body_quat_w[:, self.body_indexes]
+
+    @property
+    def robot_body_lin_vel_w(self) -> torch.Tensor:
+        return self.robot.data.body_lin_vel_w[:, self.body_indexes]
+
+    @property
+    def robot_body_ang_vel_w(self) -> torch.Tensor:
+        return self.robot.data.body_ang_vel_w[:, self.body_indexes]
+
+    @property
+    def robot_anchor_pos_w(self) -> torch.Tensor:
+        return self.robot.data.body_pos_w[:, self.robot_anchor_body_index]
+
+    @property
+    def robot_anchor_quat_w(self) -> torch.Tensor:
+        return self.robot.data.body_quat_w[:, self.robot_anchor_body_index]
+
+    @property
+    def robot_anchor_lin_vel_w(self) -> torch.Tensor:
+        return self.robot.data.body_lin_vel_w[:, self.robot_anchor_body_index]
+
+    @property
+    def robot_anchor_ang_vel_w(self) -> torch.Tensor:
+        return self.robot.data.body_ang_vel_w[:, self.robot_anchor_body_index]
+
+    def _update_metrics(self):
+        self.metrics["error_anchor_pos"] = torch.norm(self.anchor_pos_w - self.robot_anchor_pos_w, dim=-1)
+        self.metrics["error_anchor_rot"] = quat_error_magnitude(self.anchor_quat_w, self.robot_anchor_quat_w)
+        self.metrics["error_anchor_lin_vel"] = torch.norm(self.anchor_lin_vel_w - self.robot_anchor_lin_vel_w, dim=-1)
+        self.metrics["error_anchor_ang_vel"] = torch.norm(self.anchor_ang_vel_w - self.robot_anchor_ang_vel_w, dim=-1)
+
+        self.metrics["error_body_pos"] = torch.norm(self.body_pos_relative_w - self.robot_body_pos_w, dim=-1).mean(
+            dim=-1
+        )
+        self.metrics["error_body_rot"] = quat_error_magnitude(self.body_quat_relative_w, self.robot_body_quat_w).mean(
+            dim=-1
+        )
+
+        self.metrics["error_body_lin_vel"] = torch.norm(self.body_lin_vel_w - self.robot_body_lin_vel_w, dim=-1).mean(
+            dim=-1
+        )
+        self.metrics["error_body_ang_vel"] = torch.norm(self.body_ang_vel_w - self.robot_body_ang_vel_w, dim=-1).mean(
+            dim=-1
+        )
+
+        self.metrics["error_joint_pos"] = torch.norm(self.joint_pos - self.robot_joint_pos, dim=-1)
+        self.metrics["error_joint_vel"] = torch.norm(self.joint_vel - self.robot_joint_vel, dim=-1)
+
+        if self.multi_file_mode:
+            self._accumulate_clip_errors()
+
+    def _adaptive_sampling(self, env_ids: Sequence[int]):
+        termination_manager = self._env.termination_manager
+        episode_failed = termination_manager.terminated[env_ids]
+        episode_success = ~episode_failed
+        current_bin_index = torch.clamp(
+            (self.time_steps * self.bin_count) // max(self.motion.time_step_total, 1), 0, self.bin_count - 1
+        )
+        if torch.any(episode_failed):
+            fail_bins = current_bin_index[env_ids][episode_failed]
+            self._current_bin_failed[:] = torch.bincount(fail_bins, minlength=self.bin_count)
+        else:
+            self._current_bin_failed.zero_()
+        if torch.any(episode_success):
+            success_bins = current_bin_index[env_ids][episode_success]
+            self._current_bin_success[:] = torch.bincount(success_bins, minlength=self.bin_count)
+        else:
+            self._current_bin_success.zero_()
+        self._current_failed_total = float(episode_failed.sum().item())
+        self._current_success_total = float(episode_success.sum().item())
+
+        # Sample
+        fail_ratio = self.bin_failed_count / (self.bin_failed_count + self.bin_success_count + self._prob_eps)
+        fail_ratio = torch.nan_to_num(fail_ratio, nan=0.0, posinf=0.0, neginf=0.0)
+        beta = max(float(self.cfg.adaptive_beta), self._prob_eps)
+        if not math.isclose(beta, 1.0):
+            fail_ratio = torch.pow(fail_ratio, beta)
+        uniform_component = self.cfg.adaptive_uniform_ratio / float(self.bin_count)
+        sampling_probabilities = fail_ratio * (1 - self.cfg.adaptive_uniform_ratio) + uniform_component
+        sampling_probabilities = torch.nn.functional.pad(
+            sampling_probabilities.unsqueeze(0).unsqueeze(0),
+            (0, self.cfg.adaptive_kernel_size - 1),  # Non-causal kernel
+            mode="replicate",
+        )
+        sampling_probabilities = torch.nn.functional.conv1d(sampling_probabilities, self.kernel.view(1, 1, -1)).view(-1)
+        sampling_probabilities = torch.maximum(
+            sampling_probabilities,
+            torch.full_like(sampling_probabilities, self.cfg.bin_sampling_min_prob),
+        )
+        total = sampling_probabilities.sum()
+        if not torch.isfinite(total) or total <= 0:
+            sampling_probabilities = torch.full_like(sampling_probabilities, 1.0 / float(self.bin_count))
+        else:
+            sampling_probabilities = sampling_probabilities / total
+
+        sampled_bins = torch.multinomial(sampling_probabilities, len(env_ids), replacement=True)
+
+        self.time_steps[env_ids] = (
+            (sampled_bins + sample_uniform(0.0, 1.0, (len(env_ids),), device=self.device))
+            / self.bin_count
+            * (self.motion.time_step_total - 1)
+        ).long()
+        # self.time_steps[env_ids] = (sampled_bins / self.bin_count * (self.motion.time_step_total - 1)).long()
+
+        # Metrics
+        H = -(sampling_probabilities * (sampling_probabilities + 1e-12).log()).sum()
+        H_norm = H / math.log(self.bin_count)
+        pmax, imax = sampling_probabilities.max(dim=0)
+        self.metrics["sampling_entropy"][:] = H_norm
+        self.metrics["sampling_top1_prob"][:] = pmax
+        self.metrics["sampling_top1_bin"][:] = imax.float() / self.bin_count
+
+    def _setup_multi_file_state(self):
+        raw_dirs = self.cfg.motion_dir
+        if isinstance(raw_dirs, str):
+            raw_dirs = [raw_dirs]
+        dirs = [os.path.abspath(d) for d in raw_dirs]
+        for d in dirs:
+            if not os.path.isdir(d):
+                raise FileNotFoundError(f"Motion directory does not exist: {d}")
+        candidates = []
+        for d in dirs:
+            candidates.extend(sorted(
+                os.path.join(d, f) for f in os.listdir(d) if f.lower().endswith(".npz")
+            ))
+        if len(candidates) == 0:
+            raise ValueError(f"No .npz motion files found under directories: {dirs}")
+
+        self.motion_dir = dirs[0]
+        self.motion_file_paths = candidates
+        self.motion_file_names = [os.path.basename(path) for path in candidates]
+
+        # Track which source directory each file came from (for Phase B data mixing)
+        self._file_source_dir_idx = []
+        for path in candidates:
+            apath = os.path.abspath(path)
+            matched = 0
+            for di, d in enumerate(dirs):
+                if apath.startswith(d + os.sep) or apath.startswith(d):
+                    matched = di
+                    break
+            self._file_source_dir_idx.append(matched)
+        self._num_source_dirs = len(dirs)
+
+        # Phase B pseudo-levels: assigned later via compute_phase_b_pseudo_levels()
+        self._phase_b_pseudo_levels: torch.Tensor | None = None
+        # Phase B data mixing ratio (old data fraction, annealed over training)
+        self._phase_b_old_data_ratio: float = 0.0
+        self._phase_b_old_data_ratio_min: float = 0.0
+        self._phase_b_ratio_anneal_iters: int = 0
+        self._phase_b_ratio_start_iter: int = 0
+        metadata = [self._inspect_motion_file(path) for path in candidates]
+        self.motion_file_lengths = torch.tensor(
+            [meta["length"] for meta in metadata], dtype=torch.long, device=self.device
+        )
+        self.num_motion_files = len(candidates)
+        # 使用文件路径作为 key，避免 curriculum 重建文件列表时索引混乱
+        self._motion_loaders_by_path: dict[str, MotionLoader] = {}
+        self.motion_loaders: dict[int, MotionLoader] = {}  # 兼容旧接口，运行时动态更新
+        if self._preload_all_motion:
+            self._preload_motion_files()
+        # Keep a default loader for compatibility with exporters.
+        self.motion = self._get_motion_loader(0)
+        if self.enable_multi_file_bin_sampling:
+            self._init_file_bin_buffers()
+
+        self.file_indices = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
+        self.clip_start_steps = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
+        self.clip_end_steps = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
+        self.clip_error_accum = torch.zeros(self.num_envs, dtype=torch.float, device=self.device)
+        self.clip_step_count = torch.zeros(self.num_envs, dtype=torch.float, device=self.device)
+        # 单独追踪 mpjpe 和 mpjae 的累积值（用于内部评估）
+        self.clip_mpjpe_accum = torch.zeros(self.num_envs, dtype=torch.float, device=self.device)
+        self.clip_mpjae_accum = torch.zeros(self.num_envs, dtype=torch.float, device=self.device)
+        self.file_error_ema = torch.full(
+            (self.num_motion_files,),
+            float(self.cfg.file_error_norm),
+            dtype=torch.float,
+            device=self.device,
+        )
+        # 单独的 mpjpe 和 mpjae EMA（用于内部课程评估）
+        self.file_mpjpe_ema = torch.full(
+            (self.num_motion_files,),
+            float(self.cfg.curriculum_mpjpe_threshold),
+            dtype=torch.float,
+            device=self.device,
+        )
+        self.file_mpjae_ema = torch.full(
+            (self.num_motion_files,),
+            float(self.cfg.curriculum_mpjae_threshold),
+            dtype=torch.float,
+            device=self.device,
+        )
+        self.file_sampling_distribution = torch.full(
+            (self.num_motion_files,),
+            1.0 / self.num_motion_files,
+            dtype=torch.float,
+            device=self.device,
+        )
+        self.file_failed_count = torch.ones(self.num_motion_files, dtype=torch.float, device=self.device)
+        self.file_success_count = torch.ones(self.num_motion_files, dtype=torch.float, device=self.device)
+        self.file_attempt_count = torch.zeros(self.num_motion_files, dtype=torch.float, device=self.device)
+        self.file_freeze_remaining = torch.zeros(self.num_motion_files, dtype=torch.long, device=self.device)
+        self.file_freeze_cycles = torch.zeros(self.num_motion_files, dtype=torch.long, device=self.device)
+        self.file_dropped = torch.zeros(self.num_motion_files, dtype=torch.bool, device=self.device)
+        self._current_file_failed = torch.zeros(self.num_motion_files, dtype=torch.float, device=self.device)
+        self._current_file_success = torch.zeros(self.num_motion_files, dtype=torch.float, device=self.device)
+        all_env_ids = torch.arange(self.num_envs, device=self.device, dtype=torch.long)
+        self._multi_file_sampling(all_env_ids, initialize=True)
+        if self._use_global_cat:
+            self._build_global_cat()
+
+    def _preload_motion_files(self, file_paths: list[str] | None = None):
+        """Preload motion files to GPU. If file_paths is None, preload all current files."""
+        paths_to_load = file_paths if file_paths is not None else self.motion_file_paths
+        if not paths_to_load:
+            return
+        
+        # 过滤出尚未加载的文件
+        new_paths = [p for p in paths_to_load if p not in self._motion_loaders_by_path]
+        if not new_paths:
+            # 全部已加载，只需更新索引映射
+            self._rebuild_loader_index_mapping()
+            return
+        
+        total_new = len(new_paths)
+        print(
+            f"[Preload] Loading {total_new} new motion files into memory (device={self._preload_device}) ...",
+            flush=True,
+        )
+        start_time = time.time()
+        report_every = max(1, total_new // 20)
+        for i, path in enumerate(new_paths):
+            loader = MotionLoader(path, self._body_index_list, device=self._preload_device)
+            self._motion_loaders_by_path[path] = loader
+            if self._show_preload_progress:
+                self._render_preload_progress(i + 1, total_new, start_time)
+            elif (i % report_every == 0) or (i == total_new - 1):
+                pct = int((i + 1) * 100 / total_new)
+                elapsed = time.time() - start_time
+                print(f"[Preload] {i + 1}/{total_new} ({pct}%) | elapsed {elapsed:.1f}s", flush=True)
+        if self._show_preload_progress:
+            print(flush=True)
+        
+        # 更新索引映射
+        self._rebuild_loader_index_mapping()
+    
+    def _rebuild_loader_index_mapping(self):
+        """Rebuild motion_loaders (idx -> loader) from _motion_loaders_by_path."""
+        self.motion_loaders = {}
+        for idx, path in enumerate(self.motion_file_paths):
+            if path in self._motion_loaders_by_path:
+                self.motion_loaders[idx] = self._motion_loaders_by_path[path]
+
+    def _build_global_cat(self):
+        if self.num_motion_files == 0 or not self._global_cat_attrs:
+            self._global_cat = None
+            return
+        loaders: list[MotionLoader] = []
+        for idx in range(self.num_motion_files):
+            loader = self.motion_loaders.get(idx)
+            if loader is None:
+                loader = self._get_motion_loader(idx)
+            loaders.append(loader)
+        lengths = [int(loader.joint_pos.shape[0]) for loader in loaders]
+        base_offsets = []
+        acc = 0
+        for length in lengths:
+            base_offsets.append(acc)
+            acc += length
+        self._file_offsets = torch.tensor(base_offsets, dtype=torch.long, device=self.device)
+        self._file_lengths_tensor = torch.tensor(lengths, dtype=torch.long, device=self.device)
+
+        target_device = self._preload_device if self._keep_global_cat_on_preload else self.device
+        global_cat: dict[str, torch.Tensor] = {}
+        for name in self._global_cat_attrs:
+            if not hasattr(loaders[0], name):
+                continue
+            seq = [getattr(loader, name) for loader in loaders]
+            try:
+                cat = torch.cat(seq, dim=0)
+            except RuntimeError as exc:
+                print(f"[Preload] Failed to concat attribute '{name}': {exc}")
+                continue
+            if str(cat.device) != str(target_device):
+                cat = cat.to(target_device, non_blocking=True)
+            global_cat[name] = cat
+        if not global_cat:
+            self._global_cat = None
+            self._global_cat_device = None
+            return
+        self._global_cat = global_cat
+        self._global_cat_device = target_device
+        print(
+            f"[Preload] Built global tensors for {len(global_cat)} attributes "
+            f"(total_steps={acc}, device={target_device})",
+            flush=True,
+        )
+
+    def _init_file_bin_buffers(self) -> None:
+        """Allocate per-file bin buffers for multi-file bin sampling."""
+        self.file_bin_failed_counts = []
+        self.file_bin_success_counts = []
+        self.file_bin_counts = []
+        steps_per_second = 1.0 / (self._env.cfg.decimation * self._env.cfg.sim.dt)
+        for length in self.motion_file_lengths.tolist():
+            bin_count = int(length // max(steps_per_second, 1e-6)) + 1
+            self.file_bin_counts.append(bin_count)
+            self.file_bin_failed_counts.append(torch.zeros(bin_count, device=self.device))
+            self.file_bin_success_counts.append(torch.zeros(bin_count, device=self.device))
+
+    def _compute_bin_sampling_prob(self, failed: torch.Tensor, success: torch.Tensor) -> torch.Tensor:
+        """Compute bin sampling probabilities (mirrors single-file logic)."""
+        bin_count = failed.shape[0]
+        prob_eps = self._prob_eps
+        fail_ratio = failed / (failed + success + prob_eps)
+        fail_ratio = torch.nan_to_num(fail_ratio, nan=0.0, posinf=0.0, neginf=0.0)
+        beta = max(float(self.cfg.adaptive_beta), prob_eps)
+        if not math.isclose(beta, 1.0):
+            fail_ratio = torch.pow(fail_ratio, beta)
+        uniform_component = float(self.cfg.adaptive_uniform_ratio) / float(bin_count)
+        sampling_probabilities = fail_ratio * (1 - float(self.cfg.adaptive_uniform_ratio)) + uniform_component
+        sampling_probabilities = torch.nn.functional.pad(
+            sampling_probabilities.unsqueeze(0).unsqueeze(0),
+            (0, self.bin_kernel.numel() - 1),
+            mode="replicate",
+        )
+        sampling_probabilities = torch.nn.functional.conv1d(
+            sampling_probabilities, self.bin_kernel.view(1, 1, -1)
+        ).view(-1)
+        sampling_probabilities = torch.maximum(
+            sampling_probabilities,
+            torch.full_like(sampling_probabilities, float(self.cfg.bin_sampling_min_prob)),
+        )
+        total = sampling_probabilities.sum()
+        if not torch.isfinite(total) or total <= 0:
+            sampling_probabilities = torch.full_like(sampling_probabilities, 1.0 / float(bin_count))
+        else:
+            sampling_probabilities = sampling_probabilities / total
+        return sampling_probabilities
+
+    def _render_preload_progress(self, completed: int, total: int, start_time: float) -> None:
+        if total <= 0:
+            return
+        pct = min(max(completed / total, 0.0), 1.0)
+        filled = int(round(self._progress_bar_width * pct))
+        bar = "#" * filled + "-" * (self._progress_bar_width - filled)
+        elapsed = max(time.time() - start_time, 1e-6)
+        speed = completed / elapsed
+        print(
+            f"\r[Preload] |{bar}| {pct * 100:5.1f}% ({completed}/{total}) @ {speed:.2f} files/s",
+            end="",
+            flush=True,
+        )
+
+    def _gather_from_global_cat(self, attr: str, indices: torch.Tensor) -> torch.Tensor:
+        if self._global_cat is None or attr not in self._global_cat or self._file_offsets is None:
+            raise RuntimeError("Global concatenation not available for the requested attribute.")
+        cat = self._global_cat[attr]
+        if indices.dim() == 1:
+            absolute_indices = self._file_offsets[self.file_indices] + indices
+            if absolute_indices.device != cat.device:
+                absolute_indices = absolute_indices.to(cat.device)
+            values = cat.index_select(0, absolute_indices)
+        elif indices.dim() == 2:
+            base = self._file_offsets[self.file_indices][:, None]
+            absolute_indices = base + indices
+            flat_indices = absolute_indices.reshape(-1)
+            if flat_indices.device != cat.device:
+                flat_indices = flat_indices.to(cat.device)
+            values = cat.index_select(0, flat_indices)
+            value_shape = cat.shape[1:]
+            values = values.view(self.num_envs, indices.shape[1], *value_shape)
+        else:
+            raise ValueError("indices must be 1D or 2D tensor.")
+        if values.device != self.device:
+            values = values.to(self.device, non_blocking=True)
+        return values
+
+    def _resolve_preload_device(self, cfg_value) -> torch.device:
+        if cfg_value in (None, "", "env", "device", "same_as_env"):
+            return torch.device(self.device)
+        try:
+            device = torch.device(cfg_value)
+        except (TypeError, RuntimeError):
+            print(f"[Preload] Invalid preload_device '{cfg_value}', fallback to env device {self.device}.")
+            return torch.device(self.device)
+        if str(device) != str(self.device):
+            print(
+                f"[Preload] Motion data will be kept on {device} (env device: {self.device}). "
+                "Expect data copies per step if they differ."
+            )
+        return device
+
+    def _inspect_motion_file(self, path: str) -> dict[str, float | int]:
+        with np.load(path, mmap_mode="r") as data:
+            length = int(data["joint_pos"].shape[0])
+            fps_array = np.asarray(data["fps"]).reshape(-1)
+            fps_value = float(fps_array[0])
+        return {"length": length, "fps": fps_value}
+
+    def _get_motion_loader(self, file_idx: int) -> MotionLoader:
+        # 优先从索引缓存获取
+        if file_idx in self.motion_loaders:
+            return self.motion_loaders[file_idx]
+        
+        # 从路径缓存获取或按需加载
+        path = self.motion_file_paths[file_idx]
+        if path in self._motion_loaders_by_path:
+            loader = self._motion_loaders_by_path[path]
+        else:
+            target_device = self._preload_device if (self._preload_all_motion or self._use_global_cat) else self.device
+            loader = MotionLoader(path, self._body_index_list, device=target_device)
+            self._motion_loaders_by_path[path] = loader
+        
+        # 更新索引缓存
+        self.motion_loaders[file_idx] = loader
+        return loader
+
+    def _accumulate_clip_errors(self):
+        """累积采样误差，支持 MPJPE 和 MPJAE 加权组合。
+        
+        file_error_mpjae_weight=0: 只用 MPJPE (error_body_pos)
+        file_error_mpjae_weight=1: 只用 MPJAE
+        file_error_mpjae_weight=0.5: 各占一半
+        
+        同时单独累积 mpjpe 和 mpjae 用于内部课程评估。
+        """
+        mpjae_weight = float(getattr(self.cfg, "file_error_mpjae_weight", 0.0))
+        mpjpe = self.metrics["error_body_pos"]
+        # MPJAE: Mean Per Joint Angle Error，与 eval_metrics_folder.py 一致
+        mpjae = torch.abs(self.joint_pos - self.robot_joint_pos).mean(dim=-1)
+        
+        if mpjae_weight > 0.0:
+            errors = (1.0 - mpjae_weight) * mpjpe + mpjae_weight * mpjae
+        else:
+            errors = mpjpe
+        
+        errors = torch.nan_to_num(errors, nan=0.0, posinf=0.0, neginf=0.0)
+        mpjpe_safe = torch.nan_to_num(mpjpe, nan=0.0, posinf=0.0, neginf=0.0)
+        mpjae_safe = torch.nan_to_num(mpjae, nan=0.0, posinf=0.0, neginf=0.0)
+        
+        self.clip_error_accum += torch.clamp(errors, min=0.0)
+        self.clip_mpjpe_accum += torch.clamp(mpjpe_safe, min=0.0)
+        self.clip_mpjae_accum += torch.clamp(mpjae_safe, min=0.0)
+        self.clip_step_count += 1.0
+
+    def _finalize_clip_errors(self, env_ids: torch.Tensor):
+        if env_ids.numel() == 0:
+            return
+        clip_lengths = torch.clamp(self.clip_step_count[env_ids], min=1.0)
+        clip_errors = torch.nan_to_num(self.clip_error_accum[env_ids] / clip_lengths, nan=0.0, posinf=0.0, neginf=0.0)
+        clip_mpjpe = torch.nan_to_num(self.clip_mpjpe_accum[env_ids] / clip_lengths, nan=0.0, posinf=0.0, neginf=0.0)
+        clip_mpjae = torch.nan_to_num(self.clip_mpjae_accum[env_ids] / clip_lengths, nan=0.0, posinf=0.0, neginf=0.0)
+        self.clip_error_accum[env_ids] = 0.0
+        self.clip_mpjpe_accum[env_ids] = 0.0
+        self.clip_mpjae_accum[env_ids] = 0.0
+        self.clip_step_count[env_ids] = 0.0
+        self._update_file_error_statistics(self.file_indices[env_ids], clip_errors, clip_mpjpe, clip_mpjae)
+
+    def _update_file_bin_stats(self, env_ids: torch.Tensor, episode_failed: torch.Tensor):
+        if not self.enable_multi_file_bin_sampling or env_ids.numel() == 0:
+            return
+        file_ids = self.file_indices[env_ids]
+        steps = self.time_steps[env_ids]
+        alpha = float(self.cfg.adaptive_alpha)
+        for file_idx in torch.unique(file_ids).tolist():
+            bin_count = self.file_bin_counts[file_idx] if self.file_bin_counts else 0
+            if bin_count <= 0:
+                continue
+            mask = file_ids == file_idx
+            file_length = int(self.motion_file_lengths[file_idx].item())
+            bins = (steps[mask] * bin_count) // max(file_length, 1)
+            bins = torch.clamp(bins, min=0, max=bin_count - 1)
+            failed_mask = episode_failed[mask].to(torch.bool)
+            success_mask = ~failed_mask
+            if torch.any(failed_mask):
+                cur_fail = torch.bincount(bins[failed_mask], minlength=bin_count).to(self.device, dtype=torch.float)
+            else:
+                cur_fail = torch.zeros(bin_count, device=self.device)
+            if torch.any(success_mask):
+                cur_success = torch.bincount(bins[success_mask], minlength=bin_count).to(self.device, dtype=torch.float)
+            else:
+                cur_success = torch.zeros(bin_count, device=self.device)
+            self.file_bin_failed_counts[file_idx] = (
+                alpha * cur_fail + (1 - alpha) * self.file_bin_failed_counts[file_idx]
+            )
+            self.file_bin_success_counts[file_idx] = (
+                alpha * cur_success + (1 - alpha) * self.file_bin_success_counts[file_idx]
+            )
+
+    def _update_file_success_stats(self, env_ids: torch.Tensor, episode_failed: torch.Tensor):
+        if env_ids.numel() == 0 or self.num_motion_files == 0:
+            return
+        file_ids = self.file_indices[env_ids]
+        failed_mask = episode_failed.to(torch.bool)
+        success_mask = ~failed_mask
+        if torch.any(failed_mask):
+            fail_files = file_ids[failed_mask]
+            fail_counts = torch.bincount(fail_files, minlength=self.num_motion_files).to(self.device, dtype=torch.float)
+            self._current_file_failed[:] = fail_counts
+        else:
+            self._current_file_failed.zero_()
+        if torch.any(success_mask):
+            success_files = file_ids[success_mask]
+            success_counts = torch.bincount(
+                success_files, minlength=self.num_motion_files
+            ).to(self.device, dtype=torch.float)
+            self._current_file_success[:] = success_counts
+        else:
+            self._current_file_success.zero_()
+        beta = getattr(self.cfg, "file_success_beta", self.cfg.adaptive_alpha)
+        beta = float(max(beta, self._prob_eps))
+        self.file_failed_count = beta * self._current_file_failed + (1 - beta) * self.file_failed_count
+        self.file_success_count = beta * self._current_file_success + (1 - beta) * self.file_success_count
+        # 跟踪尝试次数（非 EMA）
+        attempt_counts = self._current_file_failed + self._current_file_success
+        self.file_attempt_count += attempt_counts
+        self._current_file_failed.zero_()
+        self._current_file_success.zero_()
+
+    def _update_file_error_statistics(
+        self,
+        file_indices: torch.Tensor,
+        clip_errors: torch.Tensor,
+        clip_mpjpe: torch.Tensor | None = None,
+        clip_mpjae: torch.Tensor | None = None,
+    ):
+        if file_indices.numel() == 0:
+            return
+        alpha = self.cfg.file_error_alpha
+        safe_errors = torch.clamp(torch.nan_to_num(clip_errors, nan=0.0, posinf=0.0, neginf=0.0), min=0.0)
+        safe_mpjpe = torch.clamp(torch.nan_to_num(clip_mpjpe, nan=0.0, posinf=0.0, neginf=0.0), min=0.0) if clip_mpjpe is not None else None
+        safe_mpjae = torch.clamp(torch.nan_to_num(clip_mpjae, nan=0.0, posinf=0.0, neginf=0.0), min=0.0) if clip_mpjae is not None else None
+        for file_idx in torch.unique(file_indices).tolist():
+            mask = file_indices == file_idx
+            if not torch.any(mask):
+                continue
+            error_value = safe_errors[mask].mean()
+            current = self.file_error_ema[file_idx]
+            self.file_error_ema[file_idx] = (1 - alpha) * current + alpha * error_value
+            # 更新单独的 mpjpe 和 mpjae EMA（用于内部课程评估）
+            if safe_mpjpe is not None:
+                mpjpe_value = safe_mpjpe[mask].mean()
+                self.file_mpjpe_ema[file_idx] = (1 - alpha) * self.file_mpjpe_ema[file_idx] + alpha * mpjpe_value
+            if safe_mpjae is not None:
+                mpjae_value = safe_mpjae[mask].mean()
+                self.file_mpjae_ema[file_idx] = (1 - alpha) * self.file_mpjae_ema[file_idx] + alpha * mpjae_value
+        self._refresh_file_sampling_distribution()
+
+    def _log_file_decision(self, file_idx: int, status: str, success_ratio: torch.Tensor | None):
+        path = self._freeze_log_path
+        if not path:
+            return
+        try:
+            sr = float(success_ratio[file_idx].item()) if success_ratio is not None else float("nan")
+            err = float(self.file_error_ema[file_idx].item())
+            attempts = float(self.file_attempt_count[file_idx].item())
+            cycles = int(self.file_freeze_cycles[file_idx].item())
+            refresh = int(self._file_success_refresh_count)
+            name = self.motion_file_names[file_idx]
+            line = (
+                f"{refresh}\t{status}\t{name}\t"
+                f"err={err:.4f}\tsuccess={sr:.4f}\tattempts={attempts:.0f}\tfreeze_cycles={cycles}\n"
+            )
+            with open(path, "a", encoding="utf-8") as f:
+                f.write(line)
+            if status == "drop" and self._drop_log_path:
+                with open(self._drop_log_path, "a", encoding="utf-8") as f:
+                    f.write(line)
+        except Exception as e:
+            print(f"[freeze/drop log] failed to write log: {e}", flush=True)
+
+    def _log_freeze_candidates(self, success_ratio: torch.Tensor | None, check_interval: int):
+        """Every N refreshes, log top-K candidates that are likely to be frozen soon."""
+        path = self._freeze_log_path
+        if not path or success_ratio is None:
+            return
+        if check_interval > 0 and self._file_success_refresh_count % check_interval != 0:
+            return
+        freeze_iters = max(int(getattr(self.cfg, "file_freeze_iters", 0) or 0), 0)
+        err_thr = getattr(self.cfg, "file_freeze_error_threshold", None)
+        succ_thr = getattr(self.cfg, "file_freeze_success_threshold", None)
+        min_attempts = max(int(getattr(self.cfg, "file_freeze_min_attempts", 0) or 0), 0)
+        if freeze_iters <= 0 or err_thr is None or succ_thr is None:
+            return
+        attempts = self.file_attempt_count
+        ready_mask = ~self.file_dropped & (self.file_freeze_remaining == 0)
+        attempts_mask = attempts >= float(min_attempts)
+        error_mask = self.file_error_ema >= float(err_thr)
+        success_mask = success_ratio <= float(succ_thr)
+        candidates = ready_mask & attempts_mask
+        # OR逻辑：error高 或 success低 的候选（与实际freeze逻辑一致）
+        strong_mask = candidates & (error_mask | success_mask)
+        if strong_mask.any():
+            scores = self.file_error_ema
+            selected_mask = strong_mask
+        else:
+            scores = self.file_error_ema
+            selected_mask = candidates
+        if not selected_mask.any():
+            return
+        topk = min(5, int(selected_mask.sum().item()))
+        scores_masked = torch.where(selected_mask, scores, torch.full_like(scores, -1e9))
+        top_scores, top_indices = torch.topk(scores_masked, topk)
+        refresh = int(self._file_success_refresh_count)
+        try:
+            with open(path, "a", encoding="utf-8") as f:
+                f.write(f"{refresh}\tpre-freeze-candidates\n")
+                for score, idx in zip(top_scores.tolist(), top_indices.tolist()):
+                    if score < -1e8:
+                        continue
+                    name = self.motion_file_names[int(idx)]
+                    sr = float(success_ratio[int(idx)].item())
+                    err = float(self.file_error_ema[int(idx)].item())
+                    attempts_i = float(attempts[int(idx)].item())
+                    cycles = int(self.file_freeze_cycles[int(idx)].item())
+                    f.write(
+                        f"{refresh}\tpre\t{name}\terr={err:.4f}\tsuccess={sr:.4f}\tattempts={attempts_i:.0f}\tfreeze_cycles={cycles}\n"
+                    )
+        except Exception as e:
+            print(f"[freeze/drop log] failed to write candidates: {e}", flush=True)
+
+    def set_log_dir(self, log_dir: str | None):
+        """Allow late-binding of log_dir so eval/play can still record freeze logs."""
+        self._freeze_log_path = None
+        self._freeze_in_path = None
+        self._drop_log_path = None
+        self._log_dir = log_dir
+        if not log_dir:
+            return
+        try:
+            os.makedirs(log_dir, exist_ok=True)
+            self._freeze_log_path = os.path.join(log_dir, "freeze.txt")
+            self._freeze_in_path = os.path.join(log_dir, "freeze_in.txt")
+            self._drop_log_path = os.path.join(log_dir, "drop.txt")
+            # 尝试加载永久freeze的文件
+            if self.multi_file_mode:
+                self._load_permanent_freeze_files()
+        except Exception:
+            self._freeze_log_path = None
+            self._freeze_in_path = None
+    
+    def _load_permanent_freeze_files(self):
+        """从 freeze_in.txt 加载永久 freeze 的文件列表，标记为 dropped。
+        
+        freeze_in.txt 格式：每行一个文件路径（完整路径或文件名）
+        """
+        if not self._freeze_in_path or not os.path.isfile(self._freeze_in_path):
+            return
+        
+        try:
+            with open(self._freeze_in_path, "r", encoding="utf-8") as f:
+                freeze_files = set()
+                for line in f:
+                    line = line.strip()
+                    if not line or line.startswith("#"):
+                        continue
+                    # 支持完整路径或只是文件名
+                    freeze_files.add(line)
+                    freeze_files.add(os.path.basename(line))
+            
+            if not freeze_files:
+                return
+            
+            # 标记匹配的文件为 dropped
+            dropped_count = 0
+            for idx, name in enumerate(self.motion_file_names):
+                path = self.motion_file_paths[idx]
+                if name in freeze_files or path in freeze_files:
+                    self.file_dropped[idx] = True
+                    dropped_count += 1
+            
+            if dropped_count > 0:
+                print(f"[Motion] Loaded {dropped_count} permanently frozen files from freeze_in.txt")
+                # 写入日志
+                if self._freeze_log_path:
+                    try:
+                        with open(self._freeze_log_path, "a", encoding="utf-8") as f:
+                            f.write(f"0\tfreeze_in_loaded\t{dropped_count} files marked as dropped\n")
+                    except Exception:
+                        pass
+        except Exception as e:
+            print(f"[Motion] Failed to load freeze_in.txt: {e}")
+    
+    def add_files_to_freeze_in(self, file_paths: list[str]):
+        """将文件添加到 freeze_in.txt 永久 freeze 列表。
+        
+        Args:
+            file_paths: 要永久 freeze 的文件路径列表
+        """
+        if not file_paths:
+            return
+        
+        if not self._freeze_in_path:
+            print("[Motion] Cannot add to freeze_in.txt: log_dir not set")
+            return
+        
+        try:
+            # 读取现有的 freeze_in.txt
+            existing = set()
+            if os.path.isfile(self._freeze_in_path):
+                with open(self._freeze_in_path, "r", encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and not line.startswith("#"):
+                            existing.add(line)
+            
+            # 追加新文件
+            new_files = [p for p in file_paths if p not in existing and os.path.basename(p) not in existing]
+            if new_files:
+                with open(self._freeze_in_path, "a", encoding="utf-8") as f:
+                    for path in new_files:
+                        f.write(f"{path}\n")
+                print(f"[Motion] Added {len(new_files)} files to freeze_in.txt")
+                
+                # 立即标记为 dropped
+                for path in new_files:
+                    name = os.path.basename(path)
+                    for idx, n in enumerate(self.motion_file_names):
+                        if n == name or self.motion_file_paths[idx] == path:
+                            self.file_dropped[idx] = True
+                            break
+        except Exception as e:
+            print(f"[Motion] Failed to add to freeze_in.txt: {e}")
+
+    def _refresh_file_sampling_distribution(self):
+        if self.num_motion_files == 0:
+            return
+        def _as_float(value, default):
+            try:
+                base = value if value is not None else default
+                return float(base)
+            except (TypeError, ValueError):
+                return float(default)
+
+        def _as_float_optional(value):
+            if value is None:
+                return None
+            try:
+                return float(value)
+            except (TypeError, ValueError):
+                return None
+        # 递减冻结计数器
+        if hasattr(self, "file_freeze_remaining"):
+            self.file_freeze_remaining = torch.maximum(
+                self.file_freeze_remaining - 1, torch.zeros_like(self.file_freeze_remaining)
+            )
+        # Ensure cfg values are numeric (Hydra/YAML may supply strings)
+        norm = max(_as_float(getattr(self.cfg, "file_error_norm", 0.15), 0.15), self._prob_eps)
+        normalized_errors = torch.clamp(self.file_error_ema / norm, max=1.0)
+        success_ratio = None
+        if hasattr(self, "file_success_count"):
+            denom = self.file_success_count + self.file_failed_count + self._prob_eps
+            success_ratio = torch.clamp(self.file_success_count / denom, 0.0, 1.0)
+            fail_preference = 1.0 - success_ratio
+            weight = _as_float(getattr(self.cfg, "file_success_weight", 0.0), 0.0)
+            warmup_iters = max(int(getattr(self.cfg, "file_success_warmup_iters", 0) or 0), 0)
+            use_success = warmup_iters == 0 or self._file_success_refresh_count >= warmup_iters
+            if weight > 0.0 and use_success:
+                normalized_errors = torch.clamp(
+                    (1 - weight) * normalized_errors + weight * fail_preference,
+                    min=self._prob_eps,
+                    max=1.0,
+                )
+        else:
+            use_success = False
+
+        # 冻结/丢弃决策（默认关闭，需配置阈值）
+        freeze_iters = max(int(getattr(self.cfg, "file_freeze_iters", 0) or 0), 0)
+        err_thr = _as_float_optional(getattr(self.cfg, "file_freeze_error_threshold", None))
+        succ_thr = _as_float_optional(getattr(self.cfg, "file_freeze_success_threshold", None))
+        min_attempts = max(int(getattr(self.cfg, "file_freeze_min_attempts", 0) or 0), 0)
+        drop_enabled = bool(getattr(self.cfg, "file_drop_enabled", False))
+        drop_after = max(int(getattr(self.cfg, "file_drop_after_freezes", 0) or 0), 0)
+        check_interval = max(int(getattr(self.cfg, "file_freeze_check_interval", 0) or 0), 0)
+        inactive_mask = torch.zeros(self.num_motion_files, dtype=torch.bool, device=self.device)
+
+        can_check_freeze = (
+            freeze_iters > 0
+            and err_thr is not None
+            and succ_thr is not None
+            and use_success
+            and success_ratio is not None
+            and (check_interval == 0 or self._file_success_refresh_count % check_interval == 0)
+        )
+
+        if can_check_freeze:
+            attempts = self.file_attempt_count
+            assert err_thr is not None and succ_thr is not None and success_ratio is not None
+            err_thr_val = float(err_thr)
+            succ_thr_val = float(succ_thr)
+            success_ratio_val = success_ratio
+            error_mask = self.file_error_ema >= err_thr_val
+            success_mask = success_ratio_val <= succ_thr_val
+            attempts_mask = attempts >= float(min_attempts)
+            ready_mask = ~self.file_dropped & (self.file_freeze_remaining == 0)
+            # OR逻辑：error高 或 success低 都触发freeze（只要有一个条件满足）
+            freeze_candidates = ready_mask & (error_mask | success_mask) & attempts_mask
+            if freeze_candidates.any():
+                freeze_value = torch.full_like(self.file_freeze_remaining, freeze_iters)
+                self.file_freeze_remaining = torch.where(freeze_candidates, freeze_value, self.file_freeze_remaining)
+                self.file_freeze_cycles = torch.where(
+                    freeze_candidates, self.file_freeze_cycles + 1, self.file_freeze_cycles
+                )
+                for idx in freeze_candidates.nonzero(as_tuple=False).flatten().tolist():
+                    self._log_file_decision(idx, "freeze", success_ratio)
+
+            if drop_enabled and drop_after > 0:
+                drop_mask = freeze_candidates & (self.file_freeze_cycles >= drop_after)
+                if drop_mask.any():
+                    self.file_dropped = torch.where(drop_mask, torch.ones_like(self.file_dropped), self.file_dropped)
+                    self.file_freeze_remaining = torch.where(
+                        drop_mask, torch.zeros_like(self.file_freeze_remaining), self.file_freeze_remaining
+                    )
+                    for idx in drop_mask.nonzero(as_tuple=False).flatten().tolist():
+                        self._log_file_decision(idx, "drop", success_ratio)
+
+        frozen_mask = self.file_freeze_remaining > 0 if hasattr(self, "file_freeze_remaining") else None
+        dropped_mask = self.file_dropped if hasattr(self, "file_dropped") else None
+        if frozen_mask is None:
+            frozen_mask = torch.zeros(self.num_motion_files, dtype=torch.bool, device=self.device)
+        if dropped_mask is None:
+            dropped_mask = torch.zeros(self.num_motion_files, dtype=torch.bool, device=self.device)
+        inactive_mask = frozen_mask | dropped_mask
+
+        # 周期性记录“即将冻结”候选
+        if use_success:
+            self._log_freeze_candidates(success_ratio, check_interval if check_interval > 0 else 500)
+
+        temperature = max(_as_float(getattr(self.cfg, "sampling_temperature", 1.0), 1.0), self._prob_eps)
+        sampling_power = _as_float(getattr(self.cfg, "file_sampling_power", 1.0), 1.0)
+        logits = (sampling_power * torch.log(normalized_errors + self._prob_eps)) / temperature
+        logits = logits - logits.max()
+        probs = torch.softmax(logits, dim=0)
+        min_prob = _as_float(getattr(self.cfg, "sampling_min_prob", 0.0), 0.0)
+        if min_prob > 0:
+            probs = torch.maximum(probs, torch.full_like(probs, min_prob))
+        if inactive_mask.any():
+            probs = probs.clone()
+            probs[inactive_mask] = 0.0
+            active_mask = ~inactive_mask
+            total_active = probs[active_mask].sum()
+            if not torch.isfinite(total_active) or total_active <= 0:
+                active_count = int(active_mask.sum().item())
+                if active_count > 0:
+                    probs[active_mask] = 1.0 / float(active_count)
+                else:
+                    probs[:] = 1.0 / float(self.num_motion_files)
+            else:
+                probs = probs / total_active
+        else:
+            active_mask = torch.ones_like(probs, dtype=torch.bool)
+        total = probs.sum()
+        if not torch.isfinite(total) or total <= 0:
+            probs = torch.full((self.num_motion_files,), 1.0 / self.num_motion_files, device=self.device)
+        else:
+            probs = probs / total
+
+        uniform_mix = _as_float(getattr(self.cfg, "file_uniform_mixture", 0.0), 0.0)
+        if uniform_mix > 0:
+            active_count = int(active_mask.sum().item())
+            if active_count == 0:
+                uniform_probs = torch.full_like(probs, 1.0 / self.num_motion_files)
+            else:
+                uniform_probs = torch.zeros_like(probs)
+                uniform_probs[active_mask] = 1.0 / float(active_count)
+            probs = (1 - uniform_mix) * probs + uniform_mix * uniform_probs
+            probs = probs / probs.sum()
+
+        # 应用课程学习的分层采样（如果启用）
+        if self._curriculum is not None and self.cfg.curriculum_enabled:
+            probs = self._apply_curriculum_hierarchical_sampling(probs, active_mask)
+
+        # Phase B data mixing: reweight old vs new files
+        if (
+            self._phase_b_old_data_ratio > 0
+            and hasattr(self, "_file_source_dir_idx")
+            and self._num_source_dirs > 1
+        ):
+            old_ratio = self._get_phase_b_old_data_ratio()
+            is_old = torch.tensor(
+                [1.0 if d == 0 else 0.0 for d in self._file_source_dir_idx],
+                device=self.device,
+            )
+            is_new = 1.0 - is_old
+            old_total = (probs * is_old).sum()
+            new_total = (probs * is_new).sum()
+            if old_total > 1e-8 and new_total > 1e-8:
+                probs = probs.clone()
+                probs = probs * is_old * (old_ratio / old_total) + probs * is_new * ((1.0 - old_ratio) / new_total)
+                probs = probs / probs.sum()
+
+        self.file_sampling_distribution = probs
+
+        entropy = -(probs * torch.log(probs + self._prob_eps)).sum()
+        if self.num_motion_files > 1:
+            entropy = entropy / math.log(self.num_motion_files)
+        else:
+            entropy = torch.zeros(1, device=self.device)
+        top_prob, top_idx = probs.max(dim=0)
+        self.metrics["sampling_entropy"][:] = entropy
+        self.metrics["sampling_top1_prob"][:] = top_prob
+        denom = max(self.num_motion_files, 1)
+        self.metrics["sampling_top1_bin"][:] = top_idx.float() / denom
+        self._update_file_sampling_top3(probs)
+        self._file_success_refresh_count += 1
+
+    def _sample_motion_files(self, count: int) -> torch.Tensor:
+        if count == 0:
+            return torch.zeros(0, dtype=torch.long, device=self.device)
+        if self.num_motion_files == 1:
+            return torch.zeros(count, dtype=torch.long, device=self.device)
+        # Optionally restrict how many distinct files participate per sampling call.
+        max_files = getattr(self.cfg, "max_files_per_iter", None)
+        if max_files is not None:
+            try:
+                max_files_int = int(max_files)
+            except (TypeError, ValueError):
+                max_files_int = None
+            if max_files_int is not None and max_files_int > 0 and self.num_motion_files > max_files_int:
+                probs = self.file_sampling_distribution
+                top_probs, top_indices = torch.topk(probs, max_files_int)
+                sub_probs = top_probs / top_probs.sum()
+                sampled_local = torch.multinomial(sub_probs, count, replacement=True)
+                return top_indices[sampled_local]
+        return torch.multinomial(self.file_sampling_distribution, count, replacement=True)
+
+    def _sample_clip_lengths_and_starts(self, file_indices: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        clip_lengths = torch.zeros_like(file_indices, dtype=torch.long)
+        clip_starts = torch.zeros_like(file_indices, dtype=torch.long)
+        for file_idx in torch.unique(file_indices).tolist():
+            mask = torch.nonzero(file_indices == file_idx, as_tuple=False).squeeze(-1)
+            if mask.numel() == 0:
+                continue
+            file_length = self.motion_file_lengths[file_idx]
+            if self.clip_jitter_steps > 0:
+                jitter = torch.randint(
+                    -self.clip_jitter_steps,
+                    self.clip_jitter_steps + 1,
+                    size=(mask.numel(),),
+                    device=self.device,
+                )
+            else:
+                jitter = torch.zeros(mask.numel(), dtype=torch.long, device=self.device)
+            lengths = torch.clamp(self.base_clip_steps + jitter, min=1)
+            max_steps = max(1, min(self.max_clip_steps, int(file_length.item())))
+            lengths = torch.clamp(lengths, max=max_steps)
+            lengths = torch.clamp(lengths, max=int(file_length.item()))
+            max_offsets = torch.clamp(file_length - lengths, min=0)
+            if self.enable_multi_file_bin_sampling and self.file_bin_counts:
+                bin_count = self.file_bin_counts[file_idx]
+                probs = self._compute_bin_sampling_prob(
+                    self.file_bin_failed_counts[file_idx], self.file_bin_success_counts[file_idx]
+                )
+                sampled_bins = torch.multinomial(probs, mask.numel(), replacement=True)
+                jitter_rand = torch.rand(mask.numel(), device=self.device)
+                raw_starts = torch.floor(
+                    (sampled_bins.to(self.device) + jitter_rand)
+                    / max(float(bin_count), 1.0)
+                    * float(max(int(file_length.item()) - 1, 0))
+                ).long()
+                starts = torch.minimum(raw_starts, max_offsets)
+            else:
+                rand = torch.rand(mask.numel(), device=self.device)
+                starts = torch.floor(rand * (max_offsets.float() + 1.0)).long()
+            clip_lengths[mask] = lengths
+            clip_starts[mask] = starts
+        return clip_lengths, clip_starts
+
+    def _assign_clips_to_envs(self, env_ids: torch.Tensor, file_indices: torch.Tensor):
+        clip_lengths, clip_starts = self._sample_clip_lengths_and_starts(file_indices)
+        self.file_indices[env_ids] = file_indices
+        self.clip_start_steps[env_ids] = clip_starts
+        self.time_steps[env_ids] = clip_starts
+        self.clip_end_steps[env_ids] = clip_starts + clip_lengths
+        self.clip_error_accum[env_ids] = 0.0
+        self.clip_step_count[env_ids] = 0.0
+
+    def _multi_file_sampling(
+        self,
+        env_ids: torch.Tensor,
+        initialize: bool = False,
+        episode_failed: torch.Tensor | None = None,
+    ):
+        if env_ids.numel() == 0:
+            return
+        if not initialize:
+            self._finalize_clip_errors(env_ids)
+            if episode_failed is not None:
+                self._update_file_success_stats(env_ids, episode_failed)
+        sampled_files = self._sample_motion_files(env_ids.numel())
+        self._assign_clips_to_envs(env_ids, sampled_files)
+
+    def _update_file_sampling_top3(self, probs: torch.Tensor):
+        if probs.numel() == 0 or not self.multi_file_mode:
+            self._file_sampling_top3_names = []
+            self._file_sampling_top3_display = ""
+            return
+        topk = min(3, probs.numel())
+        top_probs, top_indices = torch.topk(probs, topk)
+        names: list[str] = []
+        display_parts: list[str] = []
+        for prob, idx in zip(top_probs.tolist(), top_indices.tolist()):
+            file_name = self.motion_file_names[int(idx)]
+            names.append(file_name)
+            display_parts.append(f"{file_name} ({prob:.2f})")
+        self._file_sampling_top3_names = names
+        self._file_sampling_top3_display = ", ".join(display_parts)
+
+    def get_file_sampling_top3(self) -> list[str]:
+        return list(self._file_sampling_top3_names)
+
+    def _resample_command(self, env_ids: Sequence[int] | torch.Tensor):
+        env_ids_tensor = torch.as_tensor(env_ids, device=self.device, dtype=torch.long).reshape(-1)
+        if env_ids_tensor.numel() == 0:
+            return
+
+        if self.multi_file_mode:
+            termination_manager = self._env.termination_manager
+            episode_failed = termination_manager.terminated[env_ids_tensor]
+            episode_success = ~episode_failed
+            self._current_failed_total = float(episode_failed.sum().item())
+            self._current_success_total = float(episode_success.sum().item())
+
+        if self.multi_file_mode:
+            if self.enable_multi_file_bin_sampling:
+                self._update_file_bin_stats(env_ids_tensor, episode_failed)
+            self._multi_file_sampling(env_ids_tensor, episode_failed=episode_failed)
+        else:
+            self._adaptive_sampling(env_ids_tensor)
+
+        if env_ids_tensor.numel() > 0:
+            if self.cfg.random_static_prob > 0.0:
+                random_vals = torch.rand(env_ids_tensor.numel(), device=self.device)
+                static_flags = random_vals < self.cfg.random_static_prob
+                self.static_mask[env_ids_tensor] = static_flags
+                self.static_ref_steps[env_ids_tensor] = self.time_steps[env_ids_tensor]
+            else:
+                self.static_mask[env_ids_tensor] = False
+
+        self._apply_command_to_robot(env_ids_tensor)
+
+    def _apply_command_to_robot(self, env_ids: torch.Tensor):
+        if env_ids.numel() == 0:
+            return
+
+        env_ids = env_ids.reshape(-1)
+        root_pos = self.body_pos_w[:, 0].clone()
+        root_ori = self.body_quat_w[:, 0].clone()
+        root_lin_vel = self.body_lin_vel_w[:, 0].clone()
+        root_ang_vel = self.body_ang_vel_w[:, 0].clone()
+
+        joint_pos = self.joint_pos.clone()
+        joint_vel = self.joint_vel.clone()
+
+        def _build_range_tensor(range_cfg: dict[str, tuple[float, float]] | None) -> torch.Tensor:
+            cfg = range_cfg or {}
+            keys = ["x", "y", "z", "roll", "pitch", "yaw"]
+            values = [cfg.get(key, (0.0, 0.0)) for key in keys]
+            return torch.tensor(values, dtype=torch.float32, device=self.device)
+
+        static_mask = self.static_mask[env_ids]
+        static_env_ids = env_ids[static_mask]
+        dynamic_env_ids = env_ids[~static_mask]
+
+        if dynamic_env_ids.numel() > 0:
+            pose_ranges = _build_range_tensor(self.cfg.pose_range)
+            rand_samples = sample_uniform(pose_ranges[:, 0], pose_ranges[:, 1], (dynamic_env_ids.numel(), 6), device=self.device)
+            root_pos[dynamic_env_ids] += rand_samples[:, 0:3]
+            orientations_delta = quat_from_euler_xyz(rand_samples[:, 3], rand_samples[:, 4], rand_samples[:, 5])
+            root_ori[dynamic_env_ids] = quat_mul(orientations_delta, root_ori[dynamic_env_ids])
+
+            velocity_ranges = _build_range_tensor(self.cfg.velocity_range)
+            rand_samples = sample_uniform(
+                velocity_ranges[:, 0], velocity_ranges[:, 1], (dynamic_env_ids.numel(), 6), device=self.device
+            )
+            root_lin_vel[dynamic_env_ids] += rand_samples[:, :3]
+            root_ang_vel[dynamic_env_ids] += rand_samples[:, 3:]
+
+            joint_pos[dynamic_env_ids] += sample_uniform(
+                *self.cfg.joint_position_range, joint_pos[dynamic_env_ids].shape, device=self.device
+            )
+
+        if static_env_ids.numel() > 0:
+            ref_indices = self.time_steps.clone()
+            ref_indices[static_env_ids] = self.static_ref_steps[static_env_ids]
+            ref_joint_pos = self._gather_motion_attribute("joint_pos", indices=ref_indices)
+            ref_body_pos = self._gather_motion_attribute("body_pos_w", indices=ref_indices)
+            ref_body_quat = self._gather_motion_attribute("body_quat_w", indices=ref_indices)
+            env_origins = self._env.scene.env_origins
+
+            root_pos[static_env_ids] = ref_body_pos[static_env_ids, 0] + env_origins[static_env_ids]
+            root_ori[static_env_ids] = ref_body_quat[static_env_ids, 0]
+            joint_pos[static_env_ids] = ref_joint_pos[static_env_ids]
+            root_lin_vel[static_env_ids].zero_()
+            root_ang_vel[static_env_ids].zero_()
+            joint_vel[static_env_ids].zero_()
+
+            pose_cfg = self.cfg.static_pose_range if self.cfg.static_pose_range is not None else self.cfg.pose_range
+            pose_ranges = _build_range_tensor(pose_cfg)
+            rand_samples = sample_uniform(pose_ranges[:, 0], pose_ranges[:, 1], (static_env_ids.numel(), 6), device=self.device)
+            root_pos[static_env_ids] += rand_samples[:, 0:3]
+            orientations_delta = quat_from_euler_xyz(rand_samples[:, 3], rand_samples[:, 4], rand_samples[:, 5])
+            root_ori[static_env_ids] = quat_mul(orientations_delta, root_ori[static_env_ids])
+
+            velocity_cfg = (
+                self.cfg.static_velocity_range if self.cfg.static_velocity_range is not None else self.cfg.velocity_range
+            )
+            velocity_ranges = _build_range_tensor(velocity_cfg)
+            rand_samples = sample_uniform(
+                velocity_ranges[:, 0], velocity_ranges[:, 1], (static_env_ids.numel(), 6), device=self.device
+            )
+            root_lin_vel[static_env_ids] += rand_samples[:, :3]
+            root_ang_vel[static_env_ids] += rand_samples[:, 3:]
+
+            joint_range = self.cfg.static_joint_position_range or self.cfg.joint_position_range
+            joint_pos[static_env_ids] += sample_uniform(
+                *joint_range, joint_pos[static_env_ids].shape, device=self.device
+            )
+
+        soft_joint_pos_limits = self.robot.data.soft_joint_pos_limits[env_ids]
+        joint_pos[env_ids] = torch.clip(
+            joint_pos[env_ids], soft_joint_pos_limits[:, :, 0], soft_joint_pos_limits[:, :, 1]
+        )
+        self.robot.write_joint_state_to_sim(joint_pos[env_ids], joint_vel[env_ids], env_ids=env_ids)
+        self.robot.write_root_state_to_sim(
+            torch.cat([root_pos[env_ids], root_ori[env_ids], root_lin_vel[env_ids], root_ang_vel[env_ids]], dim=-1),
+            env_ids=env_ids,
+        )
+        self.static_mask[env_ids] = False
+
+    def _update_command(self):
+        self.time_steps += 1
+        if self.multi_file_mode:
+            env_ids = torch.where(self.time_steps >= self.clip_end_steps)[0]
+        else:
+            env_ids = torch.where(self.time_steps >= self.motion.time_step_total)[0]
+        self._resample_command(env_ids)
+
+        anchor_pos_w_repeat = self.anchor_pos_w[:, None, :].repeat(1, len(self.cfg.body_names), 1)
+        anchor_quat_w_repeat = self.anchor_quat_w[:, None, :].repeat(1, len(self.cfg.body_names), 1)
+        robot_anchor_pos_w_repeat = self.robot_anchor_pos_w[:, None, :].repeat(1, len(self.cfg.body_names), 1)
+        robot_anchor_quat_w_repeat = self.robot_anchor_quat_w[:, None, :].repeat(1, len(self.cfg.body_names), 1)
+
+        delta_pos_w = robot_anchor_pos_w_repeat
+        delta_pos_w[..., 2] = anchor_pos_w_repeat[..., 2]
+        delta_ori_w = yaw_quat(quat_mul(robot_anchor_quat_w_repeat, quat_inv(anchor_quat_w_repeat)))
+
+        self.body_quat_relative_w = quat_mul(delta_ori_w, self.body_quat_w)
+        self.body_pos_relative_w = delta_pos_w + quat_apply(delta_ori_w, self.body_pos_w - anchor_pos_w_repeat)
+
+        alpha = self.cfg.adaptive_alpha
+        if not self.multi_file_mode:
+            self.bin_failed_count = alpha * self._current_bin_failed + (1 - alpha) * self.bin_failed_count
+            self.bin_success_count = alpha * self._current_bin_success + (1 - alpha) * self.bin_success_count
+            self._current_bin_failed.zero_()
+            self._current_bin_success.zero_()
+        total_current_failed = self._current_failed_total
+        total_current_success = self._current_success_total
+        if (total_current_failed + total_current_success) > 0:
+            self.failed_total_count = alpha * total_current_failed + (1 - alpha) * self.failed_total_count
+            self.success_total_count = alpha * total_current_success + (1 - alpha) * self.success_total_count
+        denom = self.failed_total_count + self.success_total_count + self._prob_eps
+        self.metrics["pfail_total"][:] = self.failed_total_count / denom
+        self._current_failed_total = 0.0
+        self._current_success_total = 0.0
+
+    # ------------------------------------------------------------------ #
+    # Curriculum Learning Methods
+    # ------------------------------------------------------------------ #
+
+    def _apply_curriculum_hierarchical_sampling(
+        self, error_based_probs: torch.Tensor, active_mask: torch.Tensor
+    ) -> torch.Tensor:
+        """
+        应用课程学习的分层采样策略。
+        
+        策略：
+        1. 等级间：按 min_level_sampling_ratio 分配采样比例
+        2. 等级内：按 error_based_probs 进行自适应采样
+        
+        这样既能保证每个等级有最低采样比例（防遗忘），
+        又能在每个等级内部根据 error 进行自适应采样（难的文件多练）。
+        """
+        if self._curriculum is None:
+            return error_based_probs
+
+        max_level = self._curriculum.max_level
+        if max_level <= 0:
+            return error_based_probs
+
+        # 建立文件索引到等级的映射
+        file_levels = torch.zeros(self.num_motion_files, dtype=torch.long, device=self.device)
+        for i, path in enumerate(self.motion_file_paths):
+            file_levels[i] = self._curriculum.get_file_level(path)
+
+        # 获取每个等级的目标采样比例
+        level_ratios = self._curriculum.get_level_sampling_ratios(max_level)
+        if not level_ratios:
+            return error_based_probs
+
+        # 计算每个等级的 error-based 分布（归一化到该等级内部）
+        final_probs = torch.zeros_like(error_based_probs)
+
+        for level in range(1, max_level + 1):
+            level_mask = (file_levels == level) & active_mask
+            if not level_mask.any():
+                continue
+
+            level_ratio = level_ratios.get(level, 0.0)
+            if level_ratio <= 0:
+                continue
+
+            # 该等级内的 error-based 概率
+            level_error_probs = error_based_probs[level_mask]
+            level_sum = level_error_probs.sum()
+
+            if level_sum > 0 and torch.isfinite(level_sum):
+                # 归一化到等级内部，然后乘以等级比例
+                normalized = level_error_probs / level_sum
+                final_probs[level_mask] = normalized * level_ratio
+            else:
+                # 如果该等级内没有有效概率，均匀分配
+                count = level_mask.sum().item()
+                if count > 0:
+                    final_probs[level_mask] = level_ratio / count
+
+        # 确保概率和为 1
+        total = final_probs.sum()
+        if total > 0 and torch.isfinite(total):
+            final_probs = final_probs / total
+        else:
+            # Fallback: 均匀分布
+            active_count = active_mask.sum().item()
+            if active_count > 0:
+                final_probs[active_mask] = 1.0 / active_count
+
+        return final_probs
+
+    def _init_curriculum(self) -> None:
+        """Initialize curriculum learning manager."""
+        from whole_body_tracking.utils.curriculum_manager import CurriculumConfig, CurriculumManager
+
+        if not self.cfg.curriculum_csv_path or not self.cfg.motion_dir:
+            print("[Curriculum] Disabled: curriculum_csv_path or motion_dir not set.")
+            return
+
+        cfg = CurriculumConfig(
+            csv_path=self.cfg.curriculum_csv_path,
+            motion_dir=self.cfg.motion_dir,
+            mocap_dir=self.cfg.curriculum_mocap_dir,
+            iteration_per_level=self.cfg.curriculum_iteration_per_level,
+            mpjpe_threshold=self.cfg.curriculum_mpjpe_threshold,
+            mpjae_threshold=self.cfg.curriculum_mpjae_threshold,
+            new_level_weight=self.cfg.curriculum_new_level_weight,
+            eval_runs_per_file=self.cfg.curriculum_eval_runs,
+            max_difficulty=self.cfg.curriculum_max_difficulty,
+            min_level_sampling_ratio=self.cfg.curriculum_min_level_sampling_ratio,
+            auto_upgrade_after_iters=self.cfg.curriculum_auto_upgrade_after_iters,
+            auto_upgrade_per_level=self.cfg.curriculum_auto_upgrade_per_level,
+            level_difficulty_weights=self.cfg.curriculum_level_difficulty_weights,
+            # 文件渐进引入参数
+            gradual_file_intro_enabled=self.cfg.curriculum_gradual_file_intro_enabled,
+            gradual_file_intro_iters=self.cfg.curriculum_gradual_file_intro_iters,
+            gradual_file_intro_start_ratio=self.cfg.curriculum_gradual_file_intro_start_ratio,
+            gradual_file_intro_extra_start_level=self.cfg.curriculum_gradual_file_intro_extra_start_level,
+            gradual_file_intro_extra_iters=self.cfg.curriculum_gradual_file_intro_extra_iters,
+        )
+        self._curriculum = CurriculumManager(cfg)
+        self._curriculum_current_level = 1
+
+        # 预加载所有 curriculum 管理的文件（包括 mocap），避免 level 升级时再加载
+        if self._preload_all_motion:
+            all_curriculum_files = self._curriculum.all_files
+            print(f"[Curriculum] Pre-loading all {len(all_curriculum_files)} curriculum files (including mocap)...")
+            self._preload_motion_files(all_curriculum_files)
+
+        self._rebuild_file_list_for_curriculum()
+        print(f"[Curriculum] Initialized at level {self._curriculum_current_level}")
+
+    def _rebuild_file_list_for_curriculum(self) -> None:
+        """Rebuild the motion file list based on current curriculum level."""
+        if self._curriculum is None:
+            return
+
+        # Get files up to current level
+        allowed_files = self._curriculum.get_files_up_to_level(self._curriculum.max_level)
+        if not allowed_files:
+            print("[Curriculum] Warning: No files available for current level!")
+            return
+
+        # Preserve per-file statistics for files that remain after curriculum expansion.
+        # We align by file path (string) because indices will change when new files are appended/reordered.
+        old_count = self.num_motion_files
+        old_paths = list(getattr(self, "motion_file_paths", []) or [])
+        old_idx_by_path = {p: i for i, p in enumerate(old_paths)}
+        old_file_error_ema = getattr(self, "file_error_ema", None)
+        old_file_mpjpe_ema = getattr(self, "file_mpjpe_ema", None)
+        old_file_mpjae_ema = getattr(self, "file_mpjae_ema", None)
+        old_failed_count = getattr(self, "file_failed_count", None)
+        old_success_count = getattr(self, "file_success_count", None)
+        old_attempt_count = getattr(self, "file_attempt_count", None)
+        old_freeze_remaining = getattr(self, "file_freeze_remaining", None)
+        old_freeze_cycles = getattr(self, "file_freeze_cycles", None)
+        old_dropped = getattr(self, "file_dropped", None)
+
+        # Rebuild file paths and related structures
+        self.motion_file_paths = allowed_files
+        self.motion_file_names = [os.path.basename(path) for path in allowed_files]
+        self.num_motion_files = len(allowed_files)
+
+        # Rebuild file lengths tensor
+        metadata = [self._inspect_motion_file(path) for path in allowed_files]
+        self.motion_file_lengths = torch.tensor(
+            [meta["length"] for meta in metadata], dtype=torch.long, device=self.device
+        )
+
+        # Rebuild sampling distribution
+        self.file_error_ema = torch.full(
+            (self.num_motion_files,),
+            float(self.cfg.file_error_norm),
+            dtype=torch.float,
+            device=self.device,
+        )
+        # 重建单独的 mpjpe 和 mpjae EMA
+        self.file_mpjpe_ema = torch.full(
+            (self.num_motion_files,),
+            float(self.cfg.curriculum_mpjpe_threshold),
+            dtype=torch.float,
+            device=self.device,
+        )
+        self.file_mpjae_ema = torch.full(
+            (self.num_motion_files,),
+            float(self.cfg.curriculum_mpjae_threshold),
+            dtype=torch.float,
+            device=self.device,
+        )
+        self.file_sampling_distribution = torch.full(
+            (self.num_motion_files,),
+            1.0 / max(self.num_motion_files, 1),
+            dtype=torch.float,
+            device=self.device,
+        )
+        self.file_failed_count = torch.ones(self.num_motion_files, dtype=torch.float, device=self.device)
+        self.file_success_count = torch.ones(self.num_motion_files, dtype=torch.float, device=self.device)
+        self.file_attempt_count = torch.zeros(self.num_motion_files, dtype=torch.float, device=self.device)
+        self.file_freeze_remaining = torch.zeros(self.num_motion_files, dtype=torch.long, device=self.device)
+        self.file_freeze_cycles = torch.zeros(self.num_motion_files, dtype=torch.long, device=self.device)
+        self.file_dropped = torch.zeros(self.num_motion_files, dtype=torch.bool, device=self.device)
+        self._current_file_failed = torch.zeros(self.num_motion_files, dtype=torch.float, device=self.device)
+        self._current_file_success = torch.zeros(self.num_motion_files, dtype=torch.float, device=self.device)
+
+        # Copy old statistics for files that still exist after rebuild.
+        if old_idx_by_path and old_count > 0:
+            new_indices: list[int] = []
+            old_indices: list[int] = []
+            for new_i, path in enumerate(self.motion_file_paths):
+                old_i = old_idx_by_path.get(path, None)
+                if old_i is not None:
+                    new_indices.append(new_i)
+                    old_indices.append(old_i)
+
+            if new_indices:
+                new_idx_t = torch.tensor(new_indices, device=self.device, dtype=torch.long)
+                old_idx_t = torch.tensor(old_indices, device=self.device, dtype=torch.long)
+
+                if old_file_error_ema is not None:
+                    self.file_error_ema[new_idx_t] = old_file_error_ema[old_idx_t]
+                if old_file_mpjpe_ema is not None:
+                    self.file_mpjpe_ema[new_idx_t] = old_file_mpjpe_ema[old_idx_t]
+                if old_file_mpjae_ema is not None:
+                    self.file_mpjae_ema[new_idx_t] = old_file_mpjae_ema[old_idx_t]
+                if old_failed_count is not None:
+                    self.file_failed_count[new_idx_t] = old_failed_count[old_idx_t]
+                if old_success_count is not None:
+                    self.file_success_count[new_idx_t] = old_success_count[old_idx_t]
+                if old_attempt_count is not None:
+                    self.file_attempt_count[new_idx_t] = old_attempt_count[old_idx_t]
+                if old_freeze_remaining is not None:
+                    self.file_freeze_remaining[new_idx_t] = old_freeze_remaining[old_idx_t]
+                if old_freeze_cycles is not None:
+                    self.file_freeze_cycles[new_idx_t] = old_freeze_cycles[old_idx_t]
+                if old_dropped is not None:
+                    self.file_dropped[new_idx_t] = old_dropped[old_idx_t]
+
+        # Apply curriculum weights to sampling distribution
+        weights = self._curriculum.get_file_weights(self._curriculum.max_level)
+        weight_tensor = torch.ones(self.num_motion_files, dtype=torch.float, device=self.device)
+        for i, path in enumerate(self.motion_file_paths):
+            if path in weights:
+                weight_tensor[i] = weights[path]
+        self.file_sampling_distribution = weight_tensor / weight_tensor.sum()
+
+        # Rebuild bin sampling buffers if enabled
+        if self.enable_multi_file_bin_sampling:
+            self._init_file_bin_buffers()
+
+        # Preload new motion files if preload is enabled
+        if self._preload_all_motion:
+            self._preload_motion_files(allowed_files)
+
+        # Reassign all envs to new files
+        all_env_ids = torch.arange(self.num_envs, device=self.device, dtype=torch.long)
+        self._multi_file_sampling(all_env_ids, initialize=True)
+
+        # Rebuild global cat if used
+        if self._use_global_cat:
+            self._build_global_cat()
+
+        self._refresh_file_sampling_distribution()
+        print(
+            f"[Curriculum] Rebuilt file list: {old_count} -> {self.num_motion_files} files "
+            f"(level {self._curriculum.max_level})"
+        )
+
+    def set_training_iteration(self, iteration: int) -> None:
+        """Called by runner to update current training iteration."""
+        self._curriculum_iteration = iteration
+        # 更新 curriculum manager 的迭代数（用于渐进式过渡计算）
+        if self._curriculum is not None:
+            self._curriculum.update_iteration(iteration)
+
+    def skip_next_curriculum_evaluation(self) -> None:
+        """Resume 后调用，跳过下一次评估。"""
+        if self._curriculum is not None:
+            self._curriculum.skip_next_evaluation()
+
+    def should_run_curriculum_evaluation(self) -> bool:
+        """Check if curriculum evaluation should run at current iteration."""
+        if self._curriculum is None:
+            return False
+        return self._curriculum.should_run_evaluation(self._curriculum_iteration)
+
+    def get_curriculum_level(self) -> int:
+        """Get current curriculum level."""
+        if self._curriculum is None:
+            return 0
+        return self._curriculum.max_level
+
+    def get_env_difficulty_levels(self) -> torch.Tensor:
+        """Return per-env difficulty level (shape ``[num_envs]``, 1-based).
+
+        Used by the MoE training pipeline as a *side channel* – this does
+        **not** alter the observation space.  Environments whose motion
+        file has no curriculum label are assigned level 0.
+
+        In Phase B, pseudo-levels from Phase A are used when curriculum is
+        disabled, keeping the routing CE loss grounded on known data.
+        """
+        levels = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
+        if not self.multi_file_mode:
+            return levels
+        # Phase B: use pseudo-levels when curriculum is disabled
+        if self._phase_b_pseudo_levels is not None:
+            return self._phase_b_pseudo_levels[self.file_indices]
+        if self._curriculum is None:
+            return levels
+        # Build a file-index → level lookup (cached for performance)
+        if not hasattr(self, "_file_idx_to_level") or self._file_idx_to_level is None:
+            self._file_idx_to_level = torch.zeros(
+                self.num_motion_files, dtype=torch.long, device=self.device
+            )
+            for i, path in enumerate(self.motion_file_paths):
+                self._file_idx_to_level[i] = self._curriculum.get_file_level(path)
+        levels = self._file_idx_to_level[self.file_indices]
+        return levels
+
+    def invalidate_file_level_cache(self) -> None:
+        """Call after motion file list changes (e.g. level unlock) to
+        rebuild the file-index → level mapping."""
+        self._file_idx_to_level = None
+
+    # ------------------------------------------------------------------ #
+    # Phase B: pseudo-levels and data mixing
+    # ------------------------------------------------------------------ #
+
+    def compute_phase_b_pseudo_levels(self, csv_path: str) -> None:
+        """Assign pseudo-levels to files using Phase A's curriculum CSV.
+
+        Files found in the CSV get their original difficulty level.
+        Files not found (new/unlabeled) get level 0 (no CE supervision).
+        """
+        import csv as csv_mod
+
+        if not os.path.isfile(csv_path):
+            print(f"[Phase B] CSV not found: {csv_path}, pseudo-levels not set")
+            return
+
+        name_to_level: dict[str, int] = {}
+        with open(csv_path, "r", encoding="utf-8") as f:
+            reader = csv_mod.DictReader(f)
+            for row in reader:
+                txt_file = row.get("file", "").strip()
+                if not txt_file:
+                    continue
+                npz_name = txt_file.replace(".txt", ".npz")
+                try:
+                    rating = int(row.get("rating", "0"))
+                except (ValueError, TypeError):
+                    rating = 0
+                if rating > 0:
+                    name_to_level[npz_name] = rating
+
+        pseudo = torch.zeros(self.num_motion_files, dtype=torch.long, device=self.device)
+        labeled_count = 0
+        for i, path in enumerate(self.motion_file_paths):
+            name = os.path.basename(path)
+            level = name_to_level.get(name, 0)
+            pseudo[i] = level
+            if level > 0:
+                labeled_count += 1
+
+        self._phase_b_pseudo_levels = pseudo
+        print(
+            f"[Phase B] Pseudo-levels assigned: {labeled_count}/{self.num_motion_files} "
+            f"labeled, {self.num_motion_files - labeled_count} unlabeled (level=0)"
+        )
+
+    def configure_phase_b_data_mixing(
+        self,
+        old_data_ratio: float = 0.8,
+        old_data_ratio_min: float = 0.3,
+        anneal_iters: int = 30000,
+        start_iter: int = 0,
+    ) -> None:
+        """Configure Phase B data mixing (gradually shift from old to new data).
+
+        Args:
+            old_data_ratio: Initial sampling ratio for Phase A (old) files.
+            old_data_ratio_min: Minimum ratio after annealing.
+            anneal_iters: Number of iterations to linearly anneal from initial to min.
+            start_iter: Training iteration when Phase B starts.
+        """
+        self._phase_b_old_data_ratio = old_data_ratio
+        self._phase_b_old_data_ratio_min = old_data_ratio_min
+        self._phase_b_ratio_anneal_iters = anneal_iters
+        self._phase_b_ratio_start_iter = start_iter
+
+        old_count = sum(1 for d in self._file_source_dir_idx if d == 0)
+        new_count = self.num_motion_files - old_count
+        print(
+            f"[Phase B] Data mixing: old_ratio={old_data_ratio:.2f}->{old_data_ratio_min:.2f} "
+            f"over {anneal_iters} iters, old_files={old_count}, new_files={new_count}"
+        )
+
+    def _get_phase_b_old_data_ratio(self) -> float:
+        """Current Phase B old-data ratio after annealing."""
+        if self._phase_b_ratio_anneal_iters <= 0:
+            return self._phase_b_old_data_ratio
+        elapsed = max(0, self._curriculum_iteration - self._phase_b_ratio_start_iter)
+        progress = min(1.0, elapsed / self._phase_b_ratio_anneal_iters)
+        return (
+            self._phase_b_old_data_ratio
+            + (self._phase_b_old_data_ratio_min - self._phase_b_old_data_ratio) * progress
+        )
+
+    def get_curriculum_level_unlocked_iter(self, level: int | None = None) -> int:
+        """Get the iteration when a level was unlocked (0 if unknown)."""
+        if self._curriculum is None:
+            return 0
+        lvl = int(level) if level is not None else int(self._curriculum.max_level)
+        return int(self._curriculum.get_level_unlocked_iter(lvl))
+
+    def get_curriculum_files_for_evaluation(self, frozen_files: set[str], level: int | None = None) -> list[str]:
+        """Get files at specified level for evaluation, excluding frozen ones."""
+        if self._curriculum is None:
+            return []
+        # Use specified level or current max level
+        eval_level = level if level is not None else self._curriculum.max_level
+        level_files = self._curriculum.get_files_at_level(eval_level)
+        return [f for f in level_files if f not in frozen_files]
+
+    def run_curriculum_evaluation(
+        self,
+        policy,
+        frozen_files: set[str],
+    ) -> tuple[float, float]:
+        """
+        Run evaluation on current level files, excluding frozen ones.
+        Returns (mean_mpjpe, mean_mpjae) averaged over all files and runs.
+
+        This method temporarily reassigns all envs to evaluate specific files,
+        runs the policy for full clip duration, and computes metrics.
+        """
+        if self._curriculum is None:
+            return float("inf"), float("inf")
+
+        eval_files = self.get_curriculum_files_for_evaluation(frozen_files)
+        if not eval_files:
+            print("[Curriculum] No files available for evaluation (all frozen or empty).")
+            return float("inf"), float("inf")
+
+        eval_runs = self._curriculum.cfg.eval_runs_per_file
+        all_mpjpe: list[float] = []
+        all_mpjae: list[float] = []
+
+        print(f"[Curriculum] Evaluating {len(eval_files)} files at level {self._curriculum.max_level}...")
+
+        for file_idx, file_path in enumerate(eval_files):
+            file_mpjpe_list: list[float] = []
+            file_mpjae_list: list[float] = []
+
+            # Find file index in current motion_file_paths
+            try:
+                motion_idx = self.motion_file_paths.index(file_path)
+            except ValueError:
+                print(f"[Curriculum] Warning: File {file_path} not in current file list, skipping.")
+                continue
+
+            for run_idx in range(eval_runs):
+                # Assign all envs to this file, starting from t=0
+                file_indices = torch.full(
+                    (self.num_envs,), motion_idx, dtype=torch.long, device=self.device
+                )
+                env_ids = torch.arange(self.num_envs, device=self.device, dtype=torch.long)
+
+                # Get file length and set clip to full duration
+                file_length = int(self.motion_file_lengths[motion_idx].item())
+                self.file_indices[env_ids] = file_indices
+                self.clip_start_steps[env_ids] = 0
+                self.time_steps[env_ids] = 0
+                self.clip_end_steps[env_ids] = file_length
+
+                # Apply initial state to robot
+                self._apply_command_to_robot(env_ids)
+
+                # Collect metrics over the full clip
+                run_mpjpe_sum = 0.0
+                run_mpjae_sum = 0.0
+                step_count = 0
+
+                # Run through the full clip
+                max_steps = min(file_length, self.base_clip_steps)
+                for step in range(max_steps):
+                    # Get observations and run policy
+                    obs, _ = self._env.get_observations()
+                    with torch.inference_mode():
+                        actions = policy(obs)
+
+                    # Step the environment
+                    _, _, _, _ = self._env.step(actions)
+
+                    # Update time steps
+                    self.time_steps[env_ids] = torch.clamp(
+                        self.time_steps[env_ids] + 1, max=file_length - 1
+                    )
+
+                    # Compute tracking errors (like eval_metrics.py)
+                    # mpjpe: mean per-joint position error
+                    body_pos_err = torch.norm(
+                        self.body_pos_w - self.robot_body_pos_w, dim=-1
+                    ).mean(dim=1)  # (num_envs,)
+                    mpjpe = body_pos_err.mean().item()
+
+                    # mpjae: mean per-joint angle error
+                    joint_pos_err = torch.abs(
+                        self.joint_pos - self.robot_joint_pos
+                    ).mean(dim=1)  # (num_envs,)
+                    mpjae = joint_pos_err.mean().item()
+
+                    run_mpjpe_sum += mpjpe
+                    run_mpjae_sum += mpjae
+                    step_count += 1
+
+                if step_count > 0:
+                    file_mpjpe_list.append(run_mpjpe_sum / step_count)
+                    file_mpjae_list.append(run_mpjae_sum / step_count)
+
+            if file_mpjpe_list:
+                file_mpjpe = sum(file_mpjpe_list) / len(file_mpjpe_list)
+                file_mpjae = sum(file_mpjae_list) / len(file_mpjae_list)
+                all_mpjpe.append(file_mpjpe)
+                all_mpjae.append(file_mpjae)
+
+                if (file_idx + 1) % 10 == 0 or file_idx == len(eval_files) - 1:
+                    print(
+                        f"[Curriculum] Progress: {file_idx + 1}/{len(eval_files)} files evaluated"
+                    )
+
+        if not all_mpjpe:
+            return float("inf"), float("inf")
+
+        mean_mpjpe = sum(all_mpjpe) / len(all_mpjpe)
+        mean_mpjae = sum(all_mpjae) / len(all_mpjae)
+        return mean_mpjpe, mean_mpjae
+
+    def report_curriculum_evaluation(self, mpjpe: float, mpjae: float, iteration: int | None = None) -> bool:
+        """
+        Report evaluation results and check if next level should be unlocked.
+        Returns True if a new level was unlocked.
+        
+        Args:
+            mpjpe: Mean Per-Joint Position Error
+            mpjae: Mean Per-Joint Angle Error
+            iteration: Current iteration (used for gradual transition timing)
+        """
+        if self._curriculum is None:
+            return False
+
+        unlocked = self._curriculum.report_evaluation_result(mpjpe, mpjae, iteration)
+        if unlocked:
+            self._curriculum_current_level = self._curriculum.max_level
+            self._rebuild_file_list_for_curriculum()
+        return unlocked
+    
+    def update_curriculum_iteration(self, iteration: int) -> None:
+        """更新课程学习的当前迭代数（用于渐进式过渡计算）。"""
+        if self._curriculum is not None:
+            self._curriculum.update_iteration(iteration)
+
+    def _set_debug_vis_impl(self, debug_vis: bool):
+        if debug_vis:
+            if not hasattr(self, "current_anchor_visualizer"):
+                self.current_anchor_visualizer = VisualizationMarkers(
+                    self.cfg.anchor_visualizer_cfg.replace(prim_path="/Visuals/Command/current/anchor")
+                )
+                self.goal_anchor_visualizer = VisualizationMarkers(
+                    self.cfg.anchor_visualizer_cfg.replace(prim_path="/Visuals/Command/goal/anchor")
+                )
+
+                self.current_body_visualizers = []
+                self.goal_body_visualizers = []
+                for name in self.cfg.body_names:
+                    self.current_body_visualizers.append(
+                        VisualizationMarkers(
+                            self.cfg.body_visualizer_cfg.replace(prim_path="/Visuals/Command/current/" + name)
+                        )
+                    )
+                    self.goal_body_visualizers.append(
+                        VisualizationMarkers(
+                            self.cfg.body_visualizer_cfg.replace(prim_path="/Visuals/Command/goal/" + name)
+                        )
+                    )
+
+            self.current_anchor_visualizer.set_visibility(True)
+            self.goal_anchor_visualizer.set_visibility(True)
+            for i in range(len(self.cfg.body_names)):
+                self.current_body_visualizers[i].set_visibility(True)
+                self.goal_body_visualizers[i].set_visibility(True)
+
+        else:
+            if hasattr(self, "current_anchor_visualizer"):
+                self.current_anchor_visualizer.set_visibility(False)
+                self.goal_anchor_visualizer.set_visibility(False)
+                for i in range(len(self.cfg.body_names)):
+                    self.current_body_visualizers[i].set_visibility(False)
+                    self.goal_body_visualizers[i].set_visibility(False)
+
+    def _debug_vis_callback(self, event):
+        if not self.robot.is_initialized:
+            return
+
+        self.current_anchor_visualizer.visualize(self.robot_anchor_pos_w, self.robot_anchor_quat_w)
+        self.goal_anchor_visualizer.visualize(self.anchor_pos_w, self.anchor_quat_w)
+
+        for i in range(len(self.cfg.body_names)):
+            self.current_body_visualizers[i].visualize(self.robot_body_pos_w[:, i], self.robot_body_quat_w[:, i])
+            self.goal_body_visualizers[i].visualize(self.body_pos_relative_w[:, i], self.body_quat_relative_w[:, i])
+
+
+@configclass
+class MotionCommandCfg(CommandTermCfg):
+    """Configuration for the motion command."""
+
+    class_type: type = MotionCommand
+
+    asset_name: str | None = None
+
+    motion_file: str | None = None
+    motion_dir: str | list[str] | None = None
+    anchor_body_name: str | None = None
+    body_names: list[str] | None = None
+    preload_all_motion: bool = True
+    preload_device: str | None = None
+    use_global_cat: bool = True
+    keep_global_cat_on_preload: bool = False
+    preload_progress_bar: bool = True
+    preload_progress_bar_width: int = 40
+    global_cat_attributes: tuple[str, ...] = (
+        "joint_pos",
+        "joint_vel",
+        "body_pos_w",
+        "body_quat_w",
+        "body_lin_vel_w",
+        "body_ang_vel_w",
+    )
+    future_steps: int | None = None
+    encoder_future_stride: int | None = None
+    encoder_future_steps: int | None = None
+
+    max_clip_seconds: float | None = None
+    clip_length_jitter_seconds: float = 2.0
+    file_error_alpha: float = 0.1
+    file_error_norm: float = 0.15
+    file_error_mpjae_weight: float = 0.0  # MPJAE 在采样误差中的权重 (0-1)，0 表示只用 MPJPE
+    file_sampling_power: float = 5.0
+    file_uniform_mixture: float = 0.07
+    sampling_temperature: float = 1.0
+    sampling_min_prob: float = 1e-6
+    bin_sampling_min_prob: float = 1e-6
+
+    pose_range: dict[str, tuple[float, float]] = {}
+    velocity_range: dict[str, tuple[float, float]] = {}
+
+    joint_position_range: tuple[float, float] = (-0.52, 0.52)
+    random_static_prob: float = 0.0
+    static_pose_range: dict[str, tuple[float, float]] | None = None
+    static_velocity_range: dict[str, tuple[float, float]] | None = None
+    static_joint_position_range: tuple[float, float] | None = None
+
+    adaptive_kernel_size: int = 1
+    adaptive_lambda: float = 0.8
+    adaptive_uniform_ratio: float = 0.1
+    adaptive_alpha: float = 0.001
+    adaptive_beta: float = 1.0
+    file_success_beta: float = 0.01
+    file_success_weight: float = 0.25
+    file_success_warmup_iters: int = 0  # 成功率融合的冷启动迭代数（0 表示无冷启动期，立即启用）
+    file_freeze_error_threshold: float | None = None  # 误差阈值（None 关闭冻结/淘汰）
+    file_freeze_success_threshold: float | None = None  # 成功率阈值（None 关闭冻结/淘汰）
+    file_freeze_min_attempts: int = 0  # 达到多少次尝试后才评估冻结
+    file_freeze_iters: int = 0  # 冻结持续的刷新次数（0 关闭）
+    file_drop_enabled: bool = False  # 是否启用“多次冻结后直接丢弃”
+    file_drop_after_freezes: int = 0  # 达到多少次冻结后丢弃（0 关闭）
+    file_freeze_check_interval: int = 500  # 每隔多少次刷新才评估冻结/丢弃（0 表示每次）
+    max_files_per_iter: int | None = None  # 限制每次采样使用的文件种类数（None 表示不限制）
+    enable_multi_file_bin_sampling: bool = False
+
+    # Curriculum learning config
+    curriculum_enabled: bool = False
+    curriculum_csv_path: str | None = None
+    curriculum_mocap_dir: str | None = None  # e.g., /ssd/humanoid/dataset/mocap_npz
+    curriculum_iteration_per_level: int = 10000
+    curriculum_auto_upgrade_after_iters: int = 13000  # 若该level长时间不通过评估，则达到该迭代数后强制升级（0关闭）
+    # Per-level 自动升级超时列表（index 0 = lv1）。覆盖 curriculum_auto_upgrade_after_iters。
+    curriculum_auto_upgrade_per_level: list[int] | None = None
+    # Eval-metric 收敛检测配置
+    curriculum_metric_convergence_enabled: bool = False
+    curriculum_metric_convergence_evals: int = 3  # 连续 N 次 eval 改善率 < threshold 才判收敛
+    curriculum_metric_convergence_threshold: float = 0.03  # 相对改善率阈值
+    curriculum_metric_convergence_min_iters: int = 3000  # 收敛升级的最低训练迭代数
+    # Difficulty-weighted 采样权重
+    curriculum_level_difficulty_weights: list[float] | None = None
+    # resume/continue 时可强制覆盖从哪个 level 开始继续训练（0=不覆盖，按checkpoint里保存的level）
+    curriculum_resume_level_override: int = 4
+    curriculum_mpjpe_threshold: float = 0.12
+    curriculum_mpjae_threshold: float = 0.06
+    curriculum_new_level_weight: float = 2.0
+    curriculum_eval_runs: int = 5  # 每个文件评估的运行次数（子进程评估时使用）
+    curriculum_max_difficulty: int = 10  # 排除难度高于此值的文件
+    curriculum_min_level_sampling_ratio: float = 0.05  # 防遗忘：每个等级最低采样比例（旧等级按文件数比例分配）
+    curriculum_min_attempts: int = 5  # EMA 评估时每个文件需要的最小尝试次数
+    curriculum_success_threshold: float = 0.1  # 内部EMA评估时的成功率阈值（0.1 = 10%）
+    
+    # 文件渐进引入配置（解决新level学习效率低的问题）
+    # 新等级的文件不是一次性全部引入，而是分批逐步引入，让策略有时间充分学习
+    curriculum_gradual_file_intro_enabled: bool = True  # 是否启用文件渐进引入
+    curriculum_gradual_file_intro_iters: int = 5000  # 渐进引入持续迭代数
+    curriculum_gradual_file_intro_start_ratio: float = 0.1  # 起始引入比例（10%的文件）
+    curriculum_gradual_file_intro_extra_start_level: int = 4  # 从该level开始额外增加渐进引入时长
+    curriculum_gradual_file_intro_extra_iters: int = 0  # 额外增加的迭代数（0关闭）
+    
+    # 是否使用子进程进行精确评估。子进程会在 curriculum_eval_gpu 指定的 GPU 上运行。
+    # 注意：curriculum_eval_gpu 是物理 GPU ID，不是 CUDA_VISIBLE_DEVICES 中的索引。
+    # 例如：如果训练用 GPU 0，评估用 GPU 1，则设置 curriculum_eval_gpu: 1
+    curriculum_use_subprocess_eval: bool = True  # 使用子进程精确评估
+    curriculum_eval_num_envs: int = 4000  # 子进程评估时使用的环境数量
+    curriculum_eval_gpu: int | str = "auto"  # 子进程评估使用的 GPU。"auto" 自动选择第二个可见 GPU
+
+    # ========== Phase B 数据混合配置 ==========
+    phase_b_old_data_ratio: float = 0.8       # 初始旧数据采样比例（0=不启用）
+    phase_b_old_data_ratio_min: float = 0.3   # 退火后的最低比例
+    phase_b_ratio_anneal_iters: int = 30000   # 退火迭代数
+    phase_b_pseudo_level_csv: str | None = None  # Phase A 的课程 CSV（用于伪标签）
+
+    anchor_visualizer_cfg: VisualizationMarkersCfg = FRAME_MARKER_CFG.replace(prim_path="/Visuals/Command/pose")
+    anchor_visualizer_cfg.markers["frame"].scale = (0.2, 0.2, 0.2)
+
+    body_visualizer_cfg: VisualizationMarkersCfg = FRAME_MARKER_CFG.replace(prim_path="/Visuals/Command/pose")
+    body_visualizer_cfg.markers["frame"].scale = (0.1, 0.1, 0.1)

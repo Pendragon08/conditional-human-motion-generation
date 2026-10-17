@@ -1,0 +1,49 @@
+{
+  "base": {
+    "IsaacSim": "4.5.0 standalone",
+    "IsaacLab": "2.1.0",
+    "python": "3.10.15",
+    "torch": "2.5.1+cu118",
+    "cuda_runtime": "11.8"
+  },
+  "pip_phases": [
+    [
+      "rsl-rl-lib==2.3.1",
+      "gymnasium==0.29.1",
+      "numpy==1.26.0",
+      "wandb==0.19.11",
+      "hydra-core==1.3.2",
+      "onnxscript==0.2.5"
+    ]
+  ],
+  "upstream_commit": "d48621620f522f5c901ef378d57db8df92d2888d",
+  "resource": {
+    "gpu": "RTX A6000",
+    "num_gpus": 1,
+    "cpu_threads": 4
+  },
+  "env": {
+    "WANDB_MODE": "disabled",
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4"
+  },
+  "weights": {
+    "official_checkpoint": null,
+    "policy_initialization": "from scratch"
+  },
+  "smoke": {
+    "import_names": [
+      "torch",
+      "numpy",
+      "rsl_rl"
+    ],
+    "gpu_tests": [
+      {
+        "cmd": "bash scripts/run_isaac.sh scripts/kernel_witness.py",
+        "expect": "PHY_GILE_KERNEL_WITNESS"
+      }
+    ],
+    "simulation": "bash scripts/smoke.sh"
+  }
+}

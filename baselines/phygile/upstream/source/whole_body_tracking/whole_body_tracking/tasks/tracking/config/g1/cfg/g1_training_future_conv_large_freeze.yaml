@@ -1,0 +1,117 @@
+# G1 任务默认训练配置，可自行修改或通过环境变量 G1_TRAINING_CFG_PATH 指向其他文件。
+
+runner:
+  num_steps_per_env: 24
+  max_iterations: 200000
+  save_interval: 1000
+  experiment_name: "g1_flat"
+  empirical_normalization: true
+  upload_models_to_wandb: false
+
+policy:
+  class_name: "EncoderActorCritic"
+  init_noise_std: 1.0
+  actor_hidden_dims: [2048, 1024, 512]
+  critic_hidden_dims: [2048, 1024, 512]
+  activation: "elu"
+  encoder_hidden_dims: null
+  share_encoder: null
+  future_command_encoder:
+    per_frame_dim: 65
+    immediate_steps: 2
+    conv_steps: 5
+    conv_channels: [256, 128]
+    kernel_size: 3
+    pooling: "avg"
+    dropout: 0.0
+    latent_dim: 128
+    share_across_actor_critic: true
+    apply_to_actor: true
+    apply_to_critic: true
+
+commands:
+  motion:
+    # 预加载动作可选设备: "cpu"、"cuda:0"、"cuda:1"、"same_as_env"（默认与环境同设备）
+    preload_device: "cuda:1"
+    future_steps: 2
+    # 限制每次迭代参与的文件上限（可选，None 表示不限制）
+    max_files_per_iter: 200
+    encoder_future_steps: 5
+    encoder_future_stride: 20
+    enable_multi_file_bin_sampling: true
+    random_static_prob: 0.1
+
+    # ========== 等级内采样参数（在每个 curriculum 等级内部生效） ==========
+    file_error_alpha: 0.25        # 0.2 -> 0.25，让 mpjpe/mpjae EMA 更快响应
+    file_error_norm: 0.3          # 0.15 -> 0.3，提升刻度避免过早饱和
+    file_uniform_mixture: 0.20    # 0.07 -> 0.30，增加均匀兜底平滑分布
+    sampling_temperature: 1.05    # 1.0 -> 1.05，提升温度降低分布尖锐度
+    file_success_beta: 0.4       # 0.15 -> 0.5，让成功率 EMA 更快跟随当前数据
+    file_success_weight: 0.15     # 0.0 -> 0.15，将失败偏好混入权重
+    file_success_warmup_iters: 6000  # 0 -> 6000，前 6000 iter 不启用成功率融合（0 表示关闭）
+
+    # ========== Freeze 机制（与 curriculum 兼容，冻结的文件不会被任何等级采样） ==========
+    file_freeze_error_threshold: 0.1
+    file_freeze_success_threshold: 0.15 # None->0.02 成功率过低判定阈值
+    file_freeze_min_attempts: 20000
+    file_freeze_iters: 4000             # 0->2000 冻结持续刷新次数
+    file_drop_enabled: true             # 启用自动丢弃
+    file_drop_after_freezes: 2          # 冻结 2 次后丢弃
+    file_freeze_check_interval: 500     # 每 500 次刷新评估一次冻结/丢弃
+
+    # ========== 课程学习配置 ==========
+    curriculum_enabled: true
+    curriculum_csv_path: "/ssd/bjc/bm_mlp/source/whole_body_tracking/whole_body_tracking/utils/filtered_texts_0107.csv"
+    curriculum_mocap_dir: "/ssd/humanoid/dataset/mocap_npz"
+    curriculum_iteration_per_level: 1000   # 每个等级训练迭代数（评估在 iter+1 触发）
+    curriculum_auto_upgrade_after_iters: 30000  # 若该level长期不通过（mpjpe/mpjae），则到点强制升级（0关闭）
+    curriculum_resume_level_override: 0  # resume时强制覆盖level（0=不覆盖，使用checkpoint中的level；>0=从指定level开始）
+    curriculum_auto_upgrade_per_level: [8000, 8000, 9000, 10000, 11000, 12000, 15000, 20000, 20000, 20000]
+    # Eval-metric 收敛检测：mpjpe/mpjae 连续 N 次 eval 不再改善时提前升级
+    curriculum_metric_convergence_enabled: true
+    curriculum_metric_convergence_evals: 3         # 连续 3 次 eval 改善率 < 3% 才判收敛
+    curriculum_metric_convergence_threshold: 0.03  # 相对改善率阈值（3%）
+    curriculum_metric_convergence_min_iters: 3000  # 收敛升级的最低训练迭代数
+    curriculum_new_level_weight: 10.0       # 新等级 x7 采样权重
+    curriculum_max_difficulty: 10          # 最大难度等级
+    curriculum_min_level_sampling_ratio: 0.01  # 每个等级最低采样比例
+    curriculum_level_difficulty_weights: [1, 1, 1.2, 1.5, 2, 3, 4, 6, 8, 10]
+
+    curriculum_use_subprocess_eval: false
+    curriculum_mpjpe_threshold: 0.04
+    curriculum_mpjae_threshold: 0.06
+
+    
+    # 文件渐进引入配置（解决新level学习效率低的问题）
+    # 新等级的文件逐步引入，让策略有时间充分学习每批新动作
+    curriculum_gradual_file_intro_enabled: true  # 启用文件渐进引入
+    curriculum_gradual_file_intro_iters: 3000    # 渐进引入持续迭代数（4000iter内从40%增到100%）
+    curriculum_gradual_file_intro_start_ratio: 0.2  # 起始引入40%的新文件
+    curriculum_gradual_file_intro_extra_start_level: 4  # 从level4开始额外拉长渐进引入
+    curriculum_gradual_file_intro_extra_iters: 2000     # level>=4 时 intro_iters = base + 2000
+    
+    # ========== Level 变化时参数提升配置 ==========
+    # 当升级到新 level 时，调整训练参数以加速学习新动作
+    # 参数会在 curriculum_gradual_file_intro_iters 期间逐渐恢复到初始值
+    curriculum_lr_reset_enabled: true         # 启用参数调整（升级时 lr 恢复到初始值）
+
+algorithm:
+  value_loss_coef: 1.0
+  use_clipped_value_loss: true
+  clip_param: 0.2
+  entropy_coef: 0.005
+  num_learning_epochs: 5
+  num_mini_batches: 4
+  learning_rate: 0.001
+  schedule: "adaptive"
+  gamma: 0.99
+  lam: 0.95
+  desired_kl: 0.01
+  max_grad_norm: 1.0
+  normalize_advantage_per_mini_batch: false
+
+rewards:
+  motion_global_anchor_pos:
+    weight: 0.8    # 从 0.5 增加到 0.8
+    params:
+      std: 0.2    # 从 0.3 减小到 0.2（更严格）
