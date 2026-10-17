@@ -21,5 +21,9 @@
 |Paper-grounded generator core numerical checks|DONE_UNIT_CHECK_ONLY|results/reimplementation_core/verification.json; 12 checks; no motion-quality claim|
 |Actual pretrained text interface|DONE_INTERFACE_CHECK_ONLY|results/reimplementation_text/verification.json; pinned DistilBERT; generator remains untrained on real motion data|
 |Independent training entrypoint|DONE_PLUMBING_CHECK_ONLY|results/reimplementation_training_witness/verification.json; 2 CPU updates on explicitly synthetic tensors and a reduced model|
+|Curriculum integrity repairs|DONE_REGRESSION_ONLY|results/prefix_integrity/document_run/regression/verification.json; 12 software checks; unsafe evaluators disabled; full curriculum not validated|
+|Repaired-source simulation training check|DONE_RUNTIME_ONLY|results/prefix_integrity/document_run/one_ppo/receipt.json; separate 32-env × 1-PPO diagnostic, 768 transitions; curriculum off|
+|Transactional physics-prefix orchestration|DONE_SYNTHETIC_INTERFACE_ONLY|reimplementation/physics_prefix.py; two-window synthetic rollback/commit tests; no real simulator snapshot adapter yet|
+|Fresh pre-reset feedback capture and acceptance gate|DONE_SIMULATION_DIAGNOSTIC_ONLY|results/prefix_integrity/document_run/feedback_gate/verification.json; 1 training clip, 32 first episodes, 0/32 accepted 50-frame windows at 0.1 m; no generated candidate, no closed-loop PPO|
 
 No NOT_RUN or IN_PROGRESS item may be described as completed reproduction.

@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "audit_name": "phygile_prefix_integrity",
+  "round": 1,
+  "reviewed_at": "2026-10-17T21:26:55.4504244+08:00",
+  "verdict": "WARN",
+  "overall_verdict": "WARN",
+  "blocking_defects": [],
+  "review_independence": {
+    "status": "same-family",
+    "acceptance": "provisional",
+    "independent_context": true,
+    "configured_reviewer_model": "gpt-5.6-sol",
+    "configured_reasoning_effort": "ultra",
+    "runtime_model_identity": "unknown",
+    "executor_runtime_identity": "unknown"
+  },
+  "evaluation_types": {
+    "actual_feedback": "simulation_only",
+    "reference": "dataset-derived kinematic reference; not model output",
+    "regression": "synthetic_software_fixtures",
+    "one_ppo": "bounded_runtime_diagnostic",
+    "real_ground_truth": false,
+    "paper_benchmark_reproduction": false
+  },
+  "checks": {
+    "A_reference_provenance": {
+      "verdict": "PASS",
+      "evidence": [
+        "results/prefix_integrity/document_run/capture/metrics.json:2-8",
+        "results/data_inventory.json:2-11",
+        "results/data_provenance.json:473-492"
+      ]
+    },
+    "B_raw_scores_no_normalization_fraud": {
+      "verdict": "PASS",
+      "evidence": [
+        "scripts/evaluate_prefix_feedback.py:103-126",
+        "reimplementation/physics_prefix.py:75-120",
+        "results/prefix_integrity/document_run/capture/metrics.json:51-57"
+      ],
+      "independent_recomputation": {
+        "rows": 869,
+        "all_finite": true,
+        "mpjpe_m": 0.18331027030944824,
+        "mpjae_rad": 0.3282482922077179,
+        "mpjve_recorded_units_per_s": 1.9027197360992432
+      }
+    },
+    "C_artifacts_numbers_hashes_receipts": {
+      "verdict": "WARN",
+      "evidence": [
+        "results/prefix_integrity/document_run/pipeline.json:2-92",
+        "results/prefix_integrity/document_run/feedback_gate/verification.json:20-26",
+        "results/prefix_integrity/execution_archive_verification.json:2-14",
+        "results/prefix_integrity/document_run/regression/verification.json:22-30"
+      ]
+    },
+    "D_metric_functions_invoked": {
+      "verdict": "PASS",
+      "evidence": [
+        "scripts/evaluate_prefix_feedback.py:31-126",
+        "scripts/diagnose_prefix_feedback.py:18-56",
+        "upstream/source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py:397-422"
+      ]
+    },
+    "E_scope_and_claims": {
+      "verdict": "PASS",
+      "evidence": [
+        "reports/PhyGile课程修复与物理前缀推进报告.md:3-75",
+        "results/prefix_integrity/document_witness/report.md:24-30",
+        "EXPERIMENT_TRACKER.md:24-27"
+      ]
+    },
+    "F_evaluation_type": {
+      "verdict": "PASS",
+      "evidence": [
+        "results/prefix_integrity/document_run/feedback_gate/verification.json:2-18",
+        "results/prefix_integrity/document_run/regression/verification.json:2-21"
+      ]
+    },
+    "rollback_and_acceptance": {
+      "verdict": "PASS",
+      "evidence": [
+        "reimplementation/physics_prefix.py:47-120",
+        "reimplementation/physics_prefix.py:130-184",
+        "results/prefix_integrity/document_run/regression/verification.json:4-16"
+      ],
+      "scope": "synthetic interface only; no real simulator snapshot adapter"
+    },
+    "patched_source_lineage": {
+      "verdict": "WARN",
+      "evidence": [
+        "scripts/prepare_guarded_upstream.py:91-113",
+        "scripts/guarded_bootstrap.py:8-19",
+        "results/prefix_integrity/document_witness/report.md:24"
+      ]
+    }
+  },
+  "warnings": [
+    {
+      "id": "W1_PATCH_PORTABILITY",
+      "severity": "nonblocking",
+      "finding": "The round-1 compact canonical patch did not strict-apply to the pinned CRLF upstream; whitespace-ignore was required. The byte-exact generated patch was replayable but contained whole-file newline churn.",
+      "claim_impact": "No effect on executed source hashes, raw results, or bounded scientific claims; strict human-readable replay was weakened.",
+      "action": "Publish a canonical patch that passes strict git apply --check and bind it to the executed generated patch hash."
+    },
+    {
+      "id": "W2_RUNTIME_MODULE_PATH_NOT_LOGGED",
+      "severity": "limitation",
+      "finding": "Individual imported module __file__ values were not recorded.",
+      "claim_impact": "Guarded activation, import ordering, entrypoint, and exact source hashes support the runtime lineage, but direct per-module path assertions are unavailable.",
+      "evidence": "results/prefix_integrity/document_witness/report.md:24"
+    }
+  ],
+  "resolved_discrepancies": [
+    {
+      "id": "SOURCE_COUNT_ERRATUM",
+      "original": 152,
+      "verified": 153,
+      "status": "resolved_by_explicit_erratum",
+      "evidence": "results/prefix_integrity/execution_archive_verification.json:7-14"
+    }
+  ],
+  "gate_recomputation": {
+    "episodes": 32,
+    "accepted": 0,
+    "rejected": 32,
+    "records_exactly_match": true,
+    "reasons_each_episode": [
+      "incomplete_continuation",
+      "failure_termination",
+      "mpjpe_above_tolerance"
+    ]
+  },
+  "audited_source_hashes": {
+    "reimplementation/physics_prefix.py": "a8d08d3cd7071b65924ec4204b7ce3814dee8e650f267b26f743e779b3011057",
+    "reimplementation/test_prefix_and_curriculum.py": "4723ad5ff14812cee19e14c9d6cf403af869bbfe5c96d089fc58d360f4bbd815",
+    "scripts/prepare_guarded_upstream.py": "e688a87d464c0a19fbbb23c7687e26a325343039da75284339e5d492c01c067f",
+    "scripts/guarded_bootstrap.py": "c785fbaa9c2c748ac2bf7e577e97c21a077d05f8e822c85c921bf6d03bc0b371",
+    "scripts/evaluate_prefix_feedback.py": "b428bc1840c51786884498891ed93b29fa9cf719189b230e2749691f6261c9c",
+    "scripts/diagnose_prefix_feedback.py": "c93290a765b76dbe12bc9d641f3d3b36c42657a8fe46ae90cebbabc1d3649965",
+    "scripts/run_prefix_recorded.py": "c4a7624d25c261a33f8d078e5fe6e7f79f9265f2a548274151f4a1aa949aaa3",
+    "scripts/validate_prefix_milestone.py": "6655597e554bf66a713a0c2b1c020344909770416a8e257da885860930d6634b",
+    "scripts/build_prefix_report.py": "f6903f5142ceec142203cf0f60f0beaa8c78c948cd699a935429157a05445fdb",
+    "patches/curriculum_integrity.patch": "95372e72630fcc69390bd48c22aea4176a60b112117adba9710d5421b78c50e6",
+    "configs/prefix_diagnostic_plan.json": "ca44f2e1e728dc6dbb34c6b7f80a07357c5c34c9f31c4b9f8d141e46918c38ca",
+    "upstream/source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py": "b3a35da40dfbb40f227f63e0444aa31d6dac8d2889a980b610ac3c30e30f1e4a",
+    "upstream/source/whole_body_tracking/whole_body_tracking/utils/my_on_policy_runner.py": "c41fa2125cd9e5c939cbd98956c601eac437d74078e0a7e9dbd3dcdf939f701c",
+    "upstream/source/whole_body_tracking/whole_body_tracking/utils/curriculum_manager.py": "bd4c3ad5ce65f8916ad6404338297cc56031ae08915d43967778e179043612d9",
+    "patched/commands.py": "cad7ee14922ed4d5a2ba509bfa4d455cc4b8ee0a1eafa591c4e672a87751b20b",
+    "patched/my_on_policy_runner.py": "e4b73e1e3e4bfdc79c1b23a121d2ed0cfd79afdbff1df98c3cac5cfd93be7409",
+    "patched/curriculum_manager.py": "5f1a4cbcce8c85a5b5d96c67bce73d99c4de453822eab6659de932c43c7612d9"
+  },
+  "artifact_hashes": {
+    "release_assets/phygile_pilot_inputs.tar.gz": "3cac85f4436bdbf46c4fc84ab44ab4f978e2801d1aa1088bc30e9ed015bacacd",
+    "release_assets/phygile_prefix_integrity_source.tar.gz": "3e041806b4e5c22b98f1d05dc8a19f758673a607b7505dd45fa2f180477464a1",
+    "release_assets/prefix_execution_manifest.json": "c34746cc67d896f33efb5e20ff3f6e91f481f60a235db2f0d28051e8b9891eda",
+    "release_assets/phygile_prefix_guard_1ppo_diagnostic_seed42.pt": "68439707ee5c166fe17a48fd141d1ed3e9b9264fe7d064f6c5ed70fc92bbe424",
+    "results/prefix_integrity/document_run/capture/raw_pre_reset.npz": "a1a5b01f96a1a890e8723ddd9c1df5764dadfc296964a7dbc838c87af3ae00c",
+    "results/prefix_integrity/document_run/capture/initial_state.npz": "7a4a218e8c6e65ef82d4db72dffb5f400e220e756c16d5b9e9704de18b83c90",
+    "results/prefix_integrity/document_run/capture/metrics.json": "50a1b69eaa77e955952cc1d204887c477fd499ead283c1e0acbab0bd888839",
+    "results/prefix_integrity/document_run/feedback_gate/verification.json": "e91b5c0fc7f0dc034340748451c843899892e148bf3a5b3491787e97aec97a"
+  }
+}

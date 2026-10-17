@@ -2,7 +2,8 @@
 
 **状态：部分复现。** 此目录保存固定版本官方代码、仿真适配、实际运行日志及小规模结果。完整文本扩散生成和 physics-prefix 闭环组件未在检查的官方仓库中找到；本目录不能替代完整 PhyGile，也不能作为论文主表数值已复现的证明。
 
-- [本轮 2000 轮 PPO 训练与自实现生成核心报告](reports/PhyGile续训与生成核心报告.md)
+- [最新课程修复与物理前缀推进报告](reports/PhyGile课程修复与物理前缀推进报告.md)
+- [2000 轮 PPO 训练与自实现生成核心报告](reports/PhyGile续训与生成核心报告.md)
 - [上一轮 500 轮 PPO 训练报告](reports/PhyGile复现实验报告.md)
 - [范围、缺失材料与论文用途](docs/reproduction_scope.md)
 - [环境及独立运行验证](docs/environment.md)
@@ -10,6 +11,8 @@
 - [原始官方代码](https://github.com/Baojch/phygile_tracking/tree/d48621620f522f5c901ef378d57db8df92d2888d)
 
 ## 本轮新增交付
+
+新增独立课程完整性修复及物理前缀状态机，具体边界见 [本轮报告](reports/PhyGile课程修复与物理前缀推进报告.md) 和 [运行约定](docs/prefix_integrity_invocation.md)。不可靠的公开课程评估入口已禁用，完整课程训练仍未开展。新仿真记录仅用于单片段反馈接受判断；在线生成—执行多段闭环和闭环 PPO 仍待完成。
 
 公开跟踪器从固定 500 轮 PPO 检查点续训至累计 2000 轮，并完成 8 组固定最终检查点评估。测试完整片段成功为 **26/128（20.31%）**，平均持续 1.501 秒；测试仅一个来源组、一个训练种子，不是论文主表复现。复跑见 [续训协议](docs/continuation_2000.md)，大文件见 [2000 轮 PPO 训练附件](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/phygile-tracking-2000updates-20261017)。
 

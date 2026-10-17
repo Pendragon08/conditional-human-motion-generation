@@ -1,0 +1,33 @@
+{
+  "status": "COMPLETED_FEEDBACK_GATE_DIAGNOSTIC",
+  "evaluation_type": "simulation_only",
+  "source": "fresh dataset-reference replay; 32 randomized first episodes of one training clip",
+  "plan": {
+    "purpose": "Engineering validation only; no research training or generated motion quality claim",
+    "parent_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+    "clip": "data/train/sample_000_actor0.npz",
+    "selection": "Fixed first training clip, not selected by new results",
+    "num_envs": 32,
+    "seed": 2026,
+    "window_frames": 50,
+    "tolerance_m": 0.1,
+    "tolerance_origin": "Explicit diagnostic setting, not established as author physics-prefix threshold",
+    "native_state_dim": 71,
+    "generator_262d_codec": false,
+    "generator_training": false,
+    "ppo_adaptation": false
+  },
+  "generated_candidates": false,
+  "online_rolling_simulator_adapter": false,
+  "terminal_suffix_tested_in_simulation": false,
+  "ppo_updates": 0,
+  "episodes": 32,
+  "accepted": 0,
+  "rejected": 32,
+  "capture_metadata_sha256": "23763bc00fb3bb327bbb0710a4a55d4c5e131a0b2d0bf241b9dd5ab6012dccbc",
+  "source_sha256": {
+    "scripts/diagnose_prefix_feedback.py": "c93290a765b76dbe12bc9d641f3d3b36c42657a8fe46ae90cebbabc1d3649965",
+    "reimplementation/physics_prefix.py": "a8d08d3cd7071b65924ec4204b7ce3814dee8e650f267b26f743e779b3011057",
+    "configs/prefix_diagnostic_plan.json": "ca44f2e1e728dc6dbb34c6b7f80a07357c5c34c9f31c4b9f8d141e46918c38ca"
+  }
+}
