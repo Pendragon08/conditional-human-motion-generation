@@ -1,0 +1,210 @@
+{
+  "audit_skill": "experiment-audit",
+  "audit_round": 2,
+  "verdict": "WARN",
+  "reason_code": "training_provenance_handoff_blocked_and_no_scientific_motion_experiment",
+  "summary": "The revised claims accurately separate deterministic core checks, a real public pretrained text-interface check, and a two-update synthetic training-plumbing witness. A blocking path mismatch prevents the supplied fetcher output from entering train.py as documented; successful witness binaries and arrays are also outside the bounded evidence set.",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "agent_id": "/root/phygile_core_audit",
+  "verdict_id": "/root/phygile_core_audit-round2",
+  "generated_at": "2026-10-17T20:06:19.8071934+08:00",
+  "date": "2026-10-17",
+  "auditor": "gpt-5.6-sol-ultra",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "blocking_defects": [
+    {
+      "id": "B1",
+      "severity": "blocking_for_documented_research_training_start",
+      "title": "Fetcher and trainer disagree on download.json location",
+      "details": "fetch_text_encoder.py writes download.json to results/reimplementation_text while train.py requires encoder_path/download.json inside cache/text/distilbert-base-uncased. The documented fetch-to-train path cannot close without an extra manual file.",
+      "evidence": [
+        "reimplementation/fetch_text_encoder.py:6-18",
+        "reimplementation/fetch_text_encoder.py:29-34",
+        "reimplementation/train.py:117-121",
+        "reimplementation/train_config.example.json:5",
+        "reimplementation/README.md:31-33"
+      ],
+      "required_correction": "Use an explicit text_encoder_manifest config path or copy the completed manifest into the cache directory; add an end-to-end path-contract test."
+    }
+  ],
+  "scope": {
+    "trained_motion_generator": false,
+    "full_size_generator_optimized": false,
+    "real_motion_dataset_used": false,
+    "motion_quality_evaluated": false,
+    "physics_simulation_tested": false,
+    "public_pretrained_text_interface_exercised": true,
+    "synthetic_training_updates": 2,
+    "source_executed_by_reviewer": false,
+    "gpu_used_by_reviewer": false,
+    "claim_ceiling": "core implementation consistency, public text-interface compatibility, and reduced synthetic training-plumbing execution only"
+  },
+  "checks": {
+    "gt_provenance": {
+      "status": "pass",
+      "details": "No motion ground truth or quality target is used. Core and training tensors are explicitly synthetic; text verification is interface-only with public pretrained weights.",
+      "evidence": [
+        "reimplementation/test_core.py:1-18",
+        "results/reimplementation_text/verification.json:2-35",
+        "results/reimplementation_training_witness/manifest.json:2-46",
+        "results/reimplementation_training_witness/verification.json:2-15"
+      ]
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "No model-output-normalized performance score exists. Feature statistics are fit on the training split only; losses are raw x0 MSE and load-balance components.",
+      "evidence": [
+        "reimplementation/features.py:29-46",
+        "reimplementation/train.py:106-114",
+        "reimplementation/test_training_entrypoint.py:51-52",
+        "results/reimplementation_training_witness/run/training_losses.jsonl:1-2"
+      ]
+    },
+    "result_existence": {
+      "status": "warn",
+      "details": "All named files, internal numbers, manifest/config hashes, source hashes, and receipts are consistent. The bounded scope excludes cached checkpoint bytes, synthetic npy inputs, and model_000002.pt, so their recorded hashes cannot be independently rechecked here.",
+      "evidence": [
+        "results/reimplementation_core/verification.json:2-34",
+        "results/reimplementation_text/download.json:2-56",
+        "results/reimplementation_text/verification.json:2-45",
+        "results/reimplementation_training_witness/verification.json:2-28",
+        "results/reimplementation_training_witness/run/receipt.json:2-34"
+      ]
+    },
+    "dead_code": {
+      "status": "warn",
+      "details": "Coverage now includes a full-size forward, real text adapter, and two optimizer updates. Online fetch, ASFO-enabled dataset weighting, research training, file-hash leakage rejection, evaluation, and physics paths remain unexecuted or unwitnessed.",
+      "evidence": [
+        "reimplementation/test_core.py:40-134",
+        "reimplementation/test_text_encoder.py:15-26",
+        "reimplementation/test_training_entrypoint.py:43-50",
+        "results/reimplementation_text/pipeline.json:2-9",
+        "results/reimplementation_training_witness/config.json:33-38"
+      ]
+    },
+    "scope": {
+      "status": "warn",
+      "details": "README claim boundaries are accurate, but the documented future train command depends on an undocumented cache-local download.json because of the path-contract blocker.",
+      "evidence": [
+        "reimplementation/README.md:1-17",
+        "reimplementation/README.md:27-39",
+        "reimplementation/README.md:65-75",
+        "reimplementation/train.py:117-121"
+      ]
+    },
+    "evaluation_type": {
+      "status": "pass",
+      "components": [
+        {"artifact": "core", "type": "synthetic_proxy", "subtype": "deterministic_unit_check"},
+        {"artifact": "text", "type": "interface_check_only", "subtype": "public_pretrained_text_encoder"},
+        {"artifact": "training_witness", "type": "synthetic_proxy", "subtype": "training_plumbing_unit_test"}
+      ],
+      "details": "None is a motion-quality, real-GT, simulation, or human evaluation."
+    }
+  },
+  "equations": {
+    "eq_7": {"status": "pass", "qualification": "x0 loss primitive; author beta schedule remains unknown"},
+    "eq_8_9": {"status": "pass", "qualification": "formula and multi-token chunk consistency checked; paper-unspecified attention details are disclosed"},
+    "eq_10_11": {"status": "pass", "qualification": "literal arithmetic and zero-count semantics checked; actual mirroring is absent and ASFO training path is unwitnessed"},
+    "eq_12": {"status": "warn", "qualification": "explicit fixed-mask inpainting reconstruction only; no GMT/simulation/MPJPE/PPO loop"},
+    "eq_13_14": {"status": "pass", "qualification": "algebra and actual-denoiser null/negative paths checked with documented mask semantics"}
+  },
+  "training_choices": {
+    "author_published": [
+      "major generator dimensions",
+      "x0 objective",
+      "text-condition dropout 0.1",
+      "CFG scale 2.5",
+      "load-balance coefficient 0.01"
+    ],
+    "independent_proposals": [
+      "AdamW",
+      "learning rate 0.0001",
+      "adam betas 0.9 and 0.999",
+      "weight decay 0",
+      "gradient clip 1",
+      "linear beta schedule 0.0001 to 0.02 over 1000 steps",
+      "batch size 4",
+      "100000 updates",
+      "save every 1000",
+      "maximum 300 frames",
+      "rho_max 4",
+      "keep_at_least_one ASFO policy",
+      "mirroring disabled"
+    ],
+    "synthetic_witness_only": [
+      "2-layer width-16 hidden-24 3-expert model",
+      "8 diffusion steps",
+      "2 CPU optimizer updates",
+      "2 sequences and 9 training frames",
+      "ASFO disabled"
+    ]
+  },
+  "split_leakage": {
+    "status": "warn",
+    "supported": "Declared source_group and exact file-hash overlap across splits are rejected; normalization uses train only.",
+    "limit": "Different derivatives of the same source are undetectable unless their manifest source_group agrees. Only source-group rejection has a direct negative witness.",
+    "evidence": [
+      "reimplementation/train.py:39-65",
+      "reimplementation/train.py:106-114",
+      "reimplementation/test_training_entrypoint.py:27-34",
+      "reimplementation/test_training_entrypoint.py:51-57"
+    ]
+  },
+  "claims": [
+    {"id": "C1", "claim": "Twelve deterministic core checks passed on exact current sources.", "impact": "supported"},
+    {"id": "C2", "claim": "A recorded public pretrained DistilBERT revision passed the frozen text-interface test.", "impact": "supported_with_bounded_artifact_qualifier"},
+    {"id": "C3", "claim": "The public checkpoint is the authors exact checkpoint.", "impact": "unsupported"},
+    {"id": "C4", "claim": "A full-size untrained denoiser accepts real token outputs and returns finite tensors.", "impact": "supported_interface_only"},
+    {"id": "C5", "claim": "Two reduced-model CPU optimizer updates completed on explicitly synthetic arrays.", "impact": "supported_plumbing_only"},
+    {"id": "C6", "claim": "The supplied standard fetch-to-train workflow is closed.", "impact": "unsupported_blocked"},
+    {"id": "C7", "claim": "A full-size motion generator was trained or motion quality was evaluated.", "impact": "unsupported"},
+    {"id": "C8", "claim": "The two loss rows demonstrate learning or convergence.", "impact": "unsupported"},
+    {"id": "C9", "claim": "Declared source-group and identical-file overlap is rejected.", "impact": "supported_with_test_coverage_qualifier"},
+    {"id": "C10", "claim": "All semantic split leakage is eliminated.", "impact": "unsupported"},
+    {"id": "C11", "claim": "Example optimizer, schedule, budget, and ASFO values reproduce author hyperparameters.", "impact": "unsupported_and_correctly_labeled_proposed"}
+  ],
+  "required_corrections": [
+    "Reconcile fetch_text_encoder.py and train.py provenance-manifest paths and test the complete path contract.",
+    "Pre-pin the fetcher to an explicit revision and validate provenance status, repository, revision, and manifest hash in train.py.",
+    "Include or independently inventory the witness npy inputs, cached text bytes, and checkpoint in future bounded audits.",
+    "Add ASFO-enabled and exact-file-hash split-overlap tests.",
+    "Keep public-text and two-update outputs classified as interface/plumbing checks with no motion-quality interpretation."
+  ],
+  "audited_input_hashes": {
+    "reimplementation/README.md": "sha256:d9ee7de9ed5e1cc6f8880c78ff44f4fdd87a5745d2e522e8464990f8a3f09fa3",
+    "reimplementation/model.py": "sha256:76eb8baa876950a34d4b23b6fa92627515bf38072c9cadf35fbf8789a13e70ab",
+    "reimplementation/features.py": "sha256:dee9e489f91b13217faa95a71bc5bc2f9122a1cc404639a3df9838edb6c7f9ac",
+    "reimplementation/diffusion.py": "sha256:930a2cdb1967119dd51813c6838f58c062fc7d46447239b20cc15f4b638efc4c",
+    "reimplementation/text.py": "sha256:22a04171f7e1218ff9b9ed768d6739ebed24c4072c683b78d60fde595b7fcf70",
+    "reimplementation/test_core.py": "sha256:c12732d27dac9bdee04f6de4353972e94c271a6e08bc7b58608757d68dea402b",
+    "reimplementation/fetch_text_encoder.py": "sha256:a8b2b5bd47493f967690d2807917966888e550f14c4c703cf91165e297c5503d",
+    "reimplementation/test_text_encoder.py": "sha256:80ce12e90c2abafb63cadc5d687ad3a105141a6f6ee500a6ee54f9d1512fd004",
+    "reimplementation/train.py": "sha256:47031d106376a1ddc4d2d3a46d1842101b4f028742aa79f77490bce86cc61baf",
+    "reimplementation/test_training_entrypoint.py": "sha256:bd0dd2e0b5ea127c183825ddc3ba977b619f16b3d9ec3fae91b9b33afb5c55e4",
+    "reimplementation/train_config.example.json": "sha256:74dbc8c4d91e928d1e3d116ffe96bac356c779f3242076943cda565bf3df3d5f",
+    "results/reimplementation_core/verification.json": "sha256:ac8fe6e8a2321c11176cd3e1bfa88e26707113831b4ce402f8d1191ae822efb4",
+    "results/reimplementation_core/stdout_stderr.log": "sha256:a6df1bbbeff79e8a0c1b10a801d31ebfb825c16df7624260f5b2d0dee83d212d",
+    "results/reimplementation_core/exit_code.txt": "sha256:9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "results/reimplementation_text/download.json": "sha256:76c3ed2cf6deef78acdb8c86b27a8133e259a3f752535472d31c548dbd73c136",
+    "results/reimplementation_text/verification.json": "sha256:7a5391c9737833e2576902191227b783fe22d9222609a60124d348901d416246",
+    "results/reimplementation_text/pipeline.json": "sha256:c0e187d62630d7bdfd9cee9f645c502b3637fcd0a545038b10756e77e71cf3d4",
+    "results/reimplementation_text/pipeline_recovery.json": "sha256:6c017f0e13c66c8a546b4541bae1290a21ab3427cd3e654b9ea120165f7f40c9",
+    "results/reimplementation_text/text_interface_local_transfer/receipt.json": "sha256:b5c76a540db9ecc116a06133c1af39a8ee647ea1c64c6fb8545eb0e96834ed15",
+    "results/reimplementation_text/text_interface_local_transfer/stdout_stderr.log": "sha256:7a5391c9737833e2576902191227b783fe22d9222609a60124d348901d416246",
+    "results/reimplementation_training_witness/verification.json": "sha256:9462d4d0a0c84075f75e9b5aa04d88ac4b8634225132b7fad2b1c20d79246fbc",
+    "results/reimplementation_training_witness/manifest.json": "sha256:e13350f4bbd5a3e82f3259fffad4e9a261a6d5ee012029d3674f4ac623aaff9e",
+    "results/reimplementation_training_witness/config.json": "sha256:391a22ea7710281e298fc03ee66d26e9f98d098df458f6e1942db752a2e3f7d2",
+    "results/reimplementation_training_witness/run/receipt.json": "sha256:324cc3e466490a91b4ab7044b688992d4b325ddd18b4f97ab0ebb1744524d551",
+    "results/reimplementation_training_witness/run/training_losses.jsonl": "sha256:4b9e0d9a1561b00c506f8f401bb0868335f488829d9895c5e725d67f42368123",
+    "results/reimplementation_training_witness_log/receipt.json": "sha256:90a4709451eb33f9df5585e651102c776749c9ab400586db6462bb1705d6c7f8",
+    "results/reimplementation_training_witness_log/stdout_stderr.log": "sha256:0bc1274fb6561310116a533e5690a3474ff8a80b1ccf78fb0076d12eb269456c",
+    "keyword_literature_update_20261010/sources/phygile.txt": "sha256:e9bf566306ab41999033d86ec4528278bf19b8f4e7e2a01a36270bdff00c0e63",
+    "keyword_literature_update_20261010/sources/phygile.pdf": "sha256:b66edb729feedc84b507c9e87a65e969cc23f8be0360f624696ea9b3759680a0"
+  }
+}

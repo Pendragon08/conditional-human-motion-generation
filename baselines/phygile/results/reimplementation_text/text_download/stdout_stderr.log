@@ -1,0 +1,58 @@
+Traceback (most recent call last):
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/extscache/omni.kit.pip_archive-0.0.0+d02c707b.lx64.cp310/pip_prebundle/urllib3/connection.py", line 199, in _new_conn
+    sock = connection.create_connection(
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/extscache/omni.kit.pip_archive-0.0.0+d02c707b.lx64.cp310/pip_prebundle/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/extscache/omni.kit.pip_archive-0.0.0+d02c707b.lx64.cp310/pip_prebundle/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [Errno 101] Network is unreachable
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/extscache/omni.kit.pip_archive-0.0.0+d02c707b.lx64.cp310/pip_prebundle/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/extscache/omni.kit.pip_archive-0.0.0+d02c707b.lx64.cp310/pip_prebundle/urllib3/connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/extscache/omni.kit.pip_archive-0.0.0+d02c707b.lx64.cp310/pip_prebundle/urllib3/connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/extscache/omni.kit.pip_archive-0.0.0+d02c707b.lx64.cp310/pip_prebundle/urllib3/connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/extscache/omni.kit.pip_archive-0.0.0+d02c707b.lx64.cp310/pip_prebundle/urllib3/connection.py", line 693, in connect
+    self.sock = sock = self._new_conn()
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/extscache/omni.kit.pip_archive-0.0.0+d02c707b.lx64.cp310/pip_prebundle/urllib3/connection.py", line 214, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7f8fa2e36560>: Failed to establish a new connection: [Errno 101] Network is unreachable
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/exts/omni.pip.cloud/pip_prebundle/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/extscache/omni.kit.pip_archive-0.0.0+d02c707b.lx64.cp310/pip_prebundle/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/extscache/omni.kit.pip_archive-0.0.0+d02c707b.lx64.cp310/pip_prebundle/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/distilbert/distilbert-base-uncased?blobs=True (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f8fa2e36560>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/reimplementation/fetch_text_encoder.py", line 10, in <module>
+    info=HfApi().model_info(repository,files_metadata=True)
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/kit/python/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/kit/python/lib/python3.10/site-packages/huggingface_hub/hf_api.py", line 2660, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/exts/omni.pip.cloud/pip_prebundle/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/exts/omni.pip.cloud/pip_prebundle/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/exts/omni.pip.cloud/pip_prebundle/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/kit/python/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/exts/omni.pip.cloud/pip_prebundle/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/distilbert/distilbert-base-uncased?blobs=True (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f8fa2e36560>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: 8397d66c-6657-41a4-9b57-7f8c21b7131f)')
+There was an error running python

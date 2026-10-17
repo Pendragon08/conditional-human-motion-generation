@@ -8,7 +8,7 @@ if dest==src or src in dest.parents:raise ValueError('Choose a directory outside
 if os.name=='nt':
  src=Path('\\\\?\\'+str(src));dest=Path('\\\\?\\'+str(dest))
 dest.mkdir(parents=True)
-for name in ['upstream','scripts','configs','docs','patches']:
+for name in ['upstream','scripts','configs','docs','patches','reimplementation']:
  shutil.copytree(src/name,dest/name,symlinks=True,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
 for name in ['README.md','upstream_manifest.json']:
  shutil.copy2(src/name,dest/name)

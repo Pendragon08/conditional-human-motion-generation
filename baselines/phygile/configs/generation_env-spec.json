@@ -1,0 +1,23 @@
+{
+  "scope": "CPU numerical, real text interface and synthetic training-entrypoint checks; not actual motion-generator training",
+  "base_tracking_spec": "env-spec.json",
+  "base_tracking_environment_hash": "fa5883c8",
+  "additional_existing_packages": {
+    "transformers": "4.48.3",
+    "huggingface-hub": "0.36.2",
+    "safetensors": "0.8.0"
+  },
+  "resource": {"device": "cpu", "cpu_threads": 4},
+  "text_model": {
+    "repository": "distilbert/distilbert-base-uncased",
+    "revision": "12040accade4e8a0f71eabdb258fecc2e7e948be",
+    "author_exact_checkpoint_confirmed": false,
+    "provenance": "../results/reimplementation_text/download.json"
+  },
+  "installation_changes": "None; packages were already present in the authorized server environment",
+  "evidence": [
+    "../results/reimplementation_core/verification.json",
+    "../results/reimplementation_text/verification.json",
+    "../results/reimplementation_training_witness/verification.json"
+  ]
+}

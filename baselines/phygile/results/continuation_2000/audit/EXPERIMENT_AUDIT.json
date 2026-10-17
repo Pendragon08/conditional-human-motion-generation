@@ -1,0 +1,186 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "reason_code": "limited_exploratory_simulation_scope",
+  "summary": "Evidence integrity passes; the result remains an exploratory single-seed simulation comparison with one held-out source group, so broad tracking or full-PhyGile claims are not supported.",
+  "audited_input_hashes": {
+    "results/continuation_2000/audit/deterministic_verification.json": "sha256:26936d6959379bef8d26e3c9f5bd1142d506b4d3896d583bdea9a80d4a1ca99e",
+    "results/continuation_2000/pipeline.json": "sha256:72da87eb660b485a5e68919a12d0800d2b53489a2eb5c3ed1bab51eac74d74d2",
+    "results/continuation_2000/summary.json": "sha256:fceb5741095bafc88321690652f568258154b423971219485ce87f6b184eb64a",
+    "results/continuation_2000/state_comparison.json": "sha256:ee497aedd6fe5f9d14d25792572e45985882251f0c4b9636394f1cedbdc6d1fc",
+    "results/continuation_2000/train/receipt.json": "sha256:a0bcb9ff96b6f8ccb941b7cedd4c585515f7bb7671a851428a3b4e4ba2817f33",
+    "scripts/evaluate_pilot.py": "sha256:d9f75793cb60734e7f1c39313162cddda3a5d995bea2cbff8eb4097f6863e549",
+    "reports/PhyGile续训与生成核心报告.md": "sha256:82dc32e68a6318d93ff9a47c306d6aee4467f809ce32e9a5c180da156ce8549f",
+    "release_assets/phygile_initial_expert_500updates_seed42.pt": "sha256:afad21ce7192dc4ec10e04fd2bc7684e9278f901dbffcb053cf45b8b04bda162",
+    "release_assets/phygile_initial_expert_2000updates_seed42.pt": "sha256:bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336"
+  },
+  "trace_path": null,
+  "trace_status": "executor-owned reviewer-call trace pending under the review-tracing protocol",
+  "agent_id": "/root/phygile_continuation_audit",
+  "verdict_id": "/root/phygile_continuation_audit:2026-10-17",
+  "executor_model": "codex-gpt-6",
+  "executor_family": "openai",
+  "reviewer_model": "codex-gpt-6",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "not_exposed",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "generated_at": "2026-10-17T20:41:14+08:00",
+  "date": "2026-10-17",
+  "auditor": "Codex fresh same-family reviewer",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "blocking_defects": [],
+  "warnings": [
+    {
+      "code": "limited_exploratory_scope",
+      "detail": "One training seed, four selected train clips, four test clips from one held-out source group, 32 simulator first episodes per clip, and a test set already viewed at 500 iterations."
+    }
+  ],
+  "checks": {
+    "gt_provenance": {
+      "status": "pass",
+      "details": "External video-reconstructed, GMR-retargeted, FK-derived kinematic proxy; explicitly not measured robot ground truth and not output of the evaluated policy.",
+      "evidence": [
+        "results/data_inventory.json:2",
+        "results/data_provenance.json:13-14",
+        "results/data_provenance.json:1046",
+        "reports/PhyGile续训与生成核心报告.md:34",
+        "docs/accounting_terms_erratum.md:15"
+      ]
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "Raw physical-unit errors are computed directly from reference-policy differences; no prediction-statistic denominator is used.",
+      "evidence": [
+        "scripts/evaluate_pilot.py:96-101",
+        "scripts/summarize_continuation.py:12-17",
+        "reports/PhyGile续训与生成核心报告.md:40",
+        "results/continuation_2000/audit/deterministic_verification.json:34"
+      ]
+    },
+    "result_existence": {
+      "status": "pass",
+      "details": "All expected raw/metric/CSV/summary/survival/receipt/checkpoint artifacts exist; independent recomputation and direct checkpoint hashing match every principal reported value.",
+      "evidence": [
+        "results/continuation_2000/pipeline.json:2-29",
+        "results/continuation_2000/audit/deterministic_verification.json:4-153",
+        "results/continuation_2000/checkpoint_verification.json:4",
+        "results/continuation_2000/audit/deterministic_verification.json:276-282"
+      ]
+    },
+    "dead_code": {
+      "status": "pass",
+      "details": "Receipts bind all 24 evaluations to the same called evaluator/config/environment hashes. Pre-reset capture, metric recomputation, and the separately recorded state verifier all produced claimed artifacts.",
+      "evidence": [
+        "scripts/run_continuation_pipeline.py:9-24",
+        "scripts/evaluate_continuation.py:5-35",
+        "scripts/evaluate_pilot.py:65-103",
+        "scripts/summarize_continuation.py:8-40",
+        "scripts/verify_continuation_states.py:10-50",
+        "scripts/build_continuation_report.py:26-35"
+      ]
+    },
+    "scope": {
+      "status": "warn",
+      "details": "The narrow exploratory scope is accurately disclosed and cannot establish a reliable general tracker, statistical significance, or full PhyGile reproduction.",
+      "evidence": [
+        "reports/PhyGile续训与生成核心报告.md:13-17",
+        "reports/PhyGile续训与生成核心报告.md:24-28",
+        "reports/PhyGile续训与生成核心报告.md:42",
+        "reports/PhyGile续训与生成核心报告.md:92-96",
+        "EXPERIMENT_TRACKER.md:13"
+      ]
+    },
+    "eval_type": {
+      "status": "pass",
+      "classification": "simulation_only",
+      "details": "Simulator evaluation against an external reconstructed/retargeted kinematic proxy; neither measured-robot real_gt nor a reference generated by the evaluated policy.",
+      "evidence": [
+        "scripts/evaluate_pilot.py:101",
+        "results/data_inventory.json:2",
+        "docs/accounting_terms_erratum.md:15",
+        "reports/PhyGile续训与生成核心报告.md:34"
+      ]
+    }
+  },
+  "focused_checks": {
+    "resume_update_accounting": {
+      "status": "pass",
+      "details": "Exactly 1,500 logged PPO iterations (500..1999) and 25 direct Adam counters at 10,000->40,000, difference 30,000.",
+      "evidence": [
+        "results/continuation_2000/train/stdout_stderr.log:268",
+        "results/continuation_2000/train/stdout_stderr.log:66224",
+        "results/continuation_2000/audit/deterministic_verification.json:226-249"
+      ]
+    },
+    "final_checkpoint_selection": {
+      "status": "pass",
+      "details": "Fixed model_1999 checkpoint after the predeclared 2,000-iteration budget; no test-score selection.",
+      "evidence": [
+        "configs/continuation_2000_plan.json:17",
+        "results/continuation_2000/evaluation_suite.json:4",
+        "scripts/evaluate_continuation.py:9-23"
+      ]
+    },
+    "pre_reset_capture": {
+      "status": "pass",
+      "details": "Capture occurs within termination computation before reset; the terminating state is retained and environment activity is cleared after step returns.",
+      "evidence": [
+        "scripts/evaluate_pilot.py:65-87"
+      ]
+    },
+    "censoring_and_survival": {
+      "status": "pass",
+      "details": "Errors are right-censored at first failure with the failure row included; survival uses a fixed 128-episode denominator and matches full-clip success at the endpoint. The report warns that differing censoring windows prevent an accuracy-improvement inference.",
+      "evidence": [
+        "scripts/evaluate_pilot.py:88-101",
+        "scripts/build_continuation_report.py:78-100",
+        "reports/PhyGile续训与生成核心报告.md:15",
+        "reports/PhyGile续训与生成核心报告.md:40",
+        "results/continuation_2000/audit/deterministic_verification.json:131-153"
+      ]
+    }
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Observed fixed-protocol success/duration change from 500 to 2000 PPO iterations",
+      "impact": "supported_with_scope_qualifier"
+    },
+    {
+      "id": "C2",
+      "claim": "30,000 additional Adam steps across 1,500 added PPO iterations",
+      "impact": "supported"
+    },
+    {
+      "id": "C3",
+      "claim": "Improved tracking accuracy from MPJPE",
+      "impact": "unsupported_and_not_claimed"
+    },
+    {
+      "id": "C4",
+      "claim": "Reliable general tracking baseline",
+      "impact": "not_established_and_explicitly_disclaimed"
+    },
+    {
+      "id": "C5",
+      "claim": "Full PhyGile reproduction or validated language-to-motion generation",
+      "impact": "unsupported_and_explicitly_disclaimed"
+    }
+  ],
+  "action_items": [
+    "Add independent training seeds, more held-out source groups, and a test set not previously examined before broad or statistical performance claims.",
+    "Keep survival/success beside censored errors and retain the proxy-reference and simulation_only labels.",
+    "Verify the public release page after packaging; external availability was not used as scientific evidence."
+  ],
+  "deterministic_verification": {
+    "path": "results/continuation_2000/audit/deterministic_verification.json",
+    "sha256": "sha256:26936d6959379bef8d26e3c9f5bd1142d506b4d3896d583bdea9a80d4a1ca99e",
+    "status": "PASSED_DETERMINISTIC_VERIFICATION",
+    "review_independence": "deterministic",
+    "acceptance_status": "accepted"
+  },
+  "report_path": "results/continuation_2000/audit/EXPERIMENT_AUDIT.md",
+  "report_sha256": "sha256:c459234c42a6aa11d635d234a1e4742ee9cf539f6440146d178d33574a5b6f93"
+}
