@@ -1,0 +1,4358 @@
+{
+  "inspected_at_utc": "2026-10-17T14:34:55.930258+00:00",
+  "root": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run",
+  "issues": [],
+  "primary_expected_count": 82,
+  "missing_primary": [],
+  "file_count": 151,
+  "total_bytes": 5483866,
+  "pipeline": {
+    "status": "COMPLETED",
+    "started_unix": 1792247367.298362,
+    "plan_sha256": "08ceeec24676e0052c49d99d4cb5421c2bcc28d1f7b81142d57f7407ea96ba4c",
+    "stages": [
+      {
+        "name": "prepare",
+        "command": [
+          "python3",
+          "scripts/prepare_completion_upstream.py"
+        ],
+        "status": "COMPLETED",
+        "exit_code": 0
+      },
+      {
+        "name": "regression",
+        "command": [
+          "bash",
+          "scripts/run_isaac.sh",
+          "reimplementation/test_completion.py",
+          "--output",
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/regression/verification.json"
+        ],
+        "status": "COMPLETED",
+        "exit_code": 0
+      },
+      {
+        "name": "codec",
+        "command": [
+          "bash",
+          "scripts/run_isaac.sh",
+          "scripts/validate_codec262.py",
+          "--output",
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/codec/output"
+        ],
+        "status": "COMPLETED",
+        "exit_code": 0
+      },
+      {
+        "name": "curriculum",
+        "command": [
+          "python3",
+          "scripts/curriculum_evaluate.py",
+          "--request",
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/curriculum_request.json",
+          "--output",
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/curriculum/output"
+        ],
+        "status": "COMPLETED",
+        "exit_code": 0
+      },
+      {
+        "name": "expert_mask",
+        "command": [
+          "python3",
+          "scripts/curriculum_evaluate.py",
+          "--request",
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/mask_request.json",
+          "--output",
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/expert_mask/output"
+        ],
+        "status": "COMPLETED",
+        "exit_code": 0
+      },
+      {
+        "name": "training_hook",
+        "command": [
+          "bash",
+          "scripts/run_isaac.sh",
+          "scripts/validate_curriculum_training.py",
+          "--output",
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/training_hook/output"
+        ],
+        "status": "COMPLETED",
+        "exit_code": 0
+      },
+      {
+        "name": "closed_loop",
+        "command": [
+          "bash",
+          "scripts/run_isaac.sh",
+          "scripts/run_generated_closed_loop.py",
+          "--checkpoint",
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_moe_pilot/2026-10-17_11-25-01_extended2000_seed42/model_1999.pt",
+          "--motion_file",
+          "data/train/sample_000_actor0.npz",
+          "--normalization",
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/codec/output/normalization.npz",
+          "--output",
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/closed_loop/output",
+          "--headless",
+          "--device",
+          "cuda:0",
+          "--seed",
+          "2026"
+        ],
+        "status": "COMPLETED",
+        "exit_code": 0
+      }
+    ],
+    "finished_unix": 1792247598.4379208
+  },
+  "stages": [
+    {
+      "name": "prepare",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "started_utc": "2026-10-17T14:29:27.336814+00:00",
+      "finished_utc": "2026-10-17T14:29:27.402157+00:00",
+      "elapsed_seconds": 0.06507132761180401,
+      "receipt_sha256": "a498b849d263a1bf0a2ef54aeffd2a779504f72ab2717018f60c42b955a32729",
+      "log_exists": true,
+      "completion_markers": []
+    },
+    {
+      "name": "regression",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "started_utc": "2026-10-17T14:29:27.461989+00:00",
+      "finished_utc": "2026-10-17T14:29:27.827935+00:00",
+      "elapsed_seconds": 0.36566726863384247,
+      "receipt_sha256": "e8ad75e509e05ea052521517816714b6e4ec953b7b82a7c69b23c987c3f2ed20",
+      "log_exists": true,
+      "completion_markers": []
+    },
+    {
+      "name": "codec",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "started_utc": "2026-10-17T14:29:27.889012+00:00",
+      "finished_utc": "2026-10-17T14:29:32.113506+00:00",
+      "elapsed_seconds": 4.224222319200635,
+      "receipt_sha256": "51b43b75cb842af9370bad1de4a7976b8582d2c1a54abb8ba68cc796e29944af",
+      "log_exists": true,
+      "completion_markers": [
+        "PHYGILE_CODEC262_COMPLETE"
+      ]
+    },
+    {
+      "name": "curriculum",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "started_utc": "2026-10-17T14:29:32.169517+00:00",
+      "finished_utc": "2026-10-17T14:30:14.375303+00:00",
+      "elapsed_seconds": 42.20551086589694,
+      "receipt_sha256": "d139ca199117b924de06a59311cdae0fa6289991459b80c163ee215bd89a77fb",
+      "log_exists": true,
+      "completion_markers": [
+        "PHYGILE_CURRICULUM_EVALUATION_COMPLETE"
+      ]
+    },
+    {
+      "name": "expert_mask",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "started_utc": "2026-10-17T14:30:14.438219+00:00",
+      "finished_utc": "2026-10-17T14:30:33.043040+00:00",
+      "elapsed_seconds": 18.604565950110555,
+      "receipt_sha256": "d167d2ad578f2003c1105999d48d0474c67161155d6a05c4ca49be66db0b5fba",
+      "log_exists": true,
+      "completion_markers": [
+        "PHYGILE_CURRICULUM_EVALUATION_COMPLETE"
+      ]
+    },
+    {
+      "name": "training_hook",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "started_utc": "2026-10-17T14:30:33.264133+00:00",
+      "finished_utc": "2026-10-17T14:31:19.476890+00:00",
+      "elapsed_seconds": 46.212493585422635,
+      "receipt_sha256": "bf7b15d0facbacfdd77660407de8c034491e8d0ec0ba7a2baeee082b8bbf8a91",
+      "log_exists": true,
+      "completion_markers": [
+        "PHYGILE_CURRICULUM_TRAINING_VALIDATED"
+      ]
+    },
+    {
+      "name": "closed_loop",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "started_utc": "2026-10-17T14:31:19.543770+00:00",
+      "finished_utc": "2026-10-17T14:33:18.421552+00:00",
+      "elapsed_seconds": 118.87747749127448,
+      "receipt_sha256": "66e05a1c4d1a916b8aeb684a8927ca024a091b3363902e6ce8e0b9a71caa5ef9",
+      "log_exists": true,
+      "completion_markers": [
+        "PHYGILE_GENERATED_CLOSED_LOOP_COMPLETE"
+      ]
+    }
+  ],
+  "regression": {
+    "status": "PASS",
+    "checks": 13,
+    "check_groups": [
+      "pose_roundtrip",
+      "canonical_pitch_roll",
+      "SO3_roundtrip",
+      "degenerate_6d",
+      "nonfinite_features",
+      "skeleton_identity",
+      "sequence_length",
+      "palm_fixed_offset",
+      "failed_episode_success_gate",
+      "invalid_evaluation_timeout",
+      "error_threshold_gate",
+      "non_worsening_and_disabled_convergence",
+      "coverage_and_checkpoint_expert_identity"
+    ],
+    "seed": 213,
+    "scope": "synthetic mathematical and counterexample checks; no learned-motion quality claim"
+  },
+  "codec_summary": {
+    "status": "COMPLETED",
+    "evaluation_type": "self_supervised_proxy",
+    "purpose": "descriptor round-trip and URDF-vs-stored-FK consistency only",
+    "schema": "phygile-g1-262-semantic-urdf-discrete-v1",
+    "author_exact_codec_reproduced": false,
+    "normalization_fit_split": "train_only",
+    "normalization_training_sequences": 20,
+    "sequence_count": 24,
+    "max_position_error_m": 6.593780632613289e-09,
+    "max_joint_error_rad": 4.127457264857526e-08,
+    "max_fk_error_m": 9.62942522164667e-07
+  },
+  "curriculum": {
+    "status": "COMPLETED",
+    "valid": true,
+    "problems": [],
+    "evaluation_type": "simulation_only",
+    "reference_type": "dataset-derived kinematic reference",
+    "aggregation": "equal weight per requested file; errors censored at termination; success counts full clips",
+    "requested_files": [
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_train20_tracking_refs/sample_000_actor0.npz",
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_test4_tracking_refs/sample_000_actor0.npz"
+    ],
+    "attempts_per_file": 8,
+    "active_experts": 1,
+    "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+    "per_file": [
+      {
+        "motion_file": "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_train20_tracking_refs/sample_000_actor0.npz",
+        "motion_sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b",
+        "attempts": 8,
+        "successes": 0,
+        "success_fraction": 0.0,
+        "mpjpe_m_until_termination": 0.1672734022140503,
+        "mpjae_rad_until_termination": 0.3191640377044678,
+        "episode_lengths": [
+          26,
+          27,
+          26,
+          22,
+          28,
+          28,
+          26,
+          26
+        ],
+        "problems": []
+      },
+      {
+        "motion_file": "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_test4_tracking_refs/sample_000_actor0.npz",
+        "motion_sha256": "9da670f4a3f4881fa49c73b7a05efcdff8353334f8cf34f5c901ef3668ebc86d",
+        "attempts": 8,
+        "successes": 3,
+        "success_fraction": 0.375,
+        "mpjpe_m_until_termination": 0.36546245217323303,
+        "mpjae_rad_until_termination": 0.1520146280527115,
+        "episode_lengths": [
+          126,
+          83,
+          79,
+          64,
+          149,
+          149,
+          149,
+          63
+        ],
+        "problems": []
+      }
+    ],
+    "mpjpe_m": 0.26636792719364166,
+    "mpjae_rad": 0.23558933287858963,
+    "success_fraction": 0.1875,
+    "minimum_file_success_fraction": 0.0,
+    "started_unix": 1792247372.3551686,
+    "finished_unix": 1792247414.3302445,
+    "source_sha256": "d31dcebd65d1982e1b6637abf43d1824eaafadc22949f7dda0b9a0fa3ed089ce",
+    "worker_sha256": "507dd378c600e4a148a0f71d7194a3664bf2fa817d0742137b470954a924337a",
+    "request_sha256": "43f868ca1aae818e1d292d048976902a41b796103fb269eb7d1fa413c7aa4e84",
+    "raw_files": [
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/curriculum/output/file_0000/raw_pre_reset.npz",
+        "sha256": "90e30cfbf41868c407f5b675b2971619f31a1610bf7b5bab1558790802a04f94"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/curriculum/output/file_0001/raw_pre_reset.npz",
+        "sha256": "334fd848c9c519d153c0128b049bb53abb02d681f731b1f52d9f069c744518e9"
+      }
+    ]
+  },
+  "expert_mask": {
+    "status": "COMPLETED",
+    "valid": true,
+    "problems": [],
+    "evaluation_type": "simulation_only",
+    "reference_type": "dataset-derived kinematic reference",
+    "aggregation": "equal weight per requested file; errors censored at termination; success counts full clips",
+    "requested_files": [
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_train20_tracking_refs/sample_000_actor0.npz"
+    ],
+    "attempts_per_file": 2,
+    "active_experts": 2,
+    "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+    "per_file": [
+      {
+        "motion_file": "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_train20_tracking_refs/sample_000_actor0.npz",
+        "motion_sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b",
+        "attempts": 2,
+        "successes": 0,
+        "success_fraction": 0.0,
+        "mpjpe_m_until_termination": 0.19820046424865723,
+        "mpjae_rad_until_termination": 0.35598164796829224,
+        "episode_lengths": [
+          10,
+          20
+        ],
+        "problems": []
+      }
+    ],
+    "mpjpe_m": 0.19820046424865723,
+    "mpjae_rad": 0.35598164796829224,
+    "success_fraction": 0.0,
+    "minimum_file_success_fraction": 0.0,
+    "started_unix": 1792247414.6394327,
+    "finished_unix": 1792247432.9961715,
+    "source_sha256": "d31dcebd65d1982e1b6637abf43d1824eaafadc22949f7dda0b9a0fa3ed089ce",
+    "worker_sha256": "507dd378c600e4a148a0f71d7194a3664bf2fa817d0742137b470954a924337a",
+    "request_sha256": "86c9b9aa69a978b249dc801e17e85165239a3f3e844bcb65c9de233bd285a1b3",
+    "raw_files": [
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/expert_mask/output/file_0000/raw_pre_reset.npz",
+        "sha256": "2539e0ace2e1c66fa5155404b16c9520f794725cd034f19a1256abb63c6a77c0"
+      }
+    ]
+  },
+  "training_hook": {
+    "status": "COMPLETED",
+    "purpose": "scheduler integration fixture only; not difficulty curriculum reproduction",
+    "fixture_labels_are_research_annotations": false,
+    "ppo_iterations": 4,
+    "adam_optimizer_steps_expected": 80,
+    "num_envs": 32,
+    "training_run": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-30-42_training_hook",
+    "decision_path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-30-42_training_hook/independent_curriculum/iteration_00000003/decision.json",
+    "decision": {
+      "promote": false,
+      "reason": "minimum_file_success_below_threshold",
+      "iteration": 3,
+      "old_level": 1,
+      "new_level": 1,
+      "report_sha256": "59fd00be141712b2556f21fda4b09da6fdb9bfc9c560b428f5317bd8d57e805b"
+    },
+    "evaluation_path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-30-42_training_hook/independent_curriculum/iteration_00000003/assessment/evaluation.json",
+    "evaluation": {
+      "status": "COMPLETED",
+      "valid": true,
+      "problems": [],
+      "evaluation_type": "simulation_only",
+      "reference_type": "dataset-derived kinematic reference",
+      "aggregation": "equal weight per requested file; errors censored at termination; success counts full clips",
+      "requested_files": [
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_train20_tracking_refs/sample_000_actor0.npz"
+      ],
+      "attempts_per_file": 2,
+      "active_experts": 1,
+      "checkpoint_sha256": "80754992e0c0d4065fed37f33c722bed72e279c52e3a5002901538e76b6effc7",
+      "per_file": [
+        {
+          "motion_file": "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_train20_tracking_refs/sample_000_actor0.npz",
+          "motion_sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b",
+          "attempts": 2,
+          "successes": 0,
+          "success_fraction": 0.0,
+          "mpjpe_m_until_termination": 0.12251029163599014,
+          "mpjae_rad_until_termination": 0.23196259140968323,
+          "episode_lengths": [
+            5,
+            5
+          ],
+          "problems": []
+        }
+      ],
+      "mpjpe_m": 0.12251029163599014,
+      "mpjae_rad": 0.23196259140968323,
+      "success_fraction": 0.0,
+      "minimum_file_success_fraction": 0.0,
+      "started_unix": 1792247458.2423475,
+      "finished_unix": 1792247475.9599197,
+      "source_sha256": "d31dcebd65d1982e1b6637abf43d1824eaafadc22949f7dda0b9a0fa3ed089ce",
+      "worker_sha256": "507dd378c600e4a148a0f71d7194a3664bf2fa817d0742137b470954a924337a",
+      "request_sha256": "c8b90fc9189eb1d66421967cc1466fe38a6c9293f9d8c59447b8cc62e5fd6f6f",
+      "raw_files": [
+        {
+          "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-30-42_training_hook/independent_curriculum/iteration_00000003/assessment/file_0000/raw_pre_reset.npz",
+          "sha256": "413e2c225fe6adc9431605e495dff249e3d90d1f144caa827db42c9d6d699dfa"
+        }
+      ]
+    },
+    "motion_sources": [
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/train/sample_000_actor0.npz",
+        "sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/train/sample_001_actor0.npz",
+        "sha256": "90aaa5d5af04d31a27baa26cc4c1b1fd7fc9694c15900a3798ff19c753b9fa44"
+      }
+    ]
+  },
+  "closed_loop_summary": {
+    "status": "COMPLETED_ENGINEERING_VALIDATION",
+    "outcome": "REJECTED_WITHOUT_INVALID_COMMIT",
+    "evaluation_type": "simulation_only",
+    "trained_generator": false,
+    "generator": {
+      "backend": "untrained_diffusion_diagnostic",
+      "trained": false,
+      "text_conditioning": "zero/unconditional; no text-to-motion claim",
+      "schedule": "chosen linear 8-step engineering diagnostic",
+      "parameters": 146169702,
+      "normalization_sha256": "6789d03ceb19f3a9f54b6c96b500396e079ded366ef5aa04106f9c6a3cf687af"
+    },
+    "trained_semantic_generation_claim": false,
+    "actual_diffusion_sampling": true,
+    "actual_isaac_physics": true,
+    "automatic_reset_during_candidates": false,
+    "physics_prefix_ppo_adaptation_updates": 0,
+    "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+    "initialization_motion_sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b",
+    "seed": 2026,
+    "chunk_frames": 50,
+    "requested_new_frames": 100,
+    "initial_prefix_sha256": "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+    "committed_new_frames": 0,
+    "committed_prefix_sha256": "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+    "accepted_attempts": 0,
+    "rejected_attempts": 2,
+    "attempts": [
+      {
+        "accepted": false,
+        "reasons": [
+          "incomplete_continuation",
+          "failure_termination",
+          "mpjpe_above_tolerance"
+        ],
+        "expected_frames": 50,
+        "recorded_frames": 1,
+        "mpjpe_m": 0.42651834275938744,
+        "terminal_max_frame_mpjpe_m": null,
+        "candidate_sha256": "0640bbd6a83c1218937d9ea613b9ebb72f35a87406687412f9723b317e6b567e",
+        "execution_sha256": "b3d0163baee0d9c893e573a0c4fe7a393e65a7421fa239ebc6daa976e8ee67cc",
+        "prefix_frames": 1,
+        "attempt": 0,
+        "final": false
+      },
+      {
+        "accepted": false,
+        "reasons": [
+          "incomplete_continuation",
+          "failure_termination",
+          "mpjpe_above_tolerance"
+        ],
+        "expected_frames": 50,
+        "recorded_frames": 1,
+        "mpjpe_m": 0.4283586493344684,
+        "terminal_max_frame_mpjpe_m": null,
+        "candidate_sha256": "014dda4b280e74489b4acd43920bab0259f92f4265575ae21a15bf3c366578d7",
+        "execution_sha256": "bdd1b7fbb662f4b00ef741ac44158f40bfd0503a39b802681bd3fc3835a4be61",
+        "prefix_frames": 1,
+        "attempt": 1,
+        "final": false
+      }
+    ],
+    "proposals": [
+      {
+        "attempt": 0,
+        "final": false,
+        "candidate_sha256": "0640bbd6a83c1218937d9ea613b9ebb72f35a87406687412f9723b317e6b567e",
+        "input_prefix_sha256": "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+        "input_prefix_frames": 1,
+        "new_frames": 50,
+        "network_context_frames": 2,
+        "projection": {
+          "rotation_projection_residual_max": 2.828426890294271,
+          "joint_limit_violations": 992,
+          "ric_redundancy_residual_m": 0.5739798112664924,
+          "projected": true,
+          "root_pose_side_information_required": true
+        },
+        "additional_bound_changed_values": 101
+      },
+      {
+        "attempt": 1,
+        "final": false,
+        "candidate_sha256": "014dda4b280e74489b4acd43920bab0259f92f4265575ae21a15bf3c366578d7",
+        "input_prefix_sha256": "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+        "input_prefix_frames": 1,
+        "new_frames": 50,
+        "network_context_frames": 2,
+        "projection": {
+          "rotation_projection_residual_max": 2.828420151651609,
+          "joint_limit_violations": 983,
+          "ric_redundancy_residual_m": 0.5850813571133008,
+          "projected": true,
+          "root_pose_side_information_required": true
+        },
+        "additional_bound_changed_values": 99
+      }
+    ],
+    "rollback_witness": {
+      "repeated_rollout_frames": 10,
+      "state_max_abs_delta": 0.0,
+      "body_max_abs_delta_m": 0.0,
+      "tolerance": 0.0005,
+      "scope": "same seeded scene replayed in a fresh process; committed histories checked before continuation",
+      "method": "fresh_process_replay; no private PhysX state serialization claim"
+    },
+    "actual_feedback_fixture": {
+      "evaluation_type": "self_supervised_proxy",
+      "reference": "held initialization pose; not dataset truth or generated semantics",
+      "control_frames": 2,
+      "window_frames": 1,
+      "accepted_windows": 2,
+      "input_prefix_sha256": [
+        "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+        "7a85db2003544da0db27aa625efeb6f7c9ec8a07f81d22e2e9064469884d90ae"
+      ],
+      "committed_prefix_sha256": "7d3a6c0d8b48fa1d382c89b42a7f700e3c91bfd5ad6e9c0fe9067d023f9101b5",
+      "replayed_history": [
+        {
+          "candidate_sha256": "9551f6520c6dfd0031a4974bdb5e737193a4a0cf2eb42822ab78928ccb556f05",
+          "max_state_difference": 0.0
+        }
+      ],
+      "decisions": [
+        {
+          "accepted": true,
+          "reasons": [],
+          "expected_frames": 1,
+          "recorded_frames": 1,
+          "mpjpe_m": 0.022785565545358873,
+          "terminal_max_frame_mpjpe_m": null,
+          "candidate_sha256": "9551f6520c6dfd0031a4974bdb5e737193a4a0cf2eb42822ab78928ccb556f05",
+          "execution_sha256": "85f6e41bfe462e2ccb21db12616dc39c154549462d2f91722f8c395af669a9aa",
+          "prefix_frames": 1,
+          "attempt": 0,
+          "final": false
+        },
+        {
+          "accepted": true,
+          "reasons": [],
+          "expected_frames": 1,
+          "recorded_frames": 1,
+          "mpjpe_m": 0.04355391445729258,
+          "terminal_max_frame_mpjpe_m": 0.04355391445729258,
+          "candidate_sha256": "8be1d0993b0b26fad7dda3ba911e4033e8c6b92b91f834255d3c9c20c4588f1d",
+          "execution_sha256": "25c899650b07fa0cf24fbed609d0538edaaf4f64272fdf5993cfacfac16173c5",
+          "prefix_frames": 2,
+          "attempt": 0,
+          "final": true
+        }
+      ]
+    },
+    "gmt_parameters_unchanged": true,
+    "generator_parameters_unchanged": true,
+    "generator_parameter_digest": "ef3302aba02a0a981eb86e4e0c22e59dfe958e6968f1c800d0c354730d791a12",
+    "rollback_method": "fresh_process_accepted_history_replay",
+    "torch_peak_allocated_bytes": 602226688,
+    "torch_peak_reserved_bytes": 603979776,
+    "memory_scope": "PyTorch allocator only; excludes PhysX/render allocations and other processes",
+    "elapsed_seconds": 33.7869770526886,
+    "raw_files": {
+      "physics_rollout_004.npz": "c2801c21b0cd34ac8e4075f2177f8f8248d7c7c893ddfb4e63078a837155423f",
+      "physics_rollout_005.npz": "f9c4717e145766668281222c62dd844f7a98e52c8b83c16b006689c088a688f0",
+      "committed_prefix.npz": "a41353b0abcaa5b798f6e5e77850531b4504a3f377900b739b9702f2ca2e6ebb",
+      "physics_rollout_001.npz": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+      "physics_rollout_002.npz": "81872c796dcb891b9728694cfe0d915e1438d0e8e228b4bc66b8a489da36fbf5",
+      "physics_rollout_003.npz": "0207830e610f317564a1e57c7b908b8c9cfd692751f8e1718d835e8c92c5180d",
+      "physics_rollout_000.npz": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+      "rollback_development_evidence.npz": "c33b0a9c23046bc878a1fe5401960ef3593907f767715f612a223ff21013d71a",
+      "feedback_fixture_committed.npz": "1621819af31f08aeb79bdeda8de411072b984c79650fb2c831d7bf1deea09d4a",
+      "proposals/proposal_001.npz": "59567f2858b0a425a5f13579b199874b2efdbd4840260e6fb342c940242335e3",
+      "proposals/proposal_000.npz": "34caac72645d5d3a08845f6fb7699a302a194a12d4faa95e68df56f05f98db0f",
+      "simulator/invocation_005/continuation.npz": "0f67d114d54f4921c5742219ba2e5280dd7b1d0356d196b429aeac24f400c8b2",
+      "simulator/invocation_005/raw.npz": "c2801c21b0cd34ac8e4075f2177f8f8248d7c7c893ddfb4e63078a837155423f",
+      "simulator/invocation_005/candidate.npz": "817ac85cd3e0ff87c7ca060042e7ac67dd06614cbefcc32c382f89a09d681262",
+      "simulator/invocation_005/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "simulator/invocation_003/continuation.npz": "893920f64dfac728920884aa59028b01932e9cfbfbb5dcc7bcd09fdaebfddede",
+      "simulator/invocation_003/raw.npz": "81872c796dcb891b9728694cfe0d915e1438d0e8e228b4bc66b8a489da36fbf5",
+      "simulator/invocation_003/candidate.npz": "fcdda6afc5c63dda51ea3504e81db75977fa00abd0db37bc1cf73b085c0acb12",
+      "simulator/invocation_003/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "simulator/invocation_001/continuation.npz": "3a9c79e7fc896fd932c91ddd0b48e2460da1eab9b98d85e8394a2d8fb37f4c72",
+      "simulator/invocation_001/raw.npz": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+      "simulator/invocation_001/candidate.npz": "caa52c0a4da1c689881ffa9e2f5c2c5dd625edbb257e6fb5b5048b1eaf4ff3aa",
+      "simulator/invocation_001/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "simulator/invocation_002/continuation.npz": "3a9c79e7fc896fd932c91ddd0b48e2460da1eab9b98d85e8394a2d8fb37f4c72",
+      "simulator/invocation_002/raw.npz": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+      "simulator/invocation_002/candidate.npz": "caa52c0a4da1c689881ffa9e2f5c2c5dd625edbb257e6fb5b5048b1eaf4ff3aa",
+      "simulator/invocation_002/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "simulator/invocation_004/continuation.npz": "997c09c5651ffde416d2cf39a560f3b8d60e6e4c3f280d19fa6bff7f9f9efe2c",
+      "simulator/invocation_004/raw.npz": "0207830e610f317564a1e57c7b908b8c9cfd692751f8e1718d835e8c92c5180d",
+      "simulator/invocation_004/candidate.npz": "3fb55115c4a36e0c606fb9fb7ca90f1c6d6fc8d77d26e7ca3df83d8731f6e735",
+      "simulator/invocation_004/current.npz": "893920f64dfac728920884aa59028b01932e9cfbfbb5dcc7bcd09fdaebfddede",
+      "simulator/invocation_000/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "simulator/invocation_006/continuation.npz": "2c7d4bd301d53eda0651a3e7a1f450c99479c753f10ec694a6846b7b9a8df757",
+      "simulator/invocation_006/raw.npz": "f9c4717e145766668281222c62dd844f7a98e52c8b83c16b006689c088a688f0",
+      "simulator/invocation_006/candidate.npz": "c282c07293b2d6d7346675ee4276c14fcb95f028b57462cc635753effe33adad",
+      "simulator/invocation_006/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611"
+    }
+  },
+  "checks": [
+    {
+      "kind": "raw_hash",
+      "stage": "curriculum",
+      "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/curriculum/output/file_0000/raw_pre_reset.npz",
+      "expected": "90e30cfbf41868c407f5b675b2971619f31a1610bf7b5bab1558790802a04f94",
+      "actual": "90e30cfbf41868c407f5b675b2971619f31a1610bf7b5bab1558790802a04f94",
+      "matches": true
+    },
+    {
+      "kind": "raw_hash",
+      "stage": "curriculum",
+      "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/curriculum/output/file_0001/raw_pre_reset.npz",
+      "expected": "334fd848c9c519d153c0128b049bb53abb02d681f731b1f52d9f069c744518e9",
+      "actual": "334fd848c9c519d153c0128b049bb53abb02d681f731b1f52d9f069c744518e9",
+      "matches": true
+    },
+    {
+      "kind": "raw_hash",
+      "stage": "expert_mask",
+      "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/expert_mask/output/file_0000/raw_pre_reset.npz",
+      "expected": "2539e0ace2e1c66fa5155404b16c9520f794725cd034f19a1256abb63c6a77c0",
+      "actual": "2539e0ace2e1c66fa5155404b16c9520f794725cd034f19a1256abb63c6a77c0",
+      "matches": true
+    },
+    {
+      "kind": "raw_hash",
+      "stage": "training_hook",
+      "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-30-42_training_hook/independent_curriculum/iteration_00000003/assessment/file_0000/raw_pre_reset.npz",
+      "expected": "413e2c225fe6adc9431605e495dff249e3d90d1f144caa827db42c9d6d699dfa",
+      "actual": "413e2c225fe6adc9431605e495dff249e3d90d1f144caa827db42c9d6d699dfa",
+      "matches": true
+    },
+    {
+      "kind": "simulator_worker",
+      "directory": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/closed_loop/output/simulator/invocation_000",
+      "matches": true,
+      "mode": "initialize",
+      "replayed_windows": []
+    },
+    {
+      "kind": "simulator_worker",
+      "directory": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/closed_loop/output/simulator/invocation_001",
+      "matches": true,
+      "mode": "rollout",
+      "replayed_windows": []
+    },
+    {
+      "kind": "simulator_worker",
+      "directory": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/closed_loop/output/simulator/invocation_002",
+      "matches": true,
+      "mode": "rollout",
+      "replayed_windows": []
+    },
+    {
+      "kind": "simulator_worker",
+      "directory": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/closed_loop/output/simulator/invocation_003",
+      "matches": true,
+      "mode": "rollout",
+      "replayed_windows": []
+    },
+    {
+      "kind": "simulator_worker",
+      "directory": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/closed_loop/output/simulator/invocation_004",
+      "matches": true,
+      "mode": "rollout",
+      "replayed_windows": [
+        {
+          "candidate_sha256": "9551f6520c6dfd0031a4974bdb5e737193a4a0cf2eb42822ab78928ccb556f05",
+          "max_state_difference": 0.0
+        }
+      ]
+    },
+    {
+      "kind": "simulator_worker",
+      "directory": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/closed_loop/output/simulator/invocation_005",
+      "matches": true,
+      "mode": "rollout",
+      "replayed_windows": []
+    },
+    {
+      "kind": "simulator_worker",
+      "directory": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/closed_loop/output/simulator/invocation_006",
+      "matches": true,
+      "mode": "rollout",
+      "replayed_windows": []
+    },
+    {
+      "kind": "training_external_primary",
+      "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-30-42_training_hook/independent_curriculum/iteration_00000003/decision.json",
+      "matches": true,
+      "sha256": "58314792d31f532232c0033f836ba2f3b6d3b823641e684215fc83ded0eb1818"
+    },
+    {
+      "kind": "training_external_primary",
+      "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-30-42_training_hook/independent_curriculum/iteration_00000003/assessment/evaluation.json",
+      "matches": true,
+      "sha256": "59fd00be141712b2556f21fda4b09da6fdb9bfc9c560b428f5317bd8d57e805b"
+    },
+    {
+      "kind": "checkpoint_hash",
+      "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_moe_pilot/2026-10-17_11-25-01_extended2000_seed42/model_1999.pt",
+      "actual": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+      "matches": true
+    },
+    {
+      "kind": "normalization_hash",
+      "actual": "6789d03ceb19f3a9f54b6c96b500396e079ded366ef5aa04106f9c6a3cf687af",
+      "matches": true
+    }
+  ],
+  "npz_archives": [
+    {
+      "path": "closed_loop/output/committed_prefix.npz",
+      "sha256": "a41353b0abcaa5b798f6e5e77850531b4504a3f377900b739b9702f2ca2e6ebb",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/feedback_fixture_committed.npz",
+      "sha256": "1621819af31f08aeb79bdeda8de411072b984c79650fb2c831d7bf1deea09d4a",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            3,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            3,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/physics_rollout_000.npz",
+      "sha256": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            10,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            10,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "reference_body_positions.npy": {
+          "shape": [
+            10,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            10
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeouts.npy": {
+          "shape": [
+            10
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "actions.npy": {
+          "shape": [
+            10,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "frames.npy": {
+          "shape": [
+            10
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "actual_start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/physics_rollout_001.npz",
+      "sha256": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            10,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            10,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "reference_body_positions.npy": {
+          "shape": [
+            10,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            10
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeouts.npy": {
+          "shape": [
+            10
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "actions.npy": {
+          "shape": [
+            10,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "frames.npy": {
+          "shape": [
+            10
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "actual_start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/physics_rollout_002.npz",
+      "sha256": "81872c796dcb891b9728694cfe0d915e1438d0e8e228b4bc66b8a489da36fbf5",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "reference_body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeouts.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "actions.npy": {
+          "shape": [
+            1,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "frames.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "actual_start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/physics_rollout_003.npz",
+      "sha256": "0207830e610f317564a1e57c7b908b8c9cfd692751f8e1718d835e8c92c5180d",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "reference_body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeouts.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "actions.npy": {
+          "shape": [
+            1,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "frames.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "actual_start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/physics_rollout_004.npz",
+      "sha256": "c2801c21b0cd34ac8e4075f2177f8f8248d7c7c893ddfb4e63078a837155423f",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "reference_body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeouts.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "actions.npy": {
+          "shape": [
+            1,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "frames.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "actual_start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/physics_rollout_005.npz",
+      "sha256": "f9c4717e145766668281222c62dd844f7a98e52c8b83c16b006689c088a688f0",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "reference_body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeouts.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "actions.npy": {
+          "shape": [
+            1,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "frames.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "actual_start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/proposals/proposal_000.npz",
+      "sha256": "34caac72645d5d3a08845f6fb7699a302a194a12d4faa95e68df56f05f98db0f",
+      "zip_crc_valid": true,
+      "arrays": {
+        "raw_features_262.npy": {
+          "shape": [
+            52,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "decoded_native_before_bounds.npy": {
+          "shape": [
+            50,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "candidate_native.npy": {
+          "shape": [
+            51,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "candidate_body_positions.npy": {
+          "shape": [
+            51,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "conditioned_actual_prefix.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/proposals/proposal_001.npz",
+      "sha256": "59567f2858b0a425a5f13579b199874b2efdbd4840260e6fb342c940242335e3",
+      "zip_crc_valid": true,
+      "arrays": {
+        "raw_features_262.npy": {
+          "shape": [
+            52,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "decoded_native_before_bounds.npy": {
+          "shape": [
+            50,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "candidate_native.npy": {
+          "shape": [
+            51,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "candidate_body_positions.npy": {
+          "shape": [
+            51,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "conditioned_actual_prefix.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/rollback_development_evidence.npz",
+      "sha256": "c33b0a9c23046bc878a1fe5401960ef3593907f767715f612a223ff21013d71a",
+      "zip_crc_valid": true,
+      "arrays": {
+        "first_states.npy": {
+          "shape": [
+            10,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "second_states.npy": {
+          "shape": [
+            10,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "first_actions.npy": {
+          "shape": [
+            10,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "second_actions.npy": {
+          "shape": [
+            10,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_000/current.npz",
+      "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_001/candidate.npz",
+      "sha256": "caa52c0a4da1c689881ffa9e2f5c2c5dd625edbb257e6fb5b5048b1eaf4ff3aa",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            11,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            11,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_001/continuation.npz",
+      "sha256": "3a9c79e7fc896fd932c91ddd0b48e2460da1eab9b98d85e8394a2d8fb37f4c72",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            10,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            10,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_001/current.npz",
+      "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_001/raw.npz",
+      "sha256": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            10,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            10,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "reference_body_positions.npy": {
+          "shape": [
+            10,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            10
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeouts.npy": {
+          "shape": [
+            10
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "actions.npy": {
+          "shape": [
+            10,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "frames.npy": {
+          "shape": [
+            10
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "actual_start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_002/candidate.npz",
+      "sha256": "caa52c0a4da1c689881ffa9e2f5c2c5dd625edbb257e6fb5b5048b1eaf4ff3aa",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            11,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            11,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_002/continuation.npz",
+      "sha256": "3a9c79e7fc896fd932c91ddd0b48e2460da1eab9b98d85e8394a2d8fb37f4c72",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            10,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            10,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_002/current.npz",
+      "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_002/raw.npz",
+      "sha256": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            10,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            10,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "reference_body_positions.npy": {
+          "shape": [
+            10,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            10
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeouts.npy": {
+          "shape": [
+            10
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "actions.npy": {
+          "shape": [
+            10,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "frames.npy": {
+          "shape": [
+            10
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "actual_start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_003/candidate.npz",
+      "sha256": "fcdda6afc5c63dda51ea3504e81db75977fa00abd0db37bc1cf73b085c0acb12",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            2,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            2,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_003/continuation.npz",
+      "sha256": "893920f64dfac728920884aa59028b01932e9cfbfbb5dcc7bcd09fdaebfddede",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_003/current.npz",
+      "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_003/raw.npz",
+      "sha256": "81872c796dcb891b9728694cfe0d915e1438d0e8e228b4bc66b8a489da36fbf5",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "reference_body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeouts.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "actions.npy": {
+          "shape": [
+            1,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "frames.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "actual_start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_004/candidate.npz",
+      "sha256": "3fb55115c4a36e0c606fb9fb7ca90f1c6d6fc8d77d26e7ca3df83d8731f6e735",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            3,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            3,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_004/continuation.npz",
+      "sha256": "997c09c5651ffde416d2cf39a560f3b8d60e6e4c3f280d19fa6bff7f9f9efe2c",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_004/current.npz",
+      "sha256": "893920f64dfac728920884aa59028b01932e9cfbfbb5dcc7bcd09fdaebfddede",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_004/raw.npz",
+      "sha256": "0207830e610f317564a1e57c7b908b8c9cfd692751f8e1718d835e8c92c5180d",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "reference_body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeouts.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "actions.npy": {
+          "shape": [
+            1,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "frames.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "actual_start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_005/candidate.npz",
+      "sha256": "817ac85cd3e0ff87c7ca060042e7ac67dd06614cbefcc32c382f89a09d681262",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            51,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            51,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_005/continuation.npz",
+      "sha256": "0f67d114d54f4921c5742219ba2e5280dd7b1d0356d196b429aeac24f400c8b2",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_005/current.npz",
+      "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_005/raw.npz",
+      "sha256": "c2801c21b0cd34ac8e4075f2177f8f8248d7c7c893ddfb4e63078a837155423f",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "reference_body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeouts.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "actions.npy": {
+          "shape": [
+            1,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "frames.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "actual_start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_006/candidate.npz",
+      "sha256": "c282c07293b2d6d7346675ee4276c14fcb95f028b57462cc635753effe33adad",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            51,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            51,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_006/continuation.npz",
+      "sha256": "2c7d4bd301d53eda0651a3e7a1f450c99479c753f10ec694a6846b7b9a8df757",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_006/current.npz",
+      "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "schema.npy": {
+          "shape": [],
+          "dtype": "<U41",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            14
+          ],
+          "dtype": "<U24",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_006/raw.npz",
+      "sha256": "f9c4717e145766668281222c62dd844f7a98e52c8b83c16b006689c088a688f0",
+      "zip_crc_valid": true,
+      "arrays": {
+        "states.npy": {
+          "shape": [
+            1,
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "reference_body_positions.npy": {
+          "shape": [
+            1,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeouts.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "actions.npy": {
+          "shape": [
+            1,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        },
+        "frames.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "actual_start_state.npy": {
+          "shape": [
+            71
+          ],
+          "dtype": "<f8",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/normalization.npz",
+      "sha256": "6789d03ceb19f3a9f54b6c96b500396e079ded366ef5aa04106f9c6a3cf687af",
+      "zip_crc_valid": true,
+      "arrays": {
+        "mean.npy": {
+          "shape": [
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "std.npy": {
+          "shape": [
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/test/sample_000_actor0_262.npz",
+      "sha256": "f01138df97535777017d123199b837df5659db1e1fad228377fd127fbbe81da2",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/test/sample_001_actor0_262.npz",
+      "sha256": "861a8f568951633bb841b181a0ee6f2f47ca9fb775a89e1038fd96ee82807510",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/test/sample_002_actor0_262.npz",
+      "sha256": "8b74a7ef4920b8ff4a6b780b2c2a2ef3bea288bdcb7c698c5466a05162ec6f12",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/test/sample_003_actor0_262.npz",
+      "sha256": "3a92d94eb6974d19856e59fa8faa29a7ed046d1e121d1497945131f44d73cf11",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_000_actor0_262.npz",
+      "sha256": "f44345e6e582a245f07b6d0f5fcdf2f124208f82793fcad908ff259a9534a31d",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_001_actor0_262.npz",
+      "sha256": "4e34f8dbb88940ce279820635ca0106623f52ef938cf8e06fbd8e0d787032480",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_002_actor0_262.npz",
+      "sha256": "78cf4a3c212b914424eed7af7145a7630365466a384a6c6ca9365bab511bcde1",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_003_actor0_262.npz",
+      "sha256": "7fef2497eba7d89d8d66c399af85c7ec1d4805da1592dd6cff92a4c068da1b77",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_004_actor0_262.npz",
+      "sha256": "bb981f6355a1b24aa31ebc1d0bfe7e5a266dacb8ec4f7e27280cf4c9cdb54a8f",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_005_actor0_262.npz",
+      "sha256": "a15ea2e74eb823a9413b3331bd5ad6a46841c283e11df79df3da28a4c965f2e4",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_006_actor0_262.npz",
+      "sha256": "5eeb0f0d318b38e5d16f7e5bd22b07a1b05b6aadccb51f7cb0128c2a8f98c8f2",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_007_actor0_262.npz",
+      "sha256": "288c5dea930b339c086b9edf927b73495b73b6572bbe1b30a4b20f699924f503",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_008_actor0_262.npz",
+      "sha256": "fc5dac1444eac4b0c2d67880358253f405c2dacfd76a20e2ad0ae7b09465b377",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_009_actor0_262.npz",
+      "sha256": "075e9f5a5dd259b4fbccb09bdd0c48c59cbbb90b9b2109adeffce6c5dfb68ba3",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_010_actor0_262.npz",
+      "sha256": "6776716fb2e1e7b23fc08a340eb9a89e40d674d99f0e82b96ae7b960cd292cd2",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_011_actor0_262.npz",
+      "sha256": "bea3ca18f9f30f82698e1f6688abb4f2271f7c52f50dab1b8071bc90875bd128",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_012_actor0_262.npz",
+      "sha256": "cf035c486ad13ba7b058394dbca3e3f0afd45d292a98cdb69299404f903ef795",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_013_actor0_262.npz",
+      "sha256": "5e1717a24949650845ed90812592229ab79b55785c655b1b1cef7a07c2fd796f",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_014_actor0_262.npz",
+      "sha256": "3101e2061398dafe5525196afa92232da7bc4ecb4a9334d187095f28d763bbc6",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_015_actor0_262.npz",
+      "sha256": "d05f36cdcf8d60756991c4ae920f5a90e6f8a204998e869b2f71ad679dc73b76",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_016_actor0_262.npz",
+      "sha256": "9d8db8bf5e2b8828c8612eabc9605e46c8d194ae2a352809a9f1ffe29dbe9e8d",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_017_actor0_262.npz",
+      "sha256": "4030abbe7acd293ac0c23a06cac7dd39dbf41029f00472a9646a19cc120780e4",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_018_actor0_262.npz",
+      "sha256": "44b0593e2ab4a8c8f27b5ba56358773134c1670392f7d199d0b6a5168fe79718",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "codec/output/train/sample_019_actor0_262.npz",
+      "sha256": "9e76ed10842b85e56fc2aeb6f85bd402bbc46ede5ea30afd0234f57b3659ce65",
+      "zip_crc_valid": true,
+      "arrays": {
+        "features.npy": {
+          "shape": [
+            149,
+            262
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "curriculum/output/file_0000/initial_state.npz",
+      "sha256": "280fd3c13bf98b7ef46a3b632484cf79c4d9dd47433a19ec8b72e3cfb01657c4",
+      "zip_crc_valid": true,
+      "arrays": {
+        "native_state.npy": {
+          "shape": [
+            8,
+            71
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            8,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "curriculum/output/file_0000/raw_pre_reset.npz",
+      "sha256": "90e30cfbf41868c407f5b675b2971619f31a1610bf7b5bab1558790802a04f94",
+      "zip_crc_valid": true,
+      "arrays": {
+        "native_state.npy": {
+          "shape": [
+            209,
+            71
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "reference_body_pos_local.npy": {
+          "shape": [
+            209,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "robot_body_pos_local.npy": {
+          "shape": [
+            209,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "env_id.npy": {
+          "shape": [
+            209
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "frame.npy": {
+          "shape": [
+            209
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "reference_body_pos.npy": {
+          "shape": [
+            209,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "robot_body_pos.npy": {
+          "shape": [
+            209,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "reference_joint_pos.npy": {
+          "shape": [
+            209,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "robot_joint_pos.npy": {
+          "shape": [
+            209,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "reference_joint_vel.npy": {
+          "shape": [
+            209,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "robot_joint_vel.npy": {
+          "shape": [
+            209,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            209
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeout.npy": {
+          "shape": [
+            209
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "curriculum/output/file_0001/initial_state.npz",
+      "sha256": "8312fa5c5dfe358757736a665f423a8ed760e71ffab0c62035fbae57c4b1b774",
+      "zip_crc_valid": true,
+      "arrays": {
+        "native_state.npy": {
+          "shape": [
+            8,
+            71
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            8,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "curriculum/output/file_0001/raw_pre_reset.npz",
+      "sha256": "334fd848c9c519d153c0128b049bb53abb02d681f731b1f52d9f069c744518e9",
+      "zip_crc_valid": true,
+      "arrays": {
+        "native_state.npy": {
+          "shape": [
+            862,
+            71
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "reference_body_pos_local.npy": {
+          "shape": [
+            862,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "robot_body_pos_local.npy": {
+          "shape": [
+            862,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "env_id.npy": {
+          "shape": [
+            862
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "frame.npy": {
+          "shape": [
+            862
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "reference_body_pos.npy": {
+          "shape": [
+            862,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "robot_body_pos.npy": {
+          "shape": [
+            862,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "reference_joint_pos.npy": {
+          "shape": [
+            862,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "robot_joint_pos.npy": {
+          "shape": [
+            862,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "reference_joint_vel.npy": {
+          "shape": [
+            862,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "robot_joint_vel.npy": {
+          "shape": [
+            862,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            862
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeout.npy": {
+          "shape": [
+            862
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "expert_mask/output/file_0000/initial_state.npz",
+      "sha256": "a77cf2d8f897a7f1ae093a8edb99ae6174b9ca897c8827e3195dd166a06e5173",
+      "zip_crc_valid": true,
+      "arrays": {
+        "native_state.npy": {
+          "shape": [
+            2,
+            71
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "body_positions.npy": {
+          "shape": [
+            2,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "expert_mask/output/file_0000/raw_pre_reset.npz",
+      "sha256": "2539e0ace2e1c66fa5155404b16c9520f794725cd034f19a1256abb63c6a77c0",
+      "zip_crc_valid": true,
+      "arrays": {
+        "native_state.npy": {
+          "shape": [
+            30,
+            71
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "reference_body_pos_local.npy": {
+          "shape": [
+            30,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "robot_body_pos_local.npy": {
+          "shape": [
+            30,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "env_id.npy": {
+          "shape": [
+            30
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "frame.npy": {
+          "shape": [
+            30
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "reference_body_pos.npy": {
+          "shape": [
+            30,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "robot_body_pos.npy": {
+          "shape": [
+            30,
+            14,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "reference_joint_pos.npy": {
+          "shape": [
+            30,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "robot_joint_pos.npy": {
+          "shape": [
+            30,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "reference_joint_vel.npy": {
+          "shape": [
+            30,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "robot_joint_vel.npy": {
+          "shape": [
+            30,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "terminated.npy": {
+          "shape": [
+            30
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        },
+        "timeout.npy": {
+          "shape": [
+            30
+          ],
+          "dtype": "|b1",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "training_hook/output/fixture_motions/sample_000_actor0.npz",
+      "sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b",
+      "zip_crc_valid": true,
+      "arrays": {
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "joint_names.npy": {
+          "shape": [
+            29
+          ],
+          "dtype": "<U26",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            30
+          ],
+          "dtype": "<U25",
+          "fortran_order": false
+        },
+        "joint_pos.npy": {
+          "shape": [
+            149,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "joint_vel.npy": {
+          "shape": [
+            149,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "body_pos_w.npy": {
+          "shape": [
+            149,
+            30,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "body_quat_w.npy": {
+          "shape": [
+            149,
+            30,
+            4
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "body_lin_vel_w.npy": {
+          "shape": [
+            149,
+            30,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "body_ang_vel_w.npy": {
+          "shape": [
+            149,
+            30,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    },
+    {
+      "path": "training_hook/output/fixture_motions/sample_001_actor0.npz",
+      "sha256": "90aaa5d5af04d31a27baa26cc4c1b1fd7fc9694c15900a3798ff19c753b9fa44",
+      "zip_crc_valid": true,
+      "arrays": {
+        "fps.npy": {
+          "shape": [
+            1
+          ],
+          "dtype": "<i8",
+          "fortran_order": false
+        },
+        "joint_names.npy": {
+          "shape": [
+            29
+          ],
+          "dtype": "<U26",
+          "fortran_order": false
+        },
+        "body_names.npy": {
+          "shape": [
+            30
+          ],
+          "dtype": "<U25",
+          "fortran_order": false
+        },
+        "joint_pos.npy": {
+          "shape": [
+            149,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "joint_vel.npy": {
+          "shape": [
+            149,
+            29
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "body_pos_w.npy": {
+          "shape": [
+            149,
+            30,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "body_quat_w.npy": {
+          "shape": [
+            149,
+            30,
+            4
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "body_lin_vel_w.npy": {
+          "shape": [
+            149,
+            30,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        },
+        "body_ang_vel_w.npy": {
+          "shape": [
+            149,
+            30,
+            3
+          ],
+          "dtype": "<f4",
+          "fortran_order": false
+        }
+      }
+    }
+  ],
+  "manifest": [
+    {
+      "path": "closed_loop/output/committed_prefix.npz",
+      "bytes": 1040,
+      "sha256": "a41353b0abcaa5b798f6e5e77850531b4504a3f377900b739b9702f2ca2e6ebb"
+    },
+    {
+      "path": "closed_loop/output/feedback_fixture_committed.npz",
+      "bytes": 2134,
+      "sha256": "1621819af31f08aeb79bdeda8de411072b984c79650fb2c831d7bf1deea09d4a"
+    },
+    {
+      "path": "closed_loop/output/physics_rollout_000.npz",
+      "bytes": 9275,
+      "sha256": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e"
+    },
+    {
+      "path": "closed_loop/output/physics_rollout_001.npz",
+      "bytes": 9275,
+      "sha256": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e"
+    },
+    {
+      "path": "closed_loop/output/physics_rollout_002.npz",
+      "bytes": 3517,
+      "sha256": "81872c796dcb891b9728694cfe0d915e1438d0e8e228b4bc66b8a489da36fbf5"
+    },
+    {
+      "path": "closed_loop/output/physics_rollout_003.npz",
+      "bytes": 3525,
+      "sha256": "0207830e610f317564a1e57c7b908b8c9cfd692751f8e1718d835e8c92c5180d"
+    },
+    {
+      "path": "closed_loop/output/physics_rollout_004.npz",
+      "bytes": 3523,
+      "sha256": "c2801c21b0cd34ac8e4075f2177f8f8248d7c7c893ddfb4e63078a837155423f"
+    },
+    {
+      "path": "closed_loop/output/physics_rollout_005.npz",
+      "bytes": 3514,
+      "sha256": "f9c4717e145766668281222c62dd844f7a98e52c8b83c16b006689c088a688f0"
+    },
+    {
+      "path": "closed_loop/output/proposals/proposal_000.npz",
+      "bytes": 94323,
+      "sha256": "34caac72645d5d3a08845f6fb7699a302a194a12d4faa95e68df56f05f98db0f"
+    },
+    {
+      "path": "closed_loop/output/proposals/proposal_001.npz",
+      "bytes": 94423,
+      "sha256": "59567f2858b0a425a5f13579b199874b2efdbd4840260e6fb342c940242335e3"
+    },
+    {
+      "path": "closed_loop/output/rollback_development_evidence.npz",
+      "bytes": 9866,
+      "sha256": "c33b0a9c23046bc878a1fe5401960ef3593907f767715f612a223ff21013d71a"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_000/current.npz",
+      "bytes": 1830,
+      "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_000/request.json",
+      "bytes": 647,
+      "sha256": "964b8e017fae3b2579980251f666e4c8c00a7ee04e7af7efb95d603f772872f5"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_000/worker.log",
+      "bytes": 14305,
+      "sha256": "2adc4ab6031a3c1dc4dbc1a7b275e3bd2daee42ef6303984972cbc062ed67a06"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_000/worker_result.json",
+      "bytes": 863,
+      "sha256": "6f09900cadaf4dd7c5837d510ffd0e0cfcd36c463f27f510dcd57ad824f93251"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_001/candidate.npz",
+      "bytes": 1928,
+      "sha256": "caa52c0a4da1c689881ffa9e2f5c2c5dd625edbb257e6fb5b5048b1eaf4ff3aa"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_001/continuation.npz",
+      "bytes": 6528,
+      "sha256": "3a9c79e7fc896fd932c91ddd0b48e2460da1eab9b98d85e8394a2d8fb37f4c72"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_001/current.npz",
+      "bytes": 1830,
+      "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_001/raw.npz",
+      "bytes": 9275,
+      "sha256": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_001/request.json",
+      "bytes": 789,
+      "sha256": "9309141dc93469804e7d59a2e12b6323768764719551c10d2ff42232ae1ee524"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_001/worker.log",
+      "bytes": 14305,
+      "sha256": "f3e9773a404d4065365cad2d4b9065cc95d25e8ffe3ef48df197c5bb119b4e54"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_001/worker_result.json",
+      "bytes": 860,
+      "sha256": "72519933c3484b9d107540c8a423bd0b9266c1022b87cb10da0c22d31e557a60"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_002/candidate.npz",
+      "bytes": 1928,
+      "sha256": "caa52c0a4da1c689881ffa9e2f5c2c5dd625edbb257e6fb5b5048b1eaf4ff3aa"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_002/continuation.npz",
+      "bytes": 6528,
+      "sha256": "3a9c79e7fc896fd932c91ddd0b48e2460da1eab9b98d85e8394a2d8fb37f4c72"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_002/current.npz",
+      "bytes": 1830,
+      "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_002/raw.npz",
+      "bytes": 9275,
+      "sha256": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_002/request.json",
+      "bytes": 789,
+      "sha256": "91ac4d5a3b72f1c6b69dbb3c447f299c12dfb6600e755e14cebd7d5d2e8ecd3e"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_002/worker.log",
+      "bytes": 14305,
+      "sha256": "86b846ef34b32aa49e72fee2cd2f833f7acec14a0b3475f932c18bf556650d54"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_002/worker_result.json",
+      "bytes": 860,
+      "sha256": "a2247f17ac7736e059f517c1be3e339987d336ce17dc753bb837885de5e93610"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_003/candidate.npz",
+      "bytes": 1845,
+      "sha256": "fcdda6afc5c63dda51ea3504e81db75977fa00abd0db37bc1cf73b085c0acb12"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_003/continuation.npz",
+      "bytes": 1833,
+      "sha256": "893920f64dfac728920884aa59028b01932e9cfbfbb5dcc7bcd09fdaebfddede"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_003/current.npz",
+      "bytes": 1830,
+      "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_003/raw.npz",
+      "bytes": 3517,
+      "sha256": "81872c796dcb891b9728694cfe0d915e1438d0e8e228b4bc66b8a489da36fbf5"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_003/request.json",
+      "bytes": 789,
+      "sha256": "8ec46a234292cce83642328fef26c52b51ac4e68f58281257c2f8382a551c0f6"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_003/worker.log",
+      "bytes": 14305,
+      "sha256": "8ed884419ed1cb33f0694dcf8b26a19f75dc6b10b3a720237a19e2e3ea49a511"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_003/worker_result.json",
+      "bytes": 860,
+      "sha256": "467a69496503f171b036297a9bad6c4b76174452def62ee2db5d5949bf4b36fa"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_004/candidate.npz",
+      "bytes": 2417,
+      "sha256": "3fb55115c4a36e0c606fb9fb7ca90f1c6d6fc8d77d26e7ca3df83d8731f6e735"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_004/continuation.npz",
+      "bytes": 1837,
+      "sha256": "997c09c5651ffde416d2cf39a560f3b8d60e6e4c3f280d19fa6bff7f9f9efe2c"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_004/current.npz",
+      "bytes": 1833,
+      "sha256": "893920f64dfac728920884aa59028b01932e9cfbfbb5dcc7bcd09fdaebfddede"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_004/raw.npz",
+      "bytes": 3525,
+      "sha256": "0207830e610f317564a1e57c7b908b8c9cfd692751f8e1718d835e8c92c5180d"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_004/request.json",
+      "bytes": 1354,
+      "sha256": "40c0f290e0ca2d47fa60e7ca50f64201d6cfabaf258e893d2bc69031adf27f5f"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_004/worker.log",
+      "bytes": 14305,
+      "sha256": "0124f19670a0e5488c3de1949ccf94a1ceb58d8e8353262633dc609284af68f8"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_004/worker_result.json",
+      "bytes": 1003,
+      "sha256": "acd2f407d5c3eb2566bab46a3d6fdabebbd90421a14d036747f7acf04c689828"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_005/candidate.npz",
+      "bytes": 30987,
+      "sha256": "817ac85cd3e0ff87c7ca060042e7ac67dd06614cbefcc32c382f89a09d681262"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_005/continuation.npz",
+      "bytes": 1839,
+      "sha256": "0f67d114d54f4921c5742219ba2e5280dd7b1d0356d196b429aeac24f400c8b2"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_005/current.npz",
+      "bytes": 1830,
+      "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_005/raw.npz",
+      "bytes": 3523,
+      "sha256": "c2801c21b0cd34ac8e4075f2177f8f8248d7c7c893ddfb4e63078a837155423f"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_005/request.json",
+      "bytes": 789,
+      "sha256": "72c6fc69ac0cba96ea4654dffcb6609a5f2540fdd2f2a5d297c4771533e7294c"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_005/worker.log",
+      "bytes": 14305,
+      "sha256": "5ee982c8ad4da1aaeb3b8cf8b42d45a2c8141f6f47b07a0b1fc0c99307656de7"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_005/worker_result.json",
+      "bytes": 860,
+      "sha256": "18c2b3b0459037abc3d048e9720b496794090d49469e271f95e5aeb3d524d221"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_006/candidate.npz",
+      "bytes": 31040,
+      "sha256": "c282c07293b2d6d7346675ee4276c14fcb95f028b57462cc635753effe33adad"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_006/continuation.npz",
+      "bytes": 1830,
+      "sha256": "2c7d4bd301d53eda0651a3e7a1f450c99479c753f10ec694a6846b7b9a8df757"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_006/current.npz",
+      "bytes": 1830,
+      "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_006/raw.npz",
+      "bytes": 3514,
+      "sha256": "f9c4717e145766668281222c62dd844f7a98e52c8b83c16b006689c088a688f0"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_006/request.json",
+      "bytes": 789,
+      "sha256": "81bc9d4caeac0cca9d8e4a90ac820b37458affac780c7667924515ead51681d7"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_006/worker.log",
+      "bytes": 14305,
+      "sha256": "3262ebddcc79c9ac082079b8dcf4bdd30b8c2f89821e7191374ca8d3f2de7a80"
+    },
+    {
+      "path": "closed_loop/output/simulator/invocation_006/worker_result.json",
+      "bytes": 860,
+      "sha256": "0e155222f06fb64771cb5987c7c9becf1f0c6cdec9522bb84cf8d33217e7f50c"
+    },
+    {
+      "path": "closed_loop/output/verification.json",
+      "bytes": 27975,
+      "sha256": "e3a87dbfedf42444d8b69c7ecb1c76483e19a4010c3da826e592bf163709eede"
+    },
+    {
+      "path": "closed_loop/receipt.json",
+      "bytes": 24559,
+      "sha256": "66e05a1c4d1a916b8aeb684a8927ca024a091b3363902e6ce8e0b9a71caa5ef9"
+    },
+    {
+      "path": "closed_loop/stdout_stderr.log",
+      "bytes": 14252,
+      "sha256": "0db0c5907e38f81cd501fdaa4246a9e0c59b4ff3bc16c794789cb538638e8de5"
+    },
+    {
+      "path": "codec/output/normalization.npz",
+      "bytes": 2596,
+      "sha256": "6789d03ceb19f3a9f54b6c96b500396e079ded366ef5aa04106f9c6a3cf687af"
+    },
+    {
+      "path": "codec/output/test/sample_000_actor0_262.npz",
+      "bytes": 126915,
+      "sha256": "f01138df97535777017d123199b837df5659db1e1fad228377fd127fbbe81da2"
+    },
+    {
+      "path": "codec/output/test/sample_000_actor0_metadata.json",
+      "bytes": 2873,
+      "sha256": "811d4e6a8d82b1e0d2913ab38148eb71afbab2f07384845fc26f220ed7b2c706"
+    },
+    {
+      "path": "codec/output/test/sample_001_actor0_262.npz",
+      "bytes": 126341,
+      "sha256": "861a8f568951633bb841b181a0ee6f2f47ca9fb775a89e1038fd96ee82807510"
+    },
+    {
+      "path": "codec/output/test/sample_001_actor0_metadata.json",
+      "bytes": 2859,
+      "sha256": "3c94ec351e7759d2885ea06198e60e8fda8ea2646061d6090fb789d7201b18de"
+    },
+    {
+      "path": "codec/output/test/sample_002_actor0_262.npz",
+      "bytes": 126772,
+      "sha256": "8b74a7ef4920b8ff4a6b780b2c2a2ef3bea288bdcb7c698c5466a05162ec6f12"
+    },
+    {
+      "path": "codec/output/test/sample_002_actor0_metadata.json",
+      "bytes": 2863,
+      "sha256": "3c363cd37211b679af70c943d47e8d935cbded363c23d31d8eedbb856ec4603b"
+    },
+    {
+      "path": "codec/output/test/sample_003_actor0_262.npz",
+      "bytes": 126734,
+      "sha256": "3a92d94eb6974d19856e59fa8faa29a7ed046d1e121d1497945131f44d73cf11"
+    },
+    {
+      "path": "codec/output/test/sample_003_actor0_metadata.json",
+      "bytes": 2856,
+      "sha256": "2d89aca10f14bce5f7d7f0366a7bfd81d7ffc0031f1554b6178455c4f68feee2"
+    },
+    {
+      "path": "codec/output/train/sample_000_actor0_262.npz",
+      "bytes": 126181,
+      "sha256": "f44345e6e582a245f07b6d0f5fcdf2f124208f82793fcad908ff259a9534a31d"
+    },
+    {
+      "path": "codec/output/train/sample_000_actor0_metadata.json",
+      "bytes": 2843,
+      "sha256": "bf0fa2c64483defb41dc92eadd8cad99d7a32011bcc4a0d85d015ac5a94ff122"
+    },
+    {
+      "path": "codec/output/train/sample_001_actor0_262.npz",
+      "bytes": 126453,
+      "sha256": "4e34f8dbb88940ce279820635ca0106623f52ef938cf8e06fbd8e0d787032480"
+    },
+    {
+      "path": "codec/output/train/sample_001_actor0_metadata.json",
+      "bytes": 2851,
+      "sha256": "c41a69b3c0a944e86cbe936f6a57c3744de3d024737cc1fa842c950f089d4d0d"
+    },
+    {
+      "path": "codec/output/train/sample_002_actor0_262.npz",
+      "bytes": 126348,
+      "sha256": "78cf4a3c212b914424eed7af7145a7630365466a384a6c6ca9365bab511bcde1"
+    },
+    {
+      "path": "codec/output/train/sample_002_actor0_metadata.json",
+      "bytes": 2844,
+      "sha256": "3ed203551fbda2da47f6245d45ecb09a7c801d9b0708b85936d9f31619d08fce"
+    },
+    {
+      "path": "codec/output/train/sample_003_actor0_262.npz",
+      "bytes": 126721,
+      "sha256": "7fef2497eba7d89d8d66c399af85c7ec1d4805da1592dd6cff92a4c068da1b77"
+    },
+    {
+      "path": "codec/output/train/sample_003_actor0_metadata.json",
+      "bytes": 2862,
+      "sha256": "532f887d563d183a5221d4c56b0b4ca52c456611336745d93accf6df7cc60d98"
+    },
+    {
+      "path": "codec/output/train/sample_004_actor0_262.npz",
+      "bytes": 126447,
+      "sha256": "bb981f6355a1b24aa31ebc1d0bfe7e5a266dacb8ec4f7e27280cf4c9cdb54a8f"
+    },
+    {
+      "path": "codec/output/train/sample_004_actor0_metadata.json",
+      "bytes": 2855,
+      "sha256": "d65408fb5058162036ef1e921a43a219be1e122c04b28ad416d50c778f789e44"
+    },
+    {
+      "path": "codec/output/train/sample_005_actor0_262.npz",
+      "bytes": 126585,
+      "sha256": "a15ea2e74eb823a9413b3331bd5ad6a46841c283e11df79df3da28a4c965f2e4"
+    },
+    {
+      "path": "codec/output/train/sample_005_actor0_metadata.json",
+      "bytes": 2846,
+      "sha256": "52e0aa016b326078ba4f26e63e7264056023f2643e308cd94fa77fb8032d61d6"
+    },
+    {
+      "path": "codec/output/train/sample_006_actor0_262.npz",
+      "bytes": 126837,
+      "sha256": "5eeb0f0d318b38e5d16f7e5bd22b07a1b05b6aadccb51f7cb0128c2a8f98c8f2"
+    },
+    {
+      "path": "codec/output/train/sample_006_actor0_metadata.json",
+      "bytes": 2854,
+      "sha256": "e35bd523c612842e8642e611c7a2c878e0e49fa19fbb42c31f8c1a86dfa85808"
+    },
+    {
+      "path": "codec/output/train/sample_007_actor0_262.npz",
+      "bytes": 126589,
+      "sha256": "288c5dea930b339c086b9edf927b73495b73b6572bbe1b30a4b20f699924f503"
+    },
+    {
+      "path": "codec/output/train/sample_007_actor0_metadata.json",
+      "bytes": 2857,
+      "sha256": "fffb333e02176fd53394299c15adf970a59f906702f88e06cffcb1215c5803f2"
+    },
+    {
+      "path": "codec/output/train/sample_008_actor0_262.npz",
+      "bytes": 126739,
+      "sha256": "fc5dac1444eac4b0c2d67880358253f405c2dacfd76a20e2ad0ae7b09465b377"
+    },
+    {
+      "path": "codec/output/train/sample_008_actor0_metadata.json",
+      "bytes": 2868,
+      "sha256": "f3a7b75b8098eab41f10e0109a8f65de5e29c3c05d57398f8b9fda18712cdcf2"
+    },
+    {
+      "path": "codec/output/train/sample_009_actor0_262.npz",
+      "bytes": 125835,
+      "sha256": "075e9f5a5dd259b4fbccb09bdd0c48c59cbbb90b9b2109adeffce6c5dfb68ba3"
+    },
+    {
+      "path": "codec/output/train/sample_009_actor0_metadata.json",
+      "bytes": 2854,
+      "sha256": "f5122c4824cd386f51f053d62ab32a593a94298e74d0f7359d67b03640989e09"
+    },
+    {
+      "path": "codec/output/train/sample_010_actor0_262.npz",
+      "bytes": 126938,
+      "sha256": "6776716fb2e1e7b23fc08a340eb9a89e40d674d99f0e82b96ae7b960cd292cd2"
+    },
+    {
+      "path": "codec/output/train/sample_010_actor0_metadata.json",
+      "bytes": 2866,
+      "sha256": "dd7c717b2af4eebdbf0de39ff6058e7f9719b1cca0fc1ad430632918d70ddd07"
+    },
+    {
+      "path": "codec/output/train/sample_011_actor0_262.npz",
+      "bytes": 126542,
+      "sha256": "bea3ca18f9f30f82698e1f6688abb4f2271f7c52f50dab1b8071bc90875bd128"
+    },
+    {
+      "path": "codec/output/train/sample_011_actor0_metadata.json",
+      "bytes": 2850,
+      "sha256": "6d80b9cf7b1b0d0176e3e74136534ca43bb9e45f766e2224d2292252636d58b4"
+    },
+    {
+      "path": "codec/output/train/sample_012_actor0_262.npz",
+      "bytes": 126467,
+      "sha256": "cf035c486ad13ba7b058394dbca3e3f0afd45d292a98cdb69299404f903ef795"
+    },
+    {
+      "path": "codec/output/train/sample_012_actor0_metadata.json",
+      "bytes": 2861,
+      "sha256": "fc0e2e7bc3eb6ca907878e7604ca6931bb6e48293615684ce91f5def2f2336d3"
+    },
+    {
+      "path": "codec/output/train/sample_013_actor0_262.npz",
+      "bytes": 126682,
+      "sha256": "5e1717a24949650845ed90812592229ab79b55785c655b1b1cef7a07c2fd796f"
+    },
+    {
+      "path": "codec/output/train/sample_013_actor0_metadata.json",
+      "bytes": 2848,
+      "sha256": "8cb51cec49a69d62e85bef6d751558f399ba2d6e64e09d3d6285f80d705439e2"
+    },
+    {
+      "path": "codec/output/train/sample_014_actor0_262.npz",
+      "bytes": 125908,
+      "sha256": "3101e2061398dafe5525196afa92232da7bc4ecb4a9334d187095f28d763bbc6"
+    },
+    {
+      "path": "codec/output/train/sample_014_actor0_metadata.json",
+      "bytes": 2860,
+      "sha256": "f571e1568d49358b66a26ebc15b764e81e0f41060cbc01e093df39ce23468c1c"
+    },
+    {
+      "path": "codec/output/train/sample_015_actor0_262.npz",
+      "bytes": 126972,
+      "sha256": "d05f36cdcf8d60756991c4ae920f5a90e6f8a204998e869b2f71ad679dc73b76"
+    },
+    {
+      "path": "codec/output/train/sample_015_actor0_metadata.json",
+      "bytes": 2851,
+      "sha256": "2fbe8e0eb8824ff4b2efc13c72bfae89fe1bdbbacae2e47494993392203a5fa5"
+    },
+    {
+      "path": "codec/output/train/sample_016_actor0_262.npz",
+      "bytes": 126742,
+      "sha256": "9d8db8bf5e2b8828c8612eabc9605e46c8d194ae2a352809a9f1ffe29dbe9e8d"
+    },
+    {
+      "path": "codec/output/train/sample_016_actor0_metadata.json",
+      "bytes": 2851,
+      "sha256": "613551dd85e969bfc2493d9b4e3e863a5e588d70c2bf63ba0ea3b301a5f5918b"
+    },
+    {
+      "path": "codec/output/train/sample_017_actor0_262.npz",
+      "bytes": 126769,
+      "sha256": "4030abbe7acd293ac0c23a06cac7dd39dbf41029f00472a9646a19cc120780e4"
+    },
+    {
+      "path": "codec/output/train/sample_017_actor0_metadata.json",
+      "bytes": 2854,
+      "sha256": "bb838c18ed3e58f8626cf3e35631eeeda48a3bfb88e763e447b2a1f6fff8639b"
+    },
+    {
+      "path": "codec/output/train/sample_018_actor0_262.npz",
+      "bytes": 126713,
+      "sha256": "44b0593e2ab4a8c8f27b5ba56358773134c1670392f7d199d0b6a5168fe79718"
+    },
+    {
+      "path": "codec/output/train/sample_018_actor0_metadata.json",
+      "bytes": 2862,
+      "sha256": "87ebc20e9fd129b38cc1a73e07c032a960a6efa8fd6ae95699cfe416c0b90fa1"
+    },
+    {
+      "path": "codec/output/train/sample_019_actor0_262.npz",
+      "bytes": 127218,
+      "sha256": "9e76ed10842b85e56fc2aeb6f85bd402bbc46ede5ea30afd0234f57b3659ce65"
+    },
+    {
+      "path": "codec/output/train/sample_019_actor0_metadata.json",
+      "bytes": 2863,
+      "sha256": "8e0f4acf9e7455472b3522b1cc981faecc21d9e3be88f93a947ed48f286a7274"
+    },
+    {
+      "path": "codec/output/verification.json",
+      "bytes": 20370,
+      "sha256": "5604e2bf9cac0126127c9d3c0e6d2fea6ca75d7f3138e8ff492325aedb2defc5"
+    },
+    {
+      "path": "codec/receipt.json",
+      "bytes": 24092,
+      "sha256": "51b43b75cb842af9370bad1de4a7976b8582d2c1a54abb8ba68cc796e29944af"
+    },
+    {
+      "path": "codec/stdout_stderr.log",
+      "bytes": 499,
+      "sha256": "170f24cddf865cc9bd388597aea02911a70b47ab227eb5c73ee28e8aedbfdaaa"
+    },
+    {
+      "path": "curriculum/output/evaluation.json",
+      "bytes": 2823,
+      "sha256": "896f26a57ef12f49bd9625f1f2018a2a4233b92ba50a763c11669d845a66be4f"
+    },
+    {
+      "path": "curriculum/output/file_0000/feedback_metadata.json",
+      "bytes": 2930,
+      "sha256": "58731c253725c2be79e517ecb3ee5e2702e13ceb8704349492676f3e9ca2c778"
+    },
+    {
+      "path": "curriculum/output/file_0000/initial_state.npz",
+      "bytes": 3110,
+      "sha256": "280fd3c13bf98b7ef46a3b632484cf79c4d9dd47433a19ec8b72e3cfb01657c4"
+    },
+    {
+      "path": "curriculum/output/file_0000/metrics.json",
+      "bytes": 1322,
+      "sha256": "64d2b9609f8931746c4c488e845c26634a260aba97e0cf211a1d83c40e3417f1"
+    },
+    {
+      "path": "curriculum/output/file_0000/raw_pre_reset.npz",
+      "bytes": 195675,
+      "sha256": "90e30cfbf41868c407f5b675b2971619f31a1610bf7b5bab1558790802a04f94"
+    },
+    {
+      "path": "curriculum/output/file_0000.log",
+      "bytes": 15498,
+      "sha256": "00e807b551d3544c875f7d382791ee9d44acde09368099fc15da280330be16c1"
+    },
+    {
+      "path": "curriculum/output/file_0001/feedback_metadata.json",
+      "bytes": 2930,
+      "sha256": "c78e03af317d8cc5ffb945b114894a39e9fa2734af961dff42506645cbead15d"
+    },
+    {
+      "path": "curriculum/output/file_0001/initial_state.npz",
+      "bytes": 3159,
+      "sha256": "8312fa5c5dfe358757736a665f423a8ed760e71ffab0c62035fbae57c4b1b774"
+    },
+    {
+      "path": "curriculum/output/file_0001/metrics.json",
+      "bytes": 1328,
+      "sha256": "91c5a708b393fa073d0a5aa46b778a2457c09ab07173460ec3cf99e6cea10951"
+    },
+    {
+      "path": "curriculum/output/file_0001/raw_pre_reset.npz",
+      "bytes": 808715,
+      "sha256": "334fd848c9c519d153c0128b049bb53abb02d681f731b1f52d9f069c744518e9"
+    },
+    {
+      "path": "curriculum/output/file_0001.log",
+      "bytes": 15504,
+      "sha256": "ce453de0082654391642388680ad59299d4d78885174fbbb1abca0cde6f6eaa2"
+    },
+    {
+      "path": "curriculum/output/request.json",
+      "bytes": 647,
+      "sha256": "43f868ca1aae818e1d292d048976902a41b796103fb269eb7d1fa413c7aa4e84"
+    },
+    {
+      "path": "curriculum/receipt.json",
+      "bytes": 24212,
+      "sha256": "d139ca199117b924de06a59311cdae0fa6289991459b80c163ee215bd89a77fb"
+    },
+    {
+      "path": "curriculum/stdout_stderr.log",
+      "bytes": 1595,
+      "sha256": "b8d1b2ee390c83d784f92b80ca354d497e4dc2efed69ad2f926432e97a5a7834"
+    },
+    {
+      "path": "curriculum_request.json",
+      "bytes": 647,
+      "sha256": "43f868ca1aae818e1d292d048976902a41b796103fb269eb7d1fa413c7aa4e84"
+    },
+    {
+      "path": "expert_mask/output/evaluation.json",
+      "bytes": 1818,
+      "sha256": "80974e9d1874bf0dabaa8fde5c63c2f6f4b159fb34f93b0a5ebae0149f766457"
+    },
+    {
+      "path": "expert_mask/output/file_0000/feedback_metadata.json",
+      "bytes": 2930,
+      "sha256": "1cb1a2b4ed82cac8102bc135aca2341a21a15b0bf903b6c6e7eb2d78fa6eabe4"
+    },
+    {
+      "path": "expert_mask/output/file_0000/initial_state.npz",
+      "bytes": 1246,
+      "sha256": "a77cf2d8f897a7f1ae093a8edb99ae6174b9ca897c8827e3195dd166a06e5173"
+    },
+    {
+      "path": "expert_mask/output/file_0000/metrics.json",
+      "bytes": 1276,
+      "sha256": "0f662d00bdea52ab4878c1d91c3c7d7e97614ec3be06403c092c802011e71ae6"
+    },
+    {
+      "path": "expert_mask/output/file_0000/raw_pre_reset.npz",
+      "bytes": 38304,
+      "sha256": "2539e0ace2e1c66fa5155404b16c9520f794725cd034f19a1256abb63c6a77c0"
+    },
+    {
+      "path": "expert_mask/output/file_0000.log",
+      "bytes": 15563,
+      "sha256": "8c91df0777471ddb679eb7b8efd4bff8626ce11263869e3c253adc3dc6d951a3"
+    },
+    {
+      "path": "expert_mask/output/request.json",
+      "bytes": 655,
+      "sha256": "86c9b9aa69a978b249dc801e17e85165239a3f3e844bcb65c9de233bd285a1b3"
+    },
+    {
+      "path": "expert_mask/receipt.json",
+      "bytes": 24208,
+      "sha256": "d167d2ad578f2003c1105999d48d0474c67161155d6a05c4ca49be66db0b5fba"
+    },
+    {
+      "path": "expert_mask/stdout_stderr.log",
+      "bytes": 1261,
+      "sha256": "9b827d0e6769b1f23a83eaa4f23348969960b6ca8bffc5efdcaa729d7ded0fc8"
+    },
+    {
+      "path": "mask_request.json",
+      "bytes": 655,
+      "sha256": "86c9b9aa69a978b249dc801e17e85165239a3f3e844bcb65c9de233bd285a1b3"
+    },
+    {
+      "path": "pipeline.json",
+      "bytes": 3226,
+      "sha256": "0548c72e29f33ae08c7f2bf45e867493610ee3faaca5c96da3e4779ff1c42460"
+    },
+    {
+      "path": "prepare/receipt.json",
+      "bytes": 23953,
+      "sha256": "a498b849d263a1bf0a2ef54aeffd2a779504f72ab2717018f60c42b955a32729"
+    },
+    {
+      "path": "prepare/stdout_stderr.log",
+      "bytes": 408,
+      "sha256": "3638071c563b0056c908ac0c5d80706bf70d9c4435006babb591777584fa9de8"
+    },
+    {
+      "path": "regression/receipt.json",
+      "bytes": 24117,
+      "sha256": "e8ad75e509e05ea052521517816714b6e4ec953b7b82a7c69b23c987c3f2ed20"
+    },
+    {
+      "path": "regression/stdout_stderr.log",
+      "bytes": 517,
+      "sha256": "4f9df738760ba1346793651ae24543137fbc4be937744eafffbedd085bc9ecee"
+    },
+    {
+      "path": "regression/verification.json",
+      "bytes": 555,
+      "sha256": "44dc67542a26e035ee424f97a9f1440d66ca4331a6185f9da5714f2d8556d7ba"
+    },
+    {
+      "path": "training_hook/output/fixture_config.yaml",
+      "bytes": 3561,
+      "sha256": "e6c5347f1cb99477aacd8c01d70e09a143416ce4adbb0892c3826e68d1a71f0b"
+    },
+    {
+      "path": "training_hook/output/fixture_ids_not_research_labels.csv",
+      "bytes": 63,
+      "sha256": "504a2cf172b70ca402acb146f81580e09ac85c251be5a67c99cdc02568295feb"
+    },
+    {
+      "path": "training_hook/output/fixture_motions/sample_000_actor0.npz",
+      "bytes": 248429,
+      "sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b"
+    },
+    {
+      "path": "training_hook/output/fixture_motions/sample_001_actor0.npz",
+      "bytes": 249258,
+      "sha256": "90aaa5d5af04d31a27baa26cc4c1b1fd7fc9694c15900a3798ff19c753b9fa44"
+    },
+    {
+      "path": "training_hook/output/training.log",
+      "bytes": 28648,
+      "sha256": "0f001b5f7fc25a94e124fa6d56064ad4924b2a5c2b622999627e7cc9cc8da6b4"
+    },
+    {
+      "path": "training_hook/output/verification.json",
+      "bytes": 3545,
+      "sha256": "6642cb651091919c4d7d8ac7292504a10aedd2dfefb67857ec0b4c97e5d29276"
+    },
+    {
+      "path": "training_hook/receipt.json",
+      "bytes": 24112,
+      "sha256": "bf7b15d0facbacfdd77660407de8c034491e8d0ec0ba7a2baeee082b8bbf8a91"
+    },
+    {
+      "path": "training_hook/stdout_stderr.log",
+      "bytes": 1477,
+      "sha256": "21f50513515f299293ac99228a74ba6f1f5c48875dbd18158b3b978f87e97ca1"
+    }
+  ]
+}

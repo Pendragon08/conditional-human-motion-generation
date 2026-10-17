@@ -1,0 +1,431 @@
+PHYGILE_INDEPENDENT_REPAIRS_ACTIVE {"source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py": {"original_sha256": "b3a35da443de54c303e6b4fd3fb2b9e4153bdbeef7d91f9fb843bd5def3f1e4a", "patched_sha256": "cad7ee14922ed4d5a2ba509bfa4d455cc4b8ee0a1eafa591c4e672a87751b20b"}, "source/whole_body_tracking/whole_body_tracking/utils/my_on_policy_runner.py": {"original_sha256": "c41fa2122f92f9413dc43c8de72a0f8dcaae518021143cc0f37e104f497f701c", "patched_sha256": "e4b73e1e3e4bfdc79c1b23a121d2ed0cfd79afdbff1df98c3cac5cfd93be7409"}, "source/whole_body_tracking/whole_body_tracking/utils/curriculum_manager.py": {"original_sha256": "bd4c3ad52a16559144bb43c4c19d18a846b58a0228b515d5bea811a2909cbdd0", "patched_sha256": "5f1a4cbcce8c85a5b5d96c67bce73d99c4de453822eab6659de932c43c7612d9"}}
+[INFO] Using G1 training config: /data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/training_hook/output/fixture_config.yaml
+[INFO] Wandb model uploads disabled via --no_wandb_model_upload
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/IsaacLab/apps/isaaclab.python.headless.kit
+Loading user config located at: '/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/kit/data/Kit/Isaac-Sim/4.5/user.config.json'
+[Info] [carb] Logging to file: /data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/kit/logs/Kit/Isaac-Sim/4.5/kit_20261017_143033.log
+2026-10-17 14:30:33 [0ms] [Warning] [omni.kit.app.plugin] No crash reporter present, dumps uploading isn't available.
+2026-10-17 14:30:33 [6ms] [Warning] [omni.ext.plugin] [ext: rendering_modes] Extensions config 'extension.toml' doesn't exist '/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/IsaacLab/apps/rendering_modes' or '/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/IsaacLab/apps/rendering_modes/config'
+2026-10-17 14:30:34 [483ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-10-17 14:30:34 [594ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-10-17 14:30:34 [772ms] [Warning] [omni.datastore] OmniHub is inaccessible
+2026-10-17 14:30:34 [948ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 570.181       | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX A6000                 | Yes: 0 |     | 49386   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2230      | f3cc20c6.. |
+|     |                                  |        |     |            | 17        |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | NVIDIA RTX A6000                 | Yes: 1 |     | 49386   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2230      | 0b41e662.. |
+|     |                                  |        |     |            | 65        |            |
+|=============================================================================================|
+| OS: 20.04.6 LTS (Focal Fossa) ubuntu, Version: 20.04.6, Kernel: 5.4.0-216-generic
+| Processor: Intel(R) Core(TM) i9-10900X CPU @ 3.70GHz
+| Cores: 10 | Logical Cores: 20
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 257450 | Free Memory: 31921
+| Total Page/Swap (MB): 8191 | Free Page/Swap: 8177
+|---------------------------------------------------------------------------------------------|
+2026-10-17 14:30:39 [5,935ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+PHYGILE_CURRICULUM_HOOK_ACTIVE /data/code/ouyanghao/oyh/phygile-reproduction-20261017/cache/closed_loop_upstream/source/whole_body_tracking/whole_body_tracking/utils/my_on_policy_runner.py
+[G1FlatEnvCfg] Unknown motion override key 'curriculum_lr_reset_enabled', skipping.
+[G1FlatEnvCfg] Unknown motion override key 'moe_supervised_until_level', skipping.
+[G1FlatEnvCfg] Unknown motion override key 'max_motion_files', skipping.
+[INFO]: Parsing configuration from: <class 'whole_body_tracking.tasks.tracking.config.g1.flat_env_cfg.G1FlatWoStateEstimationEnvCfg'>
+[INFO]: Parsing configuration from: whole_body_tracking.tasks.tracking.config.g1.agents.rsl_rl_ppo_cfg:G1FlatPPORunnerCfg
+[INFO] Using local motion directory: /data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/training_hook/output/fixture_motions
+[INFO] Logging experiment in directory: /data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation
+Setting seed: 42
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 42
+	Physics step-size     : 0.005
+	Rendering step-size   : 0.02
+	Environment step-size : 0.02
+2026-10-17 14:30:42 [8,746ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-10-17 14:30:42 [8,746ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-10-17 14:30:42 [8,748ms] [Error] [gpu.foundation.plugin] DriverShaderCacheManager::init() called without a shutdown()!
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 570.181       | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA RTX A6000                 | Yes: 0 |     | 49386   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2230      | f3cc20c6.. |
+|     |                                  |        |     |            | 17        |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | NVIDIA RTX A6000                 | Yes: 1 |     | 49386   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2230      | 0b41e662.. |
+|     |                                  |        |     |            | 65        |            |
+|=============================================================================================|
+| OS: 20.04.6 LTS (Focal Fossa) ubuntu, Version: 20.04.6, Kernel: 5.4.0-216-generic
+| Processor: Intel(R) Core(TM) i9-10900X CPU @ 3.70GHz
+| Cores: 10 | Logical Cores: 20
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 257450 | Free Memory: 31662
+| Total Page/Swap (MB): 8191 | Free Page/Swap: 8177
+|---------------------------------------------------------------------------------------------|
+2026-10-17 14:30:43 [10,004ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-10-17 14:30:43 [10,004ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-10-17 14:30:43 [10,031ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-10-17 14:30:43 [10,031ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-10-17 14:30:43 [10,043ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-10-17 14:30:43 [10,043ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-10-17 14:30:43 [10,052ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-10-17 14:30:43 [10,052ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-10-17 14:30:43 [10,054ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-10-17 14:30:43 [10,054ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-10-17 14:30:43 [10,056ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-10-17 14:30:43 [10,056ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-10-17 14:30:44 [10,570ms] [Warning] [omni.graph.visualization.nodes._impl.extension] No Viewport Window to add omni.graph.visualization.nodes-2.1.1 scene to
+2026-10-17 14:30:45 [11,858ms] [Warning] [omni.usd] Warning: in GetNodeDiscoveryResults at line 136 of /builds/omniverse/usd-ci/USD/pxr/usd/usdShade/shaderDefUtils.cpp -- Unable to resolve info:sourceAsset </UsdPreviewSurface.info:mdl:sourceAsset> with value @UsdPreviewSurface.mdl@.
+
+2026-10-17 14:30:45 [11,858ms] [Warning] [omni.usd] Warning: in GetNodeDiscoveryResults at line 136 of /builds/omniverse/usd-ci/USD/pxr/usd/usdShade/shaderDefUtils.cpp -- Unable to resolve info:sourceAsset </UsdUVTexture.info:mdl:sourceAsset> with value @UsdPreviewSurface.mdl@.
+
+2026-10-17 14:30:45 [11,858ms] [Warning] [omni.usd] Warning: in GetNodeDiscoveryResults at line 136 of /builds/omniverse/usd-ci/USD/pxr/usd/usdShade/shaderDefUtils.cpp -- Unable to resolve info:sourceAsset </UsdPrimvarReader_float.info:mdl:sourceAsset> with value @UsdPreviewSurface.mdl@.
+
+2026-10-17 14:30:45 [11,859ms] [Warning] [omni.usd] Warning: in GetNodeDiscoveryResults at line 136 of /builds/omniverse/usd-ci/USD/pxr/usd/usdShade/shaderDefUtils.cpp -- Unable to resolve info:sourceAsset </UsdPrimvarReader_float2.info:mdl:sourceAsset> with value @UsdPreviewSurface.mdl@.
+
+2026-10-17 14:30:45 [11,859ms] [Warning] [omni.usd] Warning: in GetNodeDiscoveryResults at line 136 of /builds/omniverse/usd-ci/USD/pxr/usd/usdShade/shaderDefUtils.cpp -- Unable to resolve info:sourceAsset </UsdPrimvarReader_float3.info:mdl:sourceAsset> with value @UsdPreviewSurface.mdl@.
+
+2026-10-17 14:30:45 [11,859ms] [Warning] [omni.usd] Warning: in GetNodeDiscoveryResults at line 136 of /builds/omniverse/usd-ci/USD/pxr/usd/usdShade/shaderDefUtils.cpp -- Unable to resolve info:sourceAsset </UsdPrimvarReader_float4.info:mdl:sourceAsset> with value @UsdPreviewSurface.mdl@.
+
+2026-10-17 14:30:45 [11,859ms] [Warning] [omni.usd] Warning: in GetNodeDiscoveryResults at line 136 of /builds/omniverse/usd-ci/USD/pxr/usd/usdShade/shaderDefUtils.cpp -- Unable to resolve info:sourceAsset </UsdPrimvarReader_int.info:mdl:sourceAsset> with value @UsdPreviewSurface.mdl@.
+
+2026-10-17 14:30:45 [11,859ms] [Warning] [omni.usd] Warning: in GetNodeDiscoveryResults at line 136 of /builds/omniverse/usd-ci/USD/pxr/usd/usdShade/shaderDefUtils.cpp -- Unable to resolve info:sourceAsset </UsdPrimvarReader_string.info:mdl:sourceAsset> with value @UsdPreviewSurface.mdl@.
+
+2026-10-17 14:30:45 [11,859ms] [Warning] [omni.usd] Warning: in GetNodeDiscoveryResults at line 136 of /builds/omniverse/usd-ci/USD/pxr/usd/usdShade/shaderDefUtils.cpp -- Unable to resolve info:sourceAsset </UsdPrimvarReader_normal.info:mdl:sourceAsset> with value @UsdPreviewSurface.mdl@.
+
+2026-10-17 14:30:45 [11,859ms] [Warning] [omni.usd] Warning: in GetNodeDiscoveryResults at line 136 of /builds/omniverse/usd-ci/USD/pxr/usd/usdShade/shaderDefUtils.cpp -- Unable to resolve info:sourceAsset </UsdPrimvarReader_point.info:mdl:sourceAsset> with value @UsdPreviewSurface.mdl@.
+
+2026-10-17 14:30:45 [11,859ms] [Warning] [omni.usd] Warning: in GetNodeDiscoveryResults at line 136 of /builds/omniverse/usd-ci/USD/pxr/usd/usdShade/shaderDefUtils.cpp -- Unable to resolve info:sourceAsset </UsdPrimvarReader_vector.info:mdl:sourceAsset> with value @UsdPreviewSurface.mdl@.
+
+2026-10-17 14:30:45 [11,860ms] [Warning] [omni.usd] Warning: in GetNodeDiscoveryResults at line 136 of /builds/omniverse/usd-ci/USD/pxr/usd/usdShade/shaderDefUtils.cpp -- Unable to resolve info:sourceAsset </UsdPrimvarReader_matrix.info:mdl:sourceAsset> with value @UsdPreviewSurface.mdl@.
+
+2026-10-17 14:30:45 [11,860ms] [Warning] [omni.usd] Warning: in GetNodeDiscoveryResults at line 136 of /builds/omniverse/usd-ci/USD/pxr/usd/usdShade/shaderDefUtils.cpp -- Unable to resolve info:sourceAsset </UsdTransform2d.info:mdl:sourceAsset> with value @UsdPreviewSurface.mdl@.
+
+[INFO]: Time taken for scene creation : 3.212444 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 32
+	Environment spacing   : 2.5
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 0.499252 seconds
+[Preload] Loading 2 new motion files into memory (device=cuda:0) ...
+[Preload] |####################--------------------|  50.0% (1/2) @ 351.05 files/s[Preload] |########################################| 100.0% (2/2) @ 341.35 files/s
+[Preload] Built global tensors for 6 attributes (total_steps=298, device=cuda:0)
+[Curriculum] Loaded 2 files across levels: {1: 1, 2: 1}
+[Curriculum] Pre-loading all 2 curriculum files (including mocap)...
+[Preload] Built global tensors for 6 attributes (total_steps=149, device=cuda:0)
+[Curriculum] Rebuilt file list: 2 -> 1 files (level 1)
+[Curriculum] Initialized at level 1
+[INFO] Command Manager:  <CommandManager> contains 1 active terms.
++--------------------------------+
+|      Active Command Terms      |
++-------+--------+---------------+
+| Index | Name   |      Type     |
++-------+--------+---------------+
+|   0   | motion | MotionCommand |
++-------+--------+---------------+
+
+[INFO] Event Manager:  <EventManager> contains 2 active terms.
++---------------------------------------+
+| Active Event Terms in Mode: 'startup' |
++---------+-----------------------------+
+|  Index  | Name                        |
++---------+-----------------------------+
+|    0    | physics_material            |
+|    1    | add_joint_default_pos       |
+|    2    | base_com                    |
++---------+-----------------------------+
++----------------------------------------------+
+|    Active Event Terms in Mode: 'interval'    |
++-------+------------+-------------------------+
+| Index | Name       | Interval time range (s) |
++-------+------------+-------------------------+
+|   0   | push_robot |        (1.0, 3.0)       |
++-------+------------+-------------------------+
+
+[INFO] Recorder Manager:  <RecorderManager> contains 0 active terms.
++---------------------+
+| Active Recorder Terms |
++-----------+---------+
+|   Index   | Name    |
++-----------+---------+
++-----------+---------+
+
+[INFO] Action Manager:  <ActionManager> contains 1 active terms.
++------------------------------------+
+|  Active Action Terms (shape: 29)   |
++--------+-------------+-------------+
+| Index  | Name        |   Dimension |
++--------+-------------+-------------+
+|   0    | joint_pos   |          29 |
++--------+-------------+-------------+
+
+[INFO] Observation Manager: <ObservationManager> contains 2 groups.
++-----------------------------------------------------------+
+| Active Observation Terms in Group: 'policy' (shape: (616,)) |
++-----------+----------------------------------+------------+
+|   Index   | Name                             |   Shape    |
++-----------+----------------------------------+------------+
+|     0     | command                          |   (520,)   |
+|     1     | motion_anchor_ori_b              |    (6,)    |
+|     2     | base_ang_vel                     |    (3,)    |
+|     3     | joint_pos                        |   (29,)    |
+|     4     | joint_vel                        |   (29,)    |
+|     5     | actions                          |   (29,)    |
++-----------+----------------------------------+------------+
++-----------------------------------------------------------+
+| Active Observation Terms in Group: 'critic' (shape: (748,)) |
++-----------+----------------------------------+------------+
+|   Index   | Name                             |   Shape    |
++-----------+----------------------------------+------------+
+|     0     | command                          |   (520,)   |
+|     1     | motion_anchor_pos_b              |    (3,)    |
+|     2     | motion_anchor_ori_b              |    (6,)    |
+|     3     | body_pos                         |   (42,)    |
+|     4     | body_ori                         |   (84,)    |
+|     5     | base_lin_vel                     |    (3,)    |
+|     6     | base_ang_vel                     |    (3,)    |
+|     7     | joint_pos                        |   (29,)    |
+|     8     | joint_vel                        |   (29,)    |
+|     9     | actions                          |   (29,)    |
++-----------+----------------------------------+------------+
+
+[INFO] Termination Manager:  <TerminationManager> contains 4 active terms.
++--------------------------------+
+|    Active Termination Terms    |
++-------+-------------+----------+
+| Index | Name        | Time Out |
++-------+-------------+----------+
+|   0   | time_out    |   True   |
+|   1   | anchor_pos  |  False   |
+|   2   | anchor_ori  |  False   |
+|   3   | ee_body_pos |  False   |
++-------+-------------+----------+
+
+[INFO] Reward Manager:  <RewardManager> contains 9 active terms.
++-------------------------------------------+
+|            Active Reward Terms            |
++-------+--------------------------+--------+
+| Index | Name                     | Weight |
++-------+--------------------------+--------+
+|   0   | motion_global_anchor_pos |    0.5 |
+|   1   | motion_global_anchor_ori |    0.5 |
+|   2   | motion_body_pos          |    1.0 |
+|   3   | motion_body_ori          |    1.0 |
+|   4   | motion_body_lin_vel      |    1.0 |
+|   5   | motion_body_ang_vel      |    1.0 |
+|   6   | action_rate_l2           |   -0.1 |
+|   7   | joint_limit              |  -10.0 |
+|   8   | undesired_contacts       |   -0.1 |
++-------+--------------------------+--------+
+
+[INFO] Curriculum Manager:  <CurriculumManager> contains 0 active terms.
++----------------------+
+| Active Curriculum Terms |
++-----------+----------+
+|   Index   | Name     |
++-----------+----------+
++-----------+----------+
+
+[INFO]: Completed setting up the environment...
+[Reproduction] Verified joint/body order and 50 Hz timing for 2 references.
+[MoEActorCritic] experts=12, expert_dims=[512, 256], gate_input_dim=128, top_k=3, temperature=0.5, candidate_M=10, use_zt_gate=True, phase_b=False
+[MoE] Auto-detected MoEActorCritic, upgraded PPO -> MoEPPO
+
+[Curriculum Param Boost] Level 0 -> 1
+[Curriculum Param Boost] learning_rate: 0.000010 -> 0.001000 (reset to initial)
+[Curriculum Param Boost] desired_kl:    0.0100 -> 0.0100 (no boost)
+[Curriculum Param Boost] entropy_coef:  0.0050 -> 0.0050 (no boost)
+################################################################################
+                        [1m Learning iteration 0/4 [0m                        
+
+                       Computation: 157 steps/s (collection: 4.566s, learning 0.297s)
+             Mean action noise std: 1.00
+                   Mean value loss: 1.3473
+               Mean surrogate loss: 0.3466
+                 Mean entropy loss: 41.1455
+                 Mean moe_aux loss: 0.0000
+                       Mean reward: -0.46
+               Mean episode length: 6.29
+Episode_Reward/motion_global_anchor_pos: 0.0050
+Episode_Reward/motion_global_anchor_ori: 0.0040
+    Episode_Reward/motion_body_pos: 0.0089
+    Episode_Reward/motion_body_ori: 0.0020
+Episode_Reward/motion_body_lin_vel: 0.0004
+Episode_Reward/motion_body_ang_vel: 0.0000
+     Episode_Reward/action_rate_l2: -0.0565
+        Episode_Reward/joint_limit: -0.0020
+ Episode_Reward/undesired_contacts: -0.0013
+   Metrics/motion/error_anchor_pos: 0.0635
+   Metrics/motion/error_anchor_rot: 0.2038
+Metrics/motion/error_anchor_lin_vel: 0.6516
+Metrics/motion/error_anchor_ang_vel: 2.5253
+     Metrics/motion/error_body_pos: 0.0957
+     Metrics/motion/error_body_rot: 0.6948
+    Metrics/motion/error_joint_pos: 2.3623
+    Metrics/motion/error_joint_vel: 26.8039
+   Metrics/motion/sampling_entropy: 0.0000
+ Metrics/motion/sampling_top1_prob: 1.0000
+  Metrics/motion/sampling_top1_bin: 0.0000
+        Metrics/motion/pfail_total: 0.8333
+      Episode_Termination/time_out: 0.0000
+    Episode_Termination/anchor_pos: 0.0000
+    Episode_Termination/anchor_ori: 0.0000
+   Episode_Termination/ee_body_pos: 9.7917
+--------------------------------------------------------------------------------
+                   Total timesteps: 768
+                    Iteration time: 4.86s
+                      Time elapsed: 00:00:04
+                               ETA: 00:00:19
+
+Could not find git repository in /data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/kit/python/lib/python3.10/site-packages/rsl_rl/__init__.py. Skipping.
+Could not find git repository in /data/code/ouyanghao/oyh/phygile-reproduction-20261017/cache/closed_loop_upstream/scripts/rsl_rl/train.py. Skipping.
+################################################################################
+                        [1m Learning iteration 1/4 [0m                        
+
+                       Computation: 521 steps/s (collection: 1.264s, learning 0.209s)
+             Mean action noise std: 1.00
+                   Mean value loss: 1.5602
+               Mean surrogate loss: 0.2507
+                 Mean entropy loss: 41.1559
+                 Mean moe_aux loss: 0.0000
+                       Mean reward: -0.54
+               Mean episode length: 5.84
+Episode_Reward/motion_global_anchor_pos: 0.0055
+Episode_Reward/motion_global_anchor_ori: 0.0043
+    Episode_Reward/motion_body_pos: 0.0101
+    Episode_Reward/motion_body_ori: 0.0021
+Episode_Reward/motion_body_lin_vel: 0.0003
+Episode_Reward/motion_body_ang_vel: 0.0000
+     Episode_Reward/action_rate_l2: -0.0710
+        Episode_Reward/joint_limit: -0.0029
+ Episode_Reward/undesired_contacts: -0.0014
+   Metrics/motion/error_anchor_pos: 0.0681
+   Metrics/motion/error_anchor_rot: 0.2504
+Metrics/motion/error_anchor_lin_vel: 0.7716
+Metrics/motion/error_anchor_ang_vel: 3.6019
+     Metrics/motion/error_body_pos: 0.1115
+     Metrics/motion/error_body_rot: 0.8052
+    Metrics/motion/error_joint_pos: 2.6798
+    Metrics/motion/error_joint_vel: 32.7280
+   Metrics/motion/sampling_entropy: 0.0000
+ Metrics/motion/sampling_top1_prob: 1.0000
+  Metrics/motion/sampling_top1_bin: 0.0000
+        Metrics/motion/pfail_total: 1.0000
+ Metrics/motion/error_body_lin_vel: 2.0095
+ Metrics/motion/error_body_ang_vel: 9.6882
+      Episode_Termination/time_out: 0.0000
+    Episode_Termination/anchor_pos: 0.0000
+    Episode_Termination/anchor_ori: 0.0000
+   Episode_Termination/ee_body_pos: 5.5833
+--------------------------------------------------------------------------------
+                   Total timesteps: 1536
+                    Iteration time: 1.47s
+                      Time elapsed: 00:00:06
+                               ETA: 00:00:09
+
+################################################################################
+                        [1m Learning iteration 2/4 [0m                        
+
+                       Computation: 527 steps/s (collection: 1.264s, learning 0.192s)
+             Mean action noise std: 1.00
+                   Mean value loss: 0.6465
+               Mean surrogate loss: -0.0331
+                 Mean entropy loss: 41.1564
+                 Mean moe_aux loss: 0.0000
+                       Mean reward: -0.48
+               Mean episode length: 5.76
+Episode_Reward/motion_global_anchor_pos: 0.0053
+Episode_Reward/motion_global_anchor_ori: 0.0043
+    Episode_Reward/motion_body_pos: 0.0099
+    Episode_Reward/motion_body_ori: 0.0022
+Episode_Reward/motion_body_lin_vel: 0.0005
+Episode_Reward/motion_body_ang_vel: 0.0000
+     Episode_Reward/action_rate_l2: -0.0668
+        Episode_Reward/joint_limit: -0.0024
+ Episode_Reward/undesired_contacts: -0.0015
+   Metrics/motion/error_anchor_pos: 0.0695
+   Metrics/motion/error_anchor_rot: 0.2195
+Metrics/motion/error_anchor_lin_vel: 0.8039
+Metrics/motion/error_anchor_ang_vel: 3.2785
+     Metrics/motion/error_body_pos: 0.1063
+     Metrics/motion/error_body_rot: 0.7695
+    Metrics/motion/error_joint_pos: 2.6491
+    Metrics/motion/error_joint_vel: 33.5865
+   Metrics/motion/sampling_entropy: 0.0000
+ Metrics/motion/sampling_top1_prob: 1.0000
+  Metrics/motion/sampling_top1_bin: 0.0000
+        Metrics/motion/pfail_total: 1.0000
+ Metrics/motion/error_body_lin_vel: 2.1003
+ Metrics/motion/error_body_ang_vel: 9.9486
+      Episode_Termination/time_out: 0.0000
+    Episode_Termination/anchor_pos: 0.0000
+    Episode_Termination/anchor_ori: 0.0000
+   Episode_Termination/ee_body_pos: 5.1667
+--------------------------------------------------------------------------------
+                   Total timesteps: 2304
+                    Iteration time: 1.46s
+                      Time elapsed: 00:00:07
+                               ETA: 00:00:05
+
+PHYGILE_INDEPENDENT_CURRICULUM_DECISION {"promote": false, "reason": "minimum_file_success_below_threshold", "iteration": 3, "old_level": 1, "new_level": 1, "report_sha256": "59fd00be141712b2556f21fda4b09da6fdb9bfc9c560b428f5317bd8d57e805b"}
+################################################################################
+                        [1m Learning iteration 3/4 [0m                        
+
+                       Computation: 515 steps/s (collection: 1.280s, learning 0.209s)
+             Mean action noise std: 1.00
+                   Mean value loss: 0.2806
+               Mean surrogate loss: -0.0238
+                 Mean entropy loss: 41.1555
+                 Mean moe_aux loss: 0.0000
+                       Mean reward: -0.48
+               Mean episode length: 5.85
+Episode_Reward/motion_global_anchor_pos: 0.0053
+Episode_Reward/motion_global_anchor_ori: 0.0041
+    Episode_Reward/motion_body_pos: 0.0100
+    Episode_Reward/motion_body_ori: 0.0023
+Episode_Reward/motion_body_lin_vel: 0.0005
+Episode_Reward/motion_body_ang_vel: 0.0000
+     Episode_Reward/action_rate_l2: -0.0661
+        Episode_Reward/joint_limit: -0.0028
+ Episode_Reward/undesired_contacts: -0.0016
+   Metrics/motion/error_anchor_pos: 0.0713
+   Metrics/motion/error_anchor_rot: 0.2537
+Metrics/motion/error_anchor_lin_vel: 0.7180
+Metrics/motion/error_anchor_ang_vel: 3.1844
+     Metrics/motion/error_body_pos: 0.1074
+     Metrics/motion/error_body_rot: 0.7715
+    Metrics/motion/error_joint_pos: 2.6288
+    Metrics/motion/error_joint_vel: 33.7339
+   Metrics/motion/sampling_entropy: 0.0000
+ Metrics/motion/sampling_top1_prob: 1.0000
+  Metrics/motion/sampling_top1_bin: 0.0000
+        Metrics/motion/pfail_total: 1.0000
+ Metrics/motion/error_body_lin_vel: 1.9869
+ Metrics/motion/error_body_ang_vel: 9.9799
+      Episode_Termination/time_out: 0.0000
+    Episode_Termination/anchor_pos: 0.0000
+    Episode_Termination/anchor_ori: 0.0000
+   Episode_Termination/ee_body_pos: 5.5417
+--------------------------------------------------------------------------------
+                   Total timesteps: 3072
+                    Iteration time: 1.49s
+                      Time elapsed: 00:00:09
+                               ETA: 00:00:02
+

@@ -12,8 +12,8 @@
 |Checkpoint finite-state / expert change verification|DONE|results/checkpoint_verification.json; finite parameters; only expert 0 changed|
 |Reliable general tracking baseline|NOT_ESTABLISHED|2000-iteration test success 26/128 (20.3125%); one source group and one training seed|
 |Full two-stage GMT|NOT_RUN|Matched curriculum data/labels and training budget not available for this run|
-|Robot-native text diffusion generator training|NOT_RUN_ON_REAL_MOTION_DATA|Independent core and training entrypoint exist; paired data and codec/mapping remain unavailable|
-|Physics-prefix closed-loop adaptation|NOT_RUN|Full official implementation/inputs not available|
+|Robot-native text diffusion generator training|NOT_RUN_ON_REAL_MOTION_DATA|Independent core, codec and training entrypoint exist; real paired data remain unavailable; author codec conventions unverified|
+|Physics-prefix closed-loop PPO adaptation|NOT_RUN|Frozen-policy execution interface tested separately; real generated-distribution PPO updates not performed|
 |G1 hardware deployment|OUT_OF_SCOPE|User requested simulation only|
 |500-to-2000 continuation|DONE|results/continuation_2000/pipeline.json; 1500 extra PPO training iterations; fixed final checkpoint|
 |Fixed 2000-iteration evaluation|DONE|results/continuation_2000/evaluation_suite.json; 8 combinations; same first-episode protocol|
@@ -23,7 +23,16 @@
 |Independent training entrypoint|DONE_PLUMBING_CHECK_ONLY|results/reimplementation_training_witness/verification.json; 2 CPU updates on explicitly synthetic tensors and a reduced model|
 |Curriculum integrity repairs|DONE_REGRESSION_ONLY|results/prefix_integrity/document_run/regression/verification.json; 12 software checks; unsafe evaluators disabled; full curriculum not validated|
 |Repaired-source simulation training check|DONE_RUNTIME_ONLY|results/prefix_integrity/document_run/one_ppo/receipt.json; separate 32-env × 1-PPO diagnostic, 768 transitions; curriculum off|
-|Transactional physics-prefix orchestration|DONE_SYNTHETIC_INTERFACE_ONLY|reimplementation/physics_prefix.py; two-window synthetic rollback/commit tests; no real simulator snapshot adapter yet|
+|Transactional physics-prefix orchestration|DONE_ENGINEERING_SIMULATION_INTERFACE|results/completion_v1/document_run/closed_loop/output/verification.json; actual diffusion, simulation, rejection and fresh-process history replay; generator random/unconditional, PPO adaptation not run|
 |Fresh pre-reset feedback capture and acceptance gate|DONE_SIMULATION_DIAGNOSTIC_ONLY|results/prefix_integrity/document_run/feedback_gate/verification.json; 1 training clip, 32 first episodes, 0/32 accepted 50-frame windows at 0.1 m; no generated candidate, no closed-loop PPO|
 
 No NOT_RUN or IN_PROGRESS item may be described as completed reproduction.
+
+|New independent component|Status|Evidence / boundary|
+|---|---|---|
+|262D semantic URDF codec|DONE_CONSISTENCY_ONLY|results/completion_v1/document_run/codec/output/verification.json; 24 clips, train-only normalization; independent conventions, not author exactness|
+|Pre-reset curriculum evaluation service|DONE_BOUNDED_SIMULATION|results/completion_v1/document_run/curriculum/output/evaluation.json; 2 fixed files × 8 first episodes; failures and censoring retained|
+|Active MoE mask reconstruction|DONE_COMPATIBILITY_ONLY|results/completion_v1/document_run/expert_mask/output/evaluation.json; 2-expert mask, 2 attempts; second expert untrained, no performance claim|
+|Actual curriculum training invocation|DONE_INTEGRATION_FIXTURE_ONLY|results/completion_v1/document_run/training_hook/output/verification.json; 32 env, 4 PPO iterations, arbitrary test IDs not research labels; level held|
+|Actual accepted-state feedback and history replay|DONE_SHORT_PROXY_ONLY|results/completion_v1/document_run/closed_loop/output/verification.json; 2 × 1-frame held initialization windows; not one-second learned generation|
+|Nominal standing suffix and deterministic replay repair|DONE_ENGINEERING_BOUNDARY_ONLY|results/completion_v1/closure_recovery/verification.json; exact suffix preservation, 10-frame zero-difference replay; prior closure_final failure retained; no stable-standing performance claim|

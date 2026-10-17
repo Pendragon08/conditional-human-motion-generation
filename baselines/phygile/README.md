@@ -1,8 +1,9 @@
-# PhyGile 部分复现：公开 GMT 与自实现生成核心
+# PhyGile 部分复现：GMT、262D 与真实仿真接口
 
 **状态：部分复现。** 此目录保存固定版本官方代码、仿真适配、实际运行日志及小规模结果。完整文本扩散生成和 physics-prefix 闭环组件未在检查的官方仓库中找到；本目录不能替代完整 PhyGile，也不能作为论文主表数值已复现的证明。
 
-- [最新课程修复与物理前缀推进报告](reports/PhyGile课程修复与物理前缀推进报告.md)
+- [最新课程评估、262D 与真实闭环接口报告](reports/PhyGile课程评估与262D闭环补全报告.md)
+- [上一轮课程修复与物理前缀报告](reports/PhyGile课程修复与物理前缀推进报告.md)
 - [2000 轮 PPO 训练与自实现生成核心报告](reports/PhyGile续训与生成核心报告.md)
 - [上一轮 500 轮 PPO 训练报告](reports/PhyGile复现实验报告.md)
 - [范围、缺失材料与论文用途](docs/reproduction_scope.md)
@@ -12,13 +13,13 @@
 
 ## 本轮新增交付
 
-新增独立课程完整性修复及物理前缀状态机，具体边界见 [本轮报告](reports/PhyGile课程修复与物理前缀推进报告.md) 和 [运行约定](docs/prefix_integrity_invocation.md)。不可靠的公开课程评估入口已禁用，完整课程训练仍未开展。新仿真记录仅用于单片段反馈接受判断；在线生成—执行多段闭环和闭环 PPO 仍待完成。
+新增独立课程评估服务和训练调用、版本化 262D 编解码，以及实际扩散采样—G1 跟踪—拒绝/重放接口。完整运行约定见 [completion_invocation](docs/completion_invocation.md)，站立边界与确定性修复见 [terminal_recovery_invocation](docs/terminal_recovery_invocation.md)。先前失败的末端补测原样保留。不可靠的旧评估入口保持禁用；完整课程训练未开展。生成器为随机权重工程诊断，闭环 PPO 未执行，不能当作语义生成能力。
 
 公开跟踪器从固定 500 轮 PPO 检查点续训至累计 2000 轮，并完成 8 组固定最终检查点评估。测试完整片段成功为 **26/128（20.31%）**，平均持续 1.501 秒；测试仅一个来源组、一个训练种子，不是论文主表复现。复跑见 [续训协议](docs/continuation_2000.md)，大文件见 [2000 轮 PPO 训练附件](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/phygile-tracking-2000updates-20261017)。
 
-经用户选择，缺失生成部分按论文独立编写，保存于 [reimplementation](reimplementation/README.md)，与 `upstream` 官方代码分开。已通过 12 项数值检查、真实冻结 DistilBERT 的接口检查，以及缩小网络/人工张量的两次更新流程检查。已提供输入校验和训练入口；完整动作生成器没有用真实数据训练，physics-prefix 仿真闭环尚未实现。示例训练参数为本实现提议，不能当作作者设置。
+经用户选择，缺失生成部分按论文独立编写，保存于 [reimplementation](reimplementation/README.md)，与 `upstream` 官方代码分开。先前的数值、真实 DistilBERT 与人工张量训练入口检查保留；本轮增加真实机器人编解码和仿真接口。完整动作生成器没有用真实配对数据训练。示例训练参数与未公开的数值约定均为本实现选择，不能当作作者设置。
 
-用户目前暂无配套 HumanML3D/G1/SMPL 材料，因此没有以无配对文本的武术片段代替完整生成训练。生成数据、特征编解码/语义映射、ASFO 镜像和正式生成评估仍待补齐。本轮完整报告保留成功率、终止前误差、存活曲线、源码/输入哈希和两类独立审查。
+用户目前暂无配套 HumanML3D/G1/SMPL 材料，因此没有以无配对文本的武术片段代替完整生成训练。已有独立编解码，作者一致性尚待确认；配对数据、ASFO 镜像、完整课程训练、真实生成分布上的 PPO 适配和正式生成评估仍待补齐。原始记录、代码/输入哈希与独立审查均保留。
 
 计数更正与参考来源见 [更正说明](docs/accounting_terms_erratum.md)：旧 updates 字段表示 PPO 轮次，每轮 20 次 Adam 步进，累计 40,000 次；外部运动参考不是实测机器人真值。
 
@@ -65,7 +66,7 @@ bash scripts/run_isaac.sh scripts/summarize_results.py
 
 ## 完整实验准备
 
-`prepare_full_config.py` 可把公开 Phase A/B 配置中的机器路径替换为提供的数据与标签路径。该脚本只做路径准备，不证明数据与论文等价，也不自动启动大规模训练。Phase B 需要合适的 Phase A 检查点；完整 PhyGile 还缺生成器、权重及前缀闭环实现。详见范围说明。
+`prepare_full_config.py` 可把公开 Phase A/B 配置中的机器路径替换为提供的数据与标签路径。该脚本只做路径准备，不证明数据与论文等价，也不自动启动大规模训练。Phase B 需要合适的 Phase A 检查点；完整 PhyGile 还缺真实配对数据、已训练生成器和生成分布上的闭环 PPO 适配。详见范围说明。
 
 ## 许可
 

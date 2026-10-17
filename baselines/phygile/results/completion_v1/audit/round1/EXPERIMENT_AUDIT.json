@@ -1,0 +1,233 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "overall_verdict": "WARN",
+  "integrity_status": "qualified_engineering_evidence",
+  "reason_code": "nonblocking_documentation_gap_and_dead_metric",
+  "summary": "All completion_v1 manifest inputs, raw results, receipts, current/archived executed source, checkpoint/provenance records, and release archives were audited directly. Reported engineering metrics and identity/rollback/terminal invariants reproduce. No model-derived truth, prediction-normalized score, phantom completion, invalid rejected commit, or source mismatch was found. WARN reflects one release-checksum documentation gap and one dead/non-gating MPJVE path.",
+  "checks": {
+    "A": {
+      "status": "PASS",
+      "finding": "Provenance and labels are explicit; generated candidates are not independent truth; held pose is self_supervised_proxy; terminal target is nominal, not author-verified.",
+      "evidence": [
+        "results/data_provenance.json:12-14,31-33,93-95,1046",
+        "results/completion_v1/document_run/curriculum/output/evaluation.json:5-7",
+        "reimplementation/isaac_prefix_adapter.py:74-90",
+        "results/completion_v1/closure_recovery/output/verification.json:4-16,109-114,417-420"
+      ]
+    },
+    "B": {
+      "status": "PASS",
+      "finding": "Raw units and denominators are valid; full-clip success is strict; raw arrays exist; normalization is train-only and independently reproduces.",
+      "evidence": [
+        "cache/completion_audit_canonical/cache/closed_loop_evaluate.py:100-132",
+        "reimplementation/curriculum_evaluator.py:46-64",
+        "reimplementation/physics_prefix.py:75-120",
+        "results/completion_v1/document_run/codec/output/verification.json:3-9"
+      ]
+    },
+    "C": {
+      "status": "WARN",
+      "finding": "Claims, numbers, statuses, checkpoint/source identities, and failure/manual-stop distinctions verify. The raw-results tar lacks a completion-level published checksum/size entry.",
+      "evidence": [
+        "results/completion_v1/document_run/curriculum/output/evaluation.json:20-23,40-43,57-60",
+        "results/completion_v1/checkpoint_accounting.json:16-18,34-36",
+        "results/completion_v1/closure_final/run/receipt.json:200-204",
+        "results/completion_v1/closure_recovery/run/receipt.json:200-204",
+        "results/completion_v1/executed_source_verification.json:5-9,72-76",
+        "reports/PhyGile课程评估与262D闭环补全报告.md:68"
+      ]
+    },
+    "D": {
+      "status": "WARN",
+      "finding": "Post-physics/pre-reset capture, active masks, rollback, and commit flow are correct. MPJVE is emitted per file but dropped by aggregate/promotion code.",
+      "evidence": [
+        "cache/completion_audit_canonical/cache/closed_loop_evaluate.py:80-132",
+        "reimplementation/isaac_prefix_adapter.py:95-140",
+        "reimplementation/physics_prefix.py:130-179",
+        "reimplementation/curriculum_evaluator.py:46-64,84-102",
+        "results/completion_v1/replay_determinism_recovery/comparison.json:2-20"
+      ]
+    },
+    "E": {
+      "status": "PASS",
+      "finding": "The report correctly limits scope. Seed 2026, files, budgets, 0 PPO adaptation, 0/2 accepted long candidates, zero commits, terminal semantics, and separate failed/recovery receipts match.",
+      "evidence": [
+        "reports/PhyGile课程评估与262D闭环补全报告.md:1-13,54-60",
+        "results/completion_v1/document_run/pipeline.json:78-98",
+        "results/completion_v1/closure_recovery/output/verification.json:18-63",
+        "results/completion_v1/closure_recovery/verification.json:2-5"
+      ]
+    },
+    "F": {
+      "status": "PASS",
+      "finding": "Simulation/proxy classifications are consistent, and representative raw metrics plus codec, identity, rollback, and terminal invariants independently reproduce.",
+      "evidence": [
+        "results/completion_v1/document_run/curriculum/output/evaluation.json:2-74",
+        "results/completion_v1/document_run/expert_mask/output/evaluation.json:2-39",
+        "results/completion_v1/document_run/codec/output/verification.json:2-9,444-446",
+        "results/completion_v1/closure_recovery/output/verification.json:24-63,101-150",
+        "results/completion_v1/replay_determinism_recovery/comparison.json:2-20"
+      ]
+    }
+  },
+  "claims": [
+    {
+      "claim": "curriculum tracking metrics",
+      "status": "supported_engineering_only",
+      "impact": "two named files, eight first episodes/file, one seed/checkpoint; no real-world or paper-scale inference"
+    },
+    {
+      "claim": "262D codec",
+      "status": "supported_self_supervised_proxy",
+      "impact": "round-trip/FK consistency only; author equivalence unsupported"
+    },
+    {
+      "claim": "untrained diffusion-to-Isaac rollback/rejection interface",
+      "status": "supported_engineering_only",
+      "impact": "fixed seed/config; 0/2 long candidates accepted and zero committed frames"
+    },
+    {
+      "claim": "generated-motion or terminal-standing success",
+      "status": "unsupported_and_not_claimed",
+      "impact": "artifacts show failure, not success"
+    },
+    {
+      "claim": "full PhyGile/semantic quality/learned adaptation/paper or hardware performance",
+      "status": "unsupported_and_explicitly_excluded",
+      "impact": "must not be inferred from completion_v1"
+    }
+  ],
+  "representative_recomputations": {
+    "curriculum_train": {
+      "success": "0/8",
+      "mpjpe_m": 0.1672734022140503,
+      "mpjae_rad": 0.3191640377044678
+    },
+    "curriculum_test": {
+      "success": "3/8",
+      "mpjpe_m": 0.36546245217323303,
+      "mpjae_rad": 0.1520146280527115
+    },
+    "curriculum_equal_file": {
+      "success_fraction": 0.1875,
+      "mpjpe_m": 0.26636792719364166,
+      "mpjae_rad": 0.23558933287858963
+    },
+    "expert_mask": {
+      "success": "0/2",
+      "mpjpe_m": 0.19820046424865723,
+      "mpjae_rad": 0.35598164796829224
+    },
+    "training_hook": {
+      "success": "0/2",
+      "mpjpe_m": 0.12251029163599014,
+      "mpjae_rad": 0.23196259140968323
+    },
+    "codec": {
+      "sequences": 24,
+      "max_position_error_m": 6.593780632613289e-9,
+      "max_joint_error_rad": 4.127457264857526e-8,
+      "max_fk_error_m": 9.62942522164667e-7,
+      "normalization_mean_std_delta": 0
+    },
+    "recovery": {
+      "accepted": 0,
+      "rejected": 2,
+      "committed_frames": 0,
+      "candidate_mpjpe_m": [
+        0.42900891023804066,
+        0.4309579676126371
+      ],
+      "maximum_replay_delta": 0
+    }
+  },
+  "warnings": [
+    {
+      "code": "completion_raw_archive_checksum_not_published",
+      "severity": "nonblocking",
+      "detail": "9,533,668 bytes; SHA-256 1c52bd6403bd72b5399395754977e0296306124b239c0dceabc450d00b82da13"
+    },
+    {
+      "code": "mpjve_computed_but_not_aggregated_or_gated",
+      "severity": "nonblocking",
+      "detail": "computed at closed_loop_evaluate.py:117-132; dropped/unused at curriculum_evaluator.py:46-64,84-102"
+    }
+  ],
+  "blocking_defects": [],
+  "action_items": [
+    "Publish a completion checksum/size manifest for all three completion archives.",
+    "Aggregate MPJVE and define its promotion role, or label/remove it as diagnostic.",
+    "Preserve engineering-only/proxy qualifiers and obtain a different-family review before final acceptance."
+  ],
+  "audited_input_hashes": {
+    "reimplementation/codec262.py": "e95cc8f8f782cc0577819e862328e814a4d8e8b17bea5bee0efa46b6a194606e",
+    "reimplementation/curriculum_evaluator.py": "d31dcebd65d1982e1b6637abf43d1824eaafadc22949f7dda0b9a0fa3ed089ce",
+    "reimplementation/isaac_prefix_adapter.py": "9d58115d0d571299a8793962e6623916ae73a3798f71236c048117ddf76bc89c",
+    "reimplementation/replay_prefix_adapter.py": "9d93690397d40fa0cb190263f9756a64d4926f591ee0c7fc981828099678b82c",
+    "reimplementation/diffusion_proposer.py": "92bff21474e8001fa63c22b9a777ae315c86ed2d499f4905b6da3d93baf5fc81",
+    "reimplementation/physics_prefix.py": "a8d08d3cd7071b65924ec4204b7ce3814dee8e650f267b26f743e779b3011057",
+    "reimplementation/terminal_reference.py": "e8228145cd5d85e15bef4b8fe1143592a4501c64b25c9c71077be1322211cb6f",
+    "reimplementation/test_completion.py": "122e093c09cb309589b44cafe3a87ee3c77e5d3ac53a519974dc188f422c1911",
+    "reimplementation/train.py": "a03c92832fa70ab11c25f1dde362fffbdb26efc618241e5f655806a90c0fbbda",
+    "reimplementation/model.py": "76eb8baa876950a34d4b23b6fa92627515bf38072c9cadf35fbf8789a13e70ab",
+    "reimplementation/diffusion.py": "930a2cdb1967119dd51813c6838f58c062fc7d46447239b20cc15f4b638efc4c",
+    "scripts/validate_codec262.py": "cc36618248f0660667b0506315f5d0efab731311b1bb1f62dc77e6e32445ee65",
+    "scripts/curriculum_evaluate.py": "e4a79f369b5bc72ddb8ae098b78ebc38cec8ddf5476681ffd64a4c47f5726b48",
+    "scripts/prepare_completion_upstream.py": "0ebaa1e52841469d96d477c2ec50877d50999277ec3285732a74f3980406cab7",
+    "scripts/train_with_curriculum_evaluator.py": "9479d5ec2f958e0caa728849024d66f6623cf4af8442809a56fadbd5054771e9",
+    "scripts/validate_curriculum_training.py": "822df4d42b9886dea3cb0b95728ef603b1ab2782bb1ebc146b1b2f9344097535",
+    "scripts/replay_physics_worker.py": "19be3b6ae3ae3f512ab46b3b8ddc751bc7c0a760c87cf4824ae9b24a3612efdb",
+    "scripts/run_generated_closed_loop.py": "c91fa61ea0a2310973d8471c835dadf4d725e2637be4a8ced734cfc241bbf90f",
+    "scripts/validate_completion.py": "0818842401422c4dcf95288796a698ac51afb6bf5882bbfbe6618122d45a3ae9",
+    "scripts/validate_terminal_boundary.py": "96956f412ff41bf88e05abf3e8ec482d1bc965d03d5dca17f402b46213fbb585",
+    "scripts/run_prefix_recorded.py": "c4a7624d4cbe827a1cb3c7691bd5e8442a7024dfbf1ec5b62bf3db0a63c32aa3",
+    "scripts/evaluate_prefix_feedback.py": "b428bc18488302178f2a35b7b29430163c1e0cc3adb4962e115bd659380a8c9c",
+    "scripts/build_completion_report.py": "f1b39e7ede9c6db3c9f8077dbfea61574f22649f6771b06a9220686a5008a052",
+    "cache/completion_audit_canonical/cache/closed_loop_evaluate.py": "507dd378c600e4a148a0f71d7194a3664bf2fa817d0742137b470954a924337a",
+    "cache/completion_audit_canonical/cache/closed_loop_upstream/source/whole_body_tracking/whole_body_tracking/utils/my_on_policy_runner.py": "3fe3d5fcb3951a084b5be4d5ed435f61b38d1821964c08294ba1b8f749740b55",
+    "cache/completion_audit_canonical/cache/closed_loop_upstream/COMPLETION_HOOK.json": "0de2b20a6b495e2bf395a3d5e3bd3d80dddbfe069d5c237036fcb35ed5d5d7b8",
+    "configs/g1_codec_skeleton.json": "d2627ab9be14d9dd46fc483b754128e6c8f2515db5b1a274ba1b2b97d9aac6e7",
+    "configs/completion_plan.json": "08ceeec24676e0052c49d99d4cb5421c2bcc28d1f7b81142d57f7407ea96ba4c",
+    "configs/nominal_standing_reference.json": "02a3d0cf0f808dda854309c4f13480bf9470300fa09b3c4b10c36615d1cbe35d",
+    "configs/moe_pilot.yaml": "7a34e2417fc66c9f1894edd7f1720a2eb3243a941126553258e21c4d862b5d5f",
+    "EXPERIMENT_TRACKER.md": "15bbb2b501e05a055d504474fc2334805806fe06126bcf54ebc96f396972cf93",
+    "README.md": "43672fbb059a90f95959234a718f2f40b165b1216c930b27552db91acbee46dd",
+    "docs/reproduction_scope.md": "392ddcd757d351104c9e79a02bbc7bf8d1d7f1b623118699c6b94dba9c2eddc1",
+    "docs/completion_invocation.md": "249be2ed2cf4b4198840dc4203318527638e2c0ae724a5fefd532b4cd00f62af",
+    "docs/terminal_recovery_invocation.md": "0c070dce4ee7fb26556ca66de25bfa8ce6172e1104d55b7ae7c169ffd258faad",
+    "reports/PhyGile课程评估与262D闭环补全报告.md": "976318a36aa0957cba273cc614e1aa7fb57ba40cc326b48bde83b6b88cf6c59d",
+    "results/data_provenance.json": "ec3dd1d75f56f75a5a2d34b250e2dbbec009bece6ccd63200f11a74b65a36f70",
+    "results/completion_v1/document_run/pipeline.json": "0548c72e29f33ae08c7f2bf45e867493610ee3faaca5c96da3e4779ff1c42460",
+    "results/completion_v1/document_run/regression/verification.json": "44dc67542a26e035ee424f97a9f1440d66ca4331a6185f9da5714f2d8556d7ba",
+    "results/completion_v1/document_run/codec/output/verification.json": "5604e2bf9cac0126127c9d3c0e6d2fea6ca75d7f3138e8ff492325aedb2defc5",
+    "results/completion_v1/document_run/curriculum/output/evaluation.json": "896f26a57ef12f49bd9625f1f2018a2a4233b92ba50a763c11669d845a66be4f",
+    "results/completion_v1/document_run/expert_mask/output/evaluation.json": "80974e9d1874bf0dabaa8fde5c63c2f6f4b159fb34f93b0a5ebae0149f766457",
+    "results/completion_v1/document_run/training_hook/output/verification.json": "6642cb651091919c4d7d8ac7292504a10aedd2dfefb67857ec0b4c97e5d29276",
+    "results/completion_v1/document_run/closed_loop/output/verification.json": "e3a87dbfedf42444d8b69c7ecb1c76483e19a4010c3da826e592bf163709eede",
+    "results/completion_v1/closure_recovery/output/verification.json": "d218d655920a605035c65d460c927aea853db73ad2987d981a4872c19c90c3d3",
+    "results/completion_v1/closure_recovery/verification.json": "eeb58787787f79b1e6bfcf93af5239376fd5b4f86bafa702a5e8e8d40c7df491",
+    "results/completion_v1/replay_determinism_recovery/comparison.json": "3f562875acda032c57964f813b6566380ae7e8494af4bba686717e29812f1e1c",
+    "results/completion_v1/checkpoint_accounting.json": "64470be526ff3c0d9e70f53f97d90cc30e6b90101d61d2a26f61f3e563324a50",
+    "results/completion_v1/development_status_erratum.json": "ba9583b997a37d9e4b2d2b2f2833ec83f3c69214de30b7d25b7ed39e5fc003ad",
+    "results/completion_v1/document_witness/report.md": "ca81c91a3dbeeabd98fecbb3bea5b989f90bf7eea17eedb78e59a78aca45018a",
+    "results/completion_v1/terminal_document_witness/report.md": "62e7474c409c6bd7b3529e631ecb65039281bb38a64dde191718b8ea4904eda3",
+    "results/completion_v1/recovery_document_witness/report.md": "7784f20a12b1fe1be020c533563311f93502dcb0d479446a47825fbcd67646fb",
+    "results/completion_v1/transport_initial/source_manifest.json": "c47d56be8473bf7033b99767e3beb43f9d7769902f265ba67ebe1caf025d6056",
+    "results/completion_v1/transport_final/source_manifest.json": "9d57f5b9ec71210c26fcc8796ba17186e7347cabecdf3b096681e0c13bda5833",
+    "results/completion_v1/audit/input_manifest.json": "2263afc7a47e29f8a644c4ef5e98a3e9ee2fa3a1d762e4a240ada04693c606bd",
+    "results/completion_v1/executed_source_verification.json": "30dad2fdb333dcce97bc4bd032a46db70720444a0f17c8e46ed55e50aee27988",
+    "release_assets/phygile_completion_execution_source.tar.gz": "533513d41e3ec97fcaf3bcaef0daad1ba030530ab766d936b5a94b9db2af7db6",
+    "release_assets/phygile_completion_recovery_source.tar.gz": "d947faaeb206462d43af53f78b7a7755cdb9cd68add07ac2974793a85b7bdfda",
+    "release_assets/phygile_completion_raw_results.tar.gz": "1c52bd6403bd72b5399395754977e0296306124b239c0dceabc450d00b82da13",
+    "release_assets/phygile_pilot_inputs.tar.gz": "3cac85f442411af44eebcccb259462e1a9f60f6b9558cf58325830e511cc9acd",
+    "release_assets/phygile_initial_expert_2000updates_seed42.pt": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336"
+  },
+  "generated_at": "2026-10-17T15:19:03.784359Z",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "trace_path": ".aris/traces/experiment-audit/2026-10-17_completion/"
+}

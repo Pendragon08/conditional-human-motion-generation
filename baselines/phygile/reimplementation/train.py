@@ -155,7 +155,9 @@ def train(config_path, output, device):
                         checkpoint = {'model_state_dict':model.state_dict(), 'optimizer_state_dict':optimizer.state_dict(),
                             'optimizer_updates':step,'config':config,'normalization_mean':normalizer.mean,
                             'normalization_std':normalizer.std,'manifest_sha256':record['manifest_sha256'],
-                            'text_encoder_revision':text_provenance['revision'],'purpose':config['purpose']}
+                            'text_encoder_revision':text_provenance['revision'],'purpose':config['purpose'],
+                            'codec_schema':manifest.get('codec_schema'),
+                            'codec_skeleton_sha256':manifest.get('codec_skeleton_sha256')}
                         torch.save(checkpoint, output/f'model_{step:06d}.pt')
                     if step >= config['max_updates']:break
         record['status'] = 'COMPLETED'

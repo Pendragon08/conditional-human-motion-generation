@@ -1,0 +1,345 @@
+{
+  "status": "COMPLETED_ENGINEERING_VALIDATION",
+  "outcome": "REJECTED_WITHOUT_INVALID_COMMIT",
+  "evaluation_type": "simulation_only",
+  "trained_generator": false,
+  "generator": {
+    "backend": "untrained_diffusion_diagnostic",
+    "trained": false,
+    "text_conditioning": "zero/unconditional; no text-to-motion claim",
+    "schedule": "chosen linear 8-step engineering diagnostic",
+    "parameters": 146169702,
+    "normalization_sha256": "6789d03ceb19f3a9f54b6c96b500396e079ded366ef5aa04106f9c6a3cf687af"
+  },
+  "trained_semantic_generation_claim": false,
+  "actual_diffusion_sampling": true,
+  "actual_isaac_physics": true,
+  "automatic_reset_during_candidates": false,
+  "physics_prefix_ppo_adaptation_updates": 0,
+  "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+  "initialization_motion_sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b",
+  "seed": 2026,
+  "chunk_frames": 50,
+  "requested_new_frames": 100,
+  "initial_prefix_sha256": "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+  "committed_new_frames": 0,
+  "committed_prefix_sha256": "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+  "accepted_attempts": 0,
+  "rejected_attempts": 2,
+  "attempts": [
+    {
+      "accepted": false,
+      "reasons": [
+        "incomplete_continuation",
+        "failure_termination",
+        "mpjpe_above_tolerance"
+      ],
+      "expected_frames": 50,
+      "recorded_frames": 1,
+      "mpjpe_m": 0.42651834275938744,
+      "terminal_max_frame_mpjpe_m": null,
+      "candidate_sha256": "0640bbd6a83c1218937d9ea613b9ebb72f35a87406687412f9723b317e6b567e",
+      "execution_sha256": "b3d0163baee0d9c893e573a0c4fe7a393e65a7421fa239ebc6daa976e8ee67cc",
+      "prefix_frames": 1,
+      "attempt": 0,
+      "final": false
+    },
+    {
+      "accepted": false,
+      "reasons": [
+        "incomplete_continuation",
+        "failure_termination",
+        "mpjpe_above_tolerance"
+      ],
+      "expected_frames": 50,
+      "recorded_frames": 1,
+      "mpjpe_m": 0.4283586493344684,
+      "terminal_max_frame_mpjpe_m": null,
+      "candidate_sha256": "014dda4b280e74489b4acd43920bab0259f92f4265575ae21a15bf3c366578d7",
+      "execution_sha256": "bdd1b7fbb662f4b00ef741ac44158f40bfd0503a39b802681bd3fc3835a4be61",
+      "prefix_frames": 1,
+      "attempt": 1,
+      "final": false
+    }
+  ],
+  "proposals": [
+    {
+      "attempt": 0,
+      "final": false,
+      "candidate_sha256": "0640bbd6a83c1218937d9ea613b9ebb72f35a87406687412f9723b317e6b567e",
+      "input_prefix_sha256": "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+      "input_prefix_frames": 1,
+      "new_frames": 50,
+      "network_context_frames": 2,
+      "projection": {
+        "rotation_projection_residual_max": 2.828426890294271,
+        "joint_limit_violations": 992,
+        "ric_redundancy_residual_m": 0.5739798112664924,
+        "projected": true,
+        "root_pose_side_information_required": true
+      },
+      "additional_bound_changed_values": 101
+    },
+    {
+      "attempt": 1,
+      "final": false,
+      "candidate_sha256": "014dda4b280e74489b4acd43920bab0259f92f4265575ae21a15bf3c366578d7",
+      "input_prefix_sha256": "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+      "input_prefix_frames": 1,
+      "new_frames": 50,
+      "network_context_frames": 2,
+      "projection": {
+        "rotation_projection_residual_max": 2.828420151651609,
+        "joint_limit_violations": 983,
+        "ric_redundancy_residual_m": 0.5850813571133008,
+        "projected": true,
+        "root_pose_side_information_required": true
+      },
+      "additional_bound_changed_values": 99
+    }
+  ],
+  "rollback_witness": {
+    "repeated_rollout_frames": 10,
+    "state_max_abs_delta": 0.0,
+    "body_max_abs_delta_m": 0.0,
+    "tolerance": 0.0005,
+    "scope": "same seeded scene replayed in a fresh process; committed histories checked before continuation",
+    "method": "fresh_process_replay; no private PhysX state serialization claim"
+  },
+  "gmt_parameters_unchanged": true,
+  "generator_parameters_unchanged": true,
+  "simulator_invocations": [
+    {
+      "directory": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/development/closed_r7/output/simulator/invocation_000",
+      "command": [
+        "bash",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/scripts/run_isaac.sh",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/scripts/replay_physics_worker.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/development/closed_r7/output/simulator/invocation_000/request.json",
+        "--headless",
+        "--device",
+        "cuda:0"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "COMPLETED",
+        "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+        "request_sha256": "e267d01ec7c07efe2abe0515737d9f4766994ddf5506ab8ade351bc19c26e4b2",
+        "mode": "initialize",
+        "replayed_windows": [],
+        "gmt_parameters_unchanged": true,
+        "source_sha256": {
+          "scripts/replay_physics_worker.py": "73b5aeae17b4cd338e1fc3990ddd5aefdcca9181df6b23440d932c1fc32ad243",
+          "reimplementation/isaac_prefix_adapter.py": "8ac6eed6ae62e31e566095a744c0d3198bdc0647bfa640a9684f6a13230a4292",
+          "reimplementation/replay_prefix_adapter.py": "9d93690397d40fa0cb190263f9756a64d4926f591ee0c7fc981828099678b82c",
+          "reimplementation/physics_prefix.py": "a8d08d3cd7071b65924ec4204b7ce3814dee8e650f267b26f743e779b3011057"
+        }
+      }
+    },
+    {
+      "directory": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/development/closed_r7/output/simulator/invocation_001",
+      "command": [
+        "bash",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/scripts/run_isaac.sh",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/scripts/replay_physics_worker.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/development/closed_r7/output/simulator/invocation_001/request.json",
+        "--headless",
+        "--device",
+        "cuda:0"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "COMPLETED",
+        "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+        "request_sha256": "1267240741c9613321697b130e6e495bab9d3b638fe0d8f2a9e9cfb163892526",
+        "mode": "rollout",
+        "replayed_windows": [],
+        "gmt_parameters_unchanged": true,
+        "source_sha256": {
+          "scripts/replay_physics_worker.py": "73b5aeae17b4cd338e1fc3990ddd5aefdcca9181df6b23440d932c1fc32ad243",
+          "reimplementation/isaac_prefix_adapter.py": "8ac6eed6ae62e31e566095a744c0d3198bdc0647bfa640a9684f6a13230a4292",
+          "reimplementation/replay_prefix_adapter.py": "9d93690397d40fa0cb190263f9756a64d4926f591ee0c7fc981828099678b82c",
+          "reimplementation/physics_prefix.py": "a8d08d3cd7071b65924ec4204b7ce3814dee8e650f267b26f743e779b3011057"
+        }
+      }
+    },
+    {
+      "directory": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/development/closed_r7/output/simulator/invocation_002",
+      "command": [
+        "bash",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/scripts/run_isaac.sh",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/scripts/replay_physics_worker.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/development/closed_r7/output/simulator/invocation_002/request.json",
+        "--headless",
+        "--device",
+        "cuda:0"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "COMPLETED",
+        "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+        "request_sha256": "10a11339bc283b99379322bf9ea7b773b5d4606affee1533ba18ddc0d36139a9",
+        "mode": "rollout",
+        "replayed_windows": [],
+        "gmt_parameters_unchanged": true,
+        "source_sha256": {
+          "scripts/replay_physics_worker.py": "73b5aeae17b4cd338e1fc3990ddd5aefdcca9181df6b23440d932c1fc32ad243",
+          "reimplementation/isaac_prefix_adapter.py": "8ac6eed6ae62e31e566095a744c0d3198bdc0647bfa640a9684f6a13230a4292",
+          "reimplementation/replay_prefix_adapter.py": "9d93690397d40fa0cb190263f9756a64d4926f591ee0c7fc981828099678b82c",
+          "reimplementation/physics_prefix.py": "a8d08d3cd7071b65924ec4204b7ce3814dee8e650f267b26f743e779b3011057"
+        }
+      }
+    },
+    {
+      "directory": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/development/closed_r7/output/simulator/invocation_003",
+      "command": [
+        "bash",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/scripts/run_isaac.sh",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/scripts/replay_physics_worker.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/development/closed_r7/output/simulator/invocation_003/request.json",
+        "--headless",
+        "--device",
+        "cuda:0"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "COMPLETED",
+        "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+        "request_sha256": "de75dd29b254ccdd78953f8c77ae35fedba712500eaab287c1372cfb30978900",
+        "mode": "rollout",
+        "replayed_windows": [],
+        "gmt_parameters_unchanged": true,
+        "source_sha256": {
+          "scripts/replay_physics_worker.py": "73b5aeae17b4cd338e1fc3990ddd5aefdcca9181df6b23440d932c1fc32ad243",
+          "reimplementation/isaac_prefix_adapter.py": "8ac6eed6ae62e31e566095a744c0d3198bdc0647bfa640a9684f6a13230a4292",
+          "reimplementation/replay_prefix_adapter.py": "9d93690397d40fa0cb190263f9756a64d4926f591ee0c7fc981828099678b82c",
+          "reimplementation/physics_prefix.py": "a8d08d3cd7071b65924ec4204b7ce3814dee8e650f267b26f743e779b3011057"
+        }
+      }
+    },
+    {
+      "directory": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/development/closed_r7/output/simulator/invocation_004",
+      "command": [
+        "bash",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/scripts/run_isaac.sh",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/scripts/replay_physics_worker.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/development/closed_r7/output/simulator/invocation_004/request.json",
+        "--headless",
+        "--device",
+        "cuda:0"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "COMPLETED",
+        "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+        "request_sha256": "01ebbc1b83a5110be364c872dcc2ef2c8a0122791f15fcdd706eff942c39daf3",
+        "mode": "rollout",
+        "replayed_windows": [],
+        "gmt_parameters_unchanged": true,
+        "source_sha256": {
+          "scripts/replay_physics_worker.py": "73b5aeae17b4cd338e1fc3990ddd5aefdcca9181df6b23440d932c1fc32ad243",
+          "reimplementation/isaac_prefix_adapter.py": "8ac6eed6ae62e31e566095a744c0d3198bdc0647bfa640a9684f6a13230a4292",
+          "reimplementation/replay_prefix_adapter.py": "9d93690397d40fa0cb190263f9756a64d4926f591ee0c7fc981828099678b82c",
+          "reimplementation/physics_prefix.py": "a8d08d3cd7071b65924ec4204b7ce3814dee8e650f267b26f743e779b3011057"
+        }
+      }
+    }
+  ],
+  "rollback_method": "fresh_process_accepted_history_replay",
+  "torch_peak_allocated_bytes": 602226688,
+  "torch_peak_reserved_bytes": 603979776,
+  "memory_scope": "PyTorch allocator only; excludes PhysX/render allocations and other processes",
+  "elapsed_seconds": 33.334272623062134,
+  "source_sha256": {
+    "reimplementation/replay_prefix_adapter.py": "9d93690397d40fa0cb190263f9756a64d4926f591ee0c7fc981828099678b82c",
+    "reimplementation/test_text_encoder.py": "80ce12e90c2abafb63cadc5d687ad3a105141a6f6ee500a6ee54f9d1512fd004",
+    "reimplementation/test_core.py": "c12732d27dac9bdee04f6de4353972e94c271a6e08bc7b58608757d68dea402b",
+    "reimplementation/text.py": "22a04171f7e1218ff9b9ed768d6739ebed24c4072c683b78d60fde595b7fcf70",
+    "reimplementation/diffusion.py": "930a2cdb1967119dd51813c6838f58c062fc7d46447239b20cc15f4b638efc4c",
+    "reimplementation/test_completion.py": "dc9e2cf0b960caa6f471cd8ff21df712d2066bbf830b611964c352d944a0db68",
+    "reimplementation/diffusion_proposer.py": "92bff21474e8001fa63c22b9a777ae315c86ed2d499f4905b6da3d93baf5fc81",
+    "reimplementation/test_prefix_and_curriculum.py": "4723ad5ff14812cee19e14c9d6cf403af869bbfe5c96d089fc58d360f4bbd815",
+    "reimplementation/codec262.py": "e95cc8f8f782cc0577819e862328e814a4d8e8b17bea5bee0efa46b6a194606e",
+    "reimplementation/model.py": "76eb8baa876950a34d4b23b6fa92627515bf38072c9cadf35fbf8789a13e70ab",
+    "reimplementation/features.py": "dee9e489f91b13217faa95a71bc5bc2f9122a1cc404639a3df9838edb6c7f9ac",
+    "reimplementation/isaac_prefix_adapter.py": "8ac6eed6ae62e31e566095a744c0d3198bdc0647bfa640a9684f6a13230a4292",
+    "reimplementation/fetch_text_encoder.py": "8fbcfff77780bd14af1f29937eef8a514b4edeaead0ece680e6c029eda33b162",
+    "reimplementation/curriculum_evaluator.py": "33d163b63723e48af9d1a9d0c0adac4fed4202bbfe00e0c9694c6fb583162d21",
+    "reimplementation/physics_prefix.py": "a8d08d3cd7071b65924ec4204b7ce3814dee8e650f267b26f743e779b3011057",
+    "reimplementation/train_config.example.json": "74dbc8c4d91e928d1e3d116ffe96bac356c779f3242076943cda565bf3df3d5f",
+    "reimplementation/test_training_entrypoint.py": "bd0dd2e0b5ea127c183825ddc3ba977b619f16b3d9ec3fae91b9b33afb5c55e4",
+    "reimplementation/train.py": "a03c92832fa70ab11c25f1dde362fffbdb26efc618241e5f655806a90c0fbbda",
+    "scripts/diagnose_prefix_feedback.py": "c93290a765b76dbe12bc9d641f3d3b36c42657a8fe46ae90cebbabc1d3649965",
+    "scripts/summarize_results.py": "ff1f5e1879249630dac33f48279688a3498bd68b9957fa0aa222fd8646b50d77",
+    "scripts/summarize_continuation.py": "a002396ba3980bf58a01ac29149a1ad52aafdc0d3f7bc168236c14c6451c385e",
+    "scripts/evaluate_suite.py": "c57eda016062a6dc376a2f3262831b7dcc51ac198f9909bd296ca730381df286",
+    "scripts/guarded_bootstrap.py": "c785fbaaa6e783a43f5532281fd1cf3a4c5f5ecc56519a5a4994fd4b3330b371",
+    "scripts/curriculum_evaluate.py": "e4a79f369b5bc72ddb8ae098b78ebc38cec8ddf5476681ffd64a4c47f5726b48",
+    "scripts/inspect_checkpoints.py": "d321908aa8b732d763540c9d667677233fe52199181c1247503192dfe1281974",
+    "scripts/prepare_guarded_upstream.py": "e688a87d464c0a19fbbb23c7687e26a325343039da75284339e5d492c01c067f",
+    "scripts/data_inventory.py": "e9c76a3a9d97804108ed264e69edf947da82628c68e875f052accda590418024",
+    "scripts/run_text_validation.py": "652c971b4951414147e99e098c8ea2ce1c57b03f5f75d734ee243ce693a1884a",
+    "scripts/verify_continuation_states.py": "a5be041b3f4414a421a693911ca91cf20babdd809953faa8f9bdefcae45c80cd",
+    "scripts/finalize_pipeline.py": "38aef233f00ed2c59627ae7a5b61735bd9d27fcf2fa523763fe84753288b4e13",
+    "scripts/resume_training.py": "44132bd9972ef8eff408977304c58f91690c28dedd98ae658e0d6df10ae286e5",
+    "scripts/run_continuation_pipeline.py": "7275528f50ae937781fb9df3d1b65335bed403829e60642977ad0cf934e813db",
+    "scripts/train_extended_2000.sh": "b3a5976134e24baa7113e7c0e490c65dffb5ebcc28712fe0afc9454eab7368d5",
+    "scripts/run_prefix_recorded.py": "c4a7624d4cbe827a1cb3c7691bd5e8442a7024dfbf1ec5b62bf3db0a63c32aa3",
+    "scripts/run_recorded.py": "98685fb0e563b3b4fec3e9b6cfdc870d3bfc71c8c3fc46d72229149c2f7c95e3",
+    "scripts/smoke.sh": "81b25840ee415f7b307f278bf3d17892fb830c8b1ac1dfa4b700e8dae5e1b05d",
+    "scripts/validate_prefix_milestone.py": "6655597ef83ab12dd9f8ff0fb1606a5e01c44e265c9c99683cf4f1d3ffb6634b",
+    "scripts/prepare_completion_upstream.py": "c10d5681080bbbce50739af47fdbd44df77bf7315a05de6b33e469b0caa793a0",
+    "scripts/validate_codec262.py": "cc36618248f0660667b0506315f5d0efab731311b1bb1f62dc77e6e32445ee65",
+    "scripts/validate_completion.py": "27c6898f59589cd2be80bf4fc2eea402335f088dd4b443b0d689d7704d241dbd",
+    "scripts/replay_physics_worker.py": "73b5aeae17b4cd338e1fc3990ddd5aefdcca9181df6b23440d932c1fc32ad243",
+    "scripts/evaluate_prefix_feedback.py": "b428bc18488302178f2a35b7b29430163c1e0cc3adb4962e115bd659380a8c9c",
+    "scripts/run_isaac.sh": "754e7fc821513b1c90f7a28bdc6f4354f49107f71b84a79448c1847a78a21c9e",
+    "scripts/train_pilot.sh": "103d298ca61bbb38b4665304ddd6458a852b95e93a65a990cf08e8d34a53c756",
+    "scripts/evaluate_pilot.py": "d9f75793cb60734e7f1c39313162cddda3a5d995bea2cbff8eb4097f6863e549",
+    "scripts/train_with_curriculum_evaluator.py": "9479d5ec2f958e0caa728849024d66f6623cf4af8442809a56fadbd5054771e9",
+    "scripts/evaluate_continuation.py": "9ac96081776b6755f203ff8d1540eec19b433685f0e82151ae0758a9d16ec85c",
+    "scripts/run_generated_closed_loop.py": "db1ee3204d0427133f581974a7f0d8e5de52d7dfd50c0f99a15d131d574c371f",
+    "scripts/kernel_witness.py": "dfccf06b6c635337f48f53df9406d208009af693d9368baa13f41cfc1c96882b",
+    "scripts/validate_curriculum_training.py": "822df4d42b9886dea3cb0b95728ef603b1ab2782bb1ebc146b1b2f9344097535",
+    "configs/continuation_2000_plan.json": "91751e8ed9880f9455e611a7cacd42a757b0482cb1c1bc489d13cbd20077dac5",
+    "configs/moe_pilot.yaml": "7a34e2417fc66c9f1894edd7f1720a2eb3243a941126553258e21c4d862b5d5f",
+    "configs/completion_plan.json": "08ceeec24676e0052c49d99d4cb5421c2bcc28d1f7b81142d57f7407ea96ba4c",
+    "configs/env-spec.json": "2374b3cd9ce01a9e8cfe3166a14e63ffaec202d679cf6cd507be26f01a573b6f",
+    "configs/prefix_diagnostic_plan.json": "ca44f2e1e728dc6dbb34c6b7f80a07357c5c34c9f31c4b9f8d141e46918c38ca",
+    "configs/g1_codec_skeleton.json": "d2627ab9be14d9dd46fc483b754128e6c8f2515db5b1a274ba1b2b97d9aac6e7",
+    "configs/generation_env-spec.json": "0be86097312023b531a7078526d1f58d3f720a90f2d948a806f58fb491f2c336",
+    "configs/accounting_terms_erratum.json": "ab79281f9f2a3edf69572ec6c5974b410a0e1bea51673a1dd9f59a684ca3bd95"
+  },
+  "raw_files": {
+    "committed_prefix.npz": "a41353b0abcaa5b798f6e5e77850531b4504a3f377900b739b9702f2ca2e6ebb",
+    "physics_rollout_001.npz": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+    "physics_rollout_002.npz": "c2801c21b0cd34ac8e4075f2177f8f8248d7c7c893ddfb4e63078a837155423f",
+    "physics_rollout_003.npz": "f9c4717e145766668281222c62dd844f7a98e52c8b83c16b006689c088a688f0",
+    "physics_rollout_000.npz": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+    "rollback_development_evidence.npz": "c33b0a9c23046bc878a1fe5401960ef3593907f767715f612a223ff21013d71a",
+    "proposals/proposal_001.npz": "59567f2858b0a425a5f13579b199874b2efdbd4840260e6fb342c940242335e3",
+    "proposals/proposal_000.npz": "34caac72645d5d3a08845f6fb7699a302a194a12d4faa95e68df56f05f98db0f",
+    "simulator/invocation_003/continuation.npz": "0f67d114d54f4921c5742219ba2e5280dd7b1d0356d196b429aeac24f400c8b2",
+    "simulator/invocation_003/raw.npz": "c2801c21b0cd34ac8e4075f2177f8f8248d7c7c893ddfb4e63078a837155423f",
+    "simulator/invocation_003/candidate.npz": "817ac85cd3e0ff87c7ca060042e7ac67dd06614cbefcc32c382f89a09d681262",
+    "simulator/invocation_003/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+    "simulator/invocation_001/continuation.npz": "3a9c79e7fc896fd932c91ddd0b48e2460da1eab9b98d85e8394a2d8fb37f4c72",
+    "simulator/invocation_001/raw.npz": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+    "simulator/invocation_001/candidate.npz": "caa52c0a4da1c689881ffa9e2f5c2c5dd625edbb257e6fb5b5048b1eaf4ff3aa",
+    "simulator/invocation_001/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+    "simulator/invocation_002/continuation.npz": "3a9c79e7fc896fd932c91ddd0b48e2460da1eab9b98d85e8394a2d8fb37f4c72",
+    "simulator/invocation_002/raw.npz": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+    "simulator/invocation_002/candidate.npz": "caa52c0a4da1c689881ffa9e2f5c2c5dd625edbb257e6fb5b5048b1eaf4ff3aa",
+    "simulator/invocation_002/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+    "simulator/invocation_004/continuation.npz": "2c7d4bd301d53eda0651a3e7a1f450c99479c753f10ec694a6846b7b9a8df757",
+    "simulator/invocation_004/raw.npz": "f9c4717e145766668281222c62dd844f7a98e52c8b83c16b006689c088a688f0",
+    "simulator/invocation_004/candidate.npz": "c282c07293b2d6d7346675ee4276c14fcb95f028b57462cc635753effe33adad",
+    "simulator/invocation_004/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+    "simulator/invocation_000/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611"
+  }
+}

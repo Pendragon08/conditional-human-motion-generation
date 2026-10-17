@@ -1,0 +1,9 @@
+{
+  "purpose": "Independent engineering completion; not a full PhyGile research reproduction",
+  "parent_checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+  "codec_validation": "All existing 20 training and 4 test clips; normalization fitted on train only",
+  "curriculum_service": {"files": ["data/train/sample_000_actor0.npz", "data/test/sample_000_actor0.npz"], "attempts_per_file": 8, "seed": 2026},
+  "curriculum_training_fixture": {"ppo_iterations": 4, "num_envs": 32, "seed": 42, "labels": "arbitrary integration fixture IDs, explicitly not scientific difficulty labels"},
+  "closed_loop": {"generator": "full-size random-weight diffusion; zero text conditioning", "seed": 2026, "chunk_frames": 50, "total_new_frames": 100, "maximum_attempts_per_chunk": 2, "mpjpe_tolerance_m": 0.1},
+  "prohibited_claims": ["trained text generation", "paper-equivalent 262D conventions", "exact private PhysX solver rollback", "complete Stage I/II curriculum", "closed-loop PPO adaptation", "paper benchmark reproduction"]
+}

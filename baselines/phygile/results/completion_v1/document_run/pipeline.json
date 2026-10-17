@@ -1,0 +1,102 @@
+{
+  "status": "COMPLETED",
+  "started_unix": 1792247367.298362,
+  "plan_sha256": "08ceeec24676e0052c49d99d4cb5421c2bcc28d1f7b81142d57f7407ea96ba4c",
+  "stages": [
+    {
+      "name": "prepare",
+      "command": [
+        "python3",
+        "scripts/prepare_completion_upstream.py"
+      ],
+      "status": "COMPLETED",
+      "exit_code": 0
+    },
+    {
+      "name": "regression",
+      "command": [
+        "bash",
+        "scripts/run_isaac.sh",
+        "reimplementation/test_completion.py",
+        "--output",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/regression/verification.json"
+      ],
+      "status": "COMPLETED",
+      "exit_code": 0
+    },
+    {
+      "name": "codec",
+      "command": [
+        "bash",
+        "scripts/run_isaac.sh",
+        "scripts/validate_codec262.py",
+        "--output",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/codec/output"
+      ],
+      "status": "COMPLETED",
+      "exit_code": 0
+    },
+    {
+      "name": "curriculum",
+      "command": [
+        "python3",
+        "scripts/curriculum_evaluate.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/curriculum_request.json",
+        "--output",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/curriculum/output"
+      ],
+      "status": "COMPLETED",
+      "exit_code": 0
+    },
+    {
+      "name": "expert_mask",
+      "command": [
+        "python3",
+        "scripts/curriculum_evaluate.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/mask_request.json",
+        "--output",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/expert_mask/output"
+      ],
+      "status": "COMPLETED",
+      "exit_code": 0
+    },
+    {
+      "name": "training_hook",
+      "command": [
+        "bash",
+        "scripts/run_isaac.sh",
+        "scripts/validate_curriculum_training.py",
+        "--output",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/training_hook/output"
+      ],
+      "status": "COMPLETED",
+      "exit_code": 0
+    },
+    {
+      "name": "closed_loop",
+      "command": [
+        "bash",
+        "scripts/run_isaac.sh",
+        "scripts/run_generated_closed_loop.py",
+        "--checkpoint",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_moe_pilot/2026-10-17_11-25-01_extended2000_seed42/model_1999.pt",
+        "--motion_file",
+        "data/train/sample_000_actor0.npz",
+        "--normalization",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/codec/output/normalization.npz",
+        "--output",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/closed_loop/output",
+        "--headless",
+        "--device",
+        "cuda:0",
+        "--seed",
+        "2026"
+      ],
+      "status": "COMPLETED",
+      "exit_code": 0
+    }
+  ],
+  "finished_unix": 1792247598.4379208
+}
