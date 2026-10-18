@@ -32,7 +32,7 @@ bash scripts/run_isaac.sh reimplementation/test_core.py
 
 已有离线文件时，可放到 `cache/text/distilbert-base-uncased/`，按 `download.json` 核对后运行 `bash scripts/run_isaac.sh reimplementation/test_text_encoder.py`。有正常 Hugging Face 网络的环境可先运行 `reimplementation/fetch_text_encoder.py`；该下载入口在原服务器因网络不可达而失败，不能把接口检查通过理解为已验证该服务器的在线下载能力。
 
-用户已确认暂时没有 HumanML3D 配对动作/文本和对应 G1/SMPL 材料。当前交付停留在实现组件和接口验证，不使用 20 个无配对文本的武术片段或人工随机张量冒充生成器训练集。
+2026-10-18 已取得 HumanML3D 官方公开文本、来源索引和划分，见 [配对数据准备状态](../docs/paired_data_status_20261018.md)。对应原始动作、人体模型和 G1 配对动作尚未准备好。当前没有在这些文本上训练生成器，不使用 20 个无配对文本的武术片段或人工随机张量冒充配对训练集。
 
 ## 训练入口与输入约定
 
