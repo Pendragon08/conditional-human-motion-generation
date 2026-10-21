@@ -27,7 +27,7 @@ Third-party data and weights retain their respective terms.
 24 official public data files (870,700,765 bytes) are saved in
 `D:/具身智能/ReactiveBFM复现_20261021/data/`. Kungfu is also staged in the server's
 project `data/`. Motion arrays, SMPL-X, and third-party BERT/tracker weights are not
-redistributed by this repository. Public records contain acquisition URLs, sizes,
+redistributed by this repository. Small demo assets bundled in the licensed official source are retained unchanged. Public records contain acquisition URLs, sizes,
 SHA256 digests, split summaries and aggregate diagnostics. A size check against
 the public listing is not an official signed-checksum verification.
 
