@@ -1,0 +1,19 @@
+{
+  "executable": "C:/Windows/System32/OpenSSH/ssh.exe",
+  "arguments": [
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=20",
+    "ouyanghao@10.147.17.32",
+    "find '/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/code' -type f ! -path '*/.git/*' ! -path '*/__pycache__/*' ! -name '*.pyc' -print0 | sort -z | xargs -0 sha256sum"
+  ],
+  "utc_start": "2026-10-21T14:47:40.8031405Z",
+  "utc_end": "2026-10-21T14:47:41.9278788Z",
+  "exit_code": 0,
+  "stdout_file": "sources.after.stdout.txt",
+  "stderr_file": "sources.after.stderr.txt",
+  "output_encoding": "UTF-8 without BOM; decoded process stdout/stderr; newline content preserved"
+}

@@ -1,0 +1,19 @@
+{
+  "executable": "C:/Windows/System32/OpenSSH/ssh.exe",
+  "arguments": [
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=20",
+    "ouyanghao@10.147.17.32",
+    "if test -e '/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/witness_document_v1.json'; then printf '%s\\n' 'OUTPUT_ALREADY_EXISTS'; exit 73; fi; printf '%s\\n' 'OUTPUT_ABSENT'; pgrep -af '/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021.*([w]itness_runtime.py|[t]rain)' || test $? -eq 1"
+  ],
+  "utc_start": "2026-10-21T14:47:32.8328436Z",
+  "utc_end": "2026-10-21T14:47:33.8897055Z",
+  "exit_code": 0,
+  "stdout_file": "preflight.stdout.txt",
+  "stderr_file": "preflight.stderr.txt",
+  "output_encoding": "UTF-8 without BOM; decoded process stdout/stderr; newline content preserved"
+}

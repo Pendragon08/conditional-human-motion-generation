@@ -1,0 +1,58 @@
+{
+  "base": "Python3.10.21 + existing torch2.5.1+cu121 (compatibility pilot; official recommends Python3.12/torch2.11+cu128)",
+  "python_executable": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-retarget/bin/python",
+  "environment_directory": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/env",
+  "inherit_site_packages": [
+    "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021/lib/python3.10/site-packages",
+    "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-retarget/lib/python3.10/site-packages",
+    "/data/code/ouyanghao/oyh/world-model-risk-planning/.env/lib/python3.10/site-packages"
+  ],
+  "required_versions": {
+    "torch": "2.5.1+cu121",
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "mujoco": "3.3.7",
+    "transformers": "4.45.2",
+    "huggingface-hub": "0.36.0",
+    "tokenizers": "0.20.3",
+    "blobfile": "3.1.0"
+  },
+  "pip_phases": [
+    [
+      "transformers==4.45.2",
+      "huggingface-hub==0.36.0",
+      "tokenizers==0.20.3",
+      "blobfile==3.1.0",
+      "safetensors==0.5.3",
+      "regex==2024.11.6",
+      "sentencepiece==0.2.0"
+    ]
+  ],
+  "env": {
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4",
+    "TOKENIZERS_PARALLELISM": "false",
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1",
+    "WANDB_MODE": "disabled"
+  },
+  "resource_limits": {
+    "cpus": 4,
+    "shared_gpu": 1,
+    "pytorch_memory_fraction": 0.25,
+    "minimum_free_data_bytes": 3221225472
+  },
+  "weight_dirs": {
+    "text_encoder": {
+      "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/cache/text/distilbert-base-uncased",
+      "gated": false,
+      "source": "reuse prior pinned DistilBERT cache"
+    }
+  },
+  "smoke": {
+    "seed": 42,
+    "invocation": "scripts/witness_runtime.py --output NEW_RECEIPT.json",
+    "scope": "official DiT text-conditioned forward/backward and CUDA kernel; no physics or quality claim"
+  }
+}

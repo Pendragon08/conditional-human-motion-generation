@@ -1,0 +1,138 @@
+{
+  "witness_kind": "independent agent-follows-doc single documented invocation",
+  "setup_inputs": [
+    "baselines/reactivebfm/docs/environment.md",
+    ".aris/compute/reactivebfm-20261021.md",
+    "baselines/reactivebfm/configs/env_spec.json"
+  ],
+  "exact_command": "CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/env/bin/python /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/code/scripts/witness_runtime.py --runtime-root /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021 --output /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/witness_document_v1.json",
+  "invocation_count": 1,
+  "utc_start": "2026-10-21T14:47:35.1706938Z",
+  "utc_end": "2026-10-21T14:47:40.7797363Z",
+  "exit_code": 0,
+  "output_absence_confirmed": true,
+  "preflight_trace": "preflight.process.json",
+  "run_trace": "documented_run.process.json",
+  "receipt_file": "witness_document_v1.json",
+  "remote_receipt_sha256": "9d94fa996d5b2cb8fe6c880494304c8fc3fcdc76ad9818d391108b63107f273f",
+  "local_receipt_sha256": "9d94fa996d5b2cb8fe6c880494304c8fc3fcdc76ad9818d391108b63107f273f",
+  "receipt_hashes_match": true,
+  "source_inventory_scope": "All regular files under remote code/, excluding .git, __pycache__, and *.pyc; sha256sum sorted by path",
+  "source_inventory_before_sha256": "f31d2c2a7962197848c6d279ed0e2ede13909d83b8a0dc6d67552a3732ee8081",
+  "source_inventory_after_sha256": "f31d2c2a7962197848c6d279ed0e2ede13909d83b8a0dc6d67552a3732ee8081",
+  "source_inventory_file_count_before": 231,
+  "source_inventory_file_count_after": 231,
+  "source_inventory_before_exit_code": 0,
+  "source_inventory_after_exit_code": 0,
+  "source_files_unchanged": true,
+  "document_before": [
+    {
+      "path": "baselines/reactivebfm/docs/environment.md",
+      "sha256": "4de5d4156e33d5a1b6615845c2b72b9178b6a612d3358eb636662fea7eb641f2",
+      "snapshot": "baselines__reactivebfm__docs__environment.md.before.snapshot"
+    },
+    {
+      "path": ".aris/compute/reactivebfm-20261021.md",
+      "sha256": "6b0770e626ded436477069585501e2e654a672623b93528b9df4aa7c872556ca",
+      "snapshot": ".aris__compute__reactivebfm-20261021.md.before.snapshot"
+    },
+    {
+      "path": "baselines/reactivebfm/configs/env_spec.json",
+      "sha256": "baa6b78e7359c88e6a1d5fb45f7728e4af0a84e6cd4f0f9037c429ef569dbf1d",
+      "snapshot": "baselines__reactivebfm__configs__env_spec.json.before.snapshot"
+    }
+  ],
+  "document_after": [
+    {
+      "path": "baselines/reactivebfm/docs/environment.md",
+      "sha256": "4de5d4156e33d5a1b6615845c2b72b9178b6a612d3358eb636662fea7eb641f2",
+      "snapshot": "baselines__reactivebfm__docs__environment.md.after.snapshot"
+    },
+    {
+      "path": ".aris/compute/reactivebfm-20261021.md",
+      "sha256": "6b0770e626ded436477069585501e2e654a672623b93528b9df4aa7c872556ca",
+      "snapshot": ".aris__compute__reactivebfm-20261021.md.after.snapshot"
+    },
+    {
+      "path": "baselines/reactivebfm/configs/env_spec.json",
+      "sha256": "baa6b78e7359c88e6a1d5fb45f7728e4af0a84e6cd4f0f9037c429ef569dbf1d",
+      "snapshot": "baselines__reactivebfm__configs__env_spec.json.after.snapshot"
+    }
+  ],
+  "documents_unchanged": true,
+  "final_receipt_status": "OFFICIAL_DIT_KERNEL_AND_BACKWARD_PASSED",
+  "claims_scope": "Selected runtime/kernel/official model forward and backward only. No optimizer training, physics, paper performance, target reaching, or hardware validation.",
+  "deviations": [
+    "No documented command deviation: extracted single-line sh command was passed to SSH verbatim once.",
+    "The prescribed compatibility pilot uses documented Python3.10.21/Torch2.5.1+cu121 instead of the upstream recommendation Python3.12/Torch2.11+cu128. Python runtime version is not separately reported by the receipt.",
+    "Remote receipt ended_utc is later than the local SSH end timestamp by about 1.57 seconds. Local and remote UTC timestamps are retained separately; clock synchronization was not established.",
+    "The three permitted setup inputs do not give an expected Kungfu SHA256 value. The receipt data digest is preserved, without independently declaring an exact expected-data digest match.",
+    "The 25% PyTorch allocation cap is documented as enforced by the witness; the final receipt reports peak memory but does not expose the configured fraction. No additional runtime probe was run."
+  ],
+  "receipt_utc_start": "2026-10-21T22:47:39.672453+08:00",
+  "receipt_utc_end": "2026-10-21T22:47:42.351333+08:00",
+  "receipt_checks": {
+    "status_matches": true,
+    "shape_matches": true,
+    "nonzero_finite_gradients": true,
+    "optimizer_updates": 0,
+    "official_source_files_hashed": 226,
+    "official_source_commit_matches": true,
+    "expected_trainable_parameters_match": true,
+    "expected_device_matches": true,
+    "required_package_versions": [
+      {
+        "package": "torch",
+        "expected": "2.5.1+cu121",
+        "actual": "2.5.1+cu121",
+        "match": true
+      },
+      {
+        "package": "numpy",
+        "expected": "1.26.4",
+        "actual": "1.26.4",
+        "match": true
+      },
+      {
+        "package": "scipy",
+        "expected": "1.15.3",
+        "actual": "1.15.3",
+        "match": true
+      },
+      {
+        "package": "mujoco",
+        "expected": "3.3.7",
+        "actual": "3.3.7",
+        "match": true
+      },
+      {
+        "package": "transformers",
+        "expected": "4.45.2",
+        "actual": "4.45.2",
+        "match": true
+      },
+      {
+        "package": "huggingface-hub",
+        "expected": "0.36.0",
+        "actual": "0.36.0",
+        "match": true
+      },
+      {
+        "package": "tokenizers",
+        "expected": "0.20.3",
+        "actual": "0.20.3",
+        "match": true
+      },
+      {
+        "package": "blobfile",
+        "expected": "3.1.0",
+        "actual": "3.1.0",
+        "match": true
+      }
+    ],
+    "training_data_sha256_reported": "2fddadcd7361d3333f18cdcc556bcb0fc2d1ee30cc2fe047e191e23382a25eb5",
+    "witness_source_sha256_reported": "43a01fd0dea2ac11ad03f017806adb99f3a63f6070a59528e7ae9b760303445e",
+    "remote_witness_source_sha256_verified_against_inventory": true,
+    "stderr_bytes": 0
+  }
+}

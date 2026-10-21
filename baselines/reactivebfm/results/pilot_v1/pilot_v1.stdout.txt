@@ -1,0 +1,2861 @@
+args: Namespace(cuda=True, device=0, seed=42, batch_size_local=2, train_platform_type='NoPlatform', external_mode=False, dataset='kungfu_g1_36dim', data_dir='/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data/kungfu_g1_36dim', hml_type=None, unit_length=4, num_workers=0, log_batch_samples=False, use_bf16=False, relative_root_xy=False, num_layers=16, num_heads=8, latent_dim=512, text_encoder='/data/code/ouyanghao/oyh/phygile-reproduction-20261017/cache/text/distilbert-base-uncased', planner_arch='dit', dit_ff_size=2048, dit_dropout=0.0, dit_role_embedding=True, dit_rtc_time_cache=True, dit_rope=True, dit_text_kv_cache=True, cond_mask_prob=0.1, mask_frames=True, lambda_rcxyz=0.0, lambda_vel=0.0, lambda_fc=0.0, lambda_velocity=0.0, lambda_acceleration=0.0, lambda_velocity_prefix=0.0, training_rtc=True, rtc_max_delay=6, rtc_delay_distribution='uniform', rtc_prefix_noise_std=0.0, pos_embed_max_len=256, use_ema=False, context_len=25, pred_len=50, model_type='flow', noise_schedule='cosine', denoise_steps=10, solver_steps=10, sigma_small=True, flow_sampler='euler', flow_train_time_sampler='beta', flow_time_min=0.001, flow_time_beta_alpha=1.5, flow_time_beta_beta=1.0, save_dir='/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/runs/pilot_v1/checkpoints', overwrite=True, lr=0.0001, weight_decay=0.0, max_grad_norm=1.0, lr_anneal_steps=0, log_interval=1, save_interval=100, num_steps=101, num_frames=60, resume_checkpoint='', finetune_from='', gen_guidance_param=7.5, avg_model_beta=0.9999, adam_beta2=0.999, ddp_find_unused_parameters=True, autoregressive=True, autoregressive_include_prefix=False, autoregressive_init='data', prefix_noise_strategy=False, base_noise_scale=0.03, n_primitives=3, max_replace_prob=0.8, num_warmup_steps=25, self_rollout_mode='random_replace', cross_prob=0.1, frame_dim=36, nfeats=1, data_rep='hml_vec', distributed=False, rank=0, local_rank=0, world_size=1, batch_size_global=2)
+[Distributed] world_size=1, batch_size_local=2, batch_size_global=2
+[Scheduled Forcing Config]
+  n_primitives:     3
+  context_len:      25
+  pred_len:         50
+  max_replace_prob: 0.8
+  warmup_steps:     25
+  ramp_steps:       76
+  rollout_mode:     random_replace
+  full_len/sample:  175 frames
+creating distributed data loader...
+Loading planner dataset kungfu_g1_36dim ...
+[Data] Loading motions from: /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data/kungfu_g1_36dim/full_train.pkl...
+[PlannerMotionDataset] Using 803 motions (split=train.txt, excluded=0)
+Pointer Pointing at 116 (filtered 116 samples with length < 175, remaining 687 samples out of 803 in split)
+creating DiT model and flow-matching objective...
+Loading text encoder: /data/code/ouyanghao/oyh/phygile-reproduction-20261017/cache/text/distilbert-base-uncased
+Total params: 107.05M
+Training DiT with scheduled self-rollout...
+Loading planner dataset kungfu_g1_36dim ...
+[Data] Loading motions from: /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data/kungfu_g1_36dim/full_train.pkl...
+[PlannerMotionDataset] Using 44 motions (split=test.txt, excluded=0)
+Pointer Pointing at 7 (filtered 7 samples with length < 175, remaining 37 samples out of 44 in split)
+[Scheduled Forcing] n_primitives=3, context_len=25, pred_len=50, max_replace_prob=0.8, cross_prob=0.1
+[Scheduled Forcing] warmup_steps=25, ramp_steps=76
+[Scheduled Forcing] full_len per sample = 175 frames
+[Training RTC] enabled, uniform delay in [0, 6] action frames
+[Scheduled Forcing] train steps: 101
+Starting epoch 0
+Logging to /tmp/openai-2026-10-21-14-53-21-787469
+--------------------------------------------
+| flow/rtc_delay                | 3.17     |
+| flow/time_mean                | 0.639    |
+| flow_mse                      | 2.24     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.03     |
+| loss                          | 2.24     |
+| metrics/mse                   | 0.914    |
+| metrics/mse_acc               | 3        |
+| metrics/mse_acc_dof           | 2.98     |
+| metrics/mse_dof               | 0.857    |
+| metrics/mse_final_frame       | 0.928    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 1.03     |
+| metrics/mse_root_pos          | 1.09     |
+| metrics/mse_root_rot          | 1.2      |
+| metrics/mse_velocity          | 0.996    |
+| metrics/mse_velocity_dof      | 0.994    |
+| metrics/mse_velocity_root_pos | 1.06     |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 2        |
+| step                          | 0        |
+--------------------------------------------
+step[0]: loss[2.24489] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 3        |
+| flow/time_mean                | 0.449    |
+| flow_mse                      | 1.69     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.85     |
+| loss                          | 1.69     |
+| metrics/mse                   | 0.517    |
+| metrics/mse_acc               | 1.85     |
+| metrics/mse_acc_dof           | 1.87     |
+| metrics/mse_dof               | 0.517    |
+| metrics/mse_final_frame       | 0.626    |
+| metrics/mse_first_frame       | 0.0159   |
+| metrics/mse_mid_frame         | 0.462    |
+| metrics/mse_root_pos          | 0.362    |
+| metrics/mse_root_rot          | 0.628    |
+| metrics/mse_velocity          | 0.613    |
+| metrics/mse_velocity_dof      | 0.619    |
+| metrics/mse_velocity_root_pos | 0.564    |
+| metrics/smooth_first_dof      | 0.0171   |
+| metrics/smooth_first_root_pos | 0.0178   |
+| n_cross                       | 1        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 4        |
+| step                          | 1        |
+--------------------------------------------
+step[1]: loss[1.68940] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 2.33     |
+| flow/time_mean                | 0.549    |
+| flow_mse                      | 1.56     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.47     |
+| loss                          | 1.56     |
+| metrics/mse                   | 0.578    |
+| metrics/mse_acc               | 2.15     |
+| metrics/mse_acc_dof           | 2.13     |
+| metrics/mse_dof               | 0.579    |
+| metrics/mse_final_frame       | 0.648    |
+| metrics/mse_first_frame       | 0.0471   |
+| metrics/mse_mid_frame         | 0.554    |
+| metrics/mse_root_pos          | 0.594    |
+| metrics/mse_root_rot          | 0.562    |
+| metrics/mse_velocity          | 0.722    |
+| metrics/mse_velocity_dof      | 0.712    |
+| metrics/mse_velocity_root_pos | 0.741    |
+| metrics/smooth_first_dof      | 0.0383   |
+| metrics/smooth_first_root_pos | 0.0348   |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 6        |
+| step                          | 2        |
+--------------------------------------------
+step[2]: loss[1.55593] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 1.5      |
+| flow/time_mean                | 0.779    |
+| flow_mse                      | 2.35     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.03     |
+| loss                          | 2.35     |
+| metrics/mse                   | 1.49     |
+| metrics/mse_acc               | 3.74     |
+| metrics/mse_acc_dof           | 3.74     |
+| metrics/mse_dof               | 1.64     |
+| metrics/mse_final_frame       | 1.4      |
+| metrics/mse_first_frame       | 0.857    |
+| metrics/mse_mid_frame         | 1.49     |
+| metrics/mse_root_pos          | 0.894    |
+| metrics/mse_root_rot          | 0.917    |
+| metrics/mse_velocity          | 1.25     |
+| metrics/mse_velocity_dof      | 1.25     |
+| metrics/mse_velocity_root_pos | 1.28     |
+| metrics/smooth_first_dof      | 0.919    |
+| metrics/smooth_first_root_pos | 0.708    |
+| n_cross                       | 1        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 8        |
+| step                          | 3        |
+--------------------------------------------
+step[3]: loss[2.35055] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 2.5      |
+| flow/time_mean                | 0.63     |
+| flow_mse                      | 1.48     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.04     |
+| loss                          | 1.48     |
+| metrics/mse                   | 0.606    |
+| metrics/mse_acc               | 2.41     |
+| metrics/mse_acc_dof           | 2.41     |
+| metrics/mse_dof               | 0.614    |
+| metrics/mse_final_frame       | 0.532    |
+| metrics/mse_first_frame       | 0.165    |
+| metrics/mse_mid_frame         | 0.593    |
+| metrics/mse_root_pos          | 0.625    |
+| metrics/mse_root_rot          | 0.537    |
+| metrics/mse_velocity          | 0.802    |
+| metrics/mse_velocity_dof      | 0.805    |
+| metrics/mse_velocity_root_pos | 0.842    |
+| metrics/smooth_first_dof      | 0.154    |
+| metrics/smooth_first_root_pos | 0.131    |
+| n_cross                       | 1        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 10       |
+| step                          | 4        |
+--------------------------------------------
+step[4]: loss[1.47993] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 2.83     |
+| flow/time_mean                | 0.679    |
+| flow_mse                      | 1.48     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.73     |
+| loss                          | 1.48     |
+| metrics/mse                   | 0.786    |
+| metrics/mse_acc               | 3.15     |
+| metrics/mse_acc_dof           | 3.14     |
+| metrics/mse_dof               | 0.772    |
+| metrics/mse_final_frame       | 0.767    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.706    |
+| metrics/mse_root_pos          | 0.635    |
+| metrics/mse_root_rot          | 0.995    |
+| metrics/mse_velocity          | 1.04     |
+| metrics/mse_velocity_dof      | 1.04     |
+| metrics/mse_velocity_root_pos | 1.11     |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 1        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 12       |
+| step                          | 5        |
+--------------------------------------------
+step[5]: loss[1.47568] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 2.17     |
+| flow/time_mean                | 0.613    |
+| flow_mse                      | 1.57     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.37     |
+| loss                          | 1.57     |
+| metrics/mse                   | 0.752    |
+| metrics/mse_acc               | 2.7      |
+| metrics/mse_acc_dof           | 2.69     |
+| metrics/mse_dof               | 0.74     |
+| metrics/mse_final_frame       | 0.727    |
+| metrics/mse_first_frame       | 0.112    |
+| metrics/mse_mid_frame         | 0.815    |
+| metrics/mse_root_pos          | 0.766    |
+| metrics/mse_root_rot          | 0.834    |
+| metrics/mse_velocity          | 0.9      |
+| metrics/mse_velocity_dof      | 0.899    |
+| metrics/mse_velocity_root_pos | 0.826    |
+| metrics/smooth_first_dof      | 0.123    |
+| metrics/smooth_first_root_pos | 0.0323   |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 14       |
+| step                          | 6        |
+--------------------------------------------
+step[6]: loss[1.56722] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 3.17     |
+| flow/time_mean                | 0.519    |
+| flow_mse                      | 2.13     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.42     |
+| loss                          | 2.13     |
+| metrics/mse                   | 0.774    |
+| metrics/mse_acc               | 1.89     |
+| metrics/mse_acc_dof           | 1.83     |
+| metrics/mse_dof               | 0.705    |
+| metrics/mse_final_frame       | 0.889    |
+| metrics/mse_first_frame       | 0.0686   |
+| metrics/mse_mid_frame         | 0.695    |
+| metrics/mse_root_pos          | 0.881    |
+| metrics/mse_root_rot          | 1.19     |
+| metrics/mse_velocity          | 0.631    |
+| metrics/mse_velocity_dof      | 0.614    |
+| metrics/mse_velocity_root_pos | 0.725    |
+| metrics/smooth_first_dof      | 0.0491   |
+| metrics/smooth_first_root_pos | 0.149    |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 16       |
+| step                          | 7        |
+--------------------------------------------
+step[7]: loss[2.12717] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 2        |
+| flow/time_mean                | 0.564    |
+| flow_mse                      | 1.72     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.57     |
+| loss                          | 1.72     |
+| metrics/mse                   | 0.71     |
+| metrics/mse_acc               | 2.31     |
+| metrics/mse_acc_dof           | 2.32     |
+| metrics/mse_dof               | 0.746    |
+| metrics/mse_final_frame       | 0.648    |
+| metrics/mse_first_frame       | 0.0217   |
+| metrics/mse_mid_frame         | 0.739    |
+| metrics/mse_root_pos          | 0.476    |
+| metrics/mse_root_rot          | 0.626    |
+| metrics/mse_velocity          | 0.771    |
+| metrics/mse_velocity_dof      | 0.772    |
+| metrics/mse_velocity_root_pos | 0.795    |
+| metrics/smooth_first_dof      | 0.0239   |
+| metrics/smooth_first_root_pos | 0.00588  |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 18       |
+| step                          | 8        |
+--------------------------------------------
+step[8]: loss[1.72348] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 2.67     |
+| flow/time_mean                | 0.74     |
+| flow_mse                      | 2.13     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.41     |
+| loss                          | 2.13     |
+| metrics/mse                   | 1.31     |
+| metrics/mse_acc               | 3.56     |
+| metrics/mse_acc_dof           | 3.57     |
+| metrics/mse_dof               | 1.32     |
+| metrics/mse_final_frame       | 1.47     |
+| metrics/mse_first_frame       | 0.232    |
+| metrics/mse_mid_frame         | 1.04     |
+| metrics/mse_root_pos          | 1.38     |
+| metrics/mse_root_rot          | 1.13     |
+| metrics/mse_velocity          | 1.19     |
+| metrics/mse_velocity_dof      | 1.19     |
+| metrics/mse_velocity_root_pos | 1.22     |
+| metrics/smooth_first_dof      | 0.241    |
+| metrics/smooth_first_root_pos | 0.104    |
+| n_cross                       | 1        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 20       |
+| step                          | 9        |
+--------------------------------------------
+step[9]: loss[2.13370] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 1.33     |
+| flow/time_mean                | 0.796    |
+| flow_mse                      | 1.93     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.54     |
+| loss                          | 1.93     |
+| metrics/mse                   | 1.29     |
+| metrics/mse_acc               | 3.8      |
+| metrics/mse_acc_dof           | 3.74     |
+| metrics/mse_dof               | 1.2      |
+| metrics/mse_final_frame       | 1.27     |
+| metrics/mse_first_frame       | 0.73     |
+| metrics/mse_mid_frame         | 1.29     |
+| metrics/mse_root_pos          | 2.02     |
+| metrics/mse_root_rot          | 1.38     |
+| metrics/mse_velocity          | 1.27     |
+| metrics/mse_velocity_dof      | 1.25     |
+| metrics/mse_velocity_root_pos | 1.32     |
+| metrics/smooth_first_dof      | 0.81     |
+| metrics/smooth_first_root_pos | 0.532    |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 22       |
+| step                          | 10       |
+--------------------------------------------
+step[10]: loss[1.92889] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 2        |
+| flow/time_mean                | 0.548    |
+| flow_mse                      | 1.56     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.6      |
+| loss                          | 1.56     |
+| metrics/mse                   | 0.495    |
+| metrics/mse_acc               | 1.86     |
+| metrics/mse_acc_dof           | 1.86     |
+| metrics/mse_dof               | 0.491    |
+| metrics/mse_final_frame       | 0.449    |
+| metrics/mse_first_frame       | 0.0607   |
+| metrics/mse_mid_frame         | 0.507    |
+| metrics/mse_root_pos          | 0.386    |
+| metrics/mse_root_rot          | 0.608    |
+| metrics/mse_velocity          | 0.624    |
+| metrics/mse_velocity_dof      | 0.626    |
+| metrics/mse_velocity_root_pos | 0.601    |
+| metrics/smooth_first_dof      | 0.051    |
+| metrics/smooth_first_root_pos | 0.0241   |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 24       |
+| step                          | 11       |
+--------------------------------------------
+step[11]: loss[1.55900] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 1.83     |
+| flow/time_mean                | 0.512    |
+| flow_mse                      | 1.69     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.71     |
+| loss                          | 1.69     |
+| metrics/mse                   | 0.596    |
+| metrics/mse_acc               | 2        |
+| metrics/mse_acc_dof           | 1.99     |
+| metrics/mse_dof               | 0.617    |
+| metrics/mse_final_frame       | 0.591    |
+| metrics/mse_first_frame       | 0.526    |
+| metrics/mse_mid_frame         | 0.433    |
+| metrics/mse_root_pos          | 0.499    |
+| metrics/mse_root_rot          | 0.521    |
+| metrics/mse_velocity          | 0.669    |
+| metrics/mse_velocity_dof      | 0.668    |
+| metrics/mse_velocity_root_pos | 0.66     |
+| metrics/smooth_first_dof      | 0.528    |
+| metrics/smooth_first_root_pos | 0.27     |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 26       |
+| step                          | 12       |
+--------------------------------------------
+step[12]: loss[1.69365] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 1.83     |
+| flow/time_mean                | 0.718    |
+| flow_mse                      | 1.93     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.34     |
+| loss                          | 1.93     |
+| metrics/mse                   | 1.03     |
+| metrics/mse_acc               | 3.21     |
+| metrics/mse_acc_dof           | 3.21     |
+| metrics/mse_dof               | 0.793    |
+| metrics/mse_final_frame       | 1.04     |
+| metrics/mse_first_frame       | 0.333    |
+| metrics/mse_mid_frame         | 1.01     |
+| metrics/mse_root_pos          | 3        |
+| metrics/mse_root_rot          | 1.27     |
+| metrics/mse_velocity          | 1.07     |
+| metrics/mse_velocity_dof      | 1.06     |
+| metrics/mse_velocity_root_pos | 1.06     |
+| metrics/smooth_first_dof      | 0.216    |
+| metrics/smooth_first_root_pos | 1.62     |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 28       |
+| step                          | 13       |
+--------------------------------------------
+step[13]: loss[1.93289] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 1.83     |
+| flow/time_mean                | 0.625    |
+| flow_mse                      | 1.65     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.55     |
+| loss                          | 1.65     |
+| metrics/mse                   | 0.818    |
+| metrics/mse_acc               | 2.7      |
+| metrics/mse_acc_dof           | 2.71     |
+| metrics/mse_dof               | 0.862    |
+| metrics/mse_final_frame       | 0.855    |
+| metrics/mse_first_frame       | 0.0815   |
+| metrics/mse_mid_frame         | 0.955    |
+| metrics/mse_root_pos          | 0.511    |
+| metrics/mse_root_rot          | 0.732    |
+| metrics/mse_velocity          | 0.903    |
+| metrics/mse_velocity_dof      | 0.901    |
+| metrics/mse_velocity_root_pos | 0.833    |
+| metrics/smooth_first_dof      | 0.0921   |
+| metrics/smooth_first_root_pos | 0.0251   |
+| n_cross                       | 1        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 30       |
+| step                          | 14       |
+--------------------------------------------
+step[14]: loss[1.65481] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 2        |
+| flow/time_mean                | 0.748    |
+| flow_mse                      | 1.85     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.8      |
+| loss                          | 1.85     |
+| metrics/mse                   | 1.09     |
+| metrics/mse_acc               | 3.48     |
+| metrics/mse_acc_dof           | 3.44     |
+| metrics/mse_dof               | 1.04     |
+| metrics/mse_final_frame       | 1.07     |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 1.14     |
+| metrics/mse_root_pos          | 0.639    |
+| metrics/mse_root_rot          | 1.8      |
+| metrics/mse_velocity          | 1.15     |
+| metrics/mse_velocity_dof      | 1.14     |
+| metrics/mse_velocity_root_pos | 1.21     |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 32       |
+| step                          | 15       |
+--------------------------------------------
+step[15]: loss[1.85370] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 2.17     |
+| flow/time_mean                | 0.657    |
+| flow_mse                      | 2.02     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.83     |
+| loss                          | 2.02     |
+| metrics/mse                   | 1.08     |
+| metrics/mse_acc               | 2.77     |
+| metrics/mse_acc_dof           | 2.79     |
+| metrics/mse_dof               | 1.19     |
+| metrics/mse_final_frame       | 0.929    |
+| metrics/mse_first_frame       | 0.124    |
+| metrics/mse_mid_frame         | 1        |
+| metrics/mse_root_pos          | 0.45     |
+| metrics/mse_root_rot          | 0.735    |
+| metrics/mse_velocity          | 0.917    |
+| metrics/mse_velocity_dof      | 0.925    |
+| metrics/mse_velocity_root_pos | 0.876    |
+| metrics/smooth_first_dof      | 0.132    |
+| metrics/smooth_first_root_pos | 0.0703   |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 34       |
+| step                          | 16       |
+--------------------------------------------
+step[16]: loss[2.01691] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 3.17     |
+| flow/time_mean                | 0.478    |
+| flow_mse                      | 1.9      |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.1      |
+| loss                          | 1.9      |
+| metrics/mse                   | 0.497    |
+| metrics/mse_acc               | 1.49     |
+| metrics/mse_acc_dof           | 1.48     |
+| metrics/mse_dof               | 0.506    |
+| metrics/mse_final_frame       | 0.467    |
+| metrics/mse_first_frame       | 0.137    |
+| metrics/mse_mid_frame         | 0.44     |
+| metrics/mse_root_pos          | 0.628    |
+| metrics/mse_root_rot          | 0.331    |
+| metrics/mse_velocity          | 0.502    |
+| metrics/mse_velocity_dof      | 0.498    |
+| metrics/mse_velocity_root_pos | 0.547    |
+| metrics/smooth_first_dof      | 0.152    |
+| metrics/smooth_first_root_pos | 0.13     |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 36       |
+| step                          | 17       |
+--------------------------------------------
+step[17]: loss[1.89850] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 3.67     |
+| flow/time_mean                | 0.604    |
+| flow_mse                      | 3.15     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 6.61     |
+| loss                          | 3.15     |
+| metrics/mse                   | 1.18     |
+| metrics/mse_acc               | 2.28     |
+| metrics/mse_acc_dof           | 2.26     |
+| metrics/mse_dof               | 1.27     |
+| metrics/mse_final_frame       | 1.2      |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 1.14     |
+| metrics/mse_root_pos          | 0.415    |
+| metrics/mse_root_rot          | 1.08     |
+| metrics/mse_velocity          | 0.762    |
+| metrics/mse_velocity_dof      | 0.757    |
+| metrics/mse_velocity_root_pos | 0.806    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 38       |
+| step                          | 18       |
+--------------------------------------------
+step[18]: loss[3.14838] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 1.5      |
+| flow/time_mean                | 0.637    |
+| flow_mse                      | 1.27     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.89     |
+| loss                          | 1.27     |
+| metrics/mse                   | 0.601    |
+| metrics/mse_acc               | 2.67     |
+| metrics/mse_acc_dof           | 2.65     |
+| metrics/mse_dof               | 0.581    |
+| metrics/mse_final_frame       | 0.562    |
+| metrics/mse_first_frame       | 0.3      |
+| metrics/mse_mid_frame         | 0.583    |
+| metrics/mse_root_pos          | 0.709    |
+| metrics/mse_root_rot          | 0.669    |
+| metrics/mse_velocity          | 0.894    |
+| metrics/mse_velocity_dof      | 0.889    |
+| metrics/mse_velocity_root_pos | 0.88     |
+| metrics/smooth_first_dof      | 0.311    |
+| metrics/smooth_first_root_pos | 0.273    |
+| n_cross                       | 1        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 40       |
+| step                          | 19       |
+--------------------------------------------
+step[19]: loss[1.27276] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 3.17     |
+| flow/time_mean                | 0.601    |
+| flow_mse                      | 1.54     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.31     |
+| loss                          | 1.54     |
+| metrics/mse                   | 0.578    |
+| metrics/mse_acc               | 2.28     |
+| metrics/mse_acc_dof           | 2.23     |
+| metrics/mse_dof               | 0.577    |
+| metrics/mse_final_frame       | 0.661    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.545    |
+| metrics/mse_root_pos          | 0.545    |
+| metrics/mse_root_rot          | 0.611    |
+| metrics/mse_velocity          | 0.76     |
+| metrics/mse_velocity_dof      | 0.748    |
+| metrics/mse_velocity_root_pos | 0.841    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 42       |
+| step                          | 20       |
+--------------------------------------------
+step[20]: loss[1.53574] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 2.83     |
+| flow/time_mean                | 0.649    |
+| flow_mse                      | 1.88     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.34     |
+| loss                          | 1.88     |
+| metrics/mse                   | 0.907    |
+| metrics/mse_acc               | 2.72     |
+| metrics/mse_acc_dof           | 2.69     |
+| metrics/mse_dof               | 0.913    |
+| metrics/mse_final_frame       | 0.863    |
+| metrics/mse_first_frame       | 0.0849   |
+| metrics/mse_mid_frame         | 0.887    |
+| metrics/mse_root_pos          | 1.2      |
+| metrics/mse_root_rot          | 0.641    |
+| metrics/mse_velocity          | 0.911    |
+| metrics/mse_velocity_dof      | 0.904    |
+| metrics/mse_velocity_root_pos | 0.991    |
+| metrics/smooth_first_dof      | 0.0786   |
+| metrics/smooth_first_root_pos | 0.145    |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 44       |
+| step                          | 21       |
+--------------------------------------------
+step[21]: loss[1.88106] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 4        |
+| flow/time_mean                | 0.503    |
+| flow_mse                      | 1.64     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.45     |
+| loss                          | 1.64     |
+| metrics/mse                   | 0.596    |
+| metrics/mse_acc               | 1.92     |
+| metrics/mse_acc_dof           | 1.9      |
+| metrics/mse_dof               | 0.648    |
+| metrics/mse_final_frame       | 0.629    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.583    |
+| metrics/mse_root_pos          | 0.325    |
+| metrics/mse_root_rot          | 0.418    |
+| metrics/mse_velocity          | 0.645    |
+| metrics/mse_velocity_dof      | 0.64     |
+| metrics/mse_velocity_root_pos | 0.625    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 46       |
+| step                          | 22       |
+--------------------------------------------
+step[22]: loss[1.64169] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 3.83     |
+| flow/time_mean                | 0.718    |
+| flow_mse                      | 1.63     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.22     |
+| loss                          | 1.63     |
+| metrics/mse                   | 0.911    |
+| metrics/mse_acc               | 3.29     |
+| metrics/mse_acc_dof           | 3.33     |
+| metrics/mse_dof               | 0.947    |
+| metrics/mse_final_frame       | 0.935    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.788    |
+| metrics/mse_root_pos          | 0.716    |
+| metrics/mse_root_rot          | 0.793    |
+| metrics/mse_velocity          | 1.09     |
+| metrics/mse_velocity_dof      | 1.1      |
+| metrics/mse_velocity_root_pos | 1.03     |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 1        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 48       |
+| step                          | 23       |
+--------------------------------------------
+step[23]: loss[1.62595] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 3.83     |
+| flow/time_mean                | 0.561    |
+| flow_mse                      | 1.97     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.97     |
+| loss                          | 1.97     |
+| metrics/mse                   | 0.785    |
+| metrics/mse_acc               | 2.19     |
+| metrics/mse_acc_dof           | 2.2      |
+| metrics/mse_dof               | 0.551    |
+| metrics/mse_final_frame       | 0.842    |
+| metrics/mse_first_frame       | 0.123    |
+| metrics/mse_mid_frame         | 0.891    |
+| metrics/mse_root_pos          | 2.48     |
+| metrics/mse_root_rot          | 1.21     |
+| metrics/mse_velocity          | 0.729    |
+| metrics/mse_velocity_dof      | 0.732    |
+| metrics/mse_velocity_root_pos | 0.733    |
+| metrics/smooth_first_dof      | 0.0951   |
+| metrics/smooth_first_root_pos | 0.264    |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 50       |
+| step                          | 24       |
+--------------------------------------------
+step[24]: loss[1.97137] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 2.33     |
+| flow/time_mean                | 0.657    |
+| flow_mse                      | 1.49     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.9      |
+| loss                          | 1.49     |
+| metrics/mse                   | 0.729    |
+| metrics/mse_acc               | 2.73     |
+| metrics/mse_acc_dof           | 2.72     |
+| metrics/mse_dof               | 0.595    |
+| metrics/mse_final_frame       | 0.838    |
+| metrics/mse_first_frame       | 0.178    |
+| metrics/mse_mid_frame         | 0.69     |
+| metrics/mse_root_pos          | 1.55     |
+| metrics/mse_root_rot          | 1.09     |
+| metrics/mse_velocity          | 0.906    |
+| metrics/mse_velocity_dof      | 0.906    |
+| metrics/mse_velocity_root_pos | 0.908    |
+| metrics/smooth_first_dof      | 0.174    |
+| metrics/smooth_first_root_pos | 0.34     |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 191      |
+| samples                       | 52       |
+| step                          | 25       |
+--------------------------------------------
+step[25]: loss[1.49117] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 1.67     |
+| flow/time_mean                | 0.642    |
+| flow_mse                      | 2.12     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.71     |
+| loss                          | 2.12     |
+| metrics/mse                   | 1.06     |
+| metrics/mse_acc               | 2.99     |
+| metrics/mse_acc_dof           | 2.95     |
+| metrics/mse_dof               | 0.802    |
+| metrics/mse_final_frame       | 1.13     |
+| metrics/mse_first_frame       | 0.175    |
+| metrics/mse_mid_frame         | 0.949    |
+| metrics/mse_root_pos          | 3.68     |
+| metrics/mse_root_rot          | 0.958    |
+| metrics/mse_velocity          | 0.99     |
+| metrics/mse_velocity_dof      | 0.975    |
+| metrics/mse_velocity_root_pos | 0.968    |
+| metrics/smooth_first_dof      | 0.192    |
+| metrics/smooth_first_root_pos | 0.166    |
+| n_cross                       | 0        |
+| p_replace                     | 0.0105   |
+| param_norm                    | 191      |
+| samples                       | 54       |
+| step                          | 26       |
+--------------------------------------------
+step[26]: loss[2.12114] p_replace[0.011]
+--------------------------------------------
+| flow/rtc_delay                | 4.17     |
+| flow/time_mean                | 0.457    |
+| flow_mse                      | 2.06     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.57     |
+| loss                          | 2.06     |
+| metrics/mse                   | 0.554    |
+| metrics/mse_acc               | 1.65     |
+| metrics/mse_acc_dof           | 1.65     |
+| metrics/mse_dof               | 0.502    |
+| metrics/mse_final_frame       | 0.581    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.505    |
+| metrics/mse_root_pos          | 0.535    |
+| metrics/mse_root_rot          | 0.945    |
+| metrics/mse_velocity          | 0.548    |
+| metrics/mse_velocity_dof      | 0.55     |
+| metrics/mse_velocity_root_pos | 0.472    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 1        |
+| p_replace                     | 0.0211   |
+| param_norm                    | 191      |
+| samples                       | 56       |
+| step                          | 27       |
+--------------------------------------------
+step[27]: loss[2.06298] p_replace[0.021]
+--------------------------------------------
+| flow/rtc_delay                | 3        |
+| flow/time_mean                | 0.552    |
+| flow_mse                      | 1.84     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.61     |
+| loss                          | 1.84     |
+| metrics/mse                   | 0.709    |
+| metrics/mse_acc               | 2.07     |
+| metrics/mse_acc_dof           | 2.03     |
+| metrics/mse_dof               | 0.672    |
+| metrics/mse_final_frame       | 0.769    |
+| metrics/mse_first_frame       | 0.086    |
+| metrics/mse_mid_frame         | 0.654    |
+| metrics/mse_root_pos          | 1.14     |
+| metrics/mse_root_rot          | 0.655    |
+| metrics/mse_velocity          | 0.693    |
+| metrics/mse_velocity_dof      | 0.682    |
+| metrics/mse_velocity_root_pos | 0.794    |
+| metrics/smooth_first_dof      | 0.096    |
+| metrics/smooth_first_root_pos | 0.0544   |
+| n_cross                       | 0        |
+| p_replace                     | 0.0316   |
+| param_norm                    | 191      |
+| samples                       | 58       |
+| step                          | 28       |
+--------------------------------------------
+step[28]: loss[1.84007] p_replace[0.032]
+--------------------------------------------
+| flow/rtc_delay                | 2.17     |
+| flow/time_mean                | 0.561    |
+| flow_mse                      | 1.27     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.37     |
+| loss                          | 1.27     |
+| metrics/mse                   | 0.461    |
+| metrics/mse_acc               | 2.02     |
+| metrics/mse_acc_dof           | 2.01     |
+| metrics/mse_dof               | 0.455    |
+| metrics/mse_final_frame       | 0.523    |
+| metrics/mse_first_frame       | 0.317    |
+| metrics/mse_mid_frame         | 0.492    |
+| metrics/mse_root_pos          | 0.454    |
+| metrics/mse_root_rot          | 0.505    |
+| metrics/mse_velocity          | 0.674    |
+| metrics/mse_velocity_dof      | 0.668    |
+| metrics/mse_velocity_root_pos | 0.777    |
+| metrics/smooth_first_dof      | 0.307    |
+| metrics/smooth_first_root_pos | 0.226    |
+| n_cross                       | 0        |
+| p_replace                     | 0.0421   |
+| param_norm                    | 191      |
+| samples                       | 60       |
+| step                          | 29       |
+--------------------------------------------
+step[29]: loss[1.27067] p_replace[0.042]
+--------------------------------------------
+| flow/rtc_delay                | 4.83     |
+| flow/time_mean                | 0.575    |
+| flow_mse                      | 2.09     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.74     |
+| loss                          | 2.09     |
+| metrics/mse                   | 0.822    |
+| metrics/mse_acc               | 2.25     |
+| metrics/mse_acc_dof           | 2.22     |
+| metrics/mse_dof               | 0.571    |
+| metrics/mse_final_frame       | 0.889    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.747    |
+| metrics/mse_root_pos          | 3.38     |
+| metrics/mse_root_rot          | 0.717    |
+| metrics/mse_velocity          | 0.75     |
+| metrics/mse_velocity_dof      | 0.745    |
+| metrics/mse_velocity_root_pos | 0.753    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.0526   |
+| param_norm                    | 191      |
+| samples                       | 62       |
+| step                          | 30       |
+--------------------------------------------
+step[30]: loss[2.09180] p_replace[0.053]
+--------------------------------------------
+| flow/rtc_delay                | 2.67     |
+| flow/time_mean                | 0.701    |
+| flow_mse                      | 1.63     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.28     |
+| loss                          | 1.63     |
+| metrics/mse                   | 0.968    |
+| metrics/mse_acc               | 3.01     |
+| metrics/mse_acc_dof           | 2.97     |
+| metrics/mse_dof               | 1.02     |
+| metrics/mse_final_frame       | 1.01     |
+| metrics/mse_first_frame       | 0.295    |
+| metrics/mse_mid_frame         | 0.907    |
+| metrics/mse_root_pos          | 0.625    |
+| metrics/mse_root_rot          | 0.863    |
+| metrics/mse_velocity          | 1.01     |
+| metrics/mse_velocity_dof      | 0.996    |
+| metrics/mse_velocity_root_pos | 1.08     |
+| metrics/smooth_first_dof      | 0.299    |
+| metrics/smooth_first_root_pos | 0.326    |
+| n_cross                       | 0        |
+| p_replace                     | 0.0632   |
+| param_norm                    | 192      |
+| samples                       | 64       |
+| step                          | 31       |
+--------------------------------------------
+step[31]: loss[1.63023] p_replace[0.063]
+--------------------------------------------
+| flow/rtc_delay                | 3.33     |
+| flow/time_mean                | 0.644    |
+| flow_mse                      | 1.61     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.28     |
+| loss                          | 1.61     |
+| metrics/mse                   | 0.721    |
+| metrics/mse_acc               | 2.37     |
+| metrics/mse_acc_dof           | 2.33     |
+| metrics/mse_dof               | 0.775    |
+| metrics/mse_final_frame       | 0.779    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.525    |
+| metrics/mse_root_pos          | 0.477    |
+| metrics/mse_root_rot          | 0.513    |
+| metrics/mse_velocity          | 0.79     |
+| metrics/mse_velocity_dof      | 0.781    |
+| metrics/mse_velocity_root_pos | 0.861    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.0737   |
+| param_norm                    | 192      |
+| samples                       | 66       |
+| step                          | 32       |
+--------------------------------------------
+step[32]: loss[1.60713] p_replace[0.074]
+--------------------------------------------
+| flow/rtc_delay                | 1.67     |
+| flow/time_mean                | 0.653    |
+| flow_mse                      | 1.44     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.75     |
+| loss                          | 1.44     |
+| metrics/mse                   | 0.72     |
+| metrics/mse_acc               | 2.68     |
+| metrics/mse_acc_dof           | 2.67     |
+| metrics/mse_dof               | 0.666    |
+| metrics/mse_final_frame       | 0.73     |
+| metrics/mse_first_frame       | 0.216    |
+| metrics/mse_mid_frame         | 0.791    |
+| metrics/mse_root_pos          | 0.658    |
+| metrics/mse_root_rot          | 1.15     |
+| metrics/mse_velocity          | 0.893    |
+| metrics/mse_velocity_dof      | 0.888    |
+| metrics/mse_velocity_root_pos | 0.855    |
+| metrics/smooth_first_dof      | 0.205    |
+| metrics/smooth_first_root_pos | 0.0429   |
+| n_cross                       | 0        |
+| p_replace                     | 0.0842   |
+| param_norm                    | 192      |
+| samples                       | 68       |
+| step                          | 33       |
+--------------------------------------------
+step[33]: loss[1.43526] p_replace[0.084]
+--------------------------------------------
+| flow/rtc_delay                | 5        |
+| flow/time_mean                | 0.595    |
+| flow_mse                      | 1.64     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.66     |
+| loss                          | 1.64     |
+| metrics/mse                   | 0.626    |
+| metrics/mse_acc               | 2.12     |
+| metrics/mse_acc_dof           | 2.1      |
+| metrics/mse_dof               | 0.615    |
+| metrics/mse_final_frame       | 0.641    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.528    |
+| metrics/mse_root_pos          | 0.922    |
+| metrics/mse_root_rot          | 0.478    |
+| metrics/mse_velocity          | 0.708    |
+| metrics/mse_velocity_dof      | 0.703    |
+| metrics/mse_velocity_root_pos | 0.678    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.0947   |
+| param_norm                    | 192      |
+| samples                       | 70       |
+| step                          | 34       |
+--------------------------------------------
+step[34]: loss[1.64124] p_replace[0.095]
+--------------------------------------------
+| flow/rtc_delay                | 3.17     |
+| flow/time_mean                | 0.743    |
+| flow_mse                      | 1.5      |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.76     |
+| loss                          | 1.5      |
+| metrics/mse                   | 0.916    |
+| metrics/mse_acc               | 3.31     |
+| metrics/mse_acc_dof           | 3.3      |
+| metrics/mse_dof               | 0.903    |
+| metrics/mse_final_frame       | 1.09     |
+| metrics/mse_first_frame       | 0.239    |
+| metrics/mse_mid_frame         | 1.12     |
+| metrics/mse_root_pos          | 1.06     |
+| metrics/mse_root_rot          | 0.903    |
+| metrics/mse_velocity          | 1.09     |
+| metrics/mse_velocity_dof      | 1.09     |
+| metrics/mse_velocity_root_pos | 1.08     |
+| metrics/smooth_first_dof      | 0.232    |
+| metrics/smooth_first_root_pos | 0.052    |
+| n_cross                       | 1        |
+| p_replace                     | 0.105    |
+| param_norm                    | 192      |
+| samples                       | 72       |
+| step                          | 35       |
+--------------------------------------------
+step[35]: loss[1.50198] p_replace[0.105]
+--------------------------------------------
+| flow/rtc_delay                | 4.17     |
+| flow/time_mean                | 0.634    |
+| flow_mse                      | 1.19     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.39     |
+| loss                          | 1.19     |
+| metrics/mse                   | 0.47     |
+| metrics/mse_acc               | 2.23     |
+| metrics/mse_acc_dof           | 2.2      |
+| metrics/mse_dof               | 0.459    |
+| metrics/mse_final_frame       | 0.434    |
+| metrics/mse_first_frame       | 0.105    |
+| metrics/mse_mid_frame         | 0.522    |
+| metrics/mse_root_pos          | 0.561    |
+| metrics/mse_root_rot          | 0.479    |
+| metrics/mse_velocity          | 0.747    |
+| metrics/mse_velocity_dof      | 0.736    |
+| metrics/mse_velocity_root_pos | 0.775    |
+| metrics/smooth_first_dof      | 0.087    |
+| metrics/smooth_first_root_pos | 0.15     |
+| n_cross                       | 1        |
+| p_replace                     | 0.116    |
+| param_norm                    | 192      |
+| samples                       | 74       |
+| step                          | 36       |
+--------------------------------------------
+step[36]: loss[1.19184] p_replace[0.116]
+--------------------------------------------
+| flow/rtc_delay                | 1.5      |
+| flow/time_mean                | 0.527    |
+| flow_mse                      | 1.71     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.28     |
+| loss                          | 1.71     |
+| metrics/mse                   | 0.548    |
+| metrics/mse_acc               | 1.95     |
+| metrics/mse_acc_dof           | 1.9      |
+| metrics/mse_dof               | 0.508    |
+| metrics/mse_final_frame       | 0.483    |
+| metrics/mse_first_frame       | 0.0498   |
+| metrics/mse_mid_frame         | 0.487    |
+| metrics/mse_root_pos          | 0.649    |
+| metrics/mse_root_rot          | 0.768    |
+| metrics/mse_velocity          | 0.649    |
+| metrics/mse_velocity_dof      | 0.636    |
+| metrics/mse_velocity_root_pos | 0.665    |
+| metrics/smooth_first_dof      | 0.0359   |
+| metrics/smooth_first_root_pos | 0.134    |
+| n_cross                       | 0        |
+| p_replace                     | 0.126    |
+| param_norm                    | 192      |
+| samples                       | 76       |
+| step                          | 37       |
+--------------------------------------------
+step[37]: loss[1.70711] p_replace[0.126]
+--------------------------------------------
+| flow/rtc_delay                | 3.83     |
+| flow/time_mean                | 0.506    |
+| flow_mse                      | 1.46     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.78     |
+| loss                          | 1.46     |
+| metrics/mse                   | 0.467    |
+| metrics/mse_acc               | 1.65     |
+| metrics/mse_acc_dof           | 1.65     |
+| metrics/mse_dof               | 0.429    |
+| metrics/mse_final_frame       | 0.445    |
+| metrics/mse_first_frame       | 0.0781   |
+| metrics/mse_mid_frame         | 0.421    |
+| metrics/mse_root_pos          | 0.81     |
+| metrics/mse_root_rot          | 0.483    |
+| metrics/mse_velocity          | 0.551    |
+| metrics/mse_velocity_dof      | 0.551    |
+| metrics/mse_velocity_root_pos | 0.538    |
+| metrics/smooth_first_dof      | 0.0692   |
+| metrics/smooth_first_root_pos | 0.0667   |
+| n_cross                       | 1        |
+| p_replace                     | 0.137    |
+| param_norm                    | 192      |
+| samples                       | 78       |
+| step                          | 38       |
+--------------------------------------------
+step[38]: loss[1.46484] p_replace[0.137]
+--------------------------------------------
+| flow/rtc_delay                | 3.83     |
+| flow/time_mean                | 0.715    |
+| flow_mse                      | 1.55     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.36     |
+| loss                          | 1.55     |
+| metrics/mse                   | 1        |
+| metrics/mse_acc               | 3.03     |
+| metrics/mse_acc_dof           | 3        |
+| metrics/mse_dof               | 1.03     |
+| metrics/mse_final_frame       | 1.03     |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.988    |
+| metrics/mse_root_pos          | 1        |
+| metrics/mse_root_rot          | 0.784    |
+| metrics/mse_velocity          | 1.01     |
+| metrics/mse_velocity_dof      | 0.996    |
+| metrics/mse_velocity_root_pos | 1.01     |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.147    |
+| param_norm                    | 192      |
+| samples                       | 80       |
+| step                          | 39       |
+--------------------------------------------
+step[39]: loss[1.54833] p_replace[0.147]
+--------------------------------------------
+| flow/rtc_delay                | 4        |
+| flow/time_mean                | 0.542    |
+| flow_mse                      | 1.59     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.11     |
+| loss                          | 1.59     |
+| metrics/mse                   | 0.506    |
+| metrics/mse_acc               | 1.88     |
+| metrics/mse_acc_dof           | 1.84     |
+| metrics/mse_dof               | 0.488    |
+| metrics/mse_final_frame       | 0.54     |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.462    |
+| metrics/mse_root_pos          | 0.603    |
+| metrics/mse_root_rot          | 0.564    |
+| metrics/mse_velocity          | 0.623    |
+| metrics/mse_velocity_dof      | 0.612    |
+| metrics/mse_velocity_root_pos | 0.638    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.158    |
+| param_norm                    | 192      |
+| samples                       | 82       |
+| step                          | 40       |
+--------------------------------------------
+step[40]: loss[1.58903] p_replace[0.158]
+--------------------------------------------
+| flow/rtc_delay                | 3.33     |
+| flow/time_mean                | 0.672    |
+| flow_mse                      | 1.92     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.85     |
+| loss                          | 1.92     |
+| metrics/mse                   | 0.873    |
+| metrics/mse_acc               | 2.52     |
+| metrics/mse_acc_dof           | 2.53     |
+| metrics/mse_dof               | 0.738    |
+| metrics/mse_final_frame       | 0.902    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.783    |
+| metrics/mse_root_pos          | 1.8      |
+| metrics/mse_root_rot          | 1.16     |
+| metrics/mse_velocity          | 0.839    |
+| metrics/mse_velocity_dof      | 0.838    |
+| metrics/mse_velocity_root_pos | 0.863    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.168    |
+| param_norm                    | 192      |
+| samples                       | 84       |
+| step                          | 41       |
+--------------------------------------------
+step[41]: loss[1.92043] p_replace[0.168]
+--------------------------------------------
+| flow/rtc_delay                | 4.67     |
+| flow/time_mean                | 0.688    |
+| flow_mse                      | 1.52     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.42     |
+| loss                          | 1.52     |
+| metrics/mse                   | 0.798    |
+| metrics/mse_acc               | 2.92     |
+| metrics/mse_acc_dof           | 2.9      |
+| metrics/mse_dof               | 0.775    |
+| metrics/mse_final_frame       | 0.816    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.734    |
+| metrics/mse_root_pos          | 1        |
+| metrics/mse_root_rot          | 0.814    |
+| metrics/mse_velocity          | 0.974    |
+| metrics/mse_velocity_dof      | 0.968    |
+| metrics/mse_velocity_root_pos | 1.15     |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.179    |
+| param_norm                    | 192      |
+| samples                       | 86       |
+| step                          | 42       |
+--------------------------------------------
+step[42]: loss[1.52027] p_replace[0.179]
+--------------------------------------------
+| flow/rtc_delay                | 4.17     |
+| flow/time_mean                | 0.594    |
+| flow_mse                      | 1.62     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.86     |
+| loss                          | 1.62     |
+| metrics/mse                   | 0.67     |
+| metrics/mse_acc               | 2.36     |
+| metrics/mse_acc_dof           | 2.33     |
+| metrics/mse_dof               | 0.641    |
+| metrics/mse_final_frame       | 0.847    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.648    |
+| metrics/mse_root_pos          | 0.685    |
+| metrics/mse_root_rot          | 0.863    |
+| metrics/mse_velocity          | 0.792    |
+| metrics/mse_velocity_dof      | 0.783    |
+| metrics/mse_velocity_root_pos | 0.854    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.189    |
+| param_norm                    | 192      |
+| samples                       | 88       |
+| step                          | 43       |
+--------------------------------------------
+step[43]: loss[1.62028] p_replace[0.189]
+--------------------------------------------
+| flow/rtc_delay                | 3.33     |
+| flow/time_mean                | 0.845    |
+| flow_mse                      | 1.29     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.28     |
+| loss                          | 1.29     |
+| metrics/mse                   | 0.936    |
+| metrics/mse_acc               | 3.56     |
+| metrics/mse_acc_dof           | 3.47     |
+| metrics/mse_dof               | 0.918    |
+| metrics/mse_final_frame       | 1.09     |
+| metrics/mse_first_frame       | 0.183    |
+| metrics/mse_mid_frame         | 0.898    |
+| metrics/mse_root_pos          | 0.951    |
+| metrics/mse_root_rot          | 1.05     |
+| metrics/mse_velocity          | 1.18     |
+| metrics/mse_velocity_dof      | 1.15     |
+| metrics/mse_velocity_root_pos | 1.34     |
+| metrics/smooth_first_dof      | 0.17     |
+| metrics/smooth_first_root_pos | 0.116    |
+| n_cross                       | 0        |
+| p_replace                     | 0.2      |
+| param_norm                    | 192      |
+| samples                       | 90       |
+| step                          | 44       |
+--------------------------------------------
+step[44]: loss[1.28950] p_replace[0.200]
+--------------------------------------------
+| flow/rtc_delay                | 4.17     |
+| flow/time_mean                | 0.701    |
+| flow_mse                      | 1.31     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.48     |
+| loss                          | 1.31     |
+| metrics/mse                   | 0.666    |
+| metrics/mse_acc               | 2.54     |
+| metrics/mse_acc_dof           | 2.49     |
+| metrics/mse_dof               | 0.624    |
+| metrics/mse_final_frame       | 0.631    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.724    |
+| metrics/mse_root_pos          | 0.598    |
+| metrics/mse_root_rot          | 1.02     |
+| metrics/mse_velocity          | 0.851    |
+| metrics/mse_velocity_dof      | 0.833    |
+| metrics/mse_velocity_root_pos | 0.967    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.211    |
+| param_norm                    | 192      |
+| samples                       | 92       |
+| step                          | 45       |
+--------------------------------------------
+step[45]: loss[1.30886] p_replace[0.211]
+--------------------------------------------
+| flow/rtc_delay                | 3.17     |
+| flow/time_mean                | 0.694    |
+| flow_mse                      | 2.32     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.59     |
+| loss                          | 2.32     |
+| metrics/mse                   | 1.31     |
+| metrics/mse_acc               | 2.57     |
+| metrics/mse_acc_dof           | 2.48     |
+| metrics/mse_dof               | 1.34     |
+| metrics/mse_final_frame       | 1.13     |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 1.08     |
+| metrics/mse_root_pos          | 0.666    |
+| metrics/mse_root_rot          | 1.61     |
+| metrics/mse_velocity          | 0.853    |
+| metrics/mse_velocity_dof      | 0.823    |
+| metrics/mse_velocity_root_pos | 1.08     |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.221    |
+| param_norm                    | 192      |
+| samples                       | 94       |
+| step                          | 46       |
+--------------------------------------------
+step[46]: loss[2.31523] p_replace[0.221]
+--------------------------------------------
+| flow/rtc_delay                | 4.17     |
+| flow/time_mean                | 0.729    |
+| flow_mse                      | 1.28     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.94     |
+| loss                          | 1.28     |
+| metrics/mse                   | 0.696    |
+| metrics/mse_acc               | 2.75     |
+| metrics/mse_acc_dof           | 2.67     |
+| metrics/mse_dof               | 0.702    |
+| metrics/mse_final_frame       | 0.645    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.809    |
+| metrics/mse_root_pos          | 0.712    |
+| metrics/mse_root_rot          | 0.636    |
+| metrics/mse_velocity          | 0.917    |
+| metrics/mse_velocity_dof      | 0.889    |
+| metrics/mse_velocity_root_pos | 1.09     |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 1        |
+| p_replace                     | 0.232    |
+| param_norm                    | 192      |
+| samples                       | 96       |
+| step                          | 47       |
+--------------------------------------------
+step[47]: loss[1.28430] p_replace[0.232]
+--------------------------------------------
+| flow/rtc_delay                | 2.5      |
+| flow/time_mean                | 0.59     |
+| flow_mse                      | 1.5      |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.26     |
+| loss                          | 1.5      |
+| metrics/mse                   | 0.685    |
+| metrics/mse_acc               | 2.12     |
+| metrics/mse_acc_dof           | 2.07     |
+| metrics/mse_dof               | 0.583    |
+| metrics/mse_final_frame       | 0.557    |
+| metrics/mse_first_frame       | 0.223    |
+| metrics/mse_mid_frame         | 1.03     |
+| metrics/mse_root_pos          | 0.956    |
+| metrics/mse_root_rot          | 1.22     |
+| metrics/mse_velocity          | 0.703    |
+| metrics/mse_velocity_dof      | 0.686    |
+| metrics/mse_velocity_root_pos | 0.747    |
+| metrics/smooth_first_dof      | 0.2      |
+| metrics/smooth_first_root_pos | 0.241    |
+| n_cross                       | 1        |
+| p_replace                     | 0.242    |
+| param_norm                    | 192      |
+| samples                       | 98       |
+| step                          | 48       |
+--------------------------------------------
+step[48]: loss[1.50249] p_replace[0.242]
+--------------------------------------------
+| flow/rtc_delay                | 2.83     |
+| flow/time_mean                | 0.814    |
+| flow_mse                      | 1.42     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.33     |
+| loss                          | 1.42     |
+| metrics/mse                   | 1        |
+| metrics/mse_acc               | 3.15     |
+| metrics/mse_acc_dof           | 2.97     |
+| metrics/mse_dof               | 0.911    |
+| metrics/mse_final_frame       | 0.989    |
+| metrics/mse_first_frame       | 0.0807   |
+| metrics/mse_mid_frame         | 1.15     |
+| metrics/mse_root_pos          | 1.01     |
+| metrics/mse_root_rot          | 1.66     |
+| metrics/mse_velocity          | 1.04     |
+| metrics/mse_velocity_dof      | 0.988    |
+| metrics/mse_velocity_root_pos | 1.38     |
+| metrics/smooth_first_dof      | 0.0921   |
+| metrics/smooth_first_root_pos | 0.0473   |
+| n_cross                       | 0        |
+| p_replace                     | 0.253    |
+| param_norm                    | 192      |
+| samples                       | 100      |
+| step                          | 49       |
+--------------------------------------------
+step[49]: loss[1.41716] p_replace[0.253]
+--------------------------------------------
+| flow/rtc_delay                | 4        |
+| flow/time_mean                | 0.7      |
+| flow_mse                      | 1.5      |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.24     |
+| loss                          | 1.5      |
+| metrics/mse                   | 0.809    |
+| metrics/mse_acc               | 2.8      |
+| metrics/mse_acc_dof           | 2.72     |
+| metrics/mse_dof               | 0.762    |
+| metrics/mse_final_frame       | 0.733    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.835    |
+| metrics/mse_root_pos          | 1.3      |
+| metrics/mse_root_rot          | 0.786    |
+| metrics/mse_velocity          | 0.93     |
+| metrics/mse_velocity_dof      | 0.905    |
+| metrics/mse_velocity_root_pos | 1.02     |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.263    |
+| param_norm                    | 192      |
+| samples                       | 102      |
+| step                          | 50       |
+--------------------------------------------
+step[50]: loss[1.50346] p_replace[0.263]
+--------------------------------------------
+| flow/rtc_delay                | 3        |
+| flow/time_mean                | 0.484    |
+| flow_mse                      | 2.62     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 5.77     |
+| loss                          | 2.62     |
+| metrics/mse                   | 0.561    |
+| metrics/mse_acc               | 1.41     |
+| metrics/mse_acc_dof           | 1.37     |
+| metrics/mse_dof               | 0.6      |
+| metrics/mse_final_frame       | 0.528    |
+| metrics/mse_first_frame       | 0.04     |
+| metrics/mse_mid_frame         | 0.548    |
+| metrics/mse_root_pos          | 0.381    |
+| metrics/mse_root_rot          | 0.412    |
+| metrics/mse_velocity          | 0.466    |
+| metrics/mse_velocity_dof      | 0.453    |
+| metrics/mse_velocity_root_pos | 0.488    |
+| metrics/smooth_first_dof      | 0.0429   |
+| metrics/smooth_first_root_pos | 0.00629  |
+| n_cross                       | 0        |
+| p_replace                     | 0.274    |
+| param_norm                    | 192      |
+| samples                       | 104      |
+| step                          | 51       |
+--------------------------------------------
+step[51]: loss[2.61772] p_replace[0.274]
+--------------------------------------------
+| flow/rtc_delay                | 2.83     |
+| flow/time_mean                | 0.598    |
+| flow_mse                      | 1.7      |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.86     |
+| loss                          | 1.7      |
+| metrics/mse                   | 0.653    |
+| metrics/mse_acc               | 2.01     |
+| metrics/mse_acc_dof           | 1.89     |
+| metrics/mse_dof               | 0.566    |
+| metrics/mse_final_frame       | 0.752    |
+| metrics/mse_first_frame       | 0.00208  |
+| metrics/mse_mid_frame         | 0.597    |
+| metrics/mse_root_pos          | 1.46     |
+| metrics/mse_root_rot          | 0.68     |
+| metrics/mse_velocity          | 0.666    |
+| metrics/mse_velocity_dof      | 0.629    |
+| metrics/mse_velocity_root_pos | 0.857    |
+| metrics/smooth_first_dof      | 0.00145  |
+| metrics/smooth_first_root_pos | 0.00179  |
+| n_cross                       | 0        |
+| p_replace                     | 0.284    |
+| param_norm                    | 192      |
+| samples                       | 106      |
+| step                          | 52       |
+--------------------------------------------
+step[52]: loss[1.69858] p_replace[0.284]
+--------------------------------------------
+| flow/rtc_delay                | 3.33     |
+| flow/time_mean                | 0.757    |
+| flow_mse                      | 1.33     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.5      |
+| loss                          | 1.33     |
+| metrics/mse                   | 0.825    |
+| metrics/mse_acc               | 2.67     |
+| metrics/mse_acc_dof           | 2.57     |
+| metrics/mse_dof               | 0.723    |
+| metrics/mse_final_frame       | 1.05     |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.635    |
+| metrics/mse_root_pos          | 1.08     |
+| metrics/mse_root_rot          | 1.36     |
+| metrics/mse_velocity          | 0.886    |
+| metrics/mse_velocity_dof      | 0.848    |
+| metrics/mse_velocity_root_pos | 1.03     |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.295    |
+| param_norm                    | 192      |
+| samples                       | 108      |
+| step                          | 53       |
+--------------------------------------------
+step[53]: loss[1.32995] p_replace[0.295]
+--------------------------------------------
+| flow/rtc_delay                | 1.5      |
+| flow/time_mean                | 0.601    |
+| flow_mse                      | 2.03     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.8      |
+| loss                          | 2.03     |
+| metrics/mse                   | 0.757    |
+| metrics/mse_acc               | 1.85     |
+| metrics/mse_acc_dof           | 1.77     |
+| metrics/mse_dof               | 0.709    |
+| metrics/mse_final_frame       | 0.626    |
+| metrics/mse_first_frame       | 0.0886   |
+| metrics/mse_mid_frame         | 0.705    |
+| metrics/mse_root_pos          | 0.748    |
+| metrics/mse_root_rot          | 1.11     |
+| metrics/mse_velocity          | 0.622    |
+| metrics/mse_velocity_dof      | 0.597    |
+| metrics/mse_velocity_root_pos | 0.726    |
+| metrics/smooth_first_dof      | 0.0813   |
+| metrics/smooth_first_root_pos | 0.039    |
+| n_cross                       | 0        |
+| p_replace                     | 0.305    |
+| param_norm                    | 192      |
+| samples                       | 110      |
+| step                          | 54       |
+--------------------------------------------
+step[54]: loss[2.03038] p_replace[0.305]
+--------------------------------------------
+| flow/rtc_delay                | 3.17     |
+| flow/time_mean                | 0.621    |
+| flow_mse                      | 1.29     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.28     |
+| loss                          | 1.29     |
+| metrics/mse                   | 0.51     |
+| metrics/mse_acc               | 1.78     |
+| metrics/mse_acc_dof           | 1.71     |
+| metrics/mse_dof               | 0.406    |
+| metrics/mse_final_frame       | 0.477    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.51     |
+| metrics/mse_root_pos          | 0.894    |
+| metrics/mse_root_rot          | 0.974    |
+| metrics/mse_velocity          | 0.595    |
+| metrics/mse_velocity_dof      | 0.572    |
+| metrics/mse_velocity_root_pos | 0.748    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 1        |
+| p_replace                     | 0.316    |
+| param_norm                    | 192      |
+| samples                       | 112      |
+| step                          | 55       |
+--------------------------------------------
+step[55]: loss[1.28935] p_replace[0.316]
+--------------------------------------------
+| flow/rtc_delay                | 2.83     |
+| flow/time_mean                | 0.599    |
+| flow_mse                      | 1.68     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.79     |
+| loss                          | 1.68     |
+| metrics/mse                   | 0.674    |
+| metrics/mse_acc               | 1.7      |
+| metrics/mse_acc_dof           | 1.58     |
+| metrics/mse_dof               | 0.605    |
+| metrics/mse_final_frame       | 0.659    |
+| metrics/mse_first_frame       | 0.123    |
+| metrics/mse_mid_frame         | 0.693    |
+| metrics/mse_root_pos          | 1.02     |
+| metrics/mse_root_rot          | 0.911    |
+| metrics/mse_velocity          | 0.575    |
+| metrics/mse_velocity_dof      | 0.538    |
+| metrics/mse_velocity_root_pos | 0.719    |
+| metrics/smooth_first_dof      | 0.101    |
+| metrics/smooth_first_root_pos | 0.225    |
+| n_cross                       | 0        |
+| p_replace                     | 0.326    |
+| param_norm                    | 192      |
+| samples                       | 114      |
+| step                          | 56       |
+--------------------------------------------
+step[56]: loss[1.67732] p_replace[0.326]
+--------------------------------------------
+| flow/rtc_delay                | 4.17     |
+| flow/time_mean                | 0.533    |
+| flow_mse                      | 2.49     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 5.26     |
+| loss                          | 2.49     |
+| metrics/mse                   | 0.86     |
+| metrics/mse_acc               | 1.58     |
+| metrics/mse_acc_dof           | 1.48     |
+| metrics/mse_dof               | 0.731    |
+| metrics/mse_final_frame       | 0.952    |
+| metrics/mse_first_frame       | 0.318    |
+| metrics/mse_mid_frame         | 0.884    |
+| metrics/mse_root_pos          | 0.522    |
+| metrics/mse_root_rot          | 2.05     |
+| metrics/mse_velocity          | 0.526    |
+| metrics/mse_velocity_dof      | 0.491    |
+| metrics/mse_velocity_root_pos | 0.705    |
+| metrics/smooth_first_dof      | 0.18     |
+| metrics/smooth_first_root_pos | 0.208    |
+| n_cross                       | 0        |
+| p_replace                     | 0.337    |
+| param_norm                    | 192      |
+| samples                       | 116      |
+| step                          | 57       |
+--------------------------------------------
+step[57]: loss[2.49407] p_replace[0.337]
+--------------------------------------------
+| flow/rtc_delay                | 3.67     |
+| flow/time_mean                | 0.619    |
+| flow_mse                      | 1.49     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.56     |
+| loss                          | 1.49     |
+| metrics/mse                   | 0.569    |
+| metrics/mse_acc               | 1.79     |
+| metrics/mse_acc_dof           | 1.69     |
+| metrics/mse_dof               | 0.58     |
+| metrics/mse_final_frame       | 0.507    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.483    |
+| metrics/mse_root_pos          | 0.43     |
+| metrics/mse_root_rot          | 0.595    |
+| metrics/mse_velocity          | 0.597    |
+| metrics/mse_velocity_dof      | 0.562    |
+| metrics/mse_velocity_root_pos | 0.708    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.347    |
+| param_norm                    | 192      |
+| samples                       | 118      |
+| step                          | 58       |
+--------------------------------------------
+step[58]: loss[1.49296] p_replace[0.347]
+--------------------------------------------
+| flow/rtc_delay                | 3.17     |
+| flow/time_mean                | 0.62     |
+| flow_mse                      | 1.32     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.45     |
+| loss                          | 1.32     |
+| metrics/mse                   | 0.553    |
+| metrics/mse_acc               | 2.11     |
+| metrics/mse_acc_dof           | 2        |
+| metrics/mse_dof               | 0.535    |
+| metrics/mse_final_frame       | 0.488    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.58     |
+| metrics/mse_root_pos          | 0.623    |
+| metrics/mse_root_rot          | 0.636    |
+| metrics/mse_velocity          | 0.708    |
+| metrics/mse_velocity_dof      | 0.672    |
+| metrics/mse_velocity_root_pos | 0.782    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.358    |
+| param_norm                    | 192      |
+| samples                       | 120      |
+| step                          | 59       |
+--------------------------------------------
+step[59]: loss[1.31696] p_replace[0.358]
+--------------------------------------------
+| flow/rtc_delay                | 3.83     |
+| flow/time_mean                | 0.575    |
+| flow_mse                      | 1.21     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.81     |
+| loss                          | 1.21     |
+| metrics/mse                   | 0.474    |
+| metrics/mse_acc               | 1.72     |
+| metrics/mse_acc_dof           | 1.62     |
+| metrics/mse_dof               | 0.451    |
+| metrics/mse_final_frame       | 0.478    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.527    |
+| metrics/mse_root_pos          | 0.455    |
+| metrics/mse_root_rot          | 0.651    |
+| metrics/mse_velocity          | 0.574    |
+| metrics/mse_velocity_dof      | 0.539    |
+| metrics/mse_velocity_root_pos | 0.72     |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.368    |
+| param_norm                    | 192      |
+| samples                       | 122      |
+| step                          | 60       |
+--------------------------------------------
+step[60]: loss[1.20597] p_replace[0.368]
+--------------------------------------------
+| flow/rtc_delay                | 2        |
+| flow/time_mean                | 0.597    |
+| flow_mse                      | 1.37     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.25     |
+| loss                          | 1.37     |
+| metrics/mse                   | 0.578    |
+| metrics/mse_acc               | 1.69     |
+| metrics/mse_acc_dof           | 1.59     |
+| metrics/mse_dof               | 0.548    |
+| metrics/mse_final_frame       | 0.648    |
+| metrics/mse_first_frame       | 0.284    |
+| metrics/mse_mid_frame         | 0.665    |
+| metrics/mse_root_pos          | 0.558    |
+| metrics/mse_root_rot          | 0.811    |
+| metrics/mse_velocity          | 0.561    |
+| metrics/mse_velocity_dof      | 0.529    |
+| metrics/mse_velocity_root_pos | 0.739    |
+| metrics/smooth_first_dof      | 0.291    |
+| metrics/smooth_first_root_pos | 0.0991   |
+| n_cross                       | 0        |
+| p_replace                     | 0.379    |
+| param_norm                    | 192      |
+| samples                       | 124      |
+| step                          | 61       |
+--------------------------------------------
+step[61]: loss[1.36553] p_replace[0.379]
+--------------------------------------------
+| flow/rtc_delay                | 2.33     |
+| flow/time_mean                | 0.457    |
+| flow_mse                      | 1.47     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.61     |
+| loss                          | 1.47     |
+| metrics/mse                   | 0.338    |
+| metrics/mse_acc               | 1.04     |
+| metrics/mse_acc_dof           | 0.999    |
+| metrics/mse_dof               | 0.294    |
+| metrics/mse_final_frame       | 0.397    |
+| metrics/mse_first_frame       | 0.152    |
+| metrics/mse_mid_frame         | 0.356    |
+| metrics/mse_root_pos          | 0.486    |
+| metrics/mse_root_rot          | 0.546    |
+| metrics/mse_velocity          | 0.344    |
+| metrics/mse_velocity_dof      | 0.33     |
+| metrics/mse_velocity_root_pos | 0.427    |
+| metrics/smooth_first_dof      | 0.102    |
+| metrics/smooth_first_root_pos | 0.22     |
+| n_cross                       | 0        |
+| p_replace                     | 0.389    |
+| param_norm                    | 192      |
+| samples                       | 126      |
+| step                          | 62       |
+--------------------------------------------
+step[62]: loss[1.46967] p_replace[0.389]
+--------------------------------------------
+| flow/rtc_delay                | 3        |
+| flow/time_mean                | 0.516    |
+| flow_mse                      | 1.13     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.94     |
+| loss                          | 1.13     |
+| metrics/mse                   | 0.322    |
+| metrics/mse_acc               | 1.41     |
+| metrics/mse_acc_dof           | 1.37     |
+| metrics/mse_dof               | 0.3      |
+| metrics/mse_final_frame       | 0.318    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.311    |
+| metrics/mse_root_pos          | 0.493    |
+| metrics/mse_root_rot          | 0.356    |
+| metrics/mse_velocity          | 0.47     |
+| metrics/mse_velocity_dof      | 0.455    |
+| metrics/mse_velocity_root_pos | 0.49     |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.4      |
+| param_norm                    | 192      |
+| samples                       | 128      |
+| step                          | 63       |
+--------------------------------------------
+step[63]: loss[1.12873] p_replace[0.400]
+--------------------------------------------
+| flow/rtc_delay                | 2.5      |
+| flow/time_mean                | 0.647    |
+| flow_mse                      | 1.41     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.92     |
+| loss                          | 1.41     |
+| metrics/mse                   | 0.673    |
+| metrics/mse_acc               | 2.1      |
+| metrics/mse_acc_dof           | 2        |
+| metrics/mse_dof               | 0.618    |
+| metrics/mse_final_frame       | 0.64     |
+| metrics/mse_first_frame       | 0.119    |
+| metrics/mse_mid_frame         | 0.538    |
+| metrics/mse_root_pos          | 0.586    |
+| metrics/mse_root_rot          | 1.14     |
+| metrics/mse_velocity          | 0.701    |
+| metrics/mse_velocity_dof      | 0.667    |
+| metrics/mse_velocity_root_pos | 0.819    |
+| metrics/smooth_first_dof      | 0.0984   |
+| metrics/smooth_first_root_pos | 0.0372   |
+| n_cross                       | 0        |
+| p_replace                     | 0.411    |
+| param_norm                    | 192      |
+| samples                       | 130      |
+| step                          | 64       |
+--------------------------------------------
+step[64]: loss[1.40868] p_replace[0.411]
+--------------------------------------------
+| flow/rtc_delay                | 2.67     |
+| flow/time_mean                | 0.689    |
+| flow_mse                      | 1.4      |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3        |
+| loss                          | 1.4      |
+| metrics/mse                   | 0.71     |
+| metrics/mse_acc               | 2.21     |
+| metrics/mse_acc_dof           | 2.13     |
+| metrics/mse_dof               | 0.71     |
+| metrics/mse_final_frame       | 0.829    |
+| metrics/mse_first_frame       | 0.153    |
+| metrics/mse_mid_frame         | 0.565    |
+| metrics/mse_root_pos          | 0.61     |
+| metrics/mse_root_rot          | 0.779    |
+| metrics/mse_velocity          | 0.745    |
+| metrics/mse_velocity_dof      | 0.715    |
+| metrics/mse_velocity_root_pos | 0.896    |
+| metrics/smooth_first_dof      | 0.176    |
+| metrics/smooth_first_root_pos | 0.0526   |
+| n_cross                       | 0        |
+| p_replace                     | 0.421    |
+| param_norm                    | 192      |
+| samples                       | 132      |
+| step                          | 65       |
+--------------------------------------------
+step[65]: loss[1.39670] p_replace[0.421]
+--------------------------------------------
+| flow/rtc_delay                | 2.5      |
+| flow/time_mean                | 0.736    |
+| flow_mse                      | 2.8      |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.81     |
+| loss                          | 2.8      |
+| metrics/mse                   | 1.55     |
+| metrics/mse_acc               | 2.41     |
+| metrics/mse_acc_dof           | 2.27     |
+| metrics/mse_dof               | 1.67     |
+| metrics/mse_final_frame       | 1.4      |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 1.63     |
+| metrics/mse_root_pos          | 1.36     |
+| metrics/mse_root_rot          | 0.797    |
+| metrics/mse_velocity          | 0.799    |
+| metrics/mse_velocity_dof      | 0.752    |
+| metrics/mse_velocity_root_pos | 1.01     |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.432    |
+| param_norm                    | 192      |
+| samples                       | 134      |
+| step                          | 66       |
+--------------------------------------------
+step[66]: loss[2.79854] p_replace[0.432]
+--------------------------------------------
+| flow/rtc_delay                | 5.17     |
+| flow/time_mean                | 0.314    |
+| flow_mse                      | 1.85     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.78     |
+| loss                          | 1.85     |
+| metrics/mse                   | 0.317    |
+| metrics/mse_acc               | 0.749    |
+| metrics/mse_acc_dof           | 0.72     |
+| metrics/mse_dof               | 0.293    |
+| metrics/mse_final_frame       | 0.327    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.301    |
+| metrics/mse_root_pos          | 0.242    |
+| metrics/mse_root_rot          | 0.548    |
+| metrics/mse_velocity          | 0.252    |
+| metrics/mse_velocity_dof      | 0.242    |
+| metrics/mse_velocity_root_pos | 0.272    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.442    |
+| param_norm                    | 192      |
+| samples                       | 136      |
+| step                          | 67       |
+--------------------------------------------
+step[67]: loss[1.85060] p_replace[0.442]
+--------------------------------------------
+| flow/rtc_delay                | 2.83     |
+| flow/time_mean                | 0.719    |
+| flow_mse                      | 1.41     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.96     |
+| loss                          | 1.41     |
+| metrics/mse                   | 0.776    |
+| metrics/mse_acc               | 2.37     |
+| metrics/mse_acc_dof           | 2.24     |
+| metrics/mse_dof               | 0.805    |
+| metrics/mse_final_frame       | 0.959    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.847    |
+| metrics/mse_root_pos          | 0.716    |
+| metrics/mse_root_rot          | 0.605    |
+| metrics/mse_velocity          | 0.792    |
+| metrics/mse_velocity_dof      | 0.75     |
+| metrics/mse_velocity_root_pos | 0.95     |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.453    |
+| param_norm                    | 192      |
+| samples                       | 138      |
+| step                          | 68       |
+--------------------------------------------
+step[68]: loss[1.40676] p_replace[0.453]
+--------------------------------------------
+| flow/rtc_delay                | 3.5      |
+| flow/time_mean                | 0.581    |
+| flow_mse                      | 1.06     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.26     |
+| loss                          | 1.06     |
+| metrics/mse                   | 0.405    |
+| metrics/mse_acc               | 1.75     |
+| metrics/mse_acc_dof           | 1.63     |
+| metrics/mse_dof               | 0.393    |
+| metrics/mse_final_frame       | 0.442    |
+| metrics/mse_first_frame       | 0.178    |
+| metrics/mse_mid_frame         | 0.404    |
+| metrics/mse_root_pos          | 0.438    |
+| metrics/mse_root_rot          | 0.467    |
+| metrics/mse_velocity          | 0.583    |
+| metrics/mse_velocity_dof      | 0.546    |
+| metrics/mse_velocity_root_pos | 0.714    |
+| metrics/smooth_first_dof      | 0.178    |
+| metrics/smooth_first_root_pos | 0.151    |
+| n_cross                       | 0        |
+| p_replace                     | 0.463    |
+| param_norm                    | 192      |
+| samples                       | 140      |
+| step                          | 69       |
+--------------------------------------------
+step[69]: loss[1.06005] p_replace[0.463]
+--------------------------------------------
+| flow/rtc_delay                | 3.5      |
+| flow/time_mean                | 0.57     |
+| flow_mse                      | 1.85     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.72     |
+| loss                          | 1.85     |
+| metrics/mse                   | 0.637    |
+| metrics/mse_acc               | 1.72     |
+| metrics/mse_acc_dof           | 1.62     |
+| metrics/mse_dof               | 0.545    |
+| metrics/mse_final_frame       | 0.75     |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.664    |
+| metrics/mse_root_pos          | 0.897    |
+| metrics/mse_root_rot          | 1.11     |
+| metrics/mse_velocity          | 0.576    |
+| metrics/mse_velocity_dof      | 0.541    |
+| metrics/mse_velocity_root_pos | 0.757    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.474    |
+| param_norm                    | 192      |
+| samples                       | 142      |
+| step                          | 70       |
+--------------------------------------------
+step[70]: loss[1.85416] p_replace[0.474]
+--------------------------------------------
+| flow/rtc_delay                | 3.33     |
+| flow/time_mean                | 0.476    |
+| flow_mse                      | 1.44     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.54     |
+| loss                          | 1.44     |
+| metrics/mse                   | 0.372    |
+| metrics/mse_acc               | 1.19     |
+| metrics/mse_acc_dof           | 1.13     |
+| metrics/mse_dof               | 0.355    |
+| metrics/mse_final_frame       | 0.312    |
+| metrics/mse_first_frame       | 0.187    |
+| metrics/mse_mid_frame         | 0.409    |
+| metrics/mse_root_pos          | 0.344    |
+| metrics/mse_root_rot          | 0.513    |
+| metrics/mse_velocity          | 0.408    |
+| metrics/mse_velocity_dof      | 0.387    |
+| metrics/mse_velocity_root_pos | 0.496    |
+| metrics/smooth_first_dof      | 0.188    |
+| metrics/smooth_first_root_pos | 0.164    |
+| n_cross                       | 0        |
+| p_replace                     | 0.484    |
+| param_norm                    | 192      |
+| samples                       | 144      |
+| step                          | 71       |
+--------------------------------------------
+step[71]: loss[1.43782] p_replace[0.484]
+--------------------------------------------
+| flow/rtc_delay                | 3        |
+| flow/time_mean                | 0.561    |
+| flow_mse                      | 1.59     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.86     |
+| loss                          | 1.59     |
+| metrics/mse                   | 0.561    |
+| metrics/mse_acc               | 1.52     |
+| metrics/mse_acc_dof           | 1.38     |
+| metrics/mse_dof               | 0.436    |
+| metrics/mse_final_frame       | 0.527    |
+| metrics/mse_first_frame       | 0.0652   |
+| metrics/mse_mid_frame         | 0.778    |
+| metrics/mse_root_pos          | 1.46     |
+| metrics/mse_root_rot          | 0.798    |
+| metrics/mse_velocity          | 0.507    |
+| metrics/mse_velocity_dof      | 0.461    |
+| metrics/mse_velocity_root_pos | 0.672    |
+| metrics/smooth_first_dof      | 0.0613   |
+| metrics/smooth_first_root_pos | 0.0452   |
+| n_cross                       | 0        |
+| p_replace                     | 0.495    |
+| param_norm                    | 192      |
+| samples                       | 146      |
+| step                          | 72       |
+--------------------------------------------
+step[72]: loss[1.58564] p_replace[0.495]
+--------------------------------------------
+| flow/rtc_delay                | 2.83     |
+| flow/time_mean                | 0.587    |
+| flow_mse                      | 1.98     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.78     |
+| loss                          | 1.98     |
+| metrics/mse                   | 0.807    |
+| metrics/mse_acc               | 1.69     |
+| metrics/mse_acc_dof           | 1.56     |
+| metrics/mse_dof               | 0.731    |
+| metrics/mse_final_frame       | 0.901    |
+| metrics/mse_first_frame       | 0.253    |
+| metrics/mse_mid_frame         | 0.638    |
+| metrics/mse_root_pos          | 0.406    |
+| metrics/mse_root_rot          | 1.65     |
+| metrics/mse_velocity          | 0.56     |
+| metrics/mse_velocity_dof      | 0.514    |
+| metrics/mse_velocity_root_pos | 0.744    |
+| metrics/smooth_first_dof      | 0.266    |
+| metrics/smooth_first_root_pos | 0.264    |
+| n_cross                       | 0        |
+| p_replace                     | 0.505    |
+| param_norm                    | 192      |
+| samples                       | 148      |
+| step                          | 73       |
+--------------------------------------------
+step[73]: loss[1.97536] p_replace[0.505]
+--------------------------------------------
+| flow/rtc_delay                | 2.5      |
+| flow/time_mean                | 0.686    |
+| flow_mse                      | 1.5      |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.54     |
+| loss                          | 1.5      |
+| metrics/mse                   | 0.675    |
+| metrics/mse_acc               | 2.03     |
+| metrics/mse_acc_dof           | 1.86     |
+| metrics/mse_dof               | 0.545    |
+| metrics/mse_final_frame       | 0.787    |
+| metrics/mse_first_frame       | 0.151    |
+| metrics/mse_mid_frame         | 0.597    |
+| metrics/mse_root_pos          | 2.04     |
+| metrics/mse_root_rot          | 0.589    |
+| metrics/mse_velocity          | 0.679    |
+| metrics/mse_velocity_dof      | 0.624    |
+| metrics/mse_velocity_root_pos | 0.889    |
+| metrics/smooth_first_dof      | 0.158    |
+| metrics/smooth_first_root_pos | 0.0364   |
+| n_cross                       | 0        |
+| p_replace                     | 0.516    |
+| param_norm                    | 192      |
+| samples                       | 150      |
+| step                          | 74       |
+--------------------------------------------
+step[74]: loss[1.50037] p_replace[0.516]
+--------------------------------------------
+| flow/rtc_delay                | 2.67     |
+| flow/time_mean                | 0.775    |
+| flow_mse                      | 1.53     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.89     |
+| loss                          | 1.53     |
+| metrics/mse                   | 0.907    |
+| metrics/mse_acc               | 2.39     |
+| metrics/mse_acc_dof           | 2.28     |
+| metrics/mse_dof               | 0.911    |
+| metrics/mse_final_frame       | 0.83     |
+| metrics/mse_first_frame       | 0.422    |
+| metrics/mse_mid_frame         | 0.902    |
+| metrics/mse_root_pos          | 0.609    |
+| metrics/mse_root_rot          | 1.1      |
+| metrics/mse_velocity          | 0.792    |
+| metrics/mse_velocity_dof      | 0.751    |
+| metrics/mse_velocity_root_pos | 0.968    |
+| metrics/smooth_first_dof      | 0.439    |
+| metrics/smooth_first_root_pos | 0.4      |
+| n_cross                       | 0        |
+| p_replace                     | 0.526    |
+| param_norm                    | 192      |
+| samples                       | 152      |
+| step                          | 75       |
+--------------------------------------------
+step[75]: loss[1.52548] p_replace[0.526]
+--------------------------------------------
+| flow/rtc_delay                | 3.33     |
+| flow/time_mean                | 0.68     |
+| flow_mse                      | 1.33     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.61     |
+| loss                          | 1.33     |
+| metrics/mse                   | 0.714    |
+| metrics/mse_acc               | 1.97     |
+| metrics/mse_acc_dof           | 1.86     |
+| metrics/mse_dof               | 0.507    |
+| metrics/mse_final_frame       | 0.693    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.584    |
+| metrics/mse_root_pos          | 1.76     |
+| metrics/mse_root_rot          | 1.43     |
+| metrics/mse_velocity          | 0.653    |
+| metrics/mse_velocity_dof      | 0.611    |
+| metrics/mse_velocity_root_pos | 0.881    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.537    |
+| param_norm                    | 192      |
+| samples                       | 154      |
+| step                          | 76       |
+--------------------------------------------
+step[76]: loss[1.33144] p_replace[0.537]
+--------------------------------------------
+| flow/rtc_delay                | 0.667    |
+| flow/time_mean                | 0.378    |
+| flow_mse                      | 1.35     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.88     |
+| loss                          | 1.35     |
+| metrics/mse                   | 0.235    |
+| metrics/mse_acc               | 0.867    |
+| metrics/mse_acc_dof           | 0.821    |
+| metrics/mse_dof               | 0.222    |
+| metrics/mse_final_frame       | 0.208    |
+| metrics/mse_first_frame       | 0.157    |
+| metrics/mse_mid_frame         | 0.217    |
+| metrics/mse_root_pos          | 0.273    |
+| metrics/mse_root_rot          | 0.297    |
+| metrics/mse_velocity          | 0.286    |
+| metrics/mse_velocity_dof      | 0.27     |
+| metrics/mse_velocity_root_pos | 0.357    |
+| metrics/smooth_first_dof      | 0.146    |
+| metrics/smooth_first_root_pos | 0.126    |
+| n_cross                       | 0        |
+| p_replace                     | 0.547    |
+| param_norm                    | 192      |
+| samples                       | 156      |
+| step                          | 77       |
+--------------------------------------------
+step[77]: loss[1.35144] p_replace[0.547]
+--------------------------------------------
+| flow/rtc_delay                | 3.33     |
+| flow/time_mean                | 0.457    |
+| flow_mse                      | 1.27     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.53     |
+| loss                          | 1.27     |
+| metrics/mse                   | 0.318    |
+| metrics/mse_acc               | 1.12     |
+| metrics/mse_acc_dof           | 1.04     |
+| metrics/mse_dof               | 0.304    |
+| metrics/mse_final_frame       | 0.361    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.283    |
+| metrics/mse_root_pos          | 0.401    |
+| metrics/mse_root_rot          | 0.356    |
+| metrics/mse_velocity          | 0.375    |
+| metrics/mse_velocity_dof      | 0.346    |
+| metrics/mse_velocity_root_pos | 0.508    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.558    |
+| param_norm                    | 192      |
+| samples                       | 158      |
+| step                          | 78       |
+--------------------------------------------
+step[78]: loss[1.26564] p_replace[0.558]
+--------------------------------------------
+| flow/rtc_delay                | 4        |
+| flow/time_mean                | 0.633    |
+| flow_mse                      | 1.82     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 5.1      |
+| loss                          | 1.82     |
+| metrics/mse                   | 0.762    |
+| metrics/mse_acc               | 1.73     |
+| metrics/mse_acc_dof           | 1.57     |
+| metrics/mse_dof               | 0.75     |
+| metrics/mse_final_frame       | 0.638    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.707    |
+| metrics/mse_root_pos          | 0.616    |
+| metrics/mse_root_rot          | 0.962    |
+| metrics/mse_velocity          | 0.578    |
+| metrics/mse_velocity_dof      | 0.526    |
+| metrics/mse_velocity_root_pos | 0.905    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.568    |
+| param_norm                    | 192      |
+| samples                       | 160      |
+| step                          | 79       |
+--------------------------------------------
+step[79]: loss[1.81628] p_replace[0.568]
+--------------------------------------------
+| flow/rtc_delay                | 3        |
+| flow/time_mean                | 0.552    |
+| flow_mse                      | 1.69     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 5        |
+| loss                          | 1.69     |
+| metrics/mse                   | 0.552    |
+| metrics/mse_acc               | 1.46     |
+| metrics/mse_acc_dof           | 1.35     |
+| metrics/mse_dof               | 0.537    |
+| metrics/mse_final_frame       | 0.581    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.65     |
+| metrics/mse_root_pos          | 0.573    |
+| metrics/mse_root_rot          | 0.646    |
+| metrics/mse_velocity          | 0.49     |
+| metrics/mse_velocity_dof      | 0.452    |
+| metrics/mse_velocity_root_pos | 0.616    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.579    |
+| param_norm                    | 192      |
+| samples                       | 162      |
+| step                          | 80       |
+--------------------------------------------
+step[80]: loss[1.68626] p_replace[0.579]
+--------------------------------------------
+| flow/rtc_delay                | 2.67     |
+| flow/time_mean                | 0.468    |
+| flow_mse                      | 1.62     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.25     |
+| loss                          | 1.62     |
+| metrics/mse                   | 0.351    |
+| metrics/mse_acc               | 0.97     |
+| metrics/mse_acc_dof           | 0.898    |
+| metrics/mse_dof               | 0.34     |
+| metrics/mse_final_frame       | 0.328    |
+| metrics/mse_first_frame       | 0.106    |
+| metrics/mse_mid_frame         | 0.321    |
+| metrics/mse_root_pos          | 0.217    |
+| metrics/mse_root_rot          | 0.532    |
+| metrics/mse_velocity          | 0.327    |
+| metrics/mse_velocity_dof      | 0.303    |
+| metrics/mse_velocity_root_pos | 0.43     |
+| metrics/smooth_first_dof      | 0.109    |
+| metrics/smooth_first_root_pos | 0.0197   |
+| n_cross                       | 1        |
+| p_replace                     | 0.589    |
+| param_norm                    | 192      |
+| samples                       | 164      |
+| step                          | 81       |
+--------------------------------------------
+step[81]: loss[1.62155] p_replace[0.589]
+--------------------------------------------
+| flow/rtc_delay                | 2.5      |
+| flow/time_mean                | 0.521    |
+| flow_mse                      | 1.06     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 2.1      |
+| loss                          | 1.06     |
+| metrics/mse                   | 0.358    |
+| metrics/mse_acc               | 1.41     |
+| metrics/mse_acc_dof           | 1.32     |
+| metrics/mse_dof               | 0.349    |
+| metrics/mse_final_frame       | 0.344    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.327    |
+| metrics/mse_root_pos          | 0.363    |
+| metrics/mse_root_rot          | 0.42     |
+| metrics/mse_velocity          | 0.465    |
+| metrics/mse_velocity_dof      | 0.435    |
+| metrics/mse_velocity_root_pos | 0.542    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.6      |
+| param_norm                    | 192      |
+| samples                       | 166      |
+| step                          | 82       |
+--------------------------------------------
+step[82]: loss[1.06407] p_replace[0.600]
+--------------------------------------------
+| flow/rtc_delay                | 2.33     |
+| flow/time_mean                | 0.693    |
+| flow_mse                      | 1.48     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.41     |
+| loss                          | 1.48     |
+| metrics/mse                   | 0.734    |
+| metrics/mse_acc               | 1.92     |
+| metrics/mse_acc_dof           | 1.78     |
+| metrics/mse_dof               | 0.722    |
+| metrics/mse_final_frame       | 0.536    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.776    |
+| metrics/mse_root_pos          | 0.956    |
+| metrics/mse_root_rot          | 0.655    |
+| metrics/mse_velocity          | 0.637    |
+| metrics/mse_velocity_dof      | 0.59     |
+| metrics/mse_velocity_root_pos | 0.869    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.611    |
+| param_norm                    | 192      |
+| samples                       | 168      |
+| step                          | 83       |
+--------------------------------------------
+step[83]: loss[1.48410] p_replace[0.611]
+--------------------------------------------
+| flow/rtc_delay                | 2.67     |
+| flow/time_mean                | 0.44     |
+| flow_mse                      | 1.37     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.05     |
+| loss                          | 1.37     |
+| metrics/mse                   | 0.339    |
+| metrics/mse_acc               | 1.09     |
+| metrics/mse_acc_dof           | 1        |
+| metrics/mse_dof               | 0.33     |
+| metrics/mse_final_frame       | 0.334    |
+| metrics/mse_first_frame       | 0.0145   |
+| metrics/mse_mid_frame         | 0.379    |
+| metrics/mse_root_pos          | 0.28     |
+| metrics/mse_root_rot          | 0.448    |
+| metrics/mse_velocity          | 0.359    |
+| metrics/mse_velocity_dof      | 0.33     |
+| metrics/mse_velocity_root_pos | 0.464    |
+| metrics/smooth_first_dof      | 0.0126   |
+| metrics/smooth_first_root_pos | 0.019    |
+| n_cross                       | 0        |
+| p_replace                     | 0.621    |
+| param_norm                    | 192      |
+| samples                       | 170      |
+| step                          | 84       |
+--------------------------------------------
+step[84]: loss[1.37289] p_replace[0.621]
+--------------------------------------------
+| flow/rtc_delay                | 2.5      |
+| flow/time_mean                | 0.691    |
+| flow_mse                      | 1.34     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.44     |
+| loss                          | 1.34     |
+| metrics/mse                   | 0.667    |
+| metrics/mse_acc               | 1.98     |
+| metrics/mse_acc_dof           | 1.78     |
+| metrics/mse_dof               | 0.651    |
+| metrics/mse_final_frame       | 0.725    |
+| metrics/mse_first_frame       | 0.183    |
+| metrics/mse_mid_frame         | 0.61     |
+| metrics/mse_root_pos          | 0.648    |
+| metrics/mse_root_rot          | 0.798    |
+| metrics/mse_velocity          | 0.659    |
+| metrics/mse_velocity_dof      | 0.591    |
+| metrics/mse_velocity_root_pos | 0.938    |
+| metrics/smooth_first_dof      | 0.186    |
+| metrics/smooth_first_root_pos | 0.109    |
+| n_cross                       | 0        |
+| p_replace                     | 0.632    |
+| param_norm                    | 192      |
+| samples                       | 172      |
+| step                          | 85       |
+--------------------------------------------
+step[85]: loss[1.34095] p_replace[0.632]
+--------------------------------------------
+| flow/rtc_delay                | 1.83     |
+| flow/time_mean                | 0.669    |
+| flow_mse                      | 1.22     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.82     |
+| loss                          | 1.22     |
+| metrics/mse                   | 0.519    |
+| metrics/mse_acc               | 1.8      |
+| metrics/mse_acc_dof           | 1.63     |
+| metrics/mse_dof               | 0.483    |
+| metrics/mse_final_frame       | 0.587    |
+| metrics/mse_first_frame       | 0.0318   |
+| metrics/mse_mid_frame         | 0.605    |
+| metrics/mse_root_pos          | 0.676    |
+| metrics/mse_root_rot          | 0.659    |
+| metrics/mse_velocity          | 0.592    |
+| metrics/mse_velocity_dof      | 0.537    |
+| metrics/mse_velocity_root_pos | 0.87     |
+| metrics/smooth_first_dof      | 0.0348   |
+| metrics/smooth_first_root_pos | 0.0124   |
+| n_cross                       | 0        |
+| p_replace                     | 0.642    |
+| param_norm                    | 192      |
+| samples                       | 174      |
+| step                          | 86       |
+--------------------------------------------
+step[86]: loss[1.21603] p_replace[0.642]
+--------------------------------------------
+| flow/rtc_delay                | 3        |
+| flow/time_mean                | 0.612    |
+| flow_mse                      | 1.28     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.13     |
+| loss                          | 1.28     |
+| metrics/mse                   | 0.518    |
+| metrics/mse_acc               | 1.66     |
+| metrics/mse_acc_dof           | 1.53     |
+| metrics/mse_dof               | 0.457    |
+| metrics/mse_final_frame       | 0.493    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.436    |
+| metrics/mse_root_pos          | 1.17     |
+| metrics/mse_root_rot          | 0.472    |
+| metrics/mse_velocity          | 0.55     |
+| metrics/mse_velocity_dof      | 0.506    |
+| metrics/mse_velocity_root_pos | 0.747    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.653    |
+| param_norm                    | 192      |
+| samples                       | 176      |
+| step                          | 87       |
+--------------------------------------------
+step[87]: loss[1.28397] p_replace[0.653]
+--------------------------------------------
+| flow/rtc_delay                | 2        |
+| flow/time_mean                | 0.688    |
+| flow_mse                      | 3.22     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 13.2     |
+| loss                          | 3.22     |
+| metrics/mse                   | 1.64     |
+| metrics/mse_acc               | 1.97     |
+| metrics/mse_acc_dof           | 1.79     |
+| metrics/mse_dof               | 1.84     |
+| metrics/mse_final_frame       | 1.64     |
+| metrics/mse_first_frame       | 0.814    |
+| metrics/mse_mid_frame         | 1.74     |
+| metrics/mse_root_pos          | 0.58     |
+| metrics/mse_root_rot          | 0.976    |
+| metrics/mse_velocity          | 0.659    |
+| metrics/mse_velocity_dof      | 0.599    |
+| metrics/mse_velocity_root_pos | 0.931    |
+| metrics/smooth_first_dof      | 0.878    |
+| metrics/smooth_first_root_pos | 0.695    |
+| n_cross                       | 1        |
+| p_replace                     | 0.663    |
+| param_norm                    | 192      |
+| samples                       | 178      |
+| step                          | 88       |
+--------------------------------------------
+step[88]: loss[3.22486] p_replace[0.663]
+--------------------------------------------
+| flow/rtc_delay                | 2        |
+| flow/time_mean                | 0.633    |
+| flow_mse                      | 1.64     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 6.22     |
+| loss                          | 1.64     |
+| metrics/mse                   | 0.777    |
+| metrics/mse_acc               | 1.73     |
+| metrics/mse_acc_dof           | 1.56     |
+| metrics/mse_dof               | 0.758    |
+| metrics/mse_final_frame       | 0.758    |
+| metrics/mse_first_frame       | 0.036    |
+| metrics/mse_mid_frame         | 0.761    |
+| metrics/mse_root_pos          | 1.24     |
+| metrics/mse_root_rot          | 0.56     |
+| metrics/mse_velocity          | 0.581    |
+| metrics/mse_velocity_dof      | 0.529    |
+| metrics/mse_velocity_root_pos | 0.924    |
+| metrics/smooth_first_dof      | 0.036    |
+| metrics/smooth_first_root_pos | 0.0585   |
+| n_cross                       | 0        |
+| p_replace                     | 0.674    |
+| param_norm                    | 192      |
+| samples                       | 180      |
+| step                          | 89       |
+--------------------------------------------
+step[89]: loss[1.63618] p_replace[0.674]
+--------------------------------------------
+| flow/rtc_delay                | 2.5      |
+| flow/time_mean                | 0.685    |
+| flow_mse                      | 1.21     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.96     |
+| loss                          | 1.21     |
+| metrics/mse                   | 0.607    |
+| metrics/mse_acc               | 1.86     |
+| metrics/mse_acc_dof           | 1.72     |
+| metrics/mse_dof               | 0.562    |
+| metrics/mse_final_frame       | 0.659    |
+| metrics/mse_first_frame       | 0.235    |
+| metrics/mse_mid_frame         | 0.558    |
+| metrics/mse_root_pos          | 0.507    |
+| metrics/mse_root_rot          | 1.01     |
+| metrics/mse_velocity          | 0.618    |
+| metrics/mse_velocity_dof      | 0.571    |
+| metrics/mse_velocity_root_pos | 0.792    |
+| metrics/smooth_first_dof      | 0.196    |
+| metrics/smooth_first_root_pos | 0.184    |
+| n_cross                       | 0        |
+| p_replace                     | 0.684    |
+| param_norm                    | 192      |
+| samples                       | 182      |
+| step                          | 90       |
+--------------------------------------------
+step[90]: loss[1.20519] p_replace[0.684]
+--------------------------------------------
+| flow/rtc_delay                | 2.17     |
+| flow/time_mean                | 0.67     |
+| flow_mse                      | 1.19     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.64     |
+| loss                          | 1.19     |
+| metrics/mse                   | 0.582    |
+| metrics/mse_acc               | 1.62     |
+| metrics/mse_acc_dof           | 1.46     |
+| metrics/mse_dof               | 0.579    |
+| metrics/mse_final_frame       | 0.627    |
+| metrics/mse_first_frame       | 0.212    |
+| metrics/mse_mid_frame         | 0.791    |
+| metrics/mse_root_pos          | 0.498    |
+| metrics/mse_root_rot          | 0.669    |
+| metrics/mse_velocity          | 0.546    |
+| metrics/mse_velocity_dof      | 0.492    |
+| metrics/mse_velocity_root_pos | 0.852    |
+| metrics/smooth_first_dof      | 0.228    |
+| metrics/smooth_first_root_pos | 0.171    |
+| n_cross                       | 0        |
+| p_replace                     | 0.695    |
+| param_norm                    | 192      |
+| samples                       | 184      |
+| step                          | 91       |
+--------------------------------------------
+step[91]: loss[1.18831] p_replace[0.695]
+--------------------------------------------
+| flow/rtc_delay                | 2.5      |
+| flow/time_mean                | 0.682    |
+| flow_mse                      | 1.25     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.39     |
+| loss                          | 1.25     |
+| metrics/mse                   | 0.585    |
+| metrics/mse_acc               | 1.84     |
+| metrics/mse_acc_dof           | 1.67     |
+| metrics/mse_dof               | 0.56     |
+| metrics/mse_final_frame       | 0.625    |
+| metrics/mse_first_frame       | 0.074    |
+| metrics/mse_mid_frame         | 0.553    |
+| metrics/mse_root_pos          | 0.649    |
+| metrics/mse_root_rot          | 0.719    |
+| metrics/mse_velocity          | 0.615    |
+| metrics/mse_velocity_dof      | 0.559    |
+| metrics/mse_velocity_root_pos | 0.815    |
+| metrics/smooth_first_dof      | 0.0805   |
+| metrics/smooth_first_root_pos | 0.0721   |
+| n_cross                       | 0        |
+| p_replace                     | 0.705    |
+| param_norm                    | 192      |
+| samples                       | 186      |
+| step                          | 92       |
+--------------------------------------------
+step[92]: loss[1.24789] p_replace[0.705]
+--------------------------------------------
+| flow/rtc_delay                | 2        |
+| flow/time_mean                | 0.511    |
+| flow_mse                      | 1.33     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.4      |
+| loss                          | 1.33     |
+| metrics/mse                   | 0.359    |
+| metrics/mse_acc               | 1.09     |
+| metrics/mse_acc_dof           | 0.985    |
+| metrics/mse_dof               | 0.291    |
+| metrics/mse_final_frame       | 0.317    |
+| metrics/mse_first_frame       | 0.0166   |
+| metrics/mse_mid_frame         | 0.326    |
+| metrics/mse_root_pos          | 0.762    |
+| metrics/mse_root_rot          | 0.557    |
+| metrics/mse_velocity          | 0.363    |
+| metrics/mse_velocity_dof      | 0.329    |
+| metrics/mse_velocity_root_pos | 0.535    |
+| metrics/smooth_first_dof      | 0.0155   |
+| metrics/smooth_first_root_pos | 0.00805  |
+| n_cross                       | 0        |
+| p_replace                     | 0.716    |
+| param_norm                    | 192      |
+| samples                       | 188      |
+| step                          | 93       |
+--------------------------------------------
+step[93]: loss[1.32567] p_replace[0.716]
+--------------------------------------------
+| flow/rtc_delay                | 3.17     |
+| flow/time_mean                | 0.597    |
+| flow_mse                      | 1.35     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.49     |
+| loss                          | 1.35     |
+| metrics/mse                   | 0.535    |
+| metrics/mse_acc               | 1.48     |
+| metrics/mse_acc_dof           | 1.35     |
+| metrics/mse_dof               | 0.418    |
+| metrics/mse_final_frame       | 0.671    |
+| metrics/mse_first_frame       | 0.0418   |
+| metrics/mse_mid_frame         | 0.501    |
+| metrics/mse_root_pos          | 1.15     |
+| metrics/mse_root_rot          | 0.926    |
+| metrics/mse_velocity          | 0.492    |
+| metrics/mse_velocity_dof      | 0.445    |
+| metrics/mse_velocity_root_pos | 0.6      |
+| metrics/smooth_first_dof      | 0.0442   |
+| metrics/smooth_first_root_pos | 0.00856  |
+| n_cross                       | 0        |
+| p_replace                     | 0.726    |
+| param_norm                    | 192      |
+| samples                       | 190      |
+| step                          | 94       |
+--------------------------------------------
+step[94]: loss[1.35157] p_replace[0.726]
+--------------------------------------------
+| flow/rtc_delay                | 2.17     |
+| flow/time_mean                | 0.335    |
+| flow_mse                      | 1.27     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 4.86     |
+| loss                          | 1.27     |
+| metrics/mse                   | 0.22     |
+| metrics/mse_acc               | 0.645    |
+| metrics/mse_acc_dof           | 0.575    |
+| metrics/mse_dof               | 0.219    |
+| metrics/mse_final_frame       | 0.217    |
+| metrics/mse_first_frame       | 0.0222   |
+| metrics/mse_mid_frame         | 0.214    |
+| metrics/mse_root_pos          | 0.195    |
+| metrics/mse_root_rot          | 0.247    |
+| metrics/mse_velocity          | 0.215    |
+| metrics/mse_velocity_dof      | 0.193    |
+| metrics/mse_velocity_root_pos | 0.301    |
+| metrics/smooth_first_dof      | 0.0186   |
+| metrics/smooth_first_root_pos | 0.0511   |
+| n_cross                       | 0        |
+| p_replace                     | 0.737    |
+| param_norm                    | 192      |
+| samples                       | 192      |
+| step                          | 95       |
+--------------------------------------------
+step[95]: loss[1.27325] p_replace[0.737]
+--------------------------------------------
+| flow/rtc_delay                | 2.67     |
+| flow/time_mean                | 0.753    |
+| flow_mse                      | 1.39     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.48     |
+| loss                          | 1.39     |
+| metrics/mse                   | 0.754    |
+| metrics/mse_acc               | 2.01     |
+| metrics/mse_acc_dof           | 1.8      |
+| metrics/mse_dof               | 0.67     |
+| metrics/mse_final_frame       | 0.834    |
+| metrics/mse_first_frame       | 0.14     |
+| metrics/mse_mid_frame         | 0.729    |
+| metrics/mse_root_pos          | 0.928    |
+| metrics/mse_root_rot          | 1.23     |
+| metrics/mse_velocity          | 0.667    |
+| metrics/mse_velocity_dof      | 0.598    |
+| metrics/mse_velocity_root_pos | 0.886    |
+| metrics/smooth_first_dof      | 0.132    |
+| metrics/smooth_first_root_pos | 0.162    |
+| n_cross                       | 0        |
+| p_replace                     | 0.747    |
+| param_norm                    | 192      |
+| samples                       | 194      |
+| step                          | 96       |
+--------------------------------------------
+step[96]: loss[1.39439] p_replace[0.747]
+--------------------------------------------
+| flow/rtc_delay                | 4.33     |
+| flow/time_mean                | 0.664    |
+| flow_mse                      | 1.25     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.22     |
+| loss                          | 1.25     |
+| metrics/mse                   | 0.539    |
+| metrics/mse_acc               | 1.74     |
+| metrics/mse_acc_dof           | 1.6      |
+| metrics/mse_dof               | 0.499    |
+| metrics/mse_final_frame       | 0.551    |
+| metrics/mse_first_frame       | 0        |
+| metrics/mse_mid_frame         | 0.561    |
+| metrics/mse_root_pos          | 0.56     |
+| metrics/mse_root_rot          | 0.814    |
+| metrics/mse_velocity          | 0.587    |
+| metrics/mse_velocity_dof      | 0.536    |
+| metrics/mse_velocity_root_pos | 0.845    |
+| metrics/smooth_first_dof      | 0        |
+| metrics/smooth_first_root_pos | 0        |
+| n_cross                       | 0        |
+| p_replace                     | 0.758    |
+| param_norm                    | 192      |
+| samples                       | 196      |
+| step                          | 97       |
+--------------------------------------------
+step[97]: loss[1.25073] p_replace[0.758]
+--------------------------------------------
+| flow/rtc_delay                | 2.33     |
+| flow/time_mean                | 0.661    |
+| flow_mse                      | 1.37     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.45     |
+| loss                          | 1.37     |
+| metrics/mse                   | 0.667    |
+| metrics/mse_acc               | 1.61     |
+| metrics/mse_acc_dof           | 1.51     |
+| metrics/mse_dof               | 0.454    |
+| metrics/mse_final_frame       | 0.704    |
+| metrics/mse_first_frame       | 0.00384  |
+| metrics/mse_mid_frame         | 0.653    |
+| metrics/mse_root_pos          | 2.5      |
+| metrics/mse_root_rot          | 0.827    |
+| metrics/mse_velocity          | 0.542    |
+| metrics/mse_velocity_dof      | 0.502    |
+| metrics/mse_velocity_root_pos | 0.675    |
+| metrics/smooth_first_dof      | 0.00381  |
+| metrics/smooth_first_root_pos | 0.00724  |
+| n_cross                       | 1        |
+| p_replace                     | 0.768    |
+| param_norm                    | 192      |
+| samples                       | 198      |
+| step                          | 98       |
+--------------------------------------------
+step[98]: loss[1.37150] p_replace[0.768]
+--------------------------------------------
+| flow/rtc_delay                | 2.67     |
+| flow/time_mean                | 0.57     |
+| flow_mse                      | 1.7      |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 3.85     |
+| loss                          | 1.7      |
+| metrics/mse                   | 0.552    |
+| metrics/mse_acc               | 1.32     |
+| metrics/mse_acc_dof           | 1.17     |
+| metrics/mse_dof               | 0.48     |
+| metrics/mse_final_frame       | 0.556    |
+| metrics/mse_first_frame       | 0.103    |
+| metrics/mse_mid_frame         | 0.521    |
+| metrics/mse_root_pos          | 0.711    |
+| metrics/mse_root_rot          | 0.955    |
+| metrics/mse_velocity          | 0.445    |
+| metrics/mse_velocity_dof      | 0.395    |
+| metrics/mse_velocity_root_pos | 0.674    |
+| metrics/smooth_first_dof      | 0.0908   |
+| metrics/smooth_first_root_pos | 0.252    |
+| n_cross                       | 0        |
+| p_replace                     | 0.779    |
+| param_norm                    | 192      |
+| samples                       | 200      |
+| step                          | 99       |
+--------------------------------------------
+step[99]: loss[1.69825] p_replace[0.779]
+--------------------------------------------
+| flow/rtc_delay                | 3.5      |
+| flow/time_mean                | 0.562    |
+| flow_mse                      | 2.55     |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 6.89     |
+| loss                          | 2.55     |
+| metrics/mse                   | 1.03     |
+| metrics/mse_acc               | 1.35     |
+| metrics/mse_acc_dof           | 1.22     |
+| metrics/mse_dof               | 1.11     |
+| metrics/mse_final_frame       | 1.12     |
+| metrics/mse_first_frame       | 0.234    |
+| metrics/mse_mid_frame         | 0.965    |
+| metrics/mse_root_pos          | 0.885    |
+| metrics/mse_root_rot          | 0.493    |
+| metrics/mse_velocity          | 0.454    |
+| metrics/mse_velocity_dof      | 0.41     |
+| metrics/mse_velocity_root_pos | 0.578    |
+| metrics/smooth_first_dof      | 0.269    |
+| metrics/smooth_first_root_pos | 0.109    |
+| n_cross                       | 0        |
+| p_replace                     | 0.789    |
+| param_norm                    | 192      |
+| samples                       | 202      |
+| step                          | 100      |
+--------------------------------------------
+step[100]: loss[2.54923] p_replace[0.789]
+saving model...
+{"status": "LIMITED_OFFICIAL_TRAINING_PASSED", "started_utc": "2026-10-21T14:53:17.178465+00:00", "optimizer_updates": 101, "model_prefix_samples_selected": 169, "prefix_selection_calls": 202, "source_sha256": "8e88a7d773dbd54aae405d0c670d6e31fe43a74d9603cf94eca57b02721aed1b", "official_source_commit": "5a79d03cab824eb5917271ba720294e8a1b9d374", "paper_benchmark_reproduced": false, "physics_control_evaluated": false, "full_generator_training_completed": false, "instrumentation": "optimizer post-hook, metric sink and count-only torch.where wrapper; official sources unchanged", "official_cli_arguments": ["--save_dir", "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/runs/pilot_v1/checkpoints", "--dataset", "kungfu_g1_36dim", "--data_dir", "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data/kungfu_g1_36dim", "--model_type", "flow", "--text_encoder", "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/cache/text/distilbert-base-uncased", "--num_steps", "101", "--num_warmup_steps", "25", "--batch_size_local", "2", "--seed", "42", "--device", "0", "--num_workers", "0", "--train_platform_type", "NoPlatform", "--save_interval", "100", "--log_interval", "1", "--cross_prob", "0.1", "--no-use_ema"], "trainable_parameters": 107045924, "initial_trainable_sha256": "a93609c39f78fac35b6ee46d493d0ca1dc0c6f759d3bee79646754cff0ca00f2", "heldout_before": {"mean": 1.7152809351682663, "per_sample": [2.173609972000122, 1.9935810565948486, 1.304177165031433, 1.4631171226501465, 1.6403934955596924, 1.6560465097427368, 1.4374428987503052, 2.0538792610168457], "samples": 8, "noise_seed": 4242, "protocol": "teacher-forced single 50-frame primitive, official flow objective; not a motion-quality score"}, "heldout_after": {"mean": 1.354077585041523, "per_sample": [1.8785783052444458, 1.9426617622375488, 0.8362528681755066, 1.1614124774932861, 1.466062068939209, 1.3094403743743896, 1.0877623558044434, 1.1504504680633545], "samples": 8, "noise_seed": 4242, "protocol": "teacher-forced single 50-frame primitive, official flow objective; not a motion-quality score"}, "final_trainable_sha256": "08cf4f1039dcc147b60220b9ed41d529bcf81f8aa91df0348d91f0f6c06586f6", "weights_changed": true, "official_final_step_counter": 101, "ended_utc": "2026-10-21T14:53:54.190263+00:00", "elapsed_seconds": 37.01172938011587, "exit_code": 0, "max_allocated_bytes": 2438173184, "max_reserved_bytes": 2732589056}
