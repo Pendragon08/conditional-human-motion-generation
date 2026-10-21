@@ -16,6 +16,9 @@ paper's benchmark performance is claimed.
 - [Official data manifest](configs/official_data_files.json), [download receipts](results/acquisition_v1/acquisition.json)
 - [Numeric data audit](results/data_audit_v1.json)
 - [Environment specification](configs/env_spec.json)
+- [Full-run independent initial audit: provisional WARN](results/full_training_20261021/integrity_audit_v1/EXPERIMENT_AUDIT.md)
+- [Recovery/backup follow-up audit at6850b6e](results/full_training_20261021/integrity_audit_v1/FOLLOWUP_6850B6E.md)
+- [Operation and recovery limits](docs/full_run_operations.md)
 - [Earlier pilot integrity audit: provisional WARN](results/integrity_audit_v1/EXPERIMENT_AUDIT.md)
 
 ## Official source and attribution

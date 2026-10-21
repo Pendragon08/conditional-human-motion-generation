@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
-from prepare_verified_resume import select_verified,recovery_plan
+from prepare_verified_resume import select_verified,recovery_plan,validate_recovery_plan
 
 
 class RecoveryProtocol(unittest.TestCase):
@@ -48,6 +48,20 @@ class RecoveryProtocol(unittest.TestCase):
     def test_changed_configuration_rejected(self):
         config=self.run/'config.json';config.write_text('{"changed":true}')
         with self.assertRaises(ValueError):recovery_plan(self.run,self.run/'fresh_output',config)
+
+    def test_pair_changed_after_plan_rejected_before_launch(self):
+        config=self.run/'config.json';config.write_text('{}')
+        plan=recovery_plan(self.run,self.run/'fresh_output',config)
+        (self.run/'checkpoints/opt000000009.pt').write_bytes(b'changed after plan')
+        with self.assertRaises(RuntimeError):validate_recovery_plan(plan)
+        self.assertFalse((self.run/'fresh_output').exists())
+
+    def test_plan_revalidation_is_read_only(self):
+        config=self.run/'config.json';config.write_text('{}')
+        plan=recovery_plan(self.run,self.run/'fresh_output',config)
+        current=validate_recovery_plan(plan)
+        self.assertEqual(current['checkpoint']['manifest_sha256'],plan['checkpoint']['manifest_sha256'])
+        self.assertFalse((self.run/'fresh_output').exists())
 
 
 if __name__=='__main__':unittest.main()

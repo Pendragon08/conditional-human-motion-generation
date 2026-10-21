@@ -9,6 +9,7 @@ from unittest.mock import patch
 import json
 import shutil
 import subprocess
+import sys
 from backup_full_run import Worker, digest, freeze_package
 
 
@@ -52,7 +53,7 @@ class CleanupProtocol(unittest.TestCase):
 
     def test_changed_server_bytes_are_preserved(self):
         self.old.write_bytes(b'tampered after backup')
-        with self.assertRaises(AssertionError):
+        with self.assertRaises(RuntimeError):
             self.worker.cleanup_server_older(self.newest, [self.older], self.assets)
         self.assertTrue(self.old.exists()); self.assertTrue(self.latest.exists())
 
@@ -63,7 +64,7 @@ class CleanupProtocol(unittest.TestCase):
     def test_path_outside_checkpoint_directory_preserved(self):
         outside = self.root / self.old.name; outside.write_bytes(self.old.read_bytes())
         self.older['files'][0]['file'] = str(outside)
-        with self.assertRaises(AssertionError):
+        with self.assertRaises(RuntimeError):
             self.worker.cleanup_server_older(self.newest, [self.older], self.assets)
         self.assertTrue(outside.exists()); self.assertTrue(self.latest.exists())
 
@@ -107,6 +108,38 @@ class CleanupProtocol(unittest.TestCase):
         seal_receipt(path);check_receipt(path)
         path.write_text('{"status":"PHYSICAL_CLOSED_LOOP_EXECUTED"}')
         with self.assertRaises(RuntimeError):check_receipt(path)
+
+    def test_release_asset_enumeration_is_paginated(self):
+        self.worker.c.update(github_repo='owner/repo',release_tag='test')
+        calls=[]
+        def call(args):
+            endpoint=args[-1];calls.append(endpoint)
+            if '/tags/' in endpoint:return '{"id":123}'
+            if endpoint.endswith('&page=1'):return json.dumps([{'name':f'asset_{i}'} for i in range(100)])
+            if endpoint.endswith('&page=2'):return '[{"name":"asset_100"}]'
+            raise AssertionError(endpoint)
+        self.worker.call=call
+        assets=self.worker.assets();self.assertEqual(len(assets),101);self.assertEqual(len(calls),3)
+
+    def test_optimized_interpreter_is_rejected(self):
+        for module in ['backup_full_run','prepare_verified_resume']:
+            code='import sys;sys.path.insert(0,'+repr(str(Path(__file__).resolve().parent))+');import '+module
+            r=subprocess.run([sys.executable,'-O','-c',code],capture_output=True,text=True)
+            self.assertNotEqual(r.returncode,0);self.assertIn('Optimized Python',r.stderr)
+
+    def test_completion_requires_both_exact_ranks(self):
+        self.worker.root=self.root;self.worker.state={'processed':{'1000000':{}}}
+        self.worker.assets=lambda:{}
+        self.worker.upload=lambda *args:None
+        manifest={'official_step':1000000,'optimizer_updates':1000000}
+        ranks=[{'rank':0,'world_size':2,'status':'FULL_SCHEDULE_COMPLETED','full_training_completed':True,'optimizer_updates':1000000}]
+        self.worker.snapshot=lambda:{'statuses':ranks,'manifests':[manifest],'utc_epoch':2000,'training_process_running':False}
+        events=[];self.worker.log=lambda name,**kwargs:events.append(name)
+        self.worker.run(once=True)
+        self.assertIn('incomplete_status_rank_set_no_completion',events)
+        self.assertNotIn('full_schedule_backed_up_and_diagnostics_recorded',events)
+        ranks.append({**ranks[0],'rank':1});events.clear();self.worker.run(once=True)
+        self.assertIn('full_schedule_backed_up_and_diagnostics_recorded',events)
 
 
 if __name__ == '__main__': unittest.main()

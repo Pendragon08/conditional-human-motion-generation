@@ -20,6 +20,9 @@ import tarfile
 import time
 import traceback
 
+if not __debug__:
+    raise RuntimeError('Optimized Python is unsupported: checkpoint safety guards must remain enabled')
+
 def digest(path):
     h = hashlib.sha256()
     with Path(path).open('rb') as f:
@@ -80,18 +83,31 @@ class Worker:
         return json.loads(self.remote("from pathlib import Path, PurePosixPath\nimport json,time\nr=Path(" + root + ")\n"
             "out={'statuses':[], 'manifests':[], 'utc_epoch':time.time()}\n"
             "for p in sorted(r.glob('status_rank*.json')):\n"
-            " try:out['statuses'].append(json.loads(p.read_text()))\n"
+            " try:\n  s=json.loads(p.read_text());s['status_file_mtime_epoch']=p.stat().st_mtime;out['statuses'].append(s)\n"
             " except (ValueError,OSError):pass\n"
             "for p in sorted(r.glob('checkpoint_ready_*.json')):\n"
             " try:out['manifests'].append(json.loads(p.read_text()))\n"
             " except (ValueError,OSError):pass\n"
             "import subprocess\n"
-            "out['training_process_running']=subprocess.run(['pgrep','-f','/code/scripts/train_full.py'],capture_output=True).returncode==0\n"
+            "matches=subprocess.run(['pgrep','-f','/code/scripts/train_full.py'],capture_output=True,text=True).stdout.split()\n"
+            "out['training_pids']=[]\n"
+            "for pid in matches:\n"
+            " try:\n  args=Path('/proc/'+pid+'/cmdline').read_bytes().decode().split('\\x00')\n"
+            "  if '--output' in args and args[args.index('--output')+1]==str(r):out['training_pids'].append(int(pid))\n"
+            " except (OSError,ValueError,IndexError):pass\n"
+            "out['training_process_running']=bool(out['training_pids'])\n"
             "print(json.dumps(out))\n"))
 
     def assets(self):
         release = json.loads(self.call(['gh', 'api', f"repos/{self.c['github_repo']}/releases/tags/{self.c['release_tag']}"]))
-        return {x['name']: x for x in release['assets']}
+        result = {}; page = 1
+        while True:
+            items=json.loads(self.call(['gh','api',f"repos/{self.c['github_repo']}/releases/{release['id']}/assets?per_page=100&page={page}"]))
+            for item in items:
+                if item['name'] in result:raise RuntimeError('Duplicate Release asset name; refusing ambiguous backup state')
+                result[item['name']]=item
+            if len(items)<100:return result
+            page+=1
 
     def upload(self, path, assets):
         path = Path(path); expected = digest(path); size = path.stat().st_size
@@ -226,12 +242,12 @@ class Worker:
         script += r'''for row in a['files']:
  p=Path(row['file'])
  if not p.exists():continue
- assert not p.is_symlink() and p.resolve().parent==root
- assert re.fullmatch(r'(model|opt)\d{9}\.pt',p.name)
+ if p.is_symlink() or p.resolve().parent!=root:raise RuntimeError('Cleanup path escaped checkpoint directory')
+ if not re.fullmatch(r'(model|opt)\d{9}\.pt',p.name):raise RuntimeError('Unexpected cleanup filename')
  h=hashlib.sha256()
  with p.open('rb') as f:
   for b in iter(lambda:f.read(1048576),b''):h.update(b)
- assert h.hexdigest()==row['sha256'] and p.stat().st_size==row['bytes']
+ if h.hexdigest()!=row['sha256'] or p.stat().st_size!=row['bytes']:raise RuntimeError('Cleanup file changed after verified backup')
  p.unlink();removed.append(str(p))
 print(json.dumps(removed))
 '''
@@ -285,10 +301,8 @@ print(json.dumps(removed))
                         for row in other['files']:
                             path=folder/Path(row['file']).name
                             if path.exists():
-                                assert not path.is_symlink() and path.resolve().parent == folder.resolve()
-                                assert folder.resolve().is_relative_to(self.root.resolve())
-                                assert assets[path.name]['digest']=='sha256:'+digest(path)
-                                assert digest(path)==row['sha256'] and path.stat().st_size==row['bytes']
+                                if path.is_symlink() or path.resolve().parent!=folder.resolve() or not folder.resolve().is_relative_to(self.root.resolve()):raise RuntimeError('Local cleanup path escaped checkpoint folder')
+                                if assets[path.name]['digest']!='sha256:'+digest(path) or digest(path)!=row['sha256'] or path.stat().st_size!=row['bytes']:raise RuntimeError('Local cleanup digest mismatch')
                                 path.unlink();self.log('verified_old_local_checkpoint_copy_removed', path=str(path))
                 # A transient SSH failure after publication must not permanently
                 # disable verified cleanup and deadlock the trainer's disk guard.
@@ -296,14 +310,25 @@ print(json.dumps(removed))
                 if published:
                     self.cleanup_server_older(max(published, key=lambda m:m['optimizer_updates']), snapshot['manifests'], assets)
                 statuses=snapshot['statuses']
-                if statuses and all(s.get('full_training_completed') for s in statuses):
+                ranks_ok = len(statuses)==2 and {s.get('rank') for s in statuses}=={0,1} and all(s.get('world_size')==2 for s in statuses)
+                if not ranks_ok:self.log('incomplete_status_rank_set_no_completion',ranks=[s.get('rank') for s in statuses])
+                stale=[s['rank'] for s in statuses if s['status']=='TRAINING' and snapshot['utc_epoch']-s.get('status_file_mtime_epoch',snapshot['utc_epoch'])>self.c.get('stale_status_seconds',1800)]
+                if stale:
+                    stamp=int(max(s.get('status_file_mtime_epoch',0) for s in statuses if s['rank'] in stale))
+                    notice=self.root/f'stale_training_status_{stamp}.json'
+                    if not notice.exists():atomic_json(notice,snapshot)
+                    self.upload(notice,assets);self.log('stale_training_status_no_automatic_restart',ranks=stale)
+                completed = ranks_ok and all(s.get('full_training_completed') and s.get('optimizer_updates',0)>=1000000 for s in statuses)
+                if completed:
                     if any(m['optimizer_updates']>=1000000 and str(m['official_step']) in self.state['processed'] for m in snapshot['manifests']):
                         self.log('full_schedule_backed_up_and_diagnostics_recorded');return
                 if any(s['status']=='FAILED' for s in statuses):
                     failure=self.root/('training_failure_'+datetime.datetime.now().strftime('%Y%m%d_%H%M%S')+'.json')
                     atomic_json(failure,snapshot);self.upload(failure,assets)
                     self.log('training_failed_worker_stopped_without_restart');return
-                if statuses and not snapshot.get('training_process_running') and not all(s.get('full_training_completed') for s in statuses):
+                if not snapshot.get('training_process_running') and not completed:
+                    failure=self.root/('training_process_absent_'+datetime.datetime.now().strftime('%Y%m%d_%H%M%S')+'.json')
+                    atomic_json(failure,snapshot);self.upload(failure,assets)
                     self.log('training_process_absent_results_incomplete');return
                 if once:return
             except Exception as exc:
