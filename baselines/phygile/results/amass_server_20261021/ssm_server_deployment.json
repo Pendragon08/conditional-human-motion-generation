@@ -1,0 +1,830 @@
+{
+  "status": "SSM_STAGED_AND_VERIFIED_ON_SERVER",
+  "date": "2026-10-21",
+  "host": "original_user_authorized_server",
+  "remote_root": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass/ssm_20261021",
+  "archive_sha256": "42f91a1a0e74056b918e714192784b3aa9ae6a300031c8c94a5c2c65701741e4",
+  "archive_bytes": 38268098,
+  "body_model_weights_available": false,
+  "g1_pairs_generated": 0,
+  "new_environment_installed": false,
+  "github_dataset_upload_performed": false,
+  "preflight": {
+    "free_bytes": 20070277120,
+    "total_bytes": 1967847137280,
+    "instructions": [],
+    "retarget_python_exists": true,
+    "root_exists": false
+  },
+  "archive_remote_verification": {
+    "sha256": "42f91a1a0e74056b918e714192784b3aa9ae6a300031c8c94a5c2c65701741e4",
+    "bytes": 38268098
+  },
+  "deployed_source_hashes": {
+    "scripts/ingest_ssm_archive.py": "253fcbbdf932386162a6633ea9759541a63d33d2258f946e3a03fb156ba13623",
+    "scripts/plan_humanml_amass.py": "2e08917e2dead829efa8632a4b475067c5054f2e6277b3fe6cbc5bae7b131369",
+    "scripts/test_humanml_amass_plan.py": "ac5831702c9aff1ae2de1b81094389c9f54f7a47c3aad9a6e66e26daef0c5fe1",
+    "configs/g1_codec_skeleton.json": "d2627ab9be14d9dd46fc483b754128e6c8f2515db5b1a274ba1b2b97d9aac6e7",
+    "reimplementation/codec262.py": "e95cc8f8f782cc0577819e862328e814a4d8e8b17bea5bee0efa46b6a194606e",
+    "reimplementation/features.py": "dee9e489f91b13217faa95a71bc5bc2f9122a1cc404639a3df9838edb6c7f9ac",
+    "results/paired_data_20261018/public_metadata_manifest.json": "0ccba68da6bb7c663d2f2d73581fc3bc07a028968b71ed075125a8948ab49c8e",
+    "cache/humanml3d_public_20261018/README.md": "8ae7bb56481ef1c549ff23353f900a747a809a0d9fb5dca44a8150a44438c221",
+    "cache/humanml3d_public_20261018/LICENSE": "761dd46139fc06be92f2783041d64ca414985726c0d809f74dadb9d1ad89f075",
+    "cache/humanml3d_public_20261018/index.csv": "80226910d7259655ab5f411fd807b7651037341b4806fde025946a74d62b1065",
+    "cache/humanml3d_public_20261018/HumanML3D/texts.zip": "58f4f19b5429fe137d7a2ea216099f4745f2be51fff001f2f90d6747eaf053d2",
+    "cache/humanml3d_public_20261018/HumanML3D/all.txt": "49fa084e75a7896dde9f6af735979c9430d19feb84bed2d36a39024baf096663",
+    "cache/humanml3d_public_20261018/HumanML3D/train.txt": "e3e6975099b19964ee085db3e1d1160365a27e275f4f2b3d37c8ef24cccf4ce9",
+    "cache/humanml3d_public_20261018/HumanML3D/val.txt": "effa9e866f7c2bd3e5bb518600f95a5fd780a2dcf72c3cdb1e0caf5c93051e17",
+    "cache/humanml3d_public_20261018/HumanML3D/test.txt": "b89bc7df558df6246840702d0976a5d37ecbc4f055642b5c99e509a2d85ac12e",
+    "cache/humanml3d_public_20261018/HumanML3D/train_val.txt": "06b58744e90ee63a7b63f175dae4af213d3279e7b1689ad1908fafef13dbede6"
+  },
+  "remote_ssm_verification": {
+    "date": "2026-10-21",
+    "status": "SSM_RAW_ARCHIVE_VERIFIED_NOT_G1_TRAINING_DATA",
+    "archive_filename": "SSM_smplx_g.tar.bz2",
+    "archive_bytes": 38268098,
+    "archive_sha256": "42f91a1a0e74056b918e714192784b3aa9ae6a300031c8c94a5c2c65701741e4",
+    "motion_sequences": 30,
+    "companion_parameter_files": 3,
+    "companion_files_are_body_model_weights": false,
+    "required_model_genders": [
+      "female"
+    ],
+    "required_body_model": "SMPL-X body model weights, separate download",
+    "raw_motion_records": [
+      {
+        "file": "SSM/20160930_50032/dribble_shoot_sync_stageii.npz",
+        "sha256": "1007ff0b02a0a93dc21fb8dfe45fb2577572a093f6c70880ec67d6a1c4526bd4",
+        "bytes": 1799643,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 231,
+        "fps": 120.0,
+        "timestamp_span_seconds": 1.9166666666666667
+      },
+      {
+        "file": "SSM/20160930_50032/jumping_jacks_sync_stageii.npz",
+        "sha256": "dfc842edf95c9a38c957811ca536a7ea70b28cfa02a648b18579640944df645a",
+        "bytes": 1780685,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 235,
+        "fps": 120.0,
+        "timestamp_span_seconds": 1.95
+      },
+      {
+        "file": "SSM/20160930_50032/ATUSquat_sync_stageii.npz",
+        "sha256": "73a54e2e8b132ed2e9bedbc4d72ccca265d7fd64e4f16d7c3905cd996fc76047",
+        "bytes": 2301668,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 295,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.45
+      },
+      {
+        "file": "SSM/20160930_50032/dribble_kick_sync_stageii.npz",
+        "sha256": "4257caf34c6ecbe8b38162b92886d6e10fb86534b152a820b90c82274585a0d6",
+        "bytes": 2660469,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 351,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.9166666666666665
+      },
+      {
+        "file": "SSM/20160930_50032/clap_sync_stageii.npz",
+        "sha256": "1e81139d02f8bc5451c434b2aaeeaa9d448c3e6f5d86cf6f6ca2780761b37abb",
+        "bytes": 1231827,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 160,
+        "fps": 120.0,
+        "timestamp_span_seconds": 1.325
+      },
+      {
+        "file": "SSM/20160930_50032/special_move_sync_stageii.npz",
+        "sha256": "ef2c124f7bacb2d37dac016677dbdd99416d093b5c03f358866e7441c0147814",
+        "bytes": 1701967,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 219,
+        "fps": 120.0,
+        "timestamp_span_seconds": 1.8166666666666667
+      },
+      {
+        "file": "SSM/20160930_50032/punch_kick_sync_stageii.npz",
+        "sha256": "e1cf9b8c03ce70970941f7755ae93873d8e1c64eae94b8b26e631cf0a9abf2b4",
+        "bytes": 2053893,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 277,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.3
+      },
+      {
+        "file": "SSM/20160930_50032/light_hopping_loose_sync_stageii.npz",
+        "sha256": "09fe9520c76f4094ad50776bff94b2f02504369dfe13ef878205f51f9ea11e68",
+        "bytes": 2278674,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 292,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.425
+      },
+      {
+        "file": "SSM/20160930_50032/running_on_the_spot_sync_stageii.npz",
+        "sha256": "84c653c7162549a1a8147749bfb5d358914459792a53592315416aa9971ad999",
+        "bytes": 2186180,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 289,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.4
+      },
+      {
+        "file": "SSM/20160330_03333/shake_hips_stageii.npz",
+        "sha256": "db6d7e050d719931997fc29c6b9536872a8d32ffaefc5e1dcd0f183961b248db",
+        "bytes": 4788887,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 521,
+        "fps": 120.0,
+        "timestamp_span_seconds": 4.333333333333333
+      },
+      {
+        "file": "SSM/20160330_03333/knees_stageii.npz",
+        "sha256": "13f8bbb9164da0438cd3dac62d84e083f53ff16464841ac11dffac70a01a8785",
+        "bytes": 2614289,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 284,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.3583333333333334
+      },
+      {
+        "file": "SSM/20160330_03333/wrists_up_down_stageii.npz",
+        "sha256": "538f869ea39156cb568aa4d225b286af8349e06d28d7d597bd02d44f354575e1",
+        "bytes": 2867554,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 327,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.716666666666667
+      },
+      {
+        "file": "SSM/20160330_03333/ankles_stageii.npz",
+        "sha256": "ca4a7a25c3b1caf54c0682f4e75e7e4b488b09c1dbb71e7c2b5d6933da06599d",
+        "bytes": 2806162,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 240,
+        "fps": 120.0,
+        "timestamp_span_seconds": 1.9916666666666667
+      },
+      {
+        "file": "SSM/20160330_03333/shake_shoulders_stageii.npz",
+        "sha256": "0faace8fc2ef6184dc674782412e8a7594166cda2ef73e0c1de522ebcd6b77e5",
+        "bytes": 3583898,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 307,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.55
+      },
+      {
+        "file": "SSM/20160330_03333/side_hopping_stageii.npz",
+        "sha256": "40c394dc620abd87f8d13d3064c663a23695afa0d96ee1d38bf6b9e26826de27",
+        "bytes": 5801026,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 498,
+        "fps": 120.0,
+        "timestamp_span_seconds": 4.141666666666667
+      },
+      {
+        "file": "SSM/20160330_03333/jiggle_on_toes_stageii.npz",
+        "sha256": "e54e9c501b3c8e171a00519f51812d5faed0221e6c10949df05d272a1a4ca42e",
+        "bytes": 3723194,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 319,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.65
+      },
+      {
+        "file": "SSM/20160330_03333/punching_stageii.npz",
+        "sha256": "d3755c024610ce1d7ba948a25035d5ddb580f144babb9013d21817c8081df0fe",
+        "bytes": 2128486,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 234,
+        "fps": 120.0,
+        "timestamp_span_seconds": 1.9416666666666667
+      },
+      {
+        "file": "SSM/20160330_03333/ATU_001_stageii.npz",
+        "sha256": "ce0b7616ecf16cd80428367567d54e799d96219cf25ea58b6e36eefe450dfcd8",
+        "bytes": 2792319,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 304,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.525
+      },
+      {
+        "file": "SSM/20160330_03333/walking_01_stageii.npz",
+        "sha256": "fc4d6252c9e4e7bcfe7b98b7e09c5fd8379bbb0529f85c76cd62e7ab8c22b179",
+        "bytes": 3320051,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 362,
+        "fps": 120.0,
+        "timestamp_span_seconds": 3.0083333333333333
+      },
+      {
+        "file": "SSM/20160330_03333/shoulders_stageii.npz",
+        "sha256": "75dec3e585d448764006a73fb9a896aec8b73b471f4c40a33eaef5849fdb8fd6",
+        "bytes": 2587831,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 282,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.341666666666667
+      },
+      {
+        "file": "SSM/20160330_03333/walking_stageii.npz",
+        "sha256": "efca6faa2c071471bd35431009cdc85f6703823f8be99b2b3b21cce79fe24af6",
+        "bytes": 4314822,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 477,
+        "fps": 120.0,
+        "timestamp_span_seconds": 3.966666666666667
+      },
+      {
+        "file": "SSM/20160330_03333/chicken_wings_stageii.npz",
+        "sha256": "fbce227f9a5e81d590c88be5a1b27b30d270503ece91429019b031f09d3862d8",
+        "bytes": 2866763,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 315,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.6166666666666667
+      },
+      {
+        "file": "SSM/20161014_50033/hop_on_one_leg_sync_stageii.npz",
+        "sha256": "de7bd3cbcb5807ea9df87fd8d4a92fc7e9955722cfb2bb0002006379345faac6",
+        "bytes": 1794887,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 237,
+        "fps": 120.0,
+        "timestamp_span_seconds": 1.9666666666666666
+      },
+      {
+        "file": "SSM/20161014_50033/jumping_jacks_sync_stageii.npz",
+        "sha256": "1db4fb5c44b51a7c1165b8ef36e7c7098b2002f30fff755473cb22822bc15a01",
+        "bytes": 2082528,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 287,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.3833333333333333
+      },
+      {
+        "file": "SSM/20161014_50033/ATUSquat_sync_stageii.npz",
+        "sha256": "b352839c5824a1c0e7962b5cc15361937566b0737dde0bb561a90fa25ce57d82",
+        "bytes": 1967082,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 257,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.1333333333333333
+      },
+      {
+        "file": "SSM/20161014_50033/dribble_kick_sync_stageii.npz",
+        "sha256": "e5469f43d2277a8f85847b902866ece5c8363a918f0bf539d02f5b4160012617",
+        "bytes": 2606936,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 360,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.9916666666666667
+      },
+      {
+        "file": "SSM/20161014_50033/clap_sync_stageii.npz",
+        "sha256": "e8f66a451942760d36104f61e0b89e9f6818adb873672df7ec1404131de84156",
+        "bytes": 1441395,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 194,
+        "fps": 120.0,
+        "timestamp_span_seconds": 1.6083333333333334
+      },
+      {
+        "file": "SSM/20161014_50033/punch_kick_sync_stageii.npz",
+        "sha256": "906442bc380ee4cc7ddc7d1adad93986f9010318e6546a10a5711599a78b59c2",
+        "bytes": 1850907,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 283,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.35
+      },
+      {
+        "file": "SSM/20161014_50033/light_hopping_loose_sync_stageii.npz",
+        "sha256": "a104de4c43f496df102c6e7c1c158058bcc6bece31bc595c76a3e50545293f39",
+        "bytes": 1937971,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 253,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.1
+      },
+      {
+        "file": "SSM/20161014_50033/dance_sync_stageii.npz",
+        "sha256": "9326e33e90ad6aaf804be18eaf15aa2f8eadc17f9c21370d0f777a6387d3f554",
+        "bytes": 2205178,
+        "gender": "female",
+        "surface_model_type": "smplx",
+        "frames": 301,
+        "fps": 120.0,
+        "timestamp_span_seconds": 2.5
+      }
+    ],
+    "companion_records": [
+      {
+        "file": "SSM/20160930_50032/female_stagei.npz",
+        "sha256": "1b7f5ad64b952825eaca07a73b1a17c24eb3b6d3a553557cd04e442e52d9c8e5",
+        "bytes": 6618,
+        "gender": "female",
+        "surface_model_type": "smplx"
+      },
+      {
+        "file": "SSM/20160330_03333/female_stagei.npz",
+        "sha256": "60708b73da819666d0c90c780227b2250e4aa2121ed1a5c350f19990aa54b138",
+        "bytes": 7969,
+        "gender": "female",
+        "surface_model_type": "smplx"
+      },
+      {
+        "file": "SSM/20161014_50033/female_stagei.npz",
+        "sha256": "edb904ec530bec30a6caa9965379d592d80b66d789e01ccb1c8c35f81bbd5a62",
+        "bytes": 6614,
+        "gender": "female",
+        "surface_model_type": "smplx"
+      }
+    ],
+    "license_records": [
+      {
+        "file": "SSM/LICENSE.txt",
+        "sha256": "e889dead09626de477db18face6e181d5ba7dd7ab848bd52404dc473e9829af4",
+        "bytes": 6188
+      }
+    ],
+    "numpy_version": "1.26.4",
+    "humanml_source_clips": 30,
+    "matched_source_clips": 30,
+    "candidate_text_motion_ids": 60,
+    "source_matches": [
+      {
+        "canonical_motion_id": "000008",
+        "official_text_ids": [
+          "000008",
+          "M000008"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20161014_50033/ATUSquat_sync_poses.npy",
+        "smplx_export": "SSM/20161014_50033/ATUSquat_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 43,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "000069",
+        "official_text_ids": [
+          "000069",
+          "M000069"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160930_50032/running_on_the_spot_sync_poses.npy",
+        "smplx_export": "SSM/20160930_50032/running_on_the_spot_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 49,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "000162",
+        "official_text_ids": [
+          "000162",
+          "M000162"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160330_03333/chicken_wings_poses.npy",
+        "smplx_export": "SSM/20160330_03333/chicken_wings_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 158,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "001480",
+        "official_text_ids": [
+          "001480",
+          "M001480"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20161014_50033/dance_sync_poses.npy",
+        "smplx_export": "SSM/20161014_50033/dance_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 51,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "002428",
+        "official_text_ids": [
+          "002428",
+          "M002428"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160930_50032/dribble_kick_sync_poses.npy",
+        "smplx_export": "SSM/20160930_50032/dribble_kick_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 59,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "002511",
+        "official_text_ids": [
+          "002511",
+          "M002511"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160330_03333/side_hopping_poses.npy",
+        "smplx_export": "SSM/20160330_03333/side_hopping_stageii.npz",
+        "export_found": true,
+        "index_start_20": 7,
+        "index_end_20": 207,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "002941",
+        "official_text_ids": [
+          "002941",
+          "M002941"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160330_03333/walking_poses.npy",
+        "smplx_export": "SSM/20160330_03333/walking_stageii.npz",
+        "export_found": true,
+        "index_start_20": 13,
+        "index_end_20": 213,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "003017",
+        "official_text_ids": [
+          "003017",
+          "M003017"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20161014_50033/jumping_jacks_sync_poses.npy",
+        "smplx_export": "SSM/20161014_50033/jumping_jacks_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 48,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "003852",
+        "official_text_ids": [
+          "003852",
+          "M003852"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160930_50032/ATUSquat_sync_poses.npy",
+        "smplx_export": "SSM/20160930_50032/ATUSquat_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 50,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "004028",
+        "official_text_ids": [
+          "004028",
+          "M004028"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160330_03333/knees_poses.npy",
+        "smplx_export": "SSM/20160330_03333/knees_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 142,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "004384",
+        "official_text_ids": [
+          "004384",
+          "M004384"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20161014_50033/punch_kick_sync_poses.npy",
+        "smplx_export": "SSM/20161014_50033/punch_kick_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 48,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "005715",
+        "official_text_ids": [
+          "005715",
+          "M005715"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20161014_50033/clap_sync_poses.npy",
+        "smplx_export": "SSM/20161014_50033/clap_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 33,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "006053",
+        "official_text_ids": [
+          "006053",
+          "M006053"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160930_50032/dribble_shoot_sync_poses.npy",
+        "smplx_export": "SSM/20160930_50032/dribble_shoot_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 39,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "006515",
+        "official_text_ids": [
+          "006515",
+          "M006515"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160330_03333/shake_hips_poses.npy",
+        "smplx_export": "SSM/20160330_03333/shake_hips_stageii.npz",
+        "export_found": true,
+        "index_start_20": 21,
+        "index_end_20": 221,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "006749",
+        "official_text_ids": [
+          "006749",
+          "M006749"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160330_03333/jiggle_on_toes_poses.npy",
+        "smplx_export": "SSM/20160330_03333/jiggle_on_toes_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 160,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "007129",
+        "official_text_ids": [
+          "007129",
+          "M007129"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160330_03333/wrists_up_down_poses.npy",
+        "smplx_export": "SSM/20160330_03333/wrists_up_down_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 164,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "007410",
+        "official_text_ids": [
+          "007410",
+          "M007410"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160330_03333/punching_poses.npy",
+        "smplx_export": "SSM/20160330_03333/punching_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 117,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "007835",
+        "official_text_ids": [
+          "007835",
+          "M007835"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160930_50032/light_hopping_loose_sync_poses.npy",
+        "smplx_export": "SSM/20160930_50032/light_hopping_loose_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 49,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "008802",
+        "official_text_ids": [
+          "008802",
+          "M008802"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160330_03333/walking_01_poses.npy",
+        "smplx_export": "SSM/20160330_03333/walking_01_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 181,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "008863",
+        "official_text_ids": [
+          "008863",
+          "M008863"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160930_50032/special_move_sync_poses.npy",
+        "smplx_export": "SSM/20160930_50032/special_move_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 37,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "008894",
+        "official_text_ids": [
+          "008894",
+          "M008894"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160330_03333/ankles_poses.npy",
+        "smplx_export": "SSM/20160330_03333/ankles_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 120,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "008922",
+        "official_text_ids": [
+          "008922",
+          "M008922"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160930_50032/jumping_jacks_sync_poses.npy",
+        "smplx_export": "SSM/20160930_50032/jumping_jacks_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 40,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "008981",
+        "official_text_ids": [
+          "008981",
+          "M008981"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20161014_50033/hop_on_one_leg_sync_poses.npy",
+        "smplx_export": "SSM/20161014_50033/hop_on_one_leg_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 40,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "009466",
+        "official_text_ids": [
+          "009466",
+          "M009466"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160330_03333/shoulders_poses.npy",
+        "smplx_export": "SSM/20160330_03333/shoulders_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 141,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "011120",
+        "official_text_ids": [
+          "011120",
+          "M011120"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160330_03333/ATU_001_poses.npy",
+        "smplx_export": "SSM/20160330_03333/ATU_001_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 152,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "011281",
+        "official_text_ids": [
+          "011281",
+          "M011281"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20161014_50033/dribble_kick_sync_poses.npy",
+        "smplx_export": "SSM/20161014_50033/dribble_kick_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 60,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "011475",
+        "official_text_ids": [
+          "011475",
+          "M011475"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160330_03333/shake_shoulders_poses.npy",
+        "smplx_export": "SSM/20160330_03333/shake_shoulders_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 154,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "011760",
+        "official_text_ids": [
+          "011760",
+          "M011760"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20161014_50033/light_hopping_loose_sync_poses.npy",
+        "smplx_export": "SSM/20161014_50033/light_hopping_loose_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 43,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "012274",
+        "official_text_ids": [
+          "012274",
+          "M012274"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160930_50032/clap_sync_poses.npy",
+        "smplx_export": "SSM/20160930_50032/clap_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 27,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      },
+      {
+        "canonical_motion_id": "013303",
+        "official_text_ids": [
+          "013303",
+          "M013303"
+        ],
+        "humanml_source": "./pose_data/SSM_synced/20160930_50032/punch_kick_sync_poses.npy",
+        "smplx_export": "SSM/20160930_50032/punch_kick_sync_stageii.npz",
+        "export_found": true,
+        "index_start_20": 0,
+        "index_end_20": 47,
+        "timeline_status": "recording_name_matched; original_smplh_clock_not_verified",
+        "g1_motion_generated": false
+      }
+    ],
+    "cross_export_timing_verified": false,
+    "retargeting_executed": false,
+    "g1_paired_sequences": 0,
+    "new_262d_sequences": 0,
+    "generator_training_started": false,
+    "object_fields_loaded": false,
+    "redistribution_performed": false,
+    "license_url": "https://download.is.tue.mpg.de/amass/licenses2024/SSM/ssm_license_updated.html",
+    "code_sha256": "253fcbbdf932386162a6633ea9759541a63d33d2258f946e3a03fb156ba13623"
+  },
+  "full_amass_downloaded": false,
+  "environment_fully_validated": false,
+  "limitations": [
+    "Remaining AMASS subsets and SMPL-X model weights are absent.",
+    "Full download needs a suitable persistent storage allocation.",
+    "No GMR retargeting, new 262D data, or generator training executed."
+  ],
+  "elapsed_seconds": 23.030999999959022
+}

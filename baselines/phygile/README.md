@@ -23,6 +23,8 @@
 
 2026-10-21 已生成完整逐 ID 时间对齐计划、去重来源清单并通过 8 项时间边界检查，见 [AMASS 获取与对齐准备](docs/amass_acquisition_and_alignment_20261021.md)。SSM 已取得并核验 30 条原始 SMPL-X 动作，见 [SSM 核验记录](docs/SSM_download_status_20261021.md)；人体模型及其余子集仍缺，本轮未新增 G1 配对动作或启动生成器训练。
 
+SSM 现已上传原服务器 `/data` 下的复现项目目录并重新核验；独立 `smplx` 依赖扩展与两次 CPU 机器人运动学检查通过，新增约 160 MB。详见 [服务器部署报告](docs/amass_server_deployment_20261021.md)及 [AMASS 资产清单](datasets/AMASS/README.md)。完整 AMASS 与人体模型仍未下载齐，数据盘剩约 19 GB；GitHub 保存清单、哈希、脚本和报告，受再分发限制的原始数据保存在用户本地及服务器。
+
 计数更正与参考来源见 [更正说明](docs/accounting_terms_erratum.md)：旧 updates 字段表示 PPO 轮次，每轮 20 次 Adam 步进，累计 40,000 次；外部运动参考不是实测机器人真值。
 
 ## 从头运行 500 轮 PPO 训练试验
