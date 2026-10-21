@@ -1,0 +1,43 @@
+{
+  "status": "FULL_RUNTIME_WITNESS_PASSED",
+  "ddp_optimizer_updates_per_rank": [
+    4,
+    4
+  ],
+  "global_batch": 1024,
+  "parity": {
+    "status": "RECOMPUTATION_GRADIENT_PARITY_PASSED",
+    "seed": 42,
+    "reference_loss": 1.079074740409851,
+    "recomputed_loss": 1.079074740409851,
+    "gradient_tensors_compared": 365,
+    "maximum_absolute_gradient_error": 0.0,
+    "atol": 1e-06,
+    "rtol": 1e-05,
+    "nonzero_gradient_tensors": 365,
+    "zero_initialized_parameters_perturbed": 37,
+    "scope": "One real-data FP32 batch with deterministic nonzero gate/output perturbations; confirms recomputation hook parity, not BF16/whole-training equivalence."
+  },
+  "hold": {
+    "status": "STATIC_REFERENCE_PHYSICS_EXECUTED",
+    "control_steps": 400,
+    "simulation_seconds": 7.999999999999852,
+    "elapsed_seconds": 5.15945647098124,
+    "finite": true,
+    "minimum_root_height_m": 0.7880381941795349,
+    "final_root_height_m": 0.7897491455078125,
+    "upright_entire_rollout_height_proxy": true,
+    "root_position_rmse_m": 0.003288541454821825,
+    "dof_rmse_rad": 0.05980569124221802,
+    "reference_forcing": false,
+    "planner_used": false,
+    "scope": "Static A-pose native tracker diagnostic, not a generative-planning or paper metric."
+  },
+  "closed_loop_policy_steps": 100,
+  "closed_loop_integrator_steps": 400,
+  "closed_loop_planner_calls": 12,
+  "pilot_model_stayed_upright": false,
+  "elapsed_seconds": 49.86347708851099,
+  "full_training_completed": false,
+  "paper_performance_reproduced": false
+}
