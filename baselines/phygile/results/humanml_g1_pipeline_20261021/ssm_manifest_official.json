@@ -1,0 +1,4512 @@
+{
+  "format": "phygile262-explicit-v1",
+  "purpose": "research_training",
+  "feature_semantics": "Pinned reconstruction codec; canonical 20Hz G1 FK with measured-marker verified HumanML alignment",
+  "source_and_license": "Official licensed AMASS SSM SMPL-X / SMPL+H reference, paired with official HumanML3D text; no redistribution of motion arrays",
+  "mapping_status": "explicit_reconstruction",
+  "codec_schema": "phygile-g1-262-semantic-urdf-discrete-v1",
+  "codec_skeleton_sha256": "d2627ab9be14d9dd46fc483b754128e6c8f2515db5b1a274ba1b2b97d9aac6e7",
+  "physical_tracking_validated": false,
+  "author_exact_codec_verified": false,
+  "protocol": "official",
+  "excluded_cross_split_groups": [],
+  "splits": {
+    "train": [
+      {
+        "motion_id": "011120",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/ATU_001_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 302,
+        "reference_raw_stride": 2,
+        "frames": 152,
+        "captions": [
+          {
+            "text": "the person is doing arm and squat exercises.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person lifts their arms above their head, squats, and then puts their arms down.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person raises both arms before performing a squat",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "the person is doing arm and squat exercises.",
+          "a person lifts their arms above their head, squats, and then puts their arms down.",
+          "the person raises both arms before performing a squat"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:011120",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.3175205230372222,
+          "root_speed_max_m_s": 0.9149813528588766,
+          "root_angular_speed_max_rad_s": 1.3216648569189249,
+          "body_origin_min_z_m": 0.01586467715779712,
+          "frames": 152,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/011120_00.npy",
+        "sha256": "065787322077a33023d61ff5d76ab217c6f0497503e54854059717304a6826ef",
+        "native": "features/train/011120_00_native.npz",
+        "native_sha256": "336e3c0eec1accee7e19542da7d2a1bc8529f068312aaead44da59c82f906c76",
+        "codec_metadata": "features/train/011120_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9694084857645464e-08,
+          "joint_max_abs_rad": 4.074456116942571e-08,
+          "rotation_matrix_max_abs": 1.8120623890283127e-09,
+          "rotation_projection_residual_max": 1.6716879529279613e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2910694745410891e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M011120",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/ATU_001_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 302,
+        "reference_raw_stride": 2,
+        "frames": 152,
+        "captions": [
+          {
+            "text": "the person is doing arm and squat exercises.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person lifts their arms above their head, squats, and then puts their arms down.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person raises both arms before performing a squat",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "the person is doing arm and squat exercises.",
+          "a person lifts their arms above their head, squats, and then puts their arms down.",
+          "the person raises both arms before performing a squat"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M011120",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.3175205230372222,
+          "root_speed_max_m_s": 0.9149813528588766,
+          "root_angular_speed_max_rad_s": 1.3216648569189258,
+          "body_origin_min_z_m": 0.01586467715779718,
+          "frames": 152,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M011120_00.npy",
+        "sha256": "0e1f9b0fb1e1dc3985eed6c6516d67796e5539902431d65409d7549fea8dfa52",
+        "native": "features/train/M011120_00_native.npz",
+        "native_sha256": "d69283fbab2cd36ac00163d967b62762b5d690b8a44e56f38f313b5475815097",
+        "codec_metadata": "features/train/M011120_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9694084857645464e-08,
+          "joint_max_abs_rad": 4.074456116942571e-08,
+          "rotation_matrix_max_abs": 1.8120625000506152e-09,
+          "rotation_projection_residual_max": 1.6716879529279613e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2878835226895837e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "008894",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/ankles_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 238,
+        "reference_raw_stride": 2,
+        "frames": 120,
+        "captions": [
+          {
+            "text": "a person rolls their right ankle around.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "this person moves the right leg in a small circular motion.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person is twisting his right ankle.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person rolls their right ankle around.",
+          "this person moves the right leg in a small circular motion.",
+          "the person is twisting his right ankle."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:008894",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 5.551115123125783e-17,
+          "joint_step_max_rad": 0.12530165368103952,
+          "root_speed_max_m_s": 0.21726382599489993,
+          "root_angular_speed_max_rad_s": 0.8148873136010463,
+          "body_origin_min_z_m": 0.035962012961052545,
+          "frames": 120,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/008894_00.npy",
+        "sha256": "2f5785478aff3292eabf8983e9ed82cd09f3d15704a4f8d2a6a1f67184613b55",
+        "native": "features/train/008894_00_native.npz",
+        "native_sha256": "fb9c3f4c363df4d7dbb600a14bb8e61ad54e3ff2e45851eb899f4e42af62594e",
+        "codec_metadata": "features/train/008894_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9555362712763156e-08,
+          "joint_max_abs_rad": 3.6705913197820905e-08,
+          "rotation_matrix_max_abs": 4.561414801429464e-09,
+          "rotation_projection_residual_max": 1.0373649532237498e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.0147932038321396e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M008894",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/ankles_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 238,
+        "reference_raw_stride": 2,
+        "frames": 120,
+        "captions": [
+          {
+            "text": "a person rolls their left ankle around.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "this person moves the left leg in a small circular motion.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person is twisting his left ankle.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person rolls their left ankle around.",
+          "this person moves the left leg in a small circular motion.",
+          "the person is twisting his left ankle."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M008894",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 5.551115123125783e-17,
+          "joint_step_max_rad": 0.12530165368103952,
+          "root_speed_max_m_s": 0.21726382599489993,
+          "root_angular_speed_max_rad_s": 0.8148873136010525,
+          "body_origin_min_z_m": 0.035962012961052545,
+          "frames": 120,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M008894_00.npy",
+        "sha256": "8f25ede33cf8a33493f9a2844e36c3d2e6d18038c80c3c72cf2e59a07d34607f",
+        "native": "features/train/M008894_00_native.npz",
+        "native_sha256": "bb995d0a7e088a53c27deb14e13ea3b1ea91b444abd09c2ea3032a15a938740d",
+        "codec_metadata": "features/train/M008894_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9555362712763156e-08,
+          "joint_max_abs_rad": 3.6705913197820905e-08,
+          "rotation_matrix_max_abs": 4.561414468362557e-09,
+          "rotation_projection_residual_max": 1.0373649532237498e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.0225621665669584e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "000162",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/chicken_wings_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 314,
+        "reference_raw_stride": 2,
+        "frames": 158,
+        "captions": [
+          {
+            "text": "a person is pretending to be a chicken",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the standing person brings their hands up to their armpits and flaps their elbows up and down repeatedly.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "we have someone acting like a duck",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person is pretending to be a chicken",
+          "the standing person brings their hands up to their armpits and flaps their elbows up and down repeatedly.",
+          "we have someone acting like a duck"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:000162",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.6324987899141664,
+          "root_speed_max_m_s": 0.14794738299135696,
+          "root_angular_speed_max_rad_s": 0.5702290271859682,
+          "body_origin_min_z_m": 0.03567558843287702,
+          "frames": 158,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/000162_00.npy",
+        "sha256": "3469444872f8ddb0848a7bee230582c637881771fdf74f599a8b47a157007dab",
+        "native": "features/train/000162_00_native.npz",
+        "native_sha256": "ace6b4c1199cfc9fee83e42f689fd67676baa62f1b6510973b5a8b6d07483df7",
+        "codec_metadata": "features/train/000162_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9779074872671174e-08,
+          "joint_max_abs_rad": 3.9957073649787844e-08,
+          "rotation_matrix_max_abs": 1.9601546635827916e-09,
+          "rotation_projection_residual_max": 1.1290305768466861e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1221086540486088e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M000162",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/chicken_wings_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 314,
+        "reference_raw_stride": 2,
+        "frames": 158,
+        "captions": [
+          {
+            "text": "a person is pretending to be a chicken",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the standing person brings their hands up to their armpits and flaps their elbows up and down repeatedly.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "we have someone acting like a duck",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person is pretending to be a chicken",
+          "the standing person brings their hands up to their armpits and flaps their elbows up and down repeatedly.",
+          "we have someone acting like a duck"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M000162",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.6324987899141664,
+          "root_speed_max_m_s": 0.14794738299135696,
+          "root_angular_speed_max_rad_s": 0.570229027185967,
+          "body_origin_min_z_m": 0.03567558843287702,
+          "frames": 158,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M000162_00.npy",
+        "sha256": "0a5235b41c575cfbbc07b122cbec3d4ee898b2420db5354fbddce4cf1e110d96",
+        "native": "features/train/M000162_00_native.npz",
+        "native_sha256": "036a266703a941031321ca94b406d23ad0e78dcc3187ba474a3aae1f166df643",
+        "codec_metadata": "features/train/M000162_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9779074872671174e-08,
+          "joint_max_abs_rad": 3.9957073649787844e-08,
+          "rotation_matrix_max_abs": 1.9601546497050037e-09,
+          "rotation_projection_residual_max": 1.1290305768466861e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1223998930668727e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "006749",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/jiggle_on_toes_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 318,
+        "reference_raw_stride": 2,
+        "frames": 160,
+        "captions": [
+          {
+            "text": "the man raises both arms and begins a slow bounce, which transforms into a light jump.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person stretches and bounces.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person is standing on his toes.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "the man raises both arms and begins a slow bounce, which transforms into a light jump.",
+          "a person stretches and bounces.",
+          "the person is standing on his toes."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:006749",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.6998556737660652,
+          "root_speed_max_m_s": 0.3911570072165176,
+          "root_angular_speed_max_rad_s": 0.49216937115853954,
+          "body_origin_min_z_m": 0.04372536084813437,
+          "frames": 160,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/006749_00.npy",
+        "sha256": "b304c412e82a345027b2f66eddcf881f90efe4e983906d45732a61c08011d8d8",
+        "native": "features/train/006749_00_native.npz",
+        "native_sha256": "e875bab23ae7110d783209a358bbf9bd2aec94df81be4a0fb08f1fc83f08f30a",
+        "codec_metadata": "features/train/006749_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.966304590845681e-08,
+          "joint_max_abs_rad": 3.7801929697600656e-08,
+          "rotation_matrix_max_abs": 1.8345747143655444e-09,
+          "rotation_projection_residual_max": 1.6122318061146818e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.298561354266201e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M006749",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/jiggle_on_toes_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 318,
+        "reference_raw_stride": 2,
+        "frames": 160,
+        "captions": [
+          {
+            "text": "the man raises both arms and begins a slow bounce, which transforms into a light jump.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person stretches and bounces.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person is standing on his toes.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "the man raises both arms and begins a slow bounce, which transforms into a light jump.",
+          "a person stretches and bounces.",
+          "the person is standing on his toes."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M006749",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.6998556737660652,
+          "root_speed_max_m_s": 0.3911570072165176,
+          "root_angular_speed_max_rad_s": 0.49216937115853976,
+          "body_origin_min_z_m": 0.04372536084813437,
+          "frames": 160,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M006749_00.npy",
+        "sha256": "08a051c1c8abb89a65d872db5002ccf45e2b5feb4f96b5590210976536bb4efe",
+        "native": "features/train/M006749_00_native.npz",
+        "native_sha256": "336b5528e471f8df5fdfacd94540c0bf2b9a7ac4a2af54197582279e8f06979c",
+        "codec_metadata": "features/train/M006749_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.966304590845681e-08,
+          "joint_max_abs_rad": 3.7801929697600656e-08,
+          "rotation_matrix_max_abs": 1.8345753804993592e-09,
+          "rotation_projection_residual_max": 1.6122318061146818e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.29672434059444e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "004028",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/knees_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 282,
+        "reference_raw_stride": 2,
+        "frames": 142,
+        "captions": [
+          {
+            "text": "a person stretch his left leg backwards",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a man moves his right leg out and to the side.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the man picks up his leg and moves it around then back down on the ground.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person stretch his left leg backwards",
+          "a man moves his right leg out and to the side.",
+          "the man picks up his leg and moves it around then back down on the ground."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:004028",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.3082730903218167,
+          "root_speed_max_m_s": 0.2414855622217605,
+          "root_angular_speed_max_rad_s": 1.4905136117739242,
+          "body_origin_min_z_m": 0.03830053609087562,
+          "frames": 142,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/004028_00.npy",
+        "sha256": "7178e4b4fe9e0f35b683ac15869f7e18770af49b85233bdf75e0d333424c1908",
+        "native": "features/train/004028_00_native.npz",
+        "native_sha256": "8d73e614a4d0d583981a04ded009518859a383874631890fbe09136a8064f7dd",
+        "codec_metadata": "features/train/004028_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9724336103598148e-08,
+          "joint_max_abs_rad": 3.832456629826453e-08,
+          "rotation_matrix_max_abs": 3.5425568034597177e-09,
+          "rotation_projection_residual_max": 9.526723106711399e-09,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.0781815642546562e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M004028",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/knees_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 282,
+        "reference_raw_stride": 2,
+        "frames": 142,
+        "captions": [
+          {
+            "text": "a person stretch his right leg backwards",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a man moves his left leg out and to the side.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the man picks up his leg and moves it around then back down on the ground.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person stretch his right leg backwards",
+          "a man moves his left leg out and to the side.",
+          "the man picks up his leg and moves it around then back down on the ground."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M004028",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.3082730903218167,
+          "root_speed_max_m_s": 0.2414855622217605,
+          "root_angular_speed_max_rad_s": 1.4905136117739226,
+          "body_origin_min_z_m": 0.03830053609087562,
+          "frames": 142,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M004028_00.npy",
+        "sha256": "4a8a19d8863c5cf7f7200e712121e8ddba0e992018fff03ef48d11ae4440d4a4",
+        "native": "features/train/M004028_00_native.npz",
+        "native_sha256": "b7fbecdea8e03445fa4cb7a562fe7c69f5fa761d63aa4e43f93cc053d6901755",
+        "codec_metadata": "features/train/M004028_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9724336103598148e-08,
+          "joint_max_abs_rad": 3.832456629826453e-08,
+          "rotation_matrix_max_abs": 3.5425568034597177e-09,
+          "rotation_projection_residual_max": 9.526723106711399e-09,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.0807349837173615e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "007410",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/punching_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 232,
+        "reference_raw_stride": 2,
+        "frames": 117,
+        "captions": [
+          {
+            "text": "a man brings his arms up to neck level and punches the air in front of him with his right hand as his hips rotate, before returning to a standing position.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person is punching the wall.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person punches alternating left and right.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a man brings his arms up to neck level and punches the air in front of him with his right hand as his hips rotate, before returning to a standing position.",
+          "the person is punching the wall.",
+          "a person punches alternating left and right."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:007410",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.7370609739229378,
+          "root_speed_max_m_s": 0.1961405533357058,
+          "root_angular_speed_max_rad_s": 2.1447264895895946,
+          "body_origin_min_z_m": 0.03854612950722624,
+          "frames": 117,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/007410_00.npy",
+        "sha256": "a7e986e1dcce43607053921f713235811807fd44d0dda22971e096715b7af607",
+        "native": "features/train/007410_00_native.npz",
+        "native_sha256": "00c60b4ed207a20ca85bfd3735e39b486dae352c5d87751fc66a2195628ffd24",
+        "codec_metadata": "features/train/007410_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9615708441177446e-08,
+          "joint_max_abs_rad": 3.8592234852252716e-08,
+          "rotation_matrix_max_abs": 1.1367697005937316e-08,
+          "rotation_projection_residual_max": 2.930875731586912e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1523758522543496e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M007410",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/punching_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 232,
+        "reference_raw_stride": 2,
+        "frames": 117,
+        "captions": [
+          {
+            "text": "a man brings his arms up to neck level and punches the air in front of him with his left hand as his hips rotate, before returning to a standing position.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person is punching the wall.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person punches alternating right and left.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a man brings his arms up to neck level and punches the air in front of him with his left hand as his hips rotate, before returning to a standing position.",
+          "the person is punching the wall.",
+          "a person punches alternating right and left."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M007410",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.7370609739229378,
+          "root_speed_max_m_s": 0.1961405533357058,
+          "root_angular_speed_max_rad_s": 2.144726489589589,
+          "body_origin_min_z_m": 0.03854612950722624,
+          "frames": 117,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M007410_00.npy",
+        "sha256": "2a5abcf25f36820ad477427bd7959a2614b0ccc4cd86d4393fb0690ab68738e6",
+        "native": "features/train/M007410_00_native.npz",
+        "native_sha256": "75dfd04497eb7343b219571aa2c504a79721fb9eb0a5652e65a3d22dd369ec6d",
+        "codec_metadata": "features/train/M007410_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9615708441177446e-08,
+          "joint_max_abs_rad": 3.8592234852252716e-08,
+          "rotation_matrix_max_abs": 1.1367697005937316e-08,
+          "rotation_projection_residual_max": 2.930875731586912e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1530534547433792e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "006515",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/shake_hips_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 42,
+        "reference_raw_last": 440,
+        "reference_raw_stride": 2,
+        "frames": 200,
+        "captions": [
+          {
+            "text": "a person with their arms slightly raised, and is wiggling their hips.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "someone standing in place shaking their hips",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person is doing a dance which involves shaking their hips.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person with their arms slightly raised, and is wiggling their hips.",
+          "someone standing in place shaking their hips",
+          "a person is doing a dance which involves shaking their hips."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:006515",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.3932179632363462,
+          "root_speed_max_m_s": 0.29143843182071355,
+          "root_angular_speed_max_rad_s": 4.011526435452094,
+          "body_origin_min_z_m": 0.024012301768676535,
+          "frames": 200,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/006515_00.npy",
+        "sha256": "8d615a826127b9834c78418d6efa68061b651c10cd43736bdd23a393005405d5",
+        "native": "features/train/006515_00_native.npz",
+        "native_sha256": "846cd7a7534190bf0f6cb55ba36907f5c56327e0fdf371d2751d6c3df0e53302",
+        "codec_metadata": "features/train/006515_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.977845070528673e-08,
+          "joint_max_abs_rad": 3.989006591709199e-08,
+          "rotation_matrix_max_abs": 5.3703515301428695e-08,
+          "rotation_projection_residual_max": 3.0826857785402254e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2516464461294863e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M006515",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/shake_hips_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 42,
+        "reference_raw_last": 440,
+        "reference_raw_stride": 2,
+        "frames": 200,
+        "captions": [
+          {
+            "text": "a person with their arms slightly raised, and is wiggling their hips.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "someone standing in place shaking their hips",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person is doing a dance which involves shaking their hips.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person with their arms slightly raised, and is wiggling their hips.",
+          "someone standing in place shaking their hips",
+          "a person is doing a dance which involves shaking their hips."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M006515",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.3932179632363462,
+          "root_speed_max_m_s": 0.29143843182071355,
+          "root_angular_speed_max_rad_s": 4.01152643545209,
+          "body_origin_min_z_m": 0.024012301768676535,
+          "frames": 200,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M006515_00.npy",
+        "sha256": "8ac37eb9a005805d4222d0ac4e437ab125a71ab287e8eefb0f64c4ad3f862a85",
+        "native": "features/train/M006515_00_native.npz",
+        "native_sha256": "f0f98deeb64e0f941301eabc49a87c8a7ec58c15f49b40090c2f0462da43e6e5",
+        "codec_metadata": "features/train/M006515_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.977845070528673e-08,
+          "joint_max_abs_rad": 3.989006591709199e-08,
+          "rotation_matrix_max_abs": 5.3703515301428695e-08,
+          "rotation_projection_residual_max": 3.0826857785402254e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2489886785913951e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "011475",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/shake_shoulders_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 306,
+        "reference_raw_stride": 2,
+        "frames": 154,
+        "captions": [
+          {
+            "text": "a person is shaking their shoulders.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person is shaking their shoulders.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a man moves both arms back and forth in a rhythmic motion.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person is shaking their shoulders.",
+          "the person is shaking their shoulders.",
+          "a man moves both arms back and forth in a rhythmic motion."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:011475",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.37515773505287814,
+          "root_speed_max_m_s": 0.21815863443484612,
+          "root_angular_speed_max_rad_s": 2.930659579808383,
+          "body_origin_min_z_m": 0.03666646073187353,
+          "frames": 154,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/011475_00.npy",
+        "sha256": "1b12dc170fe4bb9e5b6a5d7987a43de05c7d33f74764e702b888fc86ea5aee86",
+        "native": "features/train/011475_00_native.npz",
+        "native_sha256": "3a53ac26d9b12c8caedce14bc4be4a3b48c4d6448764b481a977e27ab24ff46f",
+        "codec_metadata": "features/train/011475_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9798533529579174e-08,
+          "joint_max_abs_rad": 3.948640225903688e-08,
+          "rotation_matrix_max_abs": 3.0443217280407e-08,
+          "rotation_projection_residual_max": 1.7916732311185398e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.0531008746117992e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M011475",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/shake_shoulders_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 306,
+        "reference_raw_stride": 2,
+        "frames": 154,
+        "captions": [
+          {
+            "text": "a person is shaking their shoulders.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person is shaking their shoulders.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a man moves both arms back and forth in a rhythmic motion.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person is shaking their shoulders.",
+          "the person is shaking their shoulders.",
+          "a man moves both arms back and forth in a rhythmic motion."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M011475",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.37515773505287814,
+          "root_speed_max_m_s": 0.21815863443484612,
+          "root_angular_speed_max_rad_s": 2.9306595798083785,
+          "body_origin_min_z_m": 0.03666646073187353,
+          "frames": 154,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M011475_00.npy",
+        "sha256": "5cc97d8821fd7acf101843840fb63c5bba085b7bc1c5ff160ff72126e58f9660",
+        "native": "features/train/M011475_00_native.npz",
+        "native_sha256": "b185de022aebe4e941851371f689d785d929b124326f0a33e7a6b7f5ea953232",
+        "codec_metadata": "features/train/M011475_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9798533529579174e-08,
+          "joint_max_abs_rad": 3.948640225903688e-08,
+          "rotation_matrix_max_abs": 3.04432175024516e-08,
+          "rotation_projection_residual_max": 1.7916732311185398e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.0648802433014517e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "009466",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/shoulders_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 280,
+        "reference_raw_stride": 2,
+        "frames": 141,
+        "captions": [
+          {
+            "text": "a person circles his arms while raising his shoulders up and down.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "peron rotates arms in front of body at the shoulder.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person rolls their shoulders.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person circles his arms while raising his shoulders up and down.",
+          "peron rotates arms in front of body at the shoulder.",
+          "a person rolls their shoulders."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:009466",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.2178715339070432,
+          "root_speed_max_m_s": 0.42856502318853684,
+          "root_angular_speed_max_rad_s": 2.6523088898659974,
+          "body_origin_min_z_m": 0.032274156677994485,
+          "frames": 141,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/009466_00.npy",
+        "sha256": "1637a004a5008a7d2de5ba22ac8dd2c2253dfea6e94b3dff0fc6897a918c526e",
+        "native": "features/train/009466_00_native.npz",
+        "native_sha256": "aa5a3940d652065c9571e80e7d35a2ad823f692feaf1454089396e37d415c3b8",
+        "codec_metadata": "features/train/009466_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9352206554200677e-08,
+          "joint_max_abs_rad": 3.9092354908731863e-08,
+          "rotation_matrix_max_abs": 8.103383353219584e-09,
+          "rotation_projection_residual_max": 2.3302526826369716e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.3148386196580317e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M009466",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/shoulders_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 280,
+        "reference_raw_stride": 2,
+        "frames": 141,
+        "captions": [
+          {
+            "text": "a person circles his arms while raising his shoulders up and down.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "peron rotates arms in front of body at the shoulder.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person rolls their shoulders.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person circles his arms while raising his shoulders up and down.",
+          "peron rotates arms in front of body at the shoulder.",
+          "a person rolls their shoulders."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M009466",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.2178715339070432,
+          "root_speed_max_m_s": 0.42856502318853684,
+          "root_angular_speed_max_rad_s": 2.6523088898659952,
+          "body_origin_min_z_m": 0.032274156677994485,
+          "frames": 141,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M009466_00.npy",
+        "sha256": "450c470bb2dc4bfff91ad8f17f56cc63a2ffbe989d332c49b2c64492e3843609",
+        "native": "features/train/M009466_00_native.npz",
+        "native_sha256": "3af270a6b16a6a97f10365bf9ad23c5a97e6ff64769462f91aa0af06a9551ccb",
+        "codec_metadata": "features/train/M009466_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9352206554200677e-08,
+          "joint_max_abs_rad": 3.9092354908731863e-08,
+          "rotation_matrix_max_abs": 8.103383353219584e-09,
+          "rotation_projection_residual_max": 2.3302526826369716e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.3031297361703068e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "002511",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/side_hopping_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 14,
+        "reference_raw_last": 412,
+        "reference_raw_stride": 2,
+        "frames": 200,
+        "captions": [
+          {
+            "text": "a person hops over a stick, to the right, then to the left several times.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the stick figure is skiping from side to side.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person carefully jumps back and forth in place on one foot six times.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person hops over a stick, to the right, then to the left several times.",
+          "the stick figure is skiping from side to side.",
+          "a person carefully jumps back and forth in place on one foot six times."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:002511",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.5255768923419122,
+          "root_speed_max_m_s": 0.5452870653957655,
+          "root_angular_speed_max_rad_s": 1.9285157299886888,
+          "body_origin_min_z_m": 0.028535712258046096,
+          "frames": 200,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/002511_00.npy",
+        "sha256": "9e25904313ddf2028511fceaef78f1430d51cfce7fd6eee5a17993e788b7a0c4",
+        "native": "features/train/002511_00_native.npz",
+        "native_sha256": "5b949fa396f99e06cf6d1264e39d7a3b4eb25db669fabc011330319ef463a44c",
+        "codec_metadata": "features/train/002511_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.974769286456791e-08,
+          "joint_max_abs_rad": 4.140093323723448e-08,
+          "rotation_matrix_max_abs": 6.860978896128245e-09,
+          "rotation_projection_residual_max": 1.8794014908305035e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1428985978464985e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M002511",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/side_hopping_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 14,
+        "reference_raw_last": 412,
+        "reference_raw_stride": 2,
+        "frames": 200,
+        "captions": [
+          {
+            "text": "a person hops over a stick, to the left, then to the right several times.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the stick figure is skiping from side to side.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person carefully jumps back and forth in place on one foot six times.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person hops over a stick, to the left, then to the right several times.",
+          "the stick figure is skiping from side to side.",
+          "a person carefully jumps back and forth in place on one foot six times."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M002511",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.5255768923419122,
+          "root_speed_max_m_s": 0.5452870653957655,
+          "root_angular_speed_max_rad_s": 1.9285157299887008,
+          "body_origin_min_z_m": 0.0285357122580461,
+          "frames": 200,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M002511_00.npy",
+        "sha256": "2988114a508b95e75c7da7036eba3e1f7cf849276d1adf8cd0d3ef951b499680",
+        "native": "features/train/M002511_00_native.npz",
+        "native_sha256": "ff50530200c1dab1fda13c266ed71eebceb0c8aa068945f31090eca4ad58157a",
+        "codec_metadata": "features/train/M002511_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.974769286456791e-08,
+          "joint_max_abs_rad": 4.140093323723448e-08,
+          "rotation_matrix_max_abs": 6.860978452039035e-09,
+          "rotation_projection_residual_max": 1.8794014908305035e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1360840662131801e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "008802",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/walking_01_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 360,
+        "reference_raw_stride": 2,
+        "frames": 181,
+        "captions": [
+          {
+            "text": "a person walks in a tight clockwise circle.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person who’s walking forward and then back around.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a man is standing and facing forward, then turns slowly in a full clockwise circle to face forward again.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person walks in a tight clockwise circle.",
+          "the person who’s walking forward and then back around.",
+          "a man is standing and facing forward, then turns slowly in a full clockwise circle to face forward again."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:008802",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.2398451186893087,
+          "root_speed_max_m_s": 0.46207815377235284,
+          "root_angular_speed_max_rad_s": 3.149458480696045,
+          "body_origin_min_z_m": 0.03571502522181222,
+          "frames": 181,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/008802_00.npy",
+        "sha256": "5ccab20b2d448566167be70aadc12405c2c8a2d64cf7bb108754e6e1c2e7ee89",
+        "native": "features/train/008802_00_native.npz",
+        "native_sha256": "95089ee240a2825114b931ae0e9f4982b8d30788a7a9ce73b91ba27a6d9cb31e",
+        "codec_metadata": "features/train/008802_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.975608504041105e-08,
+          "joint_max_abs_rad": 3.6239043099683954e-08,
+          "rotation_matrix_max_abs": 1.3355443074375417e-08,
+          "rotation_projection_residual_max": 9.380328860669215e-09,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.0480774569979411e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M008802",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/walking_01_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 360,
+        "reference_raw_stride": 2,
+        "frames": 181,
+        "captions": [
+          {
+            "text": "a person walks in a tight counterclockwise circle.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person who’s walking forward and then back around.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a man is standing and facing forward, then turns slowly in a full counterclockwise circle to face forward again.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person walks in a tight counterclockwise circle.",
+          "the person who’s walking forward and then back around.",
+          "a man is standing and facing forward, then turns slowly in a full counterclockwise circle to face forward again."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M008802",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.2398451186893087,
+          "root_speed_max_m_s": 0.46207815377235284,
+          "root_angular_speed_max_rad_s": 3.149458480696045,
+          "body_origin_min_z_m": 0.03571502522181222,
+          "frames": 181,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M008802_00.npy",
+        "sha256": "e193594038fdfd239117b80d9a4369b6949dabbbb5e397059ec7b61fee032775",
+        "native": "features/train/M008802_00_native.npz",
+        "native_sha256": "ffb5abea16b1b003a0d192014318d5f67ab359e33491c3570205c4293e33f79e",
+        "codec_metadata": "features/train/M008802_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.975608504041105e-08,
+          "joint_max_abs_rad": 3.6239043099683954e-08,
+          "rotation_matrix_max_abs": 1.3355443075242779e-08,
+          "rotation_projection_residual_max": 9.380328860669215e-09,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.0474389652836147e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "002941",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/walking_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 26,
+        "reference_raw_last": 424,
+        "reference_raw_stride": 2,
+        "frames": 200,
+        "captions": [
+          {
+            "text": "a person goofily walks around in a clockwise motion.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person is taking clockwise steps in the room.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a man walks slowly in a circle with his elbows bent.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person goofily walks around in a clockwise motion.",
+          "a person is taking clockwise steps in the room.",
+          "a man walks slowly in a circle with his elbows bent."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:002941",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.3309475535488493,
+          "root_speed_max_m_s": 0.45137238571261284,
+          "root_angular_speed_max_rad_s": 2.9504267186219817,
+          "body_origin_min_z_m": 0.037000067120417895,
+          "frames": 200,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/002941_00.npy",
+        "sha256": "1ada9e7b26ace134027226d347e2c4688e9cdb37826a793fc53c7b6db0e442c0",
+        "native": "features/train/002941_00_native.npz",
+        "native_sha256": "1936de57377708f00f2237b0f2211259ab23372a582783941bd120482b2ef437",
+        "codec_metadata": "features/train/002941_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9726206940416944e-08,
+          "joint_max_abs_rad": 4.083020466172371e-08,
+          "rotation_matrix_max_abs": 2.8418853603717764e-08,
+          "rotation_projection_residual_max": 2.0912131695160215e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1170152734735613e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M002941",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/walking_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 26,
+        "reference_raw_last": 424,
+        "reference_raw_stride": 2,
+        "frames": 200,
+        "captions": [
+          {
+            "text": "a person goofily walks around in a counterclockwise motion.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person is taking counterclockwise steps in the room.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a man walks slowly in a circle with his elbows bent.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person goofily walks around in a counterclockwise motion.",
+          "a person is taking counterclockwise steps in the room.",
+          "a man walks slowly in a circle with his elbows bent."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M002941",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.3309475535488493,
+          "root_speed_max_m_s": 0.45137238571261284,
+          "root_angular_speed_max_rad_s": 2.9504267186219817,
+          "body_origin_min_z_m": 0.037000067120417895,
+          "frames": 200,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M002941_00.npy",
+        "sha256": "a1c783c81c4f69bdb4cf99ee09ae366ad222dbed48a5e68ab7735fdb186e0e5e",
+        "native": "features/train/M002941_00_native.npz",
+        "native_sha256": "dbe288a78ec8c1ec9675d7de20d15b7da8624362a80c8f79638a7a662cf2c2fe",
+        "codec_metadata": "features/train/M002941_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9726206940416944e-08,
+          "joint_max_abs_rad": 4.083020466172371e-08,
+          "rotation_matrix_max_abs": 2.8418853659228915e-08,
+          "rotation_projection_residual_max": 2.0912131695160215e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1205161068584711e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "007129",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/wrists_up_down_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 326,
+        "reference_raw_stride": 2,
+        "frames": 164,
+        "captions": [
+          {
+            "text": "in a standing position, arms moving up and down as if your throwing something to the ground.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the man wrists up down",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person moves hand up and down",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "in a standing position, arms moving up and down as if your throwing something to the ground.",
+          "the man wrists up down",
+          "a person moves hand up and down"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:007129",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.5028744519791989,
+          "root_speed_max_m_s": 0.1876180074035187,
+          "root_angular_speed_max_rad_s": 0.5209362511163373,
+          "body_origin_min_z_m": 0.040176418770775595,
+          "frames": 164,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/007129_00.npy",
+        "sha256": "8d4c52fde09ca92b5dc80370b20860d043397ece2b02735687dcb2b0f3b20551",
+        "native": "features/train/007129_00_native.npz",
+        "native_sha256": "80d5c9456bdb1eedddd363c1b510a061b021bd0600eef57fa46849140d3b0429",
+        "codec_metadata": "features/train/007129_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.979520830059812e-08,
+          "joint_max_abs_rad": 4.0144013779830345e-08,
+          "rotation_matrix_max_abs": 2.0221089247485224e-09,
+          "rotation_projection_residual_max": 2.7354866257517606e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1188170944378414e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M007129",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160330_03333/wrists_up_down_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 326,
+        "reference_raw_stride": 2,
+        "frames": 164,
+        "captions": [
+          {
+            "text": "in a standing position, arms moving up and down as if your throwing something to the ground.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the man wrists up down",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person moves hand up and down",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "in a standing position, arms moving up and down as if your throwing something to the ground.",
+          "the man wrists up down",
+          "a person moves hand up and down"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M007129",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.5028744519791989,
+          "root_speed_max_m_s": 0.1876180074035187,
+          "root_angular_speed_max_rad_s": 0.5209362511163343,
+          "body_origin_min_z_m": 0.040176418770775484,
+          "frames": 164,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M007129_00.npy",
+        "sha256": "70a76460528eef9e328f4d9607819e7628666e1dae744590992e9fcc63815dce",
+        "native": "features/train/M007129_00_native.npz",
+        "native_sha256": "0181a70e3a6d0cacdccbc661a76e65b0eda3f76a7b6d39dee3efb80eb1d4553f",
+        "codec_metadata": "features/train/M007129_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.979520830059812e-08,
+          "joint_max_abs_rad": 4.0144013779830345e-08,
+          "rotation_matrix_max_abs": 2.0221087027039175e-09,
+          "rotation_projection_residual_max": 2.7354866257517606e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1235177533053361e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "003852",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/ATUSquat_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 294,
+        "reference_raw_stride": 6,
+        "frames": 50,
+        "captions": [
+          {
+            "text": "a person raised their arms above their head, and squatted.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "someone is doing exercises with their arms",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a man stands with his feet shoulder width apart, and then he extends his arms out to his side parallel to the ground.  he then raises his hands while leaving his upper arm parallel to the ground.  he lowers his arms to his original position as he bends his body at the knees in a squat.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person raised their arms above their head, and squatted.",
+          "someone is doing exercises with their arms",
+          "a man stands with his feet shoulder width apart, and then he extends his arms out to his side parallel to the ground.  he then raises his hands while leaving his upper arm parallel to the ground.  he lowers his arms to his original position as he bends his body at the knees in a squat."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:003852",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.6117039015643171,
+          "root_speed_max_m_s": 1.483272911677586,
+          "root_angular_speed_max_rad_s": 2.810647076480454,
+          "body_origin_min_z_m": 0.04980678967754294,
+          "frames": 50,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/003852_00.npy",
+        "sha256": "4ae3c5fcae6c4db8faa2ff6f579f9ae5f63eb9db058c9807e17763d0b9ee9478",
+        "native": "features/train/003852_00_native.npz",
+        "native_sha256": "0b169b404145c3b54bef3063d40a20a3f6eb5ae0bcd0cfdbcf25e80dd4b776e4",
+        "codec_metadata": "features/train/003852_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.898262352335479e-08,
+          "joint_max_abs_rad": 3.825770811261009e-08,
+          "rotation_matrix_max_abs": 6.260061358176472e-09,
+          "rotation_projection_residual_max": 2.050193309180311e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2896371136805571e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M003852",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/ATUSquat_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 294,
+        "reference_raw_stride": 6,
+        "frames": 50,
+        "captions": [
+          {
+            "text": "a person raised their arms above their head, and squatted.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "someone is doing exercises with their arms",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a man stands with his feet shoulder width apart, and then he extends his arms out to his side parallel to the ground.  he then raises his hands while leaving his upper arm parallel to the ground.  he lowers his arms to his original position as he bends his body at the knees in a squat.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person raised their arms above their head, and squatted.",
+          "someone is doing exercises with their arms",
+          "a man stands with his feet shoulder width apart, and then he extends his arms out to his side parallel to the ground.  he then raises his hands while leaving his upper arm parallel to the ground.  he lowers his arms to his original position as he bends his body at the knees in a squat."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M003852",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.6117039015643171,
+          "root_speed_max_m_s": 1.483272911677586,
+          "root_angular_speed_max_rad_s": 2.8106470764804548,
+          "body_origin_min_z_m": 0.049806789677543005,
+          "frames": 50,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M003852_00.npy",
+        "sha256": "e185b7c9a0c37cbed5ed14db7e228fd6e762006ff216fc0e39dc147a5e416150",
+        "native": "features/train/M003852_00_native.npz",
+        "native_sha256": "b0312ab338a7880375854c195e5062574d75b7d3b79f74ab39dce731342d7b34",
+        "codec_metadata": "features/train/M003852_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.898262352335479e-08,
+          "joint_max_abs_rad": 3.825770811261009e-08,
+          "rotation_matrix_max_abs": 6.260061580221077e-09,
+          "rotation_projection_residual_max": 2.050193309180311e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2818156523548023e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "012274",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/clap_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 156,
+        "reference_raw_stride": 6,
+        "frames": 27,
+        "captions": [
+          {
+            "text": "a man with his legs outstretched brings his hands together to clap them.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person does a really quick clap",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a man with outstretched arms claps twice and then stretches his arms out again.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a man with his legs outstretched brings his hands together to clap them.",
+          "a person does a really quick clap",
+          "a man with outstretched arms claps twice and then stretches his arms out again."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:012274",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.8586245634665024,
+          "root_speed_max_m_s": 0.3198193002518312,
+          "root_angular_speed_max_rad_s": 0.7316109938481423,
+          "body_origin_min_z_m": 0.052972568086624996,
+          "frames": 27,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/012274_00.npy",
+        "sha256": "9cc02a235dde9ccea20920ab71b37f486bdaf2463b6a5df53c9928e3ebf17839",
+        "native": "features/train/012274_00_native.npz",
+        "native_sha256": "447c69a8b381edd41463ba8636928c0fed26357ac48bd2ecc224af07b48d5f81",
+        "codec_metadata": "features/train/012274_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9662869605040498e-08,
+          "joint_max_abs_rad": 3.434173645455729e-08,
+          "rotation_matrix_max_abs": 1.6433980842833762e-09,
+          "rotation_projection_residual_max": 3.1249641286989916e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.3203322934217927e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M012274",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/clap_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 156,
+        "reference_raw_stride": 6,
+        "frames": 27,
+        "captions": [
+          {
+            "text": "a man with his legs outstretched brings his hands together to clap them.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person does a really quick clap",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a man with outstretched arms claps twice and then stretches his arms out again.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a man with his legs outstretched brings his hands together to clap them.",
+          "a person does a really quick clap",
+          "a man with outstretched arms claps twice and then stretches his arms out again."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M012274",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.8586245634665024,
+          "root_speed_max_m_s": 0.3198193002518312,
+          "root_angular_speed_max_rad_s": 0.7316109938481427,
+          "body_origin_min_z_m": 0.052972568086624885,
+          "frames": 27,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M012274_00.npy",
+        "sha256": "5d73901136f4d01b2a67fa42aad4d292f62fcc51bbf9a280317e8e5f865f71c6",
+        "native": "features/train/M012274_00_native.npz",
+        "native_sha256": "dbd36b41e333c95b1a0dfaa415f5ea3b1cff0902aef3bcd42b6f62390e07cb90",
+        "codec_metadata": "features/train/M012274_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9662869605040498e-08,
+          "joint_max_abs_rad": 3.434173645455729e-08,
+          "rotation_matrix_max_abs": 1.6433974181495614e-09,
+          "rotation_projection_residual_max": 3.1249641286989916e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.3471574120315875e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "002428",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/dribble_kick_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 348,
+        "reference_raw_stride": 6,
+        "frames": 59,
+        "captions": [
+          {
+            "text": "a person walks forward at an angle to kick a ball",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "quickly jolts back with a kick then throws up the right arm in the air.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "person moves back two steps fastly then  kicks with right leg then raises right arm as if kicking a ball",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person walks forward at an angle to kick a ball",
+          "quickly jolts back with a kick then throws up the right arm in the air.",
+          "person moves back two steps fastly then  kicks with right leg then raises right arm as if kicking a ball"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:002428",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.285663384834179,
+          "root_speed_max_m_s": 2.0266274683545533,
+          "root_angular_speed_max_rad_s": 9.635898529488793,
+          "body_origin_min_z_m": 0.05402508912402364,
+          "frames": 59,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/002428_00.npy",
+        "sha256": "de73471872744b3691675d8c53688278ee8ff20448d7d33386eafca62b09fc5d",
+        "native": "features/train/002428_00_native.npz",
+        "native_sha256": "7b19c21cde40828520213df37d4220ebba61400d09d6326dd0e997d8d3d12cf5",
+        "codec_metadata": "features/train/002428_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9788428168586734e-08,
+          "joint_max_abs_rad": 4.049812846185219e-08,
+          "rotation_matrix_max_abs": 1.669063028064688e-08,
+          "rotation_projection_residual_max": 1.9785716628060956e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2062360738619097e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M002428",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/dribble_kick_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 348,
+        "reference_raw_stride": 6,
+        "frames": 59,
+        "captions": [
+          {
+            "text": "a person walks forward at an angle to kick a ball",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "quickly jolts back with a kick then throws up the left arm in the air.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "person moves back two steps fastly then  kicks with left leg then raises left arm as if kicking a ball",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person walks forward at an angle to kick a ball",
+          "quickly jolts back with a kick then throws up the left arm in the air.",
+          "person moves back two steps fastly then  kicks with left leg then raises left arm as if kicking a ball"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M002428",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.285663384834179,
+          "root_speed_max_m_s": 2.0266274683545533,
+          "root_angular_speed_max_rad_s": 9.63589852948879,
+          "body_origin_min_z_m": 0.05402508912402364,
+          "frames": 59,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M002428_00.npy",
+        "sha256": "1a03512d189d21ed36324017cc0f61549561d1d50fc663ad4f67807bc8b61ee8",
+        "native": "features/train/M002428_00_native.npz",
+        "native_sha256": "b20ce7d757deca56473f398f877ccc52d5857b2ecf9abf67fda40e5665dd18f2",
+        "codec_metadata": "features/train/M002428_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9788428168586734e-08,
+          "joint_max_abs_rad": 4.049812846185219e-08,
+          "rotation_matrix_max_abs": 1.6690630308402454e-08,
+          "rotation_projection_residual_max": 1.9785716628060956e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1872706904577241e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "008922",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/jumping_jacks_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 234,
+        "reference_raw_stride": 6,
+        "frames": 40,
+        "captions": [
+          {
+            "text": "hands come together above head with arms fully extended, returning back to hips and feet move slightly inward at the same time the hands meet.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person does jumping jacks very quickly.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person is doing jumping jacks.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "hands come together above head with arms fully extended, returning back to hips and feet move slightly inward at the same time the hands meet.",
+          "the person does jumping jacks very quickly.",
+          "the person is doing jumping jacks."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:008922",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.9576920300720799,
+          "root_speed_max_m_s": 2.0463010523971095,
+          "root_angular_speed_max_rad_s": 2.2639844559773756,
+          "body_origin_min_z_m": 0.055677644517740064,
+          "frames": 40,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/008922_00.npy",
+        "sha256": "7aa1499dfb3a0dc3360fd614564636fb1fe10ea373e22f68bc4fe5aeef065f72",
+        "native": "features/train/008922_00_native.npz",
+        "native_sha256": "515cc4bacd12fd465c658ea556f47a11f5cf4e801f381068a4a44374bd31698f",
+        "codec_metadata": "features/train/008922_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.8581737421262687e-08,
+          "joint_max_abs_rad": 3.8052742956651286e-08,
+          "rotation_matrix_max_abs": 9.345501761348629e-09,
+          "rotation_projection_residual_max": 1.0748065893148384e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.3038432384461655e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M008922",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/jumping_jacks_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 234,
+        "reference_raw_stride": 6,
+        "frames": 40,
+        "captions": [
+          {
+            "text": "hands come together above head with arms fully extended, returning back to hips and feet move slightly inward at the same time the hands meet.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person does jumping jacks very quickly.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person is doing jumping jacks.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "hands come together above head with arms fully extended, returning back to hips and feet move slightly inward at the same time the hands meet.",
+          "the person does jumping jacks very quickly.",
+          "the person is doing jumping jacks."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M008922",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.9576920300720799,
+          "root_speed_max_m_s": 2.0463010523971095,
+          "root_angular_speed_max_rad_s": 2.2639844559773756,
+          "body_origin_min_z_m": 0.05567764451774013,
+          "frames": 40,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M008922_00.npy",
+        "sha256": "973449444f379ed253bf0d9013791401c2d45455434cd7b537bcdc0219c80ae9",
+        "native": "features/train/M008922_00_native.npz",
+        "native_sha256": "5010c864ce371cfc8fba7c47dbe8e85b0cfae674086e02f82bd27465fe3d730c",
+        "codec_metadata": "features/train/M008922_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.8581737421262687e-08,
+          "joint_max_abs_rad": 3.8052742956651286e-08,
+          "rotation_matrix_max_abs": 9.345501650326327e-09,
+          "rotation_projection_residual_max": 1.0748065893148384e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.3077122149956724e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "007835",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/light_hopping_loose_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 288,
+        "reference_raw_stride": 6,
+        "frames": 49,
+        "captions": [
+          {
+            "text": "person extends left arm slightly then bounces on spot",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person hops up and down very quickly",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person moving left forearm and then hops three times.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "person extends left arm slightly then bounces on spot",
+          "a person hops up and down very quickly",
+          "a person moving left forearm and then hops three times."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:007835",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.6976633397211339,
+          "root_speed_max_m_s": 1.8209893472316965,
+          "root_angular_speed_max_rad_s": 1.9792981637360587,
+          "body_origin_min_z_m": 0.05399910562208987,
+          "frames": 49,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/007835_00.npy",
+        "sha256": "80fe7e171771340e5736d3e8972b9f70a867e92ee952829095625133c99dc75e",
+        "native": "features/train/007835_00_native.npz",
+        "native_sha256": "f02a5edc2598af83c8955571f41c397f2929087aa63806ef02fe575d25d94e86",
+        "codec_metadata": "features/train/007835_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9525762168525205e-08,
+          "joint_max_abs_rad": 3.097572287558137e-08,
+          "rotation_matrix_max_abs": 5.401377511926597e-09,
+          "rotation_projection_residual_max": 1.7853618458860938e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.206124381553235e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M007835",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/light_hopping_loose_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 288,
+        "reference_raw_stride": 6,
+        "frames": 49,
+        "captions": [
+          {
+            "text": "person extends right arm slightly then bounces on spot",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person hops up and down very quickly",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person moving right forearm and then hops three times.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "person extends right arm slightly then bounces on spot",
+          "a person hops up and down very quickly",
+          "a person moving right forearm and then hops three times."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M007835",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.6976633397211339,
+          "root_speed_max_m_s": 1.8209893472316965,
+          "root_angular_speed_max_rad_s": 1.9792981637360578,
+          "body_origin_min_z_m": 0.053999105622089816,
+          "frames": 49,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M007835_00.npy",
+        "sha256": "c82b36c6a310b217b6a3a1b53ec96ce7d336d9727b58a39667722e58ff8f5d6d",
+        "native": "features/train/M007835_00_native.npz",
+        "native_sha256": "0ece6c8809246f6eb03629090ead0ec1470e24a486575d930260fcb229498c10",
+        "codec_metadata": "features/train/M007835_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9525762168525205e-08,
+          "joint_max_abs_rad": 3.097572287558137e-08,
+          "rotation_matrix_max_abs": 5.401377539682173e-09,
+          "rotation_projection_residual_max": 1.7853618458860938e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1983640674067216e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "013303",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/punch_kick_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 276,
+        "reference_raw_stride": 6,
+        "frames": 47,
+        "captions": [
+          {
+            "text": "the person is doing a quick punch kick.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "person widely punches forward with their right arm while simultaneously kicking forward with their left leg before standing still",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person violently thrashes their right arm in the air, then their left arm while kicking with their left leg.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "the person is doing a quick punch kick.",
+          "person widely punches forward with their right arm while simultaneously kicking forward with their left leg before standing still",
+          "a person violently thrashes their right arm in the air, then their left arm while kicking with their left leg."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:013303",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.4821175013180308,
+          "root_speed_max_m_s": 0.8658996655083466,
+          "root_angular_speed_max_rad_s": 8.383898100030828,
+          "body_origin_min_z_m": 0.034109060145494315,
+          "frames": 47,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/013303_00.npy",
+        "sha256": "e1c01f01c3fc6475f3502b749d9ac5b2a505baa9d95b0085edb4e16171a9e290",
+        "native": "features/train/013303_00_native.npz",
+        "native_sha256": "94603d7ffb037d316d6f614de82ad7e46e13be88d2367a10143ffccfae33044f",
+        "codec_metadata": "features/train/013303_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9597404305192754e-08,
+          "joint_max_abs_rad": 3.842798479425369e-08,
+          "rotation_matrix_max_abs": 1.4082893406985875e-08,
+          "rotation_projection_residual_max": 2.5135783304363076e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2636804404155811e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M013303",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/punch_kick_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 276,
+        "reference_raw_stride": 6,
+        "frames": 47,
+        "captions": [
+          {
+            "text": "the person is doing a quick punch kick.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "person widely punches forward with their left arm while simultaneously kicking forward with their right leg before standing still",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person violently thrashes their left arm in the air, then their right arm while kicking with their right leg.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "the person is doing a quick punch kick.",
+          "person widely punches forward with their left arm while simultaneously kicking forward with their right leg before standing still",
+          "a person violently thrashes their left arm in the air, then their right arm while kicking with their right leg."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M013303",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.4821175013180308,
+          "root_speed_max_m_s": 0.8658996655083466,
+          "root_angular_speed_max_rad_s": 8.383898100030825,
+          "body_origin_min_z_m": 0.034109060145494315,
+          "frames": 47,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M013303_00.npy",
+        "sha256": "85601f532648803e1ff000d6372bef713cad43a57b9ae4b97129e436eb046cc4",
+        "native": "features/train/M013303_00_native.npz",
+        "native_sha256": "6dc2eb311c5f82234fd45a69fefd44a0e665241dbd96d40361dff7e3b8a0dd79",
+        "codec_metadata": "features/train/M013303_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9597404305192754e-08,
+          "joint_max_abs_rad": 3.842798479425369e-08,
+          "rotation_matrix_max_abs": 1.4082893295963572e-08,
+          "rotation_projection_residual_max": 2.5135783304363076e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2488762918818151e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "000069",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/running_on_the_spot_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 288,
+        "reference_raw_stride": 6,
+        "frames": 49,
+        "captions": [
+          {
+            "text": "person is running on the spot but at 2x speed",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person lifting one leg bent at the knee then the other the same way in a fast running in place motion.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person runs in place, then stands still",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "person is running on the spot but at 2x speed",
+          "a person lifting one leg bent at the knee then the other the same way in a fast running in place motion.",
+          "a person runs in place, then stands still"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:000069",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.1420965579685254,
+          "root_speed_max_m_s": 1.3964511956090866,
+          "root_angular_speed_max_rad_s": 7.5085059505218785,
+          "body_origin_min_z_m": 0.05493082053182166,
+          "frames": 49,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/000069_00.npy",
+        "sha256": "5e2c6e3320488e52e2b891f4f99081ab5f946acee1d544b2eaab05e3268fe1e6",
+        "native": "features/train/000069_00_native.npz",
+        "native_sha256": "bdc48802536b17bab1a7452aea3ec5bd32137a4ead138666d9656385f9d860d8",
+        "codec_metadata": "features/train/000069_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.8578635458131885e-08,
+          "joint_max_abs_rad": 3.4795860193170824e-08,
+          "rotation_matrix_max_abs": 3.6690335741829117e-08,
+          "rotation_projection_residual_max": 8.113281834868687e-09,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1624601484952556e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M000069",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/running_on_the_spot_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 288,
+        "reference_raw_stride": 6,
+        "frames": 49,
+        "captions": [
+          {
+            "text": "person is running on the spot but at 2x speed",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person lifting one leg bent at the knee then the other the same way in a fast running in place motion.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person runs in place, then stands still",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "person is running on the spot but at 2x speed",
+          "a person lifting one leg bent at the knee then the other the same way in a fast running in place motion.",
+          "a person runs in place, then stands still"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M000069",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.1420965579685254,
+          "root_speed_max_m_s": 1.3964511956090866,
+          "root_angular_speed_max_rad_s": 7.5085059505218785,
+          "body_origin_min_z_m": 0.05493082053182166,
+          "frames": 49,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M000069_00.npy",
+        "sha256": "afe30609258f52483838fbe903fa918ab13cc7fa0dd6e609f8b595d1b2ab3b7a",
+        "native": "features/train/M000069_00_native.npz",
+        "native_sha256": "4f853815bb77602f0109e3f2f05c1aaec3328c064d70f5e103be25a4e3c1d6a9",
+        "codec_metadata": "features/train/M000069_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.8578635458131885e-08,
+          "joint_max_abs_rad": 3.4795860193170824e-08,
+          "rotation_matrix_max_abs": 3.6690335741829117e-08,
+          "rotation_projection_residual_max": 8.113281834868687e-09,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.172345351581539e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "008863",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/special_move_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 216,
+        "reference_raw_stride": 6,
+        "frames": 37,
+        "captions": [
+          {
+            "text": "the person does a very quick dance.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a standing man does a dance. he taises his left arm the. his right arm straight up over his head. then holds both arms straight out.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "the person does a very quick dance.",
+          "a standing man does a dance. he taises his left arm the. his right arm straight up over his head. then holds both arms straight out."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:008863",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.347373404317778,
+          "root_speed_max_m_s": 0.7489292523475305,
+          "root_angular_speed_max_rad_s": 4.052731140086567,
+          "body_origin_min_z_m": 0.06053710130864086,
+          "frames": 37,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/008863_00.npy",
+        "sha256": "3098a8910bb1f7aaaa8af26b7a8ffb95c7ee0f99ca90d96a738b7ce4c2b28fe9",
+        "native": "features/train/008863_00_native.npz",
+        "native_sha256": "1426535f0ebf35e8c59a669df5ac04721783d52e81c0d9fb9595d606538b758b",
+        "codec_metadata": "features/train/008863_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9537619017361294e-08,
+          "joint_max_abs_rad": 3.917844215717281e-08,
+          "rotation_matrix_max_abs": 9.826094105047645e-09,
+          "rotation_projection_residual_max": 1.9368459063090282e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.4466670078791968e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "008863",
+        "interval": 1,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/special_move_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 114,
+        "reference_raw_stride": 6,
+        "frames": 20,
+        "captions": [
+          {
+            "text": "a person too fast shaked with hands",
+            "line": 2,
+            "kind": "segment",
+            "start_20": 0,
+            "end_20": 20
+          }
+        ],
+        "texts": [
+          "a person too fast shaked with hands"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:008863",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.347373404317778,
+          "root_speed_max_m_s": 0.7489292523475305,
+          "root_angular_speed_max_rad_s": 4.052731140086567,
+          "body_origin_min_z_m": 0.06053710130864086,
+          "frames": 20,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/008863_01.npy",
+        "sha256": "4f0b896b477c4f2b8d5561f2a11bf58004e1bf966056179579e2a00918324167",
+        "native": "features/train/008863_01_native.npz",
+        "native_sha256": "c2079bb1161320a20f2150dceb6c4828c591ce2369d83074d7f9ce52bfa7eaf4",
+        "codec_metadata": "features/train/008863_01_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.86075085842441e-08,
+          "joint_max_abs_rad": 3.917844215717281e-08,
+          "rotation_matrix_max_abs": 9.734673886430123e-09,
+          "rotation_projection_residual_max": 1.1728630022069316e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.4310909103861718e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M008863",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/special_move_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 216,
+        "reference_raw_stride": 6,
+        "frames": 37,
+        "captions": [
+          {
+            "text": "the person does a very quick dance.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a standing man does a dance. he taises his right arm the. his left arm straight up over his head. then holds both arms straight out.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "the person does a very quick dance.",
+          "a standing man does a dance. he taises his right arm the. his left arm straight up over his head. then holds both arms straight out."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M008863",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.347373404317778,
+          "root_speed_max_m_s": 0.7489292523475305,
+          "root_angular_speed_max_rad_s": 4.052731140086569,
+          "body_origin_min_z_m": 0.0605371013086408,
+          "frames": 37,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M008863_00.npy",
+        "sha256": "7c06d384bdfa6792e50c7f9cbe6ad3f6227dff3d02e9cafb39328a2a92ca4d37",
+        "native": "features/train/M008863_00_native.npz",
+        "native_sha256": "0ef09eb60fa851de6c96c8844c392988100a0009ed78925d5bdbe5328a935865",
+        "codec_metadata": "features/train/M008863_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9537619017361294e-08,
+          "joint_max_abs_rad": 3.917844215717281e-08,
+          "rotation_matrix_max_abs": 9.826094271581098e-09,
+          "rotation_projection_residual_max": 1.9368459063090282e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.392165600540069e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M008863",
+        "interval": 1,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/special_move_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 114,
+        "reference_raw_stride": 6,
+        "frames": 20,
+        "captions": [
+          {
+            "text": "a person too fast shaked with hands",
+            "line": 2,
+            "kind": "segment",
+            "start_20": 0,
+            "end_20": 20
+          }
+        ],
+        "texts": [
+          "a person too fast shaked with hands"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M008863",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.347373404317778,
+          "root_speed_max_m_s": 0.7489292523475305,
+          "root_angular_speed_max_rad_s": 4.052731140086569,
+          "body_origin_min_z_m": 0.0605371013086408,
+          "frames": 20,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M008863_01.npy",
+        "sha256": "e9c49bd609d63b51459b5848c10d16a5495b70f02a464d4dbe83f326e664ffc8",
+        "native": "features/train/M008863_01_native.npz",
+        "native_sha256": "d67bfb7ba65dad5fde5d51328cb620e6764e11748fe2ee1abe6d6ea3723f5751",
+        "codec_metadata": "features/train/M008863_01_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.86075085842441e-08,
+          "joint_max_abs_rad": 3.917844215717281e-08,
+          "rotation_matrix_max_abs": 9.734674039085789e-09,
+          "rotation_projection_residual_max": 1.1728630022069316e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.3797903100001824e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "000008",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/ATUSquat_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 252,
+        "reference_raw_stride": 6,
+        "frames": 43,
+        "captions": [
+          {
+            "text": "a man performs a squat while lifting his arms to shoulder height and hands above his head.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person squats and raises both arms and then stand backup.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person does a squat and raises both arms over its head.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person squats down and puts their hands above their head",
+            "line": 4,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a man performs a squat while lifting his arms to shoulder height and hands above his head.",
+          "a person squats and raises both arms and then stand backup.",
+          "a person does a squat and raises both arms over its head.",
+          "a person squats down and puts their hands above their head"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:000008",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 1.1102230246251565e-16,
+          "joint_step_max_rad": 0.5930865463687459,
+          "root_speed_max_m_s": 1.4446911181378657,
+          "root_angular_speed_max_rad_s": 5.565763219896435,
+          "body_origin_min_z_m": -0.02534358816416962,
+          "frames": 43,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/000008_00.npy",
+        "sha256": "bda5e7da5a32c29d71d1c443d54a01d69e902c5b55bf94cd80d04e905473a803",
+        "native": "features/train/000008_00_native.npz",
+        "native_sha256": "b1932e774d7ef413d4d68e620972f7d16eb4b030d54ecdeeab8734a185e948e4",
+        "codec_metadata": "features/train/000008_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9278736990434595e-08,
+          "joint_max_abs_rad": 3.696917461049054e-08,
+          "rotation_matrix_max_abs": 1.602854110549501e-08,
+          "rotation_projection_residual_max": 2.324445020128249e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2546657942858575e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M000008",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/ATUSquat_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 252,
+        "reference_raw_stride": 6,
+        "frames": 43,
+        "captions": [
+          {
+            "text": "a man performs a squat while lifting his arms to shoulder height and hands above his head.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person squats and raises both arms and then stand backup.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person does a squat and raises both arms over its head.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person squats down and puts their hands above their head",
+            "line": 4,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a man performs a squat while lifting his arms to shoulder height and hands above his head.",
+          "a person squats and raises both arms and then stand backup.",
+          "a person does a squat and raises both arms over its head.",
+          "a person squats down and puts their hands above their head"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M000008",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 1.1102230246251565e-16,
+          "joint_step_max_rad": 0.5930865463687459,
+          "root_speed_max_m_s": 1.4446911181378657,
+          "root_angular_speed_max_rad_s": 5.565763219896435,
+          "body_origin_min_z_m": -0.02534358816416962,
+          "frames": 43,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M000008_00.npy",
+        "sha256": "8e0df267636adbd68795a39a824bead1beddaf8db34930a30a65a8e468f90fce",
+        "native": "features/train/M000008_00_native.npz",
+        "native_sha256": "c2e37a40c17340effab80ad120431af229c3538b92923afc3590380a8a782104",
+        "codec_metadata": "features/train/M000008_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9278736990434595e-08,
+          "joint_max_abs_rad": 3.696917461049054e-08,
+          "rotation_matrix_max_abs": 1.602854110549501e-08,
+          "rotation_projection_residual_max": 2.324445020128249e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2479103240368494e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "005715",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/clap_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 192,
+        "reference_raw_stride": 6,
+        "frames": 33,
+        "captions": [
+          {
+            "text": "a person claps with his hands at should level.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "person bringing both hands in front of their body and then clapping.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person claps to a routine",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person claps with his hands at should level.",
+          "person bringing both hands in front of their body and then clapping.",
+          "the person claps to a routine"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:005715",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.7699465409133541,
+          "root_speed_max_m_s": 0.3191013530402788,
+          "root_angular_speed_max_rad_s": 2.739122513553518,
+          "body_origin_min_z_m": -0.02809283386607405,
+          "frames": 33,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/005715_00.npy",
+        "sha256": "ba226d37c4868026fbe67246485072b0a489867c8daae800a22f4d8f46e2f08b",
+        "native": "features/train/005715_00_native.npz",
+        "native_sha256": "2a8807107cee54e77b681687890fe803c0b0c57813b8c75145aae53819ff0d0a",
+        "codec_metadata": "features/train/005715_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.920922625992972e-08,
+          "joint_max_abs_rad": 3.235721035554917e-08,
+          "rotation_matrix_max_abs": 8.579357113625008e-09,
+          "rotation_projection_residual_max": 1.580795868638575e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2244188836063377e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M005715",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/clap_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 192,
+        "reference_raw_stride": 6,
+        "frames": 33,
+        "captions": [
+          {
+            "text": "a person claps with his hands at should level.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "person bringing both hands in front of their body and then clapping.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person claps to a routine",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person claps with his hands at should level.",
+          "person bringing both hands in front of their body and then clapping.",
+          "the person claps to a routine"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M005715",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.7699465409133541,
+          "root_speed_max_m_s": 0.3191013530402788,
+          "root_angular_speed_max_rad_s": 2.739122513553518,
+          "body_origin_min_z_m": -0.02809283386607405,
+          "frames": 33,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M005715_00.npy",
+        "sha256": "70f60fd9cda77c13132c57286171522e3ec2e1816a561a718760dcb21b84d34d",
+        "native": "features/train/M005715_00_native.npz",
+        "native_sha256": "169d59f3557c3b26d7d2c29ced3c02f555cd950afedd98f902f83905bf82d36b",
+        "codec_metadata": "features/train/M005715_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.920922625992972e-08,
+          "joint_max_abs_rad": 3.235721035554917e-08,
+          "rotation_matrix_max_abs": 8.579357113625008e-09,
+          "rotation_projection_residual_max": 1.580795868638575e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2135271791425598e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "001480",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/dance_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 300,
+        "reference_raw_stride": 6,
+        "frames": 51,
+        "captions": [
+          {
+            "text": "a person waves their arms wildly and shuffles their feet.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person rhymically steps feet from side to side whilst moving arms up and down",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person waves their arms wildly and shuffles their feet.",
+          "a person rhymically steps feet from side to side whilst moving arms up and down"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:001480",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.8751705366924197,
+          "root_speed_max_m_s": 1.1841790665920784,
+          "root_angular_speed_max_rad_s": 9.732852010774904,
+          "body_origin_min_z_m": -0.029040145144316347,
+          "frames": 51,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/001480_00.npy",
+        "sha256": "577ba07b4138efff9c5af63c9ef7913506f6bb3a1f58f7d33b2f098322159936",
+        "native": "features/train/001480_00_native.npz",
+        "native_sha256": "91db3388a3ff0af5bc3d2ef1b3d11b0d959b0f3f6cd61ddcdad341a7b1ad1cd2",
+        "codec_metadata": "features/train/001480_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9004015744682476e-08,
+          "joint_max_abs_rad": 4.02709844360416e-08,
+          "rotation_matrix_max_abs": 1.508278532624807e-08,
+          "rotation_projection_residual_max": 1.6657198386946036e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.232411237647149e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "001480",
+        "interval": 1,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/dance_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 234,
+        "reference_raw_stride": 6,
+        "frames": 40,
+        "captions": [
+          {
+            "text": "a person dances vigorously using mostly their upper body.",
+            "line": 3,
+            "kind": "segment",
+            "start_20": 0,
+            "end_20": 40
+          }
+        ],
+        "texts": [
+          "a person dances vigorously using mostly their upper body."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:001480",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.8751705366924197,
+          "root_speed_max_m_s": 1.1841790665920784,
+          "root_angular_speed_max_rad_s": 9.732852010774904,
+          "body_origin_min_z_m": -0.029040145144316347,
+          "frames": 40,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/001480_01.npy",
+        "sha256": "f91f1e985e125819b8fc29337c34e9bbe9074fec2036ecb9f950a20ee5e2192b",
+        "native": "features/train/001480_01_native.npz",
+        "native_sha256": "a681ea6a1f014d3d4428b0c17ef777c3fc7214c61771f83596099d05f18724f0",
+        "codec_metadata": "features/train/001480_01_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9004015744682476e-08,
+          "joint_max_abs_rad": 4.02709844360416e-08,
+          "rotation_matrix_max_abs": 1.508278532624807e-08,
+          "rotation_projection_residual_max": 1.6657198386946036e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2167486579568843e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M001480",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/dance_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 300,
+        "reference_raw_stride": 6,
+        "frames": 51,
+        "captions": [
+          {
+            "text": "a person waves their arms wildly and shuffles their feet.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person rhymically steps feet from side to side whilst moving arms up and down",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person waves their arms wildly and shuffles their feet.",
+          "a person rhymically steps feet from side to side whilst moving arms up and down"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M001480",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.8751705366924197,
+          "root_speed_max_m_s": 1.1841790665920784,
+          "root_angular_speed_max_rad_s": 9.73285201077491,
+          "body_origin_min_z_m": -0.029040145144316347,
+          "frames": 51,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M001480_00.npy",
+        "sha256": "7fbc5f7ea75d58e32bb00d4fb094f811081a98cd0553c1c482aba2e201506ca1",
+        "native": "features/train/M001480_00_native.npz",
+        "native_sha256": "10529a8451749e5bcbb3f1d2644f77fe91d9e25745154ab64ac320deb958d3fe",
+        "codec_metadata": "features/train/M001480_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9004015744682476e-08,
+          "joint_max_abs_rad": 4.02709844360416e-08,
+          "rotation_matrix_max_abs": 1.5082785242981345e-08,
+          "rotation_projection_residual_max": 1.6657198386946036e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2184538233584782e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M001480",
+        "interval": 1,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/dance_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 234,
+        "reference_raw_stride": 6,
+        "frames": 40,
+        "captions": [
+          {
+            "text": "a person dances vigorously using mostly their upper body.",
+            "line": 3,
+            "kind": "segment",
+            "start_20": 0,
+            "end_20": 40
+          }
+        ],
+        "texts": [
+          "a person dances vigorously using mostly their upper body."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M001480",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.8751705366924197,
+          "root_speed_max_m_s": 1.1841790665920784,
+          "root_angular_speed_max_rad_s": 9.73285201077491,
+          "body_origin_min_z_m": -0.029040145144316347,
+          "frames": 40,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M001480_01.npy",
+        "sha256": "ada490531efe3d67dfb9fd4113fa8d99811063d14739ad52461ad00722121450",
+        "native": "features/train/M001480_01_native.npz",
+        "native_sha256": "8fa7ac249aeab81447c8116102f0d5077db6e3018300b12193d7c3c2f7287561",
+        "codec_metadata": "features/train/M001480_01_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9004015744682476e-08,
+          "joint_max_abs_rad": 4.02709844360416e-08,
+          "rotation_matrix_max_abs": 1.5082785242981345e-08,
+          "rotation_projection_residual_max": 1.6657198386946036e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.217319511377678e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "011281",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/dribble_kick_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 354,
+        "reference_raw_stride": 6,
+        "frames": 60,
+        "captions": [
+          {
+            "text": "the person walks forward doing a dribble kick.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the sim steps back before launching forward, making a kicking motion with their right foot twice.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person steps backwards then passes a soccer ball wit their right foot.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "the person walks forward doing a dribble kick.",
+          "the sim steps back before launching forward, making a kicking motion with their right foot twice.",
+          "the person steps backwards then passes a soccer ball wit their right foot."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:011281",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.6102261040140914,
+          "root_speed_max_m_s": 1.87529858885263,
+          "root_angular_speed_max_rad_s": 4.69493690681221,
+          "body_origin_min_z_m": -0.03167389485720379,
+          "frames": 60,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/011281_00.npy",
+        "sha256": "51337ab100272a60a41a8b7acbab211714063c865f10b4534083fd93420b01a8",
+        "native": "features/train/011281_00_native.npz",
+        "native_sha256": "a9cb8bcc4e78ba3b9ad3ba58f418afb79bc9266865f563dfdc4728454a6e4166",
+        "codec_metadata": "features/train/011281_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9716140548252667e-08,
+          "joint_max_abs_rad": 4.0546983104405854e-08,
+          "rotation_matrix_max_abs": 1.235101297625274e-08,
+          "rotation_projection_residual_max": 8.76325706842243e-09,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1612800334284034e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M011281",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/dribble_kick_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 354,
+        "reference_raw_stride": 6,
+        "frames": 60,
+        "captions": [
+          {
+            "text": "the person walks forward doing a dribble kick.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the sim steps back before launching forward, making a kicking motion with their left foot twice.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person steps backwards then passes a soccer ball wit their left foot.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "the person walks forward doing a dribble kick.",
+          "the sim steps back before launching forward, making a kicking motion with their left foot twice.",
+          "the person steps backwards then passes a soccer ball wit their left foot."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M011281",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.6102261040140914,
+          "root_speed_max_m_s": 1.87529858885263,
+          "root_angular_speed_max_rad_s": 4.694936906812202,
+          "body_origin_min_z_m": -0.03167389485720379,
+          "frames": 60,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M011281_00.npy",
+        "sha256": "6089541cf2a21fb36637333eaeea3cae65ffc69ae124492088aa042b4bca9a22",
+        "native": "features/train/M011281_00_native.npz",
+        "native_sha256": "a6fc32d1772eb46dc88680c88a40ce05f297ea585dd7008a4c9b7ec942986aa0",
+        "codec_metadata": "features/train/M011281_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9716140548252667e-08,
+          "joint_max_abs_rad": 4.0546983104405854e-08,
+          "rotation_matrix_max_abs": 1.2351013031763891e-08,
+          "rotation_projection_residual_max": 8.76325706842243e-09,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1567988955052631e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "008981",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/hop_on_one_leg_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 234,
+        "reference_raw_stride": 6,
+        "frames": 40,
+        "captions": [
+          {
+            "text": "jumping on one leg.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person is hopping on one leg.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person hops on his right leg",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "jumping on one leg.",
+          "the person is hopping on one leg.",
+          "a person hops on his right leg"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:008981",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.5332507326694349,
+          "root_speed_max_m_s": 1.7284979085247616,
+          "root_angular_speed_max_rad_s": 3.5433909919267625,
+          "body_origin_min_z_m": -0.024595309381816748,
+          "frames": 40,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/008981_00.npy",
+        "sha256": "47ad6e884ace3be3201716e87e1b4af5e4f522f5d16d51fde3b26f91a6c745c6",
+        "native": "features/train/008981_00_native.npz",
+        "native_sha256": "5362800a683485021db450e02ca87f43af983ce626649cc51b74ab9c22338982",
+        "codec_metadata": "features/train/008981_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9758919772859826e-08,
+          "joint_max_abs_rad": 3.756066246918266e-08,
+          "rotation_matrix_max_abs": 1.2418474221176368e-08,
+          "rotation_projection_residual_max": 9.39557100466679e-09,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2219947364895796e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M008981",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/hop_on_one_leg_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 234,
+        "reference_raw_stride": 6,
+        "frames": 40,
+        "captions": [
+          {
+            "text": "jumping on one leg.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the person is hopping on one leg.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person hops on his left leg",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "jumping on one leg.",
+          "the person is hopping on one leg.",
+          "a person hops on his left leg"
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M008981",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.5332507326694349,
+          "root_speed_max_m_s": 1.7284979085247616,
+          "root_angular_speed_max_rad_s": 3.5433909919267625,
+          "body_origin_min_z_m": -0.024595309381816748,
+          "frames": 40,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M008981_00.npy",
+        "sha256": "f989565d4f42e363a8aff2551c8eb351fcd422185f3125275806a589ade60811",
+        "native": "features/train/M008981_00_native.npz",
+        "native_sha256": "ca33f183010c8d71837639d0c41228fc99b91a32933ba699d190c0001f4aecaf",
+        "codec_metadata": "features/train/M008981_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9758919772859826e-08,
+          "joint_max_abs_rad": 3.756066246918266e-08,
+          "rotation_matrix_max_abs": 1.2418474137909641e-08,
+          "rotation_projection_residual_max": 9.39557100466679e-09,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2003259800922773e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "011760",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/light_hopping_loose_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 252,
+        "reference_raw_stride": 6,
+        "frames": 43,
+        "captions": [
+          {
+            "text": "a person falty jumped few times",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "light jumping in place repeatedly",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the guys takes 3 quick hops simultaneously.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person falty jumped few times",
+          "light jumping in place repeatedly",
+          "the guys takes 3 quick hops simultaneously."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:011760",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.5701965281386683,
+          "root_speed_max_m_s": 1.779360616976039,
+          "root_angular_speed_max_rad_s": 1.923273780552192,
+          "body_origin_min_z_m": -0.024819775653270416,
+          "frames": 43,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/011760_00.npy",
+        "sha256": "7f979a3d354607ff21104f122a28c255b085b03eca9227b2a37109ee30652125",
+        "native": "features/train/011760_00_native.npz",
+        "native_sha256": "0cc225487fc9d951eab94b8fd0c3e29f8508618bca0b6855e6bb03fe1c8236b6",
+        "codec_metadata": "features/train/011760_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.847322944088404e-08,
+          "joint_max_abs_rad": 3.696483963366859e-08,
+          "rotation_matrix_max_abs": 5.1335109080286045e-09,
+          "rotation_projection_residual_max": 6.533355610635507e-09,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1564964112444277e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M011760",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/light_hopping_loose_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 252,
+        "reference_raw_stride": 6,
+        "frames": 43,
+        "captions": [
+          {
+            "text": "a person falty jumped few times",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "light jumping in place repeatedly",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the guys takes 3 quick hops simultaneously.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person falty jumped few times",
+          "light jumping in place repeatedly",
+          "the guys takes 3 quick hops simultaneously."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M011760",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 0.5701965281386683,
+          "root_speed_max_m_s": 1.779360616976039,
+          "root_angular_speed_max_rad_s": 1.9232737805521931,
+          "body_origin_min_z_m": -0.024819775653270475,
+          "frames": 43,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M011760_00.npy",
+        "sha256": "a8c9002981536aac4a23e1f00d2d09de2a3f652246efb0072433c7155ab58d60",
+        "native": "features/train/M011760_00_native.npz",
+        "native_sha256": "0d0a8de4ff08e6a828a52519ff8074c12d9c44b3f4e2826e84820a4e942e701f",
+        "codec_metadata": "features/train/M011760_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.847322944088404e-08,
+          "joint_max_abs_rad": 3.696483963366859e-08,
+          "rotation_matrix_max_abs": 5.133510894150817e-09,
+          "rotation_projection_residual_max": 6.533355610635507e-09,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1593644530857042e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "004384",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/punch_kick_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 282,
+        "reference_raw_stride": 6,
+        "frames": 48,
+        "captions": [
+          {
+            "text": "a person throwing a left punch and subsequently a right kick.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person angrily punches forward with their left hand, then kicks forward with their right leg",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a man uses his left arm to swing a punch and then his right leg to kick.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person throwing a left punch and subsequently a right kick.",
+          "a person angrily punches forward with their left hand, then kicks forward with their right leg",
+          "a man uses his left arm to swing a punch and then his right leg to kick."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:004384",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 5.551115123125783e-17,
+          "joint_step_max_rad": 1.080777779998551,
+          "root_speed_max_m_s": 0.7046620460312264,
+          "root_angular_speed_max_rad_s": 8.70740104267781,
+          "body_origin_min_z_m": -0.04920802401482732,
+          "frames": 48,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/004384_00.npy",
+        "sha256": "b93226a680e18182595b87555afd4e8f7dc08d68ed40dfbc5fc3d9559bcabed8",
+        "native": "features/train/004384_00_native.npz",
+        "native_sha256": "8477749815e79b43c10b873b688389782a4183c65e6d7f002aedb45421e5d923",
+        "codec_metadata": "features/train/004384_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9055472139383198e-08,
+          "joint_max_abs_rad": 3.803963233295349e-08,
+          "rotation_matrix_max_abs": 1.514598957363944e-08,
+          "rotation_projection_residual_max": 1.3799565264227e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.179864755616651e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M004384",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/punch_kick_sync_poses.npy",
+        "official_split": "train",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 282,
+        "reference_raw_stride": 6,
+        "frames": 48,
+        "captions": [
+          {
+            "text": "a person throwing a right punch and subsequently a left kick.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person angrily punches forward with their right hand, then kicks forward with their left leg",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a man uses his right arm to swing a punch and then his left leg to kick.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person throwing a right punch and subsequently a left kick.",
+          "a person angrily punches forward with their right hand, then kicks forward with their left leg",
+          "a man uses his right arm to swing a punch and then his left leg to kick."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M004384",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 5.551115123125783e-17,
+          "joint_step_max_rad": 1.080777779998551,
+          "root_speed_max_m_s": 0.7046620460312264,
+          "root_angular_speed_max_rad_s": 8.707401042677812,
+          "body_origin_min_z_m": -0.04920802401482732,
+          "frames": 48,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/train/M004384_00.npy",
+        "sha256": "1845f603b2fb5dce65c24b1fe5a1817b511e7f5b436f85537be2a8b891402357",
+        "native": "features/train/M004384_00_native.npz",
+        "native_sha256": "ff14bf46d8f6a1e02d9da96fcb853df7559efa113e1dd4cc6b966a2902541338",
+        "codec_metadata": "features/train/M004384_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9055472139383198e-08,
+          "joint_max_abs_rad": 3.803963233295349e-08,
+          "rotation_matrix_max_abs": 1.5145989240572533e-08,
+          "rotation_projection_residual_max": 1.3799565264227e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.1775539283862025e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      }
+    ],
+    "val": [],
+    "test": [
+      {
+        "motion_id": "006053",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/dribble_shoot_sync_poses.npy",
+        "official_split": "test",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 228,
+        "reference_raw_stride": 6,
+        "frames": 39,
+        "captions": [
+          {
+            "text": "waving arms around randomly quickly.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person quickly hops from one foot to the other, then quickly makes a counterclockwise circle with their right forearm, and then makes a jump shot like in basketball.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person shuffles his feet and then swings his right arm overhead.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "waving arms around randomly quickly.",
+          "a person quickly hops from one foot to the other, then quickly makes a counterclockwise circle with their right forearm, and then makes a jump shot like in basketball.",
+          "a person shuffles his feet and then swings his right arm overhead."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:006053",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.1503111999823405,
+          "root_speed_max_m_s": 2.4323512420181608,
+          "root_angular_speed_max_rad_s": 3.9791708889368023,
+          "body_origin_min_z_m": 0.049505327679892644,
+          "frames": 39,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/test/006053_00.npy",
+        "sha256": "b93fba35626d2f6a7b933d49d3dd0892d686660bf5d4a20ae273190711821183",
+        "native": "features/test/006053_00_native.npz",
+        "native_sha256": "729afde548667dd9ecadb314c323cff2d9f39b6a1515fd1d87478b77ea259875",
+        "codec_metadata": "features/test/006053_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.8563377330037554e-08,
+          "joint_max_abs_rad": 3.79041075193598e-08,
+          "rotation_matrix_max_abs": 7.398639811917462e-09,
+          "rotation_projection_residual_max": 2.934201573427731e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.3178524611864864e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M006053",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20160930_50032/dribble_shoot_sync_poses.npy",
+        "official_split": "test",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 228,
+        "reference_raw_stride": 6,
+        "frames": 39,
+        "captions": [
+          {
+            "text": "waving arms around randomly quickly.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person quickly hops from one foot to the other, then quickly makes a clockwise circle with their left forearm, and then makes a jump shot like in basketball.",
+            "line": 2,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "a person shuffles his feet and then swings his left arm overhead.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "waving arms around randomly quickly.",
+          "a person quickly hops from one foot to the other, then quickly makes a clockwise circle with their left forearm, and then makes a jump shot like in basketball.",
+          "a person shuffles his feet and then swings his left arm overhead."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M006053",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.1503111999823405,
+          "root_speed_max_m_s": 2.4323512420181608,
+          "root_angular_speed_max_rad_s": 3.979170888936785,
+          "body_origin_min_z_m": 0.049505327679892644,
+          "frames": 39,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/test/M006053_00.npy",
+        "sha256": "e0e22266cf2576b9805df1b712f8b2cb7300e79821388a5dd3391d23e65a6e9e",
+        "native": "features/test/M006053_00_native.npz",
+        "native_sha256": "639b54fc00f481be99f74bf01ce67dd00e2d0ba56b0c31675cc8217bf0c3eab4",
+        "codec_metadata": "features/test/M006053_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.8563377330037554e-08,
+          "joint_max_abs_rad": 3.79041075193598e-08,
+          "rotation_matrix_max_abs": 7.398640033962067e-09,
+          "rotation_projection_residual_max": 2.934201573427731e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.3333751592117487e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "003017",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/jumping_jacks_sync_poses.npy",
+        "official_split": "test",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 282,
+        "reference_raw_stride": 6,
+        "frames": 48,
+        "captions": [
+          {
+            "text": "a person does jumping jacks fast.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the figure is doing two jumping jacks.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person does jumping jacks fast.",
+          "the figure is doing two jumping jacks."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:003017",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.1717030722744832,
+          "root_speed_max_m_s": 2.4338831869087163,
+          "root_angular_speed_max_rad_s": 2.9038848135558277,
+          "body_origin_min_z_m": -0.030669398136887762,
+          "frames": 48,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/test/003017_00.npy",
+        "sha256": "3f3289001e56722b669b237356597130be9815db42a408395c01cc1a5438f887",
+        "native": "features/test/003017_00_native.npz",
+        "native_sha256": "9db95765da075f426e8de8dc872451c33049258dc824b7794a1321f91d15bc6e",
+        "codec_metadata": "features/test/003017_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9013668800814685e-08,
+          "joint_max_abs_rad": 3.916196256170679e-08,
+          "rotation_matrix_max_abs": 1.6099906116617824e-08,
+          "rotation_projection_residual_max": 2.4247707612441805e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2796243144259219e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "003017",
+        "interval": 1,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/jumping_jacks_sync_poses.npy",
+        "official_split": "test",
+        "mirrored": false,
+        "reference_raw_start": 0,
+        "reference_raw_last": 234,
+        "reference_raw_stride": 6,
+        "frames": 40,
+        "captions": [
+          {
+            "text": "a man jumps and brings both arms above his head as he spread his legs and then moves them back into the original position.",
+            "line": 2,
+            "kind": "segment",
+            "start_20": 0,
+            "end_20": 40
+          }
+        ],
+        "texts": [
+          "a man jumps and brings both arms above his head as he spread his legs and then moves them back into the original position."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:003017",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.1717030722744832,
+          "root_speed_max_m_s": 2.4338831869087163,
+          "root_angular_speed_max_rad_s": 2.9038848135558277,
+          "body_origin_min_z_m": -0.030669398136887762,
+          "frames": 40,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/test/003017_01.npy",
+        "sha256": "f11e272298265a19f3fac83690ad3c9f99ce70b4015617b0b253e649d9245945",
+        "native": "features/test/003017_01_native.npz",
+        "native_sha256": "0db5e3625282814f983f5b19db555446e2a07c8c25db96dbcc6f39b98c86b87b",
+        "codec_metadata": "features/test/003017_01_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9003389467874285e-08,
+          "joint_max_abs_rad": 3.916196256170679e-08,
+          "rotation_matrix_max_abs": 1.5802762987071617e-08,
+          "rotation_projection_residual_max": 2.4247707612441805e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.3294332873421324e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M003017",
+        "interval": 0,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/jumping_jacks_sync_poses.npy",
+        "official_split": "test",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 282,
+        "reference_raw_stride": 6,
+        "frames": 48,
+        "captions": [
+          {
+            "text": "a person does jumping jacks fast.",
+            "line": 1,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          },
+          {
+            "text": "the figure is doing two jumping jacks.",
+            "line": 3,
+            "kind": "whole",
+            "start_20": null,
+            "end_20": null
+          }
+        ],
+        "texts": [
+          "a person does jumping jacks fast.",
+          "the figure is doing two jumping jacks."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M003017",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.1717030722744832,
+          "root_speed_max_m_s": 2.4338831869087163,
+          "root_angular_speed_max_rad_s": 2.9038848135558255,
+          "body_origin_min_z_m": -0.030669398136887762,
+          "frames": 48,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/test/M003017_00.npy",
+        "sha256": "9c91d37ae0cc7aaaa38bc8003106eba060f7ffd7ac59c9e19ef680abbe589e2e",
+        "native": "features/test/M003017_00_native.npz",
+        "native_sha256": "29c4dab7fa48f4cf51fe8c7e51290b9debe0793e26b3295f009226f66d1ef7ea",
+        "codec_metadata": "features/test/M003017_00_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9013668800814685e-08,
+          "joint_max_abs_rad": 3.916196256170679e-08,
+          "rotation_matrix_max_abs": 1.6099906255395702e-08,
+          "rotation_projection_residual_max": 2.4247707612441805e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.2787822280497643e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      },
+      {
+        "motion_id": "M003017",
+        "interval": 1,
+        "source_group": "./pose_data/SSM_synced/20161014_50033/jumping_jacks_sync_poses.npy",
+        "official_split": "test",
+        "mirrored": true,
+        "reference_raw_start": 0,
+        "reference_raw_last": 234,
+        "reference_raw_stride": 6,
+        "frames": 40,
+        "captions": [
+          {
+            "text": "a man jumps and brings both arms above his head as he spread his legs and then moves them back into the original position.",
+            "line": 2,
+            "kind": "segment",
+            "start_20": 0,
+            "end_20": 40
+          }
+        ],
+        "texts": [
+          "a man jumps and brings both arms above his head as he spread his legs and then moves them back into the original position."
+        ],
+        "annotation_source": "HumanML3D@9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23:M003017",
+        "screening": {
+          "passed": true,
+          "reasons": [],
+          "joint_limit_excess_rad": 0.0,
+          "joint_step_max_rad": 1.1717030722744832,
+          "root_speed_max_m_s": 2.4338831869087163,
+          "root_angular_speed_max_rad_s": 2.9038848135558255,
+          "body_origin_min_z_m": -0.030669398136887762,
+          "frames": 40,
+          "dynamics_validated": false,
+          "mesh_collision_validated": false,
+          "scope": "kinematic screening; body origins are not collision geometry"
+        },
+        "tags": [],
+        "dynamics_validated": false,
+        "features": "features/test/M003017_01.npy",
+        "sha256": "23a008ed8287be1759fedd156f3c5424c4f95a94594e52280fb708df441709e0",
+        "native": "features/test/M003017_01_native.npz",
+        "native_sha256": "bd1e31f1089d2801ed5b997cf5acb989a3dff6239533cba2d84f356cf15e3407",
+        "codec_metadata": "features/test/M003017_01_metadata.json",
+        "roundtrip": {
+          "position_max_abs_m": 2.9003389467874285e-08,
+          "joint_max_abs_rad": 3.916196256170679e-08,
+          "rotation_matrix_max_abs": 1.580276316748286e-08,
+          "rotation_projection_residual_max": 2.4247707612441805e-08,
+          "joint_limit_violations": 0,
+          "ric_redundancy_residual_m": 1.3300868301592044e-08,
+          "projected": false,
+          "root_pose_side_information_required": true
+        }
+      }
+    ]
+  }
+}

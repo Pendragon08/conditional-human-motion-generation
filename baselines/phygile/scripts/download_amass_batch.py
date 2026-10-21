@@ -41,6 +41,7 @@ def main():
     p.add_argument('--identity', required=True)
     p.add_argument('--remote-root', required=True)
     p.add_argument('--remote-python', required=True)
+    p.add_argument('--local-only', action='store_true', help='Acquire references without server staging')
     p.add_argument('--credential-stdin', action='store_true')
     a = p.parse_args()
     if not a.credential_stdin:
@@ -237,7 +238,9 @@ def main():
                 subset = receipt['subset']
                 try:
                     known = receipt.get('previous_server_receipt')
-                    if known:
+                    if a.local_only:
+                        server_result = {'subset': subset, 'status': 'NOT_REQUESTED_LOCAL_REFERENCE_ONLY'}
+                    elif known:
                         server_result = json.loads(Path(known).read_text())
                         assert server_result['archive_sha256'] == receipt['sha256']
                         target = a.receipts / 'server' / (subset + '.json')

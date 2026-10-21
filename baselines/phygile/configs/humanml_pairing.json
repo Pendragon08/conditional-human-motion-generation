@@ -1,0 +1,20 @@
+{
+  "format": "humanml-g1-pairing-reconstruction-v1",
+  "fps": 20,
+  "seed": 42,
+  "cpu_threads": 4,
+  "smplx_batch_size": 64,
+  "threshold_provenance": "Explicit reproduction choices, not author-published filtering thresholds",
+  "thresholds": {
+    "min_frames": 20,
+    "joint_limit_tolerance_rad": 0.001,
+    "joint_step_max_rad": 1.5,
+    "root_speed_max_m_s": 8.0,
+    "root_angular_speed_max_rad_s": 20.0,
+    "body_origin_penetration_max_m": 0.12
+  },
+  "training_protocol": "Preserve official IDs; additionally exclude recording groups that cross official splits",
+  "physical_tracking_validation_required_before_physics_claims": true,
+  "author_exact_codec_verified": false,
+  "delete_inputs_or_outputs": false
+}
