@@ -21,9 +21,9 @@
 
 2026-10-18 已取得 HumanML3D 官方公开文本、划分和动作来源索引，见 [配对数据准备状态](docs/paired_data_status_20261018.md)。对应原始 AMASS 动作、所选重定向路径的人体模型及 G1 配对动作仍缺；没有以无配对文本的武术片段代替完整生成训练。已有独立编解码，作者一致性尚待确认；ASFO 镜像、完整课程训练、真实生成分布上的 PPO 适配和正式生成评估仍待补齐。原始记录、代码/输入哈希与独立审查均保留。
 
-2026-10-21 已生成完整逐 ID 时间对齐计划、去重来源清单并通过 8 项时间边界检查，见 [AMASS 获取与对齐准备](docs/amass_acquisition_and_alignment_20261021.md)。SSM 已取得并核验 30 条原始 SMPL-X 动作，见 [SSM 核验记录](docs/SSM_download_status_20261021.md)；人体模型及其余子集仍缺，本轮未新增 G1 配对动作或启动生成器训练。
+2026-10-21 已取得并安装 AMASS 兼容的 SMPL-X 三性别模型，作者与独立按文档运行均通过 CPU 前向验证。新增获许可的15个动作包合计57.071GB，正在后台下载；本轮快照中本地已核验9个、服务器已核验8个，另有此前已完成的SSM。TotalCapture依用户要求跳过。详见 [最新下载与模型安装报告](docs/amass_remaining_download_20261021.md)、[模型独立验证](docs/smplx_model_installation_20261021.md)和 [AMASS资产清单](datasets/AMASS/README.md)。服务器容量不足以放下全部压缩包及解压文件，后续包先保留在D盘；GitHub保存清单、哈希、脚本和报告，受再分发限制的原始数据及模型保存在用户本地及服务器。
 
-SSM 现已上传原服务器 `/data` 下的复现项目目录并重新核验；独立 `smplx` 依赖扩展与两次 CPU 机器人运动学检查通过，新增约 160 MB。详见 [服务器部署报告](docs/amass_server_deployment_20261021.md)及 [AMASS 资产清单](datasets/AMASS/README.md)。完整 AMASS 与人体模型仍未下载齐，数据盘剩约 19 GB；GitHub 保存清单、哈希、脚本和报告，受再分发限制的原始数据保存在用户本地及服务器。
+逐ID时间对齐计划、来源清单与8项时间边界检查见 [AMASS获取与对齐准备](docs/amass_acquisition_and_alignment_20261021.md)，此前SSM原始动作及服务器安装记录分别见 [SSM核验](docs/SSM_download_status_20261021.md)和 [首批部署报告](docs/amass_server_deployment_20261021.md)。这些是不同时间点的获取记录。本轮未新增G1配对动作、262D序列或启动生成器训练。
 
 计数更正与参考来源见 [更正说明](docs/accounting_terms_erratum.md)：旧 updates 字段表示 PPO 轮次，每轮 20 次 Adam 步进，累计 40,000 次；外部运动参考不是实测机器人真值。
 
