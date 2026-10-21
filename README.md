@@ -4,7 +4,7 @@
 
 **条件动作先验、物理执行与全身人形机器人控制**
 
-[实验汇报](reports/teacher_report_20261002/README.md) · [基线结果](#results) · [演示视频](media/DreamControl_official_baselines.html) · [复现实验](#setup)
+[实验汇报](reports/teacher_report_20261002/README.md) · [CLoSD 复现报告](results/closd_baseline_20261010/README.md) · [基线结果](#results) · [演示视频](media/DreamControl_official_baselines.html) · [复现实验](#setup)
 
 </div>
 
@@ -121,6 +121,10 @@ DreamControl 的归档基线使用官方任务参考动作和 PPO 控制训练�
 | Open Door | 99.0% | | |
 
 11 项均已完成评价，不等于 11 项均达到论文性能，也不代表生成方法创新已得到验证。成功率遵循官方任务判据，不能扩展解释为自然抓握、持续接触或未见场景泛化。
+
+### CLoSD: text-to-motion baseline report
+
+[完整报告与视频](results/closd_baseline_20261010/README.md) 已同步至 GitHub，提供可离线打开的 HTML 与下载包。报告包含作者公开动作重评、20,000 条新采集动作评测、9 段任务演示与 3 段生成动作预览。报告内容更新于 2026-10-17，补充发布于 2026-10-21；原指标不变，没有新增训练。该文本动作评测与下表多任务控制评价分别记录。
 
 ### CLoSD: released-checkpoint evaluation
 

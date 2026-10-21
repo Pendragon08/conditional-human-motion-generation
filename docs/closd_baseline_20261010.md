@@ -1,5 +1,7 @@
 # CLoSD baseline selection and reproduction — 2026-10-10
 
+> **Report publication update — 2026-10-21:** The released-motion evaluation, fresh collection of 20,000 retained episodes, and fresh-motion evaluation are complete. The [complete report and offline video package](../results/closd_baseline_20261010/README.md) now include the 2026-10-17 presentation update. Existing scores are unchanged; no new training was performed. Statements below describing a running batch are historical execution notes.
+
 Baseline: Tevet et al., CLoSD: Closing the Loop between Simulation and Diffusion for Multi-task Character Control, ICLR 2025 Spotlight. Official source: https://github.com/GuyTevet/CLoSD .
 
 Scope: conditional motion generation with physical execution feedback. The simulated subject is the paper's SMPL humanoid, not a G1. This run uses released weights; it does not claim to retrain the full paper. Existing October 1 multitask scores are historical and must not be relabeled as new results.
