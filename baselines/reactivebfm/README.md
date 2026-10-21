@@ -1,17 +1,22 @@
-# ReactiveBFM reproduction: bounded training milestone
+# ReactiveBFM reproduction: full training in progress
 
-This is a compatibility pilot, **not a reproduction of the paper's benchmark results**.
-The official full-size text-conditioned flow planner completed 101 AdamW updates
-on the official Kungfu training split. Physical closed-loop control is not yet evaluated.
+The full available-data 1M-update schedule is running on two RTX A6000 GPUs.
+The simulator closed loop executes actual MuJoCo PD control and real state feedback;
+the earlier 101-update pilot model falls. Neither full training completion nor the
+paper's benchmark performance is claimed.
 
-- [Chinese experiment report](reports/ReactiveBFM复现实验报告.md)
-- [Exact run receipt](results/pilot_v1/run_receipt.json)
-- [Per-step metrics](results/pilot_v1/training_metrics.jsonl)
+- [Current Chinese training and closed-loop report](reports/ReactiveBFM完整训练与闭环进展报告_20261022.md)
+- [Live snapshot captured during this delivery](results/full_training_20261021/live_snapshot_20261022_0036/)
+- [Full training checkpoints, diagnostics and reports](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/reactivebfm-full-training-20261022)
+- [Simulation execution receipt](results/full_training_20261021/closed_loop_simclock_v1/receipt.json)
+- [State feedback consistency](results/full_training_20261021/closed_loop_simclock_v1/feedback_verification.json)
+- [Independent full runtime document witness](results/full_training_20261021/document_witness_v1/witness.md)
+- [Full training configuration](configs/full_training_v1.json), [backup/evaluation worker](scripts/backup_full_run.py)
+- [Archived bounded pilot report](reports/ReactiveBFM复现实验报告.md)
 - [Official data manifest](configs/official_data_files.json), [download receipts](results/acquisition_v1/acquisition.json)
 - [Numeric data audit](results/data_audit_v1.json)
-- [Independent environment witness](results/document_witness_v1/witness.md)
 - [Environment specification](configs/env_spec.json)
-- [Integrity audit: provisional WARN](results/integrity_audit_v1/EXPERIMENT_AUDIT.md)
+- [Earlier pilot integrity audit: provisional WARN](results/integrity_audit_v1/EXPERIMENT_AUDIT.md)
 
 ## Official source and attribution
 
@@ -26,7 +31,7 @@ Third-party data and weights retain their respective terms.
 ## Data policy and storage
 
 24 official public data files (870,700,765 bytes) are saved in
-`D:/具身智能/ReactiveBFM复现_20261021/data/`. Kungfu is also staged in the server's
+`D:/具身智能/ReactiveBFM复现_20261021/data/`. All three motion subsets are staged in the server's
 project `data/`. Motion arrays, SMPL-X, and third-party BERT/tracker weights are not
 redistributed by this repository. Small demo assets bundled in the licensed official source are retained unchanged. Public records contain acquisition URLs, sizes,
 SHA256 digests, split summaries and aggregate diagnostics. A size check against
@@ -64,8 +69,13 @@ text-motion alignment, tracking error, perturbation success or full test-set eva
 
 ## Remaining work
 
-Full mixed-data training (official recipe reaches 1M steps), the unreleased
-goal/reaching data and evaluation suite, TensorRT compilation, and physical
-MuJoCo closed-loop evaluation remain outstanding. No real-robot result is claimed.
-The CPU tracker probe checks model loading and qpos-policy computation only.
-All original datasets, code, checkpoints and experiment results remain preserved.
+Full mixed-data training is in progress. The unreleased goal/reaching data and
+complete paper evaluation suite remain unavailable. TensorRT and real-time
+performance are untested. Native PyTorch/MuJoCo closed-loop execution and feedback
+wiring have been tested; learned motion/control quality remains to be established
+from the actual full-training checkpoints. No real-robot result is claimed.
+
+The local backup worker must remain running with SSH/GitHub access. It only removes
+older checkpoint copies after digest-verified publication; latest server copies
+remain. Disk exhaustion waits without deleting unverified files; a prolonged DDP
+wait can time out after3h. See the current Chinese report for the exact limits.
