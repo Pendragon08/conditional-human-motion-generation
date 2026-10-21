@@ -55,7 +55,7 @@ ScaleBFM 低层跟踪器完成官方 CPU 重建及 qpos→策略前向检查；�
 具体结果见 `../results/data_audit_v1.json`。
 
 Kungfu train 共 803 条，其中 116 条短于 175 帧，被官方 loader 排除，实际候选训练记录 687 条。
-Kungfu test 共 44 条，其中 7 条过短，候选 37 条；辅助测试只固定使用前 8 条，没有用于反向传播或调参。
+Kungfu test 共 44 条，其中 7 条过短，候选 37 条；辅助测试固定使用按长度排序后的前 8 条可用片段及确定性中心裁剪，没有用于反向传播或调参。该选择不是随机或代表性抽样，原回执没有记录逐样本键。
 
 ## 4. 环境与实验设置
 
@@ -72,7 +72,7 @@ Python 3.10.21、PyTorch 2.5.1+cu121、NumPy 1.26.4、MuJoCo 3.3.7、Transformer
 
 ## 5. 真实训练结果
 
-种子 42，batch=2，warmup=25，总更新=101，无 EMA。官方训练入口和损失保持原样；新增代码只记录标量、优化器更新次数和前缀选择次数。
+种子 42，batch=2，warmup=25，总更新=101，学习率 1e-4，FP32（use_bf16=false），无 EMA。官方训练入口和损失保持原样；新增代码只记录标量、优化器更新次数和前缀选择次数。
 
 | 检查项 | 结果 |
 |---|---:|
@@ -117,12 +117,13 @@ Python 3.10.21、PyTorch 2.5.1+cu121、NumPy 1.26.4、MuJoCo 3.3.7、Transformer
 - 数据：总目录下 `data/`；低层第三方权重在 `weights/`；本次自训练检查点在 `results/pilot_v1/`。
 - 服务器目录：`/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/`，训练结果在 `runs/pilot_v1/`。
 - GitHub 代码、日志、数据清单与报告：`Pendragon08/conditional-human-motion-generation` 的 `codex/reactivebfm-reproduction-20261021` 分支，目录 `baselines/reactivebfm/`。
-- 自训练模型和优化器通过同仓库预发布 Release 保存；链接与远端字节校验结果另见 `../results/github_backup.json`。
+- 自训练模型和优化器：[GitHub 预发布 Release](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/reactivebfm-pilot-20261021)。两个文件的 GitHub 服务端 SHA256 均与本地和服务器记录一致；代码采用 Git 对象内容标识核对，见 `../results/github_backup.json`。
+- 代码与报告：[草稿 PR #2](https://github.com/Pendragon08/conditional-human-motion-generation/pull/2)。最终分支文件清单校验书作为 Release 附件 `github_delivery_final.json` 保存；它核对固定提交，不对其自身作循环校验。
 
 上游采用 CC-BY-NC-SA-4.0，保留官方与第三方许可。补充实现及本次自训练权重采用相同许可；该权重只是限额训练检查点。
 受限原始 AMASS/SMPL-X、逐帧动作包及第三方 BERT/跟踪器权重不转存到公开仓库，仓库记录可追溯来源、大小、哈希和聚合核验结果。
 上游代码自带的少量演示资产随官方源码原样保留；新下载的三套完整训练数据不再分发。
-没有删除任何本地或服务器文件。
+没有删除任何原始数据、代码、模型权重或实验结果。
 
 ## 8. 尚未复现及后续实验
 
@@ -133,3 +134,17 @@ Python 3.10.21、PyTorch 2.5.1+cu121、NumPy 1.26.4、MuJoCo 3.3.7、Transformer
 5. 原文完整评估协议；当前官方 evaluation 尚未发布完整实现。
 
 后续首先冻结可获取的数据和评估划分，扩展服务器空间，再开展有预算记录的长训练与 MuJoCo 闭环。当前检查点适合继续验证代码链路，不能直接作为已达到论文性能的对比结果。
+
+
+## 9. 独立上下文审查与结论边界
+
+独立审查报告：`../results/integrity_audit_v1/EXPERIMENT_AUDIT.md`；结构化记录见同目录 JSON。
+审查结论 **WARN（同模型家族、独立上下文，暂定）**：A 真实参考来源 PASS、B 归一化 PASS、C 证据可核验性 WARN、D 指标执行路径 PASS、E 范围 WARN、F 类型分类 PASS。
+未发现伪造参考、以预测统计量作指标分母或不存在的论文基准结果；这不是对整体论文性能或所有可能问题的保证。
+
+限制包括：一个种子、101 次更新、8 条按长度排序选取的片段、未在原回执记录逐样本键、无完整测试集/置信区间/基线比较/动力学闭环。
+8 条片段已在训练前后被查看，后续应冻结独立验证协议并保留未触及的最终测试集。
+审查员独立复核了本地数据和检查点哈希，但未重新连接服务器确认远端副本，也没有发布方签名数据校验和；本报告的远端同哈希结论依赖保存的作者执行记录。
+数据检查脚本中的“保留官方归一化”布尔标签本身不构成发布方身份证明，仍应结合下载记录与本地文件哈希理解。
+
+本节及抽样说明在采纳审查意见后补充；审查锁定的原报告哈希保存在审查 JSON 中，原始训练代码、损失值和检查点均未改动。

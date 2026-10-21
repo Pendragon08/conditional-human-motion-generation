@@ -11,6 +11,7 @@ on the official Kungfu training split. Physical closed-loop control is not yet e
 - [Numeric data audit](results/data_audit_v1.json)
 - [Independent environment witness](results/document_witness_v1/witness.md)
 - [Environment specification](configs/env_spec.json)
+- [Integrity audit: provisional WARN](results/integrity_audit_v1/EXPERIMENT_AUDIT.md)
 
 ## Official source and attribution
 
@@ -67,4 +68,4 @@ Full mixed-data training (official recipe reaches 1M steps), the unreleased
 goal/reaching data and evaluation suite, TensorRT compilation, and physical
 MuJoCo closed-loop evaluation remain outstanding. No real-robot result is claimed.
 The CPU tracker probe checks model loading and qpos-policy computation only.
-All server/local originals remain preserved; nothing was deleted.
+All original datasets, code, checkpoints and experiment results remain preserved.
