@@ -162,7 +162,7 @@ def main():
                                 'zip_crc_verified') if k in old}
                 event(subset, 'REUSED_PRIOR_VERIFIED_LOCAL_ARCHIVE', archive_bytes=expected)
             else:
-                for attempt in range(3):
+                for attempt in range(8):
                     offset = partial.stat().st_size if partial.exists() else 0
                     assert offset <= expected
                     if offset == expected:
@@ -190,11 +190,16 @@ def main():
                                         out.flush()
                                         event(subset, 'DOWNLOADING', downloaded_bytes=offset, expected_bytes=expected)
                                         last = time.monotonic()
-                        assert partial.stat().st_size == expected, 'Incomplete transfer'
+                        if partial.stat().st_size != expected:
+                            raise OSError('Incomplete transfer; verified resume offset retained')
                         break
-                    except (OSError, urllib.error.URLError):
-                        if attempt == 2:
+                    except (OSError, urllib.error.URLError) as exc:
+                        if attempt == 7:
                             raise
+                        event(subset, 'RETRYING_RESUMABLE_NETWORK_ERROR', attempt=attempt + 1,
+                              downloaded_bytes=partial.stat().st_size if partial.exists() else 0,
+                              expected_bytes=expected, error_type=type(exc).__name__)
+                        time.sleep(min(45, 3 * 2 ** attempt))
                 assert partial.stat().st_size == expected
                 event(subset, 'VERIFYING_LOCAL_ARCHIVE', archive_bytes=expected)
                 if row.get('kind') == 'model_zip':
