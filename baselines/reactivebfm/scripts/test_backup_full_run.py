@@ -94,5 +94,19 @@ class CleanupProtocol(unittest.TestCase):
         self.assertTrue(all(x['status']=='EVALUATION_LAUNCH_FAILED' and x['physics_evaluated'] is False for x in first))
         self.assertEqual(archives, {p.name:digest(p) for p in evidence.glob('*.tar.gz')})
 
+    def test_existing_download_is_verified_against_remote_bytes(self):
+        source=self.root/'remote_receipt.json';source.write_text('{"status":"FAILED"}')
+        local=self.root/'local_receipt.json';local.write_text('{"status":"FAKE_PASS"}')
+        with self.assertRaises(RuntimeError):
+            self.worker.download(str(source),local)
+        self.assertEqual(local.read_text(),'{"status":"FAKE_PASS"}')
+
+    def test_changed_cached_evaluation_receipt_is_rejected(self):
+        from backup_full_run import seal_receipt, check_receipt
+        path=self.root/'evaluation_receipt.json';path.write_text('{"status":"FAILED"}')
+        seal_receipt(path);check_receipt(path)
+        path.write_text('{"status":"PHYSICAL_CLOSED_LOOP_EXECUTED"}')
+        with self.assertRaises(RuntimeError):check_receipt(path)
+
 
 if __name__ == '__main__': unittest.main()

@@ -42,6 +42,17 @@ def freeze_package(directory, package):
             tar.add(path, arcname=path.name)
     os.replace(partial, package)
 
+def seal_receipt(path):
+    path = Path(path)
+    atomic_json(path.with_suffix('.integrity.json'), {'bytes':path.stat().st_size, 'sha256':digest(path)})
+
+def check_receipt(path):
+    path = Path(path); metadata = path.with_suffix('.integrity.json')
+    if not metadata.exists(): raise RuntimeError('Unsealed local evaluation receipt; preserve for manual verification')
+    expected = json.loads(metadata.read_text(encoding='utf-8'))
+    if expected['bytes'] != path.stat().st_size or expected['sha256'] != digest(path):
+        raise RuntimeError('Local evaluation receipt changed after capture; refusing to infer results')
+
 class Worker:
     def __init__(self, config):
         self.c = config; self.root = Path(config['local_output']); self.root.mkdir(parents=True, exist_ok=True)
@@ -95,7 +106,12 @@ class Worker:
 
     def download(self, remote_path, local_path, expected=None, size=None):
         local_path = Path(local_path); local_path.parent.mkdir(parents=True, exist_ok=True)
-        if local_path.exists() and (expected is None or (local_path.stat().st_size == size and digest(local_path) == expected)):
+        if expected is None:
+            script='from pathlib import Path\nimport hashlib,json\np=Path('+repr(remote_path)+')\nh=hashlib.sha256()\n'
+            script+='with p.open("rb") as f:\n for b in iter(lambda:f.read(1048576),b""):h.update(b)\n'
+            script+='print(json.dumps({"bytes":p.stat().st_size,"sha256":h.hexdigest()}))\n'
+            info=json.loads(self.remote(script,timeout=300));expected=info['sha256'];size=info['bytes']
+        if local_path.exists() and local_path.stat().st_size == size and digest(local_path) == expected:
             return
         if local_path.exists(): raise RuntimeError('Existing final local file mismatches; preserve it for review')
         partial = local_path.with_suffix(local_path.suffix + '.partial')
@@ -122,6 +138,7 @@ class Worker:
                 import shlex
                 shell = 'CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false MUJOCO_GL=egl ' + shlex.join(cmd)
                 path = directory / (label + '_receipt.json')
+                if path.exists(): check_receipt(path)
                 # Freeze a failure receipt too: never retry into an existing output
                 # directory or infer physical execution from an SSH exit code.
                 if not path.exists():
@@ -147,7 +164,10 @@ class Worker:
                         atomic_json(path, {'status':'EVALUATION_LAUNCH_FAILED', 'physics_evaluated':False,
                             'error':error or 'No remote receipt was produced',
                             'scope':'Supervisor failure; no physical execution or scores inferred.'})
+                    seal_receipt(path)
                 data = json.loads(path.read_text(encoding='utf-8'))
+                if data.get('status') != 'EVALUATION_LAUNCH_FAILED':
+                    self.download(destination + '/receipt.json', path)
                 if data.get('status') == 'PHYSICAL_CLOSED_LOOP_EXECUTED':
                     feedback_path = directory / (label + '_feedback.json')
                     if not feedback_path.exists():
@@ -158,7 +178,7 @@ class Worker:
                         script += 'if not p.exists():\n r=subprocess.run('+repr(command)+',capture_output=True,text=True)\n'
                         script += ' if not p.exists():p.write_text(json.dumps({"status":"FEEDBACK_VERIFIER_FAILED","error":r.stderr[-4000:],"exit_code":r.returncode}))\n'
                         self.remote(script, timeout=120)
-                        self.download(remote_feedback, feedback_path)
+                    self.download(destination + '/feedback_verification.json', feedback_path)
                     data['feedback_verification'] = json.loads(feedback_path.read_text(encoding='utf-8'))
                 results.append({'case': case, 'seed': seed, **data})
                 # Preserve every generated simulation artifact, including failures.
