@@ -1,20 +1,23 @@
 # ReactiveBFM 完整训练与闭环进展报告
 
-冻结观察时间：2026-10-22T01:12:51.525988+08:00。**百万步完整课程训练进行中，尚未训练完成，也未复现论文性能。**
+冻结观察时间：2026-10-22T01:43:47.778656+08:00。**百万步完整课程训练进行中，尚未训练完成，也未复现论文性能。**
 
-## 1. 当前实际进度
+## 1. 实际训练进度与本次交付
 
-已在原双 RTX A6000 服务器从头训练文本条件运动规划器；两rank均完成 **810次真实优化器更新**，不能把两卡更新数相加。目标1,000,000，warmup400,000。当前尚无首次1,000更新检查点，因此没有新完整训练模型的阶段闭环结果，也没有实际检查点上传/清理/恢复的验收结果。
+原双 RTX A6000 服务器从头训练文本条件运动规划器，两rank均至少完成 **1,220次真实优化器更新 / 1,000,000**，warmup为400,000。不能把两卡更新数相加。训练会话继续运行，后台程序持续备份并进行阶段闭环诊断。
 
-本次训练的是生成规划器；底层动作跟踪器固定使用官方预训练权重，**未重新进行跟踪器RL训练**。已有任务继续共用GPU，本次未发送停止它们的命令；没有独立审计它们每个训练步的连续性。
+首个1,000更新检查点（官方step999）的模型、EMA与优化器通过有限值/计数检查；模型和优化器、9组闭环证据包及阶段报告均已上传GitHub，并逐件核对服务端大小/SHA256。独立目录中的实际双卡恢复各继续4次更新至1,004后正常退出。
 
-- [本次状态与GPU型号/资源记录](../results/full_training_20261021/live_snapshot_v2/server_snapshot.json)
-- [启动记录](../results/full_training_20261021/full_job_launch.json)
-- [早期270更新的完整日志快照](../results/full_training_20261021/live_snapshot_20261022_0036/)
+本次训练的是运动规划器；底层跟踪器固定使用官方预训练权重，**没有重新进行跟踪器RL训练**。未发送停止已有任务的命令；没有独立审计它们每个训练步的连续性。
 
-## 2. 数据与训练方案
+- [本快照训练状态](../results/full_training_20261021/live_snapshot_v4/server_snapshot.json) / [资源与磁盘](../results/full_training_20261021/live_snapshot_v4/resource_snapshot.json)
+- [首次模型/优化器GitHub校验](../results/full_training_20261021/first_checkpoint_pair_github_verified.json)
+- [完整阶段发布校验](../results/full_training_20261021/first_checkpoint_stage_v1/github_verified_assets.json)
+- [原始启动记录](../results/full_training_20261021/full_job_launch.json)
 
-24个官方公开数据文件已安装到本地和服务器，大小合计870,700,765 bytes，两端SHA256一致；这不是发布者签名校验。按175帧训练窗口过滤后的实际条目为：
+## 2. 数据与训练配置
+
+24个官方公开数据文件合计870,700,765 bytes，本地与服务器SHA256一致；这不是发布者签名校验。175帧窗口过滤后的实际训练条目如下：
 
 | 子集 | 进入训练的条目 |
 |---|---:|
@@ -23,79 +26,102 @@
 | Kungfu G1 36D | 687 |
 | 合计 | 8,358 |
 
-使用官方支持的逗号组合 `amass_g1_36dim,100style_g1_36dim,kungfu_g1_36dim`，保留各自发布Mean/Std。默认预合并别名所需的合并目录和全局归一化未包含在公开三份数据中；本方案不声称与其数值分布完全相同。发布Std与简单重算训练统计也存在差异，见[数据审计](../results/data_audit_v1.json)。闭环诊断固定Kungfu归一化组件。
+使用官方支持的逗号组合 `amass_g1_36dim,100style_g1_36dim,kungfu_g1_36dim`，保留各子集发布Mean/Std。默认预合并别名所需的合并目录和全局归一化没有随三份公开数据发布；本方案不声称与其数值分布完全相同。发布Std与简单重算统计也有差异，见[数据审计](../results/data_audit_v1.json)。闭环固定使用Kungfu归一化组件。
 
-| 配置 | 本次实际设置 |
+| 配置 | 本次设置 |
 |---|---|
 | 网络 | latent512、16层、8头；107,045,924个可训练参数 |
 | 批量 | 每卡512 × 2 = 全局1024 |
 | 步数 / warmup | 1,000,000 / 400,000 |
 | 优化 | 官方AdamW，lr1e-4，EMA |
 | BF16 / 激活重算 | 官方BF16选项 / 自行添加非重入DiT block重算 |
-| 种子 | base42；官方按rank偏移，两个rank分别42/43 |
+| 种子 | base42；官方rank偏移42/43；这是一个分布式训练种子 |
 | cross_prob | 0.0，官方默认 |
-| 每卡CUDA分配比例上限 | 0.55 |
+| 每rank CUDA分配比例上限 | 0.55 |
 | 环境 | 现有Python3.10、Torch2.5.1+cu121兼容环境 |
 
-八卡执行改为双卡并扩大每卡批量，保持全局1024；环境、混合精度、重算和归一化差异仍可能改变数值轨迹。官方226个vendored文件保持原始字节；补充封装独立保存。运行中训练源SHA256为 `ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de`，未在运行中替换。
+八卡改双卡并扩大每卡批量以保持全局1024；环境、混合精度、重算和归一化差异仍可能改变数值轨迹。官方226个vendored文件字节不变，补充封装独立保存。运行中train_full.py的SHA256为 `ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de`，没有运行中替换。
 
-## 3. 物理闭环与已获得的结果
+## 3. 首个检查点验收
 
-实际流程为：文本生成36D参考 → 官方跟踪网络/PD → MuJoCo积分 → 读取实际状态 → 重采样前缀 → 再生成。未启用reference forcing。原生PyTorch适配器复用官方ScaleBFM权重、网络核心、常量和动作适配器；规划器GPU、跟踪器CPU，没有TensorRT。
-
-串行离线仿真中规划会暂停物理积分，因此补充封装用仿真时间记录反馈历史，墙钟规划耗时另行保留。这验证离线物理闭环，不证明实时部署。
-
-| 实际检查 | 结果 | 能支持的结论 |
+| 实际验收 | 结果 | 范围 |
 |---|---|---|
-| 独立完整运行文档检查 | 两rank各4次更新，全局1024 | 完整规模训练路径可执行 |
-| FP32激活重算对照 | 365个非零梯度张量，最大绝对差0 | 一批数据的实现一致性 |
-| 静态A-pose参考跟踪 | 400次控制、8秒仿真，最低根高0.788038m | 静态跟踪诊断稳定 |
-| 旧101更新模型，stand still，seed42 | 100控制、400积分、2秒仿真、12次规划，墙钟12.246秒 | 带实际反馈的闭环确实执行 |
-| 同一旧模型的最低根高 | 0.082927m；全程高度≥0.4m为false | **机器人跌倒，不能报告控制成功** |
-| 记录状态→规划前缀核验 | 100状态、12规划；位置/关节误差5.961e-8，四元数分量误差4.043e-7 | 反馈接线一致性 |
+| 模型与EMA CPU反序列化 | 各388个状态张量，均有限 | 含buffer的状态元素数不能当可训练参数数 |
+| 优化器检查 | 365个状态，step全部为1000，张量均有限 | 检查点完整性诊断 |
+| GitHub模型备份 | 857,731,942 bytes，大小及SHA256一致 | model000000999.pt |
+| GitHub优化器备份 | 852,468,483 bytes，大小及SHA256一致 | opt000000999.pt |
+| 实际GPU恢复 | 两rank从1000继续至1004，exit0 | 独立输出目录；全局1024、原配置与原封装 |
 
-后三行使用旧的单Kungfu 101更新短训模型，不是新百万步训练的阶段效果。高度阈值、静态参考和前缀一致性都是诊断代理，不是论文成功率或数据集真值评测。
+[CPU检查回执](../results/full_training_20261021/first_checkpoint_inspection_v2/receipt.json)、[真实GPU恢复汇总](../results/full_training_20261021/actual_recovery_acceptance_summary.json)、[恢复原始记录](../results/full_training_20261021/recovery_probe_v1/)。
 
-- [独立文档运行见证](../results/full_training_20261021/document_witness_v1/witness.md)
-- [闭环回执](../results/full_training_20261021/closed_loop_simclock_v1/receipt.json) / [前缀核验](../results/full_training_20261021/closed_loop_simclock_v1/feedback_verification.json)
-- [旧模型闭环视频](https://github.com/Pendragon08/conditional-human-motion-generation/releases/download/reactivebfm-full-training-20261022/rollout.mp4)
-- [全部该次仿真产物](https://github.com/Pendragon08/conditional-human-motion-generation/releases/download/reactivebfm-full-training-20261022/closed_loop_simclock_v1.tar.gz)
+恢复测试后曾因误读启动脚本重复执行一次相同4步检查，第二次也正常退出；[两次原始记录与误判更正](../results/full_training_20261021/recovery_probe_v1_observation_correction/README.md)均保留。这不是第二个独立训练种子，也没有给主训练加8步。直接调用底层训练封装的GPU恢复通过，**恢复助手execute-plan入口尚未经过真实GPU执行验收**。
 
-## 4. 后续自动闭环与GitHub保存
+## 4. 新模型的真实物理闭环
 
-服务器会在实际更新1,000后保存恢复检查点，之后每10,000个官方step保存，并确保保存最终检查点。官方step从0计数：step999为1,000次更新，step10,000为10,001次更新。
+流程：文本生成36D参考 → 官方固定跟踪网络/PD → MuJoCo积分 → 读取实际机器人状态 → 重采样运动前缀 → 再生成。关闭reference forcing，使用real前缀。原生PyTorch适配器复用官方ScaleBFM权重、网络核心、常量与动作适配器；规划器GPU、跟踪器CPU，没有TensorRT。
 
-本地后台程序每300秒处理ready清单：下载模型/优化器并核对SHA256 → 上传GitHub Release并核对服务端大小/摘要 → 阶段闭环诊断及报告/证据上传 → 按规则清理已验证备份的旧副本。Release只追加、不覆盖不同哈希文件，资产查询使用分页。服务器保留最新检查点；本地保留最新、1,000更新和每100k里程碑；GitHub保留所有已发布检查点和报告。
+串行离线仿真中规划暂停物理积分，封装按仿真时间维护反馈历史，并另外记录墙钟耗时。它证明离线物理闭环执行，不能证明实时部署性能。
 
-阶段评估计划：更新1,000、10,001、每100k附近及最终1M，stand still / walk forward / perform a punch × seeds42/43/44，各400控制步，并验证实际状态前缀；每阶段保存站立seed42视频。缺少回执会记录失败，不推断物理步数或质量。
+1,000更新模型完成3条提示词×3个推理种子的9组诊断，每组400控制、1,600次MuJoCo积分、8秒仿真；每组实际状态到后续前缀均通过独立一致性核验。
 
-所有下载（含缓存）核对远端大小/SHA256；评估回执封印后复用前校验。完成状态要求两个rank和百万次实际更新。进程匹配限定本次输出目录；训练状态超过30分钟未更新会保存停滞记录，进程消失会发布失败记录；不会自动终止或重启训练。
+| 提示词 | 种子 | 最低根高/m | 全程根高≥0.4m | 规划调用次数 |
+|---|---:|---:|---|---:|
+| perform a punch | 42 | 0.057725 | 否 | 45 |
+| perform a punch | 43 | 0.054445 | 否 | 45 |
+| perform a punch | 44 | 0.109258 | 否 | 45 |
+| stand still | 42 | 0.054691 | 否 | 45 |
+| stand still | 43 | 0.054677 | 否 | 45 |
+| stand still | 44 | 0.098759 | 否 | 45 |
+| walk forward | 42 | 0.054636 | 否 | 45 |
+| walk forward | 43 | 0.054671 | 否 | 45 |
+| walk forward | 44 | 0.091643 | 否 | 45 |
 
-原始训练动作、AMASS、SMPL-X及第三方权重保留在授权本地/服务器；GitHub保存来源、划分、哈希和汇总，不再分发这些原始包，也未删除它们。生成的仿真状态/视频、自己训练的检查点作为实验产物发布。此前pilot文件仅在GitHub校验后迁移，原路径保留软链接。
+**高度代理达标为0/9，模型仍会跌倒，当前不能作为有效控制baseline结果。** 这是3条提示词的有限仿真诊断，不是论文成功率、文本语义分数或完整测试集评价；3个推理种子不等于独立训练种子。
 
-## 5. 审计与故障恢复边界
+- [九组原始回执、反馈核验与日志](../results/full_training_20261021/first_checkpoint_stage_v1/)
+- [阶段报告](https://github.com/Pendragon08/conditional-human-motion-generation/releases/download/reactivebfm-full-training-20261022/full_checkpoint_000000999_report.md)
+- [完整仿真证据包，含状态、前缀与8秒视频](https://github.com/Pendragon08/conditional-human-motion-generation/releases/download/reactivebfm-full-training-20261022/checkpoint_000000999_evidence.tar.gz)
+- 本地视频：`D:/具身智能/ReactiveBFM复现_20261021/ReactiveBFM_1000步_站立闭环_8秒.mp4`
 
-独立104393d初审和6850b6e复审均为same-family/provisional **WARN**，原报告完整保留。数值与执行证据匹配，没有发现未标注的预测真值或成绩归一化；范围仍不足以证明完整训练/论文性能。审计也指出了长期运行保护缺口。
+另有同一1,000更新模型的100控制短诊断：12次规划、2秒仿真、墙钟12.574秒，最低根高0.063620m，[回执](../results/full_training_20261021/first_checkpoint_closed_loop_smoke_v1/receipt.json)。它与9组400控制诊断分别记录，不作为第10个独立样本。
 
-之后修正了缓存校验、分页、精确rank/进程检查、停滞/失败记录和删除保护。恢复入口用明确异常校验模型/优化器及清单，并拒绝优化Python模式；远端/本地删除保护也不依赖可被-O关闭的assert。**11项备份协议测试、7项恢复协议测试通过，均用虚拟字节，不是机器人性能实验。** 实际SSH元数据下载与缓存校验也通过；它不能替代真实检查点验收。
+前期静态A-pose参考400控制/8秒的最低根高0.788038m；旧101更新模型100控制时跌倒。这些分别是固定参考诊断与旧模型结果，不混入新检查点表现。完整规模文档运行两rank各4步、FP32重算对照365个非零梯度张量最大绝对差0，见[运行见证](../results/full_training_20261021/document_witness_v1/witness.md)。
 
-恢复助手默认只生成计划。仅显式使用 `--execute-plan` 才会在Linux上检查原任务已经退出，重新校验模型/优化器、清单、args、配置和训练源后启动新目录中的恢复。备份进程不会自动调用它。计划执行入口尚未用本次完整模型做真实GPU恢复演练；不声称随机数和数据迭代器逐位回放。
+## 5. 后续自动训练、评估与保存
 
-运行中训练器保持原源版本，模型/优化器文件仍直接写入最终文件名；完整写完并计算哈希后才原子发布ready清单。备份仅处理ready清单，恢复必须核对完整对，不能直接挑最大文件名。部分写入不会被当作已完成备份，但仍须保留现场调查。
+目标仍为百万次更新，当前尚未进入400k之后的完整课程阶段。实际1,000更新先保存一次，之后每10,000个官方step保存并确保最终保存。step从0计数，文件step999对应1,000更新，step10,000对应10,001更新。
 
-- [初审](../results/full_training_20261021/integrity_audit_v1/EXPERIMENT_AUDIT.md) / [6850b6e复审](../results/full_training_20261021/integrity_audit_v1/FOLLOWUP_6850B6E.md)
-- [11项备份测试输出](../results/full_training_20261021/backup_worker_unit_v8_stderr.txt) / [7项恢复测试输出](../results/full_training_20261021/verified_resume_unit_v4_stderr.txt)
-- [操作说明](../docs/full_run_operations.md) / [恢复助手](../scripts/prepare_verified_resume.py)
+本地后台程序每300秒检查ready清单：下载模型/优化器并核对SHA256 → 上传Release核对大小/摘要 → 阶段闭环与报告/证据上传 → 允许按规则清理已验证备份的旧副本。已实际完成首个完整阶段的这条发布链；**首个检查点仍是最新，未发生本次完整训练旧检查点清理验收**。
 
-## 6. 运行条件、耗时与未完成部分
+阶段诊断在1,000、10,001、每100k附近和最终1M进行相同9组测试；各阶段保存站立seed42视频。缺少回执记录为失败，不推断物理步数。GitHub只追加且不覆盖不同哈希资产；保留全部已发布检查点。服务器保留最新，本地保留最新、1,000更新与100k里程碑。
 
-**本地备份电脑须保持开机联网，且SSH/GitHub授权有效。** 程序请求阻止空闲睡眠，但没有独立验证Windows电源请求结果；手动关机/休眠仍会中断。服务器训练独立运行。空间不足时保存等待，不删除未备份文件；分布式默认3小时超时可能使长时间等待退出，不能承诺无限暂停。训练/备份失败后不会自动恢复，需要查看日志和核验检查点。
+缓存也核对远端大小/SHA256；回执封印后复用前验证。完成需两个正确rank均达百万次实际更新，且最终检查点/诊断证据完成发布。进程按本次输出目录精确匹配；状态超过30分钟未更新或进程消失会发布异常记录；不会自动终止或重启训练。
 
-本快照810次更新耗时3480.2秒，约4.30秒/步；按早期恒定吞吐外推剩余约49.7天。400k后课程及共享负载会改变计算量，这不是完成时间承诺。张量峰值分配约10.69GiB是**每rank**的值，整卡使用量还含原任务。
+原始训练动作、AMASS、SMPL-X和第三方权重保留授权本地/服务器，GitHub保存来源、划分、哈希与汇总，不再分发这些原始包，也未删除它们。模型训练产生的检查点、仿真状态和视频作为本次实验产物发布。
 
-尚未完成：百万步训练、新模型阶段闭环、真实检查点备份/清理/恢复验收、论文完整性能对比。目标/到达数据、完整官方评测仍不可用；TensorRT实时性能未测；不涉及真机。
+## 6. 审计与恢复边界
+
+独立104393d初审、6850b6e复审、50e5784复审均为same-family/provisional **WARN**，原报告逐字保留。最后一次审计冻结在810更新、尚无ready清单的版本；本报告新增的真实1,000更新CPU/GPU恢复与9组闭环证据没有由该审计重新审阅，不能把原WARN改写为PASS。
+
+数值与证据类型明确区分，没有以预测冒充真值；百万步与论文指标仍未完成。缓存验证、分页、精确rank/进程匹配、停滞记录和删除保护已修正。11项备份协议测试、7项恢复协议测试通过，使用虚拟字节，不是机器人性能实验。
+
+恢复助手默认只生成计划；显式execute-plan在Linux检查原任务已退出，重新核验模型/优化器、清单、args、配置及**train_full.py封装脚本**，然后向新目录启动。这不是启动时对全部上游代码/环境的重审；备份进程不自动调用它。没有随机数/数据迭代器逐位恢复保证。
+
+训练器仍直接向最终文件名写模型/优化器，完整写完计算哈希后才原子发布ready清单；两文件写入不是原子事务。备份只处理ready清单，恢复必须验证成对文件，不能直接选最大文件名。
+
+- [初审](../results/full_training_20261021/integrity_audit_v1/EXPERIMENT_AUDIT.md) / [6850b6e复审](../results/full_training_20261021/integrity_audit_v1/FOLLOWUP_6850B6E.md) / [50e5784复审](../results/full_training_20261021/integrity_audit_v1/FOLLOWUP_50E5784.md)
+- [备份协议测试](../results/full_training_20261021/backup_worker_unit_v8_stderr.txt) / [恢复协议测试](../results/full_training_20261021/verified_resume_unit_v4_stderr.txt)
+- [操作说明](../docs/full_run_operations.md)
+
+## 7. 运行条件与尚未完成部分
+
+**本地备份电脑须保持开机联网，SSH/GitHub授权有效。** 程序请求阻止空闲睡眠，未独立验证Windows请求结果；手动关机/休眠仍会中断。服务器训练独立运行，空间不足时等待保存，不删除未备份文件；长时间等待可能触发默认3小时分布式超时。训练/备份退出后不自动恢复，须查看记录并核验检查点。
+
+本快照1,220次更新耗时5355.7秒，约4.39秒/步；按早期恒定吞吐外推剩余约50.7天。课程阶段、共享负载、检查点上传和评估都会影响耗时，这不是完成时间承诺。每rank训练张量峰值约10.7GiB，整卡使用还含已有任务；本次资源记录给出磁盘现状，后续依赖验证备份后清理旧副本维持空间。
+
+尚未完成：百万步完整训练、后期稳定动作效果、论文完整性能对比、实际旧检查点清理验收、execute-plan GPU执行验收。目标/到达数据与完整官方评测不可用，TensorRT实时性能未测，没有真机结果。
 
 - 服务器：`/home/ouyanghao/reactivebfm-full-20261021/training_v1`
 - 本地：`D:/具身智能/ReactiveBFM复现_20261021/full_training_20261022`
-- 本地最新阶段报告：该目录的 `最新训练阶段报告.md`（首次检查点处理后生成）
+- 本地自动阶段报告：上述目录的`最新训练阶段报告.md`
 - [GitHub训练产物与阶段报告](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/reactivebfm-full-training-20261022)

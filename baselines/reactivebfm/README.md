@@ -2,13 +2,17 @@
 
 The full available-data 1M-update schedule is running on two RTX A6000 GPUs.
 The simulator closed loop executes actual MuJoCo PD control and real state feedback;
-the earlier 101-update pilot model falls. Neither full training completion nor the
+the 1,000-update checkpoint completed nine 8-second diagnostic cases and fell in all nine.
+The frozen delivery snapshot records at least 1,220 actual updates per rank.
+Neither full training completion nor the
 paper's benchmark performance is claimed.
 
 - [Current Chinese training and closed-loop report](reports/ReactiveBFM完整训练与闭环进展报告_20261022.md)
-- [Live snapshot captured during this delivery](results/full_training_20261021/live_snapshot_20261022_0036/)
+- [Live snapshot captured during this delivery](results/full_training_20261021/live_snapshot_v4/)
 - [Full training checkpoints, diagnostics and reports](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/reactivebfm-full-training-20261022)
-- [Simulation execution receipt](results/full_training_20261021/closed_loop_simclock_v1/receipt.json)
+- [First full-checkpoint stage receipts, feedback checks and verified GitHub publication](results/full_training_20261021/first_checkpoint_stage_v1/)
+- [Real 1,000-to-1,004-update GPU restore evidence](results/full_training_20261021/actual_recovery_acceptance_summary.json)
+- [Earlier pilot simulation execution receipt](results/full_training_20261021/closed_loop_simclock_v1/receipt.json)
 - [State feedback consistency](results/full_training_20261021/closed_loop_simclock_v1/feedback_verification.json)
 - [Independent full runtime document witness](results/full_training_20261021/document_witness_v1/witness.md)
 - [Full training configuration](configs/full_training_v1.json), [backup/evaluation worker](scripts/backup_full_run.py)
@@ -18,6 +22,7 @@ paper's benchmark performance is claimed.
 - [Environment specification](configs/env_spec.json)
 - [Full-run independent initial audit: provisional WARN](results/full_training_20261021/integrity_audit_v1/EXPERIMENT_AUDIT.md)
 - [Recovery/backup follow-up audit at6850b6e](results/full_training_20261021/integrity_audit_v1/FOLLOWUP_6850B6E.md)
+- [Final bounded audit at50e5784: provisional WARN; predates new 1,000-update evidence](results/full_training_20261021/integrity_audit_v1/FOLLOWUP_50E5784.md)
 - [Operation and recovery limits](docs/full_run_operations.md)
 - [Earlier pilot integrity audit: provisional WARN](results/integrity_audit_v1/EXPERIMENT_AUDIT.md)
 
