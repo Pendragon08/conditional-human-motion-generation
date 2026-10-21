@@ -1,0 +1,134 @@
+{
+  "audit_skill": "experiment-audit",
+  "supplement": "r3_semantics_and_batch_loading",
+  "scope": "first_ssm_batch_only",
+  "prior_audit_unchanged": true,
+  "overall_verdict": "WARN",
+  "integrity_status": "warn",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_reasoning": "ultra",
+  "generated_at": "2026-10-21T21:47:04.1176086+08:00",
+  "trace_path": ".aris/traces/experiment-audit/2026-10-21_run02-supplemental-r3/",
+  "reason_code": "semantic_and_loader_gaps_closed_remaining_proxy_scope_limits",
+  "frozen_inputs": {
+    "processing_document_sha256": "5e1ccc5b0ae9898bb2d32dfdff7116abb77a44f4674ee5faa63cf5af47e3b34a",
+    "claims_report_sha256": "11aef5367828c8d1224aca030b21d64d0b02a2219165ba6b48ea334a00ef6855",
+    "semantic_checker_sha256": "6c073d04ce2dcb1fa8cf4ad3076a2c526d0453c37bf5608cb11ceab3107146e9",
+    "batch_loading_checker_sha256": "fb9c3b8032abb7206c825743bf1204f7993489e6f947bba7b806ce7329db871f"
+  },
+  "semantic_execution": {
+    "output_absent_before": true,
+    "legacy_core_output_absent_before": true,
+    "document_sha256_before": "5e1ccc5b0ae9898bb2d32dfdff7116abb77a44f4674ee5faa63cf5af47e3b34a",
+    "document_sha256_after": "5e1ccc5b0ae9898bb2d32dfdff7116abb77a44f4674ee5faa63cf5af47e3b34a",
+    "command_sha256_utf8_no_newline": "a756172c3da1a55df3f6d5175ef5655ae10d4a1ed4561943c7d96932855f58ee",
+    "client_started_utc": "2026-10-21T13:39:43.8171886Z",
+    "client_ended_utc": "2026-10-21T13:40:01.9026067Z",
+    "exit_code": 0,
+    "stdout_bytes": 3853,
+    "stdout_sha256": "85d0b182134ce0dd21b67142c9a03b12b496dda7656d33c1c26362af8142cc34",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "receipt_bytes": 25495,
+    "receipt_sha256": "cb924d86939df1d8738aca0c1ff7142b1d130664a2db598f764beb60f1684d23",
+    "legacy_core_receipt_bytes": 883,
+    "legacy_core_receipt_sha256": "b60eca940139cd79fe878612f47346b36c12a9a588d21a0a637dee150eb3109c",
+    "execution_divergence": false
+  },
+  "batch_loading_execution": {
+    "output_absent_before": true,
+    "document_sha256_before": "5e1ccc5b0ae9898bb2d32dfdff7116abb77a44f4674ee5faa63cf5af47e3b34a",
+    "document_sha256_after": "5e1ccc5b0ae9898bb2d32dfdff7116abb77a44f4674ee5faa63cf5af47e3b34a",
+    "command_sha256_utf8_no_newline": "8b12e91b3971e93fbb701ef064e1df819a6a12d9fe00c3b21e5abde912936942",
+    "client_started_utc": "2026-10-21T13:40:46.2353401Z",
+    "client_ended_utc": "2026-10-21T13:40:49.0373959Z",
+    "exit_code": 0,
+    "stdout_bytes": 777,
+    "stdout_sha256": "86aedb0a407d3bd9c83e539dfe0cb2c7fa124f67e9b33201722beaa42e12a619",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "receipt_bytes": 819,
+    "receipt_sha256": "7c1ef57a0ad4c98d45f1464639fa3750b034fb4fc4aa9714f995e20a2de6d59a",
+    "execution_divergence": false
+  },
+  "closure_matrix": [
+    {"id": 1, "item": "physical_timebase", "status": "closed_as_disclosure_scientific_ambiguity_remains"},
+    {"id": 2, "item": "manifest_equality_and_split_labels", "status": "closed"},
+    {"id": 3, "item": "all_262_channels_and_ric", "status": "closed_for_explicit_independent_codec"},
+    {"id": 4, "item": "stored_base_m_mirroring", "status": "closed_for_stored_motion_artifacts"},
+    {"id": 5, "item": "height_and_gmr_provenance", "status": "partially_closed"},
+    {"id": 6, "item": "real_dataloader_coverage", "status": "closed"},
+    {"id": 7, "item": "immutable_success_failure_evidence", "status": "partially_closed"},
+    {"id": 8, "item": "effective_scope_disclosure", "status": "closed"},
+    {"id": 9, "item": "claims_report_and_preservation", "status": "closed_operationally_after_supplemental_files_written"}
+  ],
+  "checks": {
+    "A_ground_truth_reference_provenance": {"prior": "warn", "supplemental": "warn"},
+    "B_score_normalization": {"prior": "pass", "supplemental": "pass"},
+    "C_result_artifact_existence": {"prior": "warn", "supplemental": "warn"},
+    "D_dead_code_reachability": {"prior": "warn", "supplemental": "pass"},
+    "E_scope": {"prior": "warn", "supplemental": "warn"},
+    "F_evaluation_classification": {"prior": "warn", "supplemental": "warn", "type": "other:mixed_real_source_algorithmic_retarget_proxy"}
+  },
+  "semantic_results": {
+    "payload_files_checked": 266,
+    "all_manifest_entries_and_official_buckets_equal": true,
+    "all_frames_all_262_channels_recomputed": true,
+    "continuous_channel_tolerance": 0.0001,
+    "continuous_channel_max_abs_error": 0.000009225268013057786,
+    "contact_channels_exact_match": true,
+    "ric_mean_residual_max_m": 1.4466670078791968e-08,
+    "ric_tolerance_m": 0.00002,
+    "mirror_pairs_checked": 33,
+    "mirror_body_position_max_m": 0.000009999965549067902,
+    "mirror_position_tolerance_m": 0.00002
+  },
+  "batch_loading_results": {
+    "training_sequences": 60,
+    "valid_training_frames": 5650,
+    "batches_read": 15,
+    "batch_size": 4,
+    "paired_motion_dataset_instantiated": true,
+    "pytorch_dataloader_iterated": true,
+    "all_padded_tensors_finite": true,
+    "valid_contact_channels_binary": true,
+    "generator_instantiated": false,
+    "optimizer_updates": 0
+  },
+  "remaining_warn_boundaries": [
+    "Physical timing remains unresolved for 13 source groups; only nominal HumanML playback is supported.",
+    "Post-run GMR tree and height observations do not prove the generation-time solver tree or retargeting fidelity.",
+    "Batch and legacy checkers lack atomic structured failure receipts.",
+    "The batch has no validation split, only two test recordings, and train/test subject-session overlap.",
+    "Algorithmic G1 proxies do not establish robot ground truth, author-exact representation, tracking, dynamics, training, or model performance."
+  ],
+  "claims": {
+    "supported": [
+      "complete_266_file_inventory",
+      "manifest_and_official_bucket_equality",
+      "explicit_independent_262d_codec_within_tolerances",
+      "exact_contact_channels",
+      "33_stored_motion_mirror_pairs",
+      "real_paired_motion_dataset_and_dataloader_traversal",
+      "recording_level_isolation"
+    ],
+    "needs_qualifier": [
+      "5904_sequence_frame_visits",
+      "mirroring_as_explicit_reconstruction_convention",
+      "post_run_gmr_tree_and_height_observations"
+    ],
+    "unsupported": [
+      "physical_20hz_for_all_sources",
+      "subject_disjoint_generalization",
+      "generation_time_gmr_source_proof",
+      "retargeting_fidelity",
+      "author_exact_262d_equivalence",
+      "real_robot_ground_truth",
+      "dynamics_or_tracking",
+      "generator_or_model_performance",
+      "complete_humanml_or_phygile_reproduction"
+    ]
+  }
+}
