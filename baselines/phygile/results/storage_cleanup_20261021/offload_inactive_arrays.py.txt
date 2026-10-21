@@ -79,4 +79,3 @@ print(json.dumps(result))
  write(PROOF/(run+'_offload.json'),receipt)
  write(OUT/(run+'_offload.json'),receipt)
  print(json.dumps({'run':run,'state':'BACKUP_VERIFIED_SERVER_ARRAYS_REMOVED','bytes_removed':plan['bytes'],'backup_bytes':target.stat().st_size,'data_free_bytes':receipt['after_free_bytes']}),flush=True)
-
