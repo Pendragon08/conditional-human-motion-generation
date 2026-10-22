@@ -1,0 +1,9 @@
+{
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/runs/storage_cleanup_20261022_102452/storage_cleanup_verified.py\", line 67, in check_inactive\n    cwd = os.readlink(proc / 'cwd')\nPermissionError: [Errno 13] Permission denied: '/proc/2310665/cwd'\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/runs/storage_cleanup_20261022_102452/storage_cleanup_verified.py\", line 146, in <module>\n    main()\n  File \"/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/runs/storage_cleanup_20261022_102452/storage_cleanup_verified.py\", line 114, in main\n    check_inactive(paths)\n  File \"/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/runs/storage_cleanup_20261022_102452/storage_cleanup_verified.py\", line 79, in check_inactive\n    raise RuntimeError('Cannot verify a same-user process; no cleanup performed')\nRuntimeError: Cannot verify a same-user process; no cleanup performed\n",
+  "files": [
+    "pilot_cleanup_plan_v2.json",
+    "storage_cleanup_verified.py"
+  ]
+}

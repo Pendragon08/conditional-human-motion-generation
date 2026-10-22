@@ -1,0 +1,163 @@
+"""Remove only explicitly archived, inactive historical files owned by this user.
+
+No recursive removal. Run without --execute first. GitHub publication is verified
+by the local authenticated client; this server helper revalidates source bytes,
+ownership, paths, identity, inactivity and the supplied publication receipt.
+"""
+import argparse
+import datetime
+import hashlib
+import json
+import os
+from pathlib import Path
+import stat
+
+
+PILOT = Path('/home/ouyanghao/reactivebfm-full-20261021/archived_pilot')
+RESULTS = Path('/data/code/ouyanghao/oyh/conditional-human-motion-generation/results')
+GENERATED = RESULTS / 'closd_baseline_20261010/fresh_generation/CLoSD.pkl'
+PREFIX = 'https://github.com/Pendragon08/conditional-human-motion-generation/releases/download/'
+
+
+def require(value, message):
+    if not value:
+        raise ValueError(message)
+
+
+def digest(path):
+    h = hashlib.sha256()
+    with path.open('rb') as f:
+        for chunk in iter(lambda: f.read(1048576), b''):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def permitted(path):
+    if path.parent == PILOT:
+        return path.name in {'model000000100.pt', 'opt000000100.pt'}
+    return path == GENERATED or (path.is_relative_to(RESULTS) and path.name == 'native_contacts.json')
+
+
+def identity(path, row):
+    require(path.is_absolute() and permitted(path), 'File outside exact historical-file whitelist')
+    require(path.resolve() == path, 'Symlink or noncanonical path rejected')
+    for ancestor in [path, *path.parents]:
+        require(not ancestor.is_symlink(), 'Symlink ancestor rejected')
+    s = path.lstat()
+    require(stat.S_ISREG(s.st_mode), 'Only regular files may be removed')
+    require(s.st_uid == os.getuid() == 1013, 'File does not belong to the authorized user')
+    require(s.st_nlink == 1, 'Hard-linked file rejected')
+    require(s.st_size == row['bytes'] and s.st_ino == row['inode'] and s.st_mtime_ns == row['mtime_ns'],
+            'File changed since backup inventory')
+    require(s.st_size > 0, 'Empty/unexpected file rejected')
+    return s
+
+
+def check_inactive(paths):
+    names = {str(p) for p in paths}
+    excluded_system_helpers = []
+    for proc in Path('/proc').iterdir():
+        if not proc.name.isdigit():
+            continue
+        args, comm = [], ''
+        try:
+            if proc.stat().st_uid != os.getuid():
+                continue
+            args = (proc / 'cmdline').read_bytes().decode(errors='replace').split(chr(0))
+            comm = (proc / 'comm').read_text().strip()
+            for arg in args:
+                require(not any(name in arg for name in names), 'Candidate mentioned by active process')
+            cwd = os.readlink(proc / 'cwd')
+            require(cwd not in names, 'Candidate used as active working directory')
+            for fd in (proc / 'fd').iterdir():
+                try:
+                    target = os.readlink(fd)
+                except OSError:
+                    continue
+                require(target not in names, 'Candidate is open in an active process')
+        except (FileNotFoundError, ProcessLookupError):
+            continue
+        except PermissionError:
+            # Linux hides nondumpable session/key agents even from their owner.
+            # Exclude only the exact observed system commands, never an unknown
+            # unreadable training, evaluation or other application process.
+            normalized = [arg for arg in args if arg]
+            known = {
+                ('(sd-pam)', ('(sd-pam)',)),
+                ('ssh-agent', ('/bin/ssh-agent', '-s')),
+                ('gpg-agent', ('/usr/bin/gpg-agent', '--supervised')),
+                ('gnome-keyring-d', ('/usr/bin/gnome-keyring-daemon', '--start', '--foreground', '--components=secrets')),
+                ('sshd', ('sshd: ouyanghao@notty',)),
+            }
+            if (comm, tuple(normalized)) not in known:
+                raise RuntimeError('Cannot verify an unknown same-user application; no cleanup performed')
+            excluded_system_helpers.append({'pid': int(proc.name), 'comm': comm, 'reason': 'OS-protected session/key agent'})
+    return excluded_system_helpers
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument('--plan', type=Path, required=True)
+    p.add_argument('--receipt', type=Path, required=True)
+    p.add_argument('--execute', action='store_true')
+    args = p.parse_args()
+    require(os.name == 'posix' and __debug__, 'Linux nonoptimized Python required')
+    require(not args.receipt.exists(), 'Refuse receipt overwrite')
+    plan_bytes = args.plan.read_bytes()
+    plan = json.loads(plan_bytes)
+    rows = plan['files']
+    paths = [Path(row['path']) for row in rows]
+    require(rows and len(paths) == len(set(paths)), 'Empty or duplicate cleanup list')
+    publication = plan['backup_verification']
+    for asset in publication['assets']:
+        require(asset['state'] == 'uploaded' and asset['bytes'] > 0, 'Unpublished backup asset')
+        require(asset['url'].startswith(PREFIX), 'Unexpected backup repository')
+        require(len(asset['sha256']) == 64 and all(c in '0123456789abcdef' for c in asset['sha256']),
+                'Invalid backup digest')
+    require(publication['assets'], 'No verified backup assets')
+    if all(path.parent == PILOT for path in paths):
+        assets = {asset['name']: asset for asset in publication['assets']}
+        for path, row in zip(paths, rows):
+            asset = assets[path.name]
+            require(asset['bytes'] == row['bytes'] and asset['sha256'] == row['sha256'],
+                    'Direct backup bytes differ from source')
+    else:
+        require(publication['all_archive_member_bytes_sha256_verified_locally'] is True,
+                'Archive contents have not been verified')
+        require(publication['archive_member_count'] == len(rows), 'Archive member count differs')
+        require(set(publication['archive_members']) == {row['archive_relative_path'] for row in rows},
+                'Archive member list differs from cleanup list')
+    excluded_helpers = check_inactive(paths)
+    allocated = 0
+    for path, row in zip(paths, rows):
+        s = identity(path, row)
+        require(digest(path) == row['sha256'], 'Source content differs from verified backup')
+        identity(path, row)
+        allocated += s.st_blocks * 512
+    excluded_helpers += check_inactive(paths)
+    receipt = {'utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+               'plan_sha256': hashlib.sha256(plan_bytes).hexdigest(),
+               'mode': 'EXECUTE' if args.execute else 'DRY_RUN',
+               'verified_files': len(rows), 'logical_bytes': sum(r['bytes'] for r in rows),
+               'allocated_bytes_before': allocated, 'removed': [], 'backup_verification': publication}
+    receipt['excluded_os_protected_system_helpers'] = list({x['pid']: x for x in excluded_helpers}.values())
+    args.receipt.parent.mkdir(parents=True, exist_ok=True)
+    # Persist the validated plan reference before any mutation, then after every file.
+    def save():
+        temporary = args.receipt.with_suffix(args.receipt.suffix + '.partial')
+        temporary.write_text(json.dumps(receipt, indent=2) + '\n')
+        os.replace(temporary, args.receipt)
+    save()
+    if args.execute:
+        for path, row in zip(paths, rows):
+            identity(path, row)
+            path.unlink()
+            receipt['removed'].append({'path': str(path), 'bytes': row['bytes'], 'sha256': row['sha256']})
+            save()
+    receipt['status'] = 'VERIFIED_ARCHIVED_FILES_REMOVED' if args.execute else 'DRY_RUN_PASSED_NO_FILES_REMOVED'
+    save()
+    print(json.dumps(receipt))
+
+
+if __name__ == '__main__':
+    main()
