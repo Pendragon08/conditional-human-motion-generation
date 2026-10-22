@@ -91,3 +91,14 @@ ReactiveBFM 未停止、重启、修改官方规划器/跟踪器基线或共享�
 - [Unitree RL Lab 官方仓库](https://github.com/unitreerobotics/unitree_rl_lab/tree/4960b84732b0c2ec593dccbfe963fda1bcd7b1e3)
 - [Unitree RL Mjlab 官方仓库](https://github.com/unitreerobotics/unitree_rl_mjlab/tree/1425b15f73bd4095f0df53709d7c389c3eb9e790)
 - [PhyGile 论文](https://arxiv.org/abs/2603.19305)
+
+
+## 审查补记与发布确认
+
+独立完整性审查结论：**WARN**（同模型家族独立代理，provisional）。原始数组、八组指标、动作映射和范围陈述核验一致；保留的 WARN 是历史执行回执未完整记录全部导入源码指纹。Isaac 回执仅记录入口脚本哈希，Mjlab 旧回执没有源码哈希，因此不能事后将“当前文件核验”表述为“逐次执行时已完整证明源码版本”。没有改写历史回执；后续新启动应补全源码指纹。
+
+审查还要求公开环境规格摘要的确切规范化方法。已在 `docs/COMPUTE_LEDGER.md` 明确 JSON 递归键排序、紧凑分隔符、`ensure_ascii=True`、UTF-8且不加末尾换行，并提供 `scripts/canonical_env_hash.py`；该方法重现原 a43f960b 摘要，没有修改环境或规格内容。补充核验单独保留，原审查意见不覆盖。
+
+审查正文与机器记录见仓库本目录上级的 `EXPERIMENT_AUDIT.md`、`EXPERIMENT_AUDIT.json`。审查时的报告原文完整保存在 `results/v1/audited_report_snapshot.md`；本节仅为审查后补记，原表格和结论未改动。首次审查服务 403 错误记录保留，随后恢复并完成独立审查。
+
+代码和结果已更新 PhyGile 分支及 PR #1，数据集、原检查点和实验记录未删除。GitHub 分支和核心代码/指标/报告载荷已核验；精确提交和哈希见 `results/v1/github_publication_receipt.json`，该回执引用其核验时的 artifact commit。

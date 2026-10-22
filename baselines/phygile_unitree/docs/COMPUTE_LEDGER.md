@@ -4,6 +4,8 @@
 
 spec: configs/environment_plan_v2.json
 canonical_sha256: a43f960bd3bcdcd3398655bffe291138b73de5ca7f30901765172ff9821e1954
+canonicalization: Parse JSON, then Python json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=True); hash UTF-8 bytes without a newline. ASCII escaping of Chinese path values is explicit and required.
+reproducer: python scripts/canonical_env_hash.py configs/environment_plan_v2.json (from baselines/phygile_unitree)
 how: isolated Windows venv at D:/具身智能/PhyGile复现/Unitree框架适配_20261022/mjlab_env; ASCII junction D:/phygile_unitree_env_20261022 points to the same directory.
 tier: {cpus: 4, device: cpu, new_rl_training: false}
 weights: private_assets/parent_checkpoint.pt; original checkpoint SHA in ENVIRONMENT.md. Inputs are read only.

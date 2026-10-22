@@ -6,8 +6,10 @@
 - new_ppo_continuation: NOT_STARTED_LOCAL_VIEWER_UNVERIFIED
 - physics_prefix_closure_migration: NOT_IMPLEMENTED
 - full_paper_reproduction: NOT_COMPLETED
-- github_publication: PENDING
+- github_publication: PUBLISHED_CORE_ARTIFACTS_VERIFIED
 - datasets_deleted: False
 - checkpoints_deleted: False
 
 Only inference/cross-simulation pilots are DONE; no new PPO run.
+
+- independent_integrity_audit: WARN (same-family/provisional; historical source attestation limitation retained)
