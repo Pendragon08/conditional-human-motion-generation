@@ -1,0 +1,54 @@
+{
+  "sources": {
+    "scripts/train_full.py": "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de",
+    "scripts/train_repaired.py": "8e45ebaa60e8568f59cd63dd21f2bbd7b1576e0d3101ddde4154c1a04919acd4",
+    "scripts/numerical_guard.py": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+    "scripts/launch_recovery.py": "a43e4d622928cdffc1569f35bb7b62ef77861b33f3893910c27f2dde3a48db7d",
+    "scripts/inspect_checkpoint.py": "6ad4d4cf15fc6e2b3eae8c94b9b1d625fe9f7bcd72a8acaa755326621018b862",
+    "scripts/prepare_verified_resume.py": "b5db0707c3a16310d01141a7d30c22aa2e2c4a258ad98eec56c662cfce651a23"
+  },
+  "upstream_python_tree_sha256": "cc0d1e8bbdd605962a29437dbdda6c9d73275bb18e239b6cdf93ea1f96485e3f",
+  "upstream_python_file_count": 117,
+  "configuration_sha256": "33e45608c5361fa22b80f16317b81f912c8b6ced4252be37b745fc7824f443ea",
+  "checkpoint_inspection": {
+    "status": "CHECKPOINT_CPU_INSPECTION_PASSED",
+    "utc": "2026-10-22T07:41:46.890836+00:00",
+    "official_step": 10020,
+    "optimizer_updates": 10021,
+    "manifest_sha256": "60b49992d204bacdff3257c367d2f648cc3307ae6bbde3ba6620b6312c82d0cd",
+    "files": [
+      {
+        "file": "/home/ouyanghao/reactivebfm-full-20261021/repaired_fp32_v2/checkpoints/model000010020.pt",
+        "bytes": 857731942,
+        "sha256": "f0e8dc460d0884632f4c7c2b4c16636078428c855ffe63b9a1d40d9355ae7ffe"
+      },
+      {
+        "file": "/home/ouyanghao/reactivebfm-full-20261021/repaired_fp32_v2/checkpoints/opt000010020.pt",
+        "bytes": 852473539,
+        "sha256": "95c06a774fdc23a5963fbf09623c363a6942402b4405c8387d41f5250cf93719"
+      }
+    ],
+    "model": {
+      "model": {
+        "tensor_count": 388,
+        "state_tensor_elements": 107308836,
+        "all_finite": true
+      },
+      "model_avg": {
+        "tensor_count": 388,
+        "state_tensor_elements": 107308836,
+        "all_finite": true
+      }
+    },
+    "optimizer_state_count": 365,
+    "optimizer_step_values": [
+      10021.0
+    ],
+    "all_optimizer_tensors_finite": true,
+    "checkpoint_restored_to_gpu": false,
+    "optimizer_resumed": false,
+    "physics_evaluated": false,
+    "scope": "SHA256/size, CPU tensor deserialization, finite model/EMA/optimizer and optimizer-counter diagnostic only.",
+    "source_sha256": "6ad4d4cf15fc6e2b3eae8c94b9b1d625fe9f7bcd72a8acaa755326621018b862"
+  }
+}

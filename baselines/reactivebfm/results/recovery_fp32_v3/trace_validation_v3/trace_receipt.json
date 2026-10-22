@@ -1,0 +1,140 @@
+{
+  "utc": "2026-10-22T08:08:41.470299+00:00",
+  "checkpoint": {
+    "official_step": 10040,
+    "optimizer_updates": 10041,
+    "created_utc": "2026-10-22T07:49:45.037263+00:00",
+    "files": [
+      {
+        "file": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/model000010040.pt",
+        "bytes": 857731942,
+        "sha256": "7aaed03598e120e843b4332b5943605a293bbc31958e05b4396ec791c083dbe5"
+      },
+      {
+        "file": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/opt000010040.pt",
+        "bytes": 852473539,
+        "sha256": "c40d09b9037aabbee95dc36f70503e265596d59f73810d81ff8fb2f05fd252f4"
+      }
+    ],
+    "configuration_sha256": "33e45608c5361fa22b80f16317b81f912c8b6ced4252be37b745fc7824f443ea"
+  },
+  "files": [
+    {
+      "name": "raw_ready_manifest.json",
+      "bytes": 743,
+      "sha256": "d2e564eb4aa49bacb43debabaeb1253f54cdbeb32cc53a428ac98168dc8a53f6"
+    },
+    {
+      "name": "training_trace_000010040.tar.gz",
+      "bytes": 9727,
+      "sha256": "2cdf5455d7cc44b9a22692621233bb5880447dc8b1f666ffab5fcbcdfd221b9d"
+    }
+  ],
+  "trace_integrity": {
+    "checkpoint_manifest": {
+      "configuration_sha256": "33e45608c5361fa22b80f16317b81f912c8b6ced4252be37b745fc7824f443ea",
+      "created_utc": "2026-10-22T07:49:45.037263+00:00",
+      "files": [
+        {
+          "bytes": 857731942,
+          "file": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/model000010040.pt",
+          "sha256": "7aaed03598e120e843b4332b5943605a293bbc31958e05b4396ec791c083dbe5"
+        },
+        {
+          "bytes": 852473539,
+          "file": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/opt000010040.pt",
+          "sha256": "c40d09b9037aabbee95dc36f70503e265596d59f73810d81ff8fb2f05fd252f4"
+        }
+      ],
+      "official_step": 10040,
+      "optimizer_updates": 10041
+    },
+    "members": {
+      "health_rank0_until_checkpoint.jsonl": {
+        "bytes": 15020,
+        "sha256": "ffced78ee3618988c770257a7dd546b9edc8b4f4d61d693e078569699333087b"
+      },
+      "health_rank1_until_checkpoint.jsonl": {
+        "bytes": 15020,
+        "sha256": "a57afd991b5d17aa4fac6d1527932b558c593662d44bb7a794e327253c632873"
+      },
+      "recovery_launch.json": {
+        "bytes": 1059,
+        "sha256": "4ccca213f042db3bee23acdaf1bb73fb8bab69cbbe87a88190f3201622836562"
+      },
+      "source_pins_verified.json": {
+        "bytes": 2369,
+        "sha256": "ae4fb58df7dff521957a0d8c39a9ca7bdd31d0fb1dffea6db4f4a5e63f66121c"
+      },
+      "status_rank0.json": {
+        "bytes": 4533,
+        "sha256": "64e53f64cccdc6d02c286b54dfffdc12960b352f0dd6ba23d6d8e8a638296b87"
+      },
+      "status_rank1.json": {
+        "bytes": 4374,
+        "sha256": "ef7295eafa128f0f6a8985c04b0b3388aa704e93a7c17abb96f72e4501a83676"
+      },
+      "supervisor_stderr.txt": {
+        "bytes": 2084,
+        "sha256": "a826e3a90bb5088fe98a617b6bd53797fd8bc88e6e53408295ee6e5201ca3c8a"
+      },
+      "supervisor_stdout.txt": {
+        "bytes": 26010,
+        "sha256": "4f781cba5835a0a2cface65354f9217edea87a03021314c0ec2458dfce323688"
+      }
+    },
+    "scope": "Status files are capture-time observations; per-rank health ends at the checkpoint."
+  },
+  "rank_endpoints": [
+    {
+      "utc": "2026-10-22T07:49:39.665787+00:00",
+      "rank": 0,
+      "status": "TRAINING",
+      "loop_step": 10040,
+      "initial_optimizer_updates": 10021,
+      "optimizer_updates": 10041,
+      "resumed_updates": 20,
+      "optimizer_step_calls": 10041,
+      "validated_optimizer_updates": 10041,
+      "attempts_since_resume": 20,
+      "skipped_attempts": 0,
+      "consecutive_skips": 0,
+      "step_applied": true,
+      "step_validated": true,
+      "ema_validated": true,
+      "reason": "OPTIMIZER_STEP_APPLIED",
+      "grad_norm_pre_clip_fp64": 1.2298779654259258,
+      "grad_norm_post_clip_fp64": 0.9999991620806407,
+      "param_norm_fp64": 205.93178666003865,
+      "offending_parameters": [],
+      "elapsed_seconds": 144.5383233986795,
+      "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "full_training_completed": false
+    },
+    {
+      "utc": "2026-10-22T07:49:39.665759+00:00",
+      "rank": 1,
+      "status": "TRAINING",
+      "loop_step": 10040,
+      "initial_optimizer_updates": 10021,
+      "optimizer_updates": 10041,
+      "resumed_updates": 20,
+      "optimizer_step_calls": 10041,
+      "validated_optimizer_updates": 10041,
+      "attempts_since_resume": 20,
+      "skipped_attempts": 0,
+      "consecutive_skips": 0,
+      "step_applied": true,
+      "step_validated": true,
+      "ema_validated": true,
+      "reason": "OPTIMIZER_STEP_APPLIED",
+      "grad_norm_pre_clip_fp64": 1.2298779654259258,
+      "grad_norm_post_clip_fp64": 0.9999991620806407,
+      "param_norm_fp64": 205.93178666003865,
+      "offending_parameters": [],
+      "elapsed_seconds": 144.53720677644014,
+      "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "full_training_completed": false
+    }
+  ]
+}

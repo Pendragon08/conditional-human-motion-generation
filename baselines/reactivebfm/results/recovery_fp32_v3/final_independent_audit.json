@@ -1,0 +1,152 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-10-22",
+  "generated_at": "2026-10-22T08:28:00Z",
+  "auditor": "fresh-codex-reviewer",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "audited_commit": "bfbd1d18793a21fae8e46b911462af2663325ac4",
+  "verdict": "WARN",
+  "integrity_status": "warn",
+  "reason_codes": [
+    "bounded_recovery_pass",
+    "long_run_stability_unproven",
+    "root_cause_unproven",
+    "large_backup_and_bound_evaluation_pending"
+  ],
+  "summary": "V3 training and saved checkpoint evidence pass within the observed window; no critical defect remains in the audited final code. Full schedule stability, causal root-cause proof, paper metrics, and completed large backup/evaluation remain unclaimed.",
+  "current_scope": {
+    "initial_optimizer_updates": 10021,
+    "saved_checkpoint_official_step": 10040,
+    "saved_checkpoint_optimizer_updates": 10041,
+    "latest_validated_optimizer_updates": 10348,
+    "latest_resumed_updates": 327,
+    "latest_skipped_attempts_rank0": 0,
+    "latest_skipped_attempts_rank1": 0,
+    "prior_first_sharp_gradient_update": 10501,
+    "prior_stall_update": 11503,
+    "target_updates": 1000000
+  },
+  "proven_defects": [
+    {
+      "id": "original_loop_advanced_after_skipped_optimizer_step",
+      "status": "corrected_by_v3_guard",
+      "evidence": [
+        "baselines/reactivebfm/upstream/reactivebfm/model/motion_planner/objectives/diffusion/fp16_util.py:220-235",
+        "baselines/reactivebfm/upstream/reactivebfm/train/scheduled_forcing_loop.py:607-613",
+        "baselines/reactivebfm/upstream/reactivebfm/train/scheduled_forcing_loop.py:668",
+        "baselines/reactivebfm/scripts/train_full.py:86-92"
+      ]
+    },
+    {
+      "id": "historical_backup_evaluated_before_verified_transfer",
+      "status": "historical_fail_preserved",
+      "source_sha256": "104295a1ee84523ef2b4c15b7955aa89fa4032f33252ba576184650835441594",
+      "old_receipts": "unbound_provisional",
+      "correction_record": "D:/具身智能/ReactiveBFM复现_20261021/repair_20261022/backup_rebind_v3.json"
+    }
+  ],
+  "hypotheses_and_limits": [
+    {
+      "id": "gradient_explosion_origin",
+      "status": "not_proven",
+      "detail": "FP32 computation plus FP64 norm/clipping is a mitigation and fail-fast mechanism, not causal proof."
+    },
+    {
+      "id": "live_adam_counter_equivalence",
+      "status": "bounded_proof_gap",
+      "detail": "Live guard counters are incremented after validated steps; all per-parameter AdamW counters were independently re-derived only at saved update 10041."
+    },
+    {
+      "id": "terminal_health_completion_flag",
+      "status": "metadata_limitation",
+      "detail": "Health rows retain full_training_completed=false; terminal completion must use rank status files and supervisor_exit.json."
+    },
+    {
+      "id": "exact_replay",
+      "status": "explicitly_false",
+      "detail": "RNG and data-iterator order are not exact replay."
+    }
+  ],
+  "checks": {
+    "A_ground_truth_provenance": {
+      "status": "PASS",
+      "detail": "No real-GT performance claim; simulation outputs are explicitly labeled diagnostic proxies."
+    },
+    "B_score_normalization": {
+      "status": "PASS",
+      "detail": "No self-output normalization; raw root-height proxy only."
+    },
+    "C_result_file_existence": {
+      "status": "WARN",
+      "detail": "Core witness/checkpoint/trace/test evidence exists and matches; completed large backup and new bound evaluation receipts are pending."
+    },
+    "D_dead_code": {
+      "status": "PASS",
+      "detail": "Training guard and strengthened real-trace validation executed; final large backup/evaluation has not completed end to end."
+    },
+    "E_scope": {
+      "status": "WARN",
+      "detail": "327 resumed validated updates; prior anomaly region and full schedule not reached."
+    },
+    "F_evaluation_type": [
+      "simulation_only",
+      "engineering_validation"
+    ]
+  },
+  "claims": [
+    {
+      "id": "v3_bounded_resume_operational",
+      "impact": "supported_with_scope_qualifier"
+    },
+    {
+      "id": "checkpoint_10041_finite_and_counter_consistent",
+      "impact": "supported"
+    },
+    {
+      "id": "gradient_root_cause_identified_or_eliminated",
+      "impact": "unsupported"
+    },
+    {
+      "id": "prior_failure_region_or_full_schedule_passed",
+      "impact": "unsupported"
+    },
+    {
+      "id": "paper_performance_reproduced",
+      "impact": "unsupported"
+    },
+    {
+      "id": "full_verified_backup_and_bound_evaluation_complete",
+      "impact": "pending"
+    }
+  ],
+  "audited_input_hashes": {
+    "configs/recovery_fp32_v3.json": "sha256:33e45608c5361fa22b80f16317b81f912c8b6ced4252be37b745fc7824f443ea",
+    "scripts/numerical_guard.py": "sha256:39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+    "scripts/train_repaired.py": "sha256:8e45ebaa60e8568f59cd63dd21f2bbd7b1576e0d3101ddde4154c1a04919acd4",
+    "scripts/launch_recovery.py": "sha256:a43e4d622928cdffc1569f35bb7b62ef77861b33f3893910c27f2dde3a48db7d",
+    "scripts/backup_full_run.py": "sha256:e1a13bfdd8fd64647afdf61a9219b0f1bebee71637d7454e30175676a34ce4ee",
+    "scripts/test_backup_full_run.py": "sha256:34e0e50b98f2507fa05ce541f2d5a72d71c8d741cc0c76aa1e8e5f64a8c99d8e",
+    "configs/full_backup_repaired_v3.json": "sha256:08d334e2654518979307fdd0453669df4fe60d469fb943193cd01339004f8c50",
+    "manual_anomalies_20261022_1451.json": "sha256:847a8cd3f857504134e2e46e54709156504ba9dfe7104233229f584033a8b12d",
+    "document_witness_v3/invocation_result.json": "sha256:44399658032dd9d303401b38e7bcb8c94dbf1a44a485b2b265f56fecfeb70af1",
+    "document_witness_v3/raw_outputs/health_rank0.json": "sha256:33fe31ab9cc7cc5a30c1ecf427fa1b6b941d1abf5d35e8bce65277ee21f4e6f9",
+    "document_witness_v3/raw_outputs/health_rank1.json": "sha256:20cfd13a9bfcfefb12f173923981f8d2da48e60b687eb21bcd72339d1b574cce",
+    "document_witness_v3/raw_outputs/source_pins_verified.json": "sha256:01e9024a20834bc4b09a1e87359020fe75fd098bca5d9a6d81eff76038a96c81",
+    "trace_validation_v3/trace_receipt.json": "sha256:25dcce142ab7db378aabb9e97b3f60ba84a085fa095869f9ffc64625fe8d2b47",
+    "trace_validation_v3/training_trace_000010040.tar.gz": "sha256:2cdf5455d7cc44b9a22692621233bb5880447dc8b1f666ffab5fcbcdfd221b9d",
+    "trace_validation_v3/raw_ready_manifest.json": "sha256:d2e564eb4aa49bacb43debabaeb1253f54cdbeb32cc53a428ac98168dc8a53f6",
+    "checkpoint_cpu_v3.json": "sha256:ecf18c2dbde5c513e4f5c9f2f7f00e7d530007dd0b95c48e25cee1eae83ad9dc",
+    "current_v3_snapshot.json": "sha256:1040b4313956f4c16997d69ed98060ef04577d46d923c8981c5ee96499e9462f",
+    "backup_worker_final_tests.json": "sha256:772671096e32c223186a8d03419cdd3cb0971b261941da985cfc40c0a4491462",
+    "trace_schema_validation_v3.json": "sha256:c7d2a1d8021770c2416b901ce40d8305a6ff2a7dc59844261432a234ac1aef7d"
+  },
+  "evidence_preservation": {
+    "original_failure_preserved": true,
+    "prior_unbound_receipts_provisional": true,
+    "transient_provenance_test_failure_preserved": true,
+    "current_backup_worker_source_sha256": "e1a13bfdd8fd64647afdf61a9219b0f1bebee71637d7454e30175676a34ce4ee",
+    "large_backup_complete": false,
+    "paper_metrics_certified": false
+  }
+}

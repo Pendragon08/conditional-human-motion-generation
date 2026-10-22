@@ -1,13 +1,21 @@
 # ReactiveBFM reproduction: full training in progress
 
 The full available-data 1M-update schedule is running on two RTX A6000 GPUs.
+After a numerical stall, audited FP32 recovery v3 restored model/EMA/AdamW
+from update10,021 and reached10,348 validated updates on both ranks with zero
+skips in the frozen repair snapshot. New checkpoint10,041 passes CPU finite-state
+and Adam-counter checks; its large-file GitHub transfer remains in progress.
 The simulator closed loop executes actual MuJoCo PD control and real state feedback;
 the 1,000-update checkpoint completed nine 8-second diagnostic cases and fell in all nine.
-The frozen delivery snapshot records at least 1,220 actual updates per rank.
+The original delivery snapshot recorded at least1,220 updates per rank.
 Neither full training completion nor the
 paper's benchmark performance is claimed.
 
-- [Latest progress check: 2026-10-22 09:53 Shanghai, 7,960 updates](reports/ReactiveBFM实验进度检查_20261022_095308.md)
+- [Current repair report: checkpoint recovery and stale PhyGile process handling](reports/ReactiveBFM训练修复与PhyGile进程处理报告_20261022.md)
+- [Recovery v3 source, validation and subsequent checkpoint assets](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/reactivebfm-recovery-fp32-v3-20261022)
+- [Recovery evidence and independent eight-update witness](results/recovery_fp32_v3/)
+- [Final recovery integrity audit: provisional WARN; long run and large backup pending](results/recovery_fp32_v3/final_independent_audit.md)
+- [Archived progress check: 2026-10-22 09:53 Shanghai, 7,960 updates](reports/ReactiveBFM实验进度检查_20261022_095308.md)
 - [Data retention: generated CLoSD motions restored and protected; net 2.94 GiB reclaimed](reports/数据保留核验与CLoSD恢复_20261022.md)
 - [Data preservation policy](docs/data_preservation.md)
 - [Current Chinese training and closed-loop report](reports/ReactiveBFM完整训练与闭环进展报告_20261022.md)
