@@ -1,0 +1,15 @@
+{
+  "call_number": 1,
+  "purpose": "code-path-audit",
+  "timestamp": null,
+  "timestamp_note": "Exact spawn timestamp not exposed after context compaction.",
+  "tool": "collaboration.spawn_agent",
+  "model": "inherited GPT-6-based Codex; exact variant not exposed",
+  "reasoning_effort": "inherited; exact setting not exposed",
+  "agent_id": "/root/unitree_v2_integrity_audit/code_path_audit",
+  "files_referenced": [
+    "experiment-audit/SKILL.md",
+    "parent task file/evidence scope"
+  ],
+  "prompt": "Read the experiment-audit SKILL.md and its required shared references yourself first. Perform strictly read-only adversarial audit of code execution/provenance/training safeguards for the exact task in parent message, focusing D executed-vs-dead paths, loaded-source/post-run edits vs immutable snapshots, optimizer restore+actual update, compact artifact safeguards/parity, failure retention, pending training status. Do not run experiments or mutate anything. Return concise findings with severity and exact file:line plus evidence artifact paths/hashes. Do not write final report."
+}

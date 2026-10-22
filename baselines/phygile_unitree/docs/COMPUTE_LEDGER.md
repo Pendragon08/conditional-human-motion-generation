@@ -22,3 +22,15 @@ gotcha: GPU1 cannot present on Xorg :10. Render on GPU0 while policy/physics use
 ### Fresh document witness 2026-10-22
 
 Two exact invocations passed independently at 09:46:27–09:46:47 UTC. Evidence: results/v1/doc_witness_report_v1/. Validation is limited to the local bounded CPU path; no new PPO or local GUI viewing claim.
+
+### V2 explicit headless exception and unchanged environments
+
+The user's later instruction explicitly authorizes headless continuation for this task, recorded verbatim in configs/headless_authorization_20261022.json. It supersedes the earlier local-viewer gate for this scope; historical policy and receipts remain unchanged. Dependency specs and the local canonical hash a43f960b are unchanged: warm reuse, no shared-environment upgrade.
+
+The actual server two-iteration continuation completed 11:58:00–11:58:49 UTC, 40 Adam calls, exact optimizer restoration, finite changed policy, parent and 446 executed sources/inputs unchanged. Independent document witness passed; source code_v9 and output headless_smoke_v3 are immutable. A separate 128-environment, 500-iteration continuation is IN_PROGRESS; completion must be verified from its final receipt.
+
+Actual Unitree PhysX and Unitree MuJoCo-Warp closure document witnesses passed. Both preserve explicit untrained/unconditional generator labels and rejected candidates. CPU sliding-friction comparison completed eight first episodes; both profiles completed1/4 full clips. These are development diagnostics. Raw licensed motion arrays remain private.
+
+### V3 bounded continuation and transfer completed
+
+The separate500-iteration run completed13:28:50 UTC:10000 actual Adam calls, step40000→50000, parent and captured sources unchanged, finite full model/optimizer. Its early launcher has no durable child exit code; this remains unknown. The dependent four-clip Isaac evaluation/export completed13:31:40 UTC with supervised exit0. New policy Isaac completes1/4 and MuJoCo1/4, so the parent remains the current baseline. New-policy closure also executed in both engines; untrained generated candidates remain rejected with zero commits. Current production compact-loader document witness passes same-batch bitwise parity and preserves the earlier cross-batch oracle failure. No environment or dependency rebuild occurred.

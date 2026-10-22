@@ -1,0 +1,501 @@
+Warp 1.12.0 initialized:
+   CUDA Toolkit 12.9, Driver 12.6
+   Devices:
+     "cpu"      : "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel"
+     "cuda:0"   : "NVIDIA GeForce RTX 4060 Laptop GPU" (8 GiB, sm_89, mempool enabled)
+   Kernel cache:
+     \\?\C:\Users\Pende\AppData\Local\NVIDIA\warp\Cache\1.12.0
+Setting seed: 2026
+
++--------------------------------+
+|        Base Environment        |
++------------------------+-------+
+| Property               | Value |
++------------------------+-------+
+| Number of environments | 1     |
+| Environment device     | cpu   |
+| Environment seed       | 2026  |
+| Physics step-size      | 0.005 |
+| Environment step-size  | 0.02  |
++------------------------+-------+
+
+[INFO] <EventManager> contains 0 active terms.
+
+[INFO] <CommandManager> contains 1 active terms.
++--------------------------------+
+|      Active Command Terms      |
++-------+--------+---------------+
+| Index | Name   |      Type     |
++-------+--------+---------------+
+|   0   | motion | PhyGileMotion |
++-------+--------+---------------+
+
+[INFO] <ActionManager> contains 1 active terms.
++---------------------------------+
+| Active Action Terms (shape: 29) |
++-------+-----------+-------------+
+| Index | Name      |   Dimension |
++-------+-----------+-------------+
+|   0   | joint_pos |          29 |
++-------+-----------+-------------+
+
+[INFO] <ObservationManager> contains 1 groups.
++------------------------------------------------------------+
+| Active Observation Terms in Group: 'actor' (shape: (616,)) |
++----------------+----------------------+--------------------+
+|     Index      | Name                 |       Shape        |
++----------------+----------------------+--------------------+
+|       0        | phygile              |       (616,)       |
++----------------+----------------------+--------------------+
+
+[INFO] <TerminationManager> contains 4 active terms.
++--------------------------------+
+|    Active Termination Terms    |
++-------+-------------+----------+
+| Index | Name        | Time Out |
++-------+-------------+----------+
+|   0   | time_out    |   True   |
+|   1   | anchor_pos  |  False   |
+|   2   | anchor_ori  |  False   |
+|   3   | ee_body_pos |  False   |
++-------+-------------+----------+
+
+[INFO] <RewardManager> contains 0 active terms.
++-----------------------+
+|  Active Reward Terms  |
++-------+------+--------+
+| Index | Name | Weight |
++-------+------+--------+
++-------+------+--------+
+
+[INFO] <NullCurriculumManager> (inactive)
+[INFO] <NullMetricsManager> (inactive)
+Setting seed: 2026
+Module reset_data__locals__reset_xfrc_applied_f86f0829 dbb8a6c load on device 'cpu' took 2.80 ms  (cached)
+Module reset_data__locals__reset_qM_1511185b 6371e1c load on device 'cpu' took 1.39 ms  (cached)
+Module reset_data__locals__reset_mocap_11135362 29c34f8 load on device 'cpu' took 1.42 ms  (cached)
+Module reset_data__locals__reset_contact_76c1c25e 2c9aa2c load on device 'cpu' took 1.50 ms  (cached)
+Module reset_data__locals__reset_nworld_d108b6ac c662add load on device 'cpu' took 1.39 ms  (cached)
+Module mujoco_warp._src.smooth 10bad7f load on device 'cpu' took 1.89 ms  (cached)
+Module mujoco_warp._src.collision_driver 6fc8b5a load on device 'cpu' took 1.76 ms  (cached)
+Module _nxn_broadphase__locals__kernel_551438e6 2490ff0 load on device 'cpu' took 1.69 ms  (cached)
+Module _primitive_narrowphase__locals__primitive_narrowphase_de1c2940 7104197 load on device 'cpu' took 1.79 ms  (cached)
+Module mujoco_warp._src.constraint c12ba33 load on device 'cpu' took 2.12 ms  (cached)
+Module _actuator_velocity__locals__actuator_velocity_912d2485 78d0675 load on device 'cpu' took 2.14 ms  (cached)
+Module mujoco_warp._src.passive b0b41b8 load on device 'cpu' took 1.70 ms  (cached)
+Module mujoco_warp._src.sensor 1d420c5 load on device 'cpu' took 2.97 ms  (cached)
+Module mujoco_warp._src.forward 4cbb6ca load on device 'cpu' took 1.41 ms  (cached)
+Module mujoco_warp._src.support 90d400c load on device 'cpu' took 1.22 ms  (cached)
+Module mujoco_warp._src.solver 58146f5 load on device 'cpu' took 1.98 ms  (cached)
+Module solve_init_jaref__locals__kernel_e167d4c9 4fc5a38 load on device 'cpu' took 2.71 ms  (cached)
+Module mul_m_sparse__locals___mul_m_sparse_3795f265 23b4214 load on device 'cpu' took 2.64 ms  (cached)
+Module update_constraint_gauss_cost__locals__kernel_6726cad8 9e3b424 load on device 'cpu' took 2.90 ms  (cached)
+Module update_gradient_JTDAJ_sparse_tiled__locals__kernel_2b3429c9 7526da2 load on device 'cpu' took 2.91 ms  (cached)
+Module update_gradient_cholesky_blocked__locals__kernel_bb004999 12dea8b load on device 'cpu' took 2.23 ms  (cached)
+Module linesearch_jv_fused__locals__kernel_b9e40014 a06327f load on device 'cpu' took 2.70 ms  (cached)
+Module linesearch_prepare_gauss__locals__kernel_00cb1ae5 bfe9c60 load on device 'cpu' took 2.81 ms  (cached)
+[MoEActorCritic] experts=12, expert_dims=[512, 256], gate_input_dim=128, top_k=3, temperature=0.5, candidate_M=10, use_zt_gate=True, phase_b=False
+Setting seed: 2026
+
++--------------------------------+
+|        Base Environment        |
++------------------------+-------+
+| Property               | Value |
++------------------------+-------+
+| Number of environments | 1     |
+| Environment device     | cpu   |
+| Environment seed       | 2026  |
+| Physics step-size      | 0.005 |
+| Environment step-size  | 0.02  |
++------------------------+-------+
+
+[INFO] <EventManager> contains 0 active terms.
+
+[INFO] <CommandManager> contains 1 active terms.
++--------------------------------+
+|      Active Command Terms      |
++-------+--------+---------------+
+| Index | Name   |      Type     |
++-------+--------+---------------+
+|   0   | motion | PhyGileMotion |
++-------+--------+---------------+
+
+[INFO] <ActionManager> contains 1 active terms.
++---------------------------------+
+| Active Action Terms (shape: 29) |
++-------+-----------+-------------+
+| Index | Name      |   Dimension |
++-------+-----------+-------------+
+|   0   | joint_pos |          29 |
++-------+-----------+-------------+
+
+[INFO] <ObservationManager> contains 1 groups.
++------------------------------------------------------------+
+| Active Observation Terms in Group: 'actor' (shape: (616,)) |
++----------------+----------------------+--------------------+
+|     Index      | Name                 |       Shape        |
++----------------+----------------------+--------------------+
+|       0        | phygile              |       (616,)       |
++----------------+----------------------+--------------------+
+
+[INFO] <TerminationManager> contains 4 active terms.
++--------------------------------+
+|    Active Termination Terms    |
++-------+-------------+----------+
+| Index | Name        | Time Out |
++-------+-------------+----------+
+|   0   | time_out    |   True   |
+|   1   | anchor_pos  |  False   |
+|   2   | anchor_ori  |  False   |
+|   3   | ee_body_pos |  False   |
++-------+-------------+----------+
+
+[INFO] <RewardManager> contains 0 active terms.
++-----------------------+
+|  Active Reward Terms  |
++-------+------+--------+
+| Index | Name | Weight |
++-------+------+--------+
++-------+------+--------+
+
+[INFO] <NullCurriculumManager> (inactive)
+[INFO] <NullMetricsManager> (inactive)
+Setting seed: 2026
+[MoEActorCritic] experts=12, expert_dims=[512, 256], gate_input_dim=128, top_k=3, temperature=0.5, candidate_M=10, use_zt_gate=True, phase_b=False
+Module mujoco_warp._src.derivative 3095017 load on device 'cpu' took 2.77 ms  (cached)
+Setting seed: 2026
+
++--------------------------------+
+|        Base Environment        |
++------------------------+-------+
+| Property               | Value |
++------------------------+-------+
+| Number of environments | 1     |
+| Environment device     | cpu   |
+| Environment seed       | 2026  |
+| Physics step-size      | 0.005 |
+| Environment step-size  | 0.02  |
++------------------------+-------+
+
+[INFO] <EventManager> contains 0 active terms.
+
+[INFO] <CommandManager> contains 1 active terms.
++--------------------------------+
+|      Active Command Terms      |
++-------+--------+---------------+
+| Index | Name   |      Type     |
++-------+--------+---------------+
+|   0   | motion | PhyGileMotion |
++-------+--------+---------------+
+
+[INFO] <ActionManager> contains 1 active terms.
++---------------------------------+
+| Active Action Terms (shape: 29) |
++-------+-----------+-------------+
+| Index | Name      |   Dimension |
++-------+-----------+-------------+
+|   0   | joint_pos |          29 |
++-------+-----------+-------------+
+
+[INFO] <ObservationManager> contains 1 groups.
++------------------------------------------------------------+
+| Active Observation Terms in Group: 'actor' (shape: (616,)) |
++----------------+----------------------+--------------------+
+|     Index      | Name                 |       Shape        |
++----------------+----------------------+--------------------+
+|       0        | phygile              |       (616,)       |
++----------------+----------------------+--------------------+
+
+[INFO] <TerminationManager> contains 4 active terms.
++--------------------------------+
+|    Active Termination Terms    |
++-------+-------------+----------+
+| Index | Name        | Time Out |
++-------+-------------+----------+
+|   0   | time_out    |   True   |
+|   1   | anchor_pos  |  False   |
+|   2   | anchor_ori  |  False   |
+|   3   | ee_body_pos |  False   |
++-------+-------------+----------+
+
+[INFO] <RewardManager> contains 0 active terms.
++-----------------------+
+|  Active Reward Terms  |
++-------+------+--------+
+| Index | Name | Weight |
++-------+------+--------+
++-------+------+--------+
+
+[INFO] <NullCurriculumManager> (inactive)
+[INFO] <NullMetricsManager> (inactive)
+Setting seed: 2026
+[MoEActorCritic] experts=12, expert_dims=[512, 256], gate_input_dim=128, top_k=3, temperature=0.5, candidate_M=10, use_zt_gate=True, phase_b=False
+Setting seed: 2026
+
++--------------------------------+
+|        Base Environment        |
++------------------------+-------+
+| Property               | Value |
++------------------------+-------+
+| Number of environments | 1     |
+| Environment device     | cpu   |
+| Environment seed       | 2026  |
+| Physics step-size      | 0.005 |
+| Environment step-size  | 0.02  |
++------------------------+-------+
+
+[INFO] <EventManager> contains 0 active terms.
+
+[INFO] <CommandManager> contains 1 active terms.
++--------------------------------+
+|      Active Command Terms      |
++-------+--------+---------------+
+| Index | Name   |      Type     |
++-------+--------+---------------+
+|   0   | motion | PhyGileMotion |
++-------+--------+---------------+
+
+[INFO] <ActionManager> contains 1 active terms.
++---------------------------------+
+| Active Action Terms (shape: 29) |
++-------+-----------+-------------+
+| Index | Name      |   Dimension |
++-------+-----------+-------------+
+|   0   | joint_pos |          29 |
++-------+-----------+-------------+
+
+[INFO] <ObservationManager> contains 1 groups.
++------------------------------------------------------------+
+| Active Observation Terms in Group: 'actor' (shape: (616,)) |
++----------------+----------------------+--------------------+
+|     Index      | Name                 |       Shape        |
++----------------+----------------------+--------------------+
+|       0        | phygile              |       (616,)       |
++----------------+----------------------+--------------------+
+
+[INFO] <TerminationManager> contains 4 active terms.
++--------------------------------+
+|    Active Termination Terms    |
++-------+-------------+----------+
+| Index | Name        | Time Out |
++-------+-------------+----------+
+|   0   | time_out    |   True   |
+|   1   | anchor_pos  |  False   |
+|   2   | anchor_ori  |  False   |
+|   3   | ee_body_pos |  False   |
++-------+-------------+----------+
+
+[INFO] <RewardManager> contains 0 active terms.
++-----------------------+
+|  Active Reward Terms  |
++-------+------+--------+
+| Index | Name | Weight |
++-------+------+--------+
++-------+------+--------+
+
+[INFO] <NullCurriculumManager> (inactive)
+[INFO] <NullMetricsManager> (inactive)
+Setting seed: 2026
+[MoEActorCritic] experts=12, expert_dims=[512, 256], gate_input_dim=128, top_k=3, temperature=0.5, candidate_M=10, use_zt_gate=True, phase_b=False
+Setting seed: 2026
+
++--------------------------------+
+|        Base Environment        |
++------------------------+-------+
+| Property               | Value |
++------------------------+-------+
+| Number of environments | 1     |
+| Environment device     | cpu   |
+| Environment seed       | 2026  |
+| Physics step-size      | 0.005 |
+| Environment step-size  | 0.02  |
++------------------------+-------+
+
+[INFO] <EventManager> contains 0 active terms.
+
+[INFO] <CommandManager> contains 1 active terms.
++--------------------------------+
+|      Active Command Terms      |
++-------+--------+---------------+
+| Index | Name   |      Type     |
++-------+--------+---------------+
+|   0   | motion | PhyGileMotion |
++-------+--------+---------------+
+
+[INFO] <ActionManager> contains 1 active terms.
++---------------------------------+
+| Active Action Terms (shape: 29) |
++-------+-----------+-------------+
+| Index | Name      |   Dimension |
++-------+-----------+-------------+
+|   0   | joint_pos |          29 |
++-------+-----------+-------------+
+
+[INFO] <ObservationManager> contains 1 groups.
++------------------------------------------------------------+
+| Active Observation Terms in Group: 'actor' (shape: (616,)) |
++----------------+----------------------+--------------------+
+|     Index      | Name                 |       Shape        |
++----------------+----------------------+--------------------+
+|       0        | phygile              |       (616,)       |
++----------------+----------------------+--------------------+
+
+[INFO] <TerminationManager> contains 4 active terms.
++--------------------------------+
+|    Active Termination Terms    |
++-------+-------------+----------+
+| Index | Name        | Time Out |
++-------+-------------+----------+
+|   0   | time_out    |   True   |
+|   1   | anchor_pos  |  False   |
+|   2   | anchor_ori  |  False   |
+|   3   | ee_body_pos |  False   |
++-------+-------------+----------+
+
+[INFO] <RewardManager> contains 0 active terms.
++-----------------------+
+|  Active Reward Terms  |
++-------+------+--------+
+| Index | Name | Weight |
++-------+------+--------+
++-------+------+--------+
+
+[INFO] <NullCurriculumManager> (inactive)
+[INFO] <NullMetricsManager> (inactive)
+Setting seed: 2026
+[MoEActorCritic] experts=12, expert_dims=[512, 256], gate_input_dim=128, top_k=3, temperature=0.5, candidate_M=10, use_zt_gate=True, phase_b=False
+Setting seed: 2026
+
++--------------------------------+
+|        Base Environment        |
++------------------------+-------+
+| Property               | Value |
++------------------------+-------+
+| Number of environments | 1     |
+| Environment device     | cpu   |
+| Environment seed       | 2026  |
+| Physics step-size      | 0.005 |
+| Environment step-size  | 0.02  |
++------------------------+-------+
+
+[INFO] <EventManager> contains 0 active terms.
+
+[INFO] <CommandManager> contains 1 active terms.
++--------------------------------+
+|      Active Command Terms      |
++-------+--------+---------------+
+| Index | Name   |      Type     |
++-------+--------+---------------+
+|   0   | motion | PhyGileMotion |
++-------+--------+---------------+
+
+[INFO] <ActionManager> contains 1 active terms.
++---------------------------------+
+| Active Action Terms (shape: 29) |
++-------+-----------+-------------+
+| Index | Name      |   Dimension |
++-------+-----------+-------------+
+|   0   | joint_pos |          29 |
++-------+-----------+-------------+
+
+[INFO] <ObservationManager> contains 1 groups.
++------------------------------------------------------------+
+| Active Observation Terms in Group: 'actor' (shape: (616,)) |
++----------------+----------------------+--------------------+
+|     Index      | Name                 |       Shape        |
++----------------+----------------------+--------------------+
+|       0        | phygile              |       (616,)       |
++----------------+----------------------+--------------------+
+
+[INFO] <TerminationManager> contains 4 active terms.
++--------------------------------+
+|    Active Termination Terms    |
++-------+-------------+----------+
+| Index | Name        | Time Out |
++-------+-------------+----------+
+|   0   | time_out    |   True   |
+|   1   | anchor_pos  |  False   |
+|   2   | anchor_ori  |  False   |
+|   3   | ee_body_pos |  False   |
++-------+-------------+----------+
+
+[INFO] <RewardManager> contains 0 active terms.
++-----------------------+
+|  Active Reward Terms  |
++-------+------+--------+
+| Index | Name | Weight |
++-------+------+--------+
++-------+------+--------+
+
+[INFO] <NullCurriculumManager> (inactive)
+[INFO] <NullMetricsManager> (inactive)
+Setting seed: 2026
+[MoEActorCritic] experts=12, expert_dims=[512, 256], gate_input_dim=128, top_k=3, temperature=0.5, candidate_M=10, use_zt_gate=True, phase_b=False
+Setting seed: 2026
+
++--------------------------------+
+|        Base Environment        |
++------------------------+-------+
+| Property               | Value |
++------------------------+-------+
+| Number of environments | 1     |
+| Environment device     | cpu   |
+| Environment seed       | 2026  |
+| Physics step-size      | 0.005 |
+| Environment step-size  | 0.02  |
++------------------------+-------+
+
+[INFO] <EventManager> contains 0 active terms.
+
+[INFO] <CommandManager> contains 1 active terms.
++--------------------------------+
+|      Active Command Terms      |
++-------+--------+---------------+
+| Index | Name   |      Type     |
++-------+--------+---------------+
+|   0   | motion | PhyGileMotion |
++-------+--------+---------------+
+
+[INFO] <ActionManager> contains 1 active terms.
++---------------------------------+
+| Active Action Terms (shape: 29) |
++-------+-----------+-------------+
+| Index | Name      |   Dimension |
++-------+-----------+-------------+
+|   0   | joint_pos |          29 |
++-------+-----------+-------------+
+
+[INFO] <ObservationManager> contains 1 groups.
++------------------------------------------------------------+
+| Active Observation Terms in Group: 'actor' (shape: (616,)) |
++----------------+----------------------+--------------------+
+|     Index      | Name                 |       Shape        |
++----------------+----------------------+--------------------+
+|       0        | phygile              |       (616,)       |
++----------------+----------------------+--------------------+
+
+[INFO] <TerminationManager> contains 4 active terms.
++--------------------------------+
+|    Active Termination Terms    |
++-------+-------------+----------+
+| Index | Name        | Time Out |
++-------+-------------+----------+
+|   0   | time_out    |   True   |
+|   1   | anchor_pos  |  False   |
+|   2   | anchor_ori  |  False   |
+|   3   | ee_body_pos |  False   |
++-------+-------------+----------+
+
+[INFO] <RewardManager> contains 0 active terms.
++-----------------------+
+|  Active Reward Terms  |
++-------+------+--------+
+| Index | Name | Weight |
++-------+------+--------+
++-------+------+--------+
+
+[INFO] <NullCurriculumManager> (inactive)
+[INFO] <NullMetricsManager> (inactive)
+Setting seed: 2026
+[MoEActorCritic] experts=12, expert_dims=[512, 256], gate_input_dim=128, top_k=3, temperature=0.5, candidate_M=10, use_zt_gate=True, phase_b=False
+{"status": "COMPLETED_ENGINEERING_VALIDATION", "outcome": "REJECTED_WITHOUT_INVALID_COMMIT", "actual_mujoco_warp_physics": true, "official_unitree_factory": "src.tasks.tracking.config.g1.env_cfgs.unitree_g1_flat_tracking_env_cfg", "contact_profile": "matched_sliding_friction", "evaluation_type": "simulation_only", "evaluation_types": ["synthetic_proxy", "simulation_only"], "optimizer_updates": 0, "actual_diffusion_sampling": true, "generator": {"backend": "untrained_diffusion_diagnostic", "trained": false, "text_conditioning": "zero/unconditional; no text-to-motion claim", "schedule": "chosen linear 8-step engineering diagnostic", "parameters": 146169702, "normalization_sha256": "6789d03ceb19f3a9f54b6c96b500396e079ded366ef5aa04106f9c6a3cf687af"}, "trained_generator": false, "trained_semantic_generation_claim": false, "checkpoint_sha256": "28eb2dc7e6734cda278c17f7385b6a3b1d0530e8be74465cb9808826a061bcfa", "checkpoint_unchanged": true, "generator_parameters_unchanged": true, "committed_new_frames": 0, "attempts": [{"accepted": false, "reasons": ["incomplete_continuation", "failure_termination", "mpjpe_above_tolerance"], "expected_frames": 50, "recorded_frames": 1, "mpjpe_m": 0.3926130904353224, "terminal_max_frame_mpjpe_m": null, "candidate_sha256": "8ddc807ce2d04d05d106206fc5a0123e70d0f3f984480b2c0e422130887a2f77", "execution_sha256": "0c3e39e0f7349f2c08e440e5add3aad08c5fe2d4b54ac4fda7a9a9a73c1472ba", "prefix_frames": 1, "attempt": 0, "final": true}, {"accepted": false, "reasons": ["incomplete_continuation", "failure_termination", "mpjpe_above_tolerance"], "expected_frames": 50, "recorded_frames": 1, "mpjpe_m": 0.3931564388452799, "terminal_max_frame_mpjpe_m": null, "candidate_sha256": "3fb0c66e9a5afa290ae06cf1e363fa85a8bb85fce53c7f91d1a5b82360895eb4", "execution_sha256": "0c3e39e0f7349f2c08e440e5add3aad08c5fe2d4b54ac4fda7a9a9a73c1472ba", "prefix_frames": 1, "attempt": 1, "final": true}], "proposals": [{"attempt": 0, "final": true, "candidate_sha256": "8ddc807ce2d04d05d106206fc5a0123e70d0f3f984480b2c0e422130887a2f77", "input_prefix_sha256": "6cc81ca7da2a495e945f2b15987005ddbe727f7d61ba1dabe3808aa3874a45c8", "input_prefix_frames": 1, "new_frames": 50, "network_context_frames": 2, "projection": {"rotation_projection_residual_max": 2.8284263347885705, "joint_limit_violations": 965, "ric_redundancy_residual_m": 0.5644955474596384, "projected": true, "root_pose_side_information_required": true}, "additional_bound_changed_values": 188}, {"attempt": 1, "final": true, "candidate_sha256": "3fb0c66e9a5afa290ae06cf1e363fa85a8bb85fce53c7f91d1a5b82360895eb4", "input_prefix_sha256": "6cc81ca7da2a495e945f2b15987005ddbe727f7d61ba1dabe3808aa3874a45c8", "input_prefix_frames": 1, "new_frames": 50, "network_context_frames": 2, "projection": {"rotation_projection_residual_max": 2.828422823710868, "joint_limit_violations": 965, "ric_redundancy_residual_m": 0.567043544225153, "projected": true, "root_pose_side_information_required": true}, "additional_bound_changed_values": 188}], "rollback_witness": {"method": "fresh_scene_seeded_accepted_history_replay", "state_max_abs_delta": 0.0, "body_max_abs_delta_m": 0.0, "frames": 10}, "actual_feedback_fixture": {"evaluation_type": "self_supervised_proxy", "reference": "held initialization pose, not learned generation or dataset truth", "accepted_windows": 2, "window_frames": 1, "input_prefix_sha256": ["6cc81ca7da2a495e945f2b15987005ddbe727f7d61ba1dabe3808aa3874a45c8", "747aeb1f965d6deb55a0d1f86c523e4594f2b84c38256ff60734303a500d68d6"], "decisions": [{"accepted": true, "reasons": [], "expected_frames": 1, "recorded_frames": 1, "mpjpe_m": 0.008302161485459949, "terminal_max_frame_mpjpe_m": null, "candidate_sha256": "6b8be7bdb8f251191855fa75f8bfb7320106c8bf6d4d36bd4769f605afaaff28", "execution_sha256": "0c3e39e0f7349f2c08e440e5add3aad08c5fe2d4b54ac4fda7a9a9a73c1472ba", "prefix_frames": 1, "attempt": 0, "final": false}, {"accepted": true, "reasons": [], "expected_frames": 1, "recorded_frames": 1, "mpjpe_m": 0.018129267744870583, "terminal_max_frame_mpjpe_m": 0.018129267744870583, "candidate_sha256": "31dc7db0873a9185aff8b0acd7413e9610278937158408748b6d07de6a07073f", "execution_sha256": "8c69d639bcba0674565ec5b95c80a779e552196d2dbd7c945ec6902a49531fe2", "prefix_frames": 2, "attempt": 0, "final": true}]}, "simulator_invocations": [{"directory": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_continue500_v1\\simulator\\scene_000", "fresh_scene": true, "replayed_windows": []}, {"directory": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_continue500_v1\\simulator\\scene_001", "fresh_scene": true, "replayed_windows": []}, {"directory": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_continue500_v1\\simulator\\scene_002", "fresh_scene": true, "replayed_windows": []}, {"directory": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_continue500_v1\\simulator\\scene_003", "fresh_scene": true, "replayed_windows": []}, {"directory": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_continue500_v1\\simulator\\scene_004", "fresh_scene": true, "replayed_windows": [{"candidate_sha256": "6b8be7bdb8f251191855fa75f8bfb7320106c8bf6d4d36bd4769f605afaaff28", "max_state_difference": 0.0}]}, {"directory": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_continue500_v1\\simulator\\scene_005", "fresh_scene": true, "replayed_windows": []}, {"directory": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_continue500_v1\\simulator\\scene_006", "fresh_scene": true, "replayed_windows": []}], "source_provenance": {"manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_continue500_v1\\executed_sources.json", "sha256": "dc0a42c1a1b9841a7f62538caeecb3776d9f97a21bb133392043d0b51c81f767", "source_files": 256}, "executed_sources_unchanged": true, "elapsed_seconds": 10.702999999979511, "raw_files": {"committed_prefix.npz": "7e78a403f01fc102b257fcadb973aa9766872a99f9990ba2e6e89ecd4cc2ce79", "physics_rollout_000.npz": "87b7e57418b033d84816216785a9c441de2e4d32cd21b828eaff08ac107ae06e", "physics_rollout_001.npz": "87b7e57418b033d84816216785a9c441de2e4d32cd21b828eaff08ac107ae06e", "physics_rollout_002.npz": "8bb9ed60e2739700a7bcad625402bf2c344a697e9ec4161d7489c590b9158043", "physics_rollout_003.npz": "f05987c4b7e52ad7adc1d1fe893f66d217fb38bdbd638961fa749812227b678b", "physics_rollout_004.npz": "05f2d45044fbcd7e824f3909183d231a2e7036837141c8784f837e58764c5744", "physics_rollout_005.npz": "c839de59ab39d73d6fb9ee1b7363e5c9afaf8a8ef0e823ff52336df44ea1ca56", "proposals\\proposal_000.npz": "a426371c7a7882d3f635d3265fb06272de23cb354d388fc6935f7e116956bf8a", "proposals\\proposal_001.npz": "84ff57e91d8aeb6093f64ec7232d65dc78348c3c5801234e45b763101b117104", "simulator\\scene_000\\converted_motion.npz": "9ee560f1ff9b7b58ea875f48439b2442af663b2b6ea323a22499796f74f45e62", "simulator\\scene_001\\converted_motion.npz": "9ee560f1ff9b7b58ea875f48439b2442af663b2b6ea323a22499796f74f45e62", "simulator\\scene_002\\converted_motion.npz": "9ee560f1ff9b7b58ea875f48439b2442af663b2b6ea323a22499796f74f45e62", "simulator\\scene_003\\converted_motion.npz": "9ee560f1ff9b7b58ea875f48439b2442af663b2b6ea323a22499796f74f45e62", "simulator\\scene_004\\converted_motion.npz": "9ee560f1ff9b7b58ea875f48439b2442af663b2b6ea323a22499796f74f45e62", "simulator\\scene_005\\converted_motion.npz": "9ee560f1ff9b7b58ea875f48439b2442af663b2b6ea323a22499796f74f45e62", "simulator\\scene_006\\converted_motion.npz": "9ee560f1ff9b7b58ea875f48439b2442af663b2b6ea323a22499796f74f45e62"}}

@@ -1,0 +1,3933 @@
+{
+  "status": "FOUR_GEOMETRY_DIAGNOSTICS_COMPLETED",
+  "development_clips": true,
+  "seed": 2026,
+  "parameter_sweep_or_best_profile_selection": false,
+  "policy_updates": 0,
+  "runs": [
+    {
+      "command": [
+        "D:\\phygile_unitree_env_20261022\\Scripts\\python.exe",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_unitree_20261022\\evaluate_source_geometry.py",
+        "--source-urdf",
+        "C:/Users/Pende/Documents/ChatGPT/\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210/work/phygile_unitree_20261022/source_main_g1.urdf",
+        "--base-scripts",
+        "C:/Users/Pende/Documents/ChatGPT/\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210/work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/phygile_unitree/scripts",
+        "--unitree-checkout",
+        "C:/Users/Pende/Documents/ChatGPT/\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210/work/phygile_unitree_20261022/vendor_unitree_rl_mjlab",
+        "--assets",
+        "D:/\u5177\u8eab\u667a\u80fd/PhyGile\u590d\u73b0/Unitree\u6846\u67b6\u9002\u914d_20261022/private_assets_contact_v3",
+        "--output",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\source_geometry_comparison_v1\\clip0",
+        "--clip",
+        "0",
+        "--contact-profile",
+        "matched_sliding_friction"
+      ],
+      "exit_code": 0,
+      "receipt": {
+        "status": "FIRST_EPISODE_EVALUATED",
+        "evaluation_type": "simulation_only",
+        "optimizer_steps": 0,
+        "seed": 2026,
+        "device": "cpu",
+        "clip": 0,
+        "started_utc": "2026-10-22T12:45:17.408218+00:00",
+        "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+        "paper_benchmark_reproduced": false,
+        "mapping": {
+          "joint_mapping": [
+            0,
+            3,
+            6,
+            9,
+            13,
+            17,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            21,
+            23,
+            25,
+            27,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28
+          ],
+          "body_mapping": [
+            0,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            3,
+            6,
+            9,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28,
+            13,
+            17,
+            21,
+            23,
+            25,
+            27,
+            29
+          ],
+          "frames": 149
+        },
+        "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+        "motion_sha256": "9da670f4a3f4881fa49c73b7a05efcdff8353334f8cf34f5c901ef3668ebc86d",
+        "motion_frames": 149,
+        "contact_profile": "matched_sliding_friction",
+        "source_provenance": {
+          "manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\source_geometry_comparison_v1\\clip0\\executed_sources.json",
+          "sha256": "74474fdf14e5ca0ab4abaa961f2a12b1d18e70fe72e0b502fd779065f1bdaca9",
+          "source_files": 248
+        },
+        "action_scale_offset_exact": true,
+        "frames_evaluated": 128,
+        "terminated": true,
+        "timeout": false,
+        "full_clip_success": false,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.11151063442230225,
+          "mpjae_rad_until_termination": 0.1481597125530243,
+          "mpjve_rad_s_until_termination": 0.5513654351234436
+        },
+        "elapsed_rollout_seconds": 6.030999999959022,
+        "physics_steps": 512,
+        "control_dt": 0.02,
+        "physics_dt": 0.005,
+        "compiled_contact_parameters": [
+          {
+            "name": "terrain",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 0
+          },
+          {
+            "name": "robot/left_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          }
+        ],
+        "executed_sources_unchanged": true,
+        "post_physics_forward_before_termination": true,
+        "body_mass_comparison": {
+          "pelvis": {
+            "isaac": 3.814000129699707,
+            "mjlab": 3.813
+          },
+          "left_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "left_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "left_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "right_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "right_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "right_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "torso_link": {
+            "isaac": 7.816999435424805,
+            "mjlab": 7.818
+          },
+          "left_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "left_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "left_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          },
+          "right_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "right_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "right_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          }
+        },
+        "note": "Same first-episode frozen-policy protocol with explicit source collision geometry. Default official geometry is preserved separately, and no performance improvement is presumed.",
+        "finished_utc": "2026-10-22T12:45:26.831152+00:00",
+        "geometry_profile": "source_urdf_capsule_primitives",
+        "geometry_provenance": {
+          "source_urdf_sha256": "dbc8471004e9b0b85c27a4ebc1f0d90a727c1cf7ca9ef507b805596f2004d64b",
+          "source_collision_count": 29,
+          "source_definitions": [
+            {
+              "body": "pelvis",
+              "name": "pelvis_source0_collision",
+              "type": 2,
+              "size": [
+                0.07,
+                0,
+                0
+              ],
+              "pos": [
+                0.0,
+                0.0,
+                -0.08
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_hip_roll_link",
+              "name": "left_hip_roll_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_knee_link",
+              "name": "left_knee_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot1_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                -0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot2_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                -0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot3_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                -0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot4_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.093,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.0,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot5_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot6_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot7_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_hip_roll_link",
+              "name": "right_hip_roll_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_knee_link",
+              "name": "right_knee_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot1_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                -0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot2_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                -0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot3_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                -0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot4_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.093,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.0,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot5_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot6_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot7_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.073,
+                0.032,
+                0
+              ],
+              "pos": [
+                0.005,
+                0.0,
+                0.22
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.7071080798594735,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source1_collision",
+              "type": 3,
+              "size": [
+                0.07,
+                0.028,
+                0
+              ],
+              "pos": [
+                0.005,
+                0.0,
+                0.13
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.7071080798594735,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source2_collision",
+              "type": 3,
+              "size": [
+                0.065,
+                0.02,
+                0
+              ],
+              "pos": [
+                0.005,
+                0.0,
+                0.06
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.7071080798594735,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source3_collision",
+              "type": 3,
+              "size": [
+                0.068,
+                0.005,
+                0
+              ],
+              "pos": [
+                0.01,
+                0.0,
+                0.415
+              ],
+              "quat": [
+                -3.6732051033465756e-06,
+                0.9999999999932537,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_shoulder_yaw_link",
+              "name": "left_shoulder_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.0,
+                0.0,
+                -0.015
+              ],
+              "quat": [
+                -3.6732051033465756e-06,
+                0.9999999999932537,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_elbow_link",
+              "name": "left_elbow_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.055,
+                0.0,
+                -0.01
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_wrist_yaw_link",
+              "name": "left_wrist_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.0,
+                0.0
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_shoulder_yaw_link",
+              "name": "right_shoulder_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.0,
+                0.0,
+                -0.015
+              ],
+              "quat": [
+                -3.6732051033465756e-06,
+                0.9999999999932537,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_elbow_link",
+              "name": "right_elbow_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.055,
+                0.0,
+                -0.01
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_wrist_yaw_link",
+              "name": "right_wrist_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.0,
+                0.0
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            }
+          ],
+          "scope": "Collision primitives from measured source URDF; cylinders become capsules as in Isaac import. Preserve official articulated kinematics, inertia, actuator settings, solver and self-contact condim; sliding friction1.0. No claim of complete engine equivalence."
+        }
+      }
+    },
+    {
+      "command": [
+        "D:\\phygile_unitree_env_20261022\\Scripts\\python.exe",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_unitree_20261022\\evaluate_source_geometry.py",
+        "--source-urdf",
+        "C:/Users/Pende/Documents/ChatGPT/\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210/work/phygile_unitree_20261022/source_main_g1.urdf",
+        "--base-scripts",
+        "C:/Users/Pende/Documents/ChatGPT/\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210/work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/phygile_unitree/scripts",
+        "--unitree-checkout",
+        "C:/Users/Pende/Documents/ChatGPT/\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210/work/phygile_unitree_20261022/vendor_unitree_rl_mjlab",
+        "--assets",
+        "D:/\u5177\u8eab\u667a\u80fd/PhyGile\u590d\u73b0/Unitree\u6846\u67b6\u9002\u914d_20261022/private_assets_contact_v3",
+        "--output",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\source_geometry_comparison_v1\\clip1",
+        "--clip",
+        "1",
+        "--contact-profile",
+        "matched_sliding_friction"
+      ],
+      "exit_code": 0,
+      "receipt": {
+        "status": "FIRST_EPISODE_EVALUATED",
+        "evaluation_type": "simulation_only",
+        "optimizer_steps": 0,
+        "seed": 2026,
+        "device": "cpu",
+        "clip": 1,
+        "started_utc": "2026-10-22T12:45:36.125999+00:00",
+        "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+        "paper_benchmark_reproduced": false,
+        "mapping": {
+          "joint_mapping": [
+            0,
+            3,
+            6,
+            9,
+            13,
+            17,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            21,
+            23,
+            25,
+            27,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28
+          ],
+          "body_mapping": [
+            0,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            3,
+            6,
+            9,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28,
+            13,
+            17,
+            21,
+            23,
+            25,
+            27,
+            29
+          ],
+          "frames": 149
+        },
+        "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+        "motion_sha256": "9f43364b4a5d2415a64277eece7f8101be2449cf356ad66175c294d91be7a499",
+        "motion_frames": 149,
+        "contact_profile": "matched_sliding_friction",
+        "source_provenance": {
+          "manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\source_geometry_comparison_v1\\clip1\\executed_sources.json",
+          "sha256": "82a638721c343f1726213aa3c5efa923d4aaaf056bad3e10b0e9904b0fd6755f",
+          "source_files": 248
+        },
+        "action_scale_offset_exact": true,
+        "frames_evaluated": 10,
+        "terminated": true,
+        "timeout": false,
+        "full_clip_success": false,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.0799131691455841,
+          "mpjae_rad_until_termination": 0.16681785881519318,
+          "mpjve_rad_s_until_termination": 1.6638917922973633
+        },
+        "elapsed_rollout_seconds": 0.5779999999795109,
+        "physics_steps": 40,
+        "control_dt": 0.02,
+        "physics_dt": 0.005,
+        "compiled_contact_parameters": [
+          {
+            "name": "terrain",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 0
+          },
+          {
+            "name": "robot/left_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          }
+        ],
+        "executed_sources_unchanged": true,
+        "post_physics_forward_before_termination": true,
+        "body_mass_comparison": {
+          "pelvis": {
+            "isaac": 3.814000129699707,
+            "mjlab": 3.813
+          },
+          "left_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "left_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "left_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "right_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "right_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "right_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "torso_link": {
+            "isaac": 7.816999435424805,
+            "mjlab": 7.818
+          },
+          "left_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "left_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "left_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          },
+          "right_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "right_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "right_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          }
+        },
+        "note": "Same first-episode frozen-policy protocol with explicit source collision geometry. Default official geometry is preserved separately, and no performance improvement is presumed.",
+        "finished_utc": "2026-10-22T12:45:39.613007+00:00",
+        "geometry_profile": "source_urdf_capsule_primitives",
+        "geometry_provenance": {
+          "source_urdf_sha256": "dbc8471004e9b0b85c27a4ebc1f0d90a727c1cf7ca9ef507b805596f2004d64b",
+          "source_collision_count": 29,
+          "source_definitions": [
+            {
+              "body": "pelvis",
+              "name": "pelvis_source0_collision",
+              "type": 2,
+              "size": [
+                0.07,
+                0,
+                0
+              ],
+              "pos": [
+                0.0,
+                0.0,
+                -0.08
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_hip_roll_link",
+              "name": "left_hip_roll_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_knee_link",
+              "name": "left_knee_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot1_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                -0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot2_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                -0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot3_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                -0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot4_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.093,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.0,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot5_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot6_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot7_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_hip_roll_link",
+              "name": "right_hip_roll_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_knee_link",
+              "name": "right_knee_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot1_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                -0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot2_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                -0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot3_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                -0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot4_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.093,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.0,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot5_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot6_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot7_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.073,
+                0.032,
+                0
+              ],
+              "pos": [
+                0.005,
+                0.0,
+                0.22
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.7071080798594735,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source1_collision",
+              "type": 3,
+              "size": [
+                0.07,
+                0.028,
+                0
+              ],
+              "pos": [
+                0.005,
+                0.0,
+                0.13
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.7071080798594735,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source2_collision",
+              "type": 3,
+              "size": [
+                0.065,
+                0.02,
+                0
+              ],
+              "pos": [
+                0.005,
+                0.0,
+                0.06
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.7071080798594735,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source3_collision",
+              "type": 3,
+              "size": [
+                0.068,
+                0.005,
+                0
+              ],
+              "pos": [
+                0.01,
+                0.0,
+                0.415
+              ],
+              "quat": [
+                -3.6732051033465756e-06,
+                0.9999999999932537,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_shoulder_yaw_link",
+              "name": "left_shoulder_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.0,
+                0.0,
+                -0.015
+              ],
+              "quat": [
+                -3.6732051033465756e-06,
+                0.9999999999932537,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_elbow_link",
+              "name": "left_elbow_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.055,
+                0.0,
+                -0.01
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_wrist_yaw_link",
+              "name": "left_wrist_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.0,
+                0.0
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_shoulder_yaw_link",
+              "name": "right_shoulder_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.0,
+                0.0,
+                -0.015
+              ],
+              "quat": [
+                -3.6732051033465756e-06,
+                0.9999999999932537,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_elbow_link",
+              "name": "right_elbow_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.055,
+                0.0,
+                -0.01
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_wrist_yaw_link",
+              "name": "right_wrist_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.0,
+                0.0
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            }
+          ],
+          "scope": "Collision primitives from measured source URDF; cylinders become capsules as in Isaac import. Preserve official articulated kinematics, inertia, actuator settings, solver and self-contact condim; sliding friction1.0. No claim of complete engine equivalence."
+        }
+      }
+    },
+    {
+      "command": [
+        "D:\\phygile_unitree_env_20261022\\Scripts\\python.exe",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_unitree_20261022\\evaluate_source_geometry.py",
+        "--source-urdf",
+        "C:/Users/Pende/Documents/ChatGPT/\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210/work/phygile_unitree_20261022/source_main_g1.urdf",
+        "--base-scripts",
+        "C:/Users/Pende/Documents/ChatGPT/\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210/work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/phygile_unitree/scripts",
+        "--unitree-checkout",
+        "C:/Users/Pende/Documents/ChatGPT/\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210/work/phygile_unitree_20261022/vendor_unitree_rl_mjlab",
+        "--assets",
+        "D:/\u5177\u8eab\u667a\u80fd/PhyGile\u590d\u73b0/Unitree\u6846\u67b6\u9002\u914d_20261022/private_assets_contact_v3",
+        "--output",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\source_geometry_comparison_v1\\clip2",
+        "--clip",
+        "2",
+        "--contact-profile",
+        "matched_sliding_friction"
+      ],
+      "exit_code": 0,
+      "receipt": {
+        "status": "FIRST_EPISODE_EVALUATED",
+        "evaluation_type": "simulation_only",
+        "optimizer_steps": 0,
+        "seed": 2026,
+        "device": "cpu",
+        "clip": 2,
+        "started_utc": "2026-10-22T12:45:49.220620+00:00",
+        "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+        "paper_benchmark_reproduced": false,
+        "mapping": {
+          "joint_mapping": [
+            0,
+            3,
+            6,
+            9,
+            13,
+            17,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            21,
+            23,
+            25,
+            27,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28
+          ],
+          "body_mapping": [
+            0,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            3,
+            6,
+            9,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28,
+            13,
+            17,
+            21,
+            23,
+            25,
+            27,
+            29
+          ],
+          "frames": 149
+        },
+        "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+        "motion_sha256": "b212bd307ecbfc9d3ed407c45ce62f48b3a70ecc803099efb61fd018efd7fe59",
+        "motion_frames": 149,
+        "contact_profile": "matched_sliding_friction",
+        "source_provenance": {
+          "manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\source_geometry_comparison_v1\\clip2\\executed_sources.json",
+          "sha256": "d50a5cbbed3b260f42ad6abdbda58e5c073f9e8056d989ba5f0743a2d4c8b2cc",
+          "source_files": 248
+        },
+        "action_scale_offset_exact": true,
+        "frames_evaluated": 149,
+        "terminated": false,
+        "timeout": true,
+        "full_clip_success": true,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.07128088176250458,
+          "mpjae_rad_until_termination": 0.12639997899532318,
+          "mpjve_rad_s_until_termination": 0.3757246732711792
+        },
+        "elapsed_rollout_seconds": 7.10999999998603,
+        "physics_steps": 596,
+        "control_dt": 0.02,
+        "physics_dt": 0.005,
+        "compiled_contact_parameters": [
+          {
+            "name": "terrain",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 0
+          },
+          {
+            "name": "robot/left_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          }
+        ],
+        "executed_sources_unchanged": true,
+        "post_physics_forward_before_termination": true,
+        "body_mass_comparison": {
+          "pelvis": {
+            "isaac": 3.814000129699707,
+            "mjlab": 3.813
+          },
+          "left_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "left_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "left_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "right_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "right_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "right_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "torso_link": {
+            "isaac": 7.816999435424805,
+            "mjlab": 7.818
+          },
+          "left_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "left_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "left_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          },
+          "right_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "right_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "right_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          }
+        },
+        "note": "Same first-episode frozen-policy protocol with explicit source collision geometry. Default official geometry is preserved separately, and no performance improvement is presumed.",
+        "finished_utc": "2026-10-22T12:45:58.990435+00:00",
+        "geometry_profile": "source_urdf_capsule_primitives",
+        "geometry_provenance": {
+          "source_urdf_sha256": "dbc8471004e9b0b85c27a4ebc1f0d90a727c1cf7ca9ef507b805596f2004d64b",
+          "source_collision_count": 29,
+          "source_definitions": [
+            {
+              "body": "pelvis",
+              "name": "pelvis_source0_collision",
+              "type": 2,
+              "size": [
+                0.07,
+                0,
+                0
+              ],
+              "pos": [
+                0.0,
+                0.0,
+                -0.08
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_hip_roll_link",
+              "name": "left_hip_roll_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_knee_link",
+              "name": "left_knee_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot1_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                -0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot2_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                -0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot3_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                -0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot4_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.093,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.0,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot5_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot6_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot7_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_hip_roll_link",
+              "name": "right_hip_roll_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_knee_link",
+              "name": "right_knee_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot1_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                -0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot2_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                -0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot3_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                -0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot4_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.093,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.0,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot5_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot6_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot7_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.073,
+                0.032,
+                0
+              ],
+              "pos": [
+                0.005,
+                0.0,
+                0.22
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.7071080798594735,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source1_collision",
+              "type": 3,
+              "size": [
+                0.07,
+                0.028,
+                0
+              ],
+              "pos": [
+                0.005,
+                0.0,
+                0.13
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.7071080798594735,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source2_collision",
+              "type": 3,
+              "size": [
+                0.065,
+                0.02,
+                0
+              ],
+              "pos": [
+                0.005,
+                0.0,
+                0.06
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.7071080798594735,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source3_collision",
+              "type": 3,
+              "size": [
+                0.068,
+                0.005,
+                0
+              ],
+              "pos": [
+                0.01,
+                0.0,
+                0.415
+              ],
+              "quat": [
+                -3.6732051033465756e-06,
+                0.9999999999932537,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_shoulder_yaw_link",
+              "name": "left_shoulder_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.0,
+                0.0,
+                -0.015
+              ],
+              "quat": [
+                -3.6732051033465756e-06,
+                0.9999999999932537,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_elbow_link",
+              "name": "left_elbow_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.055,
+                0.0,
+                -0.01
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_wrist_yaw_link",
+              "name": "left_wrist_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.0,
+                0.0
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_shoulder_yaw_link",
+              "name": "right_shoulder_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.0,
+                0.0,
+                -0.015
+              ],
+              "quat": [
+                -3.6732051033465756e-06,
+                0.9999999999932537,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_elbow_link",
+              "name": "right_elbow_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.055,
+                0.0,
+                -0.01
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_wrist_yaw_link",
+              "name": "right_wrist_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.0,
+                0.0
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            }
+          ],
+          "scope": "Collision primitives from measured source URDF; cylinders become capsules as in Isaac import. Preserve official articulated kinematics, inertia, actuator settings, solver and self-contact condim; sliding friction1.0. No claim of complete engine equivalence."
+        }
+      }
+    },
+    {
+      "command": [
+        "D:\\phygile_unitree_env_20261022\\Scripts\\python.exe",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_unitree_20261022\\evaluate_source_geometry.py",
+        "--source-urdf",
+        "C:/Users/Pende/Documents/ChatGPT/\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210/work/phygile_unitree_20261022/source_main_g1.urdf",
+        "--base-scripts",
+        "C:/Users/Pende/Documents/ChatGPT/\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210/work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/phygile_unitree/scripts",
+        "--unitree-checkout",
+        "C:/Users/Pende/Documents/ChatGPT/\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210/work/phygile_unitree_20261022/vendor_unitree_rl_mjlab",
+        "--assets",
+        "D:/\u5177\u8eab\u667a\u80fd/PhyGile\u590d\u73b0/Unitree\u6846\u67b6\u9002\u914d_20261022/private_assets_contact_v3",
+        "--output",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\source_geometry_comparison_v1\\clip3",
+        "--clip",
+        "3",
+        "--contact-profile",
+        "matched_sliding_friction"
+      ],
+      "exit_code": 0,
+      "receipt": {
+        "status": "FIRST_EPISODE_EVALUATED",
+        "evaluation_type": "simulation_only",
+        "optimizer_steps": 0,
+        "seed": 2026,
+        "device": "cpu",
+        "clip": 3,
+        "started_utc": "2026-10-22T12:46:08.727086+00:00",
+        "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+        "paper_benchmark_reproduced": false,
+        "mapping": {
+          "joint_mapping": [
+            0,
+            3,
+            6,
+            9,
+            13,
+            17,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            21,
+            23,
+            25,
+            27,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28
+          ],
+          "body_mapping": [
+            0,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            3,
+            6,
+            9,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28,
+            13,
+            17,
+            21,
+            23,
+            25,
+            27,
+            29
+          ],
+          "frames": 149
+        },
+        "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+        "motion_sha256": "3bbb62305a12b2f9a23227ad29d1bd36ea7b7b22eb97081fcc0548aee82fd92f",
+        "motion_frames": 149,
+        "contact_profile": "matched_sliding_friction",
+        "source_provenance": {
+          "manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\source_geometry_comparison_v1\\clip3\\executed_sources.json",
+          "sha256": "d02c9c4ef31d912bbe3eba0609c5b34906cdcc83f717768b7f34573a2eb631a2",
+          "source_files": 248
+        },
+        "action_scale_offset_exact": true,
+        "frames_evaluated": 15,
+        "terminated": true,
+        "timeout": false,
+        "full_clip_success": false,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.060884226113557816,
+          "mpjae_rad_until_termination": 0.15522831678390503,
+          "mpjve_rad_s_until_termination": 1.0178422927856445
+        },
+        "elapsed_rollout_seconds": 1.125,
+        "physics_steps": 60,
+        "control_dt": 0.02,
+        "physics_dt": 0.005,
+        "compiled_contact_parameters": [
+          {
+            "name": "terrain",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 0
+          },
+          {
+            "name": "robot/left_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          }
+        ],
+        "executed_sources_unchanged": true,
+        "post_physics_forward_before_termination": true,
+        "body_mass_comparison": {
+          "pelvis": {
+            "isaac": 3.814000129699707,
+            "mjlab": 3.813
+          },
+          "left_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "left_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "left_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "right_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "right_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "right_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "torso_link": {
+            "isaac": 7.816999435424805,
+            "mjlab": 7.818
+          },
+          "left_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "left_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "left_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          },
+          "right_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "right_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "right_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          }
+        },
+        "note": "Same first-episode frozen-policy protocol with explicit source collision geometry. Default official geometry is preserved separately, and no performance improvement is presumed.",
+        "finished_utc": "2026-10-22T12:46:13.483144+00:00",
+        "geometry_profile": "source_urdf_capsule_primitives",
+        "geometry_provenance": {
+          "source_urdf_sha256": "dbc8471004e9b0b85c27a4ebc1f0d90a727c1cf7ca9ef507b805596f2004d64b",
+          "source_collision_count": 29,
+          "source_definitions": [
+            {
+              "body": "pelvis",
+              "name": "pelvis_source0_collision",
+              "type": 2,
+              "size": [
+                0.07,
+                0,
+                0
+              ],
+              "pos": [
+                0.0,
+                0.0,
+                -0.08
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_hip_roll_link",
+              "name": "left_hip_roll_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_knee_link",
+              "name": "left_knee_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot1_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                -0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot2_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                -0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot3_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                -0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot4_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.093,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.0,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot5_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot6_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "left_ankle_roll_link",
+              "name": "left_foot7_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_hip_roll_link",
+              "name": "right_hip_roll_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_knee_link",
+              "name": "right_knee_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.1,
+                0
+              ],
+              "pos": [
+                0.02,
+                0.0,
+                -0.1
+              ],
+              "quat": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot1_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                -0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot2_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                -0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot3_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                -0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot4_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.093,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.0,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot5_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.091,
+                0
+              ],
+              "pos": [
+                0.039,
+                0.01,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot6_collision",
+              "type": 3,
+              "size": [
+                0.008,
+                0.0835,
+                0
+              ],
+              "pos": [
+                0.0395,
+                0.018,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "right_ankle_roll_link",
+              "name": "right_foot7_collision",
+              "type": 3,
+              "size": [
+                0.01,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.026,
+                -0.025
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                0.7071080798594735,
+                0.0
+              ],
+              "foot": true
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.073,
+                0.032,
+                0
+              ],
+              "pos": [
+                0.005,
+                0.0,
+                0.22
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.7071080798594735,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source1_collision",
+              "type": 3,
+              "size": [
+                0.07,
+                0.028,
+                0
+              ],
+              "pos": [
+                0.005,
+                0.0,
+                0.13
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.7071080798594735,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source2_collision",
+              "type": 3,
+              "size": [
+                0.065,
+                0.02,
+                0
+              ],
+              "pos": [
+                0.005,
+                0.0,
+                0.06
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.7071080798594735,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "torso_link",
+              "name": "torso_link_source3_collision",
+              "type": 3,
+              "size": [
+                0.068,
+                0.005,
+                0
+              ],
+              "pos": [
+                0.01,
+                0.0,
+                0.415
+              ],
+              "quat": [
+                -3.6732051033465756e-06,
+                0.9999999999932537,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_shoulder_yaw_link",
+              "name": "left_shoulder_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.0,
+                0.0,
+                -0.015
+              ],
+              "quat": [
+                -3.6732051033465756e-06,
+                0.9999999999932537,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_elbow_link",
+              "name": "left_elbow_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.055,
+                0.0,
+                -0.01
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "left_wrist_yaw_link",
+              "name": "left_wrist_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.0,
+                0.0
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_shoulder_yaw_link",
+              "name": "right_shoulder_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.0,
+                0.0,
+                -0.015
+              ],
+              "quat": [
+                -3.6732051033465756e-06,
+                0.9999999999932537,
+                0.0,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_elbow_link",
+              "name": "right_elbow_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.035,
+                0.065,
+                0
+              ],
+              "pos": [
+                0.055,
+                0.0,
+                -0.01
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            },
+            {
+              "body": "right_wrist_yaw_link",
+              "name": "right_wrist_yaw_link_source0_collision",
+              "type": 3,
+              "size": [
+                0.05,
+                0.025,
+                0
+              ],
+              "pos": [
+                0.075,
+                0.0,
+                0.0
+              ],
+              "quat": [
+                0.7071054825112363,
+                0.0,
+                -0.7071080798594735,
+                0.0
+              ],
+              "foot": false
+            }
+          ],
+          "scope": "Collision primitives from measured source URDF; cylinders become capsules as in Isaac import. Preserve official articulated kinematics, inertia, actuator settings, solver and self-contact condim; sliding friction1.0. No claim of complete engine equivalence."
+        }
+      }
+    }
+  ]
+}

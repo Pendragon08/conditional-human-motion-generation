@@ -8,18 +8,24 @@ import faulthandler
 import argparse,datetime,hashlib,json,os,sys,time,traceback
 from isaaclab.app import AppLauncher
 
-p=argparse.ArgumentParser(description=__doc__)
+p=argparse.ArgumentParser(description=__doc__,allow_abbrev=False)
 p.add_argument('--mode',choices=['preview','train','evaluate'],required=True)
 p.add_argument('--parent',default='/data/code/ouyanghao/oyh/phygile-reproduction-20261017')
 p.add_argument('--checkpoint',required=True);p.add_argument('--output',required=True)
 p.add_argument('--motion-file');p.add_argument('--num-envs',type=int,default=8)
 p.add_argument('--iterations',type=int,default=2);p.add_argument('--steps',type=int,default=100)
-p.add_argument('--seed',type=int,default=2026);p.add_argument('--viewer-approval')
+p.add_argument('--seed',type=int,default=2026);p.add_argument('--viewer-approval');p.add_argument('--execution-consent')
 p.add_argument('--wait-viewer-seconds',type=int,default=0)
 AppLauncher.add_app_launcher_args(p);a=p.parse_args()
 root=Path(__file__).resolve().parents[1];parent=Path(a.parent);out=Path(a.output)
 out.mkdir(parents=True,exist_ok=False)
-if a.mode=='train' and (a.headless or not a.enable_cameras):raise RuntimeError('New RL training requires a visible camera-enabled GUI')
+headless_authorization=None
+if a.mode=='train' and a.headless:
+    auth=Path(a.execution_consent or '')
+    if not auth.is_file():raise RuntimeError('Headless training requires recorded explicit user authorization')
+    headless_authorization=json.loads(auth.read_text(encoding='utf-8'))
+    if headless_authorization.get('kind')!='user_authorized_headless_continuation':raise RuntimeError('Incorrect headless authorization scope')
+elif a.mode=='train' and not a.enable_cameras:raise RuntimeError('Graphical training requires cameras')
 checkpoint=Path(a.checkpoint).resolve()
 def sha(path):
     h=hashlib.sha256()
@@ -27,7 +33,7 @@ def sha(path):
         for b in iter(lambda:f.read(1048576),b''):h.update(b)
     return h.hexdigest()
 receipt={'status':'STARTING','mode':a.mode,'training':a.mode=='train','started_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
- 'parent_checkpoint':str(checkpoint),'parent_sha256':sha(checkpoint),'device':a.device,'headless':a.headless,'display':os.environ.get('DISPLAY'),'seed':a.seed,'num_envs':a.num_envs,'source_sha256':sha(__file__),'task':'Unitree-G1-PhyGile-v0','paper_benchmark_reproduced':False}
+ 'parent_checkpoint':str(checkpoint),'parent_sha256':sha(checkpoint),'device':a.device,'headless':a.headless,'display':os.environ.get('DISPLAY'),'seed':a.seed,'num_envs':a.num_envs,'source_sha256':sha(__file__),'task':'Unitree-G1-PhyGile-v0','paper_benchmark_reproduced':False,'headless_authorization':headless_authorization}
 def save():
     temp=out/'receipt.partial';temp.write_text(json.dumps(receipt,indent=2)+'\n');temp.replace(out/'receipt.json')
 save();app=None;env=None
@@ -36,7 +42,7 @@ faulthandler.dump_traceback_later(120,repeat=True,file=stack_file)
 try:
     app=AppLauncher(a).app
     faulthandler.cancel_dump_traceback_later()
-    print('NATIVE_GUI_APP_LAUNCHED',flush=True)
+    print('ISAAC_APP_LAUNCHED',flush=True)
     import carb,gymnasium as gym,numpy as np,torch
     from PIL import Image
     from isaaclab_rl.rsl_rl import RslRlVecEnvWrapper
@@ -46,9 +52,8 @@ try:
     from unitree_rl_lab.utils.export_deploy_cfg import export_deploy_cfg
     from lab_task import PhyGileUnitreeEnvCfg,semantic_configuration,register
     torch.set_num_threads(4);torch.manual_seed(a.seed);torch.cuda.manual_seed_all(a.seed)
-    if a.mode!='train':
-        torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
-        receipt['inference_tf32']=False
+    torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
+    receipt['tf32']=False
     torch.cuda.set_per_process_memory_fraction(.20,torch.device(a.device))
     cfg=PhyGileUnitreeEnvCfg();original=G1FlatWoStateEstimationEnvCfg()
     eq=semantic_configuration(cfg)==semantic_configuration(original)
@@ -74,7 +79,7 @@ try:
             nframes=len(data['joint_pos']);fps=float(np.asarray(data['fps']).reshape(-1)[0])
         if abs(cfg.sim.dt*cfg.decimation-1/fps)>1e-8:raise RuntimeError('Reference/control rate mismatch')
         cfg.episode_length_s=nframes/fps;cfg.commands.motion.curriculum_enabled=False
-    register();env=gym.make('Unitree-G1-PhyGile-v0',cfg=cfg,render_mode='rgb_array')
+    register();env=gym.make('Unitree-G1-PhyGile-v0',cfg=cfg,render_mode=None if a.headless else 'rgb_array')
     base=env.unwrapped;robot=base.scene['robot'];mt=base.command_manager.get_term('motion')
     if a.mode=='evaluate':
         def reset_start(ids):mt.time_steps[ids]=0
@@ -91,6 +96,13 @@ try:
         for k,v in getattr(runner,name).state_dict().items():
             if not torch.equal(v,loaded[key][k]):raise RuntimeError('Normalizer mismatch: '+k)
     if a.mode=='train':
+        def equal_state(x,y):
+            if isinstance(x,torch.Tensor):return isinstance(y,torch.Tensor) and torch.equal(x.to(y.device),y)
+            if isinstance(x,dict):return x.keys()==y.keys() and all(equal_state(x[k],y[k]) for k in x)
+            if isinstance(x,(list,tuple)):return len(x)==len(y) and all(equal_state(u,v) for u,v in zip(x,y))
+            return x==y
+        if not equal_state(runner.alg.optimizer.state_dict(),loaded['optimizer_state_dict']):raise RuntimeError('Optimizer state did not restore exactly')
+        receipt['optimizer_loaded_exactly']=True
         runner.current_learning_iteration=int(loaded['iter'])+1
         rates={g['lr'] for g in runner.alg.optimizer.param_groups}
         if len(rates)!=1:raise RuntimeError('Inconsistent optimizer LR')
@@ -110,19 +122,28 @@ try:
       'reference_fps':float(np.asarray(mt.motion.fps).reshape(-1)[0]) if hasattr(mt.motion,'fps') else 50.,'policy_config':agent.policy.to_dict(),'checkpoint_sha256':receipt['parent_sha256'],
       'selected_policy':runner.alg.policy.__class__.__module__+'.'+runner.alg.policy.__class__.__name__,'selected_algorithm':runner.alg.__class__.__module__+'.'+runner.alg.__class__.__name__,
       'robot_asset':str(cfg.scene.robot.spawn.asset_path),'active_experts':runner.alg.policy._max_active_experts,
-      'body_mass':robot.root_physx_view.get_masses()[0].cpu().tolist(),'body_inertia':robot.root_physx_view.get_inertias()[0].cpu().tolist()}
+      'body_mass':robot.root_physx_view.get_masses()[0].cpu().tolist(),'body_inertia':robot.root_physx_view.get_inertias()[0].cpu().tolist(),
+      'joint_velocity_limits':values(robot.data.joint_vel_limits),'soft_joint_pos_limits':robot.data.soft_joint_pos_limits[0].cpu().tolist(),
+      'shape_material_properties':robot.root_physx_view.get_material_properties()[0].cpu().tolist(),
+      'ground_material_config':{name:getattr(cfg.scene.terrain.physics_material,name) for name in ['static_friction','dynamic_friction','restitution','friction_combine_mode','restitution_combine_mode']}}
     (out/'contract.json').write_text(json.dumps(contract,indent=2)+'\n')
     export_deploy_cfg(base,str(out/'unitree_export'))
     synthetic=torch.randn((5,obs.shape[-1]),generator=torch.Generator(device='cpu').manual_seed(42)).to(a.device)
     with torch.inference_mode():synthetic_actions=policy(synthetic)
     np.savez_compressed(out/'synthetic_policy_fixture.npz',observations=synthetic.cpu().numpy(),actions=synthetic_actions.cpu().numpy())
-    receipt.update(policy_loaded_exactly=True,normalizers_loaded_exactly=True,policy_observation_shape=list(obs.shape),action_shape=list(probe.shape),policy=contract['selected_policy'],algorithm=contract['selected_algorithm'],active_experts=contract['active_experts'],status='GUI_READY')
-    carb.settings.get_settings().set('/app/window/title','PhyGile / Unitree RL Lab / '+a.mode)
-    frame=env.render()
-    if frame is None or np.asarray(frame).size==0:raise RuntimeError('Actual simulator render is empty')
-    Image.fromarray(np.asarray(frame)[...,:3]).save(out/'frame.png')
-    receipt['render_shape']=list(frame.shape);save()
-    if a.mode=='train':
+    from source_provenance import capture as capture_sources,verify as verify_sources
+    input_files=[__file__,parent/'configs/moe_pilot.yaml',root/'configs/continuation_v2.json']
+    if a.execution_consent:input_files.append(a.execution_consent)
+    receipt['source_provenance']=capture_sources(out/'executed_sources.json',[root,parent/'upstream',os.environ['ISAAC_LAB_ROOT']],input_files)
+    receipt.update(policy_loaded_exactly=True,normalizers_loaded_exactly=True,policy_observation_shape=list(obs.shape),action_shape=list(probe.shape),policy=contract['selected_policy'],algorithm=contract['selected_algorithm'],active_experts=contract['active_experts'],status='SIMULATION_READY')
+    if not a.headless:
+        carb.settings.get_settings().set('/app/window/title','PhyGile / Unitree RL Lab / '+a.mode)
+        frame=env.render()
+        if frame is None or np.asarray(frame).size==0:raise RuntimeError('Actual simulator render is empty')
+        Image.fromarray(np.asarray(frame)[...,:3]).save(out/'frame.png')
+        receipt['render_shape']=list(frame.shape)
+    save()
+    if a.mode=='train' and not a.headless:
         approval=Path(a.viewer_approval or '')
         if not approval.is_file():raise RuntimeError('Missing prior local viewer acceptance receipt')
         verified=json.loads(approval.read_text())
@@ -134,7 +155,7 @@ try:
     original_step=wrapped.step;counter=[0]
     def visible_step(actions):
         result=original_step(actions);counter[0]+=1
-        if counter[0]%4==0:
+        if not a.headless and counter[0]%4==0:
             frame=env.render()
             if frame is not None:
                 path=out/'frame.next.png';Image.fromarray(np.asarray(frame)[...,:3]).save(path);path.replace(out/'frame.png')
@@ -144,12 +165,17 @@ try:
         before={k:v.detach().clone() for k,v in runner.alg.policy.named_parameters()}
         initial_steps=sorted({float(s['step']) for s in runner.alg.optimizer.state.values() if 'step' in s})
         calls=[0]
+        def finite_step(optimizer,args,kwargs):
+            terms=[torch.isfinite(p.grad).all() for group in optimizer.param_groups for p in group['params'] if p.grad is not None]
+            if terms and not bool(torch.stack(terms).all()):raise FloatingPointError('Nonfinite gradient before Adam')
+        runner.alg.optimizer.register_step_pre_hook(finite_step)
         def count_step(*_):calls[0]+=1
         runner.alg.optimizer.register_step_post_hook(count_step)
         runner.learn(num_learning_iterations=a.iterations,init_at_random_ep_len=True)
         final=out/'adapted_checkpoint.pt';runner.save(str(final))
         after=dict(runner.alg.policy.named_parameters());changed=[k for k,v in before.items() if not torch.equal(v,after[k])]
         if not changed or not all(torch.isfinite(v).all() for v in after.values()):raise RuntimeError('No finite policy training update observed')
+        if not all(torch.isfinite(v).all() for s in runner.alg.optimizer.state.values() for v in s.values() if isinstance(v,torch.Tensor)):raise FloatingPointError('Nonfinite Adam state')
         expected=a.iterations*agent.algorithm.num_learning_epochs*agent.algorithm.num_mini_batches
         if calls[0]!=expected:raise RuntimeError('Actual Adam calls differ from bounded PPO budget')
         receipt.update(status='BOUNDED_TRAINING_COMPLETED',parent_ppo_iterations=int(loaded['iter'])+1,additional_ppo_iterations=a.iterations,
@@ -203,7 +229,7 @@ try:
                 if not torch.isfinite(actions).all():raise RuntimeError('Nonfinite action')
                 obs,_,_,_=wrapped.step(actions)
         receipt.update(status='RENDERED_POLICY_PREVIEW_COMPLETED',control_calls=counter[0])
-    receipt.update(parent_unchanged=sha(checkpoint)==receipt['parent_sha256'],finished_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),torch_peak_allocated_bytes=torch.cuda.max_memory_allocated(torch.device(a.device)))
+    receipt.update(parent_unchanged=sha(checkpoint)==receipt['parent_sha256'],executed_sources_unchanged=verify_sources(receipt['source_provenance']),finished_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),torch_peak_allocated_bytes=torch.cuda.max_memory_allocated(torch.device(a.device)))
     if not receipt['parent_unchanged']:raise RuntimeError('Parent checkpoint changed')
     save();print('UNITREE_PHYGILE_RESULT',json.dumps(receipt),flush=True)
 except BaseException as exc:

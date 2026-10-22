@@ -1,0 +1,70 @@
+{
+  "status": "FIRST_EPISODE_EVALUATED",
+  "mode": "evaluate",
+  "training": false,
+  "started_utc": "2026-10-22T13:30:09.738002+00:00",
+  "parent_checkpoint": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/runs/headless_continue500_v1/adapted_checkpoint.pt",
+  "parent_sha256": "30ac49b42a793ec8832c72fafacce5bd0a4e51abca9ed2868aebf0e5dbc528ee",
+  "device": "cuda:1",
+  "headless": true,
+  "display": null,
+  "seed": 2026,
+  "num_envs": 1,
+  "source_sha256": "8afffc1fade430861dab8c96b38ba6ca7d6c2eef2aca2878c72180a50ed6c0f2",
+  "task": "Unitree-G1-PhyGile-v0",
+  "paper_benchmark_reproduced": false,
+  "headless_authorization": null,
+  "tf32": false,
+  "configuration_semantic_equality": true,
+  "environment_mro": [
+    "lab_task.PhyGileUnitreeEnvCfg",
+    "unitree_rl_lab.tasks.mimic.robots.g1_29dof.dance_102.tracking_env_cfg.RobotEnvCfg",
+    "isaaclab.envs.manager_based_rl_env_cfg.ManagerBasedRLEnvCfg",
+    "isaaclab.envs.manager_based_env_cfg.ManagerBasedEnvCfg",
+    "builtins.object"
+  ],
+  "evaluation_overrides": [
+    "no observation noise",
+    "no startup material/default-joint/COM randomization",
+    "no pushes",
+    "zero reset pose/velocity/joint perturbation"
+  ],
+  "source_provenance": {
+    "manifest": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/runs/post_continue500_v1/isaac_clip2/executed_sources.json",
+    "sha256": "6fe05a9be1557d2357a06e290263bbdb27e9cbfba34dbdf6c613a42a56f0f19b",
+    "source_files": 445
+  },
+  "policy_loaded_exactly": true,
+  "normalizers_loaded_exactly": true,
+  "policy_observation_shape": [
+    1,
+    616
+  ],
+  "action_shape": [
+    1,
+    29
+  ],
+  "policy": "whole_body_tracking.utils.encoder_actor_critic.MoEActorCritic",
+  "algorithm": "whole_body_tracking.utils.moe_ppo.MoEPPO",
+  "active_experts": 1,
+  "evaluation_type": "simulation_only",
+  "optimizer_steps": 0,
+  "motion_frames": 149,
+  "motion_sha256": "b212bd307ecbfc9d3ed407c45ce62f48b3a70ecc803099efb61fd018efd7fe59",
+  "frames_evaluated": 149,
+  "terminated": false,
+  "timeout": true,
+  "full_clip_success": true,
+  "metrics": {
+    "mpjpe_m_until_termination": 0.11087962239980698,
+    "mpjae_rad_until_termination": 0.21065440773963928,
+    "mpjve_rad_s_until_termination": 0.4945846199989319
+  },
+  "control_calls": 149,
+  "physics_steps": 596,
+  "protocol": "First episode from frame 0; pre-reset/post-physics state compared with current reference t; deterministic reset; original failure terminations retained. Errors are censored at failure.",
+  "parent_unchanged": true,
+  "executed_sources_unchanged": true,
+  "finished_utc": "2026-10-22T13:31:00.702563+00:00",
+  "torch_peak_allocated_bytes": 111281152
+}

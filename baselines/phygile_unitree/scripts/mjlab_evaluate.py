@@ -4,6 +4,7 @@ import argparse,datetime,hashlib,json,os,sys,time,traceback
 os.environ.update(OMP_NUM_THREADS='4',MKL_NUM_THREADS='4',OPENBLAS_NUM_THREADS='4',WANDB_MODE='disabled')
 p=argparse.ArgumentParser();p.add_argument('--unitree-checkout',type=Path,required=True);p.add_argument('--assets',type=Path,required=True)
 p.add_argument('--output',type=Path,required=True);p.add_argument('--clip',type=int,default=0);p.add_argument('--seed',type=int,default=2026)
+p.add_argument('--checkpoint',type=Path);p.add_argument('--contact-profile',choices=['official','matched_sliding_friction'],default='official')
 p.add_argument('--max-steps',type=int,default=0);p.add_argument('--device',default='cpu');a=p.parse_args()
 a.output.mkdir(parents=True,exist_ok=False)
 sys.path.insert(0,str(a.unitree_checkout.resolve()))
@@ -18,13 +19,18 @@ try:
  torch.set_num_threads(4);torch.manual_seed(a.seed);wp.init()
  c=json.loads((a.assets/'contract.json').read_text(encoding='utf-8'));source=a.assets/f'test_{a.clip:03d}.npz'
  with np.load(source,allow_pickle=False) as data:nframes=len(data['joint_pos'])
- cfg=make_config(c,a.output/'converted_motion.npz',nframes,a.seed)
+ cfg=make_config(c,a.output/'converted_motion.npz',nframes,a.seed,a.contact_profile)
  standalone=cfg.scene.entities['robot'].build()
  mapping=convert_motion(source,a.output/'converted_motion.npz',standalone.joint_names,standalone.body_names)
- receipt.update(mapping=mapping,checkpoint_sha256=hashlib.sha256((a.assets/'parent_checkpoint.pt').read_bytes()).hexdigest(),motion_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),motion_frames=nframes)
+ checkpoint=a.checkpoint or a.assets/'parent_checkpoint.pt'
+ receipt.update(mapping=mapping,checkpoint_sha256=hashlib.sha256(checkpoint.read_bytes()).hexdigest(),motion_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),motion_frames=nframes,contact_profile=a.contact_profile)
  save()
  env=PhyGileMjlabEnv(cfg,c,device=a.device,render_mode=None)
- policy=FrozenPhyGile(a.assets/'parent_checkpoint.pt',c,a.assets/'encoder_actor_critic.py',a.device)
+ policy=FrozenPhyGile(checkpoint,c,a.assets/'encoder_actor_critic.py',a.device)
+ from source_provenance import capture as capture_sources,verify as verify_sources
+ import mjlab
+ receipt['source_provenance']=capture_sources(a.output/'executed_sources.json',[Path(__file__).resolve().parents[1],a.unitree_checkout,Path(mjlab.__file__).parent],[__file__,a.assets/'contract.json',a.assets/'encoder_actor_critic.py',checkpoint,source])
+ save()
  robot=env.scene['robot'];mt=env.command_manager.get_term('motion')
  obs,_=env.reset(seed=a.seed);initialize_relative(mt)
  obs=env.observation_manager.compute(update_history=False)
@@ -70,6 +76,8 @@ try:
   frames_evaluated=len(rows),terminated=bool(raw['terminated'][-1]),timeout=bool(raw['timeout'][-1]),
   full_clip_success=bool(ended and len(rows)==nframes and not raw['terminated'].any()),metrics=metrics,
   elapsed_rollout_seconds=time.monotonic()-started,physics_steps=len(rows)*cfg.decimation,control_dt=env.step_dt,physics_dt=env.physics_dt,
+  compiled_contact_parameters=[{'name':mujoco.mj_id2name(model,mujoco.mjtObj.mjOBJ_GEOM,i),'friction':model.geom_friction[i].tolist(),'condim':int(model.geom_condim[i]),'priority':int(model.geom_priority[i])} for i in range(model.ngeom) if 'foot' in (mujoco.mj_id2name(model,mujoco.mjtObj.mjOBJ_GEOM,i) or '') or 'terrain' in (mujoco.mj_id2name(model,mujoco.mjtObj.mjOBJ_GEOM,i) or '')],
+  executed_sources_unchanged=verify_sources(receipt['source_provenance']),
   post_physics_forward_before_termination=True,body_mass_comparison=shared,
   note='Errors censored at first termination; interpret with duration and success. Default framework geometry/solver differences are retained and disclosed; same PD/action/command contract. No new policy optimization.',
   finished_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())

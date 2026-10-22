@@ -3,7 +3,7 @@
 Only frozen-policy validation is implemented here. It does not replace the
 paper's MoEPPO training algorithm with the newer RSL-RL default.
 """
-from dataclasses import dataclass,fields
+from dataclasses import dataclass,fields,replace
 import copy,re
 import numpy as np
 import torch
@@ -80,7 +80,7 @@ def convert_motion(source,destination,robot_joint_names,robot_body_names):
     np.savez_compressed(destination,**values)
     return {'joint_mapping':joints,'body_mapping':bodies,'frames':len(values['joint_pos'])}
 
-def make_config(contract,motion_file,frames,seed=2026):
+def make_config(contract,motion_file,frames,seed=2026,contact_profile='official'):
     cfg=unitree_g1_flat_tracking_env_cfg(has_state_estimation=False,play=True)
     cfg.seed=seed;cfg.scene.num_envs=1
     robot=cfg.scene.entities['robot'];names=contract['joint_names']
@@ -88,6 +88,18 @@ def make_config(contract,motion_file,frames,seed=2026):
     robot.articulation=EntityArticulationInfoCfg(actuators=tuple(BuiltinPositionActuatorCfg(target_names_expr=(re.escape(name),),
       stiffness=contract['stiffness'][i],damping=contract['damping'][i],effort_limit=contract['joint_effort_limits'][i],armature=contract['joint_armature'][i]) for i,name in enumerate(names)),soft_joint_pos_limit_factor=.9)
     robot.sort_actuators=True
+    if contact_profile=='matched_sliding_friction':
+        # Measured deterministic PhysX materials are all [1,1,0] on ground
+        # [1,1,0], multiply combine. Match only the sliding coefficient.
+        # Keep official geometry, condim, torsion/rolling and solver unchanged.
+        material=np.asarray(contract['shape_material_properties'])
+        ground=contract['ground_material_config']
+        if not (np.allclose(material,[1.,1.,0.],atol=0,rtol=0) and
+                ground['static_friction']==ground['dynamic_friction']==1. and
+                ground['friction_combine_mode']=='multiply'):
+            raise ValueError('This profile requires measured uniform source materials')
+        robot.collisions=tuple(replace(x,friction={r'^(left|right)_foot[1-7]_collision$':(1.0,)}) for x in robot.collisions)
+    elif contact_profile!='official':raise ValueError(contact_profile)
     action=cfg.actions['joint_pos']
     action.scale=dict(zip(names,contract['action_scale']))
     action.offset=dict(zip(names,contract['action_offset']))

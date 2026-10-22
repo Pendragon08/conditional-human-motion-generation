@@ -1,0 +1,33 @@
+{
+  "status": "FAIL_WITNESS_HARNESS_ENCODING_BEFORE_PHYSICS",
+  "actual_exit_code": 2,
+  "documented_command_text_preserved": true,
+  "runtime_unicode_arguments_preserved": false,
+  "wrapper_utf8_bom_present": false,
+  "wrapper_first_bytes": [
+    38,
+    32,
+    39,
+    68,
+    58,
+    47,
+    112,
+    104
+  ],
+  "outer_powershell_version": "7.6.5",
+  "outer_powershell_edition": "Core",
+  "child_shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "physics_episodes_completed": 0,
+  "expected_physics_episodes": 8,
+  "comparison_json_exists": false,
+  "child_receipts_count": 0,
+  "finite_first_episode_metrics": "NOT_EVALUATED",
+  "compiled_foot_friction_0_6_vs_1_0": "NOT_EVALUATED",
+  "source_files_checked": 366,
+  "source_changes": [],
+  "sources_unchanged": true,
+  "no_retries": true,
+  "no_source_or_dependency_repairs": true,
+  "cause": "Witness harness wrote a UTF-8-without-BOM script and executed it with Windows PowerShell 5.1. Its legacy script decoding corrupted Chinese command arguments before Python could open the entrypoint. This does not establish a defect in the documented command, environment, model, or physics.",
+  "interpretation": "No successful actual-physics witness and no tracking quality claim. Improvement is not an acceptance condition; these clips are development diagnostics."
+}

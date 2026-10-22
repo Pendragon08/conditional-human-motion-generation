@@ -16,7 +16,10 @@ class FrozenPhyGile:
         cfg=dict(contract['policy_config']);cfg.pop('class_name')
         self.model=module.MoEActorCritic(num_actor_obs=contract['observation_dims']['policy'][0],
           num_critic_obs=contract['observation_dims']['critic'][0],num_actions=len(contract['joint_names']),**cfg).to(device)
-        self.model.load_state_dict(payload['model_state_dict'],strict=True)
+        if 'artifact_kind' in payload:
+            from active_policy_artifact import load_active
+            load_active(self.model,payload,contract)
+        else:self.model.load_state_dict(payload['model_state_dict'],strict=True)
         self.model._max_active_experts=contract['active_experts']
         self.model.eval();self.norm={k:v.to(device) for k,v in payload['obs_norm_state_dict'].items()}
         if not {'_mean','_std'}.issubset(self.norm):raise ValueError('Unknown empirical normalizer state schema')
