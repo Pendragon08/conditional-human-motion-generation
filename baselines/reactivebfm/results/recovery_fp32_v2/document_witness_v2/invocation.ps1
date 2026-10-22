@@ -1,0 +1,2 @@
+ssh -o BatchMode=yes -o ConnectTimeout=15 -i C:/Users/Pende/.ssh/id_ed25519 ouyanghao@10.147.17.32 "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/env/bin/python /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/code/scripts/launch_recovery.py --config /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/code/configs/recovery_fp32_v2.json --output /home/ouyanghao/reactivebfm-full-20261021/recovery_doc_witness_v2 --probe-updates 8"
+

@@ -81,15 +81,18 @@ class Worker:
     def snapshot(self):
         root = repr(self.c['server_output'])
         return json.loads(self.remote("from pathlib import Path, PurePosixPath\nimport json,time\nr=Path(" + root + ")\n"
-            "out={'statuses':[], 'manifests':[], 'utc_epoch':time.time()}\n"
+            "out={'statuses':[], 'manifests':[], 'health':[], 'utc_epoch':time.time()}\n"
             "for p in sorted(r.glob('status_rank*.json')):\n"
             " try:\n  s=json.loads(p.read_text());s['status_file_mtime_epoch']=p.stat().st_mtime;out['statuses'].append(s)\n"
+            " except (ValueError,OSError):pass\n"
+            "for p in sorted(r.glob('health_rank*.json')):\n"
+            " try:out['health'].append(json.loads(p.read_text()))\n"
             " except (ValueError,OSError):pass\n"
             "for p in sorted(r.glob('checkpoint_ready_*.json')):\n"
             " try:out['manifests'].append(json.loads(p.read_text()))\n"
             " except (ValueError,OSError):pass\n"
             "import subprocess\n"
-            "matches=subprocess.run(['pgrep','-f','/code/scripts/train_full.py'],capture_output=True,text=True).stdout.split()\n"
+            "matches=subprocess.run(['pgrep','-f'," + repr(self.c.get('training_script','/code/scripts/train_full.py')) + "],capture_output=True,text=True).stdout.split()\n"
             "out['training_pids']=[]\n"
             "for pid in matches:\n"
             " try:\n  args=Path('/proc/'+pid+'/cmdline').read_bytes().decode().split('\\x00')\n"
@@ -140,7 +143,7 @@ class Worker:
 
     def evaluate(self, manifest, directory):
         updates = manifest['optimizer_updates']; results = []
-        if updates not in [1000, 10001, 1000000] and updates % 100000 not in [0, 1]: return results
+        if updates not in self.c.get('evaluation_updates', [1000, 10001, 1000000]) and updates % 100000 not in [0, 1]: return results
         model = next(x['file'] for x in manifest['files'] if Path(x['file']).name.startswith('model'))
         cases = [('stand_still', 'stand still'), ('walk_forward', 'walk forward'), ('punch', 'perform a punch')]
         for case, prompt in cases:
@@ -209,7 +212,7 @@ class Worker:
         updates = manifest['optimizer_updates']; passed = [e for e in evaluations if e.get('status') == 'PHYSICAL_CLOSED_LOOP_EXECUTED']
         upright = [e for e in passed if e.get('upright_entire_rollout_height_proxy')]
         rows = ['# ReactiveBFM 完整课程训练阶段报告', '', f'实际优化器更新：{updates:,} / 1,000,000。',
-            '配置：双 RTX A6000，512×2，全局 batch1024，400k warmup，EMA、BF16、激活重算；使用官方三子集组合与各自归一化。',
+            self.c.get('training_description', '配置：双 RTX A6000，512×2，全局 batch1024，400k warmup，EMA、BF16、激活重算；使用官方三子集组合与各自归一化。'),
             '该快照不等于已复现原文性能；目标到达数据/官方完整评测仍未公开。', '',
             '## 检查点备份', '', '下列文件大小及 GitHub 服务端 SHA256 与服务器保存记录一致。', '']
         rows += [f"- {x['name']}: {x['bytes']} bytes, SHA256 `{x['sha256']}`" for x in assets]
@@ -275,6 +278,11 @@ print(json.dumps(removed))
                         self.download(row['file'], path, row['sha256'], row['bytes'])
                         verified.append(self.upload(path, assets))
                     atomic_json(directory / f'checkpoint_{m["official_step"]:09d}_manifest.json', m)
+                    raw_manifest = directory / 'raw_ready_manifest.json'
+                    self.download(self.c['server_output'] + f'/checkpoint_ready_{m["official_step"]:09d}.json', raw_manifest)
+                    if json.loads(raw_manifest.read_text(encoding='utf-8')) != m:
+                        raise RuntimeError('Raw ready manifest differs from snapshot')
+                    atomic_json(directory / 'raw_ready_manifest_integrity.json', {'sha256':digest(raw_manifest), 'bytes':raw_manifest.stat().st_size})
                     self.download(self.c['server_output'] + '/checkpoints/args.json', directory / 'args.json')
                     limit=m['optimizer_updates']
                     script='import json\nfrom pathlib import Path, PurePosixPath\np=Path('+repr(self.c['server_output']+'/metrics.jsonl')+')\n'
