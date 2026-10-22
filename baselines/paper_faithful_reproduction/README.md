@@ -2,7 +2,9 @@
 
 **状态：进行中，尚未完成两篇论文的完整性能复现。**
 
+- [最新检查点10,061：真实闭环评价与视频](reports/checkpoint_10061_progress.md)：候选续训已保存新模型；500次控制、20次有效重规划、33/500帧超过近似失败阈值，仍判失败。新视频和完整轨迹记录已保存。
 - [2026-10-23 06:23 检查与数值恢复](reports/heartbeat_20261023_0623.md)：v3 在16,871次更新后自行异常退出，最近可恢复检查点为10,041次；完整故障记录及精度对照已保存，恢复状态见该报告。
+- [同轮备份重试补充](reports/backup_followup_20261023.md)：首次复制遇到连接超时，错误已保留；后续只复制任务使用 `_retry1` 独立目录。
 - [2026-10-23 03:26 后续进展](reports/heartbeat_20261023_0326.md)：训练检查及 PhyGile 时基一致子集，保留40条、暂不纳入26条。
 - [完整中文进展报告](reports/reproduction_progress_20261023.md)：原文与代码差异、训练进度、失败结果和未完成部分。
 - [视频、报告离线包与原始实验记录](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/paper-reproduction-progress-20261023)。下载 `report_and_videos.zip` 后解压，打开 `复现报告与视频.html`。
