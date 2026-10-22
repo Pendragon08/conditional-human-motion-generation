@@ -1,0 +1,190 @@
+{
+  "status": "CONFIGURED_NOT_FULLY_TRAINED",
+  "official_commit": "d48621620f522f5c901ef378d57db8df92d2888d",
+  "paper": "https://arxiv.org/pdf/2603.19305v3",
+  "changes": [
+    {
+      "phase": "a",
+      "upstream_sha256": "34c58136adc4b740c1592fcd908a7da3402c9f05161e088f0afc81ddd8898dc8",
+      "changes": [
+        {
+          "key": "policy.moe_config.expert_hidden_dims",
+          "official_example": [
+            512,
+            256
+          ],
+          "paper_profile": [
+            2048,
+            1024,
+            512
+          ],
+          "evidence": "PhyGile v3 PDF p11 section 7a"
+        },
+        {
+          "key": "commands.motion.file_freeze_min_attempts",
+          "official_example": 55000,
+          "paper_profile": 20000,
+          "evidence": "PhyGile v3 PDF p11 Table IX"
+        },
+        {
+          "key": "commands.motion.file_freeze_iters",
+          "official_example": 5000,
+          "paper_profile": 4000,
+          "evidence": "PhyGile v3 PDF p11 Table IX"
+        },
+        {
+          "key": "commands.motion.file_freeze_check_interval",
+          "official_example": 1000,
+          "paper_profile": 500,
+          "evidence": "PhyGile v3 PDF p11 Table IX"
+        },
+        {
+          "key": "runner.num_steps_per_env",
+          "official_example": 24,
+          "paper_profile": 24,
+          "evidence": "PhyGile v3 PDF p11 Table XI; per-profile cap, stage allocation unspecified"
+        },
+        {
+          "key": "runner.max_iterations",
+          "official_example": 200000,
+          "paper_profile": 200000,
+          "evidence": "PhyGile v3 PDF p11 Table XI; per-profile cap, stage allocation unspecified"
+        },
+        {
+          "key": "runner.save_interval",
+          "official_example": 1000,
+          "paper_profile": 1000,
+          "evidence": "PhyGile v3 PDF p11 Table XI; per-profile cap, stage allocation unspecified"
+        },
+        {
+          "key": "commands.motion.preload_device",
+          "official_example": "cuda:1",
+          "paper_profile": "cuda:0",
+          "evidence": "Execution placement only; replace with allocated device"
+        },
+        {
+          "key": "commands.motion.curriculum_csv_path",
+          "official_example": "/ssd/bjc/bm_mlp/source/whole_body_tracking/whole_body_tracking/utils/filtered_texts_211.csv",
+          "paper_profile": "REQUIRED_VERIFIED_DIFFICULTY_CSV",
+          "evidence": "Author DeepSeek difficulty labels unavailable; no fabricated labels"
+        },
+        {
+          "key": "commands.motion.curriculum_mocap_dir",
+          "official_example": "/ssd/humanoid/dataset/mocap_npz",
+          "paper_profile": "REQUIRED_VERIFIED_50HZ_MOTION_DIR",
+          "evidence": "Full public corpus and private 3h unavailable"
+        },
+        {
+          "key": "commands.motion.curriculum_resume_level_override",
+          "official_example": 7,
+          "paper_profile": 1,
+          "evidence": "PhyGile v3 PDF p4: start Stage I at level1, not example continuation level7"
+        }
+      ]
+    },
+    {
+      "phase": "b",
+      "upstream_sha256": "8dbaf2251fb179f6c0e44a9cb3d206481057f0897162a59386dfea4c49c37d85",
+      "changes": [
+        {
+          "key": "policy.moe_config.expert_hidden_dims",
+          "official_example": [
+            512,
+            256
+          ],
+          "paper_profile": [
+            2048,
+            1024,
+            512
+          ],
+          "evidence": "PhyGile v3 PDF p11 section 7a"
+        },
+        {
+          "key": "commands.motion.file_freeze_min_attempts",
+          "official_example": 150000,
+          "paper_profile": 20000,
+          "evidence": "PhyGile v3 PDF p11 Table IX"
+        },
+        {
+          "key": "commands.motion.file_freeze_iters",
+          "official_example": 5000,
+          "paper_profile": 4000,
+          "evidence": "PhyGile v3 PDF p11 Table IX"
+        },
+        {
+          "key": "commands.motion.file_freeze_check_interval",
+          "official_example": 1000,
+          "paper_profile": 500,
+          "evidence": "PhyGile v3 PDF p11 Table IX"
+        },
+        {
+          "key": "runner.num_steps_per_env",
+          "official_example": 24,
+          "paper_profile": 24,
+          "evidence": "PhyGile v3 PDF p11 Table XI; per-profile cap, stage allocation unspecified"
+        },
+        {
+          "key": "runner.max_iterations",
+          "official_example": 300000,
+          "paper_profile": 200000,
+          "evidence": "PhyGile v3 PDF p11 Table XI; per-profile cap, stage allocation unspecified"
+        },
+        {
+          "key": "runner.save_interval",
+          "official_example": 1000,
+          "paper_profile": 1000,
+          "evidence": "PhyGile v3 PDF p11 Table XI; per-profile cap, stage allocation unspecified"
+        },
+        {
+          "key": "commands.motion.preload_device",
+          "official_example": "cuda:1",
+          "paper_profile": "cuda:0",
+          "evidence": "Execution placement only; replace with allocated device"
+        },
+        {
+          "key": "commands.motion.curriculum_csv_path",
+          "official_example": null,
+          "paper_profile": "REQUIRED_VERIFIED_DIFFICULTY_CSV",
+          "evidence": "Author DeepSeek difficulty labels unavailable; no fabricated labels"
+        },
+        {
+          "key": "commands.motion.curriculum_mocap_dir",
+          "official_example": null,
+          "paper_profile": "REQUIRED_VERIFIED_50HZ_MOTION_DIR",
+          "evidence": "Full public corpus and private 3h unavailable"
+        }
+      ]
+    }
+  ],
+  "launch_arguments": {
+    "num_envs": 8192,
+    "headless": true,
+    "seed": 42
+  },
+  "seed_source": "reproduction choice; not specified by paper",
+  "environment": {
+    "IsaacSim": "4.5.0",
+    "IsaacLab": "2.1.0",
+    "dt": 0.005,
+    "decimation": 4,
+    "episode_seconds": 10,
+    "spacing_m": 2.5
+  },
+  "must_verify_resolved_environment_before_launch": true,
+  "full_run_blockers": [
+    "Full45h corpus includes unavailable private3h",
+    "Author difficulty CSV unavailable",
+    "Previously trained expert512x256 checkpoints incompatible with paper2048x1024x512 experts",
+    "8192 environments not yet resource-validated on currently shared GPUs"
+  ],
+  "generator_missing_author_details": [
+    "optimizer and learning-rate schedule",
+    "training batch size and steps",
+    "exact codec frame/difference conventions",
+    "denoising schedule",
+    "ASFO rarity cap and probability alpha",
+    "closed-loop MPJPE tolerance and PPO update budget",
+    "robot-space generation evaluator weights/splits"
+  ],
+  "do_not_infer": "Unspecified settings must remain reconstruction choices, never paper facts"
+}
