@@ -1,0 +1,288 @@
+{
+  "schema": "independent_integrity_v3.experiment_audit.v1",
+  "audit_skill": "experiment-audit",
+  "date": "2026-10-22",
+  "generated_at": "2026-10-22T15:00:00Z",
+  "project": "PhyGile Unitree bounded continuation and dual-simulator migration",
+  "project_root": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/phygile_unitree",
+  "local_evidence_root": "D:/具身智能/PhyGile复现/Unitree框架适配_20261022",
+  "verdict": "WARN",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "reviewer_requested_model": "gpt-5.6-sol",
+  "reviewer_requested_reasoning": "ultra",
+  "reviewer_actual_backend_independently_verified": false,
+  "reviewer_agent_id": "/root/unitree_v3_integrity_supplement/fresh_integrity_reviewer",
+  "verifier_agent_id": "/root/unitree_v3_integrity_supplement/checkpoint_binding_verifier",
+  "executor_model_self_reported": "Codex based on GPT-6",
+  "executor_exact_backend_independently_verified": false,
+  "read_only": true,
+  "experiment_or_physics_reruns": 0,
+  "server_process_operations": 0,
+  "input_manifest": {
+    "path": "AUDITED_INPUT_HASHES_V3.json",
+    "sha256": "0c3880cdffc787637b734a70e516f35015b789afb4d813ab551f7d3851160c9f"
+  },
+  "deterministic_checks": {
+    "path": "DETERMINISTIC_CHECKS.json",
+    "sha256": "569b05b80cb02f494777c9098fe2a6cc124889d76965c1d7845173eb9bb82ec4"
+  },
+  "reason_codes": [
+    "new_policy_four_batch_matrix_not_preexisting_archived_witness",
+    "runtime_loader_digest_enforcement_is_separate",
+    "same_family_review_provisional"
+  ],
+  "documented_limitation_codes": [
+    "resume2_release_asset_not_locally_byte_verified",
+    "record_level_multilabel_metadata_incomplete",
+    "v2_events_jsonl_not_directly_evidence_indexed"
+  ],
+  "summary": "No fabricated result or prediction-dependent metric normalization was found. The 500-iteration checkpoint, Adam state, compact binding, current loader, raw metrics, public seal, and evidence index validate. WARN records bounded documentary, release-completeness, and metadata limits.",
+  "checks": {
+    "A_ground_truth_and_reference_provenance": {
+      "status": "PASS",
+      "details": "Private motion arrays are reference inputs for real_gt tracking; generated references are FK-derived from candidates and explicitly reported as synthetic proxies; held-pose fixtures are self-supervised proxies.",
+      "evidence": [
+        "P/scripts/mjlab_evaluate.py:20-26,54-72",
+        "P/scripts/lab_run.py:197-224",
+        "P/scripts/unitree_prefix_adapter.py:77-92",
+        "P/results/v3/evidence/bbcc13fda1be26a6.json:2-29,30-100,110-155",
+        "D/closure_mjlab_continue500_v1/verification.json:2-28,106-142",
+        "P/results/v3/summary.json:149-368"
+      ]
+    },
+    "B_raw_metrics_and_score_normalization": {
+      "status": "PASS",
+      "details": "Raw MPJPE, angle, and velocity errors are direct reference-minus-robot metrics; no denominator is derived from predictions. The serialized policy normalizer is an input transform and is bitwise bound to the full checkpoint.",
+      "evidence": [
+        "P/scripts/lab_run.py:212-224",
+        "P/scripts/mjlab_evaluate.py:65-82",
+        "P/../phygile/reimplementation/physics_prefix.py:75-120",
+        "P/scripts/frozen_policy.py:24-31",
+        "P/results/v3/new_policy_artifact_binding.json:8-40"
+      ]
+    },
+    "C_report_status_checkpoint_optimizer_evaluation_release": {
+      "status": "PASS",
+      "details": "All material report/status/numeric claims match the sealed receipts and directly inspected PPO2500 checkpoint. The auxiliary resume2 release asset has sealed metadata/receipt but no local bytes for this independent audit; the report does not claim such a local download.",
+      "evidence": [
+        "P/results/v3/evidence/26023b2d4bf2952e.json:2-15,33-68",
+        "P/results/v3/summary.json:2-368",
+        "P/reports/PhyGile_Unitree续训500次与闭环迁移最终报告_20261022.md:26-52,68-86",
+        "P/EXPERIMENT_TRACKER.md:3-30",
+        "D/downloaded_full_checkpoint_verification_v3.json:2-4",
+        "P/results/v3/release/github_release_assets_v3.json:6-25",
+        "P/results/v3/release/github_weight_ppo2500_receipt.json:2-10",
+        "P/results/v3/release/github_weight_resume2_receipt.json:2-10"
+      ],
+      "checkpoint_inspection": {
+        "bytes": 67350908,
+        "sha256": "30ac49b42a793ec8832c72fafacce5bd0a4e51abca9ed2868aebf0e5dbc528ee",
+        "iter": 2499,
+        "model_state_tensors": 97,
+        "total_tensors": 180,
+        "finite_tensors": 180,
+        "initialized_adam_states": 25,
+        "lazy_inactive_expert_parameter_ids": 66,
+        "adam_step": 50000,
+        "parent_adam_step": 40000,
+        "changed_unique_named_parameters": 21
+      }
+    },
+    "D_current_loader_binding_and_executed_sources": {
+      "status": "WARN",
+      "details": "Current new full/compact policies were directly executed bitwise equal at batches 1/7/128/1024 with all omitted-branch guards firing and GPU/CPU fixture tolerance satisfied. The archived four-batch witness is parent-policy-only, and runtime digest identity checks remain a separate verifier.",
+      "evidence": [
+        "P/scripts/frozen_policy.py:15-32",
+        "P/scripts/active_policy_artifact.py:10-23",
+        "P/scripts/verify_artifact_binding.py:10-41",
+        "P/results/v3/new_policy_artifact_binding.json:2-51",
+        "D/private_assets_continue500_v1/contract.json:355-426",
+        "D/production_active_doc_witness_v3/witness_report.json:2-19,21-58",
+        "D/production_active_validation_v3/production_proof.json:17-62",
+        "D/production_active_doc_witness_v2/witness_report.json:2-41",
+        "P/results/v3/production_batch_diagnosis_v2.json:1-29",
+        "P/scripts/source_provenance.py:11-36"
+      ]
+    },
+    "E_scope_seeds_data_horizons_and_claims": {
+      "status": "PASS",
+      "details": "The report correctly limits evidence to one seed, four reused development clips, an untrained generator, and zero accepted generated frames; it makes no broad performance, generalization, complete-paper, semantic-generation, or robot claim.",
+      "evidence": [
+        "P/reports/PhyGile_Unitree续训500次与闭环迁移最终报告_20261022.md:7-20,26-28,40-52,68-76,98",
+        "P/README.md:3-5,39-41",
+        "P/results/v3/summary.json:138-368",
+        "P/results/v3/evidence/bbcc13fda1be26a6.json:23-100,110-155",
+        "D/closure_mjlab_continue500_v1/verification.json:13-28,28-142"
+      ]
+    },
+    "F_multilabel_evaluation_classification": {
+      "status": "PASS",
+      "details": "Final summary/additive classification has correct multi-label arrays. The immutable new PhysX receipt retains singular simulation_only metadata and the supplement's record paths identify earlier closures, but historical receipts were preserved and current aggregation retains every applicable label.",
+      "classifications": {
+        "private_motion_tracking": [
+          "real_gt",
+          "simulation_only"
+        ],
+        "generated_candidate_tracking": [
+          "synthetic_proxy",
+          "simulation_only"
+        ],
+        "held_initialization_feedback_replay": [
+          "self_supervised_proxy",
+          "simulation_only"
+        ],
+        "implementation_parity": [
+          "synthetic_proxy"
+        ],
+        "bounded_continuation": [
+          "training_integrity_not_performance_evaluation"
+        ]
+      },
+      "evidence": [
+        "P/results/v3/summary.json:149-368",
+        "P/results/v3/classification_supplement_v2.json:2-32",
+        "P/results/v3/evidence/bbcc13fda1be26a6.json:2-5,110-155",
+        "D/closure_mjlab_continue500_v1/verification.json:2-28,106-142",
+        "P/results/v3/continue500_gpu_cpu_parity.json:2-9"
+      ]
+    }
+  },
+  "deterministic_validation": {
+    "public_seal": {
+      "declared": 903,
+      "verified": 903,
+      "missing": 0,
+      "mismatched": 0,
+      "unsealed_in_scope_extra": 0,
+      "sha256": "230fa5807d3064547d2a5773ac97b2ef88ac2fedd5191eb67a1e7fc9d31e24b6"
+    },
+    "evidence_index": {
+      "declared": 246,
+      "verified": 246,
+      "missing": 0,
+      "mismatched": 0,
+      "duplicate_targets": 0,
+      "sha256": "9815535f1f11d3a7cfd35ad3edc9859fd7bec0971b9dba9e077f515087900768"
+    },
+    "current_loader_batches": [
+      {
+        "batch": 1,
+        "bitwise_equal": true,
+        "max_abs_delta": 0
+      },
+      {
+        "batch": 7,
+        "bitwise_equal": true,
+        "max_abs_delta": 0
+      },
+      {
+        "batch": 128,
+        "bitwise_equal": true,
+        "max_abs_delta": 0
+      },
+      {
+        "batch": 1024,
+        "bitwise_equal": true,
+        "max_abs_delta": 0
+      }
+    ],
+    "gpu_cpu_fixture": {
+      "rows": 5,
+      "max_abs_delta": 0.000003337860107421875,
+      "tolerance": 0.00001,
+      "pass": true
+    },
+    "isaac_private_rows": {
+      "files_hashed": 8,
+      "rows_recomputed": 4,
+      "exact_summary_rows": 4,
+      "finite_rows": 4,
+      "contiguous_rows": 4
+    },
+    "mjlab_rows": {
+      "runs": 8,
+      "exit_zero": 8,
+      "metrics_exact": 8,
+      "finite_rows": 8,
+      "contiguous_rows": 8,
+      "source_manifest_mismatches": 0
+    }
+  },
+  "seal_and_versioning": {
+    "public_seal_status": "PASS",
+    "public_seal_scope_evidence": "P/results/v3/audit_input_seal_v3.json:2-4,910-917",
+    "original_v2_audit_bytes_preserved": true,
+    "historical_v2_failure_preserved": true,
+    "v2_trace_files_in_D": 15,
+    "v2_direct_evidence_index_records": 14,
+    "omitted_direct_trace_object": "independent_integrity_v2/trace/events.jsonl",
+    "omitted_trace_object_bytes": 542,
+    "omitted_trace_object_sha256": "11ec228d2318f6f7d12f98225040a4d92840557075b0de9f8e65431e710cb8c5",
+    "omitted_trace_object_indirectly_committed_by_indexed_output_manifest": true,
+    "post_seal_local_supplements_inherit_existing_seal": false,
+    "required_next_step": "Create a later named final seal; do not change audit_input_seal_v3."
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "500 additional PPO iterations and 10000 actual Adam calls completed",
+      "impact": "supported"
+    },
+    {
+      "id": "C2",
+      "claim": "PPO2500 full checkpoint is finite and resume-capable",
+      "impact": "supported"
+    },
+    {
+      "id": "C3",
+      "claim": "New compact is bound to full checkpoint and safe for active inference",
+      "impact": "supported_with_qualifier"
+    },
+    {
+      "id": "C4",
+      "claim": "Current new full and compact inference agree",
+      "impact": "supported_with_documentary_qualifier"
+    },
+    {
+      "id": "C5",
+      "claim": "New policy improves stability or tracking",
+      "impact": "unsupported_and_not_claimed"
+    },
+    {
+      "id": "C6",
+      "claim": "Generated closure yields stable learned motion",
+      "impact": "unsupported_and_not_claimed"
+    },
+    {
+      "id": "C7",
+      "claim": "Complete reproduction, generalization, or robot performance",
+      "impact": "unsupported_and_not_claimed"
+    },
+    {
+      "id": "C8",
+      "claim": "Every release asset independently byte-verified locally",
+      "impact": "unsupported_for_resume2"
+    }
+  ],
+  "remaining_limitations": [
+    "Same-family review is provisional; actual reviewer backend/effort is not independently observable.",
+    "Single seed and four reused development clips provide no held-out or statistical evidence.",
+    "No learned generated 50-frame candidate was accepted; committed generated frames are zero.",
+    "Generator is untrained and zero/unconditionally conditioned.",
+    "No real-robot deployment or observation exists.",
+    "PhysX and MuJoCo dynamic/contact equivalence is not established.",
+    "Runtime compact loader delegates digest identity checks to a separate verifier.",
+    "No pre-existing archived four-batch witness combines the new compact with the new full checkpoint.",
+    "Resume2 release bytes were unavailable locally.",
+    "Early training launcher child exit remains unrecorded.",
+    "Source provenance does not fully bind native binaries, all robot assets, or later lazy imports.",
+    "Later outputs require a separately named final seal."
+  ],
+  "trace_path": "D:/具身智能/PhyGile复现/Unitree框架适配_20261022/independent_integrity_v3/trace",
+  "report_path": "D:/具身智能/PhyGile复现/Unitree框架适配_20261022/independent_integrity_v3/EXPERIMENT_AUDIT_V3.md",
+  "report_sha256_at_json_creation": "58783c857a7af3fa951affbccabfec6d1cce62c1637636add8f241502930fdaa"
+}
+

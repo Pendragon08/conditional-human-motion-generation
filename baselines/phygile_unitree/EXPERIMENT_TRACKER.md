@@ -27,4 +27,6 @@ Both closure paths ran actual untrained diffusion and real physics. Two one-fram
 
 - independent_integrity_audit: WARN (same-family/provisional; historical source attestation limitation retained)
 - v2_independent_integrity_audit: WARN_SAME_FAMILY_PROVISIONAL_PRESERVED
-- v3_independent_integrity_supplement: PENDING
+- v3_independent_integrity_supplement: WARN_SAME_FAMILY_PROVISIONAL_PRESERVED
+
+- final_publication_scope: CODE_RESULTS_REPORT_AND_FULL_AUDIT_TRACES

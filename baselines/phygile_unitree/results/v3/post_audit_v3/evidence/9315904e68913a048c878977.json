@@ -1,0 +1,38 @@
+{
+  "call_number": 2,
+  "purpose": "checkpoint-binding-and-seal-verifier",
+  "target_agent": "/root/unitree_v3_integrity_supplement/checkpoint_binding_verifier",
+  "requested_model": "gpt-5.6-sol",
+  "requested_reasoning_effort": "ultra",
+  "model_request_was_set_at_spawn": true,
+  "actual_backend_independently_verified": false,
+  "request_capture": "normalized reconstruction because the collaboration API does not expose the original sent payload after dispatch",
+  "files": [
+    "P/results/v3/{summary.json,evidence_index.json,audit_input_seal_v3.json,new_policy_artifact_binding.json,continue500_gpu_cpu_parity.json,parent_artifact_binding_v2.json,production_batch_diagnosis_v2.json}",
+    "P/results/v3/release/*.json and indexed evidence",
+    "P/scripts/{frozen_policy.py,active_policy_artifact.py,verify_artifact_binding.py,export_active_policy.py,validate_production_active_v3.py,lab_run.py,mjlab_evaluate.py}",
+    "D/downloaded_full_checkpoint_verification_v3.json",
+    "D/checkpoints_v3/unitree_rl_lab_ppo2500_30ac49b42a79.pt",
+    "D/private_assets/parent_checkpoint.pt",
+    "D/private_assets_continue500_v1/{parent_checkpoint.pt,contract.json,encoder_actor_critic.py}",
+    "D/continue500_synthetic_policy_fixture.npz",
+    "D/isaac_continued_private_v1/manifest.json and isaac_clip0..3 arrays",
+    "D/{production_active_doc_witness_v3,production_active_validation_v3,continue500_mjlab_comparison_v1,independent_integrity_v2}"
+  ],
+  "checklist": [
+    "Verify release size/digest and stable local full-checkpoint bytes.",
+    "Load full checkpoint read-only; validate finite model/normalizer/Adam tensors, iteration, state counts, steps, and parent delta.",
+    "Verify exact full/compact/contract/encoder/normalizer binding and compact resume status.",
+    "Execute current production full/compact loader read-only at batches 1,7,128,1024 and test omitted-branch guards and GPU fixture tolerance.",
+    "Rehash public seal and evidence index; check original audit/negative preservation and sealing boundary.",
+    "Report exact file:line evidence, PASS/WARN/FAIL, limitations, and model-route verification."
+  ],
+  "constraints": [
+    "read-only inputs",
+    "no training or physics rerun",
+    "no source repair",
+    "no server operations",
+    "write no project evidence"
+  ]
+}
+
