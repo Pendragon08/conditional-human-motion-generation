@@ -1,0 +1,28 @@
+D:\��������\PhyGile����\Unitree�������_20261022\mjlab_env\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Traceback (most recent call last):
+Warp 1.12.0 initialized:
+   CUDA Toolkit 12.9, Driver 12.6
+   Devices:
+     "cpu"      : "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel"
+     "cuda:0"   : "NVIDIA GeForce RTX 4060 Laptop GPU" (8 GiB, sm_89, mempool enabled)
+   Kernel cache:
+     \\?\C:\Users\Pende\AppData\Local\NVIDIA\warp\Cache\1.12.0
+  File "C:\Users\Pende\Documents\ChatGPT\�����˸񶷶�����׽��������\work\phygile_reproduction_20261017\conditional-human-motion-generation\baselines\phygile_unitree\scripts\mjlab_evaluate.py", line 22, in <module>
+    standalone=cfg.scene.entities['robot'].build()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\��������\PhyGile����\Unitree�������_20261022\mjlab_env\Lib\site-packages\mjlab\entity\entity.py", line 101, in build
+    return Entity(self)
+           ^^^^^^^^^^^^
+  File "D:\��������\PhyGile����\Unitree�������_20261022\mjlab_env\Lib\site-packages\mjlab\entity\entity.py", line 143, in __init__
+    self._build_spec()
+  File "D:\��������\PhyGile����\Unitree�������_20261022\mjlab_env\Lib\site-packages\mjlab\entity\entity.py", line 150, in _build_spec
+    self._spec = auto_wrap_fixed_base_mocap(self.cfg.spec_fn)()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\��������\PhyGile����\Unitree�������_20261022\mjlab_env\Lib\site-packages\mjlab\utils\spec.py", line 34, in wrapper
+    original_spec = spec_fn()
+                    ^^^^^^^^^
+  File "D:\��������\PhyGile����\Unitree�������_20261022\mjlab_env\Lib\site-packages\mjlab\asset_zoo\robots\unitree_g1\g1_constants.py", line 34, in get_spec
+    spec = mujoco.MjSpec.from_file(str(G1_XML))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ParseXML: Error opening file 'D:\��������\PhyGile����\Unitree�������_20261022\mjlab_env\Lib\site-packages\mjlab\asset_zoo\robots\unitree_g1\xmls\g1.xml'

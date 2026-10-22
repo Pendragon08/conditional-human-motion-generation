@@ -1,0 +1,23 @@
+D:\��������\PhyGile����\Unitree�������_20261022\mjlab_env\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Traceback (most recent call last):
+Warp 1.12.0 initialized:
+   CUDA Toolkit 12.9, Driver 12.6
+   Devices:
+     "cpu"      : "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel"
+     "cuda:0"   : "NVIDIA GeForce RTX 4060 Laptop GPU" (8 GiB, sm_89, mempool enabled)
+   Kernel cache:
+     \\?\C:\Users\Pende\AppData\Local\NVIDIA\warp\Cache\1.12.0
+Setting seed: 2026
+  File "C:\Users\Pende\Documents\ChatGPT\�����˸񶷶�����׽��������\work\phygile_reproduction_20261017\conditional-human-motion-generation\baselines\phygile_unitree\scripts\mjlab_evaluate.py", line 26, in <module>
+    env=PhyGileMjlabEnv(cfg,c,device=a.device,render_mode=None)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pende\Documents\ChatGPT\�����˸񶷶�����׽��������\work\phygile_reproduction_20261017\conditional-human-motion-generation\baselines\phygile_unitree\scripts\mjlab_task.py", line 120, in __init__
+    super().__init__(cfg,**kwargs)
+  File "D:\��������\PhyGile����\Unitree�������_20261022\mjlab_env\Lib\site-packages\mjlab\envs\manager_based_rl_env.py", line 171, in __init__
+    self.scene = Scene(self.cfg.scene, device=device)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\��������\PhyGile����\Unitree�������_20261022\mjlab_env\Lib\site-packages\mjlab\scene\scene.py", line 64, in __init__
+    self._spec = mujoco.MjSpec.from_file(str(_SCENE_XML))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ParseXML: Error opening file 'D:\��������\PhyGile����\Unitree�������_20261022\mjlab_env\Lib\site-packages\mjlab\scene\scene.xml'

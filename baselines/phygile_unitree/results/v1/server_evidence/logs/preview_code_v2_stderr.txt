@@ -1,0 +1,19 @@
+2026-10-22 09:11:51 [4,407ms] [Error] [carb.graphics-vulkan.plugin] Failed to find a graphics and/or presenting queue.
+2026-10-22 09:11:51 [4,407ms] [Error] [carb.graphics-vulkan.plugin] - GPU 'NVIDIA RTX A6000' cannot present rendered content from the window to the screen. Potential reasons:
+- Active GPU is not connected to a physical display. Required, except when running Kit/Create headless in --no-windows mode.
+- Active GPU is not set as the default GPU in xorg.conf for Linux UI rendering. On NVIDIA drivers, using command 'sudo nvidia-xconfig --busid XXX'.
+- Display environment variable is not set. Verify it with 'echo $DISPLAY'.
+- Driver is not properly installed, or due to an incomplete fake EDID (Extended Display Identification Data) setup.
+2026-10-22 09:11:51 [4,407ms] [Error] [omni.kit.renderer.plugin] createSwapchain failed. Width: 1440, height: 900, Format: 9
+2026-10-22 09:11:51 [4,410ms] [Error] [omni.kit.renderer.plugin] Failed to initialize graphics environment.
+Fatal Python error: Segmentation fault
+
+Current thread 0x00007ff1cef3db80 (most recent call first):
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/exts/isaacsim.simulation_app/isaacsim/simulation_app/simulation_app.py", line 427 in _start_app
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/exts/isaacsim.simulation_app/isaacsim/simulation_app/simulation_app.py", line 212 in __init__
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/IsaacLab/source/isaaclab/isaaclab/app/app_launcher.py", line 780 in _create_app
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/IsaacLab/source/isaaclab/isaaclab/app/app_launcher.py", line 131 in __init__
+  File "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v2/scripts/lab_run.py", line 37 in <module>
+
+Extension modules: psutil._psutil_linux, psutil._psutil_posix, omni.mdl.pymdlsdk._pymdlsdk (total: 3)
+/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/python.sh: line 41: 3133532 Segmentation fault      (core dumped) $python_exe "$@" $args

@@ -1,0 +1,64 @@
+{
+  "reason": "GUI startup exceeded bounded preflight; preserve logs and use single GPU/thread-capped warm-cache diagnostic",
+  "training_interrupted": false,
+  "targets": [
+    {
+      "pid": 3132348,
+      "args": [
+        "/bin/bash",
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/python.sh",
+        "-u",
+        "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/scripts/lab_run.py",
+        "--mode",
+        "preview",
+        "--checkpoint",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_moe_pilot/2026-10-17_11-25-01_extended2000_seed42/model_1999.pt",
+        "--output",
+        "/data/code/ouyanghao/oyh/phygile-unitree-20261022/runs/preview_code_v1",
+        "--motion-file",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/test/sample_000_actor0.npz",
+        "--num-envs",
+        "1",
+        "--steps",
+        "100",
+        "--wait-viewer-seconds",
+        "120",
+        "--device",
+        "cuda:1",
+        "--enable_cameras",
+        ""
+      ],
+      "stat": "3132348 (python.sh) S 1 3132348 3132348 0 -1 4194304 432 636 0 1 0 0 0 0 20 0 1 0 1385744708 7057408 859 18446744073709551615 94369299107840 94369300014805 140732568439280 0 0 0 65536 4 65538 1 0 0 17 6 0 0 1 0 0 94369300245744 94369300293124 94369768759296 140732568446391 140732568446998 140732568446998 140732568448931 0\n",
+      "remaining": false
+    },
+    {
+      "pid": 3132355,
+      "args": [
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/kit/python/bin/python3",
+        "-u",
+        "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/scripts/lab_run.py",
+        "--mode",
+        "preview",
+        "--checkpoint",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_moe_pilot/2026-10-17_11-25-01_extended2000_seed42/model_1999.pt",
+        "--output",
+        "/data/code/ouyanghao/oyh/phygile-unitree-20261022/runs/preview_code_v1",
+        "--motion-file",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/test/sample_000_actor0.npz",
+        "--num-envs",
+        "1",
+        "--steps",
+        "100",
+        "--wait-viewer-seconds",
+        "120",
+        "--device",
+        "cuda:1",
+        "--enable_cameras",
+        ""
+      ],
+      "stat": "3132355 (python3) R 3132348 3132348 3132348 0 -1 4194304 6752784 6345 955 9 368159 24361 5 21 20 0 125 0 1385744711 199565312000 3939935 18446744073709551615 4194304 4557260 140728983508896 0 0 0 0 16781312 17642 0 0 0 17 0 0 0 1214 0 0 6657288 6663648 964026368 140728983512412 140728983513022 140728983513022 140728983519126 0\n",
+      "remaining": true,
+      "kill": "Own unresponsive preview only"
+    }
+  ]
+}
