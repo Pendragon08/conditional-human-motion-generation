@@ -47,8 +47,21 @@ print(json.dumps(rows))
 
 try:
     write();deadline=time.monotonic()+7200
+    consecutive_network_errors=0
     while time.monotonic()<deadline:
-        manifest=get_manifest()
+        try:
+            manifest=get_manifest()
+            consecutive_network_errors=0
+            if state['status']=='WAITING_FOR_SSH_RETRY':
+                state['status']='WAITING_FOR_NEW_CHECKPOINT';write()
+        except (RuntimeError,subprocess.TimeoutExpired) as exc:
+            consecutive_network_errors+=1
+            state.update(status='WAITING_FOR_SSH_RETRY',last_network_error=str(exc),
+                         consecutive_network_errors=consecutive_network_errors)
+            write()
+            if consecutive_network_errors>=10:raise
+            time.sleep(30)
+            continue
         if manifest:break
         time.sleep(30)
     else:raise TimeoutError('No matching ready checkpoint; no server files removed')
