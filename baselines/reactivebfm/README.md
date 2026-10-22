@@ -7,7 +7,7 @@ The frozen delivery snapshot records at least 1,220 actual updates per rank.
 Neither full training completion nor the
 paper's benchmark performance is claimed.
 
-- [Latest progress check: 2026-10-22 03:53 Shanghai, 3,010 updates](reports/ReactiveBFM实验进度检查_20261022_035336.md)
+- [Latest progress check: 2026-10-22 09:53 Shanghai, 7,960 updates](reports/ReactiveBFM实验进度检查_20261022_095308.md)
 - [Current Chinese training and closed-loop report](reports/ReactiveBFM完整训练与闭环进展报告_20261022.md)
 - [Live snapshot captured during this delivery](results/full_training_20261021/live_snapshot_v4/)
 - [Full training checkpoints, diagnostics and reports](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/reactivebfm-full-training-20261022)
