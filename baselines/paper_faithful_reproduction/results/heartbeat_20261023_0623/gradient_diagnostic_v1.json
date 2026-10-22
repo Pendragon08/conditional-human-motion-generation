@@ -1,0 +1,57 @@
+{
+  "checkpoint": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/model000010040.pt",
+  "checkpoint_sha256": "7aaed03598e120e843b4332b5943605a293bbc31958e05b4396ec791c083dbe5",
+  "source_sha256": "8d6d8d18b6e99517b8f5d3986cd97c98dffc34baa691951beabcd46c0c088c03",
+  "batch": 8,
+  "optimizer_updates": 0,
+  "torch": "2.5.1+cu121",
+  "seed": 42,
+  "results": [
+    {
+      "backend": "default",
+      "activation_checkpointing": false,
+      "primitive_losses": [
+        0.010558903217315674,
+        0.010988777503371239,
+        0.009422766044735909
+      ],
+      "loss": 0.03097044676542282,
+      "gradient_norm_fp64": 1.309266387366546,
+      "all_gradients_finite": true,
+      "seconds": 0.628646856173873
+    },
+    {
+      "backend": "math",
+      "activation_checkpointing": false,
+      "primitive_losses": [
+        0.010558882728219032,
+        0.010988730937242508,
+        0.009422782808542252
+      ],
+      "loss": 0.030970396474003792,
+      "gradient_norm_fp64": 1.3092376580672505,
+      "all_gradients_finite": true,
+      "seconds": 0.6574804112315178,
+      "vs_default_max_abs_gradient_difference": 5.744723603129387e-05,
+      "vs_default_l2_gradient_difference": 0.0027539142247375715,
+      "largest_gradient_difference_tensor": "blocks.0.ada_ln.1.weight"
+    },
+    {
+      "backend": "math",
+      "activation_checkpointing": true,
+      "primitive_losses": [
+        0.010558882728219032,
+        0.010988730937242508,
+        0.009422782808542252
+      ],
+      "loss": 0.030970396474003792,
+      "gradient_norm_fp64": 1.309237659339329,
+      "all_gradients_finite": true,
+      "seconds": 1.3017708994448185,
+      "vs_default_max_abs_gradient_difference": 5.744723603129387e-05,
+      "vs_default_l2_gradient_difference": 0.002753912618614901,
+      "largest_gradient_difference_tensor": "blocks.0.ada_ln.1.weight"
+    }
+  ],
+  "checkpoint_unchanged": true
+}

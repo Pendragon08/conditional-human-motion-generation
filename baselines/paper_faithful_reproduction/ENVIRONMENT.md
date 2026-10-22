@@ -1,5 +1,11 @@
 # Environment and bounded invocation
 
+2026-10-23 update: training v3 exited on a numerical watchdog. The separate
+[v4 numerical recovery environment and bounded invocation](recovery_v4/ENVIRONMENT.md)
+records the new precision experiment. The asynchronous simulation witness below
+remains the previously executed 10041-update checkpoint experiment; its success
+does not certify the subsequently failed training run.
+
 No shared environment is changed. Server reuses the ReactiveBFM Python3.10.21,
 Torch2.5.1+cu121, MuJoCo3.3.7 overlay described in
 the separately checked-out ReactiveBFM branch, at the existing local file

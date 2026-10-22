@@ -1,0 +1,78 @@
+{
+  "utc": "2026-10-22T21:47:17.629837+00:00",
+  "rank": 1,
+  "status": "NUMERICAL_WATCHDOG_STOP",
+  "loop_step": 16871,
+  "initial_optimizer_updates": 10021,
+  "optimizer_updates": 16871,
+  "resumed_updates": 6850,
+  "optimizer_step_calls": 16871,
+  "validated_optimizer_updates": 16871,
+  "attempts_since_resume": 6851,
+  "skipped_attempts": 1,
+  "consecutive_skips": 1,
+  "step_applied": false,
+  "step_validated": false,
+  "ema_validated": false,
+  "reason": "NONFINITE_NORM_BEFORE_CLIPPING",
+  "grad_norm_pre_clip_fp64": null,
+  "grad_norm_post_clip_fp64": null,
+  "param_norm_fp64": 210.1682613592609,
+  "offending_parameters": [
+    {
+      "name": "role_embedding",
+      "kind": "gradient",
+      "nan_count": 512,
+      "inf_count": 0
+    },
+    {
+      "name": "input_process.poseEmbedding.weight",
+      "kind": "gradient",
+      "nan_count": 18432,
+      "inf_count": 0
+    },
+    {
+      "name": "input_process.poseEmbedding.bias",
+      "kind": "gradient",
+      "nan_count": 512,
+      "inf_count": 0
+    },
+    {
+      "name": "embed_flow_timestep.time_embed.0.weight",
+      "kind": "gradient",
+      "nan_count": 262144,
+      "inf_count": 0
+    },
+    {
+      "name": "embed_flow_timestep.time_embed.0.bias",
+      "kind": "gradient",
+      "nan_count": 512,
+      "inf_count": 0
+    },
+    {
+      "name": "embed_flow_timestep.time_embed.2.weight",
+      "kind": "gradient",
+      "nan_count": 262144,
+      "inf_count": 0
+    },
+    {
+      "name": "embed_flow_timestep.time_embed.2.bias",
+      "kind": "gradient",
+      "nan_count": 512,
+      "inf_count": 0
+    },
+    {
+      "name": "blocks.0.self_attention.q_proj.weight",
+      "kind": "gradient",
+      "nan_count": 32768,
+      "inf_count": 0
+    }
+  ],
+  "elapsed_seconds": 50402.501285875216,
+  "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+  "full_training_completed": false,
+  "last_attempt_status": "NUMERICAL_WATCHDOG_STOP",
+  "process_status": "FAILED",
+  "supervisor_exit_code": 1,
+  "process_running": false
+}
