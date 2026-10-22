@@ -1,0 +1,47 @@
+# 服务器磁盘清理报告
+
+完成核验时间：2026-10-22 10:58（北京时间）。**仅在用户自己的两个项目路径内删除133个已备份的历史文件，释放约6.87 GiB已分配空间。** 没有递归删除目录。
+
+| 分区 | 清理前可用 | 清理后可用 |
+|---|---:|---:|
+| 系统盘（用户home目录所在盘） | 4.61 GiB | 5.80 GiB |
+| 数据盘 | 4.02 GiB | 9.69 GiB |
+
+磁盘可用差额还包含同时运行任务的少量写入；精确删除量以文件回执的allocated bytes为准。
+
+## 实际清理内容
+
+| 历史文件 | 数量 | 逻辑大小 | 备份 |
+|---|---:|---:|---|
+| ReactiveBFM旧101更新模型和优化器副本 | 2 | 1.19 GiB | 原pilot Release完整权重，逐件大小/SHA256核验 |
+| 已结束实验的native_contacts.json | 130 | 1.75 GiB | 分卷压缩包，130个成员内容逐件SHA256核验 |
+| CLoSD已完成生成的20,000段动作输出 | 1 | 3.92 GiB | 分卷压缩包；源文件SHA256与原生成回执一致 |
+
+只允许删除以下精确范围：
+
+- `/home/ouyanghao/reactivebfm-full-20261021/archived_pilot/`内的model000000100.pt、opt000000100.pt。
+- `/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/`内清单列明的130个native_contacts.json，以及closd_baseline_20261010/fresh_generation/CLoSD.pkl。
+
+删除前检查路径、所有者UID1013、普通文件类型、非符号链接、inode/mtime/大小、当前SHA256和应用进程占用。Linux保护的会话/凭据代理无法读取fd，只有已识别的系统命令被排除，具体列表保留在回执；未跳过未知不可读应用进程。
+
+## 备份与恢复验收
+
+先生成本地分卷 → 校验所有归档成员内容 → 上传GitHub → 核对GitHub服务端大小及SHA256 → 上传完整索引与清理计划 → 再执行服务器文件删除。每个分卷不超过1 GiB，分卷顺序和完整压缩流SHA256保存在backup_index.json中。
+
+实际在本地新目录恢复了130个接触JSON文件和一个CLoSD.pkl，所有恢复内容的大小/SHA256均与源清单一致。没有反序列化执行pickle。此恢复测试使用本地分卷，GitHub分卷与本地的服务端摘要一致；没有将完整GitHub分卷重新下载再测试。
+
+服务器两个清理目录已留下ARCHIVED_TO_GITHUB_20261022.json恢复指引。汇总报告、小文件、原始评估回执、预览和源代码仍保留在原位置；已清理的大文件需先恢复后再重跑依赖它们的旧分析。
+
+- [GitHub历史产物归档](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/server-storage-archive-20261022)
+- [旧pilot权重备份](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/reactivebfm-pilot-20261021)
+- [完整文件清单和执行回执](../results/storage_cleanup_20261022_102452/)
+- [恢复工具](../scripts/restore_historical_archive.py)：输出必须为一个全新目录，不覆盖已有文件。
+- 本地分卷、索引和恢复副本：`D:/具身智能/服务器磁盘清理_20261022/storage_cleanup_20261022_102452`。
+
+## 保留与训练状态
+
+AMASS、SMPL-X、HumanML3D对应数据、第三方权重、运行环境、训练代码、正在训练的输出目录和最新1,000更新检查点均保留；未把这些受限原始资产上传GitHub。
+
+清理后ReactiveBFM两rank至少8,860次实际更新，状态均为TRAINING，原训练进程仍运行。未发送停止或重启任何训练任务的命令；没有独立审计所有共享任务的逐步连续性。本地备份程序仍需电脑保持开机联网。磁盘有所缓解，后续仍按“先备份校验再清理旧副本”策略运行。
+
+初次安全预检因系统会话进程权限中止，未删除文件；修正为仅排除已识别系统代理后通过。首次归档因Python3.10的tar流参数不兼容中止，未删除该批历史数据；修正后重新归档。失败输出与原版本都保留在执行记录中。

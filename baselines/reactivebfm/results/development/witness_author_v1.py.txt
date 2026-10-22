@@ -1,0 +1,71 @@
+"""Seeded official DiT forward/backward on a real Kungfu training batch; no optimizer."""
+import argparse
+import datetime
+import hashlib
+import importlib.metadata
+import json
+from pathlib import Path
+import random
+import sys
+import traceback
+import numpy as np
+import torch
+
+BASE=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(BASE/'upstream'))
+
+
+def configuration(spec):
+    from reactivebfm.utils.runtime.arguments import train_args_scheduled_forcing
+    previous=sys.argv
+    try:
+        sys.argv=['runtime_witness','--save_dir','unused_witness_no_training',
+            '--dataset','kungfu_g1_36dim','--model_type','flow',
+            '--text_encoder',spec['weight_dirs']['text_encoder']['path'],
+            '--train_platform_type','NoPlatform','--no-use_ema']
+        return train_args_scheduled_forcing()
+    finally:sys.argv=previous
+
+
+def check(a):
+    spec=json.loads((BASE/'configs/env_spec.json').read_text())
+    versions={n:importlib.metadata.version(n) for n in spec['required_versions']}
+    if versions!=spec['required_versions']:raise ValueError('Runtime differs from declared overlay')
+    random.seed(42);np.random.seed(42);torch.manual_seed(42);torch.set_num_threads(4)
+    torch.cuda.set_per_process_memory_fraction(.25,0)
+    kernel=torch.randn(16,16,device='cuda');product=kernel@kernel.T
+    if not torch.isfinite(product).all():raise ValueError('CUDA kernel failed')
+    from reactivebfm.data.datasets import get_dataset_loader
+    from reactivebfm.model.motion_planner.factory import create_model_and_diffusion_smooth
+    args=configuration(spec)
+    loader=get_dataset_loader('kungfu_g1_36dim',batch_size=1,data_dir=str(a.runtime_root/'data/kungfu_g1_36dim'),
+        fixed_len=175,pred_len=50,device='cpu',collate_mode='self_rollout',num_workers=0,
+        shuffle=False,deterministic=True)
+    motion,cond=next(iter(loader));model,_=create_model_and_diffusion_smooth(args,loader)
+    model=model.cuda().train();motion=motion.cuda()
+    y={'prefix':motion[...,:25],'mask':torch.ones(1,1,1,50,dtype=torch.bool,device='cuda'),
+       'text':cond['y']['text']}
+    prediction=model(torch.randn_like(motion[...,25:75]),torch.tensor([.5],device='cuda'),y=y)
+    loss=(prediction-motion[...,25:75]).square().mean();loss.backward()
+    grads=[p.grad for p in model.parameters() if p.requires_grad and p.grad is not None]
+    if not grads or not all(torch.isfinite(g).all() for g in grads) or not any(torch.count_nonzero(g) for g in grads):
+        raise ValueError('Official model gradient witness failed')
+    return {'status':'OFFICIAL_DIT_KERNEL_AND_BACKWARD_PASSED','seed':42,'versions':versions,
+        'device':torch.cuda.get_device_name(0),'prediction_shape':list(prediction.shape),
+        'finite_loss':float(loss.detach()),'trainable_parameters':sum(p.numel() for p in model.parameters_wo_clip()),
+        'nonzero_finite_gradients':True,'optimizer_updates':0,'real_training_batch_used':True,
+        'max_allocated_bytes':torch.cuda.max_memory_allocated(),'max_reserved_bytes':torch.cuda.max_memory_reserved(),
+        'representation':'official 36D / 60Hz / xyzw','official_source_unmodified':True,
+        'motion_quality_evaluated':False,'physics_evaluated':False}
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--runtime-root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+    if a.output.exists():raise FileExistsError(a.output)
+    start=datetime.datetime.now(datetime.timezone.utc).isoformat();code=0
+    try:result=check(a)
+    except Exception as exc:code=1;result={'status':'FAILED','error':type(exc).__name__+': '+str(exc),'traceback':traceback.format_exc()}
+    result.update({'started_utc':start,'ended_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        'source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'exit_code':code})
+    a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(result,indent=2)+'\n')
+    print(json.dumps(result),flush=True);sys.exit(code)

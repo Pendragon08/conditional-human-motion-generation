@@ -1,0 +1,120 @@
+{
+  "checked_at_shanghai": "2026-10-22T03:53:36.327501+08:00",
+  "progress_directory": "baselines/reactivebfm/results/full_training_20261021/monitor_20261022_035336",
+  "statuses": [
+    {
+      "rank": 0,
+      "updates": 3010,
+      "status": "TRAINING",
+      "status_age_seconds": 7.155177354812622
+    },
+    {
+      "rank": 1,
+      "updates": 3010,
+      "status": "TRAINING",
+      "status_age_seconds": 7.155177354812622
+    }
+  ],
+  "training_pids": [
+    3058658,
+    3058664,
+    3058665
+  ],
+  "metric_rows": 31,
+  "first_metric": {
+    "official_step": 0,
+    "optimizer_updates": 1,
+    "elapsed_seconds": 7.670890137553215,
+    "grad_norm_pre_clip": 0.42797791659923434,
+    "grad_norm": 0.42797791659923434,
+    "param_norm": 191.29603298064288,
+    "p_replace": 0.0,
+    "n_cross": 0.0,
+    "flow/time_mean": 0.5971018075942993,
+    "flow_mse": 1.8896188735961914,
+    "loss": 1.8896188735961914,
+    "flow/rtc_delay": 3.0328779220581055,
+    "metrics/mse": 0.798753023147583,
+    "metrics/mse_root_pos": 0.9298790097236633,
+    "metrics/mse_root_rot": 0.9137195944786072,
+    "metrics/mse_dof": 0.7693307399749756,
+    "metrics/mse_first_frame": 0.11463858187198639,
+    "metrics/mse_mid_frame": 0.800076961517334,
+    "metrics/mse_final_frame": 0.8016489744186401,
+    "metrics/mse_velocity": 0.8526575565338135,
+    "metrics/mse_velocity_root_pos": 0.8498879075050354,
+    "metrics/mse_velocity_dof": 0.8530362844467163,
+    "metrics/mse_acc": 2.551384449005127,
+    "metrics/mse_acc_dof": 2.5514612197875977,
+    "metrics/smooth_first_root_pos": 0.12969230115413666,
+    "metrics/smooth_first_dof": 0.1120397299528122
+  },
+  "latest_metric": {
+    "official_step": 3000,
+    "optimizer_updates": 3001,
+    "elapsed_seconds": 13101.401830455288,
+    "grad_norm_pre_clip": 0.6521878463135967,
+    "grad_norm": 0.6521878463135967,
+    "param_norm": 196.10364265174567,
+    "p_replace": 0.0,
+    "n_cross": 0.0,
+    "flow/time_mean": 0.5999871492385864,
+    "flow_mse": 0.10523510724306107,
+    "loss": 0.10523510724306107,
+    "flow/rtc_delay": 2.9420573711395264,
+    "metrics/mse": 0.0440823957324028,
+    "metrics/mse_root_pos": 0.035489521920681,
+    "metrics/mse_root_rot": 0.030749622732400894,
+    "metrics/mse_dof": 0.04681031405925751,
+    "metrics/mse_first_frame": 0.0013757500564679503,
+    "metrics/mse_mid_frame": 0.04381664842367172,
+    "metrics/mse_final_frame": 0.07280350476503372,
+    "metrics/mse_velocity": 0.004146530292928219,
+    "metrics/mse_velocity_root_pos": 0.003981395158916712,
+    "metrics/mse_velocity_dof": 0.004377331584692001,
+    "metrics/mse_acc": 0.007574492134153843,
+    "metrics/mse_acc_dof": 0.007727134041488171,
+    "metrics/smooth_first_root_pos": 0.0014121748972684145,
+    "metrics/smooth_first_dof": 0.0013714863453060389
+  },
+  "nonfinite_metric_values": [],
+  "worker_error_events_count": 2,
+  "worker_latest_event": {
+    "utc": "2026-10-21T19:49:21.295011+00:00",
+    "kind": "snapshot",
+    "statuses": [
+      {
+        "rank": 0,
+        "status": "TRAINING",
+        "updates": 2950
+      },
+      {
+        "rank": 1,
+        "status": "TRAINING",
+        "updates": 2950
+      }
+    ]
+  },
+  "checkpoint_count": 1,
+  "backup_assets_verified": 4,
+  "screen": [
+    "\t3058656.reactivebfm_full_v1\t(10/21/2026 04:14:27 PM)\t(Detached)"
+  ],
+  "resources": {
+    "gpu": "0, NVIDIA RTX A6000, 30433 MiB, 18118 MiB, 100 %\n1, NVIDIA RTX A6000, 22903 MiB, 25646 MiB, 100 %\n",
+    "root_disk": {
+      "total": 502918963200,
+      "used": 472350240768,
+      "free": 4946612224
+    },
+    "data_disk": {
+      "total": 1967847137280,
+      "used": 1863497621504,
+      "free": 4312793088
+    }
+  },
+  "log_tails": {
+    "stdout.txt": "| metrics/mse_first_frame       | 0.00126  |\n| metrics/mse_mid_frame         | 0.0468   |\n| metrics/mse_root_pos          | 0.0346   |\n| metrics/mse_root_rot          | 0.0338   |\n| metrics/mse_velocity          | 0.00398  |\n| metrics/mse_velocity_dof      | 0.00422  |\n| metrics/mse_velocity_root_pos | 0.00377  |\n| metrics/smooth_first_dof      | 0.00123  |\n| metrics/smooth_first_root_pos | 0.00128  |\n| n_cross                       | 0        |\n| p_replace                     | 0        |\n| param_norm                    | 196      |\n| samples                       | 2.77e+06 |\n| step                          | 2.7e+03  |\n--------------------------------------------\nstep[2700]: loss[0.10906] p_replace[0.000]\n--------------------------------------------\n| flow/rtc_delay                | 2.97     |\n| flow/time_mean                | 0.602    |\n| flow_mse                      | 0.107    |\n| grad_norm                     | 0.694    |\n| grad_norm_pre_clip            | 0.694    |\n| loss                          | 0.107    |\n| metrics/mse                   | 0.0463   |\n| metrics/mse_acc               | 0.00779  |\n| metrics/mse_acc_dof           | 0.00801  |\n| metrics/mse_dof               | 0.0493   |\n| metrics/mse_final_frame       | 0.0758   |\n| metrics/mse_first_frame       | 0.00152  |\n| metrics/mse_mid_frame         | 0.045    |\n| metrics/mse_root_pos          | 0.0364   |\n| metrics/mse_root_rot          | 0.0317   |\n| metrics/mse_velocity          | 0.00419  |\n| metrics/mse_velocity_dof      | 0.00445  |\n| metrics/mse_velocity_root_pos | 0.00391  |\n| metrics/smooth_first_dof      | 0.00151  |\n| metrics/smooth_first_root_pos | 0.00166  |\n| n_cross                       | 0        |\n| p_replace                     | 0        |\n| param_norm                    | 196      |\n| samples                       | 2.87e+06 |\n| step                          | 2.8e+03  |\n--------------------------------------------\nstep[2800]: loss[0.10737] p_replace[0.000]\n--------------------------------------------\n| flow/rtc_delay                | 3        |\n| flow/time_mean                | 0.602    |\n| flow_mse                      | 0.103    |\n| grad_norm                     | 0.678    |\n| grad_norm_pre_clip            | 0.678    |\n| loss                          | 0.103    |\n| metrics/mse                   | 0.0451   |\n| metrics/mse_acc               | 0.00778  |\n| metrics/mse_acc_dof           | 0.00799  |\n| metrics/mse_dof               | 0.0481   |\n| metrics/mse_final_frame       | 0.0723   |\n| metrics/mse_first_frame       | 0.00165  |\n| metrics/mse_mid_frame         | 0.0449   |\n| metrics/mse_root_pos          | 0.0358   |\n| metrics/mse_root_rot          | 0.0307   |\n| metrics/mse_velocity          | 0.00415  |\n| metrics/mse_velocity_dof      | 0.00438  |\n| metrics/mse_velocity_root_pos | 0.00387  |\n| metrics/smooth_first_dof      | 0.00167  |\n| metrics/smooth_first_root_pos | 0.00153  |\n| n_cross                       | 0        |\n| p_replace                     | 0        |\n| param_norm                    | 196      |\n| samples                       | 2.97e+06 |\n| step                          | 2.9e+03  |\n--------------------------------------------\nstep[2900]: loss[0.10344] p_replace[0.000]\n--------------------------------------------\n| flow/rtc_delay                | 2.94     |\n| flow/time_mean                | 0.6      |\n| flow_mse                      | 0.105    |\n| grad_norm                     | 0.652    |\n| grad_norm_pre_clip            | 0.652    |\n| loss                          | 0.105    |\n| metrics/mse                   | 0.0441   |\n| metrics/mse_acc               | 0.00757  |\n| metrics/mse_acc_dof           | 0.00773  |\n| metrics/mse_dof               | 0.0468   |\n| metrics/mse_final_frame       | 0.0728   |\n| metrics/mse_first_frame       | 0.00138  |\n| metrics/mse_mid_frame         | 0.0438   |\n| metrics/mse_root_pos          | 0.0355   |\n| metrics/mse_root_rot          | 0.0307   |\n| metrics/mse_velocity          | 0.00415  |\n| metrics/mse_velocity_dof      | 0.00438  |\n| metrics/mse_velocity_root_pos | 0.00398  |\n| metrics/smooth_first_dof      | 0.00137  |\n| metrics/smooth_first_root_pos | 0.00141  |\n| n_cross                       | 0        |\n| p_replace                     | 0        |\n| param_norm                    | 196      |\n| samples                       | 3.07e+06 |\n| step                          | 3e+03    |\n--------------------------------------------\nstep[3000]: loss[0.10524] p_replace[0.000]\n",
+    "stderr.txt": ""
+  }
+}

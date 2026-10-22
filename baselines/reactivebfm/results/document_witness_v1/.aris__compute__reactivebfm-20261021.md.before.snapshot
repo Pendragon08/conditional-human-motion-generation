@@ -1,0 +1,13 @@
+# ReactiveBFM provider ledger
+
+### env: reactivebfm@5d436660
+
+Provider: existing SSH ouyanghao@10.147.17.32. Human authorization: reproduce ReactiveBFM, preserve prior assets, publish code/reports/allowed results, shared GPU with a bounded training validation. Do not interrupt other jobs.
+
+Spec: baselines/reactivebfm/configs/env_spec.json. New isolated overlay reuses existing Python/Torch/NumPy/SciPy/MuJoCo read-only; install only text/training dependencies inside its own env. Existing envs are not updated.
+
+Tier: CPU4, shared GPU1, PyTorch allocation cap25% of49,140MiB, disk reserve3GiB. Only Kungfu data is staged to server for this pilot; all three public releases are kept on D drive. Source Python3.10/Torch2.5 differs from recommended Python3.12/Torch2.11 and is a recorded compatibility pilot.
+
+Weights: reuse existing DistilBERT model and tokenizer with the official loader. No official pretrained planner link was found in the pinned repository; planner training is required.
+
+Validated: NOT YET. Before readiness, run seeded kernel/official-model witness and an independent agent-follows-doc command without hidden setup.

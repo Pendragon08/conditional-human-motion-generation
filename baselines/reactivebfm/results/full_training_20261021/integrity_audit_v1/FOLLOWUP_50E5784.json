@@ -1,0 +1,241 @@
+{
+  "audit_skill": "experiment-audit",
+  "review_kind": "final_bounded_follow_up",
+  "frozen_commit": "50e5784343187ce4e715834f5f63428c7f376f88",
+  "initial_audited_commit": "104393d48be438e923a30f3e42c466b861fb8639",
+  "prior_follow_up_commit": "6850b6e404565e4716588943b03fa07f4141e085",
+  "initial_verdict": "WARN",
+  "prior_follow_up_verdict": "WARN",
+  "final_follow_up_verdict": "WARN",
+  "reason_code": "safeguards_hardened_but_real_checkpoint_and_recovery_unexercised",
+  "summary": "Commit 50e5784 fixes the optimized-Python bypass, deletion guards, release pagination, exact-rank completion, run-scoped process checks, stale/absent failure evidence, and plan-to-launch revalidation. The experiment remains WARN because the frozen run is at 810/1,000,000 with zero ready manifests; all recovery tests use dummy bytes; no real pair has been deserialized, published, cleaned, or resumed; and recovery provenance covers only the wrapper source.",
+  "scientific_checks_unchanged": {
+    "A_gt_provenance": "PASS",
+    "B_score_normalization": "PASS",
+    "C_result_existence": "WARN",
+    "D_dead_code": "PASS",
+    "E_scope": "WARN",
+    "F_evaluation_type": "PASS"
+  },
+  "evaluation_types": [
+    {
+      "evaluation": "static_A_pose_tracker",
+      "type": "simulation_only"
+    },
+    {
+      "evaluation": "old_101_update_closed_loop",
+      "type": "simulation_only"
+    },
+    {
+      "evaluation": "state_to_prefix_consistency",
+      "type": "self_supervised_proxy+simulation_only"
+    },
+    {
+      "evaluation": "activation_recomputation_and_document_witness",
+      "type": "self_supervised_proxy"
+    },
+    {
+      "evaluation": "backup_and_recovery_unit_tests",
+      "type": "protocol_test_not_scientific_evaluation"
+    },
+    {
+      "evaluation": "official_real_gt_benchmark",
+      "type": "not_executed"
+    },
+    {
+      "evaluation": "human_or_real_robot_evaluation",
+      "type": "not_executed"
+    }
+  ],
+  "audited_input_hashes": {
+    "baselines/reactivebfm/scripts/backup_full_run.py": "sha256:af25cef28b4f9a00ea88de165bdde4341667f5267af3d87bf7c94f9caffe794c",
+    "baselines/reactivebfm/scripts/test_backup_full_run.py": "sha256:a3ea6d13b66749678e626bcc09b2251092058cbbc1d68e43f1c788df44015d9b",
+    "baselines/reactivebfm/scripts/prepare_verified_resume.py": "sha256:b5db0707c3a16310d01141a7d30c22aa2e2c4a258ad98eec56c662cfce651a23",
+    "baselines/reactivebfm/scripts/test_verified_resume.py": "sha256:276e4957484fcc6b70f90fb9cce7a577fcd09d450755af266027563dcc450a08",
+    "baselines/reactivebfm/docs/full_run_operations.md": "sha256:e6d162f6435ba371cd7066291b96d45d8235cb72b55e05ced7dda4221f1df618",
+    "baselines/reactivebfm/reports/ReactiveBFM完整训练与闭环进展报告_20261022.md": "sha256:70d42dd697418234662085844d317f083faa95ea6acf95d36db88e7163def627",
+    "baselines/reactivebfm/results/full_training_20261021/backup_worker_unit_v8_stderr.txt": "sha256:9f1c03c556bca2616c7c5fd74f7430ce85a4a3fb8bbbccb2e73adb99294f43bf",
+    "baselines/reactivebfm/results/full_training_20261021/verified_resume_unit_v4_stderr.txt": "sha256:a78769d8a4b7e552ebc16d7f46a7b6a19ac068b02c2cf121ba1e2afe659f43b8",
+    "baselines/reactivebfm/results/full_training_20261021/backup_worker_launch_v4.json": "sha256:b43e22fde77d26b9eaba860e88fd379a5a659030aba9c804ce7bc5df24762bce",
+    "baselines/reactivebfm/results/full_training_20261021/scoped_snapshot_v1.json": "sha256:caade9f0d420fbc9161a681a8f9fd7a1ea42729457f5d96a91c65a91ef0191ed",
+    "baselines/reactivebfm/results/full_training_20261021/live_snapshot_v2/server_snapshot.json": "sha256:77faf742262c8c4c4894984cfccec82e0c47cba4ef5a0f4f5904bbf5c8ee06e6",
+    "baselines/reactivebfm/README.md": "sha256:de0e5b1dca78cd1267ead2c6c8cd7c726952b8186ec1e0309cdfea2f4d328892"
+  },
+  "preserved_prior_outputs": {
+    "EXPERIMENT_AUDIT.md": "sha256:2edc41ba4b79996a2e9ad2684c1987dd378882d2ac87c3c916983a9206832908",
+    "EXPERIMENT_AUDIT.json": "sha256:0a85cffd6908a1779bd196e788762b0adccd7e744648287f6d20cd32dbaa15a8",
+    "FOLLOWUP_6850B6E.md": "sha256:08155443b6a079b08b154f2c6ec40482dde4603e6294bf93f4577f7a14e2814e",
+    "FOLLOWUP_6850B6E.json": "sha256:5ecdda9594b3f7a9fef8fc8ef614e305fc125797928ba7339e090a9473f546bd",
+    "PRIOR_FINAL_RESPONSE.md": "sha256:a178628b0050ffed4dfd1f985323ee861c008700962617422d955405c42ff1f0",
+    "prior_response_text_sha256_without_terminal_file_newline": "sha256:9ff072405c1e27fb63fc46098a0cb9b1955deaf7a1992c2f8f52732b95957dc4"
+  },
+  "resolved_findings": [
+    {
+      "id": "optimized_python_assert_bypass",
+      "status": "resolved",
+      "evidence": "backup_full_run.py:23-24; prepare_verified_resume.py:18-22,32-51; test_backup_full_run.py:124-128"
+    },
+    {
+      "id": "assert_based_deletion_guards",
+      "status": "resolved",
+      "evidence": "backup_full_run.py:229-255,297-306"
+    },
+    {
+      "id": "release_asset_pagination",
+      "status": "resolved_in_code_and_unit_test",
+      "evidence": "backup_full_run.py:101-110; test_backup_full_run.py:112-122"
+    },
+    {
+      "id": "rank_and_run_liveness_validation",
+      "status": "resolved_in_code",
+      "evidence": "backup_full_run.py:81-99,312-332; test_backup_full_run.py:130-142"
+    },
+    {
+      "id": "plan_to_launch_missing_revalidation",
+      "status": "resolved_in_code",
+      "evidence": "prepare_verified_resume.py:54-105; test_verified_resume.py:52-64"
+    }
+  ],
+  "residual_findings": [
+    {
+      "id": "real_checkpoint_unexercised",
+      "severity": "material_evidence_gap",
+      "status": "warn",
+      "evidence": "live_snapshot_v2/server_snapshot.json:174; report:7,96",
+      "details": "No ready manifest exists, so no real deserialization, upload, diagnostic fan-out, cleanup, plan, executor launch, or resumed update has been accepted."
+    },
+    {
+      "id": "non_atomic_checkpoint_writer",
+      "severity": "operational",
+      "status": "warn_disclosed",
+      "evidence": "initial train_full.py:96-113; upstream scheduled_forcing_loop.py:812-823; full_run_operations.md:19-21; report:84"
+    },
+    {
+      "id": "byte_integrity_not_semantic_loadability",
+      "severity": "material_evidence_gap",
+      "status": "warn",
+      "evidence": "prepare_verified_resume.py:32-51; test_verified_resume.py:21-26",
+      "details": "The selector accepts arbitrary bytes whose manifest hash/size match; no torch.load or state compatibility check exists."
+    },
+    {
+      "id": "partial_source_provenance",
+      "severity": "claim_qualification",
+      "status": "warn",
+      "evidence": "prepare_verified_resume.py:66,80-86; initial train_full.py:37-41; report:40,82",
+      "details": "Only scripts/train_full.py is re-hashed, not the upstream tree, packages, environment, data, or normalizers."
+    },
+    {
+      "id": "args_hash_has_no_manifest_anchor",
+      "severity": "provenance_limit",
+      "status": "warn",
+      "evidence": "prepare_verified_resume.py:58-67,80-86",
+      "details": "args.json is checked for plan-to-launch stability, not against an expected hash in the checkpoint manifest."
+    },
+    {
+      "id": "revalidation_to_spawn_race",
+      "severity": "narrow_operational_race",
+      "status": "warn",
+      "evidence": "prepare_verified_resume.py:89-105"
+    },
+    {
+      "id": "launch_request_without_terminal_receipt",
+      "severity": "evidence_gap",
+      "status": "warn",
+      "evidence": "prepare_verified_resume.py:99-105",
+      "details": "The record is written before subprocess.run and is not updated with spawn success, exit code, stdout/stderr, loaded step, or first resumed update."
+    },
+    {
+      "id": "worker_v4_launch_not_liveness",
+      "severity": "point_in_time_limit",
+      "status": "warn",
+      "evidence": "backup_worker_launch_v4.json:1-6",
+      "details": "The frozen launch JSON contains PID/time/log paths but no command, source/config hash, or later heartbeat."
+    },
+    {
+      "id": "manual_long_run_supervision",
+      "severity": "operational_limit",
+      "status": "warn_disclosed",
+      "evidence": "backup_full_run.py:315-337,343-355; full_run_operations.md:7-15; report:92"
+    }
+  ],
+  "independent_observations": {
+    "optimized_import_check": {
+      "backup_full_run.py": {
+        "exit_code": 1,
+        "guard_observed": true
+      },
+      "prepare_verified_resume.py": {
+        "exit_code": 1,
+        "guard_observed": true
+      }
+    },
+    "frozen_python_sources_compile": true,
+    "test_method_counts": {
+      "backup": 11,
+      "recovery": 7
+    },
+    "snapshot_recalculation": {
+      "rank0_updates": 810,
+      "rank1_updates": 810,
+      "checkpoint_manifest_count": 0,
+      "training_process_running": true,
+      "matching_training_pid_count": 3,
+      "seconds_per_update_rank0": 4.296482376910654,
+      "linear_remaining_days": 49.68752576603421,
+      "max_allocated_gib": [
+        10.687131404876709,
+        10.691075325012207
+      ]
+    },
+    "recorded_tests_reexecuted_by_reviewer": false,
+    "recorded_test_receipts_inspected": true,
+    "external_services_queried_by_reviewer": false,
+    "gpu_work_launched_by_reviewer": false,
+    "running_jobs_modified_by_reviewer": false
+  },
+  "claim_impacts": [
+    {
+      "claim": "Both ranks had 810 optimizer updates at the frozen observation.",
+      "impact": "supported_point_in_time"
+    },
+    {
+      "claim": "The optimized-interpreter assertion bypass remains.",
+      "impact": "resolved"
+    },
+    {
+      "claim": "Recovery revalidates a saved plan before launch.",
+      "impact": "supported_in_code_not_operationally_accepted"
+    },
+    {
+      "claim": "Training source as a whole is revalidated.",
+      "impact": "needs_qualifier_wrapper_only"
+    },
+    {
+      "claim": "A verified byte pair is a loadable compatible checkpoint.",
+      "impact": "unsupported_until_deserialization"
+    },
+    {
+      "claim": "A real checkpoint was published, cleaned, or recovered.",
+      "impact": "unsupported_zero_ready_manifests"
+    },
+    {
+      "claim": "The 1M schedule or paper performance completed.",
+      "impact": "unsupported_and_explicitly_disclaimed"
+    }
+  ],
+  "action_items": [
+    "Run a non-destructive first-checkpoint acceptance at 1000 updates and retain the only server pair.",
+    "Add direct mocked tests for execute_plan and terminal launch receipts.",
+    "Demonstrate real deserialization, optimizer restoration, and one resumed optimizer update before claiming recovery.",
+    "Hash the pinned source tree/upstream manifest and environment, not only the wrapper script.",
+    "Anchor args.json in the ready manifest if it is intended as trusted provenance.",
+    "Close the revalidation-to-spawn race with immutable staging or child-side verification.",
+    "Convert remaining worker manifest assertions to explicit exceptions.",
+    "Keep all completion, performance, publication, cleanup, and recovery claims qualified until primary evidence exists."
+  ],
+  "trace_path": ".aris/traces/experiment-audit/2026-10-22_full_run01/reviewer_output/",
+  "agent_id": "/root/reactivebfm_full_integrity_audit_20261022",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "generated_at": "2026-10-21T17:25:03.123Z"
+}

@@ -1,0 +1,8 @@
+ReactiveBFM full available-data training, started 2026-10-22 Asia/Shanghai.
+
+Target: 1,000,000 optimizer updates; 400,000 warmup; 2 RTX A6000 x local batch512 = global1024; BF16 and supplementary activation recomputation.
+Training source commit: ff819d387f453b02f84b536a35b3f87fc37f5e0b. Official vendored source: 5a79d03cab824eb5917271ba720294e8a1b9d374.
+
+This is an IN-PROGRESS reproduction, not a paper-performance claim. Native PyTorch/MuJoCo closed-loop diagnostics are supplementary and do not use TensorRT. Licensed raw motion datasets and body models are not redistributed; repository manifests document acquisition, splits and hashes.
+
+Append-only assets: each checkpoint model/optimizer is validated against server SHA256 and GitHub asset digests before older copies may be removed. Latest server checkpoint is retained. Diagnostic reports distinguish physical execution from upright-height proxies and paper benchmarks.

@@ -1,0 +1,148 @@
+{
+  "audit_skill": "experiment-audit",
+  "review_kind": "bounded_follow_up",
+  "initial_audited_commit": "104393d48be438e923a30f3e42c466b861fb8639",
+  "follow_up_commit": "6850b6e404565e4716588943b03fa07f4141e085",
+  "initial_verdict": "WARN",
+  "follow_up_verdict": "WARN",
+  "reason_code": "partial_remediation_with_assert_and_launch_time_gaps",
+  "summary": "Commit 6850b6e revalidates existing downloaded artifacts and adds a manifest/hash-gated recovery-plan helper. Operational integrity remains WARN because critical recovery/deletion checks use assert, plans are not revalidated at launch, worker rank/liveness gaps remain, and no real checkpoint or recovery has been exercised.",
+  "scientific_checks_unchanged": {
+    "A_gt_provenance": "PASS",
+    "B_score_normalization": "PASS",
+    "C_result_existence": "WARN",
+    "D_dead_code": "PASS",
+    "E_scope": "WARN",
+    "F_evaluation_type": "PASS"
+  },
+  "audited_input_hashes": {
+    "baselines/reactivebfm/scripts/backup_full_run.py": "sha256:6cdac41b19a23790cfc50eaf6596844332bbabbee19e01208a13e68269ee39c1",
+    "baselines/reactivebfm/scripts/test_backup_full_run.py": "sha256:4d45108cf435e5e84b0211c190cf2b593bf6b5befebc0979d5444f8d4ec6dffa",
+    "baselines/reactivebfm/scripts/prepare_verified_resume.py": "sha256:5985d062a6bbab10d859a48aeab287e092f89b9b3c119d5b011b241079c49dcb",
+    "baselines/reactivebfm/scripts/test_verified_resume.py": "sha256:9153bfcef25942a789b1d29b91dda97868ba60c2763a9f01ab72ca484fc93fa4",
+    "baselines/reactivebfm/docs/full_run_operations.md": "sha256:001db3fe1ea4914d35c93fe1fc4aaf1e6ec4e7360440906aa0788e61b8d04d73",
+    "baselines/reactivebfm/reports/ReactiveBFM完整训练与闭环进展报告_20261022.md": "sha256:2becc9fe5500aad2a7124726bf84b4631deae9917351e89bc9af3f6e3cb99504",
+    "baselines/reactivebfm/results/full_training_20261021/backup_worker_unit_v4_stderr.txt": "sha256:751c4a498388c9c8a5a80c9fa4dc0b5d77612d6c8df70373af4153169c555bc0",
+    "baselines/reactivebfm/results/full_training_20261021/verified_resume_unit_v2_stderr.txt": "sha256:77e6e887c3b5cb4206d3ddafde0efe9b8fd056dfc64a7566b665f611287e4162",
+    "baselines/reactivebfm/results/full_training_20261021/metadata_download_v1/receipt.json": "sha256:f97cf625235743f4ee3e282d619ae6982b8805bf8bcd59ac3f793fa131542bd2",
+    "baselines/reactivebfm/results/full_training_20261021/metadata_download_v1/args.json": "sha256:c7f934811ef3e2fe166b0e53b27099ec7aef577058a5ed4066047fc91a4e491c",
+    "baselines/reactivebfm/results/full_training_20261021/backup_worker_launch_v3.json": "sha256:53f47333f35243eccbc7a625bc0f886cdd471661c8e2e020013d136d3e68da77"
+  },
+  "resolved_findings": [
+    {
+      "id": "cached_download_trust",
+      "status": "resolved_for_normal_execution",
+      "evidence": "backup_full_run.py:107-123,140-189; test_backup_full_run.py:97-109; backup_worker_unit_v4_stderr.txt:1-5"
+    }
+  ],
+  "mitigated_findings": [
+    {
+      "id": "unmanifested_highest_resume_selection",
+      "status": "mitigated_with_conditions",
+      "evidence": "prepare_verified_resume.py:23-66; test_verified_resume.py:28-50; verified_resume_unit_v2_stderr.txt:1-5",
+      "conditions": [
+        "ordinary non-optimized Python",
+        "fresh output directory",
+        "pair unchanged between plan and launch",
+        "operator uses the helper rather than direct --resume"
+      ]
+    }
+  ],
+  "residual_findings": [
+    {
+      "id": "assert_based_recovery_validation",
+      "severity": "material",
+      "status": "warn",
+      "evidence": "prepare_verified_resume.py:23-40",
+      "independent_reproduction": {
+        "mode": "python -O",
+        "result_status": "VERIFIED_RECOVERY_PLAN_ONLY",
+        "selected_files": 1,
+        "checkpoint_exists": false,
+        "optimizer_row_present": false
+      }
+    },
+    {
+      "id": "plan_to_launch_toctou",
+      "severity": "material",
+      "status": "warn",
+      "evidence": "prepare_verified_resume.py:55-66",
+      "details": "The generated command references the original model path and performs no immediate model/optimizer/manifest revalidation at launch."
+    },
+    {
+      "id": "non_atomic_checkpoint_write",
+      "severity": "material",
+      "status": "warn",
+      "details": "Unchanged from the initial audit; helper rejects partial pairs but the original writer still publishes final filenames before the ready manifest."
+    },
+    {
+      "id": "assert_based_deletion_guards",
+      "severity": "material",
+      "status": "warn",
+      "evidence": "backup_full_run.py:226-235,251-257,287-292"
+    },
+    {
+      "id": "rank_and_liveness_validation",
+      "severity": "material",
+      "status": "warn",
+      "evidence": "backup_full_run.py:78-90,298-312"
+    },
+    {
+      "id": "release_asset_pagination",
+      "severity": "scale_risk",
+      "status": "warn",
+      "evidence": "backup_full_run.py:92-94"
+    },
+    {
+      "id": "real_checkpoint_unexercised",
+      "severity": "evidence_gap",
+      "status": "warn",
+      "details": "At the read-only follow-up observation both ranks were at 660 updates with no checkpoint manifest; tests use dummy bytes and no real recovery has run."
+    }
+  ],
+  "claim_impacts": [
+    {
+      "claim": "Existing evaluation downloads are checked against current remote bytes.",
+      "impact": "supported_for_normal_execution"
+    },
+    {
+      "claim": "Cached evaluation receipts cannot silently change.",
+      "impact": "supported_for_accidental_or_stale_changes_under_normal_execution"
+    },
+    {
+      "claim": "The documented helper ignores unmanifested higher files and corrupt pairs.",
+      "impact": "supported_with_conditions_at_plan_time"
+    },
+    {
+      "claim": "The helper is safe under all Python modes.",
+      "impact": "unsupported"
+    },
+    {
+      "claim": "A verified plan guarantees the same bytes are launched later.",
+      "impact": "unsupported_without_launch_time_revalidation"
+    },
+    {
+      "claim": "Real full-run recovery has been demonstrated.",
+      "impact": "unsupported_and_explicitly_disclaimed"
+    }
+  ],
+  "independent_observations": {
+    "bounded_optimized_python_check": "malformed one-row nonexistent checkpoint was accepted when assertions were removed by -O",
+    "worker_v3_pid": 53588,
+    "worker_v3_source_sha256": "6cdac41b19a23790cfc50eaf6596844332bbabbee19e01208a13e68269ee39c1",
+    "latest_observation": {
+      "timestamp": "2026-10-22T01:01:52+08:00",
+      "rank0_updates": 660,
+      "rank1_updates": 660,
+      "checkpoint_manifests": 0,
+      "training_process_running": true
+    },
+    "external_services_queried_by_reviewer": false,
+    "gpu_work_launched_by_reviewer": false
+  },
+  "trace_path": ".aris/traces/experiment-audit/2026-10-22_full_run01/reviewer_output/",
+  "agent_id": "/root/reactivebfm_full_integrity_audit_20261022",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "generated_at": "2026-10-21T17:05:30Z"
+}

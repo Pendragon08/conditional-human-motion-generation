@@ -1,0 +1,13 @@
+from pathlib import Path
+import subprocess,time,json,os
+root=Path('/home/ouyanghao/reactivebfm-full-20261021/first_checkpoint_inspection_v2')
+manifest=Path('/home/ouyanghao/reactivebfm-full-20261021/training_v1/checkpoint_ready_000000999.json')
+started=time.time()
+while not manifest.exists():
+ if time.time()-started>7200:raise TimeoutError('First checkpoint did not become ready within two hours')
+ time.sleep(10)
+cmd=['/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/env/bin/python','/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/code/scripts/inspect_checkpoint.py','--manifest',str(manifest),'--output',str(root/'receipt.json')]
+env=os.environ.copy();env.update(OMP_NUM_THREADS='4',MKL_NUM_THREADS='4',OPENBLAS_NUM_THREADS='4')
+r=subprocess.run(cmd,env=env)
+(root/'exit.json').write_text(json.dumps({'exit_code':r.returncode,'elapsed_since_watcher_started_seconds':time.time()-started,'command':cmd},indent=2))
+raise SystemExit(r.returncode)
