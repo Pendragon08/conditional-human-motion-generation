@@ -2,6 +2,7 @@
 
 **状态：进行中，尚未完成两篇论文的完整性能复现。**
 
+- [2026-10-23 03:26 后续进展](reports/heartbeat_20261023_0326.md)：训练检查及 PhyGile 时基一致子集，保留40条、暂不纳入26条。
 - [完整中文进展报告](reports/reproduction_progress_20261023.md)：原文与代码差异、训练进度、失败结果和未完成部分。
 - [视频、报告离线包与原始实验记录](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/paper-reproduction-progress-20261023)。下载 `report_and_videos.zip` 后解压，打开 `复现报告与视频.html`。
 - [运行环境和独立复跑](ENVIRONMENT.md)。环境说明中的机器绝对路径是本次实验位置，其他机器需自行映射。
@@ -24,6 +25,7 @@
 | `scripts/analyze_reactive_recording.py` | 对齐真实状态与当前计划，计算全回合误差和失败帧 |
 | `scripts/render_phygile_records.py` | 显示全部四个既有实际轨迹；记录根姿态重建误差 |
 | `scripts/document_witness.py` | 文档独立复跑，检查执行、有限值、源文件及训练状态 |
+| `scripts/gate_phygile_sample_clock.py` | 独立生成时基一致清单，排除标头冲突和抽帧引入的播放速度变化；原数据不变 |
 | `scripts/relocate_preserved_archive.py` | 本次单次文件迁移记录：完整复制核验后保留原路径链接；不可盲目重复运行 |
 
 配置生成示例（需要 PyYAML，两个官方仓库固定在 `sources/upstream_pins.json` 的版本）：
@@ -31,6 +33,15 @@
 ```text
 python scripts/build_paper_configs.py --phygile-upstream /path/to/phygile_tracking --reactive-upstream /path/to/ReactiveBFM --output-root /path/to/new-output
 ```
+
+使用已有 SSM 配对数据前，应先运行时基检查；输出目录必须尚不存在：
+
+```text
+python scripts/gate_phygile_sample_clock.py --dataset /path/to/ssm_batch_v1 --phygile-code /path/to/baselines/phygile --output /path/to/new-clock-gate
+python /path/to/baselines/phygile/scripts/check_paired_batch_loading.py --manifest /path/to/new-clock-gate/manifest_clock_consistent.json --output /path/to/new-clock-gate/batch_loading.json
+```
+
+相对容差 `1e-5` 是处理浮点标头的复现选择，不是论文公布的阈值。标头一致仍不等于外部物理时钟被校准，也不等于动力学跟踪通过。该子集不能替代完整数据；其34条训练序列、6条测试序列、零验证序列仍不足以开展论文规模评价。输出清单引用本机既有文件的绝对路径，移机时应从当地数据重新生成。
 
 其他入口先查看 `--help`。执行环境、检查点与部署源代码路径必须与实际资产匹配。`results/reactive_async_v4/` 和独立复跑记录包含真实调用与校验信息。
 
