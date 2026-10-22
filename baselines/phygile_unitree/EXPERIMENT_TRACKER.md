@@ -17,7 +17,7 @@
 - matched_sliding_friction_diagnostic: DONE_NO_IMPROVEMENT_1_OF_4_BOTH
 - full_paper_reproduction: NOT_COMPLETED
 - github_publication: PUBLISHED_CORE_ARTIFACTS_VERIFIED
-- github_v3_publication: PREPARING
+- github_v3_publication: CODE_AND_WEIGHT_ASSETS_PUBLISHED_VERIFIED
 - datasets_deleted: False
 - checkpoints_deleted: False
 

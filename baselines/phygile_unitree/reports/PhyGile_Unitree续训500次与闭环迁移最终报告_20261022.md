@@ -96,3 +96,7 @@ ReactiveBFM保持原运行；14:15 UTC只读快照的两个rank均为13097次有
 本轮文件入口为 `results/v3/summary.json`、`results/v3/evidence_index.json` 和发布清单；旧V1/V2结果及独立审查同时保留。报告本地保存于 `D:/具身智能/PhyGile复现/Unitree框架适配_20261022`。完整检查点继续位于服务器新工程 `runs/headless_continue500_v1`。
 
 后续研究应针对动力学/接触域差异开展明确预注册的训练对照，并使用新动作与多个种子评价；完整生成器仍需合规配对数据。当前结果可以作为工程连接与失败分析的基线记录，不能作为“PhyGile已完整复现并稳定跨仿真”的依据。
+
+## 发布资产
+
+代码与本轮证据已更新至分支 codex/phygile-reproduction-20261017，首批提交3964dd19efa2a351186b21a8f8e14c0c7857b1a4。完整训练检查点、2次恢复验证检查点和FP32活跃路径文件已上传 [GitHub Release](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/phygile-unitree-headless-20261022)，服务端报告的文件大小与SHA256均已核验，原文件不变。补充审查和最终发布清单另以追加提交保存。
