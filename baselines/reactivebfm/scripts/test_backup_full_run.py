@@ -83,12 +83,11 @@ class CleanupProtocol(unittest.TestCase):
         self.worker.c['capture_recovery_trace'] = True
         rows=[{'loop_step':9,'optimizer_updates':10},{'loop_step':19,'optimizer_updates':20},
               {'loop_step':20,'optimizer_updates':21}]
-        for row in rows:row.update(step_validated=True,ema_validated=True,optimizer_step_calls=row['optimizer_updates'],validated_optimizer_updates=row['optimizer_updates'])
+        for row in rows:row.update(rank=0,step_validated=True,ema_validated=True,optimizer_step_calls=row['optimizer_updates'],validated_optimizer_updates=row['optimizer_updates'])
         log=self.root/'health_rank0.jsonl'
         log.write_text(''.join(json.dumps(x)+'\n' for x in rows))
-        (self.root/'health_rank1.jsonl').write_bytes(log.read_bytes())
-        for name in ['recovery_launch.json','source_pins_verified.json','status_rank0.json','status_rank1.json']:
-            (self.root/name).write_text('{}')
+        (self.root/'health_rank1.jsonl').write_text(''.join(json.dumps({**row,'rank':1})+'\n' for row in rows))
+        self.trace_metadata()
         destination=self.root/'trace_copy';destination.mkdir()
         self.worker.download=lambda source,target:shutil.copyfile(source,target)
         self.worker.capture_recovery_trace(self.newest,destination)
@@ -104,13 +103,34 @@ class CleanupProtocol(unittest.TestCase):
         self.worker.c['capture_recovery_trace']=True
         destination=self.root/'trace_copy';destination.mkdir()
         self.worker.download=lambda source,target:shutil.copyfile(source,target)
-        for name in ['recovery_launch.json','source_pins_verified.json','status_rank0.json','status_rank1.json']:
-            (self.root/name).write_text('{}')
-        row={'loop_step':19,'optimizer_updates':20,'step_validated':True,'ema_validated':True,'optimizer_step_calls':20,'validated_optimizer_updates':20}
+        self.trace_metadata()
+        row={'rank':0,'loop_step':19,'optimizer_updates':20,'step_validated':True,'ema_validated':True,'optimizer_step_calls':20,'validated_optimizer_updates':20}
         (self.root/'health_rank0.jsonl').write_text(json.dumps(row)+'\n')
         with self.assertRaises(RuntimeError):self.worker.capture_recovery_trace(self.newest,destination)
-        row['ema_validated']=False
+        row['ema_validated']=False;row['rank']=1
         (self.root/'health_rank1.jsonl').write_text(json.dumps(row)+'\n')
+        with self.assertRaises(RuntimeError):self.worker.capture_recovery_trace(self.newest,destination)
+        self.assertFalse((self.root/'training_trace_000000019.tar.gz').exists())
+
+    def trace_metadata(self):
+        cfg='1'*64;self.newest['configuration_sha256']=cfg
+        sources={f'scripts/{name}.py':'2'*64 for name in ['train_full','train_repaired','numerical_guard','launch_recovery','inspect_checkpoint','prepare_verified_resume']}
+        launch={'configuration_sha256':cfg,'command':['torchrun','--nproc_per_node=2','--output',str(self.root)],'resume':'test-only.pt'}
+        pins={'configuration_sha256':cfg,'sources':sources,'upstream_python_tree_sha256':'3'*64,'upstream_python_file_count':117,'checkpoint_inspection':{'status':'CHECKPOINT_CPU_INSPECTION_PASSED','optimizer_updates':0,'optimizer_step_values':[0.0]}}
+        (self.root/'recovery_launch.json').write_text(json.dumps(launch))
+        (self.root/'source_pins_verified.json').write_text(json.dumps(pins))
+        for rank in [0,1]:
+            (self.root/f'status_rank{rank}.json').write_text(json.dumps({'rank':rank,'world_size':2,'optimizer_updates':20,'configuration':{'recovery':{'initial_optimizer_updates':0,'source_sha256':sources,'upstream_python_tree_sha256':'3'*64}}}))
+
+    def test_trace_rejects_copied_rank_and_empty_provenance(self):
+        self.worker.c['capture_recovery_trace']=True;self.trace_metadata()
+        destination=self.root/'trace_copy';destination.mkdir()
+        self.worker.download=lambda source,target:shutil.copyfile(source,target)
+        row={'rank':0,'loop_step':19,'optimizer_updates':20,'step_validated':True,'ema_validated':True,'optimizer_step_calls':20,'validated_optimizer_updates':20}
+        for rank in [0,1]:(self.root/f'health_rank{rank}.jsonl').write_text(json.dumps(row)+'\n')
+        with self.assertRaisesRegex(RuntimeError,'Embedded rank'):self.worker.capture_recovery_trace(self.newest,destination)
+        row['rank']=1;(self.root/'health_rank1.jsonl').write_text(json.dumps(row)+'\n')
+        (self.root/'source_pins_verified.json').write_text('{}')
         with self.assertRaises(RuntimeError):self.worker.capture_recovery_trace(self.newest,destination)
         self.assertFalse((self.root/'training_trace_000000019.tar.gz').exists())
 

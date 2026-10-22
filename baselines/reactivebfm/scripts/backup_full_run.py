@@ -270,11 +270,26 @@ class Worker:
         if not self.c.get('capture_recovery_trace', False): return
         step = manifest['official_step']; updates = manifest['optimizer_updates']
         script = '''from pathlib import Path
-import hashlib,io,json,os,tarfile
+import hashlib,io,json,os,re,tarfile
 r=Path(ROOT); archive=r/NAME
 mandatory=['recovery_launch.json','source_pins_verified.json','status_rank0.json','status_rank1.json']
+def validate_metadata(records):
+ launch=records['recovery_launch.json'];pins=records['source_pins_verified.json'];cfg=__MANIFEST_LITERAL__.get('configuration_sha256','')
+ if not re.fullmatch('[0-9a-f]{64}',cfg) or launch.get('configuration_sha256')!=cfg or pins.get('configuration_sha256')!=cfg:raise RuntimeError('Trace configuration identity missing/mismatched')
+ cmd=launch.get('command',[])
+ if not isinstance(cmd,list) or '--nproc_per_node=2' not in cmd or '--output' not in cmd or cmd[cmd.index('--output')+1]!=str(r) or not launch.get('resume'):raise RuntimeError('Trace launch metadata incomplete')
+ sources=pins.get('sources',{})
+ required=['scripts/train_full.py','scripts/train_repaired.py','scripts/numerical_guard.py','scripts/launch_recovery.py','scripts/inspect_checkpoint.py','scripts/prepare_verified_resume.py']
+ if not all(re.fullmatch('[0-9a-f]{64}',sources.get(name,'')) for name in required) or not re.fullmatch('[0-9a-f]{64}',pins.get('upstream_python_tree_sha256','')) or pins.get('upstream_python_file_count',0)<1:raise RuntimeError('Trace source metadata incomplete')
+ inspection=pins.get('checkpoint_inspection',{})
+ initial=inspection.get('optimizer_updates',-1)
+ if inspection.get('status')!='CHECKPOINT_CPU_INSPECTION_PASSED' or initial<0 or initial>=UPDATES or inspection.get('optimizer_step_values')!=[float(initial)]:raise RuntimeError('Trace resume inspection incomplete')
+ for rank in [0,1]:
+  status=records['status_rank'+str(rank)+'.json'];recovery=status.get('configuration',{}).get('recovery',{})
+  if status.get('rank')!=rank or status.get('world_size')!=2 or status.get('optimizer_updates',-1)<UPDATES or recovery.get('initial_optimizer_updates')!=initial or recovery.get('source_sha256')!=sources or recovery.get('upstream_python_tree_sha256')!=pins['upstream_python_tree_sha256']:raise RuntimeError('Trace rank/status provenance mismatch')
 for name in mandatory:
  if not (r/name).is_file():raise RuntimeError('Missing mandatory trace member: '+name)
+validate_metadata({name:json.loads((r/name).read_bytes()) for name in mandatory})
 health={}
 for rank in [0,1]:
  p=r/('health_rank'+str(rank)+'.jsonl');chosen=[]
@@ -282,7 +297,9 @@ for rank in [0,1]:
  for line in p.read_bytes().splitlines(keepends=True):
   try:row=json.loads(line)
   except (ValueError,UnicodeError):raise RuntimeError('Malformed rank health row; retry after writer finishes')
-  if row.get('loop_step',-1)<=STEP and row.get('optimizer_updates',0)<=UPDATES:chosen.append(line)
+  if row.get('loop_step',-1)<=STEP and row.get('optimizer_updates',0)<=UPDATES:
+   if row.get('rank')!=rank:raise RuntimeError('Embedded rank does not match trace file')
+   chosen.append(line)
  if not chosen or json.loads(chosen[-1])['optimizer_updates']!=UPDATES:raise RuntimeError('Rank trace lacks checkpoint endpoint')
  endpoint=json.loads(chosen[-1])
  if endpoint.get('loop_step')!=STEP or not endpoint.get('step_validated') or not endpoint.get('ema_validated'):raise RuntimeError('Checkpoint endpoint is not validated')
@@ -298,23 +315,25 @@ if not archive.exists():
     data=p.read_bytes();item=tarfile.TarInfo(name);item.size=len(data);tar.addfile(item,io.BytesIO(data));members[name]={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
   for rank,data in health.items():
    name='health_rank'+str(rank)+'_until_checkpoint.jsonl';item=tarfile.TarInfo(name);item.size=len(data);tar.addfile(item,io.BytesIO(data));members[name]={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
-  proof={'checkpoint_manifest':CHECKPOINT,'members':members,'scope':'Status files are capture-time observations; per-rank health ends at the checkpoint.'}
+  proof={'checkpoint_manifest':__MANIFEST_LITERAL__,'members':members,'scope':'Status files are capture-time observations; per-rank health ends at the checkpoint.'}
   data=json.dumps(proof,sort_keys=True,indent=2).encode();item=tarfile.TarInfo('trace_integrity.json');item.size=len(data);tar.addfile(item,io.BytesIO(data))
  os.replace(partial,archive)
 with tarfile.open(archive) as tar:
  proof=json.load(tar.extractfile('trace_integrity.json'))
- if proof['checkpoint_manifest']!=CHECKPOINT:raise RuntimeError('Frozen trace checkpoint changed')
+ if proof['checkpoint_manifest']!=__MANIFEST_LITERAL__:raise RuntimeError('Frozen trace checkpoint changed')
  for name,expected in proof['members'].items():
   data=tar.extractfile(name).read()
   if {'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}!=expected:raise RuntimeError('Frozen trace member digest mismatch')
  for name in mandatory:
   if name not in tar.getnames():raise RuntimeError('Frozen trace is incomplete')
+ validate_metadata({name:json.load(tar.extractfile(name)) for name in mandatory})
  for rank in [0,1]:
   data=tar.extractfile('health_rank'+str(rank)+'_until_checkpoint.jsonl').read()
+  if any(json.loads(line).get('rank')!=rank for line in data.splitlines()):raise RuntimeError('Frozen trace embedded rank mismatch')
   row=json.loads(data.splitlines()[-1])
   if row['optimizer_updates']!=UPDATES or row.get('loop_step')!=STEP or not row.get('step_validated') or not row.get('ema_validated') or row.get('optimizer_step_calls')!=UPDATES or row.get('validated_optimizer_updates')!=UPDATES:raise RuntimeError('Frozen trace endpoint changed')
 print(str(archive))
-'''.replace('ROOT',repr(self.c['server_output'])).replace('NAME',repr(f'training_trace_{step:09d}.tar.gz')).replace('STEP',str(step)).replace('UPDATES',str(updates)).replace('CHECKPOINT',repr(manifest))
+'''.replace('ROOT',repr(self.c['server_output'])).replace('NAME',repr(f'training_trace_{step:09d}.tar.gz')).replace('STEP',str(step)).replace('UPDATES',str(updates)).replace('__MANIFEST_LITERAL__',repr(manifest))
         remote = self.remote(script).strip()
         self.download(remote, Path(directory)/Path(remote).name)
 
