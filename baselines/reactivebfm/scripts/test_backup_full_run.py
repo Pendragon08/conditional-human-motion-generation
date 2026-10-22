@@ -4,6 +4,7 @@ import hashlib
 import io
 from pathlib import Path
 import tempfile
+import tarfile
 import unittest
 from unittest.mock import patch
 import json
@@ -77,6 +78,74 @@ class CleanupProtocol(unittest.TestCase):
         (directory / 'new.txt').write_text('later snapshot')
         freeze_package(directory, package)
         self.assertEqual(first, digest(package))
+
+    def test_recovery_trace_is_frozen_at_checkpoint_cutoff(self):
+        self.worker.c['capture_recovery_trace'] = True
+        rows=[{'loop_step':9,'optimizer_updates':10},{'loop_step':19,'optimizer_updates':20},
+              {'loop_step':20,'optimizer_updates':21}]
+        for row in rows:row.update(step_validated=True,ema_validated=True,optimizer_step_calls=row['optimizer_updates'],validated_optimizer_updates=row['optimizer_updates'])
+        log=self.root/'health_rank0.jsonl'
+        log.write_text(''.join(json.dumps(x)+'\n' for x in rows))
+        (self.root/'health_rank1.jsonl').write_bytes(log.read_bytes())
+        for name in ['recovery_launch.json','source_pins_verified.json','status_rank0.json','status_rank1.json']:
+            (self.root/name).write_text('{}')
+        destination=self.root/'trace_copy';destination.mkdir()
+        self.worker.download=lambda source,target:shutil.copyfile(source,target)
+        self.worker.capture_recovery_trace(self.newest,destination)
+        archive=destination/'training_trace_000000019.tar.gz';before=digest(archive)
+        with tarfile.open(archive) as tar:
+            captured=[json.loads(x) for x in tar.extractfile('health_rank0_until_checkpoint.jsonl').read().splitlines()]
+        self.assertEqual([x['optimizer_updates'] for x in captured],[10,20])
+        with log.open('a') as stream:stream.write(json.dumps({'loop_step':21,'optimizer_updates':22})+'\n')
+        self.worker.capture_recovery_trace(self.newest,destination)
+        self.assertEqual(before,digest(archive))
+
+    def test_trace_refuses_missing_rank_and_unvalidated_endpoint(self):
+        self.worker.c['capture_recovery_trace']=True
+        destination=self.root/'trace_copy';destination.mkdir()
+        self.worker.download=lambda source,target:shutil.copyfile(source,target)
+        for name in ['recovery_launch.json','source_pins_verified.json','status_rank0.json','status_rank1.json']:
+            (self.root/name).write_text('{}')
+        row={'loop_step':19,'optimizer_updates':20,'step_validated':True,'ema_validated':True,'optimizer_step_calls':20,'validated_optimizer_updates':20}
+        (self.root/'health_rank0.jsonl').write_text(json.dumps(row)+'\n')
+        with self.assertRaises(RuntimeError):self.worker.capture_recovery_trace(self.newest,destination)
+        row['ema_validated']=False
+        (self.root/'health_rank1.jsonl').write_text(json.dumps(row)+'\n')
+        with self.assertRaises(RuntimeError):self.worker.capture_recovery_trace(self.newest,destination)
+        self.assertFalse((self.root/'training_trace_000000019.tar.gz').exists())
+
+    def test_evaluation_model_identity_rejects_changed_bytes(self):
+        row=self.older['files'][0]
+        self.worker.verify_model_identity(row)
+        self.old.write_bytes(b'changed after manifest')
+        with self.assertRaises(RuntimeError):self.worker.verify_model_identity(row)
+
+    def test_postcheck_failure_receipt_cannot_be_promoted_after_restore(self):
+        evaluation_root=self.root/'evaluations';evaluation_root.mkdir()
+        evidence=self.root/'evaluation_evidence';evidence.mkdir()
+        self.worker.c.update(python='unused',runtime_root='unused',evaluation_root=str(evaluation_root),bind_evaluation_model_sha256=True)
+        self.worker.ssh=['unused-ssh']
+        self.worker.download=lambda source,destination:shutil.copyfile(source,destination)
+        row=self.older['files'][0];original=self.old.read_bytes()
+        manifest={'optimizer_updates':1000,'files':[row]}
+        def failed_trial(*args,**kwargs):
+            self.old.write_bytes(b'wrong model bytes during trial')
+            return subprocess.CompletedProcess([],1,'','intentional test failure')
+        with patch('backup_full_run.subprocess.run',side_effect=failed_trial):
+            with self.assertRaises(RuntimeError):self.worker.evaluate(manifest,evidence)
+        orphan=next(evidence.glob('*_receipt.json'));before=digest(orphan)
+        self.assertFalse(list(evidence.glob('*_checkpoint_identity.json')))
+        self.old.write_bytes(original)
+        with patch('backup_full_run.subprocess.run',return_value=subprocess.CompletedProcess([],1,'','intentional test failure')) as mocked:
+            results=self.worker.evaluate(manifest,evidence)
+        self.assertEqual(mocked.call_count,9)
+        self.assertEqual(len(results),9)
+        self.assertEqual(before,digest(orphan))
+        self.assertFalse(orphan.with_name(orphan.name.replace('_receipt.json','_checkpoint_identity.json')).exists())
+        bindings=list(evidence.glob('*_checkpoint_identity.json'));self.assertEqual(len(bindings),9)
+        self.assertTrue(any('_retry001_' in p.name for p in bindings))
+        for p in bindings:
+            binding=json.loads(p.read_text());self.assertEqual(binding['model']['sha256'],row['sha256'])
 
     def test_missing_remote_receipt_is_failed_and_never_rerun(self):
         evaluation_root = self.root / 'evaluations'; evaluation_root.mkdir()

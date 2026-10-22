@@ -25,6 +25,13 @@ manifest_path = Path(configuration['recovery']['original_manifest'])
 if hashlib.sha256(manifest_path.read_bytes()).hexdigest() != configuration['recovery']['original_manifest_sha256']:
     raise ValueError('Original ready manifest changed after recovery planning')
 manifest = json.loads(manifest_path.read_text())
+step = manifest['official_step']
+if manifest['optimizer_updates'] != step+1:
+    raise ValueError('Only unambiguous periodic/early checkpoint convention is supported')
+if manifest['optimizer_updates'] != configuration['recovery']['initial_optimizer_updates']:
+    raise ValueError('Configured optimizer count differs from the ready manifest')
+if {Path(row['file']).name for row in manifest['files']} != {f'model{step:09d}.pt',f'opt{step:09d}.pt'} or len(manifest['files']) != 2:
+    raise ValueError('Exact model/optimizer pair required')
 for row in manifest['files']:
     path = Path(row['file'])
     digest = hashlib.sha256()
@@ -37,5 +44,6 @@ if str(arguments.resume) not in [r['file'] for r in manifest['files'] if Path(r[
     raise ValueError('Resume path differs from verified manifest')
 from numerical_guard import install_guards
 install_guards(arguments.output, configuration['recovery']['maximum_consecutive_skips'],
-               configuration['recovery']['save_after_resumed_updates'])
+               configuration['recovery']['save_after_resumed_updates'],
+               configuration['recovery']['initial_optimizer_updates'])
 runpy.run_path(str(BASE/'scripts/train_full.py'), run_name='__main__')

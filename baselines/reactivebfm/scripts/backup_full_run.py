@@ -141,14 +141,43 @@ class Worker:
             raise RuntimeError('Downloaded checkpoint digest mismatch')
         os.replace(partial, local_path)
 
+    def verify_model_identity(self, row):
+        script='from pathlib import Path\nimport hashlib,json\np=Path('+repr(row['file'])+')\nh=hashlib.sha256()\n'
+        script+='with p.open("rb") as f:\n for b in iter(lambda:f.read(1048576),b""):h.update(b)\n'
+        script+='print(json.dumps({"sha256":h.hexdigest(),"bytes":p.stat().st_size}))\n'
+        current=json.loads(self.remote(script,timeout=180))
+        if current != {'sha256':row['sha256'],'bytes':row['bytes']}:
+            raise RuntimeError('Evaluation model bytes differ from the verified checkpoint')
+        return current
+
     def evaluate(self, manifest, directory):
         updates = manifest['optimizer_updates']; results = []
         if updates not in self.c.get('evaluation_updates', [1000, 10001, 1000000]) and updates % 100000 not in [0, 1]: return results
         model = next(x['file'] for x in manifest['files'] if Path(x['file']).name.startswith('model'))
+        bound = self.c.get('bind_evaluation_model_sha256', False)
+        model_row = next(x for x in manifest['files'] if x['file']==model)
         cases = [('stand_still', 'stand still'), ('walk_forward', 'walk forward'), ('punch', 'perform a punch')]
         for case, prompt in cases:
             for seed in [42,43,44]:
                 label = f"u{updates:09d}_{case}_s{seed}"
+                if bound: label += '_'+model_row['sha256'][:16]
+                base_label = label
+                # A receipt left before its post-run identity check is unbound.
+                # Preserve it and its remote directory; never promote it on retry.
+                if bound:
+                    for attempt in range(100):
+                        label = base_label + (f'_retry{attempt:03d}' if attempt else '')
+                        trial_path = directory / (label + '_receipt.json')
+                        binding_path = directory / (label + '_checkpoint_identity.json')
+                        if trial_path.exists():
+                            if binding_path.exists(): break
+                            continue
+                        destination = self.c['evaluation_root'] + '/' + label
+                        query = 'from pathlib import Path\nprint(Path(' + repr(destination) + ').exists())\n'
+                        if self.remote(query).strip() == 'True': continue
+                        break
+                    else: raise RuntimeError('Too many preserved unbound diagnostic attempts')
+                    self.verify_model_identity(model_row)
                 destination = self.c['evaluation_root'] + '/' + label
                 cmd = [self.c['python'], self.c['runtime_root'] + '/code/scripts/run_closed_loop.py',
                     '--runtime-root', self.c['runtime_root'], '--checkpoint', model, '--output', destination,
@@ -187,6 +216,14 @@ class Worker:
                 data = json.loads(path.read_text(encoding='utf-8'))
                 if data.get('status') != 'EVALUATION_LAUNCH_FAILED':
                     self.download(destination + '/receipt.json', path)
+                if bound:
+                    identity=self.verify_model_identity(model_row)
+                    data['checkpoint_identity_verified']=identity
+                    identity_path=directory/(label+'_checkpoint_identity.json')
+                    binding={'model':identity,'receipt':{'bytes':path.stat().st_size,'sha256':digest(path)}}
+                    if identity_path.exists() and json.loads(identity_path.read_text())!=binding:
+                        raise RuntimeError('Cached evaluation checkpoint identity changed')
+                    if not identity_path.exists():atomic_json(identity_path,binding)
                 if data.get('status') == 'PHYSICAL_CLOSED_LOOP_EXECUTED':
                     feedback_path = directory / (label + '_feedback.json')
                     if not feedback_path.exists():
@@ -228,6 +265,58 @@ class Worker:
             '仿真 NPZ/视频为模型与物理环境生成的数据，不包含原始训练动作包。', '']
         path = directory / f'full_checkpoint_{manifest["official_step"]:09d}_report.md'
         path.write_text('\n'.join(rows), encoding='utf-8'); return path
+
+    def capture_recovery_trace(self, manifest, directory):
+        if not self.c.get('capture_recovery_trace', False): return
+        step = manifest['official_step']; updates = manifest['optimizer_updates']
+        script = '''from pathlib import Path
+import hashlib,io,json,os,tarfile
+r=Path(ROOT); archive=r/NAME
+mandatory=['recovery_launch.json','source_pins_verified.json','status_rank0.json','status_rank1.json']
+for name in mandatory:
+ if not (r/name).is_file():raise RuntimeError('Missing mandatory trace member: '+name)
+health={}
+for rank in [0,1]:
+ p=r/('health_rank'+str(rank)+'.jsonl');chosen=[]
+ if not p.is_file():raise RuntimeError('Missing rank health trace')
+ for line in p.read_bytes().splitlines(keepends=True):
+  try:row=json.loads(line)
+  except (ValueError,UnicodeError):raise RuntimeError('Malformed rank health row; retry after writer finishes')
+  if row.get('loop_step',-1)<=STEP and row.get('optimizer_updates',0)<=UPDATES:chosen.append(line)
+ if not chosen or json.loads(chosen[-1])['optimizer_updates']!=UPDATES:raise RuntimeError('Rank trace lacks checkpoint endpoint')
+ endpoint=json.loads(chosen[-1])
+ if endpoint.get('loop_step')!=STEP or not endpoint.get('step_validated') or not endpoint.get('ema_validated'):raise RuntimeError('Checkpoint endpoint is not validated')
+ if endpoint.get('optimizer_step_calls')!=UPDATES or endpoint.get('validated_optimizer_updates')!=UPDATES:raise RuntimeError('Checkpoint endpoint counters disagree')
+ health[rank]=b''.join(chosen)
+if not archive.exists():
+ partial=archive.with_suffix('.partial')
+ members={}
+ with tarfile.open(partial,'w:gz') as tar:
+  for name in mandatory+['supervisor_stdout.txt','supervisor_stderr.txt','supervisor_exit.json']:
+   p=r/name
+   if p.is_file():
+    data=p.read_bytes();item=tarfile.TarInfo(name);item.size=len(data);tar.addfile(item,io.BytesIO(data));members[name]={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+  for rank,data in health.items():
+   name='health_rank'+str(rank)+'_until_checkpoint.jsonl';item=tarfile.TarInfo(name);item.size=len(data);tar.addfile(item,io.BytesIO(data));members[name]={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+  proof={'checkpoint_manifest':CHECKPOINT,'members':members,'scope':'Status files are capture-time observations; per-rank health ends at the checkpoint.'}
+  data=json.dumps(proof,sort_keys=True,indent=2).encode();item=tarfile.TarInfo('trace_integrity.json');item.size=len(data);tar.addfile(item,io.BytesIO(data))
+ os.replace(partial,archive)
+with tarfile.open(archive) as tar:
+ proof=json.load(tar.extractfile('trace_integrity.json'))
+ if proof['checkpoint_manifest']!=CHECKPOINT:raise RuntimeError('Frozen trace checkpoint changed')
+ for name,expected in proof['members'].items():
+  data=tar.extractfile(name).read()
+  if {'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}!=expected:raise RuntimeError('Frozen trace member digest mismatch')
+ for name in mandatory:
+  if name not in tar.getnames():raise RuntimeError('Frozen trace is incomplete')
+ for rank in [0,1]:
+  data=tar.extractfile('health_rank'+str(rank)+'_until_checkpoint.jsonl').read()
+  row=json.loads(data.splitlines()[-1])
+  if row['optimizer_updates']!=UPDATES or row.get('loop_step')!=STEP or not row.get('step_validated') or not row.get('ema_validated') or row.get('optimizer_step_calls')!=UPDATES or row.get('validated_optimizer_updates')!=UPDATES:raise RuntimeError('Frozen trace endpoint changed')
+print(str(archive))
+'''.replace('ROOT',repr(self.c['server_output'])).replace('NAME',repr(f'training_trace_{step:09d}.tar.gz')).replace('STEP',str(step)).replace('UPDATES',str(updates)).replace('CHECKPOINT',repr(manifest))
+        remote = self.remote(script).strip()
+        self.download(remote, Path(directory)/Path(remote).name)
 
     def cleanup_server_older(self, newest, manifests, assets):
         candidates = []
@@ -284,6 +373,7 @@ print(json.dumps(removed))
                         raise RuntimeError('Raw ready manifest differs from snapshot')
                     atomic_json(directory / 'raw_ready_manifest_integrity.json', {'sha256':digest(raw_manifest), 'bytes':raw_manifest.stat().st_size})
                     self.download(self.c['server_output'] + '/checkpoints/args.json', directory / 'args.json')
+                    self.capture_recovery_trace(m, directory)
                     limit=m['optimizer_updates']
                     script='import json\nfrom pathlib import Path, PurePosixPath\np=Path('+repr(self.c['server_output']+'/metrics.jsonl')+')\n'
                     script+='if p.exists():\n for line in p.read_text().splitlines():\n  try:r=json.loads(line)\n  except ValueError:continue\n  if r.get("optimizer_updates",0)<='+str(limit)+':print(json.dumps(r))\n'

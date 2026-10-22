@@ -54,6 +54,10 @@ def optimizer_steps(optimizer):
     return next(iter(steps), 0)
 
 
+def tensors_finite(values):
+    return all(bool(torch.isfinite(value).all()) for value in values if torch.is_tensor(value))
+
+
 class RecoveryGuard:
     def __init__(self, trainer, optimizer, output, maximum_skips=3):
         self.trainer = trainer
@@ -63,20 +67,38 @@ class RecoveryGuard:
         self.rank = int(os.getenv('RANK', '0'))
         self.initial_updates = optimizer_steps(optimizer)
         self.updates = self.initial_updates
+        self.step_calls = self.initial_updates
         self.attempts = 0
         self.skips = 0
         self.consecutive_skips = 0
         self.started = time.monotonic()
         self.last_step_applied = False
+        self.step_called = False
+        self.ema_validated = False
         self.begin_attempt()
 
     def begin_attempt(self):
         self.last_step_applied = False
+        self.step_called = False
+        self.ema_validated = False
         self.reason = 'NO_OPTIMIZER_STEP_OR_NONFINITE_PRIMITIVE_LOSS'
         self.gradient_norm = None
         self.clipped_gradient_norm = None
         self.parameter_norm = None
         self.offending_parameters = []
+
+    def fatal(self, reason):
+        self.reason = reason
+        self.last_step_applied = False
+        step = self.loop.total_step() if hasattr(self, 'loop') else self.attempts
+        self.finish_attempt(step, force_stop=True)
+
+    def validate_ema(self, parameters, phase):
+        parameters = list(parameters)
+        device = self.trainer.master_params[0].device
+        if not collective_true(tensors_finite(parameters), device):
+            self.fatal('NONFINITE_EMA_'+phase)
+        self.ema_validated = phase == 'AFTER_UPDATE'
 
     def optimize(self):
         from reactivebfm.model.motion_planner.objectives.diffusion import logger
@@ -111,26 +133,34 @@ class RecoveryGuard:
         logger.logkv_mean('grad_norm', clipped)
         logger.logkv_mean('param_norm', parameter)
         self.optimizer.step()
+        self.step_called = True
+        self.step_calls += 1
+        finite_after = tensors_finite(parameters) and all(
+            tensors_finite(state.values()) for state in self.optimizer.state.values())
+        if not collective_true(finite_after, device):
+            self.fatal('NONFINITE_PARAMETER_OR_OPTIMIZER_STATE_AFTER_STEP_NO_ROLLBACK')
         self.updates += 1
         self.last_step_applied = True
         self.reason = 'OPTIMIZER_STEP_APPLIED'
         return True
 
-    def finish_attempt(self, loop_step):
+    def finish_attempt(self, loop_step, force_stop=False):
         self.attempts += 1
         if self.last_step_applied:
             self.consecutive_skips = 0
         else:
             self.skips += 1
             self.consecutive_skips += 1
-        stopped = self.consecutive_skips >= self.maximum_skips
+        stopped = force_stop or self.consecutive_skips >= self.maximum_skips
         row = {
             'utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
             'rank': self.rank, 'status': 'NUMERICAL_WATCHDOG_STOP' if stopped else 'TRAINING',
             'loop_step': loop_step, 'initial_optimizer_updates': self.initial_updates,
             'optimizer_updates': self.updates, 'resumed_updates': self.updates-self.initial_updates,
+            'optimizer_step_calls': self.step_calls, 'validated_optimizer_updates': self.updates,
             'attempts_since_resume': self.attempts, 'skipped_attempts': self.skips,
-            'consecutive_skips': self.consecutive_skips, 'step_applied': self.last_step_applied,
+            'consecutive_skips': self.consecutive_skips, 'step_applied': self.step_called,
+            'step_validated': self.last_step_applied, 'ema_validated': self.ema_validated,
             'reason': self.reason, 'grad_norm_pre_clip_fp64': self.gradient_norm,
             'grad_norm_post_clip_fp64': self.clipped_gradient_norm,
             'param_norm_fp64': self.parameter_norm,
@@ -150,7 +180,7 @@ class RecoveryGuard:
             raise FloatingPointError('Recovery watchdog: consecutive rejected optimizer steps; evidence preserved')
 
 
-def install_guards(output, maximum_skips=3, save_after_resumed_updates=20):
+def install_guards(output, maximum_skips=3, save_after_resumed_updates=20, expected_initial_updates=None):
     from reactivebfm.model.motion_planner.objectives.diffusion.fp16_util import MixedPrecisionTrainer
     from reactivebfm.train.scheduled_forcing_loop import ScheduledForcingLoop
 
@@ -163,6 +193,9 @@ def install_guards(output, maximum_skips=3, save_after_resumed_updates=20):
     def guarded_initialize(self, *args, **kwargs):
         initialize(self, *args, **kwargs)
         self.mp_trainer.recovery_guard = RecoveryGuard(self.mp_trainer, self.opt, output, maximum_skips)
+        self.mp_trainer.recovery_guard.loop = self
+        if expected_initial_updates is not None and self.mp_trainer.recovery_guard.initial_updates != expected_initial_updates:
+            raise ValueError('GPU-loaded optimizer count differs from the recovery manifest')
         self._recovery_early_saved = False
 
     def guarded_zero(self):
@@ -178,12 +211,16 @@ def install_guards(output, maximum_skips=3, save_after_resumed_updates=20):
     def guarded_average(self):
         guard = getattr(self.mp_trainer, 'recovery_guard', None)
         if guard is None or guard.last_step_applied:
+            if guard is not None and self.model_avg is not None:
+                guard.validate_ema(self.model_avg.parameters(), 'BEFORE_UPDATE')
             average(self)
+            if guard is not None and self.model_avg is not None:
+                guard.validate_ema(self.model_avg.parameters(), 'AFTER_UPDATE')
 
     def guarded_anneal(self):
-        anneal(self)
         guard = self.mp_trainer.recovery_guard
         guard.finish_attempt(self.total_step())
+        anneal(self)
         if (guard.last_step_applied and not self._recovery_early_saved
                 and guard.updates-guard.initial_updates == save_after_resumed_updates):
             if distributed.is_initialized(): distributed.barrier()

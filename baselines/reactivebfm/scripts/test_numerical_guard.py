@@ -49,22 +49,58 @@ class GuardTests(unittest.TestCase):
             self.assertEqual(row['status'], 'NUMERICAL_WATCHDOG_STOP')
             self.assertEqual(len(opt.state), 0)
 
+    def test_post_adam_corruption_is_not_counted_as_validated_update(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p = torch.nn.Parameter(torch.ones(3)); opt = torch.optim.AdamW([p])
+            p.grad = torch.ones_like(p); opt.step()
+            opt.state[p]['exp_avg_sq'].fill_(-1.0)
+            guard = RecoveryGuard(SimpleNamespace(master_params=[p],model=torch.nn.ParameterList([p]),max_grad_norm=1.0),opt,directory,1)
+            p.grad = torch.ones_like(p)
+            with self.assertRaises(FloatingPointError): guard.optimize()
+            row = json.loads((Path(directory)/'health_rank0.json').read_text())
+            self.assertEqual(row['optimizer_step_calls'],2)
+            self.assertEqual(row['validated_optimizer_updates'],1)
+            self.assertIn('AFTER_STEP_NO_ROLLBACK',row['reason'])
 
-def distributed_test():
+    def test_bad_ema_aborts_before_checkpoint_path(self):
+        with tempfile.TemporaryDirectory() as directory:
+            p = torch.nn.Parameter(torch.ones(3)); opt = torch.optim.AdamW([p])
+            guard = RecoveryGuard(SimpleNamespace(master_params=[p],model=torch.nn.ParameterList([p]),max_grad_norm=1.0),opt,directory,1)
+            with self.assertRaises(FloatingPointError):
+                guard.validate_ema([torch.tensor(float('nan'))],'BEFORE_UPDATE')
+            row = json.loads((Path(directory)/'health_rank0.json').read_text())
+            self.assertEqual(row['reason'],'NONFINITE_EMA_BEFORE_UPDATE')
+
+
+def distributed_test(post_step=False, output='.'):
     distributed.init_process_group('gloo')
     rank = distributed.get_rank()
     p = torch.nn.Parameter(torch.ones(3)); opt = torch.optim.AdamW([p])
-    guard = RecoveryGuard(SimpleNamespace(master_params=[p], model=torch.nn.ParameterList([p]), max_grad_norm=1.0), opt, '.', 3)
-    p.grad = torch.full_like(p, float('inf') if rank == 1 else 1.0)
-    applied = guard.optimize()
-    if applied or opt.state or not torch.equal(p.detach(), torch.ones(3)):
-        raise AssertionError('Every rank must reject a step when one rank is nonfinite')
+    guard = RecoveryGuard(SimpleNamespace(master_params=[p], model=torch.nn.ParameterList([p]), max_grad_norm=1.0), opt, output, 3)
+    if post_step:
+        original_step = opt.step
+        def poison_step(*args, **kwargs):
+            original_step(*args, **kwargs)
+            if rank == 1: p.data.fill_(float('inf'))
+        opt.step = poison_step
+        p.grad = torch.ones_like(p)
+        try: guard.optimize()
+        except FloatingPointError: pass
+        else: raise AssertionError('Post-step nonfinite state must abort both ranks')
+        if guard.step_calls != 1 or guard.updates != 0: raise AssertionError('Called and validated counters confused')
+    else:
+        p.grad = torch.full_like(p, float('inf') if rank == 1 else 1.0)
+        applied = guard.optimize()
+        if applied or opt.state or not torch.equal(p.detach(), torch.ones(3)):
+            raise AssertionError('Every rank must reject a step when one rank is nonfinite')
     distributed.barrier(); distributed.destroy_process_group()
-    print(json.dumps({'rank':rank,'status':'ALL_RANKS_REJECTED_NONFINITE_WITHOUT_MUTATION'}))
+    print(json.dumps({'rank':rank,'status':'ALL_RANKS_ABORTED_POST_STEP_NO_VALIDATED_UPDATE' if post_step else 'ALL_RANKS_REJECTED_NONFINITE_WITHOUT_MUTATION'}))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(); parser.add_argument('--distributed', action='store_true')
+    parser.add_argument('--post-step',action='store_true')
+    parser.add_argument('--output',default='.')
     arguments, remaining = parser.parse_known_args()
-    if arguments.distributed: distributed_test()
+    if arguments.distributed: distributed_test(arguments.post_step,arguments.output)
     else: unittest.main(argv=[__file__]+remaining)
