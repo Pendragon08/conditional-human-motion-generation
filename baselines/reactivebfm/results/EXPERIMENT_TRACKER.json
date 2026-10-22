@@ -23,10 +23,10 @@
     "old_full_checkpoint_cleanup_acceptance": "NOT_YET_APPLICABLE_LATEST_RETAINED",
     "historical_server_storage_cleanup": "DONE_133_FILES_ARCHIVED_VERIFIED_AND_RESTORED_LOCALLY"
   },
-  "current_full_training_snapshot": "storage_cleanup_20261022_102452/training_snapshot_after_cleanup.json",
+  "current_full_training_snapshot": "storage_cleanup_20261022_102452/training_snapshot_after_data_restore.json",
   "actual_updates_per_rank_at_snapshot": {
-    "0": 8860,
-    "1": 8860
+    "0": 9180,
+    "1": 9180
   },
   "first_checkpoint_evaluation_summary": "full_training_20261021/first_checkpoint_stage_v1/evaluation_summary.json",
   "latest_monitor_report": "reports/ReactiveBFM实验进度检查_20261022_095308.md",
@@ -34,9 +34,19 @@
   "storage_cleanup": {
     "report": "reports/服务器磁盘清理报告_20261022.md",
     "result_directory": "results/storage_cleanup_20261022_102452",
-    "removed_files": 133,
-    "released_allocated_bytes": 7374811136,
+    "removed_files": 132,
+    "released_allocated_bytes": 3160662016,
     "release": "https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/server-storage-archive-20261022",
-    "verified_shanghai": "2026-10-22T10:58:18.773908+08:00"
+    "verified_shanghai": "2026-10-22T10:58:18.773908+08:00",
+    "initial_removed_files": 133,
+    "initial_released_allocated_bytes": 7374811136,
+    "restored_reusable_motion_dataset": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/results/closd_baseline_20261010/fresh_generation/CLoSD.pkl",
+    "data_preservation_report": "reports/数据保留核验与CLoSD恢复_20261022.md"
+  },
+  "data_preservation": {
+    "policy": "docs/data_preservation.md",
+    "original_training_data_retained": true,
+    "reactivebfm_sha256_files_passed": 24,
+    "generated_closd_dataset_restored_and_protected": true
   }
 }

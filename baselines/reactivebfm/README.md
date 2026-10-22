@@ -8,7 +8,8 @@ Neither full training completion nor the
 paper's benchmark performance is claimed.
 
 - [Latest progress check: 2026-10-22 09:53 Shanghai, 7,960 updates](reports/ReactiveBFM实验进度检查_20261022_095308.md)
-- [Verified server storage cleanup: 6.87 GiB archived before deletion, actual local restoration passed](reports/服务器磁盘清理报告_20261022.md)
+- [Data retention: generated CLoSD motions restored and protected; net 2.94 GiB reclaimed](reports/数据保留核验与CLoSD恢复_20261022.md)
+- [Data preservation policy](docs/data_preservation.md)
 - [Current Chinese training and closed-loop report](reports/ReactiveBFM完整训练与闭环进展报告_20261022.md)
 - [Live snapshot captured during this delivery](results/full_training_20261021/live_snapshot_v4/)
 - [Full training checkpoints, diagnostics and reports](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/reactivebfm-full-training-20261022)

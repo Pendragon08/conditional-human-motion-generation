@@ -258,6 +258,4 @@ def archive_group(group, paths):
 
 
 if __name__ == '__main__':
-    archive_group('historical_native_contacts_20261022', [r['path'] for r in PRE['native_contact_files']])
-    archive_group('closd_generated_20261010', [PREFIX + '/results/closd_baseline_20261010/fresh_generation/CLoSD.pkl'])
-    log('all_authorized_historical_groups_archived_and_removed')
+    raise SystemExit('This one-off cleanup is complete. Do not rerun it. The reusable CLoSD generated motion collection is protected and restored; see docs/data_preservation.md. Exact executed source remains in Git history at bc58298.')

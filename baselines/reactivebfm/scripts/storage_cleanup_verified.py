@@ -35,7 +35,12 @@ def digest(path):
 def permitted(path):
     if path.parent == PILOT:
         return path.name in {'model000000100.pt', 'opt000000100.pt'}
-    return path == GENERATED or (path.is_relative_to(RESULTS) and path.name == 'native_contacts.json')
+    # Reusable generated motion collections are protected like training data.
+    # The original 2026-10-22 operation is recorded in commit bc58298; its CLoSD
+    # collection was subsequently restored at the user's data-preservation request.
+    if path == GENERATED:
+        return False
+    return path.is_relative_to(RESULTS) and path.name == 'native_contacts.json'
 
 
 def identity(path, row):
@@ -108,6 +113,8 @@ def main():
     rows = plan['files']
     paths = [Path(row['path']) for row in rows]
     require(rows and len(paths) == len(set(paths)), 'Empty or duplicate cleanup list')
+    for path in paths:
+        require(path.is_absolute() and permitted(path), 'Protected data or file outside exact historical-file whitelist')
     publication = plan['backup_verification']
     for asset in publication['assets']:
         require(asset['state'] == 'uploaded' and asset['bytes'] > 0, 'Unpublished backup asset')
