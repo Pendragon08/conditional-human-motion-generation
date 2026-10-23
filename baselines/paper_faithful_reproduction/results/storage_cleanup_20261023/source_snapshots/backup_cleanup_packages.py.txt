@@ -1,0 +1,59 @@
+from session import *
+import base64,tarfile,re,shutil
+dest=LOCAL/'storage_cleanup_20261023'
+source=BASE/'scripts/cleanup_backed_unused.py'
+code=r'''
+from pathlib import Path
+import json,base64,importlib.util,tarfile,re,datetime
+base=Path('/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1')
+guard=base/'cleanup_backed_unused_v2.py';assert not guard.exists();guard.write_bytes(base64.b64decode(ENCODED))
+spec=importlib.util.spec_from_file_location('guard',str(guard));g=importlib.util.module_from_spec(spec);spec.loader.exec_module(g)
+for relative in ['reactivebfm-reproduction-20261021/data/full_train.pkl','paper-faithful-reproduction-20261022/training_fp64_sdpa_v4/checkpoints/model.pt','humanoid-combat-motion/records/result.json','phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/model.pt']:
+ try:g.permitted(g.ROOT/relative)
+ except ValueError:pass
+ else:raise RuntimeError('Protected path erroneously accepted')
+rows=[]
+for relative in ['world-model-risk-planning/upstream_sync.tar.gz','world-model-risk-planning/wheelhouse_sync.tar']:
+ p=g.ROOT/relative;s=g.identity(p);members=0
+ with tarfile.open(str(p),'r:*') as t:
+  for m in t:
+   members+=1
+   path=Path(m.name)
+   assert not path.is_absolute() and '..' not in path.parts
+   assert path.suffix.lower() not in {'.pt','.pth','.ckpt','.pkl','.npz','.npy','.h5','.hdf5','.bvh','.fbx','.safetensors','.pem','.key'}
+   assert not any(x in path.parts for x in ['.env','credentials','.ssh'])
+   if m.isfile() and m.name.endswith('/.git/config'):
+    text=t.extractfile(m).read().decode()
+    assert not re.search(r'https?://[^/\s]+@',text)
+ rows.append({'path':str(p),'archive_member':relative,'bytes':s.st_size,'inode':s.st_ino,'mtime_ns':s.st_mtime_ns,
+  'allocated':s.st_blocks*512,'sha256':g.digest(p),'kind':g.permitted(p),'archive_members_inspected':members})
+g.inactive([Path(r['path']) for r in rows])
+plan={'files':rows,'guard_sha256':g.digest(guard),'phase':'old_source_and_wheel_transfer_packages',
+ 'allocated_bytes':sum(r['allocated'] for r in rows),'no_files_deleted':True,'protected_path_rejection_checks_passed':4}
+(base/'source_plan_packages.json').write_text(json.dumps(plan,indent=2)+'\n')
+print(json.dumps(plan))
+'''.replace('ENCODED',repr(base64.b64encode(source.read_bytes()).decode()))
+plan=json.loads(remote(code,timeout=180));dump(dest/'source_plan_packages.json',plan)
+repo='Pendragon08/conditional-human-motion-generation';tag='server-unused-cache-backup-20261023'
+def gh(args):
+    r=subprocess.run([GH,*args],capture_output=True,text=True,encoding='utf-8',timeout=600)
+    if r.returncode:raise RuntimeError(r.stderr)
+    return r.stdout
+local_root=Path('D:/具身智能/world-model-risk-planning')
+verified=[]
+for row in plan['files']:
+    local=local_root/Path(row['path']).name
+    assert local.is_file() and local.stat().st_size==row['bytes'] and sha(local.read_bytes())==row['sha256']
+    name=local.name
+    info=json.loads(gh(['api',f'repos/{repo}/releases/tags/{tag}']))
+    assets={x['name']:x for x in info['assets']}
+    if name not in assets:
+        gh(['release','upload',tag,str(local),'--repo',repo])
+    info=json.loads(gh(['api',f'repos/{repo}/releases/tags/{tag}']))
+    asset=next(x for x in info['assets'] if x['name']==local.name)
+    assert asset['size']==row['bytes'] and asset['digest']=='sha256:'+row['sha256']
+    verified.append({'source_path':row['path'],'bytes':asset['size'],'digest':asset['digest'],
+                     'url':asset['browser_download_url'],'local_path':str(local)})
+plan['backup_verification']={'mode':'direct_file_assets','all_local_copies_verified':True,'assets':verified,'utc':utc()}
+dump(dest/'cleanup_plan_packages_verified.json',plan)
+print(json.dumps({'files':len(verified),'allocated_bytes':plan['allocated_bytes'],'all_local_and_github_verified':True}))

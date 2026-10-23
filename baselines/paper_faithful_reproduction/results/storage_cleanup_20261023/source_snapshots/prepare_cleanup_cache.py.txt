@@ -1,0 +1,37 @@
+from session import *
+import base64
+dest=LOCAL/'storage_cleanup_20261023'
+source=BASE/'scripts/cleanup_backed_unused.py'
+encoded=base64.b64encode(source.read_bytes()).decode()
+code=r'''
+from pathlib import Path
+import importlib.util,base64,json,os,stat,datetime
+base=Path('/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1')
+base.mkdir(exist_ok=False)
+guard=base/'cleanup_backed_unused.py';guard.write_bytes(base64.b64decode(ENCODED))
+spec=importlib.util.spec_from_file_location('clean_guard',str(guard));g=importlib.util.module_from_spec(spec);spec.loader.exec_module(g)
+paths=[]
+for entry in g.TEXTURES+g.SHADERS:
+ root=g.ROOT/entry
+ if not root.exists():continue
+ for b,dirs,files in os.walk(str(root),followlinks=False):
+  dirs[:]=[d for d in dirs if not (Path(b)/d).is_symlink()]
+  for name in files:
+   p=Path(b)/name
+   try:g.permitted(p)
+   except ValueError:continue
+   g.identity(p);paths.append(p)
+helpers=g.inactive(paths)
+rows=[]
+for p in sorted(paths):
+ s=g.identity(p)
+ rows.append({'path':str(p),'archive_member':str(p.relative_to(g.ROOT)), 'bytes':s.st_size,
+  'inode':s.st_ino,'mtime_ns':s.st_mtime_ns,'allocated':s.st_blocks*512,'sha256':g.digest(p),'kind':g.permitted(p)})
+plan={'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'authorized_root':str(g.ROOT),'phase':'inactive_cache_only',
+ 'files':rows,'logical_bytes':sum(r['bytes'] for r in rows),'allocated_bytes':sum(r['allocated'] for r in rows),
+ 'guard_sha256':g.digest(guard),'excluded_system_helpers':helpers,'no_files_deleted':True}
+(base/'source_plan_cache.json').write_text(json.dumps(plan,indent=2)+'\n')
+print(json.dumps(plan))
+'''.replace('ENCODED',repr(encoded))
+result=json.loads(remote(code,timeout=180));dump(dest/'source_plan_cache.json',result)
+print(json.dumps({k:result[k] for k in ['phase','logical_bytes','allocated_bytes','no_files_deleted']}));print('files',len(result['files']))

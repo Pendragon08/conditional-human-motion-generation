@@ -1,0 +1,29 @@
+from pathlib import Path
+import subprocess, json, hashlib, datetime
+
+TASK=Path(__file__).resolve().parent
+REPO=TASK.parent/'phygile_reproduction_20261017/conditional-human-motion-generation'
+BASE=REPO/'baselines/paper_faithful_reproduction'
+LOCAL=Path('D:/具身智能/PhyGile与ReactiveBFM_论文对齐复现_20261022')
+PHY=REPO/'baselines/phygile'
+UNITREE=REPO/'baselines/phygile_unitree'
+RBF=TASK.parent/'reactivebfm_reproduction_20261021/repository/baselines/reactivebfm'
+RUP=TASK.parent/'reactivebfm_reproduction_20261021/upstream'
+PUP=TASK.parent/'phygile_reproduction_20261017/phygile_tracking'
+SSH=['ssh','-o','BatchMode=yes','-o','ConnectTimeout=15','-o','ServerAliveInterval=30','-i','C:/Users/Pende/.ssh/id_ed25519','ouyanghao@10.147.17.32']
+SROOT='/data/code/ouyanghao/oyh'
+REMOTE=SROOT+'/paper-faithful-reproduction-20261022'
+GH='C:/Program Files/GitHub CLI/gh.exe'
+
+def sha(data):return hashlib.sha256(data).hexdigest()
+def utc():return datetime.datetime.now(datetime.timezone.utc).isoformat()
+def dump(path, obj):
+    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+    path.write_bytes((json.dumps(obj,ensure_ascii=False,indent=2)+'\n').encode('utf-8'))
+def remote(script,python='python3',timeout=180):
+    result=subprocess.run(SSH+[python+' -'],input=script,capture_output=True,text=True,encoding='utf-8',timeout=timeout)
+    if result.returncode:raise RuntimeError(result.stderr[-6000:]+'\n'+result.stdout[-6000:])
+    return result.stdout
+
+for p in [LOCAL,BASE,TASK/'sources',BASE/'sources',BASE/'configs',BASE/'scripts',BASE/'reports',BASE/'results']:
+    p.mkdir(parents=True,exist_ok=True)

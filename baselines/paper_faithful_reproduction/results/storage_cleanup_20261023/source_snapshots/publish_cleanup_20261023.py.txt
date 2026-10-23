@@ -1,0 +1,45 @@
+from session import *
+repo='Pendragon08/conditional-human-motion-generation';tag='paper-reproduction-progress-20261023'
+def gh(args):
+    r=subprocess.run([GH,*args],capture_output=True,text=True,encoding='utf-8',timeout=240)
+    if r.returncode:raise RuntimeError(r.stderr)
+    return r.stdout
+head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=REPO,text=True).strip()
+files=[BASE/'reports/storage_cleanup_and_progress_20261023.md',LOCAL/'storage_cleanup_and_progress_public_20261023.zip',
+       LOCAL/'async_evidence_11001.tar.gz',LOCAL/'videos/reactive_v6_11001/ReactiveBFM_actual_async_11001updates.mp4']
+for p in files:
+    info=json.loads(gh(['api',f'repos/{repo}/releases/tags/{tag}']))
+    assets={a['name']:a for a in info['assets']}
+    if p.name in assets:assert assets[p.name]['digest']=='sha256:'+sha(p.read_bytes())
+    else:gh(['release','upload',tag,str(p),'--repo',repo])
+info=json.loads(gh(['api',f'repos/{repo}/releases/tags/{tag}']))
+assets={a['name']:a for a in info['assets']};verified=[]
+for p in files:
+    a=assets[p.name];assert a['size']==p.stat().st_size and a['digest']=='sha256:'+sha(p.read_bytes())
+    verified.append({k:a[k] for k in ['name','size','digest','browser_download_url']})
+backup=json.loads((LOCAL/'recovery_v4_checkpoint_11001/receipt.json').read_text(encoding='utf-8'))
+assert backup['status']=='GITHUB_AND_LOCAL_VERIFIED'
+for r in backup['copied']:
+    a=assets[r['name']];assert a['size']==r['bytes'] and a['digest']=='sha256:'+r['sha256']
+    verified.append({k:a[k] for k in ['name','size','digest','browser_download_url']})
+body=info['body']
+if 'storage_cleanup_and_progress_20261023.md' not in body:
+    body='''最新推进（2026-10-23）：
+
+- 在用户授权目录逐文件清理106个已校验备份的闲置缓存/旧传输包，释放3.26GiB；数据集、检查点和实验记录保留，ReactiveBFM原进程持续训练。
+- 新检查点11,001次更新及AdamW已完整备份。真实闭环500次控制、20次规划采用、5/500帧超近似阈值，仍判失败；单提示单种子不能作正式性能提升结论。实际视频 `ReactiveBFM_actual_async_11001updates.mp4`。
+- PhyGile补录具体终止项；3案例全部原始状态与旧回放逐位一致，两条失败触发手腕高度偏差阈值。未放宽判据，未把小样本当作完整复现。
+- 报告 `storage_cleanup_and_progress_20261023.md`；清理及实验小文件包 `storage_cleanup_and_progress_public_20261023.zip`；完整ReactiveBFM会话 `async_evidence_11001.tar.gz`。
+- 代码：https://github.com/'''+repo+'/tree/'+head+'''/baselines/paper_faithful_reproduction
+- 闲置文件恢复备份：https://github.com/'''+repo+'''/releases/tag/server-unused-cache-backup-20261023
+
+---
+
+'''+body
+    p=LOCAL/'storage_cleanup_20261023/release_notes.md';p.write_text(body,encoding='utf-8')
+    gh(['release','edit',tag,'--repo',repo,'--notes-file',str(p)])
+receipt={'utc':utc(),'code_commit':head,'verified_assets':verified,'all_11001_checkpoint_assets_verified':True,
+         'restricted_motion_assets_uploaded':False}
+dump(LOCAL/'storage_cleanup_20261023/github_publication_receipt.json',receipt)
+dump(BASE/'results/storage_cleanup_20261023/github_publication_receipt.json',receipt)
+print(json.dumps({'verified_assets':len(verified),'all_11001_checkpoint_assets_verified':True,'code_commit':head}))

@@ -1,0 +1,1097 @@
+{
+  "utc_before": "2026-10-23T03:44:53.388977+00:00",
+  "health_before": [
+    {
+      "utc": "2026-10-23T03:30:40.279077+00:00",
+      "rank": 0,
+      "status": "TRAINING",
+      "loop_step": 11000,
+      "initial_optimizer_updates": 10041,
+      "optimizer_updates": 11001,
+      "resumed_updates": 960,
+      "optimizer_step_calls": 11001,
+      "validated_optimizer_updates": 11001,
+      "attempts_since_resume": 960,
+      "skipped_attempts": 0,
+      "consecutive_skips": 0,
+      "step_applied": true,
+      "step_validated": true,
+      "ema_validated": true,
+      "reason": "OPTIMIZER_STEP_APPLIED",
+      "grad_norm_pre_clip_fp64": 0.7118003712562737,
+      "grad_norm_post_clip_fp64": 0.7118003712562737,
+      "param_norm_fp64": 206.86271603750058,
+      "offending_parameters": [],
+      "elapsed_seconds": 16898.93976571597,
+      "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "full_training_completed": false
+    },
+    {
+      "utc": "2026-10-23T03:30:40.279101+00:00",
+      "rank": 1,
+      "status": "TRAINING",
+      "loop_step": 11000,
+      "initial_optimizer_updates": 10041,
+      "optimizer_updates": 11001,
+      "resumed_updates": 960,
+      "optimizer_step_calls": 11001,
+      "validated_optimizer_updates": 11001,
+      "attempts_since_resume": 960,
+      "skipped_attempts": 0,
+      "consecutive_skips": 0,
+      "step_applied": true,
+      "step_validated": true,
+      "ema_validated": true,
+      "reason": "OPTIMIZER_STEP_APPLIED",
+      "grad_norm_pre_clip_fp64": 0.7118003712562737,
+      "grad_norm_post_clip_fp64": 0.7118003712562737,
+      "param_norm_fp64": 206.86271603750058,
+      "offending_parameters": [],
+      "elapsed_seconds": 16898.939763184637,
+      "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "full_training_completed": false
+    }
+  ],
+  "commands": [
+    {
+      "mode": "dry_run",
+      "command": [
+        "python3",
+        "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1/cleanup_backed_unused.py",
+        "--plan",
+        "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1/cache_verified_plan.json",
+        "--receipt",
+        "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1/cache_dry_run_receipt.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"DRY_RUN_PASSED\", \"files\": 0, \"allocated_bytes\": 2727657472, \"free_after\": 3828563968}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "execute",
+      "command": [
+        "python3",
+        "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1/cleanup_backed_unused.py",
+        "--plan",
+        "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1/cache_verified_plan.json",
+        "--receipt",
+        "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1/cache_execute_receipt.json",
+        "--execute"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"BACKED_UP_UNUSED_FILES_REMOVED\", \"files\": 104, \"allocated_bytes\": 2727657472, \"free_after\": 6556160000}\n",
+      "stderr": ""
+    }
+  ],
+  "dry_run": {
+    "utc": "2026-10-23T03:44:59.504120+00:00",
+    "mode": "DRY_RUN",
+    "plan_sha256": "9f2b2fd76a8fc80015f0f6a15982e92a41c9ed87b436b355a5e89db3da0c8e45",
+    "authorized_root": "/data/code/ouyanghao/oyh",
+    "verified_files": 104,
+    "allocated_bytes": 2727657472,
+    "disk_before": {
+      "total": 1967847137280,
+      "used": 1863981834240,
+      "free": 3828580352
+    },
+    "removed": [],
+    "known_os_helpers": [
+      {
+        "pid": 2310665,
+        "comm": "(sd-pam)",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3018937,
+        "comm": "ssh-agent",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3018942,
+        "comm": "gpg-agent",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3025131,
+        "comm": "gnome-keyring-d",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3188255,
+        "comm": "sshd",
+        "reason": "OS protected session/key helper"
+      }
+    ],
+    "backup_verification": {
+      "archive_contents_recovered_and_verified": true,
+      "local_archive_sha256": "87fdf8cb00cc6d35b02fb2a6d7bd855d927ca19082ddc148560eac03e73fe254",
+      "verified_member_paths": [
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "humanoid-combat-motion/cache/r3_xdg/ov/shaders/nv_shadercache/106.5/d02c707b/GLCache/ed2b444730678e1829b2dacd7528e635/ada047a2866c855d/eae91edf9a4c6d7a.bin",
+        "humanoid-combat-motion/cache/r3_xdg/ov/shaders/nv_shadercache/106.5/d02c707b/GLCache/ed2b444730678e1829b2dacd7528e635/ada047a2866c855d/eae91edf9a4c6d7a.toc",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5"
+      ],
+      "asset": {
+        "name": "inactive_builtin_cache_backup_v1.tar.gz",
+        "bytes": 396497898,
+        "digest": "sha256:87fdf8cb00cc6d35b02fb2a6d7bd855d927ca19082ddc148560eac03e73fe254",
+        "url": "https://github.com/Pendragon08/conditional-human-motion-generation/releases/download/server-unused-cache-backup-20261023/inactive_builtin_cache_backup_v1.tar.gz"
+      },
+      "utc": "2026-10-23T03:42:51.847241+00:00"
+    },
+    "dataset_checkpoint_record_deletion_allowed": false,
+    "status": "DRY_RUN_PASSED",
+    "disk_after": {
+      "total": 1967847137280,
+      "used": 1863981850624,
+      "free": 3828563968
+    }
+  },
+  "execute": {
+    "utc": "2026-10-23T03:45:05.199174+00:00",
+    "mode": "EXECUTE",
+    "plan_sha256": "9f2b2fd76a8fc80015f0f6a15982e92a41c9ed87b436b355a5e89db3da0c8e45",
+    "authorized_root": "/data/code/ouyanghao/oyh",
+    "verified_files": 104,
+    "allocated_bytes": 2727657472,
+    "disk_before": {
+      "total": 1967847137280,
+      "used": 1863981858816,
+      "free": 3828555776
+    },
+    "removed": [
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "bytes": 33554432,
+        "sha256": "7e08eda357e0efe8d515249cc78ccae476e2f7e8834b96b66c02100d504ee34c",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "bytes": 8388608,
+        "sha256": "bc21b0c7bc9b5cfa00e2388b62ef83eddce2b1d8ccb61011cc7e08515f5ad879",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "bytes": 2097152,
+        "sha256": "dea34bfd5c28bec7acf460b96c52721d2cad4152c1ac3169cc02ce16cc52b58e",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "bytes": 524288,
+        "sha256": "f65fd1c8acc7140c478d17b719e3e12678b8858bccc68c709d98a97a2522f310",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "bytes": 131072,
+        "sha256": "51769a098a5ea43173d4cadb86d690bc1e1f6b3005548cf3f52c29f6ff19581d",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "bytes": 134217728,
+        "sha256": "e6331d3bfe729544b9cdd38ad28ec26331653de6a4f82a5e80029ef110e36a6b",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "bytes": 33554432,
+        "sha256": "dbc5ff5f0640f761dc7acad440d5637983b36598cbaa8a9d3fd5e72033882e92",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "bytes": 8388608,
+        "sha256": "f9ce6484d1c91c430c9a03a70a95e4e48c48f67afb2dcf15a52114e4d9724779",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "bytes": 2097152,
+        "sha256": "ad8d38090e001b39943cf0836f939f9df16ca5114cc76fcfa7d6c93f071c9f6c",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "bytes": 524288,
+        "sha256": "6bd1d8cbf37edeffb657e2e0d56997b5ec53f30bd64be93235abb2c481483fd7",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "bytes": 131072,
+        "sha256": "8ef96cd00257edb689d81054e31d2fd7676004089d28498d07a34da6133ec583",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "bytes": 134217728,
+        "sha256": "f5c2608a04174747dd5c29289a33ee5003fe814fdf64e619bb531973ae04a105",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "bytes": 33554432,
+        "sha256": "68071bcc0df8227624bb6ceab9cca76065a2845c06797118976c801c31f02b7b",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "bytes": 8388608,
+        "sha256": "e1d72bcb1640a34532458fca8a71b170506e1db2d4e866cd8055ff239f92ffa0",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "bytes": 2097152,
+        "sha256": "00d943624515affbb42855410b1ca9cf066103656c641b8e2dbfc51e2328fab3",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "bytes": 524288,
+        "sha256": "ceb9a7556a9602644873e9a642ca4845a8bf4e5f16fe7bb9768f5919da9d5819",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "bytes": 131072,
+        "sha256": "02094cada2226936d136015e378530870456842693da19dde763154e23ad7069",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "bytes": 33554432,
+        "sha256": "7e08eda357e0efe8d515249cc78ccae476e2f7e8834b96b66c02100d504ee34c",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "bytes": 8388608,
+        "sha256": "bc21b0c7bc9b5cfa00e2388b62ef83eddce2b1d8ccb61011cc7e08515f5ad879",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "bytes": 2097152,
+        "sha256": "dea34bfd5c28bec7acf460b96c52721d2cad4152c1ac3169cc02ce16cc52b58e",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "bytes": 524288,
+        "sha256": "f65fd1c8acc7140c478d17b719e3e12678b8858bccc68c709d98a97a2522f310",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "bytes": 131072,
+        "sha256": "51769a098a5ea43173d4cadb86d690bc1e1f6b3005548cf3f52c29f6ff19581d",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "bytes": 134217728,
+        "sha256": "e6331d3bfe729544b9cdd38ad28ec26331653de6a4f82a5e80029ef110e36a6b",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "bytes": 33554432,
+        "sha256": "dbc5ff5f0640f761dc7acad440d5637983b36598cbaa8a9d3fd5e72033882e92",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "bytes": 8388608,
+        "sha256": "f9ce6484d1c91c430c9a03a70a95e4e48c48f67afb2dcf15a52114e4d9724779",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "bytes": 2097152,
+        "sha256": "ad8d38090e001b39943cf0836f939f9df16ca5114cc76fcfa7d6c93f071c9f6c",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "bytes": 524288,
+        "sha256": "6bd1d8cbf37edeffb657e2e0d56997b5ec53f30bd64be93235abb2c481483fd7",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "bytes": 131072,
+        "sha256": "8ef96cd00257edb689d81054e31d2fd7676004089d28498d07a34da6133ec583",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "bytes": 134217728,
+        "sha256": "f5c2608a04174747dd5c29289a33ee5003fe814fdf64e619bb531973ae04a105",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "bytes": 33554432,
+        "sha256": "68071bcc0df8227624bb6ceab9cca76065a2845c06797118976c801c31f02b7b",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "bytes": 8388608,
+        "sha256": "e1d72bcb1640a34532458fca8a71b170506e1db2d4e866cd8055ff239f92ffa0",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "bytes": 2097152,
+        "sha256": "00d943624515affbb42855410b1ca9cf066103656c641b8e2dbfc51e2328fab3",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "bytes": 524288,
+        "sha256": "ceb9a7556a9602644873e9a642ca4845a8bf4e5f16fe7bb9768f5919da9d5819",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "bytes": 131072,
+        "sha256": "02094cada2226936d136015e378530870456842693da19dde763154e23ad7069",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "bytes": 33554432,
+        "sha256": "7e08eda357e0efe8d515249cc78ccae476e2f7e8834b96b66c02100d504ee34c",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "bytes": 8388608,
+        "sha256": "bc21b0c7bc9b5cfa00e2388b62ef83eddce2b1d8ccb61011cc7e08515f5ad879",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "bytes": 2097152,
+        "sha256": "dea34bfd5c28bec7acf460b96c52721d2cad4152c1ac3169cc02ce16cc52b58e",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "bytes": 524288,
+        "sha256": "f65fd1c8acc7140c478d17b719e3e12678b8858bccc68c709d98a97a2522f310",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "bytes": 131072,
+        "sha256": "51769a098a5ea43173d4cadb86d690bc1e1f6b3005548cf3f52c29f6ff19581d",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "bytes": 134217728,
+        "sha256": "e6331d3bfe729544b9cdd38ad28ec26331653de6a4f82a5e80029ef110e36a6b",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "bytes": 33554432,
+        "sha256": "dbc5ff5f0640f761dc7acad440d5637983b36598cbaa8a9d3fd5e72033882e92",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "bytes": 8388608,
+        "sha256": "f9ce6484d1c91c430c9a03a70a95e4e48c48f67afb2dcf15a52114e4d9724779",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "bytes": 2097152,
+        "sha256": "ad8d38090e001b39943cf0836f939f9df16ca5114cc76fcfa7d6c93f071c9f6c",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "bytes": 524288,
+        "sha256": "6bd1d8cbf37edeffb657e2e0d56997b5ec53f30bd64be93235abb2c481483fd7",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "bytes": 131072,
+        "sha256": "8ef96cd00257edb689d81054e31d2fd7676004089d28498d07a34da6133ec583",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "bytes": 134217728,
+        "sha256": "f5c2608a04174747dd5c29289a33ee5003fe814fdf64e619bb531973ae04a105",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "bytes": 33554432,
+        "sha256": "68071bcc0df8227624bb6ceab9cca76065a2845c06797118976c801c31f02b7b",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "bytes": 8388608,
+        "sha256": "e1d72bcb1640a34532458fca8a71b170506e1db2d4e866cd8055ff239f92ffa0",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "bytes": 2097152,
+        "sha256": "00d943624515affbb42855410b1ca9cf066103656c641b8e2dbfc51e2328fab3",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "bytes": 524288,
+        "sha256": "ceb9a7556a9602644873e9a642ca4845a8bf4e5f16fe7bb9768f5919da9d5819",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "bytes": 131072,
+        "sha256": "02094cada2226936d136015e378530870456842693da19dde763154e23ad7069",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/shaders/nv_shadercache/106.5/d02c707b/GLCache/ed2b444730678e1829b2dacd7528e635/ada047a2866c855d/eae91edf9a4c6d7a.bin",
+        "bytes": 312492752,
+        "sha256": "b67c60a68e29628a84ea6cd51d31350d0078ab41b46110ff5fb9bf906d96c6a5",
+        "kind": "inactive_shader_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/shaders/nv_shadercache/106.5/d02c707b/GLCache/ed2b444730678e1829b2dacd7528e635/ada047a2866c855d/eae91edf9a4c6d7a.toc",
+        "bytes": 15800,
+        "sha256": "c66ca28020d1a24d1803403db31e2635516ecfc662c36ed6ebf31df975574933",
+        "kind": "inactive_shader_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "bytes": 33554432,
+        "sha256": "7e08eda357e0efe8d515249cc78ccae476e2f7e8834b96b66c02100d504ee34c",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "bytes": 8388608,
+        "sha256": "bc21b0c7bc9b5cfa00e2388b62ef83eddce2b1d8ccb61011cc7e08515f5ad879",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "bytes": 2097152,
+        "sha256": "dea34bfd5c28bec7acf460b96c52721d2cad4152c1ac3169cc02ce16cc52b58e",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "bytes": 524288,
+        "sha256": "f65fd1c8acc7140c478d17b719e3e12678b8858bccc68c709d98a97a2522f310",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "bytes": 131072,
+        "sha256": "51769a098a5ea43173d4cadb86d690bc1e1f6b3005548cf3f52c29f6ff19581d",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "bytes": 134217728,
+        "sha256": "e6331d3bfe729544b9cdd38ad28ec26331653de6a4f82a5e80029ef110e36a6b",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "bytes": 33554432,
+        "sha256": "dbc5ff5f0640f761dc7acad440d5637983b36598cbaa8a9d3fd5e72033882e92",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "bytes": 8388608,
+        "sha256": "f9ce6484d1c91c430c9a03a70a95e4e48c48f67afb2dcf15a52114e4d9724779",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "bytes": 2097152,
+        "sha256": "ad8d38090e001b39943cf0836f939f9df16ca5114cc76fcfa7d6c93f071c9f6c",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "bytes": 524288,
+        "sha256": "6bd1d8cbf37edeffb657e2e0d56997b5ec53f30bd64be93235abb2c481483fd7",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "bytes": 131072,
+        "sha256": "8ef96cd00257edb689d81054e31d2fd7676004089d28498d07a34da6133ec583",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "bytes": 134217728,
+        "sha256": "f5c2608a04174747dd5c29289a33ee5003fe814fdf64e619bb531973ae04a105",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "bytes": 33554432,
+        "sha256": "68071bcc0df8227624bb6ceab9cca76065a2845c06797118976c801c31f02b7b",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "bytes": 8388608,
+        "sha256": "e1d72bcb1640a34532458fca8a71b170506e1db2d4e866cd8055ff239f92ffa0",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "bytes": 2097152,
+        "sha256": "00d943624515affbb42855410b1ca9cf066103656c641b8e2dbfc51e2328fab3",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "bytes": 524288,
+        "sha256": "ceb9a7556a9602644873e9a642ca4845a8bf4e5f16fe7bb9768f5919da9d5819",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "bytes": 131072,
+        "sha256": "02094cada2226936d136015e378530870456842693da19dde763154e23ad7069",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "bytes": 33554432,
+        "sha256": "7e08eda357e0efe8d515249cc78ccae476e2f7e8834b96b66c02100d504ee34c",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "bytes": 8388608,
+        "sha256": "bc21b0c7bc9b5cfa00e2388b62ef83eddce2b1d8ccb61011cc7e08515f5ad879",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "bytes": 2097152,
+        "sha256": "dea34bfd5c28bec7acf460b96c52721d2cad4152c1ac3169cc02ce16cc52b58e",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "bytes": 524288,
+        "sha256": "f65fd1c8acc7140c478d17b719e3e12678b8858bccc68c709d98a97a2522f310",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "bytes": 131072,
+        "sha256": "51769a098a5ea43173d4cadb86d690bc1e1f6b3005548cf3f52c29f6ff19581d",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "bytes": 134217728,
+        "sha256": "e6331d3bfe729544b9cdd38ad28ec26331653de6a4f82a5e80029ef110e36a6b",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "bytes": 33554432,
+        "sha256": "dbc5ff5f0640f761dc7acad440d5637983b36598cbaa8a9d3fd5e72033882e92",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "bytes": 8388608,
+        "sha256": "f9ce6484d1c91c430c9a03a70a95e4e48c48f67afb2dcf15a52114e4d9724779",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "bytes": 2097152,
+        "sha256": "ad8d38090e001b39943cf0836f939f9df16ca5114cc76fcfa7d6c93f071c9f6c",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "bytes": 524288,
+        "sha256": "6bd1d8cbf37edeffb657e2e0d56997b5ec53f30bd64be93235abb2c481483fd7",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "bytes": 131072,
+        "sha256": "8ef96cd00257edb689d81054e31d2fd7676004089d28498d07a34da6133ec583",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "bytes": 134217728,
+        "sha256": "f5c2608a04174747dd5c29289a33ee5003fe814fdf64e619bb531973ae04a105",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "bytes": 33554432,
+        "sha256": "68071bcc0df8227624bb6ceab9cca76065a2845c06797118976c801c31f02b7b",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "bytes": 8388608,
+        "sha256": "e1d72bcb1640a34532458fca8a71b170506e1db2d4e866cd8055ff239f92ffa0",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "bytes": 2097152,
+        "sha256": "00d943624515affbb42855410b1ca9cf066103656c641b8e2dbfc51e2328fab3",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "bytes": 524288,
+        "sha256": "ceb9a7556a9602644873e9a642ca4845a8bf4e5f16fe7bb9768f5919da9d5819",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "bytes": 131072,
+        "sha256": "02094cada2226936d136015e378530870456842693da19dde763154e23ad7069",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "bytes": 33554432,
+        "sha256": "7e08eda357e0efe8d515249cc78ccae476e2f7e8834b96b66c02100d504ee34c",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "bytes": 8388608,
+        "sha256": "bc21b0c7bc9b5cfa00e2388b62ef83eddce2b1d8ccb61011cc7e08515f5ad879",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "bytes": 2097152,
+        "sha256": "dea34bfd5c28bec7acf460b96c52721d2cad4152c1ac3169cc02ce16cc52b58e",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "bytes": 524288,
+        "sha256": "f65fd1c8acc7140c478d17b719e3e12678b8858bccc68c709d98a97a2522f310",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "bytes": 131072,
+        "sha256": "51769a098a5ea43173d4cadb86d690bc1e1f6b3005548cf3f52c29f6ff19581d",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "bytes": 134217728,
+        "sha256": "e6331d3bfe729544b9cdd38ad28ec26331653de6a4f82a5e80029ef110e36a6b",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "bytes": 33554432,
+        "sha256": "dbc5ff5f0640f761dc7acad440d5637983b36598cbaa8a9d3fd5e72033882e92",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "bytes": 8388608,
+        "sha256": "f9ce6484d1c91c430c9a03a70a95e4e48c48f67afb2dcf15a52114e4d9724779",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "bytes": 2097152,
+        "sha256": "ad8d38090e001b39943cf0836f939f9df16ca5114cc76fcfa7d6c93f071c9f6c",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "bytes": 524288,
+        "sha256": "6bd1d8cbf37edeffb657e2e0d56997b5ec53f30bd64be93235abb2c481483fd7",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "bytes": 131072,
+        "sha256": "8ef96cd00257edb689d81054e31d2fd7676004089d28498d07a34da6133ec583",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "bytes": 134217728,
+        "sha256": "f5c2608a04174747dd5c29289a33ee5003fe814fdf64e619bb531973ae04a105",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "bytes": 33554432,
+        "sha256": "68071bcc0df8227624bb6ceab9cca76065a2845c06797118976c801c31f02b7b",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "bytes": 8388608,
+        "sha256": "e1d72bcb1640a34532458fca8a71b170506e1db2d4e866cd8055ff239f92ffa0",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "bytes": 2097152,
+        "sha256": "00d943624515affbb42855410b1ca9cf066103656c641b8e2dbfc51e2328fab3",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "bytes": 524288,
+        "sha256": "ceb9a7556a9602644873e9a642ca4845a8bf4e5f16fe7bb9768f5919da9d5819",
+        "kind": "inactive_builtin_texture_cache"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "bytes": 131072,
+        "sha256": "02094cada2226936d136015e378530870456842693da19dde763154e23ad7069",
+        "kind": "inactive_builtin_texture_cache"
+      }
+    ],
+    "known_os_helpers": [
+      {
+        "pid": 2310665,
+        "comm": "(sd-pam)",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3018937,
+        "comm": "ssh-agent",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3018942,
+        "comm": "gpg-agent",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3025131,
+        "comm": "gnome-keyring-d",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3188255,
+        "comm": "sshd",
+        "reason": "OS protected session/key helper"
+      }
+    ],
+    "backup_verification": {
+      "archive_contents_recovered_and_verified": true,
+      "local_archive_sha256": "87fdf8cb00cc6d35b02fb2a6d7bd855d927ca19082ddc148560eac03e73fe254",
+      "verified_member_paths": [
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "conditional-human-motion-generation/cache/r3_i1_viewer_stream/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "conditional-human-motion-generation/cache/r3_punch_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_viewer_home/.cache/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "humanoid-combat-motion/cache/r3_xdg/ov/shaders/nv_shadercache/106.5/d02c707b/GLCache/ed2b444730678e1829b2dacd7528e635/ada047a2866c855d/eae91edf9a4c6d7a.bin",
+        "humanoid-combat-motion/cache/r3_xdg/ov/shaders/nv_shadercache/106.5/d02c707b/GLCache/ed2b444730678e1829b2dacd7528e635/ada047a2866c855d/eae91edf9a4c6d7a.toc",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "humanoid-combat-motion/cache/r3_xdg_gpu1/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.0",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.1",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.2",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.3",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_basecolor_100_1_0_1738203702_436257_6.ovtex.4",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.0",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.1",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.2",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.3",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.4",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/WireframeBlur_blue_102_1_0_1738203702_1474958_6.ovtex.5",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.0",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.1",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.2",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.3",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.4",
+        "phygile-unitree-20261022/code_v1/cache/xdg/ov/texturecache/Wireframe_blue_100_1_0_1738203702_111895_6.ovtex.5"
+      ],
+      "asset": {
+        "name": "inactive_builtin_cache_backup_v1.tar.gz",
+        "bytes": 396497898,
+        "digest": "sha256:87fdf8cb00cc6d35b02fb2a6d7bd855d927ca19082ddc148560eac03e73fe254",
+        "url": "https://github.com/Pendragon08/conditional-human-motion-generation/releases/download/server-unused-cache-backup-20261023/inactive_builtin_cache_backup_v1.tar.gz"
+      },
+      "utc": "2026-10-23T03:42:51.847241+00:00"
+    },
+    "dataset_checkpoint_record_deletion_allowed": false,
+    "status": "BACKED_UP_UNUSED_FILES_REMOVED",
+    "disk_after": {
+      "total": 1967847137280,
+      "used": 1861254254592,
+      "free": 6556160000
+    }
+  },
+  "utc_after": "2026-10-23T03:45:05.764258+00:00",
+  "protected_existing_files": 42031,
+  "protected_paths_sha256": "776d25ae9076bdc430a5f6a48e181b699a53b44641d114db0a77c890fc46e3d8",
+  "protected_files_missing": [],
+  "health_after": [
+    {
+      "utc": "2026-10-23T03:30:40.279077+00:00",
+      "rank": 0,
+      "status": "TRAINING",
+      "loop_step": 11000,
+      "initial_optimizer_updates": 10041,
+      "optimizer_updates": 11001,
+      "resumed_updates": 960,
+      "optimizer_step_calls": 11001,
+      "validated_optimizer_updates": 11001,
+      "attempts_since_resume": 960,
+      "skipped_attempts": 0,
+      "consecutive_skips": 0,
+      "step_applied": true,
+      "step_validated": true,
+      "ema_validated": true,
+      "reason": "OPTIMIZER_STEP_APPLIED",
+      "grad_norm_pre_clip_fp64": 0.7118003712562737,
+      "grad_norm_post_clip_fp64": 0.7118003712562737,
+      "param_norm_fp64": 206.86271603750058,
+      "offending_parameters": [],
+      "elapsed_seconds": 16898.93976571597,
+      "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "full_training_completed": false
+    },
+    {
+      "utc": "2026-10-23T03:30:40.279101+00:00",
+      "rank": 1,
+      "status": "TRAINING",
+      "loop_step": 11000,
+      "initial_optimizer_updates": 10041,
+      "optimizer_updates": 11001,
+      "resumed_updates": 960,
+      "optimizer_step_calls": 11001,
+      "validated_optimizer_updates": 11001,
+      "attempts_since_resume": 960,
+      "skipped_attempts": 0,
+      "consecutive_skips": 0,
+      "step_applied": true,
+      "step_validated": true,
+      "ema_validated": true,
+      "reason": "OPTIMIZER_STEP_APPLIED",
+      "grad_norm_pre_clip_fp64": 0.7118003712562737,
+      "grad_norm_post_clip_fp64": 0.7118003712562737,
+      "param_norm_fp64": 206.86271603750058,
+      "offending_parameters": [],
+      "elapsed_seconds": 16898.939763184637,
+      "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "full_training_completed": false
+    }
+  ]
+}
