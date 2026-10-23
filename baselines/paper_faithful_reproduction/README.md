@@ -2,6 +2,7 @@
 
 **状态：进行中，尚未完成两篇论文的完整性能复现。**
 
+- [最新：40条配对动作实际跟踪诊断与检查点备份](reports/heartbeat_20261023_0928.md)：PhyGile既有小样本策略完整执行2/40，失败记录全部保留，不生成论文课程标签；ReactiveBFM10,061次检查点的模型及优化器已完整备份至本地和GitHub，续训采样为10,660次有效更新。
 - [最新检查点10,061：真实闭环评价与视频](reports/checkpoint_10061_progress.md)：候选续训已保存新模型；500次控制、20次有效重规划、33/500帧超过近似失败阈值，仍判失败。新视频和完整轨迹记录已保存。
 - [2026-10-23 06:23 检查与数值恢复](reports/heartbeat_20261023_0623.md)：v3 在16,871次更新后自行异常退出，最近可恢复检查点为10,041次；完整故障记录及精度对照已保存，恢复状态见该报告。
 - [同轮备份重试补充](reports/backup_followup_20261023.md)：首次复制遇到连接超时，错误已保留；后续只复制任务使用 `_retry1` 独立目录。
@@ -29,6 +30,9 @@
 | `scripts/render_phygile_records.py` | 显示全部四个既有实际轨迹；记录根姿态重建误差 |
 | `scripts/document_witness.py` | 文档独立复跑，检查执行、有限值、源文件及训练状态 |
 | `scripts/gate_phygile_sample_clock.py` | 独立生成时基一致清单，排除标头冲突和抽帧引入的播放速度变化；原数据不变 |
+| `scripts/screen_phygile_pairs_mjlab.py` | 将时基一致的262D配对特征解码并执行实际MuJoCo首回合诊断，保留全部失败；不产生作者课程标签 |
+| `scripts/render_paired_screen_records.py` | 逐帧回放全部配对动作诊断的实际观察，受限衍生视频仅保存在本地 |
+| `scripts/probe_cross_corpus_lengths.py` | 只读核查跨语料同名动作长度；不把ID匹配当作时间段对齐 |
 | `scripts/diagnose_reactive_gradients.py` | 固定检查点和真实批量，对照注意力精度与激活重算；不执行优化器更新 |
 | `recovery_v4/` | FP64 注意力、FP32 参数的独立恢复候选；固定源码与精确文档见证，不能视为已验证长时间稳定 |
 | `scripts/copy_recovery_checkpoint.py` | 新检查点只复制、核验并上传 GitHub；不删除服务器文件 |
@@ -50,6 +54,8 @@ python /path/to/baselines/phygile/scripts/check_paired_batch_loading.py --manife
 相对容差 `1e-5` 是处理浮点标头的复现选择，不是论文公布的阈值。标头一致仍不等于外部物理时钟被校准，也不等于动力学跟踪通过。该子集不能替代完整数据；其34条训练序列、6条测试序列、零验证序列仍不足以开展论文规模评价。输出清单引用本机既有文件的绝对路径，移机时应从当地数据重新生成。
 
 其他入口先查看 `--help`。执行环境、检查点与部署源代码路径必须与实际资产匹配。`results/reactive_async_v4/` 和独立复跑记录包含真实调用与校验信息。
+
+新增配对动作诊断的冻结有界命令和范围见 [PAIRED_SCREEN_INVOCATION.md](PAIRED_SCREEN_INVOCATION.md)，对应独立见证和完整批量统计保存在 `results/heartbeat_20261023_0928/`。不能把小样本冻结策略的2/40完成情况解释为论文过滤器或生成模型的性能。
 
 ## 完成条件与后续顺序
 
