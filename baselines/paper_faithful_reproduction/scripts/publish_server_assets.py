@@ -60,7 +60,8 @@ def run(a):
         for row in payload['files']:
             p = Path(row['path'])
             checkpoint = p.parent == ROOT/'training_fp64_sdpa_v4/checkpoints' and p.name in {
-                'model000012000.pt','opt000012000.pt'}
+                'model000012000.pt','opt000012000.pt',
+                'model000013000.pt','opt000013000.pt'}
             code_archive = p == ROOT/'storage_cleanup_code_packages_20261023_v2/inactive_source_packages_20261023_v2.tar.gz'
             if not (checkpoint or code_archive) or p.resolve() != p or p.is_symlink():
                 raise ValueError('Artifact outside explicit whitelist')
