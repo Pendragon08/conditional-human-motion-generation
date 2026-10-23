@@ -2,6 +2,7 @@
 
 **状态：进行中，尚未完成两篇论文的完整性能复现。**
 
+- [12:27后续：修复PhyGile生成/控制时钟](reports/heartbeat_20261023_1227.md)：训练检查点绑定真实特征FPS，20→50Hz固定时间转换与规范坐标还原；6项反例、40条真实配对及独立文档复跑通过。服务器小网络两步CPU测试通过，不计作真实生成器训练；ReactiveBFM续训11,197次，未中断。
 - [最新：磁盘清理与复现继续推进](reports/storage_cleanup_and_progress_20261023.md)：106个闲置缓存/旧传输包在备份核验后清理，释放3.26GiB；ReactiveBFM新检查点11,001已完整备份，真实闭环5/500帧超近似阈值，仍判失败。PhyGile补录3案例终止项，全部状态与旧记录逐位一致，未放宽判据。
 - [09:28：40条配对动作实际跟踪诊断与检查点备份](reports/heartbeat_20261023_0928.md)：PhyGile既有小样本策略完整执行2/40，失败记录全部保留，不生成论文课程标签；ReactiveBFM10,061次检查点的模型及优化器已完整备份至本地和GitHub，续训采样为10,660次有效更新。
 - [检查点10,061：真实闭环评价与视频](reports/checkpoint_10061_progress.md)：候选续训已保存新模型；500次控制、20次有效重规划、33/500帧超过近似失败阈值，仍判失败。新视频和完整轨迹记录已保存。
@@ -35,6 +36,7 @@
 | `scripts/render_paired_screen_records.py` | 逐帧回放全部配对动作诊断的实际观察，受限衍生视频仅保存在本地 |
 | `scripts/probe_cross_corpus_lengths.py` | 只读核查跨语料同名动作长度；不把ID匹配当作时间段对齐 |
 | `scripts/probe_phygile_termination.py` | 只读记录实际pre-reset终止项与手脚高度误差；3个案例全部原始数组与旧记录逐位一致 |
+| `scripts/verify_phygile_generator_clock.py` | 数值时钟、规范坐标与前缀保留验证；真实40条仅用于数值检查，不执行仿真或训练 |
 | `scripts/cleanup_backed_unused.py` | 仅清理精确白名单中的闲置缓存/旧传输包；要求先验证本地与GitHub备份，并检查所有者、文件身份及活动占用 |
 | `scripts/diagnose_reactive_gradients.py` | 固定检查点和真实批量，对照注意力精度与激活重算；不执行优化器更新 |
 | `recovery_v4/` | FP64 注意力、FP32 参数的独立恢复候选；固定源码与精确文档见证，不能视为已验证长时间稳定 |

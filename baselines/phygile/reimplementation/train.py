@@ -16,6 +16,7 @@ from features import BlockNormalizer, asfo_multipliers
 from model import ModelConfig, MotionDenoiser
 from text import FrozenDistilBert
 from diffusion import X0Diffusion
+from motion_clock import manifest_feature_contract
 
 def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -104,6 +105,7 @@ def train(config_path, output, device):
     config = json.loads(config_path.read_text())
     manifest_path = (config_path.parent/config['dataset_manifest']).resolve()
     manifest, training = load_manifest(manifest_path, config['purpose'])
+    feature_contract = manifest_feature_contract(manifest, manifest_path)
     if config['max_updates'] < 1 or config['batch_size'] < 1 or config['save_every'] < 1:
         raise ValueError('Positive update, batch and checkpoint intervals required')
     if max(len(x) for x,_ in training) > config['max_sequence_frames']:
@@ -134,6 +136,7 @@ def train(config_path, output, device):
               'mapping_status':manifest['mapping_status'], 'text_encoder_revision':text_provenance['revision'],
               'training_sequences':len(training), 'training_frames':sum(len(x) for x,_ in training),
               'asfo':dataset.asfo_metadata, 'device':str(device), 'torch':torch.__version__,
+              'feature_contract':feature_contract,
               'source_sha256':{p.name:digest(p) for p in Path(__file__).parent.glob('*.py')},
               'motion_quality_evaluated':False, 'physics_loop_run':False}
     started = time.monotonic(); step = 0; model.train()
@@ -157,7 +160,8 @@ def train(config_path, output, device):
                             'normalization_std':normalizer.std,'manifest_sha256':record['manifest_sha256'],
                             'text_encoder_revision':text_provenance['revision'],'purpose':config['purpose'],
                             'codec_schema':manifest.get('codec_schema'),
-                            'codec_skeleton_sha256':manifest.get('codec_skeleton_sha256')}
+                            'codec_skeleton_sha256':manifest.get('codec_skeleton_sha256'),
+                            'feature_contract':feature_contract}
                         torch.save(checkpoint, output/f'model_{step:06d}.pt')
                     if step >= config['max_updates']:break
         record['status'] = 'COMPLETED'

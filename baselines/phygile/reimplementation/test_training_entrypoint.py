@@ -20,6 +20,7 @@ for i in range(3):
                     'source_group':f'synthetic_group_{i}','texts':[f'Numerical unit input {i}.'],
                     'annotation_source':'Artificial text solely for interface testing, not a motion caption','tags':['unit']})
 manifest={'format':'phygile262-explicit-v1','purpose':'unit_test','mapping_status':'synthetic_unit_test',
+    'feature_fps':20.,
     'feature_semantics':'Artificial bounded arrays; rotations are not valid robot rotations. Not motion data.',
     'source_and_license':'Seeded numerical unit test, no external dataset',
     'splits':{'train':entries[:2],'test':entries[2:]}}
@@ -44,6 +45,9 @@ record=train(config_path,out/'run',torch.device('cpu'))
 assert record['purpose']=='unit_test' and record['status']=='COMPLETED' and record['completed_updates']==2
 checkpoint=torch.load(out/'run/model_000002.pt',map_location='cpu',weights_only=False)
 assert checkpoint['purpose']=='unit_test' and checkpoint['optimizer_updates']==2
+assert checkpoint['feature_contract']==record['feature_contract']
+assert checkpoint['feature_contract']['feature_fps']==20.
+assert checkpoint['feature_contract']['coordinate_frame']=='synthetic_unit_test'
 assert set(int(x['step']) for x in checkpoint['optimizer_state_dict']['state'].values())=={2}
 model=MotionDenoiser(ModelConfig(**config['model'])).eval();model.load_state_dict(checkpoint['model_state_dict'])
 with torch.no_grad():prediction,_=model(torch.zeros(1,4,262),torch.tensor([1]),torch.zeros(1,2,768))
@@ -55,6 +59,7 @@ result={'status':'PASSED_TRAINING_PLUMBING_CHECK','purpose':'unit_test','optimiz
         'full_size_generator_trained':False,'physics_loop_run':False,
         'checks':['synthetic inputs rejected as research data','cross-split source overlap rejected',
                   'training-only normalization','two finite optimizer updates','checkpoint reload'],
+        'feature_contract_saved_and_reloaded':True,
         'checkpoint_sha256':hashlib.sha256((out/'run/model_000002.pt').read_bytes()).hexdigest(),
         'source_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in Path(__file__).parent.glob('*.py')}}
 (out/'verification.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
