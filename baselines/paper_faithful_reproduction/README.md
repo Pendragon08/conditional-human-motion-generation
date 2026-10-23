@@ -2,6 +2,7 @@
 
 **状态：进行中，尚未完成两篇论文的完整性能复现。**
 
+- [最新：配对动作辅助物理筛选与完整训练缺口](reports/paired_filter_progress_20261023.md)：40条、17个录制；冻结外部ScaleBFM整段执行32/40，21/40通过辅助条件；三个seed轨迹一致，非120个独立试验。全部失败和实际回放保留，未替代论文GMT过滤，完整生成器未启动。
 - [12:27后续：修复PhyGile生成/控制时钟](reports/heartbeat_20261023_1227.md)：训练检查点绑定真实特征FPS，20→50Hz固定时间转换与规范坐标还原；6项反例、40条真实配对及独立文档复跑通过。服务器小网络两步CPU测试通过，不计作真实生成器训练；ReactiveBFM续训11,197次，未中断。
 - [最新：磁盘清理与复现继续推进](reports/storage_cleanup_and_progress_20261023.md)：106个闲置缓存/旧传输包在备份核验后清理，释放3.26GiB；ReactiveBFM新检查点11,001已完整备份，真实闭环5/500帧超近似阈值，仍判失败。PhyGile补录3案例终止项，全部状态与旧记录逐位一致，未放宽判据。
 - [09:28：40条配对动作实际跟踪诊断与检查点备份](reports/heartbeat_20261023_0928.md)：PhyGile既有小样本策略完整执行2/40，失败记录全部保留，不生成论文课程标签；ReactiveBFM10,061次检查点的模型及优化器已完整备份至本地和GitHub，续训采样为10,660次有效更新。
@@ -73,3 +74,5 @@ ReactiveBFM 先完成故障后的数值恢复验证，再推进公开代码分�
 ## 数据与视频可追溯性
 
 `results/public_artifact_manifest.json` 列出发布文件的大小和 SHA256；GitHub Release 的资产摘要须与之匹配。`async_evidence_v1_v4.tar.gz` 保存四次尝试的执行日志、兼容层快照与实际生成/仿真状态，不包含 AMASS 原始训练资产。视频按仿真时间播放，不代表墙钟实时性。
+
+本轮外部辅助筛选的冻结入口见 [PAIR_FILTER_INVOCATION.md](PAIR_FILTER_INVOCATION.md)。`materialize_phygile_auxiliary_filter.py`将筛选结果另存为`pending_phygile_gmt_validation`清单；不得手工改名绕过训练来源审计。全部原始与衍生SSM数组/视频留在授权私有目录，公开结果只含数字、哈希及失败回执。
