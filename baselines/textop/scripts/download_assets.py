@@ -40,7 +40,7 @@ def chunked_transfer(item,partial):
                 if attempt==5:raise
                 time.sleep(2*(attempt+1))
     try:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:list(pool.map(get_range,missing))
+        with concurrent.futures.ThreadPoolExecutor(max_workers=int(os.environ.get('TEXTOP_RANGE_WORKERS','4'))) as pool:list(pool.map(get_range,missing))
         os.fsync(fd)
     finally:os.close(fd)
 def digest(p):
