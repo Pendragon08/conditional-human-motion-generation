@@ -1,0 +1,45 @@
+"""Run unchanged official CLI with resource limits and honest optimizer accounting.
+
+No loss/model/data/sampling algorithm changes. Extra early checkpoint at 1000,
+fail-fast on a skipped optimizer update, disk guard, and JSON metrics are added.
+"""
+import json,os,pathlib,shutil,sys,time,traceback
+ROOT=pathlib.Path(__file__).resolve().parents[1]
+os.environ.update(CUDA_VISIBLE_DEVICES='1',OMP_NUM_THREADS='4',MKL_NUM_THREADS='4',OPENBLAS_NUM_THREADS='4',WANDB_MODE='disabled',PYTHONUNBUFFERED='1')
+import torch
+torch.set_num_threads(4);torch.cuda.set_per_process_memory_fraction(.65)
+from robotmdar.train.manager import MVAEManager
+start=time.time();updates=0;last=0
+real_step=torch.optim.Adam.step
+def counted_step(self,*args,**kwargs):
+    global updates
+    out=real_step(self,*args,**kwargs);updates+=1;return out
+torch.optim.Adam.step=counted_step
+original_post=MVAEManager.post_step
+def audited_post(self,*args,**kwargs):
+    global last
+    is_eval=kwargs.get('is_eval',False)
+    original_post(self,*args,**kwargs)
+    if is_eval:return
+    loss=kwargs.get('loss_dict',{}).get('total')
+    metrics={'manager_step':self.step,'optimizer_updates_this_process':updates,'loss':float(loss),'stage':self.stage_idx,'elapsed_s':time.time()-start,'peak_allocated_bytes':torch.cuda.max_memory_allocated(),'data_free_bytes':shutil.disk_usage(ROOT).free,'save_dir':str(self.save_dir)}
+    if not torch.isfinite(loss) or updates<=last:
+        (ROOT/'receipts/numerical_failure.json').write_text(json.dumps(metrics,indent=2))
+        raise RuntimeError('Nonfinite loss or official optimizer skipped an update; see numerical_failure.json')
+    last=updates
+    if self.step<=10 or self.step%100==0:
+        with (ROOT/'logs/mvae_metrics.jsonl').open('a') as f:f.write(json.dumps(metrics)+'\n')
+        (ROOT/'receipts/training_progress.json').write_text(json.dumps(metrics,indent=2))
+        print('TEXTOP_ACTUAL_TRAINING',json.dumps(metrics),flush=True)
+    if self.step==1000:self.save_model()
+    if metrics['data_free_bytes']<1024**3:
+        self.save_model()
+        (ROOT/'receipts/disk_guard_stop.json').write_text(json.dumps(metrics,indent=2))
+        raise RuntimeError('Stopped after checkpoint save: less than 1GiB disk reserve')
+MVAEManager.post_step=audited_post
+if __name__=='__main__':
+    try:
+        from robotmdar.cli import main
+        main()
+    except BaseException:
+        (ROOT/'receipts/training_failure.txt').write_text(traceback.format_exc());raise
