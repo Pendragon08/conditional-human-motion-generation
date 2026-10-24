@@ -1,0 +1,155 @@
+{
+  "utc": "2026-10-22T11:51:00.931265+00:00",
+  "accepted": false,
+  "submission": {
+    "utc": "2026-10-22T11:50:52.506193+00:00",
+    "exit_code": 0,
+    "elapsed_seconds": 9.952999999979511,
+    "command": "& 'C:/Users/Pende/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' 'C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/phygile_unitree/scripts/submit_isaac_job.py' --version code_v8 --name headless_smoke_v2 --mode train --num-envs 64 --iterations 2",
+    "submit_stdout_sha256": "f9536c6257a9137fbf61ba7bb06999fd8587420f400f98196124902792654297",
+    "submit_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "launch": {
+      "utc": "2026-10-22T11:50:53.255351+00:00",
+      "pid": 3156839,
+      "command": [
+        "taskset",
+        "-c",
+        "16-19",
+        "bash",
+        "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v8/scripts/run_isaac.sh",
+        "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v8/scripts/lab_run.py",
+        "--mode",
+        "train",
+        "--checkpoint",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_moe_pilot/2026-10-17_11-25-01_extended2000_seed42/model_1999.pt",
+        "--output",
+        "/data/code/ouyanghao/oyh/phygile-unitree-20261022/runs/headless_smoke_v2",
+        "--num-envs",
+        "64",
+        "--iterations",
+        "2",
+        "--steps",
+        "3",
+        "--device",
+        "cuda:1",
+        "--headless",
+        "--headless-authorization",
+        "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v8/configs/headless_authorization_20261022.json",
+        "--kit_args=--/renderer/multiGpu/enabled=false --/renderer/activeGpu=1 --/plugins/carb.tasking.plugin/threadCount=4 --/plugins/omni.tbb.globalcontrol/maxThreadCount=4"
+      ],
+      "gpu_free_mib_before": {
+        "0": 12368,
+        "1": 16330
+      },
+      "training": true,
+      "output": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/runs/headless_smoke_v2"
+    }
+  },
+  "repairs_or_retries": 0,
+  "poll_count": 1,
+  "checks": {
+    "status": {
+      "expected": "BOUNDED_TRAINING_COMPLETED",
+      "actual": null,
+      "passed": false,
+      "state": "unverified_due_to_absent_receipt"
+    },
+    "headless": {
+      "expected": true,
+      "actual": null,
+      "passed": false,
+      "state": "unverified_due_to_absent_receipt"
+    },
+    "optimizer_loaded_exactly": {
+      "expected": true,
+      "actual": null,
+      "passed": false,
+      "state": "unverified_due_to_absent_receipt"
+    },
+    "additional_ppo_iterations": {
+      "expected": 2,
+      "actual": null,
+      "passed": false,
+      "state": "unverified_due_to_absent_receipt"
+    },
+    "actual_adam_calls": {
+      "expected": 40,
+      "actual": null,
+      "passed": false,
+      "state": "unverified_due_to_absent_receipt"
+    },
+    "changed_policy_tensors": {
+      "expected": "> 0",
+      "actual": null,
+      "passed": false,
+      "state": "unverified_due_to_absent_receipt"
+    },
+    "executed_sources_unchanged": {
+      "expected": true,
+      "actual": null,
+      "passed": false,
+      "state": "unverified_due_to_absent_receipt"
+    },
+    "parent_unchanged": {
+      "expected": true,
+      "actual": null,
+      "passed": false,
+      "state": "unverified_due_to_absent_receipt"
+    },
+    "executed_sources_sha256_binding": {
+      "expected": "matching receipt binding and executed_sources.json bytes",
+      "actual": null,
+      "passed": false,
+      "state": "unverified_due_to_absent_receipt"
+    }
+  },
+  "divergences": [
+    "The documented invocation submitted PID 3156839 successfully (submit exit code 0), but that process had already exited at the first read-only poll.",
+    "The actual training entrypoint rejected its arguments: lab_run.py: error: argument --headless-authorization: expected one argument",
+    "No receipt.json or executed_sources.json was written; all required continuation acceptance fields and receipt-to-source SHA256 binding remain unverified."
+  ],
+  "remote_file_hashes": {
+    "receipt.json": {
+      "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/runs/headless_smoke_v2/receipt.json",
+      "exists": false
+    },
+    "executed_sources.json": {
+      "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/runs/headless_smoke_v2/executed_sources.json",
+      "exists": false
+    },
+    "headless_smoke_v2_stdout.txt": {
+      "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/logs/headless_smoke_v2_stdout.txt",
+      "size": 34,
+      "sha256": "1bff3b7190c1683a2957fd56b3b807a021d565c1eb1fbf954f4bfb8057f2c63b"
+    },
+    "headless_smoke_v2_stderr.txt": {
+      "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/logs/headless_smoke_v2_stderr.txt",
+      "size": 533,
+      "sha256": "e3d5bb6bd3158b68daf72e1c42d9eca4d6a09c8c515219f4b32ce54dfaa3d1c2"
+    },
+    "headless_smoke_v2_launch.json": {
+      "path": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/logs/headless_smoke_v2_launch.json",
+      "size": 1209,
+      "sha256": "baf4f5192d357d8bf6d62d4f641e163b2b1031b8a196f3163eff95bebae91766"
+    }
+  },
+  "outcome": "FAILED_BEFORE_BOUNDED_TRAINING_RECEIPT",
+  "submit_invocation_count": 1,
+  "training_exit_code": null,
+  "training_exit_code_reason": "Detached process exited before the first poll; no training receipt or exit marker was written. Only submit exit code 0 is observable.",
+  "remote_stdout_exact": "There was an error running python\n",
+  "remote_stderr_exact": "usage: lab_run.py [-h] --mode {preview,train,evaluate} [--parent PARENT]\n                  --checkpoint CHECKPOINT --output OUTPUT\n                  [--motion-file MOTION_FILE] [--num-envs NUM_ENVS]\n                  [--iterations ITERATIONS] [--steps STEPS] [--seed SEED]\n                  [--viewer-approval VIEWER_APPROVAL]\n                  [--headless-authorization HEADLESS_AUTHORIZATION]\n                  [--wait-viewer-seconds WAIT_VIEWER_SECONDS]\nlab_run.py: error: argument --headless-authorization: expected one argument\n",
+  "scope_observed": {
+    "num_envs_requested": 64,
+    "ppo_iterations_requested": 2,
+    "device_requested": "cuda:1",
+    "cpu_affinity_requested": "16-19",
+    "threads_requested": 4,
+    "gpu1_free_mib_before": 16330,
+    "no_repairs": true,
+    "no_retries": true,
+    "no_process_stops": true,
+    "no_source_or_dependency_changes": true,
+    "no_external_messages": true
+  }
+}

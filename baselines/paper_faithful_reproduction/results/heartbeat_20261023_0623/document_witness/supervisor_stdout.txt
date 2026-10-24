@@ -1,0 +1,114 @@
+{"attention_precision": {"variant": "DiT SDPA FP64 with FP32 output and parameters", "scope": "official _DiTAttention self and cross attention only", "dropout": 0.0, "architecture_changed": false, "loss_changed": false, "long_run_stability_verified": false}}
+{"attention_precision": {"variant": "DiT SDPA FP64 with FP32 output and parameters", "scope": "official _DiTAttention self and cross attention only", "dropout": 0.0, "architecture_changed": false, "loss_changed": false, "long_run_stability_verified": false}}
+args: Namespace(cuda=True, device=0, seed=42, batch_size_local=512, train_platform_type='NoPlatform', external_mode=False, dataset='amass_g1_36dim,100style_g1_36dim,kungfu_g1_36dim', data_dir='/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data', hml_type=None, unit_length=4, num_workers=0, log_batch_samples=False, use_bf16=False, relative_root_xy=False, num_layers=16, num_heads=8, latent_dim=512, text_encoder='/data/code/ouyanghao/oyh/phygile-reproduction-20261017/cache/text/distilbert-base-uncased', planner_arch='dit', dit_ff_size=2048, dit_dropout=0.0, dit_role_embedding=True, dit_rtc_time_cache=True, dit_rope=True, dit_text_kv_cache=True, cond_mask_prob=0.1, mask_frames=True, lambda_rcxyz=0.0, lambda_vel=0.0, lambda_fc=0.0, lambda_velocity=0.0, lambda_acceleration=0.0, lambda_velocity_prefix=0.0, training_rtc=True, rtc_max_delay=6, rtc_delay_distribution='uniform', rtc_prefix_noise_std=0.0, pos_embed_max_len=256, use_ema=True, context_len=25, pred_len=50, model_type='flow', noise_schedule='cosine', denoise_steps=10, solver_steps=10, sigma_small=True, flow_sampler='euler', flow_train_time_sampler='beta', flow_time_min=0.001, flow_time_beta_alpha=1.5, flow_time_beta_beta=1.0, save_dir='/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/probe_fp64_sdpa_v4/checkpoints', overwrite=True, lr=0.0001, weight_decay=0.0, max_grad_norm=1.0, lr_anneal_steps=0, log_interval=10, save_interval=1000, num_steps=1000000, num_frames=60, resume_checkpoint='/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/model000010040.pt', finetune_from='', gen_guidance_param=7.5, avg_model_beta=0.9999, adam_beta2=0.999, ddp_find_unused_parameters=True, autoregressive=True, autoregressive_include_prefix=False, autoregressive_init='data', prefix_noise_strategy=False, base_noise_scale=0.03, n_primitives=3, max_replace_prob=0.8, num_warmup_steps=400000, self_rollout_mode='random_replace', cross_prob=0.0, frame_dim=36, nfeats=1, data_rep='hml_vec', distributed=True, rank=0, local_rank=0, world_size=2, batch_size_global=1024)
+[Distributed] world_size=2, batch_size_local=512, batch_size_global=1024
+[Scheduled Forcing Config]
+  n_primitives:     3
+  context_len:      25
+  pred_len:         50
+  max_replace_prob: 0.8
+  warmup_steps:     400000
+  ramp_steps:       600000
+  rollout_mode:     random_replace
+  full_len/sample:  175 frames
+creating distributed data loader...
+Loading planner dataset amass_g1_36dim ...
+Loading planner dataset amass_g1_36dim ...
+[Data] Loading motions from: /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data/amass_g1_36dim/full_train.pkl...
+[Data] Loading motions from: /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data/amass_g1_36dim/full_train.pkl...
+[PlannerMotionDataset] Using 10282 motions (split=train.txt, excluded=0)
+Pointer Pointing at 8879 (filtered 8879 samples with length < 175, remaining 1403 samples out of 10282 in split)
+[PlannerMotionDataset] Using 10282 motions (split=train.txt, excluded=0)
+Pointer Pointing at 8879 (filtered 8879 samples with length < 175, remaining 1403 samples out of 10282 in split)
+Loading planner dataset 100style_g1_36dim ...
+[Data] Loading motions from: /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data/100style_g1_36dim/full_train.pkl...
+Loading planner dataset 100style_g1_36dim ...
+[Data] Loading motions from: /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data/100style_g1_36dim/full_train.pkl...
+[PlannerMotionDataset] Using 7237 motions (split=train.txt, excluded=0)
+Pointer Pointing at 969 (filtered 969 samples with length < 175, remaining 6268 samples out of 7237 in split)
+[PlannerMotionDataset] Using 7237 motions (split=train.txt, excluded=0)
+Pointer Pointing at 969 (filtered 969 samples with length < 175, remaining 6268 samples out of 7237 in split)
+Loading planner dataset kungfu_g1_36dim ...
+[Data] Loading motions from: /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data/kungfu_g1_36dim/full_train.pkl...
+Loading planner dataset kungfu_g1_36dim ...
+[Data] Loading motions from: /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data/kungfu_g1_36dim/full_train.pkl...
+[PlannerMotionDataset] Using 803 motions (split=train.txt, excluded=0)
+Pointer Pointing at 116 (filtered 116 samples with length < 175, remaining 687 samples out of 803 in split)
+[CompositeDataset] split=train, subsets={'amass_g1_36dim': 1403, '100style_g1_36dim': 6268, 'kungfu_g1_36dim': 687}, total=8358
+creating DiT model and flow-matching objective...
+[PlannerMotionDataset] Using 803 motions (split=train.txt, excluded=0)
+Pointer Pointing at 116 (filtered 116 samples with length < 175, remaining 687 samples out of 803 in split)
+[CompositeDataset] split=train, subsets={'amass_g1_36dim': 1403, '100style_g1_36dim': 6268, 'kungfu_g1_36dim': 687}, total=8358
+Loading text encoder: /data/code/ouyanghao/oyh/phygile-reproduction-20261017/cache/text/distilbert-base-uncased
+Loading text encoder: /data/code/ouyanghao/oyh/phygile-reproduction-20261017/cache/text/distilbert-base-uncased
+Total params: 107.05M
+Training DiT with scheduled self-rollout...
+Logging to /tmp/openai-2026-10-22-22-41-38-127858
+loading model from checkpoint: /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/model000010040.pt...
+loading both model and model_avg
+loading both model and model_avg
+loading optimizer state from checkpoint: /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/opt000010040.pt
+[Scheduled Forcing] n_primitives=3, context_len=25, pred_len=50, max_replace_prob=0.8, cross_prob=0.0
+[Scheduled Forcing] warmup_steps=400000, ramp_steps=600000
+[Scheduled Forcing] full_len per sample = 175 frames
+[Training RTC] enabled, uniform delay in [0, 6] action frames
+[Scheduled Forcing] train steps: 10061
+Starting epoch 0
+--------------------------------------------
+| flow/rtc_delay                | 3.06     |
+| flow/time_mean                | 0.602    |
+| flow_mse                      | 0.0755   |
+| grad_norm                     | 0.989    |
+| grad_norm_pre_clip            | 1.41     |
+| loss                          | 0.0755   |
+| metrics/mse                   | 0.0215   |
+| metrics/mse_acc               | 0.00513  |
+| metrics/mse_acc_dof           | 0.00527  |
+| metrics/mse_dof               | 0.0228   |
+| metrics/mse_final_frame       | 0.035    |
+| metrics/mse_first_frame       | 0.000596 |
+| metrics/mse_mid_frame         | 0.0212   |
+| metrics/mse_root_pos          | 0.0165   |
+| metrics/mse_root_rot          | 0.0153   |
+| metrics/mse_velocity          | 0.00261  |
+| metrics/mse_velocity_dof      | 0.00276  |
+| metrics/mse_velocity_root_pos | 0.00241  |
+| metrics/smooth_first_dof      | 0.000602 |
+| metrics/smooth_first_root_pos | 0.000611 |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 206      |
+| samples                       | 1.03e+07 |
+| step                          | 1e+04    |
+--------------------------------------------
+step[10050]: loss[0.07545] p_replace[0.000]
+--------------------------------------------
+| flow/rtc_delay                | 2.99     |
+| flow/time_mean                | 0.608    |
+| flow_mse                      | 0.0746   |
+| grad_norm                     | 1        |
+| grad_norm_pre_clip            | 1.4      |
+| loss                          | 0.0746   |
+| metrics/mse                   | 0.0222   |
+| metrics/mse_acc               | 0.00566  |
+| metrics/mse_acc_dof           | 0.00581  |
+| metrics/mse_dof               | 0.0236   |
+| metrics/mse_final_frame       | 0.0358   |
+| metrics/mse_first_frame       | 0.000872 |
+| metrics/mse_mid_frame         | 0.0214   |
+| metrics/mse_root_pos          | 0.0169   |
+| metrics/mse_root_rot          | 0.016    |
+| metrics/mse_velocity          | 0.00284  |
+| metrics/mse_velocity_dof      | 0.00299  |
+| metrics/mse_velocity_root_pos | 0.00264  |
+| metrics/smooth_first_dof      | 0.000853 |
+| metrics/smooth_first_root_pos | 0.000843 |
+| n_cross                       | 0        |
+| p_replace                     | 0        |
+| param_norm                    | 206      |
+| samples                       | 1.03e+07 |
+| step                          | 1.01e+04 |
+--------------------------------------------
+step[10060]: loss[0.07458] p_replace[0.000]
+{"rank": 1, "world_size": 2, "status": "PROBE_COMPLETED", "started_utc": "2026-10-22T22:41:34.851426+00:00", "configuration": {"official_commit": "5a79d03cab824eb5917271ba720294e8a1b9d374", "dataset": "amass_g1_36dim,100style_g1_36dim,kungfu_g1_36dim", "num_steps": 1000000, "num_warmup_steps": 400000, "batch_size_local": 512, "world_size": 2, "batch_size_global": 1024, "seed": 42, "learning_rate": 0.0001, "cross_prob": 0.0, "use_ema": true, "use_bf16": false, "activation_checkpointing": true, "memory_fraction_per_gpu": 0.65, "cpu_threads_per_rank": 4, "num_workers": 0, "save_interval": 1000, "first_checkpoint_updates": 0, "log_interval": 10, "minimum_free_output_bytes": 2147483648, "estimated_checkpoint_pair_bytes": 1800000000, "runtime_root": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021", "run_output": "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/training_fp64_sdpa_v4", "environment_spec": "configs/env_spec.json", "notes": "Experimental numerical recovery, not author-provided or established long-run fix. Restore saved model+EMA+Adam at 10041. Same network/loss/global batch 1024/LR 1e-4/400k teacher forcing/1M target. DiT self/cross SDPA uses FP64 with FP32 outputs. Save every 1000 loop steps for fault observability. Preserve all checkpoints; wait for space instead of deleting. RNG/data order not exact replay.", "recovery": {"original_output": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3", "original_manifest": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoint_ready_000010040.json", "original_manifest_sha256": "d2e564eb4aa49bacb43debabaeb1253f54cdbeb32cc53a428ac98168dc8a53f6", "model": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/model000010040.pt", "initial_optimizer_updates": 10041, "maximum_consecutive_skips": 1, "save_after_resumed_updates": 20, "variant": "FP32 model and optimizer; FP64 DiT SDPA numerical compatibility experiment v4", "exact_rng_or_data_replay": false, "source_sha256": {"scripts/attention_precision.py": "36980e6ea9fda2fbfa8fa60de4eeb822b20bab02dd36f334598d5fcc7d41e47b", "scripts/inspect_checkpoint.py": "6ad4d4cf15fc6e2b3eae8c94b9b1d625fe9f7bcd72a8acaa755326621018b862", "scripts/launch_recovery.py": "a43e4d622928cdffc1569f35bb7b62ef77861b33f3893910c27f2dde3a48db7d", "scripts/numerical_guard.py": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8", "scripts/prepare_verified_resume.py": "b5db0707c3a16310d01141a7d30c22aa2e2c4a258ad98eec56c662cfce651a23", "scripts/train_full.py": "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de", "scripts/train_repaired.py": "6f3d9b67145b2134248dba2ebb33038ef6a22e58eaae8d3f6f4dc2b6d30c0eab"}, "upstream_python_tree_sha256": "cc0d1e8bbdd605962a29437dbdda6c9d73275bb18e239b6cdf93ea1f96485e3f"}}, "probe_updates": 20, "full_training_completed": false, "physics_evaluated": false, "source_sha256": "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de", "official_arguments": ["--save_dir", "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/probe_fp64_sdpa_v4/checkpoints", "--dataset", "amass_g1_36dim,100style_g1_36dim,kungfu_g1_36dim", "--data_dir", "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data", "--model_type", "flow", "--text_encoder", "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/cache/text/distilbert-base-uncased", "--num_steps", "1000000", "--num_warmup_steps", "400000", "--batch_size_local", "512", "--seed", "42", "--num_workers", "0", "--train_platform_type", "NoPlatform", "--save_interval", "1000", "--log_interval", "10", "--cross_prob", "0.0", "--lr", "0.0001", "--resume_checkpoint", "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/model000010040.pt"], "batch_size_global": 1024, "trainable_parameters": 107045924, "dataset_component_lengths": {"amass_g1_36dim": 1403, "100style_g1_36dim": 6268, "kungfu_g1_36dim": 687}, "use_bf16": false, "optimizer_updates": 10061, "official_step_at_start": 10041, "elapsed_seconds": 358.9800669364631, "max_allocated_bytes": 18591661056, "max_reserved_bytes": 25637683200, "official_step": 10059, "final_official_step": 10061, "exit_code": 0, "ended_utc": "2026-10-22T22:47:33.831576+00:00"}
+{"rank": 0, "world_size": 2, "status": "PROBE_COMPLETED", "started_utc": "2026-10-22T22:41:34.847956+00:00", "configuration": {"official_commit": "5a79d03cab824eb5917271ba720294e8a1b9d374", "dataset": "amass_g1_36dim,100style_g1_36dim,kungfu_g1_36dim", "num_steps": 1000000, "num_warmup_steps": 400000, "batch_size_local": 512, "world_size": 2, "batch_size_global": 1024, "seed": 42, "learning_rate": 0.0001, "cross_prob": 0.0, "use_ema": true, "use_bf16": false, "activation_checkpointing": true, "memory_fraction_per_gpu": 0.65, "cpu_threads_per_rank": 4, "num_workers": 0, "save_interval": 1000, "first_checkpoint_updates": 0, "log_interval": 10, "minimum_free_output_bytes": 2147483648, "estimated_checkpoint_pair_bytes": 1800000000, "runtime_root": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021", "run_output": "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/training_fp64_sdpa_v4", "environment_spec": "configs/env_spec.json", "notes": "Experimental numerical recovery, not author-provided or established long-run fix. Restore saved model+EMA+Adam at 10041. Same network/loss/global batch 1024/LR 1e-4/400k teacher forcing/1M target. DiT self/cross SDPA uses FP64 with FP32 outputs. Save every 1000 loop steps for fault observability. Preserve all checkpoints; wait for space instead of deleting. RNG/data order not exact replay.", "recovery": {"original_output": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3", "original_manifest": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoint_ready_000010040.json", "original_manifest_sha256": "d2e564eb4aa49bacb43debabaeb1253f54cdbeb32cc53a428ac98168dc8a53f6", "model": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/model000010040.pt", "initial_optimizer_updates": 10041, "maximum_consecutive_skips": 1, "save_after_resumed_updates": 20, "variant": "FP32 model and optimizer; FP64 DiT SDPA numerical compatibility experiment v4", "exact_rng_or_data_replay": false, "source_sha256": {"scripts/attention_precision.py": "36980e6ea9fda2fbfa8fa60de4eeb822b20bab02dd36f334598d5fcc7d41e47b", "scripts/inspect_checkpoint.py": "6ad4d4cf15fc6e2b3eae8c94b9b1d625fe9f7bcd72a8acaa755326621018b862", "scripts/launch_recovery.py": "a43e4d622928cdffc1569f35bb7b62ef77861b33f3893910c27f2dde3a48db7d", "scripts/numerical_guard.py": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8", "scripts/prepare_verified_resume.py": "b5db0707c3a16310d01141a7d30c22aa2e2c4a258ad98eec56c662cfce651a23", "scripts/train_full.py": "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de", "scripts/train_repaired.py": "6f3d9b67145b2134248dba2ebb33038ef6a22e58eaae8d3f6f4dc2b6d30c0eab"}, "upstream_python_tree_sha256": "cc0d1e8bbdd605962a29437dbdda6c9d73275bb18e239b6cdf93ea1f96485e3f"}}, "probe_updates": 20, "full_training_completed": false, "physics_evaluated": false, "source_sha256": "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de", "official_arguments": ["--save_dir", "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/probe_fp64_sdpa_v4/checkpoints", "--dataset", "amass_g1_36dim,100style_g1_36dim,kungfu_g1_36dim", "--data_dir", "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data", "--model_type", "flow", "--text_encoder", "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/cache/text/distilbert-base-uncased", "--num_steps", "1000000", "--num_warmup_steps", "400000", "--batch_size_local", "512", "--seed", "42", "--num_workers", "0", "--train_platform_type", "NoPlatform", "--save_interval", "1000", "--log_interval", "10", "--cross_prob", "0.0", "--lr", "0.0001", "--resume_checkpoint", "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/model000010040.pt"], "batch_size_global": 1024, "trainable_parameters": 107045924, "dataset_component_lengths": {"amass_g1_36dim": 1403, "100style_g1_36dim": 6268, "kungfu_g1_36dim": 687}, "use_bf16": false, "optimizer_updates": 10061, "official_step_at_start": 10041, "elapsed_seconds": 358.99193289130926, "max_allocated_bytes": 17474946560, "max_reserved_bytes": 24677187584, "official_step": 10059, "final_official_step": 10061, "exit_code": 0, "ended_utc": "2026-10-22T22:47:33.840008+00:00"}

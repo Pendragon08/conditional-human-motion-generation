@@ -1,0 +1,118 @@
+{
+  "snapshot": "V2_IN_PROGRESS",
+  "training500_completed": false,
+  "headless_smoke": {
+    "ppo_iterations": 2,
+    "actual_adam_updates": 40,
+    "parent_preserved": true
+  },
+  "contact_diagnostic": [
+    {
+      "profile": "official",
+      "clip": 0,
+      "frames": 129,
+      "success": false,
+      "metrics": {
+        "mpjpe_m_until_termination": 0.10080162435770035,
+        "mpjae_rad_until_termination": 0.1483706384897232,
+        "mpjve_rad_s_until_termination": 0.5985475778579712
+      }
+    },
+    {
+      "profile": "official",
+      "clip": 1,
+      "frames": 10,
+      "success": false,
+      "metrics": {
+        "mpjpe_m_until_termination": 0.0796847715973854,
+        "mpjae_rad_until_termination": 0.1657697707414627,
+        "mpjve_rad_s_until_termination": 1.6562098264694214
+      }
+    },
+    {
+      "profile": "official",
+      "clip": 2,
+      "frames": 149,
+      "success": true,
+      "metrics": {
+        "mpjpe_m_until_termination": 0.08948104828596115,
+        "mpjae_rad_until_termination": 0.13402718305587769,
+        "mpjve_rad_s_until_termination": 0.42945703864097595
+      }
+    },
+    {
+      "profile": "official",
+      "clip": 3,
+      "frames": 14,
+      "success": false,
+      "metrics": {
+        "mpjpe_m_until_termination": 0.05893192067742348,
+        "mpjae_rad_until_termination": 0.1512841284275055,
+        "mpjve_rad_s_until_termination": 1.0656405687332153
+      }
+    },
+    {
+      "profile": "matched_sliding_friction",
+      "clip": 0,
+      "frames": 129,
+      "success": false,
+      "metrics": {
+        "mpjpe_m_until_termination": 0.1057429313659668,
+        "mpjae_rad_until_termination": 0.14980904757976532,
+        "mpjve_rad_s_until_termination": 0.5578228235244751
+      }
+    },
+    {
+      "profile": "matched_sliding_friction",
+      "clip": 1,
+      "frames": 9,
+      "success": false,
+      "metrics": {
+        "mpjpe_m_until_termination": 0.07400951534509659,
+        "mpjae_rad_until_termination": 0.15670326352119446,
+        "mpjve_rad_s_until_termination": 1.7354998588562012
+      }
+    },
+    {
+      "profile": "matched_sliding_friction",
+      "clip": 2,
+      "frames": 149,
+      "success": true,
+      "metrics": {
+        "mpjpe_m_until_termination": 0.10137458890676498,
+        "mpjae_rad_until_termination": 0.13043692708015442,
+        "mpjve_rad_s_until_termination": 0.39781367778778076
+      }
+    },
+    {
+      "profile": "matched_sliding_friction",
+      "clip": 3,
+      "frames": 15,
+      "success": false,
+      "metrics": {
+        "mpjpe_m_until_termination": 0.06096819043159485,
+        "mpjae_rad_until_termination": 0.15533585846424103,
+        "mpjve_rad_s_until_termination": 1.013835072517395
+      }
+    }
+  ],
+  "closures": {
+    "physx": {
+      "status": "COMPLETED_ENGINEERING_VALIDATION",
+      "outcome": "REJECTED_WITHOUT_INVALID_COMMIT",
+      "trained_generator": false,
+      "committed_new_frames": 0,
+      "generator_parameters_unchanged": true,
+      "executed_sources_unchanged": true
+    },
+    "mujoco": {
+      "status": "COMPLETED_ENGINEERING_VALIDATION",
+      "outcome": "REJECTED_WITHOUT_INVALID_COMMIT",
+      "trained_generator": false,
+      "committed_new_frames": 0,
+      "generator_parameters_unchanged": true,
+      "executed_sources_unchanged": true
+    }
+  },
+  "scope": "Single-seed engineering diagnostics; zero trained semantic-generation claim; failure-censored metrics. Original data/checkpoints/logs retained."
+}

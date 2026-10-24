@@ -1,0 +1,789 @@
+{
+  "status": "PASS_DOCUMENT_FOLLOWING_ENGINEERING_VALIDATION",
+  "created_at_utc": "2026-10-17T14:38:40.0399942Z",
+  "scope": "Independent one-shot document witness; no implementation inspection, code/doc/environment changes, threshold tuning, rename, or experiment rerun",
+  "invocation": {
+    "started_at_utc": "2026-10-17T14:29:25.9789484Z",
+    "server": "ouyanghao@10.147.17.32",
+    "identity_path": "C:/Users/Pende/.ssh/id_ed25519",
+    "command": "cd /data/code/ouyanghao/oyh/phygile-reproduction-20261017\npython3 scripts/validate_completion.py --name document_run",
+    "invocation_count": 1,
+    "environment_spec_hash": "fa5883c8"
+  },
+  "finished_at_utc": "2026-10-17T14:33:18.3206192Z",
+  "transport_exit": 0,
+  "global_sentinel": "PHYGILE_COMPLETION_VALIDATION_COMPLETE",
+  "global_sentinel_exact_line_count": 1,
+  "stderr_bytes": 0,
+  "initial_hold": "No invocation occurred before the earlier hold; prior preflight records retained",
+  "preflight_record": "preflight_20261017T142900Z.stdout.txt",
+  "document_invocation_divergences": [],
+  "stage_receipts": [
+    {
+      "name": "prepare",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "started_utc": "2026-10-17T22:29:27.336814+08:00",
+      "finished_utc": "2026-10-17T22:29:27.402157+08:00",
+      "elapsed_seconds": 0.06507132761180401,
+      "receipt_sha256": "a498b849d263a1bf0a2ef54aeffd2a779504f72ab2717018f60c42b955a32729",
+      "log_exists": true,
+      "completion_markers": []
+    },
+    {
+      "name": "regression",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "started_utc": "2026-10-17T22:29:27.461989+08:00",
+      "finished_utc": "2026-10-17T22:29:27.827935+08:00",
+      "elapsed_seconds": 0.36566726863384247,
+      "receipt_sha256": "e8ad75e509e05ea052521517816714b6e4ec953b7b82a7c69b23c987c3f2ed20",
+      "log_exists": true,
+      "completion_markers": []
+    },
+    {
+      "name": "codec",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "started_utc": "2026-10-17T22:29:27.889012+08:00",
+      "finished_utc": "2026-10-17T22:29:32.113506+08:00",
+      "elapsed_seconds": 4.224222319200635,
+      "receipt_sha256": "51b43b75cb842af9370bad1de4a7976b8582d2c1a54abb8ba68cc796e29944af",
+      "log_exists": true,
+      "completion_markers": [
+        "PHYGILE_CODEC262_COMPLETE"
+      ]
+    },
+    {
+      "name": "curriculum",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "started_utc": "2026-10-17T22:29:32.169517+08:00",
+      "finished_utc": "2026-10-17T22:30:14.375303+08:00",
+      "elapsed_seconds": 42.20551086589694,
+      "receipt_sha256": "d139ca199117b924de06a59311cdae0fa6289991459b80c163ee215bd89a77fb",
+      "log_exists": true,
+      "completion_markers": [
+        "PHYGILE_CURRICULUM_EVALUATION_COMPLETE"
+      ]
+    },
+    {
+      "name": "expert_mask",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "started_utc": "2026-10-17T22:30:14.438219+08:00",
+      "finished_utc": "2026-10-17T22:30:33.04304+08:00",
+      "elapsed_seconds": 18.604565950110555,
+      "receipt_sha256": "d167d2ad578f2003c1105999d48d0474c67161155d6a05c4ca49be66db0b5fba",
+      "log_exists": true,
+      "completion_markers": [
+        "PHYGILE_CURRICULUM_EVALUATION_COMPLETE"
+      ]
+    },
+    {
+      "name": "training_hook",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "started_utc": "2026-10-17T22:30:33.264133+08:00",
+      "finished_utc": "2026-10-17T22:31:19.47689+08:00",
+      "elapsed_seconds": 46.212493585422635,
+      "receipt_sha256": "bf7b15d0facbacfdd77660407de8c034491e8d0ec0ba7a2baeee082b8bbf8a91",
+      "log_exists": true,
+      "completion_markers": [
+        "PHYGILE_CURRICULUM_TRAINING_VALIDATED"
+      ]
+    },
+    {
+      "name": "closed_loop",
+      "status": "COMPLETED",
+      "exit_code": 0,
+      "started_utc": "2026-10-17T22:31:19.54377+08:00",
+      "finished_utc": "2026-10-17T22:33:18.421552+08:00",
+      "elapsed_seconds": 118.87747749127448,
+      "receipt_sha256": "66e05a1c4d1a916b8aeb684a8927ca024a091b3363902e6ce8e0b9a71caa5ef9",
+      "log_exists": true,
+      "completion_markers": [
+        "PHYGILE_GENERATED_CLOSED_LOOP_COMPLETE"
+      ]
+    }
+  ],
+  "pipeline_elapsed_seconds": 231.13955879211426,
+  "primary_integrity": {
+    "expected_primary_files": 82,
+    "missing_primary": [],
+    "manifest_file_count": 151,
+    "manifest_total_bytes": 5483866,
+    "npz_archive_count": 69,
+    "npz_crc_and_npy_header_checks": "PASS",
+    "reported_hash_and_worker_checks": "PASS",
+    "audit_file": "artifact_inspection.json",
+    "raw_independent_check_file": "raw_primary_checks.json",
+    "remote_issues": [],
+    "max_absolute_raw_error_recomputation_difference": 2.4741655502147353E-08
+  },
+  "local_delivery": {
+    "status": "PASS_RESOLVED",
+    "initial_manifest_matches": 149,
+    "initial_missing_files": [
+      "training_hook/output/fixture_motions/sample_000_actor0.npz",
+      "training_hook/output/fixture_motions/sample_001_actor0.npz"
+    ],
+    "cause": "Two generated fixture links were valid remote symlinks but absent from the initial local copy",
+    "resolution": "Parent materialized their targets as local regular files; remote primary evidence unchanged",
+    "resolution_receipt": "../fixture_materialization.json",
+    "rechecked_manifest_files": 151,
+    "unresolved_mismatches": [],
+    "initial_record": "local_copy_verification.json",
+    "resolved_record": "local_copy_verification_resolved.json"
+  },
+  "regression": {
+    "status": "PASS",
+    "checks": 13,
+    "check_groups": [
+      "pose_roundtrip",
+      "canonical_pitch_roll",
+      "SO3_roundtrip",
+      "degenerate_6d",
+      "nonfinite_features",
+      "skeleton_identity",
+      "sequence_length",
+      "palm_fixed_offset",
+      "failed_episode_success_gate",
+      "invalid_evaluation_timeout",
+      "error_threshold_gate",
+      "non_worsening_and_disabled_convergence",
+      "coverage_and_checkpoint_expert_identity"
+    ],
+    "seed": 213,
+    "scope": "synthetic mathematical and counterexample checks; no learned-motion quality claim"
+  },
+  "codec": {
+    "status": "COMPLETED",
+    "evaluation_type": "self_supervised_proxy",
+    "purpose": "descriptor round-trip and URDF-vs-stored-FK consistency only",
+    "schema": "phygile-g1-262-semantic-urdf-discrete-v1",
+    "author_exact_codec_reproduced": false,
+    "normalization_fit_split": "train_only",
+    "normalization_training_sequences": 20,
+    "sequence_count": 24,
+    "max_position_error_m": 6.593780632613289E-09,
+    "max_joint_error_rad": 4.127457264857526E-08,
+    "max_fk_error_m": 9.62942522164667E-07
+  },
+  "curriculum": {
+    "status": "COMPLETED",
+    "valid": true,
+    "problems": [],
+    "evaluation_type": "simulation_only",
+    "reference_type": "dataset-derived kinematic reference",
+    "aggregation": "equal weight per requested file; errors censored at termination; success counts full clips",
+    "requested_files": [
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_train20_tracking_refs/sample_000_actor0.npz",
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_test4_tracking_refs/sample_000_actor0.npz"
+    ],
+    "attempts_per_file": 8,
+    "active_experts": 1,
+    "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+    "per_file": [
+      {
+        "motion_file": "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_train20_tracking_refs/sample_000_actor0.npz",
+        "motion_sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b",
+        "attempts": 8,
+        "successes": 0,
+        "success_fraction": 0.0,
+        "mpjpe_m_until_termination": 0.1672734022140503,
+        "mpjae_rad_until_termination": 0.3191640377044678,
+        "episode_lengths": [
+          26,
+          27,
+          26,
+          22,
+          28,
+          28,
+          26,
+          26
+        ],
+        "problems": []
+      },
+      {
+        "motion_file": "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_test4_tracking_refs/sample_000_actor0.npz",
+        "motion_sha256": "9da670f4a3f4881fa49c73b7a05efcdff8353334f8cf34f5c901ef3668ebc86d",
+        "attempts": 8,
+        "successes": 3,
+        "success_fraction": 0.375,
+        "mpjpe_m_until_termination": 0.36546245217323303,
+        "mpjae_rad_until_termination": 0.1520146280527115,
+        "episode_lengths": [
+          126,
+          83,
+          79,
+          64,
+          149,
+          149,
+          149,
+          63
+        ],
+        "problems": []
+      }
+    ],
+    "mpjpe_m": 0.26636792719364166,
+    "mpjae_rad": 0.23558933287858963,
+    "success_fraction": 0.1875,
+    "minimum_file_success_fraction": 0.0,
+    "started_unix": 1792247372.3551686,
+    "finished_unix": 1792247414.3302445,
+    "source_sha256": "d31dcebd65d1982e1b6637abf43d1824eaafadc22949f7dda0b9a0fa3ed089ce",
+    "worker_sha256": "507dd378c600e4a148a0f71d7194a3664bf2fa817d0742137b470954a924337a",
+    "request_sha256": "43f868ca1aae818e1d292d048976902a41b796103fb269eb7d1fa413c7aa4e84",
+    "raw_files": [
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/curriculum/output/file_0000/raw_pre_reset.npz",
+        "sha256": "90e30cfbf41868c407f5b675b2971619f31a1610bf7b5bab1558790802a04f94"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/curriculum/output/file_0001/raw_pre_reset.npz",
+        "sha256": "334fd848c9c519d153c0128b049bb53abb02d681f731b1f52d9f069c744518e9"
+      }
+    ]
+  },
+  "expert_mask": {
+    "status": "COMPLETED",
+    "valid": true,
+    "problems": [],
+    "evaluation_type": "simulation_only",
+    "reference_type": "dataset-derived kinematic reference",
+    "aggregation": "equal weight per requested file; errors censored at termination; success counts full clips",
+    "requested_files": [
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_train20_tracking_refs/sample_000_actor0.npz"
+    ],
+    "attempts_per_file": 2,
+    "active_experts": 2,
+    "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+    "per_file": [
+      {
+        "motion_file": "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_train20_tracking_refs/sample_000_actor0.npz",
+        "motion_sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b",
+        "attempts": 2,
+        "successes": 0,
+        "success_fraction": 0.0,
+        "mpjpe_m_until_termination": 0.19820046424865723,
+        "mpjae_rad_until_termination": 0.35598164796829224,
+        "episode_lengths": [
+          10,
+          20
+        ],
+        "problems": []
+      }
+    ],
+    "mpjpe_m": 0.19820046424865723,
+    "mpjae_rad": 0.35598164796829224,
+    "success_fraction": 0.0,
+    "minimum_file_success_fraction": 0.0,
+    "started_unix": 1792247414.6394327,
+    "finished_unix": 1792247432.9961715,
+    "source_sha256": "d31dcebd65d1982e1b6637abf43d1824eaafadc22949f7dda0b9a0fa3ed089ce",
+    "worker_sha256": "507dd378c600e4a148a0f71d7194a3664bf2fa817d0742137b470954a924337a",
+    "request_sha256": "86c9b9aa69a978b249dc801e17e85165239a3f3e844bcb65c9de233bd285a1b3",
+    "raw_files": [
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/expert_mask/output/file_0000/raw_pre_reset.npz",
+        "sha256": "2539e0ace2e1c66fa5155404b16c9520f794725cd034f19a1256abb63c6a77c0"
+      }
+    ]
+  },
+  "training_hook": {
+    "status": "COMPLETED",
+    "purpose": "scheduler integration fixture only; not difficulty curriculum reproduction",
+    "fixture_labels_are_research_annotations": false,
+    "ppo_iterations": 4,
+    "adam_optimizer_steps_expected": 80,
+    "num_envs": 32,
+    "training_run": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-30-42_training_hook",
+    "decision_path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-30-42_training_hook/independent_curriculum/iteration_00000003/decision.json",
+    "decision": {
+      "promote": false,
+      "reason": "minimum_file_success_below_threshold",
+      "iteration": 3,
+      "old_level": 1,
+      "new_level": 1,
+      "report_sha256": "59fd00be141712b2556f21fda4b09da6fdb9bfc9c560b428f5317bd8d57e805b"
+    },
+    "evaluation_path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-30-42_training_hook/independent_curriculum/iteration_00000003/assessment/evaluation.json",
+    "evaluation": {
+      "status": "COMPLETED",
+      "valid": true,
+      "problems": [],
+      "evaluation_type": "simulation_only",
+      "reference_type": "dataset-derived kinematic reference",
+      "aggregation": "equal weight per requested file; errors censored at termination; success counts full clips",
+      "requested_files": [
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_train20_tracking_refs/sample_000_actor0.npz"
+      ],
+      "attempts_per_file": 2,
+      "active_experts": 1,
+      "checkpoint_sha256": "80754992e0c0d4065fed37f33c722bed72e279c52e3a5002901538e76b6effc7",
+      "per_file": [
+        {
+          "motion_file": "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_train20_tracking_refs/sample_000_actor0.npz",
+          "motion_sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b",
+          "attempts": 2,
+          "successes": 0,
+          "success_fraction": 0.0,
+          "mpjpe_m_until_termination": 0.12251029163599014,
+          "mpjae_rad_until_termination": 0.23196259140968323,
+          "episode_lengths": [
+            5,
+            5
+          ],
+          "problems": []
+        }
+      ],
+      "mpjpe_m": 0.12251029163599014,
+      "mpjae_rad": 0.23196259140968323,
+      "success_fraction": 0.0,
+      "minimum_file_success_fraction": 0.0,
+      "started_unix": 1792247458.2423475,
+      "finished_unix": 1792247475.9599197,
+      "source_sha256": "d31dcebd65d1982e1b6637abf43d1824eaafadc22949f7dda0b9a0fa3ed089ce",
+      "worker_sha256": "507dd378c600e4a148a0f71d7194a3664bf2fa817d0742137b470954a924337a",
+      "request_sha256": "c8b90fc9189eb1d66421967cc1466fe38a6c9293f9d8c59447b8cc62e5fd6f6f",
+      "raw_files": [
+        {
+          "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-30-42_training_hook/independent_curriculum/iteration_00000003/assessment/file_0000/raw_pre_reset.npz",
+          "sha256": "413e2c225fe6adc9431605e495dff249e3d90d1f144caa827db42c9d6d699dfa"
+        }
+      ]
+    },
+    "motion_sources": [
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/train/sample_000_actor0.npz",
+        "sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/train/sample_001_actor0.npz",
+        "sha256": "90aaa5d5af04d31a27baa26cc4c1b1fd7fc9694c15900a3798ff19c753b9fa44"
+      }
+    ]
+  },
+  "closed_loop": {
+    "status": "COMPLETED_ENGINEERING_VALIDATION",
+    "outcome": "REJECTED_WITHOUT_INVALID_COMMIT",
+    "evaluation_type": "simulation_only",
+    "trained_generator": false,
+    "generator": {
+      "backend": "untrained_diffusion_diagnostic",
+      "trained": false,
+      "text_conditioning": "zero/unconditional; no text-to-motion claim",
+      "schedule": "chosen linear 8-step engineering diagnostic",
+      "parameters": 146169702,
+      "normalization_sha256": "6789d03ceb19f3a9f54b6c96b500396e079ded366ef5aa04106f9c6a3cf687af"
+    },
+    "trained_semantic_generation_claim": false,
+    "actual_diffusion_sampling": true,
+    "actual_isaac_physics": true,
+    "automatic_reset_during_candidates": false,
+    "physics_prefix_ppo_adaptation_updates": 0,
+    "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+    "initialization_motion_sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b",
+    "seed": 2026,
+    "chunk_frames": 50,
+    "requested_new_frames": 100,
+    "initial_prefix_sha256": "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+    "committed_new_frames": 0,
+    "committed_prefix_sha256": "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+    "accepted_attempts": 0,
+    "rejected_attempts": 2,
+    "attempts": [
+      {
+        "accepted": false,
+        "reasons": [
+          "incomplete_continuation",
+          "failure_termination",
+          "mpjpe_above_tolerance"
+        ],
+        "expected_frames": 50,
+        "recorded_frames": 1,
+        "mpjpe_m": 0.42651834275938744,
+        "terminal_max_frame_mpjpe_m": null,
+        "candidate_sha256": "0640bbd6a83c1218937d9ea613b9ebb72f35a87406687412f9723b317e6b567e",
+        "execution_sha256": "b3d0163baee0d9c893e573a0c4fe7a393e65a7421fa239ebc6daa976e8ee67cc",
+        "prefix_frames": 1,
+        "attempt": 0,
+        "final": false
+      },
+      {
+        "accepted": false,
+        "reasons": [
+          "incomplete_continuation",
+          "failure_termination",
+          "mpjpe_above_tolerance"
+        ],
+        "expected_frames": 50,
+        "recorded_frames": 1,
+        "mpjpe_m": 0.4283586493344684,
+        "terminal_max_frame_mpjpe_m": null,
+        "candidate_sha256": "014dda4b280e74489b4acd43920bab0259f92f4265575ae21a15bf3c366578d7",
+        "execution_sha256": "bdd1b7fbb662f4b00ef741ac44158f40bfd0503a39b802681bd3fc3835a4be61",
+        "prefix_frames": 1,
+        "attempt": 1,
+        "final": false
+      }
+    ],
+    "proposals": [
+      {
+        "attempt": 0,
+        "final": false,
+        "candidate_sha256": "0640bbd6a83c1218937d9ea613b9ebb72f35a87406687412f9723b317e6b567e",
+        "input_prefix_sha256": "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+        "input_prefix_frames": 1,
+        "new_frames": 50,
+        "network_context_frames": 2,
+        "projection": {
+          "rotation_projection_residual_max": 2.828426890294271,
+          "joint_limit_violations": 992,
+          "ric_redundancy_residual_m": 0.5739798112664924,
+          "projected": true,
+          "root_pose_side_information_required": true
+        },
+        "additional_bound_changed_values": 101
+      },
+      {
+        "attempt": 1,
+        "final": false,
+        "candidate_sha256": "014dda4b280e74489b4acd43920bab0259f92f4265575ae21a15bf3c366578d7",
+        "input_prefix_sha256": "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+        "input_prefix_frames": 1,
+        "new_frames": 50,
+        "network_context_frames": 2,
+        "projection": {
+          "rotation_projection_residual_max": 2.828420151651609,
+          "joint_limit_violations": 983,
+          "ric_redundancy_residual_m": 0.5850813571133008,
+          "projected": true,
+          "root_pose_side_information_required": true
+        },
+        "additional_bound_changed_values": 99
+      }
+    ],
+    "rollback_witness": {
+      "repeated_rollout_frames": 10,
+      "state_max_abs_delta": 0.0,
+      "body_max_abs_delta_m": 0.0,
+      "tolerance": 0.0005,
+      "scope": "same seeded scene replayed in a fresh process; committed histories checked before continuation",
+      "method": "fresh_process_replay; no private PhysX state serialization claim"
+    },
+    "actual_feedback_fixture": {
+      "evaluation_type": "self_supervised_proxy",
+      "reference": "held initialization pose; not dataset truth or generated semantics",
+      "control_frames": 2,
+      "window_frames": 1,
+      "accepted_windows": 2,
+      "input_prefix_sha256": [
+        "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+        "7a85db2003544da0db27aa625efeb6f7c9ec8a07f81d22e2e9064469884d90ae"
+      ],
+      "committed_prefix_sha256": "7d3a6c0d8b48fa1d382c89b42a7f700e3c91bfd5ad6e9c0fe9067d023f9101b5",
+      "replayed_history": [
+        {
+          "candidate_sha256": "9551f6520c6dfd0031a4974bdb5e737193a4a0cf2eb42822ab78928ccb556f05",
+          "max_state_difference": 0.0
+        }
+      ],
+      "decisions": [
+        {
+          "accepted": true,
+          "reasons": [],
+          "expected_frames": 1,
+          "recorded_frames": 1,
+          "mpjpe_m": 0.022785565545358873,
+          "terminal_max_frame_mpjpe_m": null,
+          "candidate_sha256": "9551f6520c6dfd0031a4974bdb5e737193a4a0cf2eb42822ab78928ccb556f05",
+          "execution_sha256": "85f6e41bfe462e2ccb21db12616dc39c154549462d2f91722f8c395af669a9aa",
+          "prefix_frames": 1,
+          "attempt": 0,
+          "final": false
+        },
+        {
+          "accepted": true,
+          "reasons": [],
+          "expected_frames": 1,
+          "recorded_frames": 1,
+          "mpjpe_m": 0.04355391445729258,
+          "terminal_max_frame_mpjpe_m": 0.04355391445729258,
+          "candidate_sha256": "8be1d0993b0b26fad7dda3ba911e4033e8c6b92b91f834255d3c9c20c4588f1d",
+          "execution_sha256": "25c899650b07fa0cf24fbed609d0538edaaf4f64272fdf5993cfacfac16173c5",
+          "prefix_frames": 2,
+          "attempt": 0,
+          "final": true
+        }
+      ]
+    },
+    "gmt_parameters_unchanged": true,
+    "generator_parameters_unchanged": true,
+    "generator_parameter_digest": "ef3302aba02a0a981eb86e4e0c22e59dfe958e6968f1c800d0c354730d791a12",
+    "rollback_method": "fresh_process_accepted_history_replay",
+    "torch_peak_allocated_bytes": 602226688,
+    "torch_peak_reserved_bytes": 603979776,
+    "memory_scope": "PyTorch allocator only; excludes PhysX/render allocations and other processes",
+    "elapsed_seconds": 33.7869770526886,
+    "raw_files": {
+      "physics_rollout_004.npz": "c2801c21b0cd34ac8e4075f2177f8f8248d7c7c893ddfb4e63078a837155423f",
+      "physics_rollout_005.npz": "f9c4717e145766668281222c62dd844f7a98e52c8b83c16b006689c088a688f0",
+      "committed_prefix.npz": "a41353b0abcaa5b798f6e5e77850531b4504a3f377900b739b9702f2ca2e6ebb",
+      "physics_rollout_001.npz": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+      "physics_rollout_002.npz": "81872c796dcb891b9728694cfe0d915e1438d0e8e228b4bc66b8a489da36fbf5",
+      "physics_rollout_003.npz": "0207830e610f317564a1e57c7b908b8c9cfd692751f8e1718d835e8c92c5180d",
+      "physics_rollout_000.npz": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+      "rollback_development_evidence.npz": "c33b0a9c23046bc878a1fe5401960ef3593907f767715f612a223ff21013d71a",
+      "feedback_fixture_committed.npz": "1621819af31f08aeb79bdeda8de411072b984c79650fb2c831d7bf1deea09d4a",
+      "proposals/proposal_001.npz": "59567f2858b0a425a5f13579b199874b2efdbd4840260e6fb342c940242335e3",
+      "proposals/proposal_000.npz": "34caac72645d5d3a08845f6fb7699a302a194a12d4faa95e68df56f05f98db0f",
+      "simulator/invocation_005/continuation.npz": "0f67d114d54f4921c5742219ba2e5280dd7b1d0356d196b429aeac24f400c8b2",
+      "simulator/invocation_005/raw.npz": "c2801c21b0cd34ac8e4075f2177f8f8248d7c7c893ddfb4e63078a837155423f",
+      "simulator/invocation_005/candidate.npz": "817ac85cd3e0ff87c7ca060042e7ac67dd06614cbefcc32c382f89a09d681262",
+      "simulator/invocation_005/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "simulator/invocation_003/continuation.npz": "893920f64dfac728920884aa59028b01932e9cfbfbb5dcc7bcd09fdaebfddede",
+      "simulator/invocation_003/raw.npz": "81872c796dcb891b9728694cfe0d915e1438d0e8e228b4bc66b8a489da36fbf5",
+      "simulator/invocation_003/candidate.npz": "fcdda6afc5c63dda51ea3504e81db75977fa00abd0db37bc1cf73b085c0acb12",
+      "simulator/invocation_003/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "simulator/invocation_001/continuation.npz": "3a9c79e7fc896fd932c91ddd0b48e2460da1eab9b98d85e8394a2d8fb37f4c72",
+      "simulator/invocation_001/raw.npz": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+      "simulator/invocation_001/candidate.npz": "caa52c0a4da1c689881ffa9e2f5c2c5dd625edbb257e6fb5b5048b1eaf4ff3aa",
+      "simulator/invocation_001/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "simulator/invocation_002/continuation.npz": "3a9c79e7fc896fd932c91ddd0b48e2460da1eab9b98d85e8394a2d8fb37f4c72",
+      "simulator/invocation_002/raw.npz": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e",
+      "simulator/invocation_002/candidate.npz": "caa52c0a4da1c689881ffa9e2f5c2c5dd625edbb257e6fb5b5048b1eaf4ff3aa",
+      "simulator/invocation_002/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "simulator/invocation_004/continuation.npz": "997c09c5651ffde416d2cf39a560f3b8d60e6e4c3f280d19fa6bff7f9f9efe2c",
+      "simulator/invocation_004/raw.npz": "0207830e610f317564a1e57c7b908b8c9cfd692751f8e1718d835e8c92c5180d",
+      "simulator/invocation_004/candidate.npz": "3fb55115c4a36e0c606fb9fb7ca90f1c6d6fc8d77d26e7ca3df83d8731f6e735",
+      "simulator/invocation_004/current.npz": "893920f64dfac728920884aa59028b01932e9cfbfbb5dcc7bcd09fdaebfddede",
+      "simulator/invocation_000/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611",
+      "simulator/invocation_006/continuation.npz": "2c7d4bd301d53eda0651a3e7a1f450c99479c753f10ec694a6846b7b9a8df757",
+      "simulator/invocation_006/raw.npz": "f9c4717e145766668281222c62dd844f7a98e52c8b83c16b006689c088a688f0",
+      "simulator/invocation_006/candidate.npz": "c282c07293b2d6d7346675ee4276c14fcb95f028b57462cc635753effe33adad",
+      "simulator/invocation_006/current.npz": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611"
+    }
+  },
+  "independent_raw_verification": {
+    "scope": "read-only independent raw NPZ episode counts, terminations, and error recomputation; no threshold changes",
+    "files": [
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/curriculum/output/file_0000/raw_pre_reset.npz",
+        "recorded_rows": 209,
+        "environment_count": 8,
+        "episodes": [
+          {
+            "env_id": 0,
+            "recorded_frames": 26,
+            "last_frame": 25,
+            "failure_terminations": 1,
+            "timeouts": 0
+          },
+          {
+            "env_id": 1,
+            "recorded_frames": 27,
+            "last_frame": 26,
+            "failure_terminations": 1,
+            "timeouts": 0
+          },
+          {
+            "env_id": 2,
+            "recorded_frames": 26,
+            "last_frame": 25,
+            "failure_terminations": 1,
+            "timeouts": 0
+          },
+          {
+            "env_id": 3,
+            "recorded_frames": 22,
+            "last_frame": 21,
+            "failure_terminations": 1,
+            "timeouts": 0
+          },
+          {
+            "env_id": 4,
+            "recorded_frames": 28,
+            "last_frame": 27,
+            "failure_terminations": 1,
+            "timeouts": 0
+          },
+          {
+            "env_id": 5,
+            "recorded_frames": 28,
+            "last_frame": 27,
+            "failure_terminations": 1,
+            "timeouts": 0
+          },
+          {
+            "env_id": 6,
+            "recorded_frames": 26,
+            "last_frame": 25,
+            "failure_terminations": 1,
+            "timeouts": 0
+          },
+          {
+            "env_id": 7,
+            "recorded_frames": 26,
+            "last_frame": 25,
+            "failure_terminations": 1,
+            "timeouts": 0
+          }
+        ],
+        "reported_episode_lengths": [
+          26,
+          27,
+          26,
+          22,
+          28,
+          28,
+          26,
+          26
+        ],
+        "recorded_counts_match_reported_lengths": true,
+        "independent_full_clip_successes": 0,
+        "reported_successes": 0,
+        "independent_mpjpe_m": 0.16727340238177868,
+        "reported_mpjpe_m": 0.1672734022140503,
+        "independent_mpjae_rad": 0.31916403632164597,
+        "reported_mpjae_rad": 0.3191640377044678,
+        "nonfinite_numeric_count": 0
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/curriculum/output/file_0001/raw_pre_reset.npz",
+        "recorded_rows": 862,
+        "environment_count": 8,
+        "episodes": [
+          {
+            "env_id": 0,
+            "recorded_frames": 126,
+            "last_frame": 125,
+            "failure_terminations": 1,
+            "timeouts": 0
+          },
+          {
+            "env_id": 1,
+            "recorded_frames": 83,
+            "last_frame": 82,
+            "failure_terminations": 1,
+            "timeouts": 0
+          },
+          {
+            "env_id": 2,
+            "recorded_frames": 79,
+            "last_frame": 78,
+            "failure_terminations": 1,
+            "timeouts": 0
+          },
+          {
+            "env_id": 3,
+            "recorded_frames": 64,
+            "last_frame": 63,
+            "failure_terminations": 1,
+            "timeouts": 0
+          },
+          {
+            "env_id": 4,
+            "recorded_frames": 149,
+            "last_frame": 148,
+            "failure_terminations": 0,
+            "timeouts": 1
+          },
+          {
+            "env_id": 5,
+            "recorded_frames": 149,
+            "last_frame": 148,
+            "failure_terminations": 0,
+            "timeouts": 1
+          },
+          {
+            "env_id": 6,
+            "recorded_frames": 149,
+            "last_frame": 148,
+            "failure_terminations": 0,
+            "timeouts": 1
+          },
+          {
+            "env_id": 7,
+            "recorded_frames": 63,
+            "last_frame": 62,
+            "failure_terminations": 1,
+            "timeouts": 0
+          }
+        ],
+        "reported_episode_lengths": [
+          126,
+          83,
+          79,
+          64,
+          149,
+          149,
+          149,
+          63
+        ],
+        "recorded_counts_match_reported_lengths": true,
+        "independent_full_clip_successes": 3,
+        "reported_successes": 3,
+        "independent_mpjpe_m": 0.3654624530545949,
+        "reported_mpjpe_m": 0.36546245217323303,
+        "independent_mpjae_rad": 0.15201462508532895,
+        "reported_mpjae_rad": 0.1520146280527115,
+        "nonfinite_numeric_count": 0
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/expert_mask/output/file_0000/raw_pre_reset.npz",
+        "recorded_rows": 30,
+        "environment_count": 2,
+        "episodes": [
+          {
+            "env_id": 0,
+            "recorded_frames": 10,
+            "last_frame": 9,
+            "failure_terminations": 1,
+            "timeouts": 0
+          },
+          {
+            "env_id": 1,
+            "recorded_frames": 20,
+            "last_frame": 19,
+            "failure_terminations": 1,
+            "timeouts": 0
+          }
+        ],
+        "reported_episode_lengths": [
+          10,
+          20
+        ],
+        "recorded_counts_match_reported_lengths": true,
+        "independent_full_clip_successes": 0,
+        "reported_successes": 0,
+        "independent_mpjpe_m": 0.19820045697933025,
+        "reported_mpjpe_m": 0.19820046424865723,
+        "independent_mpjae_rad": 0.35598162322663673,
+        "reported_mpjae_rad": 0.35598164796829224,
+        "nonfinite_numeric_count": 0
+      }
+    ]
+  },
+  "execution_source": {
+    "archive": "../../../release_assets/phygile_completion_execution_source.tar.gz",
+    "archive_sha256": "533513d41e3ec97fcaf3bcaef0daad1ba030530ab766d936b5a94b9db2af7db6",
+    "plan_sha256": "08ceeec24676e0052c49d99d4cb5421c2bcc28d1f7b81142d57f7407ea96ba4c",
+    "source_content_inspected": false,
+    "note": "Execution receipts and archived execution source identify this run; subsequent supplement deployment is outside this witness"
+  },
+  "limitations": [
+    "This passes the documented engineering pipeline, not paper-scale PhyGile reproduction.",
+    "Codec is a locally specified convention; author-exact numeric codec compatibility is not claimed. Its validation measures round-trip/FK consistency, not motion-generation quality.",
+    "Only one training and one test clip, eight attempts each, were evaluated. Errors are censored at early failure and must be read with 3/16 full-clip successes.",
+    "The two-expert run only checks requested Python expert-mask restoration; the second expert is untrained and its 0/2 result is not a policy performance score.",
+    "Curriculum training uses arbitrary fixture IDs, 32 environments and four PPO iterations; 80 optimizer steps are recorded as expected, not independently audited actual optimizer steps.",
+    "Diffusion uses 146169702 random-weight parameters, zero/unconditional text, a chosen eight-step schedule and engineering projection/bounds. Both generated windows were rejected after one physical frame, so no generated continuation was committed.",
+    "The accepted feedback fixture comprises two artificial one-frame held-initialization windows; it is not a successful one-second generated-motion experiment.",
+    "The real generated proposals never reached a final accepted window; this run does not demonstrate terminal-boundary acceptance for generated motion.",
+    "Rollback checks use fresh-process replay; there is no private PhysX state serialization claim. The recorded zero repeat/replay differences cover these small checks only.",
+    "No paired-data generator training, text semantic generation, full Stage I/II GMT, closed-loop PPO adaptation, paper main experiments, or hardware deployment is established.",
+    "Reported PyTorch memory excludes PhysX/render allocations and other processes."
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "exit_code": 0,
+  "command": [
+    "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/env/bin/python",
+    "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/generator_clock_contract_v2/phygile/reimplementation/test_training_entrypoint.py"
+  ],
+  "gpu_used": false,
+  "existing_environment_spec": "5d436660",
+  "source_sha256": {
+    "features.py": "dee9e489f91b13217faa95a71bc5bc2f9122a1cc404639a3df9838edb6c7f9ac",
+    "model.py": "76eb8baa876950a34d4b23b6fa92627515bf38072c9cadf35fbf8789a13e70ab",
+    "text.py": "22a04171f7e1218ff9b9ed768d6739ebed24c4072c683b78d60fde595b7fcf70",
+    "diffusion.py": "930a2cdb1967119dd51813c6838f58c062fc7d46447239b20cc15f4b638efc4c",
+    "train.py": "1c4200097437bc5bcad0e9e5990a97f9c44edf1e019ca0c2645da0854ffa03b9",
+    "motion_clock.py": "440a45e03f56d064cb2c5332e9e1759e9748d17847e91ccb29ea29816cb92db6",
+    "codec262.py": "e95cc8f8f782cc0577819e862328e814a4d8e8b17bea5bee0efa46b6a194606e",
+    "test_training_entrypoint.py": "e0140fc3cb3d12966142dc701dffe21aa1965661b3f3d932185c547b57e628ec"
+  },
+  "verification": {
+    "status": "PASSED_TRAINING_PLUMBING_CHECK",
+    "purpose": "unit_test",
+    "optimizer_updates": 2,
+    "device": "cpu",
+    "real_motion_data_used": false,
+    "motion_quality_evaluated": false,
+    "full_size_generator_trained": false,
+    "physics_loop_run": false,
+    "checks": [
+      "synthetic inputs rejected as research data",
+      "cross-split source overlap rejected",
+      "training-only normalization",
+      "two finite optimizer updates",
+      "checkpoint reload"
+    ],
+    "feature_contract_saved_and_reloaded": true,
+    "checkpoint_sha256": "aeddb866d38ea73577a845dc6f941cfb0eb15384c89ba26b3e4abc42c3c255ba",
+    "source_sha256": {
+      "text.py": "22a04171f7e1218ff9b9ed768d6739ebed24c4072c683b78d60fde595b7fcf70",
+      "diffusion.py": "930a2cdb1967119dd51813c6838f58c062fc7d46447239b20cc15f4b638efc4c",
+      "codec262.py": "e95cc8f8f782cc0577819e862328e814a4d8e8b17bea5bee0efa46b6a194606e",
+      "model.py": "76eb8baa876950a34d4b23b6fa92627515bf38072c9cadf35fbf8789a13e70ab",
+      "features.py": "dee9e489f91b13217faa95a71bc5bc2f9122a1cc404639a3df9838edb6c7f9ac",
+      "motion_clock.py": "440a45e03f56d064cb2c5332e9e1759e9748d17847e91ccb29ea29816cb92db6",
+      "test_training_entrypoint.py": "e0140fc3cb3d12966142dc701dffe21aa1965661b3f3d932185c547b57e628ec",
+      "train.py": "1c4200097437bc5bcad0e9e5990a97f9c44edf1e019ca0c2645da0854ffa03b9"
+    }
+  },
+  "receipt": {
+    "status": "COMPLETED",
+    "purpose": "unit_test",
+    "author_training_program": false,
+    "manifest_sha256": "e8be9cb7c6a5abec053ad60162f559a6a902f6f9ff2a2812d17a601579ee7384",
+    "config_sha256": "391a22ea7710281e298fc03ee66d26e9f98d098df458f6e1942db752a2e3f7d2",
+    "mapping_status": "synthetic_unit_test",
+    "text_encoder_revision": "12040accade4e8a0f71eabdb258fecc2e7e948be",
+    "training_sequences": 2,
+    "training_frames": 9,
+    "asfo": {
+      "enabled": false,
+      "effective_counts": [
+        1,
+        1
+      ]
+    },
+    "device": "cpu",
+    "torch": "2.5.1+cu121",
+    "feature_contract": {
+      "version": "phygile-feature-clock-v1",
+      "feature_fps": 20.0,
+      "coordinate_frame": "synthetic_unit_test",
+      "metadata": []
+    },
+    "source_sha256": {
+      "text.py": "22a04171f7e1218ff9b9ed768d6739ebed24c4072c683b78d60fde595b7fcf70",
+      "diffusion.py": "930a2cdb1967119dd51813c6838f58c062fc7d46447239b20cc15f4b638efc4c",
+      "codec262.py": "e95cc8f8f782cc0577819e862328e814a4d8e8b17bea5bee0efa46b6a194606e",
+      "model.py": "76eb8baa876950a34d4b23b6fa92627515bf38072c9cadf35fbf8789a13e70ab",
+      "features.py": "dee9e489f91b13217faa95a71bc5bc2f9122a1cc404639a3df9838edb6c7f9ac",
+      "motion_clock.py": "440a45e03f56d064cb2c5332e9e1759e9748d17847e91ccb29ea29816cb92db6",
+      "test_training_entrypoint.py": "e0140fc3cb3d12966142dc701dffe21aa1965661b3f3d932185c547b57e628ec",
+      "train.py": "1c4200097437bc5bcad0e9e5990a97f9c44edf1e019ca0c2645da0854ffa03b9"
+    },
+    "motion_quality_evaluated": false,
+    "physics_loop_run": false,
+    "completed_updates": 2,
+    "elapsed_seconds": 0.09170331433415413
+  }
+}

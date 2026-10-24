@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-17",
+  "scope": "tracking experiment only; immutable historical fields retained",
+  "legacy_fields_meaning": {
+    "optimizer_updates": "PPO learning iterations",
+    "parent_optimizer_updates": "parent PPO learning iterations",
+    "additional_updates_requested": "additional PPO learning iterations",
+    "updates": "PPO learning iterations in tracking summaries"
+  },
+  "epochs_per_iteration": 5,
+  "minibatches_per_epoch": 4,
+  "adam_steps_per_iteration": 20,
+  "parent_ppo_iterations": 500,
+  "continuation_ppo_iterations": 1500,
+  "final_ppo_iterations": 2000,
+  "expected_parent_adam_steps": 10000,
+  "expected_additional_adam_steps": 30000,
+  "expected_final_adam_steps": 40000,
+  "verification": "results/continuation_2000/state_comparison.json",
+  "evaluation_reference": "Independent externally reconstructed and retargeted kinematic proxy; not output of the evaluated policy; not measured robot ground truth",
+  "evidence_class": "simulation_only",
+  "generator_unit_test_exception": "The two optimizer_updates in the synthetic generator-entrypoint test are actual AdamW steps."
+}

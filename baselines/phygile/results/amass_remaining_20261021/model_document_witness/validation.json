@@ -1,0 +1,40 @@
+{
+  "validation_type": "fresh_agent_follows_doc_cpu_only",
+  "verdict": "PASSED",
+  "checks": {
+    "documented_command_executed_verbatim": true,
+    "remote_output_absent_before_execution": true,
+    "exit_code_zero": true,
+    "status_matches": true,
+    "device_cpu": true,
+    "seed_42": true,
+    "exactly_three_genders": true,
+    "all_vertices_shape_1x10475x3": true,
+    "all_vertices_finite": true,
+    "female_actual_ssm_frame": true,
+    "all_16_betas": true,
+    "model_archive_sha256_matches": true,
+    "source_sha256_matches": true,
+    "stdout_matches_retrieved_receipt": true,
+    "empty_stderr": true,
+    "installation_document_unchanged": true,
+    "forward_executed": true,
+    "no_gmr_retargeting": true,
+    "no_g1_pairs": true,
+    "no_new_262d_sequences": true,
+    "no_training": true
+  },
+  "failed_checks": [],
+  "model_receipt_sha256": "c034a5a24362e1d5deee9772ffe0cc344ddce0506831ea90763a6b0662cf072e",
+  "document_sha256_after": "4f9f2fbdadc1eb32e4c09ac85ae5c1f420331c5a67e650dc8980c7062ac88b88",
+  "installation_document_execution_divergences": [],
+  "additional_stderr_messages": [],
+  "provider_ledger_notes": [
+    "The original ledger block retains the historical statement that SMPL-X weights are absent and forward validation is impossible. The later model weight addition supersedes it.",
+    "The model weight addition still says independent witness pending as read before this run. This execution now produced a successful independent receipt; no ledger edits were made by this witness agent."
+  ],
+  "scope": "CPU SMPL-X model installation forward witness only. Does not establish full hands/face motion recovery, GMR/G1 retargeting, paired data, text timing alignment, filtering, 262D encoding, or generator training.",
+  "environment_or_source_changes_by_witness_agent": false,
+  "remote_mutation": "Only the documented new model_witness_document.json receipt was created.",
+  "completed_utc": "2026-10-21T09:48:21.4215319Z"
+}

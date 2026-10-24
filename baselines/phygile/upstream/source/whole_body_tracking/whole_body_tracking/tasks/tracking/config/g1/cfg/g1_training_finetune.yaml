@@ -1,0 +1,83 @@
+# G1 微调配置 - 无freeze无curriculum，适合少量文件微调
+# 基于 g1_training_future_conv_large_freeze.yaml，保持网络结构和主要参数一致
+
+runner:
+  num_steps_per_env: 24
+  max_iterations: 300000
+  save_interval: 1000
+  experiment_name: "g1_flat"
+  empirical_normalization: true
+  upload_models_to_wandb: false
+
+policy:
+  class_name: "EncoderActorCritic"
+  init_noise_std: 1.0
+  actor_hidden_dims: [2048, 1024, 512]
+  critic_hidden_dims: [2048, 1024, 512]
+  activation: "elu"
+  encoder_hidden_dims: null
+  share_encoder: null
+  future_command_encoder:
+    per_frame_dim: 65
+    immediate_steps: 2
+    conv_steps: 5
+    conv_channels: [256, 128]
+    kernel_size: 3
+    pooling: "avg"
+    dropout: 0.0
+    latent_dim: 128
+    share_across_actor_critic: true
+    apply_to_actor: true
+    apply_to_critic: true
+
+commands:
+  motion:
+    preload_device: "cuda:0"
+    future_steps: 2
+    max_files_per_iter: null
+    encoder_future_steps: 5
+    encoder_future_stride: 20
+    enable_multi_file_bin_sampling: true
+    random_static_prob: 0.1
+
+    # 简化采样参数
+    file_error_alpha: 0.25
+    file_error_norm: 0.3
+    file_uniform_mixture: 0.30
+    sampling_temperature: 1.05
+    file_success_beta: 0.4
+    file_success_weight: 0.0
+    file_success_warmup_iters: 0
+
+    # ========== 关闭 Freeze 机制 ==========
+    file_freeze_error_threshold: null
+    file_freeze_success_threshold: null
+    file_freeze_min_attempts: null
+    file_freeze_iters: 0
+    file_drop_enabled: false
+    file_drop_after_freezes: null
+    file_freeze_check_interval: null
+
+    # ========== 关闭课程学习 ==========
+    curriculum_enabled: false
+
+algorithm:
+  value_loss_coef: 1.0
+  use_clipped_value_loss: true
+  clip_param: 0.2
+  entropy_coef: 0.005
+  num_learning_epochs: 5
+  num_mini_batches: 4
+  learning_rate: 0.001
+  schedule: "adaptive"
+  gamma: 0.99
+  lam: 0.95
+  desired_kl: 0.01
+  max_grad_norm: 1.0
+  normalize_advantage_per_mini_batch: false
+
+rewards:
+  motion_global_anchor_pos:
+    weight: 0.8
+    params:
+      std: 0.2

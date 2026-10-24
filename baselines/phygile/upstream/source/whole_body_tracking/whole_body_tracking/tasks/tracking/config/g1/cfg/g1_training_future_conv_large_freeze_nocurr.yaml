@@ -1,0 +1,84 @@
+# G1 任务默认训练配置，可自行修改或通过环境变量 G1_TRAINING_CFG_PATH 指向其他文件。
+
+runner:
+  num_steps_per_env: 24
+  max_iterations: 200000
+  save_interval: 1000
+  experiment_name: "g1_flat"
+  empirical_normalization: true
+  upload_models_to_wandb: false
+
+policy:
+  class_name: "EncoderActorCritic"
+  init_noise_std: 1.0
+  actor_hidden_dims: [2048, 1024, 512]
+  critic_hidden_dims: [2048, 1024, 512]
+  activation: "elu"
+  encoder_hidden_dims: null
+  share_encoder: null
+  future_command_encoder:
+    per_frame_dim: 65
+    immediate_steps: 2
+    conv_steps: 5
+    conv_channels: [256, 128]
+    kernel_size: 3
+    pooling: "avg"
+    dropout: 0.0
+    latent_dim: 128
+    share_across_actor_critic: true
+    apply_to_actor: true
+    apply_to_critic: true
+
+commands:
+  motion:
+    # 预加载动作可选设备: "cpu"、"cuda:0"、"cuda:1"、"same_as_env"（默认与环境同设备）
+    preload_device: "cuda:1"
+    future_steps: 2
+    # 限制每次迭代参与的文件上限（可选，None 表示不限制）
+    max_files_per_iter: 200
+    encoder_future_steps: 5
+    encoder_future_stride: 20
+    enable_multi_file_bin_sampling: true
+    random_static_prob: 0.1
+
+    # ========== 等级内采样参数（在每个 curriculum 等级内部生效） ==========
+    file_error_alpha: 0.25        # 0.2 -> 0.25，让 mpjpe/mpjae EMA 更快响应
+    file_error_norm: 0.3          # 0.15 -> 0.3，提升刻度避免过早饱和
+    file_uniform_mixture: 0.20    # 0.07 -> 0.30，增加均匀兜底平滑分布
+    sampling_temperature: 1.05    # 1.0 -> 1.05，提升温度降低分布尖锐度
+    file_success_beta: 0.4       # 0.15 -> 0.5，让成功率 EMA 更快跟随当前数据
+    file_success_weight: 0.15     # 0.0 -> 0.15，将失败偏好混入权重
+    file_success_warmup_iters: 6000  # 0 -> 6000，前 6000 iter 不启用成功率融合（0 表示关闭）
+
+    # ========== Freeze 机制（与 curriculum 兼容，冻结的文件不会被任何等级采样） ==========
+    file_freeze_error_threshold: 0.6    # None->0.6 误差过高判定阈值
+    file_freeze_success_threshold: 0.02 # None->0.02 成功率过低判定阈值
+    file_freeze_min_attempts: 6000      # 0->8000 尝试数达到后才评估冻结
+    file_freeze_iters: 2000             # 0->2000 冻结持续刷新次数
+    file_drop_enabled: true             # 启用自动丢弃
+    file_drop_after_freezes: 3          # 冻结 3 次后丢弃
+    file_freeze_check_interval: 500     # 每 500 次刷新评估一次冻结/丢弃
+
+    # ========== 课程学习配置 ==========
+    curriculum_enabled: false
+
+algorithm:
+  value_loss_coef: 1.0
+  use_clipped_value_loss: true
+  clip_param: 0.2
+  entropy_coef: 0.005
+  num_learning_epochs: 5
+  num_mini_batches: 4
+  learning_rate: 0.001
+  schedule: "adaptive"
+  gamma: 0.99
+  lam: 0.95
+  desired_kl: 0.01
+  max_grad_norm: 1.0
+  normalize_advantage_per_mini_batch: false
+
+rewards:
+  motion_global_anchor_pos:
+    weight: 0.8    # 从 0.5 增加到 0.8
+    params:
+      std: 0.2    # 从 0.3 减小到 0.2（更严格）

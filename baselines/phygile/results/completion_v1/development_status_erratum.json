@@ -1,0 +1,14 @@
+{
+  "preserve_original_receipts": true,
+  "scope": "Only development execution accounting; no successful validation is inferred from outer exit code alone",
+  "runs": {
+    "development/closed_r1": {"effective_status": "MANUALLY_STOPPED_AFTER_EXCEPTION_AND_SHUTDOWN_HANG", "original_outer_exit_code": 0, "completed_primary_verification": false},
+    "development/closed_r2": {"effective_status": "MANUALLY_STOPPED_AFTER_EXCEPTION_AND_SHUTDOWN_HANG", "original_outer_exit_code": 0, "completed_primary_verification": false},
+    "development/closed_r3": {"effective_status": "FAILED_DEFAULT_SLICE_RESTORE_API", "completed_primary_verification": false},
+    "development/closed_r4": {"effective_status": "FAILED_INFERENCE_TENSOR_MUTATION", "completed_primary_verification": false},
+    "development/closed_r5": {"effective_status": "FAILED_DIRECT_STATE_RESTORE_REPEATABILITY", "completed_primary_verification": false},
+    "development/closed_r6": {"effective_status": "FAILED_DIRECT_STATE_RESTORE_REPEATABILITY", "completed_primary_verification": false},
+    "closure_final": {"effective_status": "FAILED_FRESH_PROCESS_REPLAY_REPEATABILITY", "completed_primary_verification": false, "state_max_abs_delta": 4.238388895988464, "body_max_abs_delta_m": 0.0018104314804077148, "tolerance": 0.0005, "separate_transport_cr_error": true}
+  },
+  "repair": "Direct state restore disabled. Fresh-process replay additionally requires deterministic PyTorch/cuBLAS and PhysX configuration. New closure_recovery evidence is separate; no old evidence overwritten."
+}

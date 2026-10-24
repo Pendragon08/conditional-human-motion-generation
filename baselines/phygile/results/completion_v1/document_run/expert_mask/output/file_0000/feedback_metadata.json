@@ -1,0 +1,76 @@
+{
+  "schema": "g1-root13-q29-dq29-env_origin_relative-v1",
+  "root_order": "xyz, quaternion_wxyz, linear_velocity_xyz, angular_velocity_xyz; world axes",
+  "joint_names": [
+    "left_hip_pitch_joint",
+    "right_hip_pitch_joint",
+    "waist_yaw_joint",
+    "left_hip_roll_joint",
+    "right_hip_roll_joint",
+    "waist_roll_joint",
+    "left_hip_yaw_joint",
+    "right_hip_yaw_joint",
+    "waist_pitch_joint",
+    "left_knee_joint",
+    "right_knee_joint",
+    "left_shoulder_pitch_joint",
+    "right_shoulder_pitch_joint",
+    "left_ankle_pitch_joint",
+    "right_ankle_pitch_joint",
+    "left_shoulder_roll_joint",
+    "right_shoulder_roll_joint",
+    "left_ankle_roll_joint",
+    "right_ankle_roll_joint",
+    "left_shoulder_yaw_joint",
+    "right_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "right_elbow_joint",
+    "left_wrist_roll_joint",
+    "right_wrist_roll_joint",
+    "left_wrist_pitch_joint",
+    "right_wrist_pitch_joint",
+    "left_wrist_yaw_joint",
+    "right_wrist_yaw_joint"
+  ],
+  "body_names": [
+    "pelvis",
+    "left_hip_roll_link",
+    "left_knee_link",
+    "left_ankle_roll_link",
+    "right_hip_roll_link",
+    "right_knee_link",
+    "right_ankle_roll_link",
+    "torso_link",
+    "left_shoulder_roll_link",
+    "left_elbow_link",
+    "left_wrist_yaw_link",
+    "right_shoulder_roll_link",
+    "right_elbow_link",
+    "right_wrist_yaw_link"
+  ],
+  "fps": 50.0,
+  "timing": "post_step_pre_reset_current_reference",
+  "source_type": "dataset_reference_replay_diagnostic; no generated reference",
+  "guarded_source": {
+    "status": "MATERIALIZED_NOT_TRAINED",
+    "destination": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/cache/guarded_upstream",
+    "scope": "Integrity repairs; unsafe evaluators disabled; full curriculum not validated",
+    "sources": {
+      "source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py": {
+        "original_sha256": "b3a35da443de54c303e6b4fd3fb2b9e4153bdbeef7d91f9fb843bd5def3f1e4a",
+        "patched_sha256": "cad7ee14922ed4d5a2ba509bfa4d455cc4b8ee0a1eafa591c4e672a87751b20b"
+      },
+      "source/whole_body_tracking/whole_body_tracking/utils/my_on_policy_runner.py": {
+        "original_sha256": "c41fa2122f92f9413dc43c8de72a0f8dcaae518021143cc0f37e104f497f701c",
+        "patched_sha256": "e4b73e1e3e4bfdc79c1b23a121d2ed0cfd79afdbff1df98c3cac5cfd93be7409"
+      },
+      "source/whole_body_tracking/whole_body_tracking/utils/curriculum_manager.py": {
+        "original_sha256": "bd4c3ad52a16559144bb43c4c19d18a846b58a0228b515d5bea811a2909cbdd0",
+        "patched_sha256": "5f1a4cbcce8c85a5b5d96c67bce73d99c4de453822eab6659de932c43c7612d9"
+      }
+    },
+    "builder_sha256": "e688a87d464c0a19fbbb23c7687e26a325343039da75284339e5d492c01c067f"
+  },
+  "initial_state_sha256": "a77cf2d8f897a7f1ae093a8edb99ae6174b9ca897c8827e3195dd166a06e5173",
+  "raw_sha256": "2539e0ace2e1c66fa5155404b16c9520f794725cd034f19a1256abb63c6a77c0"
+}

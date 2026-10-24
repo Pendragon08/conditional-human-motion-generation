@@ -1,0 +1,25 @@
+import json,os,hashlib,shutil,subprocess,datetime
+from pathlib import Path
+plan=json.loads(Path('/tmp/phygile_cleanup_plan_20261021.json').read_text(encoding='utf-8-sig'))
+base=Path('/data/code/ouyanghao/oyh')
+allowed=[base/'humanoid-combat-motion/cache/pip-pbhc-training',base/'humanoid-combat-motion/cache/pip-isaac',base/'humanoid-combat-motion/cache/closd-r3-pip',base/'humanoid-combat-motion/cache/engineai-official/tmp',Path('/home/ouyanghao/.cache/pip/http'),Path('/home/ouyanghao/.cache/pip/http-v2'),Path('/home/ouyanghao/.cache/pip/wheels'),base/'phygile-reproduction-20261017/data/amass']
+def under(p,root):
+ try:p.relative_to(root);return p!=root
+ except ValueError:return False
+open_names=set(x[1:] for x in subprocess.run(['lsof','-nP','-u',str(os.getuid()),'-Fn'],capture_output=True,text=True).stdout.splitlines() if x.startswith('n'))
+for row in plan['files']:
+ p=Path(row['path']);assert p.is_absolute() and p.resolve()==p and any(under(p,r) for r in allowed)
+ s=p.stat();assert s.st_uid==os.getuid() and s.st_ino==row['inode'] and s.st_mtime_ns==row['mtime_ns'] and s.st_size==row['bytes']
+ assert not p.is_symlink() and str(p) not in open_names
+ if '/data/amass/' in str(p):assert 'local_backup_sha256' in row and (p.name.endswith('.tar.bz2') or p.name.endswith('.zip'))
+start={p:shutil.disk_usage(p).free for p in ['/data','/']}
+records=[]
+for row in plan['files']:
+ p=Path(row['path']);s=p.stat()
+ assert s.st_ino==row['inode'] and s.st_mtime_ns==row['mtime_ns'] and s.st_size==row['bytes']
+ p.unlink();records.append({**row,'removed':True})
+end={p:shutil.disk_usage(p).free for p in ['/data','/']}
+report={'completed_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'files_removed':len(records),'logical_bytes_removed':sum(x['bytes'] for x in records),'before_free_bytes':start,'after_free_bytes':end,'observed_free_delta_bytes':{k:end[k]-start[k] for k in start},'records':records,'only_enumerated_files_deleted':True,'installed_environments_and_extracted_assets_retained':True}
+out=base/'phygile-reproduction-20261017/results/storage_cleanup_20261021';out.mkdir(exist_ok=True)
+(out/'cleanup_receipt.json').write_text(json.dumps(report,indent=2)+'\n')
+print(json.dumps({k:v for k,v in report.items() if k!='records'}))

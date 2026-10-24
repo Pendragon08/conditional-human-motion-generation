@@ -1,0 +1,288 @@
+{
+  "audit_skill": "experiment-audit",
+  "schema": "independent_integrity_v2.audit.v1",
+  "verdict": "WARN",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "reason_codes": [
+    "compact_parity_not_end_to_end",
+    "exact_compact_exporter_source_unretained",
+    "publication_root_unsealed",
+    "v2_audit_status_contradiction_at_cutoff",
+    "closure_eval_type_incomplete",
+    "runtime_provenance_partial"
+  ],
+  "summary": "Numerical/runtime evidence is internally consistent and honestly scoped, but compact-artifact parity, V2 publication sealing, and evaluation-type metadata have material traceability gaps. The 500-iteration continuation remains pending/unknown.",
+  "project": "PhyGile Unitree Lab/Mjlab V2 continuation and dual-simulator closure",
+  "project_dir": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/phygile_unitree",
+  "trace_path": "D:/具身智能/PhyGile复现/Unitree框架适配_20261022/independent_integrity_v2/trace/",
+  "input_hash_manifest": "D:/具身智能/PhyGile复现/Unitree框架适配_20261022/independent_integrity_v2/AUDITED_INPUT_HASHES.json",
+  "report_path": "D:/具身智能/PhyGile复现/Unitree框架适配_20261022/independent_integrity_v2/EXPERIMENT_AUDIT.md",
+  "agent_id": "/root/unitree_v2_integrity_audit",
+  "verdict_id": "/root/unitree_v2_integrity_audit@2026-10-22T12:43Z",
+  "executor_model": "gpt-6-based Codex (exact runtime variant not exposed)",
+  "executor_family": "openai",
+  "reviewer_model": "gpt-6-based Codex (exact runtime variant not exposed)",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "inherited; exact setting not exposed",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "generated_at": "2026-10-22T20:46:00.4848685+08:00",
+  "date": "2026-10-22",
+  "auditor": "fresh same-family read-only Codex reviewer",
+  "audit_cutoff": {
+    "local": "2026-10-22T20:43:18+08:00",
+    "utc": "2026-10-22T12:43:18Z",
+    "server_contacted": false,
+    "experiments_launched_or_retried": false,
+    "source_or_result_inputs_mutated": false,
+    "server_processes_touched": false
+  },
+  "input_change_notice": {
+    "reported_changed_around_dispatch": [
+      "EXPERIMENT_TRACKER.md",
+      "README.md",
+      "docs/COMPUTE_LEDGER.md"
+    ],
+    "cached_reads_discarded": true,
+    "before_hashes_available": false,
+    "current_bytes_hashed_and_read": true
+  },
+  "audited_input_hashes": {
+    "P/EXPERIMENT_TRACKER.md": "sha256:51376c8a3d4858f41a83da2cb9b7391fdc7f4264f75a10d26366c7aaa59f1f0b",
+    "P/README.md": "sha256:0dc83eab022cbd19761fb0e228c0d23c808a271dc2fb2d9f328aeaead2bc0536",
+    "P/docs/COMPUTE_LEDGER.md": "sha256:ec5a1dfde0a3c57d1ad6b016108336edffcb16fc812392886486dc9d01ff5fc5",
+    "P/reports/PhyGile_无界面续训与双仿真闭环报告_20261022.md": "sha256:f3e445e4d6a6d4d84f7d76fa49250543c88addd3b40fb0d753c4a754f2249533",
+    "P/results/v2/summary.json": "sha256:8ed793b1fc86304da640fefe731c62bcd84c3bdeaeda2a144d55769cdc9aef4e",
+    "P/results/v2/evidence_index.json": "sha256:e70b85974bdddb4c3116ce61e89e7db6257c00c04ec8c17b2fd6f992dace31d9",
+    "P/results/v2/publication_snapshot.json": "sha256:4256b02a1ea07fa593febe76984e5fa774ce569bacbd490b97f6edb8954558a6",
+    "D/protected_progress_snapshot_v2.json": "sha256:0b2a251df6b55d49ba52601d5d690b5a3a25b11c24386cfa437083f29dd7f180",
+    "D/parent_active_policy_v1/artifact_proof.json": "sha256:7430372d64b6f6be25c22aa758a8c907af5e8188e0c11945a73c7a66f553eea4",
+    "D/parent_active_policy_v1/active_policy.pt": "sha256:07b15d7f83e00afe1900ec6547b9ddc65ffb4ee8e1d6cf7b936bfa61189771ba"
+  },
+  "deterministic_checks": {
+    "evidence_index": {
+      "entries": 287,
+      "missing": 0,
+      "hash_mismatches": 0,
+      "status": "PASS"
+    },
+    "publication_snapshot": {
+      "entries": 404,
+      "missing": 0,
+      "hash_mismatches": 0,
+      "status": "PASS",
+      "unsealed_substantive_files": [
+        "results/v2/evidence_index.json",
+        "results/v2/summary.json"
+      ]
+    },
+    "immutable_mjlab_source_snapshot": {
+      "entries": 29,
+      "missing": 0,
+      "hash_mismatches": 0,
+      "status": "PASS"
+    },
+    "compact_old_exporter_hash_search": {
+      "sha256": "02f0318701e572aeb4fb84c89b172401342ac3cca3e92dbf6491784d990df7c3",
+      "matches": 0,
+      "status": "WARN"
+    },
+    "contact_executed_frozen_source_archive": {
+      "executed_sha256": "2ae2cedee9537487c99b93cae410c093845f7c1a51a33134a9c04a852390df22",
+      "current_sha256": "843c3742977e643b7c78ab89b02bfff6c32b1c2edf48caf8420037b33470b83b",
+      "archive_matches": true,
+      "current_tree_matches_execution": false,
+      "status": "PASS_WITH_DISCLOSED_DRIFT"
+    }
+  },
+  "checks": {
+    "gt_provenance": {
+      "id": "A",
+      "status": "PASS",
+      "details": "Contact references are loaded from private motion arrays; generated closure targets are FK-derived from candidates and explicitly untrained; held-pose fixtures are labeled self_supervised_proxy. No fake GT.",
+      "evidence": [
+        "P/scripts/mjlab_evaluate.py:20,54-72",
+        "P/scripts/unitree_prefix_adapter.py:77-87",
+        "D/closure_unitree_doc_witness_v3/remote/runs/closure_unitree_v3/verification.json:2-14,26,111-147",
+        "D/closure_mjlab_doc_witness_v1/independent_artifact_verification.json:133"
+      ]
+    },
+    "score_normalization": {
+      "id": "B",
+      "status": "PASS",
+      "details": "All acceptance/tracking scores use raw physical-unit errors and fixed tolerances; the feature normalizer is fit on training sequences only. No prediction-dependent score normalization.",
+      "evidence": [
+        "R/physics_prefix.py:75-120",
+        "P/scripts/mjlab_evaluate.py:70-82",
+        "R/features.py:25-44"
+      ]
+    },
+    "result_existence": {
+      "id": "C",
+      "status": "WARN",
+      "details": "All indexed numbers/files checked out, including smoke, contact, closures, and retained failures. WARN because the V2 report implied an archived audit while tracker said PENDING, publication root omits summary/index/narrative files, and compact parity wording exceeds the harness actually exercised.",
+      "evidence": [
+        "P/EXPERIMENT_TRACKER.md:25-26",
+        "P/reports/PhyGile_无界面续训与双仿真闭环报告_20261022.md:71",
+        "D/headless_smoke_doc_witness_v3/acceptance_report.json:42-80",
+        "P/results/v2/summary.json:2-117",
+        "D/parent_active_policy_v1/artifact_proof.json:2-8,85-95",
+        "P/scripts/export_active_policy.py:23-30"
+      ]
+    },
+    "dead_code": {
+      "id": "D",
+      "status": "WARN",
+      "details": "Completed smoke/contact/closure paths have execution evidence. Current compact loader, post-training evaluation/export, completed 500-iteration update, and trained-generator branch do not. Exact old exporter bytes are absent and runtime provenance excludes native/assets/later lazy imports.",
+      "evidence": [
+        "P/scripts/frozen_policy.py:19-25",
+        "P/scripts/after_training.py:18-42",
+        "P/scripts/source_provenance.py:14-28",
+        "D/contact_doc_witness_v4/post_run_source_audit.json:3-20",
+        "D/closure_unitree_doc_witness_v3/witness_checks.json:2-82"
+      ]
+    },
+    "scope": {
+      "id": "E",
+      "status": "PASS",
+      "details": "Evidence is one seed, four development clips, two failed 50-frame proposals and two accepted one-frame self-supervised fixtures per simulator, plus a two-iteration training smoke. Narrative explicitly limits claims and does not call this full reproduction, stability, semantics, generalization, or robot deployment.",
+      "evidence": [
+        "P/configs/continuation_v2.json:7-15",
+        "P/README.md:37",
+        "P/reports/PhyGile_无界面续训与双仿真闭环报告_20261022.md:12,24,53,69"
+      ]
+    },
+    "eval_type": {
+      "id": "F",
+      "status": "WARN",
+      "details": "Contact is real_gt+simulation_only development diagnostic; candidate closure tracking is synthetic_proxy+simulation_only; held fixtures are self_supervised_proxy+simulation_only. Stored closure top levels omit synthetic_proxy for generated-reference attempts.",
+      "classifications": [
+        {
+          "component": "contact_tracking",
+          "types": [
+            "real_gt",
+            "simulation_only"
+          ],
+          "qualifier": "development_diagnostic"
+        },
+        {
+          "component": "generated_candidate_tracking",
+          "types": [
+            "synthetic_proxy",
+            "simulation_only"
+          ],
+          "qualifier": "untrained_generator"
+        },
+        {
+          "component": "held_initialization_fixture",
+          "types": [
+            "self_supervised_proxy",
+            "simulation_only"
+          ]
+        },
+        {
+          "component": "two_iteration_training",
+          "types": [
+            "training_integrity_diagnostic"
+          ]
+        },
+        {
+          "component": "compact_parity",
+          "types": [
+            "deterministic_synthetic_input_implementation_check"
+          ]
+        }
+      ],
+      "evidence": [
+        "P/scripts/mjlab_evaluate.py:20,54-72",
+        "P/scripts/unitree_prefix_adapter.py:77-87",
+        "D/closure_unitree_doc_witness_v3/remote/runs/closure_unitree_v3/verification.json:4,111-147",
+        "D/closure_mjlab_doc_witness_v1/verification.json:7,103-131"
+      ]
+    }
+  },
+  "training500": {
+    "classification": "PENDING_UNKNOWN",
+    "completion_claim_supported": false,
+    "current_liveness_verified": false,
+    "latest_local_snapshot": {
+      "utc": "2026-10-22T12:29:33.999384Z",
+      "iteration": "2160/2500",
+      "total_timesteps": 494592,
+      "pipeline": "WAITING_FOR_TRAINING"
+    },
+    "required_before_acceptance": [
+      "durable supervised exit record",
+      "BOUNDED_TRAINING_COMPLETED",
+      "500 additional PPO iterations",
+      "10000 Adam calls",
+      "finite final model and optimizer state",
+      "final checkpoint SHA256",
+      "unchanged parent and executed inputs",
+      "dependent evaluations and compact export complete"
+    ]
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Two-iteration exact restoration and finite update",
+      "impact": "supported_bounded",
+      "qualifier": "2 PPO iterations / 40 Adam calls; no performance claim"
+    },
+    {
+      "id": "C2",
+      "claim": "Matched friction did not improve four-clip completion",
+      "impact": "supported_bounded",
+      "qualifier": "1/4 vs 1/4, seed 2026, development diagnostics"
+    },
+    {
+      "id": "C3",
+      "claim": "Both framework closure wirings executed",
+      "impact": "supported_with_qualifier",
+      "qualifier": "untrained generator, rejected proposals, zero generated commits"
+    },
+    {
+      "id": "C4",
+      "claim": "Compact artifact end-to-end production-loader bitwise parity",
+      "impact": "not_fully_supported",
+      "qualifier": "active model branch parity only; production compact loader/serialized normalizer not exercised"
+    },
+    {
+      "id": "C5",
+      "claim": "500-iteration run completed or currently live",
+      "impact": "unsupported",
+      "qualifier": "progress at one timestamp only; completion pending/unknown"
+    },
+    {
+      "id": "C6",
+      "claim": "Stable semantics/full reproduction/generalization/robot deployment",
+      "impact": "unsupported_and_not_claimed"
+    }
+  ],
+  "action_items": [
+    "Preserve this audit/input manifest and reconcile report line 71 plus tracker line 26 append-only.",
+    "Run a future end-to-end compact proof through FrozenPhyGile(active_policy.pt, ...), archive exact sources, and bind contract/encoder/source/normalizer/artifact hashes.",
+    "Accept the 500-run only with durable supervised completion, exactly 500 PPO iterations and 10000 Adam calls, final hashes, finite tensors, and completed dependent stages.",
+    "Create a final root manifest after summary/index/report/tracker/README/ledger/audit and future outputs; normalize paths and version later snapshots.",
+    "Add synthetic_proxy+simulation_only metadata to generated-candidate closure attempts.",
+    "Expand provenance to exact import bytes, lazy imports, robot/assets, environment locks, and native artifacts before claiming full runtime attestation.",
+    "Require multiple seeds, held-out data, longer accepted generated horizons, and a trained generator before broader performance claims."
+  ],
+  "reviewer_calls": [
+    {
+      "agent_id": "/root/unitree_v2_integrity_audit/code_path_audit",
+      "purpose": "code_path_audit",
+      "status": "ok",
+      "review_independence": "same-family",
+      "acceptance_status": "provisional"
+    },
+    {
+      "agent_id": "/root/unitree_v2_integrity_audit/evidence_consistency",
+      "purpose": "evidence_consistency",
+      "status": "ok",
+      "review_independence": "same-family",
+      "acceptance_status": "provisional"
+    }
+  ]
+}

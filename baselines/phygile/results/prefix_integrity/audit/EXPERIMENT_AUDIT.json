@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "audit_name": "phygile_prefix_integrity",
+  "round": 2,
+  "canonical": true,
+  "reviewed_at": "2026-10-17T21:34:57.8233823+08:00",
+  "verdict": "PASS",
+  "overall_verdict": "PASS",
+  "blocking_defects": [],
+  "warnings": [],
+  "review_independence": {
+    "status": "same-family",
+    "acceptance": "provisional",
+    "independent_context": true,
+    "configured_reviewer_model": "gpt-5.6-sol",
+    "configured_reasoning_effort": "ultra",
+    "runtime_model_identity": "unknown",
+    "executor_runtime_identity": "unknown"
+  },
+  "evaluation_types": {
+    "actual_feedback": "simulation_only",
+    "reference": "dataset-derived kinematic reference; not model output",
+    "regression": "synthetic_software_fixtures",
+    "one_ppo": "bounded_runtime_diagnostic",
+    "real_ground_truth": false,
+    "generator_evaluation": false,
+    "paper_benchmark_reproduction": false
+  },
+  "checks": {
+    "A_reference_provenance": {
+      "verdict": "PASS",
+      "evidence": [
+        "results/prefix_integrity/document_run/capture/metrics.json:2-8",
+        "results/data_inventory.json:2-11",
+        "results/data_provenance.json:473-492"
+      ],
+      "dataset_sample_sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b",
+      "captured_reference_max_abs_difference": 4.76837158203125e-07
+    },
+    "B_raw_scores_no_normalization_fraud": {
+      "verdict": "PASS",
+      "evidence": [
+        "scripts/evaluate_prefix_feedback.py:103-126",
+        "reimplementation/physics_prefix.py:75-120",
+        "results/prefix_integrity/document_run/capture/metrics.json:51-57"
+      ],
+      "independent_recomputation": {
+        "rows": 869,
+        "all_finite": true,
+        "mpjpe_m": 0.18331027030944824,
+        "mpjae_rad": 0.3282482922077179,
+        "mpjve_recorded_units_per_s": 1.9027197360992432,
+        "world_local_mpjpe_max_difference": 0.0
+      }
+    },
+    "C_artifacts_numbers_hashes_receipts": {
+      "verdict": "PASS",
+      "evidence": [
+        "results/prefix_integrity/document_run/pipeline.json:2-92",
+        "results/prefix_integrity/document_run/feedback_gate/verification.json:20-26",
+        "results/prefix_integrity/execution_archive_verification.json:2-14",
+        "results/prefix_integrity/patch_portability/verification.json:2-14"
+      ],
+      "stage_exit_codes_zero": true,
+      "current_source_hash_mismatches": 0,
+      "source_archive_regular_files": 153,
+      "source_archive_receipt_entries": 153,
+      "source_archive_set_exact": true
+    },
+    "D_metric_functions_invoked": {
+      "verdict": "PASS",
+      "evidence": [
+        "scripts/evaluate_prefix_feedback.py:31-126",
+        "scripts/diagnose_prefix_feedback.py:18-56",
+        "upstream/source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py:397-422",
+        "upstream/source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py:791-830"
+      ],
+      "assess_execution_independently_invoked": true,
+      "saved_gate_records_exactly_reproduced": true
+    },
+    "E_scope_and_claims": {
+      "verdict": "PASS",
+      "evidence": [
+        "reports/PhyGile课程修复与物理前缀推进报告.md:3-75",
+        "results/prefix_integrity/document_witness/report.md:24-30",
+        "EXPERIMENT_TRACKER.md:24-27"
+      ]
+    },
+    "F_evaluation_type": {
+      "verdict": "PASS",
+      "evidence": [
+        "results/prefix_integrity/document_run/feedback_gate/verification.json:2-18",
+        "results/prefix_integrity/document_run/regression/verification.json:2-21"
+      ]
+    },
+    "rollback_and_acceptance": {
+      "verdict": "PASS",
+      "evidence": [
+        "reimplementation/physics_prefix.py:21-38",
+        "reimplementation/physics_prefix.py:47-120",
+        "reimplementation/physics_prefix.py:130-184",
+        "results/prefix_integrity/document_run/regression/verification.json:4-16"
+      ],
+      "scope": "synthetic interface only; no real simulator snapshot adapter"
+    },
+    "patched_source_lineage": {
+      "verdict": "PASS",
+      "evidence": [
+        "scripts/prepare_guarded_upstream.py:91-113",
+        "scripts/guarded_bootstrap.py:8-19",
+        "results/prefix_integrity/document_run/regression/verification.json:22-30",
+        "results/prefix_integrity/patch_portability/verification.json:2-14"
+      ],
+      "canonical_patch_strict_apply_exit_code": 0,
+      "canonical_patch_matches_executed_generated_patch": true,
+      "original_compact_patch_preserved": true
+    }
+  },
+  "gate_recomputation": {
+    "episodes": 32,
+    "accepted": 0,
+    "rejected": 32,
+    "records_exactly_match": true,
+    "reasons_each_episode": [
+      "incomplete_continuation",
+      "failure_termination",
+      "mpjpe_above_tolerance"
+    ]
+  },
+  "resolved_findings": [
+    {
+      "id": "W1_PATCH_PORTABILITY",
+      "round1_status": "WARN",
+      "final_status": "resolved",
+      "evidence": "results/prefix_integrity/patch_portability/verification.json:2-14",
+      "canonical_patch_sha256": "1ed02041066a4c768a33530ba47cfeb9b17b238811b63bf34f8fdbccf8534e99",
+      "original_compact_patch_sha256": "95372e72630fcc69390bd48c22aea4176a60b112117adba9710d5421b78c50e6"
+    },
+    {
+      "id": "SOURCE_COUNT_ERRATUM",
+      "status": "resolved_by_explicit_preserved_erratum",
+      "original_count": 152,
+      "verified_count": 153,
+      "original_manifest_preserved_byte_exact": true,
+      "evidence": "results/prefix_integrity/execution_archive_verification.json:7-14"
+    }
+  ],
+  "limitations": [
+    "same-family review; acceptance is provisional",
+    "simulation-only feedback from one training clip",
+    "dataset-derived reference is not real measured robot ground truth",
+    "rollback/commit is validated only through synthetic interfaces",
+    "no full curriculum, online generator feedback, terminal standing, closed-loop PPO, paper-scale comparison, or hardware claim",
+    "individual runtime module __file__ values were not recorded"
+  ],
+  "audited_source_hashes": {
+    "reimplementation/physics_prefix.py": "a8d08d3cd7071b65924ec4204b7ce3814dee8e650f267b26f743e779b3011057",
+    "reimplementation/test_prefix_and_curriculum.py": "4723ad5ff14812cee19e14c9d6cf403af869bbfe5c96d089fc58d360f4bbd815",
+    "scripts/prepare_guarded_upstream.py": "e688a87d464c0a19fbbb23c7687e26a325343039da75284339e5d492c01c067f",
+    "scripts/guarded_bootstrap.py": "c785fbaaa6e783a43f5532281fd1cf3a4c5f5ecc56519a5a4994fd4b3330b371",
+    "scripts/evaluate_prefix_feedback.py": "b428bc18488302178f2a35b7b29430163c1e0cc3adb4962e115bd659380a8c9c",
+    "scripts/diagnose_prefix_feedback.py": "c93290a765b76dbe12bc9d641f3d3b36c42657a8fe46ae90cebbabc1d3649965",
+    "scripts/run_prefix_recorded.py": "c4a7624d4cbe827a1cb3c7691bd5e8442a7024dfbf1ec5b62bf3db0a63c32aa3",
+    "scripts/validate_prefix_milestone.py": "6655597ef83ab12dd9f8ff0fb1606a5e01c44e265c9c99683cf4f1d3ffb6634b",
+    "scripts/build_prefix_report.py": "f6903f513cc9c702b6f489be32795fe84cdb9db1377205bc89f0c86267c45fdb",
+    "patches/curriculum_integrity.patch": "1ed02041066a4c768a33530ba47cfeb9b17b238811b63bf34f8fdbccf8534e99",
+    "configs/prefix_diagnostic_plan.json": "ca44f2e1e728dc6dbb34c6b7f80a07357c5c34c9f31c4b9f8d141e46918c38ca",
+    "docs/prefix_integrity_invocation.md": "09e57c5a4c5dc2ab38e2e015e78e7693857da2176ccf592085f86ee1ced3a596",
+    "docs/reproduction_scope.md": "06eb85ee726b01f636a7c7e467c5aba56be33893a26d38b964a799caa5b3bba1",
+    "upstream/source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py": "b3a35da443de54c303e6b4fd3fb2b9e4153bdbeef7d91f9fb843bd5def3f1e4a",
+    "upstream/source/whole_body_tracking/whole_body_tracking/utils/my_on_policy_runner.py": "c41fa2122f92f9413dc43c8de72a0f8dcaae518021143cc0f37e104f497f701c",
+    "upstream/source/whole_body_tracking/whole_body_tracking/utils/curriculum_manager.py": "bd4c3ad52a16559144bb43c4c19d18a846b58a0228b515d5bea811a2909cbdd0",
+    "patched/source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py": "cad7ee14922ed4d5a2ba509bfa4d455cc4b8ee0a1eafa591c4e672a87751b20b",
+    "patched/source/whole_body_tracking/whole_body_tracking/utils/my_on_policy_runner.py": "e4b73e1e3e4bfdc79c1b23a121d2ed0cfd79afdbff1df98c3cac5cfd93be7409",
+    "patched/source/whole_body_tracking/whole_body_tracking/utils/curriculum_manager.py": "5f1a4cbcce8c85a5b5d96c67bce73d99c4de453822eab6659de932c43c7612d9"
+  },
+  "artifact_hashes": {
+    "results/data_inventory.json": "2859c16b291b95fb12c6b8b08a2d976a4d134eb7f973bc42ff8672999164552e",
+    "results/data_provenance.json": "ec3dd1d75f56f75a5a2d34b250e2dbbec009bece6ccd63200f11a74b65a36f70",
+    "release_assets/phygile_pilot_inputs.tar.gz": "3cac85f442411af44eebcccb259462e1a9f60f6b9558cf58325830e511cc9acd",
+    "release_assets/phygile_prefix_integrity_source.tar.gz": "3e041806b4e5c22b98f1d05dc8a19f758673a607b7505dd45fa2f180477464a1",
+    "release_assets/prefix_execution_manifest.json": "c34746cc67d896f33efb5e20ff3f6e91f481f60a235db2f0d28051e8b9891eda",
+    "release_assets/phygile_prefix_guard_1ppo_diagnostic_seed42.pt": "68439707ee5c166fe17a48fd141d1ed3e9b9264fe7d064f6c5ed70fc92bbe424",
+    "results/prefix_integrity/document_run/capture/raw_pre_reset.npz": "a1a5b01f4e96a6a717f00ab2d9968b2edec3bd6a2c532236cc45b5f5323ae00c",
+    "results/prefix_integrity/document_run/capture/initial_state.npz": "7a4a218eb69f485c3f0b071c8126fc7ddfff9f52d9b2b2df51a0bbdff8183c90",
+    "results/prefix_integrity/document_run/capture/metrics.json": "50a1b69e90358f4c3a0bf4bb7f735f460789909c573dadb0c6f84512fe888839",
+    "results/prefix_integrity/document_run/feedback_gate/verification.json": "e91b5c0f87506f4a673a5b1e2d8b68ccfedaaf702b9d18ac535138096c2ec97a",
+    "results/prefix_integrity/document_run/regression/verification.json": "dab62d2e60b21a74d8947f78968aea66d41b293256a9dcdf34d1fcebeecf9ab4",
+    "results/prefix_integrity/document_run/pipeline.json": "f1eb81f36890bfd303869c5e23471d9567fc7a00ad2de7927965156a2269aff6",
+    "results/prefix_integrity/document_witness/report.md": "154f2859fa2b019f52b447c2d83e15fd9247c3316319c5e543f9fba58bebd794",
+    "results/prefix_integrity/document_witness/report.json": "6fe8ae91c7fb7bc53a7bf9b2dd4064a0ed38e486904afcaf517ef71661e09554",
+    "results/prefix_integrity/document_witness/artifact_inspection.json": "7f4d15502ae211cce6ad12f172e32d79e8a901d47e5d9ef4c7827cf743f93555",
+    "results/prefix_integrity/execution_archive_verification.json": "1eb1c924f182d21ac2a779745c1b0bd19d16acb7e2b47998dbc5153adc8071a9",
+    "results/prefix_integrity/execution_transport_manifest_original.json": "c34746cc67d896f33efb5e20ff3f6e91f481f60a235db2f0d28051e8b9891eda",
+    "results/prefix_integrity/patch_portability/original_compact.patch": "95372e72630fcc69390bd48c22aea4176a60b112117adba9710d5421b78c50e6",
+    "results/prefix_integrity/patch_portability/verification.json": "5fcc85d940bb8b4ac978ef6b59c70dc0df3ecdc6d336ee4b24ecfbb32fe15975"
+  },
+  "review_record_erratum": {
+    "round1_hash_table_contains_transcription_errors": true,
+    "round1_files_preserved_unchanged": true,
+    "canonical_hash_source": "direct SHA-256 reads from each primary file",
+    "experiment_artifacts_changed_by_correction": false
+  }
+}

@@ -1,0 +1,59 @@
+[Curriculum EMA] Evaluated 2/2 files
+[Curriculum EMA]   Mean success ratio: 1.0000
+[Curriculum EMA]   Min success ratio: 1.0000 (file: a)
+[Curriculum EMA]   Mean mpjpe: 0.0150
+[Curriculum EMA]   Mean mpjae: 0.0200
+
+[Curriculum] ===== Evaluation at iteration 10000 =====
+[Curriculum] Level 1: 1 files to evaluate
+[Curriculum] Using subprocess evaluation.
+[Curriculum] Thresholds check:
+[Curriculum]   success: nan (ignored)
+[Curriculum]   mpjpe:   inf ✗ 0.12 (relaxed: 0.12)
+[Curriculum]   mpjae:   inf ✗ 0.06 (relaxed: 0.06)
+[Curriculum] ✗ Level 1 NOT passed: mpjpe inf >= 0.12 AND mpjae inf >= 0.06
+[Curriculum] ==========================================
+
+
+[Curriculum] ===== Evaluation at iteration 10001 =====
+[Curriculum] Level 1: 1 files to evaluate
+[Curriculum] Using subprocess evaluation.
+[Curriculum] Thresholds check:
+[Curriculum]   success: nan (ignored)
+[Curriculum]   mpjpe:   0.0100 ✓ 0.12 (relaxed: 0.12)
+[Curriculum]   mpjae:   0.0100 ✓ 0.06 (relaxed: 0.06)
+[Curriculum] Level 1 upgrade check finished (no unlock).
+[Curriculum] ==========================================
+
+{
+  "status": "PASSED_REGRESSION_CHECKS",
+  "evaluation_type": "synthetic_software_fixtures",
+  "checks": [
+    "Convergence rejects worsening, cancellation, nonfinite and still-improving windows",
+    "Nonfinite instantaneous and accumulated errors stop before statistics mutation",
+    "Both unsafe evaluator entrypoints fail explicitly before stepping",
+    "EMA requires every requested file and enough attempts; valid zero error remains valid",
+    "Curriculum manager cannot promote invalid metrics even after timeout",
+    "Outer evaluation branch has initialized fields, unknown success and invalid-timeout rejection",
+    "Two-window loop rolls back rejected attempts and conditions on accepted actual states",
+    "Retry exhaustion returns the unchanged prefix and restores simulator state",
+    "Acceptance rejects truncation, failure, wrong candidate, wrong boundary and post-reset timing",
+    "Terminal error cannot hide inside the whole-window average",
+    "Unexpected proposer/adapter exceptions restore the checkpoint",
+    "Nonfinite states and incompatible frame rates fail before use"
+  ],
+  "torch_version": "2.5.1+cu118",
+  "trained_model": false,
+  "physics_simulation": false,
+  "full_curriculum_training": false,
+  "patched_source_sha256": {
+    "source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py": "cad7ee14922ed4d5a2ba509bfa4d455cc4b8ee0a1eafa591c4e672a87751b20b",
+    "source/whole_body_tracking/whole_body_tracking/utils/my_on_policy_runner.py": "e4b73e1e3e4bfdc79c1b23a121d2ed0cfd79afdbff1df98c3cac5cfd93be7409",
+    "source/whole_body_tracking/whole_body_tracking/utils/curriculum_manager.py": "5f1a4cbcce8c85a5b5d96c67bce73d99c4de453822eab6659de932c43c7612d9"
+  },
+  "source_sha256": {
+    "reimplementation/test_prefix_and_curriculum.py": "4723ad5ff14812cee19e14c9d6cf403af869bbfe5c96d089fc58d360f4bbd815",
+    "reimplementation/physics_prefix.py": "a8d08d3cd7071b65924ec4204b7ce3814dee8e650f267b26f743e779b3011057",
+    "scripts/prepare_guarded_upstream.py": "e688a87d464c0a19fbbb23c7687e26a325343039da75284339e5d492c01c067f"
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "verification_type": "read-only checks of outputs, captured metadata and file hashes; simulation not rerun",
+  "checks": {
+    "invocation_exactly_once": true,
+    "saved_command_matches_document_block": true,
+    "exit_zero": true,
+    "document_unchanged": true,
+    "environment_plan_canonical_hash_matches_ledger": true,
+    "expected_summary_status": true,
+    "one_record": true,
+    "finite_nonempty_raw_states": true,
+    "summary_input_hashes_unchanged": true,
+    "independent_input_hashes_match": true,
+    "executed_source_hashes_match": true,
+    "receipt_hash_matches": true,
+    "raw_hash_matches": true,
+    "source_manifest_hash_matches": true,
+    "no_time_stretch": true,
+    "no_extrapolation": true,
+    "tail_less_than_control_tick": true,
+    "zero_training_updates": true,
+    "zero_curriculum_labels": true,
+    "cpu_device": true,
+    "censored_first_episode_receipt": true,
+    "only_last_observed_frame_terminated": true,
+    "no_timeout_frames": true
+  },
+  "all_checks_passed": true,
+  "environment_plan_canonical_sha256": "a43f960bd3bcdcd3398655bffe291138b73de5ca7f30901765172ff9821e1954",
+  "raw_state_array_metadata": {
+    "frame": {
+      "shape": [
+        14
+      ],
+      "dtype": "int64",
+      "nonempty": true,
+      "finite": true
+    },
+    "reference_body_pos": {
+      "shape": [
+        14,
+        14,
+        3
+      ],
+      "dtype": "float32",
+      "nonempty": true,
+      "finite": true
+    },
+    "robot_body_pos": {
+      "shape": [
+        14,
+        14,
+        3
+      ],
+      "dtype": "float32",
+      "nonempty": true,
+      "finite": true
+    },
+    "reference_joint_pos": {
+      "shape": [
+        14,
+        29
+      ],
+      "dtype": "float32",
+      "nonempty": true,
+      "finite": true
+    },
+    "robot_joint_pos": {
+      "shape": [
+        14,
+        29
+      ],
+      "dtype": "float32",
+      "nonempty": true,
+      "finite": true
+    },
+    "reference_joint_vel": {
+      "shape": [
+        14,
+        29
+      ],
+      "dtype": "float32",
+      "nonempty": true,
+      "finite": true
+    },
+    "robot_joint_vel": {
+      "shape": [
+        14,
+        29
+      ],
+      "dtype": "float32",
+      "nonempty": true,
+      "finite": true
+    },
+    "terminated": {
+      "shape": [
+        14
+      ],
+      "dtype": "bool",
+      "nonempty": true,
+      "finite": true,
+      "nonzero_count": 1,
+      "nonzero_indices": [
+        [
+          13
+        ]
+      ]
+    },
+    "timeout": {
+      "shape": [
+        14
+      ],
+      "dtype": "bool",
+      "nonempty": true,
+      "finite": true,
+      "nonzero_count": 0,
+      "nonzero_indices": []
+    }
+  },
+  "input_hash_count": 10,
+  "input_hash_mismatches": [],
+  "executed_source_hash_count": 246,
+  "executed_source_hash_mismatches": [],
+  "source_manifest_reported_path_exists": true,
+  "source_manifest_actual_path": "D:\\具身智能\\PhyGile与ReactiveBFM_论文对齐复现_20261022\\phygile_pair_screen_witness_v1\\episode_000\\executed_sources.json",
+  "selected_sequences": 1,
+  "source_frames": 50,
+  "requested_control_frames": 123,
+  "observed_control_frames": 14,
+  "control_steps_duration_s": 0.28,
+  "physics_steps": 56,
+  "terminated": true,
+  "timeout": false,
+  "full_clip_success": false,
+  "omitted_tail_s": 0.010000000000000231,
+  "outer_stderr_bytes": 0,
+  "episode_stderr_bytes": 197,
+  "runtime_package_versions": {
+    "mjlab": "1.2.0",
+    "mujoco": "3.5.0",
+    "mujoco-warp": "3.5.0",
+    "numpy": "2.5.4",
+    "rsl-rl-lib": "5.0.1",
+    "torch": "2.14.1",
+    "warp-lang": "1.12.0"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "status": "PASS_WITH_ALLOWED_EARLY_TERMINATION",
+  "document_acceptance_discrepancies": [],
+  "warnings": [
+    "Episode stderr contains the PyTorch torch.jit.script deprecation FutureWarning. Outer stderr is empty; exit codes are zero."
+  ],
+  "interpretation_limits": [
+    "Robot completed only 14 of 123 requested control steps; the diagnostic is accepted but full-clip tracking failed.",
+    "Termination flags and cutoff are recorded; the receipt does not name the individual termination condition.",
+    "This is one decoded existing pair and an undertrained pilot frozen-policy CPU diagnostic, not generated motion, paper physical filtering, curriculum labeling, training, or a throughput benchmark."
+  ]
+}

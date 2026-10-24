@@ -1,0 +1,78 @@
+from session import *
+import tarfile,gzip,io,os,shutil
+dest=LOCAL/'storage_cleanup_20261023'
+plan=json.loads((dest/'source_plan_cache.json').read_text(encoding='utf-8'))
+archive=dest/'inactive_builtin_cache_backup_v1.tar.gz'
+require_free=plan['logical_bytes']+1024**3
+assert shutil.disk_usage(dest).free>require_free
+script=r'''
+from pathlib import Path
+import sys,json,tarfile,gzip,importlib.util
+root=Path('/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1')
+p=root/'source_plan_cache.json';plan=json.loads(p.read_text())
+spec=importlib.util.spec_from_file_location('guard',str(root/'cleanup_backed_unused.py'));g=importlib.util.module_from_spec(spec);spec.loader.exec_module(g)
+g.inactive([Path(r['path']) for r in plan['files']])
+with gzip.GzipFile(fileobj=sys.stdout.buffer,mode='wb',compresslevel=1) as zipped:
+ with tarfile.open(fileobj=zipped,mode='w|') as t:
+  t.add(str(p),arcname='source_plan_cache.json',recursive=False)
+  t.add(str(root/'cleanup_backed_unused.py'),arcname='cleanup_backed_unused.py',recursive=False)
+  for row in plan['files']:
+   path=Path(row['path']);g.identity(path,row)
+   t.add(str(path),arcname=row['archive_member'],recursive=False)
+   g.identity(path,row)
+'''
+with archive.open('xb') as output, (dest/'archive_stream_stderr.txt').open('xb') as error:
+    result=subprocess.run(SSH+['python3 -'],input=script.encode(),stdout=output,stderr=error,timeout=600)
+assert result.returncode==0,(dest/'archive_stream_stderr.txt').read_text(encoding='utf-8')
+rows={r['archive_member']:r for r in plan['files']};verified=[]
+recovery=dest/'cache_recovery_verified';recovery.mkdir(exist_ok=False)
+with tarfile.open(archive,'r|gz') as t:
+    for member in t:
+        if member.name in ['source_plan_cache.json','cleanup_backed_unused.py']:
+            continue
+        assert member.isfile() and member.name in rows
+        row=rows[member.name];h=hashlib.sha256();count=0
+        recovered=recovery/row['sha256']
+        writer=None if recovered.exists() else recovered.open('xb')
+        try:
+            stream=t.extractfile(member)
+            for block in iter(lambda:stream.read(4*1024*1024),b''):
+                h.update(block);count+=len(block)
+                if writer:writer.write(block)
+        finally:
+            if writer:writer.close()
+        assert count==row['bytes'] and h.hexdigest()==row['sha256']
+        verified.append(member.name)
+assert set(verified)==set(rows) and len(verified)==len(rows)
+for p in recovery.iterdir():assert sha(p.read_bytes())==p.name
+info={'utc':utc(),'archive':str(archive),'archive_bytes':archive.stat().st_size,'archive_sha256':sha(archive.read_bytes()),
+      'archive_member_count':len(rows),'archive_contents_recovered_and_verified':True,'unique_recovered_contents':len(list(recovery.iterdir())),
+      'verified_member_paths':[r['archive_member'] for r in plan['files']], 'original_source_plan_sha256':sha((dest/'source_plan_cache.json').read_bytes())}
+dump(dest/'local_archive_recovery_verification.json',info)
+repo='Pendragon08/conditional-human-motion-generation';tag='server-unused-cache-backup-20261023'
+def gh(args,timeout=180):
+    r=subprocess.run([GH,*args],capture_output=True,text=True,encoding='utf-8',timeout=timeout)
+    if r.returncode:raise RuntimeError(r.stderr)
+    return r.stdout
+existing=subprocess.run([GH,'api',f'repos/{repo}/releases/tags/{tag}'],capture_output=True,text=True,encoding='utf-8')
+if existing.returncode:
+    notes=dest/'backup_release_notes.md'
+    notes.write_text('本次只归档用户目录中已确认闲置的内置纹理/着色器缓存及旧代码传输包。逐文件清单和SHA256用于恢复。仅在本地恢复和GitHub摘要核验完成后清理服务器副本。数据集、检查点、实验记录、环境和活动代码全部保留。\n',encoding='utf-8')
+    gh(['release','create',tag,'--repo',repo,'--target','codex/phygile-reproduction-20261017','--title','闲置缓存与代码传输包可恢复备份（2026-10-23）','--notes-file',str(notes),'--latest=false'])
+for f in [archive,dest/'source_plan_cache.json',dest/'local_archive_recovery_verification.json']:
+    release=json.loads(gh(['api',f'repos/{repo}/releases/tags/{tag}']))
+    assets={a['name']:a for a in release['assets']}
+    if f.name not in assets:
+        gh(['release','upload',tag,str(f),'--repo',repo],timeout=600)
+    else:
+        assert assets[f.name]['digest']=='sha256:'+sha(f.read_bytes())
+release=json.loads(gh(['api',f'repos/{repo}/releases/tags/{tag}']))
+asset=next(a for a in release['assets'] if a['name']==archive.name)
+assert asset['digest']=='sha256:'+info['archive_sha256'] and asset['size']==archive.stat().st_size
+plan['backup_verification']={'archive_contents_recovered_and_verified':True,
+    'local_archive_sha256':info['archive_sha256'],'verified_member_paths':info['verified_member_paths'],
+    'asset':{'name':asset['name'],'bytes':asset['size'],'digest':asset['digest'],'url':asset['browser_download_url']},
+    'utc':utc()}
+dump(dest/'cleanup_plan_cache_verified.json',plan)
+print(json.dumps({'archive_bytes':archive.stat().st_size,'github_digest_verified':True,'files':len(rows),
+                 'allocated_to_reclaim':plan['allocated_bytes'],'url':asset['browser_download_url']}))

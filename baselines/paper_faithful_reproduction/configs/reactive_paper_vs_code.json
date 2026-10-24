@@ -1,0 +1,77 @@
+{
+  "paper": "https://arxiv.org/pdf/2606.30362",
+  "official_commit": "5a79d03cab824eb5917271ba720294e8a1b9d374",
+  "preserve_existing_training": true,
+  "planner_paper_table4": {
+    "optimizer": "Adam",
+    "batch_size": 128,
+    "learning_rate": 0.0001,
+    "iterations": 2500,
+    "environments": 32,
+    "n_steps": 512,
+    "n_epochs": 4,
+    "buffer_size": 30,
+    "value_coefficient": 0.8,
+    "entropy_coefficient": 0.01,
+    "gamma": 0.99,
+    "GAE": 0.99,
+    "ppo_clip": 0.2
+  },
+  "paper_table4_inconsistency": "The main text and public planner use supervised flow matching. These PPO-style table fields do not map to the published planner trainer; not silently used as planner PPO instructions.",
+  "official_training_recipe": {
+    "global_batch": 1024,
+    "teacher_forcing_updates": 400000,
+    "total_updates": 1000000,
+    "cross_prob_text_only": 0.0,
+    "cross_prob_streaming": 0.1,
+    "model_type": "flow"
+  },
+  "running_training": {
+    "ranks": 2,
+    "batch_per_rank": 512,
+    "global_batch": 1024,
+    "learning_rate": 0.0001,
+    "teacher_forcing_updates": 400000,
+    "total_updates": 1000000,
+    "precision": "FP32 repair",
+    "context_frames": 25,
+    "prediction_frames": 50
+  },
+  "paper_deployment": {
+    "context_frames": 20,
+    "prediction_frames": 40,
+    "policy_hz": 50,
+    "pd_hz": 200,
+    "buffer_trigger_frames": 10,
+    "asynchronous": true
+  },
+  "controller_paper_table5": {
+    "actor_learning_rate": 2e-05,
+    "critic_learning_rate": 0.001,
+    "num_envs": 8192,
+    "minibatches": 16,
+    "epochs": 2,
+    "rollout_steps": 64,
+    "value_coefficient": 1.0,
+    "entropy_coefficient": 0.005,
+    "gamma": 0.99,
+    "GAE": 0.95,
+    "ppo_clip": 0.2,
+    "sampling_discount": 0.999
+  },
+  "controller_reproduction": "Reuse frozen official ScaleBFM M model22200; no downstream RL fine-tuning, as paper Appendix B1. Table5 describes upstream BFM pretraining, not a required new ReactiveBFM PPO stage.",
+  "unresolved": [
+    "Paper20/40 versus released/running25/50 window",
+    "Paper37.14h includes PhysHSI-Reach not in installed3components",
+    "Paper1000-pair100STYLE benchmark/evaluator not publicly installed",
+    "TensorRT latency not reproduced; shared A6000 native/Inductor compatibility run"
+  ],
+  "completion_requirements": [
+    "training final valid checkpoint",
+    "scheduled forcing phase genuinely executed",
+    "fresh generated motion reaches controller in asynchronous loop",
+    "paper failure metrics from actual simulator states",
+    "5 or more fixed seeds and specified held-out split",
+    "video provenance and source/checkpoint hashes"
+  ]
+}

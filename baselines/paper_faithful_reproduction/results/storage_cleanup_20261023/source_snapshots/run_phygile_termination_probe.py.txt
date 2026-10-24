@@ -1,0 +1,17 @@
+from session import *
+root=LOCAL/'phygile_termination_probe_v1';root.mkdir(exist_ok=False)
+args=['D:/phygile_unitree_env_20261022/Scripts/python.exe',
+    str(BASE/'scripts/probe_phygile_termination.py'),'--base-scripts',str(UNITREE/'scripts'),
+    '--unitree-checkout',str(TASK.parent/'phygile_unitree_20261022/vendor_unitree_rl_mjlab'),
+    '--assets',str(LOCAL/'phygile_pair_screen_all40_v1/prepared_private'),
+    '--checkpoint','D:/具身智能/PhyGile复现/Unitree框架适配_20261022/private_assets_continue500_v1/parent_checkpoint.pt',
+    '--seed','2026','--contact-profile','official','--device','cpu']
+for index in [0,20,34]:
+    out=root/f'case_{index:03d}'
+    cmd=[*args,'--clip',str(index),'--output',str(out),'--trace-output',str(out/'termination_trace.json')]
+    started=utc()
+    with (root/f'case_{index:03d}_stdout.txt').open('w',encoding='utf-8') as o, (root/f'case_{index:03d}_stderr.txt').open('w',encoding='utf-8') as e:
+        r=subprocess.run(cmd,stdout=o,stderr=e,timeout=600)
+    dump(root/f'case_{index:03d}_execution.json',{'command':cmd,'exit_code':r.returncode,'started_utc':started,'ended_utc':utc()})
+    assert r.returncode==0
+    print(json.dumps({'case':index,'exit_code':r.returncode}),flush=True)

@@ -1,0 +1,323 @@
+{
+  "status": "PASS_WITH_CORRECTED_DOCUMENT_LINK",
+  "verification_scope": "Fresh-reader execution of the documented one-time bounded inference invocation, followed by read-only evidence inspection.",
+  "local_invocation": "$env:PYTHONUTF8='1'\n& 'C:\\Users\\Pende\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe' 'C:\\Users\\Pende\\Documents\\ChatGPT\\机器人格斗动作捕捉数据生成\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\paper_faithful_reproduction\\scripts\\document_witness.py' --output 'D:\\具身智能\\PhyGile与ReactiveBFM_论文对齐复现_20261022\\document_witness_v1'",
+  "exact_invocation_run_count": 1,
+  "invocation_exit_code": 0,
+  "output_directory": "D:/具身智能/PhyGile与ReactiveBFM_论文对齐复现_20261022/document_witness_v1",
+  "remote_command": [
+    "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/env/bin/python",
+    "-u",
+    "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/code_v4/run_reactive_async.py",
+    "--runtime-root",
+    "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021",
+    "--code-root",
+    "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/code",
+    "--checkpoint",
+    "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/model000010040.pt",
+    "--output",
+    "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/doc_witness_v1",
+    "--steps",
+    "200",
+    "--prompt",
+    "walk forward",
+    "--compile-planner"
+  ],
+  "run_started_utc": "2026-10-22T16:01:08.505721+00:00",
+  "run_ended_utc": "2026-10-22T16:01:57.098505+00:00",
+  "policy_calls": 200,
+  "effective_replans": 7,
+  "event_counts": {
+    "control_started": 1,
+    "planner_submitted": 8,
+    "planner_activated": 7,
+    "runtime_stop": 1
+  },
+  "activated_policy_steps": [
+    37,
+    61,
+    84,
+    108,
+    131,
+    155,
+    178
+  ],
+  "stop_reason": "max_policy_steps_reached",
+  "array_checks": {
+    "executed_states.npz": {
+      "time": {
+        "shape": [
+          200
+        ],
+        "dtype": "float64",
+        "all_finite": true
+      },
+      "qpos": {
+        "shape": [
+          200,
+          36
+        ],
+        "dtype": "float64",
+        "all_finite": true
+      },
+      "body_pos": {
+        "shape": [
+          200,
+          33,
+          3
+        ],
+        "dtype": "float64",
+        "all_finite": true
+      }
+    },
+    "observed_prefixes.npz": {
+      "prefix": {
+        "shape": [
+          9,
+          25,
+          36
+        ],
+        "dtype": "float32",
+        "all_finite": true
+      }
+    },
+    "session/online_motion_20261022_160155/motion_buffers.npz": {
+      "real_robot_motion36": {
+        "shape": [
+          200,
+          36
+        ],
+        "dtype": "float32",
+        "all_finite": true
+      },
+      "real_robot_policy_step": {
+        "shape": [
+          200
+        ],
+        "dtype": "int64",
+        "all_finite": true
+      },
+      "real_robot_sample_perf_s": {
+        "shape": [
+          200
+        ],
+        "dtype": "float64",
+        "all_finite": true
+      },
+      "active_plan_motion36": {
+        "shape": [
+          200,
+          36
+        ],
+        "dtype": "float32",
+        "all_finite": true
+      },
+      "active_plan_policy_step": {
+        "shape": [
+          200
+        ],
+        "dtype": "int64",
+        "all_finite": true
+      },
+      "active_plan_sample_perf_s": {
+        "shape": [
+          200
+        ],
+        "dtype": "float64",
+        "all_finite": true
+      }
+    }
+  },
+  "all_saved_numeric_arrays_finite": true,
+  "compile_parity": [
+    {
+      "eager_vs_compiled_cfg_max_abs": 0.00000667572021484375,
+      "atol": 0.0002,
+      "rtol": 0.0002,
+      "scope": "first actual planner CFG invocation"
+    }
+  ],
+  "minimum_root_height_m": 0.6039843124142485,
+  "source_identity": {
+    "official_commit": "5a79d03cab824eb5917271ba720294e8a1b9d374",
+    "runner_path": "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/code_v4/run_reactive_async.py",
+    "runner_sha256": "2728711d6ea5fb8f371ae5970f01adcb12c4f1196f7e9e334ec0df0368731df1",
+    "tracked_source_count": 119,
+    "sources_unchanged": true,
+    "all_source_hashes_in": "result.json:receipt.source_hashes"
+  },
+  "planner_checkpoint": {
+    "path": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/model000010040.pt",
+    "sha256": "7aaed03598e120e843b4332b5943605a293bbc31958e05b4396ec791c083dbe5",
+    "unchanged": true
+  },
+  "policy_checkpoint": {
+    "path": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/weights/ScaleBFM_m_model_22200.pt",
+    "sha256": "88d5a79946c03ed25503f48b2af71d16290844ef066ca9b6c8fa8dc3837422e3",
+    "bytes": 72856655,
+    "verification_scope": "post-run identity only; wrapper before/after unchanged assertion covers planner checkpoint"
+  },
+  "runtime_versions": {
+    "python": "3.10.21",
+    "torch": "2.5.1+cu121",
+    "mujoco": "3.3.7"
+  },
+  "resource_constraints": {
+    "gpu_physical_index": 1,
+    "cpu_threads": 4,
+    "pytorch_memory_fraction": 0.16,
+    "gpu1_free_memory_preflight": "Exact invocation enforces memory.free > 8192 MiB before inference; assertion passed; exact measured value not retained."
+  },
+  "training_progress": [
+    {
+      "rank": 0,
+      "before": {
+        "utc": "2026-10-22T16:01:03.804057+00:00",
+        "rank": 0,
+        "status": "TRAINING",
+        "loop_step": 13974,
+        "initial_optimizer_updates": 10021,
+        "optimizer_updates": 13975,
+        "resumed_updates": 3954,
+        "optimizer_step_calls": 13975,
+        "validated_optimizer_updates": 13975,
+        "attempts_since_resume": 3954,
+        "skipped_attempts": 0,
+        "consecutive_skips": 0,
+        "step_applied": true,
+        "step_validated": true,
+        "ema_validated": true,
+        "reason": "OPTIMIZER_STEP_APPLIED",
+        "grad_norm_pre_clip_fp64": 49.01761422417303,
+        "grad_norm_post_clip_fp64": 0.9999999956252716,
+        "param_norm_fp64": 209.82450935564083,
+        "offending_parameters": [],
+        "elapsed_seconds": 29628.676595292985,
+        "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+        "full_training_completed": false
+      },
+      "after": {
+        "utc": "2026-10-22T16:01:56.084395+00:00",
+        "rank": 0,
+        "status": "TRAINING",
+        "loop_step": 13981,
+        "initial_optimizer_updates": 10021,
+        "optimizer_updates": 13982,
+        "resumed_updates": 3961,
+        "optimizer_step_calls": 13982,
+        "validated_optimizer_updates": 13982,
+        "attempts_since_resume": 3961,
+        "skipped_attempts": 0,
+        "consecutive_skips": 0,
+        "step_applied": true,
+        "step_validated": true,
+        "ema_validated": true,
+        "reason": "OPTIMIZER_STEP_APPLIED",
+        "grad_norm_pre_clip_fp64": 10.156403168837919,
+        "grad_norm_post_clip_fp64": 0.9999998722338416,
+        "param_norm_fp64": 209.81912347002086,
+        "offending_parameters": [],
+        "elapsed_seconds": 29680.956936564296,
+        "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+        "full_training_completed": false
+      },
+      "validated_update_delta": 7
+    },
+    {
+      "rank": 1,
+      "before": {
+        "utc": "2026-10-22T16:01:03.804085+00:00",
+        "rank": 1,
+        "status": "TRAINING",
+        "loop_step": 13974,
+        "initial_optimizer_updates": 10021,
+        "optimizer_updates": 13975,
+        "resumed_updates": 3954,
+        "optimizer_step_calls": 13975,
+        "validated_optimizer_updates": 13975,
+        "attempts_since_resume": 3954,
+        "skipped_attempts": 0,
+        "consecutive_skips": 0,
+        "step_applied": true,
+        "step_validated": true,
+        "ema_validated": true,
+        "reason": "OPTIMIZER_STEP_APPLIED",
+        "grad_norm_pre_clip_fp64": 49.01761422417303,
+        "grad_norm_post_clip_fp64": 0.9999999956252716,
+        "param_norm_fp64": 209.82450935564083,
+        "offending_parameters": [],
+        "elapsed_seconds": 29628.675530727953,
+        "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+        "full_training_completed": false
+      },
+      "after": {
+        "utc": "2026-10-22T16:01:56.084426+00:00",
+        "rank": 1,
+        "status": "TRAINING",
+        "loop_step": 13981,
+        "initial_optimizer_updates": 10021,
+        "optimizer_updates": 13982,
+        "resumed_updates": 3961,
+        "optimizer_step_calls": 13982,
+        "validated_optimizer_updates": 13982,
+        "attempts_since_resume": 3961,
+        "skipped_attempts": 0,
+        "consecutive_skips": 0,
+        "step_applied": true,
+        "step_validated": true,
+        "ema_validated": true,
+        "reason": "OPTIMIZER_STEP_APPLIED",
+        "grad_norm_pre_clip_fp64": 10.156403168837919,
+        "grad_norm_post_clip_fp64": 0.9999998722338416,
+        "param_norm_fp64": 209.81912347002086,
+        "offending_parameters": [],
+        "elapsed_seconds": 29680.955874634907,
+        "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+        "full_training_completed": false
+      },
+      "validated_update_delta": 7
+    }
+  ],
+  "remote_logs": {
+    "doc_witness.stdout.txt": {
+      "path": "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/doc_witness.stdout.txt",
+      "bytes": 4533,
+      "sha256": "ec0114f2d52f8f4307066f56b9564765018a58c3a0b32d7e931b90ed0aad40a2"
+    },
+    "doc_witness.stderr.txt": {
+      "path": "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/doc_witness.stderr.txt",
+      "bytes": 4523,
+      "sha256": "c02d0ef5bfb5447b212c8661a1fda86b417e1b0fcdd425c4f37398474e581feb"
+    }
+  },
+  "local_raw_logs": [
+    "ssh_stdout.txt",
+    "ssh_stderr.txt"
+  ],
+  "document_divergences": [
+    {
+      "finding": "Original ENVIRONMENT.md relative provider-ledger link did not resolve in this checkout.",
+      "original_reference": "../reactivebfm/docs/recovery_provider_ledger_v3.md",
+      "verified_ledger": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/work/reactivebfm_reproduction_20261021/repository/baselines/reactivebfm/docs/recovery_provider_ledger_v3.md",
+      "disposition": "Author corrected ENVIRONMENT.md to the verified absolute path. Fresh reader reread the corrected document after the invocation had already finished. Exact witness invocation was unchanged; no repeated launch was performed."
+    }
+  ],
+  "other_observations": [
+    "Remote stderr has frame-overrun warnings, consistent with the document's lack of any real-time performance claim.",
+    "Remote stderr reports optional OpenGL_accelerate unavailable; headless inference nevertheless completed successfully."
+  ],
+  "limitations": [
+    "TensorRT not installed; no 50Hz real-time claim",
+    "partial planner checkpoint; text-only branch; no target-reaching data"
+  ],
+  "claims_not_established": [
+    "real-time 50 Hz performance",
+    "semantic motion quality",
+    "paper success rate or benchmark reproduction",
+    "full dataset coverage",
+    "completed training"
+  ],
+  "environment_or_implementation_changes_by_witness": false,
+  "processes_stopped_by_witness": false,
+  "files_deleted_by_witness": false
+}

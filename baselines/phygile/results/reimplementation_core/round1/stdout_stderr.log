@@ -1,0 +1,36 @@
+PASS TP-MoE mixes parameters before nonlinear activation; balance matches formula
+PASS Padding payload cannot affect valid frames or routing balance
+PASS x0 loss has finite nonzero gradients into every expert pool and gate
+PASS Standard and negative-prompt CFG match Eqs. 13–14
+PASS Chosen inpainting sampler preserves exact clean prefix and suffix
+PASS 262D block normalization preserves rotation/contact channels and round trips
+PASS ASFO frequency, median and sample maxima match Eqs. 10–11
+PASS Full stated architecture constructs without pretrained weights
+{
+  "status": "PASSED_NUMERICAL_CHECKS",
+  "tests": [
+    "TP-MoE mixes parameters before nonlinear activation; balance matches formula",
+    "Padding payload cannot affect valid frames or routing balance",
+    "x0 loss has finite nonzero gradients into every expert pool and gate",
+    "Standard and negative-prompt CFG match Eqs. 13\u201314",
+    "Chosen inpainting sampler preserves exact clean prefix and suffix",
+    "262D block normalization preserves rotation/contact channels and round trips",
+    "ASFO frequency, median and sample maxima match Eqs. 10\u201311",
+    "Full stated architecture constructs without pretrained weights"
+  ],
+  "torch_version": "2.5.1+cu118",
+  "seed": 73,
+  "elapsed_seconds": 0.9808897711336613,
+  "full_architecture_parameters": 146169702,
+  "trained_model": false,
+  "text_encoder_loaded": false,
+  "dataset_used": false,
+  "physics_simulation_tested": false,
+  "source_sha256": {
+    "test_core.py": "e0e152279e98371faafea3fe125b79900f2654fb68294f449154b90f67d34458",
+    "text.py": "22a04171f7e1218ff9b9ed768d6739ebed24c4072c683b78d60fde595b7fcf70",
+    "diffusion.py": "930a2cdb1967119dd51813c6838f58c062fc7d46447239b20cc15f4b638efc4c",
+    "model.py": "76eb8baa876950a34d4b23b6fa92627515bf38072c9cadf35fbf8789a13e70ab",
+    "features.py": "4a6708949a4754bc38cedd2362b08372f45702875a62116074a6cfee2a79b7c1"
+  }
+}

@@ -1,0 +1,369 @@
+{
+  "status": "BOUNDED_CONTINUATION_AND_DUAL_SIMULATOR_MIGRATION_COMPLETED_WITH_STABILITY_FAILURES",
+  "snapshot_utc": "2026-10-22T14:26:53.393132+00:00",
+  "training": {
+    "status": "BOUNDED_TRAINING_COMPLETED",
+    "mode": "train",
+    "training": true,
+    "started_utc": "2026-10-22T12:00:45.886963+00:00",
+    "parent_checkpoint": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_moe_pilot/2026-10-17_11-25-01_extended2000_seed42/model_1999.pt",
+    "parent_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+    "device": "cuda:1",
+    "headless": true,
+    "display": null,
+    "seed": 2026,
+    "num_envs": 128,
+    "source_sha256": "8afffc1fade430861dab8c96b38ba6ca7d6c2eef2aca2878c72180a50ed6c0f2",
+    "task": "Unitree-G1-PhyGile-v0",
+    "paper_benchmark_reproduced": false,
+    "headless_authorization": {
+      "kind": "user_authorized_headless_continuation",
+      "date": "2026-10-22",
+      "source": "Explicit user instruction in this conversation",
+      "instruction": "\u6682\u65f6\u4e0d\u7528\u56fe\u5f62\u754c\u9762\uff0c\u5141\u8bb8\u65e0\u754c\u9762\u7eed\u8bad\uff0c\u7ee7\u7eed\u4fee\u590d\u8de8\u4eff\u771f\u7a33\u5b9a\u6027\u5e76\u5b8c\u6210\u95ed\u73af\u8fc1\u79fb\u3002ReactiveBFM\u4e0d\u8981\u4e2d\u65ad\uff0c\u4fdd\u7559\u6570\u636e\u96c6\u3001\u68c0\u67e5\u70b9\u548c\u5b9e\u9a8c\u8bb0\u5f55\uff0c\u4ee3\u7801\u3001\u7ed3\u679c\u548c\u62a5\u544a\u540c\u6b65\u5230GitHub\uff0c\u672c\u5730\u4e5f\u4fdd\u5b58\u62a5\u544a\u3002",
+      "scope": "Current PhyGile Unitree continuation, transfer diagnostics and closure migration; no changes to ReactiveBFM or original frozen runs",
+      "preserve_existing_records": true
+    },
+    "tf32": false,
+    "configuration_semantic_equality": true,
+    "environment_mro": [
+      "lab_task.PhyGileUnitreeEnvCfg",
+      "unitree_rl_lab.tasks.mimic.robots.g1_29dof.dance_102.tracking_env_cfg.RobotEnvCfg",
+      "isaaclab.envs.manager_based_rl_env_cfg.ManagerBasedRLEnvCfg",
+      "isaaclab.envs.manager_based_env_cfg.ManagerBasedEnvCfg",
+      "builtins.object"
+    ],
+    "optimizer_loaded_exactly": true,
+    "source_provenance": {
+      "manifest": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/runs/headless_continue500_v1/executed_sources.json",
+      "sha256": "09ee8b7a4a8dd3ba779df0e6559b5b590376f9f7cb051dc4b4e9c13a11b78933",
+      "source_files": 446
+    },
+    "policy_loaded_exactly": true,
+    "normalizers_loaded_exactly": true,
+    "policy_observation_shape": [
+      128,
+      616
+    ],
+    "action_shape": [
+      128,
+      29
+    ],
+    "policy": "whole_body_tracking.utils.encoder_actor_critic.MoEActorCritic",
+    "algorithm": "whole_body_tracking.utils.moe_ppo.MoEPPO",
+    "active_experts": 1,
+    "parent_ppo_iterations": 2000,
+    "additional_ppo_iterations": 500,
+    "final_checkpoint": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/runs/headless_continue500_v1/adapted_checkpoint.pt",
+    "final_sha256": "30ac49b42a793ec8832c72fafacce5bd0a4e51abca9ed2868aebf0e5dbc528ee",
+    "changed_policy_tensors": 21,
+    "adam_steps_before": [
+      40000.0
+    ],
+    "adam_steps_after": [
+      50000.0
+    ],
+    "actual_adam_calls": 10000,
+    "control_calls": 12000,
+    "parent_unchanged": true,
+    "executed_sources_unchanged": true,
+    "finished_utc": "2026-10-22T13:28:50.526089+00:00",
+    "torch_peak_allocated_bytes": 954060800
+  },
+  "training_launcher_exit_code": "not_recorded_by_early_launcher",
+  "dependent_pipeline_exit_code": 0,
+  "artifact_binding": {
+    "status": "FULL_CHECKPOINT_ARTIFACT_CONTRACT_ENCODER_NORMALIZER_BOUND",
+    "source_checkpoint_sha256": "30ac49b42a793ec8832c72fafacce5bd0a4e51abca9ed2868aebf0e5dbc528ee",
+    "artifact_sha256": "28eb2dc7e6734cda278c17f7385b6a3b1d0530e8be74465cb9808826a061bcfa",
+    "active_experts": 1,
+    "retained_model_tensors_exact": 23,
+    "omitted_model_tensors": 74,
+    "normalizer_schema": {
+      "_mean": {
+        "shape": [
+          1,
+          616
+        ],
+        "dtype": "torch.float32",
+        "value_sha256": "8b7295b2d1b2ff87dc6937e8bca3c1a9782b251114c652e0acf973f0979bda2e"
+      },
+      "_var": {
+        "shape": [
+          1,
+          616
+        ],
+        "dtype": "torch.float32",
+        "value_sha256": "496dfab886e1b53c062de5adcb5e1c46d44f3a224d7bb4ffe39241cd4e51b0b4"
+      },
+      "_std": {
+        "shape": [
+          1,
+          616
+        ],
+        "dtype": "torch.float32",
+        "value_sha256": "e9b7e66d701f545cacf9c3761fec62b7e83c16dd4cee86d57cb7d17915573beb"
+      },
+      "count": {
+        "shape": [],
+        "dtype": "torch.int64",
+        "value_sha256": "e1a80d39810942208b2216d056004d9e5bb96463dd93418d5d14f8a812b2840b"
+      }
+    },
+    "all_full_model_and_optimizer_tensors_finite": true,
+    "normalizer_and_retained_state_bitwise_equal": true,
+    "training_resume_supported": false,
+    "inputs_unchanged": true,
+    "source_and_input_hashes": {
+      "/data/code/ouyanghao/oyh/phygile-unitree-20261022/runs/headless_continue500_v1/adapted_checkpoint.pt": "30ac49b42a793ec8832c72fafacce5bd0a4e51abca9ed2868aebf0e5dbc528ee",
+      "/data/code/ouyanghao/oyh/phygile-unitree-20261022/runs/post_continue500_v1/active_policy/active_policy.pt": "28eb2dc7e6734cda278c17f7385b6a3b1d0530e8be74465cb9808826a061bcfa",
+      "/data/code/ouyanghao/oyh/phygile-unitree-20261022/runs/post_continue500_v1/isaac_clip0/contract.json": "e9c51d3c07bbfa4543a78cfd6c838a14e14f761fcea0b73c8f3ba5cac82eabff",
+      "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/upstream/source/whole_body_tracking/whole_body_tracking/utils/encoder_actor_critic.py": "8d5dd4a93efcb7b2c573da1eee931a99bb8b9ea06be5eb4da9b5f1aacfc986fa",
+      "/data/code/ouyanghao/oyh/phygile-unitree-20261022/addenda_v1/verify_artifact_binding.py": "227387cd0ee45fc58862a8a25cad6eea71659dc4813650cbb5ac938debb1f03f",
+      "/data/code/ouyanghao/oyh/phygile-unitree-20261022/code_v12/scripts/active_policy_artifact.py": "434883e87f0ac459093a338538cd06901e05aeff9b62df5d599f4434f86d6af9"
+    },
+    "scope": "Read-only artifact identity and numerical state binding; complements separately witnessed production inference. No training or motion-quality result."
+  },
+  "gpu_cpu_parity": {
+    "status": "NEW_CHECKPOINT_GPU_CPU_ACTIVE_INFERENCE_PARITY",
+    "max_abs_action_delta": 3.337860107421875e-06,
+    "preexisting_tolerance": 1e-05,
+    "synthetic_rows": 5,
+    "source_checkpoint_sha256": "30ac49b42a793ec8832c72fafacce5bd0a4e51abca9ed2868aebf0e5dbc528ee",
+    "artifact_sha256": "28eb2dc7e6734cda278c17f7385b6a3b1d0530e8be74465cb9808826a061bcfa",
+    "evaluation_type": "synthetic_proxy",
+    "policy_or_physics_updates": 0
+  },
+  "baseline_selection": "retain original 2000-iteration parent; 2500-iteration model has no observed improvement",
+  "success_counts": {
+    "before": {
+      "isaac": 2,
+      "mjlab_official": 1
+    },
+    "after": {
+      "isaac": 1,
+      "mjlab_official": 1,
+      "mjlab_matched_friction": 1
+    }
+  },
+  "comparison_rows": [
+    {
+      "clip": 0,
+      "engine": "isaac",
+      "before_frames": 149,
+      "after_frames": 128,
+      "before_success": true,
+      "after_success": false,
+      "before_metrics": {
+        "mpjpe_m_until_termination": 0.10578294098377228,
+        "mpjae_rad_until_termination": 0.16308119893074036,
+        "mpjve_rad_s_until_termination": 0.6768550276756287
+      },
+      "after_metrics": {
+        "mpjpe_m_until_termination": 0.0895664170384407,
+        "mpjae_rad_until_termination": 0.1988309919834137,
+        "mpjve_rad_s_until_termination": 0.6145287752151489
+      },
+      "evaluation_types": [
+        "real_gt",
+        "simulation_only"
+      ],
+      "development_diagnostic": true,
+      "seed": 2026
+    },
+    {
+      "clip": 0,
+      "engine": "mjlab",
+      "before_frames": 129,
+      "after_frames": 126,
+      "before_success": false,
+      "after_success": false,
+      "before_metrics": {
+        "mpjpe_m_until_termination": 0.10080162435770035,
+        "mpjae_rad_until_termination": 0.1483706384897232,
+        "mpjve_rad_s_until_termination": 0.5985475778579712
+      },
+      "after_metrics": {
+        "mpjpe_m_until_termination": 0.11084053665399551,
+        "mpjae_rad_until_termination": 0.20897039771080017,
+        "mpjve_rad_s_until_termination": 0.63551926612854
+      },
+      "evaluation_types": [
+        "real_gt",
+        "simulation_only"
+      ],
+      "development_diagnostic": true,
+      "seed": 2026
+    },
+    {
+      "clip": 1,
+      "engine": "isaac",
+      "before_frames": 12,
+      "after_frames": 10,
+      "before_success": false,
+      "after_success": false,
+      "before_metrics": {
+        "mpjpe_m_until_termination": 0.0958448275923729,
+        "mpjae_rad_until_termination": 0.1759459674358368,
+        "mpjve_rad_s_until_termination": 1.578159213066101
+      },
+      "after_metrics": {
+        "mpjpe_m_until_termination": 0.08494261652231216,
+        "mpjae_rad_until_termination": 0.15998393297195435,
+        "mpjve_rad_s_until_termination": 1.671140432357788
+      },
+      "evaluation_types": [
+        "real_gt",
+        "simulation_only"
+      ],
+      "development_diagnostic": true,
+      "seed": 2026
+    },
+    {
+      "clip": 1,
+      "engine": "mjlab",
+      "before_frames": 10,
+      "after_frames": 8,
+      "before_success": false,
+      "after_success": false,
+      "before_metrics": {
+        "mpjpe_m_until_termination": 0.0796847715973854,
+        "mpjae_rad_until_termination": 0.1657697707414627,
+        "mpjve_rad_s_until_termination": 1.6562098264694214
+      },
+      "after_metrics": {
+        "mpjpe_m_until_termination": 0.06696467846632004,
+        "mpjae_rad_until_termination": 0.14879104495048523,
+        "mpjve_rad_s_until_termination": 1.8330795764923096
+      },
+      "evaluation_types": [
+        "real_gt",
+        "simulation_only"
+      ],
+      "development_diagnostic": true,
+      "seed": 2026
+    },
+    {
+      "clip": 2,
+      "engine": "isaac",
+      "before_frames": 149,
+      "after_frames": 149,
+      "before_success": true,
+      "after_success": true,
+      "before_metrics": {
+        "mpjpe_m_until_termination": 0.08769341558218002,
+        "mpjae_rad_until_termination": 0.12084983289241791,
+        "mpjve_rad_s_until_termination": 0.416519433259964
+      },
+      "after_metrics": {
+        "mpjpe_m_until_termination": 0.11087962239980698,
+        "mpjae_rad_until_termination": 0.21065440773963928,
+        "mpjve_rad_s_until_termination": 0.4945846199989319
+      },
+      "evaluation_types": [
+        "real_gt",
+        "simulation_only"
+      ],
+      "development_diagnostic": true,
+      "seed": 2026
+    },
+    {
+      "clip": 2,
+      "engine": "mjlab",
+      "before_frames": 149,
+      "after_frames": 149,
+      "before_success": true,
+      "after_success": true,
+      "before_metrics": {
+        "mpjpe_m_until_termination": 0.08948104828596115,
+        "mpjae_rad_until_termination": 0.13402718305587769,
+        "mpjve_rad_s_until_termination": 0.42945703864097595
+      },
+      "after_metrics": {
+        "mpjpe_m_until_termination": 0.08763942867517471,
+        "mpjae_rad_until_termination": 0.2119193822145462,
+        "mpjve_rad_s_until_termination": 0.47026413679122925
+      },
+      "evaluation_types": [
+        "real_gt",
+        "simulation_only"
+      ],
+      "development_diagnostic": true,
+      "seed": 2026
+    },
+    {
+      "clip": 3,
+      "engine": "isaac",
+      "before_frames": 62,
+      "after_frames": 56,
+      "before_success": false,
+      "after_success": false,
+      "before_metrics": {
+        "mpjpe_m_until_termination": 0.1668108105659485,
+        "mpjae_rad_until_termination": 0.25691139698028564,
+        "mpjve_rad_s_until_termination": 0.8972397446632385
+      },
+      "after_metrics": {
+        "mpjpe_m_until_termination": 0.16726168990135193,
+        "mpjae_rad_until_termination": 0.25726670026779175,
+        "mpjve_rad_s_until_termination": 0.93157958984375
+      },
+      "evaluation_types": [
+        "real_gt",
+        "simulation_only"
+      ],
+      "development_diagnostic": true,
+      "seed": 2026
+    },
+    {
+      "clip": 3,
+      "engine": "mjlab",
+      "before_frames": 14,
+      "after_frames": 15,
+      "before_success": false,
+      "after_success": false,
+      "before_metrics": {
+        "mpjpe_m_until_termination": 0.05893192067742348,
+        "mpjae_rad_until_termination": 0.1512841284275055,
+        "mpjve_rad_s_until_termination": 1.0656405687332153
+      },
+      "after_metrics": {
+        "mpjpe_m_until_termination": 0.07224179804325104,
+        "mpjae_rad_until_termination": 0.16341178119182587,
+        "mpjve_rad_s_until_termination": 1.0824103355407715
+      },
+      "evaluation_types": [
+        "real_gt",
+        "simulation_only"
+      ],
+      "development_diagnostic": true,
+      "seed": 2026
+    }
+  ],
+  "new_policy_closures": {
+    "physx": {
+      "status": "COMPLETED_ENGINEERING_VALIDATION",
+      "outcome": "REJECTED_WITHOUT_INVALID_COMMIT",
+      "committed_new_frames": 0,
+      "trained_generator": false,
+      "executed_sources_unchanged": true
+    },
+    "mujoco": {
+      "status": "COMPLETED_ENGINEERING_VALIDATION",
+      "outcome": "REJECTED_WITHOUT_INVALID_COMMIT",
+      "committed_new_frames": 0,
+      "trained_generator": false,
+      "executed_sources_unchanged": true
+    }
+  },
+  "closure_evaluation_types": [
+    "synthetic_proxy",
+    "simulation_only"
+  ],
+  "held_pose_fixture_evaluation_types": [
+    "self_supervised_proxy",
+    "simulation_only"
+  ],
+  "online_prefix_ppo_updates": 0,
+  "scope": "Single seed and four reused development clips; no complete-paper, stable generated motion or generalization claim."
+}

@@ -1,0 +1,403 @@
+{
+  "schema_version": 1,
+  "audit_skill": "experiment-audit",
+  "status": "PASSED_DETERMINISTIC_VERIFICATION",
+  "review_date": "2026-10-17",
+  "review_independence": "deterministic",
+  "acceptance_status": "accepted",
+  "runtime": {
+    "python": "3.11.14",
+    "numpy": "2.0.1",
+    "torch": "2.5.1",
+    "cuda_available": false
+  },
+  "scope": {
+    "raw_npz_files": 24,
+    "old_raw_files": 16,
+    "new_raw_files": 8,
+    "evaluation_receipts": 24,
+    "training_seeds": 1,
+    "evaluated_train_clips": 4,
+    "evaluated_test_clips": 4,
+    "test_source_groups": 1,
+    "episodes_per_clip": 32
+  },
+  "formulas": {
+    "mpjpe_m_until_termination": "mean over retained pre-reset rows and 14 bodies of Euclidean world-position error",
+    "mpjae_rad_until_termination": "mean over retained pre-reset rows and 29 joints of absolute joint-position error",
+    "mpjve_rad_s_until_termination": "mean over retained pre-reset rows and 29 joints of absolute joint-velocity error",
+    "success": "episode length equals 149 frames and no terminated flag",
+    "survival_at_t": "mean((length > t) OR ((length == t) AND success)) over a fixed denominator of 128 test episodes",
+    "aggregation": "equal-weight macro mean over four selected clips"
+  },
+  "max_absolute_differences": {
+    "raw_float64_vs_metrics_json": 3.417445517683859e-07,
+    "raw_float64_vs_per_step_csv": 9.387886441558635e-07,
+    "raw_float64_vs_summary": 3.417445517683859e-07,
+    "evaluation_summary_csv_vs_summary": 0.0,
+    "survival_json_vs_raw": 0.0
+  },
+  "groups_recomputed_float64_from_raw": [
+    {
+      "updates": 1,
+      "split": "train",
+      "clips": 4,
+      "successes": 0,
+      "trials": 128,
+      "success_fraction": 0.0,
+      "mean_duration_s_macro": 0.406875,
+      "mpjpe_m_macro_until_failure": 0.1484118844102306
+    },
+    {
+      "updates": 1,
+      "split": "test",
+      "clips": 4,
+      "successes": 0,
+      "trials": 128,
+      "success_fraction": 0.0,
+      "mean_duration_s_macro": 0.45796875000000004,
+      "mpjpe_m_macro_until_failure": 0.1589551958961308
+    },
+    {
+      "updates": 500,
+      "split": "train",
+      "clips": 4,
+      "successes": 3,
+      "trials": 128,
+      "success_fraction": 0.0234375,
+      "mean_duration_s_macro": 1.0582812499999998,
+      "mpjpe_m_macro_until_failure": 0.1969592946491728
+    },
+    {
+      "updates": 500,
+      "split": "test",
+      "clips": 4,
+      "successes": 2,
+      "trials": 128,
+      "success_fraction": 0.015625,
+      "mean_duration_s_macro": 0.904375,
+      "mpjpe_m_macro_until_failure": 0.17606260831844084
+    },
+    {
+      "updates": 2000,
+      "split": "train",
+      "clips": 4,
+      "successes": 34,
+      "trials": 128,
+      "success_fraction": 0.265625,
+      "mean_duration_s_macro": 1.5074999999999998,
+      "mpjpe_m_macro_until_failure": 0.21043908068690367
+    },
+    {
+      "updates": 2000,
+      "split": "test",
+      "clips": 4,
+      "successes": 26,
+      "trials": 128,
+      "success_fraction": 0.203125,
+      "mean_duration_s_macro": 1.5010937500000001,
+      "mpjpe_m_macro_until_failure": 0.2750853419538274
+    }
+  ],
+  "comparison_500_vs_2000_test": {
+    "protocol_identity": "PASS: same called evaluator/config/environment hashes, clips, motion hashes, seed 2026, 32 envs, 149 frames, 50 Hz, one active expert",
+    "ppo_iterations": [
+      500,
+      2000
+    ],
+    "successes": [
+      2,
+      26
+    ],
+    "trials": [
+      128,
+      128
+    ],
+    "success_fractions": [
+      0.015625,
+      0.203125
+    ],
+    "success_percentage_point_change": 18.75,
+    "mean_duration_s_macro": [
+      0.904375,
+      1.5010937500000001
+    ],
+    "mpjpe_m_macro_until_failure": [
+      0.17606260831844084,
+      0.2750853419538274
+    ],
+    "censoring_warning": "MPJPE retention windows differ because first-failure times differ; do not interpret the increase as a controlled tracking-accuracy comparison."
+  },
+  "survival_recomputed_from_raw": {
+    "500": {
+      "episodes": 128,
+      "successes": 2,
+      "final_fraction": 0.015625,
+      "mean_length_steps": 45.21875,
+      "selected_points": {
+        "1": 1.0,
+        "25": 0.7421875,
+        "50": 0.28125,
+        "75": 0.15625,
+        "100": 0.09375,
+        "125": 0.03125,
+        "149": 0.015625
+      }
+    },
+    "2000": {
+      "episodes": 128,
+      "successes": 26,
+      "final_fraction": 0.203125,
+      "mean_length_steps": 75.0546875,
+      "selected_points": {
+        "1": 1.0,
+        "25": 0.75,
+        "50": 0.6015625,
+        "75": 0.390625,
+        "100": 0.359375,
+        "125": 0.34375,
+        "149": 0.203125
+      }
+    }
+  },
+  "checkpoint_state_recomputed_cpu_only": {
+    "checkpoint_sha256": {
+      "500": "afad21ce7192dc4ec10e04fd2bc7684e9278f901dbffcb053cf45b8b04bda162",
+      "2000": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336"
+    },
+    "iterations": [
+      499,
+      1999
+    ],
+    "model_tensor_count": 97,
+    "changed_model_tensors": 27,
+    "all_final_model_tensors_finite": true,
+    "expert_parameter_changes": {
+      "0": {
+        "tensors": 6,
+        "changed_tensors": 6
+      },
+      "1": {
+        "tensors": 6,
+        "changed_tensors": 0
+      },
+      "2": {
+        "tensors": 6,
+        "changed_tensors": 0
+      },
+      "3": {
+        "tensors": 6,
+        "changed_tensors": 0
+      },
+      "4": {
+        "tensors": 6,
+        "changed_tensors": 0
+      },
+      "5": {
+        "tensors": 6,
+        "changed_tensors": 0
+      },
+      "6": {
+        "tensors": 6,
+        "changed_tensors": 0
+      },
+      "7": {
+        "tensors": 6,
+        "changed_tensors": 0
+      },
+      "8": {
+        "tensors": 6,
+        "changed_tensors": 0
+      },
+      "9": {
+        "tensors": 6,
+        "changed_tensors": 0
+      },
+      "10": {
+        "tensors": 6,
+        "changed_tensors": 0
+      },
+      "11": {
+        "tensors": 6,
+        "changed_tensors": 0
+      }
+    },
+    "optimizer_tensors_with_step": 25,
+    "parent_adam_steps": [
+      10000
+    ],
+    "final_adam_steps": [
+      40000
+    ],
+    "optimizer_step_differences": [
+      30000
+    ],
+    "all_final_optimizer_tensors_finite": true
+  },
+  "training_execution": {
+    "pipeline_status": "COMPLETED",
+    "pipeline_stage_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "train_receipt_status": "COMPLETED",
+    "train_receipt_exit_code": 0,
+    "logged_learning_iterations": 1500,
+    "first_logged_iteration": 500,
+    "last_logged_iteration": 1999,
+    "resume_marker_present": true,
+    "state_check_receipt_status": "COMPLETED",
+    "state_check_exit_code": 0
+  },
+  "reference_provenance": {
+    "reference_type": "video-reconstructed, GMR-retargeted, FK-derived kinematic reference; not measured robot trajectory",
+    "splits": {
+      "train": {
+        "clips": 20,
+        "source_groups": 7
+      },
+      "test": {
+        "clips": 4,
+        "source_groups": 1
+      }
+    },
+    "source_group_overlap": [],
+    "classification": "simulation_only using an external video-reconstructed, GMR-retargeted, FK-derived kinematic proxy; not measured robot ground truth and not output of the evaluated policy"
+  },
+  "called_code_sha256": {
+    "scripts/evaluate_pilot.py": "d9f75793cb60734e7f1c39313162cddda3a5d995bea2cbff8eb4097f6863e549",
+    "configs/moe_pilot.yaml": "7a34e2417fc66c9f1894edd7f1720a2eb3243a941126553258e21c4d862b5d5f",
+    "upstream/source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/terminations.py": "3a5ec93c101ada4754372624852c6645a7b755daa53ca5b6d0b92c44dee23033",
+    "upstream/source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py": "b3a35da443de54c303e6b4fd3fb2b9e4153bdbeef7d91f9fb843bd5def3f1e4a",
+    "upstream/source/whole_body_tracking/whole_body_tracking/tasks/tracking/config/g1/flat_env_cfg.py": "f359e08c16a9330493a59dc97da594ee397b8b1d40ee19b0fb4ac2134b530369",
+    "upstream/source/whole_body_tracking/whole_body_tracking/tasks/tracking/config/g1/agents/rsl_rl_ppo_cfg.py": "cdeca647d779596a4ea62f350a2f6ea10ec1d297e3d7023e1a1d612c3735a7c2",
+    "upstream/source/whole_body_tracking/whole_body_tracking/utils/my_on_policy_runner.py": "c41fa2122f92f9413dc43c8de72a0f8dcaae518021143cc0f37e104f497f701c",
+    "upstream/source/whole_body_tracking/whole_body_tracking/utils/moe_ppo.py": "4e0a5a23435a9c85af003879c70ef362193caed0aae1f94b7228921f8a122ed4"
+  },
+  "report_binding": {
+    "builder_sha256": "ea3eac73e7b9a7aeaf448eb7416c53962ef993c52c1c432bbd495bd3d0615271",
+    "report_md_sha256": "82dc32e68a6318d93ff9a47c306d6aee4467f809ce32e9a5c180da156ce8549f",
+    "manifest_matches_actual_bytes": true,
+    "principal_numeric_claims_match_raw_recomputation": true
+  },
+  "audited_input_sha256": {
+    "scripts/resume_training.py": "44132bd9972ef8eff408977304c58f91690c28dedd98ae658e0d6df10ae286e5",
+    "scripts/train_extended_2000.sh": "b3a5976134e24baa7113e7c0e490c65dffb5ebcc28712fe0afc9454eab7368d5",
+    "scripts/run_continuation_pipeline.py": "7275528f50ae937781fb9df3d1b65335bed403829e60642977ad0cf934e813db",
+    "scripts/evaluate_continuation.py": "9ac96081776b6755f203ff8d1540eec19b433685f0e82151ae0758a9d16ec85c",
+    "scripts/evaluate_pilot.py": "d9f75793cb60734e7f1c39313162cddda3a5d995bea2cbff8eb4097f6863e549",
+    "scripts/summarize_continuation.py": "a002396ba3980bf58a01ac29149a1ad52aafdc0d3f7bc168236c14c6451c385e",
+    "scripts/verify_continuation_states.py": "a5be041b3f4414a421a693911ca91cf20babdd809953faa8f9bdefcae45c80cd",
+    "scripts/build_continuation_report.py": "ea3eac73e7b9a7aeaf448eb7416c53962ef993c52c1c432bbd495bd3d0615271",
+    "configs/continuation_2000_plan.json": "91751e8ed9880f9455e611a7cacd42a757b0482cb1c1bc489d13cbd20077dac5",
+    "configs/moe_pilot.yaml": "7a34e2417fc66c9f1894edd7f1720a2eb3243a941126553258e21c4d862b5d5f",
+    "configs/accounting_terms_erratum.json": "ab79281f9f2a3edf69572ec6c5974b410a0e1bea51673a1dd9f59a684ca3bd95",
+    "docs/accounting_terms_erratum.md": "64ab9c88087b3766d4396e4e0ab036579b3501199f4450559fe1dd2113dd989a",
+    "docs/continuation_2000.md": "6412edabb1ee5f62630e0320a85eb96576fcd783fcf4b33be1f2db08687d3539",
+    "results/data_inventory.json": "2859c16b291b95fb12c6b8b08a2d976a4d134eb7f973bc42ff8672999164552e",
+    "results/data_provenance.json": "ec3dd1d75f56f75a5a2d34b250e2dbbec009bece6ccd63200f11a74b65a36f70",
+    "results/summary.json": "d71b11e89f252fcfe1b369448cb67b9a145dee27ae09ddec78ff740590cf5586",
+    "results/continuation_2000/pipeline.json": "72da87eb660b485a5e68919a12d0800d2b53489a2eb5c3ed1bab51eac74d74d2",
+    "results/continuation_2000/train/receipt.json": "a0bcb9ff96b6f8ccb941b7cedd4c585515f7bb7671a851428a3b4e4ba2817f33",
+    "results/continuation_2000/evaluation_suite.json": "ef316077ebcd1c584183bbbc521eef5fe08c8706cd2f0493e62bd69b923439d7",
+    "results/continuation_2000/summary.json": "fceb5741095bafc88321690652f568258154b423971219485ce87f6b184eb64a",
+    "results/continuation_2000/evaluation_summary.csv": "a203f85e01111c5326c47463f1229415fed8a87b7a2183e172ddd41c176004b4",
+    "results/continuation_2000/checkpoint_verification.json": "33f8cb21d3bd7aadb6a6634b3cb85af786d6f69a609fd0242361bdd63504eebf",
+    "results/continuation_2000/state_comparison.json": "ee497aedd6fe5f9d14d25792572e45985882251f0c4b9636394f1cedbdc6d1fc",
+    "results/continuation_2000/state_comparison_check/receipt.json": "72f7abf2453760ca984645f641aca4e4e8b7340537ef5116c195e076095b4653",
+    "results/continuation_2000/resume_provenance.json": "5f1fc51881c00c755d3666d860177a90b624e78e02536be13db9e89ed1865bda",
+    "results/continuation_2000/survival_curves.json": "44fc704cea0f4bd8f3cf47dac09332b33c20634850c185276d8ef4a4a91ee7bd",
+    "results/continuation_2000/report_build.json": "501e34442c7422c78f2c5acc449eb6e6299416ce32a32d29bf13fe0c78f4840b",
+    "results/continuation_2000/execution_archive_verification.json": "9eeb365b589c59d6d0bf8dc238a4188e012776d6736d41bd0ad14af8ac3dc37b",
+    "reports/PhyGile续训与生成核心报告.md": "82dc32e68a6318d93ff9a47c306d6aee4467f809ce32e9a5c180da156ce8549f",
+    "README.md": "f6435599df23c13704933faa54ce6ce4674d3ed9aecfaff39e428c4d295b682e",
+    "EXPERIMENT_TRACKER.md": "8aee85663063067d19417d272b9b5058212cd2fcd87c07798a83fed66d8aeb31",
+    "release_assets/phygile_initial_expert_500updates_seed42.pt": "afad21ce7192dc4ec10e04fd2bc7684e9278f901dbffcb053cf45b8b04bda162",
+    "release_assets/phygile_initial_expert_2000updates_seed42.pt": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336"
+  },
+  "raw_npz_sha256": {
+    "old/iter000_test_000/raw_pre_reset.npz": "255dfa2a3151154ed475abb3ac9a2ae6b7da6f2b1dc57714b31fb0141e430c9e",
+    "old/iter000_test_001/raw_pre_reset.npz": "7e4a09bb14531a0c81c199f4e8a2435e4b3d3ea06eea14b0cb07672cb45b3b12",
+    "old/iter000_test_002/raw_pre_reset.npz": "923d128fbcddc61ae483ec158365d736c60673ac40733888f46cecd22ed7464b",
+    "old/iter000_test_003/raw_pre_reset.npz": "f6eef37121937d417248fe1e4dbdcec1002b841b8a759170cd42bfdcaa1ed15f",
+    "old/iter000_train_000/raw_pre_reset.npz": "a1ee6805baa05782d864ad21337f240cbedd7fe270feef8fe1fd32a1482feb7e",
+    "old/iter000_train_008/raw_pre_reset.npz": "4050ed1a03eefd825493caaf004c422944d0f803436786dd68be0d43e5c26942",
+    "old/iter000_train_010/raw_pre_reset.npz": "41a9a837cf0c3c3c15e2a97df2ee8e2ccb1a210f6aeb969ec30469bd43da1e72",
+    "old/iter000_train_014/raw_pre_reset.npz": "5c9416a8b039e1561fd05663b93fac934d1bfca1edd36c29eaf2447339fb6945",
+    "old/iter499_test_000/raw_pre_reset.npz": "6112ae05cdab7c5d24f8cbf0d83948a8cbd03f17a3fef251256d7469604263e7",
+    "old/iter499_test_001/raw_pre_reset.npz": "5c45a957cab2c6c5fc3386b47633ef782437e08fe11a7a72404466a88737b00f",
+    "old/iter499_test_002/raw_pre_reset.npz": "9597f3cac9d0bba6ad0ca9dac93f568f9708b58f42e56af2ed7d26a5d8286bd6",
+    "old/iter499_test_003/raw_pre_reset.npz": "8c65bbf9c41d2adc34d3bec9b2ac6312d0f2a872ed2e743dcc55e94b47700b52",
+    "old/iter499_train_000/raw_pre_reset.npz": "48cbf4e7741c089e10bc1514006df36470d08b717d32b70811f321d858d2fd39",
+    "old/iter499_train_008/raw_pre_reset.npz": "b3142a2b3a2bfb9014f673c39b9d7e91d752b0eed8dd24a2d4062c46e887d0b7",
+    "old/iter499_train_010/raw_pre_reset.npz": "0eb99ffef2781eabe43c9355d7109e68b87da2b2ca21e0b19adf126e4a32c935",
+    "old/iter499_train_014/raw_pre_reset.npz": "93f40574b28484d9f70ec8b65a322bccada7c73cc9fcd8125fcf7748d0763e90",
+    "new/iter1999_test_000/raw_pre_reset.npz": "4adf0411b3c11c6d7fbc8af7dcd314c90b483850dc56247ba4d8628284a05847",
+    "new/iter1999_test_001/raw_pre_reset.npz": "6b3c7a8fbf7b193497eca75ee9f78f9aa0a09dcf35941761b855e14eba0ac85e",
+    "new/iter1999_test_002/raw_pre_reset.npz": "03c9c8e8d4582256f8aa0a40c163c6caa124958099bc189c315614868b31e4f3",
+    "new/iter1999_test_003/raw_pre_reset.npz": "642b412d254427804b4447189f4d14142d2cb3dbe37442bec7d7a11451fe2027",
+    "new/iter1999_train_000/raw_pre_reset.npz": "39ab5bed0272f6549e56e7c9cba52db0649117ae5ae15c940462a54d47350635",
+    "new/iter1999_train_008/raw_pre_reset.npz": "5e413a2614dbcf46151690543de4e96aa34a3464033fa41171269161ea442714",
+    "new/iter1999_train_010/raw_pre_reset.npz": "c5aa0e286237c577db5f976ebf71d90868ef8a604ab0ce24042ab7e90e7ffe9a",
+    "new/iter1999_train_014/raw_pre_reset.npz": "01935f9e71117edade3ab827473e84a732ef37d431265c33d99717b047ba8111"
+  },
+  "metrics_json_sha256": {
+    "old/iter000_test_000/metrics.json": "891087ac1f11f8b681d8a32404666156ca6fadc21ac964793070590def3363a6",
+    "old/iter000_test_001/metrics.json": "85210d61a103ca164a43bfd434ca119d4297a74d7ed4425e9b3656a330ed0317",
+    "old/iter000_test_002/metrics.json": "d39ea7084b86851d5fbef0a562298cb2146d76a9f2c2665ddccef9c5c9e950ea",
+    "old/iter000_test_003/metrics.json": "9f1dd947500831bcab88f06ca65e3eef71fbb95e963ed0889c1af3e0c5e5f8e2",
+    "old/iter000_train_000/metrics.json": "a0d139e3c26c3c5cd509c3c9315f0a79beec0074690fb1b6f2c4a6deb1ac684c",
+    "old/iter000_train_008/metrics.json": "8a74cff44d8f05712d5d8495ba1d477b74b0818b331ea018397e06a4a6027b4f",
+    "old/iter000_train_010/metrics.json": "090892b81b0b05c34e109a9f9923779d5c2ca688485a94afe28ea26a95f1c127",
+    "old/iter000_train_014/metrics.json": "00712af8f1241a44b9a82c3197d1f2abb950dc1371cdc3e33faff620d590f19e",
+    "old/iter499_test_000/metrics.json": "06250bf02df86ffe630e9af4c4ba5673856dbd4f6be9940b7b5da3f434c7bb2b",
+    "old/iter499_test_001/metrics.json": "7e07d66e184b412b5f57930023dcd79bf9239cf9dbfa9015e97ff80d19e6ba8e",
+    "old/iter499_test_002/metrics.json": "78cc00bc4fa762506be0ec38846591e3e732e7ff07872a468bffe71f25da3480",
+    "old/iter499_test_003/metrics.json": "a6131523d3c7ffac1eac5fb680393feb9b7de926857e085610feba78201e18bd",
+    "old/iter499_train_000/metrics.json": "cf066619bd827b96bc835ff6e1065a965fddada5d6802c04f269050d4531ed74",
+    "old/iter499_train_008/metrics.json": "89e1b1f4f812e765f0b1587ce8fa4d2e548267245ccbd6abd7bb3cc512a7a8d7",
+    "old/iter499_train_010/metrics.json": "ac8fdf5a432e0bb9c0bcef706228cb50a41311f15abb0cef19c289763da68728",
+    "old/iter499_train_014/metrics.json": "9a8466a61a5c184a2975ede9386f8aca05011ae38363cc7882b9d728729c1d87",
+    "new/iter1999_test_000/metrics.json": "002fda38aa3085d53d2f913819d4fa88766d364cd1f5b8b175021135c2021c5a",
+    "new/iter1999_test_001/metrics.json": "3f4cd2719d66c39372fe05f403afc4e84f8399345653758012e47af7acf1ca5f",
+    "new/iter1999_test_002/metrics.json": "910fd16277b4b25cdb54145607f034f23725065c985273584f541c0800580be6",
+    "new/iter1999_test_003/metrics.json": "664c05775210ba0cf4221c928325a33a13940f91dc0428906a12e339a6a5168e",
+    "new/iter1999_train_000/metrics.json": "50a1b69e90358f4c3a0bf4bb7f735f460789909c573dadb0c6f84512fe888839",
+    "new/iter1999_train_008/metrics.json": "67dae98978a43d94a4666fa23561b43d10144268db186690bf26a092729f1310",
+    "new/iter1999_train_010/metrics.json": "349f2d5ea7f46cd7dfc4a960b9eda6eb086604c791747279e9b7eebdeb365dec",
+    "new/iter1999_train_014/metrics.json": "377d7c06cd602fd8321f3a5a12ddccec612868b01342cfa9dc2a6c2cc4da334b"
+  },
+  "evaluation_receipt_sha256": {
+    "old/iter000_test_000/receipt.json": "0796643fac60cbce11b89cf97837bb16534c061ec2485e1c8a1c5f7b1cd44a15",
+    "old/iter000_test_001/receipt.json": "8d9007a508e6430641c6056772490e0563355fba3bda2bbf7840dded6483d7ef",
+    "old/iter000_test_002/receipt.json": "910ab2b7f179cde83d57a8c26839c0a7f04c5bfdd0e60f79eac2c2918da60ee9",
+    "old/iter000_test_003/receipt.json": "e16768d961b68599ae49b7cac08f053e5821110a5f72eec10893409641b636dd",
+    "old/iter000_train_000/receipt.json": "df5d2eefd2b53fc367a86db36f80a5d58c9947bad81a182d9a37ac20ef028164",
+    "old/iter000_train_008/receipt.json": "fdd606b37c851241881985e6f211b8f0fa24fdc9212411fa591edd14efa266c6",
+    "old/iter000_train_010/receipt.json": "df208af03281c4dabda77c1045e3c17aad239263fbfe359c8cdd5d8d10daf1ba",
+    "old/iter000_train_014/receipt.json": "3451b5a83fc36673ec69d835d218f1afe9cfaa8c0f563c0aec527306a7c71a45",
+    "old/iter499_test_000/receipt.json": "1ba04302a05bc166302a1facf801aeefea2e7c920d5c8a61c70b40054c939689",
+    "old/iter499_test_001/receipt.json": "c86b834b6919b658f85b20083cc494088bf86e131bacb9d28cf0d30036c14e4e",
+    "old/iter499_test_002/receipt.json": "515bc426ea11fca9f0807070af90c90b7513a960e7d5bc27107d0088d3d84176",
+    "old/iter499_test_003/receipt.json": "9449c0a6b014e4f53a458e92564fe9b0ea9c395dba4e8b24824ccfcc6d16676d",
+    "old/iter499_train_000/receipt.json": "b427e6df5dd0689b2e9ef73a704c4187363b141380041ce49f4efd656c6e44ea",
+    "old/iter499_train_008/receipt.json": "1fc0bee7261bd53d163c94985e00061759d1d13bd266b1310025144e1e3e0c08",
+    "old/iter499_train_010/receipt.json": "e5feb8e940ca79a6bbc254087a90fa7ab37352a7ee1d1b520ce66f80b763e667",
+    "old/iter499_train_014/receipt.json": "5dae762aa1548927c6f06a8744b8cda6266a2fe977f36b573cc0309707b462ee",
+    "new/iter1999_test_000/receipt.json": "d5f363d4a9e31d73ed92489df36c106140d89f6ad961e7f88d2479c9e91647fb",
+    "new/iter1999_test_001/receipt.json": "2da425338741f356e19a750c2d32cf8542b6863d7dd721b1766adfdc149fdd16",
+    "new/iter1999_test_002/receipt.json": "beb35ac4f659b24792331b96c69e9be03788a5600942d8191aaff05de438707a",
+    "new/iter1999_test_003/receipt.json": "8bee835ebd16a3c85f899f87d24d8d42da0480b4ee0c3c8de3f85038cc74edd4",
+    "new/iter1999_train_000/receipt.json": "79e5ce7f00381dfc316a2fe04d7f3fb66a8a15e452166a7a6810f0d5f8e1acb3",
+    "new/iter1999_train_008/receipt.json": "b5f87dfc3ead4917a8294b22390c8960ce7c312f915bc24a1f58ebc54e09fbed",
+    "new/iter1999_train_010/receipt.json": "29a5cc7553e774a74a168b695d40a9093f963b8433373d7bb7f7766b409a462c",
+    "new/iter1999_train_014/receipt.json": "e848575cbddf7e7e1bb51dd875d94bf010aa741a3176824daef5793ebb68689b"
+  },
+  "limitations": [
+    "Same-family semantic review remains provisional even though deterministic checks are accepted.",
+    "One training seed and one held-out source group; 32 simulator episodes per clip are not independent training seeds.",
+    "The 500-iteration test results had already been viewed, so the continuation comparison is exploratory.",
+    "External release-page availability was not used as evidence; all scientific claims were checked against local artifacts."
+  ]
+}

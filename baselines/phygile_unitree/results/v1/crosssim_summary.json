@@ -1,0 +1,231 @@
+{
+  "status": "RAW_METRICS_RECOMPUTED_AND_ACTUAL_INPUT_PARITY_PASSED",
+  "utc": "2026-10-22T09:48:30.074446+00:00",
+  "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+  "seed": 2026,
+  "trials_per_clip_per_engine": 1,
+  "optimizer_steps": 0,
+  "control_dt": 0.02,
+  "physics_dt": 0.005,
+  "policy_observation_dims": 616,
+  "actions": 29,
+  "success_counts": {
+    "isaac": 2,
+    "mjlab": 1
+  },
+  "clips": [
+    {
+      "clip": 0,
+      "engines": [
+        {
+          "engine": "isaac",
+          "clip": 0,
+          "motion_sha256": "9da670f4a3f4881fa49c73b7a05efcdff8353334f8cf34f5c901ef3668ebc86d",
+          "motion_frames": 149,
+          "frames_evaluated": 149,
+          "seconds_until_termination": 2.98,
+          "full_clip_success": true,
+          "metrics": {
+            "mpjpe_m_until_termination": 0.10578294098377228,
+            "mpjae_rad_until_termination": 0.16308119893074036,
+            "mpjve_rad_s_until_termination": 0.6768550276756287
+          },
+          "actual_observation_policy_parity": {
+            "max_abs_action_error": 1.4901161193847656e-07,
+            "allclose": true
+          },
+          "reference_type": "dataset-derived kinematic reference",
+          "evaluation_type": "simulation_only"
+        },
+        {
+          "engine": "mjlab",
+          "clip": 0,
+          "motion_sha256": "9da670f4a3f4881fa49c73b7a05efcdff8353334f8cf34f5c901ef3668ebc86d",
+          "motion_frames": 149,
+          "frames_evaluated": 129,
+          "seconds_until_termination": 2.58,
+          "full_clip_success": false,
+          "metrics": {
+            "mpjpe_m_until_termination": 0.10080162435770035,
+            "mpjae_rad_until_termination": 0.1483706384897232,
+            "mpjve_rad_s_until_termination": 0.5985475778579712
+          },
+          "actual_observation_policy_parity": {
+            "max_abs_action_error": 0.0,
+            "allclose": true
+          },
+          "reference_type": "dataset-derived kinematic reference",
+          "evaluation_type": "simulation_only"
+        }
+      ],
+      "initial_observation_max_abs_difference_by_block": {
+        "command": 0.0,
+        "anchor_orientation": 1.2787890568688454e-07,
+        "base_angular_velocity": 5.587935447692871e-09,
+        "joint_position": 0.0,
+        "joint_velocity": 0.0,
+        "previous_action": 0.0
+      }
+    },
+    {
+      "clip": 1,
+      "engines": [
+        {
+          "engine": "isaac",
+          "clip": 1,
+          "motion_sha256": "9f43364b4a5d2415a64277eece7f8101be2449cf356ad66175c294d91be7a499",
+          "motion_frames": 149,
+          "frames_evaluated": 12,
+          "seconds_until_termination": 0.24,
+          "full_clip_success": false,
+          "metrics": {
+            "mpjpe_m_until_termination": 0.0958448275923729,
+            "mpjae_rad_until_termination": 0.1759459674358368,
+            "mpjve_rad_s_until_termination": 1.578159213066101
+          },
+          "actual_observation_policy_parity": {
+            "max_abs_action_error": 3.2782554626464844e-07,
+            "allclose": true
+          },
+          "reference_type": "dataset-derived kinematic reference",
+          "evaluation_type": "simulation_only"
+        },
+        {
+          "engine": "mjlab",
+          "clip": 1,
+          "motion_sha256": "9f43364b4a5d2415a64277eece7f8101be2449cf356ad66175c294d91be7a499",
+          "motion_frames": 149,
+          "frames_evaluated": 10,
+          "seconds_until_termination": 0.2,
+          "full_clip_success": false,
+          "metrics": {
+            "mpjpe_m_until_termination": 0.0796847715973854,
+            "mpjae_rad_until_termination": 0.1657697707414627,
+            "mpjve_rad_s_until_termination": 1.6562098264694214
+          },
+          "actual_observation_policy_parity": {
+            "max_abs_action_error": 0.0,
+            "allclose": true
+          },
+          "reference_type": "dataset-derived kinematic reference",
+          "evaluation_type": "simulation_only"
+        }
+      ],
+      "initial_observation_max_abs_difference_by_block": {
+        "command": 0.0,
+        "anchor_orientation": 3.30362183831312e-07,
+        "base_angular_velocity": 7.748603820800781e-07,
+        "joint_position": 2.9802322387695312e-08,
+        "joint_velocity": 0.0,
+        "previous_action": 0.0
+      }
+    },
+    {
+      "clip": 2,
+      "engines": [
+        {
+          "engine": "isaac",
+          "clip": 2,
+          "motion_sha256": "b212bd307ecbfc9d3ed407c45ce62f48b3a70ecc803099efb61fd018efd7fe59",
+          "motion_frames": 149,
+          "frames_evaluated": 149,
+          "seconds_until_termination": 2.98,
+          "full_clip_success": true,
+          "metrics": {
+            "mpjpe_m_until_termination": 0.08769341558218002,
+            "mpjae_rad_until_termination": 0.12084983289241791,
+            "mpjve_rad_s_until_termination": 0.416519433259964
+          },
+          "actual_observation_policy_parity": {
+            "max_abs_action_error": 1.4901161193847656e-07,
+            "allclose": true
+          },
+          "reference_type": "dataset-derived kinematic reference",
+          "evaluation_type": "simulation_only"
+        },
+        {
+          "engine": "mjlab",
+          "clip": 2,
+          "motion_sha256": "b212bd307ecbfc9d3ed407c45ce62f48b3a70ecc803099efb61fd018efd7fe59",
+          "motion_frames": 149,
+          "frames_evaluated": 149,
+          "seconds_until_termination": 2.98,
+          "full_clip_success": true,
+          "metrics": {
+            "mpjpe_m_until_termination": 0.08948104828596115,
+            "mpjae_rad_until_termination": 0.13402718305587769,
+            "mpjve_rad_s_until_termination": 0.42945703864097595
+          },
+          "actual_observation_policy_parity": {
+            "max_abs_action_error": 0.0,
+            "allclose": true
+          },
+          "reference_type": "dataset-derived kinematic reference",
+          "evaluation_type": "simulation_only"
+        }
+      ],
+      "initial_observation_max_abs_difference_by_block": {
+        "command": 0.0,
+        "anchor_orientation": 4.938615916216804e-07,
+        "base_angular_velocity": 6.05359673500061e-09,
+        "joint_position": 0.0,
+        "joint_velocity": 0.0,
+        "previous_action": 0.0
+      }
+    },
+    {
+      "clip": 3,
+      "engines": [
+        {
+          "engine": "isaac",
+          "clip": 3,
+          "motion_sha256": "3bbb62305a12b2f9a23227ad29d1bd36ea7b7b22eb97081fcc0548aee82fd92f",
+          "motion_frames": 149,
+          "frames_evaluated": 62,
+          "seconds_until_termination": 1.24,
+          "full_clip_success": false,
+          "metrics": {
+            "mpjpe_m_until_termination": 0.1668108105659485,
+            "mpjae_rad_until_termination": 0.25691139698028564,
+            "mpjve_rad_s_until_termination": 0.8972397446632385
+          },
+          "actual_observation_policy_parity": {
+            "max_abs_action_error": 2.384185791015625e-07,
+            "allclose": true
+          },
+          "reference_type": "dataset-derived kinematic reference",
+          "evaluation_type": "simulation_only"
+        },
+        {
+          "engine": "mjlab",
+          "clip": 3,
+          "motion_sha256": "3bbb62305a12b2f9a23227ad29d1bd36ea7b7b22eb97081fcc0548aee82fd92f",
+          "motion_frames": 149,
+          "frames_evaluated": 14,
+          "seconds_until_termination": 0.28,
+          "full_clip_success": false,
+          "metrics": {
+            "mpjpe_m_until_termination": 0.05893192067742348,
+            "mpjae_rad_until_termination": 0.1512841284275055,
+            "mpjve_rad_s_until_termination": 1.0656405687332153
+          },
+          "actual_observation_policy_parity": {
+            "max_abs_action_error": 0.0,
+            "allclose": true
+          },
+          "reference_type": "dataset-derived kinematic reference",
+          "evaluation_type": "simulation_only"
+        }
+      ],
+      "initial_observation_max_abs_difference_by_block": {
+        "command": 0.0,
+        "anchor_orientation": 2.3669903725931363e-07,
+        "base_angular_velocity": 5.960464477539063e-08,
+        "joint_position": 2.9802322387695312e-08,
+        "joint_velocity": 0.0,
+        "previous_action": 0.0
+      }
+    }
+  ],
+  "scope": "Four existing short held-out clips, one deterministic episode each. Failure-censored errors must be read with duration/success. This is a simulation-only framework/transfer pilot, not paper-scale validation, equivalence, or real-robot performance."
+}

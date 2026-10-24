@@ -1,0 +1,125 @@
+# G1 MoE (Mixture-of-Experts) 训练配置
+# 基于 g1_training_future_conv_large_freeze.yaml，将 Actor 替换为 MoE 架构。
+# 用法：--g1_training_cfg <此文件路径>
+#
+# 训练分两阶段：
+#   Phase 1 (supervised) – 课程学习逐级解锁 expert，80% 硬路由 + 20% gate 自主路由
+#   Phase 2 (adaptive)   – 所有 expert 开放，gate 完全自主路由，引入无标注数据
+
+runner:
+  num_steps_per_env: 24
+  max_iterations: 200000
+  save_interval: 1000
+  experiment_name: "g1_flat_moe"
+  empirical_normalization: true
+  upload_models_to_wandb: false
+
+policy:
+  class_name: "MoEActorCritic"
+  init_noise_std: 1.0
+  # 这些 actor_hidden_dims 不再用于 actor（MoE expert 有自己的 dims），
+  # 但仍用于 critic head
+  actor_hidden_dims: [2048, 1024, 512]
+  critic_hidden_dims: [2048, 1024, 512]
+  activation: "elu"
+  encoder_hidden_dims: null
+  share_encoder: null
+  future_command_encoder:
+    per_frame_dim: 65
+    immediate_steps: 2
+    conv_steps: 5
+    conv_channels: [256, 128]
+    kernel_size: 3
+    pooling: "avg"
+    dropout: 0.0
+    latent_dim: 128
+    share_across_actor_critic: true
+    apply_to_actor: true
+    apply_to_critic: true
+
+  # ========== MoE 配置 ==========
+  moe_config:
+    num_experts: 12              # 12 个 expert（10 levels + 2 spare）
+    expert_hidden_dims: [512, 256]   # 每个 expert 的 MLP 隐藏层
+    gate_hidden_dims: [256]          # Gating network 隐藏层
+    top_k: 2                         # adaptive 模式下选择 top-k expert
+    routing_loss_coef: 0.1           # CE 路由监督 loss 系数
+    load_balance_loss_coef: 0.01     # load-balance loss 系数（adaptive 模式）
+    supervised_hard_ratio: 0.8       # Phase 1 中硬路由的固定概率
+
+commands:
+  motion:
+    preload_device: "cuda:1"
+    future_steps: 2
+    max_files_per_iter: 200
+    encoder_future_steps: 5
+    encoder_future_stride: 20
+    enable_multi_file_bin_sampling: true
+    random_static_prob: 0.1
+
+    # ========== 等级内采样参数 ==========
+    file_error_alpha: 0.25
+    file_error_norm: 0.3
+    file_uniform_mixture: 0.20
+    sampling_temperature: 1.05
+    file_success_beta: 0.4
+    file_success_weight: 0.15
+    file_success_warmup_iters: 6000
+
+    # ========== Freeze 机制 ==========
+    file_freeze_error_threshold: 0.6
+    file_freeze_success_threshold: 0.02
+    file_freeze_min_attempts: 6000
+    file_freeze_iters: 2000
+    file_drop_enabled: true
+    file_drop_after_freezes: 3
+    file_freeze_check_interval: 500
+
+    # ========== 课程学习配置（与 MLP 版本完全一致）==========
+    curriculum_enabled: true
+    curriculum_csv_path: "/ssd/bjc/bm_mlp/source/whole_body_tracking/whole_body_tracking/utils/filtered_texts_0107.csv"
+    curriculum_mocap_dir: "/ssd/humanoid/dataset/mocap_npz"
+    curriculum_iteration_per_level: 1000
+    curriculum_auto_upgrade_after_iters: 30000
+    curriculum_resume_level_override: 0    # MoE 从头训练时从 level 1 开始
+    curriculum_new_level_weight: 10.0
+    curriculum_max_difficulty: 10
+    curriculum_min_level_sampling_ratio: 0.01
+
+    curriculum_use_subprocess_eval: false
+    curriculum_mpjpe_threshold: 0.05
+    curriculum_mpjae_threshold: 0.07
+
+    curriculum_gradual_file_intro_enabled: true
+    curriculum_gradual_file_intro_iters: 3000
+    curriculum_gradual_file_intro_start_ratio: 0.2
+    curriculum_gradual_file_intro_extra_start_level: 4
+    curriculum_gradual_file_intro_extra_iters: 2000
+
+    curriculum_lr_reset_enabled: true
+
+    # ========== MoE 专用配置 ==========
+    moe_supervised_until_level: 10     # 课程达到此 level 后切换为 adaptive 路由
+    # moe_extra_unlabeled_dirs:        # Phase 2 时引入的无标注数据目录
+    #   - "/ssd/humanoid/dataset/lafan_npz"
+
+algorithm:
+  value_loss_coef: 1.0
+  use_clipped_value_loss: true
+  clip_param: 0.2
+  entropy_coef: 0.005
+  num_learning_epochs: 5
+  num_mini_batches: 4
+  learning_rate: 0.001
+  schedule: "adaptive"
+  gamma: 0.99
+  lam: 0.95
+  desired_kl: 0.01
+  max_grad_norm: 1.0
+  normalize_advantage_per_mini_batch: false
+
+rewards:
+  motion_global_anchor_pos:
+    weight: 0.8
+    params:
+      std: 0.2

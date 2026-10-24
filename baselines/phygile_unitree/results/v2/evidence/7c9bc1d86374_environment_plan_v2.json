@@ -1,0 +1,65 @@
+{
+  "created": "2026-10-22",
+  "isaac": {
+    "provider": "existing SSH ouyanghao@10.147.17.32",
+    "runtime_root": "/data/code/ouyanghao/oyh/phygile-unitree-20261022",
+    "parent": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017",
+    "unitree_rl_lab_commit": "4960b84732b0c2ec593dccbfe963fda1bcd7b1e3",
+    "IsaacSim": "4.5.0",
+    "IsaacLab": "2.1.0",
+    "torch": "2.5.1+cu118",
+    "rsl-rl-lib": "2.3.1",
+    "gpu": 1,
+    "cpu_threads": 4,
+    "memory_fraction": 0.2,
+    "reuse_shared_dependencies_read_only": true,
+    "new_training_requires_gui": true,
+    "wandb": false
+  },
+  "mjlab": {
+    "provider": "isolated local Windows environment; frozen-policy cross-simulation, no RL training",
+    "environment": "D:/具身智能/PhyGile复现/Unitree框架适配_20261022/mjlab_env",
+    "python": "3.12.14",
+    "torch": "2.14.1+cpu",
+    "mjlab": "1.2.0",
+    "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+    "mujoco-warp": "3.5.0",
+    "mujoco": "3.5.0",
+    "warp-lang": "1.12.0",
+    "rsl-rl-lib": "5.0.1",
+    "cpu_threads": 4,
+    "device": "cpu",
+    "pip_phases": [
+      [
+        "torch==2.14.1",
+        "torchvision==0.29.1",
+        "--index-url",
+        "https://download.pytorch.org/whl/cpu"
+      ],
+      [
+        "mjlab==1.2.0",
+        "mujoco-warp==3.5.0",
+        "mujoco==3.5.0",
+        "warp-lang==1.12.0",
+        "rsl-rl-lib==5.0.1",
+        "tensordict==0.15.2",
+        "numpy==2.5.4",
+        "scipy==1.16.2"
+      ]
+    ],
+    "scope": "Use actual unitree_rl_mjlab task factory and mjlab physics; explicit PhyGile observation/action adapter. CPU execution speed is not a GPU throughput benchmark.",
+    "torchvision": "0.29.1",
+    "tensordict": "0.15.2",
+    "numpy": "2.5.4",
+    "scipy": "1.16.2"
+  },
+  "protected": [
+    "ReactiveBFM active processes, code, environment and inputs",
+    "all original datasets",
+    "parent model_1999.pt",
+    "all original experiment records"
+  ],
+  "scientific_scope": "Framework adaptation and frozen-policy cross-simulation; not full PhyGile reproduction. Preserve original paper-specific MDP/MoE and state which settings differ.",
+  "revision": 2,
+  "supersedes": "environment_plan.json (retained initial request; transitive resolver upgraded isolated Torch)"
+}

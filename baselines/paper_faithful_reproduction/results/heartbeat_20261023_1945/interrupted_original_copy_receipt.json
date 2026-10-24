@@ -1,0 +1,41 @@
+{
+  "status": "COPYING",
+  "deletes_files": false,
+  "expected_updates": 12001,
+  "last_network_error": "ssh_dispatch_run_fatal: Connection to 10.147.17.32 port 22: Connection timed out\n",
+  "consecutive_network_errors": 3,
+  "manifest": {
+    "official_step": 12000,
+    "optimizer_updates": 12001,
+    "created_utc": "2026-10-23T08:38:16.705893+00:00",
+    "files": [
+      {
+        "file": "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/training_fp64_sdpa_v4/checkpoints/model000012000.pt",
+        "bytes": 857731942,
+        "sha256": "a9162a1a86fac9ee1126b1d96572b90520e73fede39de069cd1cd708fa5bedda"
+      },
+      {
+        "file": "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/training_fp64_sdpa_v4/checkpoints/opt000012000.pt",
+        "bytes": 852473539,
+        "sha256": "d51b0fadad70da56445b41d6ae0b287e04102d57775eccf8abac68cbc22cbcad"
+      }
+    ],
+    "configuration_sha256": "9b6165b24326b447f0ea62c9f1ed9a08d474f990426780a41320399c16c42ea8"
+  },
+  "transfer_failures": [
+    {
+      "file": "reactive_v4_model000012000.pt",
+      "attempt": 1,
+      "partial_preserved": "D:\\具身智能\\PhyGile与ReactiveBFM_论文对齐复现_20261022\\recovery_v4_checkpoint_12001\\reactive_v4_model000012000.pt.partial_1792744737790856500",
+      "bytes": 5210112,
+      "error": "Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=15', '-o', 'ServerAliveInterval=30', '-i', 'C:/Users/Pende/.ssh/id_ed25519', 'ouyanghao@10.147.17.32', 'cat -- /data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/training_fp64_sdpa_v4/checkpoints/model000012000.pt']' timed out after 600 seconds"
+    },
+    {
+      "file": "reactive_v4_model000012000.pt",
+      "attempt": 2,
+      "partial_preserved": "D:\\具身智能\\PhyGile与ReactiveBFM_论文对齐复现_20261022\\recovery_v4_checkpoint_12001\\reactive_v4_model000012000.pt.partial_1792745352839509100",
+      "bytes": 1654784,
+      "error": "client_loop: send disconnect: Connection reset\r\n"
+    }
+  ]
+}

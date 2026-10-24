@@ -1,0 +1,52 @@
+{
+  "base": "Existing Python 3.10.21 retarget runtime; isolated extension",
+  "python_executable": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-retarget/bin/python",
+  "environment_directory": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021",
+  "inherit_site_packages": [
+    "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-retarget/lib/python3.10/site-packages",
+    "/data/code/ouyanghao/oyh/world-model-risk-planning/.env/lib/python3.10/site-packages"
+  ],
+  "required_versions": {
+    "numpy": "1.26.4",
+    "torch": "2.5.1+cu121",
+    "scipy": "1.15.3",
+    "mujoco": "3.3.7",
+    "mink": "0.0.13",
+    "smplx": "0.1.28",
+    "qpsolvers": "4.8.1",
+    "daqp": "0.7.2",
+    "rich": "13.9.4",
+    "tqdm": "4.70.0"
+  },
+  "pip_phases": [
+    [
+      "smplx==0.1.28",
+      "--no-deps"
+    ]
+  ],
+  "env": {
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4"
+  },
+  "weight_dirs": {
+    "smplx": {
+      "source": "https://smpl-x.is.tue.mpg.de/",
+      "gated": true,
+      "available": false
+    }
+  },
+  "smoke": {
+    "import_names": [
+      "numpy",
+      "torch",
+      "scipy",
+      "mujoco",
+      "mink",
+      "smplx"
+    ],
+    "gpu_tests": [],
+    "cpu_witness": "scripts/witness_gmr_amass_cpu.py",
+    "scope": "Dependencies and seeded CPU G1 FK only; no human-body forward or retargeting without model weights"
+  }
+}

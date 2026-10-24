@@ -1,0 +1,209 @@
+{
+  "utc_before": "2026-10-23T12:31:10.155074+00:00",
+  "health_before": [
+    {
+      "utc": "2026-10-23T12:31:06.917735+00:00",
+      "rank": 0,
+      "status": "TRAINING",
+      "loop_step": 12794,
+      "initial_optimizer_updates": 10041,
+      "optimizer_updates": 12795,
+      "resumed_updates": 2754,
+      "optimizer_step_calls": 12795,
+      "validated_optimizer_updates": 12795,
+      "attempts_since_resume": 2754,
+      "skipped_attempts": 0,
+      "consecutive_skips": 0,
+      "step_applied": true,
+      "step_validated": true,
+      "ema_validated": true,
+      "reason": "OPTIMIZER_STEP_APPLIED",
+      "grad_norm_pre_clip_fp64": 0.37883911864752856,
+      "grad_norm_post_clip_fp64": 0.37883911864752856,
+      "param_norm_fp64": 208.82391345428283,
+      "offending_parameters": [],
+      "elapsed_seconds": 49325.578423319384,
+      "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "full_training_completed": false
+    },
+    {
+      "utc": "2026-10-23T12:31:06.917762+00:00",
+      "rank": 1,
+      "status": "TRAINING",
+      "loop_step": 12794,
+      "initial_optimizer_updates": 10041,
+      "optimizer_updates": 12795,
+      "resumed_updates": 2754,
+      "optimizer_step_calls": 12795,
+      "validated_optimizer_updates": 12795,
+      "attempts_since_resume": 2754,
+      "skipped_attempts": 0,
+      "consecutive_skips": 0,
+      "step_applied": true,
+      "step_validated": true,
+      "ema_validated": true,
+      "reason": "OPTIMIZER_STEP_APPLIED",
+      "grad_norm_pre_clip_fp64": 0.37883911864752856,
+      "grad_norm_post_clip_fp64": 0.37883911864752856,
+      "param_norm_fp64": 208.82391345428283,
+      "offending_parameters": [],
+      "elapsed_seconds": 49325.57842163183,
+      "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "full_training_completed": false
+    }
+  ],
+  "command": [
+    "python3",
+    "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_code_packages_20261023_v2/cleanup_backed_unused.py",
+    "--plan",
+    "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_code_packages_20261023_v2/cleanup_plan_verified.json",
+    "--receipt",
+    "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_code_packages_20261023_v2/execute_receipt.json",
+    "--execute"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"status\": \"BACKED_UP_UNUSED_FILES_REMOVED\", \"files\": 2, \"allocated_bytes\": 315506688, \"free_after\": 4069478400}\n",
+  "stderr": "",
+  "execute": {
+    "utc": "2026-10-23T12:31:10.957758+00:00",
+    "mode": "EXECUTE",
+    "plan_sha256": "b0d96e0748718f4b83163dc85e42f369fbc5285ac22f906082bdebe1805650b3",
+    "authorized_root": "/data/code/ouyanghao/oyh",
+    "verified_files": 2,
+    "allocated_bytes": 315506688,
+    "disk_before": {
+      "total": 1967847137280,
+      "used": 1864056438784,
+      "free": 3753975808
+    },
+    "removed": [
+      {
+        "path": "/data/code/ouyanghao/oyh/maniskill-hab-demo/code_maniskill.tar",
+        "bytes": 222608896,
+        "sha256": "40bb7defbbe21dbf76051bcb52175c1b9af7e274657245f8657955161286f5e3",
+        "kind": "unused_transfer_package"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/maniskill-hab-demo/code_mshab.tar",
+        "bytes": 92897280,
+        "sha256": "879120b5a71c3b45fcb6b49a18f68f90b1312e58d0a6aed395718d8fac8efa4f",
+        "kind": "unused_transfer_package"
+      }
+    ],
+    "known_os_helpers": [
+      {
+        "pid": 2310665,
+        "comm": "(sd-pam)",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3018937,
+        "comm": "ssh-agent",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3018942,
+        "comm": "gpg-agent",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3025131,
+        "comm": "gnome-keyring-d",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3207827,
+        "comm": "sshd",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3218430,
+        "comm": "sshd",
+        "reason": "OS protected session/key helper"
+      }
+    ],
+    "backup_verification": {
+      "archive_contents_recovered_and_verified": true,
+      "local_archive_sha256": "6b67c9e3d3b7528d475cd648d0b8fb35ed16f832db3eee1dd433965bc5593141",
+      "local_archive": "D:\\具身智能\\PhyGile与ReactiveBFM_论文对齐复现_20261022\\heartbeat_20261023_1945\\github_source_archive_restore\\inactive_source_packages_20261023_v2.tar.gz",
+      "asset": {
+        "url": "https://github.com/Pendragon08/conditional-human-motion-generation/releases/download/server-unused-cache-backup-20261023/inactive_source_packages_20261023_v2.tar.gz",
+        "digest": "sha256:6b67c9e3d3b7528d475cd648d0b8fb35ed16f832db3eee1dd433965bc5593141",
+        "bytes": 182701714
+      },
+      "verified_member_paths": [
+        "maniskill-hab-demo/code_maniskill.tar",
+        "maniskill-hab-demo/code_mshab.tar"
+      ]
+    },
+    "dataset_checkpoint_record_deletion_allowed": false,
+    "status": "BACKED_UP_UNUSED_FILES_REMOVED",
+    "disk_after": {
+      "total": 1967847137280,
+      "used": 1863740936192,
+      "free": 4069478400
+    }
+  },
+  "protected_files_missing": [],
+  "protected_existing_files": 42642,
+  "protected_paths_sha256": "97d34a92bd265aa54e55d17b7e386c15e4f2932be011280a5b5b2a4ef55af3cf",
+  "health_after": [
+    {
+      "utc": "2026-10-23T12:31:06.917735+00:00",
+      "rank": 0,
+      "status": "TRAINING",
+      "loop_step": 12794,
+      "initial_optimizer_updates": 10041,
+      "optimizer_updates": 12795,
+      "resumed_updates": 2754,
+      "optimizer_step_calls": 12795,
+      "validated_optimizer_updates": 12795,
+      "attempts_since_resume": 2754,
+      "skipped_attempts": 0,
+      "consecutive_skips": 0,
+      "step_applied": true,
+      "step_validated": true,
+      "ema_validated": true,
+      "reason": "OPTIMIZER_STEP_APPLIED",
+      "grad_norm_pre_clip_fp64": 0.37883911864752856,
+      "grad_norm_post_clip_fp64": 0.37883911864752856,
+      "param_norm_fp64": 208.82391345428283,
+      "offending_parameters": [],
+      "elapsed_seconds": 49325.578423319384,
+      "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "full_training_completed": false
+    },
+    {
+      "utc": "2026-10-23T12:31:06.917762+00:00",
+      "rank": 1,
+      "status": "TRAINING",
+      "loop_step": 12794,
+      "initial_optimizer_updates": 10041,
+      "optimizer_updates": 12795,
+      "resumed_updates": 2754,
+      "optimizer_step_calls": 12795,
+      "validated_optimizer_updates": 12795,
+      "attempts_since_resume": 2754,
+      "skipped_attempts": 0,
+      "consecutive_skips": 0,
+      "step_applied": true,
+      "step_validated": true,
+      "ema_validated": true,
+      "reason": "OPTIMIZER_STEP_APPLIED",
+      "grad_norm_pre_clip_fp64": 0.37883911864752856,
+      "grad_norm_post_clip_fp64": 0.37883911864752856,
+      "param_norm_fp64": 208.82391345428283,
+      "offending_parameters": [],
+      "elapsed_seconds": 49325.57842163183,
+      "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "full_training_completed": false
+    }
+  ],
+  "original_training_processes_alive": {
+    "3184871": true,
+    "3184901": true,
+    "3184908": true,
+    "3184909": true
+  },
+  "utc_after": "2026-10-23T12:31:11.141194+00:00"
+}

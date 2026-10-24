@@ -1,0 +1,33 @@
+{
+  "created_date": "2026-10-17",
+  "objective": "Test whether a larger update budget improves the released initial-expert tracking pilot; not full PhyGile reproduction",
+  "parent_checkpoint_sha256": "afad21ce7192dc4ec10e04fd2bc7684e9278f901dbffcb053cf45b8b04bda162",
+  "parent_optimizer_updates": 500,
+  "additional_optimizer_updates": 1500,
+  "total_optimizer_updates": 2000,
+  "seed": 42,
+  "num_envs": 1024,
+  "rollout_steps": 24,
+  "timeout_seconds": 10800,
+  "training_config": "configs/moe_pilot.yaml",
+  "reward_network_observations_changed": false,
+  "training_data_changed": false,
+  "curriculum_enabled": false,
+  "active_experts": 1,
+  "selection_rule": "Evaluate the fixed final checkpoint after 2000 total updates; no checkpoint selection using held-out test scores",
+  "evaluation": {
+    "train_clips": [0, 8, 10, 14],
+    "test_clips": [0, 1, 2, 3],
+    "first_episodes_per_clip": 32,
+    "seed": 2026,
+    "protocol_script": "scripts/evaluate_pilot.py",
+    "previous_comparison_updates": [1, 500]
+  },
+  "known_limits": [
+    "One training seed and one held-out source group",
+    "Previously inspected test set: exploratory comparison, not a fresh confirmatory benchmark",
+    "Only initial expert; no two-stage GMT or generator/physics-prefix reproduction",
+    "World-frame errors are censored at failure",
+    "Checkpoint continuation resets simulator, sampler, rollout and RNG state"
+  ]
+}

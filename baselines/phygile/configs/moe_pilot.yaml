@@ -1,0 +1,141 @@
+runner:
+  num_steps_per_env: 24
+  max_iterations: 2000
+  save_interval: 500
+  experiment_name: phygile_moe_pilot
+  empirical_normalization: true
+  upload_models_to_wandb: false
+policy:
+  class_name: MoEActorCritic
+  init_noise_std: 1.0
+  actor_hidden_dims:
+  - 2048
+  - 1024
+  - 512
+  critic_hidden_dims:
+  - 2048
+  - 1024
+  - 512
+  activation: elu
+  encoder_hidden_dims: null
+  share_encoder: null
+  future_command_encoder:
+    per_frame_dim: 65
+    immediate_steps: 2
+    conv_steps: 5
+    conv_channels:
+    - 256
+    - 128
+    kernel_size: 3
+    pooling: avg
+    dropout: 0.0
+    latent_dim: 128
+    share_across_actor_critic: true
+    apply_to_actor: true
+    apply_to_critic: true
+  moe_config:
+    num_experts: 12
+    expert_hidden_dims:
+    - 512
+    - 256
+    gate_hidden_dims:
+    - 256
+    top_k: 3
+    routing_loss_coef: 0.1
+    load_balance_loss_coef: 0.01
+    supervised_hard_ratio: 0.0
+    new_level_hard_ratio: 0.8
+    expert_warm_start: true
+    candidate_update_interval: 10
+    temperature: 0.5
+    logits_ema_alpha: 0.8
+    use_zt_for_gate: true
+    phase_b_enabled: false
+commands:
+  motion:
+    preload_device: same_as_env
+    future_steps: 2
+    max_files_per_iter: 200
+    encoder_future_steps: 5
+    encoder_future_stride: 20
+    enable_multi_file_bin_sampling: true
+    random_static_prob: 0.0
+    file_error_alpha: 0.25
+    file_error_norm: 0.3
+    file_uniform_mixture: 0.2
+    sampling_temperature: 1.05
+    file_success_beta: 0.4
+    file_success_weight: 0.15
+    file_success_warmup_iters: 6000
+    file_freeze_error_threshold: null
+    file_freeze_success_threshold: null
+    file_freeze_min_attempts: 55000
+    file_freeze_iters: 0
+    file_drop_enabled: false
+    file_drop_after_freezes: 2
+    file_freeze_check_interval: 1000
+    curriculum_enabled: false
+    curriculum_csv_path: ''
+    curriculum_mocap_dir: ''
+    curriculum_iteration_per_level: 1000
+    curriculum_resume_level_override: 0
+    curriculum_auto_upgrade_per_level:
+    - 9000
+    - 13000
+    - 14000
+    - 18000
+    - 20000
+    - 22000
+    - 23000
+    - 25000
+    - 25000
+    - 25000
+    curriculum_metric_convergence_enabled: true
+    curriculum_metric_convergence_evals: 3
+    curriculum_metric_convergence_threshold: 0.03
+    curriculum_metric_convergence_min_iters: 3000
+    curriculum_new_level_weight: 10.0
+    curriculum_max_difficulty: 10
+    curriculum_min_level_sampling_ratio: 0.01
+    curriculum_level_difficulty_weights:
+    - 1
+    - 1
+    - 1.2
+    - 1.5
+    - 2
+    - 3
+    - 4
+    - 6
+    - 8
+    - 10
+    curriculum_use_subprocess_eval: false
+    curriculum_mpjpe_threshold: 0.04
+    curriculum_mpjae_threshold: 0.06
+    curriculum_gradual_file_intro_enabled: true
+    curriculum_gradual_file_intro_iters: 3000
+    curriculum_gradual_file_intro_start_ratio: 0.2
+    curriculum_gradual_file_intro_extra_start_level: 4
+    curriculum_gradual_file_intro_extra_iters: 2000
+    curriculum_lr_reset_enabled: true
+    moe_supervised_until_level: 10
+    max_motion_files: 200
+    debug_vis: false
+algorithm:
+  value_loss_coef: 1.0
+  use_clipped_value_loss: true
+  clip_param: 0.2
+  entropy_coef: 0.005
+  num_learning_epochs: 5
+  num_mini_batches: 4
+  learning_rate: 0.001
+  schedule: adaptive
+  gamma: 0.99
+  lam: 0.95
+  desired_kl: 0.01
+  max_grad_norm: 1.0
+  normalize_advantage_per_mini_batch: false
+rewards:
+  motion_global_anchor_pos:
+    weight: 0.8
+    params:
+      std: 0.2

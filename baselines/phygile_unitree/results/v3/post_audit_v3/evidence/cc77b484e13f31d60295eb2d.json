@@ -1,0 +1,226 @@
+{
+  "schema": "independent_integrity_v3.deterministic_checks.v1",
+  "generated_at": "2026-10-22T14:55:00Z",
+  "executor_model_label": "Codex based on GPT-6 (self-reported from runtime instructions; exact backend identifier not independently verified)",
+  "read_only": true,
+  "physics_runs": 0,
+  "training_runs": 0,
+  "public_seal": {
+    "path": "P/results/v3/audit_input_seal_v3.json",
+    "sha256": "230fa5807d3064547d2a5773ac97b2ef88ac2fedd5191eb67a1e7fc9d31e24b6",
+    "declared_files": 903,
+    "verified_files": 903,
+    "missing": 0,
+    "mismatched": 0,
+    "unsealed_in_scope_extra": 0
+  },
+  "evidence_index": {
+    "path": "P/results/v3/evidence_index.json",
+    "sha256": "9815535f1f11d3a7cfd35ad3edc9859fd7bec0971b9dba9e077f515087900768",
+    "declared_entries": 246,
+    "verified_entries": 246,
+    "missing": 0,
+    "mismatched": 0,
+    "duplicate_targets": 0
+  },
+  "full_checkpoint": {
+    "path": "D:/具身智能/PhyGile复现/Unitree框架适配_20261022/checkpoints_v3/unitree_rl_lab_ppo2500_30ac49b42a79.pt",
+    "bytes": 67350908,
+    "sha256_first": "30ac49b42a793ec8832c72fafacce5bd0a4e51abca9ed2868aebf0e5dbc528ee",
+    "sha256_second": "30ac49b42a793ec8832c72fafacce5bd0a4e51abca9ed2868aebf0e5dbc528ee",
+    "size_and_mtime_stable_across_hashes": true,
+    "zip_members": 178,
+    "zip_test_bad_member": null,
+    "top_level_keys": [
+      "infos",
+      "iter",
+      "model_state_dict",
+      "obs_norm_state_dict",
+      "optimizer_state_dict",
+      "privileged_obs_norm_state_dict"
+    ],
+    "iter": 2499,
+    "infos": null,
+    "model_state_tensors": 97,
+    "total_tensors": 180,
+    "finite_tensors": 180,
+    "nonfinite_tensors": 0,
+    "optimizer_param_groups": 1,
+    "optimizer_param_ids": 91,
+    "initialized_adam_states": 25,
+    "lazy_uninitialized_ids": 66,
+    "lazy_ids_exactly_inactive_experts_1_to_11": true,
+    "initialized_entries_have_step_exp_avg_exp_avg_sq": true,
+    "optimizer_tensors_finite": true,
+    "adam_steps": [
+      50000
+    ],
+    "parent_iter": 1999,
+    "parent_adam_steps": [
+      40000
+    ],
+    "changed_state_dict_tensors": 27,
+    "changed_unique_named_parameters": 21
+  },
+  "binding": {
+    "full_sha256": "30ac49b42a793ec8832c72fafacce5bd0a4e51abca9ed2868aebf0e5dbc528ee",
+    "compact_sha256": "28eb2dc7e6734cda278c17f7385b6a3b1d0530e8be74465cb9808826a061bcfa",
+    "contract_sha256": "e9c51d3c07bbfa4543a78cfd6c838a14e14f761fcea0b73c8f3ba5cac82eabff",
+    "encoder_sha256": "8d5dd4a93efcb7b2c573da1eee931a99bb8b9ea06be5eb4da9b5f1aacfc986fa",
+    "compact_embedded_hashes_match": true,
+    "active_experts": 1,
+    "retained_tensor_count": 23,
+    "omitted_tensor_count": 74,
+    "retained_key_set_exact": true,
+    "omitted_key_set_exact": true,
+    "retained_tensors_bitwise_equal": true,
+    "policy_normalizer_bitwise_equal": true,
+    "policy_normalizer_value_sha256": {
+      "_mean": "8b7295b2d1b2ff87dc6937e8bca3c1a9782b251114c652e0acf973f0979bda2e",
+      "_var": "496dfab886e1b53c062de5adcb5e1c46d44f3a224d7bb4ffe39241cd4e51b0b4",
+      "_std": "e9b7e66d701f545cacf9c3761fec62b7e83c16dd4cee86d57cb7d17915573beb",
+      "count": "e1a80d39810942208b2216d056004d9e5bb96463dd93418d5d14f8a812b2840b"
+    },
+    "optimizer_absent_from_compact": true,
+    "compact_training_resume_supported": false
+  },
+  "current_production_loader": {
+    "loader": "P/scripts/frozen_policy.py -> P/scripts/active_policy_artifact.py::load_active",
+    "current_new_full_and_compact_directly_executed": true,
+    "batch_checks": [
+      {
+        "batch": 1,
+        "bitwise_equal": true,
+        "max_abs_delta": 0
+      },
+      {
+        "batch": 7,
+        "bitwise_equal": true,
+        "max_abs_delta": 0
+      },
+      {
+        "batch": 128,
+        "bitwise_equal": true,
+        "max_abs_delta": 0
+      },
+      {
+        "batch": 1024,
+        "bitwise_equal": true,
+        "max_abs_delta": 0
+      }
+    ],
+    "deliberate_omitted_branch_calls": {
+      "critic": "RuntimeError: Compact inference entered an omitted branch",
+      "expert1": "RuntimeError: Compact inference entered an omitted branch",
+      "expert11": "RuntimeError: Compact inference entered an omitted branch"
+    },
+    "guarded_inactive_experts": 11,
+    "fixture_sha256": "a1bb1b6479fa3ccf462221565a3c32333927c630b04c587edd7eca4b79b68fc4",
+    "fixture_rows": 5,
+    "compact_cpu_vs_archived_gpu_max_abs_delta": 0.000003337860107421875,
+    "tolerance": 0.00001,
+    "within_tolerance": true
+  },
+  "isaac_private_recomputation": {
+    "manifest_files_verified": 8,
+    "hash_mismatches": 0,
+    "rows": [
+      {
+        "clip": 0,
+        "frames": 128,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.0895664170384407,
+          "mpjae_rad_until_termination": 0.1988309919834137,
+          "mpjve_rad_s_until_termination": 0.6145287752151489
+        },
+        "summary_exact": true,
+        "raw_all_finite": true,
+        "frames_contiguous": true,
+        "policy_cpu_vs_archived_gpu_max_abs_delta": 1.7881393432617188e-7
+      },
+      {
+        "clip": 1,
+        "frames": 10,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.08494261652231216,
+          "mpjae_rad_until_termination": 0.15998393297195435,
+          "mpjve_rad_s_until_termination": 1.671140432357788
+        },
+        "summary_exact": true,
+        "raw_all_finite": true,
+        "frames_contiguous": true,
+        "policy_cpu_vs_archived_gpu_max_abs_delta": 3.427267074584961e-7
+      },
+      {
+        "clip": 2,
+        "frames": 149,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.11087962239980698,
+          "mpjae_rad_until_termination": 0.21065440773963928,
+          "mpjve_rad_s_until_termination": 0.4945846199989319
+        },
+        "summary_exact": true,
+        "raw_all_finite": true,
+        "frames_contiguous": true,
+        "policy_cpu_vs_archived_gpu_max_abs_delta": 1.564621925354004e-7
+      },
+      {
+        "clip": 3,
+        "frames": 56,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.16726168990135193,
+          "mpjae_rad_until_termination": 0.25726670026779175,
+          "mpjve_rad_s_until_termination": 0.93157958984375
+        },
+        "summary_exact": true,
+        "raw_all_finite": true,
+        "frames_contiguous": true,
+        "policy_cpu_vs_archived_gpu_max_abs_delta": 4.76837158203125e-7
+      }
+    ]
+  },
+  "mjlab_recomputation": {
+    "runs": 8,
+    "exit_zero_runs": 8,
+    "exact_metric_rows": 8,
+    "finite_raw_rows": 8,
+    "contiguous_frame_rows": 8,
+    "source_manifests": 8,
+    "declared_source_files_each": 246,
+    "source_hash_mismatches": 0,
+    "official_frames": [
+      126,
+      8,
+      149,
+      15
+    ],
+    "matched_sliding_friction_frames": [
+      126,
+      8,
+      149,
+      15
+    ],
+    "official_full_clip_successes": 1,
+    "matched_sliding_friction_full_clip_successes": 1
+  },
+  "preserved_history": {
+    "v2_audit_markdown_matches_original_D_copy": true,
+    "v2_audit_json_matches_original_D_copy": true,
+    "v2_production_failure_preserved": true,
+    "v2_trace_files_present_in_D": 15,
+    "v2_trace_files_indexed_in_public_evidence": 14,
+    "only_unindexed_v2_trace_file": "independent_integrity_v2/trace/events.jsonl"
+  },
+  "release": {
+    "ppo2500_local_bytes_and_digest_match_manifest": true,
+    "compact_local_bytes_and_digest_match_manifest": true,
+    "resume2_asset_local_bytes_available": false,
+    "resume2_verification_scope": "sealed release metadata and receipt only"
+  },
+  "sealing_boundary": {
+    "downloaded_checkpoint_and_private_isaac_evidence_postdate_public_seal": true,
+    "retroactively_inherited_by_audit_input_seal_v3": false,
+    "required_publication_method": "later named final seal"
+  }
+}
+

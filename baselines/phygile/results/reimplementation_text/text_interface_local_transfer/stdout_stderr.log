@@ -1,0 +1,46 @@
+{
+  "status": "PASSED_INTERFACE_CHECK",
+  "evaluation_type": "interface_check_only",
+  "model_repository": "distilbert/distilbert-base-uncased",
+  "model_revision": "12040accade4e8a0f71eabdb258fecc2e7e948be",
+  "paper_exact_checkpoint_confirmed": false,
+  "prompts": [
+    "A person stands still.",
+    "A person turns quickly and jumps forward."
+  ],
+  "token_shape": [
+    2,
+    10,
+    768
+  ],
+  "valid_tokens": [
+    7,
+    10
+  ],
+  "prediction_shape": [
+    2,
+    4,
+    262
+  ],
+  "encoder_frozen": true,
+  "encoder_eval_under_train": true,
+  "repeat_output_identical": true,
+  "batch_padding_consistent": true,
+  "full_denoiser_forward_finite": true,
+  "motion_generator_trained": false,
+  "motion_dataset_used": false,
+  "motion_quality_evaluated": false,
+  "physics_tested": false,
+  "transformers_version": "4.48.3",
+  "torch_version": "2.5.1+cu118",
+  "elapsed_seconds": 2.6982057597488165,
+  "source_sha256": {
+    "test_text_encoder.py": "80ce12e90c2abafb63cadc5d687ad3a105141a6f6ee500a6ee54f9d1512fd004",
+    "test_core.py": "c12732d27dac9bdee04f6de4353972e94c271a6e08bc7b58608757d68dea402b",
+    "text.py": "22a04171f7e1218ff9b9ed768d6739ebed24c4072c683b78d60fde595b7fcf70",
+    "diffusion.py": "930a2cdb1967119dd51813c6838f58c062fc7d46447239b20cc15f4b638efc4c",
+    "model.py": "76eb8baa876950a34d4b23b6fa92627515bf38072c9cadf35fbf8789a13e70ab",
+    "features.py": "dee9e489f91b13217faa95a71bc5bc2f9122a1cc404639a3df9838edb6c7f9ac",
+    "fetch_text_encoder.py": "a8b2b5bd47493f967690d2807917966888e550f14c4c703cf91165e297c5503d"
+  }
+}

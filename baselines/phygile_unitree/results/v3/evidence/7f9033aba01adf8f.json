@@ -1,0 +1,2677 @@
+{
+  "status": "EIGHT_PAIRED_DIAGNOSTICS_COMPLETED",
+  "evaluation_type": "simulation_only",
+  "seeds": [
+    2026
+  ],
+  "clips_are_development_diagnostics": true,
+  "optimizer_updates": 0,
+  "selected_by_test_performance": false,
+  "change": "Measured source sliding coefficient 1.0 replaces official foot coefficient 0.6; other geometry/contact/solver settings retained. PhysX and MuJoCo contacts are not asserted equivalent.",
+  "runs": [
+    {
+      "command": [
+        "D:\\phygile_unitree_env_20261022\\Scripts\\python.exe",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\phygile_unitree\\scripts\\mjlab_evaluate.py",
+        "--unitree-checkout",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_unitree_20261022\\vendor_unitree_rl_mjlab",
+        "--assets",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\private_assets_continue500_v1",
+        "--output",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\official_clip0",
+        "--clip",
+        "0",
+        "--seed",
+        "2026",
+        "--contact-profile",
+        "official"
+      ],
+      "exit_code": 0,
+      "receipt": {
+        "status": "FIRST_EPISODE_EVALUATED",
+        "evaluation_type": "simulation_only",
+        "optimizer_steps": 0,
+        "seed": 2026,
+        "device": "cpu",
+        "clip": 0,
+        "started_utc": "2026-10-22T14:20:13.437241+00:00",
+        "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+        "paper_benchmark_reproduced": false,
+        "mapping": {
+          "joint_mapping": [
+            0,
+            3,
+            6,
+            9,
+            13,
+            17,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            21,
+            23,
+            25,
+            27,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28
+          ],
+          "body_mapping": [
+            0,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            3,
+            6,
+            9,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28,
+            13,
+            17,
+            21,
+            23,
+            25,
+            27,
+            29
+          ],
+          "frames": 149
+        },
+        "checkpoint_sha256": "28eb2dc7e6734cda278c17f7385b6a3b1d0530e8be74465cb9808826a061bcfa",
+        "motion_sha256": "9da670f4a3f4881fa49c73b7a05efcdff8353334f8cf34f5c901ef3668ebc86d",
+        "motion_frames": 149,
+        "contact_profile": "official",
+        "source_provenance": {
+          "manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\official_clip0\\executed_sources.json",
+          "sha256": "b6921a6049f95e5aeed4731f80ab56fd0f4e45cfdf6ee20d2353f711b236b99a",
+          "source_files": 246
+        },
+        "action_scale_offset_exact": true,
+        "frames_evaluated": 126,
+        "terminated": true,
+        "timeout": false,
+        "full_clip_success": false,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.11084053665399551,
+          "mpjae_rad_until_termination": 0.20897039771080017,
+          "mpjve_rad_s_until_termination": 0.63551926612854
+        },
+        "elapsed_rollout_seconds": 5.077999999979511,
+        "physics_steps": 504,
+        "control_dt": 0.02,
+        "physics_dt": 0.005,
+        "compiled_contact_parameters": [
+          {
+            "name": "terrain",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 0
+          },
+          {
+            "name": "robot/left_foot1_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot2_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot3_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot4_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot5_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot6_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot7_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot1_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot2_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot3_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot4_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot5_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot6_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot7_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          }
+        ],
+        "executed_sources_unchanged": true,
+        "post_physics_forward_before_termination": true,
+        "body_mass_comparison": {
+          "pelvis": {
+            "isaac": 3.814000129699707,
+            "mjlab": 3.813
+          },
+          "left_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "left_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "left_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "right_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "right_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "right_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "torso_link": {
+            "isaac": 7.816999435424805,
+            "mjlab": 7.818
+          },
+          "left_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "left_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "left_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          },
+          "right_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "right_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "right_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          }
+        },
+        "note": "Errors censored at first termination; interpret with duration and success. Default framework geometry/solver differences are retained and disclosed; same PD/action/command contract. No new policy optimization.",
+        "finished_utc": "2026-10-22T14:20:28.235046+00:00"
+      }
+    },
+    {
+      "command": [
+        "D:\\phygile_unitree_env_20261022\\Scripts\\python.exe",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\phygile_unitree\\scripts\\mjlab_evaluate.py",
+        "--unitree-checkout",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_unitree_20261022\\vendor_unitree_rl_mjlab",
+        "--assets",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\private_assets_continue500_v1",
+        "--output",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\official_clip1",
+        "--clip",
+        "1",
+        "--seed",
+        "2026",
+        "--contact-profile",
+        "official"
+      ],
+      "exit_code": 0,
+      "receipt": {
+        "status": "FIRST_EPISODE_EVALUATED",
+        "evaluation_type": "simulation_only",
+        "optimizer_steps": 0,
+        "seed": 2026,
+        "device": "cpu",
+        "clip": 1,
+        "started_utc": "2026-10-22T14:20:29.698656+00:00",
+        "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+        "paper_benchmark_reproduced": false,
+        "mapping": {
+          "joint_mapping": [
+            0,
+            3,
+            6,
+            9,
+            13,
+            17,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            21,
+            23,
+            25,
+            27,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28
+          ],
+          "body_mapping": [
+            0,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            3,
+            6,
+            9,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28,
+            13,
+            17,
+            21,
+            23,
+            25,
+            27,
+            29
+          ],
+          "frames": 149
+        },
+        "checkpoint_sha256": "28eb2dc7e6734cda278c17f7385b6a3b1d0530e8be74465cb9808826a061bcfa",
+        "motion_sha256": "9f43364b4a5d2415a64277eece7f8101be2449cf356ad66175c294d91be7a499",
+        "motion_frames": 149,
+        "contact_profile": "official",
+        "source_provenance": {
+          "manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\official_clip1\\executed_sources.json",
+          "sha256": "3b378443aa2cd9e5929c2c80b603c92be4c86750580c3b13a545c80b4a9a1c1f",
+          "source_files": 246
+        },
+        "action_scale_offset_exact": true,
+        "frames_evaluated": 8,
+        "terminated": true,
+        "timeout": false,
+        "full_clip_success": false,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.06696467846632004,
+          "mpjae_rad_until_termination": 0.14879104495048523,
+          "mpjve_rad_s_until_termination": 1.8330795764923096
+        },
+        "elapsed_rollout_seconds": 0.46899999992456287,
+        "physics_steps": 32,
+        "control_dt": 0.02,
+        "physics_dt": 0.005,
+        "compiled_contact_parameters": [
+          {
+            "name": "terrain",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 0
+          },
+          {
+            "name": "robot/left_foot1_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot2_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot3_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot4_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot5_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot6_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot7_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot1_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot2_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot3_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot4_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot5_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot6_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot7_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          }
+        ],
+        "executed_sources_unchanged": true,
+        "post_physics_forward_before_termination": true,
+        "body_mass_comparison": {
+          "pelvis": {
+            "isaac": 3.814000129699707,
+            "mjlab": 3.813
+          },
+          "left_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "left_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "left_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "right_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "right_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "right_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "torso_link": {
+            "isaac": 7.816999435424805,
+            "mjlab": 7.818
+          },
+          "left_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "left_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "left_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          },
+          "right_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "right_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "right_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          }
+        },
+        "note": "Errors censored at first termination; interpret with duration and success. Default framework geometry/solver differences are retained and disclosed; same PD/action/command contract. No new policy optimization.",
+        "finished_utc": "2026-10-22T14:20:39.544961+00:00"
+      }
+    },
+    {
+      "command": [
+        "D:\\phygile_unitree_env_20261022\\Scripts\\python.exe",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\phygile_unitree\\scripts\\mjlab_evaluate.py",
+        "--unitree-checkout",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_unitree_20261022\\vendor_unitree_rl_mjlab",
+        "--assets",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\private_assets_continue500_v1",
+        "--output",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\official_clip2",
+        "--clip",
+        "2",
+        "--seed",
+        "2026",
+        "--contact-profile",
+        "official"
+      ],
+      "exit_code": 0,
+      "receipt": {
+        "status": "FIRST_EPISODE_EVALUATED",
+        "evaluation_type": "simulation_only",
+        "optimizer_steps": 0,
+        "seed": 2026,
+        "device": "cpu",
+        "clip": 2,
+        "started_utc": "2026-10-22T14:20:40.769433+00:00",
+        "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+        "paper_benchmark_reproduced": false,
+        "mapping": {
+          "joint_mapping": [
+            0,
+            3,
+            6,
+            9,
+            13,
+            17,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            21,
+            23,
+            25,
+            27,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28
+          ],
+          "body_mapping": [
+            0,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            3,
+            6,
+            9,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28,
+            13,
+            17,
+            21,
+            23,
+            25,
+            27,
+            29
+          ],
+          "frames": 149
+        },
+        "checkpoint_sha256": "28eb2dc7e6734cda278c17f7385b6a3b1d0530e8be74465cb9808826a061bcfa",
+        "motion_sha256": "b212bd307ecbfc9d3ed407c45ce62f48b3a70ecc803099efb61fd018efd7fe59",
+        "motion_frames": 149,
+        "contact_profile": "official",
+        "source_provenance": {
+          "manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\official_clip2\\executed_sources.json",
+          "sha256": "a876272d71acfa42aef57757169311be1044081db69689582c0dde9bb644f946",
+          "source_files": 246
+        },
+        "action_scale_offset_exact": true,
+        "frames_evaluated": 149,
+        "terminated": false,
+        "timeout": true,
+        "full_clip_success": true,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.08763942867517471,
+          "mpjae_rad_until_termination": 0.2119193822145462,
+          "mpjve_rad_s_until_termination": 0.47026413679122925
+        },
+        "elapsed_rollout_seconds": 9.702999999979511,
+        "physics_steps": 596,
+        "control_dt": 0.02,
+        "physics_dt": 0.005,
+        "compiled_contact_parameters": [
+          {
+            "name": "terrain",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 0
+          },
+          {
+            "name": "robot/left_foot1_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot2_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot3_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot4_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot5_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot6_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot7_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot1_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot2_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot3_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot4_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot5_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot6_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot7_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          }
+        ],
+        "executed_sources_unchanged": true,
+        "post_physics_forward_before_termination": true,
+        "body_mass_comparison": {
+          "pelvis": {
+            "isaac": 3.814000129699707,
+            "mjlab": 3.813
+          },
+          "left_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "left_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "left_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "right_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "right_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "right_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "torso_link": {
+            "isaac": 7.816999435424805,
+            "mjlab": 7.818
+          },
+          "left_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "left_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "left_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          },
+          "right_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "right_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "right_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          }
+        },
+        "note": "Errors censored at first termination; interpret with duration and success. Default framework geometry/solver differences are retained and disclosed; same PD/action/command contract. No new policy optimization.",
+        "finished_utc": "2026-10-22T14:21:01.835738+00:00"
+      }
+    },
+    {
+      "command": [
+        "D:\\phygile_unitree_env_20261022\\Scripts\\python.exe",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\phygile_unitree\\scripts\\mjlab_evaluate.py",
+        "--unitree-checkout",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_unitree_20261022\\vendor_unitree_rl_mjlab",
+        "--assets",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\private_assets_continue500_v1",
+        "--output",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\official_clip3",
+        "--clip",
+        "3",
+        "--seed",
+        "2026",
+        "--contact-profile",
+        "official"
+      ],
+      "exit_code": 0,
+      "receipt": {
+        "status": "FIRST_EPISODE_EVALUATED",
+        "evaluation_type": "simulation_only",
+        "optimizer_steps": 0,
+        "seed": 2026,
+        "device": "cpu",
+        "clip": 3,
+        "started_utc": "2026-10-22T14:21:03.245012+00:00",
+        "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+        "paper_benchmark_reproduced": false,
+        "mapping": {
+          "joint_mapping": [
+            0,
+            3,
+            6,
+            9,
+            13,
+            17,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            21,
+            23,
+            25,
+            27,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28
+          ],
+          "body_mapping": [
+            0,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            3,
+            6,
+            9,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28,
+            13,
+            17,
+            21,
+            23,
+            25,
+            27,
+            29
+          ],
+          "frames": 149
+        },
+        "checkpoint_sha256": "28eb2dc7e6734cda278c17f7385b6a3b1d0530e8be74465cb9808826a061bcfa",
+        "motion_sha256": "3bbb62305a12b2f9a23227ad29d1bd36ea7b7b22eb97081fcc0548aee82fd92f",
+        "motion_frames": 149,
+        "contact_profile": "official",
+        "source_provenance": {
+          "manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\official_clip3\\executed_sources.json",
+          "sha256": "a9fbbf0a2382be5ca163f3f687208212f334225d0d1c36dce9bd29b8f76452f4",
+          "source_files": 246
+        },
+        "action_scale_offset_exact": true,
+        "frames_evaluated": 15,
+        "terminated": true,
+        "timeout": false,
+        "full_clip_success": false,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.07224179804325104,
+          "mpjae_rad_until_termination": 0.16341178119182587,
+          "mpjve_rad_s_until_termination": 1.0824103355407715
+        },
+        "elapsed_rollout_seconds": 0.8279999999795109,
+        "physics_steps": 60,
+        "control_dt": 0.02,
+        "physics_dt": 0.005,
+        "compiled_contact_parameters": [
+          {
+            "name": "terrain",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 0
+          },
+          {
+            "name": "robot/left_foot1_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot2_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot3_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot4_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot5_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot6_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot7_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot1_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot2_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot3_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot4_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot5_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot6_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot7_collision",
+            "friction": [
+              0.6,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          }
+        ],
+        "executed_sources_unchanged": true,
+        "post_physics_forward_before_termination": true,
+        "body_mass_comparison": {
+          "pelvis": {
+            "isaac": 3.814000129699707,
+            "mjlab": 3.813
+          },
+          "left_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "left_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "left_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "right_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "right_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "right_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "torso_link": {
+            "isaac": 7.816999435424805,
+            "mjlab": 7.818
+          },
+          "left_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "left_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "left_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          },
+          "right_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "right_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "right_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          }
+        },
+        "note": "Errors censored at first termination; interpret with duration and success. Default framework geometry/solver differences are retained and disclosed; same PD/action/command contract. No new policy optimization.",
+        "finished_utc": "2026-10-22T14:21:13.687116+00:00"
+      }
+    },
+    {
+      "command": [
+        "D:\\phygile_unitree_env_20261022\\Scripts\\python.exe",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\phygile_unitree\\scripts\\mjlab_evaluate.py",
+        "--unitree-checkout",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_unitree_20261022\\vendor_unitree_rl_mjlab",
+        "--assets",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\private_assets_continue500_v1",
+        "--output",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\matched_sliding_friction_clip0",
+        "--clip",
+        "0",
+        "--seed",
+        "2026",
+        "--contact-profile",
+        "matched_sliding_friction"
+      ],
+      "exit_code": 0,
+      "receipt": {
+        "status": "FIRST_EPISODE_EVALUATED",
+        "evaluation_type": "simulation_only",
+        "optimizer_steps": 0,
+        "seed": 2026,
+        "device": "cpu",
+        "clip": 0,
+        "started_utc": "2026-10-22T14:21:15.170726+00:00",
+        "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+        "paper_benchmark_reproduced": false,
+        "mapping": {
+          "joint_mapping": [
+            0,
+            3,
+            6,
+            9,
+            13,
+            17,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            21,
+            23,
+            25,
+            27,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28
+          ],
+          "body_mapping": [
+            0,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            3,
+            6,
+            9,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28,
+            13,
+            17,
+            21,
+            23,
+            25,
+            27,
+            29
+          ],
+          "frames": 149
+        },
+        "checkpoint_sha256": "28eb2dc7e6734cda278c17f7385b6a3b1d0530e8be74465cb9808826a061bcfa",
+        "motion_sha256": "9da670f4a3f4881fa49c73b7a05efcdff8353334f8cf34f5c901ef3668ebc86d",
+        "motion_frames": 149,
+        "contact_profile": "matched_sliding_friction",
+        "source_provenance": {
+          "manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\matched_sliding_friction_clip0\\executed_sources.json",
+          "sha256": "b6921a6049f95e5aeed4731f80ab56fd0f4e45cfdf6ee20d2353f711b236b99a",
+          "source_files": 246
+        },
+        "action_scale_offset_exact": true,
+        "frames_evaluated": 126,
+        "terminated": true,
+        "timeout": false,
+        "full_clip_success": false,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.168317511677742,
+          "mpjae_rad_until_termination": 0.20354445278644562,
+          "mpjve_rad_s_until_termination": 0.6821275949478149
+        },
+        "elapsed_rollout_seconds": 6.469000000040978,
+        "physics_steps": 504,
+        "control_dt": 0.02,
+        "physics_dt": 0.005,
+        "compiled_contact_parameters": [
+          {
+            "name": "terrain",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 0
+          },
+          {
+            "name": "robot/left_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          }
+        ],
+        "executed_sources_unchanged": true,
+        "post_physics_forward_before_termination": true,
+        "body_mass_comparison": {
+          "pelvis": {
+            "isaac": 3.814000129699707,
+            "mjlab": 3.813
+          },
+          "left_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "left_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "left_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "right_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "right_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "right_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "torso_link": {
+            "isaac": 7.816999435424805,
+            "mjlab": 7.818
+          },
+          "left_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "left_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "left_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          },
+          "right_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "right_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "right_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          }
+        },
+        "note": "Errors censored at first termination; interpret with duration and success. Default framework geometry/solver differences are retained and disclosed; same PD/action/command contract. No new policy optimization.",
+        "finished_utc": "2026-10-22T14:21:31.289228+00:00"
+      }
+    },
+    {
+      "command": [
+        "D:\\phygile_unitree_env_20261022\\Scripts\\python.exe",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\phygile_unitree\\scripts\\mjlab_evaluate.py",
+        "--unitree-checkout",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_unitree_20261022\\vendor_unitree_rl_mjlab",
+        "--assets",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\private_assets_continue500_v1",
+        "--output",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\matched_sliding_friction_clip1",
+        "--clip",
+        "1",
+        "--seed",
+        "2026",
+        "--contact-profile",
+        "matched_sliding_friction"
+      ],
+      "exit_code": 0,
+      "receipt": {
+        "status": "FIRST_EPISODE_EVALUATED",
+        "evaluation_type": "simulation_only",
+        "optimizer_steps": 0,
+        "seed": 2026,
+        "device": "cpu",
+        "clip": 1,
+        "started_utc": "2026-10-22T14:21:32.501927+00:00",
+        "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+        "paper_benchmark_reproduced": false,
+        "mapping": {
+          "joint_mapping": [
+            0,
+            3,
+            6,
+            9,
+            13,
+            17,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            21,
+            23,
+            25,
+            27,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28
+          ],
+          "body_mapping": [
+            0,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            3,
+            6,
+            9,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28,
+            13,
+            17,
+            21,
+            23,
+            25,
+            27,
+            29
+          ],
+          "frames": 149
+        },
+        "checkpoint_sha256": "28eb2dc7e6734cda278c17f7385b6a3b1d0530e8be74465cb9808826a061bcfa",
+        "motion_sha256": "9f43364b4a5d2415a64277eece7f8101be2449cf356ad66175c294d91be7a499",
+        "motion_frames": 149,
+        "contact_profile": "matched_sliding_friction",
+        "source_provenance": {
+          "manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\matched_sliding_friction_clip1\\executed_sources.json",
+          "sha256": "3b378443aa2cd9e5929c2c80b603c92be4c86750580c3b13a545c80b4a9a1c1f",
+          "source_files": 246
+        },
+        "action_scale_offset_exact": true,
+        "frames_evaluated": 8,
+        "terminated": true,
+        "timeout": false,
+        "full_clip_success": false,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.06754710525274277,
+          "mpjae_rad_until_termination": 0.15102209150791168,
+          "mpjve_rad_s_until_termination": 1.8210375308990479
+        },
+        "elapsed_rollout_seconds": 0.45400000002700835,
+        "physics_steps": 32,
+        "control_dt": 0.02,
+        "physics_dt": 0.005,
+        "compiled_contact_parameters": [
+          {
+            "name": "terrain",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 0
+          },
+          {
+            "name": "robot/left_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          }
+        ],
+        "executed_sources_unchanged": true,
+        "post_physics_forward_before_termination": true,
+        "body_mass_comparison": {
+          "pelvis": {
+            "isaac": 3.814000129699707,
+            "mjlab": 3.813
+          },
+          "left_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "left_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "left_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "right_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "right_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "right_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "torso_link": {
+            "isaac": 7.816999435424805,
+            "mjlab": 7.818
+          },
+          "left_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "left_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "left_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          },
+          "right_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "right_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "right_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          }
+        },
+        "note": "Errors censored at first termination; interpret with duration and success. Default framework geometry/solver differences are retained and disclosed; same PD/action/command contract. No new policy optimization.",
+        "finished_utc": "2026-10-22T14:21:42.149959+00:00"
+      }
+    },
+    {
+      "command": [
+        "D:\\phygile_unitree_env_20261022\\Scripts\\python.exe",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\phygile_unitree\\scripts\\mjlab_evaluate.py",
+        "--unitree-checkout",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_unitree_20261022\\vendor_unitree_rl_mjlab",
+        "--assets",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\private_assets_continue500_v1",
+        "--output",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\matched_sliding_friction_clip2",
+        "--clip",
+        "2",
+        "--seed",
+        "2026",
+        "--contact-profile",
+        "matched_sliding_friction"
+      ],
+      "exit_code": 0,
+      "receipt": {
+        "status": "FIRST_EPISODE_EVALUATED",
+        "evaluation_type": "simulation_only",
+        "optimizer_steps": 0,
+        "seed": 2026,
+        "device": "cpu",
+        "clip": 2,
+        "started_utc": "2026-10-22T14:21:43.493484+00:00",
+        "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+        "paper_benchmark_reproduced": false,
+        "mapping": {
+          "joint_mapping": [
+            0,
+            3,
+            6,
+            9,
+            13,
+            17,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            21,
+            23,
+            25,
+            27,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28
+          ],
+          "body_mapping": [
+            0,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            3,
+            6,
+            9,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28,
+            13,
+            17,
+            21,
+            23,
+            25,
+            27,
+            29
+          ],
+          "frames": 149
+        },
+        "checkpoint_sha256": "28eb2dc7e6734cda278c17f7385b6a3b1d0530e8be74465cb9808826a061bcfa",
+        "motion_sha256": "b212bd307ecbfc9d3ed407c45ce62f48b3a70ecc803099efb61fd018efd7fe59",
+        "motion_frames": 149,
+        "contact_profile": "matched_sliding_friction",
+        "source_provenance": {
+          "manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\matched_sliding_friction_clip2\\executed_sources.json",
+          "sha256": "a876272d71acfa42aef57757169311be1044081db69689582c0dde9bb644f946",
+          "source_files": 246
+        },
+        "action_scale_offset_exact": true,
+        "frames_evaluated": 149,
+        "terminated": false,
+        "timeout": true,
+        "full_clip_success": true,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.0873895138502121,
+          "mpjae_rad_until_termination": 0.21157604455947876,
+          "mpjve_rad_s_until_termination": 0.43397095799446106
+        },
+        "elapsed_rollout_seconds": 6.656000000075437,
+        "physics_steps": 596,
+        "control_dt": 0.02,
+        "physics_dt": 0.005,
+        "compiled_contact_parameters": [
+          {
+            "name": "terrain",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 0
+          },
+          {
+            "name": "robot/left_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          }
+        ],
+        "executed_sources_unchanged": true,
+        "post_physics_forward_before_termination": true,
+        "body_mass_comparison": {
+          "pelvis": {
+            "isaac": 3.814000129699707,
+            "mjlab": 3.813
+          },
+          "left_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "left_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "left_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "right_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "right_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "right_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "torso_link": {
+            "isaac": 7.816999435424805,
+            "mjlab": 7.818
+          },
+          "left_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "left_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "left_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          },
+          "right_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "right_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "right_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          }
+        },
+        "note": "Errors censored at first termination; interpret with duration and success. Default framework geometry/solver differences are retained and disclosed; same PD/action/command contract. No new policy optimization.",
+        "finished_utc": "2026-10-22T14:21:59.975892+00:00"
+      }
+    },
+    {
+      "command": [
+        "D:\\phygile_unitree_env_20261022\\Scripts\\python.exe",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\phygile_unitree\\scripts\\mjlab_evaluate.py",
+        "--unitree-checkout",
+        "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_unitree_20261022\\vendor_unitree_rl_mjlab",
+        "--assets",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\private_assets_continue500_v1",
+        "--output",
+        "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\matched_sliding_friction_clip3",
+        "--clip",
+        "3",
+        "--seed",
+        "2026",
+        "--contact-profile",
+        "matched_sliding_friction"
+      ],
+      "exit_code": 0,
+      "receipt": {
+        "status": "FIRST_EPISODE_EVALUATED",
+        "evaluation_type": "simulation_only",
+        "optimizer_steps": 0,
+        "seed": 2026,
+        "device": "cpu",
+        "clip": 3,
+        "started_utc": "2026-10-22T14:22:01.285206+00:00",
+        "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+        "paper_benchmark_reproduced": false,
+        "mapping": {
+          "joint_mapping": [
+            0,
+            3,
+            6,
+            9,
+            13,
+            17,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            21,
+            23,
+            25,
+            27,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28
+          ],
+          "body_mapping": [
+            0,
+            1,
+            4,
+            7,
+            10,
+            14,
+            18,
+            2,
+            5,
+            8,
+            11,
+            15,
+            19,
+            3,
+            6,
+            9,
+            12,
+            16,
+            20,
+            22,
+            24,
+            26,
+            28,
+            13,
+            17,
+            21,
+            23,
+            25,
+            27,
+            29
+          ],
+          "frames": 149
+        },
+        "checkpoint_sha256": "28eb2dc7e6734cda278c17f7385b6a3b1d0530e8be74465cb9808826a061bcfa",
+        "motion_sha256": "3bbb62305a12b2f9a23227ad29d1bd36ea7b7b22eb97081fcc0548aee82fd92f",
+        "motion_frames": 149,
+        "contact_profile": "matched_sliding_friction",
+        "source_provenance": {
+          "manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\matched_sliding_friction_clip3\\executed_sources.json",
+          "sha256": "a9fbbf0a2382be5ca163f3f687208212f334225d0d1c36dce9bd29b8f76452f4",
+          "source_files": 246
+        },
+        "action_scale_offset_exact": true,
+        "frames_evaluated": 15,
+        "terminated": true,
+        "timeout": false,
+        "full_clip_success": false,
+        "metrics": {
+          "mpjpe_m_until_termination": 0.07098358124494553,
+          "mpjae_rad_until_termination": 0.16329914331436157,
+          "mpjve_rad_s_until_termination": 1.0720839500427246
+        },
+        "elapsed_rollout_seconds": 0.5630000000819564,
+        "physics_steps": 60,
+        "control_dt": 0.02,
+        "physics_dt": 0.005,
+        "compiled_contact_parameters": [
+          {
+            "name": "terrain",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 0
+          },
+          {
+            "name": "robot/left_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/left_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot1_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot2_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot3_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot4_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot5_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot6_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          },
+          {
+            "name": "robot/right_foot7_collision",
+            "friction": [
+              1.0,
+              0.005,
+              0.0001
+            ],
+            "condim": 3,
+            "priority": 1
+          }
+        ],
+        "executed_sources_unchanged": true,
+        "post_physics_forward_before_termination": true,
+        "body_mass_comparison": {
+          "pelvis": {
+            "isaac": 3.814000129699707,
+            "mjlab": 3.813
+          },
+          "left_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "left_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "left_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "right_hip_roll_link": {
+            "isaac": 1.5199999809265137,
+            "mjlab": 1.52
+          },
+          "right_knee_link": {
+            "isaac": 1.9320000410079956,
+            "mjlab": 1.932
+          },
+          "right_ankle_roll_link": {
+            "isaac": 0.6079999804496765,
+            "mjlab": 0.608
+          },
+          "torso_link": {
+            "isaac": 7.816999435424805,
+            "mjlab": 7.818
+          },
+          "left_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "left_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "left_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          },
+          "right_shoulder_roll_link": {
+            "isaac": 0.6430000066757202,
+            "mjlab": 0.643
+          },
+          "right_elbow_link": {
+            "isaac": 0.6000000238418579,
+            "mjlab": 0.6
+          },
+          "right_wrist_yaw_link": {
+            "isaac": 0.2545764744281769,
+            "mjlab": 0.254576
+          }
+        },
+        "note": "Errors censored at first termination; interpret with duration and success. Default framework geometry/solver differences are retained and disclosed; same PD/action/command contract. No new policy optimization.",
+        "finished_utc": "2026-10-22T14:22:11.248431+00:00"
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+from session import *
+import base64
+dest=LOCAL/'storage_cleanup_20261023'
+plan_path=dest/'cleanup_plan_packages_verified.json'
+plan=json.loads(plan_path.read_text(encoding='utf-8'))
+assert plan['guard_sha256']==sha((BASE/'scripts/cleanup_backed_unused.py').read_bytes())
+payload=base64.b64encode(plan_path.read_bytes()).decode()
+script=r'''
+from pathlib import Path
+import base64,json,subprocess,os,datetime,hashlib
+base=Path('/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1')
+root=base.parent.parent
+plan=base/'packages_verified_plan.json';assert not plan.exists()
+plan.write_bytes(base64.b64decode(PAYLOAD))
+guard=base/'cleanup_backed_unused_v2.py'
+assert hashlib.sha256(guard.read_bytes()).hexdigest()==json.loads(plan.read_text())['guard_sha256']
+training=base.parent/'training_fp64_sdpa_v4'
+out={'utc_before':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+ 'health_before':[json.loads((training/f'health_rank{i}.json').read_text()) for i in [0,1]],'commands':[]}
+protected_roots=[
+ 'phygile-reproduction-20261017/data','phygile-reproduction-20261017/logs','phygile-reproduction-20261017/results',
+ 'reactivebfm-reproduction-20261021/data','reactivebfm-reproduction-20261021/repair_20261022',
+ 'paper-faithful-reproduction-20261022/training_fp64_sdpa_v4/checkpoints',
+ 'phygile-unitree-20261022/runs','humanoid-combat-motion/data','humanoid-combat-motion/runs',
+ 'humanoid-combat-motion/records','conditional-human-motion-generation/artifacts',
+ 'conditional-human-motion-generation/results']
+protected=[]
+for relative in protected_roots:
+ for b,ds,fs in os.walk(str(root/relative),followlinks=False):
+  for n in fs:protected.append(str(Path(b)/n))
+(base/'protected_existing_paths_packages.json').write_text(json.dumps(protected))
+for mode in ['dry_run','execute']:
+ receipt=base/('packages_'+mode+'_receipt.json')
+ command=['python3',str(guard),'--plan',str(plan),'--receipt',str(receipt)]
+ if mode=='execute':command.append('--execute')
+ with (base/('packages_'+mode+'_stdout.txt')).open('w') as stdout,(base/('packages_'+mode+'_stderr.txt')).open('w') as stderr:
+  result=subprocess.run(command,stdout=stdout,stderr=stderr)
+ out['commands'].append({'mode':mode,'command':command,'exit_code':result.returncode,
+  'stdout':(base/('packages_'+mode+'_stdout.txt')).read_text(),'stderr':(base/('packages_'+mode+'_stderr.txt')).read_text()})
+ (base/'packages_execution.json').write_text(json.dumps(out,indent=2)+'\n')
+ if result.returncode:raise RuntimeError(json.dumps(out))
+ data=json.loads(receipt.read_text())
+ assert data['status']==('DRY_RUN_PASSED' if mode=='dry_run' else 'BACKED_UP_UNUSED_FILES_REMOVED')
+ out[mode]=data
+missing=[p for p in protected if not os.path.lexists(p)]
+out.update(utc_after=datetime.datetime.now(datetime.timezone.utc).isoformat(),protected_existing_files=len(protected),
+ protected_paths_sha256=hashlib.sha256((base/'protected_existing_paths_packages.json').read_bytes()).hexdigest(),
+ protected_files_missing=missing,
+ health_after=[json.loads((training/f'health_rank{i}.json').read_text()) for i in [0,1]])
+(base/'packages_execution.json').write_text(json.dumps(out,indent=2)+'\n')
+assert not missing
+print(json.dumps(out))
+'''.replace('PAYLOAD',repr(payload))
+out=json.loads(remote(script,timeout=300));dump(dest/'packages_cleanup_execution.json',out)
+print(json.dumps({'removed_files':len(out['execute']['removed']),'allocated_bytes':out['execute']['allocated_bytes'],
+ 'free_after':out['execute']['disk_after']['free'],'protected_existing_files':out['protected_existing_files'],
+ 'protected_files_missing':out['protected_files_missing'],'health_after':[{k:h[k] for k in ['rank','status','validated_optimizer_updates','skipped_attempts']} for h in out['health_after']]}))

@@ -1,0 +1,42 @@
+{
+  "checkpoint": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/model000010040.pt",
+  "checkpoint_sha256": "7aaed03598e120e843b4332b5943605a293bbc31958e05b4396ec791c083dbe5",
+  "source_sha256": "accf5e58ea2d97f6a70fae932bf2f4e3785183bf20d47a97fe8c41ee8f76228f",
+  "batch": 512,
+  "optimizer_updates": 0,
+  "torch": "2.5.1+cu121",
+  "seed": 42,
+  "shuffle": true,
+  "results": [
+    {
+      "backend": "default",
+      "activation_checkpointing": true,
+      "primitive_losses": [
+        0.02346533164381981,
+        0.02709091268479824,
+        0.02604544721543789
+      ],
+      "loss": 0.07660169154405594,
+      "gradient_norm_fp64": 1.4408007496657342,
+      "all_gradients_finite": true,
+      "seconds": 7.1287456545978785
+    },
+    {
+      "backend": "math",
+      "activation_checkpointing": true,
+      "primitive_losses": [
+        0.023463627323508263,
+        0.02709091454744339,
+        0.02604546770453453
+      ],
+      "loss": 0.07660000957548618,
+      "gradient_norm_fp64": 1.5702386507926613,
+      "all_gradients_finite": true,
+      "seconds": 7.15335369668901,
+      "vs_default_max_abs_gradient_difference": 0.04059911146759987,
+      "vs_default_l2_gradient_difference": 0.8930159785259886,
+      "largest_gradient_difference_tensor": "blocks.0.ada_ln.1.weight"
+    }
+  ],
+  "checkpoint_unchanged": true
+}

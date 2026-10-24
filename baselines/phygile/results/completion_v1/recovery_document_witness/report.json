@@ -1,0 +1,1071 @@
+{
+  "status": "PASS_ENGINEERING_DOCUMENT_WITNESS",
+  "generated_utc": "2026-10-17T14:54:19.749819+00:00",
+  "independence": {
+    "only_invocation_doc_and_implementation_read": true,
+    "main_task_history_read": false,
+    "implementation_or_threshold_or_document_edited": false,
+    "rerun_count": 0,
+    "documented_command_invocations": 1,
+    "ledger_path_supplied_by_parent_after_start": "docs/environment.md; read and independently hash checked"
+  },
+  "document_sha256": "0c070dce4ee7fb26556ca66de25bfa8ce6172e1104d55b7ae7c169ffd258faad",
+  "remote_host": "ouyanghao@10.147.17.32:22",
+  "remote_cwd": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017",
+  "documented_command": "bash scripts/run_isaac.sh scripts/validate_terminal_boundary.py --name closure_recovery",
+  "preflight_stdout": "nlp03\n2026-10-17T14:49:21Z\n0, NVIDIA RTX A6000, 2968 MiB, 49140 MiB\n1, NVIDIA RTX A6000, 9284 MiB, 49140 MiB\n\nTASK_PROCESSES\n\nOUTPUT_DIRECTORY_EXISTS\nno\n",
+  "run": {
+    "started_utc": "2026-10-17T14:49:55.572110+00:00",
+    "argv": [
+      "C:/Windows/System32/OpenSSH/ssh.exe",
+      "-i",
+      "C:/Users/Pende/.ssh/id_ed25519",
+      "-p",
+      "22",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=15",
+      "ouyanghao@10.147.17.32",
+      "cd /data/code/ouyanghao/oyh/phygile-reproduction-20261017 && bash scripts/run_isaac.sh scripts/validate_terminal_boundary.py --name closure_recovery"
+    ],
+    "remote_command": "cd /data/code/ouyanghao/oyh/phygile-reproduction-20261017 && bash scripts/run_isaac.sh scripts/validate_terminal_boundary.py --name closure_recovery",
+    "ended_utc": "2026-10-17T14:51:59.112566+00:00",
+    "exit_code": 0
+  },
+  "checks": [
+    {
+      "name": "remote_raw_manifest_matches_local_copy",
+      "passed": true,
+      "details": {
+        "file_count": 69,
+        "total_bytes": 577662
+      }
+    },
+    {
+      "name": "documented_invocation_once_exit_zero",
+      "passed": true,
+      "details": {
+        "invocations": 1,
+        "exit_code": 0,
+        "sentinel_count": 1,
+        "elapsed_seconds": 122.45237142033875
+      }
+    },
+    {
+      "name": "inner_recorded_command_completed",
+      "passed": true,
+      "details": {
+        "status": "COMPLETED",
+        "exit_code": 0,
+        "timeout_seconds": 600
+      }
+    },
+    {
+      "name": "outer_verification_authenticates_primary",
+      "passed": true,
+      "details": {
+        "status": "COMPLETED",
+        "primary_sha256": "d218d655920a605035c65d460c927aea853db73ad2987d981a4872c19c90c3d3",
+        "nominal_suffix_preserved_in_every_candidate": true,
+        "raw_target_is_not_measured_standing_success": true
+      }
+    },
+    {
+      "name": "primary_engineering_validation_completed",
+      "passed": true,
+      "details": "COMPLETED_ENGINEERING_VALIDATION"
+    },
+    {
+      "name": "invocation_doc_unchanged_and_remote_same",
+      "passed": true,
+      "details": {
+        "sha256": "0c070dce4ee7fb26556ca66de25bfa8ce6172e1104d55b7ae7c169ffd258faad"
+      }
+    },
+    {
+      "name": "environment_spec_matches_existing_server_notes_ledger",
+      "passed": true,
+      "details": {
+        "spec_hash": "fa5883c8",
+        "ledger": "docs/environment.md",
+        "ledger_sha256": "3a1b71551baba903df7d7aebad8b8a3fb7373809d0d14a7567e7b7da6824bf0b",
+        "spec_sha256": "2374b3cd9ce01a9e8cfe3166a14e63ffaec202d679cf6cd507be26f01a573b6f"
+      }
+    },
+    {
+      "name": "recorded_implementation_sources_match_read_only_local_sources",
+      "passed": true,
+      "details": {
+        "files": 61,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "all_isolated_workers_completed_with_frozen_gmt",
+      "passed": true,
+      "details": {
+        "workers": 7,
+        "gmt_parameter_digests": [
+          "77340d811490c8cf914aa1dc31fffee635675c941ce2b07b709b9e6d9a26a27b"
+        ]
+      }
+    },
+    {
+      "name": "worker_request_and_physical_file_hashes_match",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "all_initial_physical_parameters_exactly_equal",
+      "passed": true,
+      "details": [
+        {
+          "worker": "invocation_000",
+          "arrays": {
+            "get_masses": {
+              "shape": [
+                1,
+                30
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_inertias": {
+              "shape": [
+                1,
+                30,
+                9
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_coms": {
+              "shape": [
+                1,
+                30,
+                7
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_material_properties": {
+              "shape": [
+                1,
+                29,
+                3
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_dof_stiffnesses": {
+              "shape": [
+                1,
+                29
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_dof_dampings": {
+              "shape": [
+                1,
+                29
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            }
+          }
+        },
+        {
+          "worker": "invocation_001",
+          "arrays": {
+            "get_masses": {
+              "shape": [
+                1,
+                30
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_inertias": {
+              "shape": [
+                1,
+                30,
+                9
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_coms": {
+              "shape": [
+                1,
+                30,
+                7
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_material_properties": {
+              "shape": [
+                1,
+                29,
+                3
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_dof_stiffnesses": {
+              "shape": [
+                1,
+                29
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_dof_dampings": {
+              "shape": [
+                1,
+                29
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            }
+          }
+        },
+        {
+          "worker": "invocation_002",
+          "arrays": {
+            "get_masses": {
+              "shape": [
+                1,
+                30
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_inertias": {
+              "shape": [
+                1,
+                30,
+                9
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_coms": {
+              "shape": [
+                1,
+                30,
+                7
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_material_properties": {
+              "shape": [
+                1,
+                29,
+                3
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_dof_stiffnesses": {
+              "shape": [
+                1,
+                29
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_dof_dampings": {
+              "shape": [
+                1,
+                29
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            }
+          }
+        },
+        {
+          "worker": "invocation_003",
+          "arrays": {
+            "get_masses": {
+              "shape": [
+                1,
+                30
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_inertias": {
+              "shape": [
+                1,
+                30,
+                9
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_coms": {
+              "shape": [
+                1,
+                30,
+                7
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_material_properties": {
+              "shape": [
+                1,
+                29,
+                3
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_dof_stiffnesses": {
+              "shape": [
+                1,
+                29
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_dof_dampings": {
+              "shape": [
+                1,
+                29
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            }
+          }
+        },
+        {
+          "worker": "invocation_004",
+          "arrays": {
+            "get_masses": {
+              "shape": [
+                1,
+                30
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_inertias": {
+              "shape": [
+                1,
+                30,
+                9
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_coms": {
+              "shape": [
+                1,
+                30,
+                7
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_material_properties": {
+              "shape": [
+                1,
+                29,
+                3
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_dof_stiffnesses": {
+              "shape": [
+                1,
+                29
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_dof_dampings": {
+              "shape": [
+                1,
+                29
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            }
+          }
+        },
+        {
+          "worker": "invocation_005",
+          "arrays": {
+            "get_masses": {
+              "shape": [
+                1,
+                30
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_inertias": {
+              "shape": [
+                1,
+                30,
+                9
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_coms": {
+              "shape": [
+                1,
+                30,
+                7
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_material_properties": {
+              "shape": [
+                1,
+                29,
+                3
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_dof_stiffnesses": {
+              "shape": [
+                1,
+                29
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_dof_dampings": {
+              "shape": [
+                1,
+                29
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            }
+          }
+        },
+        {
+          "worker": "invocation_006",
+          "arrays": {
+            "get_masses": {
+              "shape": [
+                1,
+                30
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_inertias": {
+              "shape": [
+                1,
+                30,
+                9
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_coms": {
+              "shape": [
+                1,
+                30,
+                7
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_material_properties": {
+              "shape": [
+                1,
+                29,
+                3
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_dof_stiffnesses": {
+              "shape": [
+                1,
+                29
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            },
+            "get_dof_dampings": {
+              "shape": [
+                1,
+                29
+              ],
+              "max_abs_delta_from_initialize": 0.0,
+              "exact_equal": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "documented_deterministic_worker_flags",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "independent_ten_frame_replays_exactly_equal",
+      "passed": true,
+      "details": {
+        "states": {
+          "max_abs_delta": 0.0,
+          "exact_equal": true,
+          "shape": [
+            10,
+            71
+          ]
+        },
+        "body_positions": {
+          "max_abs_delta": 0.0,
+          "exact_equal": true,
+          "shape": [
+            10,
+            14,
+            3
+          ]
+        },
+        "reference_body_positions": {
+          "max_abs_delta": 0.0,
+          "exact_equal": true,
+          "shape": [
+            10,
+            14,
+            3
+          ]
+        },
+        "terminated": {
+          "max_abs_delta": 0.0,
+          "exact_equal": true,
+          "shape": [
+            10
+          ]
+        },
+        "timeouts": {
+          "max_abs_delta": 0.0,
+          "exact_equal": true,
+          "shape": [
+            10
+          ]
+        },
+        "actions": {
+          "max_abs_delta": 0.0,
+          "exact_equal": true,
+          "shape": [
+            10,
+            29
+          ]
+        },
+        "start_state": {
+          "max_abs_delta": 0.0,
+          "exact_equal": true,
+          "shape": [
+            71
+          ]
+        },
+        "frames": {
+          "max_abs_delta": 0.0,
+          "exact_equal": true,
+          "shape": [
+            10
+          ]
+        },
+        "actual_start_state": {
+          "max_abs_delta": 0.0,
+          "exact_equal": true,
+          "shape": [
+            71
+          ]
+        }
+      }
+    },
+    {
+      "name": "raw_replay_matches_reported_state_and_body_differences",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "two_one_frame_feedback_proxy_acceptances",
+      "passed": true,
+      "details": {
+        "evaluation_type": "self_supervised_proxy",
+        "reference": "held initialization pose; not dataset truth or generated semantics",
+        "control_frames": 2,
+        "window_frames": 1,
+        "accepted_windows": 2,
+        "input_prefix_sha256": [
+          "fa1d2d2deccf209f915a42914b0cba2346fbaae8aa1f0d5afea254721bedd3c8",
+          "a66a6f0c95ffc638c866a9b7473eabae75cbe31138b501da674b72b37bc6a795"
+        ],
+        "committed_prefix_sha256": "8d60a3f465df72ca32e5b45a3be47eaa4c0bb71682f827477378ee19adae5e92",
+        "replayed_history": [
+          {
+            "candidate_sha256": "9551f6520c6dfd0031a4974bdb5e737193a4a0cf2eb42822ab78928ccb556f05",
+            "max_state_difference": 0.0
+          }
+        ],
+        "decisions": [
+          {
+            "accepted": true,
+            "reasons": [],
+            "expected_frames": 1,
+            "recorded_frames": 1,
+            "mpjpe_m": 0.02278560745073324,
+            "terminal_max_frame_mpjpe_m": null,
+            "candidate_sha256": "9551f6520c6dfd0031a4974bdb5e737193a4a0cf2eb42822ab78928ccb556f05",
+            "execution_sha256": "36a1bb2b50564128f02a8f6cb0c8bae4e59e7d275cf5cd9afa94bd30045e82d8",
+            "prefix_frames": 1,
+            "attempt": 0,
+            "final": false
+          },
+          {
+            "accepted": true,
+            "reasons": [],
+            "expected_frames": 1,
+            "recorded_frames": 1,
+            "mpjpe_m": 0.0435539279935793,
+            "terminal_max_frame_mpjpe_m": 0.0435539279935793,
+            "candidate_sha256": "74606193886d2d5169263017699d6432beec4983c213950583002b28e499c4f3",
+            "execution_sha256": "609a45c1dceccd0ebe1c4c6e9c660735254bef0b3d08c3e4a0d23eb7f0c179e3",
+            "prefix_frames": 2,
+            "attempt": 0,
+            "final": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "accepted_history_replay_verified_before_continuation",
+      "passed": true,
+      "details": {
+        "history_proof": [
+          {
+            "candidate_sha256": "9551f6520c6dfd0031a4974bdb5e737193a4a0cf2eb42822ab78928ccb556f05",
+            "max_state_difference": 0.0
+          }
+        ],
+        "next_start_state_delta": 0.0
+      }
+    },
+    {
+      "name": "nominal_standing_state_independently_matches_config",
+      "passed": true,
+      "details": {
+        "root_height_m": 0.76,
+        "root_xy_matches_initial": true,
+        "orientation_delta_from_initial_yaw_only": 0.0,
+        "joint_position_delta": 0.0,
+        "root_velocity_max_abs": 0.0,
+        "joint_velocity_max_abs": 0.0,
+        "source": "Pinned upstream whole_body_tracking/robots/g1.py G1_CYLINDER_CFG.init_state",
+        "author_suffix_verified": false
+      }
+    },
+    {
+      "name": "every_fifty_frame_candidate_ends_at_independent_nominal_target",
+      "passed": true,
+      "details": [
+        {
+          "path": "output\\proposals\\proposal_000.npz",
+          "new_frames": 50,
+          "terminal_native_exact_equal": true,
+          "terminal_body_positions_exact_equal": true,
+          "native_max_abs_delta": 0.0,
+          "body_max_abs_delta": 0.0
+        },
+        {
+          "path": "output\\proposals\\proposal_001.npz",
+          "new_frames": 50,
+          "terminal_native_exact_equal": true,
+          "terminal_body_positions_exact_equal": true,
+          "native_max_abs_delta": 0.0,
+          "body_max_abs_delta": 0.0
+        }
+      ]
+    },
+    {
+      "name": "rejected_generation_has_no_invalid_commit",
+      "passed": true,
+      "details": {
+        "outcome": "REJECTED_WITHOUT_INVALID_COMMIT",
+        "accepted_attempts": 0,
+        "rejected_attempts": 2,
+        "committed_new_frames": 0,
+        "attempts": [
+          {
+            "accepted": false,
+            "reasons": [
+              "incomplete_continuation",
+              "failure_termination",
+              "mpjpe_above_tolerance"
+            ],
+            "expected_frames": 50,
+            "recorded_frames": 1,
+            "mpjpe_m": 0.42900891023804066,
+            "terminal_max_frame_mpjpe_m": null,
+            "candidate_sha256": "d821f381cc5f40fd085cc07506bcd783cb85a987664994fc6e318d8c43d94e12",
+            "execution_sha256": "fe23ee87abd9eb06f652d204a616b5ef1ab63e7fc4c12680be423901f6cb0b45",
+            "prefix_frames": 1,
+            "attempt": 0,
+            "final": true
+          },
+          {
+            "accepted": false,
+            "reasons": [
+              "incomplete_continuation",
+              "failure_termination",
+              "mpjpe_above_tolerance"
+            ],
+            "expected_frames": 50,
+            "recorded_frames": 1,
+            "mpjpe_m": 0.4309579676126371,
+            "terminal_max_frame_mpjpe_m": null,
+            "candidate_sha256": "d25868a3a9bdd1788bc27d7650e83086029075a9485d9cd8ef11672d363b921d",
+            "execution_sha256": "28e91c2b4f5b12ab474979ab8023d50a613c6728654dccb793728da8b7d0d2fb",
+            "prefix_frames": 1,
+            "attempt": 1,
+            "final": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "scope_is_untrained_generator_and_zero_ppo_updates",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "document_reality_divergences": [],
+  "scope_limits": [
+    "Both untrained diffusion proposals were rejected; zero generated frames were committed.",
+    "Nominal zero-velocity standing is an explicit target, not demonstrated stable standing.",
+    "Two accepted one-frame held-pose windows are a feedback-interface proxy, not a performance benchmark.",
+    "No trained generator, semantic generation, closed-loop PPO adaptation, or paired dataset claim."
+  ],
+  "source_comparisons": [
+    {
+      "path": "reimplementation/replay_prefix_adapter.py",
+      "run_sha256": "9d93690397d40fa0cb190263f9756a64d4926f591ee0c7fc981828099678b82c",
+      "local_sha256": "9d93690397d40fa0cb190263f9756a64d4926f591ee0c7fc981828099678b82c"
+    },
+    {
+      "path": "reimplementation/test_text_encoder.py",
+      "run_sha256": "80ce12e90c2abafb63cadc5d687ad3a105141a6f6ee500a6ee54f9d1512fd004",
+      "local_sha256": "80ce12e90c2abafb63cadc5d687ad3a105141a6f6ee500a6ee54f9d1512fd004"
+    },
+    {
+      "path": "reimplementation/test_core.py",
+      "run_sha256": "c12732d27dac9bdee04f6de4353972e94c271a6e08bc7b58608757d68dea402b",
+      "local_sha256": "c12732d27dac9bdee04f6de4353972e94c271a6e08bc7b58608757d68dea402b"
+    },
+    {
+      "path": "reimplementation/text.py",
+      "run_sha256": "22a04171f7e1218ff9b9ed768d6739ebed24c4072c683b78d60fde595b7fcf70",
+      "local_sha256": "22a04171f7e1218ff9b9ed768d6739ebed24c4072c683b78d60fde595b7fcf70"
+    },
+    {
+      "path": "reimplementation/diffusion.py",
+      "run_sha256": "930a2cdb1967119dd51813c6838f58c062fc7d46447239b20cc15f4b638efc4c",
+      "local_sha256": "930a2cdb1967119dd51813c6838f58c062fc7d46447239b20cc15f4b638efc4c"
+    },
+    {
+      "path": "reimplementation/test_completion.py",
+      "run_sha256": "122e093c09cb309589b44cafe3a87ee3c77e5d3ac53a519974dc188f422c1911",
+      "local_sha256": "122e093c09cb309589b44cafe3a87ee3c77e5d3ac53a519974dc188f422c1911"
+    },
+    {
+      "path": "reimplementation/diffusion_proposer.py",
+      "run_sha256": "92bff21474e8001fa63c22b9a777ae315c86ed2d499f4905b6da3d93baf5fc81",
+      "local_sha256": "92bff21474e8001fa63c22b9a777ae315c86ed2d499f4905b6da3d93baf5fc81"
+    },
+    {
+      "path": "reimplementation/test_prefix_and_curriculum.py",
+      "run_sha256": "4723ad5ff14812cee19e14c9d6cf403af869bbfe5c96d089fc58d360f4bbd815",
+      "local_sha256": "4723ad5ff14812cee19e14c9d6cf403af869bbfe5c96d089fc58d360f4bbd815"
+    },
+    {
+      "path": "reimplementation/codec262.py",
+      "run_sha256": "e95cc8f8f782cc0577819e862328e814a4d8e8b17bea5bee0efa46b6a194606e",
+      "local_sha256": "e95cc8f8f782cc0577819e862328e814a4d8e8b17bea5bee0efa46b6a194606e"
+    },
+    {
+      "path": "reimplementation/model.py",
+      "run_sha256": "76eb8baa876950a34d4b23b6fa92627515bf38072c9cadf35fbf8789a13e70ab",
+      "local_sha256": "76eb8baa876950a34d4b23b6fa92627515bf38072c9cadf35fbf8789a13e70ab"
+    },
+    {
+      "path": "reimplementation/features.py",
+      "run_sha256": "dee9e489f91b13217faa95a71bc5bc2f9122a1cc404639a3df9838edb6c7f9ac",
+      "local_sha256": "dee9e489f91b13217faa95a71bc5bc2f9122a1cc404639a3df9838edb6c7f9ac"
+    },
+    {
+      "path": "reimplementation/isaac_prefix_adapter.py",
+      "run_sha256": "9d58115d0d571299a8793962e6623916ae73a3798f71236c048117ddf76bc89c",
+      "local_sha256": "9d58115d0d571299a8793962e6623916ae73a3798f71236c048117ddf76bc89c"
+    },
+    {
+      "path": "reimplementation/fetch_text_encoder.py",
+      "run_sha256": "8fbcfff77780bd14af1f29937eef8a514b4edeaead0ece680e6c029eda33b162",
+      "local_sha256": "8fbcfff77780bd14af1f29937eef8a514b4edeaead0ece680e6c029eda33b162"
+    },
+    {
+      "path": "reimplementation/terminal_reference.py",
+      "run_sha256": "e8228145cd5d85e15bef4b8fe1143592a4501c64b25c9c71077be1322211cb6f",
+      "local_sha256": "e8228145cd5d85e15bef4b8fe1143592a4501c64b25c9c71077be1322211cb6f"
+    },
+    {
+      "path": "reimplementation/curriculum_evaluator.py",
+      "run_sha256": "d31dcebd65d1982e1b6637abf43d1824eaafadc22949f7dda0b9a0fa3ed089ce",
+      "local_sha256": "d31dcebd65d1982e1b6637abf43d1824eaafadc22949f7dda0b9a0fa3ed089ce"
+    },
+    {
+      "path": "reimplementation/physics_prefix.py",
+      "run_sha256": "a8d08d3cd7071b65924ec4204b7ce3814dee8e650f267b26f743e779b3011057",
+      "local_sha256": "a8d08d3cd7071b65924ec4204b7ce3814dee8e650f267b26f743e779b3011057"
+    },
+    {
+      "path": "reimplementation/train_config.example.json",
+      "run_sha256": "74dbc8c4d91e928d1e3d116ffe96bac356c779f3242076943cda565bf3df3d5f",
+      "local_sha256": "74dbc8c4d91e928d1e3d116ffe96bac356c779f3242076943cda565bf3df3d5f"
+    },
+    {
+      "path": "reimplementation/test_training_entrypoint.py",
+      "run_sha256": "bd0dd2e0b5ea127c183825ddc3ba977b619f16b3d9ec3fae91b9b33afb5c55e4",
+      "local_sha256": "bd0dd2e0b5ea127c183825ddc3ba977b619f16b3d9ec3fae91b9b33afb5c55e4"
+    },
+    {
+      "path": "reimplementation/train.py",
+      "run_sha256": "a03c92832fa70ab11c25f1dde362fffbdb26efc618241e5f655806a90c0fbbda",
+      "local_sha256": "a03c92832fa70ab11c25f1dde362fffbdb26efc618241e5f655806a90c0fbbda"
+    },
+    {
+      "path": "scripts/diagnose_prefix_feedback.py",
+      "run_sha256": "c93290a765b76dbe12bc9d641f3d3b36c42657a8fe46ae90cebbabc1d3649965",
+      "local_sha256": "c93290a765b76dbe12bc9d641f3d3b36c42657a8fe46ae90cebbabc1d3649965"
+    },
+    {
+      "path": "scripts/summarize_results.py",
+      "run_sha256": "ff1f5e1879249630dac33f48279688a3498bd68b9957fa0aa222fd8646b50d77",
+      "local_sha256": "ff1f5e1879249630dac33f48279688a3498bd68b9957fa0aa222fd8646b50d77"
+    },
+    {
+      "path": "scripts/summarize_continuation.py",
+      "run_sha256": "a002396ba3980bf58a01ac29149a1ad52aafdc0d3f7bc168236c14c6451c385e",
+      "local_sha256": "a002396ba3980bf58a01ac29149a1ad52aafdc0d3f7bc168236c14c6451c385e"
+    },
+    {
+      "path": "scripts/evaluate_suite.py",
+      "run_sha256": "c57eda016062a6dc376a2f3262831b7dcc51ac198f9909bd296ca730381df286",
+      "local_sha256": "c57eda016062a6dc376a2f3262831b7dcc51ac198f9909bd296ca730381df286"
+    },
+    {
+      "path": "scripts/validate_terminal_boundary.py",
+      "run_sha256": "96956f412ff41bf88e05abf3e8ec482d1bc965d03d5dca17f402b46213fbb585",
+      "local_sha256": "96956f412ff41bf88e05abf3e8ec482d1bc965d03d5dca17f402b46213fbb585"
+    },
+    {
+      "path": "scripts/guarded_bootstrap.py",
+      "run_sha256": "c785fbaaa6e783a43f5532281fd1cf3a4c5f5ecc56519a5a4994fd4b3330b371",
+      "local_sha256": "c785fbaaa6e783a43f5532281fd1cf3a4c5f5ecc56519a5a4994fd4b3330b371"
+    },
+    {
+      "path": "scripts/curriculum_evaluate.py",
+      "run_sha256": "e4a79f369b5bc72ddb8ae098b78ebc38cec8ddf5476681ffd64a4c47f5726b48",
+      "local_sha256": "e4a79f369b5bc72ddb8ae098b78ebc38cec8ddf5476681ffd64a4c47f5726b48"
+    },
+    {
+      "path": "scripts/inspect_checkpoints.py",
+      "run_sha256": "d321908aa8b732d763540c9d667677233fe52199181c1247503192dfe1281974",
+      "local_sha256": "d321908aa8b732d763540c9d667677233fe52199181c1247503192dfe1281974"
+    },
+    {
+      "path": "scripts/prepare_guarded_upstream.py",
+      "run_sha256": "e688a87d464c0a19fbbb23c7687e26a325343039da75284339e5d492c01c067f",
+      "local_sha256": "e688a87d464c0a19fbbb23c7687e26a325343039da75284339e5d492c01c067f"
+    },
+    {
+      "path": "scripts/data_inventory.py",
+      "run_sha256": "e9c76a3a9d97804108ed264e69edf947da82628c68e875f052accda590418024",
+      "local_sha256": "e9c76a3a9d97804108ed264e69edf947da82628c68e875f052accda590418024"
+    },
+    {
+      "path": "scripts/run_text_validation.py",
+      "run_sha256": "652c971b4951414147e99e098c8ea2ce1c57b03f5f75d734ee243ce693a1884a",
+      "local_sha256": "652c971b4951414147e99e098c8ea2ce1c57b03f5f75d734ee243ce693a1884a"
+    },
+    {
+      "path": "scripts/verify_continuation_states.py",
+      "run_sha256": "a5be041b3f4414a421a693911ca91cf20babdd809953faa8f9bdefcae45c80cd",
+      "local_sha256": "a5be041b3f4414a421a693911ca91cf20babdd809953faa8f9bdefcae45c80cd"
+    },
+    {
+      "path": "scripts/finalize_pipeline.py",
+      "run_sha256": "38aef233f00ed2c59627ae7a5b61735bd9d27fcf2fa523763fe84753288b4e13",
+      "local_sha256": "38aef233f00ed2c59627ae7a5b61735bd9d27fcf2fa523763fe84753288b4e13"
+    },
+    {
+      "path": "scripts/resume_training.py",
+      "run_sha256": "44132bd9972ef8eff408977304c58f91690c28dedd98ae658e0d6df10ae286e5",
+      "local_sha256": "44132bd9972ef8eff408977304c58f91690c28dedd98ae658e0d6df10ae286e5"
+    },
+    {
+      "path": "scripts/run_continuation_pipeline.py",
+      "run_sha256": "7275528f50ae937781fb9df3d1b65335bed403829e60642977ad0cf934e813db",
+      "local_sha256": "7275528f50ae937781fb9df3d1b65335bed403829e60642977ad0cf934e813db"
+    },
+    {
+      "path": "scripts/train_extended_2000.sh",
+      "run_sha256": "b3a5976134e24baa7113e7c0e490c65dffb5ebcc28712fe0afc9454eab7368d5",
+      "local_sha256": "b3a5976134e24baa7113e7c0e490c65dffb5ebcc28712fe0afc9454eab7368d5"
+    },
+    {
+      "path": "scripts/run_prefix_recorded.py",
+      "run_sha256": "c4a7624d4cbe827a1cb3c7691bd5e8442a7024dfbf1ec5b62bf3db0a63c32aa3",
+      "local_sha256": "c4a7624d4cbe827a1cb3c7691bd5e8442a7024dfbf1ec5b62bf3db0a63c32aa3"
+    },
+    {
+      "path": "scripts/run_recorded.py",
+      "run_sha256": "98685fb0e563b3b4fec3e9b6cfdc870d3bfc71c8c3fc46d72229149c2f7c95e3",
+      "local_sha256": "98685fb0e563b3b4fec3e9b6cfdc870d3bfc71c8c3fc46d72229149c2f7c95e3"
+    },
+    {
+      "path": "scripts/smoke.sh",
+      "run_sha256": "81b25840ee415f7b307f278bf3d17892fb830c8b1ac1dfa4b700e8dae5e1b05d",
+      "local_sha256": "81b25840ee415f7b307f278bf3d17892fb830c8b1ac1dfa4b700e8dae5e1b05d"
+    },
+    {
+      "path": "scripts/validate_prefix_milestone.py",
+      "run_sha256": "6655597ef83ab12dd9f8ff0fb1606a5e01c44e265c9c99683cf4f1d3ffb6634b",
+      "local_sha256": "6655597ef83ab12dd9f8ff0fb1606a5e01c44e265c9c99683cf4f1d3ffb6634b"
+    },
+    {
+      "path": "scripts/prepare_completion_upstream.py",
+      "run_sha256": "0ebaa1e52841469d96d477c2ec50877d50999277ec3285732a74f3980406cab7",
+      "local_sha256": "0ebaa1e52841469d96d477c2ec50877d50999277ec3285732a74f3980406cab7"
+    },
+    {
+      "path": "scripts/validate_codec262.py",
+      "run_sha256": "cc36618248f0660667b0506315f5d0efab731311b1bb1f62dc77e6e32445ee65",
+      "local_sha256": "cc36618248f0660667b0506315f5d0efab731311b1bb1f62dc77e6e32445ee65"
+    },
+    {
+      "path": "scripts/validate_completion.py",
+      "run_sha256": "0818842401422c4dcf95288796a698ac51afb6bf5882bbfbe6618122d45a3ae9",
+      "local_sha256": "0818842401422c4dcf95288796a698ac51afb6bf5882bbfbe6618122d45a3ae9"
+    },
+    {
+      "path": "scripts/replay_physics_worker.py",
+      "run_sha256": "19be3b6ae3ae3f512ab46b3b8ddc751bc7c0a760c87cf4824ae9b24a3612efdb",
+      "local_sha256": "19be3b6ae3ae3f512ab46b3b8ddc751bc7c0a760c87cf4824ae9b24a3612efdb"
+    },
+    {
+      "path": "scripts/evaluate_prefix_feedback.py",
+      "run_sha256": "b428bc18488302178f2a35b7b29430163c1e0cc3adb4962e115bd659380a8c9c",
+      "local_sha256": "b428bc18488302178f2a35b7b29430163c1e0cc3adb4962e115bd659380a8c9c"
+    },
+    {
+      "path": "scripts/run_isaac.sh",
+      "run_sha256": "754e7fc821513b1c90f7a28bdc6f4354f49107f71b84a79448c1847a78a21c9e",
+      "local_sha256": "754e7fc821513b1c90f7a28bdc6f4354f49107f71b84a79448c1847a78a21c9e"
+    },
+    {
+      "path": "scripts/train_pilot.sh",
+      "run_sha256": "103d298ca61bbb38b4665304ddd6458a852b95e93a65a990cf08e8d34a53c756",
+      "local_sha256": "103d298ca61bbb38b4665304ddd6458a852b95e93a65a990cf08e8d34a53c756"
+    },
+    {
+      "path": "scripts/evaluate_pilot.py",
+      "run_sha256": "d9f75793cb60734e7f1c39313162cddda3a5d995bea2cbff8eb4097f6863e549",
+      "local_sha256": "d9f75793cb60734e7f1c39313162cddda3a5d995bea2cbff8eb4097f6863e549"
+    },
+    {
+      "path": "scripts/train_with_curriculum_evaluator.py",
+      "run_sha256": "9479d5ec2f958e0caa728849024d66f6623cf4af8442809a56fadbd5054771e9",
+      "local_sha256": "9479d5ec2f958e0caa728849024d66f6623cf4af8442809a56fadbd5054771e9"
+    },
+    {
+      "path": "scripts/evaluate_continuation.py",
+      "run_sha256": "9ac96081776b6755f203ff8d1540eec19b433685f0e82151ae0758a9d16ec85c",
+      "local_sha256": "9ac96081776b6755f203ff8d1540eec19b433685f0e82151ae0758a9d16ec85c"
+    },
+    {
+      "path": "scripts/run_generated_closed_loop.py",
+      "run_sha256": "c91fa61ea0a2310973d8471c835dadf4d725e2637be4a8ced734cfc241bbf90f",
+      "local_sha256": "c91fa61ea0a2310973d8471c835dadf4d725e2637be4a8ced734cfc241bbf90f"
+    },
+    {
+      "path": "scripts/kernel_witness.py",
+      "run_sha256": "dfccf06b6c635337f48f53df9406d208009af693d9368baa13f41cfc1c96882b",
+      "local_sha256": "dfccf06b6c635337f48f53df9406d208009af693d9368baa13f41cfc1c96882b"
+    },
+    {
+      "path": "scripts/validate_curriculum_training.py",
+      "run_sha256": "822df4d42b9886dea3cb0b95728ef603b1ab2782bb1ebc146b1b2f9344097535",
+      "local_sha256": "822df4d42b9886dea3cb0b95728ef603b1ab2782bb1ebc146b1b2f9344097535"
+    },
+    {
+      "path": "configs/continuation_2000_plan.json",
+      "run_sha256": "91751e8ed9880f9455e611a7cacd42a757b0482cb1c1bc489d13cbd20077dac5",
+      "local_sha256": "91751e8ed9880f9455e611a7cacd42a757b0482cb1c1bc489d13cbd20077dac5"
+    },
+    {
+      "path": "configs/moe_pilot.yaml",
+      "run_sha256": "7a34e2417fc66c9f1894edd7f1720a2eb3243a941126553258e21c4d862b5d5f",
+      "local_sha256": "7a34e2417fc66c9f1894edd7f1720a2eb3243a941126553258e21c4d862b5d5f"
+    },
+    {
+      "path": "configs/completion_plan.json",
+      "run_sha256": "08ceeec24676e0052c49d99d4cb5421c2bcc28d1f7b81142d57f7407ea96ba4c",
+      "local_sha256": "08ceeec24676e0052c49d99d4cb5421c2bcc28d1f7b81142d57f7407ea96ba4c"
+    },
+    {
+      "path": "configs/nominal_standing_reference.json",
+      "run_sha256": "02a3d0cf0f808dda854309c4f13480bf9470300fa09b3c4b10c36615d1cbe35d",
+      "local_sha256": "02a3d0cf0f808dda854309c4f13480bf9470300fa09b3c4b10c36615d1cbe35d"
+    },
+    {
+      "path": "configs/env-spec.json",
+      "run_sha256": "2374b3cd9ce01a9e8cfe3166a14e63ffaec202d679cf6cd507be26f01a573b6f",
+      "local_sha256": "2374b3cd9ce01a9e8cfe3166a14e63ffaec202d679cf6cd507be26f01a573b6f"
+    },
+    {
+      "path": "configs/prefix_diagnostic_plan.json",
+      "run_sha256": "ca44f2e1e728dc6dbb34c6b7f80a07357c5c34c9f31c4b9f8d141e46918c38ca",
+      "local_sha256": "ca44f2e1e728dc6dbb34c6b7f80a07357c5c34c9f31c4b9f8d141e46918c38ca"
+    },
+    {
+      "path": "configs/g1_codec_skeleton.json",
+      "run_sha256": "d2627ab9be14d9dd46fc483b754128e6c8f2515db5b1a274ba1b2b97d9aac6e7",
+      "local_sha256": "d2627ab9be14d9dd46fc483b754128e6c8f2515db5b1a274ba1b2b97d9aac6e7"
+    },
+    {
+      "path": "configs/generation_env-spec.json",
+      "run_sha256": "0be86097312023b531a7078526d1f58d3f720a90f2d948a806f58fb491f2c336",
+      "local_sha256": "0be86097312023b531a7078526d1f58d3f720a90f2d948a806f58fb491f2c336"
+    },
+    {
+      "path": "configs/accounting_terms_erratum.json",
+      "run_sha256": "ab79281f9f2a3edf69572ec6c5974b410a0e1bea51673a1dd9f59a684ca3bd95",
+      "local_sha256": "ab79281f9f2a3edf69572ec6c5974b410a0e1bea51673a1dd9f59a684ca3bd95"
+    }
+  ],
+  "raw_manifest": "verified_raw_manifest.json",
+  "raw_copy": "raw_result",
+  "primary_verification_sha256": "d218d655920a605035c65d460c927aea853db73ad2987d981a4872c19c90c3d3",
+  "failed_checks": []
+}
