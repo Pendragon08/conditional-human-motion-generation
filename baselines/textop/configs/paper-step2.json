@@ -1,0 +1,45 @@
+{
+  "status": "AUTHORIZED_WAITING_FOR_STEP1_AND_69D_VALIDATION",
+  "authorization": "User2026-10-25: train the motion generator after dataset preparation, VAE then LDM then autoregressive generation",
+  "source_paper": "https://arxiv.org/pdf/2602.07439",
+  "source_code": "TeleHuman/TextOp@ef6555fb174c9b5c44945a62c7ffc77b5ddbbf22",
+  "profile": "public-data reproduction of paper algorithm; unavailable author-private data must remain an explicit difference",
+  "launch_enabled": false,
+  "launch_reason": "Step1 dynamic filtering is pending; released57D runtime is not yet a validated69D training implementation",
+  "representation": {"robot": "Unitree G1", "dof": 29, "feature_dim": 69, "fps": 50, "history_frames": 2, "future_frames": 8, "primitives_per_sample": 4, "feature_frames_per_sample": 34, "raw_pose_frames_for_forward_differences": 35},
+  "vae": {
+    "official_class": "robotmdar.model.mld_vae.AutoMldVae",
+    "encoder_input": "concatenated history2 and ground-truth future8 robot-motion features",
+    "decoder_input": "history2 and sampled latent",
+    "decoder_output_shape": [8, 69],
+    "latent_dim": [1, 128], "hidden_dim": 512, "ffn_dim": 1024, "transformer_layers": 9, "heads": 4,
+    "total_manager_steps": 200000, "stages_from_released_USAGE": [100000, 50000, 50000],
+    "batch_size": 512, "learning_rate": 0.0001, "self_rollout": true, "max_rollout_probability_from_table_VI": 1.0,
+    "loss": {"reconstruction": "Huber", "rec_weight": 1.0, "kl_weight": 0.0001, "body_translation_weight": 0.05, "body_rotation_weight": 0.01, "dof_position_weight": 0.03, "dof_velocity_weight": 0.00001, "foot_contact_weight": 0.01},
+    "checkpoint_policy": "New69D run; never resume23DoF/57D checkpoints"
+  },
+  "ldm": {
+    "official_class": "robotmdar.model.mld_denoiser.DenoiserTransformer",
+    "freeze_trained_vae": true, "freeze_pretrained_clip": true,
+    "conditioning": ["current text CLIP embedding", "history2 robot-motion features", "diffusion timestep"],
+    "prediction_target": "clean latent z0; not a replacement epsilon-prediction objective",
+    "hidden_dim": 512, "ffn_dim": 1024, "transformer_layers": 8, "heads": 4, "noise_dim": 128,
+    "total_manager_steps": 300000, "stages_from_released_USAGE": [100000, 100000, 100000],
+    "batch_size": 512, "learning_rate": 0.0001,
+    "diffusion_steps": 5, "noise_schedule": "cosine", "text_mask_probability": 0.1, "inference_cfg_scale": 5.0,
+    "self_rollout": true, "max_rollout_probability_from_table_VI": 0.8,
+    "loss": {"clean_latent": "Huber", "latent_weight": 1.0, "feature_reconstruction": "Huber", "rec_weight": 1.0, "geometry_weights": "same as VAE"},
+    "normalization": "reuse the accepted69D training-only feature statistics and the selected trained VAE latent statistics"
+  },
+  "autoregressive": {"reference_equation": "x_ref[t:t+8] = G(x_ref[t-2:t], current_text)", "index_convention": "Python end-exclusive; corresponds to inclusive paper t:t+7", "advance_frames": 8, "next_history": "last2 frames of the newly generated8 reference frames", "reference_duration_per_call_s": 0.16, "target_reference_generation_rate_hz": 6.25, "real_latency_measured": false},
+  "required_before_training": ["real relaxed and strict tracking-filter evidence with checkpoint/log hashes", "accepted69D paired public corpus with declared coverage and train/val source separation", "training-only normalization and complete frozen-CLIP text cache", "validated29DoF skeleton/FK and geometry losses", "69D VAE/LDM numerical and gradient validation plus fresh documented environment witness", "paper/code differences resolved or explicitly scoped", "free disk and shared GPU preflight", "checkpoint/local/GitHub backup paths configured"],
+  "source_differences_pending": [
+    "Published data and dtype.motion are23DoF/57D with n_qpos30; paper requires29DoF/69D and qpos36. Changing nfeats alone is insufficient.",
+    "BaseManager.should_rollout caps probability at1.0 for both stages; paper TableVI limits LDM to0.8. Apply an isolated documented adaptation, preserving upstream.",
+    "Paper Eq12 states reverse variance beta_k; public diffusion configuration uses FIXED_SMALL. Verify and document the sampling-variance choice before claiming paper equivalence.",
+    "Stage lengths come from released USAGE; exact curriculum transition details are not fully specified by the paper. Record this provenance.",
+    "Author-private data and evaluation resources may be unavailable; do not call public-only or subset runs the full paper-scale reproduction."
+  ],
+  "preserve": ["existing57D run and checkpoint records", "all datasets", "PhyGile and ReactiveBFM pause state", "other users directories"],
+  "outputs": ["69D VAE and LDM checkpoints with optimizer/counters and hashes", "validation reconstruction and geometric errors", "autoregressive continuity and text-switch tests", "reference-motion videos labeled as kinematic generation", "actual-execution videos only after a later tracker rollout", "local and GitHub reports; licensed raw assets remain private"]
+}
