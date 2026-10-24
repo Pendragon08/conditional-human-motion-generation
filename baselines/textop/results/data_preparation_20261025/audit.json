@@ -1,0 +1,95 @@
+{
+  "started_utc": "2026-10-24T16:39:02Z",
+  "scope": "released 23DoF / 57D dataset audit only; not physical tracking filtering",
+  "raw_stageii_unique": 1269,
+  "splits": {
+    "train": {
+      "sequences": 6213,
+      "motion_duration_s": 76803.64000000097,
+      "dof_counts": {
+        "23": 6213
+      },
+      "fps_counts": {
+        "50.0": 6213
+      },
+      "unique_motion_sha256": 6211,
+      "unique_sources": 6213,
+      "checks": {
+        "declared_length_differs_from_motion": 5731,
+        "segment_text_pairs": 36592,
+        "annotations_end_after_motion": 3710,
+        "missing_cached_embeddings": 0,
+        "valid_sequences": 6213,
+        "invalid_sequences": 0,
+        "invalid_annotation_time": 5,
+        "annotation_without_motion_overlap": 1
+      }
+    },
+    "val": {
+      "sequences": 2078,
+      "motion_duration_s": 28639.019999999764,
+      "dof_counts": {
+        "23": 2078
+      },
+      "fps_counts": {
+        "50.0": 2078
+      },
+      "unique_motion_sha256": 2078,
+      "unique_sources": 2078,
+      "checks": {
+        "segment_text_pairs": 13412,
+        "annotations_end_after_motion": 1278,
+        "missing_cached_embeddings": 0,
+        "valid_sequences": 2078,
+        "invalid_sequences": 0,
+        "declared_length_differs_from_motion": 1904
+      }
+    }
+  },
+  "unchanged_source_files": {
+    "train": {
+      "sha256": "33123a15905fb098b5fa6c083a1dc76441e7c2a90b190844534aeba1fc0dd331",
+      "bytes": 4905919425
+    },
+    "val": {
+      "sha256": "293b567e55169adee4ec84237c3e0ee221fbcf3563b4871c85043a79622b749d",
+      "bytes": 1829196298
+    }
+  },
+  "physical_filter_reexecuted": false,
+  "private_dataset_available": false,
+  "paper_target": {
+    "dof": 29,
+    "feature_dim": 69,
+    "contact_height_m": 0.2,
+    "contact_squared_displacement": 0.002,
+    "filter_training_iterations": 40000,
+    "relaxed_failure_threshold": 0.05,
+    "strict_filter": "remove any failing motion"
+  },
+  "train_val_overlap": {
+    "source_ids": 0,
+    "babel_ids": 0,
+    "exact_motion_fingerprints": 0
+  },
+  "source_dataset_counts": {
+    "BMLrub": 2139,
+    "ACCAD": 147,
+    "CMU": 1343,
+    "HDM05": 165,
+    "EyesJapanDataset": 542,
+    "KIT": 2513,
+    "EKUT": 220,
+    "DFaust": 79,
+    "SFU": 32,
+    "BMLmovi": 1111
+  },
+  "structure_errors": {},
+  "raw_pairable_sequences": 500,
+  "raw_pairable_splits": {
+    "train": 373,
+    "val": 127
+  },
+  "raw_missing_sequences": 7791,
+  "completed_utc": "2026-10-24T16:39:24Z"
+}

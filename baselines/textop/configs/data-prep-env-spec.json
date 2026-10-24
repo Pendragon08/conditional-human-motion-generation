@@ -1,0 +1,34 @@
+{
+  "base": "warm reuse gmr_amass_20261021; no pip changes",
+  "python": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021/bin/python",
+  "required_versions": {
+    "numpy": "1.26.4",
+    "torch": "2.5.1+cu121",
+    "scipy": "1.15.3",
+    "mujoco": "3.3.7",
+    "mink": "0.0.13",
+    "smplx": "0.1.28",
+    "qpsolvers": "4.8.1",
+    "daqp": "0.7.2",
+    "rich": "13.9.4",
+    "tqdm": "4.70.0"
+  },
+  "env": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4"
+  },
+  "gmr_root": "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/GMR",
+  "body_models": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass/remaining_20261021/SMPLX_lockedhead_20230207/extracted/models_lockedhead",
+  "paper_configuration": {
+    "dof": 29,
+    "fps_retarget": 30,
+    "fps_output": 50,
+    "contact_height": 0.2,
+    "contact_squared_displacement": 0.002,
+    "feature_dim": 69,
+    "physical_filter_required": true
+  },
+  "validation": "seeded CPU SMPL-X forward and one GMR IK frame, then raw motion replay; not dynamic filtering"
+}

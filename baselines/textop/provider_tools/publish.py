@@ -14,13 +14,15 @@ missing=['baselines/textop/upstream/'+x['path'] for x in meta['files'] if 'basel
 if missing:print(git('add','-f','--',*missing))
 public_results=[]
 for p in (REPO/'baselines/textop/results').rglob('*'):
+    if '.private.' in p.name or '_private.' in p.name:continue
     if p.is_file() and (p.suffix in ['.json','.jsonl','.txt','.log','.yaml'] or p.name=='complete_records.tar.gz'):public_results.append(p.relative_to(REPO).as_posix())
 if public_results:print(git('add','-f','--',*public_results))
 changes=git('diff','--cached','--name-only').splitlines()
 if any(not x.startswith('baselines/textop/') for x in changes):raise RuntimeError('Unrelated staged changes; refusing commit')
+if any('.private.' in x or '_private.' in x for x in changes):raise RuntimeError('Licensed private asset staged; refusing publication')
 if changes:
     print(git('diff','--cached','--stat')[-1200:])
-    print(git('commit','-m','Add pinned TextOp public-data reproduction and training evidence'))
+    print(git('commit','-m','Audit TextOp data provenance and reconstruct paper-oriented 29DoF candidates'))
 print(git('push','-u','origin',branch))
 head=git('rev-parse','HEAD');remote=git('ls-remote','origin','refs/heads/'+branch).split()[0]
 assert head==remote

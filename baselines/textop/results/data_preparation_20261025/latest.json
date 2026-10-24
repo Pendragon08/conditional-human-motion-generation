@@ -1,0 +1,446 @@
+{
+  "receipts": {
+    "audit": {
+      "started_utc": "2026-10-24T16:39:02Z",
+      "scope": "released 23DoF / 57D dataset audit only; not physical tracking filtering",
+      "raw_stageii_unique": 1269,
+      "splits": {
+        "train": {
+          "sequences": 6213,
+          "motion_duration_s": 76803.64000000097,
+          "dof_counts": {
+            "23": 6213
+          },
+          "fps_counts": {
+            "50.0": 6213
+          },
+          "unique_motion_sha256": 6211,
+          "unique_sources": 6213,
+          "checks": {
+            "declared_length_differs_from_motion": 5731,
+            "segment_text_pairs": 36592,
+            "annotations_end_after_motion": 3710,
+            "missing_cached_embeddings": 0,
+            "valid_sequences": 6213,
+            "invalid_sequences": 0,
+            "invalid_annotation_time": 5,
+            "annotation_without_motion_overlap": 1
+          }
+        },
+        "val": {
+          "sequences": 2078,
+          "motion_duration_s": 28639.019999999764,
+          "dof_counts": {
+            "23": 2078
+          },
+          "fps_counts": {
+            "50.0": 2078
+          },
+          "unique_motion_sha256": 2078,
+          "unique_sources": 2078,
+          "checks": {
+            "segment_text_pairs": 13412,
+            "annotations_end_after_motion": 1278,
+            "missing_cached_embeddings": 0,
+            "valid_sequences": 2078,
+            "invalid_sequences": 0,
+            "declared_length_differs_from_motion": 1904
+          }
+        }
+      },
+      "unchanged_source_files": {
+        "train": {
+          "sha256": "33123a15905fb098b5fa6c083a1dc76441e7c2a90b190844534aeba1fc0dd331",
+          "bytes": 4905919425
+        },
+        "val": {
+          "sha256": "293b567e55169adee4ec84237c3e0ee221fbcf3563b4871c85043a79622b749d",
+          "bytes": 1829196298
+        }
+      },
+      "physical_filter_reexecuted": false,
+      "private_dataset_available": false,
+      "paper_target": {
+        "dof": 29,
+        "feature_dim": 69,
+        "contact_height_m": 0.2,
+        "contact_squared_displacement": 0.002,
+        "filter_training_iterations": 40000,
+        "relaxed_failure_threshold": 0.05,
+        "strict_filter": "remove any failing motion"
+      },
+      "train_val_overlap": {
+        "source_ids": 0,
+        "babel_ids": 0,
+        "exact_motion_fingerprints": 0
+      },
+      "source_dataset_counts": {
+        "BMLrub": 2139,
+        "ACCAD": 147,
+        "CMU": 1343,
+        "HDM05": 165,
+        "EyesJapanDataset": 542,
+        "KIT": 2513,
+        "EKUT": 220,
+        "DFaust": 79,
+        "SFU": 32,
+        "BMLmovi": 1111
+      },
+      "structure_errors": {},
+      "raw_pairable_sequences": 500,
+      "raw_pairable_splits": {
+        "train": 373,
+        "val": 127
+      },
+      "raw_missing_sequences": 7791,
+      "completed_utc": "2026-10-24T16:39:24Z"
+    },
+    "aligned_release": {
+      "scope": "aligned metadata view of the released23DoF data; not the paper69D dataset",
+      "source_arrays_modified": false,
+      "source_pkl_modified": false,
+      "physical_filter_reexecuted": false,
+      "counts": {
+        "retained_pairs": 49998,
+        "intervals_clipped": 4987,
+        "train_sequences": 6213,
+        "invalid_interval_removed": 5,
+        "no_overlap_removed": 1,
+        "val_sequences": 2078
+      }
+    },
+    "smoke1": {
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "completed_sequences": 0,
+      "mirrored_sequences": 0,
+      "failed_sequences": 6,
+      "total_requested": 6,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
+      "cpu_only": true,
+      "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+      "processed": 6,
+      "updated_utc": "2026-10-24T16:55:22Z",
+      "splits": {},
+      "paired_segments": 0
+    },
+    "smoke2": {
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "completed_sequences": 6,
+      "mirrored_sequences": 6,
+      "failed_sequences": 0,
+      "total_requested": 6,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
+      "cpu_only": true,
+      "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+      "processed": 6,
+      "updated_utc": "2026-10-24T17:00:45Z",
+      "splits": {
+        "train": 2,
+        "val": 4
+      },
+      "paired_segments": 18
+    },
+    "batch500": {
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "completed_sequences": 385,
+      "mirrored_sequences": 385,
+      "failed_sequences": 0,
+      "total_requested": 500,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "status": "RUNNING",
+      "cpu_only": true,
+      "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+      "processed": 385,
+      "updated_utc": "2026-10-24T17:53:43Z"
+    },
+    "raw_reconciliation": {
+      "release_sequences": 8291,
+      "previous_exact_raw_matches": 500,
+      "additional_existing_raw_matches": 143,
+      "matched_by_group": {
+        "ACCAD": 147,
+        "HDM05": 165,
+        "EKUT": 220,
+        "DFaust": 79,
+        "SFU": 32
+      },
+      "still_unmatched_by_group": {
+        "BMLrub": 2139,
+        "CMU": 1343,
+        "EyesJapanDataset": 542,
+        "KIT": 2513,
+        "BMLmovi": 1111
+      },
+      "ambiguous_normalized_keys": 0,
+      "newly_retargeted_sequences": 0,
+      "physical_filter_executed": false,
+      "note": "Additional input availability is not completed retargeting or dynamic filtering"
+    },
+    "queue143": {
+      "pid": 3266979,
+      "wait_for": "available500_v1 completion",
+      "next": "143 additional raw inputs, CPU4; no training"
+    },
+    "witness_author": {
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "completed_sequences": 0,
+      "mirrored_sequences": 0,
+      "failed_sequences": 0,
+      "total_requested": 1,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "status": "TEXTOP_GMR_BODY_WITNESS_PASSED",
+      "cpu_only": true,
+      "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+      "witness_qpos_shape": [
+        36
+      ],
+      "witness_num_betas": 16,
+      "witness_frames_forwarded": 8,
+      "source_motion_sha256": "4d34adcec334ced939a96b6ed7e06c09217e42e5ade0ec0461520e6112ee296c",
+      "source_hashes": {
+        "general_motion_retargeting/motion_retarget.py": "7cd59ccce8b3903763c66c40d0433e871b978d3709e3fe793a87c583f658b5ff",
+        "general_motion_retargeting/utils/smpl.py": "96a72e57ce56a2b75ea7709ff9fd9e5c00bd010150d8accdcdd076da0bcbd4d9",
+        "general_motion_retargeting/ik_configs/smplx_to_g1.json": "e34e04804e19e54a34aae6de2bdc166b12a06dbbbcfd149cf687af56ad437797",
+        "assets/unitree_g1/g1_mocap_29dof.xml": "943eb0d5e24dad6cb029d3331daf85c139c8f5d8ce9c62e751e3ff69a0e44416"
+      },
+      "body_model_sha256": "44e57050d127538e20e10e27f8274ba9ca3dd09c992e954d3d2b5ae5e5bb8313"
+    },
+    "witness_document": {
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "completed_sequences": 0,
+      "mirrored_sequences": 0,
+      "failed_sequences": 0,
+      "total_requested": 1,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "status": "TEXTOP_GMR_BODY_WITNESS_PASSED",
+      "cpu_only": true,
+      "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+      "witness_qpos_shape": [
+        36
+      ],
+      "witness_num_betas": 16,
+      "witness_frames_forwarded": 8,
+      "source_motion_sha256": "4d34adcec334ced939a96b6ed7e06c09217e42e5ade0ec0461520e6112ee296c",
+      "source_hashes": {
+        "general_motion_retargeting/motion_retarget.py": "7cd59ccce8b3903763c66c40d0433e871b978d3709e3fe793a87c583f658b5ff",
+        "general_motion_retargeting/utils/smpl.py": "96a72e57ce56a2b75ea7709ff9fd9e5c00bd010150d8accdcdd076da0bcbd4d9",
+        "general_motion_retargeting/ik_configs/smplx_to_g1.json": "e34e04804e19e54a34aae6de2bdc166b12a06dbbbcfd149cf687af56ad437797",
+        "assets/unitree_g1/g1_mocap_29dof.xml": "943eb0d5e24dad6cb029d3331daf85c139c8f5d8ce9c62e751e3ff69a0e44416"
+      },
+      "body_model_sha256": "44e57050d127538e20e10e27f8274ba9ca3dd09c992e954d3d2b5ae5e5bb8313"
+    },
+    "env_validation": {
+      "canonical_spec_hash": "87f577cc",
+      "spec_file_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "independent_agent": "/root/textop_data_environment_witness",
+      "independent_witness_passed": true,
+      "meaning": "Hash conventions differ: canonical parsed JSON vs file bytes. Both are verified, not a spec mismatch.",
+      "scope": "CPU SMPL-X forward and GMR IK only; no physical filtering"
+    },
+    "pause": {
+      "time_utc": "2026-10-24T16:28:40Z",
+      "textop_training": {
+        "pid": 3237858,
+        "action": "SIGSTOP preserves live training state; prioritize dataset preparation",
+        "state": "State:\tT (stopped)"
+      },
+      "training_progress.json": {
+        "manager_step": 10200,
+        "optimizer_updates_this_process": 10039,
+        "skipped_updates_this_process": 161,
+        "loss": 0.01279846578836441,
+        "stage": 0,
+        "elapsed_s": 2323.060105085373,
+        "peak_allocated_bytes": 6959493632,
+        "data_free_bytes": 1881415680,
+        "save_dir": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/runs/RobotMDAR/TextOp_Public_Full_MVAE_20261024/train-mvae-20261024_154946"
+      },
+      "download_complete.json": {
+        "files": 100,
+        "bytes": 7653009670
+      },
+      "disk": {
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024": {
+          "total": 1967847137280,
+          "used": 1865929048064,
+          "free": 1881366528
+        },
+        "/home/ouyanghao": {
+          "total": 502918963200,
+          "used": 476185456640,
+          "free": 1111396352
+        }
+      },
+      "asset_candidates": [
+        "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data/amass_g1_36dim",
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b/data/amass",
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/GMR",
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/CondMDI/data_loaders/amass",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass/remaining_20261021/SMPLX_lockedhead_20230207",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass/remaining_20261021/SMPLX_lockedhead_20230207/extracted/models_lockedhead/smplx",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass/remaining_20261021/SMPLX_lockedhead_20230207/extracted/models_lockedhead/smplx/SMPLX_FEMALE.npz",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass/remaining_20261021/SMPLX_lockedhead_20230207/extracted/models_lockedhead/smplx/SMPLX_NEUTRAL.npz",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass/remaining_20261021/SMPLX_lockedhead_20230207/extracted/models_lockedhead/smplx/SMPLX_MALE.npz",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/assets/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps"
+      ],
+      "raw_npz_groups": {
+        "phygile-reproduction-20261017/data/amass/humanml_pairing_20261021": 101,
+        "phygile-reproduction-20261017/data/amass/remaining_20261021_v4": 449,
+        "phygile-reproduction-20261017/data/amass/remaining_20261021": 862,
+        "phygile-reproduction-20261017/data/amass/recovery_20261021_v1": 442,
+        "phygile-reproduction-20261017/data/amass/humanml_reference_20261021": 30,
+        "phygile-reproduction-20261017/data/amass/remaining_20261021_v5": 219,
+        "phygile-reproduction-20261017/data/amass/ssm_20261021": 33
+      }
+    },
+    "local_raw_expansion": {
+      "requested": 1653,
+      "completed": 130,
+      "bytes": 811541014,
+      "groups": {
+        "BMLmovi": {
+          "archive_bytes": 5295135910,
+          "archive_sha256": "b8c5fca189bdb52768cdef8b93a3892a9e0788100b4553aa1ec63eac1ddf66c0",
+          "matched": 130,
+          "bytes": 811541014
+        }
+      },
+      "status": "EXTRACTING_INDEXED_MOTIONS",
+      "new_downloads": 0,
+      "physical_filter_executed": false,
+      "updated_utc": "2026-10-24T17:53:42Z"
+    }
+  },
+  "metrics": {
+    "smoke_v2": {
+      "sequences": 6,
+      "frames50": 539,
+      "paired_annotations_including_saved_mirrors": 18,
+      "rejected_annotations": 1,
+      "codec_max_error_m_or_rad": 1.0971931319048167e-07,
+      "joint_skeleton_mirror_max_error_m": 9.999622815837217e-06,
+      "splits": {
+        "train": 2,
+        "val": 4
+      }
+    },
+    "available500_v1": {
+      "sequences": 385,
+      "frames50": 133624,
+      "paired_annotations_including_saved_mirrors": 3434,
+      "rejected_annotations": 121,
+      "codec_max_error_m_or_rad": 2.5385949732614765e-07,
+      "joint_skeleton_mirror_max_error_m": 9.999999626392198e-06,
+      "splits": {
+        "train": 289,
+        "val": 96
+      }
+    }
+  },
+  "space_bytes": {
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 1721413632,
+    "/home/ouyanghao": 1102614528
+  },
+  "missing_raw_by_dataset": {
+    "BMLrub": 2139,
+    "ACCAD": 143,
+    "CMU": 1343,
+    "EyesJapanDataset": 542,
+    "KIT": 2513,
+    "BMLmovi": 1111
+  },
+  "generator_process_state": "State:\tT (stopped)",
+  "paper_data_ready": false,
+  "physical_filter_executed": false,
+  "known_blockers": [
+    "Remaining raw AMASS source files still need reconciliation/extraction or download",
+    "Paper privileged40k policy and relaxed/strict dynamic evaluations not executed",
+    "Authors private403 clips not available",
+    "Released23DoF dataset differs from paper29DoF dataset"
+  ]
+}

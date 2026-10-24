@@ -16,3 +16,10 @@ Build metadata fix: pin setuptools68.2.2/wheel0.42.0 before editable packages. O
 validated: spec9d7f370d seeded official MVAE CUDA forward/backward passed; fresh independent doc witness_v2 passed verbatim SSH invocation, exit0, no divergence. No trained result claimed by environment witness.
 
 validated: spec9d7f370d fresh independent doc witness_v3 passed verbatim SSH invocation after corrected training-observability documentation, exit0, no divergence. Shared environment unchanged; attempt1 preserved, attempt2 uses official skip behavior and separate counters.
+
+### env: textop-data-prep@87f577cc
+Warm reuse packages from gmr_amass_20261021 (old dependency spec141547bf), no package/environment mutation. New spec records licensed body-model availability and paper69D target. Source and model hash witness pending. Resources CPU4, no CUDA. MVAE57D is SIGSTOP-held pending data preparation.
+
+Validation update 2026-10-25: author and fresh document-following executions both exited0 with TEXTOP_GMR_BODY_WITNESS_PASSED, SMPL-X num_betas16 and finite GMR qpos[36]. Results/data_preparation_20261025 retains both witnesses and explicit canonical-spec hash87f577cc versus file-byte SHA2566e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591. The hash formats represent different serialized inputs and are not contradictory. Six complete-motion processing checks passed; initial errors remain recorded. This certifies CPU preprocessing only, not dynamic tracking quality or full paper dataset readiness.
+
+Data scheduling: server batch500 PID3257584; CPU-only, four threads. Continuation wrapper PID3266979 waits for it to finish successfully, then processes143 additionally matched ACCAD inputs; no overlapping retarget batches, RL launch, or generator resumption. Local archive extraction PID69024 selects1,653 indexed BMLmovi/EyesJapan inputs from already licensed SHA-verified D-drive archives into C-drive private storage with6GiB reserve. No source archive or dataset deletion is performed. Do not put these private data directories in Git.

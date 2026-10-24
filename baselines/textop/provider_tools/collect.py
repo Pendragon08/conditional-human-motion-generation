@@ -19,6 +19,10 @@ for n in ['mvae_metrics.jsonl','gradient_skips.jsonl','build_attempt1_failed.log
         else:
             with p.open('rb') as f:f.seek(max(0,p.stat().st_size-12000));out['logs'][n]=f.read().decode(errors='replace')
 if (r/'receipts/training_failure.txt').exists():out['logs']['training_failure.txt']=(r/'receipts/training_failure.txt').read_text()
+launch=out['receipts'].get('training_launch.json',{{}})
+if launch.get('pid'):
+    p=pathlib.Path('/proc')/str(launch['pid'])/'status'
+    if p.exists():out['training_process_state']=next((x for x in p.read_text().splitlines() if x.startswith('State:')),'')
 if (r/'logs/mvae.log').exists():
     clean=re.sub(r'\x1b\[[0-9;]*m','',(r/'logs/mvae.log').read_text(errors='replace'))
     counts=[[int(a),int(b)] for a,b in re.findall(r'Found (\d+) valid samples out of (\d+)',clean)]
@@ -37,6 +41,7 @@ dl=result['receipts'].get('download_complete.json',{})
 backup=json.loads((BASE/'results/initial_checkpoint_backup.json').read_text()) if (BASE/'results/initial_checkpoint_backup.json').exists() else None
 failed=result['receipts'].get('training_exit.json',{}).get('returncode',0)!=0
 status='首轮启动检查停止，已保留失败记录，正在修正重启' if failed else ('已发生真实优化器更新' if progress else ('训练进程已启动、正在装载完整数据' if 'training_launch.json' in result['receipts'] else '下载与环境验证进行中，尚未发生真实训练更新'))
+if 'T (stopped)' in result.get('training_process_state',''):status='23DoF/57D基线训练现场已暂停；优先准备论文29DoF/69D数据'
 report=f'''# TextOp 下载与训练启动记录
 
 更新时间：{result['collected_utc']}。当前状态：**{status}**。
@@ -78,12 +83,14 @@ report=f'''# TextOp 下载与训练启动记录
 
 官方README还注明部分最新代码和数据尚未完全更新，因此本轮对齐的是上述固定公开版本，不能宣称已经覆盖最新论文的所有实现细节。
 
+2026-10-25补充核对：论文表VI为69维、附录A为29DoF和0.2m接触高度阈值；当前发布数据/旧处理脚本为23DoF、57维和0.08m。此前“官方配置”仅指固定公开代码的配置，并非已经验证与论文最终版完全一致。当前保留该实验，暂停参数更新，转为先准备29DoF论文数据；详细状态见数据准备报告。
+
 Tracker官方9780段训练动作另需9,900,102,760字节，尚未全量下载；已保存完整文件名、大小和哈希清单，本次下载包含其预训练权重。完整Tracker需要Isaac Lab2.1.0和官方rsl_rl分支，不能用当前MVAE环境代替。ROS2/Unitree MuJoCo实时部署需后续独立配置。
 
 原始/重定向数据及模型大文件留在服务器个人目录；GitHub保存代码、固定版本、哈希、配置和结果证据，避免公开受限AMASS/SMPL资产。数据目录分布在/data/code/ouyanghao/oyh/textop-reproduction-20261024/assets与/home/ouyanghao/textop-assets-20261024，由符号链接提供统一官方目录。未删除已有数据。PhyGile和ReactiveBFM保持暂停。
 '''
 (BASE/'reports/启动报告_20261024.md').write_text(report,encoding='utf-8')
-(BASE/'README.md').write_text('# TextOp 复现\n\n'+status+'。\n\n见 [启动报告](reports/启动报告_20261024.md)、[环境说明](ENVIRONMENT.md)、[官方版本](upstream/README.md)。\n\n官方代码以固定提交镜像保存于upstream/，下载数据不入Git。scripts/为本次下载、隔离环境安装、训练启动与指标记录代码。官方算法源文件未修改。\n',encoding='utf-8')
+(BASE/'README.md').write_text('# TextOp 复现\n\n'+status+'。\n\n优先查看 [数据准备核查与重建报告](reports/dataset_preparation_20261025.md)。另见 [启动报告](reports/启动报告_20261024.md)、[环境说明](ENVIRONMENT.md)、[官方版本](upstream/README.md)。\n\n官方代码以固定提交镜像保存于upstream/，下载数据不入Git。scripts/为本次下载、隔离环境安装、训练启动与指标记录代码。官方算法源文件未修改；论文29DoF重建部分为独立自实现并复用GMR核心，尚待真实动态筛选。\n',encoding='utf-8')
 for p in [BASE/'reports/启动报告_20261024.md',BASE/'results/latest_status.json',BASE/'ENVIRONMENT.md',BASE/'SERVER_NOTES.md']:shutil.copy2(p,LOCAL/p.name)
 def render_inline(t):
     t=html.escape(t)
@@ -104,6 +111,6 @@ for line in report.splitlines():
     if m:parts.append(f'<h{len(m[1])}>'+render_inline(m[2])+f'</h{len(m[1])}>')
     elif line.strip():parts.append('<p>'+render_inline(line)+'</p>')
 if in_list:parts.append('</ul>')
-page='<!DOCTYPE html><html lang="zh-CN"><meta charset="utf-8"><title>TextOp 下载与训练启动</title><style>body{font:16px/1.8 system-ui,"Microsoft YaHei",sans-serif;max-width:1040px;margin:36px auto;padding:24px 40px;background:#f6f8fa;color:#17202a}h1{font-size:30px}h2{font-size:21px;margin-top:36px;border-top:1px solid #d0d7de;padding-top:24px}a{color:#0969da;overflow-wrap:anywhere}p,li{overflow-wrap:anywhere}pre{font-size:13px;line-height:1.6;white-space:pre-wrap;background:white;padding:20px;border:1px solid #d0d7de;border-radius:10px;overflow-wrap:anywhere}strong{color:#095b45}li{margin:8px 0}</style><main>'+''.join(parts)+'</main></html>'
+page='<!DOCTYPE html><html lang="zh-CN"><meta charset="utf-8"><title>TextOp 下载与训练启动</title><style>body{font:16px/1.8 system-ui,"Microsoft YaHei",sans-serif;max-width:1040px;margin:36px auto;padding:24px 40px;background:#f6f8fa;color:#17202a}h1{font-size:30px}h2{font-size:21px;margin-top:36px;border-top:1px solid #d0d7de;padding-top:24px}a{color:#0969da;overflow-wrap:anywhere}p,li{overflow-wrap:anywhere}pre{font-size:13px;line-height:1.6;white-space:pre-wrap;background:white;padding:20px;border:1px solid #d0d7de;border-radius:10px;overflow-wrap:anywhere}strong{color:#095b45}li{margin:8px 0}</style><main><p><a href="数据准备核查报告_20261025.html">查看最新数据准备核查报告</a></p>'+''.join(parts)+'</main></html>'
 (LOCAL/'TextOp下载与训练报告.html').write_text(page,encoding='utf-8')
 print(status,json.dumps(progress,ensure_ascii=False))
