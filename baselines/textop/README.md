@@ -1,6 +1,6 @@
 # TextOp 复现
 
-首轮启动检查停止，已保留失败记录，正在修正重启。
+已发生真实优化器更新。
 
 见 [启动报告](reports/启动报告_20261024.md)、[环境说明](ENVIRONMENT.md)、[官方版本](upstream/README.md)。
 
