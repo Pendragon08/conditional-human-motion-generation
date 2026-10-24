@@ -1,6 +1,6 @@
 # TextOp 数据准备核查与重建记录
 
-更新时间：2026-10-25 02:36:30 北京时间。
+更新时间：2026-10-25 02:41:57 北京时间。
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
@@ -46,20 +46,20 @@
 
 ## 29DoF 重建进度
 
-当前成功 449/500 条、失败 0 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
+当前成功 454/500 条、失败 0 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
 
 另外143条已有ACCAD原始动作因空格/下划线导出命名差异，首轮未匹配；现通过明确的字面规范化确认，无模糊匹配、无歧义键。当前批次完成后使用同一验证过的CPU环境串行处理，已完成 0/143 条。输入可用性不等于完成重定向或通过物理筛选。
 
 ```json
 {
-  "sequences": 449,
-  "frames50": 254550,
-  "paired_annotations_including_saved_mirrors": 6276,
+  "sequences": 454,
+  "frames50": 267802,
+  "paired_annotations_including_saved_mirrors": 6556,
   "rejected_annotations": 122,
   "codec_max_error_m_or_rad": 3.981501353056416e-07,
   "joint_skeleton_mirror_max_error_m": 9.99999971451615e-06,
   "splits": {
-    "train": 338,
+    "train": 343,
     "val": 111
   }
 }
@@ -116,8 +116,8 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 ```json
 {
   "requested": 1653,
-  "completed": 1560,
-  "bytes": 16394687649,
+  "completed": 1653,
+  "bytes": 18369027723,
   "groups": {
     "BMLmovi": {
       "archive_bytes": 5295135910,
@@ -128,14 +128,15 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
     "EyesJapanDataset": {
       "archive_bytes": 7628321177,
       "archive_sha256": "85c83ca46fad11c71e4749042d3e4d0cabf21238966c3c41924016d9c53f25cf",
-      "matched": 449,
-      "bytes": 10171410953
+      "matched": 542,
+      "bytes": 12145751027
     }
   },
-  "status": "EXTRACTING_INDEXED_MOTIONS",
+  "status": "LOCAL_EXTRACTION_COMPLETE",
   "new_downloads": 0,
   "physical_filter_executed": false,
-  "updated_utc": "2026-10-24T18:36:22Z"
+  "updated_utc": "2026-10-24T18:41:17Z",
+  "unmatched_requested": 0
 }
 ```
 
@@ -155,7 +156,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 
 AMASS官网下载当前显示Sign In，已请求用户重新登录以续传BMLrub、CMU、KIT等缺少的包。BABEL原始标注另需独立登录和许可确认；已有AMASS/SMPL-X授权不自动覆盖BABEL。本次尚未接受BABEL独立许可，也未发送作者邮件。TotalCapture按此前要求跳过。
 
-数据盘约剩1.49GiB、系统盘约剩1.03GiB。先完成已有500条的处理并保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
+数据盘约剩1.48GiB、系统盘约剩1.03GiB。先完成已有500条的处理并保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
 
 代码与聚合证据同步GitHub；包含原始动作、人体模型、逐条文本的资产遵循许可保存在个人目录和本地，GitHub不公开原始/重定向数据文件。新输出均明确标为待物理筛选。PhyGile、ReactiveBFM继续暂停，未改动其数据或实验记录。
 
