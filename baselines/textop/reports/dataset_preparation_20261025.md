@@ -1,6 +1,6 @@
 # TextOp 数据准备核查与重建记录
 
-更新时间：2026-10-25 02:02:37 北京时间。
+更新时间：2026-10-25 02:04:59 北京时间。
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
@@ -44,20 +44,20 @@
 
 ## 29DoF 重建进度
 
-当前成功 401/500 条、失败 0 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
+当前成功 405/500 条、失败 0 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
 
 另外143条已有ACCAD原始动作因空格/下划线导出命名差异，首轮未匹配；现通过明确的字面规范化确认，无模糊匹配、无歧义键。当前批次完成后使用同一验证过的CPU环境串行处理，已完成 0/143 条。输入可用性不等于完成重定向或通过物理筛选。
 
 ```json
 {
-  "sequences": 401,
-  "frames50": 158498,
-  "paired_annotations_including_saved_mirrors": 4010,
+  "sequences": 405,
+  "frames50": 165033,
+  "paired_annotations_including_saved_mirrors": 4152,
   "rejected_annotations": 121,
   "codec_max_error_m_or_rad": 2.5385949732614765e-07,
   "joint_skeleton_mirror_max_error_m": 9.999999626392198e-06,
   "splits": {
-    "train": 301,
+    "train": 305,
     "val": 100
   }
 }
@@ -114,26 +114,40 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 ```json
 {
   "requested": 1653,
-  "completed": 610,
-  "bytes": 3534354711,
+  "completed": 750,
+  "bytes": 4287868834,
   "groups": {
     "BMLmovi": {
       "archive_bytes": 5295135910,
       "archive_sha256": "b8c5fca189bdb52768cdef8b93a3892a9e0788100b4553aa1ec63eac1ddf66c0",
-      "matched": 610,
-      "bytes": 3534354711
+      "matched": 750,
+      "bytes": 4287868834
     }
   },
   "status": "EXTRACTING_INDEXED_MOTIONS",
   "new_downloads": 0,
   "physical_filter_executed": false,
-  "updated_utc": "2026-10-24T18:02:30Z"
+  "updated_utc": "2026-10-24T18:04:55Z"
 }
 ```
 
+新提取的1,653条输入后续串行处理队列（同一已验证CPU环境，不启动生成器或RL）：
+```json
+{
+  "status": "WAITING_FOR_LOCAL_EXTRACTION_AND_PREVIOUS_RETARGETING",
+  "target": 1653,
+  "ram_working_copy": true,
+  "source_durable": "C private assets and D licensed original archives",
+  "physical_filter_executed": false,
+  "time_utc": "2026-10-24T18:03:18.584551+00:00"
+}
+```
+
+队列仅在本地完整提取且前面500+143条批次成功结束后运行；先逐文件校验，再检查服务器可用内存及共享内存容量，使用个人权限目录中的RAM工作副本进行GMR处理，最终编码结果归档到D盘并校验。C盘原始选中动作和D盘许可压缩包是持久输入，RAM工作副本不作为唯一数据副本。若资源条件不满足，保留记录并停止；不会删除数据或重启旧训练。
+
 AMASS官网下载当前显示Sign In，已请求用户重新登录以续传BMLrub、CMU、KIT等缺少的包。BABEL原始标注另需独立登录和许可确认；已有AMASS/SMPL-X授权不自动覆盖BABEL。本次尚未接受BABEL独立许可，也未发送作者邮件。TotalCapture按此前要求跳过。
 
-数据盘约剩1.58GiB、系统盘约剩1.03GiB。先完成已有500条的处理并保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
+数据盘约剩1.57GiB、系统盘约剩1.03GiB。先完成已有500条的处理并保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
 
 代码与聚合证据同步GitHub；包含原始动作、人体模型、逐条文本的资产遵循许可保存在个人目录和本地，GitHub不公开原始/重定向数据文件。新输出均明确标为待物理筛选。PhyGile、ReactiveBFM继续暂停，未改动其数据或实验记录。
 

@@ -39,7 +39,8 @@ def main():
     ready=PRIVATE/'indexed_raw_expansion_v1/ready.private.json'
     for _ in range(1440):
         p=PRIVATE/'raw_expansion_progress.json'
-        progress=json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
+        try:progress=json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
+        except json.JSONDecodeError:time.sleep(1);continue
         if progress.get('status')=='STOPPED_WITH_ERROR':raise RuntimeError('Local extraction stopped; retaining all files')
         if ready.exists():
             previous=json.loads(remote("import pathlib,json; p=pathlib.Path('"+ROOT+"/data_preparation_20261025/available143_v1/progress.json'); print(p.read_text() if p.exists() else '{}')",timeout=40))
@@ -47,7 +48,10 @@ def main():
                 assert previous['completed_sequences']==143 and previous['failed_sequences']==0;break
         time.sleep(30)
     else:raise TimeoutError('Prerequisites did not finish in12h; no new processing launched')
-    rows=json.loads(ready.read_text(encoding='utf-8'));assert len(rows)==1653
+    for _ in range(5):
+        try:rows=json.loads(ready.read_text(encoding='utf-8'));break
+        except json.JSONDecodeError:time.sleep(1)
+    assert len(rows)==1653
     paths=[pathlib.Path(x['local_raw_path']) for x in rows]
     for row,path in zip(rows,paths):assert path.is_file() and sha(path)==row['raw_sha256']
     total=sum(p.stat().st_size for p in paths)
@@ -95,7 +99,8 @@ receipt={{'pid':p.pid,'command':cmd,'verified_raw':len(rows),'source_sha256':has
     receipt=json.loads(remote(launch,timeout=180));state(status='RUNNING_GMR_CPU_ONLY',launch=receipt)
     last=-1
     for _ in range(2880):
-        progress=json.loads(remote("import pathlib; p=pathlib.Path('"+RAM+"/prepared1653_v1/progress.json'); print(p.read_text() if p.exists() else '{}')",timeout=40))
+        try:progress=json.loads(remote("import pathlib; p=pathlib.Path('"+RAM+"/prepared1653_v1/progress.json'); print(p.read_text() if p.exists() else '{}')",timeout=40))
+        except json.JSONDecodeError:time.sleep(1);continue
         completed=progress.get('processed',0)
         if completed//100>last:state(status='RUNNING_GMR_CPU_ONLY',progress=progress);collect_publish();last=completed//100
         if progress.get('status') in ['PREPROCESSING_FINISHED_FILTER_PENDING','PREPROCESSING_FAILED']:break
@@ -114,7 +119,8 @@ receipt={{'pid':p.pid,'command':cmd,'verified_raw':len(rows),'source_sha256':has
                 with archive.extractfile(member) as source:
                     while source.read(8*1024**2):pass
     digest=sha(partial);partial.rename(target)
-    state(status='PREPROCESSING_BACKED_UP_FILTER_PENDING',progress=progress,archive_sha256=digest,archive_bytes=target.stat().st_size)
+    outcome='PREPROCESSING_BACKED_UP_FILTER_PENDING' if progress['completed_sequences']==1653 and progress['failed_sequences']==0 else 'PREPROCESSING_PARTIAL_FAILURES_BACKED_UP'
+    state(status=outcome,progress=progress,archive_sha256=digest,archive_bytes=target.stat().st_size)
     collect_publish()
 
 if __name__=='__main__':

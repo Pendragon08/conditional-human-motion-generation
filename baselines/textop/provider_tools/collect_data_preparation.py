@@ -35,6 +35,8 @@ out['known_blockers']=['Remaining raw AMASS source files still need reconciliati
 print(json.dumps(out))
 '''
 result=json.loads(remote(code,timeout=100));dest=BASE/'results/data_preparation_20261025';dest.mkdir(parents=True,exist_ok=True)
+queue=dest/'local1653_queue.json'
+if queue.exists():result['receipts']['local1653_queue']=json.loads(queue.read_text(encoding='utf-8'))
 local_progress=REPO.parent.parent/'textop_reproduction_20261024/private_assets/raw_expansion_progress.json'
 if local_progress.exists():
     local=json.loads(local_progress.read_text(encoding='utf-8'))
@@ -46,6 +48,7 @@ for name,obj in result['receipts'].items():
     (dest/(name+'.json')).write_text(json.dumps(obj,ensure_ascii=False,indent=2),encoding='utf-8')
 a=result['receipts'].get('audit',{});b=result['receipts'].get('batch500',{});m=result['metrics'].get('available500_v1',{});v=result['receipts'].get('aligned_release',{})
 extra=result['receipts'].get('batch143',{});reconciled=result['receipts'].get('raw_reconciliation',{});local=result['receipts'].get('local_raw_expansion',{})
+local_queue=result['receipts'].get('local1653_queue',{})
 now=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S 北京时间')
 report=f'''# TextOp 数据准备核查与重建记录
 
@@ -110,6 +113,13 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 ```json
 {json.dumps(local,ensure_ascii=False,indent=2)}
 ```
+
+新提取的1,653条输入后续串行处理队列（同一已验证CPU环境，不启动生成器或RL）：
+```json
+{json.dumps(local_queue,ensure_ascii=False,indent=2)}
+```
+
+队列仅在本地完整提取且前面500+143条批次成功结束后运行；先逐文件校验，再检查服务器可用内存及共享内存容量，使用个人权限目录中的RAM工作副本进行GMR处理，最终编码结果归档到D盘并校验。C盘原始选中动作和D盘许可压缩包是持久输入，RAM工作副本不作为唯一数据副本。若资源条件不满足，保留记录并停止；不会删除数据或重启旧训练。
 
 AMASS官网下载当前显示Sign In，已请求用户重新登录以续传BMLrub、CMU、KIT等缺少的包。BABEL原始标注另需独立登录和许可确认；已有AMASS/SMPL-X授权不自动覆盖BABEL。本次尚未接受BABEL独立许可，也未发送作者邮件。TotalCapture按此前要求跳过。
 
