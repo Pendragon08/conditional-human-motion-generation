@@ -1,6 +1,6 @@
 # TextOp 数据准备核查与重建记录
 
-更新时间：2026-10-25 02:09:01 北京时间。
+更新时间：2026-10-25 02:11:23 北京时间。
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
@@ -44,21 +44,21 @@
 
 ## 29DoF 重建进度
 
-当前成功 412/500 条、失败 0 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
+当前成功 416/500 条、失败 0 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
 
 另外143条已有ACCAD原始动作因空格/下划线导出命名差异，首轮未匹配；现通过明确的字面规范化确认，无模糊匹配、无歧义键。当前批次完成后使用同一验证过的CPU环境串行处理，已完成 0/143 条。输入可用性不等于完成重定向或通过物理筛选。
 
 ```json
 {
-  "sequences": 412,
-  "frames50": 176902,
-  "paired_annotations_including_saved_mirrors": 4406,
+  "sequences": 416,
+  "frames50": 183942,
+  "paired_annotations_including_saved_mirrors": 4662,
   "rejected_annotations": 121,
   "codec_max_error_m_or_rad": 3.981501353056416e-07,
   "joint_skeleton_mirror_max_error_m": 9.999999626392198e-06,
   "splits": {
-    "train": 309,
-    "val": 103
+    "train": 312,
+    "val": 104
   }
 }
 ```
@@ -114,20 +114,26 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 ```json
 {
   "requested": 1653,
-  "completed": 990,
-  "bytes": 5592791045,
+  "completed": 1111,
+  "bytes": 6223276696,
   "groups": {
     "BMLmovi": {
       "archive_bytes": 5295135910,
       "archive_sha256": "b8c5fca189bdb52768cdef8b93a3892a9e0788100b4553aa1ec63eac1ddf66c0",
-      "matched": 990,
-      "bytes": 5592791045
+      "matched": 1111,
+      "bytes": 6223276696
+    },
+    "EyesJapanDataset": {
+      "archive_bytes": 7628321177,
+      "archive_sha256": "85c83ca46fad11c71e4749042d3e4d0cabf21238966c3c41924016d9c53f25cf",
+      "matched": 0,
+      "bytes": 0
     }
   },
   "status": "EXTRACTING_INDEXED_MOTIONS",
   "new_downloads": 0,
   "physical_filter_executed": false,
-  "updated_utc": "2026-10-24T18:09:00Z"
+  "updated_utc": "2026-10-24T18:11:20Z"
 }
 ```
 
