@@ -5,6 +5,8 @@ Exits after the one explicit batch finishes (or after six hours).
 """
 import datetime, hashlib, json, os, pathlib, subprocess, sys, time
 from session import SSH, remote
+sys.stdout.reconfigure(encoding='utf-8',errors='backslashreplace')
+sys.stderr.reconfigure(encoding='utf-8',errors='backslashreplace')
 
 HERE = pathlib.Path(__file__).resolve().parent
 BASE = HERE.parent
@@ -12,7 +14,8 @@ LOCAL = pathlib.Path('D:/具身智能/TextOp复现_20261024')
 SERVER = '/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025'
 
 def run(name):
-    result = subprocess.run([sys.executable, str(HERE/name)], capture_output=True, text=True, encoding='utf-8', errors='replace')
+    env=os.environ.copy();env['PYTHONIOENCODING']='utf-8'
+    result = subprocess.run([sys.executable, str(HERE/name)], env=env, capture_output=True, text=True, encoding='utf-8', errors='replace')
     if result.returncode:
         raise RuntimeError(name + ': ' + result.stderr[-2000:])
     print(result.stdout[-1200:], flush=True)
