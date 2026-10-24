@@ -90,7 +90,7 @@ Tracker官方9780段训练动作另需9,900,102,760字节，尚未全量下载�
 原始/重定向数据及模型大文件留在服务器个人目录；GitHub保存代码、固定版本、哈希、配置和结果证据，避免公开受限AMASS/SMPL资产。数据目录分布在/data/code/ouyanghao/oyh/textop-reproduction-20261024/assets与/home/ouyanghao/textop-assets-20261024，由符号链接提供统一官方目录。未删除已有数据。PhyGile和ReactiveBFM保持暂停。
 '''
 (BASE/'reports/启动报告_20261024.md').write_text(report,encoding='utf-8')
-(BASE/'README.md').write_text('# TextOp 复现\n\n'+status+'。\n\n优先查看 [数据准备核查与重建报告](reports/dataset_preparation_20261025.md)。另见 [启动报告](reports/启动报告_20261024.md)、[环境说明](ENVIRONMENT.md)、[官方版本](upstream/README.md)。\n\n官方代码以固定提交镜像保存于upstream/，下载数据不入Git。scripts/为本次下载、隔离环境安装、训练启动与指标记录代码。官方算法源文件未修改；论文29DoF重建部分为独立自实现并复用GMR核心，尚待真实动态筛选。\n',encoding='utf-8')
+(BASE/'README.md').write_text('# TextOp 复现\n\n'+status+'。\n\n优先查看 [数据准备核查与重建报告](reports/dataset_preparation_20261025.md)。已获授权的数据验收后续步骤见 [Step2运动生成器训练安排](reports/step2_motion_generator_20261025.md)。另见 [启动报告](reports/启动报告_20261024.md)、[环境说明](ENVIRONMENT.md)、[官方版本](upstream/README.md)。\n\n官方代码以固定提交镜像保存于upstream/，下载数据不入Git。scripts/为本次下载、隔离环境安装、训练启动与指标记录代码。官方算法源文件未修改；论文29DoF重建部分为独立自实现并复用GMR核心，尚待真实动态筛选。\n',encoding='utf-8')
 for p in [BASE/'reports/启动报告_20261024.md',BASE/'results/latest_status.json',BASE/'ENVIRONMENT.md',BASE/'SERVER_NOTES.md']:shutil.copy2(p,LOCAL/p.name)
 def render_inline(t):
     t=html.escape(t)
