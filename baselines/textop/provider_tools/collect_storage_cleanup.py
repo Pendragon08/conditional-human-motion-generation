@@ -11,6 +11,9 @@ def read(name):
 def main():
     cache=read('redundant_cache_cleanup');render=read('render_cache_cleanup');compression=read('retained_record_compression');cmu=read('cmu_resume')
     duplicates=read('duplicate_copy_cleanup');bmlrub=read('bmlrub_resume');kit=read('kit_resume')
+    personal_root=BASE/'results/storage_cleanup_20261025'
+    personal=json.loads((personal_root/'cleanup.json').read_text(encoding='utf-8')) if (personal_root/'cleanup.json').exists() else {}
+    relocated=json.loads((personal_root/'relocation.json').read_text(encoding='utf-8')) if (personal_root/'relocation.json').exists() else {}
     babel=read('babel_alignment');babel_install=read('babel_server_install')
     babel_note=('BABEL官方原始标注已下载并安装服务器，8,291条发布运动、50,004条分段标注的ID、来源路径、文本、类别和起止时间核对一致；原始JSON及逐条配对索引不公开上传GitHub。' if babel.get('mismatch_sequences')==0 and babel_install else 'BABEL原始标注独立下载或核查尚未完成；当前候选文本来自官方发布包内字段。')
     status=json.loads(remote("""
@@ -26,6 +29,7 @@ print(json.dumps({'data_free_bytes':shutil.disk_usage(r).free,'home_free_bytes':
             'server':status,'cache_cleanup':cache,'private_recovery_kit':read('cache_residency'),'render_cleanup':{k:v for k,v in render.items() if k!='files'},
             'retained_record_compression':{k:v for k,v in compression.items() if k!='details'},'cmu_download':cmu,
             'verified_duplicate_cleanup':duplicates,'bmlrub_download':bmlrub,'kit_download':kit,
+            'personal_idle_environment_cleanup':personal,'personal_system_assets_relocation':relocated,
             'datasets_deleted':0,'checkpoints_deleted':0,'unique_experiment_records_deleted':0,
             'full_generator_training_started':False,'physical_filter_executed':False}
     (DEST/'storage_cleanup_summary.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
@@ -43,6 +47,7 @@ print(json.dumps({'data_free_bytes':shutil.disk_usage(r).free,'home_free_bytes':
 - 服务器数据盘：清理71个无人使用的着色器、派生数据和纹理缓存，实际增加约{(render.get('data_free_after',0)-render.get('data_free_before',0))/1024**3:.2f}GiB。清理名单和代码已先备份，保留所有日志、模型、环境及原始资产。
 - D盘：对13个保留文件做NTFS透明压缩，物理占用减少约{compression.get('physical_bytes_saved',0)/1024**3:.2f}GiB，逐文件SHA256不变，未删除实验记录。磁盘可用量还受其他活动影响，不把物理占用变化直接当作整盘净增量。
 - D盘重复副本：完整CMU原始包CRC/SHA验证后清理其旧断点副本；CLoSD服务器原始数据集核验不变，四个本地备份分片和GitHub Release均保留，只清理此前临时恢复验证副本。恢复证据先保存到GitHub；完整记录见duplicate_copy_cleanup.json。所有权威数据、检查点和唯一实验记录保留。
+- 本轮个人目录清理：闲置EngineAI Python环境及指定旧缓存状态`{personal.get('status','BACKUP_OR_VERIFICATION_PENDING')}`；系统盘资源迁移状态`{relocated.get('status','PENDING')}`。完整软件/缓存归档在GitHub Release逐片摘要核验、代码及清单备份后才删除原副本；数据和模型资源迁移后原路径保留为链接。详见[个人目录空间清理核验](personal_storage_cleanup_20261025.md)及[EngineAI旧环境恢复说明](../ENGINEAI_ENV_RECOVERY.md)。当前TextOp/GMR环境与共享IsaacSim平台保留。迁移不计作两盘整体新增空间。
 
 当前C盘余{result['local_free_bytes']['C']/1024**3:.2f}GiB、D盘余{result['local_free_bytes']['D']/1024**3:.2f}GiB；服务器数据盘余{status['data_free_bytes']/1024**3:.2f}GiB、系统盘余{status['home_free_bytes']/1024**3:.2f}GiB。容量是本次采样值，下载过程中会变化。
 

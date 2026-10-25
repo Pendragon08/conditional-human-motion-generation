@@ -221,3 +221,15 @@ while this cleanup's file snapshot is awaiting application. Existing CPU GMR
 continues. Check cleanup continuation first; this is user's latest priority.
 The local BMLrub old partial has already been removed after full-archive CRC,
 SHA/prefix verification and GitHub-backed recovery evidence, freeing3.31GiB.
+
+Transport final fallback: local relay uploads reset while sending parts2/5.
+Parts1/4/6 are already uploaded with matching digests. Server direct uploader
+scripts/upload_storage_from_server.py now uploads only missing2/3/5 with two
+threads, progress receipts/storage_direct_upload_progress.json. SSH controller
+historicalWindowsPID54464; credentials travel only via SSH stdin/memory, never
+files/logs. Do not relay these parts again. Server uploads host was reachable;
+an earlier root-URL probe followed a302 to another hostname and misleadingly
+reported a timeout. Direct official POST is now working. Once all direct parts
+verify, resume the main finisher using existing uploaded six pieces, then apply
+the backed-up fixed cleanup and SHA-checked/home asset relocation. No source
+deletion has occurred as of this transport update; check final receipts.
