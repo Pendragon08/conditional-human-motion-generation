@@ -1,0 +1,67 @@
+{
+  "cpu_only": true,
+  "cuda_visible_devices": "",
+  "affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "torch_threads": 4,
+  "private_arrays_or_indices_published": false,
+  "same_tensor_keys": true,
+  "initial_tensor_comparisons": {
+    "motion_idx": {
+      "shape_equal": true,
+      "dtype_equal": true,
+      "exact_tensor_equal": true,
+      "max_absolute_difference": 0.0,
+      "both_finite": true
+    },
+    "time_steps": {
+      "shape_equal": true,
+      "dtype_equal": true,
+      "exact_tensor_equal": true,
+      "max_absolute_difference": 0.0,
+      "both_finite": true
+    },
+    "root_state_w": {
+      "shape_equal": true,
+      "dtype_equal": true,
+      "exact_tensor_equal": true,
+      "max_absolute_difference": 0.0,
+      "both_finite": true
+    },
+    "joint_pos": {
+      "shape_equal": true,
+      "dtype_equal": true,
+      "exact_tensor_equal": true,
+      "max_absolute_difference": 0.0,
+      "both_finite": true
+    },
+    "joint_vel": {
+      "shape_equal": true,
+      "dtype_equal": true,
+      "exact_tensor_equal": true,
+      "max_absolute_difference": 0.0,
+      "both_finite": true
+    }
+  },
+  "selected_native_vs_original": {
+    "native_root": {
+      "max_absolute_difference": 5.960464477539063e-08,
+      "exact_array_equal": false
+    },
+    "native_joint_position": {
+      "max_absolute_difference": 0.0,
+      "exact_array_equal": true
+    },
+    "native_joint_velocity": {
+      "max_absolute_difference": 0.0,
+      "exact_array_equal": true
+    }
+  },
+  "original_snapshot_sha256": "e445f357cb80d90c7b4ea58ced981716120074529c07889b9dfa862c5b29685a",
+  "current_snapshot_sha256": "e445f357cb80d90c7b4ea58ced981716120074529c07889b9dfa862c5b29685a",
+  "original_snapshot_bound": true
+}

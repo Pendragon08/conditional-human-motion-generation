@@ -1,0 +1,10 @@
+{
+  "read_only": true,
+  "worker_pid": 3808419,
+  "command": "nvidia-smi --query-compute-apps=pid,process_name,used_gpu_memory,gpu_uuid --format=csv,noheader",
+  "worker_allocations": [
+    {"gpu_index": 0, "gpu_uuid": "GPU-f3cc20c6-f613-73c1-b0f9-f54863f22602", "used_memory_mib": 456},
+    {"gpu_index": 1, "gpu_uuid": "GPU-0b41e662-b662-bb1c-954b-13ed89d7af18", "used_memory_mib": 10382}
+  ],
+  "interpretation": "Torch and physics are configured for cuda:1. The SDK process also has a small allocation on GPU0. The purpose of this auxiliary allocation is not established by this observation."
+}

@@ -1,0 +1,283 @@
+{
+  "status": "RUNNING_FORMAL_FILTER_TRAINING",
+  "optimizer_updates": 200,
+  "completed_learning_iterations": 10,
+  "formal_filter_training_started": true,
+  "full_generator_training_started": false,
+  "physical_filter_executed": false,
+  "dataset_accepted": false,
+  "source_sha256": "1efb5bce11da60d087c0867f2cc69f4b0689ec17995c2137b363bfa70a1aa88b",
+  "runtime_sha256": "ad3bb92f5836e5213450420e8f33deffd43443da7d451796adef3d6193ef6962",
+  "plan_sha256": "153f8237a17928ffc3a28b7b00e366742a4ff0080e8fbb6bac87e57da8eb291d",
+  "reference_sources": 8278,
+  "num_envs": 8192,
+  "reference_fingerprint": "0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7",
+  "target_learning_iterations": 40000,
+  "latest_losses": {
+    "value_function": 0.18749433308839797,
+    "surrogate": -0.012989196895432542,
+    "entropy": 40.445933723449706
+  },
+  "raw_completed_attempts": 47484,
+  "peak_torch_allocated_bytes": 17245488128,
+  "storage_preflight": {
+    "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_solid_floor_20261026_v1",
+    "filesystem": "ext4",
+    "owner_uid": 1013,
+    "free_bytes": 8476061696,
+    "required_bytes": 3892314112,
+    "remaining_saves": 9,
+    "checkpoint_upper_bound_bytes": 134217728,
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 536870912,
+    "persistent_owned_writable": true
+  },
+  "contact_profile": {
+    "kind": "validated_static_solid_floor",
+    "top_z": 0.0,
+    "dimensions_m": [
+      4000,
+      4000,
+      0.2
+    ],
+    "static_friction": 1.0,
+    "dynamic_friction": 1.0,
+    "restitution": 0.0,
+    "combine_mode": "multiply",
+    "self_collisions": true,
+    "validation_witnesses": [
+      {
+        "run": "solid_floor_ppo_author_v1",
+        "receipt_sha256": "3e02a9fb9d312e8f36321ae9b4d0a5dc04e038dd569eb859c615d3e28ecd4339",
+        "actual_iterations": 10,
+        "actual_optimizer_updates": 200
+      },
+      {
+        "run": "solid_floor_ppo_document_v2",
+        "receipt_sha256": "597ddb5508264769bb7953a62697ad82120b0a84ad74291112467dd8952acf7d",
+        "actual_iterations": 10,
+        "actual_optimizer_updates": 200
+      }
+    ],
+    "author_exact_collision_geometry_available": false,
+    "long_run_convergence_established": false,
+    "data_or_reward_changes": false
+  },
+  "paper_settings": {
+    "source": "https://arxiv.org/html/2602.07439v1#A1",
+    "filter_iterations": 40000,
+    "training_terminations": "relaxed height terms removed",
+    "anchor": "pelvis",
+    "privileged_observation_dim_expected": 557,
+    "actor_hidden": [
+      2048,
+      1024,
+      512
+    ],
+    "critic_hidden": [
+      2048,
+      1024,
+      512
+    ],
+    "target_num_envs": 8192,
+    "steps_per_env": 24,
+    "learning_rate": 0.001,
+    "minibatches": 4,
+    "epochs": 5,
+    "clip_param": 0.2,
+    "simulation_hz": 200,
+    "policy_hz": 50,
+    "strict_pelvis_height_threshold_m": 0.25,
+    "strict_end_effector_height_threshold_m": 0.5,
+    "domain_randomization": false,
+    "own_choices_not_specified_by_paper": {
+      "adaptive_average": "pinned release EMA alpha0.001, ads_typev1",
+      "strict_repetitions": null,
+      "failure_window_or_chunking": null,
+      "checkpoint_interval": 5000,
+      "asset": "shared BeyondMimic G1 description, authors exact asset hash unavailable",
+      "floor": "Validated local static-box plane topz0,friction1,restitution0,selfcollision retained; authors exact collider unavailable"
+    }
+  },
+  "output_writers_closed": false,
+  "elapsed_seconds": 227.275546643883,
+  "sample_unix": 1792969602.3487551,
+  "run": "filter_policy_paper69_solid_floor_20261026_v1",
+  "data_free_bytes": 8447537152,
+  "home_free_bytes": 6644154368,
+  "launch": {
+    "supervisor_pid": 3812568,
+    "child_pid": 3812573,
+    "command": [
+      "bash",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_filter_policy.py",
+      "--spec",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json",
+      "--plan",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filter-training-plan.json",
+      "--output",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_solid_floor_20261026_v1",
+      "--mode",
+      "formal",
+      "--device",
+      "cuda:1",
+      "--headless"
+    ],
+    "mode": "formal"
+  },
+  "exit": null,
+  "gpu_resources": "0, 12741, 35811, 1\n1, 32006, 16544, 22\n",
+  "host_memory": [
+    "MemAvailable:   125918188 kB"
+  ],
+  "personal_task_processes": [
+    {
+      "pid": 3237857,
+      "argv": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/launch_training.py",
+        ""
+      ],
+      "state": "State:\tS (sleeping)",
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "pid": 3237858,
+      "argv": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_official.py",
+        "--config-name=train_mvae",
+        "expname=TextOp_Public_Full_MVAE_20261024",
+        "seed=0",
+        "data.weighted_sample=true",
+        "data.datadir=/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps",
+        "data.action_statistics_path=/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps/action_statistics.json",
+        "skeleton.asset.assetRoot=/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/description/robots/g1",
+        "train.manager.stages=[100000,50000,50000]",
+        "data.num_primitive=4",
+        "train.manager.use_rollout=True",
+        "base_dir=/data/code/ouyanghao/oyh/textop-reproduction-20261024/runs",
+        ""
+      ],
+      "state": "State:\tT (stopped)",
+      "affinity": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "pid": 3812568,
+      "argv": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_filter_policy.py",
+        "--run",
+        "filter_policy_paper69_solid_floor_20261026_v1",
+        "--mode",
+        "formal",
+        ""
+      ],
+      "state": "State:\tS (sleeping)",
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "pid": 3812573,
+      "argv": [
+        "/bin/bash",
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/python.sh",
+        "-u",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_filter_policy.py",
+        "--spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json",
+        "--plan",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filter-training-plan.json",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_solid_floor_20261026_v1",
+        "--mode",
+        "formal",
+        "--device",
+        "cuda:1",
+        "--headless",
+        ""
+      ],
+      "state": "State:\tS (sleeping)",
+      "affinity": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "pid": 3812580,
+      "argv": [
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/kit/python/bin/python3",
+        "-u",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_filter_policy.py",
+        "--spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json",
+        "--plan",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filter-training-plan.json",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_solid_floor_20261026_v1",
+        "--mode",
+        "formal",
+        "--device",
+        "cuda:1",
+        "--headless",
+        ""
+      ],
+      "state": "State:\tR (running)",
+      "affinity": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

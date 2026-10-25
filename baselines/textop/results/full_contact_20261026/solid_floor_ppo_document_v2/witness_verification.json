@@ -1,0 +1,256 @@
+{
+  "run": "solid_floor_ppo_document_v2",
+  "independent_check_count": 65,
+  "all_checks_passed": true,
+  "checks": {
+    "all_local_bytes_unchanged": true,
+    "all_server_bytes_unchanged": true,
+    "private_input_bytes_unchanged": true,
+    "inputs_match_probe_receipt": true,
+    "no_active_run_processes": true,
+    "no_checkpoint": true,
+    "old_child_still_stopped": true,
+    "preflight_pass": true,
+    "actual_child_exit0": true,
+    "not_timed_out": true,
+    "completed_status": true,
+    "supervisor_completed": true,
+    "ten_learning_iterations": true,
+    "ten_collection_iterations": true,
+    "actual_updates_200": true,
+    "transitions_1966080": true,
+    "envs_8192": true,
+    "sources_8278": true,
+    "correct_affinity": true,
+    "torch_threads4": true,
+    "torch_fraction065": true,
+    "parameter_change_nonzero": true,
+    "loss_rows10": true,
+    "loss_iteration_indices": true,
+    "loss_update_counters": true,
+    "all_loss_numbers_finite": true,
+    "trace_counts_exact": true,
+    "trace_1201_rows": true,
+    "all_trace_numbers_finite": true,
+    "all_telemetry_nonfinite_counts_zero": true,
+    "physics_indices": true,
+    "reward_indices": true,
+    "reward_physics_alignment": true,
+    "summary_counts": true,
+    "trace_matches_server_sha": true,
+    "trace_server_bytes": true,
+    "no_checkpoint_receipt": true,
+    "writers_closed": true,
+    "formal_filter_off": true,
+    "generator_off": true,
+    "physical_filter_off": true,
+    "dataset_not_accepted": true,
+    "initial_tensor_keys_equal": true,
+    "initial_tensors_exact": true,
+    "first_action_checked": true,
+    "selected_first_action_exact": true,
+    "cached_vs_original_exact": true,
+    "receipt_binding:source_sha256": true,
+    "receipt_binding:capacity_spec_sha256": true,
+    "receipt_binding:input_verifier_sha256": true,
+    "receipt_binding:recording_runtime_sha256": true,
+    "receipt_binding:paper_config_sha256": true,
+    "native_close_not_claimed": true,
+    "actual_fallback_disclosed": true,
+    "peak_torch_allocation_within_fraction": true,
+    "full_corpus_stability_not_claimed": true,
+    "private_log_iteration_indices": true,
+    "private_log_completion_sentinel": true,
+    "private_backup_bytes_match": true,
+    "collector_content:receipt.json": true,
+    "collector_content:numerical_summary.json": true,
+    "collector_content:numerical_trace.jsonl": true,
+    "collector_content:exit.json": true,
+    "selected_native_difference_within_measured_global_difference": true,
+    "native_joint_position_velocity_exact": true
+  },
+  "native_root_equality_observations": {
+    "selected_native_exact": false,
+    "native_vs_cached_exact": false,
+    "selected_root_max_difference": 5.960464477539063e-08,
+    "all_root_max_difference": 7.62939453125e-06,
+    "note": "Native PhysX root transforms are not bit-identical to cached/original roots. Exact cached initial snapshot identity is separately established. These observations are not a new tolerance or changed acceptance threshold."
+  },
+  "trace_kind_counts": {
+    "initial": 1,
+    "after_physics": 960,
+    "reward_before_reset": 240
+  },
+  "telemetry_nonfinite_counter_count": 12489,
+  "telemetry_nonfinite_total": 0,
+  "trace_extrema": {
+    "joint_velocity_abs_max": 61.45398712158203,
+    "body_linear_velocity_abs_max": 17.05051040649414,
+    "body_angular_velocity_abs_max": 92.25115966796875,
+    "body_height_abs_max": 2.054537057876587,
+    "root_height_abs_max": 1.5867881774902344,
+    "root_quaternion_norm_abs_max": 1.000000238418579,
+    "joint_position_abs_max": 3.0920026302337646,
+    "applied_torque_abs_max": 139.0,
+    "action_abs_max": 8.243790626525879,
+    "reward_abs_max": 0.9100826382637024,
+    "contact_force_components_abs_max": 24765.326171875
+  },
+  "alerts": {
+    "first_state_alert": null,
+    "first_reward_alert": null,
+    "reported_alert_free": true
+  },
+  "optimizer_updates": 200,
+  "environment_transitions": 1966080,
+  "parameter_max_change": 0.03848659247159958,
+  "loss_history": [
+    {
+      "iteration_index": 0,
+      "optimizer_updates": 20,
+      "losses": {
+        "value_function": 0.6438307762145996,
+        "surrogate": 0.34699414466740564,
+        "entropy": 41.08667068481445
+      }
+    },
+    {
+      "iteration_index": 1,
+      "optimizer_updates": 40,
+      "losses": {
+        "value_function": 0.41125728040933607,
+        "surrogate": -0.005883349967189133,
+        "entropy": 41.078501510620114
+      }
+    },
+    {
+      "iteration_index": 2,
+      "optimizer_updates": 60,
+      "losses": {
+        "value_function": 0.40110365450382235,
+        "surrogate": -0.0077515903569292275,
+        "entropy": 41.027200889587405
+      }
+    },
+    {
+      "iteration_index": 3,
+      "optimizer_updates": 80,
+      "losses": {
+        "value_function": 0.2932507902383804,
+        "surrogate": -0.007796052026969846,
+        "entropy": 40.93676204681397
+      }
+    },
+    {
+      "iteration_index": 4,
+      "optimizer_updates": 100,
+      "losses": {
+        "value_function": 0.2445991776883602,
+        "surrogate": -0.008547798619838431,
+        "entropy": 40.85323028564453
+      }
+    },
+    {
+      "iteration_index": 5,
+      "optimizer_updates": 120,
+      "losses": {
+        "value_function": 0.21351419687271117,
+        "surrogate": -0.008458083734149113,
+        "entropy": 40.76162128448486
+      }
+    },
+    {
+      "iteration_index": 6,
+      "optimizer_updates": 140,
+      "losses": {
+        "value_function": 0.19111203029751778,
+        "surrogate": -0.010160319815622643,
+        "entropy": 40.65154247283935
+      }
+    },
+    {
+      "iteration_index": 7,
+      "optimizer_updates": 160,
+      "losses": {
+        "value_function": 0.1805924192070961,
+        "surrogate": -0.010207417281344533,
+        "entropy": 40.5430046081543
+      }
+    },
+    {
+      "iteration_index": 8,
+      "optimizer_updates": 180,
+      "losses": {
+        "value_function": 0.17856949046254159,
+        "surrogate": -0.009699156961869449,
+        "entropy": 40.46728630065918
+      }
+    },
+    {
+      "iteration_index": 9,
+      "optimizer_updates": 200,
+      "losses": {
+        "value_function": 0.17335084602236747,
+        "surrogate": -0.013427684915950523,
+        "entropy": 40.41101474761963
+      }
+    }
+  ],
+  "native_shutdown": {
+    "native_close_returned": false,
+    "teardown_fallback_used": true,
+    "shutdown_grace_seconds": 20,
+    "shutdown_completion_verified": true,
+    "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources"
+  },
+  "collector_transport": {
+    "receipt.json": {
+      "local_sha256": "259922eac23806c6afa5a10f99371b40a44393076de9e1f28ef32d934c416c03",
+      "server_sha256": "597ddb5508264769bb7953a62697ad82120b0a84ad74291112467dd8952acf7d",
+      "raw_bytes_match": false,
+      "lf_normalized_bytes_match": true,
+      "local_bytes": 11564,
+      "server_bytes": 11224
+    },
+    "numerical_summary.json": {
+      "local_sha256": "4b154b48a8b511c38d53efb83492e8d0c62a690230696a80860272b15dcf6fc3",
+      "server_sha256": "3c65dbd4dc6bbb99d8e9fb30a3d23e77539d86287868e07be19ab06f957423b3",
+      "raw_bytes_match": false,
+      "lf_normalized_bytes_match": true,
+      "local_bytes": 591,
+      "server_bytes": 577
+    },
+    "numerical_trace.jsonl": {
+      "local_sha256": "6a91bf505b07f60f94686fa3fdc1832dbcf491c908b1eac9f29ee23d8bb0ac98",
+      "server_sha256": "8616e04e0c8a49e37a7f335e58676d286ac460ed9dd68b4d2df36242fbb29ab1",
+      "raw_bytes_match": false,
+      "lf_normalized_bytes_match": true,
+      "local_bytes": 1583287,
+      "server_bytes": 1582086
+    },
+    "exit.json": {
+      "local_sha256": "e579a718efe84c9b13e311c554666ceda355aa47cbd300f6070a4b4315cc1f52",
+      "server_sha256": "8af7c65c170641dcc55d907e75fe3bb302fb24cfbb206549fd15182fae747c1e",
+      "raw_bytes_match": false,
+      "lf_normalized_bytes_match": true,
+      "local_bytes": 19333,
+      "server_bytes": 18836
+    }
+  },
+  "private_log_iteration_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "private_evidence_files": 3,
+  "private_evidence_bytes": 2504307,
+  "scope": "Ten bounded iterations only; no full-training convergence, motion acceptance, physical filter or generator readiness established",
+  "first_action_verification_scope": "Selected original-alert environments: independently inspected exact-zero audited hook result with its source hash; no complete8192-environment first-action raw snapshot exists."
+}

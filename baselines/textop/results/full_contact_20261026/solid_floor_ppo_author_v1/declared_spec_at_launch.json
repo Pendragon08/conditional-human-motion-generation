@@ -1,0 +1,37 @@
+{
+  "purpose": "Bounded10-iteration/200-update PPO validation after static solid-floor counterfactual suppressed first-step instability; does not activate formal training",
+  "base_probe_sha256": "7d25ad8238977fa6397080732c7ddade1c7414305ae2f254fbe42d5326357e90",
+  "capacity_spec_sha256": "0f9dc72c4c616e673d343d5e8a49a091f48e40dc2cd9156d32a6e83854b19a40",
+  "telemetry_sha256": "7915bd4ad8a5a677c2301fb2af2efbd884d7dedbbe3e0be5b3018045375c2dac",
+  "warm_environment_canonical_hash": "b7a3bf0c",
+  "num_envs": 8192,
+  "learning_iterations": 10,
+  "rollout_steps": 24,
+  "expected_optimizer_updates": 200,
+  "state_velocity_alert": 1000.0,
+  "contact_force_alert": 1000000.0,
+  "reward_alert": 10000.0,
+  "thresholds_are_diagnostic_only": true,
+  "maximum_private_environments_per_event": 8,
+  "formal_training_enabled": false,
+  "new_checkpoints": false,
+  "private_initial_state_snapshot": true,
+  "optimizer_updates": 200,
+  "private_input_directory": "tracker_validation/numerical_trace_author_v1/numerical_private",
+  "native_audit_sha256": "029cdc9c091fe51352bf93c364541283ac1b84d5b2e7db28c8e7005032702169",
+  "cases": {
+    "solid_floor": "Only floor collider representation changed to static4000x4000x0.2m box, topz0. Same visual plane, material1.0/restitution0/multiply and selfcollision enabled."
+  },
+  "full_scene_stability_accepted": false,
+  "private_input_sha256": {
+    "first_state_alert.private.json": "4a6ca322873ff76882bae7fa2fc323b9280d12b6164f29385978a03786d6abe5",
+    "initial_state.private.pth": "e445f357cb80d90c7b4ea58ced981716120074529c07889b9dfa862c5b29685a"
+  },
+  "solid_floor_source_sha256": "9a050b70eb80549bb59860c5276febdcef188d4ac96c1aefdf96a0a88cbcd26c",
+  "original_full_contact_probe_sha256": "ec84712a081b18852feb4c3e6ef0ea9fe9795e2ac4424fe711bcd0d020b54cbe",
+  "trace_expected_physics_samples": 960,
+  "trace_expected_reward_samples": 240,
+  "seed": 20261025,
+  "probe_sha256": "cb7baf7d33ab8b6eae51ebc8ee5261a79719bf6f425f11fa18bc51a810e273d4",
+  "supervisor_sha256": "ecdb1c4fee84aa330c73aec86aa29b2b1a02b74fb57653438a5a05ddeb3fe7e5"
+}

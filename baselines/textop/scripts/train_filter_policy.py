@@ -54,11 +54,16 @@ try:
  assert torch.cuda.mem_get_info(a.device)[0]>plan['minimum_gpu_free_gib']*1024**3
  cfg,agent=make(spec,[x['file'] for x in rows],out/'usd',phase='relaxed',num_envs=receipt['num_envs'])
  cfg.commands.motion.class_type=RecordedMotionCommand
+ if not diagnostic:
+  from validated_contact_profile import apply as apply_contact_profile
+  receipt['contact_profile']=apply_contact_profile(cfg,out/'usd',storage_root,plan['contact_profile'])
+  receipt['contact_profile_loader_sha256']=sha(pathlib.Path(__file__).with_name('validated_contact_profile.py'))
  env=RslRlVecEnvWrapper(gym.make('Tracking-Flat-G1-PrivPrivObs-v0',cfg=cfg));motion=env.unwrapped.command_manager.get_term('motion')
  assert env.get_observations()[0].shape==(receipt['num_envs'],557)
  fp=fingerprint(rows);target=2 if diagnostic else plan['learning_iterations'];updates=0;completed=0
  receipt.update(status='RUNNING_STATISTICS_WITNESS' if diagnostic else 'RUNNING_FORMAL_FILTER_TRAINING',
        reference_fingerprint=fp,target_learning_iterations=target,paper_settings=paper_settings(),formal_filter_training_started=not diagnostic)
+ if not diagnostic:receipt['paper_settings']['own_choices_not_specified_by_paper']['floor']='Validated local static-box plane topz0,friction1,restitution0,selfcollision retained; authors exact collider unavailable'
  # Initial reset must never create an independently counted success or failure.
  assert int((motion.raw_failed+motion.raw_success).sum())==0
  def build(log):
@@ -111,7 +116,7 @@ try:
    receipt.update(completed_learning_iterations=completed,optimizer_updates=updates,latest_losses=losses,
                   raw_completed_attempts=int((motion.raw_failed+motion.raw_success).sum()),
                   peak_torch_allocated_bytes=torch.cuda.max_memory_allocated(a.device))
-   if completed%100==0:
+   if completed<=10 or completed%100==0:
     with (out/'metrics.jsonl').open('a') as f:f.write(json.dumps({'completed':completed,'updates':updates,'losses':losses})+'\n')
     save()
    if completed in save_steps:guarded_save(completed)

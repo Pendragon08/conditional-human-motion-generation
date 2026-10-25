@@ -1,11 +1,29 @@
 """Supervise only the explicitly requested private filter-policy child."""
-import argparse,json,os,pathlib,re,signal,subprocess,sys,threading,time
+import argparse,fcntl,json,os,pathlib,re,shutil,signal,subprocess,sys,threading,time
 ROOT=pathlib.Path('/data/code/ouyanghao/oyh/textop-reproduction-20261024')
 p=argparse.ArgumentParser();p.add_argument('--run',required=True);p.add_argument('--mode',required=True,choices=['witness','formal']);a=p.parse_args()
 assert os.getuid()==1013 and re.fullmatch('[a-z0-9_]+',a.run)
 plan=json.loads((ROOT/'configs/filter-training-plan.json').read_text())
 if a.mode=='formal':assert plan['formal_launch_enabled'] and not plan['formal_launch_blockers']
 out=ROOT/'tracker_validation'/a.run;assert not out.exists(),'Immutable run already exists'
+lock=(ROOT/'receipts/full_library_capacity.lock').open('a+')
+fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+for proc in pathlib.Path('/proc').iterdir():
+ if not proc.name.isdigit() or int(proc.name)==os.getpid():continue
+ try:
+  if proc.stat().st_uid!=1013:continue
+  argv=(proc/'cmdline').read_bytes().decode(errors='replace').split('\0')
+ except (FileNotFoundError,PermissionError,ProcessLookupError):continue
+ blocked=['run_tracker.sh','train_filter_policy.py','export_tracker_references.py','full_library_capacity_probe.py',
+          'full_library_numerical_probe.py','contact_replay_probe.py','full_contact_probe.py','full_solid_floor_probe.py','solid_floor_ppo_probe.py']
+ assert not {str(ROOT/'scripts'/x) for x in blocked}.intersection(argv),'Existing personal SDK worker'
+mem=[int(x.split()[1])*1024 for x in pathlib.Path('/proc/meminfo').read_text().splitlines() if x.startswith('MemAvailable:')][0]
+capacity=json.loads((ROOT/'configs/full-library-capacity-spec.json').read_text())
+assert mem>=capacity['minimum_available_host_ram_gib']*1024**3
+free={int(x.split(',')[0]):int(x.split(',')[1])*1024**2 for x in subprocess.check_output(['nvidia-smi','--query-gpu=index,memory.free','--format=csv,noheader,nounits'],text=True).strip().splitlines()}
+assert free[1]>=plan['minimum_gpu_free_gib']*1024**3
+assert shutil.disk_usage(ROOT).free>plan['minimum_disk_free_gib']*1024**3
+
 cmd=['bash',str(ROOT/'scripts/run_tracker.sh'),str(ROOT/'scripts/train_filter_policy.py'),
      '--spec',str(ROOT/'configs/tracker-env-spec.json'),'--plan',str(ROOT/'configs/filter-training-plan.json'),
      '--output',str(out),'--mode',a.mode,'--device','cuda:1','--headless']
@@ -17,7 +35,7 @@ def sample():
 thread=threading.Thread(target=sample,daemon=True);thread.start()
 with (ROOT/'logs'/('filter_policy_'+a.run+'.log')).open('xb') as target:
  child=subprocess.Popen(cmd,stdout=target,stderr=subprocess.STDOUT,start_new_session=True,
-     preexec_fn=lambda:os.sched_setaffinity(0,sorted(os.sched_getaffinity(0))[:4]))
+     preexec_fn=lambda:os.sched_setaffinity(0,{0,1,2,3}))
  (ROOT/'receipts'/('filter_policy_'+a.run+'_launch.json')).write_text(json.dumps({'supervisor_pid':os.getpid(),'child_pid':child.pid,'command':cmd,'mode':a.mode},indent=2))
  try:code=child.wait(timeout=600 if a.mode=='witness' else 7*86400)
  except subprocess.TimeoutExpired:

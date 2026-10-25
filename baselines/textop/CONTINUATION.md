@@ -1,5 +1,34 @@
 # TextOp: data completion → physical filtering → full generator training
 
+## CURRENT2026-10-26 07:06 — formal privileged policy training is RUNNING
+
+This section supersedes old pending/disabled notes below. All8278 available source
+preprocessing/FK/private backup is complete; do not repeat it. Candidate floor
+passed actual author+independent10-round/200-update tests. Formal run
+`filter_policy_paper69_solid_floor_20261026_v1` is now alive, sampled
+10/40000 completed iterations and 200 actual updates. Supervisor3812568,
+SDK worker3812580 (historical IDs: check command/state). DO NOT relaunch activation,
+launcher, diagnostics or another SDK job against the active common lock. Old
+57D sleeping launcher3237857 + stopped child3237858 are intentionally preserved.
+
+Read FORMAL_CONTACT_PROFILE_ENVIRONMENT.md, configs/formal-contact-activation.json,
+results/full_contact_20261026/formal_launch/progress.json and latest
+reports/contact_isolation_20261026.md. Read-only progress collector is
+provider_tools/collect_formal_filter_progress.py; regenerate current reports with
+collect_contact_report.py. Actual launch is not40k completion or physical success.
+PlanSHA153f8237a17928ffc3a28b7b00e366742a4ff0080e8fbb6bac87e57da8eb291d is active;
+all runtime/plan files are frozen and byte-bound. Do not edit them while training.
+
+Next: monitor real progress/checkpoint/disk and preserve first/new checkpoint;
+prepare next physical-filter/corpus steps without duplicating GPU workloads. Both
+relaxed and strict evaluations MUST use this validated contact profile, not
+silently fall back to the old Plane. Keep strict paper thresholds; no source
+exclusion or reward clipping to conceal instability. Actual2-pass filtering,
+accepted corpus, fullVAE/LDM/finalWBC/closedloop remain outstanding. Auto-continuation
+is already authorized. User will receive formal-start notice this turn, so do not
+repeat it on healthy unchanged checks. Notify the next requested real milestone.
+
+
 User2026-10-25 explicitly requests completing data preparation/processing, then
 starting the full generator. This authorizes the continuation; do not ask again
 whether to train. It does not authorize skipping validation or licenses.
@@ -978,3 +1007,107 @@ Latestreport reports/numerical_stability_20261026.md and localD
 Olderpreprocessingreportnowlinks currentstatus; don't overwrite with staleSSH
 failuretemplates. Local/GitHubsync required. Notify material numericalfinding;
 preprocessingcompletion was previouslynotified andshouldnotberepeated.
+
+## Heartbeat2026-10-26 contact isolation (supersedes prior diagnostic next step)
+
+Three-state isolated replay contact_baseline_author_v1 actualexit0 did NOT reproduce
+the full-scene first-step explosion. Do not run its planned no-self/no-floor cases
+or use the small-scene result as a fix. All original arrays/private backups stay.
+Full-scene zero-update diagnostics baseline/no-self/no-floor all actually exited0:
+first-step joint maxima3772.645/3714.538/37.0002rad/s. Same initial root/joints and
+selected first actions; native DOF/cache equal, native root diff7.63e-6, positive
+mass/inertia identical across all clones. Baseline peak9.016e16; disabling self-
+collision retained the trigger. Removing ground is diagnostic, not training.
+
+full_solid_floor_author_v1 actualexit0/192.16s,96physics/24controls/zero updates.
+Static4000x4000x0.2m box topz0/material1/restitution0/multiply retains self-collision.
+First jointmax37.0038, peak52.5480rad/s, sampled contactcomponentmax21067.84N, no
+snapshot alerts. Original state/action comparisons0. This suppresses the fault
+for the short rollout, not a proof of exact engine cause or long-run stability.
+Original production paper_filter_config.py remains unchanged. No data removed,
+no reward clipping, no paper physical thresholds changed. Formal plan remains
+false/SHAf0267553ed4cc9e0c2bfcb2d3d867ae2dc51e555ea8df44cf3a13be81ff7248c.
+
+New bounded actual PPO profile/invocations: SOLID_FLOOR_PPO_ENVIRONMENT.md,
+configs/solid-floor-ppo-spec.json. solid_floor_ppo_author_v1 is dispatched ONCE;
+check actual exit/results before any action. Fresh documented witness
+solid_floor_ppo_document_v1 is owned by subagent solid_floor_ppo_doc_witness,
+which waits for author actualexit0, then invokes once and collects aggregates /
+private D backups. Do not duplicate either job. Both use10iterations/200updates,
+8192env/all8278references/24steps, same PPO math,0checkpoints, bound1800seconds,
+GPU1/CPU0-3/Torch0.65/commonflock. Completion/finite values alone do not imply
+40k convergence or physics-filter acceptance. Final results are in
+results/full_contact_20261026/<run> and solid_floor_ppo_aggregate.json; inspect
+actual trace and witness, not these dispatch notes, for pass/fail.
+
+All diagnostic originals/failures preserved. Metadata corrections in
+contact_counterfactual_comparison.json: old telemetry simulation_changes=false
+is wrong for no-self/no-floor; zero-update receipts' inherited one-PPO wording
+and expected_optimizer_updates20 are stale; actual0. Candidate paper_settings
+floor remains baseline description; diagnostic_floor/intervention is the actual
+box. No retroactive changes to raw original receipts. SDK nativeclose remains
+false/fallbacktrue; not repaired. Standalone USD read failures (pxr/librarypath)
+were resolved only in a read-only subprocess using existing paths, no installs.
+
+Next after both actual PPO witnesses: review remaining formal launch integration,
+input/profile hash bindings, durable storage and live resources. Promote a
+contact profile explicitly only on evidence, retain reference baseline, then
+proceed authorized40k privileged policy and real two-pass filtering. Do not
+reinterpret short PPO as motion acceptance. Same final generator/closed-loop
+requirements apply. Reports use provider_tools/collect_contact_report.py; do not
+run older stale report templates. No files deleted this turn.
+
+## Contact profile accepted for monitored training,2026-10-26 07:06
+
+solid_floor_ppo_author_v1 actualexit0/283.85s and fresh
+solid_floor_ppo_document_v2 actualexit0/284.19s each completed10iterations,
+200updates,1966080transitions,960physics/240reward samples, no alerts or nonfinite
+aggregate counters. Independent42preflight+65verification+9emitted-floor checks
+passed. Original initialstate bytes/selected first action match. Root native vs
+cached has small floating difference; not declared bit-identical. Value loss
+first~0.6438307, lastauthor0.18998/doc0.17335; not bit-exact training trajectories.
+Native SDK close stillfalse/fallbacktrue. Torchpeak17285030400B. No checkpoints
+from bounded tests. All original failed/different results preserved.
+
+Document_v1 was PRE-FLIGHT ONLY,0GPU. LF-string vs actualCRLF hash metadata was
+wrong; corrected to file-byte hashes without changing executables/numeric values.
+Original launch spec is saved. paper-step2 discrepancy only user instruction and
+storage-report fields; original serverversion retained, exactcurrentbytes synced.
+Public text collection changes CRLF, so profile uses actual SERVER byte hashes,
+not hashes of local text-mode copies. Private backups remain binary SHA-equal.
+
+Actual formal startup was performed ONCE by fresh document-following launch
+witness after resource/byte/mutual-exclusion checks. Original trainer/supervisor
+code saved before small contact-application/resource/early-log integration.
+validated_contact_profile.py requires both actual receipts/traces and bound source
+hashes;7CPUpositive/tamper/storage checks passed with only floor factory stubbed,
+explicitly not physics tests. Real emitted geometry was independently inspected.
+Formal profile keeps original paper PPO rewards/learning/sampling, scene self-
+collision, floor topz0/friction1/restitution0 and changes the local contact shape.
+Authors exact asset/collider unavailable; no claim of exact author geometry.
+
+Start budget datafree8476078080B vs required3892314112B. Nine saves:
+1000 and5000..40000. Every save/100rounds checks128MiB/file upper bound+2GiBreserve+
+512MiBlogs. No checkpoint deletion. Latest sampled data8447565824B, home6644166656B;
+future VAE/LDM/finalWBC/video require fresh budget. No cleanup executed this turn.
+Current runtime CUDA/Torch optimization GPU1 with cap0.65/CPU0-3; SDK creates an
+additional~456MiB GPU0 context. Do not claim exclusiveGPU1; resource records retain
+per-PID allocations. Do not silently alter renderer/device profile while active.
+
+Source-byte bundle results/full_contact_20261026/formal_launch/bound_runtime_bytes.json
+preserves16 own scripts/configs79,387B despite Gitautocrlf. restore_bound_runtime_bytes.py
+was actually executed into NEW localformal_runtime_restore_witness_v1 folder;
+all16byteSHAs matched, no server changes/training. Preserve this recovery bundle
+and original failure records. Private rawmotion/text/source arrays are excluded.
+Latest local mainreport and 地面接触对照与候选修复_20261026.html distinguish formal
+policy running from pending physical filtering/generator. Sync publiccode/results/
+reportsGitHub and localD; retain private backups separately. Old EngineAI/DreamControl
+cleanups must not repeat; .venv-pbhc-training remains protected.
+
+Formal launch witness finalized:47local+36remote preflight and54runtime checks
+passed. Actual first10iterations/200updates observed, value loss first0.6438307464,
+range0.18749–0.64383; no exit/failure. All16boundfiles unchanged, generatedfloorSHA
+exactly matched validated witness. LatestprogressD/public byte-identical. Do not
+rerun launcher or tests; active policy still running, no checkpoint expected until
+1000. configs/formal-contact-activation.json is the immutable prelaunch snapshot;
+its formal_training_started=false is historical, current progress is authoritative.

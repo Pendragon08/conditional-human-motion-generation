@@ -1,0 +1,31 @@
+{
+  "purpose": "Controlled diagnostic replay of three first-physics-step outliers, preserving baseline and treating contact interventions only as counterfactuals",
+  "warm_environment_canonical_hash": "b7a3bf0c",
+  "pinned_sources": {
+    "scripts/paper_filter_config.py": "e6b59d8fde8574d2c953279301dfc2df0c44ff88ac90683be995b7b97f0ff0d9",
+    "scripts/run_tracker.sh": "7f23b192d3c6a5ff29a96282f90a14af2bd77ead4334e112e5a76ae333eb3bf8"
+  },
+  "private_input_directory": "tracker_validation/numerical_trace_author_v1/numerical_private",
+  "private_input_sha256": {
+    "first_state_alert.private.json": "4a6ca322873ff76882bae7fa2fc323b9280d12b6164f29385978a03786d6abe5",
+    "initial_state.private.pth": "e445f357cb80d90c7b4ea58ced981716120074529c07889b9dfa862c5b29685a"
+  },
+  "num_envs": 3,
+  "physics_substeps": 24,
+  "seed": 20261025,
+  "device": "cuda:1",
+  "cpu_threads": 4,
+  "torch_memory_fraction": 0.65,
+  "minimum_free_gpu_gib": 20,
+  "minimum_free_data_disk_gib": 3,
+  "minimum_available_host_ram_gib": 16,
+  "supervisor_timeout_seconds": 600,
+  "launch_enabled": true,
+  "cases": {
+    "baseline": "Exact saved world root/joint states and first action in three environments; hold action, no resets or PPO. Original contact parameters unchanged. Scene size differs from8192; first-step equivalence explicitly measured.",
+    "no_self_collision": "Same three saved states/actions; enabled_self_collisions=false is a diagnostic intervention only, not adopted for training.",
+    "no_floor": "Same three saved states/actions and self-collisions enabled; terrain omitted as a diagnostic intervention only, not adopted for training."
+  },
+  "formal_training_enabled": false,
+  "physical_filter_executed": false
+}
