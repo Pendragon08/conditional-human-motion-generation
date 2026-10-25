@@ -26,3 +26,5 @@ Data scheduling: server batch500 PID3257584; CPU-only, four threads. Continuatio
 
 ### env: textop-paper69@934d8221
 Spec written before numerical validation. Warm reuse textop9d7f370d dependencies, no packages installed. Process-local69D codec/FK/rollout adapter, fixed upstream preserved. GPU1 allocator cap65%, CPU4, batch2 numerical witness only. Validation pending; do not launch training.
+
+Validated textop-paper69@934d8221: seeded author and fresh verbatim document runs both exit0, identical source hashes, TEXTOP_PAPER69_NUMERICAL_WITNESS_PASSED. Core codec/FK/VAE/LDM/CLIP/sampling only; batch2 peak701244928 bytes; optimizer_updates0, dataset_acceptedfalse. Full corpus integration and training remain pending. Failed int32 sampling traces preserved.
