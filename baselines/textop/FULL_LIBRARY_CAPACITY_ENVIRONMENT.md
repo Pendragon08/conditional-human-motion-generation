@@ -1,17 +1,19 @@
 # Complete available reference library: author capacity passed, stability unresolved
 
-2026-10-26 04:08: the finite coordinator has completed the KIT content audit
-and full-library author run. Do not restart it. Read
-results/full_library_capacity_20261026/continuation_v1.json and verify its actual
-command/PID before doing anything. Historical PID39924 ran
-provider_tools/continue_full_library_capacity.py. after_kit_v1 verified8278 and
-full_library_author_v1 exited0 with20updates and17,246,092,288 peakTorch bytes.
-However, value loss3.3047911274572776e27 requires executed-state/reward/contact
-diagnosis; finite updates are not a stability acceptance. The independent
-document preflight timed out viaSSH (exit255) and launched zero GPU jobs.
-Do not repeat the completed author/audit runs. After connectivity returns,
-inspect actual resources/workers, diagnose anomalous execution and complete
-the fresh documented run. Formal40k/generator gates remainfalse.
+2026-10-26 05:07: SSH recovered without network changes. The once-only fresh
+full_library_document_v1 actually exited0,195.534seconds,8192envs/20updates,
+17,246,092,288peakTorch bytes.67independentchecks passed; frozen source/spec,
+backup/input bindings and transmitted evidence match. It reproduces value
+loss3.3047911274572776e27 and extreme contact/slide metrics. This completes
+capacity evidence, NOT stability. Both author and document runs are immutable;
+do not repeat either. The prior SSH preflight failure is retained separately.
+See results/full_library_capacity_20261026/full_library_document_v1.
+
+A separate once-only numerical trace observes the unchanged simulation and
+rewards to locate the first outlier. Read NUMERICAL_TRACE_ENVIRONMENT.md and
+its actual receipt. Formal40k/generator remain disabled until the anomaly is
+resolved and any corrected profile receives independent actual validation.
+Do not restart completed KIT, FK, backups or the finite capacity coordinator.
 
 Warm dependencies remain tracker b7a3bf0c (SERVER_NOTES.md); no installation or
 shared-package modification. This extends the previous 643-source shape to
@@ -57,8 +59,8 @@ full-library execution and fresh independent documented execution remain pending
 
 Activation and the author command below already completed on2026-10-26.
 These steps are retained for provenance, not instructions to repeat them.
-The next unexecuted run is full_library_document_v1, after restored SSH and
-fresh resource/worker checks. Check that output path is still absent first.
+The document run below has also completed. Invocation text is provenance only;
+its immutable output path already exists. Do not repeat it.
 
 Do not execute the command below while launch_enabled=false. Do not duplicate
 the KIT coordinator, its backup or reference-export worker. Wait for complete
@@ -98,9 +100,10 @@ Native SDK shutdown may hang; the existing20s fallback is only after completed
 receipts and closed writers. Preserve native_close_returnedfalse and
 teardown_fallback_usedtrue instead of claiming native shutdown succeeded.
 
-Only after both actual passes can the full-library capacity prerequisite be
-marked complete. Then refresh formal storage, runtime and checkpoint guards
-and start the40k filter-policy run, followed by genuine two-round evaluation.
+Both actual passes complete the capacity prerequisite only. The numerical
+stability prerequisite remains unresolved. Resolve the executed-state anomaly,
+independently validate the corrected profile, then refresh storage/runtime and
+checkpoint guards before40k training and genuine two-round evaluation.
 Do not run the old643-source capacity test again. Keep arrays, per-source
 indices, labels, USDs and checkpoints private. Publish aggregate evidence only.
 

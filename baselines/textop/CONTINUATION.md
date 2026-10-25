@@ -916,3 +916,65 @@ no needrepeat. Preprocessingcomplete NOTIFY is warranted;13missingCMU/403private
 scopeandphysicalfilter/generatorpendingmustremainexplicit. Report
 reports/preprocessing_complete_20261026.md andlocalD预处理完成与接续状态_20261026.
 Existinguserautoauthorizationcontinues afteractualgates, withoutanotherpermission.
+
+## Heartbeat2026-10-26 05:13: connection recovered; first-step instability localized
+
+SSH recovered without network/ZeroTier/proxy changes. Prior failure root cause
+remainsunknown. Actual05:12postflight datafree8694550528B, homefree6645030912B,
+GPU1free40726MiB, MemAvailable135000972KiB. Only matching old57DtrainPID3237858
+remainsT(stopped). No completed diagnostic SDK process remains. No files deleted.
+
+Fresh full_library_document_v1 ran ONCE after checking nonexistent outputs and
+resources. Actualchildexit0/195.534s,8192env/24steps/20Adamupdates,
+peakTorch17246092288B.67independentchecks passed, exact source/spec/backup/input
+bindings/transmissionSHA verified. Same value loss3.3047911274572776e27,
+feet_slide_velocity_sum139968976,landing_force_mean16532801323008. Nativeclose
+false/fallbacktrue retained. Evidence results/full_library_capacity_20261026/
+full_library_document_v1; fresh agent local work/textop_reproduction_20261024/
+full_library_doc_reconnected_v1/REPORT.md. Do not repeat author or document.
+The prior failedSSHpreflight remains. Fullcapacity prerequisite passed, NOT
+stability acceptance. Finished coordinator39924 receipt is historical; no restart.
+
+Targeted numerical_trace_author_v1 also actually exited0/195.599s,20updates,
+96physics/24reward samples, no trainingcheckpoint. It uses a separate copy of
+frozen capacity probe with read-only telemetry; no reference/reset/reward/action/
+PPO/simulation changes. Same loss exactly. See NUMERICAL_TRACE_ENVIRONMENT.md,
+configs/full-library-numerical-spec.json and scripts/numerical_trace.py.
+All original frozen capacity files retained. Newtrace sourcec03f38ab...,
+helper7915bd4a...,spec5142e812...; deploymentreceipt retains fullSHA.
+
+First physics substep already produces3velocityoutlierenvs; globaljointmax
+3772.645rad/s vs37.098 beforephysics. Firstcontrolstep contactcomponent max
+1023481408N; atphysicsstep10 jointmax9.01604946435113e16rad/s. It precedes ALL
+optimizerupdates, so investigate reset/collision/physicalexecution before merely
+changing learning rate. Threefirstoutliers' initialjointmax2.016/9.231/1.805rad/s,
+rootheight0.72–0.76m. Same source/frame verifiedfrom initial snapshot withCPU
+Torch1.13.1,0GPU. ThisdoesNOT prove a specific collision/asset rootcause yet.
+Thresholds1000velocity/1e6force/1e4reward selectdiagnostics ONLY, no dataacceptance
+or termination changes. No data silently removed. All96/24trace aggregates and
+actualexit/resource receipts at results/full_library_numerical_20261026/
+numerical_trace_author_v1. TraceSHA420cf9e31b0b68e7e5f17ea01edda9e9a83035613311879563f19798950d58ae.
+
+Exact initialstate snapshot andfirstoutlier source/actual/reference/action records
+remain server tracker_validation/numerical_trace_author_v1/numerical_private;
+verifiedDbackup datasets/numerical_diagnostics_private_20261026/
+numerical_trace_author_v1. Neverpublish these arrays/indices. FullSDKlogsprivateD,
+publicaggregates only. Nextindependentmeaningfulstep: bounded controlled replay
+of those initialstates andfirstactions, inspect collision geometry/selfcontacts,
+initialpenetration/jointinertia/coordinate conventions. Preserve baseline;
+any counterfactual physics setting mustbeexplicitdiagnostic, notpaperacceptance.
+Afterfixrequireindependentactualwitness beforeformal40k. Do not rerun unchanged
+fullcapacity, completebackups, inputmagnitudeaudit, or alreadycompletedstate tests.
+
+Updated disabled formal plan safely deployed after exactoldSHA/noformalworker
+checks: olde4b8624a... -> f0267553ed4cc9e0c2bfcb2d3d867ae2dc51e555ea8df44cf3a13be81ff7248c.
+Formal_launch_enabledfalse; stabilityandfreshlaunch/storage acceptance remain.
+All8278preprocessing done,13CMU/403private scope limits unchanged. Realphysical
+filtering/acceptedcorpus/VAE/LDM/finalWBC/closedloop STILLPENDING. Continue within
+standingautolaunchauthorization aftergates; no repeateduserpermission needed.
+
+Latestreport reports/numerical_stability_20261026.md and localD
+连接恢复与物理异常定位_20261026.html; mainTextOp下载与训练报告.html updated.
+Olderpreprocessingreportnowlinks currentstatus; don't overwrite with staleSSH
+failuretemplates. Local/GitHubsync required. Notify material numericalfinding;
+preprocessingcompletion was previouslynotified andshouldnotberepeated.

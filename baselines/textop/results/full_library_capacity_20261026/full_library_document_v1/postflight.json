@@ -1,0 +1,100 @@
+{
+  "utc": "2026-10-25T21:07:07.319333+00:00",
+  "files": [
+    {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/full_library_capacity_probe.py",
+      "exists": true,
+      "bytes": 8286,
+      "sha256": "7d25ad8238977fa6397080732c7ddade1c7414305ae2f254fbe42d5326357e90"
+    },
+    {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/verify_full_library_inputs.py",
+      "exists": false
+    },
+    {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_full_library_capacity.py",
+      "exists": true,
+      "bytes": 4495,
+      "sha256": "4dcda5dfc9b81efc3a6719229505e1ad3cb731d52bd7beda836d455d22c52846"
+    },
+    {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/full-library-capacity-spec.json",
+      "exists": true,
+      "bytes": 2630,
+      "sha256": "0f9dc72c4c616e673d343d5e8a49a091f48e40dc2cd9156d32a6e83854b19a40"
+    },
+    {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json",
+      "exists": true,
+      "bytes": 2924,
+      "sha256": "57992eea2e2f6aa879493409a7bc2b4d320451e3f24090ed731f1d580a058a93"
+    },
+    {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/full_library_author_v1/receipt.json",
+      "exists": true,
+      "bytes": 6730,
+      "sha256": "963e0b3869315abce621748d500cac234737d743e5fec4ed27ec7d3fabce7267"
+    },
+    {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/full_library_capacity_full_library_author_v1_exit.json",
+      "exists": true,
+      "bytes": 13091,
+      "sha256": "e7a62f5196f695445095bb99f4530d8b9eb452d54fa0a6c486504e41957cb75b"
+    },
+    {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/logs/full_library_capacity_full_library_author_v1.log",
+      "exists": true,
+      "bytes": 16314,
+      "sha256": "73ac30714f8ddf03e38dab9517f8fa0c336061e33bf07ac5051161d35f401a39"
+    },
+    {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/full_library_document_v1/receipt.json",
+      "exists": true,
+      "bytes": 6730,
+      "sha256": "d2dc45accd8bd8a0d2cd2f218ea5a7db8bd253cc410352b42b31bc5b048eeab2"
+    },
+    {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/full_library_capacity_full_library_document_v1_exit.json",
+      "exists": true,
+      "bytes": 13099,
+      "sha256": "4182031784664494765ef3bc590c87acd64a3661c3e2644d52a47fbb8c38952f"
+    },
+    {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/logs/full_library_capacity_full_library_document_v1.log",
+      "exists": true,
+      "bytes": 16315,
+      "sha256": "ffb6d8b515d2ab44ccd35f9e659f0b3738a75d9cbd895116907ef3a96fc4f1ac"
+    }
+  ],
+  "original_run_processes": [
+    {
+      "pid": 3778701,
+      "exists": false
+    },
+    {
+      "pid": 3778706,
+      "exists": false
+    },
+    {
+      "pid": 3778713,
+      "exists": false
+    },
+    {
+      "pid": 3237858,
+      "exists": true,
+      "cmdline": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python /data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_official.py --config-name=train_mvae expname=TextOp_Public_Full_MVAE_20261024 seed=0 data.weighted_sample=true data.datadir=/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps data.action_statistics_path=/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps/action_statistics.json skeleton.asset.assetRoot=/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/description/robots/g1 train.manager.stages=[100000,50000,50000] data.num_primitive=4 train.manager.use_rollout=True base_dir=/data/code/ouyanghao/oyh/textop-reproduction-20261024/runs ",
+      "state": "T (stopped)"
+    }
+  ],
+  "nvidia_smi": "0, 49140 MiB, 12223 MiB, 36328 MiB\n1, 49140 MiB, 7823 MiB, 40726 MiB\n",
+  "disk_available_bytes": 8726089728,
+  "formal_training_plan_gate_fields": {
+    "formal_launch_enabled": false,
+    "formal_launch_blockers": [
+      "remaining GMR cohorts and durable backups",
+      "all reference exports",
+      "full-library8192 memory/stability witness",
+      "new statistics/checkpoint wrapper witness"
+    ]
+  }
+}
