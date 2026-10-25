@@ -1,6 +1,6 @@
 # TextOp 数据准备核查与重建记录
 
-更新时间：2026-10-25 08:55:02 北京时间。
+更新时间：2026-10-25 09:00:22 北京时间。
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
@@ -148,7 +148,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
   "ram_working_copy": true,
   "source_durable": "C private assets and D licensed original archives",
   "physical_filter_executed": false,
-  "time_utc": "2026-10-25T00:55:00.902833+00:00",
+  "time_utc": "2026-10-25T01:00:21.617508+00:00",
   "preflight": {
     "mem": {
       "MemTotal": 269956653056,
@@ -191,8 +191,8 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
     "target_dof": 29,
     "feature_dim": 69,
     "output_fps": 50,
-    "completed_sequences": 208,
-    "mirrored_sequences": 208,
+    "completed_sequences": 304,
+    "mirrored_sequences": 304,
     "failed_sequences": 0,
     "total_requested": 1653,
     "physical_filter_passed": false,
@@ -200,8 +200,8 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
     "status": "RUNNING",
     "cpu_only": true,
     "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
-    "processed": 208,
-    "updated_utc": "2026-10-25T00:54:59Z"
+    "processed": 304,
+    "updated_utc": "2026-10-25T01:00:20Z"
   }
 }
 ```
