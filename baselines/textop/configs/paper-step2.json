@@ -149,5 +149,17 @@
     "Numerical sampling uses FIXED_LARGE to match paper beta_t reverse variance at noise-bearing steps; upstream FIXED_SMALL preserved"
   ],
   "authorized_auto_start_after_real_data_acceptance": true,
-  "latest_user_instruction": "2026-10-25: complete data preparation and processing, then start full motion-generator training"
+  "latest_user_instruction": "2026-10-25: immediately continue to full training and closed-loop validation after real data preparation and physical-filter acceptance; no extra user confirmation",
+  "authorized_continue_to_closed_loop_after_full_training": true,
+  "completion_notification_blocks_execution": false,
+  "automatic_continuation_sequence": [
+    "finish available public motion preparation, source coverage declaration and durable backups",
+    "complete real40k privileged policy and both relaxed/strict physical filtering",
+    "validate accepted69D corpus, source-disjoint splits, train-only normalization and CLIP cache",
+    "enable validated launch recipe and start new69D VAE200000 without a confirmation pause",
+    "load trained VAE and matching statistics, then train LDM300000",
+    "complete final WBC and generated-motion augmentation required for simulated closed-loop validation",
+    "evaluate actual generation-execution loop, preserve failure cases and actual execution videos",
+    "synchronize code, aggregate results, permitted videos and reports to GitHub and local folders"
+  ]
 }

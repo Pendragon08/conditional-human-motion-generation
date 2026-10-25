@@ -390,3 +390,17 @@ explicit NOT_A_TRAINED_POLICY markers, not actual acceptance or training data.
 New provider_tools/collect_filter_protocol.py saves localD and GitHub reports.
 Strict rollout executor remains unimplemented; next add it against this schema
 with diagnostic-only mode first, then actual trained40kpolicy after data ready.
+
+## Explicit automatic continuation authorization2026-10-25
+
+User: “数据准备和物理筛选完成之后直接开始完整训练和闭环验证。”
+This explicitly authorizes automatic stage transitions. Completion notices are
+informational and must not become approval waits. After actual two-round
+filtering plus accepted-corpus loader/statistics/CLIP/runtime/resource checks,
+enable the validated69D recipe and launch VAE200k→LDM300k; then proceed through
+required finalWBC/generated-motion augmentation to actual simulated closed-loop
+validation/videos. Do not pause to ask whether to train or continue. Preserve
+the original paper-profile differences and all prior resource/data safeguards.
+paper-step2.json records the automatic sequence and closed-loop authorization.
+launch_enabled remainsfalse while prerequisites are unmet; it is an evidence
+gate, not a requirement for another human approval. Current jobs keep running.
