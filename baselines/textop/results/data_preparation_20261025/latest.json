@@ -842,9 +842,9 @@
       "archive_bytes": 1188059483
     },
     "kit_indexed_queue": {
-      "status": "STAGING_SELECTED_RAW_IN_SERVER_RAM",
+      "status": "RUNNING_GMR_CPU_ONLY",
       "subset": "KIT",
-      "time_beijing": "2026-10-26T01:07:29.721350+08:00",
+      "time_beijing": "2026-10-26T01:25:33.591859+08:00",
       "physical_filter_executed": false,
       "dataset_accepted": false,
       "full_training_started": false,
@@ -856,11 +856,28 @@
       "archive_sha256": "35bcd67629ee4c68b1e5d8ec9b406d623203547a7bc9f281d979653128504b4d",
       "source_durable": "complete original archive on personal persistent volume; verified BABEL index on D",
       "ram_working_copy": true,
-      "staged_files": 1100,
-      "staged_bytes": 8093407439
+      "staged_files": 2500,
+      "staged_bytes": 18714701876,
+      "launch": {
+        "pid": 3717218,
+        "command": [
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021/bin/python",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_paper_data.py",
+          "--spec",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/data-prep-env-spec.json",
+          "--pairs",
+          "/dev/shm/ouyanghao_textop_20261025/kit_indexed_v1/pairs.private.json",
+          "--output",
+          "/dev/shm/ouyanghao_textop_20261025/kit_indexed_v1/prepared_v1"
+        ],
+        "cpu_only": true,
+        "verified_raw": 2513,
+        "source_sha256": "06539b1a7593ef45beda815d07252b4850f2c47237f2d0000c77bdcd60f101a5"
+      },
+      "progress": {}
     },
     "asset_authorization_and_storage": {
-      "recorded_beijing": "2026-10-25T14:24:14.452056+08:00",
+      "recorded_beijing": "2026-10-26T01:25:33.785314+08:00",
       "amass": {
         "user_reported_login_complete": true,
         "observed_main_download_table_accessible": true,
@@ -882,8 +899,8 @@
         "original_alignment_checked": true
       },
       "storage": {
-        "C_free_bytes": 7180431360,
-        "D_free_bytes": 10692722688,
+        "C_free_bytes": 2236690432,
+        "D_free_bytes": 7207395328,
         "remaining_archives": [
           {
             "subset": "BMLrub",
@@ -1171,8 +1188,8 @@
     }
   },
   "space_bytes": {
-    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 8783732736,
-    "/home/ouyanghao": 6654545920
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 8783728640,
+    "/home/ouyanghao": 6654496768
   },
   "missing_raw_by_dataset": {
     "BMLrub": 2139,

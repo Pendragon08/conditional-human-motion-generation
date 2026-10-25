@@ -1,6 +1,6 @@
 # TextOp 数据准备核查与重建记录
 
-更新时间：2026-10-26 01:08:17 北京时间。
+更新时间：2026-10-26 01:25:35 北京时间。
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
@@ -300,7 +300,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 
 本轮用户已回复AMASS登录完成，并明确同意BABEL独立许可及下载。CMU独立下载会话已完成官网文件主机认证；本次采样状态为LOCAL_ORIGINAL_ARCHIVE_VERIFIED。BABEL官方原始包已独立下载并安装到服务器；8,291条运动对应50,004条分段标注的ID、来源、文本、类别与时间均核对一致。原始标注位于D盘个人datasets/BABEL及服务器data_preparation_20261025/babel_v1_0目录，已核对SHA256；不公开发布原始标注。详见[BABEL独立核查](babel_original_alignment_20261025.md)。
 
-根据三个下载器当前校验凭据，BMLrub、CMU、KIT合计尚需续传约0.00GiB；完整校验通过的包无需重复下载。当前C盘余2.06GiB、D盘余6.71GiB。继续为处理结果和检查点保留余量；服务器容量另行核查。现有GMR队列继续运行，TotalCapture仍跳过。
+根据三个下载器当前校验凭据，BMLrub、CMU、KIT合计尚需续传约0.00GiB；完整校验通过的包无需重复下载。当前C盘余2.08GiB、D盘余6.71GiB。继续为处理结果和检查点保留余量；服务器容量另行核查。现有GMR队列继续运行，TotalCapture仍跳过。
 
 重复缓存清理记录（全部原始数据包、已处理数据、检查点、唯一实验记录均保留）：
 ```json
@@ -327,7 +327,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 授权和空间记录：
 ```json
 {
-  "recorded_beijing": "2026-10-25T14:24:14.452056+08:00",
+  "recorded_beijing": "2026-10-26T01:25:33.785314+08:00",
   "amass": {
     "user_reported_login_complete": true,
     "observed_main_download_table_accessible": true,
@@ -349,8 +349,8 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
     "original_alignment_checked": true
   },
   "storage": {
-    "C_free_bytes": 7180431360,
-    "D_free_bytes": 10692722688,
+    "C_free_bytes": 2236690432,
+    "D_free_bytes": 7207395328,
     "remaining_archives": [
       {
         "subset": "BMLrub",
