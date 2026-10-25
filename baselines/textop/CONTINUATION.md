@@ -558,3 +558,14 @@ requirescorrectCPUroundtrip forSciPy/GMR plus precision/timing verification.
 Currentobserver expects progress/manifest andprivatebackupbefore nextcohort;
 newwrapper must preserve exactschema andfailure/backup behavior. Treat this
 as priority over more cosmeticdiagnostics while existingqueuescontinue.
+
+## User instruction2026-10-25: continue retargeting, notify completed processing
+
+User explicitly asked to continue the existing retargeting and notify when
+complete data processing finishes. Keep active serial GMR/private backup/FK
+queues intact; no duplicate restart or unvalidated scheduling switch. Notify
+when all8278available public sources complete retargeting, paired-time/codec
+checks and durable private backup, reporting13unavailableCMUsources and403
+private clips separately. Label this preprocessing completion distinctly from
+real relaxed/strict physical-filter acceptance. Existing later milestone and
+automatic accepted-corpus VAE/LDM/closed-loop authorization still apply.
