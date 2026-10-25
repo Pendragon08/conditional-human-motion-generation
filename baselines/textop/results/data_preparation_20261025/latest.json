@@ -259,8 +259,8 @@
       "target_dof": 29,
       "feature_dim": 69,
       "output_fps": 50,
-      "completed_sequences": 1618,
-      "mirrored_sequences": 1618,
+      "completed_sequences": 1624,
+      "mirrored_sequences": 1624,
       "failed_sequences": 0,
       "total_requested": 1653,
       "physical_filter_passed": false,
@@ -268,8 +268,8 @@
       "status": "RUNNING",
       "cpu_only": true,
       "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
-      "processed": 1618,
-      "updated_utc": "2026-10-25T06:23:55Z"
+      "processed": 1624,
+      "updated_utc": "2026-10-25T06:28:48Z"
     },
     "raw_reconciliation": {
       "release_sequences": 8291,
@@ -721,12 +721,12 @@
       "new_raw_assets_published": false
     },
     "local1653_queue": {
-      "status": "STOPPED_WITH_ERROR",
+      "status": "RUNNING_GMR_CPU_ONLY",
       "target": 1653,
       "ram_working_copy": true,
-      "source_durable": "C private assets and D licensed original archives",
+      "source_durable": "D complete original archives and verified private recovery kit; RAM is working copy",
       "physical_filter_executed": false,
-      "time_utc": "2026-10-25T05:21:27.239436+00:00",
+      "time_utc": "2026-10-25T06:29:08.431249+00:00",
       "preflight": {
         "mem": {
           "MemTotal": 269956653056,
@@ -769,8 +769,8 @@
         "target_dof": 29,
         "feature_dim": 69,
         "output_fps": 50,
-        "completed_sequences": 1500,
-        "mirrored_sequences": 1500,
+        "completed_sequences": 1624,
+        "mirrored_sequences": 1624,
         "failed_sequences": 0,
         "total_requested": 1653,
         "physical_filter_passed": false,
@@ -778,10 +778,11 @@
         "status": "RUNNING",
         "cpu_only": true,
         "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
-        "processed": 1500,
-        "updated_utc": "2026-10-25T05:20:55Z"
+        "processed": 1624,
+        "updated_utc": "2026-10-25T06:28:48Z"
       },
-      "error": "RuntimeError('publish.py: Traceback (most recent call last):\\n  File \"C:\\\\Users\\\\Pende\\\\Documents\\\\ChatGPT\\\\机器人格斗动作捕捉数据生成\\\\work\\\\phygile_reproduction_20261017\\\\conditional-human-motion-generation\\\\baselines\\\\textop\\\\provider_tools\\\\publish.py\", line 37, in <module>\\n    print(git(\\'push\\',\\'-u\\',\\'origin\\',branch))\\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Pende\\\\Documents\\\\ChatGPT\\\\机器人格斗动作捕捉数据生成\\\\work\\\\phygile_reproduction_20261017\\\\conditional-human-motion-generation\\\\baselines\\\\textop\\\\provider_tools\\\\publish.py\", line 16, in git\\n    def git(*args):return subprocess.run([\\'git\\',\\'-C\\',str(REPO),\\'-c\\',\\'core.quotepath=false\\',*args],check=True,env=env,capture_output=True,text=True,encoding=\\'utf-8\\').stdout.strip()\\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Pende\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\Lib\\\\subprocess.py\", line 571, in run\\n    raise CalledProcessError(retcode, process.args,\\nsubprocess.CalledProcessError: Command \\'[\\'git\\', \\'-C\\', \\'C:\\\\\\\\Users\\\\\\\\Pende\\\\\\\\Documents\\\\\\\\ChatGPT\\\\\\\\机器人格斗动作捕捉数据生成\\\\\\\\work\\\\\\\\phygile_reproduction_20261017\\\\\\\\conditional-human-motion-generation\\', \\'-c\\', \\'core.quotepath=false\\', \\'push\\', \\'-u\\', \\'origin\\', \\'codex/textop-reproduction-20261024\\']\\' returned non-zero exit status 128.\\n')"
+      "error": "RuntimeError('publish.py: Traceback (most recent call last):\\n  File \"C:\\\\Users\\\\Pende\\\\Documents\\\\ChatGPT\\\\机器人格斗动作捕捉数据生成\\\\work\\\\phygile_reproduction_20261017\\\\conditional-human-motion-generation\\\\baselines\\\\textop\\\\provider_tools\\\\publish.py\", line 37, in <module>\\n    print(git(\\'push\\',\\'-u\\',\\'origin\\',branch))\\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Pende\\\\Documents\\\\ChatGPT\\\\机器人格斗动作捕捉数据生成\\\\work\\\\phygile_reproduction_20261017\\\\conditional-human-motion-generation\\\\baselines\\\\textop\\\\provider_tools\\\\publish.py\", line 16, in git\\n    def git(*args):return subprocess.run([\\'git\\',\\'-C\\',str(REPO),\\'-c\\',\\'core.quotepath=false\\',*args],check=True,env=env,capture_output=True,text=True,encoding=\\'utf-8\\').stdout.strip()\\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Pende\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\Lib\\\\subprocess.py\", line 571, in run\\n    raise CalledProcessError(retcode, process.args,\\nsubprocess.CalledProcessError: Command \\'[\\'git\\', \\'-C\\', \\'C:\\\\\\\\Users\\\\\\\\Pende\\\\\\\\Documents\\\\\\\\ChatGPT\\\\\\\\机器人格斗动作捕捉数据生成\\\\\\\\work\\\\\\\\phygile_reproduction_20261017\\\\\\\\conditional-human-motion-generation\\', \\'-c\\', \\'core.quotepath=false\\', \\'push\\', \\'-u\\', \\'origin\\', \\'codex/textop-reproduction-20261024\\']\\' returned non-zero exit status 128.\\n')",
+      "observer_recovered": true
     },
     "cmu_indexed_queue": {
       "status": "STAGED_VERIFIED_WAITING_FOR_PREVIOUS_BATCH_BACKUP",
@@ -889,21 +890,21 @@
       }
     },
     "prepared1653_v1": {
-      "sequences": 1618,
-      "frames50": 1057028,
-      "paired_annotations_including_saved_mirrors": 23000,
+      "sequences": 1624,
+      "frames50": 1072453,
+      "paired_annotations_including_saved_mirrors": 23212,
       "rejected_annotations": 4,
       "codec_max_error_m_or_rad": 2.2182229841849477e-07,
       "joint_skeleton_mirror_max_error_m": 9.999999928053671e-06,
       "splits": {
-        "train": 1213,
-        "val": 405
+        "train": 1216,
+        "val": 408
       }
     }
   },
   "space_bytes": {
-    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 7482191872,
-    "/home/ouyanghao": 6692921344
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 7482187776,
+    "/home/ouyanghao": 6692904960
   },
   "missing_raw_by_dataset": {
     "BMLrub": 2139,

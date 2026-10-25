@@ -12,8 +12,16 @@ if os.name=='nt':
             publish_guard.seek(0);msvcrt.locking(publish_guard.fileno(),msvcrt.LK_NBLCK,1);break
         except OSError:time.sleep(1)
     else:raise TimeoutError('Another publisher is still active; no Git changes made')
-env=os.environ.copy();env.update(HTTPS_PROXY='http://127.0.0.1:7897',HTTP_PROXY='http://127.0.0.1:7897')
-def git(*args):return subprocess.run(['git','-C',str(REPO),'-c','core.quotepath=false',*args],check=True,env=env,capture_output=True,text=True,encoding='utf-8').stdout.strip()
+env=os.environ.copy();env.update(HTTPS_PROXY='http://127.0.0.1:7897',HTTP_PROXY='http://127.0.0.1:7897',GIT_TERMINAL_PROMPT='0')
+def git(*args):
+    network=args[0] in ['push','ls-remote']
+    for attempt in range(3 if network else 1):
+        try:
+            return subprocess.run(['git','-C',str(REPO),'-c','core.quotepath=false',*args],check=True,env=env,
+                                  capture_output=True,text=True,encoding='utf-8',timeout=30 if network else None).stdout.strip()
+        except (subprocess.CalledProcessError,subprocess.TimeoutExpired):
+            if not network or attempt==2:raise
+            print('Retrying a transient Git network operation',args[0],attempt+1,flush=True);time.sleep(2**(attempt+1))
 branch='codex/textop-reproduction-20261024'
 if git('branch','--show-current')!=branch:
     if git('branch','--list',branch):print(git('checkout',branch))
