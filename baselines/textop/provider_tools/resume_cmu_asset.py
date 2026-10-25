@@ -14,6 +14,7 @@ OLD=pathlib.Path('D:/具身智能/PhyGile复现/后续AMASS下载_20261021/archi
 FINAL=ROOT/'CMU_smplx_g.tar.bz2';PART=ROOT/'CMU_smplx_g.tar.bz2.part'
 URL='https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/gender_specific/mosh_results/CMU.tar.bz2'
 EXPECTED=11572134418
+VALIDATION=ROOT/'CMU_archive_validation.private.json'
 STATE=BASE/'results/data_preparation_20261025/cmu_resume.json'
 
 def state(status,**kw):
@@ -75,7 +76,7 @@ def worker():
     sys.path.insert(0,str(BASE.parent/'phygile/scripts'))
     from download_amass_archives import validate_archive
     verification=validate_archive(PART)
-    (ROOT/'CMU_archive_validation.private.json').write_text(json.dumps(verification),encoding='utf-8')
+    VALIDATION.write_text(json.dumps(verification),encoding='utf-8')
     PART.rename(FINAL)
     public={k:v for k,v in verification.items() if k!='members'}
     state('LOCAL_ORIGINAL_ARCHIVE_VERIFIED',**public,indexed_retargeting_executed=False,physical_filter_executed=False)

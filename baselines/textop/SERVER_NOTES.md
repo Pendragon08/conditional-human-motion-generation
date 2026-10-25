@@ -28,3 +28,9 @@ Data scheduling: server batch500 PID3257584; CPU-only, four threads. Continuatio
 Spec written before numerical validation. Warm reuse textop9d7f370d dependencies, no packages installed. Process-local69D codec/FK/rollout adapter, fixed upstream preserved. GPU1 allocator cap65%, CPU4, batch2 numerical witness only. Validation pending; do not launch training.
 
 Validated textop-paper69@934d8221: seeded author and fresh verbatim document runs both exit0, identical source hashes, TEXTOP_PAPER69_NUMERICAL_WITNESS_PASSED. Core codec/FK/VAE/LDM/CLIP/sampling only; batch2 peak701244928 bytes; optimizer_updates0, dataset_acceptedfalse. Full corpus integration and training remain pending. Failed int32 sampling traces preserved.
+
+### env: textop-tracker@e65409d5
+Spec written before dispatch. Warm read-only IsaacSim4.5.0/IsaacLab2.1.0 reuse, pinned TextOp source injected in task PYTHONPATH. Shared assets and packages unchanged; GPU1, CPU4, Torch65% cap. Headless explicitly authorized. Package inventory and actual physics/FK witness pending; do not launch filter training yet.
+
+### env: textop-tracker@893388d9
+Inventory confirmed Python3.10.15, Torch2.5.1+cu118, NumPy1.26.0, Gymnasium0.29.1, RSL-RL2.3.1. IsaacLab projectVERSION2.1.0 and distribution0.36.21 refer to different release identifiers. Shared packages unchanged. Spec includes resolved versions before numerical physics dispatch. Author and fresh document witness pending.

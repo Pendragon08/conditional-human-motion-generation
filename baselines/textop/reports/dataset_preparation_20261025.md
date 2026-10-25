@@ -1,6 +1,6 @@
 # TextOp 数据准备核查与重建记录
 
-更新时间：2026-10-25 11:42:54 北京时间。
+更新时间：2026-10-25 12:28:32 北京时间。
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
@@ -48,7 +48,25 @@
 
 当前成功 500/500 条、失败 0 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
 
-补充143条：成功143、失败0。新增1653条：成功1301、失败0。不计重复的6条smoke验证，三个批次合计已完成1944条候选运动、失败0条；保存的镜像另计。新批次原始输入已逐文件校验，RAM仅作服务器工作副本。
+补充143条：成功143、失败0。新增1653条：成功1400、失败0。CMU另批成功0条、失败0条。不计重复的6条smoke验证，合计已完成2043条候选运动、失败0条；保存的镜像另计。新批次原始输入已逐文件校验，RAM仅作服务器工作副本。
+
+CMU完整原始包已通过CRC/tar校验；其选定SMPL-X G版本覆盖1,343条所需索引中的1,330条，另13条来源在该包内不存在，已保留私有缺失清单，未计为已处理。1,330条相关输入直接流式传输到个人RAM工作目录，逐文件SHA256核验后，等待前一批完成且持久归档成功，再串行执行同一GMR代码；不打断当前任务。当前CMU调度状态：
+```json
+{
+  "status": "STAGING_SELECTED_RAW_IN_SERVER_RAM",
+  "time_beijing": "2026-10-25T12:27:22.420517+08:00",
+  "target": 1330,
+  "requested_indexed_sources": 1343,
+  "missing_from_selected_official_export": 13,
+  "raw_bytes": 18804784599,
+  "archive_sha256": "8a276bd0ed23fa72202f80f1dcf8fd9a336eb053ad86233cd47a9a2f51210270",
+  "source_durable": "complete C-drive original archive; private original-BABEL-verified index on D",
+  "ram_working_copy": true,
+  "physical_filter_executed": false,
+  "staged_files": 1100,
+  "staged_bytes": 13824581796
+}
+```
 
 另外143条已有ACCAD原始动作因空格/下划线导出命名差异，首轮未匹配；现通过明确的字面规范化确认，无模糊匹配、无歧义键。当前批次完成后使用同一验证过的CPU环境串行处理，已完成 143/143 条。输入可用性不等于完成重定向或通过物理筛选。
 
@@ -150,7 +168,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
   "ram_working_copy": true,
   "source_durable": "C private assets and D licensed original archives",
   "physical_filter_executed": false,
-  "time_utc": "2026-10-25T03:42:52.873370+00:00",
+  "time_utc": "2026-10-25T04:28:30.094253+00:00",
   "preflight": {
     "mem": {
       "MemTotal": 269956653056,
@@ -193,8 +211,8 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
     "target_dof": 29,
     "feature_dim": 69,
     "output_fps": 50,
-    "completed_sequences": 1301,
-    "mirrored_sequences": 1301,
+    "completed_sequences": 1400,
+    "mirrored_sequences": 1400,
     "failed_sequences": 0,
     "total_requested": 1653,
     "physical_filter_passed": false,
@@ -202,8 +220,8 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
     "status": "RUNNING",
     "cpu_only": true,
     "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
-    "processed": 1301,
-    "updated_utc": "2026-10-25T03:42:53Z"
+    "processed": 1400,
+    "updated_utc": "2026-10-25T04:28:20Z"
   }
 }
 ```
@@ -212,7 +230,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 
 本轮用户已回复AMASS登录完成，并明确同意BABEL独立许可及下载。CMU独立下载会话已完成官网文件主机认证；本次采样状态为LOCAL_ORIGINAL_ARCHIVE_VERIFIED。BABEL官方原始包已独立下载并安装到服务器；8,291条运动对应50,004条分段标注的ID、来源、文本、类别与时间均核对一致。原始标注位于D盘个人datasets/BABEL及服务器data_preparation_20261025/babel_v1_0目录，已核对SHA256；不公开发布原始标注。详见[BABEL独立核查](babel_original_alignment_20261025.md)。
 
-按官网文件清单及本次空间核查时的断点，BMLrub、CMU、KIT合计仍需约22.65GiB新增压缩包空间，CMU续传期间该值持续减少。用户已授权继续清理无用副本；当前C盘余18.60GiB、D盘余6.72GiB。后续必须按盘容量安排续传，保留系统盘余量；服务器容量仍需单独核查。现有GMR任务继续运行，TotalCapture仍跳过。
+按官网文件清单及本次空间核查时的断点，BMLrub、CMU、KIT合计仍需约22.65GiB新增压缩包空间，CMU续传期间该值持续减少。用户已授权继续清理无用副本；当前C盘余13.62GiB、D盘余18.21GiB。后续必须按盘容量安排续传，保留系统盘余量；服务器容量仍需单独核查。现有GMR任务继续运行，TotalCapture仍跳过。
 
 重复缓存清理记录（全部原始数据包、已处理数据、检查点、唯一实验记录均保留）：
 ```json
@@ -292,7 +310,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 }
 ```
 
-数据盘约剩3.53GiB、系统盘约剩1.02GiB。继续完成新增1653条并核验持久备份，保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
+数据盘约剩3.47GiB、系统盘约剩1.12GiB。继续完成新增1653条并核验持久备份，保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
 
 代码与聚合证据同步GitHub；包含原始动作、人体模型、逐条文本的资产遵循许可保存在个人目录和本地，GitHub不公开原始/重定向数据文件。新输出均明确标为待物理筛选。PhyGile、ReactiveBFM继续暂停，未改动其数据或实验记录。
 
