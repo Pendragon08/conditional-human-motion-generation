@@ -700,3 +700,26 @@ completion and separate physicalfilter/fulltraining notification gates unchanged
 collect_parallel_gmr.py records all versions/independentREPORT and writes localD
 GMR并行处理验证_20261025.html. Automation updated for these current workers and
 parallel configuration. Serverdata remains~2.69GiBfree; budget formalcheckpoints.
+
+## Heartbeat2026-10-25 23:12: storage forecast while parallel GMR continues
+
+Read-only live check: BMLrub695/2139 at23:06, zero failed, same4 production
+workers/CPU0-3; localobserver andKITpredecessor wait continue. No re-launch,
+new GPU diagnostic, data deletion, or repeated completed archive/audit.
+New provider_tools/assess_training_storage.py --run parallel_active_v1 completed
+actualexit0. It reads existing public receipts/configs and filesystem counters;
+it does not load weights, modify active workers or infer physical acceptance.
+Scheduled checkpoint planning proxy:12,239,102,977bytes across filter9,
+VAE10 andLDM15 saves; plus2GiB reserve14,386,586,625bytes. At observation/data
+free2,888,720,384bytes, planning gap11,497,866,241bytes. Even filter9-save proxy
+alone does not fit above current2GiB reserve. Generator proxy uses EMA-on
+state-witness size, formalEMAfalse unchanged; full-library tracker counters,
+accepteddata/cache, remainingbackups, finalWBC andvideos not included. This is
+not exact full-run disk measurement or a new training result.
+
+Do not spend additional space on duplicate diagnostics or bypass disk guards.
+Before formalfilterlaunch, resolve durable output capacity and refresh budget;
+all existing datasets/checkpoints/unique records remain protected. Full accepted
+training still waits real data/physics gates. Report and aggregate assessment
+under reports/training_storage_20261025.md andresults/training_storage_20261025;
+localD后续训练存储预算_20261025.html/.md. No user action needed for currentGMR.

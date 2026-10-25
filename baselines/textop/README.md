@@ -29,3 +29,5 @@
 [生成器优化器与断点恢复诊断](GENERATOR_STATE_ENVIRONMENT.md)补充真实Adam/AdamW状态分配、落盘和新管理器恢复。每阶段仅8次诊断更新，候选数据未通过物理筛选；[聚合结果](reports/generator_state_20261025.md)明确区分正式训练、EMA测试设置及实际检查点步数。
 
 [GMR四进程并行已启用](PARALLEL_GMR_ENVIRONMENT.md)：仍限制CPU0–3，作者/独立完整动作对照约2.41/2.36倍加速，所有比较数组差异0。BMLrub已从完整上传数据启动四进程，KIT后续沿用；此前精度失败与互斥保护记录保留。[结果与适用范围](reports/parallel_gmr_20261025.md)。
+
+[后续训练存储预算](reports/training_storage_20261025.md)已按现有配置和实测诊断检查点估算；当前数据盘不足以保留计划的全部训练检查点，正式训练前需落实持久存储方案。并行重定向继续，数据和检查点未删除。
