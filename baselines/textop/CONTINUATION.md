@@ -1,32 +1,52 @@
 # TextOp: data completion → physical filtering → full generator training
 
-## CURRENT2026-10-26 07:06 — formal privileged policy training is RUNNING
+## CURRENT2026-10-26 07:28 — formal policy healthy; post-exit filtering candidate disabled
 
-This section supersedes old pending/disabled notes below. All8278 available source
-preprocessing/FK/private backup is complete; do not repeat it. Candidate floor
-passed actual author+independent10-round/200-update tests. Formal run
-`filter_policy_paper69_solid_floor_20261026_v1` is now alive, sampled
-10/40000 completed iterations and 200 actual updates. Supervisor3812568,
-SDK worker3812580 (historical IDs: check command/state). DO NOT relaunch activation,
-launcher, diagnostics or another SDK job against the active common lock. Old
-57D sleeping launcher3237857 + stopped child3237858 are intentionally preserved.
+Current real receipt: filter_policy_paper69_solid_floor_20261026_v1 is
+RUNNING_FORMAL_FILTER_TRAINING,100/40000 rounds,2000 actual updates, value loss
+0.05564889032393694, no exit receipt. This is early training, not convergence or
+physical acceptance. Progress flushes first10 rounds then every100; an unchanged
+receipt between flushes is not a stall. Keep the existing supervisor/SDK job;
+DO NOT repeat activation, launcher, any old diagnosis or another SDK task.
+Old57D sleeping launcher3237857+stopped child3237858 remain intentionally paused.
 
 Read FORMAL_CONTACT_PROFILE_ENVIRONMENT.md, configs/formal-contact-activation.json,
 results/full_contact_20261026/formal_launch/progress.json and latest
-reports/contact_isolation_20261026.md. Read-only progress collector is
-provider_tools/collect_formal_filter_progress.py; regenerate current reports with
-collect_contact_report.py. Actual launch is not40k completion or physical success.
-PlanSHA153f8237a17928ffc3a28b7b00e366742a4ff0080e8fbb6bac87e57da8eb291d is active;
-all runtime/plan files are frozen and byte-bound. Do not edit them while training.
+reports/contact_isolation_20261026.md. Use only the read-only
+provider_tools/collect_formal_filter_progress.py for aggregation and
+collect_contact_report.py for current reports. The active plan SHA remains
+153f8237a17928ffc3a28b7b00e366742a4ff0080e8fbb6bac87e57da8eb291d. All16 active
+runtime/config files are frozen; their hashes were checked again this turn.
+First checkpoint is scheduled at1000 rounds; preserve and back up new actual
+checkpoints without duplicate workers. Existing results/checkpoint_sync_state.json
+still inventories the paused old57D ckpt1000; it is not evidence that a new formal
+filter checkpoint has been backed up. Inspect actual worker commands before any
+new backup job. Checkpoint/file/data cleanup is forbidden.
 
-Next: monitor real progress/checkpoint/disk and preserve first/new checkpoint;
-prepare next physical-filter/corpus steps without duplicating GPU workloads. Both
-relaxed and strict evaluations MUST use this validated contact profile, not
-silently fall back to the old Plane. Keep strict paper thresholds; no source
-exclusion or reward clipping to conceal instability. Actual2-pass filtering,
-accepted corpus, fullVAE/LDM/finalWBC/closedloop remain outstanding. Auto-continuation
-is already authorized. User will receive formal-start notice this turn, so do not
-repeat it on healthy unchanged checks. Notify the next requested real milestone.
+New background preparation: CONTACT_FILTER_V3_ENVIRONMENT.md and
+reports/filter_contact_protocol_20261026.md. Six NEW inactive files were staged
+separately on the server; no active file changed. Local+server CPU23-case synthetic
+checks passed, actual running policy was rejected for formal filtering, disabled
+supervisor dispatched zero SDK jobs. Exact candidate bytes and all receipts are
+in results/filter_contact_protocol_20261026. The local collector's post-server
+path assertion failure was recovered without rerunning server tests.
+
+This v3 exporter/finalizer has NOT had real SDK validation. Its spec's
+formal_evaluation_enabled and real_sdk_validation_completed remainfalse.
+Do not flip them or call the new supervisor while formal training runs. Next
+prepare the distinct bounded actual validation path and continuous resource
+sampling/failure handling, with independent documented actual verification after
+GPU mutual exclusion permits. Synthetic tests are not physics, convergence or
+physical acceptance. Historical v2/Plane executor stays unchanged but cannot be
+silently used for formal filtering of this solid-floor-trained policy.
+
+Data8278 source+8278 mirrors, text/69D/FK/private backups already complete and
+notified. No repeat GMR/FK/archives/audits. Two-pass real filtering, accepted
+corpus, VAE/LDM/finalWBC/closedloop still pending. Once real filtering, final corpus,
+normalization, CLIP and resources pass, automatic training continuation is already
+authorized. Keep source/failure arrays private; publish only code and aggregates.
+Formal-start notice was already sent; healthy progress and background preparation
+are quiet. Notify next real physical-filter/corpus or complete-training milestone.
 
 
 User2026-10-25 explicitly requests completing data preparation/processing, then

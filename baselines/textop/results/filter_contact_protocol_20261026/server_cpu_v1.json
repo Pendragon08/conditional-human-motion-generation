@@ -1,0 +1,168 @@
+{
+  "status": "CONTACT_FILTER_V3_CPU_SERVER_CHECKS_PASSED",
+  "python_version": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "deployed": {
+    "scripts/apply_tracking_filter_v3.py": "365462821ecb1fd0d74fd2f13de4133c525a7b3667d5db196ab3270a14a79f85",
+    "scripts/evaluate_strict_filter_contact.py": "2ab322e9fd3ee27176db15278642f42051e4425cf47bd71ac34264776fb95035",
+    "scripts/finalize_contact_filter.py": "91864219cc435b260874393880053df0470daaaf0c9c9882f4ef503a9f20d3d8",
+    "scripts/supervise_strict_contact_replay.py": "cc8ee8bb7e7c9e1bcfc9d6efaa3a5cbb7a0a61f3ee02e3f160bf27bb239721d6",
+    "configs/strict-contact-replay-spec.json": "ee6badafbcebc705b82a409055953872a5310102b29d43e06195307108152557",
+    "tests/test_filter_contact_v3.py": "cbd5a0d0671d01656519dee21a0f47c4b0d9e3a8b12b8789c55a7cf4d94aaeb0"
+  },
+  "frozen_runtime_files_verified": 16,
+  "synthetic_check_receipt": {
+    "status": "CONTACT_FILTER_V3_SYNTHETIC_PROTOCOL_CHECKS_PASSED",
+    "checks": [
+      {
+        "name": "synthetic_consistency_only",
+        "synthetic_schema_consistent": true,
+        "real_motions_accepted": 0
+      },
+      {
+        "name": "running_policy_rejected",
+        "expected_rejection_observed": true,
+        "reason": "Actual40k training is incomplete"
+      },
+      {
+        "name": "unclosed_training_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "old_plane_profile_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "selfcollision_disabled_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "friction_changed_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "log_contact_hash_mismatch",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "failed_evaluator_exit",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "timeout_evaluator_exit",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "unclosed_evaluator_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "diagnostic_evaluator_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "evaluator_took_updates_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "wrong_executor_source",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "disabled_evaluation_spec",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "unvalidated_evaluation_spec",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "wrong_evaluated_policy",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "wrong_reference_order",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "wrong_trial_count",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "wrong_physics_step_count",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "missing_journal_trial",
+        "expected_rejection_observed": true,
+        "reason": "Expecting value: line 1 column 1 (char 0)"
+      },
+      {
+        "name": "duplicated_journal_trial",
+        "expected_rejection_observed": true,
+        "reason": "Lost or duplicated trial journal"
+      },
+      {
+        "name": "partial_trajectory_still_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "unattempted_source_still_rejected",
+        "expected_rejection_observed": true,
+        "reason": "Never-attempted motions cannot pass"
+      }
+    ],
+    "checks_passed": 23,
+    "gpu_calls": 0,
+    "physics_calls": 0,
+    "optimizer_updates": 0,
+    "physical_filter_executed": false,
+    "dataset_accepted": false,
+    "synthetic_fixture_markers_retained": true,
+    "fixtures_removed": false,
+    "elapsed_end_unix": 1792970833.0634384
+  },
+  "test_exit_code": 0,
+  "test_stdout": "{\"status\": \"CONTACT_FILTER_V3_SYNTHETIC_PROTOCOL_CHECKS_PASSED\", \"checks_passed\": 23, \"gpu_calls\": 0, \"physics_calls\": 0, \"optimizer_updates\": 0, \"physical_filter_executed\": false, \"dataset_accepted\": false, \"synthetic_fixture_markers_retained\": true, \"fixtures_removed\": false, \"elapsed_end_unix\": 1792970833.0634384}\n",
+  "test_stderr": "",
+  "actual_running_policy_rejected": true,
+  "active_policy_status": "RUNNING_FORMAL_FILTER_TRAINING",
+  "active_policy_completed_iterations": 100,
+  "active_policy_updates": 2000,
+  "active_policy_receipt_sha256": "8b4a9db8c7fc5a90e3668c1ffcfdde639257088c68afafac870960685f775ffc",
+  "actual_contact_profile_sha256": "0ebb5fcbbe2a5e93db71a6ba661077b617bb0462c6569a72608d6064ef966fb0",
+  "rejection": "Actual40k training is incomplete",
+  "disabled_supervisor_exit_code": 1,
+  "disabled_supervisor_stderr": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_strict_contact_replay.py\", line 8, in <module>\n    assert spec['formal_evaluation_enabled'] is True,'Future exporter disabled; no SDK dispatched'\nAssertionError: Future exporter disabled; no SDK dispatched\n",
+  "sdk_dispatches": 0,
+  "physics_calls": 0,
+  "optimizer_updates": 0,
+  "physical_filter_executed": false,
+  "dataset_accepted": false,
+  "time_unix": 1792970833.2117262,
+  "real_exporter_validation_pending": true,
+  "all_fixtures_preserved": true
+}
