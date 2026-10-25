@@ -7,12 +7,14 @@ import pathlib,json,collections,shutil,time
 r=pathlib.Path('/data/code/ouyanghao/oyh/textop-reproduction-20261024');d=r/'data_preparation_20261025'
 out={'receipts':{},'metrics':{},'space_bytes':{str(p):shutil.disk_usage(p).free for p in [r,pathlib.Path('/home/ouyanghao')]}}
 ram=pathlib.Path('/dev/shm/ouyanghao_textop_20261025/local1653_v1')
+cmu=pathlib.Path('/dev/shm/ouyanghao_textop_20261025/cmu1330_v1')
 paths={'audit':d/'audit_summary.json','aligned_release':d/'released_aligned_view/summary.json','smoke1':d/'smoke_v1/progress.json','smoke2':d/'smoke_v2/progress.json','batch500':d/'available500_v1/progress.json','batch143':d/'available143_v1/progress.json','batch1653':ram/'prepared1653_v1/progress.json','raw_reconciliation':d/'raw_reconciliation_summary.json','queue143':r/'receipts/additional143_queue.json','witness_author':d/'witness_author/witness.json','witness_document':d/'witness_document/witness.json','env_validation':r/'receipts/data_env_validation.json','pause':r/'receipts/data_preparation_pause.json'}
+paths['batchCMU']=cmu/'prepared1330_v1/progress.json'
 for name,p in paths.items():
     if p.exists():
         try:out['receipts'][name]=json.loads(p.read_text())
         except json.JSONDecodeError:pass
-for name,folder in [('smoke_v2',d/'smoke_v2'),('available500_v1',d/'available500_v1'),('available143_v1',d/'available143_v1'),('prepared1653_v1',ram/'prepared1653_v1')]:
+for name,folder in [('smoke_v2',d/'smoke_v2'),('available500_v1',d/'available500_v1'),('available143_v1',d/'available143_v1'),('prepared1653_v1',ram/'prepared1653_v1'),('preparedCMU',cmu/'prepared1330_v1')]:
     p=folder/'prepared_manifest.private.jsonl'
     if not p.exists():continue
     count=0;frames=0;ann=0;reject=0;err=0;mir=0;splits=collections.Counter()
@@ -43,6 +45,8 @@ authorization=dest/'asset_authorization_and_storage.json'
 if authorization.exists():result['receipts']['asset_authorization_and_storage']=json.loads(authorization.read_text(encoding='utf-8'))
 queue=dest/'local1653_queue.json'
 if queue.exists():result['receipts']['local1653_queue']=json.loads(queue.read_text(encoding='utf-8'))
+cmu_queue=dest/'cmu1343_queue.json'
+if cmu_queue.exists():result['receipts']['cmu_indexed_queue']=json.loads(cmu_queue.read_text(encoding='utf-8'))
 residency=dest/'cache_residency.json'
 if residency.exists():result['receipts']['current_input_residency']=json.loads(residency.read_text(encoding='utf-8'))
 local_progress=REPO.parent.parent/'textop_reproduction_20261024/private_assets/raw_expansion_progress.json'
@@ -58,7 +62,8 @@ a=result['receipts'].get('audit',{});b=result['receipts'].get('batch500',{});m=r
 extra=result['receipts'].get('batch143',{});reconciled=result['receipts'].get('raw_reconciliation',{});local=result['receipts'].get('local_raw_expansion',{})
 local_queue=result['receipts'].get('local1653_queue',{})
 bulk=result['receipts'].get('batch1653',{})
-prepared_total=sum(x.get('completed_sequences',0) for x in [b,extra,bulk]);failed_total=sum(x.get('failed_sequences',0) for x in [b,extra,bulk])
+cmu_prepared=result['receipts'].get('batchCMU',{})
+prepared_total=sum(x.get('completed_sequences',0) for x in [b,extra,bulk,cmu_prepared]);failed_total=sum(x.get('failed_sequences',0) for x in [b,extra,bulk,cmu_prepared])
 assets=result['receipts'].get('asset_authorization_and_storage',{})
 babel_verified=result['receipts'].get('babel_alignment',{}).get('mismatch_sequences')==0
 babel_note=('BABEL官方原始包已独立下载并安装到服务器；8,291条运动对应50,004条分段标注的ID、来源、文本、类别与时间均核对一致' if babel_verified else 'BABEL原始包尚待独立核对，当前文本来自发布包内字段')
@@ -105,7 +110,12 @@ report=f'''# TextOp 数据准备核查与重建记录
 
 当前成功 {b.get('completed_sequences',0)}/500 条、失败 {b.get('failed_sequences',0)} 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
 
-补充143条：成功{extra.get('completed_sequences',0)}、失败{extra.get('failed_sequences',0)}。新增1653条：成功{bulk.get('completed_sequences',0)}、失败{bulk.get('failed_sequences',0)}。不计重复的6条smoke验证，三个批次合计已完成{prepared_total}条候选运动、失败{failed_total}条；保存的镜像另计。新批次原始输入已逐文件校验，RAM仅作服务器工作副本。
+补充143条：成功{extra.get('completed_sequences',0)}、失败{extra.get('failed_sequences',0)}。新增1653条：成功{bulk.get('completed_sequences',0)}、失败{bulk.get('failed_sequences',0)}。CMU另批成功{cmu_prepared.get('completed_sequences',0)}条、失败{cmu_prepared.get('failed_sequences',0)}条。不计重复的6条smoke验证，合计已完成{prepared_total}条候选运动、失败{failed_total}条；保存的镜像另计。新批次原始输入已逐文件校验，RAM仅作服务器工作副本。
+
+CMU完整原始包已通过CRC/tar校验；其选定SMPL-X G版本覆盖1,343条所需索引中的1,330条，另13条来源在该包内不存在，已保留私有缺失清单，未计为已处理。1,330条相关输入直接流式传输到个人RAM工作目录，逐文件SHA256核验后，等待前一批完成且持久归档成功，再串行执行同一GMR代码；不打断当前任务。当前CMU调度状态：
+```json
+{json.dumps(result['receipts'].get('cmu_indexed_queue',{}),ensure_ascii=False,indent=2)}
+```
 
 另外143条已有ACCAD原始动作因空格/下划线导出命名差异，首轮未匹配；现通过明确的字面规范化确认，无模糊匹配、无歧义键。当前批次完成后使用同一验证过的CPU环境串行处理，已完成 {extra.get('completed_sequences',0)}/143 条。输入可用性不等于完成重定向或通过物理筛选。
 
@@ -169,6 +179,6 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 (LOCAL/'数据准备核查报告_20261025.md').write_text(report,encoding='utf-8')
 (LOCAL/'data_preparation_latest.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
 page='<!DOCTYPE html><html lang="zh-CN"><meta charset="utf-8"><title>TextOp 数据准备核查</title><style>body{font:16px/1.8 system-ui,"Microsoft YaHei";max-width:1040px;margin:36px auto;padding:20px 32px;background:#f6f8fa;color:#17202a}h1{font-size:28px}.status{background:#fff4ce;border-left:5px solid #b38600;padding:14px 20px}table{border-collapse:collapse;width:100%;background:white}th,td{padding:14px;border:1px solid #d0d7de;text-align:left;vertical-align:top}pre{white-space:pre-wrap;background:white;padding:24px;border:1px solid #d0d7de;border-radius:10px;font:14px/1.8 system-ui;overflow-wrap:anywhere}a{color:#0969da}</style><h1>TextOp 数据准备核查</h1><p class="status">论文Step1尚未完成；生成器参数更新已暂停。当前29DoF候选数据成功 '+str(b.get('completed_sequences',0))+'/500 条，真实物理筛选待执行。</p><p><a href="https://arxiv.org/pdf/2602.07439#page=13">论文附录A</a> · <a href="https://github.com/Pendragon08/conditional-human-motion-generation/tree/codex/textop-reproduction-20261024/baselines/textop">代码与聚合证据</a></p><pre>'+html.escape(report)+'</pre></html>'
-page=page.replace('当前29DoF候选数据成功 '+str(b.get('completed_sequences',0))+'/500 条','已有输入的2,296条候选运动中，已完成 '+str(prepared_total)+' 条')
+page=page.replace('当前29DoF候选数据成功 '+str(b.get('completed_sequences',0))+'/500 条','当前候选运动已完成 '+str(prepared_total)+' 条；CMU新增1,330条输入正在接续处理')
 (LOCAL/'数据准备核查报告_20261025.html').write_text(page,encoding='utf-8')
 print(json.dumps({'time':now,'prepared29':prepared_total,'failed':failed_total,'local_raw_extracted':local.get('completed',0),'physical_filter_executed':False,'paper_data_ready':False,'generator':result['generator_process_state']},ensure_ascii=False))
