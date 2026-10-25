@@ -6,13 +6,14 @@ code=r'''
 import pathlib,json,collections,shutil,time
 r=pathlib.Path('/data/code/ouyanghao/oyh/textop-reproduction-20261024');d=r/'data_preparation_20261025'
 out={'receipts':{},'metrics':{},'space_bytes':{str(p):shutil.disk_usage(p).free for p in [r,pathlib.Path('/home/ouyanghao')]}}
-paths={'audit':d/'audit_summary.json','aligned_release':d/'released_aligned_view/summary.json','smoke1':d/'smoke_v1/progress.json','smoke2':d/'smoke_v2/progress.json','batch500':d/'available500_v1/progress.json','batch143':d/'available143_v1/progress.json','raw_reconciliation':d/'raw_reconciliation_summary.json','queue143':r/'receipts/additional143_queue.json','witness_author':d/'witness_author/witness.json','witness_document':d/'witness_document/witness.json','env_validation':r/'receipts/data_env_validation.json','pause':r/'receipts/data_preparation_pause.json'}
+ram=pathlib.Path('/dev/shm/ouyanghao_textop_20261025/local1653_v1')
+paths={'audit':d/'audit_summary.json','aligned_release':d/'released_aligned_view/summary.json','smoke1':d/'smoke_v1/progress.json','smoke2':d/'smoke_v2/progress.json','batch500':d/'available500_v1/progress.json','batch143':d/'available143_v1/progress.json','batch1653':ram/'prepared1653_v1/progress.json','raw_reconciliation':d/'raw_reconciliation_summary.json','queue143':r/'receipts/additional143_queue.json','witness_author':d/'witness_author/witness.json','witness_document':d/'witness_document/witness.json','env_validation':r/'receipts/data_env_validation.json','pause':r/'receipts/data_preparation_pause.json'}
 for name,p in paths.items():
     if p.exists():
         try:out['receipts'][name]=json.loads(p.read_text())
         except json.JSONDecodeError:pass
-for name in ['smoke_v2','available500_v1','available143_v1']:
-    p=d/name/'prepared_manifest.private.jsonl'
+for name,folder in [('smoke_v2',d/'smoke_v2'),('available500_v1',d/'available500_v1'),('available143_v1',d/'available143_v1'),('prepared1653_v1',ram/'prepared1653_v1')]:
+    p=folder/'prepared_manifest.private.jsonl'
     if not p.exists():continue
     count=0;frames=0;ann=0;reject=0;err=0;mir=0;splits=collections.Counter()
     for line in p.read_text().splitlines():
@@ -35,6 +36,8 @@ out['known_blockers']=['Remaining raw AMASS source files still need reconciliati
 print(json.dumps(out))
 '''
 result=json.loads(remote(code,timeout=100));dest=BASE/'results/data_preparation_20261025';dest.mkdir(parents=True,exist_ok=True)
+authorization=dest/'asset_authorization_and_storage.json'
+if authorization.exists():result['receipts']['asset_authorization_and_storage']=json.loads(authorization.read_text(encoding='utf-8'))
 queue=dest/'local1653_queue.json'
 if queue.exists():result['receipts']['local1653_queue']=json.loads(queue.read_text(encoding='utf-8'))
 local_progress=REPO.parent.parent/'textop_reproduction_20261024/private_assets/raw_expansion_progress.json'
@@ -49,6 +52,9 @@ for name,obj in result['receipts'].items():
 a=result['receipts'].get('audit',{});b=result['receipts'].get('batch500',{});m=result['metrics'].get('available500_v1',{});v=result['receipts'].get('aligned_release',{})
 extra=result['receipts'].get('batch143',{});reconciled=result['receipts'].get('raw_reconciliation',{});local=result['receipts'].get('local_raw_expansion',{})
 local_queue=result['receipts'].get('local1653_queue',{})
+bulk=result['receipts'].get('batch1653',{})
+prepared_total=sum(x.get('completed_sequences',0) for x in [b,extra,bulk]);failed_total=sum(x.get('failed_sequences',0) for x in [b,extra,bulk])
+assets=result['receipts'].get('asset_authorization_and_storage',{})
 now=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S 北京时间')
 report=f'''# TextOp 数据准备核查与重建记录
 
@@ -61,7 +67,7 @@ report=f'''# TextOp 数据准备核查与重建记录
 | 用户所列环节 | 已实际完成 | 尚未完成/差异 |
 | --- | --- | --- |
 | AMASS、BABEL、自建数据 | 全量读取公开RobotMDAR配对包8,291条；原始stageii索引初次精确匹配500条；修复文件命名后又确认143条已有输入；另从本地完整压缩包按索引提取缺失输入 | 首轮未匹配7,791条并不都需要重下；最新覆盖见下方记录。BABEL标注本轮复用官方包内字段，未独立重下原始BABEL JSON；作者私有数据不可用 |
-| GMR人体→机器人 | 实际执行SMPL-X前向与GMR29关节IK；6条完整动作通过处理验证；500条批处理及后续143条串行队列已启动 | 旧公开包是23DoF/57D；不能补6个零就声称恢复论文29DoF/69D |
+| GMR人体→机器人 | 实际执行SMPL-X前向与GMR29关节IK；首批500条及补充143条均已处理完成；新增1653条已开始串行处理 | 旧公开包是23DoF/57D；不能补6个零就声称恢复论文29DoF/69D |
 | 过滤、对齐、训练集构建 | 全量结构与划分核查、时间标注修整视图、29DoF接触/镜像/69D编码已运行 | 论文要求的真实策略筛选还未执行，全部新输出physical_filter_passed=false、训练就绪=false |
 
 ## 论文与固定公开版本的差异
@@ -86,6 +92,8 @@ report=f'''# TextOp 数据准备核查与重建记录
 ## 29DoF 重建进度
 
 当前成功 {b.get('completed_sequences',0)}/500 条、失败 {b.get('failed_sequences',0)} 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
+
+补充143条：成功{extra.get('completed_sequences',0)}、失败{extra.get('failed_sequences',0)}。新增1653条：成功{bulk.get('completed_sequences',0)}、失败{bulk.get('failed_sequences',0)}。不计重复的6条smoke验证，三个批次合计已完成{prepared_total}条候选运动、失败{failed_total}条；保存的镜像另计。新批次原始输入已逐文件校验，RAM仅作服务器工作副本。
 
 另外143条已有ACCAD原始动作因空格/下划线导出命名差异，首轮未匹配；现通过明确的字面规范化确认，无模糊匹配、无歧义键。当前批次完成后使用同一验证过的CPU环境串行处理，已完成 {extra.get('completed_sequences',0)}/143 条。输入可用性不等于完成重定向或通过物理筛选。
 
@@ -123,9 +131,16 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 
 队列仅在本地完整提取且前面500+143条批次成功结束后运行；先逐文件校验，再检查服务器可用内存及共享内存容量，使用个人权限目录中的RAM工作副本进行GMR处理，最终编码结果归档到D盘并校验。C盘原始选中动作和D盘许可压缩包是持久输入，RAM工作副本不作为唯一数据副本。若资源条件不满足，保留记录并停止；不会删除数据或重启旧训练。
 
-AMASS官网下载当前显示Sign In，已请求用户重新登录以续传BMLrub、CMU、KIT等缺少的包。BABEL原始标注另需独立登录和许可确认；已有AMASS/SMPL-X授权不自动覆盖BABEL。本次尚未接受BABEL独立许可，也未发送作者邮件。TotalCapture按此前要求跳过。
+本轮用户已回复AMASS登录完成，并明确同意BABEL独立许可及下载。已观察到AMASS主站下载表可访问；文件下载子域会话尚未另行验证。BABEL下载入口当前跳转其独立登录表单，已保留页面并请用户登录，不重复询问许可。
 
-数据盘约剩{result['space_bytes'][ROOT]/1024**3:.2f}GiB、系统盘约剩{result['space_bytes']['/home/ouyanghao']/1024**3:.2f}GiB。先完成已有500条的处理并保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
+按之前官网文件清单及现有断点，BMLrub、CMU、KIT合计仍需约25.7GiB新增压缩包空间；本地C+D剩余空间合计不足此值，服务器数据盘也不足。已请求提供空闲不少于50GB的持久目录，以容纳后续处理和检查点。现有解压与GMR任务继续运行；没有删除数据、检查点或其他用户文件，TotalCapture仍跳过。
+
+授权和空间记录：
+```json
+{json.dumps(assets,ensure_ascii=False,indent=2)}
+```
+
+数据盘约剩{result['space_bytes'][ROOT]/1024**3:.2f}GiB、系统盘约剩{result['space_bytes']['/home/ouyanghao']/1024**3:.2f}GiB。继续完成新增1653条并核验持久备份，保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
 
 代码与聚合证据同步GitHub；包含原始动作、人体模型、逐条文本的资产遵循许可保存在个人目录和本地，GitHub不公开原始/重定向数据文件。新输出均明确标为待物理筛选。PhyGile、ReactiveBFM继续暂停，未改动其数据或实验记录。
 
@@ -137,5 +152,6 @@ AMASS官网下载当前显示Sign In，已请求用户重新登录以续传BMLru
 (LOCAL/'数据准备核查报告_20261025.md').write_text(report,encoding='utf-8')
 (LOCAL/'data_preparation_latest.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
 page='<!DOCTYPE html><html lang="zh-CN"><meta charset="utf-8"><title>TextOp 数据准备核查</title><style>body{font:16px/1.8 system-ui,"Microsoft YaHei";max-width:1040px;margin:36px auto;padding:20px 32px;background:#f6f8fa;color:#17202a}h1{font-size:28px}.status{background:#fff4ce;border-left:5px solid #b38600;padding:14px 20px}table{border-collapse:collapse;width:100%;background:white}th,td{padding:14px;border:1px solid #d0d7de;text-align:left;vertical-align:top}pre{white-space:pre-wrap;background:white;padding:24px;border:1px solid #d0d7de;border-radius:10px;font:14px/1.8 system-ui;overflow-wrap:anywhere}a{color:#0969da}</style><h1>TextOp 数据准备核查</h1><p class="status">论文Step1尚未完成；生成器参数更新已暂停。当前29DoF候选数据成功 '+str(b.get('completed_sequences',0))+'/500 条，真实物理筛选待执行。</p><p><a href="https://arxiv.org/pdf/2602.07439#page=13">论文附录A</a> · <a href="https://github.com/Pendragon08/conditional-human-motion-generation/tree/codex/textop-reproduction-20261024/baselines/textop">代码与聚合证据</a></p><pre>'+html.escape(report)+'</pre></html>'
+page=page.replace('当前29DoF候选数据成功 '+str(b.get('completed_sequences',0))+'/500 条','已有输入的2,296条候选运动中，已完成 '+str(prepared_total)+' 条')
 (LOCAL/'数据准备核查报告_20261025.html').write_text(page,encoding='utf-8')
-print(json.dumps({'time':now,'prepared29':b.get('completed_sequences',0)+extra.get('completed_sequences',0),'failed':b.get('failed_sequences',0)+extra.get('failed_sequences',0),'local_raw_extracted':local.get('completed',0),'physical_filter_executed':False,'paper_data_ready':False,'generator':result['generator_process_state']},ensure_ascii=False))
+print(json.dumps({'time':now,'prepared29':prepared_total,'failed':failed_total,'local_raw_extracted':local.get('completed',0),'physical_filter_executed':False,'paper_data_ready':False,'generator':result['generator_process_state']},ensure_ascii=False))

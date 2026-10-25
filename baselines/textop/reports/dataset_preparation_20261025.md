@@ -1,6 +1,6 @@
 # TextOp 数据准备核查与重建记录
 
-更新时间：2026-10-25 09:39:01 北京时间。
+更新时间：2026-10-25 09:43:12 北京时间。
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
@@ -9,7 +9,7 @@
 | 用户所列环节 | 已实际完成 | 尚未完成/差异 |
 | --- | --- | --- |
 | AMASS、BABEL、自建数据 | 全量读取公开RobotMDAR配对包8,291条；原始stageii索引初次精确匹配500条；修复文件命名后又确认143条已有输入；另从本地完整压缩包按索引提取缺失输入 | 首轮未匹配7,791条并不都需要重下；最新覆盖见下方记录。BABEL标注本轮复用官方包内字段，未独立重下原始BABEL JSON；作者私有数据不可用 |
-| GMR人体→机器人 | 实际执行SMPL-X前向与GMR29关节IK；6条完整动作通过处理验证；500条批处理及后续143条串行队列已启动 | 旧公开包是23DoF/57D；不能补6个零就声称恢复论文29DoF/69D |
+| GMR人体→机器人 | 实际执行SMPL-X前向与GMR29关节IK；首批500条及补充143条均已处理完成；新增1653条已开始串行处理 | 旧公开包是23DoF/57D；不能补6个零就声称恢复论文29DoF/69D |
 | 过滤、对齐、训练集构建 | 全量结构与划分核查、时间标注修整视图、29DoF接触/镜像/69D编码已运行 | 论文要求的真实策略筛选还未执行，全部新输出physical_filter_passed=false、训练就绪=false |
 
 ## 论文与固定公开版本的差异
@@ -47,6 +47,8 @@
 ## 29DoF 重建进度
 
 当前成功 500/500 条、失败 0 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
+
+补充143条：成功143、失败0。新增1653条：成功836、失败0。不计重复的6条smoke验证，三个批次合计已完成1479条候选运动、失败0条；保存的镜像另计。新批次原始输入已逐文件校验，RAM仅作服务器工作副本。
 
 另外143条已有ACCAD原始动作因空格/下划线导出命名差异，首轮未匹配；现通过明确的字面规范化确认，无模糊匹配、无歧义键。当前批次完成后使用同一验证过的CPU环境串行处理，已完成 143/143 条。输入可用性不等于完成重定向或通过物理筛选。
 
@@ -208,9 +210,62 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 
 队列仅在本地完整提取且前面500+143条批次成功结束后运行；先逐文件校验，再检查服务器可用内存及共享内存容量，使用个人权限目录中的RAM工作副本进行GMR处理，最终编码结果归档到D盘并校验。C盘原始选中动作和D盘许可压缩包是持久输入，RAM工作副本不作为唯一数据副本。若资源条件不满足，保留记录并停止；不会删除数据或重启旧训练。
 
-AMASS官网下载当前显示Sign In，已请求用户重新登录以续传BMLrub、CMU、KIT等缺少的包。BABEL原始标注另需独立登录和许可确认；已有AMASS/SMPL-X授权不自动覆盖BABEL。本次尚未接受BABEL独立许可，也未发送作者邮件。TotalCapture按此前要求跳过。
+本轮用户已回复AMASS登录完成，并明确同意BABEL独立许可及下载。已观察到AMASS主站下载表可访问；文件下载子域会话尚未另行验证。BABEL下载入口当前跳转其独立登录表单，已保留页面并请用户登录，不重复询问许可。
 
-数据盘约剩1.28GiB、系统盘约剩1.03GiB。先完成已有500条的处理并保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
+按之前官网文件清单及现有断点，BMLrub、CMU、KIT合计仍需约25.7GiB新增压缩包空间；本地C+D剩余空间合计不足此值，服务器数据盘也不足。已请求提供空闲不少于50GB的持久目录，以容纳后续处理和检查点。现有解压与GMR任务继续运行；没有删除数据、检查点或其他用户文件，TotalCapture仍跳过。
+
+授权和空间记录：
+```json
+{
+  "recorded_beijing": "2026-10-25T09:40:24.907384+08:00",
+  "amass": {
+    "user_reported_login_complete": true,
+    "observed_main_download_table_accessible": true,
+    "file_host_session_verified_this_turn": false,
+    "existing_approved_subsets_remain_authorized": true,
+    "totalcapture_skipped": true
+  },
+  "babel": {
+    "user_explicit_license_authorization": true,
+    "license_url": "https://babel.is.tue.mpg.de/license.html",
+    "scope": "non-commercial research; personal reproduction storage; no redistribution",
+    "observed_download_redirect": "https://babel.is.tue.mpg.de/login.php",
+    "download_completed": false,
+    "status": "WAITING_FOR_INDEPENDENT_BABEL_LOGIN"
+  },
+  "storage": {
+    "C_free_bytes": 13370617856,
+    "D_free_bytes": 10105581568,
+    "remaining_archives": [
+      {
+        "subset": "BMLrub",
+        "expected_archive_bytes_from_prior_official_manifest": 12919496284,
+        "current_partial_bytes": 3555048892,
+        "remaining_bytes_estimate": 9364447392
+      },
+      {
+        "subset": "CMU",
+        "expected_archive_bytes_from_prior_official_manifest": 11572134418,
+        "current_partial_bytes": 5817466303,
+        "remaining_bytes_estimate": 5754668115
+      },
+      {
+        "subset": "KIT",
+        "expected_archive_bytes_from_prior_official_manifest": 13182414052,
+        "current_partial_bytes": 683671552,
+        "remaining_bytes_estimate": 12498742500
+      }
+    ],
+    "total_additional_archive_bytes_estimate": 27617858007,
+    "status": "NEEDS_MORE_DURABLE_STORAGE_BEFORE_COMPLETE_BATCH",
+    "requested_free_capacity_gb": 50
+  },
+  "credentials_recorded": false,
+  "new_raw_assets_published": false
+}
+```
+
+数据盘约剩1.28GiB、系统盘约剩1.03GiB。继续完成新增1653条并核验持久备份，保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
 
 代码与聚合证据同步GitHub；包含原始动作、人体模型、逐条文本的资产遵循许可保存在个人目录和本地，GitHub不公开原始/重定向数据文件。新输出均明确标为待物理筛选。PhyGile、ReactiveBFM继续暂停，未改动其数据或实验记录。
 
