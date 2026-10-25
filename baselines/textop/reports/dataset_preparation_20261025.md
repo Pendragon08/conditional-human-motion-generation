@@ -1,6 +1,6 @@
 # TextOp 数据准备核查与重建记录
 
-更新时间：2026-10-25 10:59:13 北京时间。
+更新时间：2026-10-25 11:00:23 北京时间。
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
@@ -48,7 +48,7 @@
 
 当前成功 500/500 条、失败 0 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
 
-补充143条：成功143、失败0。新增1653条：成功1197、失败0。不计重复的6条smoke验证，三个批次合计已完成1840条候选运动、失败0条；保存的镜像另计。新批次原始输入已逐文件校验，RAM仅作服务器工作副本。
+补充143条：成功143、失败0。新增1653条：成功1200、失败0。不计重复的6条smoke验证，三个批次合计已完成1843条候选运动、失败0条；保存的镜像另计。新批次原始输入已逐文件校验，RAM仅作服务器工作副本。
 
 另外143条已有ACCAD原始动作因空格/下划线导出命名差异，首轮未匹配；现通过明确的字面规范化确认，无模糊匹配、无歧义键。当前批次完成后使用同一验证过的CPU环境串行处理，已完成 143/143 条。输入可用性不等于完成重定向或通过物理筛选。
 
@@ -150,7 +150,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
   "ram_working_copy": true,
   "source_durable": "C private assets and D licensed original archives",
   "physical_filter_executed": false,
-  "time_utc": "2026-10-25T02:26:35.985575+00:00",
+  "time_utc": "2026-10-25T03:00:22.553834+00:00",
   "preflight": {
     "mem": {
       "MemTotal": 269956653056,
@@ -193,8 +193,8 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
     "target_dof": 29,
     "feature_dim": 69,
     "output_fps": 50,
-    "completed_sequences": 1101,
-    "mirrored_sequences": 1101,
+    "completed_sequences": 1200,
+    "mirrored_sequences": 1200,
     "failed_sequences": 0,
     "total_requested": 1653,
     "physical_filter_passed": false,
@@ -202,8 +202,8 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
     "status": "RUNNING",
     "cpu_only": true,
     "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
-    "processed": 1101,
-    "updated_utc": "2026-10-25T02:26:27Z"
+    "processed": 1200,
+    "updated_utc": "2026-10-25T03:00:18Z"
   }
 }
 ```
@@ -212,7 +212,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 
 本轮用户已回复AMASS登录完成，并明确同意BABEL独立许可及下载。已观察到AMASS主站下载表可访问；文件下载子域会话尚未另行验证。BABEL下载入口当前跳转其独立登录表单，已保留页面并请用户登录，不重复询问许可。
 
-按之前官网文件清单及现有断点，BMLrub、CMU、KIT合计仍需约25.7GiB新增压缩包空间。用户已授权继续清理无用副本；清理后当前C盘余23.14GiB、D盘余6.77GiB。后续必须按盘容量安排续传，保留系统盘余量；服务器容量仍需单独核查。现有GMR任务继续运行，TotalCapture仍跳过。
+按之前官网文件清单及现有断点，BMLrub、CMU、KIT合计仍需约25.7GiB新增压缩包空间。用户已授权继续清理无用副本；清理后当前C盘余22.97GiB、D盘余6.77GiB。后续必须按盘容量安排续传，保留系统盘余量；服务器容量仍需单独核查。现有GMR任务继续运行，TotalCapture仍跳过。
 
 重复缓存清理记录（全部原始数据包、已处理数据、检查点、唯一实验记录均保留）：
 ```json
