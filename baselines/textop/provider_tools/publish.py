@@ -1,6 +1,17 @@
-import pathlib,sys,subprocess,os,json
+import pathlib,sys,subprocess,os,json,time
 TASK=pathlib.Path(__file__).resolve().parent
 from session import REPO
+# Both finite data workers use this publisher. Serialize complete Git operations
+# so one worker cannot commit the other worker's staged intermediate changes.
+if os.name=='nt':
+    import msvcrt
+    publish_guard=(REPO.parent.parent/'textop_reproduction_20261024/publish.lock').open('a+b')
+    if publish_guard.seek(0,2)==0:publish_guard.write(b'0');publish_guard.flush()
+    for _ in range(120):
+        try:
+            publish_guard.seek(0);msvcrt.locking(publish_guard.fileno(),msvcrt.LK_NBLCK,1);break
+        except OSError:time.sleep(1)
+    else:raise TimeoutError('Another publisher is still active; no Git changes made')
 env=os.environ.copy();env.update(HTTPS_PROXY='http://127.0.0.1:7897',HTTP_PROXY='http://127.0.0.1:7897')
 def git(*args):return subprocess.run(['git','-C',str(REPO),'-c','core.quotepath=false',*args],check=True,env=env,capture_output=True,text=True,encoding='utf-8').stdout.strip()
 branch='codex/textop-reproduction-20261024'
