@@ -258,3 +258,23 @@ licensed motion workspaces under /dev/shm/ouyanghao_textop_20261025.
 The temporary priority to avoid new SDK jobs while cleanup was pending is now
 lifted. Continue queued preprocessing/backups, real physical filter integration,
 accepted-corpus loading and full generator training after actual readiness.
+
+## Observer recovery2026-10-25 14:29
+
+User asked next steps. Live serverGMR continued1624/1653,0failures, but the old
+Windows observer had exited on a transient gitpush failure, leaving CMU waiting
+for a backup that would never be initiated. Preserved its error in
+results/data_preparation_20261025/local1653_queue_error_before_resume.json.
+New provider_tools/resume1653_backup_watcher.py historicalWindowsPID34980 now
+watches the SAME serverGMR process and outputs; it never restarts retargeting.
+It verifies every NPZ SHA in the private backup and gzipCRC, then sets existing
+PREPROCESSING_BACKED_UP_FILTER_PENDING so existing CMU waiter24952 proceeds.
+Do not duplicate these jobs. Registry resume1653_watcher.json records the PID.
+
+Git network operations now retry within the serialized publisher. The new
+watcher records pending synchronization errors without stopping processing or
+private archival. Existing BMLrub/KIT originals both completed fullCRC/tar and
+SHA verification; their existing sequential workers53968/23184 remain waiting.
+Current full generator and formal40k physical filter remain unstarted. Next:
+finish indexed cohorts/backups, complete reference export/capacity validation,
+real privileged filtering, accepted69D corpus integration, VAE200k→LDM300k.
