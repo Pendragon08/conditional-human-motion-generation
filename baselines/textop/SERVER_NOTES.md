@@ -215,3 +215,30 @@ Latest backup-audit validation: author_v1 and freshdocument_v1 actualexit0,
 from3persistentbackups/5982pending, INCOMPLETE preserved. No physicalfilter/
 accepteddata/generatortraining. Independent REPORT collected with aggregate
 results. This validates current audit procedure; all6cohorts notyetcomplete.
+
+### Generator full-state diagnostic declared2026-10-25 21:45
+Warm paper69@934d8221, no package/shared source changes. The previously draft
+generator-state-witness spec now explicitly enables a bounded candidate-only
+diagnostic, not formal training. GPU1/CPU4/Torch65%, fixed2296candidate view,
+batch512/history2/future8/fourprimitives. Eight actual Adam VAE and eight AdamW
+LDM updates, checkpoint at4 per stage; optional EMA enabled only as a diagnostic
+state stress fixture (released formal defaults remain false). One validation
+batch pending at the checkpoint must survive fresh manager restoration and
+complete without optimizer updates. Verify model/Adam/EMA, primitive attempts
+versus actual steps, explicit batch generators plus Python/NumPy/Torch/CUDA
+RNG and next-batch identity. At most1.1GB additional private checkpoints per
+run, at least2GiB free; author then fresh documented witness required. Status
+UNVALIDATED until both actual exits/proofs. Existing GMR/backup/FK queues intact.
+
+Validation2026-10-25 21:51: generator_state_author_v1 and freshdocument_v1 both
+actualexit0/no timeout/16actualupdates; independent75checks passed, no divergence.
+Both8VAEAdam+8LDMAdamW updates,zero skips, actualstates/EMA allocated; fresh
+model/optimizer/EMA/RNG/generator/clock/pendingevaluation restoration andnextbatch
+identity passed. Pending4validation primitives complete with0updates, thenresume
+to8; wrong57Dbinding rejected. Eachrun checkpoints684683326+305124157bytes at
+step4 independentlySHAverified; no final8step or formaltrainedcheckpoint claim.
+AuthorTorchpeaks4109051904/1979146752bytes. Warmdependenciesunchanged, official
+EMAdefaultsfalse, candidate/firststage scopeonly. Afterboth datafree2889515008B
+(2.69GiB), above2GiBguard but budget futureformalcheckpoints beforelaunch.
+Sourceaa511f44...,state46ef2ade...,specbd3f7a06.... Reportandprivatecheckpoints
+preserved; no additionalduplicate diagnostic needed without a new concern.

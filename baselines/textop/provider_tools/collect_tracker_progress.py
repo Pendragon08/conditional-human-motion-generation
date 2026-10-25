@@ -48,6 +48,10 @@ ppo=read('ppo_author_v2');independent=read('ppo_document_v1');export=read('expor
 capacity=read('capacity_author_v1');capacity_doc=read('capacity_document_v1')
 initialization=read('initialization_author_v1');statistics=read('filter_statistics_author_v4');statistics_doc=read('filter_statistics_document_v2')
 export1653=read('export1653_v1')
+export1330=read('export1330_v1')
+cmu_queue=latest['receipts'].get('cmu_indexed_queue',{})
+state_path=BASE/'results/generator_state_20261025/summary.json'
+generator_state=json.loads(state_path.read_text(encoding='utf-8')) if state_path.exists() else {}
 strict=read('strict_replay_author_v3');strict_doc=read('strict_replay_document_v2')
 backup_path=BASE/'results/data_preparation_20261025/reference643_backup.json'
 backup=json.loads(backup_path.read_text(encoding='utf-8')) if backup_path.exists() else {}
@@ -58,6 +62,7 @@ summary={'time_beijing':now,'prepared_source_sequences':prepared,'physical_filte
          'ppo_author':ppo,'ppo_document':independent,'reference_export643':export,'reference_export643_backup':backup,'resources':data,
          'capacity643_author':capacity,'capacity643_document':capacity_doc,'initialization_audit':initialization,
          'filter_statistics_author':statistics,'filter_statistics_document':statistics_doc,'reference_export1653':export1653,
+         'reference_export1330':export1330,'cmu_preparation_queue':cmu_queue,'generator_state_diagnostic_passed':generator_state.get('both_processes_passed',False),
          'strict_replay_author':strict,'strict_replay_document':strict_doc,
          'unresolved':['8192-env memory/stability with ALL future references; current643-source capacity alone passed','full40k policy and two-round physical filtering',
                        'accepted corpus loader/statistics/text cache','fullVAE200k and LDM300k','native SDK stop/close hang; bounded diagnostic fallback disclosed']}
@@ -79,7 +84,8 @@ report=f'''# TextOp 数据筛选器集成与生成器训练进度
 - 8,192环境容量：作者`{capacity.get('status','PENDING')}`、独立文档执行`{capacity_doc.get('status','PENDING')}`；各完成196,608次环境转换和20次Adam更新，Torch峰值分配约{capacity.get('peak_torch_allocated_bytes',0)/1024**3:.2f}GiB。范围为643条源动作及镜像，不等于全部未来运动库容量已通过。随机初始策略的价值损失约409万、接触力尖峰约111万N均保留，不能视为稳定收敛。
 - 独立初始化核查已完成：1,286条轨迹各从第0帧开始，根位置最大误差约1.19×10⁻⁷m，466个初始姿态触及软关节裁剪；20步直接参考PD出现37次终止和接触冲击。说明根坐标映射吻合，但没有证明动作可由训练后控制器稳定跟踪。诊断零重置扰动属于对照设置，未替换正式训练的官方重置分布。
 - 新增筛选统计与恢复层：作者`{statistics.get('status','PENDING')}`、独立`{statistics_doc.get('status','PENDING')}`，40次真实更新后逐项恢复模型、Adam、两套归一化、EMA失败统计及独立真实尝试计数；初始重置不计为真实成功。正式40,000轮训练入口已实现，但当前仍被数据与完整库验收条件禁用。
-- 新1,653条源动作已完成重定向并逐条SHA校验私有备份，CMU1,330条可用源动作已接续处理。其仿真参考导出当前状态`{export1653.get('status','PENDING')}`，已完成{export1653.get('exported_source_sequences',0)}/1,653条；这是参考构建，没有实施动态筛选。
+- 新1,653条源动作已完成重定向并逐条SHA校验私有备份，其参考导出完成{export1653.get('exported_source_sequences',0)}/1,653条。CMU重定向完成{latest['receipts'].get('batchCMU',{}).get('completed_sequences',0)}/1,330条，参考导出完成{export1330.get('exported_source_sequences',0)}/1,330条，备份调度状态`{cmu_queue.get('status','PENDING')}`。参考导出没有实施动态筛选，备份传输中不能计为持久备份已核验。
+- 生成器完整尺寸优化器/断点短诊断：作者`{generator_state.get('author',{}).get('status','PENDING')}`，独立文档运行`{generator_state.get('independent_document',{}).get('status','PENDING')}`。每次仅VAE8次Adam、LDM8次AdamW更新，核对模型/优化器/EMA/RNG与待评估字段恢复；候选语料尚未通过物理筛选，不能计为完整生成器训练。详见[状态验证报告](generator_state_20261025.md)。
 - 严格回放执行器已实现：最新作者`{strict.get('status','PENDING')}`、独立文档执行`{strict_doc.get('status','PENDING')}`。2条完整原动作的短策略回放均失败，未接纳动作；另外明确缩短为2帧的独立控制流夹具验证SDK自然结束信号，不能计成完整原动作通过。首轮发现重置后相对参考缓冲区零值/旧值会导致首步高度误判，已用官方同一坐标变换刷新缓冲区，未推进时间、放宽阈值或修改物理状态。正式40,000轮策略评估仍未开始。
 - 新增单一串行参考导出工作者：仅在各GMR批次实际完成、资源余量满足且无其他SDK任务时，接续CMU→BMLrub→KIT参考导出；不重启GMR/备份，不执行训练或删除。输出仍是待动态筛选的参考缓存。
 
@@ -108,6 +114,6 @@ PPO首轮已做20次Adam更新，之后比较Adam标量的CPU/GPU设备时报错
 '''
 (BASE/'reports/tracker_integration_20261025.md').write_text(report,encoding='utf-8')
 (LOCAL/'跟踪筛选器集成验证_20261025.md').write_text(report,encoding='utf-8')
-page='<!DOCTYPE html><html lang="zh-CN"><meta charset="utf-8"><title>TextOp数据与完整训练进度</title><style>body{font:16px/1.8 system-ui,"Microsoft YaHei";max-width:1000px;margin:30px auto;padding:24px;background:#f6f8fa}pre{white-space:pre-wrap;background:white;padding:24px;border:1px solid #ccc;font:inherit}a{color:#0969da}</style><h1>TextOp数据准备与完整训练进度</h1><p><a href="数据准备核查报告_20261025.html">数据准备</a> · <a href="Step2运动生成器训练安排_20261025.html">训练配置</a> · <a href="空间清理与数据续传_20261025.html">存储与下载</a></p><pre>'+html.escape(report)+'</pre></html>'
+page='<!DOCTYPE html><html lang="zh-CN"><meta charset="utf-8"><title>TextOp数据与完整训练进度</title><style>body{font:16px/1.8 system-ui,"Microsoft YaHei";max-width:1000px;margin:30px auto;padding:24px;background:#f6f8fa}pre{white-space:pre-wrap;background:white;padding:24px;border:1px solid #ccc;font:inherit}a{color:#0969da}</style><h1>TextOp数据准备与完整训练进度</h1><p><a href="数据准备核查报告_20261025.html">数据准备</a> · <a href="Step2运动生成器训练安排_20261025.html">训练配置</a> · <a href="69D优化器与断点恢复验证_20261025.html">断点恢复验证</a> · <a href="空间清理与数据续传_20261025.html">存储与下载</a></p><pre>'+html.escape(report)+'</pre></html>'
 for name in ['跟踪筛选器集成验证_20261025.html','TextOp下载与训练报告.html']:(LOCAL/name).write_text(page,encoding='utf-8')
 print(json.dumps({'prepared_sources':prepared,'ppo_actual_updates':ppo.get('optimizer_updates'),'ppo_document':independent.get('status'),'exported_sources':export.get('exported_source_sequences'),'full_generator_started':False}))

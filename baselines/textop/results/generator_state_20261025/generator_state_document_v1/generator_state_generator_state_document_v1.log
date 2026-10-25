@@ -1,0 +1,87 @@
+2026-10-25 13:46:46.168 | INFO     | robotmdar.dataloader.data:_load_data:95 -  Loading train data...
+2026-10-25 13:46:47.071 | INFO     | robotmdar.dataloader.data:_cal_sample_weight:127 -  ====================Use Weighted Sample====================
+babel sum:  165.33877081154
+samp percent:  0.0
+2026-10-25 13:47:03.142 | INFO     | robotmdar.dataloader.data:_load_data:120 -  Found 3440 valid samples out of 3440
+2026-10-25 13:47:03.142 | INFO     | robotmdar.dataloader.data:_load_text_embeddings:225 -  Loading cached text embeddings...
+2026-10-25 13:47:03.582 | INFO     | robotmdar.dataloader.data:_load_meanstd:267 -  Loading cached mean/std from /dev/shm/ouyanghao_textop_20261025/generator_candidate2296_v2/meanstd.pkl...
+2026-10-25 13:47:04.472 | INFO     | robotmdar.dataloader.data:_load_data:95 -  Loading val data...
+2026-10-25 13:47:04.770 | INFO     | robotmdar.dataloader.data:_load_data:120 -  Found 1150 valid samples out of 1150
+2026-10-25 13:47:04.770 | INFO     | robotmdar.dataloader.data:_load_text_embeddings:225 -  Loading cached text embeddings...
+2026-10-25 13:47:05.052 | INFO     | robotmdar.dataloader.data:_load_meanstd:267 -  Loading cached mean/std from /dev/shm/ouyanghao_textop_20261025/generator_candidate2296_v2/meanstd.pkl...
+2026-10-25 13:47:05.602 | INFO     | robotmdar.train.manager:hold_model:580 - MVAEManager: Holding VAE model and optimizer
+2026-10-25 13:47:05.615 | INFO     | robotmdar.train.manager:register_ema_model:197 - Registered EMA model: vae
+
+Training:   0%|                                                                              | 0/200000 [00:00<?, ?it/s]
+Training:   0%|                                                                   | 1/200000 [00:01<60:21:44,  1.09s/it]
+Training:   0%|                                   | 1/200000 [00:01<60:21:44,  1.09s/it, stage=0, loss=0.417, lr=0.0001]
+Training:   0%|                                   | 2/200000 [00:02<61:19:35,  1.10s/it, stage=0, loss=0.417, lr=0.0001]
+Training:   0%|                                   | 2/200000 [00:02<61:19:35,  1.10s/it, stage=0, loss=0.422, lr=0.0001]
+Training:   0%|                                   | 3/200000 [00:02<46:38:31,  1.19it/s, stage=0, loss=0.422, lr=0.0001]
+Training:   0%|                                   | 3/200000 [00:02<46:38:31,  1.19it/s, stage=0, loss=0.357, lr=0.0001]
+Training:   0%|                                   | 4/200000 [00:03<35:46:33,  1.55it/s, stage=0, loss=0.357, lr=0.0001]
+Training:   0%|                                   | 4/200000 [00:03<35:46:33,  1.55it/s, stage=0, loss=0.324, lr=0.0001]
+Training:   0%|                                  | 4/200000 [00:12<169:39:50,  3.05s/it, stage=0, loss=0.324, lr=0.0001]
+2026-10-25 13:47:18.670 | INFO     | robotmdar.train.manager:hold_model:580 - MVAEManager: Holding VAE model and optimizer
+2026-10-25 13:47:18.685 | INFO     | robotmdar.train.manager:register_ema_model:197 - Registered EMA model: vae
+
+Training:   0%|                                                                              | 4/200000 [00:00<?, ?it/s]
+                                                                                                                        
+Eval finished at step 4 with loss * 4: {'rec': tensor(1.3039), 'kl': tensor(1.7499), 'body_trans': tensor(0.0283), 'body_rot': tensor(0.1021), 'dof_pos': tensor(0.3715), 'dof_vel': tensor(9.8642), 'foot_contact': tensor(0.0139), 'total': tensor(1.3179)}
+
+Training:   0%|                                                                              | 4/200000 [00:00<?, ?it/s]
+                                                                                                                        
+Eval extras * 4: {'drift_xy': tensor(0.0051), 'drift_yaw': tensor(0.0356)}
+
+Training:   0%|                                                                              | 4/200000 [00:00<?, ?it/s]
+Training:   0%|                                                                   | 5/200000 [00:00<52:00:00,  1.07it/s]
+Training:   0%|                                   | 5/200000 [00:00<52:00:00,  1.07it/s, stage=0, loss=0.323, lr=0.0001]
+Training:   0%|                                   | 6/200000 [00:01<32:29:34,  1.71it/s, stage=0, loss=0.323, lr=0.0001]
+Training:   0%|                                   | 6/200000 [00:01<32:29:34,  1.71it/s, stage=0, loss=0.319, lr=0.0001]
+Training:   0%|                                   | 7/200000 [00:01<26:21:53,  2.11it/s, stage=0, loss=0.319, lr=0.0001]
+Training:   0%|                                   | 7/200000 [00:01<26:21:53,  2.11it/s, stage=0, loss=0.322, lr=0.0001]
+Training:   0%|                                   | 8/200000 [00:01<23:24:16,  2.37it/s, stage=0, loss=0.322, lr=0.0001]
+Training:   0%|                                   | 8/200000 [00:01<23:24:16,  2.37it/s, stage=0, loss=0.304, lr=0.0001]
+Training:   0%|                                   | 8/200000 [00:02<37:09:59,  1.49it/s, stage=0, loss=0.304, lr=0.0001]
+TRANS_ENC init
+2026-10-25 13:47:27.316 | INFO     | robotmdar.train.manager:hold_model:703 - DARManager: Holding denoiser models and optimizer. VAE loaded from checkpoint.
+2026-10-25 13:47:27.322 | INFO     | robotmdar.train.manager:register_ema_model:197 - Registered EMA model: denoiser
+2026-10-25 13:47:27.323 | INFO     | robotmdar.train.manager:hold_model:739 - VAE cached to /data/code/ouyanghao/oyh/textop-reproduction-20261024/generator_validation/generator_state_document_v1/ldm/vae.pth
+2026-10-25 13:47:27.751 | INFO     | robotmdar.train.manager:_load_vae_from_checkpoint:783 - Loaded VAE from checkpoint: /data/code/ouyanghao/oyh/textop-reproduction-20261024/generator_validation/generator_state_document_v1/ldm/vae.pth
+2026-10-25 13:47:27.752 | INFO     | robotmdar.train.manager:_load_vae_from_checkpoint:784 - (latent_mean, latent_std): 0, 1
+
+Training:   0%|                                                                              | 0/300000 [00:00<?, ?it/s]
+Training:   0%|                                                                   | 1/300000 [00:00<23:26:32,  3.55it/s]
+Training:   0%|                                    | 1/300000 [00:00<23:26:32,  3.55it/s, stage=0, loss=1.03, lr=0.0001]
+Training:   0%|                                    | 2/300000 [00:00<23:39:01,  3.52it/s, stage=0, loss=1.03, lr=0.0001]
+Training:   0%|                                    | 2/300000 [00:00<23:39:01,  3.52it/s, stage=0, loss=0.91, lr=0.0001]
+Training:   0%|                                    | 3/300000 [00:00<24:12:45,  3.44it/s, stage=0, loss=0.91, lr=0.0001]
+Training:   0%|                                   | 3/300000 [00:00<24:12:45,  3.44it/s, stage=0, loss=0.847, lr=0.0001]
+Training:   0%|                                   | 4/300000 [00:01<24:00:55,  3.47it/s, stage=0, loss=0.847, lr=0.0001]
+Training:   0%|                                   | 4/300000 [00:01<24:00:55,  3.47it/s, stage=0, loss=0.801, lr=0.0001]
+Training:   0%|                                  | 4/300000 [00:06<134:30:06,  1.61s/it, stage=0, loss=0.801, lr=0.0001]
+TRANS_ENC init
+2026-10-25 13:47:35.258 | INFO     | robotmdar.train.manager:hold_model:703 - DARManager: Holding denoiser models and optimizer. VAE loaded from checkpoint.
+2026-10-25 13:47:35.265 | INFO     | robotmdar.train.manager:register_ema_model:197 - Registered EMA model: denoiser
+2026-10-25 13:47:35.654 | INFO     | robotmdar.train.manager:_load_vae_from_checkpoint:783 - Loaded VAE from checkpoint: /data/code/ouyanghao/oyh/textop-reproduction-20261024/generator_validation/generator_state_document_v1/ldm/vae.pth
+2026-10-25 13:47:35.655 | INFO     | robotmdar.train.manager:_load_vae_from_checkpoint:784 - (latent_mean, latent_std): 0, 1
+
+Training:   0%|                                                                              | 4/300000 [00:00<?, ?it/s]
+                                                                                                                        
+Eval finished at step 4 with loss * 4: {'rec': tensor(1.2844), 'kl': tensor(0.), 'latent_rec': tensor(1.9009), 'body_trans': tensor(0.0296), 'body_rot': tensor(0.0994), 'dof_pos': tensor(0.3618), 'dof_vel': tensor(9.8582), 'foot_contact': tensor(0.0142), 'total': tensor(3.1989)}
+
+Training:   0%|                                                                              | 4/300000 [00:00<?, ?it/s]
+                                                                                                                        
+Eval extras * 4: {'drift_xy': tensor(0.0039), 'drift_yaw': tensor(0.0324)}
+
+Training:   0%|                                                                              | 4/300000 [00:00<?, ?it/s]
+Training:   0%|                                                                   | 5/300000 [00:00<76:04:10,  1.10it/s]
+Training:   0%|                                   | 5/300000 [00:00<76:04:10,  1.10it/s, stage=0, loss=0.803, lr=0.0001]
+Training:   0%|                                   | 6/300000 [00:01<45:24:15,  1.84it/s, stage=0, loss=0.803, lr=0.0001]
+Training:   0%|                                   | 6/300000 [00:01<45:24:15,  1.84it/s, stage=0, loss=0.795, lr=0.0001]
+Training:   0%|                                   | 7/300000 [00:01<35:31:22,  2.35it/s, stage=0, loss=0.795, lr=0.0001]
+Training:   0%|                                   | 7/300000 [00:01<35:31:22,  2.35it/s, stage=0, loss=0.789, lr=0.0001]
+Training:   0%|                                   | 8/300000 [00:01<30:55:08,  2.70it/s, stage=0, loss=0.789, lr=0.0001]
+Training:   0%|                                   | 8/300000 [00:01<30:55:08,  2.70it/s, stage=0, loss=0.786, lr=0.0001]
+Training:   0%|                                   | 8/300000 [00:02<52:15:36,  1.59it/s, stage=0, loss=0.786, lr=0.0001]
+TEXTOP_GENERATOR_STATE_WITNESS_PASSED

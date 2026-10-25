@@ -622,3 +622,39 @@ for future actualAdam/AdamW/counters/RNG-resume testing with optional diagnostic
 EMA stress (pinned releaseEMAdefaultfalse), not changing formalEMAsettings or
 training before physical data acceptance. Priorzero-updateneuralchecks remain
 the onlybatch512network evidence. Existing preprocessing continues unchanged.
+
+## Heartbeat2026-10-25 21:38: bounded generator state continuation
+
+CMU1330/1330 and FK1330 completed0fail. Existing Windows24952/server tar3618944
+still transferring the one private prepared backup; at21:48 localpartial851MB,
+growing. BMLrub53968/KIT23184 wait for predecessor durablebackup, references
+queue3527552 waits BMLrub normally. Do not duplicate or restart. Run the new
+backup audit only once CMU state becomes PREPROCESSING_BACKED_UP_FILTER_PENDING.
+No formal40k/filter/accepteddata/VAE200k/LDM300k or closedloop completed.
+
+The prior draft statewrapper now has scripts/generator_state_witness.py and
+supervise_generator_state.py plus a declared candidate-only spec. Author_v1
+actualexit0/61.05s and fresh generator_state_document_v1 actualexit0/16updates
+each. Eight actualVAE Adam and eightLDM AdamW updates, one4primitive validation
+batch perstage with no optimizer updates; checkpoint at4, freshmanager exact
+model/Adam/EMA/RNG/generator/counters/pending-evaluation restore, nextbatch and
+RNGprobe identical, mismatched57D binding rejected, resumedupdates to8. Saved
+checkpoint isstep4; no formaltrainedgenerator or8stepcheckpoint claimed. LDM
+freezes the diagnostic4stepVAE. EMAtrue is ONLYdiagnosticstress; formal default
+remainsfalse. Latercurriculum/fullacceptedcorpus still need real verification.
+
+Sourceaa511f445a65cad244246c1144b03cc8cdc16b61a242e96bfc6ddbe3224fe072,
+state46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e,
+specbd3f7a06e57235c8fcfcc1734b046f48d896f739d755d28e231168ace17efc82.
+AuthorTorchpeakVAE4109051904/LDM1979146752bytes includes actual optimizer/EMA.
+Per-run private checkpoint bytes684683326+305124157; bothauthor/document kept,
+no deletion. Afterbothruns datafree2889515008bytes(2.69GiB),home~6.21GiB. This
+is above2GiB guarded floor but thin for futurelongtraining checkpoints: budget
+full run storage before launching, do not spend more disk on duplicate state
+diagnostics. No shared packages or original algorithm files changed. Collector
+collect_generator_state.py gathers aggregate receipts/logs/metrics and writes
+localD69D优化器与断点恢复验证_20261025.html. Fresh independent report completed
+75checks/no divergence undergenerator_state_doc_witness_v1; collector copies it
+into publicresults. Do not rerun these diagnostic jobs without a new change or
+failure that requires validation. Historical
+zero-update evidence and failedSDK records remain unchanged.

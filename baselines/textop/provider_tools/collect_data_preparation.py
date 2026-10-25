@@ -65,6 +65,10 @@ extra=result['receipts'].get('batch143',{});reconciled=result['receipts'].get('r
 local_queue=result['receipts'].get('local1653_queue',{})
 bulk=result['receipts'].get('batch1653',{})
 cmu_prepared=result['receipts'].get('batchCMU',{})
+cmu_state=result['receipts'].get('cmu_indexed_queue',{}).get('status','UNKNOWN')
+cmu_summary=('CMU重定向已完成，私有备份正在传输核验' if cmu_state=='BACKING_UP_PRIVATE_PREPARED_OUTPUT' else
+             'CMU预处理与私有备份已完成' if cmu_state=='PREPROCESSING_BACKED_UP_FILTER_PENDING' else
+             'CMU当前调度状态：'+cmu_state)
 all_batches=[b,extra,bulk,cmu_prepared]+[result['receipts'].get('batch_'+tag,{}) for tag in ['bmlrub','kit']]
 prepared_total=sum(x.get('completed_sequences',0) for x in all_batches);failed_total=sum(x.get('failed_sequences',0) for x in all_batches)
 assets=result['receipts'].get('asset_authorization_and_storage',{})
@@ -175,7 +179,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 {json.dumps(assets,ensure_ascii=False,indent=2)}
 ```
 
-数据盘约剩{result['space_bytes'][ROOT]/1024**3:.2f}GiB、系统盘约剩{result['space_bytes']['/home/ouyanghao']/1024**3:.2f}GiB。继续完成新增1653条并核验持久备份，保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
+数据盘约剩{result['space_bytes'][ROOT]/1024**3:.2f}GiB、系统盘约剩{result['space_bytes']['/home/ouyanghao']/1024**3:.2f}GiB。{cmu_summary}；后续BMLrub、KIT按各自前批持久备份条件串行接续，保留失败理由。全部候选处理和参考构建完成后还须运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
 
 代码与聚合证据同步GitHub；包含原始动作、人体模型、逐条文本的资产遵循许可保存在个人目录和本地，GitHub不公开原始/重定向数据文件。新输出均明确标为待物理筛选。PhyGile、ReactiveBFM继续暂停，未改动其数据或实验记录。
 
@@ -187,6 +191,6 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 (LOCAL/'数据准备核查报告_20261025.md').write_text(report,encoding='utf-8')
 (LOCAL/'data_preparation_latest.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
 page='<!DOCTYPE html><html lang="zh-CN"><meta charset="utf-8"><title>TextOp 数据准备核查</title><style>body{font:16px/1.8 system-ui,"Microsoft YaHei";max-width:1040px;margin:36px auto;padding:20px 32px;background:#f6f8fa;color:#17202a}h1{font-size:28px}.status{background:#fff4ce;border-left:5px solid #b38600;padding:14px 20px}table{border-collapse:collapse;width:100%;background:white}th,td{padding:14px;border:1px solid #d0d7de;text-align:left;vertical-align:top}pre{white-space:pre-wrap;background:white;padding:24px;border:1px solid #d0d7de;border-radius:10px;font:14px/1.8 system-ui;overflow-wrap:anywhere}a{color:#0969da}</style><h1>TextOp 数据准备核查</h1><p class="status">论文Step1尚未完成；生成器参数更新已暂停。当前29DoF候选数据成功 '+str(b.get('completed_sequences',0))+'/500 条，真实物理筛选待执行。</p><p><a href="https://arxiv.org/pdf/2602.07439#page=13">论文附录A</a> · <a href="https://github.com/Pendragon08/conditional-human-motion-generation/tree/codex/textop-reproduction-20261024/baselines/textop">代码与聚合证据</a></p><pre>'+html.escape(report)+'</pre></html>'
-page=page.replace('当前29DoF候选数据成功 '+str(b.get('completed_sequences',0))+'/500 条','当前候选运动已完成 '+str(prepared_total)+' 条；CMU新增1,330条输入正在接续处理')
+page=page.replace('当前29DoF候选数据成功 '+str(b.get('completed_sequences',0))+'/500 条','当前候选运动已完成 '+str(prepared_total)+' 条；'+cmu_summary)
 (LOCAL/'数据准备核查报告_20261025.html').write_text(page,encoding='utf-8')
 print(json.dumps({'time':now,'prepared29':prepared_total,'failed':failed_total,'local_raw_extracted':local.get('completed',0),'physical_filter_executed':False,'paper_data_ready':False,'generator':result['generator_process_state']},ensure_ascii=False))

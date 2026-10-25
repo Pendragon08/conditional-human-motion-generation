@@ -13,6 +13,7 @@
   "minimum_gpu_free_gib": 20,
   "minimum_data_free_gib": 2,
   "checkpoint_safety_budget_bytes": 900000000,
+  "run_checkpoint_budget_bytes": 1100000000,
   "supervisor_timeout_seconds": 1800,
   "actual_optimizers": {
     "vae": "Adam",
@@ -27,6 +28,9 @@
   "formal_training_started": false,
   "dataset_accepted": false,
   "physical_filter_executed": false,
-  "status": "DRAFT_NOT_DISPATCHED_OR_VALIDATED",
-  "dispatch_enabled": false
+  "evaluation_fixture": "Four validation primitives pending at checkpoint4, completed after fresh manager restoration; no evaluation optimizer updates. Formal release evaluation intervals unchanged.",
+  "saved_checkpoint_steps_per_stage": [4],
+  "final_diagnostic_steps_per_stage": 8,
+  "status": "DECLARED_CANDIDATE_DIAGNOSTIC_ONLY",
+  "dispatch_enabled": true
 }

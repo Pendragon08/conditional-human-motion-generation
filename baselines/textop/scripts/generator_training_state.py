@@ -3,7 +3,7 @@
 No optimizer/loss/sampling algorithm changes. Checkpoints are private trusted
 local artifacts. Accepted-corpus gates remain the launcher's responsibility.
 """
-import hashlib,json,pathlib,random,shutil
+import hashlib,json,os,pathlib,random,shutil
 import numpy as np
 import torch
 
@@ -61,7 +61,13 @@ def save_manager(manager,model_key,clock,generators,path,binding,minimum_free_by
   'manager_fields':{'stage_idx':manager.stage_idx,'pending_evaluation_steps':manager._to_eval_steps,
    'eval_loss_totals':dict(manager._total_eval_loss_dict),'eval_extra_totals':dict(manager._total_eval_extras_dict),'extra':manager.extra},
   'checkpoint_boundary':'completed_four_primitive_batch; no cached batch/history'}
- partial=path.with_suffix('.partial');torch.save(state,partial);partial.replace(path)
+ partial=path.with_suffix('.partial')
+ with partial.open('xb') as handle:
+  torch.save(state,handle);handle.flush();os.fsync(handle.fileno())
+ partial.replace(path)
+ directory=os.open(str(path.parent),os.O_RDONLY)
+ try:os.fsync(directory)
+ finally:os.close(directory)
  return {'path':str(path),'bytes':path.stat().st_size,'sha256':sha(path),'manager_step':manager.step,'actual_optimizer_updates':clock.updates}
 
 def load_manager(manager,model_key,clock,generators,path,binding,expected_sha):
@@ -76,6 +82,9 @@ def load_manager(manager,model_key,clock,generators,path,binding,expected_sha):
  fields=state['manager_fields'];manager.stage_idx=fields['stage_idx'];manager._to_eval_steps=fields['pending_evaluation_steps']
  manager._total_eval_loss_dict.clear();manager._total_eval_loss_dict.update(fields['eval_loss_totals'])
  manager._total_eval_extras_dict.clear();manager._total_eval_extras_dict.update(fields['eval_extra_totals']);manager.extra=fields['extra']
+ assert equal({'stage_idx':manager.stage_idx,'pending_evaluation_steps':manager._to_eval_steps,
+  'eval_loss_totals':dict(manager._total_eval_loss_dict),'eval_extra_totals':dict(manager._total_eval_extras_dict),
+  'extra':manager.extra},fields)
  clock.load(state['primitive_clock'])
  assert equal(model.state_dict(),state[model_key]) and equal(manager.optimizer.state_dict(),state['optimizer'])
  assert all(equal(manager.ema_models[k].state_dict(),v) for k,v in state['ema_models'].items())
