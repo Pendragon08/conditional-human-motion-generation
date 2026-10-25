@@ -149,7 +149,7 @@
     "Numerical sampling uses FIXED_LARGE to match paper beta_t reverse variance at noise-bearing steps; upstream FIXED_SMALL preserved"
   ],
   "authorized_auto_start_after_real_data_acceptance": true,
-  "latest_user_instruction": "2026-10-25: immediately continue to full training and closed-loop validation after real data preparation and physical-filter acceptance; no extra user confirmation",
+  "latest_user_instruction": "2026-10-25: after preprocessing, directly start complete generator training on the server; prior real physical-filter and accepted-corpus requirements remain in force. Do not wait for a second confirmation.",
   "authorized_continue_to_closed_loop_after_full_training": true,
   "completion_notification_blocks_execution": false,
   "automatic_continuation_sequence": [
@@ -173,5 +173,6 @@
     "author_private_clips_unavailable": 403,
     "paper_data_scope_exact": false,
     "scope_note": "Available BABEL-indexed public subset; does not claim all12296public trackerclips or authorprivate403"
-  }
+  },
+  "storage_preflight_report": "reports/training_storage_20261025.md"
 }

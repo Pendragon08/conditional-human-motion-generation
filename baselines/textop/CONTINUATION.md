@@ -723,3 +723,15 @@ all existing datasets/checkpoints/unique records remain protected. Full accepted
 training still waits real data/physics gates. Report and aggregate assessment
 under reports/training_storage_20261025.md andresults/training_storage_20261025;
 localD后续训练存储预算_20261025.html/.md. No user action needed for currentGMR.
+
+## User2026-10-25 23:18: automatic generator continuation reaffirmed
+
+User says to start generator training directly once preprocessing is complete.
+Existing realfilter/dataacceptance and complete69D scope remain; no repeated
+permission question or waiting for acknowledgment of a milestone. Updated
+existingACTIVE textop heartbeat andpaper-step2 latest authorization. Do not
+interpret incompleteGMR as an acceptedtrainingcorpus. ActualBMLrub1141/2139,
+0fail at23:17, same4workers; KITnormalpredecessor wait. Server/data2.69GiB.
+Storageplan from priorheartbeat must be resolved before formaltraining while
+preserving all protected datasets/checkpoints/unique records. No new duplicate
+worker, prematurelyenabledformaljob or old57D resume was issued.
