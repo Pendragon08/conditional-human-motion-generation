@@ -10,6 +10,8 @@ def read(name):
 
 def main():
     cache=read('redundant_cache_cleanup');render=read('render_cache_cleanup');compression=read('retained_record_compression');cmu=read('cmu_resume')
+    babel=read('babel_alignment');babel_install=read('babel_server_install')
+    babel_note=('BABEL官方原始标注已下载并安装服务器，8,291条发布运动、50,004条分段标注的ID、来源路径、文本、类别和起止时间核对一致；原始JSON及逐条配对索引不公开上传GitHub。' if babel.get('mismatch_sequences')==0 and babel_install else 'BABEL原始标注独立下载或核查尚未完成；当前候选文本来自官方发布包内字段。')
     status=json.loads(remote("""
 import pathlib,json,shutil
 r=pathlib.Path('/data/code/ouyanghao/oyh/textop-reproduction-20261024');ram=pathlib.Path('/dev/shm/ouyanghao_textop_20261025/local1653_v1')
@@ -46,7 +48,7 @@ print(json.dumps({'data_free_bytes':shutil.disk_usage(r).free,'home_free_bytes':
 - 已重建{total}条29DoF/69D候选运动，另保存对应镜像；新增1,653条批次当前完成{status['batch1653'].get('completed_sequences',0)}条、失败{status['batch1653'].get('failed_sequences',0)}条。**尚未进行论文要求的动态物理筛选，不是最终可训练数据集。**
 - CMU官网续传状态：`{cmu.get('status','NOT_STARTED')}`。使用独立内存会话；旧D盘断点保留，复制到C盘后校验SHA256，续传前核对服务器对应边界字节。完整下载后必须通过bzip2 CRC及tar头校验。不得把当前字节数计作已完成下载。
 - BMLrub、KIT仍保留断点，后续按可用空间安排；未启动其新增续传，不重复全量下载已拥有的原始包，TotalCapture继续跳过。
-- 用户已报告BABEL登录完成并接受许可；当前应用内BABEL页面仍显示登录表单，独立原始标注下载尚未完成。已提供在相应页面登录或将标注包保存到本地BABEL目录的接续方式。当前候选文本来自官方TextOp发布包内BABEL派生字段。
+- {babel_note}
 - 69D生成器核心的VAE/LDM前向反向、条件输入、五步扩散和历史2→未来8帧自回归数值验证均通过；这是未训练的数值验证，0次参数更新，不代表动作质量或闭环成功。
 - 完整训练仍需补齐原始输入/标注、训练特权跟踪策略并执行宽松和严格两轮物理筛选、完成最终语料归一化与加载集成。随后按论文VAE20万、LDM30万步配置训练。当前未启动完整69D生成器，也未恢复旧57D训练。
 

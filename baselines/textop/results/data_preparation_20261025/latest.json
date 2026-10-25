@@ -259,8 +259,8 @@
       "target_dof": 29,
       "feature_dim": 69,
       "output_fps": 50,
-      "completed_sequences": 1200,
-      "mirrored_sequences": 1200,
+      "completed_sequences": 1227,
+      "mirrored_sequences": 1227,
       "failed_sequences": 0,
       "total_requested": 1653,
       "physical_filter_passed": false,
@@ -268,8 +268,8 @@
       "status": "RUNNING",
       "cpu_only": true,
       "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
-      "processed": 1200,
-      "updated_utc": "2026-10-25T03:00:18Z"
+      "processed": 1227,
+      "updated_utc": "2026-10-25T03:11:16Z"
     },
     "raw_reconciliation": {
       "release_sequences": 8291,
@@ -446,12 +446,161 @@
         "phygile-reproduction-20261017/data/amass/ssm_20261021": 33
       }
     },
+    "babel_acquisition": {
+      "time_beijing": "2026-10-25T11:07:01.452402+08:00",
+      "official_url": "https://babel.is.tue.mpg.de/media/upload/data/babel_v1-0_release.zip",
+      "download_page_observed_authenticated": true,
+      "independent_license_already_accepted": true,
+      "license_url": "https://babel.is.tue.mpg.de/license.html",
+      "status": "OFFICIAL_BABEL_V1_0_DOWNLOADED_ZIP_CRC_AND_JSON_VERIFIED",
+      "archive_bytes": 5553197,
+      "archive_sha256": "863d79b78f2d0225df74140b94cd61e06e04217726ae4ba1d2f50bad0d902428",
+      "zip_crc_verified": true,
+      "files": [
+        {
+          "file": "extra_val.json",
+          "bytes": 2588794,
+          "sha256": "a05637cc2f9ecf5b8f4e96eac3bd358ecd96dd00d7c933c40bc80cd9eccd03fc",
+          "sequence_records": 2636,
+          "sequence_labels": 4255,
+          "frame_labels": 689
+        },
+        {
+          "file": "test.json",
+          "bytes": 4140168,
+          "sha256": "f109dff2f3ccdef28c2610eea079e4fda4e60d8849cc87277e6fd3eef1683789",
+          "sequence_records": 2084,
+          "sequence_labels": 2134,
+          "frame_labels": 12297
+        },
+        {
+          "file": "train.json",
+          "bytes": 15101932,
+          "sha256": "5da8185d4374670682cd6e3391d8635e4297ecebf5fe19394d28c2ca08030c6d",
+          "sequence_records": 6615,
+          "sequence_labels": 7000,
+          "frame_labels": 36137
+        },
+        {
+          "file": "extra_train.json",
+          "bytes": 7302453,
+          "sha256": "1643abb3e8313f4828d706373563e82db4a713f44bba1103df80f28f7ecc5f30",
+          "sequence_records": 7921,
+          "sequence_labels": 12255,
+          "frame_labels": 897
+        },
+        {
+          "file": "val.json",
+          "bytes": 5423438,
+          "sha256": "50d1471db5221458ff959dea3a739e6695ce130fe70f75cc9a6446ee1a50b5ba",
+          "sequence_records": 2193,
+          "sequence_labels": 2411,
+          "frame_labels": 13333
+        }
+      ],
+      "raw_annotations_published": false,
+      "motion_alignment_validated": false
+    },
+    "babel_alignment": {
+      "time_beijing": "2026-10-25T11:11:28.371505+08:00",
+      "status": "ORIGINAL_BABEL_LABELS_VALIDATED_FOR_ALL_RELEASE_PAIRS",
+      "counts": {
+        "release_sequences": 8291,
+        "original_segment_labels_for_release_subset": 50004,
+        "validated_sequences": 8291
+      },
+      "split_counts": {
+        "train": {
+          "sequences": 6213,
+          "original_segment_labels": 36592,
+          "validated_sequences": 6213
+        },
+        "val": {
+          "sequences": 2078,
+          "original_segment_labels": 13412,
+          "validated_sequences": 2078
+        }
+      },
+      "mismatch_sequences": 0,
+      "time_tolerance_seconds": 1e-06,
+      "max_observed_time_error_seconds": 0.0,
+      "id_train_val_overlap": 0,
+      "release_index_sha256": "69c45bbb7171129b5c134d9c7eb00c73986601781f20e87c3bbfb02f976022be",
+      "original_file_sha256": {
+        "train": "5da8185d4374670682cd6e3391d8635e4297ecebf5fe19394d28c2ca08030c6d",
+        "val": "50d1471db5221458ff959dea3a739e6695ce130fe70f75cc9a6446ee1a50b5ba"
+      },
+      "verified_pair_index_sha256": "2e293ec4966f3c489d11ea7774c141319c294e10bf701881ea0d6421a9bcb39c",
+      "source_matching": "official pack_dataset.process_babel_json drops first wrapper directory; then explicit aliases and literal space/underscore normalization; no fuzzy matching",
+      "initial_path_wrapper_mismatches_resolved": 244,
+      "raw_annotation_files_published": false,
+      "physical_filter_executed": false,
+      "smplx_motion_phase_alignment_independently_verified": false,
+      "generator_dataset_accepted": false
+    },
+    "babel_server_install": {
+      "status": "SERVER_PRIVATE_BABEL_INSTALLED_AND_SHA256_VERIFIED",
+      "files_verified": 7,
+      "bytes": 46879894,
+      "server_directory": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025/babel_v1_0",
+      "data_free_bytes": 3786072064,
+      "raw_annotations_published": false,
+      "files": [
+        {
+          "file": "babel_v1-0_release.zip",
+          "bytes": 5553197,
+          "sha256": "863d79b78f2d0225df74140b94cd61e06e04217726ae4ba1d2f50bad0d902428"
+        },
+        {
+          "file": "train.json",
+          "bytes": 15101932,
+          "sha256": "5da8185d4374670682cd6e3391d8635e4297ecebf5fe19394d28c2ca08030c6d"
+        },
+        {
+          "file": "val.json",
+          "bytes": 5423438,
+          "sha256": "50d1471db5221458ff959dea3a739e6695ce130fe70f75cc9a6446ee1a50b5ba"
+        },
+        {
+          "file": "test.json",
+          "bytes": 4140168,
+          "sha256": "f109dff2f3ccdef28c2610eea079e4fda4e60d8849cc87277e6fd3eef1683789"
+        },
+        {
+          "file": "extra_train.json",
+          "bytes": 7302453,
+          "sha256": "1643abb3e8313f4828d706373563e82db4a713f44bba1103df80f28f7ecc5f30"
+        },
+        {
+          "file": "extra_val.json",
+          "bytes": 2588794,
+          "sha256": "a05637cc2f9ecf5b8f4e96eac3bd358ecd96dd00d7c933c40bc80cd9eccd03fc"
+        },
+        {
+          "file": "textop_original_verified_pairs.private.json",
+          "bytes": 6769912,
+          "sha256": "2e293ec4966f3c489d11ea7774c141319c294e10bf701881ea0d6421a9bcb39c"
+        }
+      ]
+    },
+    "cmu_resume": {
+      "time_beijing": "2026-10-25T11:11:24.709334+08:00",
+      "status": "DOWNLOADING",
+      "subset": "CMU",
+      "official_url": "https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/gender_specific/mosh_results/CMU.tar.bz2",
+      "expected_bytes": 11572134418,
+      "credentials_stored": false,
+      "old_D_partial_retained": true,
+      "raw_data_published": false,
+      "bytes_received": 9105800639,
+      "attempt": 1
+    },
     "asset_authorization_and_storage": {
-      "recorded_beijing": "2026-10-25T09:40:24.907384+08:00",
+      "recorded_beijing": "2026-10-25T11:11:28.542824+08:00",
       "amass": {
         "user_reported_login_complete": true,
         "observed_main_download_table_accessible": true,
-        "file_host_session_verified_this_turn": false,
+        "file_host_session_verified_this_turn": true,
         "existing_approved_subsets_remain_authorized": true,
         "totalcapture_skipped": true
       },
@@ -459,13 +608,18 @@
         "user_explicit_license_authorization": true,
         "license_url": "https://babel.is.tue.mpg.de/license.html",
         "scope": "non-commercial research; personal reproduction storage; no redistribution",
-        "observed_download_redirect": "https://babel.is.tue.mpg.de/login.php",
-        "download_completed": false,
-        "status": "WAITING_FOR_INDEPENDENT_BABEL_LOGIN"
+        "observed_download_redirect": null,
+        "download_completed": true,
+        "status": "OFFICIAL_BABEL_V1_0_DOWNLOADED_ZIP_CRC_AND_JSON_VERIFIED",
+        "user_reported_login_complete": true,
+        "observed_download_page": "https://babel.is.tue.mpg.de/download.php",
+        "archive_sha256": "863d79b78f2d0225df74140b94cd61e06e04217726ae4ba1d2f50bad0d902428",
+        "server_installed": true,
+        "original_alignment_checked": true
       },
       "storage": {
-        "C_free_bytes": 13370617856,
-        "D_free_bytes": 10105581568,
+        "C_free_bytes": 22409068544,
+        "D_free_bytes": 7218384896,
         "remaining_archives": [
           {
             "subset": "BMLrub",
@@ -476,8 +630,8 @@
           {
             "subset": "CMU",
             "expected_archive_bytes_from_prior_official_manifest": 11572134418,
-            "current_partial_bytes": 5817466303,
-            "remaining_bytes_estimate": 5754668115
+            "current_partial_bytes": 9118383551,
+            "remaining_bytes_estimate": 2453750867
           },
           {
             "subset": "KIT",
@@ -486,8 +640,8 @@
             "remaining_bytes_estimate": 12498742500
           }
         ],
-        "total_additional_archive_bytes_estimate": 27617858007,
-        "status": "NEEDS_MORE_DURABLE_STORAGE_BEFORE_COMPLETE_BATCH",
+        "total_additional_archive_bytes_estimate": 24316940759,
+        "status": "CMU_RESUMING_WITH_6GIB_C_RESERVE_OTHER_ARCHIVES_STILL_PENDING",
         "requested_free_capacity_gb": 50
       },
       "credentials_recorded": false,
@@ -643,21 +797,21 @@
       }
     },
     "prepared1653_v1": {
-      "sequences": 1200,
-      "frames50": 413103,
-      "paired_annotations_including_saved_mirrors": 10178,
+      "sequences": 1227,
+      "frames50": 450602,
+      "paired_annotations_including_saved_mirrors": 11092,
       "rejected_annotations": 3,
       "codec_max_error_m_or_rad": 2.0224157418202715e-07,
       "joint_skeleton_mirror_max_error_m": 9.999999870113907e-06,
       "splits": {
-        "train": 911,
-        "val": 289
+        "train": 930,
+        "val": 297
       }
     }
   },
   "space_bytes": {
-    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 3832979456,
-    "/home/ouyanghao": 1097609216
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 3786067968,
+    "/home/ouyanghao": 1097523200
   },
   "missing_raw_by_dataset": {
     "BMLrub": 2139,
