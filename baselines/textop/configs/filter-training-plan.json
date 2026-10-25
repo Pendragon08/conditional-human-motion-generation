@@ -9,6 +9,12 @@
   "rollout_steps": 24,
   "adam_updates_per_iteration": 20,
   "checkpoint_interval": 5000,
+  "checkpoint_storage": {
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 536870912,
+    "checkpoint_upper_bound_bytes": 134217728,
+    "bound_basis": "128MiB per filter-policy checkpoint, conservatively above observed90.6MB checkpoints plus full-library statistics; actual saved bytes must remain within bound"
+  },
   "minimum_disk_free_gib": 2,
   "minimum_gpu_free_gib": 20,
   "available_public_source_target": 8278,

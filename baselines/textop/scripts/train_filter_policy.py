@@ -27,6 +27,12 @@ try:
  assert shutil.disk_usage(out).free>plan['minimum_disk_free_gib']*1024**3
  diagnostic=a.mode=='witness';exports=['export_author_v1'] if diagnostic else plan['input_reference_exports']
  if not diagnostic:assert plan['formal_launch_enabled'] is True and not plan['formal_launch_blockers'],'Formal launch prerequisites not fulfilled'
+ if not diagnostic:
+  from checkpoint_storage_guard import check as storage_check,schedule
+  storage_root=pathlib.Path('/data/code/ouyanghao/oyh/textop-reproduction-20261024')
+  save_steps=schedule(plan['learning_iterations'],plan['checkpoint_interval'])
+  receipt['storage_preflight']=storage_check(out,storage_root,plan['checkpoint_storage'],len(save_steps))
+  receipt['storage_guard_sha256']=sha(pathlib.Path(__file__).with_name('checkpoint_storage_guard.py'))
  rows=[]
  for name in exports:
   ref=pathlib.Path('/dev/shm/ouyanghao_textop_20261025/tracker_references')/name
@@ -88,6 +94,15 @@ try:
   # Pinned PPO executes unchanged; log callback supplies exact post-update
   # counters and safe completed-iteration checkpoints, avoiding loop-index ambiguity.
   original_log=runner.log;original_save=runner.save
+  def guarded_save(completed,emergency=False):
+   remaining=1 if emergency else len([s for s in save_steps if s>=completed])
+   receipt['checkpoint_storage_check']=storage_check(out,storage_root,plan['checkpoint_storage'],remaining)
+   runner.save=original_save
+   try:result=save_recorded(runner,motion,out/('completed_'+str(completed)+'.pt'),completed,updates,fp,False)
+   finally:runner.save=suppressed_save
+   receipt['latest_checkpoint']=result;save()
+   assert result['bytes']<=plan['checkpoint_storage']['checkpoint_upper_bound_bytes'],'Actual checkpoint exceeds planning bound; preserve it and rebudget before continuation'
+   assert shutil.disk_usage(out).free>=plan['checkpoint_storage']['reserve_bytes'],'Disk reserve changed during save; retain all artifacts and stop'
   def monitored_log(values,*args,**kwargs):
    global completed
    original_log(values,*args,**kwargs);assert updates%20==0;completed=updates//20
@@ -99,12 +114,14 @@ try:
    if completed%100==0:
     with (out/'metrics.jsonl').open('a') as f:f.write(json.dumps({'completed':completed,'updates':updates,'losses':losses})+'\n')
     save()
-   if completed%plan['checkpoint_interval']==0 or completed==1000 or shutil.disk_usage(out).free<plan['minimum_disk_free_gib']*1024**3:
-    runner.save=original_save
-    try:receipt['latest_checkpoint']=save_recorded(runner,motion,out/('completed_'+str(completed)+'.pt'),completed,updates,fp,False)
-    finally:runner.save=suppressed_save
-    save()
-   assert shutil.disk_usage(out).free>=plan['minimum_disk_free_gib']*1024**3,'Disk guard; safe checkpoint saved, existing data retained'
+   if completed in save_steps:guarded_save(completed)
+   elif completed%100==0:
+    # Stop early if external disk usage consumes the remaining run budget.
+    # An emergency save is attempted only if its own reserve check passes.
+    try:storage_check(out,storage_root,plan['checkpoint_storage'],len([s for s in save_steps if s>completed]))
+    except AssertionError:
+     guarded_save(completed,emergency=True)
+     raise RuntimeError('Remaining checkpoint budget no longer fits; emergency state retained, rebudget before resume')
   def suppressed_save(*args,**kwargs):pass
   runner.log=monitored_log;runner.save=suppressed_save
   runner.learn(num_learning_iterations=target-completed,init_at_random_ep_len=False)
