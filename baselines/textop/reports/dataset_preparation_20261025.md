@@ -1,6 +1,6 @@
 # TextOp 数据准备核查与重建记录
 
-更新时间：2026-10-25 09:43:12 北京时间。
+更新时间：2026-10-25 09:51:36 北京时间。
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
@@ -48,7 +48,7 @@
 
 当前成功 500/500 条、失败 0 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
 
-补充143条：成功143、失败0。新增1653条：成功836、失败0。不计重复的6条smoke验证，三个批次合计已完成1479条候选运动、失败0条；保存的镜像另计。新批次原始输入已逐文件校验，RAM仅作服务器工作副本。
+补充143条：成功143、失败0。新增1653条：成功900、失败0。不计重复的6条smoke验证，三个批次合计已完成1543条候选运动、失败0条；保存的镜像另计。新批次原始输入已逐文件校验，RAM仅作服务器工作副本。
 
 另外143条已有ACCAD原始动作因空格/下划线导出命名差异，首轮未匹配；现通过明确的字面规范化确认，无模糊匹配、无歧义键。当前批次完成后使用同一验证过的CPU环境串行处理，已完成 143/143 条。输入可用性不等于完成重定向或通过物理筛选。
 
@@ -150,7 +150,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
   "ram_working_copy": true,
   "source_durable": "C private assets and D licensed original archives",
   "physical_filter_executed": false,
-  "time_utc": "2026-10-25T01:39:00.691292+00:00",
+  "time_utc": "2026-10-25T01:51:35.610910+00:00",
   "preflight": {
     "mem": {
       "MemTotal": 269956653056,
@@ -193,8 +193,8 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
     "target_dof": 29,
     "feature_dim": 69,
     "output_fps": 50,
-    "completed_sequences": 800,
-    "mirrored_sequences": 800,
+    "completed_sequences": 900,
+    "mirrored_sequences": 900,
     "failed_sequences": 0,
     "total_requested": 1653,
     "physical_filter_passed": false,
@@ -202,8 +202,8 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
     "status": "RUNNING",
     "cpu_only": true,
     "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
-    "processed": 800,
-    "updated_utc": "2026-10-25T01:38:55Z"
+    "processed": 900,
+    "updated_utc": "2026-10-25T01:51:31Z"
   }
 }
 ```
