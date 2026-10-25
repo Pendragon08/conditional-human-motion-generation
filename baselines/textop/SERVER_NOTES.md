@@ -89,3 +89,14 @@ EMA tensor; failure/checkpoint retained. Restore now runs in inference mode.
 Author_v2 passed40actualupdates and exact model/Adam/normalizer/EMA/raw-count
 restoration; fresh FILTER_TRAINING_ENVIRONMENT.md execution still required.
 No40k training or filtering or full generator launch has occurred.
+
+Latest recorded-runtime validation: author_v4 and independentdocument_v2 both
+actualexit0/no timeout/40Adamupdates, source3929b9d8..., runtimead3bb92f...,
+plan10c9ef10.... The restart audit now explicitly resets physics, restores EMA
+and raw counts without counting the synthetic reset, and marks new episodes
+as real attempts.9completedattempts observed. Model/Adam/normalizers/EMA/counters
+match exactly, then optimization continues. Earlierauthor_v3 failed20updates
+on inference-mode metric reset (exit1, preserved); reset is scoped to inference
+mode, optimizer loading remains outside. Independent REPORT copied by collector
+when available. Only this latest source has the resumed-attempt fix validated.
+Formal training remains disabled pending complete inputs/full-library checks.

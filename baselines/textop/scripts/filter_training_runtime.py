@@ -66,9 +66,10 @@ def load_recorded(runner,motion,path,corpus_fingerprint):
  # Restart real episodes explicitly. Otherwise clearing the per-env marker
  # would incorrectly omit the first *real* episode ending after restoration.
  # The reset itself is not evidence of success and must not bias saved EMA.
- motion._env.reset()
- motion.restore_recording(info['recording'])
- motion._attempt_started.fill_(True)
+ with torch.inference_mode():
+  motion._env.reset()
+  motion.restore_recording(info['recording'])
+  motion._attempt_started.fill_(True)
  assert runner.current_learning_iteration==info['completed_learning_iterations']
  for actual,key in [(runner.alg.policy.state_dict(),'model_state_dict'),(runner.alg.optimizer.state_dict(),'optimizer_state_dict'),
                     (runner.obs_normalizer.state_dict(),'obs_norm_state_dict'),(runner.privileged_obs_normalizer.state_dict(),'privileged_obs_norm_state_dict')]:

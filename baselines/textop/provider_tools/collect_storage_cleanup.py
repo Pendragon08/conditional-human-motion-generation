@@ -22,7 +22,11 @@ r=pathlib.Path('/data/code/ouyanghao/oyh/textop-reproduction-20261024');ram=path
 p=ram/'prepared1653_v1/progress.json'
 j=json.loads(p.read_text()) if p.exists() else {}
 pid=3319567;ps=pathlib.Path('/proc')/str(pid)/'status'
-print(json.dumps({'data_free_bytes':shutil.disk_usage(r).free,'home_free_bytes':shutil.disk_usage('/home/ouyanghao').free,'batch1653':{k:j.get(k) for k in ['completed_sequences','failed_sequences','status']},'gmr_process_exists':ps.exists()}))
+other={}
+for tag,folder in [('cmu','cmu1330_v1/prepared1330_v1'),('bmlrub','bmlrub_indexed_v1/prepared_v1'),('kit','kit_indexed_v1/prepared_v1')]:
+ p=ram.parent/folder/'progress.json'
+ if p.exists():other[tag]=json.loads(p.read_text())
+print(json.dumps({'data_free_bytes':shutil.disk_usage(r).free,'home_free_bytes':shutil.disk_usage('/home/ouyanghao').free,'batch1653':{k:j.get(k) for k in ['completed_sequences','failed_sequences','status']},'other_cohorts':{k:{n:v.get(n) for n in ['completed_sequences','failed_sequences','status']} for k,v in other.items()},'gmr_process_exists':ps.exists()}))
 """,timeout=50))
     result={'time_beijing':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(),
             'local_free_bytes':{x:shutil.disk_usage(x+':/').free for x in ['C','D']},
@@ -34,7 +38,7 @@ print(json.dumps({'data_free_bytes':shutil.disk_usage(r).free,'home_free_bytes':
             'full_generator_training_started':False,'physical_filter_executed':False}
     (DEST/'storage_cleanup_summary.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
     (LOCAL/'空间清理与数据续传_20261025.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
-    total=643+(status['batch1653'].get('completed_sequences') or 0)
+    total=643+(status['batch1653'].get('completed_sequences') or 0)+sum(x.get('completed_sequences',0) or 0 for x in status['other_cohorts'].values())
     report=f'''# TextOp 空间清理与数据续传
 
 更新时间：{result['time_beijing']}。
@@ -55,7 +59,7 @@ print(json.dumps({'data_free_bytes':shutil.disk_usage(r).free,'home_free_bytes':
 
 - 已重建{total}条29DoF/69D候选运动，另保存对应镜像；新增1,653条批次当前完成{status['batch1653'].get('completed_sequences',0)}条、失败{status['batch1653'].get('failed_sequences',0)}条。**尚未进行论文要求的动态物理筛选，不是最终可训练数据集。**
 - CMU下载状态：`{cmu.get('status','NOT_STARTED')}`。完整原始包已通过bzip2 CRC/tar校验，旧D盘断点在完整包校验和GitHub恢复证据备份后清理。选定导出覆盖1,330条所需输入，另13条缺失未冒充完成。
-- BMLrub状态`{bmlrub.get('status','NOT_STARTED')}`；KIT状态`{kit.get('status','NOT_STARTED')}`。两项已按授权启动官网续传，分别保留所在盘6GiB余量；完成后必须CRC/tar验证。TotalCapture继续跳过。
+- BMLrub状态`{bmlrub.get('status','NOT_STARTED')}`；KIT状态`{kit.get('status','NOT_STARTED')}`。两项完整包CRC/tar/SHA和精确索引核验均已完成，串行GMR队列等待前一批备份；无需重新下载。TotalCapture继续跳过。
 - {babel_note}
 - 69D生成器核心的VAE/LDM前向反向、条件输入、五步扩散和历史2→未来8帧自回归数值验证均通过；这是未训练的数值验证，0次参数更新，不代表动作质量或闭环成功。
 - 完整训练仍需补齐原始输入/标注、训练特权跟踪策略并执行宽松和严格两轮物理筛选、完成最终语料归一化与加载集成。随后按论文VAE20万、LDM30万步配置训练。当前未启动完整69D生成器，也未恢复旧57D训练。

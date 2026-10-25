@@ -278,3 +278,90 @@ SHA verification; their existing sequential workers53968/23184 remain waiting.
 Current full generator and formal40k physical filter remain unstarted. Next:
 finish indexed cohorts/backups, complete reference export/capacity validation,
 real privileged filtering, accepted69D corpus integration, VAE200k→LDM300k.
+
+## User instruction2026-10-25: advance preparation, real filtering, full generator
+
+This normal user turn authorized continuing the full sequence, not changing
+the training profile or resuming57D/PhyGile/ReactiveBFM. New verified milestones:
+
+- BMLrub/KIT original archives CRC/tar/SHA complete. Exact-index precheck
+  results/data_preparation_20261025/remaining_exports_reconciliation.json:
+  BMLrub2139/2139 andKIT2513/2513, no missing/ambiguous source. Public paired
+  profile8278/8291, with only13CMUmotions absent from selectedSMPL-X export.
+- GMR1653 complete0fail, source archive private backup1229573239bytes,
+  SHAed60f1458ce1325fff85cbea07d651063f265423dda776ef349a37191f862d7a,
+  all1653preparedNPZ hashes verified inside backup. Existing watcher34980
+  completed; don't restart. Existing CMU worker24952 launched serverGMR
+  PID3483711 and continues1330motions. Existing BMLrub/KIT waiters remain.
+- export1653_v1 is now FINISHED:3306trajectories,2343590frames, actualexit0,
+  manifestSHA26432869c2f21ce5f0b946f1e9c0fb7097cb65207df33894ec4b64bf272c94c3.
+  It reused unchanged export_tracker_references.py and warmSDK. No dynamics
+  advanced, physical_filter_passedfalse. Prepared sources already have durable
+  backup;4.52GB FK NPZ working outputs currently remain in personalRAM. Do not
+  call them a new persistent backup. Don't evict them before a verified backup
+  or a tested exact regeneration kit; localD currently has limited free space.
+- Capacity author_v1 and independentcapacity_document_v1:8192envs,643sources
+  plusmirrors,196608transitions,20Adamupdates, actualexit0, peakTorchallocated
+  10292943872bytes. Only a capacity pass. Large initial random-policy value
+  loss~4.09e6 andlanding-force spike~1.11e6N retained. No proven convergence.
+- Initialization author/document:1286refs,zero-noise deterministicstart0,
+ 20referencePDsteps,0PPOupdates, actualexit0. Root discrepancymax1.1921e-7m,
+ 466clippedinitialposes,maxclip.08727rad.37terminationevents/maxforce14025.6N.
+  This is diagnostic only; no filter decision. New procedure
+  TRACKER_INITIALIZATION_AUDIT.md. Default release reset perturbations remain
+  on formal training, not silently replaced by this diagnostic setting.
+- New scripts/filter_training_runtime.py, train_filter_policy.py and
+  supervise_filter_policy.py implement the formal40k training entry point,
+  exact completed-iteration checkpoint metadata, saved EMA and raw attempts,
+  reference-order fingerprint and disk guard. configs/filter-training-plan.json
+  was written before dispatch. Formal launch remains DISABLED until all
+  candidates/reference exports and full-library capacity/stability are checked.
+- New recording witness originalauthor_v1 did20updates then failed restoring
+  an inference-mode EMA tensor; saved checkpoint and error/stop receipts kept.
+  author_v2/document_v1 passed exact value restoration, but subsequent review
+  found first resumed episode could be omitted unless explicitly restarted.
+  author_v3 exposed upstream metrics inference tensor reset error (exit1,
+  checkpoint retained). author_v4 passed40actualupdates/exactrestoration with
+  physicsreset inside inference mode and optimizerload outside. It recorded
+9genuinecompletedattempts and resumed_physics_episodes_restarted_without_
+  counting_resettrue. Final independent runfilter_statistics_document_v2 also
+  passed actualexit0/no timeout/40updates and same runtimeSHAad3bb92f5836e5213450
+  420e8f33deffd43443da7d451796adef3d6193ef6962. This newest source's value restore
+  and resumed-attempt restart are now validated. Never erase earlier pass/failure.
+  Procedure FILTER_TRAINING_ENVIRONMENT.md; evidence local folders
+  tracker_capacity_doc_witness_v1,tracker_initialization_doc_witness_v1,
+  filter_statistics_doc_witness_v1/v2. Nativeclose stilluses20sfallback.
+
+Next actionable work, with existing queues left intact:
+1. Complete CMU/BMLrub/KIT GMR+backups and full reference exports. The new
+   supervisor supports export1653; add separate declared cohort cases for
+   subsequent verified batches instead of changing canonical source paths.
+2. Complete-library8192capacity/stability check must use ORIGINALS for formal
+   filter training, not mirrored candidates; current643-only capacity isn't
+   sufficient. Warm dependencies stay unchanged. Memory buffers and all
+   source fingerprints/counts must be checked live before formal launch.
+3. Formal trainer metadata is implemented/short-witness tested; still implement
+   and validate the actual strict entire-motion evaluator and its coverage
+   log. Default10sepisode limit must not turn an incomplete long trajectory
+   into a strict pass. Require trained40kcheckpoint, nonzero real attempts,
+   EMAp>.05 reject, restoredheightterms, entire-motioncoverage orfirstfailure,
+   explicit declared repeat count/window/reset choices. Do not generate
+   acceptance from a headerflag or a short diagnostic. Tighten
+   apply_tracking_filter.py to verify actual trainer receipts and framecoverage.
+4. Build accepted-source-disjoint69D corpus only after real decisions, train-
+   onlystats/CLIPcache/full official-loader witness, thenVAE200k→LDM300k.
+   The intended profile is all8278availablepublicsources before filtering;
+   declare13unavailable and403private separately. A full schedule on that
+   profile is not an exact author-data reproduction. Do not misreport
+   missing_public_sources=0 against the original8291 index. The existing
+   readiness gate needs explicit scope metadata for any declared public subset.
+5. Final deployable WBC is distinct from privileged filter teacher: paper
+   actor431D/critic557D, simulation50000iterations. After trainedgenerator,
+   include generated-motion augmentation, actual closed-loop execution and
+   videos; don't claim full TextOp from the filter teacher alone.
+
+collect_tracker_progress.py now collects the capacity/initialization/new
+statistics evidence and export1653 summaries plus independent reports. Run
+collect_data_preparation first, collect_storage_cleanup as needed, then tracker
+collector and publish.py. Restricted motion arrays and per-motion text/index
+stay private. Refresh localD mainHTML; avoid publishing RAM private manifests.

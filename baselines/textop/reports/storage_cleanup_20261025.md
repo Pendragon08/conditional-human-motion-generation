@@ -1,6 +1,6 @@
 # TextOp 空间清理与数据续传
 
-更新时间：2026-10-25T15:19:01.622223+08:00。
+更新时间：2026-10-25T15:25:57.522653+08:00。
 
 已继续清理可恢复的重复缓存，数据集、已处理数据、检查点、唯一实验记录和运行环境均保留；PhyGile、ReactiveBFM仍保持暂停。
 
@@ -12,13 +12,13 @@
 - D盘重复副本：完整CMU原始包CRC/SHA验证后清理其旧断点副本；CLoSD服务器原始数据集核验不变，四个本地备份分片和GitHub Release均保留，只清理此前临时恢复验证副本。恢复证据先保存到GitHub；完整记录见duplicate_copy_cleanup.json。所有权威数据、检查点和唯一实验记录保留。
 - 本轮个人目录清理：闲置EngineAI Python环境及指定旧缓存状态`BACKED_UP_IDLE_ENVIRONMENT_AND_CACHES_REMOVED`；系统盘资源迁移状态`ALL_ASSETS_RELOCATED_SHA_VERIFIED_ORIGINAL_PATHS_PRESERVED`。完整软件/缓存归档在GitHub Release逐片摘要核验、代码及清单备份后才删除原副本；数据和模型资源迁移后原路径保留为链接。详见[个人目录空间清理核验](personal_storage_cleanup_20261025.md)及[EngineAI旧环境恢复说明](../ENGINEAI_ENV_RECOVERY.md)。当前TextOp/GMR环境与共享IsaacSim平台保留。迁移不计作两盘整体新增空间。
 
-当前C盘余6.16GiB、D盘余8.81GiB；服务器数据盘余5.57GiB、系统盘余6.23GiB。容量是本次采样值，下载过程中会变化。
+当前C盘余6.17GiB、D盘余8.81GiB；服务器数据盘余4.68GiB、系统盘余6.23GiB。容量是本次采样值，下载过程中会变化。
 
 ## 数据与训练
 
-- 已重建2296条29DoF/69D候选运动，另保存对应镜像；新增1,653条批次当前完成1653条、失败0条。**尚未进行论文要求的动态物理筛选，不是最终可训练数据集。**
+- 已重建2601条29DoF/69D候选运动，另保存对应镜像；新增1,653条批次当前完成1653条、失败0条。**尚未进行论文要求的动态物理筛选，不是最终可训练数据集。**
 - CMU下载状态：`LOCAL_ORIGINAL_ARCHIVE_VERIFIED`。完整原始包已通过bzip2 CRC/tar校验，旧D盘断点在完整包校验和GitHub恢复证据备份后清理。选定导出覆盖1,330条所需输入，另13条缺失未冒充完成。
-- BMLrub状态`LOCAL_ORIGINAL_ARCHIVE_VERIFIED`；KIT状态`LOCAL_ORIGINAL_ARCHIVE_VERIFIED`。两项已按授权启动官网续传，分别保留所在盘6GiB余量；完成后必须CRC/tar验证。TotalCapture继续跳过。
+- BMLrub状态`LOCAL_ORIGINAL_ARCHIVE_VERIFIED`；KIT状态`LOCAL_ORIGINAL_ARCHIVE_VERIFIED`。两项完整包CRC/tar/SHA和精确索引核验均已完成，串行GMR队列等待前一批备份；无需重新下载。TotalCapture继续跳过。
 - BABEL官方原始标注已下载并安装服务器，8,291条发布运动、50,004条分段标注的ID、来源路径、文本、类别和起止时间核对一致；原始JSON及逐条配对索引不公开上传GitHub。
 - 69D生成器核心的VAE/LDM前向反向、条件输入、五步扩散和历史2→未来8帧自回归数值验证均通过；这是未训练的数值验证，0次参数更新，不代表动作质量或闭环成功。
 - 完整训练仍需补齐原始输入/标注、训练特权跟踪策略并执行宽松和严格两轮物理筛选、完成最终语料归一化与加载集成。随后按论文VAE20万、LDM30万步配置训练。当前未启动完整69D生成器，也未恢复旧57D训练。

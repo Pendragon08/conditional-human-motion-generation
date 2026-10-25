@@ -8,7 +8,7 @@ import pathlib,json,subprocess,shutil
 r=pathlib.Path('/data/code/ouyanghao/oyh/textop-reproduction-20261024');files={}
 for label in ['author_v1','author_v2','author_v3','author_v4','author_v5','document_v1','document_v2','environment_probe_v1','ppo_author_v1','ppo_author_v2','ppo_document_v1',
               'capacity_author_v1','capacity_document_v1','initialization_author_v1','initialization_document_v1',
-              'filter_statistics_author_v1','filter_statistics_author_v2','filter_statistics_document_v1']:
+              'filter_statistics_author_v1','filter_statistics_author_v2','filter_statistics_author_v3','filter_statistics_author_v4','filter_statistics_document_v1','filter_statistics_document_v2']:
  for leaf in ['receipt.json','audit_correction.json','native_teardown_stack.txt']:
   p=r/'tracker_validation'/label/leaf
   if p.exists():files[label+'/'+leaf]=p.read_text(errors='replace')
@@ -34,7 +34,7 @@ data=json.loads(remote(code,timeout=90))
 for name,value in data.pop('files').items():
     p=DEST/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(value,encoding='utf-8')
 TASK=REPO.parent.parent/'textop_reproduction_20261024'
-for folder in ['tracker_doc_witness_v1','tracker_doc_witness_v2','tracker_ppo_doc_witness_v1','tracker_capacity_doc_witness_v1','tracker_initialization_doc_witness_v1','filter_statistics_doc_witness_v1']:
+for folder in ['tracker_doc_witness_v1','tracker_doc_witness_v2','tracker_ppo_doc_witness_v1','tracker_capacity_doc_witness_v1','tracker_initialization_doc_witness_v1','filter_statistics_doc_witness_v1','filter_statistics_doc_witness_v2']:
     p=TASK/folder/'REPORT.md'
     if p.exists():
         target=DEST/folder/'REPORT.md';target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(p,target)
@@ -45,7 +45,7 @@ batches=[latest['receipts'].get(k,{}) for k in ['batch500','batch143','batch1653
 prepared=sum(x.get('completed_sequences',0) for x in batches)
 ppo=read('ppo_author_v2');independent=read('ppo_document_v1');export=read('export643_v1')
 capacity=read('capacity_author_v1');capacity_doc=read('capacity_document_v1')
-initialization=read('initialization_author_v1');statistics=read('filter_statistics_author_v2');statistics_doc=read('filter_statistics_document_v1')
+initialization=read('initialization_author_v1');statistics=read('filter_statistics_author_v4');statistics_doc=read('filter_statistics_document_v2')
 export1653=read('export1653_v1')
 backup_path=BASE/'results/data_preparation_20261025/reference643_backup.json'
 backup=json.loads(backup_path.read_text(encoding='utf-8')) if backup_path.exists() else {}
@@ -87,6 +87,8 @@ PPO首轮已做20次Adam更新，之后比较Adam标量的CPU/GPU设备时报错
 作者机器人资产哈希、最终69D几何损失刚体子集、私有403条运动未公开，不能声称与私有实现完全等价。CMU所选SMPL-X G导出缺13条索引，逐项清单保留；BMLrub、KIT已完成原始包CRC/tar/SHA校验及索引核对，分别2,139/2,139、2,513/2,513条精确匹配，零歧义。可用公开配对源范围是8,278/8,291条。它与论文跟踪器的12,296条公共运动及403条私有运动范围不同，不能把当前BABEL索引子集写成作者全量数据。
 
 新增统计恢复层首轮在20次更新后，写回由官方推断模式创建的EMA张量时报错。原始失败、检查点和仅停止该失败诊断进程的退出记录全部保留；恢复函数显式进入推断模式后，作者与独立执行均完整通过40次更新。恢复参数和统计的数值精确一致，物理仿真回合在进程恢复后重新开始，不声称仿真轨迹位级连续。
+
+进一步复查发现，恢复后必须显式开始新物理回合，否则首个真实尝试可能漏计。为此添加回合重置并再次恢复计数，排除重置本身的虚假成功；首个新版尝试暴露官方metrics张量的同类推断模式写回错误，已保留失败和exit1，随后将回合重置也放入推断模式。优化器加载保持普通模式，避免把Adam状态变为不可正常更新的推断张量；以最新作者/独立结果及source hash为准。
 
 ## 已安排的后续
 
