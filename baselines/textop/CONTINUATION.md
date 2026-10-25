@@ -735,3 +735,41 @@ interpret incompleteGMR as an acceptedtrainingcorpus. ActualBMLrub1141/2139,
 Storageplan from priorheartbeat must be resolved before formaltraining while
 preserving all protected datasets/checkpoints/unique records. No new duplicate
 worker, prematurelyenabledformaljob or old57D resume was issued.
+
+## Heartbeat2026-10-26 00:15: new idle-software backup, not repeated cleanup
+
+ExistingBMLrub parallel workers healthy,1899/2139 and0fail at00:01;KITwaits
+its durablebackup. No data/physics milestones reached; do not notify partial
+preparation. Resources/data2.69GiB,system6.21GiB,shm50.3GiBfree before newarchive.
+
+A new narrowly scoped storage operation is running, separate from completed
+EngineAI cleanup. Candidatehumanoid-combat-motion/envs/dreamcontrol-retarget
+contains only idle package overlay,13,817 files/5,857,640,648logicalbytes, allUID1013,
+no activeproc/maps/fd/environ use and no runtime symlink/pyvenv/pth dependents.
+DO NOT REMOVE .venv-pbhc-training: newaudit found it is TextOp's actual base
+interpreter andmappedby paused3237858. CurrentGMR/TextOp/SDK packages protected.
+Other large directories contain datasets/checkpoints and remain untouched.
+
+ServerarchivePID3686665 runs scripts/archive_idle_dreamcontrol.py archive,
+CPU0/nice19, software-onlyRAMwork/dev/shm/ouyanghao_dreamcontrol_backup_20261026.
+No source deletion yet. It checks everyfileSHA and everytarmember, thenparts.
+LocalHidden coordinatorPID64412 runsprovider_tools/finish_idle_dreamcontrol.py;
+logs inwork/textop_reproduction_20261024/idle_dreamcontrol_stdout.log andstderr.
+Actualcommands/state must bechecked before action; do not spawn duplicates or
+reuse finishedEngineAI upload workers. NewRelease taginactive-dreamcontrol-overlay-
+20261026. Coordinator waitsarchive, publishescode/inventory, uploads allparts
+plusmanifest/package metadata directlyserver-toGitHub withcredentialstdin-only,
+independentlyverifiesAPIassetdigests, then rechecks sourcehashes/ownership/idleness
+and removes only this software overlay. Datasets/checkpoints/records deletion0.
+Do not manuallyinvokeapply or manufacturegithub_verified proof. Ifanyfailure,
+originalsourcesremain except a clearlyrecorded partialcleanup; inspect actual
+phase ratherthanblindlyretry. Newarchive can needtimewhile4GMRcores busy.
+
+Fullstate/results inresults/idle_dreamcontrol_20261026/continuation.json andserver
+receipts/idle_dreamcontrol_20261026. Estimatedfuturegain~5.49GiB is NOT yetfreed.
+Evenafterthat, fullgenerator+finalWBC capacitymustberebudgeted; no premature
+trainingenabled. Exactbackuprestore report is generated afterarchivevalidation
+asDREAMCONTROL_SOFTWARE_RECOVERY.md andlocalD闲置DreamControl软件备份与空间回收_20261026.
+Afterconfirmedcleanup, backupRAMtar/parts are redundant butcurrentlyretained;
+ifRAMspacebecomestight, verifyGitHubdigestsandonlyremove these explicitsoftware
+archivecopies, keepmetadata/receipts. NevercleanGMRraw/prepared arraysorcheckpoints.
