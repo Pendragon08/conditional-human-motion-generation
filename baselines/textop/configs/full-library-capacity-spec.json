@@ -7,17 +7,52 @@
   "training_selection": "originals only, identical order to filter-training-plan input exports",
   "scope_input_directory": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025/source_scope_inputs_v1",
   "cohorts": [
-    {"run": "export643_v1", "sources": 643, "prepared": ["/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025/available143_v1", "/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025/available500_v1"]},
-    {"run": "export1653_v1", "sources": 1653, "prepared": ["/dev/shm/ouyanghao_textop_20261025/local1653_v1/prepared1653_v1"]},
-    {"run": "export1330_v1", "sources": 1330, "prepared": ["/dev/shm/ouyanghao_textop_20261025/cmu1330_v1/prepared1330_v1"]},
-    {"run": "export_bmlrub_v1", "sources": 2139, "prepared": ["/dev/shm/ouyanghao_textop_20261025/bmlrub_indexed_v1/prepared_v1"]},
-    {"run": "export_kit_v1", "sources": 2513, "prepared": ["/dev/shm/ouyanghao_textop_20261025/kit_indexed_v1/prepared_v1"]}
+    {
+      "run": "export643_v1",
+      "sources": 643,
+      "prepared": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025/available143_v1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025/available500_v1"
+      ]
+    },
+    {
+      "run": "export1653_v1",
+      "sources": 1653,
+      "prepared": [
+        "/dev/shm/ouyanghao_textop_20261025/local1653_v1/prepared1653_v1"
+      ]
+    },
+    {
+      "run": "export1330_v1",
+      "sources": 1330,
+      "prepared": [
+        "/dev/shm/ouyanghao_textop_20261025/cmu1330_v1/prepared1330_v1"
+      ]
+    },
+    {
+      "run": "export_bmlrub_v1",
+      "sources": 2139,
+      "prepared": [
+        "/dev/shm/ouyanghao_textop_20261025/bmlrub_indexed_v1/prepared_v1"
+      ]
+    },
+    {
+      "run": "export_kit_v1",
+      "sources": 2513,
+      "prepared": [
+        "/dev/shm/ouyanghao_textop_20261025/kit_indexed_v1/prepared_v1"
+      ]
+    }
   ],
   "num_envs": 8192,
   "learning_iterations": 1,
   "rollout_steps": 24,
   "expected_optimizer_updates": 20,
-  "actor_critic_hidden_dims": [2048, 1024, 512],
+  "actor_critic_hidden_dims": [
+    2048,
+    1024,
+    512
+  ],
   "privileged_input_dim": 557,
   "seed": 20261025,
   "device": "cuda:1",
@@ -28,9 +63,12 @@
   "minimum_available_host_ram_gib": 16,
   "supervisor_timeout_seconds": 1800,
   "checkpoint_policy": "None for this capacity-only run; existing exact checkpoint/resume diagnostics remain valid, avoid duplicate checkpoint files",
-  "launch_enabled": false,
-  "persistent_backup_acceptance": null,
-  "launch_blockers": ["KIT full preparation, persistent backup content audit and FK export are incomplete", "new full-library probe has not run", "fresh documented witness must pass before declaring full-profile capacity"],
+  "launch_enabled": true,
+  "persistent_backup_acceptance": {
+    "receipt": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/preprocessing_after_kit_v1.json",
+    "sha256": "8c742cdbeef4773bfc66fea828fb68d9c91d70f656e9d9385a70c31241fe307e"
+  },
+  "launch_blockers": [],
   "paper_data_scope_exact": false,
   "physical_filter_executed": false,
   "dataset_accepted": false,
