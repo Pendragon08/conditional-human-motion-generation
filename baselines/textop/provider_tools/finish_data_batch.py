@@ -27,7 +27,13 @@ def archive_private(batch,expected):
         return {'path': str(target), 'status': 'existing_archive_preserved'}
     partial = target.with_suffix(target.suffix+'.partial')
     if partial.exists():
-        raise FileExistsError('Previous partial archive preserved for inspection')
+        failed=list(target.parent.glob(target.name+'.partial.failed_*'))
+        if len(failed)>=3:raise RuntimeError('Three failed transfers preserved; automatic retries exhausted')
+        stamp=datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S%f')
+        saved=partial.with_name(partial.name+'.failed_'+stamp)
+        assert saved.parent.resolve()==target.parent.resolve() and not saved.exists()
+        partial.rename(saved)
+        print(json.dumps({'event':'preserved_failed_transfer','path':str(saved),'bytes':saved.stat().st_size}),flush=True)
     # Binary pipe avoids PowerShell transcoding and creates no server tar copy.
     command = ['tar', '-C', SERVER, '-czf', '-', batch,
                'audit_summary.json', 'available_raw_pairs.private.json',
