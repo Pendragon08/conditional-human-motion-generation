@@ -20,7 +20,7 @@ print(json.dumps({'data_free_bytes':shutil.disk_usage(r).free,'home_free_bytes':
 """,timeout=50))
     result={'time_beijing':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(),
             'local_free_bytes':{x:shutil.disk_usage(x+':/').free for x in ['C','D']},
-            'server':status,'cache_cleanup':cache,'render_cleanup':{k:v for k,v in render.items() if k!='files'},
+            'server':status,'cache_cleanup':cache,'private_recovery_kit':read('cache_residency'),'render_cleanup':{k:v for k,v in render.items() if k!='files'},
             'retained_record_compression':{k:v for k,v in compression.items() if k!='details'},'cmu_download':cmu,
             'datasets_deleted':0,'checkpoints_deleted':0,'unique_experiment_records_deleted':0,
             'full_generator_training_started':False,'physical_filter_executed':False}
@@ -35,7 +35,7 @@ print(json.dumps({'data_free_bytes':shutil.disk_usage(r).free,'home_free_bytes':
 
 ## 已验证的清理
 
-- C盘：清理1,653个重复解压缓存，释放约{cache.get('previous_cache_physical_bytes',0)/1024**3:.2f}GiB。D盘完整原始压缩包逐一SHA256核验、服务器1,653份工作副本全量核验，并实际从原始包恢复一条文件。私有索引保留，可按需恢复全部缓存。恢复代码及证据已先备份至GitHub提交`{cache.get('recovery_code_and_evidence_backed_up_github_commit','')}`。
+- C盘：清理1,653个重复解压缓存，释放约{cache.get('previous_cache_physical_bytes',0)/1024**3:.2f}GiB。D盘完整原始压缩包逐一SHA256核验、服务器1,653份工作副本全量核验，并实际从原始包恢复一条文件。私有索引在C、D盘均保存并核对SHA256，可按需恢复全部缓存；D盘恢复工具包位于`datasets/recovery1653_private`，逐条索引未上传GitHub。恢复代码及证据已先备份至GitHub提交`{cache.get('recovery_code_and_evidence_backed_up_github_commit','')}`。
 - 服务器数据盘：清理71个无人使用的着色器、派生数据和纹理缓存，实际增加约{(render.get('data_free_after',0)-render.get('data_free_before',0))/1024**3:.2f}GiB。清理名单和代码已先备份，保留所有日志、模型、环境及原始资产。
 - D盘：对13个保留文件做NTFS透明压缩，物理占用减少约{compression.get('physical_bytes_saved',0)/1024**3:.2f}GiB，逐文件SHA256不变，未删除实验记录。磁盘可用量还受其他活动影响，不把物理占用变化直接当作整盘净增量。
 

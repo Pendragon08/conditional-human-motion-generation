@@ -40,6 +40,8 @@ authorization=dest/'asset_authorization_and_storage.json'
 if authorization.exists():result['receipts']['asset_authorization_and_storage']=json.loads(authorization.read_text(encoding='utf-8'))
 queue=dest/'local1653_queue.json'
 if queue.exists():result['receipts']['local1653_queue']=json.loads(queue.read_text(encoding='utf-8'))
+residency=dest/'cache_residency.json'
+if residency.exists():result['receipts']['current_input_residency']=json.loads(residency.read_text(encoding='utf-8'))
 local_progress=REPO.parent.parent/'textop_reproduction_20261024/private_assets/raw_expansion_progress.json'
 if local_progress.exists():
     local=json.loads(local_progress.read_text(encoding='utf-8'))
