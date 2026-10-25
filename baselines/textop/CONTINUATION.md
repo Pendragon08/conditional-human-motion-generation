@@ -833,3 +833,39 @@ valid. Do not rerun old643-source capacity or alter sharedpackages. Full40k,
 realfilters, acceptedcorpus andVAE/LDM remainpending. Furtherformalstorage refresh
 and safercheckpointpreflight stillneeded before productionlaunch. User's
 automaticcontinuation authorization remains; notifyonlyactualmilestones.
+
+## Heartbeat2026-10-26 03:07: storage protection and finite next-stage coordinator
+
+KIT remains in originalfourworkerGMR,2500/2513 and0fail sampled03:03; no backup
+completion yet. Do not notify allpreprocessingdone. Datafree8.18GiB, GPU1free
+40726MiB, hostavailable~125GiB. ExistingKIT38236 andFK3527552 remain untouched.
+
+Added checkpoint_storage_guard.py and formal-only integration in
+train_filter_policy.py. No optimization/sampling/resume math or shared package
+changed. Beforelaunch andeachsave checkownedpersistentwritablepath, noRAM or
+symlinkdestination,2GiBreserve+512MiBlogs+128MiBforeachremainingcheckpoint.
+Ninescheduledfiltercheckpoints require3.625GiB atlaunch; thisconservativebound
+isnotexactfilemeasurement or totalpipelinebudget. Each100iterations rechecks
+remainingcapacity; emergency saveonlyifitsownreservepasses, otherwiserefuse.
+Alloldcheckpoints andpartialfailuresretained. Actualsavedfileoverboundstops
+forrebudget. CPUauthor_v1 andfreshdocument_v1 eachactualexit0,11checks, zero
+newcheckpoint/GPU/modelupdates. Sourcebff54d2b...,trainerf804ea2b...,plane4b8624a....
+Pre-guardcodesnapshots retained. SeeCHECKPOINT_STORAGE_GUARD.md and
+reports/checkpoint_storage_guard_20261026.md; localD检查点存储保护_20261026.html.
+
+New finite Windows coordinator PID39924 owns ONLY nextKITcontentaudit and
+full-libraryAUTHORcapacity. Sourceprovider_tools/continue_full_library_capacity.py
+iscommitted; sourcehashpreflight/check-only passed, actualprocessandWAITING state
+verified. State results/full_library_capacity_20261026/continuation_v1.json,
+logs work/textop_reproduction_20261024/full_library_continuation_20261026_*.log.
+It waits originalKITdurablebackup, runs newafter_kit_v1 audit exactlyonce,
+requires actual8278complete receipt, collects/publishes, waits originalKITFK
+actualexit0, checks GPU/RAM/disk/sourcehashes, activates onlycapacityspec with
+realbackupreceiptSHA, then supervises full_library_author_v1 exactlyonce.
+No formal40k or generatorlaunch, no deletion, no duplicateGMR/backup/export.
+Do not manually run its audit/activation/authorjob whilealive. If itfails,
+inspect phase/logs/actualchildstate; neverblindlyrestart. Fresh independent
+full_library_document_v1 remainsrequired afterauthorpass, then actualformal
+launch gates/storage evidence mustbereviewed. Allpreprocessingcompletion
+notification still requires actualaudit8278, notcoordinator startup. Update
+reports/local/GitHub and continue without repeateduserconfirmation atrealgates.

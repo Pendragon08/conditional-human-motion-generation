@@ -1,5 +1,16 @@
 # Complete available reference-library capacity: prepared, not yet validated
 
+2026-10-26 03:07: an existing finite Windows coordinator now owns the new KIT
+backup audit and the author capacity invocation below. Read
+results/full_library_capacity_20261026/continuation_v1.json and verify its actual
+command/PID before doing anything. Initial PID39924 runs
+provider_tools/continue_full_library_capacity.py; it waits for the original
+KIT backup and FK workers, does not replace them. Do not manually start another
+after_kit_v1 audit, activate the spec, or launch full_library_author_v1 while
+that coordinator is alive. It stops after the author run; the fresh independent
+document invocation remains the next agent's responsibility after actual success.
+On failure inspect its precise phase and retained logs rather than restarting.
+
 Warm dependencies remain tracker b7a3bf0c (SERVER_NOTES.md); no installation or
 shared-package modification. This extends the previous 643-source shape to
 all 8,278 available original references. The previous 8192-environment result

@@ -1,5 +1,12 @@
 # TextOp environment ledger
 
+Storage guard2026-10-26: unchanged warm tracker b7a3bf0c and optimization math.
+Formal checkpoint I/O now validates personal/persistent/writable destinations
+and a conservative remaining-save budget. CPU-only author_v1 and fresh
+document_v1 passed11checks with actualexit0 and zero GPU/checkpoint/model work.
+This validates the storage checks only, not full-library numerical capacity.
+See CHECKPOINT_STORAGE_GUARD.md and results/checkpoint_storage_guard_20261026.
+
 ### env: textop@92b1d1b1
 how: isolated venv on nlp03, shared base read only.
 tier: CPUs 4, GPU1 A6000, CUDA allocation cap 65%.
