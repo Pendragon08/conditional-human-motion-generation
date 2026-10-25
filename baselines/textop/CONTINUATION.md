@@ -806,3 +806,30 @@ Currentfits narrowly; allstagesmustrefreshlivefree/checkpointsize/resource/data
 acceptance beforeuse. FinalWBC/augmenteddata/video costexcluded, notfullstorage
 solved. reports/training_storage_20261026.md andlocalDsame-datebudgetsupersede
 oldEMA-onplanningestimate without erasingits historicalevidence.
+
+## Heartbeat2026-10-26 02:15: exact prepared-to-reference binding
+
+ExistingKIT fourworkers remain healthy,1888/2513 and0fail sampled02:10. Original
+Windows38236 andFKqueue own their continuation; no duplicate/restart issued.
+New read-only scripts/full_library_inputs.py actualexit0/129.17s on completed
+cohorts verifies5765originals/11530references/3755132originalframes, everyprepared
+andreferencefileSHA, exactdeclaredsource/split and original/mirror binding,
+body/joint order, and formaloriginal-only referenceorder fingerprint. KIT2513
+explicitlypending. It did not rerun privatebackup audit or startphysics/GPU.
+Result results/full_library_capacity_20261026/inputs_after_bmlrub_v1; do not rerun
+unchangedpartialinputcheck. Nextinputverification when KITFKexport finishes.
+
+New full_library_capacity_probe.py andsupervise_full_library_capacity.py are
+deployed drafts, syntaxchecked but NOT actualGPUvalidated. Their separate spec
+full-library-capacity-spec.json remains launch_enabledfalse, backupacceptance
+null. Actualdisabled_guard_v1 expectedexit1 prevented allSDK/output/checkpoint
+creation. This is a guardtest, not fullcapacity. SeeFULL_LIBRARY_CAPACITY_ENVIRONMENT.md
+for exact activation/author/freshdoc requirements. On all8278privatebackups and
+referenceexports complete, copy actualaggregatebackupreceipt withSHA, enable
+onlythecapacitygate, then author+freshdocument runs with newuniquenames. Theprobe
+uses originalsonly, same RecordedMotionCommand and ordering as formalfilter,
+8192env/24steps/20updates, no newcheckpoint. Existing exactresume evidence stays
+valid. Do not rerun old643-source capacity or alter sharedpackages. Full40k,
+realfilters, acceptedcorpus andVAE/LDM remainpending. Furtherformalstorage refresh
+and safercheckpointpreflight stillneeded before productionlaunch. User's
+automaticcontinuation authorization remains; notifyonlyactualmilestones.
