@@ -2,17 +2,19 @@
 import argparse,json,os,pathlib,re,signal,subprocess,sys,time
 ROOT=pathlib.Path('/data/code/ouyanghao/oyh/textop-reproduction-20261024')
 RAM=pathlib.Path('/dev/shm/ouyanghao_textop_20261025')
-p=argparse.ArgumentParser();p.add_argument('--run',required=True);p.add_argument('--job',required=True,choices=['export_witness','export643','export1653','ppo_witness']);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--run',required=True);p.add_argument('--job',required=True,choices=['export_witness','export643','export1653','export1330','export_bmlrub','export_kit','ppo_witness']);a=p.parse_args()
 assert re.fullmatch('[a-z0-9_]+',a.run) and os.getuid()==1013
 out=(RAM/'tracker_references'/a.run) if a.job.startswith('export') else (ROOT/'tracker_validation'/a.run)
 assert not out.exists(),'Immutable run already exists; use a new run name'
 cmd=['bash',str(ROOT/'scripts/run_tracker.sh')]
 if a.job.startswith('export'):
     expected='TEXTOP_TRACKER_REFERENCE_EXPORT_PASSED';entry='export_tracker_references.py'
-    if a.job=='export1653':
-        folder=RAM/'local1653_v1/prepared1653_v1'
+    cohorts={'export1653':('local1653_v1/prepared1653_v1',1653),'export1330':('cmu1330_v1/prepared1330_v1',1330),
+             'export_bmlrub':('bmlrub_indexed_v1/prepared_v1',2139),'export_kit':('kit_indexed_v1/prepared_v1',2513)}
+    if a.job in cohorts:
+        relative,expected_sources=cohorts[a.job];folder=RAM/relative
         progress=json.loads((folder/'progress.json').read_text())
-        assert progress['status']=='PREPROCESSING_FINISHED_FILTER_PENDING' and progress['completed_sequences']==1653 and progress['failed_sequences']==0
+        assert progress['status']=='PREPROCESSING_FINISHED_FILTER_PENDING' and progress['completed_sequences']==expected_sources and progress['failed_sequences']==0
         assert __import__('shutil').disk_usage(RAM).free>12*1024**3,'Leave shared-RAM reserve; source outputs retained'
         extra=['--manifest',str(folder/'prepared_manifest.private.jsonl')]
     else:
@@ -29,7 +31,7 @@ log=ROOT/'logs'/('tracker_job_'+a.run+'.log');start=time.monotonic();timed_out=F
 with log.open('xb') as target:
     child=subprocess.Popen(cmd,stdout=target,stderr=subprocess.STDOUT,start_new_session=True,
         preexec_fn=lambda:os.sched_setaffinity(0,sorted(os.sched_getaffinity(0))[:4]))
-    try:code=child.wait(timeout=28800 if a.job in ['export643','export1653'] else 600)
+    try:code=child.wait(timeout=28800 if a.job.startswith('export') and a.job!='export_witness' else 600)
     except subprocess.TimeoutExpired:
         timed_out=True;os.killpg(child.pid,signal.SIGTERM)
         try:code=child.wait(timeout=5)

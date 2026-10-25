@@ -1,0 +1,23 @@
+{
+  "warm_environment_canonical_hash": "b7a3bf0c",
+  "device": "cuda:1",
+  "torch_memory_fraction": 0.65,
+  "cpu_threads": 4,
+  "seed": 20261025,
+  "maximum_parallel_envs": 128,
+  "strict_rollouts_per_motion": 1,
+  "control_hz": 50,
+  "reset_start_frame": 0,
+  "reset_perturbations": "none; deterministic strict replay, own choice where paper detail unpublished",
+  "replace_episode_timeout_with_exact_motion_end": true,
+  "witness_reference_exports": ["export_author_v1"],
+  "witness_checkpoint": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_statistics_author_v4/completed_2.pt",
+  "witness_checkpoint_sha256": "2a755bd0a59c013465e0bd0efd75b3be52c440714cce53ab3385437e5aaf7459",
+  "witness_checkpoint_completed_iterations": 2,
+  "witness_expected_sources": 2,
+  "witness_supervisor_timeout_seconds": 600,
+  "formal_supervisor_timeout_seconds": 86400,
+  "formal_evaluation_enabled": false,
+  "formal_blocker": "No actual full40k trained policy or accepted full reference library yet",
+  "limitation": "A diagnostic on a two-iteration policy validates execution/accounting only; no motion acceptance or learned tracking-quality claim"
+}

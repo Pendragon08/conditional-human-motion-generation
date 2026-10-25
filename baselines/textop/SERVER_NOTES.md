@@ -100,3 +100,15 @@ on inference-mode metric reset (exit1, preserved); reset is scoped to inference
 mode, optimizer loading remains outside. Independent REPORT copied by collector
 when available. Only this latest source has the resumed-attempt fix validated.
 Formal training remains disabled pending complete inputs/full-library checks.
+
+### strict-replay executor diagnostic: warm tracker@b7a3bf0c
+configs/strict-replay-spec.json declared before dispatch. No package/shared
+source changes, GPU1/CPU4/Torch65%. New evaluator loads the explicitly hashed
+two-iteration diagnostic checkpoint and2original references, privileged557D
+inference only, no optimizer steps. Deterministic start0, reset perturbations
+disabled for strict replay; standard height/orientation terms restored.
+Default10stimeout replaced with exactT-1transition motion-end timeout. All
+per-motion logs stay private; diagnostic cannot emit accepted evidence. Actual
+SDK author and independent documented run required. Formal evaluation disabled
+until real40kpolicy and full reference corpus exist. Pure17case coverage/schema
+tests alone are not SDK validation or tracking success.
