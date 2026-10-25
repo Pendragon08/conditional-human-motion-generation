@@ -404,3 +404,53 @@ the original paper-profile differences and all prior resource/data safeguards.
 paper-step2.json records the automatic sequence and closed-loop authorization.
 launch_enabled remainsfalse while prerequisites are unmet; it is an evidence
 gate, not a requirement for another human approval. Current jobs keep running.
+
+## Heartbeat2026-10-25 16:30: strict SDK executor and FK continuation
+
+Preflight GPU1used7823MiB,data4.68GiB/home6.23GiB/RAM72.8GiBfree. CMUGMR848
+then901/1330,0fail, current workers left intact. New evaluator/scripts/spec
+declared before actual SDK dispatch, warm unchangedb7a3bf0c. Formal mode still
+disabled until real40kcheckpoint/full corpus exist.
+
+- evaluate_strict_filter.py + supervise_strict_replay.py implemented. Actual
+  policy inference, exact trial coverage/firstfailure, captured termination
+  causes,0optimizer steps; emits private protocolv2evidence only in formal mode
+  with SHA-bound actual40ktraining+exit and reference fingerprint. Logs/private
+  source mapping stay server-side. New STRICT_REPLAY_ENVIRONMENT.md.
+- Author_v1 exited0 but both trajectories falsely terminated on first control
+  due stale/zero body_pos_relative_w reference buffers after reset. Pinned code
+  updates these only after termination computation. Historical source preserved
+  in sources/strict_replay_author_v1 and serverrunfolder; no source erased.
+- Author_v2+independentdocument_v1 align reset references with the exact pinned
+  transform, without time/EMA/physical-state change. Initialbodymaxerror.02697m,
+  16controlcalls/64physicssteps,2failed originals/0complete; strictheightterms
+  remain. Latest fullsource before addingfixture preserved in sources/strict_
+  replay_author_v2. This reset fix is also needed for final WBC strict tracking
+  initialization; don't silently treat old first-step height failures as data
+  failures. Relaxed teacher currently removes height terms; audit initial reward
+  alignment separately if integrating the same correction into training.
+- Author_v3 adds separate explicitly2frame prefix control-flow fixtures, not
+  original motion passes.17vectorcalls/68scene steps,2failed full originals,
+  0fullcompletions, plus2completeprefixfixtures. It verifies SDK motion-end
+  handling only. SourceSHA5c8e0bbec3486580596916eb8fcc823d9c47f46880c8b39068b7655b4ecc4ce0,
+  specSHAe5f95521cb54084f550362053e9d130595b51eb9895569ff18cc600aef86188f.
+  Actualexit0; nativeclosefalse/20sfallbacktrue. Independent document_v2 also
+  actualexit0/no timeout,44checks passed with same source/spec;17calls/68scene
+  steps/0updates,2failed originals/0fullcompletions plus2completeprefixfixtures.
+  No data acceptance or full trained-policy quality claim.
+- New reference-only serial queuePID3527552, spec12fb1eeb91429c16c224b72657d4d638cc33bdc6738300b2958af4ecbf031fc9,
+  configs/reference-export-queue.json, scriptcontinue_reference_exports.py.
+  State receipts/reference_export_queue_v1.json, lockflock. Waits exact full GMR
+  success/count0fail, RAM12/data2/GPU1free20GiB and no ownSDK before exports
+  export1330_v1→export_bmlrub_v1→export_kit_v1. Does not duplicate GMR/archive or
+  train/delete. Existing supervisionsupportscasesfull1330/2139/2513; same warmFK
+  entry/source. Inspect livequeue before any restart/extra export launch.
+
+Run collect_strict_replay.py plus normalcollectors/publish to update localD and
+GitHub evidence. Existing trackercollector now includes strictdiagnostics/queue
+and futureFKcohorts. Formal enablement sequence (no new human approval): after
+all refs/capacity validate, enable filter-training-plan and train40k; after real
+teacher completion, enable strict-replay formal evaluation; only after real
+filter/accepted corpus/runtime/cache checks enable paper-step2 and trainVAE/LDM.
+Do not keep any gatefalse merely to wait for user confirmation; do not bypass
+evidence gates or interpret the2framefixture as original motion acceptance.

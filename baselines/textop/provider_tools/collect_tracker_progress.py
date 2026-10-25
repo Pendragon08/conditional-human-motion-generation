@@ -8,23 +8,24 @@ import pathlib,json,subprocess,shutil
 r=pathlib.Path('/data/code/ouyanghao/oyh/textop-reproduction-20261024');files={}
 for label in ['author_v1','author_v2','author_v3','author_v4','author_v5','document_v1','document_v2','environment_probe_v1','ppo_author_v1','ppo_author_v2','ppo_document_v1',
               'capacity_author_v1','capacity_document_v1','initialization_author_v1','initialization_document_v1',
-              'filter_statistics_author_v1','filter_statistics_author_v2','filter_statistics_author_v3','filter_statistics_author_v4','filter_statistics_document_v1','filter_statistics_document_v2']:
+              'filter_statistics_author_v1','filter_statistics_author_v2','filter_statistics_author_v3','filter_statistics_author_v4','filter_statistics_document_v1','filter_statistics_document_v2',
+              'strict_replay_author_v1','strict_replay_author_v2','strict_replay_author_v3','strict_replay_document_v1','strict_replay_document_v2']:
  for leaf in ['receipt.json','audit_correction.json','native_teardown_stack.txt']:
   p=r/'tracker_validation'/label/leaf
   if p.exists():files[label+'/'+leaf]=p.read_text(errors='replace')
- for prefix in ['tracker_kernel_','tracker_job_','tracker_capacity_','tracker_initialization_','filter_policy_']:
+ for prefix in ['tracker_kernel_','tracker_job_','tracker_capacity_','tracker_initialization_','filter_policy_','strict_replay_']:
   p=r/'receipts'/(prefix+label+'_exit.json')
   if p.exists():files[label+'/supervisor_'+prefix+'.json']=p.read_text()
   p=r/'logs'/(prefix+label+'.log')
   if p.exists():files[label+'/'+prefix+'.log']=p.read_text(errors='replace')
-for label in ['export_author_v1','export643_v1','export1653_v1']:
+for label in ['export_author_v1','export643_v1','export1653_v1','export1330_v1','export_bmlrub_v1','export_kit_v1']:
  p=pathlib.Path('/dev/shm/ouyanghao_textop_20261025/tracker_references')/label/'receipt.json'
  if p.exists():files[label+'/receipt.json']=p.read_text()
  p=r/'receipts'/('tracker_job_'+label+'_exit.json')
  if p.exists():files[label+'/supervisor.json']=p.read_text()
  p=r/'logs'/('tracker_job_'+label+'.log')
  if p.exists():files[label+'/export.log']=p.read_text(errors='replace')
-for leaf in ['reference643_dynamics_audit.json','filter_statistics_author_v1_failure_stop.json']:
+for leaf in ['reference643_dynamics_audit.json','filter_statistics_author_v1_failure_stop.json','reference_export_queue_v1.json']:
  p=r/'receipts'/leaf
  if p.exists():files['additional/'+leaf]=p.read_text()
 print(json.dumps({'files':files,'space':{x:shutil.disk_usage(x).free for x in ['/data','/home/ouyanghao','/dev/shm']},
@@ -34,7 +35,7 @@ data=json.loads(remote(code,timeout=90))
 for name,value in data.pop('files').items():
     p=DEST/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(value,encoding='utf-8')
 TASK=REPO.parent.parent/'textop_reproduction_20261024'
-for folder in ['tracker_doc_witness_v1','tracker_doc_witness_v2','tracker_ppo_doc_witness_v1','tracker_capacity_doc_witness_v1','tracker_initialization_doc_witness_v1','filter_statistics_doc_witness_v1','filter_statistics_doc_witness_v2']:
+for folder in ['tracker_doc_witness_v1','tracker_doc_witness_v2','tracker_ppo_doc_witness_v1','tracker_capacity_doc_witness_v1','tracker_initialization_doc_witness_v1','filter_statistics_doc_witness_v1','filter_statistics_doc_witness_v2','strict_replay_doc_witness_v1','strict_replay_doc_witness_v2']:
     p=TASK/folder/'REPORT.md'
     if p.exists():
         target=DEST/folder/'REPORT.md';target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(p,target)
@@ -47,6 +48,7 @@ ppo=read('ppo_author_v2');independent=read('ppo_document_v1');export=read('expor
 capacity=read('capacity_author_v1');capacity_doc=read('capacity_document_v1')
 initialization=read('initialization_author_v1');statistics=read('filter_statistics_author_v4');statistics_doc=read('filter_statistics_document_v2')
 export1653=read('export1653_v1')
+strict=read('strict_replay_author_v3');strict_doc=read('strict_replay_document_v2')
 backup_path=BASE/'results/data_preparation_20261025/reference643_backup.json'
 backup=json.loads(backup_path.read_text(encoding='utf-8')) if backup_path.exists() else {}
 now=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat()
@@ -56,6 +58,7 @@ summary={'time_beijing':now,'prepared_source_sequences':prepared,'physical_filte
          'ppo_author':ppo,'ppo_document':independent,'reference_export643':export,'reference_export643_backup':backup,'resources':data,
          'capacity643_author':capacity,'capacity643_document':capacity_doc,'initialization_audit':initialization,
          'filter_statistics_author':statistics,'filter_statistics_document':statistics_doc,'reference_export1653':export1653,
+         'strict_replay_author':strict,'strict_replay_document':strict_doc,
          'unresolved':['8192-env memory/stability with ALL future references; current643-source capacity alone passed','full40k policy and two-round physical filtering',
                        'accepted corpus loader/statistics/text cache','fullVAE200k and LDM300k','native SDK stop/close hang; bounded diagnostic fallback disclosed']}
 (DEST/'summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
@@ -77,6 +80,8 @@ report=f'''# TextOp 数据筛选器集成与生成器训练进度
 - 独立初始化核查已完成：1,286条轨迹各从第0帧开始，根位置最大误差约1.19×10⁻⁷m，466个初始姿态触及软关节裁剪；20步直接参考PD出现37次终止和接触冲击。说明根坐标映射吻合，但没有证明动作可由训练后控制器稳定跟踪。诊断零重置扰动属于对照设置，未替换正式训练的官方重置分布。
 - 新增筛选统计与恢复层：作者`{statistics.get('status','PENDING')}`、独立`{statistics_doc.get('status','PENDING')}`，40次真实更新后逐项恢复模型、Adam、两套归一化、EMA失败统计及独立真实尝试计数；初始重置不计为真实成功。正式40,000轮训练入口已实现，但当前仍被数据与完整库验收条件禁用。
 - 新1,653条源动作已完成重定向并逐条SHA校验私有备份，CMU1,330条可用源动作已接续处理。其仿真参考导出当前状态`{export1653.get('status','PENDING')}`，已完成{export1653.get('exported_source_sequences',0)}/1,653条；这是参考构建，没有实施动态筛选。
+- 严格回放执行器已实现：最新作者`{strict.get('status','PENDING')}`、独立文档执行`{strict_doc.get('status','PENDING')}`。2条完整原动作的短策略回放均失败，未接纳动作；另外明确缩短为2帧的独立控制流夹具验证SDK自然结束信号，不能计成完整原动作通过。首轮发现重置后相对参考缓冲区零值/旧值会导致首步高度误判，已用官方同一坐标变换刷新缓冲区，未推进时间、放宽阈值或修改物理状态。正式40,000轮策略评估仍未开始。
+- 新增单一串行参考导出工作者：仅在各GMR批次实际完成、资源余量满足且无其他SDK任务时，接续CMU→BMLrub→KIT参考导出；不重启GMR/备份，不执行训练或删除。输出仍是待动态筛选的参考缓存。
 
 ## 保留的失败与差异
 

@@ -112,3 +112,28 @@ per-motion logs stay private; diagnostic cannot emit accepted evidence. Actual
 SDK author and independent documented run required. Formal evaluation disabled
 until real40kpolicy and full reference corpus exist. Pure17case coverage/schema
 tests alone are not SDK validation or tracking success.
+
+Strict author_v1 exited0 but first-step failures were contaminated by stale/
+zero aligned-reference buffers. Preserved sources/strict_replay_author_v1 and
+raw receipts/logs. Author_v2+independentdocument_v1 refreshed the pinned exact
+alignment transform after reset, no time/EMA/physical-state change:16control
+calls,64scene steps,2failed originals,0completions; initial body error.02697m.
+Author_v3 adds a distinct2frame prefix control-flow fixture only, not original
+motion acceptance. It passed17calls/68steps,2failed originals plus2complete
+prefix fixtures,0optimizer steps,actualexit0. Latest source5c8e0bbe..., spec
+e5f95521.... Independent STRICT_REPLAY_ENVIRONMENT.md v2 run pending. No full
+teacher or real corpus filtering completion claimed. Nativefallback remains.
+
+Latest validation: strict_replay_author_v3 and independentdocument_v2 both
+actualexit0/no timeout, source5c8e0bbe.../spece5f95521...,17calls/68scene steps,
+0updates,2failed fulloriginals/0fullcompletions. Separate2framefixtures verify
+SDK motion-end handler, full_original_motion_passes0, originals unchanged.
+Independent44checks passed. This validates replay/accounting paths, not full
+motion success or actual40kpolicy filtering. Newest source validated; all
+earlier records and historical sources retained.
+
+Reference-only queue: configs/reference-export-queue.json written before
+launch, warm unchanged export kernel. Server workerPID3527552, state receipts/
+reference_export_queue_v1.json, flock-locked. Waits each exact full GMR cohort,
+RAM12GiB/data2GiB/GPU1free20GiB and no own headless SDK before serial exports
+1330/BMLrub2139/KIT2513. No retarget, backup duplication, training or deletion.

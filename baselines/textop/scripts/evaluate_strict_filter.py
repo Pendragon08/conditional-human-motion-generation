@@ -162,6 +162,24 @@ try:
     assert not pending,'Incomplete whole-motion rollout; no acceptance artifact emitted'
     receipt.update(finished_trials=completed_trials+failed_trials,failed_trials=failed_trials,complete_trials=completed_trials,
                    actual_vectorized_control_calls=control_calls);save()
+ prefix_probe=None
+ if diagnostic:
+  # Separate, explicitly shortened two-frame control-flow fixture. It can
+  # validate the SDK natural-end path but NEVER adds a passing full source.
+  # All original85/90frame trial results above remain unchanged and private.
+  with torch.inference_mode():
+   observations,_=gym_env.reset();align_reset_reference();observations=raw.observation_manager.compute()
+   motion.motion_length.fill_(2)
+   observations,rewards,terminated,truncated,extras=gym_env.step(policy(observations['policy']))
+   control_calls+=1;physical_steps+=cfg.decimation
+   fixtures=[]
+   for slot in range(env_count):
+    c=StrictCoverage(2);c.observe(terminated=bool(terminated[slot]),motion_end=bool(truncated[slot]));fixtures.append(c.record())
+   assert all(x['complete'] and not x['failed'] for x in fixtures),'SDK natural-end control-flow fixture failed'
+   assert bool(captured['motion_complete'].all())
+   prefix_probe={'kind':'two_frame_prefix_control_flow_fixture_only','fixture_envs':env_count,'reference_frames':2,
+                 'control_calls':1,'complete_fixture_trials':env_count,'full_original_motion_passes':0,
+                 'original_reference_arrays_unchanged':True,'sdk_motion_end_branch_verified':True}
  strict={'status':'STRICT_REPLAY_DIAGNOSTIC_FINISHED' if diagnostic else 'STRICT_ENTIRE_MOTION_ROLLOUTS_FINISHED',
          'diagnostic_only':diagnostic,'policy_checkpoint_sha256':checkpoint_sha,'reference_fingerprint':fp,
          'standard_terminations_restored':True,'pelvis_height_threshold_m':.25,'end_effector_height_threshold_m':.5,
@@ -187,7 +205,7 @@ try:
     peak_torch_allocated_bytes=torch.cuda.max_memory_allocated(a.device),
     completion_branch_exercised=completed_trials>0,limitation=cfgspec['limitation'] if diagnostic else plan['corpus_scope'])
  receipt.update(reset_reference_alignment_refreshed_without_time_advance=True,initial_max_tracked_body_error_m=initial_max_error,
-                termination_term_event_counts=termination_counts)
+                termination_term_event_counts=termination_counts,diagnostic_prefix_probe=prefix_probe)
  save();print(receipt['status'],flush=True)
 except BaseException as error:
  receipt.update(status='FAILED',error=repr(error),traceback=traceback.format_exc());save();raise

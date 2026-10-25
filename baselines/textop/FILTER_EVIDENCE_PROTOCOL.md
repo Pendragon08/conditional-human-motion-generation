@@ -2,8 +2,11 @@
 
 This is evidence bookkeeping, not a simulated evaluator. No motion has passed
 physical filtering merely because this code's synthetic regression tests pass.
-The actual entire-motion SDK rollout executor still must be implemented and
-validated against the fixed teacher and reference library.
+The SDK executor is now implemented in evaluate_strict_filter.py. Diagnostic
+failure recording and a separately labeled2frame end-handling fixture have
+been exercised in real dynamics. Actual full40kpolicy/full-library evaluation
+still remains; these diagnostics accept no motions. See
+STRICT_REPLAY_ENVIRONMENT.md for the documented source and scope.
 
 `scripts/apply_tracking_filter.py` now rejects the earlier header-only schema.
 No accepted dataset existed under that schema. It reads five SHA-verified

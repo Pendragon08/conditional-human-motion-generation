@@ -9,7 +9,7 @@ not a trained tracking result or accepted data. Two original references have
 Fresh independent command, exactly once unchanged in PowerShell:
 
 ```powershell
-ssh -o BatchMode=yes -o ConnectTimeout=15 -o ServerAliveInterval=30 -i 'C:/Users/Pende/.ssh/id_ed25519' ouyanghao@10.147.17.32 'python3 /data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_strict_replay.py --run strict_replay_document_v1 --mode witness'
+ssh -o BatchMode=yes -o ConnectTimeout=15 -o ServerAliveInterval=30 -i 'C:/Users/Pende/.ssh/id_ed25519' ouyanghao@10.147.17.32 'python3 /data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_strict_replay.py --run strict_replay_document_v2 --mode witness'
 ```
 
 Require actualexit0, no timeout, TEXTOP_STRICT_REPLAY_SUPERVISED_EXIT0 and
@@ -19,9 +19,16 @@ diagnostic_dynamic_rollouts_executedtrue,physical_filter_executedfalse,
 dataset_acceptedfalse,full_generator_training_startedfalse and closed writers.
 Require reset_reference_alignment_refreshed_without_time_advancetrue; retain
 complete/failed counts and completion_branch_exercised as observed. All failures
-are permissible for this untrained diagnostic, but do not claim an unexercised
-SDK natural-completion branch passed. Pure synthetic accounting tests alone
-cover that branch until a genuine dynamic completion is observed.
+are permissible for this untrained diagnostic. A separate diagnostic_prefix_
+probe uses explicitly shortened2frame control-flow fixtures, one real SDK step
+each, to exercise natural-end signal handling. Require its
+sdk_motion_end_branch_verifiedtrue and full_original_motion_passes0. Those
+fixtures NEVER add passing full motions or acceptance. The original85/90frame
+reference arrays/trial results stay unchanged. A false
+completion_branch_exercised still means no FULL original completed; the2frame
+fixture verifies SDK end handling only. Expected latest author3:17vectorized
+calls/68scenephysicssteps,2failed full trials,0complete full trials, plus2
+complete prefix fixtures. Verify actual values and report differences.
 
 Standard pelvisheight0.25m/EEheight0.5m/orientation term restored. Deterministic
 frame0 reset is an explicitly declared evaluation choice. Default10stimeout is
@@ -36,13 +43,13 @@ released reference-alignment transform after reset without advancing time,
 changing EMA, relaxing thresholds or changing physical states. Failure term
 counts and initial body discrepancy are recorded. The policy is unchanged.
 
-Public evidence paths on server: tracker_validation/strict_replay_document_v1/
+Public evidence paths on server: tracker_validation/strict_replay_document_v2/
 receipt.json and native_teardown_stack.txt; receipts/strict_replay_strict_replay_
-document_v1_exit.json; logs/strict_replay_strict_replay_document_v1.log. Copy only
+document_v2_exit.json; logs/strict_replay_strict_replay_document_v2.log. Copy only
 these public artifacts. Do not copy checkpoints, per-motion private JSON or
 reference arrays, inspect/repair source, retry, stop other tasks or publish.
 Verify source/spec hashes without source inspection. Save command/stdout and
 doc-vs-reality report in work/textop_reproduction_20261024/strict_replay_doc_
-witness_v1. Nativeclose remains blocked; after saved output and closed writers,
+witness_v2. Nativeclose remains blocked; after saved output and closed writers,
 20sfallback can exit only this completed child. Distinguish actualexit0 from
 native_close_returnedfalse/teardown_fallback_usedtrue.
