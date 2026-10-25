@@ -365,3 +365,28 @@ statistics evidence and export1653 summaries plus independent reports. Run
 collect_data_preparation first, collect_storage_cleanup as needed, then tracker
 collector and publish.py. Restricted motion arrays and per-motion text/index
 stay private. Refresh localD mainHTML; avoid publishing RAM private manifests.
+
+## Heartbeat2026-10-25 15:30: evidence-gate next step
+
+Live preflight: GPU1about7823MiB inuse by preserved oldpausedrun; data4.68GiB
+free,home6.23GiB,RAM73GiBfree,MemAvailable176GiB. ServerCMUGMR3483711 healthy,
+374/1330then404/1330 with0fail; existing Windows24952/53968/23184 all alive.
+No worker restart, cleanup, new SDK run or generator launch performed.
+
+Completed independent CPU step while GMR continues: strict_tracking_coverage.py
+and revised apply_tracking_filter.py require protocoltextop.dynamic_filter.v2,
+SHA-bound finalcheckpoint/trainingreceipt/actualexit, actual40000/800000counts,
+reference fingerprint, all realattempted references, consistent EMAp, exact
+strict eligible set and entireT-1framecoverage orfirstfailure.10s timeout is
+incomplete evidence. No accepted data existed under earlierheader-onlyschema.
+This is consistency checking, not cryptographic proof of trusted simulation;
+actual executor provenance is still essential. FILTER_EVIDENCE_PROTOCOL.md.
+
+17synthetic regression tests passed locally and on serverPython3.8.10, realexit0,
+no packages/dependency mutation, no physics or optimizer calls. Server receipts/
+filter_evidence_v2_20261025.json/logs counterpart and public results/filter_
+protocol_20261025 retain exact sources/outputhashes. Positive test fixtures are
+explicit NOT_A_TRAINED_POLICY markers, not actual acceptance or training data.
+New provider_tools/collect_filter_protocol.py saves localD and GitHub reports.
+Strict rollout executor remains unimplemented; next add it against this schema
+with diagnostic-only mode first, then actual trained40kpolicy after data ready.
