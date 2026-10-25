@@ -259,8 +259,8 @@
       "target_dof": 29,
       "feature_dim": 69,
       "output_fps": 50,
-      "completed_sequences": 1227,
-      "mirrored_sequences": 1227,
+      "completed_sequences": 1286,
+      "mirrored_sequences": 1286,
       "failed_sequences": 0,
       "total_requested": 1653,
       "physical_filter_passed": false,
@@ -268,8 +268,8 @@
       "status": "RUNNING",
       "cpu_only": true,
       "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
-      "processed": 1227,
-      "updated_utc": "2026-10-25T03:11:16Z"
+      "processed": 1286,
+      "updated_utc": "2026-10-25T03:36:40Z"
     },
     "raw_reconciliation": {
       "release_sequences": 8291,
@@ -502,7 +502,7 @@
       "motion_alignment_validated": false
     },
     "babel_alignment": {
-      "time_beijing": "2026-10-25T11:11:28.371505+08:00",
+      "time_beijing": "2026-10-25T11:12:01.085831+08:00",
       "status": "ORIGINAL_BABEL_LABELS_VALIDATED_FOR_ALL_RELEASE_PAIRS",
       "counts": {
         "release_sequences": 8291,
@@ -530,6 +530,8 @@
         "train": "5da8185d4374670682cd6e3391d8635e4297ecebf5fe19394d28c2ca08030c6d",
         "val": "50d1471db5221458ff959dea3a739e6695ce130fe70f75cc9a6446ee1a50b5ba"
       },
+      "pinned_official_commit": "ef6555fb174c9b5c44945a62c7ffc77b5ddbbf22",
+      "official_pack_dataset_sha256": "543338e15f0c8d4cc84b9e569c94dacb51c1264703704004668f53490af87df7",
       "verified_pair_index_sha256": "2e293ec4966f3c489d11ea7774c141319c294e10bf701881ea0d6421a9bcb39c",
       "source_matching": "official pack_dataset.process_babel_json drops first wrapper directory; then explicit aliases and literal space/underscore normalization; no fuzzy matching",
       "initial_path_wrapper_mismatches_resolved": 244,
@@ -584,16 +586,24 @@
       ]
     },
     "cmu_resume": {
-      "time_beijing": "2026-10-25T11:11:24.709334+08:00",
-      "status": "DOWNLOADING",
+      "time_beijing": "2026-10-25T11:36:38.234283+08:00",
+      "status": "LOCAL_ORIGINAL_ARCHIVE_VERIFIED",
       "subset": "CMU",
       "official_url": "https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/gender_specific/mosh_results/CMU.tar.bz2",
       "expected_bytes": 11572134418,
       "credentials_stored": false,
       "old_D_partial_retained": true,
       "raw_data_published": false,
-      "bytes_received": 9105800639,
-      "attempt": 1
+      "sha256": "8a276bd0ed23fa72202f80f1dcf8fd9a336eb053ad86233cd47a9a2f51210270",
+      "archive_bytes": 11572134418,
+      "unpacked_file_bytes": 27261391446,
+      "regular_files": 2080,
+      "npz_files": 2079,
+      "compressed_crc_and_tar_headers_verified": true,
+      "motion_arrays_validated": false,
+      "extracted": false,
+      "indexed_retargeting_executed": false,
+      "physical_filter_executed": false
     },
     "asset_authorization_and_storage": {
       "recorded_beijing": "2026-10-25T11:11:28.542824+08:00",
@@ -797,21 +807,21 @@
       }
     },
     "prepared1653_v1": {
-      "sequences": 1227,
-      "frames50": 450602,
-      "paired_annotations_including_saved_mirrors": 11092,
+      "sequences": 1286,
+      "frames50": 538166,
+      "paired_annotations_including_saved_mirrors": 12868,
       "rejected_annotations": 3,
-      "codec_max_error_m_or_rad": 2.0224157418202715e-07,
+      "codec_max_error_m_or_rad": 2.2182229841849477e-07,
       "joint_skeleton_mirror_max_error_m": 9.999999870113907e-06,
       "splits": {
-        "train": 930,
-        "val": 297
+        "train": 969,
+        "val": 317
       }
     }
   },
   "space_bytes": {
-    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 3786067968,
-    "/home/ouyanghao": 1097523200
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 3786022912,
+    "/home/ouyanghao": 1097359360
   },
   "missing_raw_by_dataset": {
     "BMLrub": 2139,
