@@ -70,3 +70,22 @@ and original paths retained as links. Details in personal_storage_cleanup report
 
 ### capacity diagnostic: textop-tracker@b7a3bf0c / shape@37c64682
 Declarative configs/tracker-capacity-spec.json written before dispatch. Warm unchanged dependencies, GPU1/CPU4/Torch65%. Completed643-source library(1286 trajectories,946700 frames),8192envs, one24-step PPO iteration/20 Adam updates only. Verify actual observations, finite gradients/checkpoint and measured memory. Full-corpus capacity,40k formal filtering and generator readiness remain false. Author followed by fresh verbatim document witness required before marking this shape validated.
+
+Validation update2026-10-25: capacity_author_v1 and independent
+capacity_document_v1 both exit0/196608transitions/20actualAdamupdates, matching
+source/spec and peakTorch10292943872bytes. Initial random policy produced huge
+finite losses/contact spikes; these runs certify capacity, not stability or
+tracking quality.1286trajectory reference-PD initialization audit author and
+document runs also exit0; roots agree within1.1921e-7m,466initial poses clipped
+at soft joint limits.20PD steps had contact spikes and37termination events,
+not physical acceptance. Native-close fallback remains disclosed.
+
+### recorded filter-policy runtime: warm tracker@b7a3bf0c
+configs/filter-training-plan.json written before dispatch. Official PPO/sampler
+unchanged; independent raw attempt recording and atomic checkpoint metadata
+added. Formal launch remains disabled pending full library/readiness. First
+8env diagnostic failed after20updates restoring an upstream inference-mode
+EMA tensor; failure/checkpoint retained. Restore now runs in inference mode.
+Author_v2 passed40actualupdates and exact model/Adam/normalizer/EMA/raw-count
+restoration; fresh FILTER_TRAINING_ENVIRONMENT.md execution still required.
+No40k training or filtering or full generator launch has occurred.
