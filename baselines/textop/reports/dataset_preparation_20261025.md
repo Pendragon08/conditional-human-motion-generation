@@ -1,6 +1,6 @@
 # TextOp 数据准备核查与重建记录
 
-更新时间：2026-10-25 21:50:17 北京时间。
+更新时间：2026-10-25 22:03:48 北京时间。
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
@@ -53,13 +53,13 @@
 CMU完整原始包已通过CRC/tar校验；其选定SMPL-X G版本覆盖1,343条所需索引中的1,330条，另13条来源在该包内不存在，已保留私有缺失清单，未计为已处理。1,330条相关输入直接流式传输到个人RAM工作目录，逐文件SHA256核验后，等待前一批完成且持久归档成功，再串行执行同一GMR代码；不打断当前任务。当前CMU调度状态：
 ```json
 {
-  "status": "BACKING_UP_PRIVATE_PREPARED_OUTPUT",
-  "time_beijing": "2026-10-25T20:22:26.480848+08:00",
+  "status": "PREPROCESSING_BACKED_UP_FILTER_PENDING",
+  "time_beijing": "2026-10-25T22:03:46.463551+08:00",
   "target": 1330,
   "requested_indexed_sources": 1343,
   "missing_from_selected_official_export": 13,
   "raw_bytes": 18804784599,
-  "archive_sha256": "8a276bd0ed23fa72202f80f1dcf8fd9a336eb053ad86233cd47a9a2f51210270",
+  "archive_sha256": "a3681df57899f4771457301d94f664a6a46afcc7f8a1871f79ca27c0fb11e268",
   "source_durable": "complete C-drive original archive; private original-BABEL-verified index on D",
   "ram_working_copy": true,
   "physical_filter_executed": false,
@@ -119,7 +119,8 @@ CMU完整原始包已通过CRC/tar校验；其选定SMPL-X G版本覆盖1,343条
       "val": 377
     },
     "paired_segments": 19692
-  }
+  },
+  "archive_bytes": 1048036153
 }
 ```
 
@@ -299,7 +300,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 
 本轮用户已回复AMASS登录完成，并明确同意BABEL独立许可及下载。CMU独立下载会话已完成官网文件主机认证；本次采样状态为LOCAL_ORIGINAL_ARCHIVE_VERIFIED。BABEL官方原始包已独立下载并安装到服务器；8,291条运动对应50,004条分段标注的ID、来源、文本、类别与时间均核对一致。原始标注位于D盘个人datasets/BABEL及服务器data_preparation_20261025/babel_v1_0目录，已核对SHA256；不公开发布原始标注。详见[BABEL独立核查](babel_original_alignment_20261025.md)。
 
-根据三个下载器当前校验凭据，BMLrub、CMU、KIT合计尚需续传约0.00GiB；完整校验通过的包无需重复下载。当前C盘余2.07GiB、D盘余8.00GiB。继续为处理结果和检查点保留余量；服务器容量另行核查。现有GMR队列继续运行，TotalCapture仍跳过。
+根据三个下载器当前校验凭据，BMLrub、CMU、KIT合计尚需续传约0.00GiB；完整校验通过的包无需重复下载。当前C盘余2.06GiB、D盘余7.82GiB。继续为处理结果和检查点保留余量；服务器容量另行核查。现有GMR队列继续运行，TotalCapture仍跳过。
 
 重复缓存清理记录（全部原始数据包、已处理数据、检查点、唯一实验记录均保留）：
 ```json
@@ -384,7 +385,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 }
 ```
 
-数据盘约剩2.69GiB、系统盘约剩6.21GiB。CMU重定向已完成，私有备份正在传输核验；后续BMLrub、KIT按各自前批持久备份条件串行接续，保留失败理由。全部候选处理和参考构建完成后还须运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
+数据盘约剩2.69GiB、系统盘约剩6.21GiB。CMU预处理与私有备份已完成；后续BMLrub、KIT按各自前批持久备份条件串行接续，保留失败理由。全部候选处理和参考构建完成后还须运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
 
 代码与聚合证据同步GitHub；包含原始动作、人体模型、逐条文本的资产遵循许可保存在个人目录和本地，GitHub不公开原始/重定向数据文件。新输出均明确标为待物理筛选。PhyGile、ReactiveBFM继续暂停，未改动其数据或实验记录。
 
