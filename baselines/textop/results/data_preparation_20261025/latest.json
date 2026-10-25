@@ -259,8 +259,8 @@
       "target_dof": 29,
       "feature_dim": 69,
       "output_fps": 50,
-      "completed_sequences": 1500,
-      "mirrored_sequences": 1500,
+      "completed_sequences": 1548,
+      "mirrored_sequences": 1548,
       "failed_sequences": 0,
       "total_requested": 1653,
       "physical_filter_passed": false,
@@ -268,8 +268,8 @@
       "status": "RUNNING",
       "cpu_only": true,
       "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
-      "processed": 1500,
-      "updated_utc": "2026-10-25T05:20:55Z"
+      "processed": 1548,
+      "updated_utc": "2026-10-25T05:43:21Z"
     },
     "raw_reconciliation": {
       "release_sequences": 8291,
@@ -606,8 +606,8 @@
       "physical_filter_executed": false
     },
     "bmlrub_resume": {
-      "time_beijing": "2026-10-25T13:21:07.448388+08:00",
-      "status": "DOWNLOADING",
+      "time_beijing": "2026-10-25T13:43:07.037005+08:00",
+      "status": "LOCAL_ORIGINAL_ARCHIVE_VERIFIED",
       "subset": "BMLrub",
       "official_url": "https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/gender_specific/mosh_results/BMLrub.tar.bz2",
       "expected_bytes": 12919496284,
@@ -615,11 +615,19 @@
       "old_partial_retained_until_full_validation": true,
       "raw_data_published": false,
       "volume_reserve_bytes": 6442450944,
-      "bytes_received": 11905908156,
-      "attempt": 1
+      "sha256": "7b7dc34e81c0b55cf7ff692c319f84aae2f7782868babab2cb5ba8346abae1fa",
+      "archive_bytes": 12919496284,
+      "unpacked_file_bytes": 25442488121,
+      "regular_files": 3173,
+      "npz_files": 3172,
+      "compressed_crc_and_tar_headers_verified": true,
+      "motion_arrays_validated": false,
+      "extracted": false,
+      "indexed_retargeting_executed": false,
+      "physical_filter_executed": false
     },
     "kit_resume": {
-      "time_beijing": "2026-10-25T13:21:19.845256+08:00",
+      "time_beijing": "2026-10-25T13:43:28.756151+08:00",
       "status": "DOWNLOADING",
       "subset": "KIT",
       "official_url": "https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/gender_specific/mosh_results/KIT.tar.bz2",
@@ -628,7 +636,7 @@
       "old_partial_retained_until_full_validation": true,
       "raw_data_published": false,
       "volume_reserve_bytes": 6442450944,
-      "bytes_received": 9600761856,
+      "bytes_received": 12771655680,
       "attempt": 1
     },
     "bmlrub_indexed_queue": {
@@ -648,7 +656,7 @@
       "full_training_started": false
     },
     "asset_authorization_and_storage": {
-      "recorded_beijing": "2026-10-25T13:13:35.149253+08:00",
+      "recorded_beijing": "2026-10-25T13:43:32.382186+08:00",
       "amass": {
         "user_reported_login_complete": true,
         "observed_main_download_table_accessible": true,
@@ -670,14 +678,14 @@
         "original_alignment_checked": true
       },
       "storage": {
-        "C_free_bytes": 8861712384,
-        "D_free_bytes": 13169594368,
+        "C_free_bytes": 7246602240,
+        "D_free_bytes": 7528579072,
         "remaining_archives": [
           {
             "subset": "BMLrub",
             "expected_archive_bytes_from_prior_official_manifest": 12919496284,
-            "current_partial_bytes": 11025104316,
-            "remaining_bytes_estimate": 1894391968
+            "current_partial_bytes": 12919496284,
+            "remaining_bytes_estimate": 0
           },
           {
             "subset": "CMU",
@@ -688,15 +696,15 @@
           {
             "subset": "KIT",
             "expected_archive_bytes_from_prior_official_manifest": 13182414052,
-            "current_partial_bytes": 8678014976,
-            "remaining_bytes_estimate": 4504399076
+            "current_partial_bytes": 12784238592,
+            "remaining_bytes_estimate": 398175460
           }
         ],
-        "total_additional_archive_bytes_estimate": 6398791044,
+        "total_additional_archive_bytes_estimate": 398175460,
         "status": "ASSETS_RESUMING_WITH_6GIB_PER_VOLUME_RESERVE",
         "requested_free_capacity_gb": 50,
         "download_states": {
-          "BMLrub": "DOWNLOADING",
+          "BMLrub": "LOCAL_ORIGINAL_ARCHIVE_VERIFIED",
           "CMU": "LOCAL_ORIGINAL_ARCHIVE_VERIFIED",
           "KIT": "DOWNLOADING"
         }
@@ -705,12 +713,12 @@
       "new_raw_assets_published": false
     },
     "local1653_queue": {
-      "status": "RUNNING_GMR_CPU_ONLY",
+      "status": "STOPPED_WITH_ERROR",
       "target": 1653,
       "ram_working_copy": true,
       "source_durable": "C private assets and D licensed original archives",
       "physical_filter_executed": false,
-      "time_utc": "2026-10-25T05:21:18.766046+00:00",
+      "time_utc": "2026-10-25T05:21:27.239436+00:00",
       "preflight": {
         "mem": {
           "MemTotal": 269956653056,
@@ -764,7 +772,8 @@
         "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
         "processed": 1500,
         "updated_utc": "2026-10-25T05:20:55Z"
-      }
+      },
+      "error": "RuntimeError('publish.py: Traceback (most recent call last):\\n  File \"C:\\\\Users\\\\Pende\\\\Documents\\\\ChatGPT\\\\机器人格斗动作捕捉数据生成\\\\work\\\\phygile_reproduction_20261017\\\\conditional-human-motion-generation\\\\baselines\\\\textop\\\\provider_tools\\\\publish.py\", line 37, in <module>\\n    print(git(\\'push\\',\\'-u\\',\\'origin\\',branch))\\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Pende\\\\Documents\\\\ChatGPT\\\\机器人格斗动作捕捉数据生成\\\\work\\\\phygile_reproduction_20261017\\\\conditional-human-motion-generation\\\\baselines\\\\textop\\\\provider_tools\\\\publish.py\", line 16, in git\\n    def git(*args):return subprocess.run([\\'git\\',\\'-C\\',str(REPO),\\'-c\\',\\'core.quotepath=false\\',*args],check=True,env=env,capture_output=True,text=True,encoding=\\'utf-8\\').stdout.strip()\\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"C:\\\\Users\\\\Pende\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\Lib\\\\subprocess.py\", line 571, in run\\n    raise CalledProcessError(retcode, process.args,\\nsubprocess.CalledProcessError: Command \\'[\\'git\\', \\'-C\\', \\'C:\\\\\\\\Users\\\\\\\\Pende\\\\\\\\Documents\\\\\\\\ChatGPT\\\\\\\\机器人格斗动作捕捉数据生成\\\\\\\\work\\\\\\\\phygile_reproduction_20261017\\\\\\\\conditional-human-motion-generation\\', \\'-c\\', \\'core.quotepath=false\\', \\'push\\', \\'-u\\', \\'origin\\', \\'codex/textop-reproduction-20261024\\']\\' returned non-zero exit status 128.\\n')"
     },
     "cmu_indexed_queue": {
       "status": "STAGED_VERIFIED_WAITING_FOR_PREVIOUS_BATCH_BACKUP",
@@ -872,21 +881,21 @@
       }
     },
     "prepared1653_v1": {
-      "sequences": 1500,
-      "frames50": 858893,
-      "paired_annotations_including_saved_mirrors": 19474,
+      "sequences": 1548,
+      "frames50": 930893,
+      "paired_annotations_including_saved_mirrors": 20998,
       "rejected_annotations": 4,
       "codec_max_error_m_or_rad": 2.2182229841849477e-07,
       "joint_skeleton_mirror_max_error_m": 9.999999928053671e-06,
       "splits": {
-        "train": 1129,
-        "val": 371
+        "train": 1165,
+        "val": 383
       }
     }
   },
   "space_bytes": {
-    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 2596106240,
-    "/home/ouyanghao": 1204940800
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 2596044800,
+    "/home/ouyanghao": 1204850688
   },
   "missing_raw_by_dataset": {
     "BMLrub": 2139,
