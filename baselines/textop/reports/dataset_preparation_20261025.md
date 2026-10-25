@@ -1,6 +1,6 @@
 # TextOp 数据准备核查与重建记录
 
-更新时间：2026-10-25 09:00:22 北京时间。
+更新时间：2026-10-25 09:06:46 北京时间。
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
@@ -148,7 +148,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
   "ram_working_copy": true,
   "source_durable": "C private assets and D licensed original archives",
   "physical_filter_executed": false,
-  "time_utc": "2026-10-25T01:00:21.617508+00:00",
+  "time_utc": "2026-10-25T01:06:45.683922+00:00",
   "preflight": {
     "mem": {
       "MemTotal": 269956653056,
@@ -191,8 +191,8 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
     "target_dof": 29,
     "feature_dim": 69,
     "output_fps": 50,
-    "completed_sequences": 304,
-    "mirrored_sequences": 304,
+    "completed_sequences": 407,
+    "mirrored_sequences": 407,
     "failed_sequences": 0,
     "total_requested": 1653,
     "physical_filter_passed": false,
@@ -200,8 +200,8 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
     "status": "RUNNING",
     "cpu_only": true,
     "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
-    "processed": 304,
-    "updated_utc": "2026-10-25T01:00:20Z"
+    "processed": 407,
+    "updated_utc": "2026-10-25T01:06:46Z"
   }
 }
 ```
@@ -210,7 +210,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 
 AMASS官网下载当前显示Sign In，已请求用户重新登录以续传BMLrub、CMU、KIT等缺少的包。BABEL原始标注另需独立登录和许可确认；已有AMASS/SMPL-X授权不自动覆盖BABEL。本次尚未接受BABEL独立许可，也未发送作者邮件。TotalCapture按此前要求跳过。
 
-数据盘约剩1.28GiB、系统盘约剩1.04GiB。先完成已有500条的处理并保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
+数据盘约剩1.28GiB、系统盘约剩1.03GiB。先完成已有500条的处理并保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
 
 代码与聚合证据同步GitHub；包含原始动作、人体模型、逐条文本的资产遵循许可保存在个人目录和本地，GitHub不公开原始/重定向数据文件。新输出均明确标为待物理筛选。PhyGile、ReactiveBFM继续暂停，未改动其数据或实验记录。
 
