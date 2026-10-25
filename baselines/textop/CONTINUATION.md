@@ -317,7 +317,7 @@ the training profile or resuming57D/PhyGile/ReactiveBFM. New verified milestones
   was written before dispatch. Formal launch remains DISABLED until all
   candidates/reference exports and full-library capacity/stability are checked.
 - New recording witness originalauthor_v1 did20updates then failed restoring
-  an inference-mode EMA tensor; saved checkpoint and error/stop receipts kept.
+  an inference-mode EMA tensor; saved checkpoint and error/exit1 receipts kept.
   author_v2/document_v1 passed exact value restoration, but subsequent review
   found first resumed episode could be omitted unless explicitly restarted.
   author_v3 exposed upstream metrics inference tensor reset error (exit1,
