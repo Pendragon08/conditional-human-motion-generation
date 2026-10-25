@@ -137,3 +137,6 @@ launch, warm unchanged export kernel. Server workerPID3527552, state receipts/
 reference_export_queue_v1.json, flock-locked. Waits each exact full GMR cohort,
 RAM12GiB/data2GiB/GPU1free20GiB and no own headless SDK before serial exports
 1330/BMLrub2139/KIT2513. No retarget, backup duplication, training or deletion.
+
+### candidate loader diagnostic: warm paper69@934d8221
+Spec configs/candidate-loader-spec.json written before dispatch, no package/shared-source mutation. All2296completed unfiltered originals+mirrors, private candidate view, train-only float64 stats/std floor1e-6, frozen real CLIP caches. Official dataloader batch512/history2/future8/primitives4, uniform train/val and weightedtrain. Process-local sampler fixes valid-index mapping and inclusive segment bounds. No model gradients/optimizer/accepted data or full training. Author build/kernel and fresh documented loader witness required. Final accepted data must refit statistics/cache after real physical filtering.

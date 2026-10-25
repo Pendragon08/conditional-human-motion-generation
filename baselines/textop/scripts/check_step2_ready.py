@@ -16,16 +16,16 @@ def audit(plan,acceptance):
     if acceptance is None:
         return {'ready':False,'training_launched':False,'blockers':['No accepted dataset and69D runtime evidence exists; preprocessing progress is insufficient']}
     data=acceptance.get('dataset',{});runtime=acceptance.get('runtime',{})
-    for key,value in {'dof':29,'feature_dim':69,'fps':50,'physical_filter_passed':True,'pairing_validated':True,'train_val_source_disjoint':True,'normalization_fit_split':'train','missing_public_sources':0}.items():
+    for key,value in {'dof':29,'feature_dim':69,'fps':50,'physical_filter_passed':True,'pairing_validated':True,'train_val_source_disjoint':True,'normalization_fit_split':'train','missing_available_public_sources':0}.items():
         actual=data.get(key)
         valid=(actual is value) if isinstance(value,bool) else (type(actual) in [int,float] and actual==value) if isinstance(value,(int,float)) else actual==value
         if not valid:blockers.append('dataset.'+key)
     if data.get('train_sequences',0)<1 or data.get('val_sequences',0)<1:blockers.append('Nonempty accepted train/val splits required')
-    for key in ['vae69_forward_backward_passed','ldm69_conditioning_and_gradients_passed','fk29_geometry_loss_passed','fresh_document_witness_passed','paper_code_differences_audited']:
+    for key in ['vae69_forward_backward_passed','ldm69_conditioning_and_gradients_passed','fk29_geometry_loss_passed','fresh_document_witness_passed','paper_code_differences_audited','accepted_corpus_loader_and_cache_passed']:
         if runtime.get(key) is not True:blockers.append('runtime.'+key)
     # Require real file references; a hand-written true flag cannot satisfy these.
     references=acceptance.get('artifacts',{})
-    for key in ['filter_evidence','accepted_train_manifest','accepted_val_manifest','train_only_statistics','clip_cache_receipt','runtime69_witness','paper_code_audit']:
+    for key in ['filter_evidence','accepted_train_manifest','accepted_val_manifest','train_only_statistics','clip_cache_receipt','runtime69_witness','paper_code_audit','source_scope','accepted_corpus_witness']:
         entry=references.get(key,{})
         if not entry.get('path') or not entry.get('sha256'):
             blockers.append('Missing artifact '+key);continue
@@ -38,6 +38,12 @@ def audit(plan,acceptance):
         try:
             decisions=apply(evidence)
             if not any(x['decision']=='retain' for x in decisions):blockers.append('No retained motions in actual filter evidence')
+            from source_scope import verify_scope
+            scope=verify_scope(plan['data_scope'],json.loads(pathlib.Path(references['source_scope']['path']).read_text(encoding='utf-8')),[x['motion_id'] for x in decisions])
+            if data.get('coverage_profile_id')!=scope['profile_id']:blockers.append('dataset.coverage_profile_id')
+            accepted=json.loads(pathlib.Path(references['accepted_corpus_witness']['path']).read_text(encoding='utf-8'))
+            if accepted.get('dataset_accepted') is not True or accepted.get('candidate_view_only',False) is not False:
+                blockers.append('Unfiltered candidate-loader diagnostics cannot certify an accepted corpus')
         except Exception as error:blockers.append('Dynamic-filter evidence rejected: '+repr(error))
     if not plan.get('launch_enabled'):blockers.append('69D launch recipe remains disabled pending completed preparation and validation')
     return {'ready':not blockers,'training_launched':False,'blockers':blockers,'note':'This is a prerequisite audit; accepted motion contents and runtime must still be checked by the actual launcher'}
