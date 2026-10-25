@@ -1,6 +1,6 @@
 # TextOp 数据准备核查与重建记录
 
-更新时间：2026-10-25 08:45:20 北京时间。
+更新时间：2026-10-25 08:49:40 北京时间。
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
@@ -148,7 +148,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
   "ram_working_copy": true,
   "source_durable": "C private assets and D licensed original archives",
   "physical_filter_executed": false,
-  "time_utc": "2026-10-25T00:45:19.180088+00:00",
+  "time_utc": "2026-10-25T00:49:39.034061+00:00",
   "preflight": {
     "mem": {
       "MemTotal": 269956653056,
@@ -174,7 +174,35 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
     "time_utc": "2026-10-25T00:45:18Z",
     "durability": "raw originals in localC and archivesD; RAM is working copy; outputs must be backed up to localD"
   },
-  "progress": {}
+  "progress": {
+    "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+    "versions": {
+      "numpy": "1.26.4",
+      "torch": "2.5.1+cu121",
+      "scipy": "1.15.3",
+      "mujoco": "3.3.7",
+      "mink": "0.0.13",
+      "smplx": "0.1.28",
+      "qpsolvers": "4.8.1",
+      "daqp": "0.7.2",
+      "rich": "13.9.4",
+      "tqdm": "4.70.0"
+    },
+    "target_dof": 29,
+    "feature_dim": 69,
+    "output_fps": 50,
+    "completed_sequences": 104,
+    "mirrored_sequences": 104,
+    "failed_sequences": 0,
+    "total_requested": 1653,
+    "physical_filter_passed": false,
+    "ready_for_generator_training": false,
+    "status": "RUNNING",
+    "cpu_only": true,
+    "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+    "processed": 104,
+    "updated_utc": "2026-10-25T00:49:36Z"
+  }
 }
 ```
 
