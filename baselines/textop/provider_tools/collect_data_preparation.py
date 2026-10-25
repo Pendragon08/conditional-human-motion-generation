@@ -10,6 +10,8 @@ ram=pathlib.Path('/dev/shm/ouyanghao_textop_20261025/local1653_v1')
 cmu=pathlib.Path('/dev/shm/ouyanghao_textop_20261025/cmu1330_v1')
 paths={'audit':d/'audit_summary.json','aligned_release':d/'released_aligned_view/summary.json','smoke1':d/'smoke_v1/progress.json','smoke2':d/'smoke_v2/progress.json','batch500':d/'available500_v1/progress.json','batch143':d/'available143_v1/progress.json','batch1653':ram/'prepared1653_v1/progress.json','raw_reconciliation':d/'raw_reconciliation_summary.json','queue143':r/'receipts/additional143_queue.json','witness_author':d/'witness_author/witness.json','witness_document':d/'witness_document/witness.json','env_validation':r/'receipts/data_env_validation.json','pause':r/'receipts/data_preparation_pause.json'}
 paths['batchCMU']=cmu/'prepared1330_v1/progress.json'
+for tag in ['bmlrub','kit']:
+    paths['batch_'+tag]=pathlib.Path('/dev/shm/ouyanghao_textop_20261025')/(tag+'_indexed_v1')/'prepared_v1/progress.json'
 for name,p in paths.items():
     if p.exists():
         try:out['receipts'][name]=json.loads(p.read_text())
@@ -38,7 +40,7 @@ out['known_blockers']=['Remaining raw AMASS source files still need reconciliati
 print(json.dumps(out))
 '''
 result=json.loads(remote(code,timeout=100));dest=BASE/'results/data_preparation_20261025';dest.mkdir(parents=True,exist_ok=True)
-for name in ['babel_acquisition','babel_alignment','babel_server_install','cmu_resume']:
+for name in ['babel_acquisition','babel_alignment','babel_server_install','cmu_resume','bmlrub_resume','kit_resume','bmlrub_indexed_queue','kit_indexed_queue']:
     p=dest/(name+'.json')
     if p.exists():result['receipts'][name]=json.loads(p.read_text(encoding='utf-8'))
 authorization=dest/'asset_authorization_and_storage.json'
@@ -63,7 +65,8 @@ extra=result['receipts'].get('batch143',{});reconciled=result['receipts'].get('r
 local_queue=result['receipts'].get('local1653_queue',{})
 bulk=result['receipts'].get('batch1653',{})
 cmu_prepared=result['receipts'].get('batchCMU',{})
-prepared_total=sum(x.get('completed_sequences',0) for x in [b,extra,bulk,cmu_prepared]);failed_total=sum(x.get('failed_sequences',0) for x in [b,extra,bulk,cmu_prepared])
+all_batches=[b,extra,bulk,cmu_prepared]+[result['receipts'].get('batch_'+tag,{}) for tag in ['bmlrub','kit']]
+prepared_total=sum(x.get('completed_sequences',0) for x in all_batches);failed_total=sum(x.get('failed_sequences',0) for x in all_batches)
 assets=result['receipts'].get('asset_authorization_and_storage',{})
 babel_verified=result['receipts'].get('babel_alignment',{}).get('mismatch_sequences')==0
 babel_note=('BABEL官方原始包已独立下载并安装到服务器；8,291条运动对应50,004条分段标注的ID、来源、文本、类别与时间均核对一致' if babel_verified else 'BABEL原始包尚待独立核对，当前文本来自发布包内字段')
@@ -124,6 +127,8 @@ CMU完整原始包已通过CRC/tar校验；其选定SMPL-X G版本覆盖1,343条
 ```
 
 处理链：已授权SMPL-X原始动作 → 保留16个形状参数的人体前向 → 复用GMR核心IK → 保留全部29关节 → 按实际秒轴重采样50Hz → 按论文阈值重算足接触 → 对齐BABEL派生标注 → 骨架和方向词镜像 → 69D编码/逆变换核查。
+
+BMLrub与KIT的后续队列已安排：分别等待完整原始包CRC/SHA校验、前一批GMR与持久备份成功，再逐一精确核对索引、串行重定向和归档。缺失或有歧义的来源保留清单，不填造动作、不启动重叠GMR。当前两项成功条数分别为{result['receipts'].get('batch_bmlrub',{}).get('completed_sequences',0)}、{result['receipts'].get('batch_kit',{}).get('completed_sequences',0)}，下载/排队本身不计入已处理数据。
 
 SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像、69D编解码与调度为本次自实现，明确区别于官方旧处理脚本。GMR源码镜像没有可用Git提交，使用源文件和配置SHA256固定。CPU环境依赖未修改，已有独立按文档执行的数值验证。
 

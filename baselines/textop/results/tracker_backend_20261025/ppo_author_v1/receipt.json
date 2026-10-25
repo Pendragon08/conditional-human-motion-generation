@@ -1,0 +1,18 @@
+{
+  "status": "FAILED",
+  "optimizer_updates": 0,
+  "full_training_started": false,
+  "dataset_accepted": false,
+  "physical_filter_executed": false,
+  "output_writers_closed": false,
+  "source_sha256": "ebb99ae7e6db0dd27182e6b4290fb463d4f91858b78f4e2471d0f65a12104087",
+  "diagnostic_spec_sha256": "c978be1ace1d759f0020f946a6211c7ce94cda81e6ef0f3413399161c191681a",
+  "reference_trajectories": 4,
+  "error": "RuntimeError('Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:1! (when checking argument for argument other in method wrapper_CUDA__equal)')",
+  "traceback": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/tracker_ppo_resume_witness.py\", line 65, in <module>\n    assert equal(restored.alg.optimizer.state_dict(),state['optimizer_state_dict'])\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/tracker_ppo_resume_witness.py\", line 44, in equal\n    if isinstance(x,dict):return x.keys()==y.keys() and all(equal(x[k],y[k]) for k in x)\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/tracker_ppo_resume_witness.py\", line 44, in <genexpr>\n    if isinstance(x,dict):return x.keys()==y.keys() and all(equal(x[k],y[k]) for k in x)\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/tracker_ppo_resume_witness.py\", line 44, in equal\n    if isinstance(x,dict):return x.keys()==y.keys() and all(equal(x[k],y[k]) for k in x)\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/tracker_ppo_resume_witness.py\", line 44, in <genexpr>\n    if isinstance(x,dict):return x.keys()==y.keys() and all(equal(x[k],y[k]) for k in x)\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/tracker_ppo_resume_witness.py\", line 44, in equal\n    if isinstance(x,dict):return x.keys()==y.keys() and all(equal(x[k],y[k]) for k in x)\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/tracker_ppo_resume_witness.py\", line 44, in <genexpr>\n    if isinstance(x,dict):return x.keys()==y.keys() and all(equal(x[k],y[k]) for k in x)\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/tracker_ppo_resume_witness.py\", line 43, in equal\n    if torch.is_tensor(x):return torch.equal(x,y)\nRuntimeError: Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:1! (when checking argument for argument other in method wrapper_CUDA__equal)\n",
+  "native_close_returned": false,
+  "teardown_fallback_used": true,
+  "shutdown_grace_seconds": 20,
+  "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+  "shutdown_completion_verified": false
+}

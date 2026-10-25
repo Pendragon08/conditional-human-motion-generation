@@ -25,7 +25,12 @@
     "num_envs": 8,
     "control_steps": 8,
     "optimizer_updates": 0,
-    "purpose": "actual seeded dynamics dispatch plus FK export; not physical filtering or tracking success"
+    "purpose": "actual seeded dynamics dispatch plus FK export; not physical filtering or tracking success",
+    "wait_for_replicator_on_close": false,
+    "supervisor_timeout_seconds": 240,
+    "native_shutdown_grace_seconds": 20,
+    "zero_update_diagnostic_process_exit_after_durable_receipts_authorized": true,
+    "kinematic_update": "SimulationContext.forward; no rendering needed"
   },
   "paper_filter_training": {
     "num_envs": 8192,

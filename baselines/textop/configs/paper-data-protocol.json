@@ -4,16 +4,31 @@
   "feature_dim": 69,
   "retarget_rate_hz": 30,
   "output_rate_hz": 50,
-  "contact": {"squared_frame_displacement_threshold": 0.002, "height_m": 0.2, "height_frame": "t"},
+  "contact": {
+    "squared_frame_displacement_threshold": 0.002,
+    "height_m": 0.2,
+    "height_frame": "t"
+  },
   "filter_policy": {
     "official_task": "Tracking-Flat-G1-PrivPrivObs-v0",
     "training_iterations": 40000,
     "num_envs_from_paper_table_XI": 8192,
     "privileged_actor_and_critic": true,
     "domain_randomization": false,
-    "disable_events": ["physics_material", "add_joint_default_pos", "base_com", "push_robot"],
-    "relaxed_remove_terminations": ["anchor_pos", "ee_body_pos"],
-    "relaxed_keep_termination": ["anchor_ori", "time_out"],
+    "disable_events": [
+      "physics_material",
+      "add_joint_default_pos",
+      "base_com",
+      "push_robot"
+    ],
+    "relaxed_remove_terminations": [
+      "anchor_pos",
+      "ee_body_pos"
+    ],
+    "relaxed_keep_termination": [
+      "anchor_ori",
+      "time_out"
+    ],
     "reject_if_relaxed_failure_probability_greater_than": 0.05,
     "strict_evaluation": "Restore anchor_pos and ee_body_pos; reject every motion with any failure",
     "ema_window_or_decay": null,
@@ -21,11 +36,48 @@
     "unspecified_values": "The paper does not provide the exact EMA window/decay or strict repeat count. Record any implementation choice as an assumption, not an author-released constant.",
     "filter_policy_training_executed": false,
     "relaxed_evaluation_executed": false,
-    "strict_evaluation_executed": false
+    "strict_evaluation_executed": false,
+    "relaxed_terminations_during_training": true,
+    "anchor_body": "pelvis",
+    "actor_hidden_dims": [
+      2048,
+      1024,
+      512
+    ],
+    "critic_hidden_dims": [
+      2048,
+      1024,
+      512
+    ],
+    "privileged_observation_dim": 557,
+    "strict_pelvis_height_threshold_m": 0.25,
+    "strict_end_effector_height_threshold_m": 0.5,
+    "paper_config_implementation": "scripts/paper_filter_config.py",
+    "paper_config_runtime_validation_pending": true
   },
-  "pairing": {"index": "BABEL source path and time interval", "time_unit": "seconds", "out_of_range": "clip to available sampled timeline; retain originals in private audit", "empty_or_invalid": "exclude annotation with a recorded reason"},
-  "mirror": {"root": "reflection across x-z plane", "joints": "left/right permutation with axis-derived signs", "labels": "left/right and clockwise/counterclockwise exchanged", "split": "preserve original BABEL train/val membership; mirrored validation is stored but not required for evaluation"},
-  "tracking_clips": {"min_frames": 100, "max_frames": 2000, "overlap_min_frames": 50, "overlap_max_frames": 200},
-  "private_data": {"available": false, "paper_clips": 403, "paper_hours": 3.12, "substitution": "No fabricated substitute; report as unavailable"},
+  "pairing": {
+    "index": "BABEL source path and time interval",
+    "time_unit": "seconds",
+    "out_of_range": "clip to available sampled timeline; retain originals in private audit",
+    "empty_or_invalid": "exclude annotation with a recorded reason"
+  },
+  "mirror": {
+    "root": "reflection across x-z plane",
+    "joints": "left/right permutation with axis-derived signs",
+    "labels": "left/right and clockwise/counterclockwise exchanged",
+    "split": "preserve original BABEL train/val membership; mirrored validation is stored but not required for evaluation"
+  },
+  "tracking_clips": {
+    "min_frames": 100,
+    "max_frames": 2000,
+    "overlap_min_frames": 50,
+    "overlap_max_frames": 200
+  },
+  "private_data": {
+    "available": false,
+    "paper_clips": 403,
+    "paper_hours": 3.12,
+    "substitution": "No fabricated substitute; report as unavailable"
+  },
   "ready_for_paper_training": false
 }

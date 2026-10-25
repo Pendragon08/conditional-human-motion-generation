@@ -10,6 +10,7 @@ def read(name):
 
 def main():
     cache=read('redundant_cache_cleanup');render=read('render_cache_cleanup');compression=read('retained_record_compression');cmu=read('cmu_resume')
+    duplicates=read('duplicate_copy_cleanup');bmlrub=read('bmlrub_resume');kit=read('kit_resume')
     babel=read('babel_alignment');babel_install=read('babel_server_install')
     babel_note=('BABEL官方原始标注已下载并安装服务器，8,291条发布运动、50,004条分段标注的ID、来源路径、文本、类别和起止时间核对一致；原始JSON及逐条配对索引不公开上传GitHub。' if babel.get('mismatch_sequences')==0 and babel_install else 'BABEL原始标注独立下载或核查尚未完成；当前候选文本来自官方发布包内字段。')
     status=json.loads(remote("""
@@ -24,6 +25,7 @@ print(json.dumps({'data_free_bytes':shutil.disk_usage(r).free,'home_free_bytes':
             'local_free_bytes':{x:shutil.disk_usage(x+':/').free for x in ['C','D']},
             'server':status,'cache_cleanup':cache,'private_recovery_kit':read('cache_residency'),'render_cleanup':{k:v for k,v in render.items() if k!='files'},
             'retained_record_compression':{k:v for k,v in compression.items() if k!='details'},'cmu_download':cmu,
+            'verified_duplicate_cleanup':duplicates,'bmlrub_download':bmlrub,'kit_download':kit,
             'datasets_deleted':0,'checkpoints_deleted':0,'unique_experiment_records_deleted':0,
             'full_generator_training_started':False,'physical_filter_executed':False}
     (DEST/'storage_cleanup_summary.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
@@ -40,14 +42,15 @@ print(json.dumps({'data_free_bytes':shutil.disk_usage(r).free,'home_free_bytes':
 - C盘：清理1,653个重复解压缓存，释放约{cache.get('previous_cache_physical_bytes',0)/1024**3:.2f}GiB。D盘完整原始压缩包逐一SHA256核验、服务器1,653份工作副本全量核验，并实际从原始包恢复一条文件。私有索引在C、D盘均保存并核对SHA256，可按需恢复全部缓存；D盘恢复工具包位于`datasets/recovery1653_private`，逐条索引未上传GitHub。恢复代码及证据已先备份至GitHub提交`{cache.get('recovery_code_and_evidence_backed_up_github_commit','')}`。
 - 服务器数据盘：清理71个无人使用的着色器、派生数据和纹理缓存，实际增加约{(render.get('data_free_after',0)-render.get('data_free_before',0))/1024**3:.2f}GiB。清理名单和代码已先备份，保留所有日志、模型、环境及原始资产。
 - D盘：对13个保留文件做NTFS透明压缩，物理占用减少约{compression.get('physical_bytes_saved',0)/1024**3:.2f}GiB，逐文件SHA256不变，未删除实验记录。磁盘可用量还受其他活动影响，不把物理占用变化直接当作整盘净增量。
+- D盘重复副本：完整CMU原始包CRC/SHA验证后清理其旧断点副本；CLoSD服务器原始数据集核验不变，四个本地备份分片和GitHub Release均保留，只清理此前临时恢复验证副本。恢复证据先保存到GitHub；完整记录见duplicate_copy_cleanup.json。所有权威数据、检查点和唯一实验记录保留。
 
 当前C盘余{result['local_free_bytes']['C']/1024**3:.2f}GiB、D盘余{result['local_free_bytes']['D']/1024**3:.2f}GiB；服务器数据盘余{status['data_free_bytes']/1024**3:.2f}GiB、系统盘余{status['home_free_bytes']/1024**3:.2f}GiB。容量是本次采样值，下载过程中会变化。
 
 ## 数据与训练
 
 - 已重建{total}条29DoF/69D候选运动，另保存对应镜像；新增1,653条批次当前完成{status['batch1653'].get('completed_sequences',0)}条、失败{status['batch1653'].get('failed_sequences',0)}条。**尚未进行论文要求的动态物理筛选，不是最终可训练数据集。**
-- CMU官网续传状态：`{cmu.get('status','NOT_STARTED')}`。使用独立内存会话；旧D盘断点保留，复制到C盘后校验SHA256，续传前核对服务器对应边界字节。完整下载后必须通过bzip2 CRC及tar头校验。不得把当前字节数计作已完成下载。
-- BMLrub、KIT仍保留断点，后续按可用空间安排；未启动其新增续传，不重复全量下载已拥有的原始包，TotalCapture继续跳过。
+- CMU下载状态：`{cmu.get('status','NOT_STARTED')}`。完整原始包已通过bzip2 CRC/tar校验，旧D盘断点在完整包校验和GitHub恢复证据备份后清理。选定导出覆盖1,330条所需输入，另13条缺失未冒充完成。
+- BMLrub状态`{bmlrub.get('status','NOT_STARTED')}`；KIT状态`{kit.get('status','NOT_STARTED')}`。两项已按授权启动官网续传，分别保留所在盘6GiB余量；完成后必须CRC/tar验证。TotalCapture继续跳过。
 - {babel_note}
 - 69D生成器核心的VAE/LDM前向反向、条件输入、五步扩散和历史2→未来8帧自回归数值验证均通过；这是未训练的数值验证，0次参数更新，不代表动作质量或闭环成功。
 - 完整训练仍需补齐原始输入/标注、训练特权跟踪策略并执行宽松和严格两轮物理筛选、完成最终语料归一化与加载集成。随后按论文VAE20万、LDM30万步配置训练。当前未启动完整69D生成器，也未恢复旧57D训练。

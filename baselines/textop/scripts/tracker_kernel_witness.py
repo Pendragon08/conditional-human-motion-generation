@@ -10,7 +10,7 @@ p=argparse.ArgumentParser();p.add_argument('--spec',required=True);p.add_argumen
 AppLauncher.add_app_launcher_args(p);args=p.parse_args()
 spec=json.loads(pathlib.Path(args.spec).read_text());out=pathlib.Path(args.output);out.mkdir(parents=True,exist_ok=False)
 receipt={'status':'STARTING','optimizer_updates':0,'physical_filter_executed':False,'full_filter_training_ready':False}
-app=None
+app=None;sim=None
 
 def sha(path):
     h=hashlib.sha256()
@@ -44,6 +44,11 @@ try:
         robot:ArticulationCfg=robot_cfg
     sim=sim_utils.SimulationContext(sim_utils.SimulationCfg(dt=.005,device=args.device))
     scene=InteractiveScene(Scene(num_envs=8,env_spacing=2.5));sim.reset();robot=scene['robot']
+    try:
+        import omni.replicator.core as rep
+    except ModuleNotFoundError:
+        rep=None
+    if rep is not None:rep.orchestrator.set_capture_on_play(False)
     assert len(robot.joint_names)==29
     motion_root=pathlib.Path(spec['root'])/'data_preparation_20261025/available500_v1'
     records=[json.loads(line) for line in (motion_root/'prepared_manifest.private.jsonl').read_text().splitlines()]
@@ -55,7 +60,7 @@ try:
     root[:,3:7]=torch.as_tensor(q[:,3:7],device=args.device);root[:,7:]=0
     jp=robot.data.default_joint_pos.clone();jp[:,indices]=torch.as_tensor(q[:,7:],device=args.device)
     robot.write_root_state_to_sim(root);robot.write_joint_state_to_sim(jp,torch.zeros_like(jp))
-    sim.render();scene.update(.005)
+    sim.forward();scene.update(.005)
     assert torch.allclose(robot.data.joint_pos[:,indices],torch.as_tensor(q[:,7:],device=args.device),atol=1e-5)
     assert torch.allclose(robot.data.root_pos_w,root[:,:3],atol=1e-5)
     fk_pos=robot.data.body_pos_w-scene.env_origins[:,None,:]
@@ -79,9 +84,12 @@ try:
         real_state_transition_max_m=delta,seeded_paper_MLP_forward_backward_passed=True,MLP_input_dim=557,
         peak_torch_allocated_bytes=torch.cuda.max_memory_allocated(torch.device(args.device)),
         private_reference_sha256=item['output_sha256'],ground_present=False,tracking_success_evaluated=False,
-        completed_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
+        completed_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),output_writers_closed=True)
     save();print('TEXTOP_TRACKER_PHYSICS_KERNEL_PASSED',flush=True)
 except BaseException as error:
     receipt.update(status='FAILED',error=repr(error),traceback=traceback.format_exc());save();raise
 finally:
-    if app is not None:app.close()
+    if app is not None:
+        from bounded_headless_close import close
+        receipt['shutdown_helper_sha256']=sha(pathlib.Path(__file__).with_name('bounded_headless_close.py'))
+        close(app,receipt,save,out,simulation=sim)

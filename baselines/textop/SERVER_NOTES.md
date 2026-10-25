@@ -34,3 +34,27 @@ Spec written before dispatch. Warm read-only IsaacSim4.5.0/IsaacLab2.1.0 reuse, 
 
 ### env: textop-tracker@893388d9
 Inventory confirmed Python3.10.15, Torch2.5.1+cu118, NumPy1.26.0, Gymnasium0.29.1, RSL-RL2.3.1. IsaacLab projectVERSION2.1.0 and distribution0.36.21 refer to different release identifiers. Shared packages unchanged. Spec includes resolved versions before numerical physics dispatch. Author and fresh document witness pending.
+
+### env: textop-tracker@9beeb746
+Backend numerical checks passed twice under893388d9, but normal teardown never returned. Both zero-update test children terminated after evidence preservation; GMR and old57D pause state retained. No shared package/source changes. This diagnostic has no Replicator writers, so use documented SimulationApp.close(wait_for_replicator=False). New240s supervisor retains real exit status. Fresh author/document rerun pending.
+
+### env: textop-tracker@b7a3bf0c
+Native close remains blocked even without Replicator wait. V1/V2 failures retained. Diagnostic only: disable capture-on-play, use explicit FK forward, stop physics and clear callbacks, attempt native close with20s bound. A fallback process exit is permitted only after complete zero-update numerical receipts; record fallback distinctly from native close success. No camera/writer or uncommitted experiment state. Shared dependencies unchanged; author/document verification pending.
+
+Validation update2026-10-25: backend author_v5 and independent document_v2
+both actualexit0, timeoutfalse, numerical pass, matching source/spec/URDF hashes.
+The20s fallback was used; stack blocks in SimulationContext.stop/callback/render
+before proving native app.close was reached. All native hangs/timeouts and the
+optional Replicator import error retained. Full MDP environment_probe_v1 also
+passed8env/24controlcalls/557D observations and strict/relaxed config assertions.
+
+Warm diagnostic extension: configs/tracker-ppo-diagnostic.json written before
+dispatch; dependencies unchanged. export_author_v1 passed full2 motions+mirrors,
+350FK frames. PPO author_v2 passed40 actual Adam updates and exact-value/type/
+shape model/Adam/actor+critic normalizer restoration with continued optimization.
+Independent ppo_document_v1 direct invocation also exited0, timeoutfalse;
+document comparison saved separately. Native shutdown fallback only after
+checkpoints/receipts saved and writers closed. This remains8env/2iterations,
+not8192env/40k physical-filter training. Author_v1 failed after20 actual steps
+on Adam scalar CPU/GPU comparison; stale0 receipt retained with correction.
+Full corpus and8192 capacity still pending; do not enable the generator gate.

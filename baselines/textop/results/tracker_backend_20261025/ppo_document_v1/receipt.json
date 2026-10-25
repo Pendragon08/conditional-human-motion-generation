@@ -1,0 +1,78 @@
+{
+  "status": "TEXTOP_TRACKER_PPO_RESUME_WITNESS_PASSED",
+  "optimizer_updates": 40,
+  "full_training_started": false,
+  "dataset_accepted": false,
+  "physical_filter_executed": false,
+  "output_writers_closed": true,
+  "source_sha256": "cfff854196ebf022377b9a1abcf0698a038e45023d3abf3c84c66232d3068e32",
+  "diagnostic_spec_sha256": "c978be1ace1d759f0020f946a6211c7ce94cda81e6ef0f3413399161c191681a",
+  "reference_trajectories": 4,
+  "num_envs": 8,
+  "completed_learning_iterations": 2,
+  "environment_transitions": 384,
+  "policy_observation_dim": 557,
+  "model_restored_exactly": true,
+  "adam_restored_exactly": true,
+  "both_normalizers_restored_exactly": true,
+  "restore_comparison": "exact tensor values/dtypes/shapes; Adam scalar step CPU residency is permitted by PyTorch",
+  "initial_parameter_max_change": 0.0045002116821706295,
+  "resumed_parameter_max_change": 0.004639417864382267,
+  "underlying_first_last_index": 0,
+  "resume_completed_iteration": 1,
+  "checkpoints": [
+    {
+      "name": "completed_iteration_1.pt",
+      "bytes": 90600722,
+      "sha256": "de1fa2448399f948e981eb87ec695c66289b4fca6513933de64a765d29c3deed"
+    },
+    {
+      "name": "completed_iteration_2.pt",
+      "bytes": 90600722,
+      "sha256": "6f7dd581611140a2a94d1f6b92ed59e2a2190d26315c55b1610d6b54d80b2e87"
+    }
+  ],
+  "peak_torch_allocated_bytes": 443603456,
+  "paper_settings": {
+    "source": "https://arxiv.org/html/2602.07439v1#A1",
+    "filter_iterations": 40000,
+    "training_terminations": "relaxed height terms removed",
+    "anchor": "pelvis",
+    "privileged_observation_dim_expected": 557,
+    "actor_hidden": [
+      2048,
+      1024,
+      512
+    ],
+    "critic_hidden": [
+      2048,
+      1024,
+      512
+    ],
+    "target_num_envs": 8192,
+    "steps_per_env": 24,
+    "learning_rate": 0.001,
+    "minibatches": 4,
+    "epochs": 5,
+    "clip_param": 0.2,
+    "simulation_hz": 200,
+    "policy_hz": 50,
+    "strict_pelvis_height_threshold_m": 0.25,
+    "strict_end_effector_height_threshold_m": 0.5,
+    "domain_randomization": false,
+    "own_choices_not_specified_by_paper": {
+      "adaptive_average": "pinned release EMA alpha0.001, ads_typev1",
+      "strict_repetitions": null,
+      "failure_window_or_chunking": null,
+      "checkpoint_interval": 5000,
+      "asset": "shared BeyondMimic G1 description, authors exact asset hash unavailable",
+      "floor": "locally generated PhysX ground plane with friction1.0; no remote visual textures"
+    }
+  },
+  "full_filter_training_ready": false,
+  "native_close_returned": false,
+  "teardown_fallback_used": true,
+  "shutdown_grace_seconds": 20,
+  "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+  "shutdown_completion_verified": true
+}

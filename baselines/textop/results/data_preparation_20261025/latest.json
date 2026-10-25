@@ -259,8 +259,8 @@
       "target_dof": 29,
       "feature_dim": 69,
       "output_fps": 50,
-      "completed_sequences": 1400,
-      "mirrored_sequences": 1400,
+      "completed_sequences": 1483,
+      "mirrored_sequences": 1483,
       "failed_sequences": 0,
       "total_requested": 1653,
       "physical_filter_passed": false,
@@ -268,8 +268,8 @@
       "status": "RUNNING",
       "cpu_only": true,
       "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
-      "processed": 1400,
-      "updated_utc": "2026-10-25T04:28:20Z"
+      "processed": 1483,
+      "updated_utc": "2026-10-25T05:13:20Z"
     },
     "raw_reconciliation": {
       "release_sequences": 8291,
@@ -605,8 +605,50 @@
       "indexed_retargeting_executed": false,
       "physical_filter_executed": false
     },
+    "bmlrub_resume": {
+      "time_beijing": "2026-10-25T13:13:33.926445+08:00",
+      "status": "DOWNLOADING",
+      "subset": "BMLrub",
+      "official_url": "https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/gender_specific/mosh_results/BMLrub.tar.bz2",
+      "expected_bytes": 12919496284,
+      "credentials_stored": false,
+      "old_partial_retained_until_full_validation": true,
+      "raw_data_published": false,
+      "volume_reserve_bytes": 6442450944,
+      "bytes_received": 11025104316,
+      "attempt": 1
+    },
+    "kit_resume": {
+      "time_beijing": "2026-10-25T13:13:27.569714+08:00",
+      "status": "DOWNLOADING",
+      "subset": "KIT",
+      "official_url": "https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/gender_specific/mosh_results/KIT.tar.bz2",
+      "expected_bytes": 13182414052,
+      "credentials_stored": false,
+      "old_partial_retained_until_full_validation": true,
+      "raw_data_published": false,
+      "volume_reserve_bytes": 6442450944,
+      "bytes_received": 8669626368,
+      "attempt": 1
+    },
+    "bmlrub_indexed_queue": {
+      "status": "WAITING_FOR_VERIFIED_DOWNLOAD_AND_PREVIOUS_GMR_BACKUP",
+      "subset": "BMLrub",
+      "time_beijing": "2026-10-25T13:06:32.799582+08:00",
+      "physical_filter_executed": false,
+      "dataset_accepted": false,
+      "full_training_started": false
+    },
+    "kit_indexed_queue": {
+      "status": "WAITING_FOR_VERIFIED_DOWNLOAD_AND_PREVIOUS_GMR_BACKUP",
+      "subset": "KIT",
+      "time_beijing": "2026-10-25T13:06:32.805641+08:00",
+      "physical_filter_executed": false,
+      "dataset_accepted": false,
+      "full_training_started": false
+    },
     "asset_authorization_and_storage": {
-      "recorded_beijing": "2026-10-25T11:11:28.542824+08:00",
+      "recorded_beijing": "2026-10-25T13:13:35.149253+08:00",
       "amass": {
         "user_reported_login_complete": true,
         "observed_main_download_table_accessible": true,
@@ -628,31 +670,36 @@
         "original_alignment_checked": true
       },
       "storage": {
-        "C_free_bytes": 22409068544,
-        "D_free_bytes": 7218384896,
+        "C_free_bytes": 8861712384,
+        "D_free_bytes": 13169594368,
         "remaining_archives": [
           {
             "subset": "BMLrub",
             "expected_archive_bytes_from_prior_official_manifest": 12919496284,
-            "current_partial_bytes": 3555048892,
-            "remaining_bytes_estimate": 9364447392
+            "current_partial_bytes": 11025104316,
+            "remaining_bytes_estimate": 1894391968
           },
           {
             "subset": "CMU",
             "expected_archive_bytes_from_prior_official_manifest": 11572134418,
-            "current_partial_bytes": 9118383551,
-            "remaining_bytes_estimate": 2453750867
+            "current_partial_bytes": 11572134418,
+            "remaining_bytes_estimate": 0
           },
           {
             "subset": "KIT",
             "expected_archive_bytes_from_prior_official_manifest": 13182414052,
-            "current_partial_bytes": 683671552,
-            "remaining_bytes_estimate": 12498742500
+            "current_partial_bytes": 8678014976,
+            "remaining_bytes_estimate": 4504399076
           }
         ],
-        "total_additional_archive_bytes_estimate": 24316940759,
-        "status": "CMU_RESUMING_WITH_6GIB_C_RESERVE_OTHER_ARCHIVES_STILL_PENDING",
-        "requested_free_capacity_gb": 50
+        "total_additional_archive_bytes_estimate": 6398791044,
+        "status": "ASSETS_RESUMING_WITH_6GIB_PER_VOLUME_RESERVE",
+        "requested_free_capacity_gb": 50,
+        "download_states": {
+          "BMLrub": "DOWNLOADING",
+          "CMU": "LOCAL_ORIGINAL_ARCHIVE_VERIFIED",
+          "KIT": "DOWNLOADING"
+        }
       },
       "credentials_recorded": false,
       "new_raw_assets_published": false
@@ -720,8 +767,8 @@
       }
     },
     "cmu_indexed_queue": {
-      "status": "STAGING_SELECTED_RAW_IN_SERVER_RAM",
-      "time_beijing": "2026-10-25T12:27:22.420517+08:00",
+      "status": "STAGED_VERIFIED_WAITING_FOR_PREVIOUS_BATCH_BACKUP",
+      "time_beijing": "2026-10-25T12:36:42.247738+08:00",
       "target": 1330,
       "requested_indexed_sources": 1343,
       "missing_from_selected_official_export": 13,
@@ -730,8 +777,12 @@
       "source_durable": "complete C-drive original archive; private original-BABEL-verified index on D",
       "ram_working_copy": true,
       "physical_filter_executed": false,
-      "staged_files": 1100,
-      "staged_bytes": 13824581796
+      "staged_files": 1300,
+      "staged_bytes": 18347165831,
+      "verification": {
+        "files_sha256_verified": 1330,
+        "raw_bytes": 18804784599
+      }
     },
     "current_input_residency": {
       "private_recovery_indexes_verified_on_D": true,
@@ -821,21 +872,21 @@
       }
     },
     "prepared1653_v1": {
-      "sequences": 1400,
-      "frames50": 708893,
-      "paired_annotations_including_saved_mirrors": 16082,
-      "rejected_annotations": 3,
+      "sequences": 1483,
+      "frames50": 833393,
+      "paired_annotations_including_saved_mirrors": 18878,
+      "rejected_annotations": 4,
       "codec_max_error_m_or_rad": 2.2182229841849477e-07,
-      "joint_skeleton_mirror_max_error_m": 9.999999870113907e-06,
+      "joint_skeleton_mirror_max_error_m": 9.999999928053671e-06,
       "splits": {
-        "train": 1056,
-        "val": 344
+        "train": 1117,
+        "val": 366
       }
     }
   },
   "space_bytes": {
-    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 3728326656,
-    "/home/ouyanghao": 1205948416
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 2596118528,
+    "/home/ouyanghao": 1205002240
   },
   "missing_raw_by_dataset": {
     "BMLrub": 2139,

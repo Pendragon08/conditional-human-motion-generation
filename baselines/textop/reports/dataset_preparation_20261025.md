@@ -1,6 +1,6 @@
 # TextOp 数据准备核查与重建记录
 
-更新时间：2026-10-25 12:28:32 北京时间。
+更新时间：2026-10-25 13:13:36 北京时间。
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
@@ -48,13 +48,13 @@
 
 当前成功 500/500 条、失败 0 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
 
-补充143条：成功143、失败0。新增1653条：成功1400、失败0。CMU另批成功0条、失败0条。不计重复的6条smoke验证，合计已完成2043条候选运动、失败0条；保存的镜像另计。新批次原始输入已逐文件校验，RAM仅作服务器工作副本。
+补充143条：成功143、失败0。新增1653条：成功1483、失败0。CMU另批成功0条、失败0条。不计重复的6条smoke验证，合计已完成2126条候选运动、失败0条；保存的镜像另计。新批次原始输入已逐文件校验，RAM仅作服务器工作副本。
 
 CMU完整原始包已通过CRC/tar校验；其选定SMPL-X G版本覆盖1,343条所需索引中的1,330条，另13条来源在该包内不存在，已保留私有缺失清单，未计为已处理。1,330条相关输入直接流式传输到个人RAM工作目录，逐文件SHA256核验后，等待前一批完成且持久归档成功，再串行执行同一GMR代码；不打断当前任务。当前CMU调度状态：
 ```json
 {
-  "status": "STAGING_SELECTED_RAW_IN_SERVER_RAM",
-  "time_beijing": "2026-10-25T12:27:22.420517+08:00",
+  "status": "STAGED_VERIFIED_WAITING_FOR_PREVIOUS_BATCH_BACKUP",
+  "time_beijing": "2026-10-25T12:36:42.247738+08:00",
   "target": 1330,
   "requested_indexed_sources": 1343,
   "missing_from_selected_official_export": 13,
@@ -63,8 +63,12 @@ CMU完整原始包已通过CRC/tar校验；其选定SMPL-X G版本覆盖1,343条
   "source_durable": "complete C-drive original archive; private original-BABEL-verified index on D",
   "ram_working_copy": true,
   "physical_filter_executed": false,
-  "staged_files": 1100,
-  "staged_bytes": 13824581796
+  "staged_files": 1300,
+  "staged_bytes": 18347165831,
+  "verification": {
+    "files_sha256_verified": 1330,
+    "raw_bytes": 18804784599
+  }
 }
 ```
 
@@ -86,6 +90,8 @@ CMU完整原始包已通过CRC/tar校验；其选定SMPL-X G版本覆盖1,343条
 ```
 
 处理链：已授权SMPL-X原始动作 → 保留16个形状参数的人体前向 → 复用GMR核心IK → 保留全部29关节 → 按实际秒轴重采样50Hz → 按论文阈值重算足接触 → 对齐BABEL派生标注 → 骨架和方向词镜像 → 69D编码/逆变换核查。
+
+BMLrub与KIT的后续队列已安排：分别等待完整原始包CRC/SHA校验、前一批GMR与持久备份成功，再逐一精确核对索引、串行重定向和归档。缺失或有歧义的来源保留清单，不填造动作、不启动重叠GMR。当前两项成功条数分别为0、0，下载/排队本身不计入已处理数据。
 
 SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像、69D编解码与调度为本次自实现，明确区别于官方旧处理脚本。GMR源码镜像没有可用Git提交，使用源文件和配置SHA256固定。CPU环境依赖未修改，已有独立按文档执行的数值验证。
 
@@ -230,7 +236,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 
 本轮用户已回复AMASS登录完成，并明确同意BABEL独立许可及下载。CMU独立下载会话已完成官网文件主机认证；本次采样状态为LOCAL_ORIGINAL_ARCHIVE_VERIFIED。BABEL官方原始包已独立下载并安装到服务器；8,291条运动对应50,004条分段标注的ID、来源、文本、类别与时间均核对一致。原始标注位于D盘个人datasets/BABEL及服务器data_preparation_20261025/babel_v1_0目录，已核对SHA256；不公开发布原始标注。详见[BABEL独立核查](babel_original_alignment_20261025.md)。
 
-按官网文件清单及本次空间核查时的断点，BMLrub、CMU、KIT合计仍需约22.65GiB新增压缩包空间，CMU续传期间该值持续减少。用户已授权继续清理无用副本；当前C盘余13.62GiB、D盘余18.21GiB。后续必须按盘容量安排续传，保留系统盘余量；服务器容量仍需单独核查。现有GMR任务继续运行，TotalCapture仍跳过。
+按官网文件清单及本次空间核查时的断点，BMLrub、CMU、KIT合计仍需约5.96GiB新增压缩包空间，CMU续传期间该值持续减少。用户已授权继续清理无用副本；当前C盘余8.24GiB、D盘余12.25GiB。后续必须按盘容量安排续传，保留系统盘余量；服务器容量仍需单独核查。现有GMR任务继续运行，TotalCapture仍跳过。
 
 重复缓存清理记录（全部原始数据包、已处理数据、检查点、唯一实验记录均保留）：
 ```json
@@ -257,7 +263,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 授权和空间记录：
 ```json
 {
-  "recorded_beijing": "2026-10-25T11:11:28.542824+08:00",
+  "recorded_beijing": "2026-10-25T13:13:35.149253+08:00",
   "amass": {
     "user_reported_login_complete": true,
     "observed_main_download_table_accessible": true,
@@ -279,38 +285,43 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
     "original_alignment_checked": true
   },
   "storage": {
-    "C_free_bytes": 22409068544,
-    "D_free_bytes": 7218384896,
+    "C_free_bytes": 8861712384,
+    "D_free_bytes": 13169594368,
     "remaining_archives": [
       {
         "subset": "BMLrub",
         "expected_archive_bytes_from_prior_official_manifest": 12919496284,
-        "current_partial_bytes": 3555048892,
-        "remaining_bytes_estimate": 9364447392
+        "current_partial_bytes": 11025104316,
+        "remaining_bytes_estimate": 1894391968
       },
       {
         "subset": "CMU",
         "expected_archive_bytes_from_prior_official_manifest": 11572134418,
-        "current_partial_bytes": 9118383551,
-        "remaining_bytes_estimate": 2453750867
+        "current_partial_bytes": 11572134418,
+        "remaining_bytes_estimate": 0
       },
       {
         "subset": "KIT",
         "expected_archive_bytes_from_prior_official_manifest": 13182414052,
-        "current_partial_bytes": 683671552,
-        "remaining_bytes_estimate": 12498742500
+        "current_partial_bytes": 8678014976,
+        "remaining_bytes_estimate": 4504399076
       }
     ],
-    "total_additional_archive_bytes_estimate": 24316940759,
-    "status": "CMU_RESUMING_WITH_6GIB_C_RESERVE_OTHER_ARCHIVES_STILL_PENDING",
-    "requested_free_capacity_gb": 50
+    "total_additional_archive_bytes_estimate": 6398791044,
+    "status": "ASSETS_RESUMING_WITH_6GIB_PER_VOLUME_RESERVE",
+    "requested_free_capacity_gb": 50,
+    "download_states": {
+      "BMLrub": "DOWNLOADING",
+      "CMU": "LOCAL_ORIGINAL_ARCHIVE_VERIFIED",
+      "KIT": "DOWNLOADING"
+    }
   },
   "credentials_recorded": false,
   "new_raw_assets_published": false
 }
 ```
 
-数据盘约剩3.47GiB、系统盘约剩1.12GiB。继续完成新增1653条并核验持久备份，保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
+数据盘约剩2.42GiB、系统盘约剩1.12GiB。继续完成新增1653条并核验持久备份，保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
 
 代码与聚合证据同步GitHub；包含原始动作、人体模型、逐条文本的资产遵循许可保存在个人目录和本地，GitHub不公开原始/重定向数据文件。新输出均明确标为待物理筛选。PhyGile、ReactiveBFM继续暂停，未改动其数据或实验记录。
 

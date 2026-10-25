@@ -10,7 +10,8 @@ for group,size in expected.items():
     partial=archive_dir/(group+'_smplx_g.tar.bz2.part')
     local_partial=REPO.parent.parent/'textop_reproduction_20261024/private_assets/incoming_amass'/(group+'_smplx_g.tar.bz2.part')
     local_final=local_partial.with_suffix('')
-    have=max(p.stat().st_size if p.exists() else 0 for p in [partial,local_partial,local_final])
+    durable_final=partial.with_suffix('')
+    have=max(p.stat().st_size if p.exists() else 0 for p in [partial,durable_final,local_partial,local_final])
     rows.append({'subset':group,'expected_archive_bytes_from_prior_official_manifest':size,'current_partial_bytes':have,'remaining_bytes_estimate':size-have})
 receipt={'recorded_beijing':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(),
          'amass':{'user_reported_login_complete':True,'observed_main_download_table_accessible':True,'file_host_session_verified_this_turn':False,'existing_approved_subsets_remain_authorized':True,'totalcapture_skipped':True},
@@ -27,7 +28,11 @@ if babel_acquisition.exists():
 cmu=DEST/'cmu_resume.json'
 if cmu.exists():
     receipt['amass']['file_host_session_verified_this_turn']=True
-    receipt['storage']['status']='CMU_RESUMING_WITH_6GIB_C_RESERVE_OTHER_ARCHIVES_STILL_PENDING'
+    receipt['storage']['status']='ASSETS_RESUMING_WITH_6GIB_PER_VOLUME_RESERVE'
+    receipt['storage']['download_states']={}
+    for group in expected:
+        path=DEST/(group.lower()+'_resume.json')
+        if path.exists():receipt['storage']['download_states'][group]=json.loads(path.read_text(encoding='utf-8')).get('status')
 DEST.mkdir(parents=True,exist_ok=True);(DEST/'asset_authorization_and_storage.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2),encoding='utf-8')
 (LOCAL/'数据授权与空间核查_20261025.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2),encoding='utf-8')
 print(json.dumps({'babel_authorized':True,'babel_download_complete':receipt['babel']['download_completed'],'remaining_archive_gib':receipt['storage']['total_additional_archive_bytes_estimate']/1024**3,'storage_status':receipt['storage']['status']}))
