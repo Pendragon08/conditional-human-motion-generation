@@ -27,3 +27,5 @@
 [预处理持久备份验收](PREPROCESSING_BACKUP_AUDIT.md)逐条读取已备份的动作核对SHA、数组和来源覆盖；局部批次通过不代表全部数据完成，也不替代真实物理筛选。[聚合报告](reports/preprocessing_backup_audit_20261025.md)。
 
 [生成器优化器与断点恢复诊断](GENERATOR_STATE_ENVIRONMENT.md)补充真实Adam/AdamW状态分配、落盘和新管理器恢复。每阶段仅8次诊断更新，候选数据未通过物理筛选；[聚合结果](reports/generator_state_20261025.md)明确区分正式训练、EMA测试设置及实际检查点步数。
+
+[GMR四进程并行已启用](PARALLEL_GMR_ENVIRONMENT.md)：仍限制CPU0–3，作者/独立完整动作对照约2.41/2.36倍加速，所有比较数组差异0。BMLrub已从完整上传数据启动四进程，KIT后续沿用；此前精度失败与互斥保护记录保留。[结果与适用范围](reports/parallel_gmr_20261025.md)。

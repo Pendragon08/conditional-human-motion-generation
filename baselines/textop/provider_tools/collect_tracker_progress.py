@@ -52,6 +52,8 @@ export1330=read('export1330_v1')
 cmu_queue=latest['receipts'].get('cmu_indexed_queue',{})
 state_path=BASE/'results/generator_state_20261025/summary.json'
 generator_state=json.loads(state_path.read_text(encoding='utf-8')) if state_path.exists() else {}
+parallel_path=BASE/'results/parallel_gmr_20261025/summary.json'
+parallel_gmr=json.loads(parallel_path.read_text(encoding='utf-8')) if parallel_path.exists() else {}
 strict=read('strict_replay_author_v3');strict_doc=read('strict_replay_document_v2')
 backup_path=BASE/'results/data_preparation_20261025/reference643_backup.json'
 backup=json.loads(backup_path.read_text(encoding='utf-8')) if backup_path.exists() else {}
@@ -63,6 +65,7 @@ summary={'time_beijing':now,'prepared_source_sequences':prepared,'physical_filte
          'capacity643_author':capacity,'capacity643_document':capacity_doc,'initialization_audit':initialization,
          'filter_statistics_author':statistics,'filter_statistics_document':statistics_doc,'reference_export1653':export1653,
          'reference_export1330':export1330,'cmu_preparation_queue':cmu_queue,'generator_state_diagnostic_passed':generator_state.get('both_processes_passed',False),
+         'gmr_parallel_activation':parallel_gmr.get('activation',{}).get('mode','UNKNOWN'),
          'strict_replay_author':strict,'strict_replay_document':strict_doc,
          'unresolved':['8192-env memory/stability with ALL future references; current643-source capacity alone passed','full40k policy and two-round physical filtering',
                        'accepted corpus loader/statistics/text cache','fullVAE200k and LDM300k','native SDK stop/close hang; bounded diagnostic fallback disclosed']}
@@ -77,6 +80,7 @@ report=f'''# TextOp 数据筛选器集成与生成器训练进度
 ## 已验证的实际进展
 
 - 29DoF/69D源运动已重建{prepared}条，另存镜像；原始BABEL的8,291条运动、50,004条标签已核对。所有新候选仍是physical_filter_passed=false。
+- 用户已授权GMR批内四进程并行，当前门禁`{parallel_gmr.get('activation',{}).get('mode','UNKNOWN')}`；所有进程共同限制CPU0–3。作者及独立8动作对照约2.41/2.36倍加速、数组差异0，未放宽精度门槛。BMLrub从完整上传的数据接续，KIT等待其备份后沿用并行；历史互斥启动保护记录保留。[并行验证与限制](parallel_gmr_20261025.md)。
 - 真实IsaacSim4.5.0 / IsaacLab项目2.1.0（包标识0.36.21）运行通过。29关节、合并固定关节后的30个刚体使用名称映射，不混用GMR的38个框架顺序。
 - 作者与独立按文档执行的底层FK/物理诊断均退出0。实际跟踪MDP也完成8环境、24次控制调用，观测/奖励有限；actor和critic均557维，无域随机化，预训练期间移除高度终止项，严格阶段恢复骨盆0.25m、末端0.5m阈值。
 - 真实PPO更新及断点恢复：作者状态`{ppo.get('status','PENDING')}`，实际Adam更新{ppo.get('optimizer_updates',0)}次；模型、Adam、两套观测归一化的数值/类型/形状逐一核对，恢复后继续更新。独立按文档复核状态`{independent.get('status','PENDING')}`。这是8环境、2轮的功能诊断，**不是论文8192环境、40,000轮的过滤训练，更不是动作通过率**。
@@ -103,7 +107,7 @@ PPO首轮已做20次Adam更新，之后比较Adam标量的CPU/GPU设备时报错
 
 ## 已安排的后续
 
-1. 现有原始包下载已核验完成；GMR队列当前为CMU1330条 → BMLrub2139条 → KIT2513条，前一批持久备份成功后才进入下一批；不重复备份、不并发抢占GMR资源。
+1. 现有原始包下载已核验完成，CMU重定向及持久备份已完成；BMLrub2139条 → KIT2513条按批次接续，批内使用经验证的四进程GMR，前批持久备份成功后进入下一批。避免重复处理和重复备份。
 2. 完成所有可获得候选的参考导出，检查8192环境及完整运动库的显存容量，启动论文40,000轮特权过滤策略。保留失败记录，再执行宽松失败概率>0.05剔除及严格任何失败剔除。
 3. 从真实保留动作构建训练/验证分离语料，仅用训练集统计归一化并补全CLIP文本缓存。加载和断点恢复验证通过后，新建29DoF/69D训练：VAE200,000步 → 冻结VAE的LDM300,000步；batch512、lr1e-4、历史2帧→未来8帧及论文网络配置。
 4. 生成器训练完成后还需训练最终非特权431D actor/557D critic全身控制器（仿真实验50,000轮），加入生成运动增强，再验证文本切换、长时自回归和生成—执行闭环，保存结果视频、失败案例和报告。特权筛选策略不是最终部署控制器。
@@ -114,6 +118,6 @@ PPO首轮已做20次Adam更新，之后比较Adam标量的CPU/GPU设备时报错
 '''
 (BASE/'reports/tracker_integration_20261025.md').write_text(report,encoding='utf-8')
 (LOCAL/'跟踪筛选器集成验证_20261025.md').write_text(report,encoding='utf-8')
-page='<!DOCTYPE html><html lang="zh-CN"><meta charset="utf-8"><title>TextOp数据与完整训练进度</title><style>body{font:16px/1.8 system-ui,"Microsoft YaHei";max-width:1000px;margin:30px auto;padding:24px;background:#f6f8fa}pre{white-space:pre-wrap;background:white;padding:24px;border:1px solid #ccc;font:inherit}a{color:#0969da}</style><h1>TextOp数据准备与完整训练进度</h1><p><a href="数据准备核查报告_20261025.html">数据准备</a> · <a href="Step2运动生成器训练安排_20261025.html">训练配置</a> · <a href="69D优化器与断点恢复验证_20261025.html">断点恢复验证</a> · <a href="空间清理与数据续传_20261025.html">存储与下载</a></p><pre>'+html.escape(report)+'</pre></html>'
+page='<!DOCTYPE html><html lang="zh-CN"><meta charset="utf-8"><title>TextOp数据与完整训练进度</title><style>body{font:16px/1.8 system-ui,"Microsoft YaHei";max-width:1000px;margin:30px auto;padding:24px;background:#f6f8fa}pre{white-space:pre-wrap;background:white;padding:24px;border:1px solid #ccc;font:inherit}a{color:#0969da}</style><h1>TextOp数据准备与完整训练进度</h1><p><a href="数据准备核查报告_20261025.html">数据准备</a> · <a href="Step2运动生成器训练安排_20261025.html">训练配置</a> · <a href="69D优化器与断点恢复验证_20261025.html">断点恢复验证</a> · <a href="GMR并行处理验证_20261025.html">GMR并行验证</a> · <a href="空间清理与数据续传_20261025.html">存储与下载</a></p><pre>'+html.escape(report)+'</pre></html>'
 for name in ['跟踪筛选器集成验证_20261025.html','TextOp下载与训练报告.html']:(LOCAL/name).write_text(page,encoding='utf-8')
 print(json.dumps({'prepared_sources':prepared,'ppo_actual_updates':ppo.get('optimizer_updates'),'ppo_document':independent.get('status'),'exported_sources':export.get('exported_source_sequences'),'full_generator_started':False}))

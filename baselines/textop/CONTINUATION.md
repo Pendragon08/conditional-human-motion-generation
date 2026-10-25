@@ -658,3 +658,45 @@ localD69D优化器与断点恢复验证_20261025.html. Fresh independent report 
 into publicresults. Do not rerun these diagnostic jobs without a new change or
 failure that requires validation. Historical
 zero-update evidence and failedSDK records remain unchanged.
+
+## User-authorized parallel GMR2026-10-25 22:55
+
+User explicitly asked to accelerate with parallel processing. Production gate
+configs/gmr-parallel-activation.json is now PARALLEL_VALIDATED for exact BMLrub
+andKITprepared_v1 outputs. This supersedes prior within-cohort serial scheduling;
+cohorts still wait for previous durablebackup. Do not revert or start duplicates.
+Four processes share CPUset0-3, Torch/MKL4 threads, OpenBLAS1, OMP_WAIT_POLICY
+PASSIVE/KMP_BLOCKTIME0; CUDAdisabled. Same sequential motion-local GMR/codec math.
+Originalkernel90db2afd preserved and AST comparison recorded. Currententrypoint
+06539b1a...,helper79d532ac...,specb797d143...,witnessa0ae6fc5.... Warm packages
+unchanged. Author_v1(oneTorchthread) FAILED qposdifference0.00016665; retained.
+V2/V3 exactresults butonly1.08/1.07speedup; retained. Finalauthor_v4 and fresh
+document_v1 actualexit0,112array/144metadata comparisons, allarrayerrors0,
+48independentchecks passed.8CMUsources/5040poseframes,2.41/2.36speedup observed;
+not guaranteed4x or fullcohort completion/physics acceptance. Do not rerun.
+
+BMLrub2139raw assets fully uploaded andSHAverified. OldWindows53968 then hit
+the intended no-concurrent-GMR guard while benchmark ran; oldKIT23184 exited
+on predecessor failure. Both had already exited naturally; no data/GMR killed.
+Errors preserved inresults/data_preparation_20261025/queue_history. No duplicate
+upload. Newresume_staged_bmlrub.py Windows61460 waits verifiedgate, rechecks all
+rawSHA, launches once and observes/backs up. Serverparent3653970 launchedUTC
+14:55:14; workers3654252/53/54/55, first13outputs0fail, allCPU0-3. ActualPID/state
+must be rechecked, not blindly reused. KIT restarted with narrowly guarded
+--resume-waiting; Windows38236 waits BMLrub durablebackup, then original exact
+staging and same parallel entrypoint. Referencequeue3527552 still intact.
+
+Remaining indexed backups now allow8h instead of2h because observedCMU1.048GB
+transfer tookabout101min; largercohorts must not time out at2h. This is only
+timeout budget, no new concurrentbackup. Keep minD2GiBreserve and fullgzip/tar/
+SHA proof. Parent canonical output has one manifest and oneNPZ peroriginal;
+worker scratch/manifests are outside canonical archive. No raw data/checkpoint
+or failed diagnostic evidence deleted. No fullfilter/generatortraining enabled.
+
+CMU completed privatebackup contentaudit after_cmu_v1:3626verifiedsources,
+4652remaining, statusINCOMPLETE; do not rerun unchanged audit. Nextaudit only
+after BMLrub orKIT privatebackup completes, with a newrunname. Existing8278
+completion and separate physicalfilter/fulltraining notification gates unchanged.
+collect_parallel_gmr.py records all versions/independentREPORT and writes localD
+GMR并行处理验证_20261025.html. Automation updated for these current workers and
+parallel configuration. Serverdata remains~2.69GiBfree; budget formalcheckpoints.
