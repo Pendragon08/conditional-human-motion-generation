@@ -1,6 +1,6 @@
 {
-  "status": "STAGED_VERIFIED_WAITING_FOR_PREVIOUS_BATCH_BACKUP",
-  "time_beijing": "2026-10-25T12:36:42.247738+08:00",
+  "status": "RUNNING_GMR_CPU_ONLY",
+  "time_beijing": "2026-10-25T15:07:44.584982+08:00",
   "target": 1330,
   "requested_indexed_sources": 1343,
   "missing_from_selected_official_export": 13,
@@ -14,5 +14,23 @@
   "verification": {
     "files_sha256_verified": 1330,
     "raw_bytes": 18804784599
-  }
+  },
+  "launch": {
+    "pid": 3483711,
+    "command": [
+      "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021/bin/python",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_paper_data.py",
+      "--spec",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/data-prep-env-spec.json",
+      "--pairs",
+      "/dev/shm/ouyanghao_textop_20261025/cmu1330_v1/pairs.private.json",
+      "--output",
+      "/dev/shm/ouyanghao_textop_20261025/cmu1330_v1/prepared1330_v1"
+    ],
+    "cpu_only": true,
+    "source_sha256": "90db2afdb9baf3521356c7995c95d2cd48bdc56836ffc4539073c4c8e4b819dc",
+    "target": 1330,
+    "time_utc": "2026-10-25T07:07:44Z"
+  },
+  "progress": {}
 }

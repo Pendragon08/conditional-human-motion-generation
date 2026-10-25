@@ -67,3 +67,6 @@ before using that old profile. Current TextOp9d7f370d/GMR87f577cc/paper69934d822
 Trackerb7a3bf0c environments and shared SDKs unchanged. HOME TextOp assets and
 PhyGile preserved assets relocated to personal/data with all19 fileSHA matches
 and original paths retained as links. Details in personal_storage_cleanup report.
+
+### capacity diagnostic: textop-tracker@b7a3bf0c / shape@37c64682
+Declarative configs/tracker-capacity-spec.json written before dispatch. Warm unchanged dependencies, GPU1/CPU4/Torch65%. Completed643-source library(1286 trajectories,946700 frames),8192envs, one24-step PPO iteration/20 Adam updates only. Verify actual observations, finite gradients/checkpoint and measured memory. Full-corpus capacity,40k formal filtering and generator readiness remain false. Author followed by fresh verbatim document witness required before marking this shape validated.
