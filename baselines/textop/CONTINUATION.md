@@ -773,3 +773,36 @@ asDREAMCONTROL_SOFTWARE_RECOVERY.md andlocalD闲置DreamControl软件备份与�
 Afterconfirmedcleanup, backupRAMtar/parts are redundant butcurrentlyretained;
 ifRAMspacebecomestight, verifyGitHubdigestsandonlyremove these explicitsoftware
 archivecopies, keepmetadata/receipts. NevercleanGMRraw/prepared arraysorcheckpoints.
+
+## Heartbeat2026-10-26 01:05: BMLrub backup audited, software cleanup recovered
+
+BMLrub2139/2139 finished0fail, fouractualworkerexits0,6948.20s. Prepared private
+archive1,188,059,483B SHA6e058321033c919f0fb3349d0a44058dbeca4605b927a807cbcd0665f0a40ccd
+completed00:53. FK2139/4278trajectories/2,242,736frames also done. Newread-only
+backupauditafter_bmlrub_v1 actualexit0 verified5765sources; remaining2513KIT.
+StillINCOMPLETE/physicalfilterfalse/fulltrainingfalse. Do not re-audit thissame
+unchangedbackup or send fullcompletion notification. KITexisting38236 has
+begun rawstaging; referencequeue waitsKIT, no duplicateworker.
+
+DreamControlsoftware archive13817files/3,553,869,959B and4parts+manifest+packages
+allverifiedGitHubRelease423521218,taginactive-dreamcontrol-overlay-20261026.
+Originalcleanup240s deadlineexpired before destructivephase; noapply_started,
+15233membersallpresent/metadataunchanged. Failure retained incontinuation_timeout_
+attempt1.json andapply_timeout_attempt1.json. Narrowresume reverifiedGitHubassets
+andoriginalbackupcommit then immutablekernel with1800s supervisor; actualexit0.
+StatusIDLE_SOFTWARE_RECOVERY_AND_CLEANUP_VERIFIED. Datafree8,783,761,408B(~8.18GiB),
+~5.49GiBreclaimed. No dataset/checkpoint/record deleted. VerifiedredundantRAM
+softwaretar+4partsremoved7,107,739,918B, allmetadata/receipts retained. Do notrerun
+archive/upload/cleanup coordinators; original64412 exited, recoveryalsoended.
+PBHCbase mandatoryforTextOp, notcleanupcandidate.
+
+CPU-onlyread-onlycheckpointstorageaudit actualexit0, zeroGPU/modelupdates/new
+checkpointfiles. It serializedexisting trustedEMA-on diagnosticstates into a
+countingsink withEMA={} matchingformalfalse. SourceSHAunchanged. VAE513,513,149B,
+LDM223,726,743B before1% planningmargin; CPUmapping metadata differs fromactualGPU
+files, soforecastonly. Newconfigs/training-storage-layout.json isPROVISIONAL,
+NOTACTIVATED: filter+VAEdata, LDMpersonalhome,2GiBreserve+512MiBlogs pervolume.
+Currentfits narrowly; allstagesmustrefreshlivefree/checkpointsize/resource/data
+acceptance beforeuse. FinalWBC/augmenteddata/video costexcluded, notfullstorage
+solved. reports/training_storage_20261026.md andlocalDsame-datebudgetsupersede
+oldEMA-onplanningestimate without erasingits historicalevidence.

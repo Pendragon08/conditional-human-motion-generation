@@ -1,0 +1,49 @@
+{
+  "status": "CHECKPOINT_SIZE_PLANNING_ONLY",
+  "torch_version": "1.13.1+cu117",
+  "cpu_only": true,
+  "source_sha256": "2b035fe22c92faac0a98738ecaf5eaf53ede751ef17f154b25689cc0b008feaa",
+  "new_checkpoint_files_written": 0,
+  "optimizer_updates": 0,
+  "physical_filter_executed": false,
+  "dataset_accepted": false,
+  "formal_training_started": false,
+  "stages": {
+    "vae": {
+      "existing_checkpoint_sha256": "5785d063f37ad30f639760a79bad5ffe0e69c30507a24243df90c895f8e5f74b",
+      "existing_file_bytes": 684683326,
+      "cpu_serialization_ema_on_bytes": 684668734,
+      "ema_tensor_bytes": 171066148,
+      "cpu_serialization_ema_off_bytes": 513513149,
+      "per_checkpoint_planning_bytes_with_one_percent_margin": 518648281,
+      "checkpoint_count": 10,
+      "scheduled_planning_bytes": 5186482810,
+      "formal_ema_enabled": false,
+      "official_config_sha256": "7ca61a334485815f4409fa6c2b0a6e2edef3a9d40548e0075b8944fc1bce7d6c",
+      "source_checkpoint_unchanged": true
+    },
+    "ldm": {
+      "existing_checkpoint_sha256": "bdf540b976b26a6ca6e47fc3a595314970211a2419386b72c561d8f90e786be3",
+      "existing_file_bytes": 305124157,
+      "cpu_serialization_ema_on_bytes": 305117693,
+      "ema_tensor_bytes": 91591168,
+      "cpu_serialization_ema_off_bytes": 223726743,
+      "per_checkpoint_planning_bytes_with_one_percent_margin": 225964011,
+      "checkpoint_count": 15,
+      "scheduled_planning_bytes": 3389460165,
+      "formal_ema_enabled": false,
+      "official_config_sha256": "4283dc83c984e052e903020f767b7e53b3b38067b26351a7b3ac0159400d111c",
+      "source_checkpoint_unchanged": true
+    }
+  },
+  "limitations": [
+    "Existing diagnostic weights only; accepted-corpus binding and future state may differ.",
+    "CPU-mapped serialization changes device metadata; formal GPU checkpoint size has not been measured.",
+    "One percent serialization allowance is a planning margin, not a proven upper bound.",
+    "Does not include final WBC, generated augmentation, full corpus/cache or all logs."
+  ],
+  "disk_free_bytes": {
+    "/data": 8783740928,
+    "/home": 6654562304
+  }
+}
