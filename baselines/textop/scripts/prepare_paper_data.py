@@ -103,9 +103,9 @@ def annotations(entry,times,mirror=False):
         good.append({'start_frame':lo,'end_frame_exclusive':hi,'start_s':lo/50,'end_s':hi/50,'text':mirror_text(text) if mirror else text,'action_categories':[mirror_text(c) for c in cats] if mirror else cats,'original_start_s':float(a),'original_end_s':float(b)})
     return good,rejected
 
-def main(args):
+def main(args,cpu_threads=4):
     spec=json.loads(args.spec.read_text());args.output.mkdir(parents=True,exist_ok=True)
-    torch.set_num_threads(4);torch.manual_seed(42);np.random.seed(42)
+    torch.set_num_threads(cpu_threads);torch.manual_seed(42);np.random.seed(42)
     GMR,frames_fn,versions=load_runtime(spec);models={}
     pairs=json.loads(args.pairs.read_text());pairs=sorted(pairs,key=lambda x:(x['frames'],x['canonical_source']))
     if args.limit:pairs=pairs[:args.limit]
@@ -154,4 +154,7 @@ def main(args):
     receipt['status']='PREPROCESSING_FINISHED_FILTER_PENDING' if records else 'PREPROCESSING_FAILED';receipt['splits']=dict(collections.Counter(x['split'] for x in records));receipt['paired_segments']=sum(len(x['annotations'])+len(x['mirrored_annotations']) for x in records)
     (args.output/'progress.json').write_text(json.dumps(receipt,indent=2));print(json.dumps(receipt),flush=True)
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--spec',type=pathlib.Path,required=True);p.add_argument('--pairs',type=pathlib.Path,required=True);p.add_argument('--output',type=pathlib.Path,required=True);p.add_argument('--limit',type=int);p.add_argument('--witness',action='store_true');main(p.parse_args())
+    p=argparse.ArgumentParser();p.add_argument('--spec',type=pathlib.Path,required=True);p.add_argument('--pairs',type=pathlib.Path,required=True);p.add_argument('--output',type=pathlib.Path,required=True);p.add_argument('--limit',type=int);p.add_argument('--witness',action='store_true')
+    args=p.parse_args()
+    from parallel_prepare_data import maybe_dispatch
+    if not maybe_dispatch(args):main(args)

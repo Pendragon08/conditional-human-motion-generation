@@ -21,11 +21,17 @@ def load(path):
         except json.JSONDecodeError:time.sleep(1)
     raise RuntimeError('Repeated incomplete state: '+str(path))
 
-def main(subset):
+def main(subset,resume_waiting=False):
     tag=subset.lower();dest=BASE/'results/data_preparation_20261025';state_path=dest/(tag+'_indexed_queue.json')
-    assert not state_path.exists(),'Existing continuation retained; inspect before retry'
+    if state_path.exists():
+        old=load(state_path)
+        assert resume_waiting and subset=='KIT' and old.get('status')=='STOPPED_WITH_ERROR_ALL_DATA_RETAINED' and 'Predecessor failed' in old.get('error',''),'Existing continuation retained; inspect before retry'
+        assert remote("import pathlib;print(pathlib.Path('/dev/shm/ouyanghao_textop_20261025/kit_indexed_v1').exists())").strip()=='False'
+        history=dest/'queue_history';history.mkdir(exist_ok=True);snapshot=history/'kit_predecessor_guard_20261025.json';assert not snapshot.exists();snapshot.write_text(json.dumps(old,indent=2),encoding='utf-8')
     def state(status,**values):
-        old=load(state_path);old.update(status=status,subset=subset,time_beijing=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(),**values)
+        old=load(state_path)
+        if 'error' in old:old['previous_error']=old.pop('error')
+        old.update(status=status,subset=subset,time_beijing=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(),**values)
         state_path.write_text(json.dumps(old,indent=2),encoding='utf-8');print(json.dumps({k:v for k,v in old.items() if k!='progress'}),flush=True)
     def publish():
         for name in ['record_asset_authorization.py','collect_data_preparation.py','collect_storage_cleanup.py','publish.py']:
@@ -129,7 +135,7 @@ proof={{'pid':p.pid,'command':cmd,'cpu_only':True,'verified_raw':len(rows),'sour
         target=LOCAL/'datasets'/('paper29_'+tag+'_20261025.private.tar.gz');partial=target.with_suffix(target.suffix+'.partial')
         assert not target.exists() and not partial.exists()
         for attempt in range(3):
-            with partial.open('xb') as output:proc=subprocess.run([*SSH,'tar -C '+shlex.quote(ram)+' -czf - prepared_v1 pairs.private.json'],stdout=output,stderr=subprocess.PIPE,timeout=7200)
+            with partial.open('xb') as output:proc=subprocess.run([*SSH,'tar -C '+shlex.quote(ram)+' -czf - prepared_v1 pairs.private.json'],stdout=output,stderr=subprocess.PIPE,timeout=28800)
             if proc.returncode==0:break
             partial.rename(partial.with_name(partial.name+'.failed_'+str(attempt+1)))
         assert proc.returncode==0
@@ -142,4 +148,4 @@ proof={{'pid':p.pid,'command':cmd,'cpu_only':True,'verified_raw':len(rows),'sour
     except BaseException as error:state('STOPPED_WITH_ERROR_ALL_DATA_RETAINED',error=repr(error));raise
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--subset',required=True,choices=['BMLrub','KIT']);main(p.parse_args().subset)
+    p=argparse.ArgumentParser();p.add_argument('--subset',required=True,choices=['BMLrub','KIT']);p.add_argument('--resume-waiting',action='store_true');args=p.parse_args();main(args.subset,args.resume_waiting)

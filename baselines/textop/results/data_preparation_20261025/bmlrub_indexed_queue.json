@@ -1,8 +1,39 @@
 {
-  "status": "WAITING_FOR_VERIFIED_DOWNLOAD_AND_PREVIOUS_GMR_BACKUP",
+  "status": "RUNNING_GMR_PARALLEL_CPU_ONLY",
   "subset": "BMLrub",
-  "time_beijing": "2026-10-25T13:06:32.799582+08:00",
+  "time_beijing": "2026-10-25T22:55:15.966340+08:00",
   "physical_filter_executed": false,
   "dataset_accepted": false,
-  "full_training_started": false
+  "full_training_started": false,
+  "requested_indexed_sources": 2139,
+  "target": 2139,
+  "missing_from_selected_official_export": 0,
+  "raw_bytes": 18183418757,
+  "archive_sha256": "7b7dc34e81c0b55cf7ff692c319f84aae2f7782868babab2cb5ba8346abae1fa",
+  "source_durable": "complete original archive on personal persistent volume; verified BABEL index on D",
+  "ram_working_copy": true,
+  "staged_files": 2100,
+  "staged_bytes": 17866597002,
+  "previous_error": "RuntimeError('Traceback (most recent call last):\\n  File \"<stdin>\", line 13, in <module>\\nAssertionError: Another GMR is active\\n\\n')",
+  "resume_kind": "reuse fully staged and hashed raw inputs; no duplicate transfer",
+  "launch": {
+    "pid": 3653970,
+    "command": [
+      "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021/bin/python",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_paper_data.py",
+      "--spec",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/data-prep-env-spec.json",
+      "--pairs",
+      "/dev/shm/ouyanghao_textop_20261025/bmlrub_indexed_v1/pairs.private.json",
+      "--output",
+      "/dev/shm/ouyanghao_textop_20261025/bmlrub_indexed_v1/prepared_v1"
+    ],
+    "cpu_only": true,
+    "parallel_workers": 4,
+    "verified_raw": 2139,
+    "source_sha256": "06539b1a7593ef45beda815d07252b4850f2c47237f2d0000c77bdcd60f101a5",
+    "time_utc": "2026-10-25T14:55:14Z",
+    "resume_after_mutual_exclusion": true
+  },
+  "progress": {}
 }

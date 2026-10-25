@@ -242,3 +242,12 @@ EMAdefaultsfalse, candidate/firststage scopeonly. Afterboth datafree2889515008B
 (2.69GiB), above2GiBguard but budget futureformalcheckpoints beforelaunch.
 Sourceaa511f44...,state46ef2ade...,specbd3f7a06.... Reportandprivatecheckpoints
 preserved; no additionalduplicate diagnostic needed without a new concern.
+
+### Parallel GMR declared2026-10-25, before dispatch
+User authorized disjoint-motion parallel preprocessing. Warm GMR87f577cc, no packages changed. Four single-CPU workers, threads1, CPUset0-3, GPUdisabled; same motion-local sequential solver and69D math. Original90db2afd kernel preserved; AST shows only main cpu_threads argument/thread constant and entrypoint dispatch changed. New configs/gmr-parallel-spec.json precedes sample benchmark. Compare8 complete motions against serial4threads and stored previous outputs; contacts/times/labels exact, floating tolerances declared. Canonical output schema and private backup gate preserved. Existing BMLrub upload/KIT waiter continue; scoped WAIT_FOR_VALIDATION prevents unverified production dispatch. Author and fresh documented witness required before enabling gate. No changed algorithm, resource expansion or full physical acceptance claimed.
+
+ParallelGMR author_v1 failed output equivalence atqpos maxdiff0.0001666463840418464, unchangedatol1e-5. serial101.41s/parallel39.40s are failed-profile timing only, not production acceptance. All source/spec/output failures retained. Revised spec beforeauthor_v2 keeps originalTorch/BLAS4threads and allworkers share fixedCPUset0-3; aggregate CPUcap stays4. No tolerance/algorithm change. spec78de590d...,helper9711f166...,witnessa0ae6fc5.... Awaitauthor+freshdocument equivalence beforeactivation.
+
+ParallelGMR author_v2 passed unchanged comparison, serial100.41s/parallel92.83s (1.08x). OriginalTorch/BLAS4 arithmetic preserved, but concurrent tiny BLAS operations oversubscribed; this is limited benefit, not a4x claim. Revision3 declared beforedispatch retainsTorch/MKL4 and changesonlyOpenBLAS to1; same4CPUset and precision gates. Existingauthor_v1failure/v2sources retained. No production activation yet.
+
+ParallelGMR author_v3 preserved exact numerical outputs but serial99.38s/parallel92.83s(1.07x). Revision4 declared beforedispatch changes only idleOpenMP wait behavior toPASSIVE/KMP_BLOCKTIME0, retainingTorch/MKL4 andOpenBLAS1 andsame4CPUset. No numeric tolerance change; previous source/receipts retained. Awaitactual benchmark before enabling.
