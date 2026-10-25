@@ -1,6 +1,6 @@
 # TextOp 数据准备核查与重建记录
 
-更新时间：2026-10-25 02:41:57 北京时间。
+更新时间：2026-10-25 08:45:20 北京时间。
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
@@ -46,21 +46,21 @@
 
 ## 29DoF 重建进度
 
-当前成功 454/500 条、失败 0 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
+当前成功 500/500 条、失败 0 条，并分别保存对应镜像；这些是未通过动态过滤的候选数据。
 
-另外143条已有ACCAD原始动作因空格/下划线导出命名差异，首轮未匹配；现通过明确的字面规范化确认，无模糊匹配、无歧义键。当前批次完成后使用同一验证过的CPU环境串行处理，已完成 0/143 条。输入可用性不等于完成重定向或通过物理筛选。
+另外143条已有ACCAD原始动作因空格/下划线导出命名差异，首轮未匹配；现通过明确的字面规范化确认，无模糊匹配、无歧义键。当前批次完成后使用同一验证过的CPU环境串行处理，已完成 143/143 条。输入可用性不等于完成重定向或通过物理筛选。
 
 ```json
 {
-  "sequences": 454,
-  "frames50": 267802,
-  "paired_annotations_including_saved_mirrors": 6556,
+  "sequences": 500,
+  "frames50": 429871,
+  "paired_annotations_including_saved_mirrors": 9396,
   "rejected_annotations": 122,
   "codec_max_error_m_or_rad": 3.981501353056416e-07,
   "joint_skeleton_mirror_max_error_m": 9.99999971451615e-06,
   "splits": {
-    "train": 343,
-    "val": 111
+    "train": 373,
+    "val": 127
   }
 }
 ```
@@ -143,12 +143,38 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 新提取的1,653条输入后续串行处理队列（同一已验证CPU环境，不启动生成器或RL）：
 ```json
 {
-  "status": "WAITING_FOR_LOCAL_EXTRACTION_AND_PREVIOUS_RETARGETING",
+  "status": "RUNNING_GMR_CPU_ONLY",
   "target": 1653,
   "ram_working_copy": true,
   "source_durable": "C private assets and D licensed original archives",
   "physical_filter_executed": false,
-  "time_utc": "2026-10-24T18:03:18.584551+00:00"
+  "time_utc": "2026-10-25T00:45:19.180088+00:00",
+  "preflight": {
+    "mem": {
+      "MemTotal": 269956653056,
+      "MemAvailable": 247712681984
+    },
+    "raw_bytes": 18369027723,
+    "ram_root": "/dev/shm/ouyanghao_textop_20261025/local1653_v1"
+  },
+  "launch": {
+    "pid": 3319567,
+    "command": [
+      "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021/bin/python",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_paper_data.py",
+      "--spec",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/data-prep-env-spec.json",
+      "--pairs",
+      "/dev/shm/ouyanghao_textop_20261025/local1653_v1/pairs.private.json",
+      "--output",
+      "/dev/shm/ouyanghao_textop_20261025/local1653_v1/prepared1653_v1"
+    ],
+    "verified_raw": 1653,
+    "source_sha256": "90db2afdb9baf3521356c7995c95d2cd48bdc56836ffc4539073c4c8e4b819dc",
+    "time_utc": "2026-10-25T00:45:18Z",
+    "durability": "raw originals in localC and archivesD; RAM is working copy; outputs must be backed up to localD"
+  },
+  "progress": {}
 }
 ```
 
@@ -156,7 +182,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 
 AMASS官网下载当前显示Sign In，已请求用户重新登录以续传BMLrub、CMU、KIT等缺少的包。BABEL原始标注另需独立登录和许可确认；已有AMASS/SMPL-X授权不自动覆盖BABEL。本次尚未接受BABEL独立许可，也未发送作者邮件。TotalCapture按此前要求跳过。
 
-数据盘约剩1.48GiB、系统盘约剩1.03GiB。先完成已有500条的处理并保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
+数据盘约剩1.28GiB、系统盘约剩1.04GiB。先完成已有500条的处理并保留失败理由；补齐原始输入后，准备未过滤的跟踪数据并运行论文两轮真实评估。只有通过动态筛选的动作才能进入后续论文69D生成器训练。旧57D检查点不作为69D检查点继续使用。
 
 代码与聚合证据同步GitHub；包含原始动作、人体模型、逐条文本的资产遵循许可保存在个人目录和本地，GitHub不公开原始/重定向数据文件。新输出均明确标为待物理筛选。PhyGile、ReactiveBFM继续暂停，未改动其数据或实验记录。
 

@@ -1,8 +1,34 @@
 {
-  "status": "WAITING_FOR_LOCAL_EXTRACTION_AND_PREVIOUS_RETARGETING",
+  "status": "RUNNING_GMR_CPU_ONLY",
   "target": 1653,
   "ram_working_copy": true,
   "source_durable": "C private assets and D licensed original archives",
   "physical_filter_executed": false,
-  "time_utc": "2026-10-24T18:03:18.584551+00:00"
+  "time_utc": "2026-10-25T00:45:19.180088+00:00",
+  "preflight": {
+    "mem": {
+      "MemTotal": 269956653056,
+      "MemAvailable": 247712681984
+    },
+    "raw_bytes": 18369027723,
+    "ram_root": "/dev/shm/ouyanghao_textop_20261025/local1653_v1"
+  },
+  "launch": {
+    "pid": 3319567,
+    "command": [
+      "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021/bin/python",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_paper_data.py",
+      "--spec",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/data-prep-env-spec.json",
+      "--pairs",
+      "/dev/shm/ouyanghao_textop_20261025/local1653_v1/pairs.private.json",
+      "--output",
+      "/dev/shm/ouyanghao_textop_20261025/local1653_v1/prepared1653_v1"
+    ],
+    "verified_raw": 1653,
+    "source_sha256": "90db2afdb9baf3521356c7995c95d2cd48bdc56836ffc4539073c4c8e4b819dc",
+    "time_utc": "2026-10-25T00:45:18Z",
+    "durability": "raw originals in localC and archivesD; RAM is working copy; outputs must be backed up to localD"
+  },
+  "progress": {}
 }
