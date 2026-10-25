@@ -181,3 +181,32 @@ Still required:8192-env/full-library capacity, full40k privileged policy,
 actual relaxed/strict filtering, accepted69D corpus loader/cache/statistics,
 VAE200k→LDM300k and real generation/execution. The user has already authorized
 starting full generator training once these prerequisites actually pass.
+
+## Personal-storage cleanup authorized2026-10-25 (check actual phase)
+
+User explicitly requested clearing only their files because both server disks
+are tight. provider_tools/finish_personal_storage_cleanup.py currently handles
+the task; historical WindowsPID61664, state results/storage_cleanup_20261025/
+continuation.json. Do not duplicate this worker. Server archive phase completed
+with82,327 fileSHA checks,10,114,610,390 source bytes,5,769,849,788 archive bytes;
+6 pieces in /dev/shm/ouyanghao_storage_20261025. Only one idle EngineAI Python
+env .venv-engineai-official and fixed derived/download caches are selected.
+No processes or other Python environments depended on it at preflight. Current
+TextOp/GMR/IsaacSim/IsaacLab runtimes, datasets/checkpoints/records are excluded.
+
+Every backup piece must have a matching uploaded GitHub Release digest and
+code/manifest must be committed before any source unlink. Release tag
+inactive-engineai-environment-cache-20261025. The worker streams SSH bytes to
+official GitHub through the local proxy, no temporary local disk archive copy.
+Earlier waiting worker was replaced before deletion, and a requests-import
+failure was corrected to standard-library HTTPS; attempt logs/state are kept.
+
+After verified cleanup, the worker moves /home/ouyanghao/textop-assets-20261024
+and phygile-preserved-assets-20261023 to personal/data retained-system-assets-
+20261025, SHA-verifies every file and preserves each original/home path as a
+link. Assets are retained; moving them frees system disk but consumes data
+disk. EngineAI source tree/base Python stay intact; its archived environment
+must be restored from ordered Release pieces before any future EngineAI job.
+Read final cleanup/relocation receipts and local personal-storage HTML report,
+do not assume completion from this handoff. Large CLoSD cache actually holds
+datasets/pretrained weights; it was intentionally excluded from deletion.
