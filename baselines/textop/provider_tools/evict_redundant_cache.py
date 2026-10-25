@@ -28,7 +28,13 @@ def main(commit,evict):
     for relative in ['provider_tools/restore_indexed_cache.py','provider_tools/evict_redundant_cache.py','results/data_preparation_20261025/cache_recovery_verified.json']:
         rel='baselines/textop/'+relative
         recorded=subprocess.check_output(['git','-C',str(REPO),'show',commit+':'+rel])
-        assert recorded==(BASE/relative).read_bytes(),'Recovery material differs from backed-up commit'
+        current=(BASE/relative).read_bytes()
+        if relative.endswith('.json'):
+            # Windows text writes CRLF; Git stores LF. Compare parsed evidence,
+            # preserving every key/value rather than weakening source checks.
+            assert json.loads(recorded)==json.loads(current),'Recovery evidence differs from backed-up commit'
+        else:
+            assert recorded==current,'Recovery source differs from backed-up commit'
     for row in rows:
         p=pathlib.Path(row['path']).resolve()
         assert p.parent==CACHE and p.name.endswith('_stageii.npz')
