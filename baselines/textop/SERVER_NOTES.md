@@ -193,3 +193,25 @@ mirrors,3h47elapsed. Main bottleneck is per-frame serial GMR IK, not GPU shortag
 Default NumPy/MuJoCo/Mink+DAQP solve path has no CUDAdevice switch; SMPL-X
 Torch body forward could be separately accelerated but speedup is unmeasured.
 Do not equate GPU FK/filter use with GPU GMR IK. Existing workers unchanged.
+
+### Persistent preprocessing completion audit2026-10-25 19:40
+Read-only local bundled Python/NumPy2.3.5, no ML/GPU environment change. Spec
+configs/preprocessing-completion-audit.json beforedispatch, source
+a4a9418aa2ee1e6730a4f113f2eecb1955081efe1b5f467147ab99a3d69e076e,
+spec1dd2ba137f99bd173b8158dda2d1b8db27ed48ac2bdbd3be0a72e571e90cfa25.
+Author_v1 actualexit0/17.5s reread all2296NPZoriginal+mirror payloads from3
+persistent private archives; per-motionSHA/source-split/dimensions/times/
+finitequaternion/contact/selected69Dfields/mirrorroot/annotationbounds passed.
+Selectedfieldmaxerror1.1921e-7. This does NOT recompute everyFK/codec field.
+Correct result INCOMPLETE,5982available sources still lack completebackup
+verification; do not equate livepartialGMR progress with durablefullcompletion.
+No data deletion/copy/export, no worker control or physical acceptance. Fresh
+PREPROCESSING_BACKUP_AUDIT.md witness requested, independent result pending.
+All6backups+exact8278source/split set required for preprocessor completion
+notification; real physical-filter and fulltraining gates unchanged.
+
+Latest backup-audit validation: author_v1 and freshdocument_v1 actualexit0,
+22independentchecks/source+spechashes match, no divergence. Both2296verified
+from3persistentbackups/5982pending, INCOMPLETE preserved. No physicalfilter/
+accepteddata/generatortraining. Independent REPORT collected with aggregate
+results. This validates current audit procedure; all6cohorts notyetcomplete.

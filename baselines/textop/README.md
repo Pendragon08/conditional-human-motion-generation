@@ -23,3 +23,5 @@
 官方代码以固定提交镜像保存于upstream/，下载数据不入Git。scripts/为本次下载、隔离环境安装、训练启动与指标记录代码。官方算法源文件未修改；论文29DoF重建部分为独立自实现并复用GMR核心，尚待真实动态筛选。
 
 [完整网络batch512数值检查](NEURAL_BATCH512_ENVIRONMENT.md)已由作者和独立文档执行验证：8次VAE、4次LDM反向，0次优化器更新。显存测量未分配Adam/EMA状态，不代表完整训练已启动；[实际范围与报告](reports/neural_batch512_20261025.md)。
+
+[预处理持久备份验收](PREPROCESSING_BACKUP_AUDIT.md)逐条读取已备份的动作核对SHA、数组和来源覆盖；局部批次通过不代表全部数据完成，也不替代真实物理筛选。[聚合报告](reports/preprocessing_backup_audit_20261025.md)。

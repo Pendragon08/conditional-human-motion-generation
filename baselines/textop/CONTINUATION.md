@@ -569,3 +569,37 @@ checks and durable private backup, reporting13unavailableCMUsources and403
 private clips separately. Label this preprocessing completion distinctly from
 real relaxed/strict physical-filter acceptance. Existing later milestone and
 automatic accepted-corpus VAE/LDM/closed-loop authorization still apply.
+
+## Heartbeat2026-10-25 19:34: backup-content completion gate
+
+CurrentCMU1293then1301/1330,0fail; total3597GMRoriginals asof19:42. Existing
+GMR3483711/FKqueue3527552/Windows24952,53968,23184 healthy, no restarts.
+BMLrub/KIT completeoriginals already downloaded andexactindexed. Selectedraw
+bytes18.18GB/18.75GB, currentRAM77.06GBfree satisfies next35.87GBstagingguard;
+future guarded again, not a guarantee for allfuturejobs. datafree4.54GiB,
+home6.22GiB,C4.17GiB,D8.80GiB. No cleanup/download/training performed.
+
+Newconfigs/preprocessing-completion-audit.json +provider_tools/
+audit_preprocessing_backups.py verify actualprivateDarchives before notifying
+fullpreprocessing completion. Author_v1actualexit0,17.5s,2296sources+mirrors
+from3archives reread witheveryNPZSHA/dimensions/finites/timing/source-split and
+selected69Dfields/mirrorroot/labelbounds. Correct INCOMPLETE5982pending;
+notallcurrentGMRoutputs are already in completebackups. Sourcea4a9418a...,
+spec1dd2ba13.... Doc PREPROCESSING_BACKUP_AUDIT.md; freshdocument_v1witness
+requested. Alllicensedarrays/indexes/errortraces remainprivateD, onlyaggregate
+proofs inresults/preprocessing_backup_audit_20261025; noarchiveextract/delete.
+
+Run thisaudit with a NEWuniquerun name only after a newcohort's privatebackup
+finishes (CMU/BMLrub/KIT), neverreuseexistingrun dirs orduplicatethebackups.
+OnlystatusPREPROCESSING_ALL_AVAILABLE_SOURCES_BACKED_UP_VERIFIED_FILTER_PENDING,
+verified_sources8278,preprocessing_completetrue andmatchingfixedindexscope
+allows the user-requestedpreprocessing completion notice. The audit never
+claims physicalacceptance/training andneverlaunchesjobs; formalfilter and
+acceptedcorpus still required. collect_preprocessing_audit.py writes GitHub
+aggregateproofs/localDHTML. Existinghourlyautomation updated with these exact
+notificationconditions. No premature fullcompletion message from partialGMR.
+
+Fresh preprocessingdocument_v1 now completed: actualexit0/22checks, matching
+source/spec,2296verified5982pending,correctINCOMPLETE. Independent REPORT at
+work/textop_reproduction_20261024/preprocessing_backup_doc_witness_v1,copy
+throughcollect_preprocessing_audit.py. Auditprocedurevalidated; notcorpusdone.
