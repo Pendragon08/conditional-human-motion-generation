@@ -544,7 +544,7 @@
       "paired_segments": 18032
     },
     "batch_kit": {
-      "status": "RUNNING",
+      "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
       "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
       "parallel_spec_sha256": "b797d14305c7459a926573033eedd355e506a9722e1db0dec6d6fa063198a657",
       "source_sha256": "06539b1a7593ef45beda815d07252b4850f2c47237f2d0000c77bdcd60f101a5",
@@ -565,8 +565,8 @@
       "feature_dim": 69,
       "output_fps": 50,
       "total_requested": 2513,
-      "completed_sequences": 2507,
-      "mirrored_sequences": 2507,
+      "completed_sequences": 2513,
+      "mirrored_sequences": 2513,
       "failed_sequences": 0,
       "physical_filter_passed": false,
       "ready_for_generator_training": false,
@@ -586,9 +586,20 @@
         3717696,
         3717697
       ],
-      "processed": 2507,
-      "elapsed_seconds": 6194.763938786462,
-      "updated_utc": "2026-10-25T19:09:28Z"
+      "processed": 2513,
+      "elapsed_seconds": 6487.841942925006,
+      "updated_utc": "2026-10-25T19:14:21Z",
+      "worker_exit_codes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "splits": {
+        "train": 1902,
+        "val": 611
+      },
+      "paired_segments": 21384
     },
     "babel_acquisition": {
       "time_beijing": "2026-10-25T11:07:01.452402+08:00",
@@ -889,9 +900,9 @@
       "archive_bytes": 1188059483
     },
     "kit_indexed_queue": {
-      "status": "RUNNING_GMR_CPU_ONLY",
+      "status": "PREPROCESSING_BACKED_UP_FILTER_PENDING",
       "subset": "KIT",
-      "time_beijing": "2026-10-26T03:03:13.448373+08:00",
+      "time_beijing": "2026-10-26T03:16:33.896638+08:00",
       "physical_filter_executed": false,
       "dataset_accepted": false,
       "full_training_started": false,
@@ -900,7 +911,7 @@
       "target": 2513,
       "missing_from_selected_official_export": 0,
       "raw_bytes": 18751658690,
-      "archive_sha256": "35bcd67629ee4c68b1e5d8ec9b406d623203547a7bc9f281d979653128504b4d",
+      "archive_sha256": "5d0565bd7660133f69dec17980a8b91710c6c0d4302a314b3c75a12205aceb2b",
       "source_durable": "complete original archive on personal persistent volume; verified BABEL index on D",
       "ram_working_copy": true,
       "staged_files": 2500,
@@ -922,7 +933,7 @@
         "source_sha256": "06539b1a7593ef45beda815d07252b4850f2c47237f2d0000c77bdcd60f101a5"
       },
       "progress": {
-        "status": "RUNNING",
+        "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
         "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
         "parallel_spec_sha256": "b797d14305c7459a926573033eedd355e506a9722e1db0dec6d6fa063198a657",
         "source_sha256": "06539b1a7593ef45beda815d07252b4850f2c47237f2d0000c77bdcd60f101a5",
@@ -943,8 +954,8 @@
         "feature_dim": 69,
         "output_fps": 50,
         "total_requested": 2513,
-        "completed_sequences": 2500,
-        "mirrored_sequences": 2500,
+        "completed_sequences": 2513,
+        "mirrored_sequences": 2513,
         "failed_sequences": 0,
         "physical_filter_passed": false,
         "ready_for_generator_training": false,
@@ -964,13 +975,25 @@
           3717696,
           3717697
         ],
-        "processed": 2500,
-        "elapsed_seconds": 5818.797503525391,
-        "updated_utc": "2026-10-25T19:03:12Z"
-      }
+        "processed": 2513,
+        "elapsed_seconds": 6487.841942925006,
+        "updated_utc": "2026-10-25T19:14:21Z",
+        "worker_exit_codes": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "splits": {
+          "train": 1902,
+          "val": 611
+        },
+        "paired_segments": 21384
+      },
+      "archive_bytes": 1105812860
     },
     "asset_authorization_and_storage": {
-      "recorded_beijing": "2026-10-26T03:03:13.661873+08:00",
+      "recorded_beijing": "2026-10-26T03:16:34.031453+08:00",
       "amass": {
         "user_reported_login_complete": true,
         "observed_main_download_table_accessible": true,
@@ -992,8 +1015,8 @@
         "original_alignment_checked": true
       },
       "storage": {
-        "C_free_bytes": 2242584576,
-        "D_free_bytes": 7206719488,
+        "C_free_bytes": 2217758720,
+        "D_free_bytes": 6100881408,
         "remaining_archives": [
           {
             "subset": "BMLrub",
@@ -1281,8 +1304,8 @@
     }
   },
   "space_bytes": {
-    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 8783663104,
-    "/home/ouyanghao": 6645567488
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 8783196160,
+    "/home/ouyanghao": 6645477376
   },
   "missing_raw_by_dataset": {
     "BMLrub": 2139,
