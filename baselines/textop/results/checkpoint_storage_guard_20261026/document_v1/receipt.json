@@ -1,0 +1,35 @@
+{
+  "status": "CHECKPOINT_STORAGE_GUARD_WITNESS_PASSED",
+  "cpu_only": true,
+  "new_checkpoints_written": 0,
+  "training_started": false,
+  "checks": [
+    "fixed_nine_checkpoint_schedule",
+    "actual_owned_persistent_writable_destination_and_full_budget",
+    "exact_full_budget_boundary_passes",
+    "one_byte_below_full_run_budget_rejected",
+    "unsafe_emergency_save_rejected",
+    "outside_personal_task_root_rejected",
+    "volatile_ram_filesystem_rejected",
+    "symlink_destination_rejected",
+    "unwritable_destination_rejected",
+    "unexpected_ownership_context_rejected",
+    "missing_destination_rejected"
+  ],
+  "actual_preflight": {
+    "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/checkpoint_storage_guard_document_v1",
+    "filesystem": "ext4",
+    "owner_uid": 1013,
+    "free_bytes": 8783667200,
+    "required_bytes": 3892314112,
+    "remaining_saves": 9,
+    "checkpoint_upper_bound_bytes": 134217728,
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 536870912,
+    "persistent_owned_writable": true
+  },
+  "checks_passed": 11,
+  "source_sha256": "bff54d2b4fb7f29fdc18f6cc46d86626ca14b299faba49161c1c10897897788c",
+  "witness_sha256": "11dfa9dc8b36c1c1619eb183ba7b57a96fe8e6dbb1851b5d94ad8aa9c5952b94",
+  "output_writers_closed": true
+}
