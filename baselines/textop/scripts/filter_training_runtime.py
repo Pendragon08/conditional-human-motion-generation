@@ -63,9 +63,16 @@ def load_recorded(runner,motion,path,corpus_fingerprint):
  saved=torch.load(path,map_location=runner.device,weights_only=False)
  info=saved['infos'];assert info['reference_fingerprint']==corpus_fingerprint
  runner.load(str(path),load_optimizer=True);motion.restore_recording(info['recording'])
+ # Restart real episodes explicitly. Otherwise clearing the per-env marker
+ # would incorrectly omit the first *real* episode ending after restoration.
+ # The reset itself is not evidence of success and must not bias saved EMA.
+ motion._env.reset()
+ motion.restore_recording(info['recording'])
+ motion._attempt_started.fill_(True)
  assert runner.current_learning_iteration==info['completed_learning_iterations']
  for actual,key in [(runner.alg.policy.state_dict(),'model_state_dict'),(runner.alg.optimizer.state_dict(),'optimizer_state_dict'),
                     (runner.obs_normalizer.state_dict(),'obs_norm_state_dict'),(runner.privileged_obs_normalizer.state_dict(),'privileged_obs_norm_state_dict')]:
   assert equal_state(actual,saved[key]),key
  assert equal_state(motion.recording_state(),info['recording'])
+ assert bool(motion._attempt_started.all())
  return info

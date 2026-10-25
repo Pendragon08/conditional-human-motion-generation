@@ -68,7 +68,7 @@ try:
  if a.resume:
   info=load_recorded(runner,motion,a.resume,fp);assert info['diagnostic_only']==diagnostic
   updates=info['actual_optimizer_updates'];completed=info['completed_learning_iterations'];assert updates==completed*20
-  receipt['resume_exact_state_verified']=True
+  receipt['resume_exact_state_verified']=True;receipt['resumed_physics_episodes_restarted_without_counting_reset']=True
  save()
  if diagnostic:
   runner.learn(num_learning_iterations=1,init_at_random_ep_len=False);assert updates==20
@@ -77,7 +77,7 @@ try:
   runner.writer.flush();runner.writer.close();runner.writer=None
   restored=build('restored_training_logs');info=load_recorded(restored,motion,ckpt,fp)
   assert info['completed_learning_iterations']==1 and updates==20
-  receipt['resume_exact_state_verified']=True
+  receipt['resume_exact_state_verified']=True;receipt['resumed_physics_episodes_restarted_without_counting_reset']=True
   restored.learn(num_learning_iterations=1,init_at_random_ep_len=False);assert updates==40
   final=save_recorded(restored,motion,out/'completed_2.pt',2,updates,fp,True)
   receipt.update(status='TEXTOP_FILTER_STATISTICS_RESUME_WITNESS_PASSED',completed_learning_iterations=2,

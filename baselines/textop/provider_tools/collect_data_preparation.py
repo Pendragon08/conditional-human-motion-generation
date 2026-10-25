@@ -36,7 +36,7 @@ out['missing_raw_by_dataset']=dict(missing)
 pid=json.loads((r/'receipts/training_launch.json').read_text())['pid'];status=pathlib.Path('/proc')/str(pid)/'status'
 out['generator_process_state']=next((x for x in status.read_text().splitlines() if x.startswith('State:')),'') if status.exists() else 'exited'
 out['paper_data_ready']=False;out['physical_filter_executed']=False
-out['known_blockers']=['Remaining raw AMASS source files still need reconciliation/extraction or download','Paper privileged40k policy and relaxed/strict dynamic evaluations not executed','Authors private403 clips not available','Released23DoF dataset differs from paper29DoF dataset']
+out['known_blockers']=['Remaining available raw AMASS cohorts need serial GMR and reference export; selected CMU export lacks13 indexed sources','Paper privileged40k policy and relaxed/strict dynamic evaluations not executed','Authors private403 clips not available','Released23DoF dataset differs from paper29DoF dataset']
 print(json.dumps(out))
 '''
 result=json.loads(remote(code,timeout=100));dest=BASE/'results/data_preparation_20261025';dest.mkdir(parents=True,exist_ok=True)
@@ -71,7 +71,8 @@ assets=result['receipts'].get('asset_authorization_and_storage',{})
 babel_verified=result['receipts'].get('babel_alignment',{}).get('mismatch_sequences')==0
 babel_note=('BABEL官方原始包已独立下载并安装到服务器；8,291条运动对应50,004条分段标注的ID、来源、文本、类别与时间均核对一致' if babel_verified else 'BABEL原始包尚待独立核对，当前文本来自发布包内字段')
 file_host_note=('CMU独立下载会话已完成官网文件主机认证；本次采样状态为'+result['receipts'].get('cmu_resume',{}).get('status','UNKNOWN') if assets.get('amass',{}).get('file_host_session_verified_this_turn') else '文件主机下载会话尚待验证')
-remaining_gib=assets.get('storage',{}).get('total_additional_archive_bytes_estimate',27617858007)/1024**3
+download_states=[result['receipts'].get(tag+'_resume',{}) for tag in ['cmu','bmlrub','kit']]
+remaining_gib=sum(max(0,x.get('expected_bytes',0)-x.get('bytes_received',0)) if x.get('status')!='LOCAL_ORIGINAL_ARCHIVE_VERIFIED' else 0 for x in download_states)/1024**3
 cache_cleanup=dest/'redundant_cache_cleanup.json'
 cache_cleanup=json.loads(cache_cleanup.read_text(encoding='utf-8')) if cache_cleanup.exists() else {}
 current_local_space={x:shutil.disk_usage(x+':/').free for x in ['C','D']}
@@ -87,7 +88,7 @@ report=f'''# TextOp 数据准备核查与重建记录
 | 用户所列环节 | 已实际完成 | 尚未完成/差异 |
 | --- | --- | --- |
 | AMASS、BABEL、自建数据 | 全量读取公开RobotMDAR配对包8,291条；原始stageii索引初次精确匹配500条；修复文件命名后又确认143条已有输入；另从本地完整压缩包按索引提取缺失输入。{babel_note} | 首轮未匹配7,791条并不都需要重下；最新覆盖见下方记录。作者私有数据不可用；标签一致尚不等于全部动作已完成物理筛选 |
-| GMR人体→机器人 | 实际执行SMPL-X前向与GMR29关节IK；首批500条及补充143条均已处理完成；新增1653条已开始串行处理 | 旧公开包是23DoF/57D；不能补6个零就声称恢复论文29DoF/69D |
+| GMR人体→机器人 | 实际执行SMPL-X前向与GMR29关节IK；首批500条及补充143条均已处理完成；新增1653条已完成{bulk.get('completed_sequences',0)}条；CMU接续处理{cmu_prepared.get('completed_sequences',0)}条 | 旧公开包是23DoF/57D；不能补6个零就声称恢复论文29DoF/69D |
 | 过滤、对齐、训练集构建 | 全量结构与划分核查、时间标注修整视图、29DoF接触/镜像/69D编码已运行 | 论文要求的真实策略筛选还未执行，全部新输出physical_filter_passed=false、训练就绪=false |
 
 ## 论文与固定公开版本的差异
@@ -130,6 +131,8 @@ CMU完整原始包已通过CRC/tar校验；其选定SMPL-X G版本覆盖1,343条
 
 BMLrub与KIT的后续队列已安排：分别等待完整原始包CRC/SHA校验、前一批GMR与持久备份成功，再逐一精确核对索引、串行重定向和归档。缺失或有歧义的来源保留清单，不填造动作、不启动重叠GMR。当前两项成功条数分别为{result['receipts'].get('batch_bmlrub',{}).get('completed_sequences',0)}、{result['receipts'].get('batch_kit',{}).get('completed_sequences',0)}，下载/排队本身不计入已处理数据。
 
+最新独立核对：两包均已完成CRC/tar/SHA验证；BMLrub2,139/2,139、KIT2,513/2,513条索引精确唯一匹配，零缺失、零歧义。所有可用公开配对源为8,278/8,291条，差额仅为CMU13条；与论文12,296条公共跟踪运动及403条私有运动的范围差异单列，不冒充完整作者语料。
+
 SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像、69D编解码与调度为本次自实现，明确区别于官方旧处理脚本。GMR源码镜像没有可用Git提交，使用源文件和配置SHA256固定。CPU环境依赖未修改，已有独立按文档执行的数值验证。
 
 首轮镜像检查错误地包含固定IMU安装框架，其真实横向偏置会产生4.48mm镜像残差；已改为核查动作表示中的根与驱动关节骨架，未提高阈值掩盖误差。首轮失败记录保留。SMPL-X批量前向的表情批维适配错误也已修复并保留日志。
@@ -160,7 +163,7 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 
 本轮用户已回复AMASS登录完成，并明确同意BABEL独立许可及下载。{file_host_note}。{babel_note}。原始标注位于D盘个人datasets/BABEL及服务器data_preparation_20261025/babel_v1_0目录，已核对SHA256；不公开发布原始标注。详见[BABEL独立核查](babel_original_alignment_20261025.md)。
 
-按官网文件清单及本次空间核查时的断点，BMLrub、CMU、KIT合计仍需约{remaining_gib:.2f}GiB新增压缩包空间，CMU续传期间该值持续减少。用户已授权继续清理无用副本；当前C盘余{current_local_space['C']/1024**3:.2f}GiB、D盘余{current_local_space['D']/1024**3:.2f}GiB。后续必须按盘容量安排续传，保留系统盘余量；服务器容量仍需单独核查。现有GMR任务继续运行，TotalCapture仍跳过。
+根据三个下载器当前校验凭据，BMLrub、CMU、KIT合计尚需续传约{remaining_gib:.2f}GiB；完整校验通过的包无需重复下载。当前C盘余{current_local_space['C']/1024**3:.2f}GiB、D盘余{current_local_space['D']/1024**3:.2f}GiB。继续为处理结果和检查点保留余量；服务器容量另行核查。现有GMR队列继续运行，TotalCapture仍跳过。
 
 重复缓存清理记录（全部原始数据包、已处理数据、检查点、唯一实验记录均保留）：
 ```json
