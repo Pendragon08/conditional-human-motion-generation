@@ -17,7 +17,13 @@ def state(status,**values):
  p=DEST/'continuation.json';j=json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
  j.update(status=status,time_beijing=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(),**values)
  p.write_text(json.dumps(j,indent=2),encoding='utf-8');print(json.dumps(j),flush=True)
-def gh(*args):return subprocess.check_output([GH,*args],env=ENV,text=True,encoding='utf-8')
+def gh(*args):
+ readonly=args and args[0]=='api' and '--method' not in args and '-X' not in args
+ for attempt in range(5 if readonly else 1):
+  result=subprocess.run([GH,*args],env=ENV,capture_output=True,text=True,encoding='utf-8')
+  if result.returncode==0:return result.stdout
+  if not readonly or attempt==4:raise RuntimeError('GitHub command failed: '+result.stderr[-700:])
+  print('Retrying a transient GitHub read',attempt+1,flush=True);time.sleep(2**attempt)
 def publish():
  p=subprocess.run([sys.executable,str(HERE/'publish.py')],env=ENV,capture_output=True,text=True,encoding='utf-8',errors='replace')
  if p.returncode:raise RuntimeError(p.stderr[-1800:])
@@ -109,7 +115,12 @@ def main():
   assert old['size']==item['bytes'] and old.get('digest')=='sha256:'+item['sha256']
   parts.append({**item,'github_asset_id':old['id'],'github_digest':old['digest']})
   state('BACKUP_PART_VERIFIED',verified_parts=len(parts),total_parts=len(proof['parts']))
- index=DEST/'archive_index.json';gh('release','upload',TAG,str(index),str(DEST/'requirements-engineai.txt'),str(DEST/'pyvenv.cfg'),'--repo',REPOSITORY)
+ for metadata in [DEST/'archive_index.json',DEST/'requirements-engineai.txt',DEST/'pyvenv.cfg']:
+  release=json.loads(gh('api','repos/'+REPOSITORY+'/releases/tags/'+TAG));old=next((x for x in release['assets'] if x['name']==metadata.name),None)
+  if old is None:
+   gh('release','upload',TAG,str(metadata),'--repo',REPOSITORY)
+   release=json.loads(gh('api','repos/'+REPOSITORY+'/releases/tags/'+TAG));old=next(x for x in release['assets'] if x['name']==metadata.name)
+  assert old['size']==metadata.stat().st_size and old.get('digest')=='sha256:'+sha(metadata)
  release=json.loads(gh('api','repos/'+REPOSITORY+'/releases/tags/'+TAG))
  auth={'all_asset_digests_verified':True,'release_url':release['html_url'],'parts':parts,
        'archive_sha256':proof['archive_sha256'],'manifest_sha256':proof['manifest_sha256']}

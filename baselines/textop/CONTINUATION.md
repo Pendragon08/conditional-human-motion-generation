@@ -210,3 +210,14 @@ must be restored from ordered Release pieces before any future EngineAI job.
 Read final cleanup/relocation receipts and local personal-storage HTML report,
 do not assume completion from this handoff. Large CLoSD cache actually holds
 datasets/pretrained weights; it was intentionally excluded from deletion.
+
+Cleanup transport update: main worker historicalPID60276 now reuses successful
+uploaded parts and retries transient GitHub GET failures; tail-only helper57644
+uploads parts4-6 independently, state parallel_tail_upload.json. They only
+upload software/cache archive parts; main must verify ALL6 digests and commit
+code/index before unlinking source. All earlier attempt states/logs retained.
+Do not launch new SDK/training jobs that could change selected cache files
+while this cleanup's file snapshot is awaiting application. Existing CPU GMR
+continues. Check cleanup continuation first; this is user's latest priority.
+The local BMLrub old partial has already been removed after full-archive CRC,
+SHA/prefix verification and GitHub-backed recovery evidence, freeing3.31GiB.
