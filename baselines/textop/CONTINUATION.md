@@ -525,3 +525,36 @@ not publish per-text caches or private lists. Backup proof in
 results/candidate_loader_20261025/private_diagnostic_backup.json. The large
 candidatePKLs remain RAM working copies recoverable from backed-up prepared
 motions+code; final accepted data/statistics must NOT silently reuse candidates.
+
+## User progress/GPU questions and heartbeat2026-10-25 18:55
+
+Existing CMUGMR3483711/Windowsobserver24952 and BMLrub53968/KIT23184 waiters
+remain active. Latest1235/1330 CMU0fail; prior2296 complete originals, alloriginal
+archives downloaded/verified. Reference-only queue3527552 waiting normally.
+No physical dataset acceptance, formal40kteacher or full69Dgenerator started.
+Old57DremainsSIGSTOP, PhyGile/ReactiveBFM paused. datafree4.54GiB/home6.22GiB,
+RAMfree71.9GiB and availablehostmemory175.5GiB; keep guards.
+
+New neural512_author_v1 and independent neural512_document_v1 actualexit0/no
+timeout,42independentchecks matching source/spec/view. VAE8/LDM4 finite
+backwards, allparameterSHAunchanged, zerooptimization. MeasuredTorchVAE3.19GiB
+andLDM1.57GiB exclude actualAdam/AdamW/EMA states/checkpoint/finalcorpus.
+NEURAL_BATCH512_ENVIRONMENT.md andcollect_neural_batch512.py retain receipts,
+realdevice samples and limitations, pluslocalDHTML. Do not promote this to
+fulltraining readiness. Formal69Dlauncher still needs fullstate/accepteddata
+validation. OfficialVAEAdam vsLDMAdamW; post_step/optimizer happen perprimitive,
+not per4primitivebatch. 200k/300kmanagersteps = about50k/75kbatchdraws,actual
+updates may be fewer when officialgradientskip occurs; logboth.
+
+Important next efficiency action: measured CPU1.0core during5ssample despite
+4coreaffinity. Current GMR serial-per-frame Mink/DAQP isCPU; PyTorchSMPL-X
+forward can potentially moveGPU but this does NOT port IKsolver. Preserve
+currentCMU job. Before changing nextcohort scheduling, inspect Windowswaiters
+and introduce a separatelydeclared/witnessed disjointmotion multprocesswrapper
+within totalCPU4, with perchildthreads1 and same untouched GMR constraints.
+Do not launchduplicatecohort jobs, change currentlyrunning sources/spec, or
+claim4xspeedup without realtiming/outputequivalence evidence. SMPL-XGPU
+requirescorrectCPUroundtrip forSciPy/GMR plus precision/timing verification.
+Currentobserver expects progress/manifest andprivatebackupbefore nextcohort;
+newwrapper must preserve exactschema andfailure/backup behavior. Treat this
+as priority over more cosmeticdiagnostics while existingqueuescontinue.

@@ -1,0 +1,21 @@
+{
+  "warm_base_canonical_hash": "934d8221",
+  "seed": 20261025,
+  "batch_size": 512,
+  "history": 2,
+  "future": 8,
+  "primitives": 4,
+  "candidate_view": "/dev/shm/ouyanghao_textop_20261025/generator_candidate2296_v2",
+  "view_receipt_sha256": "c4875fa612707507ae8de28c15ca4f1160cff5293467cb91c7801d43184d3b23",
+  "torch_memory_fraction": 0.65,
+  "minimum_gpu_free_gib": 20,
+  "minimum_data_free_gib": 2,
+  "supervisor_timeout_seconds": 1800,
+  "vae_history_modes": ["ground_truth", "detached_generated"],
+  "ldm_history_mode": "detached_generated, numerical stress case; not a changed training curriculum",
+  "sampling": {"steps": 5, "cfg": 5.0, "segments": 2},
+  "optimizer_constructed": false,
+  "adam_ema_states_allocated": false,
+  "scope": "FP32 official VAE9L/LDM8L batch512 forwards/backwards and geometry losses on unfiltered candidate fixtures; zero optimization, no training readiness or quality claim",
+  "limitation": "Measured memory excludes real optimizer/EMA state, checkpointing and final accepted corpus; random VAE with latent scale1 is a numerical stand-in only"
+}

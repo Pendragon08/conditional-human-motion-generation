@@ -163,3 +163,33 @@ audit/quarantine/feature-statistics/text-cache records backed up to localD with
 allSHA matches (12636826bytes); no raw dataset/model/checkpoint deleted or
 published. Final corpus must recompute quality exclusions/statistics after real
 physical filtering. No package/shared environment changes.
+
+### neural batch512 diagnostic: warm paper69@934d8221
+configs/neural-batch512-spec.json declared before dispatch; unchanged packages
+and basecodec/sampler. Fixedunfiltered2296view/metaSHA, official VAE9L/LDM8L,
+batch512/history2/future8,4primitives with sequential backwards and detached
+history, actual cached CLIP and train-only candidate statistics. Official
+MVAEManager/DARManager loss bodies reused. No optimizer constructed, no updates
+or model learning; Adam/EMA state memory NOT allocated. EightVAE/fourLDM
+backwards and5stepCFG5numeric sampling test capacity/stability only. Parameter
+hashes unchanged required. Candidate data/randomVAE cannot establish accepted
+training readiness, semantic quality or full-state training memory. GPU1/CPU4/
+Torch65%; author followed by fresh documented witness required. Do not interrupt
+GMR/FK or oldpaused57D. No shared sources/package install or cleanup.
+
+Validated neural batch512 author_v1 and independent document_v1 both actualexit0,
+no timeout,42 independent checks, identical source26cbf30c.../spec2a91a7f6...
+and candidate viewc4875fa6.... EightVAE/fourLDM backwards have finite nonzero
+gradients and unchanged parameters. Two5stepCFG5 numeric segments pass.
+Torchallocated peaksVAE3429537280/LDM1681969664bytes. No optimizer/Adam/EMA
+states allocated or updates. This validates the zero-update shape only; full
+training memory, accepted full corpus, actual learning and quality remain pending.
+Documentation NEURAL_BATCH512_ENVIRONMENT.md and report/neural_batch512 evidence.
+
+Live preprocessing profile2026-10-25 18:55 China: CMU process3483711 used
+0.999 CPUcores during5s sample despite affinity[0,1,2,3],13threads, lifetime
+CPU121%. Completed1235/1330 with0failure,1379092 outputposeframes including
+mirrors,3h47elapsed. Main bottleneck is per-frame serial GMR IK, not GPU shortage.
+Default NumPy/MuJoCo/Mink+DAQP solve path has no CUDAdevice switch; SMPL-X
+Torch body forward could be separately accelerated but speedup is unmeasured.
+Do not equate GPU FK/filter use with GPU GMR IK. Existing workers unchanged.

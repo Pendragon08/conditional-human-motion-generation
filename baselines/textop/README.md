@@ -21,3 +21,5 @@
 [BABEL原始标注已下载、安装服务器并独立核查](reports/babel_original_alignment_20261025.md)：8,291条运动对应50,004条分段标签与原始JSON一致；原始标注及逐条索引按许可保存在个人目录。
 
 官方代码以固定提交镜像保存于upstream/，下载数据不入Git。scripts/为本次下载、隔离环境安装、训练启动与指标记录代码。官方算法源文件未修改；论文29DoF重建部分为独立自实现并复用GMR核心，尚待真实动态筛选。
+
+[完整网络batch512数值检查](NEURAL_BATCH512_ENVIRONMENT.md)已由作者和独立文档执行验证：8次VAE、4次LDM反向，0次优化器更新。显存测量未分配Adam/EMA状态，不代表完整训练已启动；[实际范围与报告](reports/neural_batch512_20261025.md)。

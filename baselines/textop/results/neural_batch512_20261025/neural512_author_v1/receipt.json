@@ -1,0 +1,150 @@
+{
+  "status": "TEXTOP_NEURAL_BATCH512_WITNESS_PASSED",
+  "optimizer_constructed": false,
+  "optimizer_updates": 0,
+  "dataset_accepted": false,
+  "physical_filter_executed": false,
+  "full_generator_training_started": false,
+  "model_weights_trained": false,
+  "output_writers_closed": true,
+  "source_sha256": "26cbf30cf75afbdfdee97ed3bdf26de11f91d82b67bf35690b719844b237410d",
+  "spec_sha256": "2a91a7f6ec63732b90a666b52f615264ee1117b467e41f7a49485b53652896ca",
+  "base_spec_sha256": "30bcaa928d4e7ed4cf7359d88dfe909334718957fffbd07bc98510467612d421",
+  "view_receipt_sha256": "c4875fa612707507ae8de28c15ca4f1160cff5293467cb91c7801d43184d3b23",
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "batch_size": 512,
+  "primitives": 4,
+  "feature_dim": 69,
+  "gpu_name": "NVIDIA RTX A6000",
+  "candidate_sources_examined": 2296,
+  "source_hashes": {
+    "paper69_runtime.py": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
+    "paper69_data_runtime.py": "cf5c1e3f27665e7fc4d4aa1ede6bcd1931e3563409ad766ff67a576cc0c7b60d"
+  },
+  "elapsed_seconds": 33.520317535847425,
+  "vae": [
+    {
+      "history_mode": "ground_truth",
+      "primitives": [
+        {
+          "primitive": 0,
+          "loss": 0.4174458980560303,
+          "finite_gradient_tensors": 247,
+          "gradient_l2_norm": 1.6306915283203125
+        },
+        {
+          "primitive": 1,
+          "loss": 0.41598111391067505,
+          "finite_gradient_tensors": 247,
+          "gradient_l2_norm": 1.6272807121276855
+        },
+        {
+          "primitive": 2,
+          "loss": 0.4217350482940674,
+          "finite_gradient_tensors": 247,
+          "gradient_l2_norm": 1.6243093013763428
+        },
+        {
+          "primitive": 3,
+          "loss": 0.4177410900592804,
+          "finite_gradient_tensors": 247,
+          "gradient_l2_norm": 1.614615559577942
+        }
+      ],
+      "elapsed_seconds": 3.239479621872306,
+      "peak_allocated_bytes": 3429537280,
+      "peak_reserved_bytes": 3607101440
+    },
+    {
+      "history_mode": "detached_generated",
+      "primitives": [
+        {
+          "primitive": 0,
+          "loss": 0.41841921210289,
+          "finite_gradient_tensors": 247,
+          "gradient_l2_norm": 1.6317397356033325
+        },
+        {
+          "primitive": 1,
+          "loss": 0.41504889726638794,
+          "finite_gradient_tensors": 247,
+          "gradient_l2_norm": 1.666118860244751
+        },
+        {
+          "primitive": 2,
+          "loss": 0.4209582805633545,
+          "finite_gradient_tensors": 247,
+          "gradient_l2_norm": 1.660834789276123
+        },
+        {
+          "primitive": 3,
+          "loss": 0.41664353013038635,
+          "finite_gradient_tensors": 247,
+          "gradient_l2_norm": 1.6630284786224365
+        }
+      ],
+      "elapsed_seconds": 1.314929636195302,
+      "peak_allocated_bytes": 3394360832,
+      "peak_reserved_bytes": 3607101440
+    }
+  ],
+  "vae_parameters_unchanged": true,
+  "ldm": {
+    "primitives": [
+      {
+        "primitive": 0,
+        "loss": 1.0548189878463745,
+        "finite_gradient_tensors": 108,
+        "gradient_l2_norm": 1.1183593273162842
+      },
+      {
+        "primitive": 1,
+        "loss": 1.0527881383895874,
+        "finite_gradient_tensors": 108,
+        "gradient_l2_norm": 1.2704471349716187
+      },
+      {
+        "primitive": 2,
+        "loss": 1.0567623376846313,
+        "finite_gradient_tensors": 108,
+        "gradient_l2_norm": 1.2781041860580444
+      },
+      {
+        "primitive": 3,
+        "loss": 1.0539462566375732,
+        "finite_gradient_tensors": 108,
+        "gradient_l2_norm": 1.2822695970535278
+      }
+    ],
+    "elapsed_seconds": 1.221232732757926,
+    "peak_allocated_bytes": 1681969664,
+    "peak_reserved_bytes": 1742733312
+  },
+  "sampling": {
+    "batch_size": 512,
+    "steps": 5,
+    "cfg": 5.0,
+    "segments": 2,
+    "total_frames_per_sample": 16,
+    "elapsed_seconds": 0.19633949548006058,
+    "limitation": "Random untrained weights; batching latency is not single-stream deployment latency"
+  },
+  "denoiser_parameters_unchanged": true,
+  "frozen_vae_has_no_gradients": true,
+  "vae_parameter_bytes": 171066132,
+  "denoiser_parameter_bytes": 71111168,
+  "estimated_additional_adam_and_ema_bytes": {
+    "vae": 513198396,
+    "ldm": 213333504
+  },
+  "optimizer_and_ema_states_actually_allocated": false,
+  "loss_implementation": "Unmodified pinned MVAEManager.calc_loss and DARManager.calc_loss",
+  "vae_backward_passes": 8,
+  "ldm_backward_passes": 4,
+  "limitation": "Measured memory excludes real optimizer/EMA state, checkpointing and final accepted corpus; random VAE with latent scale1 is a numerical stand-in only"
+}
