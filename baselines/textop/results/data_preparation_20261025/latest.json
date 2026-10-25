@@ -451,6 +451,35 @@
         "phygile-reproduction-20261017/data/amass/ssm_20261021": 33
       }
     },
+    "batchCMU": {
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "completed_sequences": 2,
+      "mirrored_sequences": 2,
+      "failed_sequences": 0,
+      "total_requested": 1330,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "status": "RUNNING",
+      "cpu_only": true,
+      "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+      "processed": 2,
+      "updated_utc": "2026-10-25T07:07:53Z"
+    },
     "babel_acquisition": {
       "time_beijing": "2026-10-25T11:07:01.452402+08:00",
       "official_url": "https://babel.is.tue.mpg.de/media/upload/data/babel_v1-0_release.zip",
@@ -931,11 +960,22 @@
         "train": 1236,
         "val": 417
       }
+    },
+    "preparedCMU": {
+      "sequences": 2,
+      "frames50": 139,
+      "paired_annotations_including_saved_mirrors": 4,
+      "rejected_annotations": 0,
+      "codec_max_error_m_or_rad": 1.1855420911643932e-07,
+      "joint_skeleton_mirror_max_error_m": 9.998782577999576e-06,
+      "splits": {
+        "train": 2
+      }
     }
   },
   "space_bytes": {
-    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 7005278208,
-    "/home/ouyanghao": 6692364288
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 7005274112,
+    "/home/ouyanghao": 6692360192
   },
   "missing_raw_by_dataset": {
     "BMLrub": 2139,
