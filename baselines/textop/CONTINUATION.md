@@ -603,3 +603,22 @@ Fresh preprocessingdocument_v1 now completed: actualexit0/22checks, matching
 source/spec,2296verified5982pending,correctINCOMPLETE. Independent REPORT at
 work/textop_reproduction_20261024/preprocessing_backup_doc_witness_v1,copy
 throughcollect_preprocessing_audit.py. Auditprocedurevalidated; notcorpusdone.
+
+## User2026-10-25 reiterates completion notification
+User again asks to be told after all data processing is finished. Existing
+textop automation remains ACTIVE and full8278/source+backup-content gate is
+already recorded; do not create duplicate monitors or notify routine partial
+progress. CMU completed1330/0fail andFKexport1330done at20:36, but its existing
+private backup was still running underWindows24952/server tar3618944. Waiters
+53968/23184 remain; do not restart or duplicate. Re-audit completebackup only
+after predecessor state actually becomes PREPROCESSING_BACKED_UP_FILTER_PENDING.
+
+Unfinished independent code preparatory work: configs/generator-state-witness.json
+and scripts/generator_training_state.py are DRAFT_NOT_DISPATCHED_OR_VALIDATED.
+No GPU job, optimizer update or new checkpoint was created. The spec explicitly
+dispatch_enabledfalse; no driver/witness implementation exists yet. Do not
+claim statewrapper validation or formal training readiness. It was intended
+for future actualAdam/AdamW/counters/RNG-resume testing with optional diagnostic
+EMA stress (pinned releaseEMAdefaultfalse), not changing formalEMAsettings or
+training before physical data acceptance. Priorzero-updateneuralchecks remain
+the onlybatch512network evidence. Existing preprocessing continues unchanged.

@@ -1,0 +1,32 @@
+{
+  "warm_base_canonical_hash": "934d8221",
+  "seed": 20261025,
+  "batch_size": 512,
+  "history": 2,
+  "future": 8,
+  "primitives": 4,
+  "batch_draws_per_stage": 2,
+  "expected_actual_updates_per_stage": 8,
+  "candidate_view": "/dev/shm/ouyanghao_textop_20261025/generator_candidate2296_v2",
+  "view_receipt_sha256": "c4875fa612707507ae8de28c15ca4f1160cff5293467cb91c7801d43184d3b23",
+  "torch_memory_fraction": 0.65,
+  "minimum_gpu_free_gib": 20,
+  "minimum_data_free_gib": 2,
+  "checkpoint_safety_budget_bytes": 900000000,
+  "supervisor_timeout_seconds": 1800,
+  "actual_optimizers": {
+    "vae": "Adam",
+    "ldm": "AdamW"
+  },
+  "ema_fixture_enabled": true,
+  "ema_decay": 0.999,
+  "ema_scope": "Additional diagnostic state stress test; pinned release defaults EMA off. Does not silently enable EMA in a formal paper recipe.",
+  "checkpoint_boundary": "After4 completed primitive attempts, between batch draws; no cached mid-batch/history continuation",
+  "restore": "Exact model, optimizer, optional EMA, counters, Python/NumPy/Torch/CUDA RNG, explicit batch-generator state and pending manager evaluation fields",
+  "scope": "Short unfiltered-candidate numerical optimizer/resume diagnostic only. Not paper200k/300k training, final accepted corpus or trained VAE quality.",
+  "formal_training_started": false,
+  "dataset_accepted": false,
+  "physical_filter_executed": false,
+  "status": "DRAFT_NOT_DISPATCHED_OR_VALIDATED",
+  "dispatch_enabled": false
+}
