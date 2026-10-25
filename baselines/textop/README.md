@@ -14,6 +14,8 @@
 
 [严格SDK回放执行器](STRICT_REPLAY_ENVIRONMENT.md)已实现并进行诊断：完整原动作仍失败，另有明确2帧控制流夹具验证结束信号；没有原动作接纳。修复重置相对参考缓冲区导致的首步高度误判。CMU/BMLrub/KIT参考导出队列会在各批GMR完成后串行接续，正式两轮筛选仍等待真实40,000轮策略。
 
+[候选语料加载验证](CANDIDATE_LOADER_ENVIRONMENT.md)已建立2,296条完成源的未过滤视图，检查真实CLIP缓存、训练集统计与官方batch512加载器。发现1条训练源与验证源的全长动作重复，在候选视图中隔离训练源及镜像，原始数据与验证集保留；这不是物理筛选通过。最终范围验收见[SOURCE_SCOPE_PROTOCOL.md](SOURCE_SCOPE_PROTOCOL.md)：明确13条不可获得来源，仍要求其余8,278条全部有真实准备和过滤记录。
+
 [个人目录空间清理已完成](reports/personal_storage_cleanup_20261025.md)：完整备份并核验GitHub后清理闲置EngineAI环境和旧缓存，数据盘回收9.66GiB；系统盘19个资源文件迁到个人数据盘并保留原路径，SHA全部一致。最终采样数据盘余6.97GiB、系统盘余6.23GiB，数据/模型/实验检查点/唯一记录保留，GMR未中断。[旧EngineAI环境恢复说明](ENGINEAI_ENV_RECOVERY.md)。
 
 [BABEL原始标注已下载、安装服务器并独立核查](reports/babel_original_alignment_20261025.md)：8,291条运动对应50,004条分段标签与原始JSON一致；原始标注及逐条索引按许可保存在个人目录。

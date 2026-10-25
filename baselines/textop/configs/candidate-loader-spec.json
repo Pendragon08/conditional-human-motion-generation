@@ -4,7 +4,7 @@
   "batch_size": 512,
   "expected_sources": 2296,
   "minimum_shm_free_gib": 16,
-  "candidate_view": "/dev/shm/ouyanghao_textop_20261025/generator_candidate2296_v1",
+  "candidate_view": "/dev/shm/ouyanghao_textop_20261025/generator_candidate2296_v2",
   "verified_source_index": "/dev/shm/ouyanghao_textop_20261025/generator_loader_inputs2296_v1/verified_index.private.json",
   "verified_source_index_sha256": "2e293ec4966f3c489d11ea7774c141319c294e10bf701881ea0d6421a9bcb39c",
   "prepared_manifests": [
@@ -16,5 +16,6 @@
   "scope": "All2296completed sources plus mirrors, UNFILTERED_DIAGNOSTIC_ONLY, no accepted statistics or training",
   "statistics": "float64 streaming population statistics over eligibleTRAINsources and mirrors; stdfloor1e-6; refit after true filtering",
   "clip": "frozen existing ViT-B/32 weight SHAverified; real original and mirrored labels, private cache",
-  "sampler_fixes": "valid-only weighted index mapping and inclusive laststart/exact35frame support; official primitive extraction unchanged"
+  "sampler_fixes": "valid-only weighted index mapping and inclusive laststart/exact35frame support; official primitive extraction unchanged",
+  "cross_split_pose_policy": "Quarantine entireTRAINsource family if any original/mirrored float32qpos overlaps validation; preserve validation and all authoritative source assets; record private exclusions; refit trainstats"
 }

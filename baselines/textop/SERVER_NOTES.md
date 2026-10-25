@@ -140,3 +140,26 @@ RAM12GiB/data2GiB/GPU1free20GiB and no own headless SDK before serial exports
 
 ### candidate loader diagnostic: warm paper69@934d8221
 Spec configs/candidate-loader-spec.json written before dispatch, no package/shared-source mutation. All2296completed unfiltered originals+mirrors, private candidate view, train-only float64 stats/std floor1e-6, frozen real CLIP caches. Official dataloader batch512/history2/future8/primitives4, uniform train/val and weightedtrain. Process-local sampler fixes valid-index mapping and inclusive segment bounds. No model gradients/optimizer/accepted data or full training. Author build/kernel and fresh documented loader witness required. Final accepted data must refit statistics/cache after real physical filtering.
+
+Candidate author_v1 failed safely after reading all2296sources on exactcross-
+split pose check. Private audit2groups/1train+1valsource/275frames; raw numeric
+differences≤9.6e-13,not retargetcollapse. Historicalsource/spec/exit1 retained.
+Specv2 before dispatch now quarantines bothTRAINvariants of that source family,
+keepsvalidation/allassets, refits trainstats with cross-source boundaries
+excluded. Author_v2 actualexit0,2296examined/4590variants,train3440/val1150,
+2999realCLIPtexts,3officialbatch512passes,0overlaperror/0missingembeddings,
+0optimizerupdates. Source5c6d9a49.../spec703321e4.../samplercf5c1e3f....
+This is an unfiltered candidate diagnostic, not accepted data/full model memory
+or full8278corpus validation. Fresh documented candidate_loader_document_v1
+verification pending. Warm dependencies unchanged; no original data deleted.
+
+Latest candidate-loader validation: author_v2 and independentdocument_v1 both
+actualexit0/no timeout;41independent checks, source5c6d9a49.../spec703321e4...,
+2296examined/4590variants,train3440/val1150,three[4,512,10,69]loaderpasses,
+0overlaperror/0missingtext,exact35frame+validweightedmapchecks. Candidate-only,
+0optimizerupdates, not fullmodelmemory or accepted corpus. IndependentpeakGPU0
+is expected for cached CPU loading; authorCLIPpeak442733568bytes. Six private
+audit/quarantine/feature-statistics/text-cache records backed up to localD with
+allSHA matches (12636826bytes); no raw dataset/model/checkpoint deleted or
+published. Final corpus must recompute quality exclusions/statistics after real
+physical filtering. No package/shared environment changes.

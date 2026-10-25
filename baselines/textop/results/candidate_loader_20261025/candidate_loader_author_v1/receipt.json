@@ -1,0 +1,28 @@
+{
+  "status": "FAILED",
+  "optimizer_updates": 0,
+  "dataset_accepted": false,
+  "physical_filter_executed": false,
+  "full_generator_training_started": false,
+  "candidate_view_only": true,
+  "source_sha256": "60b1ae527e609f6e345797a8f06be4bf780d6266e58e3e7bb10fca0d5f70c858",
+  "spec_sha256": "7be3de2ba68d8daa435ae4aacf84470eaac7e1961ecce7ec980a3075fbe2a9a6",
+  "adapter": {
+    "valid_index_mapping_fixed": true,
+    "last_legal_start_included": true,
+    "exact35_pose_frames_supported": true,
+    "official_primitive_extraction_preserved": true,
+    "upstream_files_modified": false
+  },
+  "sampler_source_sha256": "cf5c1e3f27665e7fc4d4aa1ede6bcd1931e3563409ad766ff67a576cc0c7b60d",
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "elapsed_seconds": 565.2907724808902,
+  "processed_sources": 2200,
+  "error": "AssertionError('Cross-split source or exact motion leakage')",
+  "traceback": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/paper69_candidate_loader.py\", line 69, in <module>\n    assert not sources['train']&sources['val'] and not pose_hashes['train']&pose_hashes['val'],'Cross-split source or exact motion leakage'\nAssertionError: Cross-split source or exact motion leakage\n"
+}

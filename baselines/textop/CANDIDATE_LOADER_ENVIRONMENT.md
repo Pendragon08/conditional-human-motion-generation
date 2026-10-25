@@ -7,7 +7,7 @@ shared-source edits. GPU1/CPU4/Torch65%. Full build uses the already-completed
 outputs and not an accepted dataset. No model gradients or optimizer is used.
 
 Author build is running under supervise_candidate_loader.py --run
-candidate_loader_author_v1 --build. Do not rebuild or duplicate its candidate
+candidate_loader_author_v2 --build. Do not rebuild or duplicate its candidate
 directory. After its actualexit0, fresh document invocation once, unchanged:
 
 ```powershell
@@ -15,7 +15,8 @@ ssh -o BatchMode=yes -o ConnectTimeout=15 -o ServerAliveInterval=30 -i 'C:/Users
 ```
 
 Require actualexit0/no timeout, TEXTOP_CANDIDATE_LOADER_SUPERVISED_EXIT0 and
-TEXTOP_CANDIDATE69_LOADER_WITNESS_PASSED. Source_sequences2296,variants4592,
+TEXTOP_CANDIDATE69_LOADER_WITNESS_PASSED. Source_sequences2296examined,
+variants4590after quarantining1TRAINsource family/2variants;validation unchanged,
 0optimizerupdates,candidate_view_onlytrue,dataset_acceptedfalse,
 physical_filter_executedfalse,full_generator_training_startedfalse. Three real
 official-loader passes: uniformtrain,uniformval,weightedtrain;4primitives each
@@ -32,8 +33,22 @@ splits are retained, source and exact pose hashes checked across splits. Uses
 the pinned released action-category weights; neither exact author69D statistics
 nor private category distribution is claimed. Full-frame population statistics
 are an explicit convention instead of upstream's approximate random-window
-estimate. They MUST be refitted after real filtering, with a new accepted-view
+estimate. Cross-source transitions are excluded before normalization and
+equivalence checked on real source excerpts. They MUST be refitted after real
+filtering, with a new accepted-view
 fingerprint; candidate normalization/cache cannot establish training readiness.
+
+Author_v1 stopped before fitting/export because a rebuilt full-source TRAIN
+motion and a VAL motion (plus their mirrored forms) had exactly equal robot
+poses. Private audit confirmed2pose groups,1train/1val source,275frames; raw
+SMPL-X numeric arrays differ by at most9.6e-13,betas/gender/fps agree, despite
+different file hashes. This is a near-identical source capture, not a static
+retargeting collapse (joint range1.76rad,root range5.37m). V1failure/source/logs
+are retained. V2quarantines both variants of the TRAINsource, keeps validation
+and all authoritative files unchanged, records private exclusions and refits
+TRAINstatistics afterward. This is an explicitly declared data-quality choice;
+repeat the analysis on the final accepted corpus instead of blindly reusing
+this provisional candidate exclusion. No files are deleted or relabeled.
 
 paper69_data_runtime.py corrects two released sampler indexing defects in this
 process only: sample within valid-source weights (not indexing a filtered list

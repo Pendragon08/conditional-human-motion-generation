@@ -56,17 +56,44 @@ try:
      q=np.array(motion[key],dtype=np.float32);contact=np.array(motion[ckey],dtype=np.float32)
      assert q.shape==(row['frames50'],36) and np.isfinite(q).all()
      values={'root_trans_offset':q[:,:3].copy(),'root_rot':q[:,[4,5,6,3]].copy(),'dof':q[:,7:].copy(),'contact_mask':contact.copy()}
-     pose_hashes[split].add(hashlib.sha256(q.tobytes()).hexdigest())
+     pose_fingerprint=hashlib.sha256(q.tobytes()).hexdigest();pose_hashes[split].add(pose_fingerprint)
      ann=[[x['start_s'],x['end_s'],x['text'],x['action_categories']] for x in row[akey]]
      assert all(0<=x[0]<x[1]<=len(q)/50+1e-8 for x in ann)
-     item={'feat_p':source,'babel_sid':index[source]['babel_sid'],'length':len(q),'mirrored':mirrored,
+     item={'feat_p':source,'babel_sid':index[source]['babel_sid'],'length':len(q),'mirrored':mirrored,'pose_fingerprint':pose_fingerprint,
            'physical_filter_passed':False,'motion':{**values,'fps':50,'motion_len':len(q)},'frame_ann':ann}
      data[split].append(item);annotation_count+=len(ann)
-     if split=='train' and len(q)>=35:
-      features,_=encode69({k:torch.from_numpy(v) for k,v in values.items()});f=features.numpy().astype(np.float64)
-      sums+=f.sum(0);squares+=np.square(f).sum(0);count+=len(f)
    if (position+1)%100==0:receipt.update(status='BUILDING_PRIVATE_CANDIDATE_VIEW',processed_sources=position+1);save()
-  assert not sources['train']&sources['val'] and not pose_hashes['train']&pose_hashes['val'],'Cross-split source or exact motion leakage'
+  assert not sources['train']&sources['val'],'Cross-split source identity leakage'
+  overlap=pose_hashes['train']&pose_hashes['val']
+  quarantined={x['feat_p'] for x in data['train'] if x['pose_fingerprint'] in overlap}
+  # Keep validation unchanged and quarantine the entire corresponding TRAIN
+  # source family, including its mirrored variant. Original assets are kept.
+  excluded=[{'canonical_source':x['feat_p'],'mirrored':x['mirrored'],'reason':'exact_float32_pose_overlap_with_validation',
+             'pose_fingerprint':x['pose_fingerprint']} for x in data['train'] if x['feat_p'] in quarantined]
+  (view/'cross_split_quarantine.private.json').write_text(json.dumps(excluded,indent=2))
+  data['train']=[x for x in data['train'] if x['feat_p'] not in quarantined]
+  annotation_count=sum(len(x['frame_ann']) for items in data.values() for x in items)
+  assert not {x['pose_fingerprint'] for x in data['train']}&pose_hashes['val']
+  receipt.update(status='FITTING_TRAIN_ONLY_CANDIDATE_STATISTICS',processed_sources=len(rows),
+   exact_cross_split_pose_groups=len(overlap),quarantined_train_source_families=len(quarantined),
+   quarantined_train_variants=len(excluded),validation_variants_removed=0);save()
+  eligible=[x for x in data['train'] if x['length']>=35]
+  assert len(eligible)>=2
+  from robotmdar.dtype.motion import MotionKeys
+  joined={k:torch.cat([torch.from_numpy(x['motion'][k]) for x in eligible],dim=0) for k in MotionKeys}
+  features,_=encode69(joined);valid=torch.ones(len(features),dtype=torch.bool)
+  boundaries=np.cumsum([x['length'] for x in eligible])[:-1]-1;valid[torch.as_tensor(boundaries)]=False
+  # Pairwise transforms are independent of earlier frames. Exclude every
+  # cross-source transition and accumulate only valid training rows in float64.
+  small=[{k:torch.from_numpy(x['motion'][k][:35]) for k in MotionKeys} for x in eligible[:2]]
+  combined,_=encode69({k:torch.cat([x[k] for x in small],0) for k in MotionKeys})
+  separate=torch.cat([encode69(x)[0] for x in small],0);mask=torch.ones(len(combined),dtype=torch.bool);mask[34]=False
+  assert torch.allclose(combined[mask],separate,atol=1e-6,rtol=1e-6)
+  for start in range(0,len(features),65536):
+   f=features[start:start+65536][valid[start:start+65536]].numpy().astype(np.float64);assert np.isfinite(f).all()
+   sums+=f.sum(0);squares+=np.square(f).sum(0);count+=len(f)
+  assert count==sum(x['length']-1 for x in eligible)
+  del features,valid,joined
   assert count>0
   mean=sums/count;variance=np.maximum(0,squares/count-mean*mean);std=np.sqrt(variance);floored=np.flatnonzero(std<1e-6).tolist();std=np.maximum(std,1e-6)
   torch.save((torch.from_numpy(mean.astype(np.float32)),torch.from_numpy(std.astype(np.float32))),view/'meanstd.pkl')
@@ -95,6 +122,9 @@ try:
    torch.save({text:cache[text] for text in sorted(texts)},view/(split+'_text_embed.pkl'))
   meta={'status':'UNFILTERED_CANDIDATE_VIEW_READY_NOT_ACCEPTED','physical_filter_passed':False,'dataset_accepted':False,
    'source_sequences':len(rows),'motion_variants':sum(len(v) for v in data.values()),'prepared_manifest_hashes':manifest_hashes,
+   'quarantined_train_source_families':len(quarantined),'quarantined_train_variants':len(excluded),'validation_variants_removed':0,
+   'source_sequences_in_view':len(rows)-len(quarantined),'normalization_boundary_handling_verified':True,
+   'cross_split_pose_groups_before_quarantine':len(overlap),'exact_cross_split_pose_overlap_after_quarantine':0,
    'fit_split':'train','train_stat_feature_frames':count,'std_floor':1e-6,'std_floored_feature_indices':floored,
    'unique_clip_texts':len(unique),'clip_weight_sha256':expected,'released_action_statistics_sha256':sha(spec['released_action_statistics']),
    'normalization_scope':'UNFILTERED_DIAGNOSTIC_ONLY_REFIT_AFTER_ACTUAL_FILTERING',
@@ -123,6 +153,8 @@ try:
  assert mock._sample_motion_batch(torch.Generator().manual_seed(0))==[(35,0),(35,0)]
  receipt.update(status='TEXTOP_CANDIDATE69_LOADER_WITNESS_PASSED',source_sequences=meta['source_sequences'],motion_variants=meta['motion_variants'],
    view_receipt_sha256=sha(view/'view_receipt.json'),loader_checks=results,exact35_frame_regression_passed=True,
+   quarantined_train_source_families=meta['quarantined_train_source_families'],quarantined_train_variants=meta['quarantined_train_variants'],
+   validation_variants_removed=0,normalization_cross_source_boundaries_excluded=True,
    invalid_weighted_index_regression_passed=True,clip_unique_texts=meta['unique_clip_texts'],train_only_statistics=True,
    peak_torch_allocated_bytes=torch.cuda.max_memory_allocated(),output_writers_closed=True,
    limitation='Unfiltered2296-source candidate view only. No accepted corpus, model gradients, optimizer, full generator training or physical filtering')

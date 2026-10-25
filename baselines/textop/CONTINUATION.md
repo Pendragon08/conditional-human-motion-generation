@@ -454,3 +454,74 @@ teacher completion, enable strict-replay formal evaluation; only after real
 filter/accepted corpus/runtime/cache checks enable paper-step2 and trainVAE/LDM.
 Do not keep any gatefalse merely to wait for user confirmation; do not bypass
 evidence gates or interpret the2framefixture as original motion acceptance.
+
+## Heartbeat2026-10-25 17:30: 69D candidate loader and explicit source scope
+
+Preflight GPU1used7823MiB,data4.54GiB/home6.22GiB/RAM72.7GiBfree,
+MemAvailable176GiB,CMUGMR1058/1330with0fail;FKqueue3527552waitinghealthy.
+Current23DremainsSIGSTOP, no other experiments resumed. Independent next step:
+
+- Added process-local paper69_data_runtime.py over warm934d8221, fixing valid-
+  only weighted index mapping and inclusive laststart/exact35pose-frame window.
+  Official primitive extraction/text selection/encoding preserved. No pip/shared
+  package edits. Sourcecf5c1e3f27665e7fc4d4aa1ede6bcd1931e3563409ad766ff67a576cc0c7b60d.
+- configs/candidate-loader-spec.json declared before dispatch. Immutable completed
+  500+143+1653source manifests only; do NOT consume partialCMU outputs. Private
+  originalBABELindex SHAverified under RAM/generator_loader_inputs2296_v1.
+- Author_v1 source60b1ae52... failedexit1 atcross-split pose assertion before
+  PKL/cache export. Lastperiodicprogress2200thoughall2296readbeforeassert. Source
+  +spec preserved locallysources/candidate_loader_author_v1 and serverrunfolder.
+  No accepted data or training. Historical audit source at server
+  scripts/audit_candidate_collision_v1.py, per-motion collisionlist PRIVATE.
+- Actual audit2posegroups,1TRAIN+1VALsource plusmirrors,275frames. Different
+  rawfileSHA butpose/root/transdifferences≤9.6e-13; betas/gender/fpssame. Dynamic
+  motion (joint1.76rad/root5.37m), not GMRcollapse. Old released23Dcropped view
+  and new fullraw view are different objects, so earlier23Dno-leak audit isn't
+  a test of the newly rebuilt full motion. Raw comparison/collision aggregate
+  receipts retained; no raw source or arrays deleted/relabelled.
+- V2candidateview RAM/generator_candidate2296_v2 quarantines BOTH variants of
+  the overlapping TRAINsource family, preservesvalidation, records private
+  exclusions and refits trainstats. This is a declared data-quality choice;
+  redo it after real filtering, don't blindly carry provisional exclusions to
+  final corpus. Stats vectorized once with cross-source transitions excluded,
+  equivalence checked on real excerpts; float64population/std floor1e-6.
+- Author_v2 supervisor3560803 actualexit0 in83.32s;2296examined,4590variants,
+  train3440/val1150,34534annotations,2999realCLIPtexts,2389768trainfeatureframes.
+  Threeofficial-loader checks uniformtrain/uniformval/weightedtrain each
+  [4,512,10,69],texts[512,512],0historyoverlaperror/0missingtext,finite stats;
+  exact35frame/invalidweightedmapping regressions passed.0modelgradients/
+  optimizerupdates,peakCLIP442733568bytes NOT modelbatch512memory. SourceSHA
+  5c6d9a49df38b1b2a7886b786bb905e9333d5b69543319219ba6f3ff1666c8b7,
+  spec703321e499ee3d68b66d4a43185cbe9658f42d41e57d6290dd1266c5b36ee56f.
+  Fresh CANDIDATE_LOADER_ENVIRONMENT.md witness candidate_loader_document_v1
+  also actualexit0/no timeout,41checks passed, matching sources/spec and counts;
+  it reused frozen view without rebuilding. Its GPUallocatedpeak0 reflects CPU
+  cache loading, NOT modeltrainingmemory. Current source/shape validated only
+  for this unfiltered2296source view; accepted fullcorpus still requires checks.
+- New source_scope.py/check_step2_ready.py distinguish unavailable13 from
+  missingAVAILABLEsources. Public profile inpaper-step2.data_scope pins private
+  index8291andmissing13SHA, target8278,private403notincluded,paperexactfalse.
+  Private inputcopies verified atROOT/data_preparation_20261025/source_scope_
+  inputs_v1. Future source_scope artifact references both indexes and all6
+  complete preparedmanifests bySHA; verifier requires EXACT original-minus-
+  missing set, splitmembership/no duplicates and actualfilterdecisions forall.
+  Added accepted_corpus_loader_and_cache_passed plusaccepted_corpus_witness:
+  candidate dataset_acceptedfalse CANNOT satisfy readiness.10synthetic tests
+  actualserverexit0, no physics/corpusacceptance. SOURCE_SCOPE_PROTOCOL.md.
+
+Collect withcollect_candidate_loader.py (includes scope/audit publicproofs),
+normalcollectors thenpublish. All candidatePKL/CLIP caches/private exclusions
+remain private. Finalaccepted dataset/normalization/cache still must be rebuilt
+after real physical filtering; this2296subset is not full8278capacity or final
+training readiness. Formal69D launcher must install BOTH paper69_runtime and
+paper69_data_runtime before using the official managers, bind accepted stats,
+validate fullmodelbatch512memory and record real updates/resume; don't resume
+old57Dtrain_official. Existing GMR/FK continuation jobs remain authoritative.
+
+Private tiny audit/cache backups now localD/datasets/candidate2296_diagnostic_
+private_20261025,6files/12636826bytes,allSHAverified. This includes collision+
+quarantine lists,viewmetadata,train-onlycandidate stats and bothCLIPcaches. Do
+not publish per-text caches or private lists. Backup proof in
+results/candidate_loader_20261025/private_diagnostic_backup.json. The large
+candidatePKLs remain RAM working copies recoverable from backed-up prepared
+motions+code; final accepted data/statistics must NOT silently reuse candidates.
