@@ -1,6 +1,6 @@
 {
-  "time_beijing": "2026-10-25T15:07:56.728287+08:00",
-  "prepared_source_sequences": 2298,
+  "time_beijing": "2026-10-25T15:26:03.454674+08:00",
+  "prepared_source_sequences": 2602,
   "physical_filter_executed": false,
   "full_generator_training_started": false,
   "backend_author_passed": "TEXTOP_TRACKER_PHYSICS_KERNEL_PASSED",
@@ -268,14 +268,1441 @@
   },
   "resources": {
     "space": {
-      "/data": 7005270016,
-      "/home/ouyanghao": 6692360192,
-      "/dev/shm": 83023314944
+      "/data": 5020729344,
+      "/home/ouyanghao": 6691790848,
+      "/dev/shm": 78415421440
     },
     "gpu": "0, 12223 MiB, 49140 MiB\n1, 7823 MiB, 49140 MiB\n"
   },
+  "capacity643_author": {
+    "status": "TEXTOP_8192_CAPACITY_PROBE_PASSED",
+    "optimizer_updates": 20,
+    "dataset_accepted": false,
+    "physical_filter_executed": false,
+    "formal_filter_training_started": false,
+    "full_generator_training_started": false,
+    "full_corpus_capacity_passed": false,
+    "output_writers_closed": true,
+    "source_sha256": "9b579a2c5ab6bb427e88f81fc9aac12fa3b0f2d3c4511b7e0070fd2c8b7a9e7a",
+    "capacity_spec_sha256": "d805fbb7c472a68392f68ad705302accf33370e47307b6aedfd54802b549a5bb",
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "num_envs": 8192,
+    "reference_source_sequences": 643,
+    "reference_trajectories": 1286,
+    "reference_frames": 946700,
+    "private_reference_manifest_sha256": "5601a109e150f9ef991f4dda0b1f618b743c278db3b64c509642d36f2eca6158",
+    "elapsed_seconds": 108.50254176184535,
+    "torch_threads": 4,
+    "torch_allocator_fraction_configured": 0.65,
+    "gpu_name": "NVIDIA RTX A6000",
+    "device_free_before_environment": 42333437952,
+    "device_total_bytes": 50907250688,
+    "device_free_after_environment": 30897012736,
+    "completed_learning_iterations": 1,
+    "environment_transitions": 196608,
+    "policy_observation_dim": 557,
+    "critic_observation_dim": 557,
+    "parameter_max_change": 0.0045095644891262054,
+    "peak_torch_allocated_bytes": 10292943872,
+    "peak_torch_reserved_bytes": 11414798336,
+    "checkpoint_bytes": 90601506,
+    "checkpoint_sha256": "f547dc8828919193bb25157d087e7cac3755c12010630928553712ebf5913de0",
+    "paper_settings": {
+      "source": "https://arxiv.org/html/2602.07439v1#A1",
+      "filter_iterations": 40000,
+      "training_terminations": "relaxed height terms removed",
+      "anchor": "pelvis",
+      "privileged_observation_dim_expected": 557,
+      "actor_hidden": [
+        2048,
+        1024,
+        512
+      ],
+      "critic_hidden": [
+        2048,
+        1024,
+        512
+      ],
+      "target_num_envs": 8192,
+      "steps_per_env": 24,
+      "learning_rate": 0.001,
+      "minibatches": 4,
+      "epochs": 5,
+      "clip_param": 0.2,
+      "simulation_hz": 200,
+      "policy_hz": 50,
+      "strict_pelvis_height_threshold_m": 0.25,
+      "strict_end_effector_height_threshold_m": 0.5,
+      "domain_randomization": false,
+      "own_choices_not_specified_by_paper": {
+        "adaptive_average": "pinned release EMA alpha0.001, ads_typev1",
+        "strict_repetitions": null,
+        "failure_window_or_chunking": null,
+        "checkpoint_interval": 5000,
+        "asset": "shared BeyondMimic G1 description, authors exact asset hash unavailable",
+        "floor": "locally generated PhysX ground plane with friction1.0; no remote visual textures"
+      }
+    },
+    "limitation": "Only completed643 sources plus mirrors; complete future motion library requires another memory check",
+    "config_source_sha256": "e6b59d8fde8574d2c953279301dfc2df0c44ff88ac90683be995b7b97f0ff0d9",
+    "native_close_returned": false,
+    "teardown_fallback_used": true,
+    "shutdown_grace_seconds": 20,
+    "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+    "shutdown_completion_verified": true
+  },
+  "capacity643_document": {
+    "status": "TEXTOP_8192_CAPACITY_PROBE_PASSED",
+    "optimizer_updates": 20,
+    "dataset_accepted": false,
+    "physical_filter_executed": false,
+    "formal_filter_training_started": false,
+    "full_generator_training_started": false,
+    "full_corpus_capacity_passed": false,
+    "output_writers_closed": true,
+    "source_sha256": "9b579a2c5ab6bb427e88f81fc9aac12fa3b0f2d3c4511b7e0070fd2c8b7a9e7a",
+    "capacity_spec_sha256": "d805fbb7c472a68392f68ad705302accf33370e47307b6aedfd54802b549a5bb",
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "num_envs": 8192,
+    "reference_source_sequences": 643,
+    "reference_trajectories": 1286,
+    "reference_frames": 946700,
+    "private_reference_manifest_sha256": "5601a109e150f9ef991f4dda0b1f618b743c278db3b64c509642d36f2eca6158",
+    "elapsed_seconds": 108.62931851111352,
+    "torch_threads": 4,
+    "torch_allocator_fraction_configured": 0.65,
+    "gpu_name": "NVIDIA RTX A6000",
+    "device_free_before_environment": 42333437952,
+    "device_total_bytes": 50907250688,
+    "device_free_after_environment": 30897012736,
+    "completed_learning_iterations": 1,
+    "environment_transitions": 196608,
+    "policy_observation_dim": 557,
+    "critic_observation_dim": 557,
+    "parameter_max_change": 0.0045095644891262054,
+    "peak_torch_allocated_bytes": 10292943872,
+    "peak_torch_reserved_bytes": 11414798336,
+    "checkpoint_bytes": 90601506,
+    "checkpoint_sha256": "a74fd431de4e0323de5eda30e46fc1c89c14160e4c84fb06abc5dcea7a073903",
+    "paper_settings": {
+      "source": "https://arxiv.org/html/2602.07439v1#A1",
+      "filter_iterations": 40000,
+      "training_terminations": "relaxed height terms removed",
+      "anchor": "pelvis",
+      "privileged_observation_dim_expected": 557,
+      "actor_hidden": [
+        2048,
+        1024,
+        512
+      ],
+      "critic_hidden": [
+        2048,
+        1024,
+        512
+      ],
+      "target_num_envs": 8192,
+      "steps_per_env": 24,
+      "learning_rate": 0.001,
+      "minibatches": 4,
+      "epochs": 5,
+      "clip_param": 0.2,
+      "simulation_hz": 200,
+      "policy_hz": 50,
+      "strict_pelvis_height_threshold_m": 0.25,
+      "strict_end_effector_height_threshold_m": 0.5,
+      "domain_randomization": false,
+      "own_choices_not_specified_by_paper": {
+        "adaptive_average": "pinned release EMA alpha0.001, ads_typev1",
+        "strict_repetitions": null,
+        "failure_window_or_chunking": null,
+        "checkpoint_interval": 5000,
+        "asset": "shared BeyondMimic G1 description, authors exact asset hash unavailable",
+        "floor": "locally generated PhysX ground plane with friction1.0; no remote visual textures"
+      }
+    },
+    "limitation": "Only completed643 sources plus mirrors; complete future motion library requires another memory check",
+    "config_source_sha256": "e6b59d8fde8574d2c953279301dfc2df0c44ff88ac90683be995b7b97f0ff0d9",
+    "native_close_returned": false,
+    "teardown_fallback_used": true,
+    "shutdown_grace_seconds": 20,
+    "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+    "shutdown_completion_verified": true
+  },
+  "initialization_audit": {
+    "status": "TEXTOP_INITIALIZATION_AUDIT_FINISHED",
+    "optimizer_updates": 0,
+    "dataset_accepted": false,
+    "physical_filter_executed": false,
+    "formal_filter_training_started": false,
+    "full_generator_training_started": false,
+    "output_writers_closed": true,
+    "source_sha256": "59b677d7437819dec825e7559dc41b24923f07b7625ea99b2b51eedaa7ffbca6",
+    "audit_spec_sha256": "3207d0fda974ca0c4ec82275df7eda427d1be8504428879809bcd93cc9f25b88",
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "reference_trajectories": 1286,
+    "private_manifest_sha256": "5601a109e150f9ef991f4dda0b1f618b743c278db3b64c509642d36f2eca6158",
+    "diagnostic_changes": [
+      "one environment per trajectory",
+      "deterministic motion assignment",
+      "no reset perturbations",
+      "reference-position PD action instead of an RL policy"
+    ],
+    "elapsed_seconds": 63.030835846439004,
+    "initial_frame": {
+      "root_position_error_m": {
+        "count": 1286,
+        "percentiles_0_50_95_99_100": [
+          0.0,
+          0.0,
+          5.960464477539063e-08,
+          5.960464477539063e-08,
+          1.1920928955078125e-07
+        ]
+      },
+      "tracked_body_error_m": {
+        "count": 18004,
+        "percentiles_0_50_95_99_100": [
+          0.0,
+          1.90827972801344e-06,
+          8.531517778465059e-06,
+          0.023538471907377245,
+          0.07813523709774017
+        ]
+      },
+      "joint_clipping_difference_rad": {
+        "count": 37294,
+        "percentiles_0_50_95_99_100": [
+          0.0,
+          0.0,
+          0.0,
+          0.048217400908470154,
+          0.08726763725280762
+        ]
+      },
+      "envs_with_joint_clipping": 466,
+      "initial_root_speed_m_s": {
+        "count": 1286,
+        "percentiles_0_50_95_99_100": [
+          0.0011078289244323969,
+          0.059399791061878204,
+          1.646041989326477,
+          2.8147923946380615,
+          8.536494255065918
+        ]
+      },
+      "initial_joint_speed_rad_s": {
+        "count": 37294,
+        "percentiles_0_50_95_99_100": [
+          0.0,
+          0.405392050743103,
+          6.340871810913086,
+          16.49097442626953,
+          59.34614181518555
+        ]
+      },
+      "minimum_tracked_body_origin_z_m": {
+        "count": 1286,
+        "percentiles_0_50_95_99_100": [
+          -5.774199962615967e-08,
+          0.027474847622215748,
+          0.3976779356598854,
+          0.8155164897441864,
+          0.8189585208892822
+        ]
+      }
+    },
+    "action_scale_range": {
+      "count": 37294,
+      "percentiles_0_50_95_99_100": [
+        0.07450087368488312,
+        0.4385773241519928,
+        0.5475464463233948,
+        0.5475464463233948,
+        0.5475464463233948
+      ]
+    },
+    "pd_steps": [
+      {
+        "step": 1,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            18.236089420317985,
+            1768.3635437011271,
+            14025.572265625
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            3.000895958393812e-06,
+            0.33084331452846527,
+            4.111196255683897,
+            10.841525745391841,
+            22.0028018951416
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.0003634295426309109,
+            0.007767215603962541,
+            0.02568947197869418,
+            0.10340380296111132,
+            0.5485053658485413
+          ]
+        },
+        "termination_events": 0,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -1.1431556940078735,
+            -0.01429794356226921,
+            0.027584996540099382,
+            0.03402430750429634,
+            0.04019936919212341
+          ]
+        }
+      },
+      {
+        "step": 2,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            5.923218512534786,
+            1031.174675292944,
+            11485.7763671875
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            1.7299225874012336e-06,
+            0.28540949523448944,
+            3.0988063812255846,
+            8.365283527374267,
+            31.19843292236328
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.0005914034554734826,
+            0.012571428902447224,
+            0.04788360167294735,
+            0.18955144762993015,
+            1.0479686260223389
+          ]
+        },
+        "termination_events": 0,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.18967732787132263,
+            0.08982464671134949,
+            0.09821588918566704,
+            0.09916268661618233,
+            0.0994105115532875
+          ]
+        }
+      },
+      {
+        "step": 3,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            37.77440910339197,
+            568.3008782958952,
+            10466.95703125
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            3.2003717933548614e-06,
+            0.3176727145910263,
+            2.997229158878325,
+            6.776241154670715,
+            22.006893157958984
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.00021261096117086709,
+            0.019209603779017925,
+            0.07153483480215068,
+            0.19274481713772026,
+            1.2245985269546509
+          ]
+        },
+        "termination_events": 3,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.11601458489894867,
+            0.09102075919508934,
+            0.09830067120492458,
+            0.09886501617729664,
+            0.09919270128011703
+          ]
+        }
+      },
+      {
+        "step": 4,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            86.91818122863751,
+            350.27444824218645,
+            8091.34033203125
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            4.885951057076454e-06,
+            0.305801197886467,
+            3.043040370941159,
+            6.8266584444045995,
+            22.005096435546875
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.00010511597793083638,
+            0.025903952307999134,
+            0.0980334814637898,
+            0.20716702610254387,
+            1.4364484548568726
+          ]
+        },
+        "termination_events": 4,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.13750281929969788,
+            0.08966254815459251,
+            0.09825299680233002,
+            0.09874495677649976,
+            0.09899339824914932
+          ]
+        }
+      },
+      {
+        "step": 5,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            116.29075012207004,
+            324.0811532592758,
+            7578.64892578125
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            1.2003583833575249e-06,
+            0.30173787474632263,
+            2.997132718563079,
+            6.212293257713317,
+            22.00554084777832
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.00010645122529240325,
+            0.02965269424021244,
+            0.12244833372533319,
+            0.2259936730563642,
+            1.428580403327942
+          ]
+        },
+        "termination_events": 5,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.04979689419269562,
+            0.08670207485556602,
+            0.09776267595589161,
+            0.098494603484869,
+            0.0987570658326149
+          ]
+        }
+      },
+      {
+        "step": 6,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            126.4080699920648,
+            296.5281219482419,
+            6671.02734375
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            1.5291152521967888e-07,
+            0.3035905957221985,
+            2.9742794156074503,
+            6.263334736824035,
+            26.987667083740234
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.00012493431859184057,
+            0.032222071662545204,
+            0.15034446492791143,
+            0.2630978000164038,
+            1.185261845588684
+          ]
+        },
+        "termination_events": 3,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.12016995251178741,
+            0.08325859531760216,
+            0.09694748930633068,
+            0.0980901762843132,
+            0.09855001419782639
+          ]
+        }
+      },
+      {
+        "step": 7,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            132.93279953002923,
+            302.56619689941397,
+            6786.88818359375
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            1.827138476073742e-07,
+            0.29643839597702026,
+            2.769107902050018,
+            5.6861880588531495,
+            20.595720291137695
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.000705564918462187,
+            0.0351804681122303,
+            0.17917096167802782,
+            0.31287484049797065,
+            0.7500161528587341
+          ]
+        },
+        "termination_events": 1,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.13234436511993408,
+            0.08101189881563187,
+            0.09639123268425465,
+            0.09753232784569263,
+            0.09800860285758972
+          ]
+        }
+      },
+      {
+        "step": 8,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            134.20715789794897,
+            276.2923455810546,
+            6336.3056640625
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            2.7121248535877385e-07,
+            0.28570254147052765,
+            2.5930699348449706,
+            5.288369808197022,
+            21.592453002929688
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.000560235814191401,
+            0.039183611050248146,
+            0.20801027715206138,
+            0.3625232052803061,
+            0.7818495035171509
+          ]
+        },
+        "termination_events": 0,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.07171331346035004,
+            0.07920663431286812,
+            0.09566074796020985,
+            0.09715898409485817,
+            0.09868074953556061
+          ]
+        }
+      },
+      {
+        "step": 9,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            133.28367004394522,
+            279.113368835449,
+            6452.3359375
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            1.5406385500682518e-07,
+            0.26938319206237793,
+            2.5276712179183947,
+            5.078504161834717,
+            16.585750579833984
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.0005200529703870416,
+            0.04436819069087505,
+            0.235655315220356,
+            0.4139497014880182,
+            0.7959713339805603
+          ]
+        },
+        "termination_events": 0,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.4438871443271637,
+            0.07644175365567207,
+            0.09498366340994835,
+            0.09641913548111916,
+            0.09849409013986588
+          ]
+        }
+      },
+      {
+        "step": 10,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            138.20684432983393,
+            298.78554565429664,
+            5779.85986328125
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            5.1984807214466855e-06,
+            0.25725485384464264,
+            2.5106975317001328,
+            5.104218311309811,
+            18.514392852783203
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.0004895778256468475,
+            0.05099041759967804,
+            0.2624862104654312,
+            0.4579467409849207,
+            0.7969693541526794
+          ]
+        },
+        "termination_events": 0,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.0889730453491211,
+            0.0735151544213295,
+            0.0943905021995306,
+            0.09601160511374474,
+            0.09868662059307098
+          ]
+        }
+      },
+      {
+        "step": 11,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            138.25227279663036,
+            296.0301263427729,
+            6094.2333984375
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            2.3285330996714038e-08,
+            0.2542557269334793,
+            2.463430356979368,
+            5.0350057506561265,
+            27.462194442749023
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.0005370275466702878,
+            0.05782780982553959,
+            0.29111535996198645,
+            0.501494998931885,
+            0.7902534008026123
+          ]
+        },
+        "termination_events": 0,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.08255264163017273,
+            0.07069358974695206,
+            0.09486530721187592,
+            0.09640275314450264,
+            0.0985165536403656
+          ]
+        }
+      },
+      {
+        "step": 12,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            138.07129898071278,
+            296.74328765869126,
+            7818.70458984375
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            6.673867858353333e-08,
+            0.2511022984981537,
+            2.431974327564239,
+            5.348214645385738,
+            28.660478591918945
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.0005772552685812116,
+            0.0655999444425106,
+            0.32374644130468366,
+            0.5474367028474809,
+            0.8387477993965149
+          ]
+        },
+        "termination_events": 0,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.06812069565057755,
+            0.068028274923563,
+            0.09465380758047104,
+            0.0959179136902094,
+            0.09826169908046722
+          ]
+        }
+      },
+      {
+        "step": 13,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            136.7912742614746,
+            289.7259259033199,
+            9522.21484375
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            1.5167820777151064e-08,
+            0.24871280789375305,
+            2.383552992343902,
+            5.121506972312925,
+            37.4424934387207
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.0005572765949182212,
+            0.07353639975190163,
+            0.3575598806142807,
+            0.5801723891496667,
+            0.9082282781600952
+          ]
+        },
+        "termination_events": 0,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.09647466242313385,
+            0.06529320403933525,
+            0.09445283375680447,
+            0.09596411287784577,
+            0.09786535054445267
+          ]
+        }
+      },
+      {
+        "step": 14,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            140.7156585693357,
+            296.4971166992187,
+            9694.5390625
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            7.6484525379783e-09,
+            0.25871847569942474,
+            2.548484063148498,
+            5.35234837055206,
+            24.239734649658203
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.0005515558877959847,
+            0.08276375383138657,
+            0.3995367050170898,
+            0.6212227284908315,
+            0.9759359359741211
+          ]
+        },
+        "termination_events": 0,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.25463056564331055,
+            0.06299293786287308,
+            0.09394174069166183,
+            0.09547889828681946,
+            0.09649739414453506
+          ]
+        }
+      },
+      {
+        "step": 15,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            140.41553039550772,
+            288.5638378906248,
+            9134.9697265625
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.25542670488357544,
+            2.4639919638633727,
+            5.284922585487365,
+            27.338651657104492
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.0005691239493899047,
+            0.09242338314652443,
+            0.45019009262323373,
+            0.670735647082329,
+            1.071202039718628
+          ]
+        },
+        "termination_events": 1,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.20829743146896362,
+            0.06122535467147827,
+            0.09327919036149979,
+            0.0949355259537697,
+            0.09797266125679016
+          ]
+        }
+      },
+      {
+        "step": 16,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            137.7517234802246,
+            282.5910122680663,
+            8869.2314453125
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.2529764175415039,
+            2.5622903943061806,
+            5.977057967185974,
+            39.820213317871094
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.0005473520723171532,
+            0.10169719532132149,
+            0.5101164817810059,
+            0.6994827300310149,
+            1.1264303922653198
+          ]
+        },
+        "termination_events": 7,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.1291336715221405,
+            0.05983741581439972,
+            0.09263435192406178,
+            0.09449069201946259,
+            0.0982169508934021
+          ]
+        }
+      },
+      {
+        "step": 17,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            136.29496688842744,
+            278.9759671020508,
+            8685.7275390625
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.24555350095033646,
+            2.5486810326576235,
+            5.721348190307616,
+            28.017057418823242
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.0005540903657674789,
+            0.11151188611984253,
+            0.567780870199203,
+            0.7344378769397748,
+            1.2118626832962036
+          ]
+        },
+        "termination_events": 6,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.1669367253780365,
+            0.05699676647782326,
+            0.09199880622327328,
+            0.0938695501536131,
+            0.09801436960697174
+          ]
+        }
+      },
+      {
+        "step": 18,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            133.16282882690422,
+            275.38310760498035,
+            8642.2626953125
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            1.0620169632602483e-08,
+            0.24877140671014786,
+            2.5768930912017822,
+            5.742123003005975,
+            19.083284378051758
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            1.8789200112223625e-05,
+            0.12194693461060524,
+            0.6085852205753324,
+            0.761599786877635,
+            1.1986873149871826
+          ]
+        },
+        "termination_events": 3,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.12685683369636536,
+            0.05416875146329403,
+            0.09109503403306007,
+            0.09333493933081627,
+            0.09763923287391663
+          ]
+        }
+      },
+      {
+        "step": 19,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            130.20613174438475,
+            281.734246520996,
+            8629.70703125
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            4.863291280798876e-08,
+            0.25529834628105164,
+            2.6268136143684373,
+            5.717413096427917,
+            18.14352035522461
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.0006429925560951233,
+            0.13362672179937363,
+            0.6354604274034498,
+            0.7977079296112088,
+            1.2429280281066895
+          ]
+        },
+        "termination_events": 0,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.25965186953544617,
+            0.05113061144948006,
+            0.09026477485895157,
+            0.09259056337177754,
+            0.09731190651655197
+          ]
+        }
+      },
+      {
+        "step": 20,
+        "contact_force_n": {
+          "count": 38580,
+          "percentiles_0_50_95_99_100": [
+            0.0,
+            0.0,
+            128.86716842651305,
+            287.2401123046875,
+            13136.1376953125
+          ]
+        },
+        "joint_speed_rad_s": {
+          "count": 37294,
+          "percentiles_0_50_95_99_100": [
+            9.294517155922222e-09,
+            0.2652641236782074,
+            2.837194037437437,
+            6.2347882938385,
+            48.179359436035156
+          ]
+        },
+        "body_position_error_m": {
+          "count": 18004,
+          "percentiles_0_50_95_99_100": [
+            0.0007025870145298541,
+            0.14528917521238327,
+            0.6679853498935691,
+            0.8387845307588611,
+            1.312088131904602
+          ]
+        },
+        "termination_events": 4,
+        "timeout_events": 0,
+        "reward": {
+          "count": 1286,
+          "percentiles_0_50_95_99_100": [
+            -0.12487493455410004,
+            0.04935966245830059,
+            0.0894221793860197,
+            0.09232545495033265,
+            0.0994194969534874
+          ]
+        }
+      }
+    ],
+    "peak_torch_allocated_bytes": 2373836288,
+    "limitation": "Untrained reference-PD diagnostic, not learned tracking or a physical acceptance decision",
+    "native_close_returned": false,
+    "teardown_fallback_used": true,
+    "shutdown_grace_seconds": 20,
+    "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+    "shutdown_completion_verified": true
+  },
+  "filter_statistics_author": {
+    "status": "TEXTOP_FILTER_STATISTICS_RESUME_WITNESS_PASSED",
+    "optimizer_updates": 40,
+    "completed_learning_iterations": 2,
+    "formal_filter_training_started": false,
+    "full_generator_training_started": false,
+    "physical_filter_executed": false,
+    "dataset_accepted": false,
+    "output_writers_closed": true,
+    "mode": "witness",
+    "source_sha256": "3929b9d8df0575778bfa5104a86d4515d834b20a8f1e54252964128ac0e16a53",
+    "runtime_sha256": "ad3bb92f5836e5213450420e8f33deffd43443da7d451796adef3d6193ef6962",
+    "plan_sha256": "10c9ef10b7408c0023414c503dc4eef6a03415a2afc680befaee9a00fdcd6338",
+    "reference_sources": 2,
+    "num_envs": 8,
+    "corpus_scope": "BABEL-indexed available public profile; not a claim of reproducing all 12296 author tracking clips or private403 clips",
+    "elapsed_seconds": 39.76430415734649,
+    "reference_fingerprint": "9d9ada9fcb17014efe0a663e28baa94f43c7a9ba57af0098862c0ed27fc80470",
+    "target_learning_iterations": 2,
+    "paper_settings": {
+      "source": "https://arxiv.org/html/2602.07439v1#A1",
+      "filter_iterations": 40000,
+      "training_terminations": "relaxed height terms removed",
+      "anchor": "pelvis",
+      "privileged_observation_dim_expected": 557,
+      "actor_hidden": [
+        2048,
+        1024,
+        512
+      ],
+      "critic_hidden": [
+        2048,
+        1024,
+        512
+      ],
+      "target_num_envs": 8192,
+      "steps_per_env": 24,
+      "learning_rate": 0.001,
+      "minibatches": 4,
+      "epochs": 5,
+      "clip_param": 0.2,
+      "simulation_hz": 200,
+      "policy_hz": 50,
+      "strict_pelvis_height_threshold_m": 0.25,
+      "strict_end_effector_height_threshold_m": 0.5,
+      "domain_randomization": false,
+      "own_choices_not_specified_by_paper": {
+        "adaptive_average": "pinned release EMA alpha0.001, ads_typev1",
+        "strict_repetitions": null,
+        "failure_window_or_chunking": null,
+        "checkpoint_interval": 5000,
+        "asset": "shared BeyondMimic G1 description, authors exact asset hash unavailable",
+        "floor": "locally generated PhysX ground plane with friction1.0; no remote visual textures"
+      }
+    },
+    "checkpoints": [
+      {
+        "name": "completed_1.pt",
+        "bytes": 90600818,
+        "sha256": "8ab2d121e750eb1e081ddb31da27b3072e5205e910231590beddf1f4a2264426",
+        "completed_learning_iterations": 1,
+        "actual_optimizer_updates": 20
+      },
+      {
+        "name": "completed_2.pt",
+        "bytes": 90600818,
+        "sha256": "2a755bd0a59c013465e0bd0efd75b3be52c440714cce53ab3385437e5aaf7459",
+        "completed_learning_iterations": 2,
+        "actual_optimizer_updates": 40
+      }
+    ],
+    "resume_exact_state_verified": true,
+    "resumed_physics_episodes_restarted_without_counting_reset": true,
+    "initial_resets_excluded_from_raw_counts": true,
+    "raw_completed_attempts": 9,
+    "limitation": "8envs/2iterations. Exact model/Adam/normalizers/EMA/raw-counters restore only; not full policy or accepted motions",
+    "peak_torch_allocated_bytes": 352427520,
+    "native_close_returned": false,
+    "teardown_fallback_used": true,
+    "shutdown_grace_seconds": 20,
+    "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+    "shutdown_completion_verified": true
+  },
+  "filter_statistics_document": {
+    "status": "TEXTOP_FILTER_STATISTICS_RESUME_WITNESS_PASSED",
+    "optimizer_updates": 40,
+    "completed_learning_iterations": 2,
+    "formal_filter_training_started": false,
+    "full_generator_training_started": false,
+    "physical_filter_executed": false,
+    "dataset_accepted": false,
+    "output_writers_closed": true,
+    "mode": "witness",
+    "source_sha256": "3929b9d8df0575778bfa5104a86d4515d834b20a8f1e54252964128ac0e16a53",
+    "runtime_sha256": "ad3bb92f5836e5213450420e8f33deffd43443da7d451796adef3d6193ef6962",
+    "plan_sha256": "10c9ef10b7408c0023414c503dc4eef6a03415a2afc680befaee9a00fdcd6338",
+    "reference_sources": 2,
+    "num_envs": 8,
+    "corpus_scope": "BABEL-indexed available public profile; not a claim of reproducing all 12296 author tracking clips or private403 clips",
+    "elapsed_seconds": 40.19746502675116,
+    "reference_fingerprint": "9d9ada9fcb17014efe0a663e28baa94f43c7a9ba57af0098862c0ed27fc80470",
+    "target_learning_iterations": 2,
+    "paper_settings": {
+      "source": "https://arxiv.org/html/2602.07439v1#A1",
+      "filter_iterations": 40000,
+      "training_terminations": "relaxed height terms removed",
+      "anchor": "pelvis",
+      "privileged_observation_dim_expected": 557,
+      "actor_hidden": [
+        2048,
+        1024,
+        512
+      ],
+      "critic_hidden": [
+        2048,
+        1024,
+        512
+      ],
+      "target_num_envs": 8192,
+      "steps_per_env": 24,
+      "learning_rate": 0.001,
+      "minibatches": 4,
+      "epochs": 5,
+      "clip_param": 0.2,
+      "simulation_hz": 200,
+      "policy_hz": 50,
+      "strict_pelvis_height_threshold_m": 0.25,
+      "strict_end_effector_height_threshold_m": 0.5,
+      "domain_randomization": false,
+      "own_choices_not_specified_by_paper": {
+        "adaptive_average": "pinned release EMA alpha0.001, ads_typev1",
+        "strict_repetitions": null,
+        "failure_window_or_chunking": null,
+        "checkpoint_interval": 5000,
+        "asset": "shared BeyondMimic G1 description, authors exact asset hash unavailable",
+        "floor": "locally generated PhysX ground plane with friction1.0; no remote visual textures"
+      }
+    },
+    "checkpoints": [
+      {
+        "name": "completed_1.pt",
+        "bytes": 90600818,
+        "sha256": "8ab2d121e750eb1e081ddb31da27b3072e5205e910231590beddf1f4a2264426",
+        "completed_learning_iterations": 1,
+        "actual_optimizer_updates": 20
+      },
+      {
+        "name": "completed_2.pt",
+        "bytes": 90600818,
+        "sha256": "2a755bd0a59c013465e0bd0efd75b3be52c440714cce53ab3385437e5aaf7459",
+        "completed_learning_iterations": 2,
+        "actual_optimizer_updates": 40
+      }
+    ],
+    "resume_exact_state_verified": true,
+    "resumed_physics_episodes_restarted_without_counting_reset": true,
+    "initial_resets_excluded_from_raw_counts": true,
+    "raw_completed_attempts": 9,
+    "limitation": "8envs/2iterations. Exact model/Adam/normalizers/EMA/raw-counters restore only; not full policy or accepted motions",
+    "peak_torch_allocated_bytes": 352427520,
+    "native_close_returned": false,
+    "teardown_fallback_used": true,
+    "shutdown_grace_seconds": 20,
+    "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+    "shutdown_completion_verified": true
+  },
+  "reference_export1653": {
+    "status": "TEXTOP_TRACKER_REFERENCE_EXPORT_PASSED",
+    "exported_source_sequences": 1653,
+    "exported_trajectories": 3306,
+    "exported_frames": 2343590,
+    "physical_filter_executed": false,
+    "dataset_accepted": false,
+    "optimizer_updates": 0,
+    "output_writers_closed": true,
+    "input_manifest_hashes": [
+      "58685fa7bcf557b58384674c513914919e9f20fd5837e6e75ef05b44f2cb5057"
+    ],
+    "target_sources": 1653,
+    "source_sha256": "8e4ce4114c4e783146754846fb07c6d254f4c32433c6b42380d6a4686d0238c9",
+    "urdf_sha256": "dbc8471004e9b0b85c27a4ebc1f0d90a727c1cf7ca9ef507b805596f2004d64b",
+    "joint_names": [
+      "left_hip_pitch_joint",
+      "right_hip_pitch_joint",
+      "waist_yaw_joint",
+      "left_hip_roll_joint",
+      "right_hip_roll_joint",
+      "waist_roll_joint",
+      "left_hip_yaw_joint",
+      "right_hip_yaw_joint",
+      "waist_pitch_joint",
+      "left_knee_joint",
+      "right_knee_joint",
+      "left_shoulder_pitch_joint",
+      "right_shoulder_pitch_joint",
+      "left_ankle_pitch_joint",
+      "right_ankle_pitch_joint",
+      "left_shoulder_roll_joint",
+      "right_shoulder_roll_joint",
+      "left_ankle_roll_joint",
+      "right_ankle_roll_joint",
+      "left_shoulder_yaw_joint",
+      "right_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "right_elbow_joint",
+      "left_wrist_roll_joint",
+      "right_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "right_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "right_wrist_yaw_joint"
+    ],
+    "body_names": [
+      "pelvis",
+      "left_hip_pitch_link",
+      "right_hip_pitch_link",
+      "waist_yaw_link",
+      "left_hip_roll_link",
+      "right_hip_roll_link",
+      "waist_roll_link",
+      "left_hip_yaw_link",
+      "right_hip_yaw_link",
+      "torso_link",
+      "left_knee_link",
+      "right_knee_link",
+      "left_shoulder_pitch_link",
+      "right_shoulder_pitch_link",
+      "left_ankle_pitch_link",
+      "right_ankle_pitch_link",
+      "left_shoulder_roll_link",
+      "right_shoulder_roll_link",
+      "left_ankle_roll_link",
+      "right_ankle_roll_link",
+      "left_shoulder_yaw_link",
+      "right_shoulder_yaw_link",
+      "left_elbow_link",
+      "right_elbow_link",
+      "left_wrist_roll_link",
+      "right_wrist_roll_link",
+      "left_wrist_pitch_link",
+      "right_wrist_pitch_link",
+      "left_wrist_yaw_link",
+      "right_wrist_yaw_link"
+    ],
+    "fps": 50,
+    "quaternion_convention": "WXYZ, world-frame angular velocity",
+    "physics_steps": 0,
+    "private_manifest_sha256": "26432869c2f21ce5f0b946f1e9c0fb7097cb65207df33894ec4b64bf272c94c3",
+    "peak_torch_allocated_bytes": 10084352,
+    "native_close_returned": false,
+    "teardown_fallback_used": true,
+    "shutdown_grace_seconds": 20,
+    "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+    "shutdown_completion_verified": true
+  },
   "unresolved": [
-    "8192-env memory/capacity with complete references",
+    "8192-env memory/stability with ALL future references; current643-source capacity alone passed",
     "full40k policy and two-round physical filtering",
     "accepted corpus loader/statistics/text cache",
     "fullVAE200k and LDM300k",

@@ -1,0 +1,63 @@
+{
+  "status": "FAILED",
+  "optimizer_updates": 20,
+  "completed_learning_iterations": 0,
+  "formal_filter_training_started": false,
+  "full_generator_training_started": false,
+  "physical_filter_executed": false,
+  "dataset_accepted": false,
+  "output_writers_closed": false,
+  "mode": "witness",
+  "source_sha256": "9d4a2ff4a588ba268c5bf6dd86cfe310f3b7ba76f8d0babab4804e172f94e1be",
+  "runtime_sha256": "1b136c6ee39a6498c52e8b35da90b3ed590d368fa805b03de5064685dae3e421",
+  "plan_sha256": "10c9ef10b7408c0023414c503dc4eef6a03415a2afc680befaee9a00fdcd6338",
+  "reference_sources": 2,
+  "num_envs": 8,
+  "corpus_scope": "BABEL-indexed available public profile; not a claim of reproducing all 12296 author tracking clips or private403 clips",
+  "elapsed_seconds": 38.272817362099886,
+  "reference_fingerprint": "9d9ada9fcb17014efe0a663e28baa94f43c7a9ba57af0098862c0ed27fc80470",
+  "target_learning_iterations": 2,
+  "paper_settings": {
+    "source": "https://arxiv.org/html/2602.07439v1#A1",
+    "filter_iterations": 40000,
+    "training_terminations": "relaxed height terms removed",
+    "anchor": "pelvis",
+    "privileged_observation_dim_expected": 557,
+    "actor_hidden": [
+      2048,
+      1024,
+      512
+    ],
+    "critic_hidden": [
+      2048,
+      1024,
+      512
+    ],
+    "target_num_envs": 8192,
+    "steps_per_env": 24,
+    "learning_rate": 0.001,
+    "minibatches": 4,
+    "epochs": 5,
+    "clip_param": 0.2,
+    "simulation_hz": 200,
+    "policy_hz": 50,
+    "strict_pelvis_height_threshold_m": 0.25,
+    "strict_end_effector_height_threshold_m": 0.5,
+    "domain_randomization": false,
+    "own_choices_not_specified_by_paper": {
+      "adaptive_average": "pinned release EMA alpha0.001, ads_typev1",
+      "strict_repetitions": null,
+      "failure_window_or_chunking": null,
+      "checkpoint_interval": 5000,
+      "asset": "shared BeyondMimic G1 description, authors exact asset hash unavailable",
+      "floor": "locally generated PhysX ground plane with friction1.0; no remote visual textures"
+    }
+  },
+  "error": "RuntimeError('Inplace update to inference tensor outside InferenceMode is not allowed.You can make a clone to get a normal tensor before doing inplace update.See https://github.com/pytorch/rfcs/pull/17 for more details.')",
+  "traceback": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_filter_policy.py\", line 77, in <module>\n    restored=build('restored_training_logs');info=load_recorded(restored,motion,ckpt,fp)\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/filter_training_runtime.py\", line 64, in load_recorded\n    runner.load(str(path),load_optimizer=True);motion.restore_recording(info['recording'])\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/filter_training_runtime.py\", line 36, in restore_recording\n    value.copy_(saved.to(value.device))\nRuntimeError: Inplace update to inference tensor outside InferenceMode is not allowed.You can make a clone to get a normal tensor before doing inplace update.See https://github.com/pytorch/rfcs/pull/17 for more details.\n",
+  "native_close_returned": false,
+  "teardown_fallback_used": true,
+  "shutdown_grace_seconds": 20,
+  "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+  "shutdown_completion_verified": false
+}

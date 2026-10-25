@@ -1,0 +1,72 @@
+{
+  "status": "FAILED",
+  "optimizer_updates": 20,
+  "completed_learning_iterations": 1,
+  "formal_filter_training_started": false,
+  "full_generator_training_started": false,
+  "physical_filter_executed": false,
+  "dataset_accepted": false,
+  "output_writers_closed": false,
+  "mode": "witness",
+  "source_sha256": "3929b9d8df0575778bfa5104a86d4515d834b20a8f1e54252964128ac0e16a53",
+  "runtime_sha256": "c153cfc8ea280a7615da877c340410e343f69e00f3afab303e16c7bba2d52a85",
+  "plan_sha256": "10c9ef10b7408c0023414c503dc4eef6a03415a2afc680befaee9a00fdcd6338",
+  "reference_sources": 2,
+  "num_envs": 8,
+  "corpus_scope": "BABEL-indexed available public profile; not a claim of reproducing all 12296 author tracking clips or private403 clips",
+  "elapsed_seconds": 38.53335561044514,
+  "reference_fingerprint": "9d9ada9fcb17014efe0a663e28baa94f43c7a9ba57af0098862c0ed27fc80470",
+  "target_learning_iterations": 2,
+  "paper_settings": {
+    "source": "https://arxiv.org/html/2602.07439v1#A1",
+    "filter_iterations": 40000,
+    "training_terminations": "relaxed height terms removed",
+    "anchor": "pelvis",
+    "privileged_observation_dim_expected": 557,
+    "actor_hidden": [
+      2048,
+      1024,
+      512
+    ],
+    "critic_hidden": [
+      2048,
+      1024,
+      512
+    ],
+    "target_num_envs": 8192,
+    "steps_per_env": 24,
+    "learning_rate": 0.001,
+    "minibatches": 4,
+    "epochs": 5,
+    "clip_param": 0.2,
+    "simulation_hz": 200,
+    "policy_hz": 50,
+    "strict_pelvis_height_threshold_m": 0.25,
+    "strict_end_effector_height_threshold_m": 0.5,
+    "domain_randomization": false,
+    "own_choices_not_specified_by_paper": {
+      "adaptive_average": "pinned release EMA alpha0.001, ads_typev1",
+      "strict_repetitions": null,
+      "failure_window_or_chunking": null,
+      "checkpoint_interval": 5000,
+      "asset": "shared BeyondMimic G1 description, authors exact asset hash unavailable",
+      "floor": "locally generated PhysX ground plane with friction1.0; no remote visual textures"
+    }
+  },
+  "checkpoints": [
+    {
+      "name": "completed_1.pt",
+      "bytes": 90600818,
+      "sha256": "8ab2d121e750eb1e081ddb31da27b3072e5205e910231590beddf1f4a2264426",
+      "completed_learning_iterations": 1,
+      "actual_optimizer_updates": 20
+    }
+  ],
+  "error": "RuntimeError('Inplace update to inference tensor outside InferenceMode is not allowed.You can make a clone to get a normal tensor before doing inplace update.See https://github.com/pytorch/rfcs/pull/17 for more details.')",
+  "traceback": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_filter_policy.py\", line 78, in <module>\n    restored=build('restored_training_logs');info=load_recorded(restored,motion,ckpt,fp)\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/filter_training_runtime.py\", line 69, in load_recorded\n    motion._env.reset()\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_env.py\", line 295, in reset\n    self._reset_idx(env_ids)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_rl_env.py\", line 379, in _reset_idx\n    info = self.command_manager.reset(env_ids)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/IsaacLab/source/isaaclab/isaaclab/managers/command_manager.py\", line 353, in reset\n    metrics = term.reset(env_ids=env_ids)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/IsaacLab/source/isaaclab/isaaclab/managers/command_manager.py\", line 142, in reset\n    metric_value[env_ids] = 0.0\nRuntimeError: Inplace update to inference tensor outside InferenceMode is not allowed.You can make a clone to get a normal tensor before doing inplace update.See https://github.com/pytorch/rfcs/pull/17 for more details.\n",
+  "native_close_returned": false,
+  "teardown_fallback_used": true,
+  "shutdown_grace_seconds": 20,
+  "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+  "shutdown_completion_verified": false
+}

@@ -1,0 +1,82 @@
+{
+  "status": "TEXTOP_FILTER_STATISTICS_RESUME_WITNESS_PASSED",
+  "optimizer_updates": 40,
+  "completed_learning_iterations": 2,
+  "formal_filter_training_started": false,
+  "full_generator_training_started": false,
+  "physical_filter_executed": false,
+  "dataset_accepted": false,
+  "output_writers_closed": true,
+  "mode": "witness",
+  "source_sha256": "2f8fe7756eb948cfa4196a62db2b6b6cc086687f8ae00b768ec5bb3764972bd9",
+  "runtime_sha256": "4d3fcb8662bfca49ee1c2709b0509bb932cbc28d12a05422e9ac63671a1cd0f9",
+  "plan_sha256": "10c9ef10b7408c0023414c503dc4eef6a03415a2afc680befaee9a00fdcd6338",
+  "reference_sources": 2,
+  "num_envs": 8,
+  "corpus_scope": "BABEL-indexed available public profile; not a claim of reproducing all 12296 author tracking clips or private403 clips",
+  "elapsed_seconds": 40.59267848171294,
+  "reference_fingerprint": "9d9ada9fcb17014efe0a663e28baa94f43c7a9ba57af0098862c0ed27fc80470",
+  "target_learning_iterations": 2,
+  "paper_settings": {
+    "source": "https://arxiv.org/html/2602.07439v1#A1",
+    "filter_iterations": 40000,
+    "training_terminations": "relaxed height terms removed",
+    "anchor": "pelvis",
+    "privileged_observation_dim_expected": 557,
+    "actor_hidden": [
+      2048,
+      1024,
+      512
+    ],
+    "critic_hidden": [
+      2048,
+      1024,
+      512
+    ],
+    "target_num_envs": 8192,
+    "steps_per_env": 24,
+    "learning_rate": 0.001,
+    "minibatches": 4,
+    "epochs": 5,
+    "clip_param": 0.2,
+    "simulation_hz": 200,
+    "policy_hz": 50,
+    "strict_pelvis_height_threshold_m": 0.25,
+    "strict_end_effector_height_threshold_m": 0.5,
+    "domain_randomization": false,
+    "own_choices_not_specified_by_paper": {
+      "adaptive_average": "pinned release EMA alpha0.001, ads_typev1",
+      "strict_repetitions": null,
+      "failure_window_or_chunking": null,
+      "checkpoint_interval": 5000,
+      "asset": "shared BeyondMimic G1 description, authors exact asset hash unavailable",
+      "floor": "locally generated PhysX ground plane with friction1.0; no remote visual textures"
+    }
+  },
+  "checkpoints": [
+    {
+      "name": "completed_1.pt",
+      "bytes": 90600818,
+      "sha256": "8ab2d121e750eb1e081ddb31da27b3072e5205e910231590beddf1f4a2264426",
+      "completed_learning_iterations": 1,
+      "actual_optimizer_updates": 20
+    },
+    {
+      "name": "completed_2.pt",
+      "bytes": 90600818,
+      "sha256": "bb04ae41b5f8ae0888628ef03970364055b5f7649f7bed9418806f92895bf8b8",
+      "completed_learning_iterations": 2,
+      "actual_optimizer_updates": 40
+    }
+  ],
+  "resume_exact_state_verified": true,
+  "initial_resets_excluded_from_raw_counts": true,
+  "raw_completed_attempts": 5,
+  "limitation": "8envs/2iterations. Exact model/Adam/normalizers/EMA/raw-counters restore only; not full policy or accepted motions",
+  "peak_torch_allocated_bytes": 352427520,
+  "native_close_returned": false,
+  "teardown_fallback_used": true,
+  "shutdown_grace_seconds": 20,
+  "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+  "shutdown_completion_verified": true
+}
