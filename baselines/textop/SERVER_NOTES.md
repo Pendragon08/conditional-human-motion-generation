@@ -58,3 +58,12 @@ checkpoints/receipts saved and writers closed. This remains8env/2iterations,
 not8192env/40k physical-filter training. Author_v1 failed after20 actual steps
 on Adam scalar CPU/GPU comparison; stale0 receipt retained with correction.
 Full corpus and8192 capacity still pending; do not enable the generator gate.
+
+Storage update2026-10-25: one unusedEngineAI Python environment
+/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-engineai-official archived
+in a full fileSHA-verified, six-part GitHub Release, then removed with old fixed
+caches. Its source trees/base interpreter retained; recover and revalidate
+before using that old profile. Current TextOp9d7f370d/GMR87f577cc/paper69934d8221/
+Trackerb7a3bf0c environments and shared SDKs unchanged. HOME TextOp assets and
+PhyGile preserved assets relocated to personal/data with all19 fileSHA matches
+and original paths retained as links. Details in personal_storage_cleanup report.

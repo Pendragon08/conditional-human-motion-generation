@@ -233,3 +233,28 @@ reported a timeout. Direct official POST is now working. Once all direct parts
 verify, resume the main finisher using existing uploaded six pieces, then apply
 the backed-up fixed cleanup and SHA-checked/home asset relocation. No source
 deletion has occurred as of this transport update; check final receipts.
+
+## Cleanup completed2026-10-25 14:22, resume authorized TextOp work
+
+Final state CLEANUP_AND_ASSET_RELOCATION_VERIFIED. Both supervised cleanup and
+relocation exited0. GitHub Release all6 pieces verified before any unlink;
+backed-up source/inventory commit bff1f861453273c070b557ccc836a8c24009ae2c.
+Idle EngineAI env + fixed caches reclaimed9.66GiB on/data before relocation.
+19 protected resource files moved from/home to personal/data, fullSHA matched
+and original/home links verified by rereading every file. No dataset, model,
+experiment checkpoint or unique record was lost. Current TextOp/GMR/SDK kept.
+Final sampled free:/data6.97GiB,/home6.23GiB; recheck live usage before any job.
+GMR was still running1615/1653 with0 failures, old57D stillT(stopped).
+
+Read reports/personal_storage_cleanup_20261025.md, results/storage_cleanup_
+20261025/{cleanup,relocation,post_verification}.json and ENGINEAI_ENV_RECOVERY.md.
+Do not rerun the completed cleanup or original finisher apply phase. Old
+EngineAI Python env is archived and needs recovery+validation before future
+EngineAI tasks; current reproduction environment hashes are unchanged.
+RAM /dev/shm/ouyanghao_storage_20261025 still holds only redundant software-
+archive transfer copies and metadata. They may be evicted after another live
+GitHub digest check if staging needs RAM; never confuse this directory with
+licensed motion workspaces under /dev/shm/ouyanghao_textop_20261025.
+The temporary priority to avoid new SDK jobs while cleanup was pending is now
+lifted. Continue queued preprocessing/backups, real physical filter integration,
+accepted-corpus loading and full generator training after actual readiness.
