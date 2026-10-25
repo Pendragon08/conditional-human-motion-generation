@@ -1,5 +1,5 @@
 """Copy aggregate preparation evidence only; never publish licensed motion data."""
-import collections,datetime,hashlib,html,json,pathlib,subprocess,sys
+import collections,datetime,hashlib,html,json,pathlib,subprocess,sys,shutil
 from session import REPO,remote
 BASE=REPO/'baselines/textop';LOCAL=pathlib.Path('D:/具身智能/TextOp复现_20261024');ROOT='/data/code/ouyanghao/oyh/textop-reproduction-20261024'
 code=r'''
@@ -55,6 +55,9 @@ local_queue=result['receipts'].get('local1653_queue',{})
 bulk=result['receipts'].get('batch1653',{})
 prepared_total=sum(x.get('completed_sequences',0) for x in [b,extra,bulk]);failed_total=sum(x.get('failed_sequences',0) for x in [b,extra,bulk])
 assets=result['receipts'].get('asset_authorization_and_storage',{})
+cache_cleanup=dest/'redundant_cache_cleanup.json'
+cache_cleanup=json.loads(cache_cleanup.read_text(encoding='utf-8')) if cache_cleanup.exists() else {}
+current_local_space={x:shutil.disk_usage(x+':/').free for x in ['C','D']}
 now=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S 北京时间')
 report=f'''# TextOp 数据准备核查与重建记录
 
@@ -62,7 +65,7 @@ report=f'''# TextOp 数据准备核查与重建记录
 
 **论文 Step1 尚未完整复现；生成器参数更新已暂停，保留训练现场与检查点，先完成数据准备。**
 
-已按用户2026-10-25的新指令记录后续顺序：数据验收 → VAE → LDM → 历史2帧生成未来8帧的自回归验证。见[Step2训练安排](step2_motion_generator_20261025.md)。物理筛选和69D实现验证未完成前不启动生成器，原57D训练现场继续暂停。
+已按用户2026-10-25的新指令记录后续顺序：数据验收 → VAE → LDM → 历史2帧生成未来8帧的自回归验证。见[Step2训练安排](step2_motion_generator_20261025.md)。[69D核心数值验证已通过](paper69_runtime_validation_20261025.md)，完整数据加载/归一化集成及物理筛选仍未完成；原57D训练现场继续暂停。
 
 | 用户所列环节 | 已实际完成 | 尚未完成/差异 |
 | --- | --- | --- |
@@ -129,11 +132,16 @@ SMPL-X与GMR部分复用已有授权资产/代码；时间轴、接触、镜像�
 {json.dumps(local_queue,ensure_ascii=False,indent=2)}
 ```
 
-队列仅在本地完整提取且前面500+143条批次成功结束后运行；先逐文件校验，再检查服务器可用内存及共享内存容量，使用个人权限目录中的RAM工作副本进行GMR处理，最终编码结果归档到D盘并校验。C盘原始选中动作和D盘许可压缩包是持久输入，RAM工作副本不作为唯一数据副本。若资源条件不满足，保留记录并停止；不会删除数据或重启旧训练。
+队列仅在本地完整提取且前面500+143条批次成功结束后运行；先逐文件校验，再检查服务器可用内存及共享内存容量，使用个人权限目录中的RAM工作副本进行GMR处理，最终编码结果归档到D盘并校验。D盘完整许可压缩包和私有索引是持久输入；C盘重复解压缓存已经过原始包哈希、服务器全量副本及实际恢复验证后清理，恢复工具和证据先备份到GitHub。RAM工作副本不作为唯一数据副本。原始包、处理后数据、检查点与实验记录均保留。
 
 本轮用户已回复AMASS登录完成，并明确同意BABEL独立许可及下载。已观察到AMASS主站下载表可访问；文件下载子域会话尚未另行验证。BABEL下载入口当前跳转其独立登录表单，已保留页面并请用户登录，不重复询问许可。
 
-按之前官网文件清单及现有断点，BMLrub、CMU、KIT合计仍需约25.7GiB新增压缩包空间；本地C+D剩余空间合计不足此值，服务器数据盘也不足。已请求提供空闲不少于50GB的持久目录，以容纳后续处理和检查点。现有解压与GMR任务继续运行；没有删除数据、检查点或其他用户文件，TotalCapture仍跳过。
+按之前官网文件清单及现有断点，BMLrub、CMU、KIT合计仍需约25.7GiB新增压缩包空间。用户已授权继续清理无用副本；清理后当前C盘余{current_local_space['C']/1024**3:.2f}GiB、D盘余{current_local_space['D']/1024**3:.2f}GiB。后续必须按盘容量安排续传，保留系统盘余量；服务器容量仍需单独核查。现有GMR任务继续运行，TotalCapture仍跳过。
+
+重复缓存清理记录（全部原始数据包、已处理数据、检查点、唯一实验记录均保留）：
+```json
+{json.dumps(cache_cleanup,ensure_ascii=False,indent=2)}
+```
 
 授权和空间记录：
 ```json
