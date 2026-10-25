@@ -1,5 +1,7 @@
 # TextOp 复现
 
+**2026-10-26最新：8,278条可获取源动作预处理与私有备份内容验收全部完成。** [完成报告与证据](reports/preprocessing_complete_20261026.md)。真实物理筛选和完整生成器尚未完成；完整库作者容量运行通过，但价值损失异常大，需诊断。当前SSH连接超时，独立GPU复核未派发，正式训练保持禁用。以下旧状态为历史阶段记录，以本报告和最新CONTINUATION为准。
+
 23DoF/57D基线训练现场已暂停；优先准备论文29DoF/69D数据。
 
 优先查看 [数据准备核查与重建报告](reports/dataset_preparation_20261025.md)。已获授权的数据验收后续步骤见 [Step2运动生成器训练安排](reports/step2_motion_generator_20261025.md)。另见 [启动报告](reports/启动报告_20261024.md)、[环境说明](ENVIRONMENT.md)、[官方版本](upstream/README.md)。

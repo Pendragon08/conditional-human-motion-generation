@@ -1,0 +1,31 @@
+{
+  "warm_environment_canonical_hash": "b7a3bf0c",
+  "seed": 20261025,
+  "device": "cuda:1",
+  "cpu_threads": 4,
+  "torch_memory_fraction": 0.65,
+  "num_envs": 8192,
+  "learning_iterations": 40000,
+  "rollout_steps": 24,
+  "adam_updates_per_iteration": 20,
+  "checkpoint_interval": 5000,
+  "checkpoint_storage": {
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 536870912,
+    "checkpoint_upper_bound_bytes": 134217728,
+    "bound_basis": "128MiB per filter-policy checkpoint, conservatively above observed90.6MB checkpoints plus full-library statistics; actual saved bytes must remain within bound"
+  },
+  "minimum_disk_free_gib": 2,
+  "minimum_gpu_free_gib": 20,
+  "available_public_source_target": 8278,
+  "unavailable_selected_export_sources": 13,
+  "authors_private_clips_unavailable": 403,
+  "input_reference_exports": ["export643_v1", "export1653_v1", "export1330_v1", "export_bmlrub_v1", "export_kit_v1"],
+  "training_reference_selection": "original trajectories only; filter originals before adding their mirrored copies to retained corpus",
+  "corpus_scope": "BABEL-indexed available public profile; not a claim of reproducing all 12296 author tracking clips or private403 clips",
+  "reset_distribution": "pinned official pose/velocity/joint reset perturbations retained, four DR events and observation corruption disabled",
+  "failure_statistics": "pinned EMA alpha0.001/ads_typev1 plus independent cumulative real-attempt counters; initial resets excluded from independent counts",
+  "resume_scope": "exact saved model/Adam/normalizers/EMA/counters; physics episodes restart, not bit-exact simulator continuation",
+  "formal_launch_enabled": false,
+  "formal_launch_blockers": ["remaining GMR cohorts and durable backups", "all reference exports", "full-library8192 memory/stability witness", "new statistics/checkpoint wrapper witness"]
+}

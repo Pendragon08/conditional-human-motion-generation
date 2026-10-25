@@ -869,3 +869,50 @@ full_library_document_v1 remainsrequired afterauthorpass, then actualformal
 launch gates/storage evidence mustbereviewed. Allpreprocessingcompletion
 notification still requires actualaudit8278, notcoordinator startup. Update
 reports/local/GitHub and continue without repeateduserconfirmation atrealgates.
+
+## Heartbeat2026-10-26 04:08: all preprocessing complete; connectivity/stability gates
+
+OriginalKIT2513 finished03:14:21,0fail, allfourworkerexit0,6487.84s. Its
+1,105,812,860B privateDarchive completed03:16:33, SHA5d0565bd7660133f69dec17980a8b91710c6c0d4302a314b3c75a12205aceb2b.
+Newafter_kit_v1 backupcontentaudit actualexit0/48.84s,8278verified,
+preprocessing_completetrue, statusPREPROCESSING_ALL_AVAILABLE_SOURCES_BACKED_UP_VERIFIED_FILTER_PENDING.
+ReceiptSHA8c742cdbeef4773bfc66fea828fb68d9c91d70f656e9d9385a70c31241fe307e.
+Allsixarchives verified. Do not re-audit unchanged data or restart oldKIT,
+BMLrub,backups,FKqueue orWindows39924. All known data phases have complete
+receipts; the current server process list is unavailable while SSH times out.
+
+FullKITFK2513/5026trajectories/2139760frames actualexit0. Wholeavailablelibrary
+8278originals/4825012originalframes andmirrors16,556trajectories; referenceorder
+fingerprint0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7.
+Full_library_author_v1 actualexit0/195.50s,8192env/20updates, no newcheckpoint,
+peakTorch17246092288B. CapacityspecactivatedSHA0f9dc72c4c616e673d343d5e8a49a091f48e40dc2cd9156d32a6e83854b19a40.
+HOWEVER initialvalue loss3.3047911274572776e27 is anomalous; finite-updatecapacity
+mustnotbeinterpretedasstabilityacceptance. Preserveoriginalreceipt/logs; inspect
+actualrewardterms,contacts,statevelocities andfirstoutlier beforeformal40k.
+No arbitraryrewardclipping/datadropping to force a pass. NativeSDKfallback remains.
+
+At04:00 rootSSH timedout; independentfull_library_doc_witness_v1 readonlypreflight
+04:03:29–04:03:44 actualexit255, GPUdocumentinvocations0. No newGPU job exists
+fromthisattempt. Local6hashes matchauthor butarenotindependent execution. Evidence
+results/full_library_capacity_20261026/document_preflight_blocked_v1. LocalZT
+online/networkOK; targetroute initiallyWLAN, latercorrectZT10.147.17.0/24 butSSH
+stilltimedout. No networksettingsmodified. Cannotdiagnoseremoteserver/network
+rootcauseorassertproxyculprit. Uponconnectionrecovery inspectactualprocesses;
+do not rerun oldcoordinator orcapacityauthor blindly. Full_library_document_v1
+has NOT been dispatched; checkserverpath before a fresh documented invocation.
+
+Usefulofflinework completed: audit_reference_input_magnitudes.py author_v1
+read all8278originalposes/4825012frames witharchive+perNPZhashbindings, actualexit0,
+24.09s,zeroGPU/physics/optimization. Max jointvelocity74.35rad/s,rootlinear8.93m/s,
+rootangular67.30rad/s; minrootheight0.0555m,0negative roots.1696sources/7832difference
+frames haveanyjointspeed>20rad/s. Allfinite. Thisisnotphysicsfilteroracauseproof;
+20rad/s isupstreamrewardreference, notnewacceptancerule. Per-motiondiagnostics
+privateD/datasets/input_magnitude_diagnostics_private_20261026, aggregatesGitHub.
+
+Localfilter-training-plan.json blockers nowexplicitindependentGPU/stability/live
+resources. LocalchangeNOTYETDEPLOYED dueSSH; serverformal_launch_enabledwasfalse
+andwasnotchanged. Oldstatistics/resumewitness andCPUstorageguard remainvalid;
+no needrepeat. Preprocessingcomplete NOTIFY is warranted;13missingCMU/403private
+scopeandphysicalfilter/generatorpendingmustremainexplicit. Report
+reports/preprocessing_complete_20261026.md andlocalD预处理完成与接续状态_20261026.
+Existinguserautoauthorizationcontinues afteractualgates, withoutanotherpermission.

@@ -1,15 +1,17 @@
-# Complete available reference-library capacity: prepared, not yet validated
+# Complete available reference library: author capacity passed, stability unresolved
 
-2026-10-26 03:07: an existing finite Windows coordinator now owns the new KIT
-backup audit and the author capacity invocation below. Read
+2026-10-26 04:08: the finite coordinator has completed the KIT content audit
+and full-library author run. Do not restart it. Read
 results/full_library_capacity_20261026/continuation_v1.json and verify its actual
-command/PID before doing anything. Initial PID39924 runs
-provider_tools/continue_full_library_capacity.py; it waits for the original
-KIT backup and FK workers, does not replace them. Do not manually start another
-after_kit_v1 audit, activate the spec, or launch full_library_author_v1 while
-that coordinator is alive. It stops after the author run; the fresh independent
-document invocation remains the next agent's responsibility after actual success.
-On failure inspect its precise phase and retained logs rather than restarting.
+command/PID before doing anything. Historical PID39924 ran
+provider_tools/continue_full_library_capacity.py. after_kit_v1 verified8278 and
+full_library_author_v1 exited0 with20updates and17,246,092,288 peakTorch bytes.
+However, value loss3.3047911274572776e27 requires executed-state/reward/contact
+diagnosis; finite updates are not a stability acceptance. The independent
+document preflight timed out viaSSH (exit255) and launched zero GPU jobs.
+Do not repeat the completed author/audit runs. After connectivity returns,
+inspect actual resources/workers, diagnose anomalous execution and complete
+the fresh documented run. Formal40k/generator gates remainfalse.
 
 Warm dependencies remain tracker b7a3bf0c (SERVER_NOTES.md); no installation or
 shared-package modification. This extends the previous 643-source shape to
@@ -30,6 +32,14 @@ all SDK allocations is permitted.
 
 ## Verified so far
 
+Latest actual author receipt supersedes the partial counts below: all8278
+originals,4825012originalframes,16556 original/mirror references, exact source
+bindings and persistent-backup content verified. Actual childexit0,timeoutfalse,
+20updates,zero checkpoint writes. Activated spec SHA:
+0f9dc72c4c616e673d343d5e8a49a091f48e40dc2cd9156d32a6e83854b19a40.
+Independent actualGPU execution and training stability remain unresolved.
+The following partial-input/disabled-gate checks are historical evidence.
+
 The read-only inputs_after_bmlrub_v1 run exited0 and verified5,765 completed
 originals and their11,530 mirrored/original FK references. It checks every
 prepared and reference NPZ SHA, exact original-index source/split mapping,
@@ -44,6 +54,11 @@ The new GPU kernel and supervisor only passed syntax compilation; their actual
 full-library execution and fresh independent documented execution remain pending.
 
 ## Activation requirements and next actual run
+
+Activation and the author command below already completed on2026-10-26.
+These steps are retained for provenance, not instructions to repeat them.
+The next unexecuted run is full_library_document_v1, after restored SSH and
+fresh resource/worker checks. Check that output path is still absent first.
 
 Do not execute the command below while launch_enabled=false. Do not duplicate
 the KIT coordinator, its backup or reference-export worker. Wait for complete
