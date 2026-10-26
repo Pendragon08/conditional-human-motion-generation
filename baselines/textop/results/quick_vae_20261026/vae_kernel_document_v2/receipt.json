@@ -1,0 +1,123 @@
+{
+  "status": "QUICK_VAE_WITNESS_PASSED",
+  "mode": "witness",
+  "quality_label": "QUICK_REPRODUCTION_NOT_PAPER_COMPLETE",
+  "full_paper_training": false,
+  "optimizer_updates": 4,
+  "completed_primitive_attempts": 4,
+  "skipped_updates": 0,
+  "output_writers_closed": true,
+  "source_sha256": "660aaec92ca3e7a6b97716739b9af981fc615deb2781ad074ee242bf59ecda72",
+  "spec_sha256": "6f46ee98484b41c3604dc7793b4457e4dc4c4cd606eecb058f2d0849e8f189e8",
+  "corpus_receipt_sha256": "d0a44b975c8f390f25dc5e95c414b3b8354dacacc19d5673d7a86e6d21c9c8f1",
+  "data_acceptance_sha256": "5f4f58c2fd9e98f36a23fb44de90d7a24aa0a7ab2fbf63207ea35eacae7cadc6",
+  "elapsed_seconds": 10.55932185612619,
+  "initial_storage_check": {
+    "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/vae/checkpoints",
+    "filesystem": "ext4",
+    "owner_uid": 1013,
+    "free_bytes": 7994458112,
+    "required_bytes": 4571791360,
+    "remaining_saves": 3,
+    "checkpoint_upper_bound_bytes": 629145600,
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 536870912,
+    "persistent_owned_writable": true
+  },
+  "memory_witness": {
+    "status": "QUICK_VAE_REAL_GRADIENT_MEMORY_RESUME_WITNESS_PASSED",
+    "actual_optimizer_updates": 4,
+    "primitive_attempts": 4,
+    "all_four_training_gradients_finite": true,
+    "validation_optimizer_updates": 0,
+    "model_and_adam_roundtrip_exact": true,
+    "next_batch_and_rng_restored": true,
+    "pending_evaluation_completed_without_updates": true,
+    "ema_enabled": false,
+    "memory_serialized_bytes": 513522813,
+    "memory_serialized_sha256": "c51e3630096ecd3cacc8c1fdd38c480d90a81f22dde007d97ab2a3cca8dd6974",
+    "persistent_checkpoint_created": false,
+    "weights_reused_for_training": false,
+    "train_records": [
+      {
+        "manager_step": 1,
+        "loss": 0.5410364866256714,
+        "reconstruction_huber": 0.5376691222190857,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 1,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      },
+      {
+        "manager_step": 2,
+        "loss": 0.49970826506614685,
+        "reconstruction_huber": 0.4964620769023895,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 2,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      },
+      {
+        "manager_step": 3,
+        "loss": 0.4586658179759979,
+        "reconstruction_huber": 0.45598846673965454,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 3,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      },
+      {
+        "manager_step": 4,
+        "loss": 0.4414868950843811,
+        "reconstruction_huber": 0.43897926807403564,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 4,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      }
+    ],
+    "validation_records": [
+      {
+        "manager_step": 4,
+        "loss": 0.40919050574302673,
+        "reconstruction_huber": 0.40636399388313293,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 4,
+        "skipped_updates": 0,
+        "is_evaluation": true
+      },
+      {
+        "manager_step": 4,
+        "loss": 0.4019492268562317,
+        "reconstruction_huber": 0.3991432785987854,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 4,
+        "skipped_updates": 0,
+        "is_evaluation": true
+      },
+      {
+        "manager_step": 4,
+        "loss": 0.40154001116752625,
+        "reconstruction_huber": 0.3987492620944977,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 4,
+        "skipped_updates": 0,
+        "is_evaluation": true
+      },
+      {
+        "manager_step": 4,
+        "loss": 0.3934151530265808,
+        "reconstruction_huber": 0.39064839482307434,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 4,
+        "skipped_updates": 0,
+        "is_evaluation": true
+      }
+    ],
+    "file_resume_scope": "Existing unchanged generator_training_state.py file protocol; first real1000 checkpoint will be reloaded and checked"
+  },
+  "memory_only_diagnostic": true,
+  "training_checkpoint_created": false,
+  "weights_used_for_formal_training": false,
+  "peak_torch_allocated_bytes": 3930611712
+}

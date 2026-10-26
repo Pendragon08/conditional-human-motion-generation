@@ -83,8 +83,28 @@ else:
 view = R/'source_view_v1/summary.json'
 if view.exists():
     v = json.loads(view.read_text(encoding='utf-8'))
-    md.append('已识别{}条名义跟踪完成的原始参考候选，train/val来源为{}；状态{}，training_ready=false，镜像尚未实际评估。'.format(v['nominal_tracking_completed_sources'],v['retained_source_splits'],v['status']))
-md += ['随后构建保留REFERENCE+BABEL的私有训练语料，复核源数组与来源/姿态划分、训练集69D归一化、真实完整CLIP缓存、实际加载与断点恢复，再训练明确标注的快速生成器。VAE2,000/LDM3,000目前仍是独立禁用提案，尚无已验收训练入口或生成器结果；原论文VAE200,000/LDM300,000配置保留。第一阶段5k特权teacher原型不能冒充论文最终可部署WBC或完整实时系统。', '',
+    md.append('来源选择保留{}条名义跟踪完成的原始参考，train/val来源为{}；未评估镜像排除。来源view的历史training_ready=false与后续独立语料/训练入口验收分别记录。'.format(v['nominal_tracking_completed_sources'],v['retained_source_splits']))
+data_proof=B/'results/quick69_corpus_20261026/data_acceptance_v1.json'
+if data_proof.exists():
+    proof=json.loads(data_proof.read_text(encoding='utf-8'))
+    md += ['快速版私有参考语料与缓存已完成独立验收：42条原始参考、31条训练来源与11条验证来源、174个动作—文本标注对、74个非空CLIP文本，训练归一化统计包含14,505个69D特征帧。来源和精确float32姿态跨划分重叠为0，未加入未评估镜像；TRAIN/VAL/weightedTRAIN三项实际512批次、四primitive加载均通过，history连续误差0、缺失文本嵌入0。全部私有语料已在服务器与D盘核验备份。', '']
+    vae_path=B/'results/quick_vae_20261026/quick_vae_train_v1/receipt.json'
+    if vae_path.exists():
+        vae=json.loads(vae_path.read_text(encoding='utf-8'))
+        md += ['## 快速VAE实际训练', '',
+               '服务器运行quick_vae_train_v1，最近核验状态{}：{}/2,000次primitive训练尝试、{}次实际Adam更新、{}次跳过。VAE使用69D、batch512、history2/future8、四primitive和原网络/损失；课程及学习率时钟压缩100倍，属于快速版，不等同论文200,000步。'.format(vae['status'],vae['completed_primitive_attempts'],vae['optimizer_updates'],vae['skipped_updates']), '']
+        vx=vae_path.parent/'exit.json'
+        if vx.exists():
+            ex=json.loads(vx.read_text(encoding='utf-8'))
+            md.append('实际子进程退出{}、监督验收{}；固定验证批次的VAE重建门槛{}。这些是后验重建诊断，不是文本生成质量或物理执行指标。'.format(ex['child_exit_code'],ex['supervision_passed'],vae.get('vae_quality_gate_passed')))
+        if vae.get('checkpoints'):
+            md.append('已实际写入的完整状态步数：{}。每份保存后重新加载，核对模型、优化器、计数和所有随机数状态；不删除已有版本。'.format([x['manager_step'] for x in vae['checkpoints']]))
+        md += ['', 'LDM3,000步使用独立入口和真实已训练VAE验收，不以梯度诊断权重代替。原论文VAE200,000/LDM300,000配置保留；当前文本生成—执行闭环仍未完成。', '']
+    else:
+        md += ['VAE2,000步入口已实现并独立核验；以实际训练收据判断是否开训，LDM3,000步仍需其独立入口与已训练VAE质量验收。原论文VAE200,000/LDM300,000配置保留。', '']
+else:
+    md += ['随后构建保留REFERENCE+BABEL的私有训练语料，复核源数组与来源/姿态划分、训练集69D归一化、真实完整CLIP缓存、实际加载与断点恢复，再训练明确标注的快速生成器。VAE2,000/LDM3,000目前仍是独立禁用提案，尚无已验收训练入口或生成器结果；原论文VAE200,000/LDM300,000配置保留。', '']
+md += ['第一阶段5k特权teacher原型不能冒充论文最终可部署WBC或完整实时系统。', '',
        '数据范围差异：13条所选CMU导出缺失，403条作者私有动作不可得；8,278条来源不等于作者全部12,296条公共跟踪动作。公开仓库保存代码、聚合证据、推理权重、许可允许的科研结果录像和报告；完整Adam/逐动作采样状态与受限资产保持私有。', '',
        '[5,000轮推理权重与说明]('+backup['github_release']+')。完整恢复仍须私有检查点。', '',
        '证据目录：results/quick_pilot_actual_20261026、results/formal_filter_checkpoints_20261026/round_5000及results/quick_reproduction_20261026/coordinator_network_resume_v2。']

@@ -1,6 +1,6 @@
 {
   "schema": "textop.quick_generator_proposal.v1",
-  "status": "POST_PILOT_SOURCE_VIEW_IDENTIFIED_CORPUS_NOT_READY",
+  "status": "QUICK_VAE2000_FINISHED_LDM_KERNEL_DOCUMENT_PENDING",
   "quality_label": "QUICK_REPRODUCTION_NOT_PAPER_COMPLETE",
   "launch_enabled": false,
   "corpus_build_enabled": false,
@@ -17,8 +17,8 @@
     "proposed_train_sources_before_physics": 47,
     "proposed_val_sources_before_physics": 17,
     "actual_retained_sources": 42,
-    "actual_retained_text_pairs": null,
-    "corpus_accepted": false,
+    "actual_retained_text_pairs": 174,
+    "corpus_accepted": true,
     "representation": {
       "robot": "Unitree G1",
       "dof": 29,
@@ -47,7 +47,9 @@
       "val": 11
     },
     "source_view_private_decisions_sha256": "ffcb7df8d1e1261486b80d68c68385f5adac1f7330d010d57c3201b4fd1a925d",
-    "mirror_policy_after_actual_pilot": "originals_only; unassessed mirrors excluded"
+    "mirror_policy_after_actual_pilot": "originals_only; unassessed mirrors excluded",
+    "actual_unique_nonempty_texts": 74,
+    "corpus_acceptance_scope": "Quick42 original references only; full-paper corpus not accepted"
   },
   "vae": {
     "official_class": "robotmdar.model.mld_vae.AutoMldVae",
@@ -248,5 +250,20 @@
     "official_manager_local_sha256": "c6df6a0b3ca504d96e9e8893fa4a29ab98f60dc1cd6dc54e47a434ad5d722fae",
     "official_train_vae_local_sha256": "e62d31c88d6f9c15bdf1d2d4f00bf6d282e464ea27b56f40b00d723c1686cbbc",
     "official_train_ldm_local_sha256": "9ff744389950265ccf20560404fdff4085d2bc32847a14219fda26248037e117"
-  }
+  },
+  "vae_runtime_candidate": {
+    "entrypoint": "scripts/run_quick_vae.py",
+    "spec": "configs/quick-vae-runtime-spec.json",
+    "train_authorized": false,
+    "latest_author_witness": "vae_kernel_author_v2",
+    "fresh_document_pending": "vae_kernel_document_v2"
+  },
+  "ldm_runtime_entrypoint": null,
+  "vae_training_completed": true,
+  "vae_completed_attempts": 2000,
+  "vae_actual_optimizer_updates": 2000,
+  "vae_training_run": "quick_vae_train_v1",
+  "vae_actual_entrypoint": "scripts/run_quick_vae.py",
+  "ldm_candidate_entrypoint": "scripts/run_quick_ldm.py",
+  "ldm_training_started": false
 }

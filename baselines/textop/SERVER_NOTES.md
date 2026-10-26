@@ -1,3 +1,24 @@
+### quickLDM3000 declared beforedispatch2026-10-26; realVAE2000 passed
+Warm934d8221, no dependency/sharedsource changes. RealVAE2000 finished2000
+Adam updates/0skips, actualexit0, bothfixedVALposteriorreconstruction gates
+passed; full1000/2000 file model/Adam/ALL RNG restore and server+D backups.
+Separate quickLDM source/spec includes single513523901B HOME frozenVAE cache,
+three300MiB state slots+emergency,2GiBreserve+512MiBlogs. Authorv1 failed after
+4diagnosticupdates whenfunctionCFG lacked parameters() for inferreddevice;
+original failure preserved. ONLY device='cuda' samplerargument changed;
+authorv2 actuallypassed4AdamW/0skip/0valupdate and full5stepCFG5 sampling.
+Freshdocumentv1 pending; trainingdisabled untilsource-boundactualpass.
+See QUICK_LDM_ENVIRONMENT.md. This is quick3000, not paper300000.
+
+### quickVAE2000, declared beforegradient dispatch2026-10-26
+Warm934d8221/source-bound real42-reference corpus. New4update memorywitness, officialEMAfalse/math; fullfile helper unchanged and realtraining snapshots reloaded. Author/freshdoc required beforetrain. See QUICK_VAE_ENVIRONMENT.md.
+
+### quick69-retained-reference corpus, declared2026-10-26 beforebuild
+Warm generatorpaper69@934d8221, no dependency changes. Bind actual42privateview,
+reference/BABEL, refittrain-onlystats and realCLIPcache; new512loader witness.
+Author and fresh documented verify required; no optimizer or quicktraining gate.
+See QUICK69_CORPUS_ENVIRONMENT.md and configs/quick69-corpus-spec.json.
+
 # TextOp environment ledger
 
 Storage guard2026-10-26: unchanged warm tracker b7a3bf0c and optimization math.

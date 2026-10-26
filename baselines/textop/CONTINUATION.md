@@ -1,3 +1,186 @@
+## CURRENT2026-10-26 19:30 — VAE2000 COMPLETE, LDM author witness in progress
+
+VAE quick_vae_train_v1 genuinely FINISHED2000 attempts/2000 Adam updates/0skips,
+actual child/supervisor exit0 and writersclosed. Both fixedVAL posterior Huber
+reconstruction gates passed: teacherforced .4810608253→.1169947516,
+predicted-history .4805838242→.1496971175. Not text/physics/paper metrics.
+Real1000/2000 fullstates reloaded with recursive model/Adam/ALL RNG equality,
+server+D private SHA backups complete. Real2000 is513523901B,
+SHA5109f593309349504d52677997bcdd21de3d27e045b9154be8c06278182b1219.
+DO NOT rerun VAE, recopy snapshots unnecessarily or use diagnostic weights.
+Raw logs/resources/metrics/actual supervisor exit backed up Ddiagnostics/
+quick_vae_train_v1. See reports/quick_vae_actual_20261026.md.
+
+Separate LDM runtime was actually staged, training STILLdisabled, specSHA
+1b929bf8fceca281650c8667fdddebb4f685e7e7d9a6d098bb5888d8e7849ffd.
+Read QUICK_LDM_ENVIRONMENT.md. Actual ldm_kernel_author_v1 was dispatched once,
+driver4045074 historical. Check actual receipt/exit/resources, not launchproof.
+After author success/commonlockfree, fresh document invocation ONCE is
+python3 scripts/supervise_quick_ldm.py --mode witness --run ldm_kernel_document_v1.
+Four diagnostic AdamW updates+0valupdates, direct allRNG/model/Adam memory
+roundtrip, trainedVAEfrozen and actual5-step CFG5 sampling must pass. Do not
+rerun author, mutate bound runtime, rebuild corpus or dispatch overlapping GPU.
+Only then bind actualwitnesses/enabletrain and launch quick_ldm_train_v1 once.
+All fast scope/curriculum/LR differences and HOME singleVAEcache budget in doc.
+The initial local stage attempt was refused BEFORE SSH because the finalVAE
+backup was still copying; preserved prestage_backup_pending_v1.json,0GPU/
+0servermutations. Existing copy finished0 before genuine successful staging.
+
+## HISTORICAL2026-10-26 19:20 — actual quick VAE2000 training RUNNING
+
+OVERRIDES all lower pendingkernel/trainfalse claims. Both actual VAEv2 kernel
+witnesses completed with realexit0: vae_kernel_author_v2 and fresh
+vae_kernel_document_v2. Four diagnostic Adam updates each, 0 skips/valupdates,
+exact model/Adam memoryroundtrip, pendingvalidation and nextbatch replay;
+diagnostic weights discarded. Memoryproof does not separately compare every
+RNGstate; actual training's qualitybatch preserves/asserts ALL RNGs, and the
+unchanged fullfile helper recursively verifies ALL RNGs at real1000/2000 saves.
+Fresh v2 report and original scope limitations retained; do NOT rerun witnesses.
+
+Parent bound the two genuine receipt/exit hashes and changed only
+train_authorized plus witness metadata in quick-vae-runtime-spec.json. Actual
+server run quick_vae_train_v1 is RUNNING, latest collected 1400/2000 primitive
+attempts, 1400 actual Adam updates, 0 skips. Durable driver4040736 is historical;
+check real run/receipt/workers, never launch another. The real1000 fullstate
+has already passed recursive model/Adam/RNG/file reload and server+D private
+SHA backup. Keep ALL checkpoints; collect_quick_vae.py --run quick_vae_train_v1
+is read-only unless --backup-stable-checkpoints is explicitly given. First1000
+backup completed, no need duplicate copy. At real2000/exit0/closedwriters collect
+and backup its genuine snapshot and inspect the posterior reconstruction gate.
+VAE2k is QUICK, not paper200k, no LDM or generated-physics result yet.
+
+THREE VAE runtime sources + active spec are FROZEN while running; do not edit
+run_quick_vae.py/quick_vae_runtime.py/supervise_quick_vae.py or config to prepare
+LDM. New separate quick_ldm_runtime.py/run_quick_ldm.py/supervise_quick_ldm.py
+are LOCAL candidate preparation, not deployed/validated/authorized yet. They
+must bind a genuinely completed VAE2000 with passed quality, actual exit and
+server+D snapshot backup. No old2296/57D/probe weights, no retraining corpus.
+LDM3000 needs its own exact-source author/fresh-document real gradient/state/
+five-step CFG sampling witnesses, then automatic launch without re-confirmation.
+Its HOME guard includes one real cross-filesystem VAE cache copy (<=600MiB),
+three300MiB regular checkpoints+one emergency, 2GiB reserve+512MiB logs. Never
+overlap GPU/SDK jobs or modify the 19 old frozen runtime/control files.
+
+All three actual movies completed. SFU32.26s movie+credits are NOW public and
+GitHub digest verified (release textop-quick-tracking-video-20261026); BMLmovi
+failure movie PRIVATE. Quick corpus actually accepted42 originalsources,
+31train/11val,174 annotationpairs/74 CLIPtexts,14505TRAIN featureframes,
+server+D archive verified. Do not use lower historical zero-result templates.
+Main reports/publisher must reflect actual VAE progress, not assumed completion.
+
+## HISTORICAL2026-10-26 19:05 — videos published, quickcorpusaccepted, VAEv2 witness pending
+
+OVERRIDES17:50 pendingrender/emptycorpus claims. Bothv2 fullmovies are COMPLETE,
+independent actualdocument proofrealexit0, media/control/versionsallverified.
+SFU1613frames32.26s/7000764B SHA28f75b8210af35810b3ce4ab63018bfbfb4cb7de5157c32683c176e53e1df169;
+BMLmovi440frames8.8s/1654976B SHA24035899475a575860b4b524d86d4b63a5aaba979e21e1e36a4e752a9d696bd9.
+BothDvideos/private/<run>/video.mp4 SHA verified. SFUfirst/mid/lastframes visually
+reviewed; actualSFUresearchmovie+credits nowGitHub Release
+textop-quick-tracking-video-20261026, GHassetdigestmatches. BMLmovie staysprivate,
+lastfailureframe visiblyreviewed with FAILURElabel; nozero-shotgenerator claim.
+Do NOT restartold rendererdriver4015296 orrerun anycompletedrender/test/collect
+forno newreason. Warm renderingmath/deps unchanged; original900stimeout and
+partialMP4 remain preserved. Localpreview first failed missingimageio_ffmpeg
+beforemutation; actualframes thenextracted with existingremoteffmpeg, later
+CPU0-3+threads4 explicit. Allmovies 0newSDK/physics/optimizer.
+
+REAL quickcorpus now built and independentlyverified:ROOT/quick_generator_20261026/
+corpus_v1,42originalREFERENCE/BABELsources train31/val11,174annotationpairs,
+74nonemptyCLIPtexts,14505TRAINfeatureframes. Source/f32exactpose overlap0,
+noquarantine, mirrorsEXCLUDED. Eachsourceencoded independently forTRAIN-only
+69D meanstd, no crosssource transitions, noflooredfeatures(stdthreshold1e-6),
+true frozenCLIP ViT-B/32cache weightSHA40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af.
+Author quick_corpus_author_v3 andfresh quick_corpus_document_v1 realexit0,
+3actual512/4primitive/history2future8loader checks, overlaperror0/missingtexts0,
+maxabsnorm28.74. AuthorpeakTorch442733568B/0optim; verifycachedCPUpeakTorch0.
+CorpusreceiptSHAd0a44b975c8f390f25dc5e95c414b3b8354dacacc19d5673d7a86e6d21c9c8f1.
+Privatearchive2847980B SHA15a120d1f73c5888a2ded0cd9fef9f1c352090829ad4830955211cceeb35354a
+server+Ddatasets/quick69_corpus_private_20261026 verified; do notrebuild/archive
+again. FullcorpusBABEL/raw arrays remainprivate. Source/index/rawassets rehashed.
+Global releasedauthor actiontable reused and explicitly NOT quick-train fitted.
+Dataacceptance ROOT/receipts/quick69_data_acceptance_v1.json SHA
+5f4f58c2fd9e98f36a23fb44de90d7a24aa0a7ab2fbf63207ea35eacae7cadc6,
+statusQUICK69_REFERENCE_CORPUS_AND_LOADER_ACCEPTED, quick_corpusacceptedtrue,
+quick_training_readyfalse untilnewtrainerwitness/activation; fullpaperfalse.
+Read QUICK69_CORPUS_ENVIRONMENT.md/results/quick69_corpus_20261026. Do notrepeat
+sourceview orloader/stats/cache checks. Retained corpusimmutable whenchecking.
+Builderauthorv1 hadPath/strhasherror BEFOREGPUchild; v2durabledriverbadquote
+BEFOREsupervisor; exactsource/logs preserved, exitnotobserved notinvented.
+CorrectedPathhelper+ASTcheckeddriver authorv3 actuallybuilt in8.96s/exit0.
+Onlynewownedfiles changed, old19training/control files preserved.
+
+NEW VAE2000runtime nowexists, NOT yettraining: quick_vae_runtime.py,
+run_quick_vae.py, supervise_quick_vae.py, configs/quick-vae-runtime-spec.json.
+See QUICK_VAE_ENVIRONMENT.md CURRENT. Unchangedwarm934d8221, official69DVAE
+latent1x128/hidden512/FF1024/9layers/4heads,batch512,Adam1e-4/clip1/EMAfalse,
+originalloss/history/staticsampling; quickstages1000/500/500 and compressedLR,
+notpaper200k. Nativecheckpoint requests recorded, actualfullstateI/O after
+4primitive+12valboundary at1000/2000, guards600MiB/file,2GiBreserve+512MiBlogs,
+remainingregular+1emergencyslot; each100steps/save check, no duplicate native
+checkpoints. Realtrainingfile is loaded/verified at1000/2000 byUNCHANGED
+ generator_training_state.py. Emergency only at closedbatch/evalboundary and
+capacity; no midbatch exactresume claim, previousfiles retained. No largefake
+checkpoint generated forwitnesses.
+
+Old VAEauthorv1 andfreshdocumentv1 genuinelypassed:4Adamupdates/0skips,
+4valprimitive/0valupdates, allfinite, exactmodel+Adam/RNG/nextbatch+pendingval
+MEMORY roundtrip (513522813B, NOTdisk), EMAfalse, peak3930611712B. Diagnostically
+optimizedweights discarded, nottrainedmodel. Oldrawreceipts/sourcebytes kept.
+Review found train --resume drewadditionalqualityVALbatch afterRNGrestore.
+After olddocumentv1fullyclosed, ONLYCLIqualitybatch preparation corrected:
+snapshotall RNGs→dedicateddeterministicseed+VALgen→drawfixedbatch→restoreallRNG→
+assert exactequality. Coremath/data/statehelper unchanged. Saved old4runtime
+bytes results/quick_vae_20261026/before_quality_rng_isolation_v2.json. Do NOT
+acceptoldwitnesses fornewentrypoint. Authornew vae_kernel_author_v2 hasalready
+realexit0/same4Adam-memoryproof. Activefresh agent /root/quick_vae_kernel_document_v2
+owns ONE newactualdocument command fromCURRENTdoc. Firstcheck agent/local
+work/textop_reproduction_20261024/quick_vae_kernel_document_v2/serverrun/actualexit;
+neverduplicate, modifycurrentcode/spec orlaunchtrain beforeitsclosure.
+train_authorizedfalse. GPUshared20GiBfreerequirement, notemptyGPU500MiB.
+
+NEXT IMMEDIATE: actualfreshdocv2pass→collect_quick_vae.py --run
+vae_kernel_document_v2→bind authorv2+docv2receipt/exit SHA, comparetheir OLDspecSHA
+tocurrentbeforeactivation andsource tocurrententrypoint/runtime/hyperparameters,
+all19frozen/currentcorpus/sourcewitnesses/resource+SDKlock; then changeONLY
+train_authorizedtrue+witnessmetadata, preserve before/afterbytes and activate
+ONE durabletraining command:
+ python3 scripts/supervise_quick_vae.py --mode train --run quick_vae_train_v1
+Alreadyexplicituserautoauthorization, no furtherconfirmation. Fresh modelseed,
+NOT the4updateddiagnosticweight. Existingcheckpointdir shouldbeempty; guard
+againstanyexistingmodelstate; do notoverwrite. Freezeallnewruntime+spec through
+activeVAEtrain. No oldteacher/SDK restart. Use durableouterdriver with real
+supervisor returncode, notnakedPopen that loses preflightreturncode. Logpaths
+prefix quick_vae_<run>, receiptROOT/quick_generator_20261026/vae_runs/<run>/receipt.json,
+exitROOT/receipts/quick_vae_<run>_exit.json. Newcollect_quick_vae.py --run
+quick_vae_train_v1 --backup-stable-checkpoints capturesrealprogress and privately
+backs stable>30sfullstates, lockserialized, keepallversions. No checkpoint existed
+beforetrain. Actual2000attempts/updates/skips separate;20consecutiveskips stop,
+no ad hoc gradient/lossclipping beyondoriginalnorm1. Paper200000notmodified.
+EndqualitysamefixedVALbatch teacherforced andalwayspredictedhistory recon;
+bothmustimprove forautomaticLDMhandoff. Not text/physicalsemantics benchmark.
+
+LDM3000 ENTRYPOINT NOTYETIMPLEMENTED; originalproposal remainsnofull-chain
+launcher. WhileVAEtrains, implementseparateLDMcore/probe/train without modifying
+activeVAEfiles. Reuse officialDARManager/8layer512denoiser, freeze REALtrainedVAE
+onlyafter2000qualitypassed,5cosine START_X/CFG5/history2future8/rolloutcap.8,
+AdamW1e-4/EMAfalse,batch512, stages1000x3; officialnativevalidation1noisedlatent
+step, finalsampling5steps explicit. Need actualownLDMwitness+freshdoc/data+resume/
+resources beforetrain, no olduntrained/diagnosticVAEsubstitute. WATCH STORAGE:
+DARManager.hold_model caches full VAE asvae.pth inLDMsave_dir; data/home distinct
+filesystems meansCOPY~513MB, extra600MiB cachebudget must be added to previous
+home plan, sharedcache onlyone, no hiddenduplicate. LDM3regular+1emergency at
+300MiB/file pluscache600MiB+2GiBreserve+512MiBlogs stillwithin home~6.16GiB but
+recheckactualeachsave. Full trainedLDM andgeneration→execution stillabsent.
+
+Privatefullcheckpoints/data/uniqueevents/failures/paused57D+PhyGile+ReactiveBFM
+protected, onlyownedfolders, no shareddeps, CPU0-3/GPU1/Torch.65/headless remain.
+Existing5kteacher and64/42sourcepreprocessing results frompriorCURRENTstillapply,
+neverretrain/re-eval oldwork. Syncnewcode/aggregates/report tosameGitbranch+D.
+Mainreportcollector collect_quick_actual_report.py nowknowscorpusacceptance and
+publicSFUlink, do notoverwritewitholdzero-trial/emptydata/staleSSHtemplates.
+UsershouldhearnewcompleteSFUvideo/quickdata andVAEactualtrainstartonce; healthy
+kernelpreparation quietlycontinues. No fullpaper/wholelibraryfinishedclaim.
+
 # TextOp: data completion → physical filtering → full generator training
 
 ## UPDATE2026-10-26 17:50 — v2 actualvideo durable launch confirmed

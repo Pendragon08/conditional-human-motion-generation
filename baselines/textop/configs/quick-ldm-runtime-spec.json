@@ -1,0 +1,71 @@
+{
+  "schema": "textop.quick_ldm_runtime.v1",
+  "witness_authorized": true,
+  "train_authorized": false,
+  "witnesses": [],
+  "seed": 20261026,
+  "data_acceptance_sha256": "5f4f58c2fd9e98f36a23fb44de90d7a24aa0a7ab2fbf63207ea35eacae7cadc6",
+  "corpus_receipt_sha256": "d0a44b975c8f390f25dc5e95c414b3b8354dacacc19d5673d7a86e6d21c9c8f1",
+  "corpus_dir": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/corpus_v1",
+  "vae_training": {
+    "receipt_path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/vae_runs/quick_vae_train_v1/receipt.json",
+    "receipt_sha256": "abdd2bf422af2c0b1cf6215fdd2119707a7a5ff421e1358a97b1d55a7ecfb582",
+    "exit_path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/quick_vae_quick_vae_train_v1_exit.json",
+    "exit_sha256": "f1a0da1f70a314e8ec70a10693077b96f5d46a78d836b4c02ffabfb2b7d2ee99"
+  },
+  "vae_checkpoint": {
+    "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/vae/checkpoints/vae_state_2000.pth",
+    "bytes": 513523901,
+    "sha256": "5109f593309349504d52677997bcdd21de3d27e045b9154be8c06278182b1219",
+    "manager_step": 2000,
+    "actual_optimizer_updates": 2000
+  },
+  "checkpoint_dir": "/home/ouyanghao/textop-quick69-checkpoints-20261026/ldm",
+  "checkpoint_allowed_root": "/home/ouyanghao/textop-quick69-checkpoints-20261026",
+  "vae_cache_upper_bound_bytes": 629145600,
+  "checkpoint_policy": {
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 536870912,
+    "checkpoint_upper_bound_bytes": 314572800
+  },
+  "ldm": {
+    "stages": [
+      1000,
+      1000,
+      1000
+    ],
+    "batch_size": 512,
+    "learning_rate": 0.0001,
+    "latent_shape": [
+      1,
+      128
+    ],
+    "hidden": 512,
+    "ff": 1024,
+    "layers": 8,
+    "heads": 4,
+    "feature_dim": 69,
+    "history": 2,
+    "future": 8,
+    "primitives": 4,
+    "clip_dim": 512,
+    "cond_mask_prob": 0.1,
+    "diffusion_steps": 5,
+    "noise_schedule": "cosine",
+    "prediction": "x0",
+    "cfg": 5,
+    "ema": false
+  },
+  "bound_sources": {
+    "scripts/paper69_runtime.py": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
+    "scripts/paper69_data_runtime.py": "cf5c1e3f27665e7fc4d4aa1ede6bcd1931e3563409ad766ff67a576cc0c7b60d",
+    "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e",
+    "scripts/checkpoint_storage_guard.py": "bff54d2b4fb7f29fdc18f6cc46d86626ca14b299faba49161c1c10897897788c",
+    "scripts/quick_vae_runtime.py": "a92cbd866ebd3b805bee62546f10f145c80f0080f8282b8fc6aae9da34de6001",
+    "scripts/quick_ldm_runtime.py": "558d3b91e511e12658c309037ea476d01bdf76c73ce323caf2fc909e269043a3",
+    "configs/paper69-env-spec.json": "30bcaa928d4e7ed4cf7359d88dfe909334718957fffbd07bc98510467612d421"
+  },
+  "entrypoint_sha256": "68551ebd93f43353fc6c6b9eb45701f13f3c478de1c393750c9755df5dfc962a",
+  "supervisor_sha256": "5cff6053c2d2c586b11335d539da6c61c6cad8884dfd5b7332bc9ee739ab4a04",
+  "scope": "Quick3000 attempts; compressed curriculum/LR clocks, not paper300k. Actual frozen VAE2000 required; shared cache budget explicit; no fullpaper/closedloop claim."
+}
