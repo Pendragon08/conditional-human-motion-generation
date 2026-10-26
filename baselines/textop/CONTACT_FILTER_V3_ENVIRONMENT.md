@@ -5,6 +5,38 @@ exporter/supervisor/finalizer is **disabled and has not been executed in the SDK
 It does not establish physical acceptance, a trained generator, or evaluator readiness.
 Do not modify the 16 byte-bound files used by the active formal training run.
 
+## UPDATE2026-10-26 08:20 — CPU supervision integration completed
+
+This section supersedes only the earlier missing resource-supervision code note.
+contact_process_supervision.py now owns and bounds only its newly spawned child
+process group. Seven real CPU subprocess cases passed: natural/nonzero exit,
+TERM timeout, KILL escalation, before-launch/running sampler failure, and SIGTERM
+to the supervisor. An unrelated owned sentinel remained alive in all cases.
+Partial fixture journals and all process proof/sample files remain intact.
+
+contact_filter_resources.py reads aggregate GPU/RAM/disk and only its own child
+group's per-process usage. The inactive strict supervisor samples before launch,
+every15seconds and after exit. Resource-read failures or reserve crossings fail
+closed and persist the actual process-exit proof; no active jobs are discovered
+and terminated. Current runtime reserves are2GiB RAM/2GiB disk, preflight disk
+2.5GiB plus existing full-library RAM/GPU preflight. These are execution guards,
+not physical-motion acceptance thresholds or total-pipeline storage guarantees.
+
+v3 post-exit acceptance now also binds resource samples and process-exit receipts,
+rejecting sampling/supervision failures even when the child itself exits0. Final
+local+server synthetic protocol checks each pass27cases. This supersedes the
+previous23-case revision; all prior receipts and candidate bytes remain preserved.
+Nine inactive candidate files are byte-bound in
+results/contact_supervision_20261026/candidate_runtime_bytes_v2.json. Original
+six-file bundle and server pre-change snapshot remain. All16 active trainer
+files match their original hashes before and after deployment.
+
+**No new SDK run took place.** New exporter still has no bounded real validation
+entry and no actual SDK validation; both launch flags remainfalse. The next step
+is that bounded validation entry, then actual author/fresh independent execution
+when the common lock is available. Do not repeat CPU tests or interrupt formal
+training just to run validation. The old SDK native-close issue remains separate.
+
 ## Reason and exact boundary
 
 Formal policy training now uses the validated static solid-floor contact profile.

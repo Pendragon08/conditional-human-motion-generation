@@ -63,6 +63,8 @@ if formal_running:
  '下一阶段是持续检查真实训练、备份新检查点、完成宽松与严格两轮物理筛选；最终语料验收后自动接续 VAE 200,000 → LDM 300,000 与实际闭环视频。'])
 if (B/'results/filter_contact_protocol_20261026/server_cpu_v1.json').exists():
  md.extend(['', '## 后续筛选准备（尚未实际执行）', '', '新筛选入口要求评估沿用训练的同一接触设置，并在实际退出后核对全部回放证据。本地及服务器各23项合成逻辑检查通过，活动训练16份文件哈希未变。新回放器仍保持禁用，尚需真实SDK验证；不代表物理筛选或语料验收完成。详细记录见物理筛选接触一致性与退出后验收准备_20261026报告。'])
+if (B/'results/contact_supervision_20261026/integration_cpu_v1.json').exists():
+ md.extend(['', '## 后续筛选资源监督准备', '', '新增7项实际CPU子进程检查，以及本地/服务器各27项更新后的验收逻辑检查通过。新监督器保留超时、采样失败和实际退出证据，资源监测已经接入。没有新SDK回放，两个正式筛选标志仍禁用；下一步补齐独立有界实际验证入口。详情见后续物理筛选资源监测与失败保留_20261026报告。'])
 text='\n'.join(md)
 (B/'reports/contact_isolation_20261026.md').write_text(text,encoding='utf-8')
 D.mkdir(exist_ok=True);(D/'地面接触对照与候选修复_20261026.md').write_text(text,encoding='utf-8')

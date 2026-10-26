@@ -21,6 +21,9 @@ class Fixture:
   self.evaluation={'status':'TEXTOP_TWO_ROUND_FILTER_EXPORT_FINISHED','mode':'formal','output_writers_closed':True,'physical_filter_executed':True,'dataset_accepted':False,'optimizer_updates':0,'diagnostic_dynamic_rollouts_executed':False,'source_sha256':source,'policy_checkpoint_sha256':cp,'policy_checkpoint_completed_iterations':40000,'reference_fingerprint':fp,'reference_sources':1,'contact_profile':copy.deepcopy(self.profile),'contact_profile_sha256':signature,'eligible_original_sources':1,'finished_trials':1,'failed_trials':0,'complete_trials':1,'actual_scene_physics_steps':12,'actual_vectorized_control_calls':3}
   self.journal=[{'motion_id':row['motion_id'],'trial':trial} for row in self.strict['motions'] for trial in row['trials']]
   self.eval_exit={'child_exit_code':0,'timed_out':False,'numerical_status':self.evaluation['status']}
+  self.process={'child_pid':12345,'child_exit_code':0,'child_reaped':True,'timed_out':False,'supervision_passed':True,'supervisor_error':None,'sample_errors':[],'samples_written':3}
+  self.samples=[{'phase':x,'synthetic_resource_sample':True} for x in ['before_launch','after_launch','after_exit']]
+  self.eval_exit.update(self.process)
   self.refresh()
  def write(self,key,data,binary=False):
   path=self.root/key;path.write_bytes(data if binary else json.dumps(data).encode())
@@ -33,6 +36,10 @@ class Fixture:
   self.write('strict_trial_journal',('\n'.join(json.dumps(x) for x in self.journal)+'\n').encode(),True)
   self.evaluation.update(training_receipt_sha256=self.e['training_receipt']['sha256'],training_plan_sha256=self.e['training_plan']['sha256'],replay_spec_sha256=self.e['evaluation_spec']['sha256'],private_relaxed_log_sha256=self.e['relaxed_rollout_log']['sha256'],private_strict_log_sha256=self.e['strict_rollout_log']['sha256'],private_trial_journal_sha256=self.e['strict_trial_journal']['sha256'])
   self.write('evaluation_receipt',self.evaluation)
+  self.write('process_exit_receipt',self.process)
+  self.write('resource_samples',('\n'.join(json.dumps(x) for x in self.samples)+'\n').encode(),True)
+  self.eval_exit['process_exit_sha256']=self.e['process_exit_receipt']['sha256']
+  self.eval_exit['resources_sha256']=self.e['resource_samples']['sha256']
   self.eval_exit['evaluation_receipt_sha256']=self.e['evaluation_receipt']['sha256'];self.write('evaluation_exit_receipt',self.eval_exit)
 
 
@@ -73,6 +80,10 @@ def main():
  case('duplicated_journal_trial',lambda f:f.journal.append(copy.deepcopy(f.journal[0])))
  case('partial_trajectory_still_rejected',lambda f:(f.strict['motions'][0]['trials'][0].update(control_steps=1),f.journal[0]['trial'].update(control_steps=1)))
  case('unattempted_source_still_rejected',lambda f:f.relaxed['motions'][0].update(raw_success=0))
+ case('supervisor_failure_even_child_exit0',lambda f:f.eval_exit.update(supervision_passed=False))
+ case('process_exit_disagrees_with_wrapper',lambda f:f.process.update(child_exit_code=7))
+ case('sampling_error_retained',lambda f:f.process.update(sample_errors=[{'error':'synthetic'}]))
+ case('missing_after_exit_sample',lambda f:f.samples.pop())
  receipt={'status':'CONTACT_FILTER_V3_SYNTHETIC_PROTOCOL_CHECKS_PASSED','checks':checks,'checks_passed':len(checks),'gpu_calls':0,'physics_calls':0,'optimizer_updates':0,'physical_filter_executed':False,'dataset_accepted':False,'synthetic_fixture_markers_retained':True,'fixtures_removed':False,'elapsed_end_unix':time.time()}
  (root/'receipt.json').write_text(json.dumps(receipt,indent=2));print(json.dumps({k:v for k,v in receipt.items() if k!='checks'}))
 if __name__=='__main__':main()

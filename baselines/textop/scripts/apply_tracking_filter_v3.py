@@ -36,7 +36,7 @@ def apply(evidence):
  assert plan['contact_profile']['enabled'] is True
  assert plan['contact_profile']['kind']==training['contact_profile']['kind']
  profile_sha=contact_signature(training['contact_profile'])
- paths={k:artifact(evidence,k) for k in ['evaluation_receipt','evaluation_exit_receipt','evaluation_source','evaluation_spec','relaxed_rollout_log','strict_rollout_log','strict_trial_journal']}
+ paths={k:artifact(evidence,k) for k in ['evaluation_receipt','evaluation_exit_receipt','evaluation_source','evaluation_spec','relaxed_rollout_log','strict_rollout_log','strict_trial_journal','process_exit_receipt','resource_samples']}
  evaluation=json.loads(paths['evaluation_receipt'].read_text())
  exit_proof=json.loads(paths['evaluation_exit_receipt'].read_text())
  spec=json.loads(paths['evaluation_spec'].read_text())
@@ -45,6 +45,17 @@ def apply(evidence):
  assert evaluation['physical_filter_executed'] is True and evaluation['dataset_accepted'] is False
  assert evaluation['optimizer_updates']==0 and evaluation['diagnostic_dynamic_rollouts_executed'] is False
  assert exit_proof['child_exit_code']==0 and exit_proof['timed_out'] is False
+ assert exit_proof['supervision_passed'] is True and exit_proof['child_reaped'] is True
+ assert exit_proof['supervisor_error'] is None and not exit_proof.get('cleanup_error')
+ process=json.loads(paths['process_exit_receipt'].read_text())
+ for key in ['child_pid','child_exit_code','child_reaped','timed_out','supervision_passed','supervisor_error','samples_written']:
+  assert process[key]==exit_proof[key]
+ assert not process.get('cleanup_error') and process['sample_errors']==[]
+ assert exit_proof['resources_sha256']==evidence['resource_samples']['sha256']
+ assert exit_proof['process_exit_sha256']==evidence['process_exit_receipt']['sha256']
+ samples=[json.loads(line) for line in paths['resource_samples'].read_text().splitlines()]
+ assert len(samples)==process['samples_written'] and len(samples)>=3
+ assert samples[0]['phase']=='before_launch' and samples[1]['phase']=='after_launch' and samples[-1]['phase']=='after_exit'
  assert exit_proof['numerical_status']==evaluation['status']
  assert exit_proof['evaluation_receipt_sha256']==evidence['evaluation_receipt']['sha256']
  assert evaluation['source_sha256']==evidence['evaluation_source']['sha256']==spec['executor_sha256']

@@ -1,0 +1,52 @@
+"""Collect completed CPU supervision checks; no claim of SDK/physical acceptance."""
+import datetime
+import html
+import json
+import pathlib
+
+B = pathlib.Path(__file__).resolve().parents[1]
+R = B / 'results/contact_supervision_20261026'
+D = pathlib.Path('D:/具身智能/TextOp复现_20261024')
+cpu = json.loads((R / 'server_cpu_author_v1.json').read_text(encoding='utf-8'))
+integration = json.loads((R / 'integration_cpu_v1.json').read_text(encoding='utf-8'))
+progress = json.loads((B / 'results/full_contact_20261026/formal_launch/progress.json').read_text(encoding='utf-8'))
+text = '''# TextOp：后续筛选的资源监测与失败保留
+
+更新时间：{time}
+
+正式特权跟踪策略仍在服务器运行，采样收据为 **{rounds:,} / 40,000 轮、{updates:,} 次实际优化更新**，价值损失 {loss:.8f}，尚无退出收据。旧 57D 训练仍保持暂停。当前数据盘余量约 {free:.2f} GiB；这不是对后续生成器、最终 WBC 和视频全流程空间的保证。
+
+本轮补齐了后续筛选监督器的连续资源记录和失败退出处理，并进行了实际 CPU 子进程验证。没有另起 SDK 或 GPU 作业，没有改动正在训练的16个运行文件，也没有删除数据集、检查点或实验记录。
+
+|实际验证内容|结果|含义|
+|---|---|---|
+|正常退出、非零退出、超时终止、忽略终止后强制退出|4项通过|保存实际子进程退出结果；只处理新建的测试进程组|
+|采样器启动前失败、运行中失败、监督器收到终止信号|3项通过|保留错误和已有文件，并回收本次子进程|
+|其他测试进程保护|全部通过|独立哨兵进程未受到影响；正式训练继续运行|
+|本地及服务器更新后的验收逻辑|各27项通过|新增拒绝监督失败、退出记录不一致、采样错误或缺少末次采样|
+|资源读取与容量下限拒绝|通过|只读RAM、磁盘和GPU状态；没有GPU计算或仿真|
+|后续正式筛选入口|仍禁用|启动检查拒绝了执行，未派发SDK|
+
+新增监督器在运行前、运行中和退出后记录资源状态，并分别保留实际进程退出收据与最终筛选收据。即使子进程退出码为0，只要监督、采样或记录完整性检查失败，也不能当作物理筛选通过。超时测试使用人工CPU等待进程；模拟失败记录和全部输出文件均保留。这些测试不代表机器人跟踪成功率。
+
+两轮物理筛选仍未执行。新回放器还需要独立的有界实际SDK验证入口和真实验证，不能把本轮CPU检查当作通过。当前正式训练持有共同互斥锁，后续工作不会占用第二个SDK任务。
+
+待40,000轮策略完成并备份后，使用同一已验证接触设置执行完整动作覆盖的真实筛选；合格69D语料、训练集归一化、真实CLIP缓存、断点和资源验收通过后，按已有授权自动接续VAE 200,000 → LDM 300,000及闭环验证。
+
+代码与聚合证据位于 results/contact_supervision_20261026；此前六文件候选版本与本轮九文件精确字节包分别保留，服务器更新前也保存了旧候选源码。该包不含受限动作数组和逐条文本来源。SDK原生退出可能卡住的已知差异没有被本轮CPU监督测试解决。
+'''.format(time=datetime.datetime.now().astimezone().isoformat(timespec='seconds'),
+           rounds=progress['completed_learning_iterations'], updates=progress['optimizer_updates'],
+           loss=progress['latest_losses']['value_function'],
+           free=integration['read_only_resource_sample']['data_free_bytes'] / 1024**3)
+(B / 'reports/filter_supervision_20261026.md').write_text(text, encoding='utf-8')
+(D / '后续物理筛选资源监测与失败保留_20261026.md').write_text(text, encoding='utf-8')
+try:
+    import markdown
+    body = markdown.markdown(text, extensions=['tables'])
+except ImportError:
+    body = '<pre>' + html.escape(text) + '</pre>'
+page = '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>TextOp 筛选资源监测准备</title><style>body{max-width:1080px;margin:40px auto;padding:0 24px;font:17px/1.7 system-ui;color:#203040}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccd6df;padding:9px}th{background:#edf3f8}pre{white-space:pre-wrap}</style>' + body + '</html>'
+(D / '后续物理筛选资源监测与失败保留_20261026.html').write_text(page, encoding='utf-8')
+print(json.dumps({'cpu_subprocess_cases': cpu['test_receipt']['checks_passed'],
+                  'protocol_cases': integration['test_receipt']['checks_passed'],
+                  'new_sdk_runs': 0, 'report_saved': True}))

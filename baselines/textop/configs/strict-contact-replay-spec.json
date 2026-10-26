@@ -20,13 +20,20 @@
   "witness_supervisor_timeout_seconds": 600,
   "formal_supervisor_timeout_seconds": 86400,
   "formal_evaluation_enabled": false,
-  "formal_blocker": "Active40k policy incomplete; new exporter and post-exit finalizer have not had real SDK validation",
+  "formal_blocker": "Active40k incomplete; supervisor CPU process tests passed but new exporter still lacks bounded real SDK validation",
   "limitation": "A diagnostic on a two-iteration policy validates execution/accounting only; no motion acceptance or learned tracking-quality claim",
   "acceptance_schema": "textop.dynamic_filter.v3",
   "executor_sha256": "2ab322e9fd3ee27176db15278642f42051e4425cf47bd71ac34264776fb95035",
   "contact_profile_required": true,
   "post_exit_finalization_required": true,
   "real_sdk_validation_completed": false,
-  "acceptor_sha256": "365462821ecb1fd0d74fd2f13de4133c525a7b3667d5db196ab3270a14a79f85",
-  "incremental_private_trial_journal": true
+  "acceptor_sha256": "0fe06d3c972c9f47739ad7e75454300fb61e14979c6024543502733afd60f038",
+  "incremental_private_trial_journal": true,
+  "resource_sample_interval_seconds": 15,
+  "minimum_preflight_disk_free_gib": 2.5,
+  "minimum_runtime_available_host_ram_gib": 2,
+  "minimum_runtime_disk_free_gib": 2,
+  "supervision_sha256": "44d689a71dc0c04778a7e6e651bc61d234dd59d3435a80c543be9d8db55638b4",
+  "resource_sampler_sha256": "1003a7cba9d2f2e30a05a881020e51ed8907eba6d523e4ce8af6b1b5399f76e5",
+  "supervisor_sha256": "3f5efc540dec1aabcc7c511533948bb4bd5e480e2741ef3247be16dd95548157"
 }

@@ -1,10 +1,10 @@
 # TextOp: data completion → physical filtering → full generator training
 
-## CURRENT2026-10-26 07:28 — formal policy healthy; post-exit filtering candidate disabled
+## CURRENT2026-10-26 08:20 — formal policy healthy; post-exit filtering candidate disabled
 
 Current real receipt: filter_policy_paper69_solid_floor_20261026_v1 is
-RUNNING_FORMAL_FILTER_TRAINING,100/40000 rounds,2000 actual updates, value loss
-0.05564889032393694, no exit receipt. This is early training, not convergence or
+RUNNING_FORMAL_FILTER_TRAINING,400/40000 rounds,8000 actual updates, value loss
+0.07517762780189514, no exit receipt. This is early training, not convergence or
 physical acceptance. Progress flushes first10 rounds then every100; an unchanged
 receipt between flushes is not a stall. Keep the existing supervisor/SDK job;
 DO NOT repeat activation, launcher, any old diagnosis or another SDK task.
@@ -23,22 +23,26 @@ still inventories the paused old57D ckpt1000; it is not evidence that a new form
 filter checkpoint has been backed up. Inspect actual worker commands before any
 new backup job. Checkpoint/file/data cleanup is forbidden.
 
-New background preparation: CONTACT_FILTER_V3_ENVIRONMENT.md and
-reports/filter_contact_protocol_20261026.md. Six NEW inactive files were staged
-separately on the server; no active file changed. Local+server CPU23-case synthetic
-checks passed, actual running policy was rejected for formal filtering, disabled
-supervisor dispatched zero SDK jobs. Exact candidate bytes and all receipts are
-in results/filter_contact_protocol_20261026. The local collector's post-server
-path assertion failure was recovered without rerunning server tests.
+New background preparation: read CONTACT_FILTER_V3_ENVIRONMENT.md's UPDATE,
+reports/filter_supervision_20261026.md and results/contact_supervision_20261026.
+The new generic CPU process supervisor passed7 actual subprocess cases including
+TERM/KILL timeout, sampler failure and supervisor SIGTERM. It preserves partial
+records and only signals its own newly created group. An unrelated owned sentinel
+was untouched. Continuous resource sampling and failure handling are now integrated
+into the inactive strict supervisor; final process exit and resource hashes are
+bound by v3 acceptance. Local+server updated synthetic protocol tests each passed27.
+No SDK was invoked.16 active training files were unchanged. Old candidate snapshots
+and six-file bytes remain; current nine-file bytes are candidate_runtime_bytes_v2.
+Do not rerun the completed CPU tests or restore old candidates over the new ones.
 
-This v3 exporter/finalizer has NOT had real SDK validation. Its spec's
-formal_evaluation_enabled and real_sdk_validation_completed remainfalse.
-Do not flip them or call the new supervisor while formal training runs. Next
-prepare the distinct bounded actual validation path and continuous resource
-sampling/failure handling, with independent documented actual verification after
-GPU mutual exclusion permits. Synthetic tests are not physics, convergence or
-physical acceptance. Historical v2/Plane executor stays unchanged but cannot be
-silently used for formal filtering of this solid-floor-trained policy.
+New exporter/finalizer still lack actual SDK validation. Both flags in
+strict-contact-replay-spec remainfalse. Next prepare a separate bounded actual
+validation mode/entry; current exporter CLI only acceptsformal. Then do actual
+author+fresh independent validation when no SDK holds the lock, followed by full
+coverage using the finished40k policy. Do not accept CPU tests as physics or enable
+formal evaluation now. Historical v2/Plane executor cannot silently replace this
+contact-consistent route. The resource helper reads global GPU usage plus only the
+new child's process group; do not alter current renderer/device settings.
 
 Data8278 source+8278 mirrors, text/69D/FK/private backups already complete and
 notified. No repeat GMR/FK/archives/audits. Two-pass real filtering, accepted

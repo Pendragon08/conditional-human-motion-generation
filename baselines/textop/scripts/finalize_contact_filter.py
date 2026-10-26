@@ -13,7 +13,7 @@ assert e['child_exit_code']==0 and e['timed_out'] is False
 output_paths=[out/'evidence_v3.private.json',out/'decisions_v3.private.json',out/'post_exit_filter_receipt.json']
 assert not any(x.exists() for x in output_paths),'Prior finalized evidence must be preserved'
 evidence=json.loads((out/'evidence_inputs.private.json').read_text())
-for key,path in [('evaluation_receipt',receipt),('evaluation_exit_receipt',exitpath)]:evidence[key]={'path':str(path),'sha256':hashlib.sha256(path.read_bytes()).hexdigest()}
+for key,path in [('evaluation_receipt',receipt),('evaluation_exit_receipt',exitpath),('process_exit_receipt',ROOT/'receipts'/('strict_contact_'+a.run+'_process_exit.json')),('resource_samples',ROOT/'logs'/('strict_contact_'+a.run+'_resources.jsonl'))]:evidence[key]={'path':str(path),'sha256':hashlib.sha256(path.read_bytes()).hexdigest()}
 decisions=apply(evidence);counts=dict(collections.Counter(x['decision'] for x in decisions))
 for path,data in zip(output_paths[:2],[evidence,{'schema':'textop.dynamic_filter.v3','decisions':decisions,'dataset_accepted':False,'corpus_acceptance_pending':True}]):
  with path.open('x') as f:f.write(json.dumps(data,indent=2))
