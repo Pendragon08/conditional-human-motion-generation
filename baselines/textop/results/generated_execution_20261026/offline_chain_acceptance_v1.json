@@ -1,0 +1,86 @@
+{
+  "receipt": {
+    "status": "QUICK_OFFLINE_TRAINED_GENERATION_TO_PHYSICS_EXECUTION_ACCEPTED",
+    "time_unix": 1793020883.7139287,
+    "quality_label": "QUICK_REPRODUCTION_NOT_PAPER_COMPLETE",
+    "scope": "One generated258pose stream, author+independent repeat; real control feedback but offline precomputed refs",
+    "offline_pipeline_verified": true,
+    "online_text_interaction_verified": false,
+    "realtime_deadlines_verified": false,
+    "semantic_quality_accepted": false,
+    "ldm_sampling_quality_accepted": false,
+    "final_reference_endpoint_verified": false,
+    "full_library_physically_filtered": false,
+    "full_paper_training_complete": false,
+    "bindings": {
+      "vae": {
+        "receipt_sha256": "abdd2bf422af2c0b1cf6215fdd2119707a7a5ff421e1358a97b1d55a7ecfb582",
+        "exit_sha256": "f1a0da1f70a314e8ec70a10693077b96f5d46a78d836b4c02ffabfb2b7d2ee99",
+        "final_checkpoint": {
+          "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/vae/checkpoints/vae_state_2000.pth",
+          "bytes": 513523901,
+          "sha256": "5109f593309349504d52677997bcdd21de3d27e045b9154be8c06278182b1219",
+          "manager_step": 2000,
+          "actual_optimizer_updates": 2000
+        }
+      },
+      "ldm": {
+        "receipt_sha256": "b74e84a4fb466c406f41d1285154ddc4cf00af6774771484b77d6b24eba63925",
+        "exit_sha256": "bb3189cc3aaf0d5ef53d9226b8bd382e240a99dcdd80209e306b4938b553fb29",
+        "final_checkpoint": {
+          "path": "/home/ouyanghao/textop-quick69-checkpoints-20261026/ldm/ldm_state_3000.pth",
+          "bytes": 223731095,
+          "sha256": "1fae633c923cb7363017615d2765608dbade95dc9d548a0c2fced1c3935cf68c",
+          "manager_step": 3000,
+          "actual_optimizer_updates": 3000
+        }
+      },
+      "generated_author_v1": {
+        "receipt_sha256": "41fef6921939e5b1493578d4c7dbcb7152a293321b7a70ee72879124c3f8ed66",
+        "exit_sha256": "0517810f7f54fc22bdb84688f3d650a2f4af25cfdd41afdc197ab37f4b2376ce",
+        "generated_npz_sha256": "987b374a505778a6a010ac5cf9cb943b1a45cb12a5b40b5ccb4a10c82c56a2ef"
+      },
+      "generated_document_v1": {
+        "receipt_sha256": "34cfde12b1fa9a93872f41e2019492fef15ea47d1d68ca57274f1941dd828351",
+        "exit_sha256": "c32bc5037c121472da4630d70f57ea91518b3b774fd99e7796e6bd92cf2015b6",
+        "generated_npz_sha256": "987b374a505778a6a010ac5cf9cb943b1a45cb12a5b40b5ccb4a10c82c56a2ef"
+      },
+      "generated_sdk_author_v1": {
+        "pipeline_sha256": "93bc169c1af4cfcc4f7c1c17933132982b1cc14dd50005fd151cd0fb7172eb93",
+        "trial": {
+          "repeat": 0,
+          "start_frame": 0,
+          "reference_frames": 258,
+          "control_steps": 257,
+          "end_reason": "motion_end",
+          "failed": false,
+          "complete": true
+        },
+        "controlled_physics_substeps": 1028,
+        "text_switch_target_consumed": true
+      },
+      "generated_sdk_document_v1": {
+        "pipeline_sha256": "33e21be3ee975fc81c39f6f66172d1f4e81c40d3c07f58b7cf85e9f69c036d96",
+        "trial": {
+          "repeat": 0,
+          "start_frame": 0,
+          "reference_frames": 258,
+          "control_steps": 257,
+          "end_reason": "motion_end",
+          "failed": false,
+          "complete": true
+        },
+        "controlled_physics_substeps": 1028,
+        "text_switch_target_consumed": true
+      },
+      "actual_video": {
+        "run": "generated_execution_video_document_v1",
+        "receipt_sha256": "1ecb547ccc41fc9dcbb28f8b28ffd3a727675ce088cff73913a4713e18cf8919",
+        "exit_sha256": "f16e10dda194bac467a4bacf3f054b1d4767864c939b7c0a502ad21dfa8630fc",
+        "video_sha256": "42cf13845b885c0ab84ac8e8027c1efd352be5c994f546a953da88290416384f",
+        "frames": 258
+      }
+    }
+  },
+  "receipt_sha256": "e2bd8a14398a2391d122a5fda9c64505fe4ca86dfbaaaf3e402e5f6e84acc720"
+}
