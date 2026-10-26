@@ -8,12 +8,14 @@ Quick online functional chain is accepted; semantic/paper quality is still not.
 New lexical coverage audit found only1wave-stem annotation (~0.84s) inquickTRAIN,
 versus147availableTRAINsource candidates (27explicitwave+right); this is a lead
 for realphysics and controlled semantic tests, not a causal or quality claim.
+Separate [post-hoc 5k endpoint baseline](reports/recorded_endpoint_baseline_20261027.md)
+compares retained terminal poses; it adds no physics trial or acceptance threshold.
 Future fullpaper completion must include accepteddata/fullgenerator/requiredWBC,
 augmentation/onlinequality/video; user must be notified when actually attained.
 
 # TextOp 复现
 
-当前已验证**快速版在线“文本切换→异步生成→真实仿真反馈控制”功能链路**：作者及独立两次各257步均零超时、断流和物理失败。语义与论文质量仍未通过；完整40k跟踪器已从5k状态实际恢复并继续优化，实际状态见[在线验收与续训报告](reports/online_quick_20261026.md)。最新证据与本地录像入口见[实际结果报告](reports/quick_actual_results_20261026.md)，继续工作先读[CONTINUATION顶部](CONTINUATION.md)。
+当前已验证**快速版在线“文本切换→异步生成→真实仿真反馈控制”功能链路**：作者及独立两次各257步均零超时、断流和物理失败。语义与论文质量仍未通过；跟踪器已从5k状态实际恢复，先到10k备份并受控暂停，比较筛选效果后决定是否继续40k。实际状态见[在线验收与续训报告](reports/online_quick_20261026.md)。最新证据与本地录像入口见[实际结果报告](reports/quick_actual_results_20261026.md)，继续工作先读[CONTINUATION顶部](CONTINUATION.md)。
 
 |环节|已核验状态|
 |---|---|
@@ -24,12 +26,12 @@ augmentation/onlinequality/video; user must be notified when actually attained.
 |生成参考的物理执行|同一258姿态序列作者/独立两次均自然完成257控制步/1028受控物理子步，文本切换目标130已消费|
 |新执行录像|258帧、50fps，实际执行姿态可视化；本地私有视频与独立审计完成|
 |在线功能验证|脚本实时文本切换，异步生成和实际50Hz控制；两次各257步零超时/断流/物理失败，独立63+430+41检查通过|
-|完整训练接续|已从已核验5k完整状态实际恢复，正训练至总40k，沿用原8192环境GPU物理；完整VAE/LDM仍等待全量物理筛选与最终语料|
+|完整训练接续|已从已核验5k完整状态实际恢复，先在10k评估筛选效果；沿用原8192环境GPU物理和保留的40k配置；完整VAE/LDM仍等待全量物理筛选与最终语料|
 |尚未验收|语义/论文质量、无限时长实时性、最终端点、论文最终WBC与完整训练结果|
 
 固定完整采样Huber由0.310267升到0.607536，生成质量仍待评估；短序列被跟踪不等于语义或论文质量达标。自定义身体平均误差0.043041m、关节RMSE0.128405rad只描述本次控制目标跟踪。原生SDK关闭仍使用有界兜底，差异保留。作者精确碰撞资产不可得。
 
-快速功能链路通过后，按用户授权进入40k跟踪器研究续训以改善质量；完成全部可得数据真实筛选、最终语料及容量验收后再进入论文VAE200k/LDM300k；快版课程/学习率时钟已缩短，不把快版计数当作论文完整结果。受限动作/逐条文本/训练全状态保持私有，公开仓库保存代码、聚合证据、报告和许可允许的视频。
+快速功能链路通过后，按用户最新要求先用10k跟踪器评估筛选效果；根据实际结果扩大筛选或继续训练，并保留40k论文参照。完成全部可得数据真实筛选、最终语料及容量验收后再进入论文VAE200k/LDM300k；快版课程/学习率时钟已缩短，不把快版计数当作论文完整结果。受限动作/逐条文本/训练全状态保持私有，公开仓库保存代码、聚合证据、报告和许可允许的视频。
 
 新配置与独立证据：[生成入口](QUICK_GENERATION_ENVIRONMENT.md)、[SDK生成执行](QUICK_GENERATED_EXECUTION_ENVIRONMENT.md)、[实际执行录像](GENERATED_EXECUTION_VIDEO_ENVIRONMENT.md)、[独立SDK审计](results/generated_execution_20261026/independent_document_v1/REPORT.md)、[独立媒体审计](results/generated_execution_20261026/independent_video_document_v1/REPORT.md)。历史SFU参考跟踪科研视频已[公开发布](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/textop-quick-tracking-video-20261026)；新生成执行视频暂存本地私有。
 

@@ -1,3 +1,33 @@
+## CURRENT — 2026-10-27 retained5k endpoint baseline independently verified
+
+Active teacher latest coordinator observation5800/116000, waiting real10000,
+no signals; historyPID63636 coordinator exclusively owns backup/stop. Original
+trainer and20boundruntime/control unchanged. Do not duplicate any active job.
+
+New independent analysis from existing quick_pilot_sample64_v1 recordings is
+complete: read RECORDED_ENDPOINT_ENVIRONMENT.md and
+reports/recorded_endpoint_baseline_20261027.md. AuthorCPUexit0, local/server7
+focused logic checks, fresh recorded_endpoint_document_v1 verbatim recomputation
+actualexit0/43checks/no divergence. All64match;42natural completions compare
+physical pose at(T-1)/50 against independent referenceT-1,22earlierfailures have
+no extrapolated endpoint. Original controller consumedT-2; oldreceipt endpoint
+flag remainsfalse. No newphysicaltrial/SDK/model/optimization/acceptance change.
+Worldroot terminal error mean.160800m/max1.357581m;29jointRMSE mean.175056rad/
+max.884652rad. Initialroot offset max0, no per-frameyaw/root alignment. Not old
+aligned current-target metrics, paper scores, semantic acceptance or newthreshold.
+Private2files101666B server+D/datasets/endpoint_diagnostics_private_20261027
+SHAverified;metricsSHAd403d95c0d040fe756154363dc52a4ba1f5ad7d4180aff323de11754197ef35e.
+Do not rerun author/fixtures/fresh or rearchive the unchanged64 trials.
+10k paired executor remains to implement/actuallyvalidate; its flags remain
+false/entrypointnull. Future compare same64 outcomes, failures and independent
+endpoints separately, then expand semanticcoverage. No10k physics yet; no new
+semanticquality improvement claimed. Online/generated endpoints remain separate.
+
+Automation historical mojibake is repaired using clean UTF-8 instructions,
+priorTOML preserved privately; no runtime changed. Use PYTHONIOENCODING=utf-8
+for all localPython transport and UTF-8 files. Latest GitHub/D sync receipt is
+the authoritative commit; no need to rerun prior reports/experiments to fill time.
+
 ## CURRENT ACTIVATION — 10k evaluation handoff coordinator live
 
 NewspecSHA931812877f098add85b86141cb99eb7763d8d80193f904d9ff4d654528690af6;

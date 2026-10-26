@@ -1,0 +1,292 @@
+{
+  "schema": "textop.recorded_endpoint_document_validation.v1",
+  "status": "PASSED_NO_OBSERVED_DOC_DIVERGENCE",
+  "fresh_independent_agent": true,
+  "documented_invocation_count": 1,
+  "actual_exit": 0,
+  "local_exit": 0,
+  "timed_out": false,
+  "duration_seconds": 2.4070000000065193,
+  "document_sha256": "d8f34ddd3677ab031864d5d435b4264e87fcc7ac4dbff0dbee3dcbd771f70f10",
+  "invocation_sha256": "34431aa0ad91b445e3cc994c5c3bbe092e484d7887012b8dd80151405b70c398",
+  "spec_sha256": "6db8a9171e8ed95cba7db0a31a3ad73cfe0be32f8fca0eff51d84596796d400b",
+  "verified_summary_sha256": "9f635efe3f0bf8add73cf4a944b031927aaba6b4d28762ebb2416ec6597ad315",
+  "matched_trials": 64,
+  "natural_completions_endpoint_compared": 42,
+  "failures_retained_without_extrapolation": 22,
+  "terminal_metrics": {
+    "terminal_world_root_position_error_m": {
+      "mean": 0.16080046526290323,
+      "median": 0.09081864035028797,
+      "p95": 0.5271585413984107,
+      "max": 1.3575811750669249
+    },
+    "terminal_world_root_horizontal_error_m": {
+      "mean": 0.1576443206922572,
+      "median": 0.08977176806627597,
+      "p95": 0.5256669913489045,
+      "max": 1.3575290276186625
+    },
+    "terminal_world_root_height_error_abs_m": {
+      "mean": 0.01936961923326765,
+      "median": 0.01914045214653015,
+      "p95": 0.04073748886585235,
+      "max": 0.04606747627258301
+    },
+    "terminal_root_orientation_geodesic_rad": {
+      "mean": 0.06861419199809589,
+      "median": 0.050946909798347206,
+      "p95": 0.16314809522276352,
+      "max": 0.2976329565871667
+    },
+    "terminal_joint_rmse_rad": {
+      "mean": 0.17505556614387252,
+      "median": 0.14450458017475165,
+      "p95": 0.3076743427600134,
+      "max": 0.8846519877132757
+    },
+    "terminal_joint_abs_max_rad": {
+      "mean": 0.47142366669140756,
+      "median": 0.3375181257724762,
+      "p95": 0.7939460299909107,
+      "max": 3.2427886724472046
+    }
+  },
+  "initial_world_root_offset_max_m": 0.0,
+  "frozen_runtime_files_matched": 16,
+  "checks_passed": 43,
+  "checks": [
+    {
+      "name": "single verbatim documented invocation",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "local and remote exit zero without timeout",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "empty local and remote stderr",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "expected recomputation sentinel and 64 matches",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "documented spec file hash",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "exact saved summary equality hash",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "42 completions retained",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "22 failures retained without endpoint metric",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "all failures actually precede terminal elapsed time",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "completed physical state at T-1 and control target T-2",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "initial world root offset zero",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "documented rounded endpoint means",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "original receipt false flag unchanged",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "original closed recordings",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "no new SDK/model/optimizer/physics claims",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "acceptance and originals unchanged",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "server bound source scripts/audit_recorded_endpoints.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "server bound source scripts/recorded_endpoint_metrics.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "server bound source scripts/quick_pilot_trace.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "server bound source scripts/strict_tracking_coverage.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "reviewed local source scripts/audit_recorded_endpoints.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "reviewed local source scripts/recorded_endpoint_metrics.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "reviewed local source scripts/quick_pilot_trace.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "reviewed local source scripts/strict_tracking_coverage.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime scripts/solid_floor_ppo_probe.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime scripts/supervise_solid_floor_ppo.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime scripts/solid_floor_diagnostic.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime scripts/paper_filter_config.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime scripts/filter_training_runtime.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime scripts/numerical_trace.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime scripts/audit_full_contact_state.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime configs/full-library-capacity-spec.json",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime configs/solid-floor-ppo-spec.json",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime configs/tracker-env-spec.json",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime configs/paper-step2.json",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime scripts/validated_contact_profile.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime scripts/train_filter_policy.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime scripts/supervise_filter_policy.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime scripts/checkpoint_storage_guard.py",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "frozen runtime configs/filter-training-plan.json",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "recording executor matches original receipt and reviewed source",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "quick plan remains bound",
+      "passed": true,
+      "kind": "observed"
+    },
+    {
+      "name": "auditor import closure excludes Torch and SDK",
+      "passed": true,
+      "kind": "observed"
+    }
+  ],
+  "doc_divergences": [],
+  "sdk_runs": 0,
+  "optimizer_updates": 0,
+  "new_physical_trials": 0,
+  "model_loads": 0,
+  "signals_sent": 0,
+  "prior_pilots_rerun": 0,
+  "cpu_fixtures_rerun": 0,
+  "runtime_or_spec_edits": 0,
+  "server_output_writes_requested": 0,
+  "raw_arrays_or_per_source_identities_copied": false,
+  "formal_training_or_dataset_acceptance_claimed": false,
+  "limitations": [
+    "This verifies retained 5k post-hoc endpoint analysis; it does not validate 10k evaluation, semantic quality, full-trajectory quality, or the full corpus.",
+    "Live trainer/coordinator liveness was not independently measured in this pass.",
+    "CPU affinity/thread environment and signal-free/read-only behavior were inspected in the exact source path; no profiler or new kernel witness was launched."
+  ]
+}
