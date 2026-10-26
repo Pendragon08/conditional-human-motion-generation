@@ -3,8 +3,8 @@
   "mode": "train",
   "quality_label": "QUICK_REPRODUCTION_NOT_PAPER_COMPLETE",
   "full_paper_training": false,
-  "optimizer_updates": 300,
-  "completed_primitive_attempts": 300,
+  "optimizer_updates": 1100,
+  "completed_primitive_attempts": 1100,
   "skipped_updates": 0,
   "output_writers_closed": false,
   "source_sha256": "68551ebd93f43353fc6c6b9eb45701f13f3c478de1c393750c9755df5dfc962a",
@@ -12,7 +12,7 @@
   "corpus_receipt_sha256": "d0a44b975c8f390f25dc5e95c414b3b8354dacacc19d5673d7a86e6d21c9c8f1",
   "data_acceptance_sha256": "5f4f58c2fd9e98f36a23fb44de90d7a24aa0a7ab2fbf63207ea35eacae7cadc6",
   "vae_checkpoint_sha256": "5109f593309349504d52677997bcdd21de3d27e045b9154be8c06278182b1219",
-  "elapsed_seconds": 100.28818048909307,
+  "elapsed_seconds": 352.63457242399454,
   "initial_storage_check": {
     "destination": "/home/ouyanghao/textop-quick69-checkpoints-20261026/ldm",
     "filesystem": "ext4",
@@ -42,42 +42,42 @@
   },
   "last_train_batch": [
     {
-      "manager_step": 297,
-      "loss": 0.16673734784126282,
-      "reconstruction_huber": 0.032651618123054504,
-      "latent_reconstruction_huber": 0.13405245542526245,
+      "manager_step": 1097,
+      "loss": 0.09771647304296494,
+      "reconstruction_huber": 0.0248077604919672,
+      "latent_reconstruction_huber": 0.07288548350334167,
       "gradients_finite": true,
-      "actual_optimizer_updates": 297,
+      "actual_optimizer_updates": 1097,
       "skipped_updates": 0,
       "is_evaluation": false
     },
     {
-      "manager_step": 298,
-      "loss": 0.17535407841205597,
-      "reconstruction_huber": 0.03408242017030716,
-      "latent_reconstruction_huber": 0.14123572409152985,
+      "manager_step": 1098,
+      "loss": 0.09738332778215408,
+      "reconstruction_huber": 0.025683818385004997,
+      "latent_reconstruction_huber": 0.0716746523976326,
       "gradients_finite": true,
-      "actual_optimizer_updates": 298,
+      "actual_optimizer_updates": 1098,
       "skipped_updates": 0,
       "is_evaluation": false
     },
     {
-      "manager_step": 299,
-      "loss": 0.17791853845119476,
-      "reconstruction_huber": 0.03414132446050644,
-      "latent_reconstruction_huber": 0.1437433362007141,
+      "manager_step": 1099,
+      "loss": 0.11839544773101807,
+      "reconstruction_huber": 0.03498228266835213,
+      "latent_reconstruction_huber": 0.08336441963911057,
       "gradients_finite": true,
-      "actual_optimizer_updates": 299,
+      "actual_optimizer_updates": 1099,
       "skipped_updates": 0,
       "is_evaluation": false
     },
     {
-      "manager_step": 300,
-      "loss": 0.2026837319135666,
-      "reconstruction_huber": 0.04347513988614082,
-      "latent_reconstruction_huber": 0.15916459262371063,
+      "manager_step": 1100,
+      "loss": 0.09930301457643509,
+      "reconstruction_huber": 0.026180699467658997,
+      "latent_reconstruction_huber": 0.07309706509113312,
       "gradients_finite": true,
-      "actual_optimizer_updates": 300,
+      "actual_optimizer_updates": 1100,
       "skipped_updates": 0,
       "is_evaluation": false
     }
@@ -86,12 +86,30 @@
     "destination": "/home/ouyanghao/textop-quick69-checkpoints-20261026/ldm",
     "filesystem": "ext4",
     "owner_uid": 1013,
-    "free_bytes": 6094249984,
-    "required_bytes": 3942645760,
-    "remaining_saves": 4,
+    "free_bytes": 5870501888,
+    "required_bytes": 3628072960,
+    "remaining_saves": 3,
     "checkpoint_upper_bound_bytes": 314572800,
     "reserve_bytes": 2147483648,
     "log_allowance_bytes": 536870912,
     "persistent_owned_writable": true
+  },
+  "checkpoints": [
+    {
+      "path": "/home/ouyanghao/textop-quick69-checkpoints-20261026/ldm/ldm_state_1000.pth",
+      "bytes": 223731095,
+      "sha256": "94f0ef8be3db0e5e70ff8656b18db8075eb0128b6ecbb6684b5a190fb8f89043",
+      "manager_step": 1000,
+      "actual_optimizer_updates": 1000
+    }
+  ],
+  "latest_file_resume_verification": {
+    "model_restored_exactly": true,
+    "optimizer_restored_exactly": true,
+    "ema_restored_exactly": true,
+    "rng_and_generator_restored_exactly": true,
+    "clock_restored_exactly": true,
+    "pending_evaluation_fields_restored": true,
+    "checkpoint_boundary": "completed_four_primitive_batch; no cached batch/history"
   }
 }

@@ -1,4 +1,18 @@
-## CURRENT2026-10-26 19:42 — quick VAE FINISHED; actual LDM3000 RUNNING
+## CURRENT2026-10-26 19:49 checkpoint update — LDM remains RUNNING
+
+Latest genuine collected quick_ldm_train_v1:1100/3000 primitiveattempts,
+1100 actualAdamW updates,0skips, noexit. Real1000 LDM fullstate has now been
+saved, immediately reloaded with exactmodel/Adam/ALLRNG/clock verification,
+and SHAbacked up server+D/checkpoints/private/quick_ldm_20261026. Actualsize/
+SHA in results/quick_ldm_20261026/quick_ldm_train_v1/checkpoint_backup.json.
+Firstbackup exited0; no active backup worker to restart. DO NOT recopy this
+unchanged1000 snapshot; preserve it. Remaining new2000/3000 checkpoints need
+future actualstable receipt/SHA backup. Active3LDMsources/spec stillFROZEN,
+common GPUlock held, no overlappingSDK. Read actualprogress/exit onnextwake,
+not this historical sampling count. All next-generation and protection rules
+in immediatelyfollowingCURRENT remain applicable. Fullchain stillunfinished.
+
+## VERIFIED2026-10-26 19:42 — quick VAE FINISHED; actual LDM3000 RUNNING
 
 Read this before all historical CURRENT blocks. VAE2000 genuinely completed,
 2000updates/0skips/exit0, both fixedVAL posterior reconstruction gates passed;
