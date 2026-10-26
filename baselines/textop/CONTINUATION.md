@@ -1,95 +1,84 @@
 # TextOp: data completion → physical filtering → full generator training
 
-## CURRENT2026-10-26 10:27 — formal policy healthy; post-exit filtering candidate disabled
+## CURRENT2026-10-26 11:46 — USER CHANGED PRIORITY: quick5k reproduction is ARMED
 
-Current real receipt: filter_policy_paper69_solid_floor_20261026_v1 is
-RUNNING_FORMAL_FILTER_TRAINING,1600/40000 rounds,32000 actual updates, value loss
-0.09798470251262188, no exit receipt. This is early training, not convergence or
-physical acceptance. Progress flushes first10 rounds then every100; an unchanged
-receipt between flushes is not a stall. Keep the existing supervisor/SDK job;
-DO NOT repeat activation, launcher, any old diagnosis or another SDK task.
-Old57D sleeping launcher3237857+stopped child3237858 remain intentionally paused.
+The user's latest instruction asks for faster reproduction with fewer than40000
+rounds. Short-term target is5000, then a small-sample real tracking assessment.
+This supersedes earlier instructions to wait for40k BEFORE any quick-mode work.
+Keep all formal40k claims/gates for the later full baseline; do not fake completion.
+Read QUICK_REPRODUCTION_ENVIRONMENT.md (pre-activation witness, already executed),
+configs/quick-reproduction-plan-20261026.json, reports/quick_reproduction_20261026.md
+and results/quick_reproduction_20261026/coordinator_v1/state.json FIRST.
 
-Read FORMAL_CONTACT_PROFILE_ENVIRONMENT.md, configs/formal-contact-activation.json,
-results/full_contact_20261026/formal_launch/progress.json and latest
-reports/contact_isolation_20261026.md. Use only the read-only
-provider_tools/collect_formal_filter_progress.py for aggregation and
-collect_contact_report.py for current reports. The active plan SHA remains
-153f8237a17928ffc3a28b7b00e366742a4ff0080e8fbb6bac87e57da8eb291d. All16 active
-runtime/config files are frozen; their hashes were checked again this turn.
-First1000-round checkpoint is now saved and backed up; do not repeat that job.
-Read FORMAL_CHECKPOINT_BACKUP.md and
-results/formal_filter_checkpoints_20261026/round_1000/backup.json.
-90799598B complete checkpoint SHA76b3cecff93807b90b61202907cc62e5b40c6678d0da2f4258d3a5541ce91b08
-is retained unchanged on server and privately onD. Public inference export30208218B
-SHAaaa262a1a8af05bcdba3292f17f5ffda24d3fefea14bda05b3979e3ed7878f28 is verified
-server/D/GitHub Release textop-filter-policy29d-20261026. Public export deliberately
-omits per-motion sampling arrays and optimizer state; full resume uses the private
-checkpoint. CPU audit verified actual20000 Adam updates,80 finite tensors and25
-identical public model/normalizer tensors. This is intermediate, not40k completion,
-physical acceptance, finalWBC or actual SDK resume validation. Nothing was deleted.
-First CPU audit failed because oldTorch1.13 weights-only parser rejects FLOAT
-opcode71; original source/directory/exit retained. v2 loads only this own SHA-bound
-trusted checkpoint on CPU (Torch1.13.1+cu117, CUDA uninitialized). Training still
-uses unchanged pinned SDK Torch2.5.1. No package/environment changes or SDK runs.
-Next stable policy checkpoint is5000; check workers before using
-provider_tools/backup_formal_filter_checkpoint.py --completed 5000.
-It only backs up the latest stable
-checkpoint, never removes original files, and must not overlap another backup.
-First-checkpoint protection is complete. Revision4 bounded validation mode is
-now separately prepared; actual SDK validation/activation remain pending.
- Existing results/checkpoint_sync_state.json
-still inventories the paused old57D ckpt1000; it is not evidence that a new formal
-filter checkpoint has been backed up. Inspect actual worker commands before any
-new backup job. Checkpoint/file/data cleanup is forbidden.
+Current server run filter_policy_paper69_solid_floor_20261026_v1 is still running:
+2300/40000 internal original target, 46000 actual updates. Effective user
+budget is now5000, managed externally to preserve the original16 frozen runtime
+files/plan. Local hidden coordinator PID50680 is WAITING_VERIFIED_5000_CHECKPOINT;
+check its actual command/state before actions. It exclusively owns the5000 backup
+and stop transition. DO NOT launch another coordinator, manually stop/restart the
+trainer, duplicate backup5000, or edit the16 active files. Old57D/PhyGile/ReactiveBFM
+remain paused and protected.
 
-New background preparation: read CONTACT_FILTER_V3_ENVIRONMENT.md's UPDATE,
-reports/filter_supervision_20261026.md and results/contact_supervision_20261026.
-The new generic CPU process supervisor passed7 actual subprocess cases including
-TERM/KILL timeout, sampler failure and supervisor SIGTERM. It preserves partial
-records and only signals its own newly created group. An unrelated owned sentinel
-was untouched. Continuous resource sampling and failure handling are now integrated
-into the inactive strict supervisor; final process exit and resource hashes are
-bound by v3 acceptance. Local+server updated synthetic protocol tests each passed27.
-No SDK was invoked.16 active training files were unchanged. Old candidate snapshots
-and six-file bytes remain; current nine-file bytes are candidate_runtime_bytes_v2.
-Do not rerun the completed CPU tests or restore old candidates over the new ones.
+At stable5000 checkpoint (>30s, real receipt/SHA), coordinator backs up full private
+state onD and preserves server, verifies the separate public inference export on
+GitHub, THEN requests an early exit. pidfd+original process start time bind signals
+to this exact trainer; no numeric-PID/group-wide kill or other-user signals.
+Backup/network errors leave the trainer running and preserve failure evidence.
+Do not retry a NEEDS_INSPECTION state blindly; inspect exact stage/workers/files.
+If successful, original receipt may sayFAILED/KeyboardInterrupt and supervisor
+exit may be nonzero; preserve it. The separate quick5000_controlled_stop.json
+labels the human-authorized early exit, NOT a numerical failure or40k completion.
+Some transient updates after saved5000 are intentionally not recoverable; saved
+model/Adam/normalizers/sampling statistics are retained for later continuation.
 
-Latest new route: read CONTACT_REPLAY_V4_ENVIRONMENT.md and
-reports/contact_replay_v4_20261026.md; evidence in results/contact_replay_v4_20261026.
-New evaluate_contact_filter_v4.py/supervise_contact_filter_v4.py use the new spec
-contact-filter-v4-spec.json and shared pure mode helper. This is executorrevision4,
-not a new acceptance schema: formal outputs still requirev3 finalization.
-Both modes require the actual completed40k/800k teacher and its successful exit.
-Validation selects8 complete original50..500frame sources, no truncation, one
-batch8,1024 control-call/600s run budget plus bounded shutdown. It cannot produce
-formal evidence/decisions. New validation/formal/real-SDK flags remainfalse.
-Local+server each13 new CPU mode/selection/nonacceptance checks passed. Current
-1500-round actual receipt was rejected for validation; both disabled CLI modes
-exited before SDK or teacher-file reads. Common SDK lock observed busy. Metadata
-planning found8 whole sources of52..64frames; exact indices/hash mapping stay private
-on server and SHA-verifiedD datasets/contact_replay_v4_private_20261026.16 active+9
-older inactive files unchanged. Exact new5-file bytes in candidate_runtime_bytes_v4.
-Do NOT rerun stage_contact_replay_v4.py or either existing CPU run directory.
+Activation receipt results/quick_reproduction_20261026/activation.json records only
+early_stop_enabled false→true after checks; original training plan remains
+SHA153f8237a17928ffc3a28b7b00e366742a4ff0080e8fbb6bac87e57da8eb291d.
+Local11 guard tests and server11 passed; independent v1 review found numeric PID
+reuse risk before activation, now fixed with pidfd. Server3 actual CPU-fixture
+pidfd checks passed (no training signals), fresh document_v2 actualexit0/19checks,
+frozen16 intact, disabled/no SDK/no signal at witness time. Minor docs results-path
+ambiguity is recorded: paths are baseline-relative. Exact old/new code and all
+witness reports are in results/quick_reproduction_20261026; enabled_control_runtime_bytes
+preserves byte bindings. Do not rerun preflight/CPU tests after activation.
 
-Actual SDK execution still unperformed. Next prepare post-exit validation witness
-verifier/activation evidence, then, AFTER formal training finishes and releases
-its lock, use real private40000 checkpoint and independent author/document runs.
-Existing1000 private checkpoint/public inference weights cannot substitute for it.
-Validate actual exits/resources/8 full trials/natural completion before formal
-activation; document's future command is not authorization to overlap currentSDK.
-The earlier contact-consistent v3 candidate and original Plane executor remain
-preserved, disabled and superseded by the new route for this purpose. Do not use CPU receipts as physical acceptance or
-claim all-source runtime/quality from short-source validation. Main training and
-all physical-filter/corpus/generator gates remain intact.
+NEXT: prepare a SEPARATE quick/pilot replay route that accepts the genuinely
+backed-up5000 snapshot + actual user-controlled-stop evidence and remains labeled
+QUICK_REPRODUCTION_NOT_PAPER_COMPLETE. The current v4 formal/validation route still
+requires40k and must not be weakened or accidentally invoked with5000. Use the
+same tested backend/contact profile/557D model, preserve failures and per-source
+mapping privately. No new SDK while current trainer holds the common lock. After
+actual early exit and fresh resource/lock acceptance, run real small-sample
+tracking first, with actual exit/resource records and real execution video. Do
+not apply5% failure rejection to all8278 based only on an undertrained teacher.
+If pilot quality is inadequate, continue from saved state; no automatic restart
+of the old40k run just because its raw receipt shows a controlled interruption.
+Generator budgets were NOT silently reduced; maintain explicit quick/paper scope
+and decide subsequent data/training budget based on real pilot results. User has
+authorized automatic continuation after suitable data/physical checks.
 
-Data8278 source+8278 mirrors, text/69D/FK/private backups already complete and
-notified. No repeat GMR/FK/archives/audits. Two-pass real filtering, accepted
-corpus, VAE/LDM/finalWBC/closedloop still pending. Once real filtering, final corpus,
-normalization, CLIP and resources pass, automatic training continuation is already
-authorized. Keep source/failure arrays private; publish only code and aggregates.
-Formal-start notice was already sent; healthy progress and background preparation
-are quiet. Notify next real physical-filter/corpus or complete-training milestone.
+Protected completed data:8278 original+8278 mirror GMR/text/69D/FK/private backups
+complete;13selectedCMU missing/403authorprivate unavailable. Source fp
+0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7; raw/text/source
+indexes remain private. No repeat GMR/archives/unchanged audits. First1000 full
+checkpoint SHA76b3cecff93807b90b61202907cc62e5b40c6678d0da2f4258d3a5541ce91b08
+already backed up private server+D; inference-only export SHAaaa262a1a8af05bcdba3292f17f5ffda24d3fefea14bda05b3979e3ed7878f28 onGitHub release
+textop-filter-policy29d-20261026; don't repeat. Never publish full per-motion state
+or treat inference export as a complete resume checkpoint. Backupv1 legacy Torch
+reader failure and CPUv2 recovery remain recorded.
+
+Resources unchanged: headless GPU1/Torch0.65, CPU0–3, SDK GPU0 auxiliary~456MiB
+reported. Shared dependencies and other users untouched. Validated static solid
+floor topz0/friction1/restitution0/selfcollision retained; paper rewards/PPO same.
+SDK native-close hang/fallback still a limitation. Preserve all checkpoints/data,
+unique records and failed attempts. No repeated completed EngineAI/DreamControl
+cleanup; protect.venv-pbhc-training. New pilot/fullVAE/LDM/WBC/video still need
+capacity budgeting. Existing old57D checkpoint_sync_state watcher is separate.
+
+Publish code/aggregate results/permitted videos/reports to the existing branch
+andD folder. Reports must show effective quick target and actual transition,
+never overwrite back to stale40k-only narrative. Notify on the actual quick
+handoff/pilot results or required intervention; healthy waiting stays quiet.
 
 
 User2026-10-25 explicitly requests completing data preparation/processing, then

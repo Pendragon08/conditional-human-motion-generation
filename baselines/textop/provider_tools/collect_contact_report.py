@@ -6,6 +6,16 @@ D=pathlib.Path('D:/具身智能/TextOp复现_20261024')
 formal_path=R/'formal_launch/progress.json'
 formal=json.loads(formal_path.read_text(encoding='utf-8')) if formal_path.exists() else {}
 formal_running=formal.get('status')=='RUNNING_FORMAL_FILTER_TRAINING' and formal.get('optimizer_updates',0)>0
+quick_path=B/'configs/quick-reproduction-plan-20261026.json'
+quick=json.loads(quick_path.read_text(encoding='utf-8')) if quick_path.exists() else {}
+quick_active=quick.get('early_stop_enabled') is True
+quick_state_path=B/'results/quick_reproduction_20261026/coordinator_v1/state.json'
+quick_state=json.loads(quick_state_path.read_text(encoding='utf-8')) if quick_state_path.exists() else {}
+quick_ready=quick_state.get('status')=='QUICK_CHECKPOINT_READY_FOR_PILOT'
+if quick_ready:training_note='快速版已保存5,000轮/100,000次更新并受控结束，等待小规模真实评估；原40,000轮未完成'
+elif formal_running:training_note='进行中：{}/{}轮，{}次实际更新'.format(formal.get('completed_learning_iterations'),'5,000（快速版预算）' if quick_active else '40,000',formal.get('optimizer_updates'))
+elif quick_active:training_note='快速切换状态待核查：'+quick_state.get('status','未知')+'；保留原退出记录'
+else:training_note='未取得正在运行的正式优化凭据；以真实退出/失败收据为准'
 comparison=json.loads((R/'contact_counterfactual_comparison.json').read_text(encoding='utf-8'))
 labels={'baseline':'原 Plane 地面','no_self_collision':'仅关闭自碰撞（诊断）','no_floor':'仅移除地面（诊断）','solid_floor':'静态箱体平地，保留自碰撞（候选）'}
 md=['# TextOp：地面接触对照与候选修复验证','',
@@ -45,7 +55,7 @@ md.extend(['',
 '## 当前论文流程状态','',
 '|阶段|状态|','|---|---|',
 '|可得数据 GMR、文本对齐、镜像/69D 编码、私有备份|8,278 源 + 8,278 镜像已完成，之前已通知|',
-'|特权跟踪策略正式训练|'+('已启动：{}/40,000 轮，{} 次实际优化更新；仍未完成'.format(formal.get('completed_learning_iterations'),formal.get('optimizer_updates')) if formal_running else '未取得正在运行的正式优化凭据；以真实退出/失败收据为准')+'|',
+'|特权跟踪策略训练|'+training_note+'|',
 '|宽松 + 严格两轮物理筛选|未执行|',
 '|合格语料与 VAE 200,000 / LDM 300,000|未启动完整训练|',
 '|最终 WBC、生成增强、生成—执行视频|待后续训练和真实评价|','',
@@ -54,10 +64,10 @@ md.extend(['',
 '## 证据及元数据更正','',
 '公开聚合证据在 results/contact_replay_20261026 和 results/full_contact_20261026；私有初始状态、来源映射及 SDK 日志位于本地 datasets/contact_diagnostics_private_20261026 和服务器独立 run 目录，已经逐文件 SHA 核验，未上传公开仓库。','',
 '原始无自碰撞/无地面收据继承的 simulation_or_reward_changes=false 与实际不符；真实设置以 case/spec 为准，更正已保存在 contact_counterfactual_comparison.json，原始文件保留。零更新对照中的“one real PPO iteration”和继承的 expected_optimizer_updates=20 也不代表训练：实际为一次 rollout、0 优化更新。候选收据 paper_settings 中原 Plane 描述是基线设置，实际箱体在 diagnostic_floor/intervention 中明确记录。后续独立 PPO 规格明确为 10 轮/200 次更新。',''])
-(R/'solid_floor_ppo_aggregate.json').write_text(json.dumps({'runs':ppo,'formal_profile_changed':formal_running,'physical_filter_executed':False,'full_generator_training_started':False},indent=2),encoding='utf-8')
+(R/'solid_floor_ppo_aggregate.json').write_text(json.dumps({'runs':ppo,'formal_profile_changed':bool(formal.get('contact_profile')),'physical_filter_executed':False,'full_generator_training_started':False},indent=2),encoding='utf-8')
 if formal_running:
  md.extend(['## 正式策略训练已启动','',
- '已经按既有授权接续服务器上的 40,000 轮特权跟踪策略训练。采样时已完成 {} 轮、{} 次优化更新；这不是生成器训练，也不等于物理筛选完成。'.format(formal['completed_learning_iterations'],formal['optimizer_updates']),'',
+ ('当前按用户新的快速复现安排，目标为5,000轮；原始40,000轮设置保留，检查点备份后受控结束。' if quick_active else '已经按既有授权接续服务器上的40,000轮特权跟踪策略训练。')+'采样时已完成{}轮、{}次优化更新；生成器训练和物理筛选尚未完成。'.format(formal['completed_learning_iterations'],formal['optimizer_updates']),'',
  '采用已实际验证的静态箱体地面，仍保留自碰撞和论文 PPO 参数。CPU 绑定 0–3，CUDA/Torch 优化指向 GPU1、显存比例上限 0.65；独立复核观察到 SDK 在 GPU0 还建立约 456 MiB 辅助上下文，不能宣称整个 SDK 仅占用 GPU1。当前资源采样保存在启动证据中。','',
  '检查点计划为 1,000 轮及每 5,000 轮，启动预算包含 9 份检查点、2 GiB 保留空间和 512 MiB 日志余量。每次保存及每 100 轮复查容量；既有数据集和检查点不删除。','',
  '下一阶段是持续检查真实训练、备份新检查点、完成宽松与严格两轮物理筛选；最终语料验收后自动接续 VAE 200,000 → LDM 300,000 与实际闭环视频。'])
@@ -72,6 +82,9 @@ if backup_path.exists():
   md.extend(['', '## 首个正式策略检查点已备份', '', '第1,000轮/20,000次实际优化更新的完整检查点已保存，服务器原文件与D盘私有备份SHA一致。单独的推理权重已在服务器、D盘及GitHub Release三端核验；公开版本不含逐动作统计和优化器，完整恢复须使用私有检查点。没有删除文件或中断训练。这不是40,000轮完成、物理筛选通过或生成器训练完成。', '', '[推理权重及范围说明]('+backup['github_release']+')。详细记录见首个正式策略检查点与备份_20261026报告。'])
 if (B/'results/contact_replay_v4_20261026/server_cpu_author_v1.json').exists():
  md.extend(['', '## 有界回放验证入口已准备，尚未运行SDK', '', '新执行器版本4增加独立验证模式：使用真实完成的40,000轮策略，回放8条完整短源动作，保留控制调用与超时预算。当前三个启动/验证标志仍禁用，本地与服务器各13项CPU检查通过，16份活动训练文件及9份旧候选文件不变。实际SDK验证、验证输出验收和正式全量筛选仍未完成；详细记录见有界物理回放验证入口准备_20261026报告。'])
+if quick_active:
+ md.insert(4,'**当前优先级已调整：先5,000轮快速验证。** '+training_note+'。原论文完整版仍保留40,000轮口径；当前不能算论文同规模结果。')
+ md.extend(['', '## 用户选择快速复现', '', '5,000轮检查点和完整备份核验成功后，只结束本次训练，再做小规模真实跟踪评估。全部数据、检查点和原始失败/中断记录保留；不以早期策略直接大批量剔除数据，也不放宽论文完整版的验收口径。详情见TextOp快速复现安排_20261026报告。'])
 text='\n'.join(md)
 (B/'reports/contact_isolation_20261026.md').write_text(text,encoding='utf-8')
 D.mkdir(exist_ok=True);(D/'地面接触对照与候选修复_20261026.md').write_text(text,encoding='utf-8')

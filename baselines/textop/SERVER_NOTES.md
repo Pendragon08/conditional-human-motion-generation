@@ -260,3 +260,14 @@ ParallelGMR author_v2 passed unchanged comparison, serial100.41s/parallel92.83s 
 ParallelGMR author_v3 preserved exact numerical outputs but serial99.38s/parallel92.83s(1.07x). Revision4 declared beforedispatch changes only idleOpenMP wait behavior toPASSIVE/KMP_BLOCKTIME0, retainingTorch/MKL4 andOpenBLAS1 andsame4CPUset. No numeric tolerance change; previous source/receipts retained. Awaitactual benchmark before enabling.
 
 ParallelGMR finalauthor_v4 and independentdocument_v1 both actualexit0,48 independentchecks pass,112array/144metadata comparisons allzeroerror. Speed2.4086/2.3600x on8motions. Specb797d143...,helper79d532ac...,entrypoint06539b1a... validated andactivated forBMLrub/KIT only. BMLrub stagedrawreverified2139, parent3653970/4workers live, first13processed0failUTC14:55. Oldcoordinators naturally exited on benchmark mutualexclusion guard; failures retained, no raw retransmission. NewWindows61460/38236 authoritative observers; seeCONTINUATION for backup8h and privatecontentaudit3626. Fullphysicalfilter andgenerationtraining remain false.
+
+### quick budget2026-10-26 — unchanged warm b7a3bf0c
+Human requested faster reproduction; effective5000-round budget is external to
+the frozen40k run, preserving all16 runtime files and numerical settings. No
+package/GPU-kernel rebuild. New stdlibCPU control uses pidfd via installed Linux
+x86_64 headers on Python3.8 (pidfd_open434/send_signal424);3 actual CPU-fixture
+checks passed, no training signal.11 guard checks and fresh disabled v2 doc
+preflight actualexit0/19checks passed. Original PID race review/fix and minor
+docs baseline-relative-path clarification retained. CoordinatorPID50680 waits for
+checkpoint+private/public backup before a user-authorized early exit. This is not
+an already-executed SDK stop or proof of tracking quality; quick pilot still pending.
