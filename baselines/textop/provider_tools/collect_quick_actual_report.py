@@ -29,6 +29,14 @@ for p in sorted(R.glob('*/receipt.json')):
     assert j['output_writers_closed'] and ex['child_exit_code'] == 0 and ex['supervision_passed']
     videos.append((p.parent.name, j))
 samples = [j for j in rows if j['stage'] == 'sample']
+generated_videos=[]
+for p in sorted((B/'results/generated_execution_20261026').glob('*/receipt.json')):
+    j=json.loads(p.read_text(encoding='utf-8'));ep=p.parent/'exit.json'
+    if j.get('status')=='RECORDED_ISAACLAB_POSE_VIDEO_CREATED' and ep.exists():
+        ex=json.loads(ep.read_text(encoding='utf-8'))
+        assert ex['child_exit_code']==0 and ex['supervision_passed'] and j['output_writers_closed']
+        assert j['provenance']['source_kind']=='trained_generated_reference_actual_isaaclab_execution'
+        generated_videos.append((p.parent.name,j))
 now = datetime.datetime.now().astimezone().isoformat(timespec='seconds')
 md = ['# TextOp快速复现：真实跟踪评估与录像', '', '更新：'+now, '',
       '**当前属于5,000轮策略的快速验证；论文40,000轮完整版、全库物理筛选和文本生成—执行闭环尚未完成。**', '',
@@ -122,6 +130,27 @@ if data_proof.exists():
         md += ['VAE2,000步入口已实现并独立核验；以实际训练收据判断是否开训，LDM3,000步仍需其独立入口与已训练VAE质量验收。原论文VAE200,000/LDM300,000配置保留。', '']
 else:
     md += ['随后构建保留REFERENCE+BABEL的私有训练语料，复核源数组与来源/姿态划分、训练集69D归一化、真实完整CLIP缓存、实际加载与断点恢复，再训练明确标注的快速生成器。VAE2,000/LDM3,000目前仍是独立禁用提案，尚无已验收训练入口或生成器结果；原论文VAE200,000/LDM300,000配置保留。', '']
+generation_receipts=[]
+for p in sorted((B/'results/quick_generation_20261026').glob('*/receipt.json')):
+    j=json.loads(p.read_text(encoding='utf-8'))
+    if j.get('status')=='TRAINED_QUICK_TEXT_REFERENCE_GENERATED':generation_receipts.append((p.parent.name,j))
+if generation_receipts:
+    md += ['## 新生成动作的真实执行原型', '',
+           '真实VAE2000与LDM3000已进行文本条件生成：两帧中立初始参考，后续只使用自身预测的末两帧历史，32个primitive各生成8帧，新增未来256帧。自写指令先为“walk forward”，后为“wave your right hand”；不读取真实未来动作或未来后验。两次独立生成的258×36姿态及CLIP嵌入逐值一致，169项独立核对通过。它验证生成路径与可复验性，文本语义匹配仍未验收。', '',
+           '|SDK独立运行|生成参考帧数|实际控制步|受控物理子步|自然完成|失败|文本切换目标已消费|身体平均误差m|关节RMSErad|',
+           '|---|---:|---:|---:|---|---|---|---:|---:|']
+    for pp in sorted((B/'results/generated_execution_20261026').glob('*/pipeline.json')):
+        root=pp.parent;combined=json.loads(pp.read_text(encoding='utf-8'));rp=root/'replay/receipt.json';ep=root/'replay/exit.json'
+        if not rp.exists() or not ep.exists():continue
+        rr=json.loads(rp.read_text(encoding='utf-8'));ex=json.loads(ep.read_text(encoding='utf-8'));trial=rr['trial'];metrics=rr['own_tracking_metrics']
+        assert combined['output_writers_closed'] and rr['output_writers_closed'] and ex['child_exit_code']==0 and ex['supervision_passed']
+        md.append('|{}|{}|{}|{}|{}|{}|{}|{:.6f}|{:.6f}|'.format(root.name,trial['reference_frames'],trial['control_steps'],rr['actual_controlled_physics_substeps'],trial['complete'],trial['failed'],rr['text_switch_physically_consumed'],metrics['aligned_14_body_position_error_mean_m'],metrics['joint_rmse_rad']))
+    md += ['', '这是同一条短生成序列的作者与独立重复试验，不能相加称为两个不同动作样本。参考身体数据通过跟踪器原始URDF的真实SDK前向运动学导出，再由原5k/100k特权策略实际执行；两次均保留自动重置前的终止状态。SDK独立一致性审计416项通过。首次审计的四项失败来自验证器假设：跨NumPy版本float64角速度舍入差最大3.55e−15rad/s，以及同一地面Cube的等价size/scale文本表示；原失败保留，仅修正验证器，没有改数据、仿真或物理阈值。', '',
+           '当前已验证的是离线“文本生成→机器人参考→仿真反馈控制”原型。控制包含257个20ms区间；没有额外验收最后参考帧端点。独立实测约30ms/primitive只是神经推理耗时，未验证在线文本输入、异步队列、50Hz执行期限或实时交互。初次SDK原生关闭仍未返回，使用原有有界退出，差异保留。', '',
+           '**生成质量仍待验收：固定完整采样Huber从0.310267升到0.607536。单条序列被物理跟踪不等于文本语义或论文质量通过。**', '']
+    for name,j in generated_videos:
+        md += ['新生成动作的实际执行录像：{}，{}帧／50fps／{:.2f}秒，媒体SHA {}；已独立检查首、中、末帧并在服务器与D盘核验。影片由实际IsaacLab执行姿态绘制，CPU渲染不新增动力学。新影片先保存在本地私有目录，公开仓库保存代码、聚合结果与报告。'.format(name,j['frames_decoded'],j['frames_decoded']/50,j['video_sha256']), '']
+    md += ['后续顺序：先补齐快速版在线文本切换、异步生成与实际控制时序验证，并评估采样误差和语义效果；然后扩大真实物理筛选，完成数据/质量/持久容量验收，再进入论文40,000轮跟踪策略、VAE200,000步、LDM300,000步完整训练。快版课程和学习率时钟已缩短，正式阶段须独立记录，不能把快版计数当作论文完整训练。', '']
 md += ['第一阶段5k特权teacher原型不能冒充论文最终可部署WBC或完整实时系统。', '',
        '数据范围差异：13条所选CMU导出缺失，403条作者私有动作不可得；8,278条来源不等于作者全部12,296条公共跟踪动作。公开仓库保存代码、聚合证据、推理权重、许可允许的科研结果录像和报告；完整Adam/逐动作采样状态与受限资产保持私有。', '',
        '[5,000轮推理权重与说明]('+backup['github_release']+')。完整恢复仍须私有检查点。', '',
@@ -138,6 +167,10 @@ for name, j in videos:
     movie = D/'videos/private'/name/'video.mp4'
     if movie.exists():
         body += '<h2>本地录像：'+html.escape(name)+'</h2><video controls preload="metadata" style="max-width:100%" src="videos/private/'+html.escape(name)+'/video.mp4"></video>'
+for name,j in generated_videos:
+    movie=D/'videos/private'/name/'video.mp4'
+    if movie.exists():
+        body += '<h2>新生成动作的真实执行录像</h2><p>VAE2000/LDM3000生成参考，由5k策略在IsaacLab实际执行；离线原型，实时交互与语义质量待验收。</p><video controls preload="metadata" style="max-width:100%" src="videos/private/'+html.escape(name)+'/video.mp4"></video>'
 page = '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>TextOp真实跟踪评估与视频</title><style>body{max-width:1120px;margin:40px auto;padding:0 24px;font:17px/1.7 system-ui;color:#203040}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccd6df;padding:8px}pre{white-space:pre-wrap}a{color:#135fa3}</style>'+body+'</html>'
 (D/'TextOp真实跟踪评估与视频_20261026.html').write_text(page,encoding='utf-8')
 main = D/'TextOp下载与训练报告.html'
@@ -145,4 +178,4 @@ prior = D/'TextOp主报告_真实pilot前快照_20261026.html'
 if main.exists() and not prior.exists():
     shutil.copy2(main,prior)
 main.write_text(page,encoding='utf-8')
-print(json.dumps({'actual_closed_runs':len(rows),'actual_local_videos':len(videos),'full_paper_generator_trained':False,'whole_library_filtered':False,'generated_physics_closed_loop_verified':False}))
+print(json.dumps({'actual_closed_reference_pilot_runs':len(rows),'reference_tracking_videos':len(videos),'generated_execution_videos':len(generated_videos),'full_paper_generator_trained':False,'whole_library_filtered':False,'real_time_generated_physics_closed_loop_verified':False}))

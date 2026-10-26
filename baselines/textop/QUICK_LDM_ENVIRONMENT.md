@@ -1,3 +1,14 @@
+## CURRENT — completed quickLDM3000, no training worker remains
+
+Actual3000attempts/3000AdamW/0skip/exit0/closedwriters;1000/2000/3000 fullfiles
+reloaded model/Adam/ALLRNG exactly, all3 nowSHAverified at correct server+D
+privatepath. Do notrerun training/witness/backup. FixedfullsamplingHuber rose
+.3102665581→.6075362638; qualitynotaccepted. Offline actualgenerated-reference
+physics author/fresh naturallycompleted and privatevideo exists; realtime/
+semantic/fullpaper stillpending. See latestCONTINUATION andactualresults.
+Original sources/specs/receipts immutable. Localcollector pathencodingerror
+and hashverified three-file migration preserved separately; no deletion.
+
 ## CURRENT2026-10-26 19:42 — actual quick_ldm_train_v1 RUNNING, runtime frozen
 
 Author ldm_kernel_author_v2 and fresh ldm_kernel_document_v1 BOTH completed,

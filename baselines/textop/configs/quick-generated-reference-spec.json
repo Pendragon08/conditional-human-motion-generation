@@ -1,0 +1,56 @@
+{
+  "schema": "textop.quick_generated_reference.v1",
+  "generation_enabled": true,
+  "sdk_export_enabled": false,
+  "physical_execution_enabled": false,
+  "seed": 20261026,
+  "trained_models": {
+    "vae": {
+      "receipt": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/vae_runs/quick_vae_train_v1/receipt.json",
+      "receipt_sha256": "abdd2bf422af2c0b1cf6215fdd2119707a7a5ff421e1358a97b1d55a7ecfb582",
+      "exit": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/quick_vae_quick_vae_train_v1_exit.json",
+      "exit_sha256": "f1a0da1f70a314e8ec70a10693077b96f5d46a78d836b4c02ffabfb2b7d2ee99",
+      "checkpoint": {
+        "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/vae/checkpoints/vae_state_2000.pth",
+        "bytes": 513523901,
+        "sha256": "5109f593309349504d52677997bcdd21de3d27e045b9154be8c06278182b1219",
+        "manager_step": 2000,
+        "actual_optimizer_updates": 2000
+      }
+    },
+    "ldm": {
+      "receipt": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/ldm_runs/quick_ldm_train_v1/receipt.json",
+      "receipt_sha256": "b74e84a4fb466c406f41d1285154ddc4cf00af6774771484b77d6b24eba63925",
+      "exit": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/quick_ldm_quick_ldm_train_v1_exit.json",
+      "exit_sha256": "bb3189cc3aaf0d5ef53d9226b8bd382e240a99dcdd80209e306b4938b553fb29",
+      "checkpoint": {
+        "path": "/home/ouyanghao/textop-quick69-checkpoints-20261026/ldm/ldm_state_3000.pth",
+        "bytes": 223731095,
+        "sha256": "1fae633c923cb7363017615d2765608dbade95dc9d548a0c2fced1c3935cf68c",
+        "manager_step": 3000,
+        "actual_optimizer_updates": 3000
+      }
+    }
+  },
+  "corpus_dir": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/corpus_v1",
+  "corpus_receipt_sha256": "d0a44b975c8f390f25dc5e95c414b3b8354dacacc19d5673d7a86e6d21c9c8f1",
+  "bound_sources": {
+    "scripts/paper69_runtime.py": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
+    "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e",
+    "configs/paper69-env-spec.json": "30bcaa928d4e7ed4cf7359d88dfe909334718957fffbd07bc98510467612d421",
+    "configs/quick-ldm-runtime-spec.json": "c199af5ead10df1b18a0efc503a12fe73df374fec1dddfc8404125d053f354ab"
+  },
+  "text_schedule": [
+    {
+      "text": "walk forward",
+      "primitives": 16
+    },
+    {
+      "text": "wave your right hand",
+      "primitives": 16
+    }
+  ],
+  "executor_sha256": "25539897101a9aaf99ecf5fcb232aa45a175f2965b159a00915022d4f6554eba",
+  "supervisor_sha256": "d0c512a53dbf18497b697307b1210bf632ad58234b69b98097cf4a1d4f6a4857",
+  "scope": "Offline two-text actual trained generation; neutral initial2 then ownreference history,32x8 future frames, no posteriorfuture, no text-semantic/physical/real-time claim"
+}

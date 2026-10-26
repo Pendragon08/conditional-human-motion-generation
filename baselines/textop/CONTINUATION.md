@@ -1,4 +1,113 @@
-## CURRENT2026-10-26 19:49 checkpoint update — LDM remains RUNNING
+## CURRENT — 2026-10-26 verified offline generated-execution prototype + actual video
+
+This overrides lower RUNNING/empty-generation claims. VAE2000 and LDM3000 both
+FINISHED,2000Adam/3000AdamW updates,0skips,actualexit0/closedwriters. AllVAE1000/
+2000 andLDM1000/2000/3000 realfullstates file-reloaded model/optimizer/ALLRNG/
+clock exact and privatelySHAbacked up server+CORRECT D/checkpoints/private.
+LDM3000 SHA1fae633c923cb7363017615d2765608dbade95dc9d548a0c2fced1c3935cf68c.
+VAE2000 SHA5109f593309349504d52677997bcdd21de3d27e045b9154be8c06278182b1219.
+Do NOT retrain/re-witness/rebackup unchanged models. LDM finalfixed12x4 complete
+5-stepCFG5 samplingHuber WORSENED .3102665581→.6075362638; qualityNOTaccepted.
+ActualLDM full logs/metrics/resource/process/outerexit backup Ddiagnostics/
+quick_ldm_train_v1 (verify source_hashes.json marker), no rawlogs published.
+
+Important priorpatherror corrected: collect_quick_ldm.py had been cloned using
+WindowsdefaultGBK, corrupting onlyDdestinationliteral. All3 LDMfiles were
+present at wrong own-createdDpath with matchingSHA; moved individually using
+nativePowerShell, absolute roots+before/afterSHA checked, NOdata/checkpoint
+was deleted, server originals unchanged. Correct collector now explicitUTF8.
+Originalbadsource/failure notes preserved results/quick_ldm_20261026/
+local_backup_path_correction_v1.json. Do NOT rerun migration or move files again.
+
+Realnewtextgeneration generated_author_v1 + freshgenerated_document_v1 already
+completed actualexit0,169independentchecks passed, exactsame arrays. TrueVAE2k/
+LDM3k/realCLIP, onlyneutralinitial2 + ownpredictedhistory2,32x8 futureframes,
+258totalposes/50Hz, two selfwrittencommands16primitives each. NoGTfuture or
+posteriorconditioning; global69Ddecode/name/world/normalization/history32hashes
+checked. MeanprimitiveGPU-synchronized~.0306s is OFFLINE timing, not realtime.
+Read QUICK_GENERATION_ENVIRONMENT.md. No new optimizer. Allgenarrays private
+server+Ddatasets/generated_reference_private_20261026; do not regenerate.
+
+GeneratedSDK author generated_sdk_author_v1 and freshgenerated_sdk_document_v1
+both genuinely CLOSED2serialSDKchildren(exportFK,thenphysics),eachchild+outer
+exit0/closedwriters; each trial naturallyfinished257controls/1028controlled
+physics substeps, nofailure, textswitchreference130 consumed. SameONE generated
+258pose stream, two independent repeats NOT two uniqueactions. Bodymeanerror
+.0430411138m/max.2020034045m,29jointRMSE.1284052581rad; owncurrenttarget metrics,
+notpaper orsemantic/finalendpoint. Nativeclosefalse/fallbacktrue preserved.
+NewSDKspec f9da18f6c5d83fc26a4375c3834867fbe30ee6fab61e551d53124572ae9503e0,
+separate generatedschema, nofake8278source identity. Profile3SDKsources/spec
+are immutable. Private perrun reference/tracearchives already server+D,
+allworkers done, no newSDKdispatch. Read QUICK_GENERATED_EXECUTION_ENVIRONMENT.
+Fresh audit416/416passed. Originalverifier-v1fourfails retained: float64
+NumPy1.26vs2.3 angularvelocity roundoff3.55e-15rad/s, and wrong literalUSDA
+Cube2 instead ofactual Cube1*scale4000/4000/.2 withtranslatez-.1. V2comparison
+8float64eps*scale + semanticgroundparse ONLY, no source/spec/data/physical
+threshold edits. Provider capacity interrupted reporting twice, notexperiments;
+actualSDKcommands ran onceeach. Complete35.86MB145member evidence+v1/v2audit
+onDdiagnostics/generated_execution_document_v1; onlyREPORT/SUMMARY public.
+
+NEW actualgenerated-execution video completed by fresh CPUdocument ONCE:
+generated_execution_video_document_v1,258frames/640x480/50fps,5.16splayback,
+actual257controlintervals5.14s,configuredfuture256frames5.12s. MP4 1039667B,
+SHA42cf13845b885c0ab84ac8e8027c1efd352be5c994f546a953da88290416384f.
+Actualchild/outer0/reaped/closedwriters/no timeout. Originalvisualcore exact
+fda597... andnumericdbb430... unchanged fromauthor_v4/document_v2 warmkernel;
+new render_generated_execution.py only substitutes truthful generatedpipeline
+provenancecallback, no fakequickpilot receipts. No repeatedrenderfixtures or
+extraauthorfullvideo. Source/69proofs/37assets stable, Mesa/CPU0-3/CUDAempty/
+noNVIDIAlibs/compiledplane1, no newSDK/physics/optimizer. Wholemedia independently
+decoded258 andfirst/mid129/last257 visuallychecked byagent AND parent. Private
+Dvideos/private/generated_execution_video_document_v1, notuploadedpublic.
+Originalspec.pending disabledprose is historicalmetadata, actualenableflags
+true; preservebytes/hash, aggregatecorrectiononly. Do NOT renderagain or mutate
+frozenSDK/neural/video specs. Newvideo-wrapper2sources+config remainimmutable.
+Provider capacity firstinterrupted videoagent BEFOREdispatch; resumed same
+agent after allrun/exit/driver absent, actualrendercommand executedONCE.
+
+Currentquick42REFERENCE corpus31train/11val/174pairs/74nonemptyCLIP/14505TRAIN
+featureframes accepted, allprivatebackupdone. Data8278 preprocessing/GMR/FK
+andpilot64/42natural22failed alreadycomplete; no full-libraryphysacceptance.
+Old57D/PhyGile/ReactiveBFM remainpaused, allauthoritativeassets/checkpoints/
+unique failures protected. Sourceexactbyte bundles and publicreports need
+GitHub+Dsync beforefinal; latestcommit verified inprovider_tools/github_sync.
+Cfree last~803MB/D~3.90GiB; bulkprivate archives stayD, Csmallmetadataonly.
+Never copy D/diagnostics or D/results/quick_generation/independent_document_v1
+rawbundles into publicrepo (containsarrays). OnlyapprovedREPORT/SUMMARY public.
+
+USER20:xxasked currentprogress andconfirmed sequence: firstquick ENTIREflow,
+thenfulltraining. Parent answeredyes and willnot startfullblindly. Offline
+prototype is verified, but online text-input/asyncgeneration/actual50Hzcontrol
+scheduling and semanticquality are NOTyetvalidated. Nextprimary: implement a
+separate bounded ONLINE prototype, actualtext hot-switch duringphysics, own
+referencehistory2→future8, truthful command/chunk availability/latencies and
+misseddeadlines; no silenthold/unproducedfuture/referenceendpoint claims.
+Investigate exactMotionCommand future-lookahead indices before IPCbufferdesign.
+An exacttrackerURDF analyticFK could be independently checked CPUagainst the
+alreadycaptured actualSDK full258pose export (and bounded additional existing
+reference poses) to avoid a newkinematicghost alteringphysics. Do not use GMR
+visualFK as trackerbodyFK without proof. Newonline pairedgeneratorTorch1.13 +
+SDK2.5 processes must be ONE resource-bound exclusive experiment, nootherSDK
+job overlap; declare intentionaltwo-workerGPU1 cooperation/aggregateTorchcap
+<=.65/CPU0-3 and actualresource beforedispatch, nothiddenbackgroundoverlap.
+Alloldofflineprofiles stayimmutable. Seededauthor/freshdoc execution required
+fornewprofile, no package/sharedsource/asset edits. Don't mistake offline
+30msinference for successfulliveinteractive latency. Preserve allfailures.
+
+After quickwholeflow/qualityreview, expandrealphysicsfiltering and69Dcorpus,
+complete remainingfull-data/normalization/CLIP/resume/persistent-capacity gates,
+then originalpaper40k teacher/VAE200k/LDM300k. Quickcurriculum/LRcompressed100x,
+not an exactpaper continuation; explicitnewfullrun or declaredwarm-start only.
+LDMsamplingerror/semanticcondition needsdiagnosis, no silentCFG/loss/threshold
+changes or rejectionofunattempteddata. Fullavailable8278 differsauthor12296:
+13CMUexports+403private unavailable. Fullscale storage must be rebudgeted,
+existingdata/home+Windowsfree snapshots don'tguaranteeallfuturecheckpoints.
+OnlyrecoverableGitHub-backedsoftwarecopies can becleaned, no authoritative
+orpauseddependencies .venv-pbhc-training deletion. No repeatedpermissionask;
+continuealreadyauthorizedscope, notify only newsubstantiveresults/failures/
+requiredinput. Thisofflinequickpass is NOT fullpaperorfinalWBCcompletion.
+
+## HISTORICAL2026-10-26 19:49 checkpoint update — LDM remains RUNNING
 
 Latest genuine collected quick_ldm_train_v1:1100/3000 primitiveattempts,
 1100 actualAdamW updates,0skips, noexit. Real1000 LDM fullstate has now been

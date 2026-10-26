@@ -1,7 +1,7 @@
 """Collect actual quick-LDM evidence; optionally back up stable real snapshots privately."""
 import argparse,hashlib,json,pathlib,shutil,subprocess
 from session import remote
-B=pathlib.Path(__file__).resolve().parents[1];D=pathlib.Path('D:/鍏疯韩鏅鸿兘/TextOp澶嶇幇_20261024')
+B=pathlib.Path(__file__).resolve().parents[1];D=pathlib.Path('D:/具身智能/TextOp复现_20261024')
 p=argparse.ArgumentParser();p.add_argument('--run',required=True);p.add_argument('--backup-stable-checkpoints',action='store_true');a=p.parse_args();assert a.run.isidentifier() and a.run.isascii()
 script=r'''
 import pathlib,json,hashlib,time

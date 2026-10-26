@@ -1,0 +1,85 @@
+{
+  "status": "GENERATED_REFERENCE_PHYSICS_TRIAL_FINISHED",
+  "stage": "replay",
+  "quality_label": "QUICK_REPRODUCTION_NOT_PAPER_COMPLETE",
+  "source_kind": "trained_generated_reference",
+  "optimizer_updates": 0,
+  "source_sha256": "b08e96eab36e6e8003b2c14f047959e0220271285396e00ec4def2a4e31f85d2",
+  "spec_sha256": "f9da18f6c5d83fc26a4375c3834867fbe30ee6fab61e551d53124572ae9503e0",
+  "input_generated_npz_sha256": "987b374a505778a6a010ac5cf9cb943b1a45cb12a5b40b5ccb4a10c82c56a2ef",
+  "output_writers_closed": true,
+  "whole_library_filtered": false,
+  "real_time_interactive_closed_loop_verified": false,
+  "final_reference_endpoint_comparison_performed": false,
+  "elapsed_seconds": 43.6666557751596,
+  "contact_profile": {
+    "kind": "validated_static_solid_floor",
+    "top_z": 0.0,
+    "dimensions_m": [
+      4000,
+      4000,
+      0.2
+    ],
+    "static_friction": 1.0,
+    "dynamic_friction": 1.0,
+    "restitution": 0.0,
+    "combine_mode": "multiply",
+    "self_collisions": true,
+    "validation_witnesses": [
+      {
+        "run": "solid_floor_ppo_author_v1",
+        "receipt_sha256": "3e02a9fb9d312e8f36321ae9b4d0a5dc04e038dd569eb859c615d3e28ecd4339",
+        "actual_iterations": 10,
+        "actual_optimizer_updates": 200
+      },
+      {
+        "run": "solid_floor_ppo_document_v2",
+        "receipt_sha256": "597ddb5508264769bb7953a62697ad82120b0a84ad74291112467dd8952acf7d",
+        "actual_iterations": 10,
+        "actual_optimizer_updates": 200
+      }
+    ],
+    "author_exact_collision_geometry_available": false,
+    "long_run_convergence_established": false,
+    "data_or_reward_changes": false
+  },
+  "teacher_checkpoint_sha256": "cfb443ab9ac80a615fdffdd881ede38b6e1997a0993752ff2a82a9f7c9939fae",
+  "teacher_completed_iterations": 5000,
+  "reference_sha256": "50883810ec8c2bf4d3920da0e8b61e44d5e1f7399b0f36594cd8a52177f3a8d6",
+  "num_envs": 1,
+  "actual_vectorized_control_calls": 257,
+  "actual_controlled_physics_substeps": 1028,
+  "trial": {
+    "repeat": 0,
+    "start_frame": 0,
+    "reference_frames": 258,
+    "control_steps": 257,
+    "end_reason": "motion_end",
+    "failed": false,
+    "complete": true
+  },
+  "terminal_execution_state_captured_before_autoreset": true,
+  "private_trace_index_sha256": "06c6d46d8e9ed475c9aedbe5d1153ede21430d98ddc814e883d1612106b70df4",
+  "private_trace_bytes": 358291,
+  "termination_terms": {
+    "anchor_pos": false,
+    "anchor_ori": false,
+    "ee_body_pos": false,
+    "motion_complete": true
+  },
+  "own_tracking_metrics": {
+    "aligned_14_body_position_error_mean_m": 0.04304111376404762,
+    "aligned_14_body_position_error_max_m": 0.20200340449810028,
+    "joint_rmse_rad": 0.12840525805950165,
+    "definition": "Own error against current control targets before autoreset; zero-order-hold timing, not final endpoint or paper aggregate scores"
+  },
+  "text_switch_reference_frame": 130,
+  "text_switch_physically_consumed": true,
+  "limitation": "Offline generated-reference execution, quick5k teacher/42-source VAE2k LDM3k, not real-time interactive finalWBC; final reference endpoint unchecked",
+  "peak_torch_allocated_bytes": 130256384,
+  "native_close_returned": false,
+  "teardown_fallback_used": true,
+  "shutdown_grace_seconds": 20,
+  "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+  "shutdown_completion_verified": true
+}

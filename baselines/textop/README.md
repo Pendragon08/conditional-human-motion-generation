@@ -1,5 +1,29 @@
 # TextOp 复现
 
+当前已验证**快速版离线“文本生成→机器人参考→真实仿真反馈控制”原型**；实时交互、语义质量和论文规模完整版尚未完成。最新证据与本地录像入口见[实际结果报告](reports/quick_actual_results_20261026.md)，继续工作先读[CONTINUATION顶部](CONTINUATION.md)。
+
+|环节|已核验状态|
+|---|---|
+|可得数据预处理|8278原始来源及镜像完成GMR、文本对齐、69D/FK与私有备份|
+|快速训练语料|64条实测中42自然完成、22失败；42原始参考保留31train/11val、174标注对、74非空CLIP文本|
+|快速训练|5k跟踪策略、VAE2k、LDM3k均完成；完整状态在服务器及D盘私有核验备份|
+|实际生成|真实训练权重、history2→future8、5步CFG5、32段/256未来帧；两次独立生成数组一致|
+|生成参考的物理执行|同一258姿态序列作者/独立两次均自然完成257控制步/1028受控物理子步，文本切换目标130已消费|
+|新执行录像|258帧、50fps，实际执行姿态可视化；本地私有视频与独立审计完成|
+|尚未验收|实时文本热切换/异步控制时序、语义质量、最终端点、论文最终WBC与完整训练|
+
+固定完整采样Huber由0.310267升到0.607536，生成质量仍待评估；短序列被跟踪不等于语义或论文质量达标。自定义身体平均误差0.043041m、关节RMSE0.128405rad只描述本次控制目标跟踪。原生SDK关闭仍使用有界兜底，差异保留。作者精确碰撞资产不可得。
+
+当前先验证快版整个流程，随后经完整可得数据真实筛选、质量和容量验收再进入论文40k/VAE200k/LDM300k；快版课程/学习率时钟已缩短，不把快版计数当作论文完整结果。受限动作/逐条文本/训练全状态保持私有，公开仓库保存代码、聚合证据、报告和许可允许的视频。
+
+新配置与独立证据：[生成入口](QUICK_GENERATION_ENVIRONMENT.md)、[SDK生成执行](QUICK_GENERATED_EXECUTION_ENVIRONMENT.md)、[实际执行录像](GENERATED_EXECUTION_VIDEO_ENVIRONMENT.md)、[独立SDK审计](results/generated_execution_20261026/independent_document_v1/REPORT.md)、[独立媒体审计](results/generated_execution_20261026/independent_video_document_v1/REPORT.md)。历史SFU参考跟踪科研视频已[公开发布](https://github.com/Pendragon08/conditional-human-motion-generation/releases/tag/textop-quick-tracking-video-20261026)；新生成执行视频暂存本地私有。
+
+<details>
+<summary>保留的历史阶段记录（不作为当前运行指令）</summary>
+
+以下“当前/最新/等待/禁用”等属于历史记录；实际状态以CONTINUATION最顶部和冻结运行的真实收据为准。不要据此重启已结束工作者或重复已完成的诊断。
+
+
 [真实评估到quick语料的来源选择入口](reports/quick_source_selection_20261026.md)：已部署禁用候选，本地/服务器15项合成逻辑检查通过；真实64来源决定、可训练语料和生成器仍未完成。
 
 [快速生成器方案与两卷预算](reports/quick_generator_proposal_20261026.md)：准备了尚未启用的VAE2,000/LDM3,000小样本方案及保留检查点的存储安排。原200k/300k配置未改，真实保留数据和该方案训练入口仍待验收；不是训练启动或论文完成。
@@ -57,3 +81,5 @@
 [完整参考库训练前核查](reports/full_library_capacity_20261026.md)：5,765条已完成源与仿真参考的逐条SHA、来源/划分和镜像对应核查通过；KIT仍在现有队列中。完整8,278源的8192环境容量入口已准备但禁用，尚未执行完整库GPU验证；[接续条件](FULL_LIBRARY_CAPACITY_ENVIRONMENT.md)。
 
 [正式筛选检查点存储保护](reports/checkpoint_storage_guard_20261026.md)增加保存前的个人目录、持久盘和剩余容量检查；不把低于保留空间后再尝试保存当作可靠保护。训练启动条件保持不变。
+
+</details>
