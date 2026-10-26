@@ -1,4 +1,55 @@
-## CURRENT2026-10-26 19:30 — VAE2000 COMPLETE, LDM author witness in progress
+## CURRENT2026-10-26 19:42 — quick VAE FINISHED; actual LDM3000 RUNNING
+
+Read this before all historical CURRENT blocks. VAE2000 genuinely completed,
+2000updates/0skips/exit0, both fixedVAL posterior reconstruction gates passed;
+1000/2000 fullmodel/Adam/ALLRNG file reload and server+D privatebackups done.
+Real2000 checkpoint513523901B SHA5109f593309349504d52677997bcdd21de3d27e045b9154be8c06278182b1219.
+Do NOT retrain/re-audit/re-copy unchanged VAE or quickcorpus.
+
+LDM authorv1 actually failed AFTER4diagnosticupdates because CFGfunction had no
+parameters() for inferred samplingdevice. Failure and exact oldsource kept;
+ONLY explicit device='cuda' added. Authorv2/freshdocumentv1 actualexit0,
+4diagnosticAdamW/0skip/0valupdates, exact model/Adam/ALLRNGmemory recovery,
+nextbatch/pendingVAL and real5-stepCFG5 sampling12x4 passed. Fresh195 checks,
+all31collected sources/configs and old19 exact pre/post unchanged. Parent then
+bound actualwitnesses and enabled ONLY train_authorized, source/math untouched.
+Active specSHA c199af5ead10df1b18a0efc503a12fe73df374fec1dddfc8404125d053f354ab.
+Read QUICK_LDM_ENVIRONMENT.md CURRENT. Actual quick_ldm_train_v1 dispatched once
+at19:40, durable driver4048656 historical; actual receipt RUNNING, optimizer
+progress must be read, not inferred from this launch. Common lock held by new
+supervisor; no overlapping GPU/SDK, no duplicate launch/activation, freeze3LDM
+sources+spec. Teacher, VAE, renderer/corpus/probe coordinators all ended.
+Only read/collect actualprogress via provider_tools/collect_quick_ldm.py --run
+quick_ldm_train_v1. Stable new1000/2000/3000 snapshots may be privately copied
+with --backup-stable-checkpoints, not public fullstates. HOME uses one existing
+VAEcache513523901B; current no duplicates. Guard300MiB/LDMSnapshot+1emergency,
+2GiBreserve+512MiBlogs/every100step+save, no deletion. Witnessserialized223730007B
+is MEMORY-only, not a realtrainedLDM checkpoint. Fullstates immediatelyreloaded
+at actual1000/2000/3000; finalactualexit/closedwriters/quality must be checked.
+
+Nextafter LDM complete: actual conditional5-stepCFG5 autoregressive history2→
+future8 generation from real3000/realVAE2000 (keep seed/customprompt provenance,
+reference69D trainnormalization, no posterior futureconditioning), verify
+69Ddecode/worldcontinuity/jointnameorder and finite whole generated trajectory.
+Then use the trackerURDF-consistent FK/export path for generated refs and real
+same-solidfloor5kteacher execution with failures/preautoreset traces and video.
+Existing export_tracker_references.py illustrates exactSDK FK/body layout, but
+old source-selected8278 gate cannot be faked for generated refs: use a separate
+honest schema/source/spec/receipt. Do NOT call offline reference replay true
+realtime text-switch closedloop; stage it explicitly then implement interactive
+coupling with truthful latency/control/feedback scope. SDK only after LDM exits
+and freshlock/resources/preflight; author/fresh actual profile validation per
+run-experiment, no new shared dependencies. No finalWBC/wholepaper claim.
+
+Current42 reference corpus/31train11val/174pairs74CLIP accepted and privately
+backed up; no corpus rebuild. Both longvideos complete, SFU32.26s+credits NOW
+publicGitHub release textop-quick-tracking-video-20261026, BMLfailureprivate.
+Data8278 preprocessing and realpilot64/42natural22failed already notified,
+not full-library filtering. Keep old57D/PhyGile/ReactiveBFM paused, no data/
+checkpoints/unique failures/otheruser/shareddeps deletion. Use actualreports,
+not historical zero-result or 40k-wait templates. SyncGitHub+D beforefinal.
+
+## HISTORICAL2026-10-26 19:30 — VAE2000 COMPLETE, LDM author witness in progress
 
 VAE quick_vae_train_v1 genuinely FINISHED2000 attempts/2000 Adam updates/0skips,
 actual child/supervisor exit0 and writersclosed. Both fixedVAL posterior Huber

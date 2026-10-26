@@ -1,0 +1,844 @@
+{
+  "run": "ldm_kernel_document_v1",
+  "status": "PASS",
+  "checks_passed": 195,
+  "checks_total": 195,
+  "actual_command": [
+    "python3",
+    "scripts/supervise_quick_ldm.py",
+    "--mode",
+    "witness",
+    "--run",
+    "ldm_kernel_document_v1"
+  ],
+  "actual_supervisor_returncode": 0,
+  "actual_child_exit_code": 0,
+  "child_reaped": true,
+  "optimizer_updates": 4,
+  "skipped_updates": 0,
+  "validation_optimizer_updates": 0,
+  "output_writers_closed": true,
+  "persistent_diagnostic_checkpoint_created": false,
+  "receipt_sha256": "d7819dba4d7ebd99c0a9c0b49359268a3cfbfaf8046468125a5c30c2553d42c3",
+  "exit_sha256": "8185fa32cdff9c89f631db1385e2e679027d7af561b9c47dd3aba4b18ec2c1cd",
+  "process_exit_sha256": "c73efa2e6864533f4cd1eb51b802085b2d79ba9a68351bc1b3f1d622ea4b9581",
+  "resources_sha256": "7c538d86519a5adb724f7e14c1445b50cdf7d8ce046bddee55dc4c27aa16fab0",
+  "durable_wrapper_execution_sha256": "0a99398399a2c3b05768017fb7c700d147408c1edf0b765b5a58b3fdbdcdb5a3",
+  "pre_and_post_spec_sha256": "0a2d838bfb9e5b87af300f59e1a1842cb2601ef25477719cc1f92f1b93c1137d",
+  "three_sources_sha256": {
+    "scripts/run_quick_ldm.py": "68551ebd93f43353fc6c6b9eb45701f13f3c478de1c393750c9755df5dfc962a",
+    "scripts/quick_ldm_runtime.py": "558d3b91e511e12658c309037ea476d01bdf76c73ce323caf2fc909e269043a3",
+    "scripts/supervise_quick_ldm.py": "5cff6053c2d2c586b11335d539da6c61c6cad8884dfd5b7332bc9ee739ab4a04"
+  },
+  "vae_checkpoint_and_shared_cache_sha256": "5109f593309349504d52677997bcdd21de3d27e045b9154be8c06278182b1219",
+  "trained_frozen_VAE_model_sha256": "044521e6d8c3cedf7cfe14a544a501de97fe5effac8eac387523c24ff89a6112",
+  "memory_serialized_bytes": 223730007,
+  "memory_serialized_sha256": "e9fb0ad8b5776a3cf17d077c12f05ac2570568e8a9de45cf634821e208475d34",
+  "sampling_diagnostic": {
+    "normalized_full_sampling_huber": 0.3134639114141464,
+    "batch": 12,
+    "primitives": 4,
+    "diffusion_steps": 5,
+    "cfg": 5,
+    "posterior_future_not_used": true,
+    "generated_history_after_first_primitive": true,
+    "text_semantics_or_physical_execution_verified": false
+  },
+  "peak_torch_allocated_bytes": 1887571968,
+  "supervisor_elapsed_seconds": 14.349129719659686,
+  "actual_kernel_elapsed_seconds": 11.944468667730689,
+  "preflight_gpu1_free_mib": 40726,
+  "old19_unchanged": true,
+  "source_spec_corpus_VAE_unchanged": true,
+  "common_lock_free_after": true,
+  "all_owned_processes_gone_after": true,
+  "train_authorized_untouched_false": true,
+  "divergences": [
+    "CURRENT document says author_v2 dispatched/pending verification; preflight independently confirmed it already had genuine wrapper/child exit0. This is status wording only; the required invocation and profile matched.",
+    "Short witness (14.349s supervised) ended before the 15-second periodic resource sample. Original samples capture before-launch, after-launch CPU affinity, and after-exit; no live nvidia per-process GPU peak is independently sampled. Actual Torch peak is recorded by the CUDA runtime.",
+    "Corpus construction receipt retains BUILT_LOADER_PENDING/quick_training_ready=false; separate SHA-bound data-acceptance receipt records accepted corpus/loader. This is preserved layered state, with no claim of full-paper dataset acceptance."
+  ],
+  "scope": "Fresh agent-follows-document witness only: four discarded AdamW updates, exact in-memory model/Adam/all-RNG restore and next-batch replay, zero-update pending validation, finite 5-step CFG5 samples for 12 histories x 4 primitives. No LDM3000 training, persistent LDM diagnostic state, physics, semantic quality, deployment, dependency/source/spec/data mutation, author rerun, or blind retry.",
+  "checks": [
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/solid_floor_ppo_probe.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/supervise_solid_floor_ppo.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/solid_floor_diagnostic.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/paper_filter_config.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/filter_training_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/numerical_trace.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/audit_full_contact_state.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/configs/full-library-capacity-spec.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/configs/solid-floor-ppo-spec.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/configs/tracker-env-spec.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/configs/paper-step2.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/validated_contact_profile.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/train_filter_policy.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/supervise_filter_policy.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/checkpoint_storage_guard.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/configs/filter-training-plan.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/quick_budget_guards.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/quick_budget_control.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/quick_pidfd.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/paper69_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/paper69_data_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/generator_training_state.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/quick_vae_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/quick_ldm_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/configs/paper69-env-spec.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/run_quick_ldm.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/supervise_quick_ldm.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/configs/quick-ldm-runtime-spec.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/configs/quick-reproduction-plan-20261026.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/contact_process_supervision.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/sources/scripts/contact_filter_resources.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/originals/receipts/quick69_data_acceptance_v1.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/originals/quick_generator_20261026/corpus_v1/corpus_receipt.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/originals/quick_generator_20261026/vae_runs/quick_vae_train_v1/receipt.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/originals/receipts/quick_vae_quick_vae_train_v1_exit.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/originals/quick_generator_20261026/ldm_runs/ldm_kernel_author_v2/receipt.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/originals/receipts/quick_ldm_ldm_kernel_author_v2_exit.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/originals/receipts/quick_ldm_ldm_kernel_author_v2_process_exit.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/originals/logs/quick_ldm_ldm_kernel_author_v2_resources.jsonl",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/originals/receipts/ldm_kernel_author_v2_supervisor_execution.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/originals/receipts/quick_vae_quick_vae_train_v1_process_exit.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:before/originals/logs/quick_vae_quick_vae_train_v1_resources.jsonl",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/solid_floor_ppo_probe.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/supervise_solid_floor_ppo.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/solid_floor_diagnostic.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/paper_filter_config.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/filter_training_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/numerical_trace.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/audit_full_contact_state.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/configs/full-library-capacity-spec.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/configs/solid-floor-ppo-spec.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/configs/tracker-env-spec.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/configs/paper-step2.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/validated_contact_profile.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/train_filter_policy.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/supervise_filter_policy.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/checkpoint_storage_guard.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/configs/filter-training-plan.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/quick_budget_guards.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/quick_budget_control.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/quick_pidfd.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/paper69_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/paper69_data_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/generator_training_state.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/quick_vae_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/quick_ldm_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/configs/paper69-env-spec.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/run_quick_ldm.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/supervise_quick_ldm.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/configs/quick-ldm-runtime-spec.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/configs/quick-reproduction-plan-20261026.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/contact_process_supervision.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/sources/scripts/contact_filter_resources.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/originals/receipts/quick69_data_acceptance_v1.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/originals/quick_generator_20261026/corpus_v1/corpus_receipt.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/originals/quick_generator_20261026/vae_runs/quick_vae_train_v1/receipt.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/originals/receipts/quick_vae_quick_vae_train_v1_exit.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/originals/quick_generator_20261026/ldm_runs/ldm_kernel_author_v2/receipt.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/originals/receipts/quick_ldm_ldm_kernel_author_v2_exit.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/originals/receipts/quick_ldm_ldm_kernel_author_v2_process_exit.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/originals/logs/quick_ldm_ldm_kernel_author_v2_resources.jsonl",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/originals/receipts/ldm_kernel_author_v2_supervisor_execution.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/originals/receipts/quick_vae_quick_vae_train_v1_process_exit.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/originals/logs/quick_vae_quick_vae_train_v1_resources.jsonl",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/run_originals/quick_generator_20261026/ldm_runs/ldm_kernel_document_v1/receipt.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/run_originals/receipts/quick_ldm_ldm_kernel_document_v1_exit.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/run_originals/receipts/quick_ldm_ldm_kernel_document_v1_process_exit.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/run_originals/logs/quick_ldm_ldm_kernel_document_v1_resources.jsonl",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/run_originals/receipts/ldm_kernel_document_v1_independent_execution.json",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/run_originals/logs/quick_ldm_ldm_kernel_document_v1.log",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/run_originals/logs/ldm_kernel_document_v1.independent_driver.log",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/run_originals/receipts/ldm_kernel_document_v1_independent_driver.py",
+      "passed": true
+    },
+    {
+      "name": "raw_saved_bytes:after/run_originals/quick_generator_20261026/ldm_runs/ldm_kernel_document_v1/metrics.jsonl",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/solid_floor_ppo_probe.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/supervise_solid_floor_ppo.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/solid_floor_diagnostic.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/paper_filter_config.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/filter_training_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/numerical_trace.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/audit_full_contact_state.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:configs/full-library-capacity-spec.json",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:configs/solid-floor-ppo-spec.json",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:configs/tracker-env-spec.json",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:configs/paper-step2.json",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/validated_contact_profile.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/train_filter_policy.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/supervise_filter_policy.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/checkpoint_storage_guard.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:configs/filter-training-plan.json",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/quick_budget_guards.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/quick_budget_control.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/quick_pidfd.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/paper69_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/paper69_data_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/generator_training_state.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/quick_vae_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/quick_ldm_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:configs/paper69-env-spec.json",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/run_quick_ldm.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/supervise_quick_ldm.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:configs/quick-ldm-runtime-spec.json",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:configs/quick-reproduction-plan-20261026.json",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/contact_process_supervision.py",
+      "passed": true
+    },
+    {
+      "name": "source_and_spec_unchanged:scripts/contact_filter_resources.py",
+      "passed": true
+    },
+    {
+      "name": "original_evidence_unchanged:/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/quick69_data_acceptance_v1.json",
+      "passed": true
+    },
+    {
+      "name": "original_evidence_unchanged:/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/corpus_v1/corpus_receipt.json",
+      "passed": true
+    },
+    {
+      "name": "original_evidence_unchanged:/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/vae_runs/quick_vae_train_v1/receipt.json",
+      "passed": true
+    },
+    {
+      "name": "original_evidence_unchanged:/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/quick_vae_quick_vae_train_v1_exit.json",
+      "passed": true
+    },
+    {
+      "name": "original_evidence_unchanged:/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/ldm_runs/ldm_kernel_author_v2/receipt.json",
+      "passed": true
+    },
+    {
+      "name": "original_evidence_unchanged:/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/quick_ldm_ldm_kernel_author_v2_exit.json",
+      "passed": true
+    },
+    {
+      "name": "original_evidence_unchanged:/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/quick_ldm_ldm_kernel_author_v2_process_exit.json",
+      "passed": true
+    },
+    {
+      "name": "original_evidence_unchanged:/data/code/ouyanghao/oyh/textop-reproduction-20261024/logs/quick_ldm_ldm_kernel_author_v2_resources.jsonl",
+      "passed": true
+    },
+    {
+      "name": "original_evidence_unchanged:/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm_kernel_author_v2_supervisor_execution.json",
+      "passed": true
+    },
+    {
+      "name": "original_evidence_unchanged:/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/quick_vae_quick_vae_train_v1_process_exit.json",
+      "passed": true
+    },
+    {
+      "name": "original_evidence_unchanged:/data/code/ouyanghao/oyh/textop-reproduction-20261024/logs/quick_vae_quick_vae_train_v1_resources.jsonl",
+      "passed": true
+    },
+    {
+      "name": "corpus_artifact_unchanged:action_statistics.json",
+      "passed": true
+    },
+    {
+      "name": "corpus_artifact_unchanged:train.pkl",
+      "passed": true
+    },
+    {
+      "name": "corpus_artifact_unchanged:train_text_embed.pkl",
+      "passed": true
+    },
+    {
+      "name": "corpus_artifact_unchanged:meanstd.pkl",
+      "passed": true
+    },
+    {
+      "name": "corpus_artifact_unchanged:val_text_embed.pkl",
+      "passed": true
+    },
+    {
+      "name": "corpus_artifact_unchanged:statistics.yaml",
+      "passed": true
+    },
+    {
+      "name": "corpus_artifact_unchanged:pose_quarantine.private.json",
+      "passed": true
+    },
+    {
+      "name": "corpus_artifact_unchanged:val.pkl",
+      "passed": true
+    },
+    {
+      "name": "documented_local_matches_actual_server:scripts/quick_ldm_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "documented_local_matches_actual_server:scripts/run_quick_ldm.py",
+      "passed": true
+    },
+    {
+      "name": "documented_local_matches_actual_server:scripts/supervise_quick_ldm.py",
+      "passed": true
+    },
+    {
+      "name": "documented_local_matches_actual_server:configs/quick-ldm-runtime-spec.json",
+      "passed": true
+    },
+    {
+      "name": "all_old19_frozen",
+      "passed": true
+    },
+    {
+      "name": "train_gate_untouched",
+      "passed": true
+    },
+    {
+      "name": "preflight_absence_and_lock",
+      "passed": true
+    },
+    {
+      "name": "gpu1_shared_authorized_free_gt20GiB",
+      "passed": true
+    },
+    {
+      "name": "ram_and_disk_minimum",
+      "passed": true
+    },
+    {
+      "name": "home_budget_persistent_owned_no_symlink",
+      "passed": true
+    },
+    {
+      "name": "vae_checkpoint_and_cache_unchanged",
+      "passed": true
+    },
+    {
+      "name": "shared_cache_directory_unchanged",
+      "passed": true
+    },
+    {
+      "name": "no_persistent_diagnostic_LDM_checkpoint",
+      "passed": true
+    },
+    {
+      "name": "accepted42_original31train11val174pairs74texts",
+      "passed": true
+    },
+    {
+      "name": "corpus_train_only_source_pose_separation_no_mirrors",
+      "passed": true
+    },
+    {
+      "name": "VAE2000_genuine_updates_exit_quality",
+      "passed": true
+    },
+    {
+      "name": "VAE2000_fullstate_RNG_file_resume",
+      "passed": true
+    },
+    {
+      "name": "verbatim_command_once",
+      "passed": true
+    },
+    {
+      "name": "durable_wrapper_actual_subprocess_returncode0",
+      "passed": true
+    },
+    {
+      "name": "original_wrapper_stdout_stderr",
+      "passed": true
+    },
+    {
+      "name": "supervisor_stderr_empty",
+      "passed": true
+    },
+    {
+      "name": "actual_child_exit0_and_reaped",
+      "passed": true
+    },
+    {
+      "name": "no_shutdown_signals_needed",
+      "passed": true
+    },
+    {
+      "name": "receipt_process_resources_SHA_chain",
+      "passed": true
+    },
+    {
+      "name": "supervisor_stdout_matches_exit_proof",
+      "passed": true
+    },
+    {
+      "name": "passed_receipt_and_closed_writers",
+      "passed": true
+    },
+    {
+      "name": "actual_four_AdamW_updates_zero_skips",
+      "passed": true
+    },
+    {
+      "name": "frozenVAE_module_matches_trainedVAE2000",
+      "passed": true
+    },
+    {
+      "name": "actual_source_spec_corpus_acceptance_bound",
+      "passed": true
+    },
+    {
+      "name": "memory_witness:model_and_adam_roundtrip_exact",
+      "passed": true
+    },
+    {
+      "name": "memory_witness:all_rngs_restored_exactly",
+      "passed": true
+    },
+    {
+      "name": "memory_witness:next_batch_replayed_exactly",
+      "passed": true
+    },
+    {
+      "name": "memory_witness:pending_evaluation_completed_without_updates",
+      "passed": true
+    },
+    {
+      "name": "memory_witness:vae_frozen_and_unchanged",
+      "passed": true
+    },
+    {
+      "name": "memory_witness:all_four_training_gradients_finite",
+      "passed": true
+    },
+    {
+      "name": "memory_witness_real_size",
+      "passed": true
+    },
+    {
+      "name": "all_rng_categories_source_asserted",
+      "passed": true
+    },
+    {
+      "name": "actual512x4primitive_shapes_and_Torch65percent_source_asserted",
+      "passed": true
+    },
+    {
+      "name": "four_actual_train_records",
+      "passed": true
+    },
+    {
+      "name": "four_pending_validation_primitives_zero_optimizer_updates",
+      "passed": true
+    },
+    {
+      "name": "real5stepCFG5_sampler12x4finite",
+      "passed": true
+    },
+    {
+      "name": "sampler_no_posterior_future_autoregressive_generated_history",
+      "passed": true
+    },
+    {
+      "name": "diagnostic_discarded_no_checkpoint_or_formal_reuse",
+      "passed": true
+    },
+    {
+      "name": "scope_no_semantics_physics_fullpaper_claim",
+      "passed": true
+    },
+    {
+      "name": "only_metrics_receipt_in_witness_output_directory",
+      "passed": true
+    },
+    {
+      "name": "resource_samples_valid_and_error_free",
+      "passed": true
+    },
+    {
+      "name": "CPU0to3_affinity_observed",
+      "passed": true
+    },
+    {
+      "name": "resource_reserves_at_all_actual_samples",
+      "passed": true
+    },
+    {
+      "name": "actual_peak_Torch_below65percent_GPU",
+      "passed": true
+    },
+    {
+      "name": "all_owned_processes_gone_after_exit",
+      "passed": true
+    },
+    {
+      "name": "old57D_same_PID_start_and_paused_state",
+      "passed": true
+    },
+    {
+      "name": "author_and_document_seeded_numeric_results_identical",
+      "passed": true
+    }
+  ]
+}

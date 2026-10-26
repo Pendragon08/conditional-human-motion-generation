@@ -1,8 +1,19 @@
 {
   "schema": "textop.quick_ldm_runtime.v1",
   "witness_authorized": true,
-  "train_authorized": false,
-  "witnesses": [],
+  "train_authorized": true,
+  "witnesses": [
+    {
+      "run": "ldm_kernel_author_v2",
+      "receipt_sha256": "c8dac1873e6352a1e8261eb45a5ce8d203cebfe549877869d1d7f80ca2ab6b7c",
+      "exit_sha256": "264fd61a12f58812723c34882da76c80cdd1f99d1ef36b8d10a4a6b9989fc389"
+    },
+    {
+      "run": "ldm_kernel_document_v1",
+      "receipt_sha256": "d7819dba4d7ebd99c0a9c0b49359268a3cfbfaf8046468125a5c30c2553d42c3",
+      "exit_sha256": "8185fa32cdff9c89f631db1385e2e679027d7af561b9c47dd3aba4b18ec2c1cd"
+    }
+  ],
   "seed": 20261026,
   "data_acceptance_sha256": "5f4f58c2fd9e98f36a23fb44de90d7a24aa0a7ab2fbf63207ea35eacae7cadc6",
   "corpus_receipt_sha256": "d0a44b975c8f390f25dc5e95c414b3b8354dacacc19d5673d7a86e6d21c9c8f1",

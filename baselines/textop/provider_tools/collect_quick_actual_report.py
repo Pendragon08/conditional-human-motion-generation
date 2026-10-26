@@ -97,9 +97,27 @@ if data_proof.exists():
         if vx.exists():
             ex=json.loads(vx.read_text(encoding='utf-8'))
             md.append('实际子进程退出{}、监督验收{}；固定验证批次的VAE重建门槛{}。这些是后验重建诊断，不是文本生成质量或物理执行指标。'.format(ex['child_exit_code'],ex['supervision_passed'],vae.get('vae_quality_gate_passed')))
+            if 'final_quality' in vae:
+                md += ['', '|固定批次后验重建Huber|训练前|训练后|','|---|---:|---:|']
+                for key in ['teacher_forced','self_rollout']:
+                    md.append('|{}|{:.6f}|{:.6f}|'.format(key,vae['initial_quality'][key]['normalized_reconstruction_huber'],vae['final_quality'][key]['normalized_reconstruction_huber']))
         if vae.get('checkpoints'):
             md.append('已实际写入的完整状态步数：{}。每份保存后重新加载，核对模型、优化器、计数和所有随机数状态；不删除已有版本。'.format([x['manager_step'] for x in vae['checkpoints']]))
         md += ['', 'LDM3,000步使用独立入口和真实已训练VAE验收，不以梯度诊断权重代替。原论文VAE200,000/LDM300,000配置保留；当前文本生成—执行闭环仍未完成。', '']
+        ldm_path=B/'results/quick_ldm_20261026/quick_ldm_train_v1/receipt.json'
+        if ldm_path.exists():
+            ldm=json.loads(ldm_path.read_text(encoding='utf-8'))
+            md += ['## 快速LDM实际训练', '',
+                   '服务器运行quick_ldm_train_v1，最近核验状态{}：{}/3,000次primitive训练尝试、{}次实际AdamW更新、{}次跳过。输入为真实CLIP文本嵌入与历史2帧，VAE2000保持冻结；五步cosine扩散预测x0，后续每次生成未来8帧。课程和学习率时钟为快速版。'.format(ldm['status'],ldm['completed_primitive_attempts'],ldm['optimizer_updates'],ldm['skipped_updates']), '']
+            lx=ldm_path.parent/'exit.json'
+            if lx.exists():
+                le=json.loads(lx.read_text(encoding='utf-8'))
+                md.append('实际子进程退出{}、监督验收{}；生成器训练完成与真实机器人仿真闭环验证分别记录。'.format(le['child_exit_code'],le['supervision_passed']))
+            if ldm.get('final_full_sampling_quality'):
+                md.append('固定12个验证历史、四primitive完整五步CFG5采样的归一化Huber诊断：训练前{:.6f}，训练后{:.6f}。采样不读取未来动作后验，后续primitive使用自身预测历史；这不是文本语义指标，也不证明物理可跟踪。'.format(ldm['initial_full_sampling_quality']['normalized_full_sampling_huber'],ldm['final_full_sampling_quality']['normalized_full_sampling_huber']))
+            md += ['', '仍需对实际生成参考进行独立物理执行、文本切换和失败记录验证，已有SFU影片展示的是参考动作跟踪。', '']
+        else:
+            md += ['独立LDM入口已部署，作者梯度/状态恢复/完整五步CFG5采样见证已通过；以新的独立见证与实际训练收据判断下一阶段，不把4次诊断更新算为3,000步训练。', '']
     else:
         md += ['VAE2,000步入口已实现并独立核验；以实际训练收据判断是否开训，LDM3,000步仍需其独立入口与已训练VAE质量验收。原论文VAE200,000/LDM300,000配置保留。', '']
 else:
@@ -127,4 +145,4 @@ prior = D/'TextOp主报告_真实pilot前快照_20261026.html'
 if main.exists() and not prior.exists():
     shutil.copy2(main,prior)
 main.write_text(page,encoding='utf-8')
-print(json.dumps({'actual_closed_runs':len(rows),'actual_local_videos':len(videos),'generator_trained':False,'whole_library_filtered':False}))
+print(json.dumps({'actual_closed_runs':len(rows),'actual_local_videos':len(videos),'full_paper_generator_trained':False,'whole_library_filtered':False,'generated_physics_closed_loop_verified':False}))

@@ -1,11 +1,11 @@
 {
   "schema": "textop.quick_generator_proposal.v1",
-  "status": "QUICK_VAE2000_FINISHED_LDM_KERNEL_DOCUMENT_PENDING",
+  "status": "QUICK_VAE2000_FINISHED_LDM3000_ACTUAL_TRAINING_RUNNING",
   "quality_label": "QUICK_REPRODUCTION_NOT_PAPER_COMPLETE",
   "launch_enabled": false,
   "corpus_build_enabled": false,
   "trainer_entrypoint_for_this_proposal": null,
-  "trainer_and_dataset_runtime_validated": false,
+  "trainer_and_dataset_runtime_validated": true,
   "reason": "Independent1-percent generator chain proposal for the user-requested quick reproduction, not activated by this planning step",
   "paper_recipe_unchanged": true,
   "paper_recipe_server_sha256": "d668360a8cbc1d4ad48845467841f3d4d9804f291a86790201ac3de74fec42dd",
@@ -265,5 +265,8 @@
   "vae_training_run": "quick_vae_train_v1",
   "vae_actual_entrypoint": "scripts/run_quick_vae.py",
   "ldm_candidate_entrypoint": "scripts/run_quick_ldm.py",
-  "ldm_training_started": false
+  "ldm_training_started": true,
+  "ldm_training_run": "quick_ldm_train_v1",
+  "ldm_actual_entrypoint": "scripts/run_quick_ldm.py",
+  "actual_chain_authorization": "Separate source-bound VAE and LDM specs/receipts; this historical proposal is not a launcher"
 }

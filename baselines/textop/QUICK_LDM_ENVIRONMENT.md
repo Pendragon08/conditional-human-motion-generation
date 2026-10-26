@@ -1,4 +1,26 @@
-## CURRENT2026-10-26 19:32 — explicit sampler device, training disabled
+## CURRENT2026-10-26 19:42 — actual quick_ldm_train_v1 RUNNING, runtime frozen
+
+Author ldm_kernel_author_v2 and fresh ldm_kernel_document_v1 BOTH completed,
+realexit0/closedwriters and195 independent consistency checks passed. Four
+AdamW diagnosticupdates/0skips/0VALupdates, exact model/Adam/ALL RNG memory
+restore/nextbatch/pendingVAL, trainedVAEfrozen and5-step CFG5 sampling passed.
+No repeated witnesses; original v1failure and v2fix retained. Status-only
+metadata update here does not change execution instructions or runtime math.
+Parent verified actual receipt/exit/source/process/resource chain, storage,
+19frozenfiles and free GPU; only train_authorized+witnessmetadata changed.
+Activated specSHA c199af5ead10df1b18a0efc503a12fe73df374fec1dddfc8404125d053f354ab.
+Actual durable quick_ldm_train_v1 dispatched ONCE, driver4048656 historical,
+latest actualreceipt RUNNING_QUICK_LDM_TRAINING; no completion inferred.
+Use collect_quick_ldm.py --run quick_ldm_train_v1 for actual attempts/updates.
+All3 LDM sources+active spec FROZEN; never run commands below again, restart
+trainer or overwrite states. Real1000/2000/3000 are reloaded after save; use
+--backup-stable-checkpoints only for genuinely new stable snapshots, preserving
+all files. After realFINISHED3000/exit0/closedwriters collect final quality,
+state/RNG proofs and privatebackups, then prioritize actual generation/physics
+bridge, not more kernel tests. Existing SFUvideo is reference tracking, not
+text generator or final WBC. LDMfast3000 notpaper300000.
+
+## HISTORICAL2026-10-26 19:32 — explicit sampler device, training disabled
 
 Authorv1 completed4 diagnostic AdamW updates and memory restore, then failed
 in the five-step sampler: it inferred device from model.parameters(), but CFG
