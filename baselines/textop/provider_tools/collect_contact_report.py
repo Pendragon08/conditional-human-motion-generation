@@ -70,6 +70,8 @@ if backup_path.exists():
  backup=json.loads(backup_path.read_text(encoding='utf-8'))
  if backup.get('status')=='FORMAL_CHECKPOINT_PRIVATE_FULL_AND_GITHUB_INFERENCE_VERIFIED':
   md.extend(['', '## 首个正式策略检查点已备份', '', '第1,000轮/20,000次实际优化更新的完整检查点已保存，服务器原文件与D盘私有备份SHA一致。单独的推理权重已在服务器、D盘及GitHub Release三端核验；公开版本不含逐动作统计和优化器，完整恢复须使用私有检查点。没有删除文件或中断训练。这不是40,000轮完成、物理筛选通过或生成器训练完成。', '', '[推理权重及范围说明]('+backup['github_release']+')。详细记录见首个正式策略检查点与备份_20261026报告。'])
+if (B/'results/contact_replay_v4_20261026/server_cpu_author_v1.json').exists():
+ md.extend(['', '## 有界回放验证入口已准备，尚未运行SDK', '', '新执行器版本4增加独立验证模式：使用真实完成的40,000轮策略，回放8条完整短源动作，保留控制调用与超时预算。当前三个启动/验证标志仍禁用，本地与服务器各13项CPU检查通过，16份活动训练文件及9份旧候选文件不变。实际SDK验证、验证输出验收和正式全量筛选仍未完成；详细记录见有界物理回放验证入口准备_20261026报告。'])
 text='\n'.join(md)
 (B/'reports/contact_isolation_20261026.md').write_text(text,encoding='utf-8')
 D.mkdir(exist_ok=True);(D/'地面接触对照与候选修复_20261026.md').write_text(text,encoding='utf-8')

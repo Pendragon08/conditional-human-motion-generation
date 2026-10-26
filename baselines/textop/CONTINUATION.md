@@ -1,10 +1,10 @@
 # TextOp: data completion → physical filtering → full generator training
 
-## CURRENT2026-10-26 09:26 — formal policy healthy; post-exit filtering candidate disabled
+## CURRENT2026-10-26 10:27 — formal policy healthy; post-exit filtering candidate disabled
 
 Current real receipt: filter_policy_paper69_solid_floor_20261026_v1 is
-RUNNING_FORMAL_FILTER_TRAINING,1000/40000 rounds,20000 actual updates, value loss
-0.096397540345788, no exit receipt. This is early training, not convergence or
+RUNNING_FORMAL_FILTER_TRAINING,1600/40000 rounds,32000 actual updates, value loss
+0.09798470251262188, no exit receipt. This is early training, not convergence or
 physical acceptance. Progress flushes first10 rounds then every100; an unchanged
 receipt between flushes is not a stall. Keep the existing supervisor/SDK job;
 DO NOT repeat activation, launcher, any old diagnosis or another SDK task.
@@ -36,8 +36,8 @@ Next stable policy checkpoint is5000; check workers before using
 provider_tools/backup_formal_filter_checkpoint.py --completed 5000.
 It only backs up the latest stable
 checkpoint, never removes original files, and must not overlap another backup.
-Further SDK validation-mode preparation remains pending; no new evaluator mode
-was implemented during this checkpoint-protection turn.
+First-checkpoint protection is complete. Revision4 bounded validation mode is
+now separately prepared; actual SDK validation/activation remain pending.
  Existing results/checkpoint_sync_state.json
 still inventories the paused old57D ckpt1000; it is not evidence that a new formal
 filter checkpoint has been backed up. Inspect actual worker commands before any
@@ -55,14 +55,33 @@ No SDK was invoked.16 active training files were unchanged. Old candidate snapsh
 and six-file bytes remain; current nine-file bytes are candidate_runtime_bytes_v2.
 Do not rerun the completed CPU tests or restore old candidates over the new ones.
 
-New exporter/finalizer still lack actual SDK validation. Both flags in
-strict-contact-replay-spec remainfalse. Next prepare a separate bounded actual
-validation mode/entry; current exporter CLI only acceptsformal. Then do actual
-author+fresh independent validation when no SDK holds the lock, followed by full
-coverage using the finished40k policy. Do not accept CPU tests as physics or enable
-formal evaluation now. Historical v2/Plane executor cannot silently replace this
-contact-consistent route. The resource helper reads global GPU usage plus only the
-new child's process group; do not alter current renderer/device settings.
+Latest new route: read CONTACT_REPLAY_V4_ENVIRONMENT.md and
+reports/contact_replay_v4_20261026.md; evidence in results/contact_replay_v4_20261026.
+New evaluate_contact_filter_v4.py/supervise_contact_filter_v4.py use the new spec
+contact-filter-v4-spec.json and shared pure mode helper. This is executorrevision4,
+not a new acceptance schema: formal outputs still requirev3 finalization.
+Both modes require the actual completed40k/800k teacher and its successful exit.
+Validation selects8 complete original50..500frame sources, no truncation, one
+batch8,1024 control-call/600s run budget plus bounded shutdown. It cannot produce
+formal evidence/decisions. New validation/formal/real-SDK flags remainfalse.
+Local+server each13 new CPU mode/selection/nonacceptance checks passed. Current
+1500-round actual receipt was rejected for validation; both disabled CLI modes
+exited before SDK or teacher-file reads. Common SDK lock observed busy. Metadata
+planning found8 whole sources of52..64frames; exact indices/hash mapping stay private
+on server and SHA-verifiedD datasets/contact_replay_v4_private_20261026.16 active+9
+older inactive files unchanged. Exact new5-file bytes in candidate_runtime_bytes_v4.
+Do NOT rerun stage_contact_replay_v4.py or either existing CPU run directory.
+
+Actual SDK execution still unperformed. Next prepare post-exit validation witness
+verifier/activation evidence, then, AFTER formal training finishes and releases
+its lock, use real private40000 checkpoint and independent author/document runs.
+Existing1000 private checkpoint/public inference weights cannot substitute for it.
+Validate actual exits/resources/8 full trials/natural completion before formal
+activation; document's future command is not authorization to overlap currentSDK.
+The earlier contact-consistent v3 candidate and original Plane executor remain
+preserved, disabled and superseded by the new route for this purpose. Do not use CPU receipts as physical acceptance or
+claim all-source runtime/quality from short-source validation. Main training and
+all physical-filter/corpus/generator gates remain intact.
 
 Data8278 source+8278 mirrors, text/69D/FK/private backups already complete and
 notified. No repeat GMR/FK/archives/audits. Two-pass real filtering, accepted

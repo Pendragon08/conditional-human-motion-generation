@@ -1,0 +1,124 @@
+{
+  "status": "CONTACT_REPLAY_V4_CPU_STAGING_VERIFIED_SDK_PENDING",
+  "test_receipt": {
+    "status": "CONTACT_REPLAY_MODE_CPU_CHECKS_PASSED",
+    "checks": [
+      {
+        "case": "formal_disabled",
+        "expected_rejection": true,
+        "reason": "Future exporter disabled; no SDK dispatched"
+      },
+      {
+        "case": "validation_disabled",
+        "expected_rejection": true,
+        "reason": "Future validation disabled; no SDK dispatched"
+      },
+      {
+        "case": "validation_flag_cannot_enable_formal",
+        "expected_rejection": true,
+        "reason": "Future exporter disabled; no SDK dispatched"
+      },
+      {
+        "case": "formal_without_real_sdk_witness",
+        "expected_rejection": true,
+        "reason": "Actual independent SDK validation still required"
+      },
+      {
+        "case": "validation_incomplete_teacher",
+        "expected_rejection": true,
+        "reason": "Actual40k training is incomplete"
+      },
+      {
+        "case": "validation_failed_teacher_exit",
+        "expected_rejection": true,
+        "reason": ""
+      },
+      {
+        "case": "validation_teacher_not_closed",
+        "expected_rejection": true,
+        "reason": ""
+      },
+      {
+        "case": "validation_teacher_timeout",
+        "expected_rejection": true,
+        "reason": ""
+      },
+      {
+        "case": "synthetic_validation_authorization_only",
+        "physical_acceptance": false
+      },
+      {
+        "case": "eight_whole_sources_deterministic_selection",
+        "input_arrays_modified": false
+      },
+      {
+        "case": "insufficient_complete_sources_rejected",
+        "expected_rejection": true
+      },
+      {
+        "case": "validation_has_separate_nonacceptance_status",
+        "passed": true
+      },
+      {
+        "case": "validation_receipt_cannot_become_formal_decisions",
+        "expected_rejection": true
+      }
+    ],
+    "checks_passed": 13,
+    "sdk_runs": 0,
+    "gpu_calls": 0,
+    "physics_steps": 0,
+    "optimizer_updates": 0,
+    "physical_filter_executed": false,
+    "dataset_accepted": false,
+    "full_training_simulated_only_in_test_fixture": true
+  },
+  "test_exit_code": 0,
+  "test_stdout": "{\"status\": \"CONTACT_REPLAY_MODE_CPU_CHECKS_PASSED\", \"checks_passed\": 13, \"sdk_runs\": 0, \"gpu_calls\": 0, \"physics_steps\": 0, \"optimizer_updates\": 0, \"physical_filter_executed\": false, \"dataset_accepted\": false, \"full_training_simulated_only_in_test_fixture\": true}\n",
+  "test_stderr": "",
+  "disabled_supervisor_checks": [
+    {
+      "mode": "formal",
+      "exit_code": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_contact_filter_v4.py\", line 11, in <module>\n    gate_mode(a.mode,spec)\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/contact_replay_modes.py\", line 15, in gate_mode\n    assert spec['formal_evaluation_enabled'] is True, 'Future exporter disabled; no SDK dispatched'\nAssertionError: Future exporter disabled; no SDK dispatched\n",
+      "sdk_dispatched": false
+    },
+    {
+      "mode": "validation",
+      "exit_code": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_contact_filter_v4.py\", line 11, in <module>\n    gate_mode(a.mode,spec)\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/contact_replay_modes.py\", line 18, in gate_mode\n    assert spec['validation_launch_enabled'] is True, 'Future validation disabled; no SDK dispatched'\nAssertionError: Future validation disabled; no SDK dispatched\n",
+      "sdk_dispatched": false
+    }
+  ],
+  "actual_training_rejected_for_validation": true,
+  "actual_training_rejection": "Actual40k training is incomplete",
+  "actual_training_completed_iterations": 1500,
+  "actual_training_receipt_sha256": "bb59fc42784b519d9e921dc6d745476731dab1f27b6e904d37d5c7185db10c45",
+  "selection_metadata_verified": true,
+  "reference_sources": 8278,
+  "reference_fingerprint": "0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7",
+  "selected_complete_sources": 8,
+  "selected_frame_min": 52,
+  "selected_frame_max": 64,
+  "private_selection_plan_sha256": "6a2f9d51881452a83e949fb03818991b0cc997d18f9c17b32088eb98e0baea1a",
+  "sdk_lock_observed_busy": true,
+  "frozen_runtime_files_verified": 16,
+  "older_inactive_files_unchanged": 9,
+  "deployed": {
+    "scripts/contact_replay_modes.py": "a5d45e7bed4a67432043c82c1fbfb6cf92eec0146bffaa2acc6895fc43fd9887",
+    "scripts/evaluate_contact_filter_v4.py": "272258ba758a69a61d98d196287b66862284f6a74bce9351f21d362c2a72b504",
+    "scripts/supervise_contact_filter_v4.py": "e16aa02a75a0b1d5f697d51fad8939241a7621b66b3c588b5ef202e096a1551f",
+    "configs/contact-filter-v4-spec.json": "43c6f410a0e58b003a22f26b2dfac1bd75980e8be60a7a68c3f11676f1e9fcb1",
+    "tests/test_contact_replay_modes.py": "82b6fb75eb525dc6c9b12b385f6fac46cf22c79c7df4916240ed3e9ac59bbd00"
+  },
+  "sdk_runs": 0,
+  "gpu_jobs": 0,
+  "physics_steps": 0,
+  "optimizer_updates": 0,
+  "physical_filter_executed": false,
+  "dataset_accepted": false,
+  "actual_sdk_validation_completed": false,
+  "sample_unix": 1792981357.5341415,
+  "transport_exit_code": 0,
+  "transport_stderr": ""
+}

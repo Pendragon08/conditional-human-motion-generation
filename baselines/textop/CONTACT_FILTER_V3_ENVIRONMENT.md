@@ -5,6 +5,16 @@ exporter/supervisor/finalizer is **disabled and has not been executed in the SDK
 It does not establish physical acceptance, a trained generator, or evaluator readiness.
 Do not modify the 16 byte-bound files used by the active formal training run.
 
+## UPDATE2026-10-26 10:25 — separate revision4 bounded route prepared
+
+Read CONTACT_REPLAY_V4_ENVIRONMENT.md and reports/contact_replay_v4_20261026.md.
+New revision4 files add a bounded validation mode without changing these9 older
+candidates or the16 active training files. Local+server each13 CPU checks passed;
+actual SDK runs remain0. New validation/formal/real-SDK flags allfalse. The older
+statement that no bounded validation entry exists is now historical; actual
+witness execution, post-exit witness verification and activation remain pending.
+Do not repeat prior CPU tests or run any SDK while formal training owns the lock.
+
 ## UPDATE2026-10-26 08:20 — CPU supervision integration completed
 
 This section supersedes only the earlier missing resource-supervision code note.
