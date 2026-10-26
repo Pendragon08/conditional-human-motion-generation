@@ -1,5 +1,18 @@
 # TextOp: data completion → physical filtering → full generator training
 
+## UPDATE2026-10-26 17:50 — v2 actualvideo durable launch confirmed
+
+Fresh agent independently verified realteacher/backup/stop/all64closedtraces,
+source/spec/sharedresource/timebudget andoldv1reaped. Exactlyone serialdriver
+started09:50:03UTC: driver4015296, firstsupervisor4015297, renderer4015302.
+Check ROOT/video_witness_private/execution_video_actual_document_v3/state.json
+and localwork/textop_reproduction_20261024/execution_video_actual_document_v3.
+The fresh agent remainsworking; no duplicates/stop/sourcechanges. It owns both
+v2movies through realexit. Follow17:46/17:29 actualdata andnextcorpus instructions.
+GitHubcode/aggregates/report verifiedcdae5af4c5c972b7426ecd4a2e4f7d33c37246b5;
+longmovies NOTyetcomplete oruploaded, publisherpreparedonly. Existing52frame
+actualshortmovie andallrawresultbackup remainlocal/server verified.
+
 ## CURRENT2026-10-26 17:46 — longvideo timeout preserved; v2 freshdocument owns repair
 
 OVERRIDES17:29 claim of activev1videobatch. Longcompletedv1 hit900s limit,
