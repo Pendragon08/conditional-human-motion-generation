@@ -65,6 +65,11 @@ if (B/'results/filter_contact_protocol_20261026/server_cpu_v1.json').exists():
  md.extend(['', '## 后续筛选准备（尚未实际执行）', '', '新筛选入口要求评估沿用训练的同一接触设置，并在实际退出后核对全部回放证据。本地及服务器各23项合成逻辑检查通过，活动训练16份文件哈希未变。新回放器仍保持禁用，尚需真实SDK验证；不代表物理筛选或语料验收完成。详细记录见物理筛选接触一致性与退出后验收准备_20261026报告。'])
 if (B/'results/contact_supervision_20261026/integration_cpu_v1.json').exists():
  md.extend(['', '## 后续筛选资源监督准备', '', '新增7项实际CPU子进程检查，以及本地/服务器各27项更新后的验收逻辑检查通过。新监督器保留超时、采样失败和实际退出证据，资源监测已经接入。没有新SDK回放，两个正式筛选标志仍禁用；下一步补齐独立有界实际验证入口。详情见后续物理筛选资源监测与失败保留_20261026报告。'])
+backup_path=B/'results/formal_filter_checkpoints_20261026/round_1000/backup.json'
+if backup_path.exists():
+ backup=json.loads(backup_path.read_text(encoding='utf-8'))
+ if backup.get('status')=='FORMAL_CHECKPOINT_PRIVATE_FULL_AND_GITHUB_INFERENCE_VERIFIED':
+  md.extend(['', '## 首个正式策略检查点已备份', '', '第1,000轮/20,000次实际优化更新的完整检查点已保存，服务器原文件与D盘私有备份SHA一致。单独的推理权重已在服务器、D盘及GitHub Release三端核验；公开版本不含逐动作统计和优化器，完整恢复须使用私有检查点。没有删除文件或中断训练。这不是40,000轮完成、物理筛选通过或生成器训练完成。', '', '[推理权重及范围说明]('+backup['github_release']+')。详细记录见首个正式策略检查点与备份_20261026报告。'])
 text='\n'.join(md)
 (B/'reports/contact_isolation_20261026.md').write_text(text,encoding='utf-8')
 D.mkdir(exist_ok=True);(D/'地面接触对照与候选修复_20261026.md').write_text(text,encoding='utf-8')

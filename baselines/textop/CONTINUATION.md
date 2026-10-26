@@ -1,10 +1,10 @@
 # TextOp: data completion → physical filtering → full generator training
 
-## CURRENT2026-10-26 09:04 — formal policy healthy; post-exit filtering candidate disabled
+## CURRENT2026-10-26 09:26 — formal policy healthy; post-exit filtering candidate disabled
 
 Current real receipt: filter_policy_paper69_solid_floor_20261026_v1 is
-RUNNING_FORMAL_FILTER_TRAINING,800/40000 rounds,16000 actual updates, value loss
-0.10634440071880817, no exit receipt. This is early training, not convergence or
+RUNNING_FORMAL_FILTER_TRAINING,1000/40000 rounds,20000 actual updates, value loss
+0.096397540345788, no exit receipt. This is early training, not convergence or
 physical acceptance. Progress flushes first10 rounds then every100; an unchanged
 receipt between flushes is not a stall. Keep the existing supervisor/SDK job;
 DO NOT repeat activation, launcher, any old diagnosis or another SDK task.
@@ -17,8 +17,28 @@ provider_tools/collect_formal_filter_progress.py for aggregation and
 collect_contact_report.py for current reports. The active plan SHA remains
 153f8237a17928ffc3a28b7b00e366742a4ff0080e8fbb6bac87e57da8eb291d. All16 active
 runtime/config files are frozen; their hashes were checked again this turn.
-First checkpoint is scheduled at1000 rounds; preserve and back up new actual
-checkpoints without duplicate workers. Existing results/checkpoint_sync_state.json
+First1000-round checkpoint is now saved and backed up; do not repeat that job.
+Read FORMAL_CHECKPOINT_BACKUP.md and
+results/formal_filter_checkpoints_20261026/round_1000/backup.json.
+90799598B complete checkpoint SHA76b3cecff93807b90b61202907cc62e5b40c6678d0da2f4258d3a5541ce91b08
+is retained unchanged on server and privately onD. Public inference export30208218B
+SHAaaa262a1a8af05bcdba3292f17f5ffda24d3fefea14bda05b3979e3ed7878f28 is verified
+server/D/GitHub Release textop-filter-policy29d-20261026. Public export deliberately
+omits per-motion sampling arrays and optimizer state; full resume uses the private
+checkpoint. CPU audit verified actual20000 Adam updates,80 finite tensors and25
+identical public model/normalizer tensors. This is intermediate, not40k completion,
+physical acceptance, finalWBC or actual SDK resume validation. Nothing was deleted.
+First CPU audit failed because oldTorch1.13 weights-only parser rejects FLOAT
+opcode71; original source/directory/exit retained. v2 loads only this own SHA-bound
+trusted checkpoint on CPU (Torch1.13.1+cu117, CUDA uninitialized). Training still
+uses unchanged pinned SDK Torch2.5.1. No package/environment changes or SDK runs.
+Next stable policy checkpoint is5000; check workers before using
+provider_tools/backup_formal_filter_checkpoint.py --completed 5000.
+It only backs up the latest stable
+checkpoint, never removes original files, and must not overlap another backup.
+Further SDK validation-mode preparation remains pending; no new evaluator mode
+was implemented during this checkpoint-protection turn.
+ Existing results/checkpoint_sync_state.json
 still inventories the paused old57D ckpt1000; it is not evidence that a new formal
 filter checkpoint has been backed up. Inspect actual worker commands before any
 new backup job. Checkpoint/file/data cleanup is forbidden.
