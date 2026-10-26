@@ -1,0 +1,60 @@
+{
+  "receipts/quick5000_stop_requested.json": {
+    "exists": false,
+    "sha256": null,
+    "data": null
+  },
+  "receipts/quick5000_controlled_stop.json": {
+    "exists": false,
+    "sha256": null,
+    "data": null
+  },
+  "receipts/quick5000_backup_verified.json": {
+    "exists": false,
+    "sha256": null,
+    "data": null
+  },
+  "bound_sources": {
+    "scripts/solid_floor_ppo_probe.py": true,
+    "scripts/supervise_solid_floor_ppo.py": true,
+    "scripts/solid_floor_diagnostic.py": true,
+    "scripts/paper_filter_config.py": true,
+    "scripts/filter_training_runtime.py": true,
+    "scripts/numerical_trace.py": true,
+    "scripts/audit_full_contact_state.py": true,
+    "configs/full-library-capacity-spec.json": true,
+    "configs/solid-floor-ppo-spec.json": true,
+    "configs/tracker-env-spec.json": true,
+    "configs/paper-step2.json": true,
+    "scripts/validated_contact_profile.py": true,
+    "scripts/train_filter_policy.py": true,
+    "scripts/supervise_filter_policy.py": true,
+    "scripts/checkpoint_storage_guard.py": true,
+    "configs/filter-training-plan.json": true,
+    "scripts/quick_budget_guards.py": true,
+    "scripts/quick_budget_control.py": true,
+    "scripts/quick_pidfd.py": true
+  },
+  "observe": {
+    "returncode": 0,
+    "stdout": "{\"status\": \"QUICK_BUDGET_TARGET_READY\", \"quick_target_iterations\": 5000, \"current_completed_iterations\": 5300, \"optimizer_updates\": 106000, \"target_checkpoint_ready\": true, \"checkpoint\": {\"path\": \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_solid_floor_20261026_v1/completed_5000.pt\", \"bytes\": 90799598, \"sha256\": \"cfb443ab9ac80a615fdffdd881ede38b6e1997a0993752ff2a82a9f7c9939fae\"}, \"trainer_pid\": 3812580, \"owned_group\": 3812573, \"enabled\": true, \"quality_label\": \"QUICK_REPRODUCTION_NOT_PAPER_COMPLETE\", \"signals_sent\": [], \"sdk_runs\": 0, \"data_deleted\": false, \"sample_unix\": 1793005230.5257618}\n",
+    "stderr": ""
+  },
+  "disks": {
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": {
+      "free": 8199041024
+    },
+    "/home/ouyanghao": {
+      "free": 6617018368
+    }
+  },
+  "gpu": "0, 12741 MiB, 35811 MiB, 1 %\n1, 32006 MiB, 16544 MiB, 98 %\n",
+  "checked_unix": 1793005230.5894604,
+  "relevant_owned_processes": [
+    "3237857       1 Ss    1-17:10:46 python3 /data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/launch_training.py",
+    "3812568       1 Ssl     09:57:58 python3 /data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_filter_policy.py --run filter_policy_paper69_solid_floor_20261026_v1 --mode formal",
+    "3812573 3812568 Ss      09:57:58 /bin/bash /data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/python.sh -u /data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_filter_policy.py --spec /data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json --plan /data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filter-training-plan.json --output /data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_solid_floor_20261026_v1 --mode formal --device cuda:1 --headless",
+    "3812580 3812573 Rl      09:57:58 /data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/kit/python/bin/python3 -u /data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_filter_policy.py --spec /data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json --plan /data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filter-training-plan.json --output /data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_solid_floor_20261026_v1 --mode formal --device cuda:1 --headless"
+  ],
+  "private_full_process_snapshot_sha256": "da4f2155de011df24102731da4770e31614c7f166428ccf26df7c6971050e7aa"
+}
