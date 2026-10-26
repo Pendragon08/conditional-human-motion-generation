@@ -1,5 +1,65 @@
 # TextOp: data completion → physical filtering → full generator training
 
+## CURRENT2026-10-26 14:13 — disabled1% generator proposal / independent-volume storage prepared
+
+Teacher remains healthy: latest3700/5000 effective budget,74000updates,
+value loss0.08228810765, no exit. Coordinator50680 still owns the future backup
+and controlled stop. No new GPU/model/SDK/optimizer work or server config/path
+writes this turn; original16/live control code unchanged. Do not interrupt,
+restart, race backups or dispatch overlapping SDK while waiting for5000.
+
+NEW independently completed preparation: configs/quick-generator-proposal-20261026.json,
+reports/quick_generator_proposal_20261026.md and results/quick_generator_plan_20261026/
+budget_v1/assessment.json. Do NOT repeat prepare_quick_generator_plan.py or the
+old checkpoint-size audit. This is only a LOCAL disabled proposal; launch_enabled
+and corpus_build_enabledfalse, trainer_entrypointNone, no actual accepted quick
+corpus or implemented/validated launcher for this proposal. It is NOT new training
+and does not replace the unchanged full200k/300k paper recipe.
+
+Optional first quick generator chain: VAE2000 manager attempts with[1000,500,500],
+LDM3000 with[1000,1000,1000], each1% of source steps/stages. Batch512/lr1e-4,
+69D/history2/future8/fourprimitives, original networks/losses/5cosine steps/x0/CFG5,
+VAE/LDM rollout caps1/.8 retained; EMAfalse. Save interval1000 yields2 VAE+3LDM
+milestones, each with1 emergency slot. Quick-only evaluation500interval/12primitives
+(three full4-primitive validation draws), explicitly differs release2000/10.
+Attempts, actual optimizer steps and skipped gradients must remain separate.
+Compressed curriculum AND LR clocks are an experiment difference, so quick
+weights cannot become an exact full-paper continuation; later transfer needs an
+explicit warm-start label and distinct checkpoint binding. Do not silently
+promote or auto-execute this proposal because a JSON exists.
+
+Data stays conditional on genuine5k+actual SDK pilot. Selected64 before physics
+is47train/17val; actual retained sources/text pairs are stillnull. Train on kept
+retargeted REFERENCE motions with BABEL timing, not executed-pose video traces.
+Rebuild private corpus, family/pose splits, legal35pose/34feature primitive windows,
+train-only69D stats, real complete CLIP cache and declared weighting scope; no
+unfiltered2296 view statistics/diagnostic checkpoints. Actual VAE reconstruction/
+rollout and corpus/loader/resume/resource checks precede LDM. First chain using
+privileged5k teacher is a text-reference→simulated-tracking prototype, not the
+paper final deployable WBC or full real-time system. No quality claim from finite
+loss alone; original data/failure records remain protected.
+
+Storage was actually read only: personal/data and/home have distinct ext4 device
+IDs, owned1013, persistent resolved parents and writable. Snapshot new-budget
+margins: data1915719680B, home2675335168B.
+Propose VAE under personal project quick_generator_20261026/vae/checkpoints,
+LDM/home/ouyanghao/textop-quick69-checkpoints-20261026/ldm (neither created).
+Per-file planning ceilings600/300MiB use already completed EMA-off size proxy,
+not a new measurement or an enforced runtime guard. Include2GiB reserve per
+volume,512MiB logs,1GiB quick corpus/CLIP,512MiB small trace/video allowance and
+192MiB nextteacher checkpoint/export. Paper final WBC/full augmentation/additional
+seeds or resumes excluded. Revalidate/implement actual save guards before any
+use; do not claim all full-paper space issues solved or delete checkpoints.
+
+NEXT remains actual5000 coordinator handoff→fresh resource/lock/source checks→
+quick SDK author and independent smoke→scoped pilot→closed-trace actual videos.
+CPU video software profile already fully witnessed/bound but actual render flag
+stillfalse. Only afterward choose/activate a clearly labeled quick generator
+budget using genuine data/evidence; do not ask repeat permission or weaken full
+paper gates. Healthy preparation is quiet; real5k handoff/pilot/video milestones
+are notification points. Prior per-stage protections and commands below apply.
+
+
 ## CURRENT2026-10-26 13:30 — CPU execution-video renderer validated; genuine5k pilot pending
 
 Latest teacher3300/5000 effective budget,66000updates,value loss0.08690167218,

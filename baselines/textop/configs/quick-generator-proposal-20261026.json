@@ -1,0 +1,246 @@
+{
+  "schema": "textop.quick_generator_proposal.v1",
+  "status": "PROPOSED_ONLY_NOT_TRAINING_READY",
+  "quality_label": "QUICK_REPRODUCTION_NOT_PAPER_COMPLETE",
+  "launch_enabled": false,
+  "corpus_build_enabled": false,
+  "trainer_entrypoint_for_this_proposal": null,
+  "trainer_and_dataset_runtime_validated": false,
+  "reason": "Independent1-percent generator chain proposal for the user-requested quick reproduction, not activated by this planning step",
+  "paper_recipe_unchanged": true,
+  "paper_recipe_server_sha256": "d668360a8cbc1d4ad48845467841f3d4d9804f291a86790201ac3de74fec42dd",
+  "teacher_required_completed_iterations": 5000,
+  "teacher_backup_and_controlled_stop_required": true,
+  "physical_pilot_required": "Real same-contact quick SDK author/fresh smoke and representative pilot; closed exit/resources/whole-trial evidence",
+  "data_scope": {
+    "proposed_reference_sources": 64,
+    "proposed_train_sources_before_physics": 47,
+    "proposed_val_sources_before_physics": 17,
+    "actual_retained_sources": null,
+    "actual_retained_text_pairs": null,
+    "corpus_accepted": false,
+    "representation": {
+      "robot": "Unitree G1",
+      "dof": 29,
+      "feature_dim": 69,
+      "fps": 50,
+      "history_frames": 2,
+      "future_frames": 8,
+      "primitives_per_sample": 4,
+      "feature_frames_per_sample": 34,
+      "raw_pose_frames_for_forward_differences": 35
+    },
+    "mirror_stays_with_original_source_split": true,
+    "private_assets_only": true,
+    "training_inputs": "Retargeted reference motions that pass the scoped quick tracking assessment, with original verified BABEL timing; executed poses are evaluation/video data, not substituted training targets",
+    "required_data_acceptance": [
+      "Exact retained-source/variant/text-time coverage and private persistent copies",
+      "Source-family and exact-pose split checks; keep original assets if a view quarantines an overlapping training family",
+      "At least35 pose frames per primitive window, no cross-source transitions",
+      "Refit69D feature statistics on retained quick TRAIN only; no2296-source unfiltered diagnostic statistics",
+      "Real frozenCLIP cache covering all retained nonempty captions; mirrored captions preserved",
+      "Record action-weight statistics scope; never silently label a mismatched full-corpus table as quick-train statistics",
+      "Validate actual batch512/four primitives/history2/future8 loader, gradients and resumable state on this corpus before dispatch"
+    ]
+  },
+  "vae": {
+    "official_class": "robotmdar.model.mld_vae.AutoMldVae",
+    "encoder_input": "concatenated history2 and ground-truth future8 robot-motion features",
+    "decoder_input": "history2 and sampled latent",
+    "decoder_output_shape": [
+      8,
+      69
+    ],
+    "latent_dim": [
+      1,
+      128
+    ],
+    "hidden_dim": 512,
+    "ffn_dim": 1024,
+    "transformer_layers": 9,
+    "heads": 4,
+    "total_manager_steps": 2000,
+    "batch_size": 512,
+    "learning_rate": 0.0001,
+    "self_rollout": true,
+    "max_rollout_probability_from_table_VI": 1.0,
+    "loss": {
+      "reconstruction": "Huber",
+      "rec_weight": 1.0,
+      "kl_weight": 0.0001,
+      "body_translation_weight": 0.05,
+      "body_rotation_weight": 0.01,
+      "dof_position_weight": 0.03,
+      "dof_velocity_weight": 1e-05,
+      "foot_contact_weight": 0.01
+    },
+    "checkpoint_policy": "New69D run; never resume23DoF/57D checkpoints",
+    "stages": [
+      1000,
+      500,
+      500
+    ],
+    "paper_total_manager_steps": 200000,
+    "paper_stages": [
+      100000,
+      50000,
+      50000
+    ],
+    "optimizer": "Adam",
+    "ema_enabled": false,
+    "anneal_lr": true,
+    "save_every": 1000,
+    "eval_every": 500,
+    "eval_steps": 12,
+    "evaluation_choice": "Quick-only12=three complete4-primitive validation draws; differs released10",
+    "checkpoint_completed_steps": [
+      1000,
+      2000
+    ],
+    "emergency_checkpoint_slots": 1,
+    "checkpoint_per_file_planning_ceiling_bytes": 629145600,
+    "expected_batch_draws": 500,
+    "actual_optimizer_updates": null,
+    "skipped_updates": null,
+    "completed_primitive_attempts": 0,
+    "checkpoint_size_previous_ema_off_proxy_bytes": 518648281,
+    "total_checkpoint_planning_bytes": 1887436800
+  },
+  "ldm": {
+    "official_class": "robotmdar.model.mld_denoiser.DenoiserTransformer",
+    "freeze_trained_vae": true,
+    "freeze_pretrained_clip": true,
+    "conditioning": [
+      "current text CLIP embedding",
+      "history2 robot-motion features",
+      "diffusion timestep"
+    ],
+    "prediction_target": "clean latent z0; not a replacement epsilon-prediction objective",
+    "hidden_dim": 512,
+    "ffn_dim": 1024,
+    "transformer_layers": 8,
+    "heads": 4,
+    "noise_dim": 128,
+    "total_manager_steps": 3000,
+    "batch_size": 512,
+    "learning_rate": 0.0001,
+    "diffusion_steps": 5,
+    "noise_schedule": "cosine",
+    "text_mask_probability": 0.1,
+    "inference_cfg_scale": 5.0,
+    "self_rollout": true,
+    "max_rollout_probability_from_table_VI": 0.8,
+    "loss": {
+      "clean_latent": "Huber",
+      "latent_weight": 1.0,
+      "feature_reconstruction": "Huber",
+      "rec_weight": 1.0,
+      "geometry_weights": "same as VAE"
+    },
+    "normalization": "reuse the accepted69D training-only feature statistics and the selected trained VAE latent statistics",
+    "stages": [
+      1000,
+      1000,
+      1000
+    ],
+    "paper_total_manager_steps": 300000,
+    "paper_stages": [
+      100000,
+      100000,
+      100000
+    ],
+    "optimizer": "AdamW",
+    "ema_enabled": false,
+    "anneal_lr": true,
+    "save_every": 1000,
+    "eval_every": 500,
+    "eval_steps": 12,
+    "evaluation_choice": "Quick-only12=three complete4-primitive validation draws; differs released10",
+    "checkpoint_completed_steps": [
+      1000,
+      2000,
+      3000
+    ],
+    "emergency_checkpoint_slots": 1,
+    "checkpoint_per_file_planning_ceiling_bytes": 314572800,
+    "expected_batch_draws": 750,
+    "actual_optimizer_updates": null,
+    "skipped_updates": null,
+    "completed_primitive_attempts": 0,
+    "checkpoint_size_previous_ema_off_proxy_bytes": 225964011,
+    "total_checkpoint_planning_bytes": 1258291200
+  },
+  "storage": {
+    "status": "PROVISIONAL_NOT_CREATED_OR_ACTIVATED",
+    "vae_checkpoint_root": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/vae/checkpoints",
+    "ldm_checkpoint_root": "/home/ouyanghao/textop-quick69-checkpoints-20261026/ldm",
+    "volumes": {
+      "data": {
+        "checkpoints": 1887436800,
+        "future_teacher5000_full_and_inference": 201326592,
+        "accepted_quick_corpus_and_clip": 1073741824,
+        "private_trace_and_video_allowance": 536870912,
+        "logs_metadata": 536870912,
+        "free_reserve": 2147483648,
+        "planned_total_bytes": 6383730688,
+        "snapshot_free_bytes": 8299450368,
+        "snapshot_margin_bytes": 1915719680
+      },
+      "home": {
+        "checkpoints": 1258291200,
+        "logs_metadata": 536870912,
+        "free_reserve": 2147483648,
+        "planned_total_bytes": 3942645760,
+        "snapshot_free_bytes": 6617980928,
+        "snapshot_margin_bytes": 2675335168
+      }
+    },
+    "refresh_before_launch_and_each_save": true,
+    "no_old_checkpoint_relocation_or_deletion": true,
+    "per_file_ceiling_is_planning_allowance_not_measurement": true,
+    "excluded": [
+      "Paper final431D actor WBC",
+      "Full-corpus generated augmentation",
+      "Additional resumes/seeds beyond declared emergency slots",
+      "Paper-scale200k/300k checkpoint plan"
+    ]
+  },
+  "resources": {
+    "gpu": 1,
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "torch_memory_fraction": 0.65,
+    "minimum_gpu_free_gib": 20,
+    "no_new_job_while_existing_teacher_or_pilot_owns_SDK": true,
+    "shared_dependencies_unchanged": true
+  },
+  "activation_requirements": [
+    "Genuine5000 handoff and actual pilot results, never CPU/synthetic evidence alone",
+    "Implement and validate a separate quick launcher without weakening formal40k/full-generator gates",
+    "Bind exact source/corpus/statistics/CLIP/selected trainedVAE/quick-plan hashes in checkpoints",
+    "Measure actual loss/rollout stability before progressingVAE toLDM; finite loss alone is not quality acceptance",
+    "Record primitive attempts, real optimizer updates and skipped gradients separately; validation updates0",
+    "Owner/persistent/writable/non-RAM checks and actual file-size/free-capacity guards, including emergency saves"
+  ],
+  "schedule_difference": "Curriculum and LR clocks compressed100x, not just early stopping the paper recipe. Quick weights are not an exact continuation of paper training; any later transfer is a separately labeled warm-start run.",
+  "first_chain_scope": "Text-to-reference then simulated tracking by5k privileged teacher only; not the paper final deployable WBC or complete real-time TextOp system",
+  "actual_generator_training_started": false,
+  "generation_execution_loop_completed": false,
+  "actual_result_videos": 0,
+  "source_bindings": {
+    "runtime_server_sha256": {
+      "paper69_runtime.py": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
+      "paper69_data_runtime.py": "cf5c1e3f27665e7fc4d4aa1ede6bcd1931e3563409ad766ff67a576cc0c7b60d",
+      "generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e"
+    },
+    "base_environment_server_sha256": "30bcaa928d4e7ed4cf7359d88dfe909334718957fffbd07bc98510467612d421",
+    "prior_checkpoint_size_audit_sha256": "72a3b275dbd9ccba2103431f2aff6aabb55abbeb7ddf1d47762514a2229bc209",
+    "official_manager_local_sha256": "c6df6a0b3ca504d96e9e8893fa4a29ab98f60dc1cd6dc54e47a434ad5d722fae",
+    "official_train_vae_local_sha256": "e62d31c88d6f9c15bdf1d2d4f00bf6d282e464ea27b56f40b00d723c1686cbbc",
+    "official_train_ldm_local_sha256": "9ff744389950265ccf20560404fdff4085d2bc32847a14219fda26248037e117"
+  }
+}
