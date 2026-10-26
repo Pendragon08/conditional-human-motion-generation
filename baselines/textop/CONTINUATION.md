@@ -1,10 +1,10 @@
 # TextOp: data completion → physical filtering → full generator training
 
-## CURRENT2026-10-26 08:20 — formal policy healthy; post-exit filtering candidate disabled
+## CURRENT2026-10-26 09:04 — formal policy healthy; post-exit filtering candidate disabled
 
 Current real receipt: filter_policy_paper69_solid_floor_20261026_v1 is
-RUNNING_FORMAL_FILTER_TRAINING,400/40000 rounds,8000 actual updates, value loss
-0.07517762780189514, no exit receipt. This is early training, not convergence or
+RUNNING_FORMAL_FILTER_TRAINING,800/40000 rounds,16000 actual updates, value loss
+0.10634440071880817, no exit receipt. This is early training, not convergence or
 physical acceptance. Progress flushes first10 rounds then every100; an unchanged
 receipt between flushes is not a stall. Keep the existing supervisor/SDK job;
 DO NOT repeat activation, launcher, any old diagnosis or another SDK task.
