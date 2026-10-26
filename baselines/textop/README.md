@@ -1,3 +1,16 @@
+## Latest user direction: evaluate at10k and improve semantics
+
+User2026-10-26 requests physical filtering assessment at10,000 teacher rounds
+before deciding whether40,000 is needed. Originalpaper baseline remains frozen.
+See [10k evaluation and semantic plan](reports/teacher10000_and_semantics_20261026.md)
+and [runtime contract](TEACHER10000_EVALUATION_ENVIRONMENT.md).
+Quick online functional chain is accepted; semantic/paper quality is still not.
+New lexical coverage audit found only1wave-stem annotation (~0.84s) inquickTRAIN,
+versus147availableTRAINsource candidates (27explicitwave+right); this is a lead
+for realphysics and controlled semantic tests, not a causal or quality claim.
+Future fullpaper completion must include accepteddata/fullgenerator/requiredWBC,
+augmentation/onlinequality/video; user must be notified when actually attained.
+
 # TextOp 复现
 
 当前已验证**快速版在线“文本切换→异步生成→真实仿真反馈控制”功能链路**：作者及独立两次各257步均零超时、断流和物理失败。语义与论文质量仍未通过；完整40k跟踪器已从5k状态实际恢复并继续优化，实际状态见[在线验收与续训报告](reports/online_quick_20261026.md)。最新证据与本地录像入口见[实际结果报告](reports/quick_actual_results_20261026.md)，继续工作先读[CONTINUATION顶部](CONTINUATION.md)。

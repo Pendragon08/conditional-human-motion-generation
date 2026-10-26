@@ -1,3 +1,62 @@
+## CURRENT ACTIVATION — 10k evaluation handoff coordinator live
+
+NewspecSHA931812877f098add85b86141cb99eb7763d8d80193f904d9ff4d654528690af6;
+handoff_enabled=true only after freshdoc actualexit0/28hashes+staticreview/noissues.
+Local hidden teacher10000_coordinator.py --run coordinator_v1 PID63636 is historical:
+check actual command/state first. Latest5400/108000, WAITING_VERIFIED_10000_CHECKPOINT,
+no signals or newSDK. It exclusively owns future10000 backup+controlledhandoff.
+Never duplicate/restart it or manually compete for10000backup/stop. Newbackup
+provider backup_full_teacher_checkpoint.py (not old5k hardcodedtool), fullstate
+CPUadapter and newresume run provenancedescribed below. Actualpositive10000audit/
+backup/stop remainfuture;32+32CPUmetadata andread-onlydoc are not that result.
+Originaltrainer/20frozenbindings unchanged. Afterhandoff actualevaluation needs
+new10k schema/executor validation; do not spoofolder5k/40kreceiptcounts.
+
+## CURRENT — user-requested10k filtering checkpoint and semantic improvement
+
+2026-10-26 user overrides the lower mandatory40k-before-evaluation sequence:
+evaluate physics filtering at10000 first; improve semantic motion quality;
+notify only when full paper reproduction effect is actually achieved.
+Read TEACHER10000_EVALUATION_ENVIRONMENT.md,
+configs/teacher10000-evaluation-spec.json,
+reports/teacher10000_and_semantics_20261026.md and newest
+results/teacher10000_evaluation_20261026/*/state.json.
+Original active8192 trainer/spec and frozen sources remain immutable; external
+handoff controls only the same original process after real latest10000 stable
+snapshot, new-run CPUaudit and server+D private/full +GitHub inference backup.
+Do not use old hardcoded5k backup or restart any trainer/coordinator.
+Current control activation is determined by actualhandoff_enabled and live state,
+not this historical prose. Metadata CPUchecks32local/32server passed; no10000
+snapshot yet, no actual new backup/stop/physics evaluation has occurred.
+Fresh independent read-only execution/review precedes activation. On failure
+inspect exactstage; pending signals prohibit repetition. Original40k supervisor
+may exit nonzero after authorized interruption: preserve it, explain via new
+teacher10000_controlled_stop; never auto-restart40k or claim40kcompleted.
+
+After handoff create separate10k evaluation schema/executor and actualauthor/
+fresh validation, compare same64sources/same thresholds against5k42success22fail
+without best-retry selection, then expand fixed coverage/semantic candidates.
+Originalfull40k gate files remain; do not fabricate their counts. Based on
+actualquality continue teacher if needed or expand screening. Wholeavailable
+corpus/normalization/CLIP/restore/storage acceptance still precedes fullgenerator.
+
+New read-only semantic coverage audits complete, do not rerun:
+audit_quick_text_coverage.py coverage_author_v1 and
+ audit_semantic_candidate_pool.py full_available_pool_v1, eachCPUexit0/0GPU.
+QuickTRAIN31sources: wave-stem only1annotation~0.84s, wave+right0; availableTRAIN
+wave147sources/wave+right27, VAL61/17. Lexical hints, not synonym-complete labels,
+root-cause proof, or physical acceptance. All53928legalTRAINprimitive occurrences
+have nonempty text;11096have multiple distinct labels, not necessarily conflicts.
+Not the actual action-weighted minibatch distribution. Rawprivate details/pool
+server+Ddatasets/semantic_diagnostics_private_20261026 SHAverified4files.
+Prioritize real physics of missing lexical groups and controlled same-noise/
+history different-prompt vsunconditional and multiple-seed heldout tests. Keep
+CFG5 baseline, LDMqualitynegative result and all failures. Do not edit datasets
+or claim semantics improved from coverage alone. New actual findings/results
+publicaggregates: results/semantic_quality_20261026. Full reproduction completion
+notification remains required including semanticquality, finalWBC/augmentation,
+onlineexecution/video; no partialstage masquerades as complete.
+
 ## Latest persisted training observation
 
 New fullteacher receipt now actually reports5100 completed/102000optimizer updates,

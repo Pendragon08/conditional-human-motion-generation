@@ -1,0 +1,56 @@
+{
+  "schema": "textop.teacher10000_evaluation.v1",
+  "run": "filter_policy_paper69_resume5000_to40000_20261026_v1",
+  "user_request": "2026-10-26: evaluate physical filtering at10000 iterations first; improve motion semantics; notify when paper-level complete reproduction is achieved.",
+  "handoff_enabled": true,
+  "evaluation_checkpoint": 10000,
+  "paper_reference_iterations": 40000,
+  "process_identity": {
+    "pid": 4104159,
+    "start_ticks": 1422364669,
+    "group": 4104152
+  },
+  "resume_spec_sha256": "a5bc7b0b8693dbd6f4acecc65d783a80d198edc3707ce3ed7919338007823be4",
+  "backup_spec_sha256": "c13c3f0146f627db1ed529eb0375ffb28d8c840fd35c9a906974d92e11d23c6a",
+  "bound_control_sources": {
+    "scripts/teacher_evaluation_control.py": "12308bcaace6bee7b9f953d6d887ae706fd0486671a5bbc7baf772d1c0649181",
+    "scripts/quick_pidfd.py": "df180bffb3e35dd77c8bb4f8ca9b143879a4184f6f8aab98188e1139de6538f2",
+    "scripts/full_teacher_backup_protocol.py": "d13b82c8fc9952fc4659dc77441657bdbca1124d04aab2a3cc983768beb2869e"
+  },
+  "evaluation_launch_enabled": false,
+  "evaluation_entrypoint": null,
+  "evaluation_protocol": {
+    "first_comparison": "Same previously fixed64 source IDs, all42 successes and22 failures retained; same full-duration strict thresholds and contact, compare5k vs10k without selecting best retries.",
+    "additional_coverage": "After executor author/fresh validation, fixed held-out representative sources including longer durations and missing lexical groups; private selection frozen before outcomes.",
+    "metrics": [
+      "complete-duration success/failure/unattempted",
+      "root/body/joint tracking error",
+      "feet slip/contact",
+      "full reference endpoint check",
+      "per-source and duration-stratum paired changes"
+    ],
+    "weak_teacher_failure_is_not_absolute_motion_infeasibility": true,
+    "whole_library_acceptance": false,
+    "continue_to40000_if_needed": true
+  },
+  "semantics": {
+    "quality_accepted": false,
+    "causal_reason_established": false,
+    "do_not_modify_active_training": true,
+    "controlled_comparisons": [
+      "Same seed/history different prompts and unconditional branch",
+      "Same prompt different seeds",
+      "Fixed held-out text families and original full5-step CFG5 sampling",
+      "VAE posterior reconstruction versus autoregressive generation",
+      "Endpoint and semantic motion measurements plus visual review"
+    ],
+    "improvements": "Use measured label coverage and held-out errors to expand physically accepted, source-separated training corpus and adjust only explicit experimental variants. Preserve paper baseline, negative results, data and every checkpoint."
+  },
+  "notification": "Notify when paper complete reproduction quality and all required stages are actually accepted, and for material results/failures; not every healthy polling interval.",
+  "independent_document": {
+    "summary_sha256": "53c9c1b93d214bbdf942ef5c214c5b5d3588ccb9bf894cae5550809ccaa4a611",
+    "report_sha256": "9f25089d63128eaf84109b8e3d5ec615932cca0f764db6b7636d320244d7e9ed",
+    "actual_exit": 0,
+    "actual_checkpoint_audit_and_stop_pending": true
+  }
+}
