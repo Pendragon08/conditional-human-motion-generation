@@ -78,5 +78,7 @@ j=json.loads(remote(code,timeout=90));o=B/'results/full_teacher_resume_20261026'
 (B/'results/online_quick_20261026/quality_review_v1.json').write_text(json.dumps(review,indent=2),encoding='utf-8')
 for folder in ['online_document_v1','analytic_fk_document_v1']:
     target=B/'results/online_quick_20261026'/folder;target.mkdir(exist_ok=True)
-    for name in ['REPORT.md','SUMMARY.json']:shutil.copyfile(T/folder/name,target/name)
+    for name in ['REPORT.md','SUMMARY.json']:
+        public_name='independent_summary.json' if folder=='online_document_v1' and name=='SUMMARY.json' else name
+        shutil.copyfile(T/folder/name,target/public_name)
 print(json.dumps(j['proof']));assert j['proof']['actual_preflight_returncode']==0

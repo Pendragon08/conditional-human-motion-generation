@@ -1,3 +1,13 @@
+## Latest persisted training observation
+
+New fullteacher receipt now actually reports5100 completed/102000optimizer updates,
+resume verified, finite losses, still RUNNING/noexit. Latestnative snapshot5119 is
+newer but not a checkpoint. Current stable fullresume source remains5000 until10000.
+The previous zero-counter startup note below is historical; no training reset occurred.
+Public online summaries use distinct independent_summary.json and summary.json:
+Windows SUMMARY/summary case collision was corrected from both preserved originals,
+with local_summary_case_correction.json evidence; no experiment/server file changed.
+
 ## CURRENT — bounded online functional acceptance; full paper teacher actually resumed
 
 This overrides lower claims that online execution is still untested. Read

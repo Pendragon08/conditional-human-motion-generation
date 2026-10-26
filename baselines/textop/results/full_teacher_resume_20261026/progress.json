@@ -1,11 +1,11 @@
 {
   "run": "filter_policy_paper69_resume5000_to40000_20261026_v1",
-  "sample_unix": 1793026849.1106067,
+  "sample_unix": 1793026984.673377,
   "spec_sha256": "a5bc7b0b8693dbd6f4acecc65d783a80d198edc3707ce3ed7919338007823be4",
   "receipt": {
     "status": "RUNNING_FORMAL_FILTER_TRAINING",
-    "optimizer_updates": 0,
-    "completed_learning_iterations": 0,
+    "optimizer_updates": 102000,
+    "completed_learning_iterations": 5100,
     "formal_filter_training_started": true,
     "full_generator_training_started": false,
     "physical_filter_executed": false,
@@ -31,7 +31,7 @@
     "reference_sources": 8278,
     "num_envs": 8192,
     "corpus_scope": "BABEL-indexed available public profile; not a claim of reproducing all 12296 author tracking clips or private403 clips",
-    "elapsed_seconds": 136.46526031009853,
+    "elapsed_seconds": 772.8012462109327,
     "contact_profile": {
       "kind": "validated_static_solid_floor",
       "top_z": 0.0,
@@ -103,10 +103,17 @@
       }
     },
     "resume_exact_state_verified": true,
-    "resumed_physics_episodes_restarted_without_counting_reset": true
+    "resumed_physics_episodes_restarted_without_counting_reset": true,
+    "latest_losses": {
+      "value_function": 0.08342104256153107,
+      "surrogate": -0.010613020416349173,
+      "entropy": 15.707827806472778
+    },
+    "raw_completed_attempts": 9846414,
+    "peak_torch_allocated_bytes": 17247570432
   },
-  "latest_native_logged_iteration_zero_based": 5096,
-  "observed_completed_from_native_log": 5097,
+  "latest_native_logged_iteration_zero_based": 5118,
+  "observed_completed_from_native_log": 5119,
   "exact_source_resume_completed": 5000,
   "exact_source_resume_updates": 100000,
   "actual_workers": [
@@ -206,7 +213,7 @@
       ],
       "state": [
         "State:\tR (running)",
-        "VmRSS:\t 9207668 kB"
+        "VmRSS:\t 9208740 kB"
       ]
     }
   ],
@@ -214,11 +221,11 @@
   "outer_exit": null,
   "latest_resource_sample": {
     "child_pid": 4104152,
-    "sampled_unix": 1793026813.2604861,
+    "sampled_unix": 1793026933.4750886,
     "resources": {
-      "available_host_ram_bytes": 129476513792,
-      "data_free_bytes": 6103920640,
-      "all_device_usage_including_other_jobs": "0, 12741, 35811, 1\n1, 31536, 17014, 98",
+      "available_host_ram_bytes": 129476161536,
+      "data_free_bytes": 6103810048,
+      "all_device_usage_including_other_jobs": "0, 12741, 35811, 1\n1, 31536, 17014, 97",
       "owned_child_group": 4104152,
       "owned_group_processes": [
         {
@@ -240,7 +247,7 @@
           "group": 4104152,
           "state_and_rss": [
             "State:\tR (running)",
-            "VmRSS:\t 9206932 kB"
+            "VmRSS:\t 9209612 kB"
           ],
           "cpu_affinity": [
             0,

@@ -5,7 +5,7 @@ def main():
     p=B/'results/online_quick_20261026/functional_acceptance_v1.json'
     if not p.exists():return
     acceptance=json.loads(p.read_text(encoding='utf-8'))
-    doc=json.loads((B/'results/online_quick_20261026/online_document_v1/SUMMARY.json').read_text(encoding='utf-8'))
+    doc=json.loads((B/'results/online_quick_20261026/online_document_v1/independent_summary.json').read_text(encoding='utf-8'))
     pp=B/'results/full_teacher_resume_20261026/progress.json';progress=json.loads(pp.read_text(encoding='utf-8')) if pp.exists() else {}
     rc=progress.get('receipt') or {};observed=progress.get('observed_completed_from_native_log')
     running=bool(progress.get('actual_workers')) and rc.get('resume_exact_state_verified') and progress.get('outer_exit') is None
