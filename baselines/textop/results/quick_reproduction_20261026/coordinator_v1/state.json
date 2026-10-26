@@ -1,15 +1,15 @@
 {
-  "status": "WAITING_VERIFIED_5000_CHECKPOINT",
+  "status": "QUICK_TRANSITION_NEEDS_INSPECTION",
   "pid": 50680,
   "quick_target_iterations": 5000,
   "quality_label": "QUICK_REPRODUCTION_NOT_PAPER_COMPLETE",
   "data_deleted": false,
-  "sample_unix": 1792999332.700525,
+  "sample_unix": 1793001011.013649,
   "observation": {
     "status": "QUICK_BUDGET_WAITING_FOR_5000",
     "quick_target_iterations": 5000,
-    "current_completed_iterations": 4400,
-    "optimizer_updates": 88000,
+    "current_completed_iterations": 4700,
+    "optimizer_updates": 94000,
     "target_checkpoint_ready": false,
     "checkpoint": null,
     "trainer_pid": 3812580,
@@ -19,6 +19,8 @@
     "signals_sent": [],
     "sdk_runs": 0,
     "data_deleted": false,
-    "sample_unix": 1792999333.799137
-  }
+    "sample_unix": 1793000977.0874112
+  },
+  "error": "Traceback (most recent call last):\n  File \"C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\provider_tools\\quick_budget_coordinator.py\", line 59, in <module>\n    observed=control('observe');state['observation']=observed\n             ^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\provider_tools\\quick_budget_coordinator.py\", line 49, in control\n    return json.loads(remote(script,timeout=85))\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\provider_tools\\session.py\", line 8, in remote\n    if result.returncode:raise RuntimeError(result.stderr[-6000:]+'\\n'+result.stdout[-6000:])\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: ssh: connect to host 10.147.17.32 port 22: Connection timed out\n\n\n",
+  "no_new_sdk_dispatched": true
 }

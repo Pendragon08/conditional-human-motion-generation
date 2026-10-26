@@ -1,5 +1,54 @@
 # TextOp: data completion → physical filtering → full generator training
 
+## CURRENT2026-10-26 16:14 — SSH interruption; last actual4700, coordinator exited
+
+THIS UPDATE OVERRIDES earlier statements that50680 is live/4400 is latest.
+The originalcoordinator_v1 last successfully observed4700/5000 and94000 actual
+updates at15:49:37. At15:50:11 its READ-ONLY observation failed with SSHtimeout;
+state is QUICK_TRANSITION_NEEDS_INSPECTION and its Windows process is gone.
+No backup stage/stop signal was reached in that coordinator. Do NOT infer the
+server trainer stopped: original40k internal target may still run; current
+server state is UNKNOWN. Do not invent a5k backup/controlled-stop receipt.
+
+Read reports/connection_interruption_20261026.md and results/
+connection_interruption_20261026/observation_v1.json. Default and explicitZT
+source SSH bothtimeout. LocalZT service/APIonline=true, networkOK, managedIP
+and Alive subnet route exist; target neighborUnreachable and route selection
+showedWLAN. Rootcause not established; no proxy/route/service/network setting
+changed, no training signals/data/checkpoint deletions. Do not repeat old
+source-selection/renderer/CPU diagnostics while disconnected.
+
+NEXT: one boundedSSH check. If still unreachable, preserve actual error and
+avoid repeated GPU/SDK dispatch or blind network/training restarts. If restored,
+inspect actual original process identities, latestreceipt/checkpoint stability,
+16frozen+3controlSHA, backup workers, SDKlock, resources and BOTH server
+quick5000_stop_requested.json/quick5000_controlled_stop.json before any action.
+coordinator_v1 failure must remain unchanged. Only if confirmed pure observation
+failure/no active coordinator or backup/no pending signals may the SAME existing
+quick_budget_coordinator.py safely resume under a NEW unique run name, e.g.
+coordinator_network_resume_v2. Do not reusev1/run directories or modify original
+trainer/runtime/control sources. If a stop was already requested, follow the
+existing pending/real-supervisor-exit protocol; never resend signals. If5k
+already exists, existing verifiedlatest+backup+pidfd rules still apply; do not
+relax provenance simply because elapsedtime exceeded5k.
+
+Report-only quick_progress_snapshot.py now selects the newest real coordinator
+state and its later observation, preserving originalprogress.json. Two report
+collectors use it and distinguish LAST VERIFIED4700 from unknown currentstate;
+no environment, model or GPU execution changed. MainDreport and new
+连接中断与最新核验进度_20261026 report reflect failure, not healthy4400. New
+coordinator resumes will be picked by latestsample time automatically. Do not
+call old templates to overwrite this with healthy/current claims.
+
+Physical filtering/quick SDKpilot/generator/realvideos remain NOT EXECUTED.
+Full8278 preprocessing already complete, do not reprocess or renotify. Genuine
+5k backup+controlledexit→actualauthor/freshdocument smoke→64pilot→realposevideo
+remains first execution priority. All previous resource/privateasset/protection
+and5000/public-inference/private-full-backup rules remain. User was told the
+new connectionfailure while asking whether filteringfinished; do not repeat
+unchanged failures eachheartbeat. Notify actual recovery/milestone/newrequired
+action, and continue authorized work without asking repeatconfirmation.
+
 ## CURRENT2026-10-26 15:18 — disabled post-pilot source selector prepared, real decisions0
 
 Latest teacher4400/5000, 88000updates, value loss0.08757374510169029,

@@ -7,9 +7,8 @@ import pathlib
 B=pathlib.Path(__file__).resolve().parents[1]
 D=pathlib.Path('D:/具身智能/TextOp复现_20261024')
 plan=json.loads((B/'configs/quick-reproduction-plan-20261026.json').read_text(encoding='utf-8'))
-progress=json.loads((B/'results/full_contact_20261026/formal_launch/progress.json').read_text(encoding='utf-8'))
-state_path=B/'results/quick_reproduction_20261026/coordinator_v1/state.json'
-state=json.loads(state_path.read_text(encoding='utf-8')) if state_path.exists() else {'status':'NOT_STARTED'}
+from quick_progress_snapshot import snapshot
+progress,state,connection_note=snapshot(B)
 text='''# TextOp快速复现：先在5,000轮节点做小规模验证
 
 更新：{time}
@@ -39,6 +38,8 @@ text='''# TextOp快速复现：先在5,000轮节点做小规模验证
 '''.format(time=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(timespec='seconds'),
            rounds=progress['completed_learning_iterations'],updates=progress['optimizer_updates'],
            enabled=plan['early_stop_enabled'],state=state['status'])
+if connection_note:
+    text=text.replace('更新：', '**'+connection_note+'**\n\n更新：', 1)
 if (B/'results/quick_pilot_candidate_20261026/trace_semantics_v2.json').exists():
     text+='''
 

@@ -9,13 +9,15 @@ formal_running=formal.get('status')=='RUNNING_FORMAL_FILTER_TRAINING' and formal
 quick_path=B/'configs/quick-reproduction-plan-20261026.json'
 quick=json.loads(quick_path.read_text(encoding='utf-8')) if quick_path.exists() else {}
 quick_active=quick.get('early_stop_enabled') is True
-quick_state_path=B/'results/quick_reproduction_20261026/coordinator_v1/state.json'
-quick_state=json.loads(quick_state_path.read_text(encoding='utf-8')) if quick_state_path.exists() else {}
+from quick_progress_snapshot import snapshot
+formal,quick_state,connection_note=snapshot(B)
 quick_ready=quick_state.get('status')=='QUICK_CHECKPOINT_READY_FOR_PILOT'
 if quick_ready:training_note='快速版已保存5,000轮/100,000次更新并受控结束，等待小规模真实评估；原40,000轮未完成'
 elif formal_running:training_note='进行中：{}/{}轮，{}次实际更新'.format(formal.get('completed_learning_iterations'),'5,000（快速版预算）' if quick_active else '40,000',formal.get('optimizer_updates'))
 elif quick_active:training_note='快速切换状态待核查：'+quick_state.get('status','未知')+'；保留原退出记录'
 else:training_note='未取得正在运行的正式优化凭据；以真实退出/失败收据为准'
+if connection_note:
+ training_note='最后核验{}/5,000轮、{}次更新；当前连接中断，服务器实时状态及5,000轮切换待核查'.format(formal.get('completed_learning_iterations'),formal.get('optimizer_updates'))
 comparison=json.loads((R/'contact_counterfactual_comparison.json').read_text(encoding='utf-8'))
 labels={'baseline':'原 Plane 地面','no_self_collision':'仅关闭自碰撞（诊断）','no_floor':'仅移除地面（诊断）','solid_floor':'静态箱体平地，保留自碰撞（候选）'}
 md=['# TextOp：地面接触对照与候选修复验证','',
@@ -85,6 +87,8 @@ if (B/'results/contact_replay_v4_20261026/server_cpu_author_v1.json').exists():
 if quick_active:
  md.insert(4,'**当前优先级已调整：先5,000轮快速验证。** '+training_note+'。原论文完整版仍保留40,000轮口径；当前不能算论文同规模结果。')
  md.extend(['', '## 用户选择快速复现', '', '5,000轮检查点和完整备份核验成功后，只结束本次训练，再做小规模真实跟踪评估。全部数据、检查点和原始失败/中断记录保留；不以早期策略直接大批量剔除数据，也不放宽论文完整版的验收口径。详情见TextOp快速复现安排_20261026报告。'])
+if connection_note:
+ md.insert(4,'**'+connection_note+'**')
 text='\n'.join(md)
 (B/'reports/contact_isolation_20261026.md').write_text(text,encoding='utf-8')
 D.mkdir(exist_ok=True);(D/'地面接触对照与候选修复_20261026.md').write_text(text,encoding='utf-8')
