@@ -1,5 +1,68 @@
 # TextOp: data completion → physical filtering → full generator training
 
+## CURRENT2026-10-26 12:32 — disabled quick-pilot candidate v2 prepared; actual SDK pending
+
+Continue the effective5000 teacher budget and the live coordinator below. Latest
+read-only teacher sample2700/5000,54000 updates, value loss0.09990353547, exit absent.
+PID50680 still has the expected quick_budget_coordinator.py --run coordinator_v1
+command. Do not restart it, race backup5000 or signal/modify the active trainer.
+The16 active files and quick-control code remained unchanged through all work.
+
+NEW preparation is complete, do NOT repeat it: separate quick5k schema/executor/
+supervisor/provenance checks and pre-autoreset execution-trace writer are deployed.
+Read QUICK_PILOT_ENVIRONMENT.md, configs/quick-pilot-spec.json,
+reports/quick_pilot_candidate_20261026.md and results/quick_pilot_candidate_20261026.
+Both pilot_launch_enabled and sample_launch_enabled remain false; full-v4 flags
+also remain false. No actual SDK pilot, accepted corpus, generator or video exists.
+Do not call full-v4 with5k or weaken its40k gates.
+
+Local/server CPUv1 each28 checks exit0; independent docv1 exit0/15 checks. Review
+found the target clock nuance and misleading both-branches wording. Revision2
+preserves physics, asserts consumed reference sequence and labels endpoint NOT
+independently checked. Local/server CPUv2 each31 checks exit0, new fresh docv2
+actualexit0/16checks/stderr empty. Old bytes/review/receipts remain, no failures
+hidden. Do not rerun stage/update tools, CPU fixtures or unchanged preflights.
+The initial deployment and v2 update snapshots are in stage.json,
+trace_semantics_v2.json, runtime_bytes.json/runtime_bytes_v2.json and doc bundles.
+
+Actual8278-source metadata selection has been checked once, no physics/rejection:
+smoke8 whole52..64frame originals (KIT5/CMU1/DFaust2), sample64 whole65..1613frame
+originals across10datasets, duration bins22/23/19, train/val47/17. Overlap0,
+failure EMA unused;330 sources outside declared50..2000 scope were NOT rejected.
+Sample leaves8214 unattempted. Exact private selection18467B/SHA
+d5ca0353bd1b379153cd2bd18b935c11cd71106d14d78c21362528be6f8fe6af
+is server+D verified. Public selection_metadata.json contains aggregates only.
+
+NEXT after the existing coordinator has actual5000 backup+controlled exit:
+verify checkpoint/stop/actual original exit, worker absence/common lock, source
+bytes and fresh GPU/RAM/disk. Enable ONLY new pilot_launch_enabled, then serial
+actual author smoke and fresh document smoke with unique run names per doc.
+Smoke is8env/1024calls/600s. Sample flag stays false until both real closed
+smoke/exit/resource/trace witnesses are bound; CPU passes cannot enable it.
+At least one natural completion is required; all failures/partial trials retained.
+If all8 pass, actual failure branch is unexercised. Later64 sample uses16env,
+8192calls/3600s, without mass5% rejection based on early teacher quality.
+
+The pose writer copies state in termination_manager.compute BEFORE autoreset,
+not after env.step returns. Private binary journals flush each sample; initial
+plus pre-reset physical poses and compressed finished/failed traces are retained,
+256MiB maximum, real runtime kind distinguished from synthetic fixtures. Actual
+video renderer/output still pending. Important: T−1 elapsed-duration calls consume
+current references0..T−2; stored current-target diagnostics do not independently
+compare final reference endpointT−1. Do not claim endpoint tracking or paper scores
+without an additional aligned endpoint check and actual validation. This is an
+explicit quick/paper difference, not a changed motion clock or reward rule.
+
+New local/GitHub report is TextOp快速跟踪候选与数据范围_20261026.html; use
+collect_quick_pilot_candidate_report.py only for candidate preparation (it reports
+zero real trials), not to overwrite future actual SDK results. Current main/quick
+report renderers remain quick-aware. Update actual receipts/collector after real
+runs. Healthy training/preparation remains quiet; actual5000 backed-up controlled
+handoff and real pilot/video outcomes are notification milestones. Continue after
+milestones without another permission question. Prior protection/resource/data
+constraints and quick coordinator ownership below remain in force.
+
+
 ## CURRENT2026-10-26 11:46 — USER CHANGED PRIORITY: quick5k reproduction is ARMED
 
 The user's latest instruction asks for faster reproduction with fewer than40000

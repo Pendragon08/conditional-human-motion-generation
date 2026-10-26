@@ -31,7 +31,7 @@ text='''# TextOp快速复现：先在5,000轮节点做小规模验证
 
 原训练收据可能因受控中断记录KeyboardInterrupt/FAILED及非零退出，这些原始信息会保留，并由单独的用户授权提前结束记录解释；不会改写成40,000轮已完成。
 
-**快速版不代表论文同规模复现。** 早期策略失败不能直接证明动作物理不可行。先评估小规模动作，效果不足时从检查点续训。实际快速回放入口及SDK验证是后续工作；既有要求40,000轮的正式筛选门槛没有被放宽。生成器VAE/LDM训练步数尚未因本次变更自动缩减，后续会明确数据范围和实验预算。
+**快速版不代表论文同规模复现。** 早期策略失败不能直接证明动作物理不可行。先评估小规模动作，效果不足时从检查点续训。真实快速回放和SDK验证仍需单独执行，以实际收据为准；既有要求40,000轮的正式筛选门槛没有被放宽。生成器VAE/LDM训练步数尚未因本次变更自动缩减，后续会明确数据范围和实验预算。
 
 自动切换协调器运行在本地，训练仍在原服务器；本地需保持联网以完成备份和切换。约6.36秒/轮的既有实测只能用于估算，到达节点时间随共享资源而变。
 
@@ -39,6 +39,13 @@ text='''# TextOp快速复现：先在5,000轮节点做小规模验证
 '''.format(time=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(timespec='seconds'),
            rounds=progress['completed_learning_iterations'],updates=progress['optimizer_updates'],
            enabled=plan['early_stop_enabled'],state=state['status'])
+if (B/'results/quick_pilot_candidate_20261026/trace_semantics_v2.json').exists():
+    text+='''
+
+## 小规模回放候选准备记录
+
+独立quick入口已形成禁用候选，新版本本地及服务器31项CPU检查通过；真实SDK回放尚未运行。已用实际私有清单核对8条完整短动作和跨10个数据集的64条代表动作选择，不使用失败EMA批量淘汰动作。记录器在自动重置前保存实际物理姿态；参考末帧端点尚未独立比较，不能将当前目标误差当作论文指标。详见本地《TextOp快速跟踪候选与数据范围_20261026.html》及仓库reports/quick_pilot_candidate_20261026.md。此准备记录不代表真实筛选、生成器或闭环完成。
+'''
 (B/'reports/quick_reproduction_20261026.md').write_text(text,encoding='utf-8')
 (D/'TextOp快速复现安排_20261026.md').write_text(text,encoding='utf-8')
 try:

@@ -1,0 +1,45 @@
+{
+  "status": "QUICK_PILOT_DISABLED_DOCUMENT_PREFLIGHT_PASSED",
+  "check_count": 15,
+  "checks": [
+    "candidate_byte_match:scripts/quick_pilot_protocol.py",
+    "candidate_byte_match:scripts/quick_pilot_trace.py",
+    "candidate_byte_match:scripts/evaluate_quick_pilot.py",
+    "candidate_byte_match:scripts/supervise_quick_pilot.py",
+    "candidate_byte_match:configs/quick-pilot-spec.json",
+    "candidate_byte_match:provider_tools/validate_quick_pilot_cpu.py",
+    "quick_pilot_both_gates_disabled",
+    "same_live_quick_budget_plan",
+    "all16_original_training_files_unchanged",
+    "live_quick_control_sources_unchanged",
+    "actual_server28_new_cpu_fixtures_passed",
+    "actual_disabled_supervisor_refused_before_SDK",
+    "full40k_gates_unchanged_and_disabled",
+    "pinned_motion_API_contains_trace_properties",
+    "actual_step_terminates_then_rewards_then_autoresets_then_advances_reference"
+  ],
+  "deployed_sha256": {
+    "scripts/quick_pilot_protocol.py": "efea4b788d6e0b39fa2cb8de5d09015f26fcfe1a7b6fb7ea90439b28738f9ca1",
+    "scripts/quick_pilot_trace.py": "7940a8cead19db7280a7ae0a0ae38f795bc58da8da18f236c5120694d6d76da3",
+    "scripts/evaluate_quick_pilot.py": "c2faf0739d51812ab70868204ebf07d8684ad5b4cea4754f89b7e40423ca40e8",
+    "scripts/supervise_quick_pilot.py": "9ad8b6dd166c4cedbcf2ac855029f1fa7b555093b8f78eaa1ef3084a490f7740",
+    "configs/quick-pilot-spec.json": "a0f4a7d833d7e2d8aaa42fc8960e1d44d52b9077b89a2d7e2f618b4fcbca79be",
+    "provider_tools/validate_quick_pilot_cpu.py": "c30e9f43614d5b8756261ebe1f68487298b066dd66ed027a6f3199502ab2274e"
+  },
+  "pinned_motion_source_sha256": "b838ea5d5aa985b7635e11d2d3de85ba5714c57f5cdd3e50dbf925937460a9eb",
+  "pinned_step_source_sha256": "f75a4dc1a5bdd87764d11733055b4ca7c4ae9908cbfc892dc04d4c2a86788a67",
+  "step_order_lines": {
+    "termination": 203,
+    "reward": 207,
+    "reset": 220,
+    "command": 233
+  },
+  "observed_training_status": "RUNNING_FORMAL_FILTER_TRAINING",
+  "observed_training_completed": 2700,
+  "sdk_runs": 0,
+  "training_signals_sent": 0,
+  "new_optimizer_updates": 0,
+  "data_deleted": false,
+  "real_sdk_pilot_validation_completed": false,
+  "sample_unix": 1792988448.429048
+}
