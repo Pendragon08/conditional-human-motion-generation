@@ -1,0 +1,101 @@
+{
+  "status": "TEXTOP_QUICK_PILOT_EXECUTION_COMPLETED",
+  "mode": "quick_pilot",
+  "stage": "smoke",
+  "quality_label": "QUICK_REPRODUCTION_NOT_PAPER_COMPLETE",
+  "optimizer_updates": 0,
+  "physical_filter_executed": false,
+  "dataset_accepted": false,
+  "whole_library_filtered": false,
+  "full_generator_training_started": false,
+  "output_writers_closed": true,
+  "actual_execution_video_created": false,
+  "source_sha256": "a1db771b4e7be8bc2f856c01bea28269eb0b08311d48233858862f0fea3be091",
+  "quick_protocol_sha256": "efea4b788d6e0b39fa2cb8de5d09015f26fcfe1a7b6fb7ea90439b28738f9ca1",
+  "trace_source_sha256": "761cdf1c00e0c4b9bae52db746337d31d35e3878a21a7e1d2e87a5b45d558db7",
+  "pilot_spec_sha256": "ccff3774e1c40ed14da65b38d102a82ffb870121d78975db8aec46351a6aa0d1",
+  "execution_settings_sha256": "06d10896bde78e58ced33e54960b7d5769693a1a509de31ce66cd4c5f4c25cd4",
+  "teacher_artifact_sha256": {
+    "training": "d77dbe1c014a05307cbc752955b9ee33838b60547ff180bca498628f37f8cda3",
+    "stop": "7d0b04728d99bc52d0a7d8ca90b39303eba101ea31c84f4c45f120a8490e530c",
+    "backup": "8d87643e377cb8c3086b761cc4382a7ead2859b06fb042100a9124850faf3991",
+    "quick_plan": "9d9051a24391d807e30b8823baa0b23d8b11a0d6ba73a575454641ded1b2dbd7",
+    "original_exit": "2b24e50a7ee689f21c10e78e4926596a6f9b52cb7ef6c18fe870e93ab314f145"
+  },
+  "policy_checkpoint_sha256": "cfb443ab9ac80a615fdffdd881ede38b6e1997a0993752ff2a82a9f7c9939fae",
+  "policy_checkpoint_completed_iterations": 5000,
+  "policy_checkpoint_optimizer_updates": 100000,
+  "reference_sources": 8278,
+  "replayed_original_sources": 8,
+  "source_selection": "eight shortest whole originals50..500frames",
+  "unattempted_original_sources": 8270,
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "elapsed_seconds": 116.53311456367373,
+  "reference_fingerprint": "0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7",
+  "contact_profile": {
+    "kind": "validated_static_solid_floor",
+    "top_z": 0.0,
+    "dimensions_m": [
+      4000,
+      4000,
+      0.2
+    ],
+    "static_friction": 1.0,
+    "dynamic_friction": 1.0,
+    "restitution": 0.0,
+    "combine_mode": "multiply",
+    "self_collisions": true,
+    "validation_witnesses": [
+      {
+        "run": "solid_floor_ppo_author_v1",
+        "receipt_sha256": "3e02a9fb9d312e8f36321ae9b4d0a5dc04e038dd569eb859c615d3e28ecd4339",
+        "actual_iterations": 10,
+        "actual_optimizer_updates": 200
+      },
+      {
+        "run": "solid_floor_ppo_document_v2",
+        "receipt_sha256": "597ddb5508264769bb7953a62697ad82120b0a84ad74291112467dd8952acf7d",
+        "actual_iterations": 10,
+        "actual_optimizer_updates": 200
+      }
+    ],
+    "author_exact_collision_geometry_available": false,
+    "long_run_convergence_established": false,
+    "data_or_reward_changes": false
+  },
+  "contact_profile_sha256": "0ebb5fcbbe2a5e93db71a6ba661077b617bb0462c6569a72608d6064ef966fb0",
+  "num_envs": 8,
+  "quick_pilot_executed": true,
+  "physical_tracking_executed": true,
+  "finished_trials": 8,
+  "complete_trials": 8,
+  "failed_trials": 0,
+  "actual_vectorized_control_calls": 63,
+  "actual_scene_physics_steps": 252,
+  "private_trial_journal_sha256": "91724c7e7a211d88b2eb9306600e46cb1c79fadf99047f9d56da020e75825690",
+  "private_strict_log_sha256": "f9bf745da70dbb373d9cc10cb565835dc961dfac9f3babfc96d17341d599340f",
+  "private_executed_trace_index_sha256": "ad318894328ef7e4a6b60bff07f3d54f49edf64f4ea4b64a084d427c78d3eddb",
+  "private_trace_bytes": 650853,
+  "terminal_execution_state_captured_before_autoreset": true,
+  "termination_term_event_counts": {
+    "anchor_pos": 0,
+    "anchor_ori": 0,
+    "ee_body_pos": 0,
+    "motion_complete": 8
+  },
+  "reference_timing": "initial0; consumed current targets0..control_steps-1; command advances after termination/reset",
+  "final_reference_endpoint_comparison_performed": false,
+  "completion_branch_exercised": true,
+  "peak_torch_allocated_bytes": 8822339584,
+  "limitation": "Early5k teacher; limited selected whole-motion trials, not whole-library physical filtering or paper quality",
+  "native_close_returned": false,
+  "teardown_fallback_used": true,
+  "shutdown_grace_seconds": 20,
+  "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+  "shutdown_completion_verified": true
+}

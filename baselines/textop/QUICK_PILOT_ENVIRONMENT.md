@@ -1,3 +1,36 @@
+## CURRENT2026-10-26 17:03 — genuine5k handoff complete, actualauthor smoke started
+
+The former disabled status below is historical. Originalteacher was controlled
+stopped after actual5000 fullserver+D backup and publicGitHub inference digest
+verification; checkpointSHA cfb443ab9ac80a615fdffdd881ede38b6e1997a0993752ff2a82a9f7c9939fae.
+SSH recovered without localnetwork settings changes. Due to interruption it
+reached5400/108000 transient updates; recoverable snapshot remains5000/100000.
+Original exit0/RUNNING receipt is preserved and separately annotated userstop,
+not40k completion. SIGINT was sent once through the originalpidfd identity.
+
+Only pilot_launch_enabled is nowtrue; sample_launch_enabledfalse and allformal
+40k/full-corpus gates remainunchanged. Author actualrun quick_pilot_smoke_author_v1
+was launched after19boundSHAs, checkpoint/backup/controlledstop evidence,
+commonlock, oldSDKabsence and resources passed. It must finish naturally with
+realexit/resource/closed-trace proof; STARTING is not a pass. Do not rerun it.
+The fresh independent actualdocument run below is authorized ONLY AFTER author
+supervision_passed/exit0,8closedtrials and >=1natural completion. It must inspect
+that real authorreceipt first and verify no personalSDKworker/commonlock
+conflict. Use a fresh localwitness folder and the exact documented command:
+
+```text
+python3 scripts/supervise_quick_pilot.py --stage smoke --run quick_pilot_smoke_document_v1
+```
+
+Run it from serverproject /data/code/ouyanghao/oyh/textop-reproduction-20261024
+through normalSSH/session helper; no packages/config/threshold changes or
+workarounds permitted. Preserve realchildexit, receiptSHA, resources/process_exit,
+closedtrials, actualcallcounts and limitations. If an assertion fails, save the
+exact discrepancy, no blind retry/renaming/reducing criteria. The actualdocument
+invocation is separate from the earlier read-onlyCPU preflight; do not rerun
+that old candidate checker, which correctly expects historicaldisabled flags.
+Only after both realactualsmokes can witness hashes be bound for64pilot.
+
 # Separate5k pilot candidate — warm backend, disabled, no robot trials yet
 
 This candidate reuses the existing tracker environment unchanged. No package,

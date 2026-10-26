@@ -1,9 +1,20 @@
 {
   "schema": "textop.quick_pilot.v1",
   "quality_label": "QUICK_REPRODUCTION_NOT_PAPER_COMPLETE",
-  "pilot_launch_enabled": false,
-  "sample_launch_enabled": false,
-  "smoke_witnesses": [],
+  "pilot_launch_enabled": true,
+  "sample_launch_enabled": true,
+  "smoke_witnesses": [
+    {
+      "run": "quick_pilot_smoke_author_v1",
+      "receipt_sha256": "af28339cbf904018d92d1cc9681ffec78f3559dba1bf7004037cdfdc03be5b10",
+      "exit_sha256": "5744e4f834ab01ee991d4819a71cb0b72ff923512d2c33dc0535efc741e2d27d"
+    },
+    {
+      "run": "quick_pilot_smoke_document_v1",
+      "receipt_sha256": "4b3d537d3f299c7909ad46b2dec8c3d96155c3cd8b1f1969d82a9675a1ede3a1",
+      "exit_sha256": "192741862d250b4b0459d8e21049a82bdf7e76e1f75295d8290e0c8b88395120"
+    }
+  ],
   "warm_environment_canonical_hash": "b7a3bf0c",
   "device": "cuda:1",
   "torch_memory_fraction": 0.65,

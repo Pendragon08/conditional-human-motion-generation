@@ -1,3 +1,55 @@
+## CURRENT2026-10-26 17:44 — actual short video passed; long CPU budget repaired
+
+Actual5k handoff and actualauthor/freshsmoke/64pilot have completed. Rendering
+is nowenabled, unchangedMesa/GMRdependencies/source/signature. Existing actual
+shortmovie actual_smoke_author_trial0_v1 completed52frames50fps/realexit0 and was
+visually inspected; it is the first actualrecorded-physics video, not synthetic.
+
+Long actual_sample64_longest_completed_v1 hit its900s CPU-only supervisor bound:
+childexit-15/timed_outtrue,62resource samples; partialMP4 retained server+D,
+NOTa valid video. Whole64physical results remain42complete/22failed, all closed
+physics records and originalassets remainintact. Its serialbatch stopped before
+longest_failed_v1 was launched. Do not rerunv1 or present itspartialmedia.
+A budget helper first failed beforemutation with missingimportsys; error saved.
+Corrected helper confirmed900 unchanged, preservedfailure and changed ONLY
+actual_timeout_seconds900→2400. Numerical render_signature remains
+ dbb4301b20d56abf03619cad25854a8d53769eea980950fb39ecc0de0a9cabc5.
+Allrender maths/width640/height480/fps50/allframes/nointerpolation/CPU0-3/Mesa/
+CUDAempty/max2001frames/source hashes and original16/control remainunchanged.
+This repairs a supervision allowance, not physics/generator quality. Existing
+52frame render took36.76s, so1613frames requires roughly19minutes plusoverhead.
+
+Fresh agent-follows-doc actualinvocation (CPUONLY; no GPUempty-card criterion)
+may start only after checkingv1 reaped/no activevideo worker, realclosedpilot,
+currentexactsource/spec/profile and persistentdisk/RAM. From serverproject
+/data/code/ouyanghao/oyh/textop-reproduction-20261024, execute these commands
+ONCE, SERIALLY, preserving realfinalexit/receipt/mediaSHA:
+
+```text
+python3 scripts/supervise_execution_video.py --mode actual --run actual_sample64_longest_completed_v2 --pilot-run quick_pilot_sample64_v1 --trial 31
+python3 scripts/supervise_execution_video.py --mode actual --run actual_sample64_longest_failed_v2 --pilot-run quick_pilot_sample64_v1 --trial 44
+```
+
+Firstinput1613frames32.26s nominalcompletion, SFU. Second440frames8.8s failure,
+BMLmovi. Selection rule: longest actualexecuted duration withinoutcome group,
+earliestfinishindex breaks ties. Neither is a newrobottrial;0newSDK/physics/
+optimizer. No package/sharedfile/source/config change is permitted by witness.
+Use fresh local work/textop_reproduction_20261024/execution_video_actual_document_v3.
+Check repeated runfolders/receipts and activeworkers before launch. If anyreal
+assertion/bound/resource failure occurs, preserve rawoutputs and stop, no blind
+retry/renaming/criterion relaxation. Waitactualexit; STARTING/partialMP4 is not
+success. Keep originalfailure, root/source maps and poses private.
+
+Afteractualcomplete, parentcollectors collect_quick_recorded_video.py --run
+<existing_v2_run> verify proof/media and copyDprivate. Parentmust inspectframes.
+SFU terms permit noncommercial research with attribution; parenthas read the
+officiallicense and will use publish_quick_sfu_video.py --run
+actual_sample64_longest_completed_v2 only AFTER mediaSHA/realexit/visualcheck,
+code/reportpublication. No rawmotions/indices/models published. BMLmovi failure
+video staysprivate due its more restrictive distribution wording; parentreport
+links localvideo and publishes aggregatefailures. Do NOT runoldCPUrenderer
+fixtures or syntheticstagecommands again. Fullgenerator/closedloop stillpending.
+
 # CPU software video renderer — no SDK or new control simulation
 
 This profile reuses the existing GMR Python and35 read-only Unitree visual mesh

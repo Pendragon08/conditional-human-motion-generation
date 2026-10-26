@@ -1,5 +1,148 @@
 # TextOp: data completion → physical filtering → full generator training
 
+## CURRENT2026-10-26 17:46 — longvideo timeout preserved; v2 freshdocument owns repair
+
+OVERRIDES17:29 claim of activev1videobatch. Longcompletedv1 hit900s limit,
+actualchildexit-15/timedouttrue,62samples,alloriginal16/controlunchanged; partial
+MP4/logs preserved server+Ddiagnostics/actual_long_video_timeout_v1. Batch stopped
+beforefailedv1. Do not rerun/collect/publishv1 asvalid; notphysicsfailure and
+all64closedtraces42/22 remainverified. Initialbudgethelper NameError before
+mutation retained video_budget_update_v1_failure.json. Corrected helper changed
+ONLY actual_timeout_seconds900→2400 inexecution-video-spec; same rendernumeric
+signature dbb4301b20d56abf03619cad25854a8d53769eea980950fb39ecc0de0a9cabc5,
+sameSource/640x480/50fps/allframes/CPU0-3/CUDAempty/Mesa/dependencies. No extra
+SDK/physics/optimizer. First52frameactualvideo is VALID36.76s CPUrender,
+not the invalidpartial32svideo. Expect roughly20minutes CPU for1613frames.
+
+Fresh agent /root/execution_video_actual_document_v3 nowowns actualdocumentv2
+commands fromEXECUTION_VIDEO_ENVIRONMENT.md CURRENT: SERIAL
+actual_sample64_longest_completed_v2, thenactual_sample64_longest_failed_v2.
+Do NOT launchduplicates or modifyitsconfig/stopitsprocess. Check agentmessage,
+localwork/textop_reproduction_20261024/execution_video_actual_document_v3 and
+actualserverprocess/run/exit first. Pending is notfailure. Actual sourceinput
+finishindices31/44 andseed/selection unchanged, no newrobottrials. Freshdocmust
+awaitrealclosedmedia/exit; ifrootturnends,durableCPUrendererstillruns and later
+heartbeatcollects existingruns. Actualtool collect_quick_recorded_video.py --run
+<existing_v2> binds exit/process/resource/receipt/mediadigests andcopiesDprivate;
+alreadyactualpositive checked once on EXISTING52frameshortmovie, do notretest.
+Inspectfinalframes withlocalimages before publishinglongmovies.
+
+Officiallicense pages were actuallyread via localHTTPS (webtoolfailed, retained
+Ddiagnostics/video_license_review_20261026). Longsuccessfulsource isSFU; scientific
+result publication/noncommercialresearch terms and attribution permitresearch
+resultmovie. LongfailedsourceBMLmovi hasrestrictive thirdpartydistribution and
+staysPRIVATE. Newpublish_quick_sfu_video.py --run actual_sample64_longest_completed_v2
+is prepared BUT NOTRUN, requiresactualcomplete/exit/mediaSHA, verifiesactualsource
+SFU via privatemap, copiesonlythemovie pluscredits, createsnewresearchprerelease
+textop-quick-tracking-video-20261026 and verifiesGitHubdigest. Run AFTERv2 success,
+localSHA/visualinspection andcode/reportpush. It neverpublishes rawAMASS/SMPL/
+BABEL arrays orindices. Licensing snapshotSFU SHA
+27a0299f51d33d05c17e3a70111c56a555b851431a7d8b2d891495be52e092e8.
+Do notpublishprivateBMLmovi failedmovie. This is1scientifictrackingresultmovie,
+not textgenerator/wholepapercompletion. OncepublishedrerunNEWactualreport,
+notoldzero-trial orstaleconnection templates. Source42view/traininggates and
+NEXTcorpus/CLIP/loader/quicktrainer tasks from17:29 remainprimaryindependent
+work whileCPUvideosrender; no waitingfor40k orrepeatGPUdiagnostics. No actual
+quickcorpus/joblib ortrainedgenerator existsyet. Allprotections andautomatic
+continuationauthorization remain; notify64pilot5khandoffonce, thenhealthy
+render progress quiet until realcompletion ornewactionablefailure.
+
+## CURRENT2026-10-26 17:29 — real5k handoff, two actualsmokes and64pilot complete
+
+OVERRIDES oldSSHunknown/4700 and all zero-real-trial candidate statements below.
+SSH recovered at17:00; no proxy/route/ZeroTier settings changed, rootcause unknown.
+After realprocess/19boundSHA/no pending signals/resources checks, SAME existing
+coordinator resumed once ascoordinator_network_resume_v2 (historicalPID66452).
+It completed5000 privatefullserver+D and publicGitHub inference verification,
+then sent ONE originalpidfdSIGINT. Final observedteacher5400/108000; recoverable
+snapshot5000/100000. Extra400 rounds' RAM updates not guaranteedrecoverable.
+Originalsupervisor exited0, originalfinalreceipt retainedRUNNING; annotated by
+quick5000_controlled_stop, never40k FINISHED. Coordinator nowREADY_FOR_PILOT and
+its backup/stop/publication have ended; do not restart or signal/backup again.
+Fullcheckpoint90799598B SHA cfb443ab9ac80a615fdffdd881ede38b6e1997a0993752ff2a82a9f7c9939fae;
+publicinference SHA be576e4f3232027326f46eee6869d360eb436a8f9f4ce273bb984641626cc332.
+
+ACTUALSDK DONE, do not rerun: quick_pilot_smoke_author_v1 and fresh independent
+quick_pilot_smoke_document_v1 each realexit0/supervisionpassed/8closed/8natural/
+0failed/63vectorcalls252physicssteps. Same8 sources, NOT16unique sources.
+Freshdoc verified privatebinary/NPZ arrays,CRC/finite/50Hz29jointnames and
+initial0 thenconsumed0..T-2, no privatearrays published. Initial docv1 generic
+emptyGPU criterion preflight failed at0SDK, preserved; existing explicit user
+sharedGPU authorization applies, v2 retained actualfree>20GiB/cap0.65/CPU0-3
+and real documentedcommand ranonce. No supervisor threshold/source changes.
+Freshreport results/quick_pilot_actual_20261026/document_witness_v1/REPORT.md,
+fullprivatewitness Ddiagnostics/quick_pilot_actual_document_v1. SDKnativeclose
+stillfalse/fallbacktrue, finalT-1endpoint independentlyunchecked.
+
+Both actualsmokeSHA witnesses are bound; pilot_launch_enabled and
+sample_launch_enabled nowTRUE. Full40k/v3/v4 gates unchanged. Actualsample
+quick_pilot_sample64_v1 completed64 whole sources across10datasets,42natural,
+22failed,4650vectorcontrolcalls/18600physicssteps,16env,0optimizerupdates,
+exit0/supervisionpassed/writersclosed,23resourcesamples. Runtime~296seconds.
+PeakTorch8847906304B. ReceiptSHA6802615b355c7372fdda6c0a595207636ae04a266f3b1d18c019b9aaa18b8dad,
+exitSHA25cccfacd7f05fd54c2aa7666ff266d56e41fc0d19f817e141f45e2f7f0ddca2.
+Private closedrecordarchive30157007B SHA8d0fc543a5260d49657871ffa2186958f29b6492aa01f97f4fc759ebf40e46ea
+is server+D verified. Alloriginals,failures and8214unattempted remain, no
+whole8278 rejection or absoluteinfeasibility. The actual failure branch HAS NOW
+been exercised in64pilot, unlike8smokes. Ownweighted14bodypositionmean .06256475m,
+jointRMSE .23917706rad overalltrials, notpaperbenchmark/finalendpoint scores.
+
+Actualsource selector enabled and invoked ONCE afterclosed64proof; no moreCPU
+fixtures or pilot/selection reruns. PrivateviewROOT/quick_source_views/
+quick_sample64_nominal_v1/source_decisions.private.json SHA
+ffcb7df8d1e1261486b80d68c68385f5adac1f7330d010d57c3201b4fd1a925d,
+server+Ddatasets/quick_source_views_private_20261026/quick_sample64_nominal_v1
+verified. Publicsummary results/quick_pilot_actual_20261026/source_view_v1.
+42 nominallycompleted ORIGINALS, train31/val11, mirrorsunassessedEXCLUDED.
+Status QUICK_TRACKING_SUBSET_IDENTIFIED_CORPUS_NOT_READY, dataset_accepted and
+training_readyFALSE. Exactretainedtextpairs unknown untilbuilder; nevertrain
+on actualexecuted/video arrays. Configquickgeneratorproposal nowrecords42/31/11
+but launch/corpusbuildfalse, trainer_entrypointNone, original200k/300k unchanged.
+NEXTactualpriority: implement private retainedREFERENCE+BABEL corpus from this
+verifiedview, rehash preparedarrays and source/posefamily split, train-only69D
+normalization, true completeCLIPcache and real512batch/35pose→34feature loader;
+then newquicktrainer/state/saveguards and actualwarmenv author/freshdoc witness,
+then explicitquickVAE2000→LDM3000 ifaccepted. Reuse code patterns from
+paper69_candidate_loader.py/paper69_data_runtime.py/generator_state_witness.py
+but NOT oldUNFILTERED2296 corpus/statistics, EMAtrue diagnostic weights/checkpoints
+or hardcodedacceptance. Original-only data; do not add unassessedmirrors.
+Need fresh exactspec/storage/ownership/resources and nooverlappingSDK; preserve
+allcheckpoints. FullVAE200k/LDM300k remains laterpapertarget, quickcurriculum/LR
+compression is declaredexperimentdifference, notexactpaperresume. No trained
+generator, finaldeployableWBC or generation→executionclosedloop existsyet.
+
+VIDEOS: actual_smoke_author_trial0_v1 actuallycompleted realexit0,52frames50fps,
+341061B SHA2d9a9a1f9ae272e2f830fbe82dd6d0cbb3cf8e166e97bcfa634faf17b9949129.
+Dvideos/private/actual_smoke_author_trial0_v1/video.mp4 and firstframe verified;
+firstframe visuallychecked. Actual CPU/Mesa rendering flag nowTRUE, dependency/
+rendernumeric profile/source unchanged. This is recordedIsaacLabposes with visual
+FK only, not referenceanimation/notMuJoCo control/notgeneratortest. Do notrerun
+oldrenderertests/stage/activation. TWO MORE actualCPU videos started SERIAL via
+ROOT/receipts/render_sample64_videos_v1.py, historicalcoordinatorPID4008737:
+actual_sample64_longest_completed_v1 (finishindex31,1613frames32.26s) then
+actual_sample64_longest_failed_v1 (finishindex44,440frames8.8s). Selectionrule
+longestexecuted duration withinoutcome/earliestindex tie, notbesterror.
+At17:26 no finalreceipt/exit yet, logactive EGL warnings, do not mistake absent
+finalreceipt for notstarted or launchduplicates. Check actualprocess/log/media
+mtime and sample64_actual_video_batch_results_v1.json;900s pervideo. Collectonly
+finalRECORDED_ISAACLAB_POSE_VIDEO_CREATED+writersclosed+realexit0+mediaSHA, verify
+Dcopy and inspectframes before claiming these2 completed. They contain NOnew
+SDK/physics/optimizer and shareCPU0-3. Private until publicationlicense verified;
+rawpose/text/source indices neverpublic. Existing1s video is not a finalmotion
+qualitydemo. Mainreport new collector collect_quick_actual_report.py uses actual
+closedreceipts and localvideo files; do NOT overwrite with old zero-trial/
+staleconnection reports. Newactualcollector collect_quick_pilot_actual.py --run
+<EXISTING_RUN> has already archived/backed-up allTHREE realruns; do not recreate
+archives, sourceviews or CPU suites. Recollection only for new justifiedmetrics
+uses sameverifiedarchive. Video localHTML/report updatedafternewresults.
+
+Report/code/results sync branch codex/textop-reproduction-20261024 +D asbefore.
+Private SDKlogs/pertrial arrays remain in Ddatasets/quick_pilot_execution_private_20261026
+and serverprivate_backups/quick_pilot_actual; Gitonlyaggregates, code/reports and
+inferenceweights. Oldpauses/otherusers/shareddeps/data/checkpoints fullyprotected.
+Real5khandoff and64pilot are new milestones; notifyonce andcontinue, no repeated
+permission. Notfullpapercomplete. Originaldata8278 preprocessingalreadydone.
+
 ## CURRENT2026-10-26 16:14 — SSH interruption; last actual4700, coordinator exited
 
 THIS UPDATE OVERRIDES earlier statements that50680 is live/4400 is latest.

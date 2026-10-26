@@ -1,6 +1,6 @@
 {
   "schema": "textop.quick_generator_proposal.v1",
-  "status": "PROPOSED_ONLY_NOT_TRAINING_READY",
+  "status": "POST_PILOT_SOURCE_VIEW_IDENTIFIED_CORPUS_NOT_READY",
   "quality_label": "QUICK_REPRODUCTION_NOT_PAPER_COMPLETE",
   "launch_enabled": false,
   "corpus_build_enabled": false,
@@ -16,7 +16,7 @@
     "proposed_reference_sources": 64,
     "proposed_train_sources_before_physics": 47,
     "proposed_val_sources_before_physics": 17,
-    "actual_retained_sources": null,
+    "actual_retained_sources": 42,
     "actual_retained_text_pairs": null,
     "corpus_accepted": false,
     "representation": {
@@ -41,7 +41,13 @@
       "Real frozenCLIP cache covering all retained nonempty captions; mirrored captions preserved",
       "Record action-weight statistics scope; never silently label a mismatched full-corpus table as quick-train statistics",
       "Validate actual batch512/four primitives/history2/future8 loader, gradients and resumable state on this corpus before dispatch"
-    ]
+    ],
+    "actual_retained_source_splits": {
+      "train": 31,
+      "val": 11
+    },
+    "source_view_private_decisions_sha256": "ffcb7df8d1e1261486b80d68c68385f5adac1f7330d010d57c3201b4fd1a925d",
+    "mirror_policy_after_actual_pilot": "originals_only; unassessed mirrors excluded"
   },
   "vae": {
     "official_class": "robotmdar.model.mld_vae.AutoMldVae",
