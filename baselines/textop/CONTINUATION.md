@@ -1,5 +1,41 @@
 # TextOp: data completion → physical filtering → full generator training
 
+## CURRENT2026-10-26 15:18 — disabled post-pilot source selector prepared, real decisions0
+
+Latest teacher4400/5000, 88000updates, value loss0.08757374510169029,
+RUNNING/no exit. Existing5000 coordinator owns backup and stop; no new GPU/SDK
+or signals. All active16/live controls and quick-pilot spec unchanged.
+
+New select_quick_corpus_sources.py + quick-corpus-selection-spec.json are staged
+with selection_enabledfalse. Read QUICK_SOURCE_SELECTION.md and reports/
+quick_source_selection_20261026.md. Local/server CPU each actualexit0/15 new
+synthetic4-source decision tests; disabled CLI actualexit1/no real view. Source
+frame length is checked against original manifest, never self-declared trial
+length; missing/duplicate/foreign/truncated/timeout/multiple-trial evidence and
+unassessed mirrors are rejected. Original failed assets retained, no absolute
+infeasibility claim. Do not rerun stage_quick_source_selection.py, CPU fixtures
+or selection_disabled_v1. No actual64 artifact acceptance or real subset exists.
+
+Actual positive path still requires genuine5k backed-up controlled handoff,
+actual author/fresh smoke and closed64 representative pilot, source/exit/resource/
+private journal/trace hashes, identical contact and recorded source IDs. Only
+then enable NEW selection flag and use a new view run. It outputs a PRIVATE
+nominal-tracking candidate mapping under owned project quick_source_views, not
+joblib data or a formal accepted corpus. Initial view ORIGINALS ONLY, unassessed
+mirrors excluded; originals/mirrors keep source-family split when later used.
+Even success keeps dataset_accepted/training_readyfalse. If no candidates or
+empty train/val, resume/reassess rather than manufacture accepted examples.
+
+Then implement/build private retained reference+BABEL corpus, source-array and
+pose/split audit, train-only69D statistics, real complete CLIP cache and actual
+loader/resume/runtime checks before separate quick-training-ready acceptance.
+Do not promote full40k/full-corpus gates. Proposed quick2k/3k generator launcher
+remains absent/unvalidated; original200k/300k unchanged. First teacher5k/actual
+pilot/video node is still NEXT and already authorized; no further confirmation.
+Preserve native-close/fallback, T−2/final-endpoint limits and all prior failures.
+Healthy preparation stays quiet; actual milestones notify once and continue.
+
+
 ## CURRENT2026-10-26 14:13 — disabled1% generator proposal / independent-volume storage prepared
 
 Teacher remains healthy: latest3700/5000 effective budget,74000updates,
