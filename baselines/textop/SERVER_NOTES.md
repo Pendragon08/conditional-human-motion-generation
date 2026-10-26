@@ -271,3 +271,22 @@ preflight actualexit0/19checks passed. Original PID race review/fix and minor
 docs baseline-relative-path clarification retained. CoordinatorPID50680 waits for
 checkpoint+private/public backup before a user-authorized early exit. This is not
 an already-executed SDK stop or proof of tracking quality; quick pilot still pending.
+
+
+### rendering: warm GMR CPU / execution-video@dbb4301b20d56abf
+
+2026-10-26: separate visual-pose profile, no package or shared asset mutation.
+MuJoCo3.3.7, PyOpenGL3.1.10, imageio2.33.1/imageio-ffmpeg0.4.9,
+NumPy1.26.4/Pillow12.3.0; native GL3.1/Mesa21.2.6 llvmpipe.
+Spec execution-video-spec.json was written before first execution. Mesa vendor
+forced, CUDA empty, CPU0–3, no libnvidia loaded, no Isaac SDK/dynamics integration.
+Author_v1 prelaunch checksum helper failure kept. V2/document_v1 had visible
+coplanar floors; intermediate_v3 parsed only first of two worldbody sections and
+its count1 was not a compiled count. All old media/receipts/source kept. Current
+source handles both sections and asserts a single compiled world plane. Actual
+author_v4 + fresh document_v2 each exit0/24encoded+decoded50fps frames, recognized
+G1/clear synthetic labels/clean ground independently viewed. No actual policy
+video or physical filtering claim. Same mediaSHA b082dfd55601956dc22f2684f2edf0d2332f8e71cec01d8d6b987e40f0035845.
+Two witness hashes are bound while actual_rendering_enabled remainsfalse. No
+16-file training/quick-control changes; current teacher and5000 coordinator keep
+running. This profile does not replace Isaac tracking with MuJoCo control.

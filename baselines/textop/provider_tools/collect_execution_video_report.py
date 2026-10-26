@@ -1,0 +1,58 @@
+"""Report CPU video preparation without promoting fixtures to experiment results."""
+import datetime, html, json, pathlib
+B=pathlib.Path(__file__).resolve().parents[1];R=B/'results/execution_video_20261026'
+D=pathlib.Path('D:/具身智能/TextOp复现_20261024')
+a=json.loads((R/'author_v4.json').read_text(encoding='utf-8'))
+d=json.loads((R/'document_v2_witness.json').read_text(encoding='utf-8'))
+binding=json.loads((R/'witness_binding_v1.json').read_text(encoding='utf-8'))
+p=json.loads((B/'results/full_contact_20261026/formal_launch/progress.json').read_text(encoding='utf-8'))
+assert a['supervisor_exit_code']==d['actual_supervisor_exit_code']==0
+assert a['receipt']['video_sha256']==d['receipt']['video_sha256']
+text=f'''# TextOp：执行轨迹视频渲染准备
+
+更新：{datetime.datetime.now().astimezone().isoformat(timespec='seconds')}
+
+**CPU视频渲染入口已实际验证；真实策略结果视频仍为0。** 本报告的视频自检使用合成姿态，醒目标注“NOT AN EXPERIMENT RESULT”，没有调用Isaac SDK、优化策略或新增动力学积分。服务器teacher继续运行，最近采样{p['completed_learning_iterations']:,}/5,000轮、{p['optimizer_updates']:,}次更新；自动备份/受控停止协调器所有权不变。
+
+|项目|已验证范围|
+|---|---|
+|运行位置|原服务器，既有GMR Python环境，只读复用；未安装/升级依赖|
+|视频工具|MuJoCo3.3.7视觉FK、Mesa21.2.6 llvmpipe、PyOpenGL3.1.10、imageio2.33.1、imageio-ffmpeg0.4.9|
+|计算资源|CPU0–3；CUDA为空、仅Mesa厂商库；实际GL检查无libnvidia，不新增Isaac SDK任务|
+|作者/独立验证|renderer_author_v4及fresh renderer_document_v2均实际退出0；stderr为空|
+|输出验收|各24帧编码并实际解码，50fps；29关节按名称映射；编译模型1个地面|
+|本地自检媒体|server与D盘按SHA核验，MP4 {a['receipt']['video_bytes']:,}字节；仅为合成渲染自检|
+|实际视频门禁|actual_rendering_enabled=false；两份CPU证据已绑定，仍需真实5,000快照与物理试验|
+
+当前RL训练使用的Isaac Sim/Lab及PPO没有迁移到MuJoCo。这里的MuJoCo仅将**已经记录的根位姿和29关节状态**绘成画面，禁止mj_step，不重新执行策略，也不构成跨仿真控制验证。GMR视觉MJCF与跟踪器URDF是不同资产，不能从渲染画面推断同一碰撞几何或论文指标。
+
+## 已修复的问题与保留记录
+
+首次监督器在派发视频工作者前因字符串路径校验报错退出1；已修正新工具自身的Path转换，原始退出和源码保留。后续软件渲染成功，但独立目视检查发现地面重叠闪烁。模型含两个worldbody段，MuJoCo合并它们；旧代码额外加入了与第二段原地面共面的平面。
+
+中间修正只检查第一个worldbody，记录的visual_ground_count=1不代表编译模型计数，视频仍与前版逐字节相同。该收据原样保留并明确更正，不能作为修复通过证据。最终版本检查所有worldbody段、复用原地面，并在**编译后的模型**再次断言只有1个世界平面。作者及fresh独立执行均通过；独立目视确认G1、合成标识清晰且地面闪烁消失。新实际模式标题明确写RECORDED ISAACLAB。
+
+只有最终作者v4和独立document_v2被绑定，旧成功渲染/错误计数没有被冒充新版本验收。两份最终自检视频SHA相同：`{a['receipt']['video_sha256']}`；这只是同环境合成渲染的一致性，不是论文训练逐位复现。
+
+另有4项CPU拒绝路径检查：禁用实际模式在读动作或加载GL前拒绝；即使仅在进程内临时改一个布尔值，也因真实5,000轮受控结束证据不存在而拒绝；没有更改磁盘配置或产生实际媒体。没有重复原有数据/GMR/PPO验收。
+
+## 真实结果视频的接续条件
+
+先等待既有协调器真正完成5,000轮检查点备份与受控退出，再按独立quick入口完成真实跟踪。视频实际模式要求闭合的pilot/监督/资源收据、真实5,000检查点/备份/停止证据、私有执行索引及NPZ/二进制摘要。参考动作或合成自检不能作为实际输入。只有`RECORDED_ISAACLAB_POSE_VIDEO_CREATED`、写入关闭、实际监督退出及媒体摘要均通过后，才能报告生成了结果视频。
+
+实际根/关节数据来自autoreset前的物理状态，逐帧50fps，不插值或丢帧。失败视频继续标注失败。当前时序仍是T−1调用消费目标0..T−2，末帧端点尚未独立比较；视频不新增端点验收。初期真实跟踪也仍是参考动作跟踪，生成器和生成—执行闭环尚待训练验证，不能用该视频代替。
+
+原始AMASS/SMPL/BABEL和逐条来源/文本/动作数组继续保持私有。本轮仅保存新工具、聚合证据及明确标注的本地合成自检媒体，没有删除数据、检查点或唯一记录，也没有向正在训练的进程发送信号。
+
+协议及历史命令：EXECUTION_VIDEO_ENVIRONMENT.md（两个当前版本见证已完成，不重复运行）。证据：results/execution_video_20261026。
+'''
+(B/'reports/execution_video_20261026.md').write_text(text,encoding='utf-8')
+(D/'TextOp执行轨迹视频渲染准备_20261026.md').write_text(text,encoding='utf-8')
+try:
+ import markdown
+ body=markdown.markdown(text,extensions=['tables'])
+except ImportError:body='<pre>'+html.escape(text)+'</pre>'
+body+='<p><a href="diagnostics/execution_video_20261026/renderer_author_v4/video.mp4">合成渲染自检视频（非实验结果）</a></p>'
+page='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>TextOp执行轨迹视频渲染准备</title><style>body{max-width:1100px;margin:40px auto;padding:0 24px;font:17px/1.7 system-ui;color:#203040}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccd6df;padding:9px}th{background:#edf3f8}pre{white-space:pre-wrap}</style>'+body+'</html>'
+(D/'TextOp执行轨迹视频渲染准备_20261026.html').write_text(page,encoding='utf-8')
+print(json.dumps(dict(status='CPU_RENDER_PREPARATION_REPORT_SAVED',teacher_completed=p['completed_learning_iterations'],actual_result_videos=0)))

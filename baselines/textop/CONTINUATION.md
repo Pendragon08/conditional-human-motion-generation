@@ -1,5 +1,54 @@
 # TextOp: data completion → physical filtering → full generator training
 
+## CURRENT2026-10-26 13:30 — CPU execution-video renderer validated; genuine5k pilot pending
+
+Latest teacher3300/5000 effective budget,66000updates,value loss0.08690167218,
+RUNNING/no exit. Existing coordinator50680 still owns5000 backup/stop. Do not
+signal trainer, race backup, restart workers or modify original16/live controls.
+
+NEW completed independent work, do not repeat: CPU/Mesa render-only tool/profile
+is staged: render_quick_execution_video.py, supervise_execution_video.py,
+execution-video-spec.json, EXECUTION_VIDEO_ENVIRONMENT.md. See reports/
+execution_video_20261026.md and results/execution_video_20261026. It reuses GMR
+Python/MuJoCo3.3.7, forced Mesa llvmpipe, empty CUDA,CPU0–3. No SDK or dynamics
+integration and no shared source/dependency change. Actual result videos still0.
+
+Author_v1 exited1 before worker (Path helper). Author_v2/document_v1 software
+passed but eye review found floor z-fighting. Intermediate author_v3 counted
+first XML section only; count1 was NOT compiled and old MP4 was identical. Keep
+all versions/error/corrections; do not cite v3 as accepted ground fix. Current
+source checks both worldbody sections, reuses existing plane, asserts compiled
+world plane count1, and labels actual caption RECORDED ISAACLAB. Author_v4 and
+fresh document_v2 each actualexit0/24encoded+decoded50fps, GLllvmpipe/noNVIDIA,
+original16/control bytes intact, no training signal/SDK/physics/optimizer work.
+Fresh image review confirmed recognizable G1, clear synthetic labels, clean floor.
+MediaSHA b082dfd55601956dc22f2684f2edf0d2332f8e71cec01d8d6b987e40f0035845.
+Both witnesses are bound; render_signature unchanged by metadata binding,
+actual_rendering_enabled=false. Do NOT rerun stage_execution_video.py, prior
+fix/deploy invocations, author/doc renderer_test commands or4refusal CPU checks.
+The actual_trace function was unchanged by floor/caption corrections.
+
+NEXT after genuine5000 handoff and actual closed quick-pilot trials: first
+perform the quick smoke/independent/pilot protocol below, then enable separate
+actual rendering only with fresh source/receipt/resource/space checks. Actual
+video input must be bound closed pilot/exit/resource/index/private NPZ+binary,
+genuine5k checkpoint/backup/controlled stop. Renderer requires both successful
+software witnesses and same source/settings; rejects references/synthetic poses.
+Use supervisor actual mode with unique run/trial names per doc, no training/policy
+step. Only final RECORDED_ISAACLAB_POSE_VIDEO_CREATED + closed outputs + real
+exit+mediaSHA support an actual result-video claim. STARTING/FAILED do not.
+GMR visual asset differs from tracker URDF; this is pose visualization, not
+sim-to-sim control. Current trials track references, not trained generator output.
+T−2 consumed-target/unchecked final endpoint limitations remain.
+
+Small synthetic diagnostics are saved D:/.../diagnostics/execution_video_20261026,
+not published as paper result videos. Main and quick report update from real
+progress; new TextOp执行轨迹视频渲染准备_20261026 report describes preparation ONLY.
+Future actual results must use actual receipts, not overwrite with zero-trial
+preparation templates. Preserve datasets/checkpoints/all failures/privacy; prior
+quick5000 coordination/SDK-lock/resource/notification rules below still apply.
+
+
 ## CURRENT2026-10-26 12:32 — disabled quick-pilot candidate v2 prepared; actual SDK pending
 
 Continue the effective5000 teacher budget and the live coordinator below. Latest
