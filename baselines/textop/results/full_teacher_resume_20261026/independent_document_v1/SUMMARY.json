@@ -1,0 +1,144 @@
+{
+  "status": "INDEPENDENT_FULL_TEACHER_RESUME_LAUNCH_VERIFIED_RUNNING",
+  "all_passed": true,
+  "preflight_checks": 76,
+  "postflight_checks": 80,
+  "documented_invocations": 1,
+  "actual_local_launcher_returncode": 0,
+  "run": "filter_policy_paper69_resume5000_to40000_20261026_v1",
+  "spec_sha256": "a5bc7b0b8693dbd6f4acecc65d783a80d198edc3707ce3ed7919338007823be4",
+  "resume_checkpoint_sha256": "cfb443ab9ac80a615fdffdd881ede38b6e1997a0993752ff2a82a9f7c9939fae",
+  "resumed_completed_iterations": 5000,
+  "resumed_optimizer_updates": 100000,
+  "target_completed_iterations": 40000,
+  "target_optimizer_updates": 800000,
+  "resume_exact_saved_state_verified": true,
+  "native_logged_iterations_in_snapshot": 41,
+  "native_first_zero_based_iteration": 5000,
+  "native_last_zero_based_iteration": 5040,
+  "completed_from_native_snapshot": 5041,
+  "updates_from_native_snapshot": 100820,
+  "count_scope": "Derived from completed native PPO iteration log snapshot; receipt counters refresh every100, not a new persistent checkpoint.",
+  "first_two_printed_losses": [
+    {
+      "zero_based_learning_iteration": 5000,
+      "target": 40000,
+      "printed_losses": {
+        "value_function": 2.1566,
+        "surrogate": 0.2158,
+        "entropy": 15.4249
+      }
+    },
+    {
+      "zero_based_learning_iteration": 5001,
+      "target": 40000,
+      "printed_losses": {
+        "value_function": 0.3089,
+        "surrogate": -0.0117,
+        "entropy": 15.4357
+      }
+    }
+  ],
+  "latest_snapshot_printed_losses": {
+    "zero_based_learning_iteration": 5040,
+    "target": 40000,
+    "printed_losses": {
+      "value_function": 0.0809,
+      "surrogate": -0.0124,
+      "entropy": 15.6788
+    }
+  },
+  "actual_sdk_pid": 4104159,
+  "actual_child_group": 4104152,
+  "active_pids": [
+    4104139,
+    4104140,
+    4104152,
+    4104159
+  ],
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "gpu_resource_sample": {
+    "available_host_ram_bytes": 129479655424,
+    "data_free_bytes": 6104031232,
+    "all_device_usage_including_other_jobs": "0, 12741, 35811, 1\n1, 31536, 17014, 99",
+    "owned_child_group": 4104152,
+    "owned_group_processes": [
+      {
+        "pid": 4104152,
+        "group": 4104152,
+        "state_and_rss": [
+          "State:\tS (sleeping)",
+          "VmRSS:\t    3264 kB"
+        ],
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "pid": 4104159,
+        "group": 4104152,
+        "state_and_rss": [
+          "State:\tR (running)",
+          "VmRSS:\t 9206484 kB"
+        ],
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "owned_group_gpu_memory": [
+      {
+        "pid": 4104159,
+        "gpu_uuid": "GPU-f3cc20c6-f613-73c1-b0f9-f54863f22602",
+        "used_gpu_memory_mib": "456"
+      },
+      {
+        "pid": 4104159,
+        "gpu_uuid": "GPU-0b41e662-b662-bb1c-954b-13ed89d7af18",
+        "used_gpu_memory_mib": "23650"
+      }
+    ]
+  },
+  "no_original_runtime_or_config_changes": true,
+  "production_left_running": true,
+  "full_teacher_finished": false,
+  "full_generator_training_started": false,
+  "semantic_quality_accepted": false,
+  "paper_quality_accepted": false,
+  "paper_complete": false,
+  "physics_and_rng_trajectory_restored_bit_exact": false,
+  "snapshot_hashes": {
+    "driver.snapshot.private": "6a4f61b4e62bab0534ccc5d7a76c31e61de7b50c4d95181a81a5d155c03d9416",
+    "launch.snapshot.private": "cdfe9caaf9867008d987111833c2f3882c6c7f3dbe04a1f0f7327cccdf0e35f2",
+    "live.snapshot.private": "5f428a78bb9d569c82ff88dfbd2e491a88d7bc3ef774908610b2fd1615ea2418",
+    "log.snapshot.private": "d541cd6561e9442fcd94e693b547893a8123eb481b5abc174b0c98ed3eacccf7",
+    "receipt.snapshot.private": "6808ed6cfa51dbfc780285bcaa9f1724a6f3e0824018434cdb42e03f672245f7",
+    "resources.snapshot.private": "1aac43164a6ed275e03abeaf721429216977c9eccd038a875db3df9d997104c7"
+  },
+  "private_evidence_directory": "D:\\\u5177\u8eab\u667a\u80fd\\TextOp\u590d\u73b0_20261024\\diagnostics\\full_teacher_resume_document_v1",
+  "documented_invocation_divergences": [],
+  "verifier_failure_retained": {
+    "path": "postflight_v1_failure.json",
+    "reason": "CPU process selector initially matched bash wrapper as well as actual Python SDK. v2 identifies executable argv0; real experiment was not repeated or edited."
+  },
+  "limitations": [
+    "Only production startup/resume and initial new PPO iterations certified, not40000 completion/convergence.",
+    "Exact saved model/Adam/normalizers/motion EMA/raw counts restored; physics episodes and RNG trajectory restart.",
+    "Legacy receipt counters remain0 until first5100 refresh; real native logs establish progress.",
+    "Bounded functional pass does not accept semantic/paper quality, full-data filter, finalWBC or full generator training.",
+    "No stop/restart/signal/newcheckpoint/private data publication performed."
+  ],
+  "local_audit_construction_failure_preserved": "audit_construction_failure.json",
+  "independent_auditor_source_sha256": "61aae9436bc7ab92622bb81d51e6aa5cff27f1a0032f03aac2d097fda559b0f0"
+}

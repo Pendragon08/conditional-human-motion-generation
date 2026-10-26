@@ -1,3 +1,14 @@
+## Current online and full continuation runtime (2026-10-26)
+Read QUICK_ONLINE_ENVIRONMENT.md and FULL_TEACHER_RESUME_ENVIRONMENT.md first.
+Onlinev11+freshdoc real257timedcalls each passed0deadline/underflow/physicalfailure.
+Explicit CPUPhysX single-robot +GPU1neural, aggregate4CPUs/combinedTorch.65; this
+runtime difference does not change full8192GPUphysics training. Both closed.
+Full teacher continuation uses unchanged frozen SDK env/trainer/plan, separate
+--resume launcher with verified5000 fullstate. Newrun and spec are frozen;
+inspect results/full_teacher_resume_20261026/progress.json, never relaunch.
+Quality review is negative/limited; functional engineering acceptance does not
+mean semantic/paper quality passed. Final corpus/fullgenerator gates remain.
+
 ### Verified quick offline generation→physical execution→video2026-10-26
 VAE2k/LDM3kfinished actualexit0/0skips, allprivatecheckpoints server+correctD
 SHAverified. Newtrainedgeneration author/fresh169checks; newSDK2phasesauthor/

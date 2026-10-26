@@ -150,7 +150,7 @@ if generation_receipts:
            '**生成质量仍待验收：固定完整采样Huber从0.310267升到0.607536。单条序列被物理跟踪不等于文本语义或论文质量通过。**', '']
     for name,j in generated_videos:
         md += ['新生成动作的实际执行录像：{}，{}帧／50fps／{:.2f}秒，媒体SHA {}；已独立检查首、中、末帧并在服务器与D盘核验。影片由实际IsaacLab执行姿态绘制，CPU渲染不新增动力学。新影片先保存在本地私有目录，公开仓库保存代码、聚合结果与报告。'.format(name,j['frames_decoded'],j['frames_decoded']/50,j['video_sha256']), '']
-    md += ['后续顺序：先补齐快速版在线文本切换、异步生成与实际控制时序验证，并评估采样误差和语义效果；然后扩大真实物理筛选，完成数据/质量/持久容量验收，再进入论文40,000轮跟踪策略、VAE200,000步、LDM300,000步完整训练。快版课程和学习率时钟已缩短，正式阶段须独立记录，不能把快版计数当作论文完整训练。', '']
+    md += ['当前在线功能验证、质量评审及完整跟踪器续训状态见本报告顶部最新说明和《TextOp在线功能验收与完整训练接续》：快版功能通过不等于语义质量通过。完整跟踪器后仍需全量真实物理筛选和最终数据/容量验收，才进入VAE200,000步、LDM300,000步。快版课程和学习率时钟已缩短，正式阶段须独立记录，不能把快版计数当作论文完整训练。', '']
 md += ['第一阶段5k特权teacher原型不能冒充论文最终可部署WBC或完整实时系统。', '',
        '数据范围差异：13条所选CMU导出缺失，403条作者私有动作不可得；8,278条来源不等于作者全部12,296条公共跟踪动作。公开仓库保存代码、聚合证据、推理权重、许可允许的科研结果录像和报告；完整Adam/逐动作采样状态与受限资产保持私有。', '',
        '[5,000轮推理权重与说明]('+backup['github_release']+')。完整恢复仍须私有检查点。', '',
@@ -179,3 +179,7 @@ if main.exists() and not prior.exists():
     shutil.copy2(main,prior)
 main.write_text(page,encoding='utf-8')
 print(json.dumps({'actual_closed_reference_pilot_runs':len(rows),'reference_tracking_videos':len(videos),'generated_execution_videos':len(generated_videos),'full_paper_generator_trained':False,'whole_library_filtered':False,'real_time_generated_physics_closed_loop_verified':False}))
+
+# Preserve the latest bounded online/full continuation state after legacy sections.
+from collect_online_report import main as collect_current_online_report
+collect_current_online_report()

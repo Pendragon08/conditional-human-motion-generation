@@ -1,3 +1,97 @@
+## CURRENT — bounded online functional acceptance; full paper teacher actually resumed
+
+This overrides lower claims that online execution is still untested. Read
+QUICK_ONLINE_ENVIRONMENT.md, FULL_TEACHER_RESUME_ENVIRONMENT.md,
+reports/online_quick_20261026.md and results/full_teacher_resume_20261026/progress.json.
+User explicitly requested completing quick validation then full training; no repeat permission.
+
+Quick engineering chain acceptance is now real and independently audited:
+online_author_v11 + fresh online_document_v1 each257 timed controls/1028 physics
+substeps, separate16warmup/64substeps,0 missed20ms deadlines,0 underruns,0 physical
+failures, allgenerator/SDK/outer exit0. Author control-loop5.134738s; fresh5.131990s.
+Live text submitted90, new reference consumed114; fresh latency0.496600s including
+buffering. Fresh63preflight+430content/timing+41postflight checks passed. Nativeclose
+false/fallbacktrue persists. Bounded scripted text switching, not UI delivery or an
+unbounded hard-real-time guarantee. Terminal reference endpoint and finalWBC pending.
+
+Explicit single-robot online profile: CPUPhysX, GPU1generator+teacher, sameURDF,
+solidfloor/strict thresholds/5ms×4; generatorCPU0/SDKmainCPU1-3, I/OthreadsCPU0,
+Torchcaps.15+.50=.65. Full8192 training remains originalGPUphysics. Warmup before
+clock; verified NPZ/SHA packet loading and private trace I/O off critical thread,
+bounded queues and genuine failure propagation. Training reward evaluation omitted
+only during inference; returned zeros are API placeholders, not measured rewards.
+Same557Dactor/critic input reuse asserted. No model/threshold/deadline relaxation.
+Online specSHA818d9e0dd951eaa5b2bb3f3e5d7858f2322cf7af740348f1d59190554fca4430.
+Allv1..v11 andfreshdoc closed; do NOT relaunch. v2 reset-inference andv7 pinnedAPI
+failures, v1/v3..v10 missed deadlines all preserved. Twelve private raw archives
+server+D SHA verified; backupqueue online_backup_queue_v1 fully ended, no restart.
+No new online video yet; existing5.16s film is offline generated execution.
+
+ExactURDF analyticFK author+fresh already passed all258×30 bodies/29joints:
+maxposition3.169e-6m,rotation1.787e-6rad,linearvelocity1.264e-4m/s,angularvelocity
+5.510e-5rad/s; exactjointarrays. No newSDK forFKvalidation. Do not redo. Local FK
+specCRLF corrected to existingserverLF only, previousbytes/failure preserved.
+Exact10 newsource/spec restore package results/online_quick_20261026/
+current_runtime_bytes_v11_fullresume_v1.json; never overwrite active server files.
+
+Quality review remains explicitly NOT semantic/paper acceptance. LDMfixedsampling
+Huber.3103→.6075 worsened; original short walk phase root displacement only~.078m
+and wave phase~1.79m, so semantics not established. This is preserved negative
+quality evidence, not an assumed proof of its cause. Functional readiness permits
+the user's next RESEARCH training stage; it is not certification of current quality.
+Acceptance ROOT/receipts/quick_functional_acceptance_20261026_v1.json SHA
+35c357c6f51cc5013a8903c454c6cc5182c7fc865facd8eb6324f9f6fa93acbd.
+Fullgenerator finalcorpus/physics/CLIP/norm/storage gates NOT bypassed.
+
+New production continuation dispatched by fresh full_teacher_resume_document_v1:
+run filter_policy_paper69_resume5000_to40000_20261026_v1, driver4104139/wrapper4104152
+historicalIDs; verify actualcmd/receipt first. Original trainer/plan/contact/8278
+references and original16runtime bytes unchanged. New supervisor only supplies
+--resume verifiedcompleted_5000.pt SHA
+cfb443ab9ac80a615fdffdd881ede38b6e1997a0993752ff2a82a9f7c9939fae.
+Target40000 TOTAL/800000updates,35000additional. Exact model/Adam/normalizers/
+motionEMA/attempts restore is asserted inside unchanged load_recorded. Physics
+and RNG trajectory restart, not bitexact continuous simulator continuation.
+Original oldrun/5kcontrolledstop/1000+5000checkpoints retained; no second oldstop.
+New specSHAa5bc7b0b8693dbd6f4acecc65d783a80d198edc3707ce3ed7919338007823be4.
+New source+spec and frozenbindings now immutable while running. Do NOT rerun
+launch_full_teacher_resume.py, oldlaunch/activate/coordinator or newSDK alongside.
+ParentCPU preflightactual0; fresh production launch and exactstate restore verified.
+Actualnative log already beyond5018total completed iterations, losses finite,
+RUNNING_FORMAL_FILTER_TRAINING and noexit. Check newestprogress for currentcount;
+full_teacher_resume_document_v1 actual76preflight+80postflight passed, exactlyONE
+launch; native5000..5040 confirms41newrounds/completed5041/derived100820updates,
+not anewcheckpoint. Driver4104139/supervisor4104140/wrapper4104152/SDK4104159;
+SDKGPU1~23650MiB plusGPU0~456MiB. Firstnewvalue2.1566 then.3089, snapshotlast.0809,
+allprintedlossesfinite; longrunconvergence notclaimed. CPUauditv1 misclassified
+bashwrapper assecondSDK and localauditor SyntaxError beforeanynewremoteaction
+were retained, v2correctedCPUauditoronly; trainer neverrestarted. Freshagentended. Legacy trainer receipt starts counters0 afterrestore
+until5100; resume_exact_state_verified plus new native logs are startup evidence.
+Do not treat0 as loststate or missing100-roundrefresh as stuck.
+
+Read-only collect_full_teacher_resume.py updates actualworkers/receipt/native-log
+progress/resources. Next new stable checkpoint is10000. Old
+backup_formal_filter_checkpoint.py is hardcoded to original5krun: do NOT use it to
+claim newrun backup or relax latest-checkpoint checks. Prepare separate bound
+continuation backup/CPU fullstate audit with the actualnewrun/receipt, privateDfull
+state and non-private inference export; preserve everyversion. Actual10k snapshot
+must be stable, sourceSHA matched, server+D verified. No repeat5kbackup.
+
+Current continuation phase budget: datafree~6.13GB>3.892GB conservative9save startup,
+128MiB/teachercheckpoint,2GiBreserve+512MiBlogs; unchangedtrainer checks every100
+and every save. Later fullVAE/LDM/WBC/video requires new persistentcapacity budget.
+Fullteacher completion then allavailable8278 realrelaxed+strict filtering, final69D
+corpus/sourceisolation/TRAINnorm/realCLIP/restore/resourceacceptance precede
+VAE200k→LDM300k. Quick2k/3kcompressedclock weights are not exact paperresumes.
+Finish deployableWBC/augmentation and actualonlinevideo/quality, not only modelsteps.
+
+Reports: collect_online_report.py preserves currentonline/fullphase on mainDHTML;
+collect_quick_actual_report.py must call it after older offline summary generation.
+Rawsourcearrays/NPZ/BABEL/sourceindices/realtrace/logs stay privateD/server. Only
+owncode/aggregate REPORT/SUMMARY/allowedvideo published. No repeated datasets,
+GMR/FK/archives/statewitness/cleanup. Keep old57D stopped, PhyGile/ReactiveBFMpaused,
+.venv-pbhc-training protected; onlypersonal dirs, sharedGPU1/CPU0-3/Torch.65.
+
 ## CURRENT — 2026-10-26 verified offline generated-execution prototype + actual video
 
 This overrides lower RUNNING/empty-generation claims. VAE2000 and LDM3000 both

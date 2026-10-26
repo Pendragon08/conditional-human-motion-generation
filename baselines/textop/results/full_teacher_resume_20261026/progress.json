@@ -1,0 +1,269 @@
+{
+  "run": "filter_policy_paper69_resume5000_to40000_20261026_v1",
+  "sample_unix": 1793026849.1106067,
+  "spec_sha256": "a5bc7b0b8693dbd6f4acecc65d783a80d198edc3707ce3ed7919338007823be4",
+  "receipt": {
+    "status": "RUNNING_FORMAL_FILTER_TRAINING",
+    "optimizer_updates": 0,
+    "completed_learning_iterations": 0,
+    "formal_filter_training_started": true,
+    "full_generator_training_started": false,
+    "physical_filter_executed": false,
+    "dataset_accepted": false,
+    "output_writers_closed": false,
+    "storage_preflight": {
+      "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume5000_to40000_20261026_v1",
+      "filesystem": "ext4",
+      "owner_uid": 1013,
+      "free_bytes": 6132895744,
+      "required_bytes": 3892314112,
+      "remaining_saves": 9,
+      "checkpoint_upper_bound_bytes": 134217728,
+      "reserve_bytes": 2147483648,
+      "log_allowance_bytes": 536870912,
+      "persistent_owned_writable": true
+    },
+    "storage_guard_sha256": "bff54d2b4fb7f29fdc18f6cc46d86626ca14b299faba49161c1c10897897788c",
+    "mode": "formal",
+    "source_sha256": "1efb5bce11da60d087c0867f2cc69f4b0689ec17995c2137b363bfa70a1aa88b",
+    "runtime_sha256": "ad3bb92f5836e5213450420e8f33deffd43443da7d451796adef3d6193ef6962",
+    "plan_sha256": "153f8237a17928ffc3a28b7b00e366742a4ff0080e8fbb6bac87e57da8eb291d",
+    "reference_sources": 8278,
+    "num_envs": 8192,
+    "corpus_scope": "BABEL-indexed available public profile; not a claim of reproducing all 12296 author tracking clips or private403 clips",
+    "elapsed_seconds": 136.46526031009853,
+    "contact_profile": {
+      "kind": "validated_static_solid_floor",
+      "top_z": 0.0,
+      "dimensions_m": [
+        4000,
+        4000,
+        0.2
+      ],
+      "static_friction": 1.0,
+      "dynamic_friction": 1.0,
+      "restitution": 0.0,
+      "combine_mode": "multiply",
+      "self_collisions": true,
+      "validation_witnesses": [
+        {
+          "run": "solid_floor_ppo_author_v1",
+          "receipt_sha256": "3e02a9fb9d312e8f36321ae9b4d0a5dc04e038dd569eb859c615d3e28ecd4339",
+          "actual_iterations": 10,
+          "actual_optimizer_updates": 200
+        },
+        {
+          "run": "solid_floor_ppo_document_v2",
+          "receipt_sha256": "597ddb5508264769bb7953a62697ad82120b0a84ad74291112467dd8952acf7d",
+          "actual_iterations": 10,
+          "actual_optimizer_updates": 200
+        }
+      ],
+      "author_exact_collision_geometry_available": false,
+      "long_run_convergence_established": false,
+      "data_or_reward_changes": false
+    },
+    "contact_profile_loader_sha256": "1b7f056335b4642021e5eeb76466012a1283748acd661d8e31e00f7408d3333b",
+    "reference_fingerprint": "0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7",
+    "target_learning_iterations": 40000,
+    "paper_settings": {
+      "source": "https://arxiv.org/html/2602.07439v1#A1",
+      "filter_iterations": 40000,
+      "training_terminations": "relaxed height terms removed",
+      "anchor": "pelvis",
+      "privileged_observation_dim_expected": 557,
+      "actor_hidden": [
+        2048,
+        1024,
+        512
+      ],
+      "critic_hidden": [
+        2048,
+        1024,
+        512
+      ],
+      "target_num_envs": 8192,
+      "steps_per_env": 24,
+      "learning_rate": 0.001,
+      "minibatches": 4,
+      "epochs": 5,
+      "clip_param": 0.2,
+      "simulation_hz": 200,
+      "policy_hz": 50,
+      "strict_pelvis_height_threshold_m": 0.25,
+      "strict_end_effector_height_threshold_m": 0.5,
+      "domain_randomization": false,
+      "own_choices_not_specified_by_paper": {
+        "adaptive_average": "pinned release EMA alpha0.001, ads_typev1",
+        "strict_repetitions": null,
+        "failure_window_or_chunking": null,
+        "checkpoint_interval": 5000,
+        "asset": "shared BeyondMimic G1 description, authors exact asset hash unavailable",
+        "floor": "Validated local static-box plane topz0,friction1,restitution0,selfcollision retained; authors exact collider unavailable"
+      }
+    },
+    "resume_exact_state_verified": true,
+    "resumed_physics_episodes_restarted_without_counting_reset": true
+  },
+  "latest_native_logged_iteration_zero_based": 5096,
+  "observed_completed_from_native_log": 5097,
+  "exact_source_resume_completed": 5000,
+  "exact_source_resume_updates": 100000,
+  "actual_workers": [
+    {
+      "pid": 4104139,
+      "args": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/full_resume_filter_policy_paper69_resume5000_to40000_20261026_v1_driver.py",
+        ""
+      ],
+      "cpu_affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "state": [
+        "State:\tS (sleeping)",
+        "VmRSS:\t   11108 kB"
+      ]
+    },
+    {
+      "pid": 4104152,
+      "args": [
+        "/bin/bash",
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/python.sh",
+        "-u",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_filter_policy.py",
+        "--spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json",
+        "--plan",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filter-training-plan.json",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume5000_to40000_20261026_v1",
+        "--mode",
+        "formal",
+        "--resume",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_solid_floor_20261026_v1/completed_5000.pt",
+        "--device",
+        "cuda:1",
+        "--headless",
+        ""
+      ],
+      "cpu_affinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "state": [
+        "State:\tS (sleeping)",
+        "VmRSS:\t    3264 kB"
+      ]
+    },
+    {
+      "pid": 4104159,
+      "args": [
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/kit/python/bin/python3",
+        "-u",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_filter_policy.py",
+        "--spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json",
+        "--plan",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filter-training-plan.json",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume5000_to40000_20261026_v1",
+        "--mode",
+        "formal",
+        "--resume",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_solid_floor_20261026_v1/completed_5000.pt",
+        "--device",
+        "cuda:1",
+        "--headless",
+        ""
+      ],
+      "cpu_affinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "state": [
+        "State:\tR (running)",
+        "VmRSS:\t 9207668 kB"
+      ]
+    }
+  ],
+  "exit": null,
+  "outer_exit": null,
+  "latest_resource_sample": {
+    "child_pid": 4104152,
+    "sampled_unix": 1793026813.2604861,
+    "resources": {
+      "available_host_ram_bytes": 129476513792,
+      "data_free_bytes": 6103920640,
+      "all_device_usage_including_other_jobs": "0, 12741, 35811, 1\n1, 31536, 17014, 98",
+      "owned_child_group": 4104152,
+      "owned_group_processes": [
+        {
+          "pid": 4104152,
+          "group": 4104152,
+          "state_and_rss": [
+            "State:\tS (sleeping)",
+            "VmRSS:\t    3264 kB"
+          ],
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "pid": 4104159,
+          "group": 4104152,
+          "state_and_rss": [
+            "State:\tR (running)",
+            "VmRSS:\t 9206932 kB"
+          ],
+          "cpu_affinity": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "owned_group_gpu_memory": [
+        {
+          "pid": 4104159,
+          "gpu_uuid": "GPU-f3cc20c6-f613-73c1-b0f9-f54863f22602",
+          "used_gpu_memory_mib": "456"
+        },
+        {
+          "pid": 4104159,
+          "gpu_uuid": "GPU-0b41e662-b662-bb1c-954b-13ed89d7af18",
+          "used_gpu_memory_mib": "23650"
+        }
+      ]
+    }
+  },
+  "full_generator_training_started": false,
+  "paper_quality_accepted": false
+}
