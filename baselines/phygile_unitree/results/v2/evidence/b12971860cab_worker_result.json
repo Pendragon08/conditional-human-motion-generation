@@ -1,0 +1,43 @@
+{
+  "status": "COMPLETED",
+  "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+  "request_sha256": "cca870c3317d709859bbd0f4d6c1f10ff4f0bbc824e9e3e6149726bc64ae6169",
+  "mode": "rollout",
+  "replayed_windows": [],
+  "gmt_parameters_unchanged": true,
+  "gmt_parameter_digest": "77340d811490c8cf914aa1dc31fffee635675c941ce2b07b709b9e6d9a26a27b",
+  "determinism": {
+    "torch_deterministic_algorithms": true,
+    "cublas_workspace_config": ":4096:8",
+    "tf32": false,
+    "physx_enhanced_determinism": true,
+    "physical_properties_sha256": "29d5a322ea2d2c039f8639b90ee54e475409f8a5e39723ad65211bf9a8ba6eb5"
+  },
+  "task": "Unitree-G1-PhyGile-v0",
+  "source_provenance": {
+    "manifest": "/data/code/ouyanghao/oyh/phygile-unitree-20261022/runs/closure_unitree_v3/simulator/invocation_006/executed_sources.json",
+    "sha256": "d4b9e3a1690aa35de142fef6e06b7a26f922fd20db48eea9c233ea14d7b95cf1",
+    "source_files": 452
+  },
+  "executed_sources_unchanged": true,
+  "independent_guarded_upstream": {
+    "status": "MATERIALIZED_NOT_TRAINED",
+    "destination": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/cache/guarded_upstream",
+    "scope": "Integrity repairs; unsafe evaluators disabled; full curriculum not validated",
+    "sources": {
+      "source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py": {
+        "original_sha256": "b3a35da443de54c303e6b4fd3fb2b9e4153bdbeef7d91f9fb843bd5def3f1e4a",
+        "patched_sha256": "cad7ee14922ed4d5a2ba509bfa4d455cc4b8ee0a1eafa591c4e672a87751b20b"
+      },
+      "source/whole_body_tracking/whole_body_tracking/utils/my_on_policy_runner.py": {
+        "original_sha256": "c41fa2122f92f9413dc43c8de72a0f8dcaae518021143cc0f37e104f497f701c",
+        "patched_sha256": "e4b73e1e3e4bfdc79c1b23a121d2ed0cfd79afdbff1df98c3cac5cfd93be7409"
+      },
+      "source/whole_body_tracking/whole_body_tracking/utils/curriculum_manager.py": {
+        "original_sha256": "bd4c3ad52a16559144bb43c4c19d18a846b58a0228b515d5bea811a2909cbdd0",
+        "patched_sha256": "5f1a4cbcce8c85a5b5d96c67bce73d99c4de453822eab6659de932c43c7612d9"
+      }
+    },
+    "builder_sha256": "e688a87d464c0a19fbbb23c7687e26a325343039da75284339e5d492c01c067f"
+  }
+}

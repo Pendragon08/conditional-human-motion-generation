@@ -1,0 +1,121 @@
+runner:
+  num_steps_per_env: 24
+  max_iterations: 200000
+  save_interval: 1000
+  experiment_name: g1_flat_moe_phase_b
+  empirical_normalization: true
+  upload_models_to_wandb: false
+policy:
+  class_name: MoEActorCritic
+  init_noise_std: 1.0
+  actor_hidden_dims:
+  - 2048
+  - 1024
+  - 512
+  critic_hidden_dims:
+  - 2048
+  - 1024
+  - 512
+  activation: elu
+  encoder_hidden_dims: null
+  share_encoder: null
+  future_command_encoder:
+    per_frame_dim: 65
+    immediate_steps: 2
+    conv_steps: 5
+    conv_channels:
+    - 256
+    - 128
+    kernel_size: 3
+    pooling: avg
+    dropout: 0.0
+    latent_dim: 128
+    share_across_actor_critic: true
+    apply_to_actor: true
+    apply_to_critic: true
+  moe_config:
+    num_experts: 12
+    expert_hidden_dims:
+    - 2048
+    - 1024
+    - 512
+    gate_hidden_dims:
+    - 256
+    top_k: 3
+    routing_loss_coef: 0.1
+    load_balance_loss_coef: 0.01
+    supervised_hard_ratio: 0.0
+    new_level_hard_ratio: 0.0
+    expert_warm_start: false
+    candidate_update_interval: 10
+    temperature: 0.5
+    logits_ema_alpha: 0.8
+    use_zt_for_gate: true
+    adaptive_ce_coef: 0.05
+    max_value_err: 10.0
+    critic_warmup_iters: 4000
+    surrogate_ramp_iters: 5000
+    phase_b_enabled: true
+    new_expert_weight_cap: 0.3
+    new_expert_warmup_steps: 5000
+    max_total_experts: 16
+    new_expert_lr_scale: 3.0
+    old_expert_lr_scale: 0.1
+    difficulty_err_threshold: 0.14
+    difficulty_entropy_threshold: 0.8
+    difficulty_gap_threshold: 0.15
+    difficulty_sustained_windows: 30
+    difficulty_trigger_ratio: 0.1
+    difficulty_check_interval: 500
+    boost_lr_scale: 2.0
+    boost_lr_duration_iters: 3000
+commands:
+  motion:
+    preload_device: cuda:0
+    future_steps: 2
+    max_files_per_iter: 200
+    encoder_future_steps: 5
+    encoder_future_stride: 20
+    enable_multi_file_bin_sampling: true
+    random_static_prob: 0.1
+    file_error_alpha: 0.25
+    file_error_norm: 0.3
+    file_uniform_mixture: 0.2
+    sampling_temperature: 1.05
+    file_success_beta: 0.4
+    file_success_weight: 0.15
+    file_success_warmup_iters: 6000
+    file_freeze_error_threshold: 0.1
+    file_freeze_success_threshold: 0.15
+    file_freeze_min_attempts: 20000
+    file_freeze_iters: 4000
+    file_drop_enabled: true
+    file_drop_after_freezes: 3
+    file_freeze_check_interval: 500
+    curriculum_enabled: false
+    phase_b_pseudo_level_csv: /ssd/bjc/bm_mlp/source/whole_body_tracking/whole_body_tracking/utils/filtered_texts_211.csv
+    phase_b_old_data_ratio: 0.8
+    phase_b_old_data_ratio_min: 0.3
+    phase_b_ratio_anneal_iters: 30000
+    moe_supervised_until_level: 0
+    curriculum_csv_path: REQUIRED_VERIFIED_DIFFICULTY_CSV
+    curriculum_mocap_dir: REQUIRED_VERIFIED_50HZ_MOTION_DIR
+algorithm:
+  value_loss_coef: 0.5
+  use_clipped_value_loss: true
+  clip_param: 0.15
+  entropy_coef: 0.005
+  num_learning_epochs: 5
+  num_mini_batches: 8
+  learning_rate: 0.0005
+  schedule: adaptive
+  gamma: 0.99
+  lam: 0.95
+  desired_kl: 0.01
+  max_grad_norm: 1.0
+  normalize_advantage_per_mini_batch: true
+rewards:
+  motion_global_anchor_pos:
+    weight: 0.8
+    params:
+      std: 0.2

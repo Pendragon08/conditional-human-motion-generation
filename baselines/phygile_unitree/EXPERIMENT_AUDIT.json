@@ -1,0 +1,241 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "reason_code": "incomplete_execution_source_attestation",
+  "secondary_reason_codes": [
+    "environment_canonical_digest_method_undocumented",
+    "same_family_review_provisional",
+    "initial_reviewer_route_http_403_then_resumed"
+  ],
+  "summary": "All accessible raw artifacts, dataset references, reported metrics, status claims, permutations, and frozen-policy checks verified. Historical receipts incompletely bind the executed imported source graph, and the environment-plan canonical digest was not reproducible without an undocumented canonicalization method.",
+  "trace_path": ".aris/traces/experiment-audit/2026-10-22_run01/",
+  "agent_id": "/root/unitree_integrity_audit",
+  "verdict_id": "/root/unitree_integrity_audit",
+  "executor_model": "gpt-5.6-sol",
+  "executor_family": "openai",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "generated_at": "2026-10-22T11:17:52.8352199Z",
+  "date": "2026-10-22",
+  "auditor": "gpt-5.6-sol-ultra",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "checks": {
+    "A_gt_provenance": {
+      "status": "pass",
+      "details": "All eight stored reference array families equal the corresponding dataset motion arrays exactly after name-based selection; no reference derives from robot/policy outputs.",
+      "evidence": [
+        "scripts/lab_run.py:171-177",
+        "scripts/mjlab_evaluate.py:42-51",
+        "scripts/analyze_crosssim.py:18-26",
+        "reports/PhyGile_Unitree适配与跨仿真报告_20261022.md:48-52"
+      ]
+    },
+    "B_score_normalization": {
+      "status": "pass",
+      "details": "Metrics are raw Euclidean/absolute means. Saved observation normalization is applied only to policy inputs and does not normalize evaluation scores.",
+      "evidence": [
+        "scripts/lab_run.py:192-197",
+        "scripts/mjlab_evaluate.py:59-66",
+        "scripts/analyze_crosssim.py:20-24",
+        "scripts/frozen_policy.py:15-28",
+        "reports/PhyGile_Unitree适配与跨仿真报告_20261022.md:65"
+      ]
+    },
+    "C_result_existence": {
+      "status": "warn",
+      "details": "Files, keys, numbers, and DONE versus pending status all match. WARN because Isaac hashes only lab_run.py, Mjlab receipts hash no source, and the environment ledger canonical digest lacks a reproducible documented procedure.",
+      "evidence": [
+        "results/v1/crosssim_summary.json:2-13",
+        "EXPERIMENT_TRACKER.md:3-13",
+        "scripts/lab_run.py:25-30",
+        "scripts/mjlab_evaluate.py:8-17",
+        "docs/COMPUTE_LEDGER.md:3-6",
+        "reports/PhyGile_Unitree适配与跨仿真报告_20261022.md:54-65"
+      ]
+    },
+    "D_dead_code": {
+      "status": "pass",
+      "details": "Every reported metric is computed on the completed evaluation path and independently recomputed by analyze_crosssim. The unexecuted training branch is explicitly marked NOT_STARTED rather than claimed.",
+      "evidence": [
+        "scripts/lab_run.py:180-198",
+        "scripts/mjlab_evaluate.py:54-75",
+        "scripts/analyze_crosssim.py:18-30",
+        "scripts/lab_run.py:143-157",
+        "EXPERIMENT_TRACKER.md:6,13"
+      ]
+    },
+    "E_scope": {
+      "status": "pass",
+      "details": "Claims match four short clips, two simulation engines, one deterministic episode per clip/engine, seed 2026, and failure censoring. Documents expressly reject paper-scale, equivalence, generalization, and real-robot conclusions.",
+      "evidence": [
+        "results/v1/crosssim_summary.json:4-7,230",
+        "README.md:32-34",
+        "reports/PhyGile_Unitree适配与跨仿真报告_20261022.md:48-52,65,79-82"
+      ]
+    },
+    "F_eval_type": {
+      "status": "pass",
+      "classifications": {
+        "tracking_metrics": [
+          "real_gt",
+          "simulation_only"
+        ],
+        "frozen_policy_numeric_parity": "synthetic_proxy",
+        "compiled_dynamics": "simulation_only_static_diagnostic",
+        "document_witness": "simulation_only_bounded_probe",
+        "human_eval": false,
+        "real_robot": false
+      },
+      "evidence": [
+        "scripts/lab_run.py:192-198",
+        "scripts/mjlab_evaluate.py:69-75",
+        "scripts/analyze_crosssim.py:31-43",
+        "scripts/verify_reference_v3.py:10-21",
+        "scripts/check_mjlab_dynamics.py:8-20",
+        "reports/PhyGile_Unitree适配与跨仿真报告_20261022.md:82"
+      ]
+    }
+  },
+  "verification": {
+    "private_raw_manifest_entries": 24,
+    "private_raw_all_exist": true,
+    "private_raw_all_bytes_match": true,
+    "private_raw_all_sha256_match": true,
+    "private_asset_entries": 8,
+    "private_assets_all_exist": true,
+    "private_assets_all_bytes_match": true,
+    "private_assets_all_sha256_match": true,
+    "evaluations_checked": 8,
+    "reference_array_max_abs_difference": 0.0,
+    "reported_metric_max_abs_difference": 0.0,
+    "frame_sequences_contiguous_from_zero": true,
+    "first_done_only": true,
+    "fresh_policy_action_max_abs_difference": 2.682209014892578e-7,
+    "policy_action_tolerance_passed": true,
+    "initial_520d_command_max_abs_difference": 0.0,
+    "mjlab_converted_motion_exact": true,
+    "published_receipts_byte_exact_to_private": true,
+    "current_scripts_match_author_source_manifest": true,
+    "success_counts": {
+      "isaac": 2,
+      "mjlab": 1
+    },
+    "frames_evaluated": {
+      "isaac": [149, 12, 149, 62],
+      "mjlab": [129, 10, 149, 14]
+    },
+    "checkpoint": {
+      "sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+      "bytes": 67349356,
+      "iter": 1999,
+      "optimizer_state_entries": 25,
+      "optimizer_step_values": [40000.0]
+    },
+    "environment_plan_digest_check": {
+      "ledger_claim": "a43f960bd3bcdcd3398655bffe291138b73de5ca7f30901765172ff9821e1954",
+      "current_lf_file_sha256": "639a7e9b5e007f6f65fef2b1a8476495577a6b47154c451fb20e651958b05b79",
+      "crlf_variant_sha256": "1453e96ca6070b797fb15a4102b537052269865ebad5e1df120505807474b55d",
+      "sorted_compact_json_sha256": "37aa187011c77fcabd72a7024a864e0d06dc4951667497e6253cff73aa5798f6",
+      "canonicalization_documented": false,
+      "ledger_claim_reproduced": false
+    }
+  },
+  "historical_route": {
+    "attempt_001_status": "error",
+    "returned_error": "unexpected status 403 Forbidden",
+    "scientific_verdict_from_attempt_001": "unavailable",
+    "evidence": "results/v1/audit_route_attempt01_error.json",
+    "resumed_review_status": "ok"
+  },
+  "claims": [
+    {
+      "id": "adapter_and_success_counts",
+      "impact": "supported"
+    },
+    {
+      "id": "reported_failure_censored_metrics",
+      "impact": "supported"
+    },
+    {
+      "id": "same_checkpoint_and_policy_io",
+      "impact": "supported"
+    },
+    {
+      "id": "no_new_ppo_or_weights",
+      "impact": "supported"
+    },
+    {
+      "id": "exact_executed_source_snapshot",
+      "impact": "needs_qualifier"
+    },
+    {
+      "id": "environment_plan_canonical_sha256",
+      "impact": "needs_correction_or_method_disclosure"
+    },
+    {
+      "id": "paper_scale_or_real_robot_performance",
+      "impact": "unsupported_and_not_claimed"
+    }
+  ],
+  "action_items": [
+    "For future runs, bind a pre-execution manifest covering the entrypoint, project imports, contract, framework commit, and environment lock into every receipt.",
+    "Document and reproduce the environment-plan canonicalization algorithm or correct the ledger digest.",
+    "Retain the historical source-attestation limitation; do not retrofit hashes into completed receipts.",
+    "Keep same-family acceptance provisional."
+  ],
+  "audited_input_hashes": {
+    "README.md": "sha256:e545334180319e1d9495c88abb19bfaa27949718802af4ed7e4c8246e203bbef",
+    "reports/PhyGile_Unitree适配与跨仿真报告_20261022.md": "sha256:5eb10fdf11d736821e05363afcaaeff90a3149a742b010004c8374c94c6f893a",
+    "EXPERIMENT_TRACKER.md": "sha256:6dd24ab2c5b5fbbb7214c6fc5a5d05888ab2a573d0d987d0d175541fdb1fe4b6",
+    "docs/ENVIRONMENT.md": "sha256:bba284ec60d47bd2e16aa2263f4e81dfe1b29c617c4b6449d8d881b4199d68e1",
+    "docs/COMPUTE_LEDGER.md": "sha256:6539bc37b5fe0835eb6e50ab615023446edc5d8c8c414c128cd1762a85fdcca3",
+    "configs/environment_plan.json": "sha256:080eb678bbdc4974ea42f243c8f3b8bbf3c7b2de50e75e196109346ed9740380",
+    "configs/environment_plan_v2.json": "sha256:639a7e9b5e007f6f65fef2b1a8476495577a6b47154c451fb20e651958b05b79",
+    "configs/mjlab_resolved_requirements_v2.txt": "sha256:7590bde7b6932f549229da1f1bacabf5a393a3d724b83cde3225ec6e86242303",
+    "scripts/analyze_crosssim.py": "sha256:10071f3a51025aa51c1ce64dd9eeeec0c95b5f8495864db2c836bd8d30df9568",
+    "scripts/check_mjlab_dynamics.py": "sha256:ec20ace08740fc9a715a88aedc3acdf94d1a1ea2d35c6fe8b8031f12f9307da4",
+    "scripts/export_policy_reference.py": "sha256:15379f272309893abed36c6d366cb5e4527a62f3b1945da42c9dbfdb26977c74",
+    "scripts/frozen_policy.py": "sha256:2ae2cedee9537487c99b93cae410c093845f7c1a51a33134a9c04a852390df22",
+    "scripts/lab_run.py": "sha256:1731b0df2b85e178754c7ded162f34d32eebbe0b1a156a224437cfff3581e95d",
+    "scripts/lab_task.py": "sha256:6a2df47b6705e90b6de9305a7e6c4eee91fe26f2ac07ef21a38f273a967749dd",
+    "scripts/mjlab_evaluate.py": "sha256:e309f901ba526ad3cf0e15f79f3994b984f8e850bc18717f5c43ff34454ded29",
+    "scripts/mjlab_kernel_witness.py": "sha256:9a90ea39b0c63fd3f3ac77c30e72a96b88c43316ef7f6180692a5bfa6ae17ad8",
+    "scripts/mjlab_task.py": "sha256:9430a1759ee774456475b4aa03bf5dccafb41f76cd90f0146ddfc15638d47882",
+    "scripts/prepare_unitree_vendor.py": "sha256:efa29f7b5398528b694dccd096cdf761d349b4408e2b232fc2295e5753001708",
+    "scripts/run_isaac.sh": "sha256:f3e5c06b7aa407785cf40473001c197535b920cc2a2f8a3efb2fb03b06db3e0d",
+    "scripts/verify_frozen_policy.py": "sha256:5fcb90b5fd8267a8cde8f2e13cac20d566b8b781aa30e5b1a9052ed32604b4e6",
+    "scripts/verify_reference_v2.py": "sha256:7ed119cfd689393f03cfd0810c2659aac0e29583e76058768a12cafa273222f7",
+    "scripts/verify_reference_v3.py": "sha256:fd11944f1881a2b95a1c35e12b422a01b8b7e7ec78d9b0654e7e885418388c4b",
+    "results/v1/contract.json": "sha256:8ab68b24aa18bda313e594b3f8807514e38bfc8d1d00e4f3e61a92e1b18a59f1",
+    "results/v1/crosssim_summary.json": "sha256:e9cba1c5d6c6318b964cd0c19fa5165ec45252c89e5996bdca0486570d24cda9",
+    "results/v1/private_raw_manifest.json": "sha256:c3c32c8d03013cf370478adf0be4d715ad34430198e2c62b27a760e5f646276e",
+    "results/v1/private_asset_manifest.json": "sha256:102a73a8a7482ea4e352b3b2b7727ea374b69b18ba48ce93a2a101fe8927acf9",
+    "results/v1/frozen_policy_parity_v3.json": "sha256:4ea6bcf2bd891c60e83eb067c52103a6e6c914154e25ef3b462befd494b808aa",
+    "results/v1/mjlab_compiled_dynamics_v1.json": "sha256:97bd543800f263c059c2df65dcc0eef316ca5a6477b55f8538de477c54f31d97",
+    "results/v1/author_source_manifest.json": "sha256:7eae44c157be080f1ac30cc164b9f0752c520d18918fa33feb565b1fc343b7e4",
+    "results/v1/server_evidence_manifest_v1.json": "sha256:4184c6c8949d904514cd4daff69f4b67542ff14f5a3428044c603db53b697e0b",
+    "results/v1/doc_witness_report_v1/REPORT.md": "sha256:9695cf7ce34786daa65d9ddfdd280cef0568ab144f87a3d12709ea2da433d43b",
+    "results/v1/doc_witness_report_v1/command_output_trace.json": "sha256:3978e8be631fd68a722593eb8bbffe69038bfeaa201f4e1f6f16d54b3dc906c7",
+    "results/v1/audit_route_attempt01_error.json": "sha256:cfaacd96fffa3891be3cfd8cc6add05a9646aa0bce0cf7b264f7b0172df69e17",
+    "results/v1/server_evidence/code_v5/scripts/lab_run.py": "sha256:1731b0df2b85e178754c7ded162f34d32eebbe0b1a156a224437cfff3581e95d",
+    "results/v1/server_evidence/code_v5/scripts/mjlab_evaluate.py": "sha256:9d4644647e3cd79c6a796f752fe76dae813c14a185634771cce72606cda4260d",
+    "results/v1/server_evidence/numeric_reference_v2/export_policy_reference.py": "sha256:15379f272309893abed36c6d366cb5e4527a62f3b1945da42c9dbfdb26977c74",
+    "results/v1/server_evidence/runs/lab_eval_v1_clip000/receipt.json": "sha256:6a6f41e7d0163b12cebada72dcd9edc8efe4806b1beb507e11ebf75a9f136ec7",
+    "results/v1/server_evidence/runs/lab_eval_v1_clip001/receipt.json": "sha256:048edd786a57ae9086c7d9158745255a945f3ae843d547f8a9972ae355af57cc",
+    "results/v1/server_evidence/runs/lab_eval_v1_clip002/receipt.json": "sha256:fac76f8c0c18e081cb655e17a1485f737c752628217ce9876c50e6e01e2b9e72",
+    "results/v1/server_evidence/runs/lab_eval_v1_clip003/receipt.json": "sha256:7dc97a19393dc49701eb851a90cb72a34c0e27249f6ab6a36cbff24b27388c2a",
+    "results/v1/mjlab/mjlab_eval_v2_clip000/receipt.json": "sha256:3ae8cd4348b8f79626e287a6267ab79dbbf78a4deeaa916150514082e36cc9f9",
+    "results/v1/mjlab/mjlab_eval_v2_clip001/receipt.json": "sha256:9989c7ccbd4fd8cf6b9752cce4fb3058fe50d6c8c8ff8527ce5a0b4ff1ee9db1",
+    "results/v1/mjlab/mjlab_eval_v2_clip002/receipt.json": "sha256:8282a96768c06960ca9e26afd9306fbb44c0507b43672d594ddb980ad40ab004",
+    "results/v1/mjlab/mjlab_eval_v2_clip003/receipt.json": "sha256:fd8f3f72b1577fed2591ea34f889204a44603e02da4eac9872974194c17589cb",
+    "D:/具身智能/PhyGile复现/Unitree框架适配_20261022/private_assets/parent_checkpoint.pt": "sha256:bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+    "D:/具身智能/PhyGile复现/Unitree框架适配_20261022/private_assets/test_000.npz": "sha256:9da670f4a3f4881fa49c73b7a05efcdff8353334f8cf34f5c901ef3668ebc86d",
+    "D:/具身智能/PhyGile复现/Unitree框架适配_20261022/private_assets/test_001.npz": "sha256:9f43364b4a5d2415a64277eece7f8101be2449cf356ad66175c294d91be7a499",
+    "D:/具身智能/PhyGile复现/Unitree框架适配_20261022/private_assets/test_002.npz": "sha256:b212bd307ecbfc9d3ed407c45ce62f48b3a70ecc803099efb61fd018efd7fe59",
+    "D:/具身智能/PhyGile复现/Unitree框架适配_20261022/private_assets/test_003.npz": "sha256:3bbb62305a12b2f9a23227ad29d1bd36ea7b7b22eb97081fcc0548aee82fd92f"
+  }
+}

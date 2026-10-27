@@ -1,0 +1,52 @@
+{
+  "status": "RENDERED_POLICY_PREVIEW_COMPLETED",
+  "mode": "preview",
+  "training": false,
+  "started_utc": "2026-10-22T09:15:05.151388+00:00",
+  "parent_checkpoint": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_moe_pilot/2026-10-17_11-25-01_extended2000_seed42/model_1999.pt",
+  "parent_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+  "device": "cuda:1",
+  "headless": false,
+  "display": ":10",
+  "seed": 2026,
+  "num_envs": 1,
+  "source_sha256": "60afc8fb122d7332c4f5c6d62b1bcc7682238840eafa5f03e6644d5f259419f8",
+  "task": "Unitree-G1-PhyGile-v0",
+  "paper_benchmark_reproduced": false,
+  "configuration_semantic_equality": true,
+  "environment_mro": [
+    "lab_task.PhyGileUnitreeEnvCfg",
+    "unitree_rl_lab.tasks.mimic.robots.g1_29dof.dance_102.tracking_env_cfg.RobotEnvCfg",
+    "isaaclab.envs.manager_based_rl_env_cfg.ManagerBasedRLEnvCfg",
+    "isaaclab.envs.manager_based_env_cfg.ManagerBasedEnvCfg",
+    "builtins.object"
+  ],
+  "evaluation_overrides": [
+    "no observation noise",
+    "no startup material/default-joint/COM randomization",
+    "no pushes",
+    "zero reset pose/velocity/joint perturbation"
+  ],
+  "policy_loaded_exactly": true,
+  "normalizers_loaded_exactly": true,
+  "policy_observation_shape": [
+    1,
+    616
+  ],
+  "action_shape": [
+    1,
+    29
+  ],
+  "policy": "whole_body_tracking.utils.encoder_actor_critic.MoEActorCritic",
+  "algorithm": "whole_body_tracking.utils.moe_ppo.MoEPPO",
+  "active_experts": 1,
+  "render_shape": [
+    540,
+    960,
+    3
+  ],
+  "control_calls": 100,
+  "parent_unchanged": true,
+  "finished_utc": "2026-10-22T09:18:10.171512+00:00",
+  "torch_peak_allocated_bytes": 111534080
+}

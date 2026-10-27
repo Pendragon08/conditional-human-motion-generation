@@ -1,0 +1,20 @@
+{
+  "purpose": "research_training",
+  "assumptions": "Proposed independent settings, not the unpublished author training configuration. Requires genuine paired 262D robot/text inputs. ASFO mirroring is not implemented.",
+  "dataset_manifest": "/replace/with/verified/dataset_manifest.json",
+  "text_encoder_path": "../cache/text/distilbert-base-uncased",
+  "seed": 42,
+  "batch_size": 4,
+  "max_updates": 100000,
+  "save_every": 1000,
+  "max_sequence_frames": 300,
+  "model": {},
+  "schedule": {"type": "linear", "start": 0.0001, "end": 0.02, "steps": 1000},
+  "learning_rate": 0.0001,
+  "adam_betas": [0.9, 0.999],
+  "weight_decay": 0.0,
+  "gradient_clip": 1.0,
+  "condition_dropout": 0.1,
+  "balance_weight": 0.01,
+  "asfo": {"enabled": true, "rho_max": 4, "count_policy": "keep_at_least_one", "mirroring": false}
+}

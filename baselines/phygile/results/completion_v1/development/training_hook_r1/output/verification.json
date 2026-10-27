@@ -1,0 +1,72 @@
+{
+  "status": "COMPLETED",
+  "purpose": "scheduler integration fixture only; not difficulty curriculum reproduction",
+  "fixture_labels_are_research_annotations": false,
+  "ppo_iterations": 4,
+  "adam_optimizer_steps_expected": 80,
+  "num_envs": 32,
+  "training_run": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-11-07_training_hook_r1",
+  "decision_path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-11-07_training_hook_r1/independent_curriculum/iteration_00000003/decision.json",
+  "decision": {
+    "promote": false,
+    "reason": "minimum_file_success_below_threshold",
+    "iteration": 3,
+    "old_level": 1,
+    "new_level": 1,
+    "report_sha256": "d883fc4c1f0d4ebb76bfdda73dc15cd478fb4310046a0c7870e7f7800146eb6e"
+  },
+  "evaluation_path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-11-07_training_hook_r1/independent_curriculum/iteration_00000003/assessment/evaluation.json",
+  "evaluation": {
+    "status": "COMPLETED",
+    "valid": true,
+    "problems": [],
+    "evaluation_type": "simulation_only",
+    "reference_type": "dataset-derived kinematic reference",
+    "aggregation": "equal weight per requested file; errors censored at termination; success counts full clips",
+    "requested_files": [
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_train20_tracking_refs/sample_000_actor0.npz"
+    ],
+    "attempts_per_file": 2,
+    "checkpoint_sha256": "4e294a7e7ab956941d8220ae790e334ab8ee051693a60831645cca9fb9f4fdf8",
+    "per_file": [
+      {
+        "motion_file": "/data/code/ouyanghao/oyh/humanoid-combat-motion/runs/kungfu_train20_tracking_refs/sample_000_actor0.npz",
+        "motion_sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b",
+        "attempts": 2,
+        "successes": 0,
+        "success_fraction": 0.0,
+        "mpjpe_m_until_termination": 0.12265126407146454,
+        "mpjae_rad_until_termination": 0.23407287895679474,
+        "episode_lengths": [
+          5,
+          5
+        ],
+        "problems": []
+      }
+    ],
+    "mpjpe_m": 0.12265126407146454,
+    "mpjae_rad": 0.23407287895679474,
+    "success_fraction": 0.0,
+    "minimum_file_success_fraction": 0.0,
+    "started_unix": 1792246283.9374,
+    "finished_unix": 1792246306.463827,
+    "source_sha256": "33d163b63723e48af9d1a9d0c0adac4fed4202bbfe00e0c9694c6fb583162d21",
+    "request_sha256": "cb491ddbe3dab7bbe96c3b450e09c12f074fd14d1e7900a82b4f60dc0c872b56",
+    "raw_files": [
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_curriculum_interface_validation/2026-10-17_14-11-07_training_hook_r1/independent_curriculum/iteration_00000003/assessment/file_0000/raw_pre_reset.npz",
+        "sha256": "8f56c27a97b534ca9a0b4451093a89f9a919ee684fa6d105ad0264d2a34fbf5d"
+      }
+    ]
+  },
+  "motion_sources": [
+    {
+      "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/train/sample_000_actor0.npz",
+      "sha256": "a4f3aa10ad1b17ad11508b5ea3b22664beb724ce7ea9148054d137cc8da6bd1b"
+    },
+    {
+      "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/train/sample_001_actor0.npz",
+      "sha256": "90aaa5d5af04d31a27baa26cc4c1b1fd7fc9694c15900a3798ff19c753b9fa44"
+    }
+  ]
+}

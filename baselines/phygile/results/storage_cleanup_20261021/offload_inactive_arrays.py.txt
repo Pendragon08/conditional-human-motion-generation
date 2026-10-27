@@ -1,0 +1,81 @@
+"""Archive inactive experiment arrays locally, verify every byte, then remove only those server copies."""
+import json,hashlib,subprocess,base64,shlex,tarfile,datetime,shutil,os
+from pathlib import Path
+HOST='ouyanghao@10.147.17.32'
+SSH=['ssh','-o','BatchMode=yes','-o','ConnectTimeout=20','-i',r'C:/Users/Pende/.ssh/id_ed25519',HOST]
+ROOT='/data/code/ouyanghao/oyh/conditional-human-motion-generation'
+OUT=Path(r'D:\具身智能\PhyGile复现\服务器空间清理_20261021')
+OUT.mkdir(parents=True,exist_ok=True)
+PROOF=Path(__file__).resolve().parent
+
+def remote(code):
+ wrapped='import base64;exec(base64.b64decode('+repr(base64.b64encode(code.encode()).decode())+'))'
+ r=subprocess.run(SSH+['/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021/bin/python -c '+shlex.quote(wrapped)],stdin=subprocess.DEVNULL,capture_output=True,text=True,timeout=1800)
+ if r.returncode:raise RuntimeError(r.stderr[-2500:])
+ return json.loads(r.stdout)
+
+def write(p,x):p.write_text(json.dumps(x,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+
+for run in ['world_ppo_20261006','world_residual_20261007']:
+ target=OUT/(run+'_inactive_arrays.tar.gz')
+ if target.exists():raise FileExistsError(target)
+ plan=remote('''import os,json,hashlib,subprocess,time
+from pathlib import Path
+base=Path(ROOT).resolve()
+open_names=set(x[1:] for x in subprocess.run(['lsof','-nP','-u',str(os.getuid()),'-Fn'],capture_output=True,text=True).stdout.splitlines() if x.startswith('n'))
+rows=[]
+for seed in [42,43,44]:
+ folder=base/'artifacts'/RUN/('collect_seed'+str(seed)+'_v1')
+ assert folder.resolve().is_relative_to(base) and not folder.is_symlink()
+ for p in sorted(folder.glob('*.npy')):
+  s=p.stat();assert p.resolve()==p and s.st_uid==os.getuid() and time.time()-s.st_mtime>7*86400 and str(p) not in open_names
+  h=hashlib.sha256()
+  with p.open('rb') as f:
+   for b in iter(lambda:f.read(4194304),b''):h.update(b)
+  rows.append({'path':str(p.relative_to(base)),'bytes':s.st_size,'sha256':h.hexdigest(),'mtime_ns':s.st_mtime_ns,'inode':s.st_ino})
+print(json.dumps({'files':rows,'bytes':sum(x['bytes'] for x in rows),'run':RUN}))
+'''.replace('ROOT',repr(ROOT)).replace('RUN',repr(run)))
+ assert plan['bytes']>0 and shutil.disk_usage(OUT).free>plan['bytes']+42*1024**3
+ write(PROOF/(run+'_plan.json'),plan)
+ paths=[x['path'] for x in plan['files']]
+ command='tar -C '+shlex.quote(ROOT)+' -cf - -- '+ ' '.join(shlex.quote(x) for x in paths)+' | gzip -1'
+ part=target.with_suffix(target.suffix+'.part')
+ print(json.dumps({'run':run,'state':'ARCHIVING_INACTIVE_ARRAYS','raw_bytes':plan['bytes']}),flush=True)
+ with part.open('xb') as dest:
+  result=subprocess.run(SSH+['set -o pipefail; '+command],stdin=subprocess.DEVNULL,stdout=dest,stderr=subprocess.PIPE,timeout=3600)
+ assert result.returncode==0,result.stderr[-2000:]
+ expected={x['path']:x for x in plan['files']};seen=set()
+ with tarfile.open(part,'r|gz') as archive:
+  for m in archive:
+   assert m.isfile() and m.name in expected and m.name not in seen
+   h=hashlib.sha256();n=0
+   with archive.extractfile(m) as f:
+    for b in iter(lambda:f.read(4194304),b''):h.update(b);n+=len(b)
+   assert n==expected[m.name]['bytes'] and h.hexdigest()==expected[m.name]['sha256']
+   seen.add(m.name)
+ assert seen==expected.keys()
+ part.rename(target)
+ backup_sha=hashlib.file_digest(target.open('rb'),'sha256').hexdigest()
+ write(OUT/(run+'_manifest.json'),{**plan,'archive':str(target),'archive_bytes':target.stat().st_size,'archive_sha256':backup_sha,'all_member_sha256_verified':True})
+ header='ROOT='+repr(ROOT)+'\nPLAN='+repr(plan)+'\nBACKUP='+repr(str(target))+'\nBACKUP_SHA='+repr(backup_sha)+'\n'
+ raise RuntimeError('Deletion disabled by user: verified GitHub backup of every candidate is required; a D-drive archive alone is insufficient.')
+ receipt=remote(header+'''import os,json,subprocess,shutil,datetime
+from pathlib import Path
+root=Path(ROOT).resolve()
+open_names=set(x[1:] for x in subprocess.run(['lsof','-nP','-u',str(os.getuid()),'-Fn'],capture_output=True,text=True).stdout.splitlines() if x.startswith('n'))
+for row in PLAN['files']:
+ p=root/row['path'];assert p.resolve()==p and p.is_relative_to(root/'artifacts'/PLAN['run'])
+ s=p.stat();assert s.st_uid==os.getuid() and s.st_ino==row['inode'] and s.st_size==row['bytes'] and s.st_mtime_ns==row['mtime_ns'] and str(p) not in open_names
+before=shutil.disk_usage('/data').free
+for row in PLAN['files']:(root/row['path']).unlink()
+for seed in [42,43,44]:
+ p=root/'artifacts'/PLAN['run']/('collect_seed'+str(seed)+'_v1')/'ARRAYS_ARCHIVED_20261021.json'
+ p.write_text(json.dumps({'local_archive':BACKUP,'archive_sha256':BACKUP_SHA,'restore':'Extract this archive into '+ROOT,'all_member_sha256_verified_before_removal':True},indent=2)+'\n')
+result={**PLAN,'archive':BACKUP,'archive_sha256':BACKUP_SHA,'all_member_sha256_verified':True,'before_free_bytes':before,'after_free_bytes':shutil.disk_usage('/data').free,'removed_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'models_metrics_configs_retained':True}
+out=Path('/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/storage_cleanup_20261021')
+(out/(PLAN['run']+'_offload.json')).write_text(json.dumps(result,indent=2)+'\n')
+print(json.dumps(result))
+''')
+ write(PROOF/(run+'_offload.json'),receipt)
+ write(OUT/(run+'_offload.json'),receipt)
+ print(json.dumps({'run':run,'state':'BACKUP_VERIFIED_SERVER_ARRAYS_REMOVED','bytes_removed':plan['bytes'],'backup_bytes':target.stat().st_size,'data_free_bytes':receipt['after_free_bytes']}),flush=True)

@@ -1,0 +1,219 @@
+{
+  "status": "FAILED_DOCUMENT_FOLLOWING_WITNESS",
+  "scientific_validation_passed": false,
+  "invocation_count": 1,
+  "rerun_performed": false,
+  "implementation_read_or_modified": false,
+  "evidence_modified": false,
+  "initial_document_issue": {
+    "description": "Initial three permitted files did not specify SSH host/user/port/key, so no launch occurred until the parent corrected terminal_boundary_invocation.md.",
+    "initial_hashes_file": "document_hashes.json",
+    "corrected_hashes_file": "corrected_document_hashes.json",
+    "corrected_by_witness": false
+  },
+  "environment_spec": "fa5883c8",
+  "ssh": {
+    "user_host": "ouyanghao@10.147.17.32",
+    "port": 22,
+    "identity_path": "C:/Users/Pende/.ssh/id_ed25519",
+    "options": [
+      "BatchMode=yes",
+      "ConnectTimeout=15"
+    ]
+  },
+  "preflight": {
+    "transport_exit": 0,
+    "remote_root_exists": true,
+    "output_directory_existed": false,
+    "document_run_exists": true,
+    "gpu_stdout": "0, 2968 MiB, 49140 MiB\n1, 9284 MiB, 49140 MiB\n",
+    "gpu_shared_authorization": "environment.md explicitly authorizes existing shared idle allocations",
+    "prior_statuses": [
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/closed_loop/output/verification.json",
+        "status": "COMPLETED_ENGINEERING_VALIDATION"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/codec/output/verification.json",
+        "status": "COMPLETED"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/regression/verification.json",
+        "status": "PASS"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/document_run/training_hook/output/verification.json",
+        "status": "COMPLETED"
+      }
+    ]
+  },
+  "invocation": {
+    "commands": [
+      "cd /data/code/ouyanghao/oyh/phygile-reproduction-20261017",
+      "bash scripts/run_isaac.sh scripts/validate_terminal_boundary.py"
+    ],
+    "remote_wrapper": "timeout --signal=TERM 600 bash -s",
+    "started_utc": "2026-10-17T14:38:12.6026208+00:00",
+    "finished_utc": "2026-10-17T14:39:03.5034968+00:00",
+    "ssh_transport_exit": 127,
+    "runner_status": "FAILED",
+    "child_exit_code": 1,
+    "child_elapsed_seconds": 49.73612189292908,
+    "timeout_seconds": 600,
+    "timeout_observed": false,
+    "stdout_file": "invocation.stdout.txt",
+    "stderr_file": "invocation.stderr.txt",
+    "transport_divergence": "PowerShell native pipeline appended a CR-only blank line after the two documented commands. Bash reported line 3 CR command not found, setting SSH exit 127 after the scientific child had already failed with exit 1. No corrective rerun was attempted."
+  },
+  "failure": {
+    "last_stages": [
+      "runtime_ready",
+      "snapshot_ready",
+      "first_rollback_rollout",
+      "second_rollback_rollout"
+    ],
+    "exact_error": "AssertionError: ('Exposed-state rollback witness failed', 4.238388895988464, 0.0018104314804077148)",
+    "gate_tolerance": 0.0005,
+    "independent_npz_comparison_file": "rollback_npz_comparison.json",
+    "state_max_abs_delta": 4.238388895988464,
+    "body_max_abs_delta_m": 0.0018104314804077148,
+    "action_max_abs_delta": 0.23255288414657116
+  },
+  "primary_artifacts": {
+    "remote_root": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/results/completion_v1/closure_final",
+    "verification_exists": false,
+    "required_status_observed": false,
+    "sentinel_in_stdout": false,
+    "sentinel_in_stderr": false,
+    "sentinel_in_main_log": false,
+    "npz_files_inspected": 11,
+    "npz_arrays_inspected": 59,
+    "float_nonfinite_values": 0,
+    "nominal_target_shape": [
+      1,
+      71
+    ],
+    "nominal_target_root_height_m": 0.76,
+    "nominal_target_root_velocities_zero": true,
+    "nominal_target_joint_velocity_max_abs": 0.0,
+    "inspection_file": "primary_artifact_inspection.json",
+    "files": [
+      {
+        "path": "output/nominal_standing_target.npz",
+        "size_bytes": 836,
+        "sha256": "29bcf2b34e959437ae104747a1b2e45e4c557abd7542488eb27d66ce64ab8866"
+      },
+      {
+        "path": "output/rollback_development_evidence.npz",
+        "size_bytes": 9874,
+        "sha256": "0396c509e01b26316f2a01bf21044e01397943abd7280cca5a81512d5dc05a05"
+      },
+      {
+        "path": "output/simulator/invocation_000/current.npz",
+        "size_bytes": 1830,
+        "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611"
+      },
+      {
+        "path": "output/simulator/invocation_000/request.json",
+        "size_bytes": 636,
+        "sha256": "cbf38ba22f70fe81a78bf17885d9d2afe35da864147e58ba999b060e262068d8"
+      },
+      {
+        "path": "output/simulator/invocation_000/worker.log",
+        "size_bytes": 14305,
+        "sha256": "620f8c58e4a78f81ad4399ae16ad382943068abc4be29fa4567043a1ad1b6e7c"
+      },
+      {
+        "path": "output/simulator/invocation_000/worker_result.json",
+        "size_bytes": 863,
+        "sha256": "a83cfb5c38ed429f2f3096c88193ea948bad03dd5b3487fb6809a1fe8998b8f8"
+      },
+      {
+        "path": "output/simulator/invocation_001/candidate.npz",
+        "size_bytes": 1928,
+        "sha256": "caa52c0a4da1c689881ffa9e2f5c2c5dd625edbb257e6fb5b5048b1eaf4ff3aa"
+      },
+      {
+        "path": "output/simulator/invocation_001/continuation.npz",
+        "size_bytes": 6522,
+        "sha256": "c57eb7417d03646f7223b574de854691bf5006e7a0912dc8692c5c571124a041"
+      },
+      {
+        "path": "output/simulator/invocation_001/current.npz",
+        "size_bytes": 1830,
+        "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611"
+      },
+      {
+        "path": "output/simulator/invocation_001/raw.npz",
+        "size_bytes": 9267,
+        "sha256": "3ecc357121b609a756fbb825c1ebbcfc46461b7a2bbd142e536b9ce97db876be"
+      },
+      {
+        "path": "output/simulator/invocation_001/request.json",
+        "size_bytes": 767,
+        "sha256": "ffecc6d784e4b78090613d6a1fe9271acbc79adea78b287a02b09506e3474648"
+      },
+      {
+        "path": "output/simulator/invocation_001/worker.log",
+        "size_bytes": 14305,
+        "sha256": "db4c1f49e4b08884367be3b737baa9623a784e6f3cc135765b11f68f5843cc47"
+      },
+      {
+        "path": "output/simulator/invocation_001/worker_result.json",
+        "size_bytes": 860,
+        "sha256": "7f15419bc0d2d1f6d512797b95486408d2a69866d91a3442a8151c264229835f"
+      },
+      {
+        "path": "output/simulator/invocation_002/candidate.npz",
+        "size_bytes": 1928,
+        "sha256": "caa52c0a4da1c689881ffa9e2f5c2c5dd625edbb257e6fb5b5048b1eaf4ff3aa"
+      },
+      {
+        "path": "output/simulator/invocation_002/continuation.npz",
+        "size_bytes": 6528,
+        "sha256": "3a9c79e7fc896fd932c91ddd0b48e2460da1eab9b98d85e8394a2d8fb37f4c72"
+      },
+      {
+        "path": "output/simulator/invocation_002/current.npz",
+        "size_bytes": 1830,
+        "sha256": "5b275e9942709371a8f82789de4b02889debacd2508edd202421e4917ce21611"
+      },
+      {
+        "path": "output/simulator/invocation_002/raw.npz",
+        "size_bytes": 9275,
+        "sha256": "847f12cba0f6e4a85d8990f2aa4e522e2efdfe9f6eeaa8d9bbee47611af8810e"
+      },
+      {
+        "path": "output/simulator/invocation_002/request.json",
+        "size_bytes": 767,
+        "sha256": "5f1aa184efb1f162425e35f74434a6bd68b7c78e0b777007ae439043e4971ca7"
+      },
+      {
+        "path": "output/simulator/invocation_002/worker.log",
+        "size_bytes": 14305,
+        "sha256": "cbdd1afada62934b8b5c54898a66b6533014b8353c64eb2f91b46c58fb84aae4"
+      },
+      {
+        "path": "output/simulator/invocation_002/worker_result.json",
+        "size_bytes": 860,
+        "sha256": "5ab38479f661306358cf866b4a050d99fa05d281a90657e890fffe22147adafb"
+      },
+      {
+        "path": "run/receipt.json",
+        "size_bytes": 24857,
+        "sha256": "fc550af3a60979b21108e586ad3b4521d2f3bf9e9aa01183f89fa42230838aca"
+      },
+      {
+        "path": "run/stdout_stderr.log",
+        "size_bytes": 1497,
+        "sha256": "2dd18396a57f196f43dd046aafd3fddf0eed2995800c0bc4ac00193d36adbc45"
+      }
+    ]
+  },
+  "limitations": [
+    "Failure occurred at the rollback gate before the documented terminal-boundary validation completed.",
+    "No acceptance/rejection or semantic-generation success is established by this failed supplementary run.",
+    "Existing partial closure_final is preserved; it must not be renamed, overwritten, or rerun under the witness instructions.",
+    "No installation, code, threshold, or scientific evidence was changed by the witness."
+  ]
+}

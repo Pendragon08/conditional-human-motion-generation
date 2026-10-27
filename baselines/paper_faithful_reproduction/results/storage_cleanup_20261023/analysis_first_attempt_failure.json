@@ -1,0 +1,8 @@
+{
+  "exit_code": 1,
+  "phase": "offline_metric_recomputation_only",
+  "error": "TypeError: object of type NoneType has no len() at assert len(names)==29",
+  "cause": "The supplied joint-order source deploy/run_online_generation.py imports the tuple instead of declaring it.",
+  "correction": "Used fixed official reactivebfm/model/motion_planner/inference.py which declares the exact tuple.",
+  "physics_rerun": false
+}

@@ -1,0 +1,55 @@
+from session import *
+target=LOCAL/'storage_cleanup_20261023';target.mkdir(exist_ok=True)
+script=r'''
+from pathlib import Path
+import os,stat,json,shutil,datetime,collections
+root=Path('/data/code/ouyanghao/oyh');uid=os.getuid()
+assert uid==1013 and root.resolve()==root and root.stat().st_uid==uid
+result={'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'authorized_root':str(root),'uid':uid,
+        'disk':{'/data':shutil.disk_usage('/data')._asdict()},'top':{},'second':{},'large_files':[],
+        'skipped_unowned_directories':[],'symlinks':[],'processes':[]}
+for proc in Path('/proc').iterdir():
+    if not proc.name.isdigit():continue
+    try:
+        if proc.stat().st_uid!=uid:continue
+        argv=[x for x in (proc/'cmdline').read_bytes().decode(errors='replace').split(chr(0)) if x]
+        cwd=os.readlink(proc/'cwd')
+        refs=[x for x in argv if x.startswith(str(root))]
+        if refs or cwd.startswith(str(root)):
+            result['processes'].append({'pid':int(proc.name),'comm':(proc/'comm').read_text().strip(),
+                                       'cwd':cwd,'absolute_project_arguments':refs})
+    except (OSError,ValueError):pass
+for base,dirs,files in os.walk(str(root),followlinks=False):
+    kept=[]
+    for name in dirs:
+        p=Path(base)/name
+        try:s=p.lstat()
+        except OSError:continue
+        if stat.S_ISLNK(s.st_mode):
+            if len(result['symlinks'])<150:result['symlinks'].append({'path':str(p),'target':os.readlink(p)})
+        elif s.st_uid!=uid:result['skipped_unowned_directories'].append(str(p))
+        else:kept.append(name)
+    dirs[:]=kept
+    for name in files:
+        p=Path(base)/name
+        try:s=p.lstat()
+        except OSError:continue
+        if not stat.S_ISREG(s.st_mode) or s.st_uid!=uid:continue
+        rel=p.relative_to(root);parts=rel.parts
+        for key,group in [('top',parts[0]),('second','/'.join(parts[:2]))]:
+            row=result[key].setdefault(group,{'logical':0,'allocated':0,'files':0})
+            row['logical']+=s.st_size;row['allocated']+=s.st_blocks*512;row['files']+=1
+        if s.st_size>=32*1024*1024:
+            result['large_files'].append({'path':str(p),'bytes':s.st_size,'allocated':s.st_blocks*512,
+                'inode':s.st_ino,'mtime_ns':s.st_mtime_ns,'links':s.st_nlink})
+training=root/'paper-faithful-reproduction-20261022/training_fp64_sdpa_v4'
+result['training_health']=[json.loads((training/f'health_rank{i}.json').read_text()) for i in [0,1]]
+result['ready_checkpoints']=[p.name for p in training.glob('checkpoint_ready_*.json')]
+print(json.dumps(result))
+'''
+out=json.loads(remote(script,timeout=240));dump(target/'inventory_before.json',out)
+print(json.dumps({'disk':out['disk'],'training_health':[{k:h[k] for k in ['rank','status','validated_optimizer_updates','skipped_attempts']} for h in out['training_health']],
+ 'top':sorted(out['top'].items(),key=lambda x:x[1]['allocated'],reverse=True),
+ 'second_largest':sorted(out['second'].items(),key=lambda x:x[1]['allocated'],reverse=True)[:45],
+ 'large_files':sorted(out['large_files'],key=lambda x:x['allocated'],reverse=True)[:35],
+ 'processes':out['processes']},ensure_ascii=False,indent=2))

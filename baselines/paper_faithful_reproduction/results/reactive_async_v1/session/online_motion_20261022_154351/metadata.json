@@ -1,0 +1,501 @@
+{
+  "planner_checkpoint": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/model000010040.pt",
+  "future_idx": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "generation_fps": 60.0,
+  "policy_fps": 50.0,
+  "planner_context_len": 25,
+  "planner_pred_len": 50,
+  "planner_raw_context_len": 25,
+  "planner_raw_pred_len": 50,
+  "applied_frame": 0,
+  "applied_policy_steps": 0,
+  "seed": 42,
+  "init_pose": "A_pose",
+  "init_motion_path": "",
+  "a_pose_path": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/code/upstream/deploy/assets/a_pose_g1_36dim.json",
+  "initial_prompt": "walk forward",
+  "prompt_schedule": "",
+  "random_prompt_csv": "",
+  "random_switch_interval_s": 0.0,
+  "random_switch_count": 0,
+  "random_start_s": 5.0,
+  "interactive_prompts": false,
+  "user_prompt_hold_s": 10.0,
+  "prompt_clock": "wall",
+  "command": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/code/upstream/deploy/run_online_generation.py --model_path /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3/checkpoints/model000010040.pt --policy_checkpoint /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/weights/ScaleBFM_m_model_22200.pt --text_prompt 'walk forward' --init_pose A_pose --simulator mujoco_simulator --headless --planner_device cuda --deploy_device cuda --planner_data_dir /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data --planner_stats_dataset kungfu_g1_36dim --no-reference_forcing --replan_prefix_mode real --applied_frame 0 --regenerate_threshold 10 --reference_blend_frames 5 --max_policy_steps 500 --warmup_steps 20 --seed 42 --output_root /data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/reactive_async_v1/session --scalebridge_override agent._target_=torch_bfm_agent.TorchBFMAgent",
+  "stop_reason": "max_policy_steps_reached",
+  "events": [
+    {
+      "kind": "control_started",
+      "time_ns": 1792683803865792520,
+      "initial_prompt": "walk forward"
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683805086094872,
+      "policy_step": 33,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683806031707934,
+      "policy_step": 50,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683806033542393,
+      "policy_step": 50,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683806920083907,
+      "policy_step": 66,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683806921837227,
+      "policy_step": 66,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683807831945616,
+      "policy_step": 82,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683807833757747,
+      "policy_step": 82,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683808751363071,
+      "policy_step": 98,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683808753219519,
+      "policy_step": 98,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683809663750135,
+      "policy_step": 114,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683809665473788,
+      "policy_step": 114,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_activated",
+      "time_ns": 1792683810407314528,
+      "policy_step": 130,
+      "prompt": "walk forward",
+      "source": "",
+      "generation_id": 0,
+      "activation_time_s": 6.123354250565171,
+      "command_to_activation_latency_s": null,
+      "planner_elapsed_s": 0.7182025071233511
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683810409093667,
+      "policy_step": 130,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_activated",
+      "time_ns": 1792683811135216530,
+      "policy_step": 146,
+      "prompt": "walk forward",
+      "source": "",
+      "generation_id": 0,
+      "activation_time_s": 6.851254293695092,
+      "command_to_activation_latency_s": null,
+      "planner_elapsed_s": 0.6991160288453102
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683811137055644,
+      "policy_step": 146,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683812068404167,
+      "policy_step": 162,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683812070232696,
+      "policy_step": 162,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683812979967008,
+      "policy_step": 178,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683812982694749,
+      "policy_step": 178,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683813902270370,
+      "policy_step": 194,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683813904014731,
+      "policy_step": 194,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683814795231802,
+      "policy_step": 210,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683814796975304,
+      "policy_step": 210,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683815688136294,
+      "policy_step": 226,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683815689887865,
+      "policy_step": 226,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683816604841252,
+      "policy_step": 242,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683816606587173,
+      "policy_step": 242,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683817523486505,
+      "policy_step": 258,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683817525276447,
+      "policy_step": 258,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683818472060322,
+      "policy_step": 274,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683818473845929,
+      "policy_step": 274,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683819353554825,
+      "policy_step": 290,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683819355285125,
+      "policy_step": 290,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683820210916926,
+      "policy_step": 305,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683820212657799,
+      "policy_step": 305,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_activated",
+      "time_ns": 1792683820894017024,
+      "policy_step": 321,
+      "prompt": "walk forward",
+      "source": "",
+      "generation_id": 0,
+      "activation_time_s": 16.61005585640669,
+      "command_to_activation_latency_s": null,
+      "planner_elapsed_s": 0.6607485581189394
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683820895740621,
+      "policy_step": 321,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683821680962692,
+      "policy_step": 337,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683821682740622,
+      "policy_step": 337,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683822573196331,
+      "policy_step": 353,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683822574916269,
+      "policy_step": 353,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683823496756677,
+      "policy_step": 369,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683823498498372,
+      "policy_step": 369,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683824415202288,
+      "policy_step": 385,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683824416951616,
+      "policy_step": 385,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683825359740488,
+      "policy_step": 402,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683825361508131,
+      "policy_step": 402,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683826261391790,
+      "policy_step": 418,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683826263098539,
+      "policy_step": 418,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683827245681347,
+      "policy_step": 435,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683827247435688,
+      "policy_step": 435,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683828190707273,
+      "policy_step": 451,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683828192415506,
+      "policy_step": 451,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683829069598905,
+      "policy_step": 466,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683829071779077,
+      "policy_step": 466,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683829971021903,
+      "policy_step": 482,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683829972747259,
+      "policy_step": 482,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "planner_result_expired",
+      "time_ns": 1792683830917654526,
+      "policy_step": 498,
+      "prompt": "walk forward",
+      "generation_id": 0
+    },
+    {
+      "kind": "planner_submitted",
+      "time_ns": 1792683830919519949,
+      "policy_step": 498,
+      "prompt": "walk forward",
+      "generation_id": 0,
+      "reason": "lookahead"
+    },
+    {
+      "kind": "runtime_stop",
+      "time_ns": 1792683831006700849,
+      "reason": "max_policy_steps_reached"
+    }
+  ]
+}

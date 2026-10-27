@@ -1,0 +1,21 @@
+import json,os,hashlib,subprocess
+from pathlib import Path
+base=Path('/data/code/ouyanghao/oyh')
+roots=[base/'humanoid-combat-motion/cache/pip-pbhc-training',base/'humanoid-combat-motion/cache/pip-isaac',base/'humanoid-combat-motion/cache/closd-r3-pip',base/'humanoid-combat-motion/cache/engineai-official/tmp',Path('/home/ouyanghao/.cache/pip/http'),Path('/home/ouyanghao/.cache/pip/http-v2'),Path('/home/ouyanghao/.cache/pip/wheels')]
+files=[]
+for root in roots:
+ if not root.exists():continue
+ assert not root.is_symlink()
+ for p in root.rglob('*'):
+  if p.is_file() and not p.is_symlink():
+   s=p.stat();assert s.st_uid==os.getuid()
+   files.append({'path':str(p),'bytes':s.st_size,'mtime_ns':s.st_mtime_ns,'device':s.st_dev,'inode':s.st_ino,'reason':'Regenerable package installer/download cache; installed environments retained'})
+archives=[]
+for p in (base/'phygile-reproduction-20261017/data/amass').rglob('*'):
+ if p.is_file() and (p.name.endswith('.tar.bz2') or p.name.endswith('.zip')):
+  h=hashlib.sha256()
+  with p.open('rb') as f:
+   for b in iter(lambda:f.read(4194304),b''):h.update(b)
+  s=p.stat()
+  archives.append({'path':str(p),'bytes':s.st_size,'sha256':h.hexdigest(),'mtime_ns':s.st_mtime_ns,'inode':s.st_ino})
+print(json.dumps({'cache_files':files,'cache_file_count':len(files),'cache_bytes':sum(x['bytes'] for x in files),'archives':archives},indent=2))

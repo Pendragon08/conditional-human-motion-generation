@@ -1,0 +1,42 @@
+{
+  "status": "BYTE_PRESERVING_TRANSPORT_POLICY_CORRECTION",
+  "utc": "2026-10-22T15:11:46.187638+00:00",
+  "previous_commit": "9141ab6f6151ba31ba4d5fbb01b63c2288e9ea43",
+  "previous_worktree_seal": "results/v3/publication_seal_final_v3.json",
+  "previous_worktree_seal_sha256": "ef0492443eb82440338a36ce49f78a01851ff5bacbf5ef5df34cbed052f1e90b",
+  "old_seal_reconstruction": {
+    ".gitattributes": {
+      "file": "results/v3/transport_v4/previous_gitattributes.txt",
+      "sha256": "0d15d88e6858051557670e9a5f5335efe66e3a9a6b59490792a5609a9750a2a8"
+    }
+  },
+  "note": "The previous seal correctly captured the worktree, but Git auto-converted text line endings on transport. Preserve original audited worktree bytes rather than silently changing source fingerprints. Only .gitattributes changes in the worktree; no evaluation/training source, numeric result, checkpoint or original evidence bytes are edited. The new named v4 seal is authoritative for published bytes.",
+  "previous_transport_differences": [
+    {
+      "file": "EXPERIMENT_TRACKER.md",
+      "audited_worktree_sha256": "8703fd616f00afbec8bb173880d4a0da00ae8ea07c1448bec6c9e98b0af6b5b2",
+      "previous_git_sha256": "4913c7764fd375a30c6f02965ed2bdfe697a14269180c0eff87208dce20af45a",
+      "only_crlf_to_lf_conversion": true
+    },
+    {
+      "file": "reports/PhyGile_Unitree\u7eed\u8bad500\u6b21\u4e0e\u95ed\u73af\u8fc1\u79fb\u6700\u7ec8\u62a5\u544a_20261022.md",
+      "audited_worktree_sha256": "3df4148c97f3987e0f234403b7998dc98a0b8add8a11552c210a148fa9bdc9f1",
+      "previous_git_sha256": "8c8e0a56a41a9ca47d7e68a9db07eb7ae314fcaa288d93ecdbac07d369a55b1c",
+      "only_crlf_to_lf_conversion": true
+    },
+    {
+      "file": "third_party_licenses/vendor_unitree_rl_lab/LICENCE",
+      "audited_worktree_sha256": "821676de20867ee55cdfa2697b9b77b1d35a7c4cbc13f7295915b393e36085f7",
+      "previous_git_sha256": "ff28cacaef7b9919a0fb905136cf4ccffba5191522bf5d024c4339932c0edc28",
+      "only_crlf_to_lf_conversion": true
+    },
+    {
+      "file": "third_party_licenses/vendor_unitree_rl_mjlab/LICENCE",
+      "audited_worktree_sha256": "821676de20867ee55cdfa2697b9b77b1d35a7c4cbc13f7295915b393e36085f7",
+      "previous_git_sha256": "ff28cacaef7b9919a0fb905136cf4ccffba5191522bf5d024c4339932c0edc28",
+      "only_crlf_to_lf_conversion": true
+    }
+  ],
+  "different_files": 4,
+  "all_differences_only_line_endings": true
+}

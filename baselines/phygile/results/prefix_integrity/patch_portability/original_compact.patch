@@ -1,0 +1,140 @@
+--- a/source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py
++++ b/source/whole_body_tracking/whole_body_tracking/tasks/tracking/mdp/commands.py
+@@ -807,6 +807,9 @@
+         else:
+             errors = mpjpe
+         
++        # Independent repair: invalid states must not become perfect tracking.
++        if not all(bool(torch.isfinite(x).all()) for x in (errors, mpjpe, mpjae)):
++            raise FloatingPointError("Nonfinite tracking error; stop before sampler statistics")
+         errors = torch.nan_to_num(errors, nan=0.0, posinf=0.0, neginf=0.0)
+         mpjpe_safe = torch.nan_to_num(mpjpe, nan=0.0, posinf=0.0, neginf=0.0)
+         mpjae_safe = torch.nan_to_num(mpjae, nan=0.0, posinf=0.0, neginf=0.0)
+@@ -819,6 +822,9 @@
+     def _finalize_clip_errors(self, env_ids: torch.Tensor):
+         if env_ids.numel() == 0:
+             return
++        if not all(bool(torch.isfinite(x[env_ids]).all()) for x in (self.clip_error_accum,
++                self.clip_mpjpe_accum, self.clip_mpjae_accum, self.clip_step_count)):
++            raise FloatingPointError("Nonfinite accumulated clip statistics")
+         clip_lengths = torch.clamp(self.clip_step_count[env_ids], min=1.0)
+         clip_errors = torch.nan_to_num(self.clip_error_accum[env_ids] / clip_lengths, nan=0.0, posinf=0.0, neginf=0.0)
+         clip_mpjpe = torch.nan_to_num(self.clip_mpjpe_accum[env_ids] / clip_lengths, nan=0.0, posinf=0.0, neginf=0.0)
+@@ -1954,6 +1960,8 @@
+         This method temporarily reassigns all envs to evaluate specific files,
+         runs the policy for full clip duration, and computes metrics.
+         """
++        raise RuntimeError("Unsafe in-process evaluator disabled: double frame advance and post-reset sampling. "
++                           "Use scripts/evaluate_prefix_feedback.py for bounded pre-reset diagnostics.")
+         if self._curriculum is None:
+             return float("inf"), float("inf")
+ 
+--- a/source/whole_body_tracking/whole_body_tracking/utils/my_on_policy_runner.py
++++ b/source/whole_body_tracking/whole_body_tracking/utils/my_on_policy_runner.py
+@@ -1,6 +1,7 @@
+ """Extended OnPolicyRunner with curriculum learning support."""
+ 
+ from __future__ import annotations
++import math
+ 
+ import json
+ import os
+@@ -449,6 +450,8 @@
+             (mpjpe, mpjae, bad_files) from the subprocess evaluation.
+             bad_files contains paths that produced inf/nan metrics.
+         """
++        raise RuntimeError("Unverified public subprocess evaluator disabled by integrity repairs. "
++                           "A complete pre-reset curriculum evaluator remains required.")
+         if not eval_files:
+             print("[Curriculum] No files to evaluate.")
+             return float("inf"), float("inf"), []
+@@ -653,7 +656,9 @@
+         use_subprocess = getattr(cfg, "curriculum_use_subprocess_eval", True) if cfg else True
+         
+         bad_files: list[str] = []
+-        success_ratio = 0.0
++        success_ratio = float("nan")
++        min_success_ratio = float("nan")
++        min_success_file = ""
+         
+         if use_subprocess and self.log_dir:
+             # Use subprocess to run evaluation in a separate Isaac Lab environment
+@@ -662,7 +667,7 @@
+                 current_level=current_level,
+                 eval_files=eval_files,
+             )
+-            success_ratio = 1.0  # subprocess 模式不检查成功率
++            success_ratio = float("nan")  # Unknown, never fabricated as 100%.
+             log_lines.append("[Curriculum] Using subprocess evaluation.")
+         else:
+             # 使用内部 EMA 评估
+@@ -691,7 +696,8 @@
+         if self.writer is not None and not getattr(self, "disable_logs", False):
+             self.writer.add_scalar("Curriculum/eval_mpjpe", mpjpe, iteration)
+             self.writer.add_scalar("Curriculum/eval_mpjae", mpjae, iteration)
+-            self.writer.add_scalar("Curriculum/eval_success_ratio", success_ratio, iteration)
++            if math.isfinite(success_ratio):
++                self.writer.add_scalar("Curriculum/eval_success_ratio", success_ratio, iteration)
+         
+         # 检查升级条件：移除 success 要求
+         # 新条件：mpjpe 和 mpjae 其中一个满足，另一个在 +0.01 范围内
+@@ -706,7 +712,8 @@
+         # 条件2: mpjae 满足严格阈值，mpjpe 满足宽松阈值
+         condition2 = mpjae_ok_strict and mpjpe_ok_relaxed
+         
+-        passed = condition1 or condition2
++        metrics_valid = not bad_files and all(math.isfinite(x) and x >= 0 for x in (mpjpe, mpjae))
++        passed = metrics_valid and (condition1 or condition2)
+ 
+         # ---- 自动升级判定：per-level timeout + reward 收敛 ----
+         level_start_iter = 0
+@@ -734,7 +741,7 @@
+         if (not passed) and self._metric_conv_enabled and elapsed_at_level >= self._metric_conv_min_iters:
+             convergence_due = is_conv
+ 
+-        force_due = timeout_due or convergence_due
++        force_due = metrics_valid and (timeout_due or convergence_due)
+         
+         # 打印状态
+         mpjpe_mark = "✓" if mpjpe_ok_strict else ("~" if mpjpe_ok_relaxed else "✗")
+@@ -893,7 +900,13 @@
+                 min_success_file = os.path.basename(min_success_file)
+         
+         # 过滤有效的 mpjpe/mpjae 值
+-        valid_mask = (mpjpe_values > 1e-6) & (mpjae_values > 1e-6)
++        valid_mask = torch.isfinite(mpjpe_values) & torch.isfinite(mpjae_values) & (mpjpe_values >= 0) & (mpjae_values >= 0)
++        # Missing/insufficient files cannot silently disappear from the denominator.
++        minimum = max(1, int(getattr(motion_term.cfg, "curriculum_min_attempts", 5)))
++        if len(file_indices) != len(eval_files) or success_ratio_per_file is None or not bool(valid_mask.all()):
++            return float("inf"), float("inf"), mean_success_ratio, min_success_ratio, min_success_file
++        if not bool(((success + failed) >= minimum).all()) or not bool(torch.isfinite(success + failed).all()):
++            return float("inf"), float("inf"), mean_success_ratio, min_success_ratio, min_success_file
+         
+         if not valid_mask.any():
+             print(f"[Curriculum EMA] No valid files found")
+@@ -954,7 +967,12 @@
+         imp_mpjae = (first_mpjae - last_mpjae) / max(first_mpjae, 1e-4)
+ 
+         # Converged if BOTH metrics improved less than threshold over N evals
+-        is_converged = imp_mpjpe < self._metric_conv_threshold and imp_mpjae < self._metric_conv_threshold
++        valid = all(math.isfinite(x) and x >= 0 for pair in window for x in pair)
++        changes = [(a[k] - b[k]) / max(a[k], 1e-4)
++                   for a, b in zip(window, window[1:]) for k in (0, 1)]
++        # Independent conservative interpretation: every consecutive eval is stable
++        # and non-worsening. Endpoint cancellation/negative improvement is not convergence.
++        is_converged = valid and all(0 <= x < self._metric_conv_threshold for x in changes)
+         return (is_converged, imp_mpjpe, imp_mpjae, first_mpjpe, first_mpjae, last_mpjpe, last_mpjae, N)
+ 
+     def _reset_params_on_level_change(self, new_level: int, iteration: int) -> None:
+--- a/source/whole_body_tracking/whole_body_tracking/utils/curriculum_manager.py
++++ b/source/whole_body_tracking/whole_body_tracking/utils/curriculum_manager.py
+@@ -443,6 +443,9 @@
+             mpjae: Mean Per-Joint Angle Error
+             iteration: Current iteration number (for tracking file intro timing)
+         """
++        import math
++        if not all(math.isfinite(x) and x >= 0 for x in (mpjpe, mpjae)):
++            return False  # Even timeout must not promote invalid evaluation.
+         passed_by_metric = mpjpe < self.cfg.mpjpe_threshold or mpjae < self.cfg.mpjae_threshold
+         auto_due = False
+         if (not passed_by_metric) and iteration is not None:

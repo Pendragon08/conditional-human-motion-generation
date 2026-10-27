@@ -1,0 +1,39 @@
+spec={'base': 'Existing Python 3.10.21 retarget runtime; isolated extension', 'python_executable': '/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-retarget/bin/python', 'environment_directory': '/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021', 'inherit_site_packages': ['/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-retarget/lib/python3.10/site-packages', '/data/code/ouyanghao/oyh/world-model-risk-planning/.env/lib/python3.10/site-packages'], 'required_versions': {'numpy': '1.26.4', 'torch': '2.5.1+cu121', 'scipy': '1.15.3', 'mujoco': '3.3.7', 'mink': '0.0.13', 'smplx': '0.1.28', 'qpsolvers': '4.8.1', 'daqp': '0.7.2', 'rich': '13.9.4', 'tqdm': '4.70.0'}, 'pip_phases': [['smplx==0.1.28', '--no-deps']], 'env': {'OMP_NUM_THREADS': '4', 'MKL_NUM_THREADS': '4', 'OPENBLAS_NUM_THREADS': '4'}, 'weight_dirs': {'smplx': {'source': 'https://smpl-x.is.tue.mpg.de/', 'gated': True, 'available': False}}, 'smoke': {'import_names': ['numpy', 'torch', 'scipy', 'mujoco', 'mink', 'smplx'], 'gpu_tests': [], 'cpu_witness': 'scripts/witness_gmr_amass_cpu.py', 'scope': 'Dependencies and seeded CPU G1 FK only; no human-body forward or retargeting without model weights'}}
+witness_source='"""Seeded CPU environment witness. This is not a motion-quality experiment."""\nimport argparse\nimport hashlib\nimport importlib.metadata as md\nimport json\nfrom pathlib import Path\nimport sys\nimport numpy as np\nimport torch\nimport mujoco\nimport smplx\nimport mink\n\n\ndef main(args):\n    if args.output.exists():raise FileExistsError(\'Existing witness preserved\')\n    spec=json.loads(args.spec.read_text())\n    actual={name:md.version(name) for name in spec[\'required_versions\']}\n    if actual!=spec[\'required_versions\']:raise ValueError(\'Environment version drift: \'+str(actual))\n    sys.path.insert(0,str(args.gmr_root))\n    from general_motion_retargeting import GeneralMotionRetargeting\n    sys.path.insert(0,str(args.ingestion_root/\'reimplementation\'))\n    from codec262 import G1Codec\n    codec=G1Codec(args.ingestion_root/\'configs/g1_codec_skeleton.json\')\n    xml=args.gmr_root/\'assets/unitree_g1/g1_mocap_29dof.xml\'\n    model=mujoco.MjModel.from_xml_path(str(xml));data=mujoco.MjData(model)\n    rng=np.random.default_rng(42)\n    joints=rng.uniform(codec.low,codec.high,size=(16,29))\n    pos=np.zeros((16,3));pos[:,2]=1\n    quat=np.zeros((16,4));quat[:,0]=1\n    positions,rotations=codec.fk(pos,quat,joints)\n    missing=[n for n in codec.body_names if mujoco.mj_name2id(model,mujoco.mjtObj.mjOBJ_BODY,n)<0]\n    pos_error=rot_error=0.0\n    if not missing:\n        for t in range(16):\n            data.qpos[:7]=np.r_[pos[t],quat[t]]\n            for i,name in enumerate(codec.joint_names):\n                joint=mujoco.mj_name2id(model,mujoco.mjtObj.mjOBJ_JOINT,name)\n                if joint<0:raise ValueError(\'Missing G1 joint \'+name)\n                data.qpos[model.jnt_qposadr[joint]]=joints[t,i]\n            mujoco.mj_forward(model,data)\n            for name in codec.body_names:\n                body=mujoco.mj_name2id(model,mujoco.mjtObj.mjOBJ_BODY,name)\n                pos_error=max(pos_error,float(np.max(np.abs(data.xpos[body]-positions[name][t]))))\n                rot_error=max(rot_error,float(np.max(np.abs(data.xmat[body].reshape(3,3)-rotations[name][t]))))\n    torch.manual_seed(42)\n    x=torch.randn(8,8,device=\'cpu\');sentinel=float((x@x.T).sum())\n    good=not missing and pos_error<1e-5 and rot_error<1e-5\n    result={\'status\':\'CPU_WITNESS_PASSED\' if good else \'G1_FK_INCOMPATIBLE\',\n            \'python\':sys.version,\'versions\':actual,\'seed\':42,\'device\':\'cpu\',\n            \'gmr_class_imported\':True,\'fk_pose_count\':16,\n            \'missing_codec_bodies_in_gmr_model\':missing,\n            \'fk_max_position_abs_m\':pos_error if not missing else None,\n            \'fk_max_rotation_matrix_abs\':rot_error if not missing else None,\n            \'torch_cpu_kernel_sum\':sentinel,\n            \'gmr_xml_sha256\':hashlib.sha256(xml.read_bytes()).hexdigest(),\n            \'spec_hash\':hashlib.sha256(json.dumps(spec,sort_keys=True,separators=(\',\',\':\')).encode()).hexdigest()[:8],\n            \'human_model_forward_pass_executed\':False,\'gmr_retargeting_executed\':False,\n            \'environment_fully_ready_for_humanml_processing\':False,\n            \'source_sha256\':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}\n    args.output.parent.mkdir(parents=True,exist_ok=True)\n    args.output.write_text(json.dumps(result,indent=2,allow_nan=False)+\'\\n\')\n    print(json.dumps(result,indent=2,allow_nan=False))\n    if not good:raise SystemExit(2)\n\n\nif __name__==\'__main__\':\n    parser=argparse.ArgumentParser(description=__doc__)\n    for name in (\'gmr-root\',\'ingestion-root\',\'spec\',\'output\'):\n        parser.add_argument(\'--\'+name,type=Path,required=True)\n    main(parser.parse_args())\n'
+from pathlib import Path
+import hashlib,json,os,shutil,subprocess
+root=Path('/data/code/ouyanghao/oyh/phygile-reproduction-20261017')
+env=Path(spec['environment_directory'])
+artifacts=root/'data/amass/ssm_20261021/environment_extension_v1'
+if env.exists() or artifacts.exists():raise FileExistsError('Existing environment or installation record preserved')
+if shutil.disk_usage(root).free<5*1024**3:raise RuntimeError('Less than 5 GiB reserve')
+artifacts.mkdir()
+config=artifacts/'env-spec.json';config.write_text(json.dumps(spec,indent=2)+'\n')
+witness=artifacts/'witness_gmr_amass_cpu.py';witness.write_text(witness_source)
+parent=spec['python_executable']
+create=subprocess.run([parent,'-m','venv',str(env)],text=True,capture_output=True,timeout=90)
+(artifacts/'venv.stdout.log').write_text(create.stdout);(artifacts/'venv.stderr.log').write_text(create.stderr)
+if create.returncode:raise RuntimeError(create.stderr)
+python=env/'bin/python'
+site=subprocess.check_output([str(python),'-c','import sysconfig;print(sysconfig.get_paths()["purelib"])'],text=True).strip()
+Path(site,'phygile_parent_runtime.pth').write_text('\n'.join(spec['inherit_site_packages'])+'\n')
+environment=os.environ.copy();environment.update(spec['env'])
+install=subprocess.run([str(python),'-m','pip','install','--disable-pip-version-check',
+ '--index-url','https://pypi.org/simple','--cache-dir',str(artifacts/'pip-cache'),
+ '--no-deps','smplx==0.1.28'],text=True,capture_output=True,timeout=180,env=environment)
+(artifacts/'pip.stdout.log').write_text(install.stdout);(artifacts/'pip.stderr.log').write_text(install.stderr)
+if install.returncode:raise RuntimeError(install.stderr)
+run=subprocess.run([str(python),str(witness),'--gmr-root',
+ '/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/GMR','--ingestion-root',
+ str(root/'data/amass/ssm_20261021/ingestion'),'--spec',str(config),
+ '--output',str(artifacts/'cpu_witness_author.json')],text=True,capture_output=True,timeout=90,env=environment)
+(artifacts/'witness.stdout.log').write_text(run.stdout);(artifacts/'witness.stderr.log').write_text(run.stderr)
+receipt={'status':'DEPENDENCY_EXTENSION_INSTALLED','spec_hash':hashlib.sha256(
+ json.dumps(spec,sort_keys=True,separators=(',',':')).encode()).hexdigest()[:8],
+ 'environment_directory':str(env),'reused_site_packages':spec['inherit_site_packages'],
+ 'installed_package':'smplx==0.1.28','witness_exit_code':run.returncode,
+ 'witness':json.loads((artifacts/'cpu_witness_author.json').read_text()) if (artifacts/'cpu_witness_author.json').exists() else None,
+ 'witness_stderr':run.stderr,'human_model_weights_available':False,
+ 'independent_document_witness_completed':False,'ready_for_full_humanml_processing':False}
+(artifacts/'installation.json').write_text(json.dumps(receipt,indent=2)+'\n')
+print(json.dumps(receipt))

@@ -1,0 +1,29 @@
+{
+  "call_number": 1,
+  "purpose": "supplemental-r3-semantics-and-loading",
+  "timestamp": "2026-10-21T21:38:02.5079191+08:00",
+  "tool": "followup_task",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "ultra",
+  "files_referenced": [
+    "docs/humanml_g1_processing_20261021.md",
+    "scripts/audit_humanml_g1_semantics.py",
+    "scripts/check_paired_batch_loading.py",
+    "results/humanml_g1_pipeline_20261021/semantics_author_v1_command.txt",
+    "results/humanml_g1_pipeline_20261021/semantics_author_v1_stdout.txt",
+    "results/humanml_g1_pipeline_20261021/semantics_author_v1_stderr.txt",
+    "results/humanml_g1_pipeline_20261021/semantics_author_v1_execution.json",
+    "results/humanml_g1_pipeline_20261021/ssm_semantics_author_v1.json",
+    "results/humanml_g1_pipeline_20261021/batch_loading_author_command.txt",
+    "results/humanml_g1_pipeline_20261021/batch_loading_author_stdout.txt",
+    "results/humanml_g1_pipeline_20261021/batch_loading_author_stderr.txt",
+    "results/humanml_g1_pipeline_20261021/batch_loading_author_execution.json",
+    "results/humanml_g1_pipeline_20261021/ssm_batch_loading_author.json",
+    "results/humanml_g1_pipeline_20261021/test_humanml_amass_plan.py.stderr.txt",
+    "results/humanml_g1_pipeline_20261021/test_humanml_pairing.py.stderr.txt",
+    "results/humanml_g1_pipeline_20261021/local_checks.json",
+    "results/humanml_g1_pipeline_20261021/independent_review/EXPERIMENT_AUDIT.md",
+    "results/humanml_g1_pipeline_20261021/independent_review/EXPERIMENT_AUDIT.json"
+  ],
+  "prompt": "Perform a constrained incremental experiment-integrity review for the first SSM batch only. This is a continuation of your prior review; keep the same fresh reviewer identity. Read all listed files directly and do not trust author summaries. Do not edit code, data, environment, documentation, the original EXPERIMENT_AUDIT files, or any historical trace. Do not process ACCAD. Do not launch training.\n\nProject root:\nC:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/phygile\n\nFrozen document, expected SHA256 5e1ccc5b0ae9898bb2d32dfdff7116abb77a44f4674ee5faa63cf5af47e3b34a:\n- docs/humanml_g1_processing_20261021.md\n\nNew code to read line by line:\n- scripts/audit_humanml_g1_semantics.py\n- scripts/check_paired_batch_loading.py\n\nNew author evidence to inspect directly:\n- results/humanml_g1_pipeline_20261021/semantics_author_v1_command.txt\n- results/humanml_g1_pipeline_20261021/semantics_author_v1_stdout.txt\n- results/humanml_g1_pipeline_20261021/semantics_author_v1_stderr.txt\n- results/humanml_g1_pipeline_20261021/semantics_author_v1_execution.json\n- results/humanml_g1_pipeline_20261021/ssm_semantics_author_v1.json\n- results/humanml_g1_pipeline_20261021/batch_loading_author_command.txt\n- results/humanml_g1_pipeline_20261021/batch_loading_author_stdout.txt\n- results/humanml_g1_pipeline_20261021/batch_loading_author_stderr.txt\n- results/humanml_g1_pipeline_20261021/batch_loading_author_execution.json\n- results/humanml_g1_pipeline_20261021/ssm_batch_loading_author.json\n- results/humanml_g1_pipeline_20261021/test_humanml_amass_plan.py.stderr.txt\n- results/humanml_g1_pipeline_20261021/test_humanml_pairing.py.stderr.txt\n- results/humanml_g1_pipeline_20261021/local_checks.json\n\nPrior audit baseline to compare, without modifying:\n- results/humanml_g1_pipeline_20261021/independent_review/EXPERIMENT_AUDIT.md\n- results/humanml_g1_pipeline_20261021/independent_review/EXPERIMENT_AUDIT.json\n\nAgent-follows-document pass:\n1. Independently verify the frozen document hash from disk immediately before any command.\n2. Locate the two new exact commands in the frozen document. For each, verify its documented output path is absent, then execute the command verbatim exactly once through PowerShell/SSH using ouyanghao@10.147.17.32 and identity C:/Users/Pende/.ssh/id_ed25519.\n3. Do not repair or rerun on failure. Preserve literal command, UTF-8 byte length/hash, output-absence evidence, UTC start/end, exit code, exact stdout/stderr bytes and hashes, receipt path/content/size/mtime/hash, and document hash before and after each invocation.\n4. Report every divergence from the document or author evidence.\n\nIncremental integrity review:\n- Determine which of the prior nine must-fix items are fully closed, partially closed, unchanged, or out of scope, with exact file:line evidence.\n- Reassess A-F only to the extent affected by these new semantic and batch-loading checks. Preserve the prior verdict where evidence does not change it.\n- Do not treat consistency against restricted real-source inputs and algorithmic G1 proxies as robot ground truth or model performance.\n- Keep review_independence=same-family and acceptance_status=provisional.\n- Return complete deterministic execution records promptly, then a concise supplemental verdict and remaining boundaries. Do not write the final supplemental report files yourself.\n\nThe claims report reports/HumanML3D到G1配对数据处理报告.md is not yet frozen for this round. Do not review it until I provide its final hash in a later follow-up."
+}

@@ -1,0 +1,13 @@
+{
+  "status": "FAILED",
+  "evaluation_type": "simulation_only",
+  "optimizer_steps": 0,
+  "seed": 2026,
+  "device": "cpu",
+  "clip": 0,
+  "started_utc": "2026-10-22T09:36:45.452731+00:00",
+  "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790",
+  "paper_benchmark_reproduced": false,
+  "error": "ValueError(\"ParseXML: Error opening file 'D:\\\\\u5177\u8eab\u667a\u80fd\\\\PhyGile\u590d\u73b0\\\\Unitree\u6846\u67b6\u9002\u914d_20261022\\\\mjlab_env\\\\Lib\\\\site-packages\\\\mjlab\\\\asset_zoo\\\\robots\\\\unitree_g1\\\\xmls\\\\g1.xml'\")",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\phygile_unitree\\scripts\\mjlab_evaluate.py\", line 22, in <module>\n    standalone=cfg.scene.entities['robot'].build()\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\mjlab_env\\Lib\\site-packages\\mjlab\\entity\\entity.py\", line 101, in build\n    return Entity(self)\n           ^^^^^^^^^^^^\n  File \"D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\mjlab_env\\Lib\\site-packages\\mjlab\\entity\\entity.py\", line 143, in __init__\n    self._build_spec()\n  File \"D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\mjlab_env\\Lib\\site-packages\\mjlab\\entity\\entity.py\", line 150, in _build_spec\n    self._spec = auto_wrap_fixed_base_mocap(self.cfg.spec_fn)()\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\mjlab_env\\Lib\\site-packages\\mjlab\\utils\\spec.py\", line 34, in wrapper\n    original_spec = spec_fn()\n                    ^^^^^^^^^\n  File \"D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\mjlab_env\\Lib\\site-packages\\mjlab\\asset_zoo\\robots\\unitree_g1\\g1_constants.py\", line 34, in get_spec\n    spec = mujoco.MjSpec.from_file(str(G1_XML))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: ParseXML: Error opening file 'D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\mjlab_env\\Lib\\site-packages\\mjlab\\asset_zoo\\robots\\unitree_g1\\xmls\\g1.xml'\n"
+}

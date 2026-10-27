@@ -1,0 +1,456 @@
+{
+  "status": "CLOCK_GATE_COMPLETED",
+  "script_sha256": "28893ae505d5ed31041d82630ed33ef62e78d2add5811c9cd3feb944dbc09028",
+  "source_manifest_sha256": "35aa58fe79b726322a7c3a12bf562cd820e35693bbdf0de389078753cdaad193",
+  "input_sequences": 66,
+  "retained_sequences": 40,
+  "excluded_sequences": 26,
+  "retained_sources": 17,
+  "excluded_sources": 13,
+  "retained_splits": {
+    "train": {
+      "sequences": 34,
+      "frames": 1472,
+      "sources": 15
+    },
+    "val": {
+      "sequences": 0,
+      "frames": 0,
+      "sources": 0
+    },
+    "test": {
+      "sequences": 6,
+      "frames": 254,
+      "sources": 2
+    }
+  },
+  "exclusion_reasons": {
+    "conflicting_export_fps_headers": 26,
+    "reference_stride_clock_differs_from_feature_clock": 26,
+    "target_stride_clock_differs_from_feature_clock": 26
+  },
+  "source_clocks": {
+    "./pose_data/SSM_synced/20160930_50032/special_move_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160330_03333/shoulders_poses.npy": {
+      "eligible": false,
+      "reasons": [
+        "conflicting_export_fps_headers",
+        "reference_stride_clock_differs_from_feature_clock",
+        "target_stride_clock_differs_from_feature_clock"
+      ],
+      "reference_fps": 59.9999885559082,
+      "target_fps": 120.0,
+      "raw_frame_stride": 2,
+      "reference_sample_fps": 29.9999942779541,
+      "target_sample_fps": 60.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160330_03333/ATU_001_poses.npy": {
+      "eligible": false,
+      "reasons": [
+        "conflicting_export_fps_headers",
+        "reference_stride_clock_differs_from_feature_clock",
+        "target_stride_clock_differs_from_feature_clock"
+      ],
+      "reference_fps": 59.9999885559082,
+      "target_fps": 120.0,
+      "raw_frame_stride": 2,
+      "reference_sample_fps": 29.9999942779541,
+      "target_sample_fps": 60.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160930_50032/running_on_the_spot_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160930_50032/dribble_shoot_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160330_03333/shake_shoulders_poses.npy": {
+      "eligible": false,
+      "reasons": [
+        "conflicting_export_fps_headers",
+        "reference_stride_clock_differs_from_feature_clock",
+        "target_stride_clock_differs_from_feature_clock"
+      ],
+      "reference_fps": 59.9999885559082,
+      "target_fps": 120.0,
+      "raw_frame_stride": 2,
+      "reference_sample_fps": 29.9999942779541,
+      "target_sample_fps": 60.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160930_50032/dribble_kick_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160330_03333/knees_poses.npy": {
+      "eligible": false,
+      "reasons": [
+        "conflicting_export_fps_headers",
+        "reference_stride_clock_differs_from_feature_clock",
+        "target_stride_clock_differs_from_feature_clock"
+      ],
+      "reference_fps": 59.9999885559082,
+      "target_fps": 120.0,
+      "raw_frame_stride": 2,
+      "reference_sample_fps": 29.9999942779541,
+      "target_sample_fps": 60.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20161014_50033/dance_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20161014_50033/hop_on_one_leg_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160930_50032/jumping_jacks_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160330_03333/jiggle_on_toes_poses.npy": {
+      "eligible": false,
+      "reasons": [
+        "conflicting_export_fps_headers",
+        "reference_stride_clock_differs_from_feature_clock",
+        "target_stride_clock_differs_from_feature_clock"
+      ],
+      "reference_fps": 59.9999885559082,
+      "target_fps": 120.0,
+      "raw_frame_stride": 2,
+      "reference_sample_fps": 29.9999942779541,
+      "target_sample_fps": 60.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160330_03333/wrists_up_down_poses.npy": {
+      "eligible": false,
+      "reasons": [
+        "conflicting_export_fps_headers",
+        "reference_stride_clock_differs_from_feature_clock",
+        "target_stride_clock_differs_from_feature_clock"
+      ],
+      "reference_fps": 59.9999885559082,
+      "target_fps": 120.0,
+      "raw_frame_stride": 2,
+      "reference_sample_fps": 29.9999942779541,
+      "target_sample_fps": 60.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20161014_50033/ATUSquat_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20161014_50033/dribble_kick_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160330_03333/side_hopping_poses.npy": {
+      "eligible": false,
+      "reasons": [
+        "conflicting_export_fps_headers",
+        "reference_stride_clock_differs_from_feature_clock",
+        "target_stride_clock_differs_from_feature_clock"
+      ],
+      "reference_fps": 59.9999885559082,
+      "target_fps": 120.0,
+      "raw_frame_stride": 2,
+      "reference_sample_fps": 29.9999942779541,
+      "target_sample_fps": 60.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160330_03333/ankles_poses.npy": {
+      "eligible": false,
+      "reasons": [
+        "conflicting_export_fps_headers",
+        "reference_stride_clock_differs_from_feature_clock",
+        "target_stride_clock_differs_from_feature_clock"
+      ],
+      "reference_fps": 59.9999885559082,
+      "target_fps": 120.0,
+      "raw_frame_stride": 2,
+      "reference_sample_fps": 29.9999942779541,
+      "target_sample_fps": 60.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160930_50032/clap_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160330_03333/walking_01_poses.npy": {
+      "eligible": false,
+      "reasons": [
+        "conflicting_export_fps_headers",
+        "reference_stride_clock_differs_from_feature_clock",
+        "target_stride_clock_differs_from_feature_clock"
+      ],
+      "reference_fps": 59.9999885559082,
+      "target_fps": 120.0,
+      "raw_frame_stride": 2,
+      "reference_sample_fps": 29.9999942779541,
+      "target_sample_fps": 60.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160330_03333/shake_hips_poses.npy": {
+      "eligible": false,
+      "reasons": [
+        "conflicting_export_fps_headers",
+        "reference_stride_clock_differs_from_feature_clock",
+        "target_stride_clock_differs_from_feature_clock"
+      ],
+      "reference_fps": 59.9999885559082,
+      "target_fps": 120.0,
+      "raw_frame_stride": 2,
+      "reference_sample_fps": 29.9999942779541,
+      "target_sample_fps": 60.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20161014_50033/punch_kick_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20161014_50033/clap_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160930_50032/punch_kick_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20161014_50033/light_hopping_loose_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160930_50032/light_hopping_loose_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160330_03333/chicken_wings_poses.npy": {
+      "eligible": false,
+      "reasons": [
+        "conflicting_export_fps_headers",
+        "reference_stride_clock_differs_from_feature_clock",
+        "target_stride_clock_differs_from_feature_clock"
+      ],
+      "reference_fps": 59.9999885559082,
+      "target_fps": 120.0,
+      "raw_frame_stride": 2,
+      "reference_sample_fps": 29.9999942779541,
+      "target_sample_fps": 60.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160930_50032/ATUSquat_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160330_03333/punching_poses.npy": {
+      "eligible": false,
+      "reasons": [
+        "conflicting_export_fps_headers",
+        "reference_stride_clock_differs_from_feature_clock",
+        "target_stride_clock_differs_from_feature_clock"
+      ],
+      "reference_fps": 59.9999885559082,
+      "target_fps": 120.0,
+      "raw_frame_stride": 2,
+      "reference_sample_fps": 29.9999942779541,
+      "target_sample_fps": 60.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20160330_03333/walking_poses.npy": {
+      "eligible": false,
+      "reasons": [
+        "conflicting_export_fps_headers",
+        "reference_stride_clock_differs_from_feature_clock",
+        "target_stride_clock_differs_from_feature_clock"
+      ],
+      "reference_fps": 59.9999885559082,
+      "target_fps": 120.0,
+      "raw_frame_stride": 2,
+      "reference_sample_fps": 29.9999942779541,
+      "target_sample_fps": 60.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    },
+    "./pose_data/SSM_synced/20161014_50033/jumping_jacks_sync_poses.npy": {
+      "eligible": true,
+      "reasons": [],
+      "reference_fps": 120.00004577636719,
+      "target_fps": 120.0,
+      "raw_frame_stride": 6,
+      "reference_sample_fps": 20.00000762939453,
+      "target_sample_fps": 20.0,
+      "feature_fps": 20.0,
+      "relative_tolerance": 1e-05,
+      "external_physical_clock_certified": false
+    }
+  },
+  "rtol": 1e-05,
+  "normalizer_training_frames": 1472,
+  "motion_arrays_changed": false,
+  "captions_shifted": false,
+  "data_deleted": false,
+  "physical_tracking_validated": false,
+  "author_data_reproduced": false,
+  "generator_updates": 0,
+  "output_manifest_sha256": "eb8ca6b3586fa55f2343d924ece5da94aabb06c1671503dd0832135823656593",
+  "normalization_sha256": "9ef1dcd31a216bda64e08f18ddda33bb77398fc434e3f5dcad347accb7725f8e"
+}

@@ -1,0 +1,99 @@
+Warp 1.12.0 initialized:
+   CUDA Toolkit 12.9, Driver 12.6
+   Devices:
+     "cpu"      : "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel"
+     "cuda:0"   : "NVIDIA GeForce RTX 4060 Laptop GPU" (8 GiB, sm_89, mempool enabled)
+   Kernel cache:
+     \\?\C:\Users\Pende\AppData\Local\NVIDIA\warp\Cache\1.12.0
+Setting seed: 2026
+
++--------------------------------+
+|        Base Environment        |
++------------------------+-------+
+| Property               | Value |
++------------------------+-------+
+| Number of environments | 1     |
+| Environment device     | cpu   |
+| Environment seed       | 2026  |
+| Physics step-size      | 0.005 |
+| Environment step-size  | 0.02  |
++------------------------+-------+
+
+[INFO] <EventManager> contains 0 active terms.
+
+[INFO] <CommandManager> contains 1 active terms.
++--------------------------------+
+|      Active Command Terms      |
++-------+--------+---------------+
+| Index | Name   |      Type     |
++-------+--------+---------------+
+|   0   | motion | PhyGileMotion |
++-------+--------+---------------+
+
+[INFO] <ActionManager> contains 1 active terms.
++---------------------------------+
+| Active Action Terms (shape: 29) |
++-------+-----------+-------------+
+| Index | Name      |   Dimension |
++-------+-----------+-------------+
+|   0   | joint_pos |          29 |
++-------+-----------+-------------+
+
+[INFO] <ObservationManager> contains 1 groups.
++------------------------------------------------------------+
+| Active Observation Terms in Group: 'actor' (shape: (616,)) |
++----------------+----------------------+--------------------+
+|     Index      | Name                 |       Shape        |
++----------------+----------------------+--------------------+
+|       0        | phygile              |       (616,)       |
++----------------+----------------------+--------------------+
+
+[INFO] <TerminationManager> contains 4 active terms.
++--------------------------------+
+|    Active Termination Terms    |
++-------+-------------+----------+
+| Index | Name        | Time Out |
++-------+-------------+----------+
+|   0   | time_out    |   True   |
+|   1   | anchor_pos  |  False   |
+|   2   | anchor_ori  |  False   |
+|   3   | ee_body_pos |  False   |
++-------+-------------+----------+
+
+[INFO] <RewardManager> contains 0 active terms.
++-----------------------+
+|  Active Reward Terms  |
++-------+------+--------+
+| Index | Name | Weight |
++-------+------+--------+
++-------+------+--------+
+
+[INFO] <NullCurriculumManager> (inactive)
+[INFO] <NullMetricsManager> (inactive)
+[MoEActorCritic] experts=12, expert_dims=[512, 256], gate_input_dim=128, top_k=3, temperature=0.5, candidate_M=10, use_zt_gate=True, phase_b=False
+Setting seed: 2026
+Module reset_data__locals__reset_xfrc_applied_f86f0829 dbb8a6c load on device 'cpu' took 3.38 ms  (cached)
+Module reset_data__locals__reset_qM_1511185b 6371e1c load on device 'cpu' took 1.26 ms  (cached)
+Module reset_data__locals__reset_mocap_11135362 29c34f8 load on device 'cpu' took 1.26 ms  (cached)
+Module reset_data__locals__reset_contact_76c1c25e 2c9aa2c load on device 'cpu' took 1.19 ms  (cached)
+Module reset_data__locals__reset_nworld_d108b6ac c662add load on device 'cpu' took 1.18 ms  (cached)
+Module mujoco_warp._src.smooth 10bad7f load on device 'cpu' took 1.68 ms  (cached)
+Module mujoco_warp._src.collision_driver 6fc8b5a load on device 'cpu' took 1.16 ms  (cached)
+Module _nxn_broadphase__locals__kernel_551438e6 2490ff0 load on device 'cpu' took 1.32 ms  (cached)
+Module _primitive_narrowphase__locals__primitive_narrowphase_de1c2940 7104197 load on device 'cpu' took 1.69 ms  (cached)
+Module mujoco_warp._src.constraint c12ba33 load on device 'cpu' took 1.42 ms  (cached)
+Module _actuator_velocity__locals__actuator_velocity_912d2485 78d0675 load on device 'cpu' took 1.30 ms  (cached)
+Module mujoco_warp._src.passive b0b41b8 load on device 'cpu' took 1.43 ms  (cached)
+Module mujoco_warp._src.sensor 1d420c5 load on device 'cpu' took 1.50 ms  (cached)
+Module mujoco_warp._src.forward 4cbb6ca load on device 'cpu' took 1.41 ms  (cached)
+Module mujoco_warp._src.support 90d400c load on device 'cpu' took 1.21 ms  (cached)
+Module mujoco_warp._src.solver 58146f5 load on device 'cpu' took 1.17 ms  (cached)
+Module solve_init_jaref__locals__kernel_e167d4c9 4fc5a38 load on device 'cpu' took 1.31 ms  (cached)
+Module mul_m_sparse__locals___mul_m_sparse_3795f265 23b4214 load on device 'cpu' took 1.25 ms  (cached)
+Module update_constraint_gauss_cost__locals__kernel_6726cad8 9e3b424 load on device 'cpu' took 1.49 ms  (cached)
+Module update_gradient_JTDAJ_sparse_tiled__locals__kernel_2b3429c9 7526da2 load on device 'cpu' took 1.36 ms  (cached)
+Module update_gradient_cholesky_blocked__locals__kernel_bb004999 12dea8b load on device 'cpu' took 1.40 ms  (cached)
+Module linesearch_jv_fused__locals__kernel_b9e40014 a06327f load on device 'cpu' took 1.42 ms  (cached)
+Module linesearch_prepare_gauss__locals__kernel_00cb1ae5 bfe9c60 load on device 'cpu' took 1.20 ms  (cached)
+Module mujoco_warp._src.derivative 3095017 load on device 'cpu' took 2.38 ms  (cached)
+UNITREE_MJLAB_PHYGILE_RESULT {"status": "FIRST_EPISODE_EVALUATED", "evaluation_type": "simulation_only", "optimizer_steps": 0, "seed": 2026, "device": "cpu", "clip": 1, "started_utc": "2026-10-22T14:21:32.501927+00:00", "unitree_rl_mjlab_commit": "1425b15f73bd4095f0df53709d7c389c3eb9e790", "paper_benchmark_reproduced": false, "mapping": {"joint_mapping": [0, 3, 6, 9, 13, 17, 1, 4, 7, 10, 14, 18, 2, 5, 8, 11, 15, 19, 21, 23, 25, 27, 12, 16, 20, 22, 24, 26, 28], "body_mapping": [0, 1, 4, 7, 10, 14, 18, 2, 5, 8, 11, 15, 19, 3, 6, 9, 12, 16, 20, 22, 24, 26, 28, 13, 17, 21, 23, 25, 27, 29], "frames": 149}, "checkpoint_sha256": "28eb2dc7e6734cda278c17f7385b6a3b1d0530e8be74465cb9808826a061bcfa", "motion_sha256": "9f43364b4a5d2415a64277eece7f8101be2449cf356ad66175c294d91be7a499", "motion_frames": 149, "contact_profile": "matched_sliding_friction", "source_provenance": {"manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\continue500_mjlab_comparison_v1\\matched_sliding_friction_clip1\\executed_sources.json", "sha256": "3b378443aa2cd9e5929c2c80b603c92be4c86750580c3b13a545c80b4a9a1c1f", "source_files": 246}, "action_scale_offset_exact": true, "frames_evaluated": 8, "terminated": true, "timeout": false, "full_clip_success": false, "metrics": {"mpjpe_m_until_termination": 0.06754710525274277, "mpjae_rad_until_termination": 0.15102209150791168, "mpjve_rad_s_until_termination": 1.8210375308990479}, "elapsed_rollout_seconds": 0.45400000002700835, "physics_steps": 32, "control_dt": 0.02, "physics_dt": 0.005, "compiled_contact_parameters": [{"name": "terrain", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 0}, {"name": "robot/left_foot1_collision", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 1}, {"name": "robot/left_foot2_collision", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 1}, {"name": "robot/left_foot3_collision", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 1}, {"name": "robot/left_foot4_collision", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 1}, {"name": "robot/left_foot5_collision", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 1}, {"name": "robot/left_foot6_collision", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 1}, {"name": "robot/left_foot7_collision", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 1}, {"name": "robot/right_foot1_collision", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 1}, {"name": "robot/right_foot2_collision", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 1}, {"name": "robot/right_foot3_collision", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 1}, {"name": "robot/right_foot4_collision", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 1}, {"name": "robot/right_foot5_collision", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 1}, {"name": "robot/right_foot6_collision", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 1}, {"name": "robot/right_foot7_collision", "friction": [1.0, 0.005, 0.0001], "condim": 3, "priority": 1}], "executed_sources_unchanged": true, "post_physics_forward_before_termination": true, "body_mass_comparison": {"pelvis": {"isaac": 3.814000129699707, "mjlab": 3.813}, "left_hip_roll_link": {"isaac": 1.5199999809265137, "mjlab": 1.52}, "left_knee_link": {"isaac": 1.9320000410079956, "mjlab": 1.932}, "left_ankle_roll_link": {"isaac": 0.6079999804496765, "mjlab": 0.608}, "right_hip_roll_link": {"isaac": 1.5199999809265137, "mjlab": 1.52}, "right_knee_link": {"isaac": 1.9320000410079956, "mjlab": 1.932}, "right_ankle_roll_link": {"isaac": 0.6079999804496765, "mjlab": 0.608}, "torso_link": {"isaac": 7.816999435424805, "mjlab": 7.818}, "left_shoulder_roll_link": {"isaac": 0.6430000066757202, "mjlab": 0.643}, "left_elbow_link": {"isaac": 0.6000000238418579, "mjlab": 0.6}, "left_wrist_yaw_link": {"isaac": 0.2545764744281769, "mjlab": 0.254576}, "right_shoulder_roll_link": {"isaac": 0.6430000066757202, "mjlab": 0.643}, "right_elbow_link": {"isaac": 0.6000000238418579, "mjlab": 0.6}, "right_wrist_yaw_link": {"isaac": 0.2545764744281769, "mjlab": 0.254576}}, "note": "Errors censored at first termination; interpret with duration and success. Default framework geometry/solver differences are retained and disclosed; same PD/action/command contract. No new policy optimization.", "finished_utc": "2026-10-22T14:21:42.149959+00:00"}

@@ -1,0 +1,36 @@
+{
+  "status": "COMPLETED",
+  "started_utc": "2026-10-17T11:24:53.018955+00:00",
+  "stages": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "scripts/run_recorded.py",
+        "--name",
+        "continuation_2000/train",
+        "--timeout",
+        "10800",
+        "--",
+        "bash",
+        "scripts/train_extended_2000.sh"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "scripts/evaluate_continuation.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_isaac.sh",
+        "scripts/summarize_continuation.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "finished_utc": "2026-10-17T12:27:54.670814+00:00"
+}

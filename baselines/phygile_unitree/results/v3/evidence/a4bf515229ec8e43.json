@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "checks": {
+    "actual_exit_zero": true,
+    "all_tracked_original_bytes_unchanged": true,
+    "all_witness_source_snapshot_bytes_match": true,
+    "warm_spec_matches_ledger": true,
+    "v2_preserved": true,
+    "command_invoked_exactly_once": true,
+    "strict_same_batch_bitwise_full_vs_compact_all_four_sizes": true,
+    "batch1024_fixture_bitwise_equal": true,
+    "cross_batch_fixture_within_existing_1e_5": true,
+    "omitted_branches_forbidden_hooks": true,
+    "no_optimizer_or_physics_updates": true,
+    "synthetic_proxy_only": true,
+    "all_executed_source_snapshots_match_original_bytes": true,
+    "exporter_passed_with_bitwise_parity": true,
+    "full_resume_checkpoint_preserved": true,
+    "compact_resume_disabled": true
+  },
+  "batch_checks": [
+    {
+      "batch": 1,
+      "same_batch_full_vs_compact_bitwise_equal": true,
+      "max_abs_action_delta": 0.0,
+      "cross_batch_fixture_delta": 2.384185791015625e-06,
+      "cross_batch_fixture_tolerance": 1e-05
+    },
+    {
+      "batch": 7,
+      "same_batch_full_vs_compact_bitwise_equal": true,
+      "max_abs_action_delta": 0.0,
+      "cross_batch_fixture_delta": 2.384185791015625e-06,
+      "cross_batch_fixture_tolerance": 1e-05
+    },
+    {
+      "batch": 128,
+      "same_batch_full_vs_compact_bitwise_equal": true,
+      "max_abs_action_delta": 0.0,
+      "cross_batch_fixture_delta": 2.86102294921875e-06,
+      "cross_batch_fixture_tolerance": 1e-05
+    },
+    {
+      "batch": 1024,
+      "same_batch_full_vs_compact_bitwise_equal": true,
+      "max_abs_action_delta": 0.0,
+      "cross_batch_fixture_delta": 0.0,
+      "cross_batch_fixture_tolerance": 1e-05
+    }
+  ],
+  "evidence_dir": "D:\\具身智能\\PhyGile复现\\Unitree框架适配_20261022\\production_active_doc_witness_v3",
+  "production_output_dir": "D:\\具身智能\\PhyGile复现\\Unitree框架适配_20261022\\production_active_validation_v3",
+  "scope": "synthetic_proxy; CPU inference correctness only; no training, optimizer, physics, environment changes or server operations",
+  "exact_command": "& 'D:/phygile_unitree_env_20261022/Scripts/python.exe' 'C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/work/phygile_unitree_20261022/validate_production_active_v3.py' --scripts 'C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/phygile_unitree/scripts' --assets 'D:/具身智能/PhyGile复现/Unitree框架适配_20261022/private_assets_contact_v3' --output 'D:/具身智能/PhyGile复现/Unitree框架适配_20261022/production_active_validation_v3'",
+  "actual_exit": 0,
+  "powershell_process_exit": 0,
+  "canonical_environment_sha256": "a43f960bd3bcdcd3398655bffe291138b73de5ca7f30901765172ff9821e1954",
+  "preserved_v2_failure_and_diagnosis": true
+}

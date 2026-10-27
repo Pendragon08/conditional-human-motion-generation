@@ -1,0 +1,80 @@
+seed: 42
+device: cuda:0
+num_steps_per_env: 24
+max_iterations: 500
+empirical_normalization: true
+policy:
+  class_name: MoEActorCritic
+  init_noise_std: 1.0
+  noise_std_type: scalar
+  actor_hidden_dims:
+  - 2048
+  - 1024
+  - 512
+  critic_hidden_dims:
+  - 2048
+  - 1024
+  - 512
+  activation: elu
+  encoder_hidden_dims: null
+  share_encoder: null
+  future_command_encoder:
+    per_frame_dim: 65
+    immediate_steps: 2
+    conv_steps: 5
+    conv_channels:
+    - 256
+    - 128
+    kernel_size: 3
+    pooling: avg
+    dropout: 0.0
+    latent_dim: 128
+    share_across_actor_critic: true
+    apply_to_actor: true
+    apply_to_critic: true
+  moe_config:
+    num_experts: 12
+    expert_hidden_dims:
+    - 512
+    - 256
+    gate_hidden_dims:
+    - 256
+    top_k: 3
+    routing_loss_coef: 0.1
+    load_balance_loss_coef: 0.01
+    supervised_hard_ratio: 0.0
+    new_level_hard_ratio: 0.8
+    expert_warm_start: true
+    candidate_update_interval: 10
+    temperature: 0.5
+    logits_ema_alpha: 0.8
+    use_zt_for_gate: true
+    phase_b_enabled: false
+algorithm:
+  class_name: PPO
+  num_learning_epochs: 5
+  num_mini_batches: 4
+  learning_rate: 0.001
+  schedule: adaptive
+  gamma: 0.99
+  lam: 0.95
+  entropy_coef: 0.005
+  desired_kl: 0.01
+  max_grad_norm: 1.0
+  value_loss_coef: 1.0
+  use_clipped_value_loss: true
+  clip_param: 0.2
+  normalize_advantage_per_mini_batch: false
+  symmetry_cfg: null
+  rnd_cfg: null
+clip_actions: null
+save_interval: 500
+experiment_name: phygile_moe_pilot
+run_name: train20_nostate_seed42
+logger: tensorboard
+neptune_project: isaaclab
+wandb_project: isaaclab
+resume: false
+load_run: .*
+load_checkpoint: model_.*.pt
+upload_models_to_wandb: false

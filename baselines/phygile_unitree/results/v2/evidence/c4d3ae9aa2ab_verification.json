@@ -1,0 +1,207 @@
+{
+  "status": "COMPLETED_ENGINEERING_VALIDATION",
+  "outcome": "REJECTED_WITHOUT_INVALID_COMMIT",
+  "actual_mujoco_warp_physics": true,
+  "official_unitree_factory": "src.tasks.tracking.config.g1.env_cfgs.unitree_g1_flat_tracking_env_cfg",
+  "contact_profile": "matched_sliding_friction",
+  "evaluation_type": "simulation_only",
+  "optimizer_updates": 0,
+  "actual_diffusion_sampling": true,
+  "generator": {
+    "backend": "untrained_diffusion_diagnostic",
+    "trained": false,
+    "text_conditioning": "zero/unconditional; no text-to-motion claim",
+    "schedule": "chosen linear 8-step engineering diagnostic",
+    "parameters": 146169702,
+    "normalization_sha256": "6789d03ceb19f3a9f54b6c96b500396e079ded366ef5aa04106f9c6a3cf687af"
+  },
+  "trained_generator": false,
+  "trained_semantic_generation_claim": false,
+  "checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+  "checkpoint_unchanged": true,
+  "generator_parameters_unchanged": true,
+  "committed_new_frames": 0,
+  "attempts": [
+    {
+      "accepted": false,
+      "reasons": [
+        "incomplete_continuation",
+        "failure_termination",
+        "mpjpe_above_tolerance"
+      ],
+      "expected_frames": 50,
+      "recorded_frames": 1,
+      "mpjpe_m": 0.3926215555626271,
+      "terminal_max_frame_mpjpe_m": null,
+      "candidate_sha256": "8ddc807ce2d04d05d106206fc5a0123e70d0f3f984480b2c0e422130887a2f77",
+      "execution_sha256": "3ad0d2f2bf7e510e117c772882b44b3ce0c7074ad125a09e9879fb31bbc7f8ed",
+      "prefix_frames": 1,
+      "attempt": 0,
+      "final": true
+    },
+    {
+      "accepted": false,
+      "reasons": [
+        "incomplete_continuation",
+        "failure_termination",
+        "mpjpe_above_tolerance"
+      ],
+      "expected_frames": 50,
+      "recorded_frames": 1,
+      "mpjpe_m": 0.39316207382514584,
+      "terminal_max_frame_mpjpe_m": null,
+      "candidate_sha256": "3fb0c66e9a5afa290ae06cf1e363fa85a8bb85fce53c7f91d1a5b82360895eb4",
+      "execution_sha256": "3ad0d2f2bf7e510e117c772882b44b3ce0c7074ad125a09e9879fb31bbc7f8ed",
+      "prefix_frames": 1,
+      "attempt": 1,
+      "final": true
+    }
+  ],
+  "proposals": [
+    {
+      "attempt": 0,
+      "final": true,
+      "candidate_sha256": "8ddc807ce2d04d05d106206fc5a0123e70d0f3f984480b2c0e422130887a2f77",
+      "input_prefix_sha256": "6cc81ca7da2a495e945f2b15987005ddbe727f7d61ba1dabe3808aa3874a45c8",
+      "input_prefix_frames": 1,
+      "new_frames": 50,
+      "network_context_frames": 2,
+      "projection": {
+        "rotation_projection_residual_max": 2.8284263347885705,
+        "joint_limit_violations": 965,
+        "ric_redundancy_residual_m": 0.5644955474596384,
+        "projected": true,
+        "root_pose_side_information_required": true
+      },
+      "additional_bound_changed_values": 188
+    },
+    {
+      "attempt": 1,
+      "final": true,
+      "candidate_sha256": "3fb0c66e9a5afa290ae06cf1e363fa85a8bb85fce53c7f91d1a5b82360895eb4",
+      "input_prefix_sha256": "6cc81ca7da2a495e945f2b15987005ddbe727f7d61ba1dabe3808aa3874a45c8",
+      "input_prefix_frames": 1,
+      "new_frames": 50,
+      "network_context_frames": 2,
+      "projection": {
+        "rotation_projection_residual_max": 2.828422823710868,
+        "joint_limit_violations": 965,
+        "ric_redundancy_residual_m": 0.567043544225153,
+        "projected": true,
+        "root_pose_side_information_required": true
+      },
+      "additional_bound_changed_values": 188
+    }
+  ],
+  "rollback_witness": {
+    "method": "fresh_scene_seeded_accepted_history_replay",
+    "state_max_abs_delta": 0.0,
+    "body_max_abs_delta_m": 0.0,
+    "frames": 10
+  },
+  "actual_feedback_fixture": {
+    "evaluation_type": "self_supervised_proxy",
+    "reference": "held initialization pose, not learned generation or dataset truth",
+    "accepted_windows": 2,
+    "window_frames": 1,
+    "input_prefix_sha256": [
+      "6cc81ca7da2a495e945f2b15987005ddbe727f7d61ba1dabe3808aa3874a45c8",
+      "645c4782c35b0c40fc2fe45f52b434e60ff93985f5cd593747f7d3910f65619f"
+    ],
+    "decisions": [
+      {
+        "accepted": true,
+        "reasons": [],
+        "expected_frames": 1,
+        "recorded_frames": 1,
+        "mpjpe_m": 0.00826349488046638,
+        "terminal_max_frame_mpjpe_m": null,
+        "candidate_sha256": "6b8be7bdb8f251191855fa75f8bfb7320106c8bf6d4d36bd4769f605afaaff28",
+        "execution_sha256": "3ad0d2f2bf7e510e117c772882b44b3ce0c7074ad125a09e9879fb31bbc7f8ed",
+        "prefix_frames": 1,
+        "attempt": 0,
+        "final": false
+      },
+      {
+        "accepted": true,
+        "reasons": [],
+        "expected_frames": 1,
+        "recorded_frames": 1,
+        "mpjpe_m": 0.018353520141933036,
+        "terminal_max_frame_mpjpe_m": 0.018353520141933036,
+        "candidate_sha256": "12b7ec08b4a9899e878991396428458693305b652becbd3d196ea91116bb06b2",
+        "execution_sha256": "066df86ab4fd04ecdc0df2fe06b0af4f7d8869e81471bcbac344a7e085b6f5d8",
+        "prefix_frames": 2,
+        "attempt": 0,
+        "final": true
+      }
+    ]
+  },
+  "simulator_invocations": [
+    {
+      "directory": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_v1\\simulator\\scene_000",
+      "fresh_scene": true,
+      "replayed_windows": []
+    },
+    {
+      "directory": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_v1\\simulator\\scene_001",
+      "fresh_scene": true,
+      "replayed_windows": []
+    },
+    {
+      "directory": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_v1\\simulator\\scene_002",
+      "fresh_scene": true,
+      "replayed_windows": []
+    },
+    {
+      "directory": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_v1\\simulator\\scene_003",
+      "fresh_scene": true,
+      "replayed_windows": []
+    },
+    {
+      "directory": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_v1\\simulator\\scene_004",
+      "fresh_scene": true,
+      "replayed_windows": [
+        {
+          "candidate_sha256": "6b8be7bdb8f251191855fa75f8bfb7320106c8bf6d4d36bd4769f605afaaff28",
+          "max_state_difference": 0.0
+        }
+      ]
+    },
+    {
+      "directory": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_v1\\simulator\\scene_005",
+      "fresh_scene": true,
+      "replayed_windows": []
+    },
+    {
+      "directory": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_v1\\simulator\\scene_006",
+      "fresh_scene": true,
+      "replayed_windows": []
+    }
+  ],
+  "source_provenance": {
+    "manifest": "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\closure_mjlab_v1\\executed_sources.json",
+    "sha256": "7a68de6eac8ff105bffa25cf996cbea2b9430e2ea3e4139e1d6656cd65100433",
+    "source_files": 255
+  },
+  "executed_sources_unchanged": true,
+  "elapsed_seconds": 10.812999999965541,
+  "raw_files": {
+    "committed_prefix.npz": "7e78a403f01fc102b257fcadb973aa9766872a99f9990ba2e6e89ecd4cc2ce79",
+    "physics_rollout_000.npz": "f08fa37e0994d1fff75a4f5abc63059e405a06a0b9f5fc0733f617d5686cf497",
+    "physics_rollout_001.npz": "f08fa37e0994d1fff75a4f5abc63059e405a06a0b9f5fc0733f617d5686cf497",
+    "physics_rollout_002.npz": "5bcd2d2464baeef9fc94cc99c46c61c3a986872becef0e5e3a053b7a8fc3f08a",
+    "physics_rollout_003.npz": "dfecb321427ca1acf8b08fad344998b3c3007bf5c1b4619dd81c3bf832f20863",
+    "physics_rollout_004.npz": "ed6a5485c04cf1009dc5c76b731ada66752f9826a55f4aae9c48a848749789ca",
+    "physics_rollout_005.npz": "2a9055ecbe8fb7afd05d10ebeefbbcdf941147e7f3f06b823f500962a363cb6c",
+    "proposals\\proposal_000.npz": "a426371c7a7882d3f635d3265fb06272de23cb354d388fc6935f7e116956bf8a",
+    "proposals\\proposal_001.npz": "84ff57e91d8aeb6093f64ec7232d65dc78348c3c5801234e45b763101b117104",
+    "simulator\\scene_000\\converted_motion.npz": "9ee560f1ff9b7b58ea875f48439b2442af663b2b6ea323a22499796f74f45e62",
+    "simulator\\scene_001\\converted_motion.npz": "9ee560f1ff9b7b58ea875f48439b2442af663b2b6ea323a22499796f74f45e62",
+    "simulator\\scene_002\\converted_motion.npz": "9ee560f1ff9b7b58ea875f48439b2442af663b2b6ea323a22499796f74f45e62",
+    "simulator\\scene_003\\converted_motion.npz": "9ee560f1ff9b7b58ea875f48439b2442af663b2b6ea323a22499796f74f45e62",
+    "simulator\\scene_004\\converted_motion.npz": "9ee560f1ff9b7b58ea875f48439b2442af663b2b6ea323a22499796f74f45e62",
+    "simulator\\scene_005\\converted_motion.npz": "9ee560f1ff9b7b58ea875f48439b2442af663b2b6ea323a22499796f74f45e62",
+    "simulator\\scene_006\\converted_motion.npz": "9ee560f1ff9b7b58ea875f48439b2442af663b2b6ea323a22499796f74f45e62"
+  }
+}

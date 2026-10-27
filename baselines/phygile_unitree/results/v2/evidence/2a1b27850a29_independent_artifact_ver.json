@@ -1,0 +1,134 @@
+{
+  "status": "PASS",
+  "checks": {
+    "exact_command_matches_document": true,
+    "powershell_wrapper_utf8_bom": true,
+    "single_invocation_actual_exit_zero": true,
+    "within_20_minute_limit": true,
+    "environment_spec_hash_matches_ledger": true,
+    "completed_engineering_validation": true,
+    "actual_mujoco_warp_and_diffusion": true,
+    "checkpoint_unchanged_and_hash_matches": true,
+    "normalization_hash_matches": true,
+    "generator_parameters_unchanged": true,
+    "snapshot_29_sources_unchanged": true,
+    "executed_source_manifest_hash_matches": true,
+    "executed_255_sources_still_match": true,
+    "fresh_scene_replay_delta_within_2e_6": true,
+    "accepted_history_replay_exact": true,
+    "all_scenes_fresh": true,
+    "held_initialization_proxy_two_accepted_one_frame_windows": true,
+    "exactly_two_50_frame_diffusion_attempts": true,
+    "failed_motions_never_committed": true,
+    "raw_array_hashes_match": true,
+    "no_trained_or_semantic_generation_claim": true
+  },
+  "environment_canonical_sha256": "a43f960bd3bcdcd3398655bffe291138b73de5ca7f30901765172ff9821e1954",
+  "source_mismatches": [],
+  "raw_mismatches": [],
+  "array_metadata_only": {
+    "committed_prefix.npz": {
+      "states": {
+        "shape": [
+          1,
+          71
+        ],
+        "dtype": "float64"
+      },
+      "body_positions": {
+        "shape": [
+          1,
+          14,
+          3
+        ],
+        "dtype": "float64"
+      }
+    },
+    "proposals\\proposal_000.npz": {
+      "raw_features_262": {
+        "shape": [
+          52,
+          262
+        ],
+        "dtype": "float32"
+      },
+      "decoded_native_before_bounds": {
+        "shape": [
+          50,
+          71
+        ],
+        "dtype": "float64"
+      },
+      "candidate_native": {
+        "shape": [
+          51,
+          71
+        ],
+        "dtype": "float64"
+      },
+      "candidate_body_positions": {
+        "shape": [
+          51,
+          14,
+          3
+        ],
+        "dtype": "float64"
+      },
+      "conditioned_actual_prefix": {
+        "shape": [
+          1,
+          71
+        ],
+        "dtype": "float64"
+      }
+    },
+    "proposals\\proposal_001.npz": {
+      "raw_features_262": {
+        "shape": [
+          52,
+          262
+        ],
+        "dtype": "float32"
+      },
+      "decoded_native_before_bounds": {
+        "shape": [
+          50,
+          71
+        ],
+        "dtype": "float64"
+      },
+      "candidate_native": {
+        "shape": [
+          51,
+          71
+        ],
+        "dtype": "float64"
+      },
+      "candidate_body_positions": {
+        "shape": [
+          51,
+          14,
+          3
+        ],
+        "dtype": "float64"
+      },
+      "conditioned_actual_prefix": {
+        "shape": [
+          1,
+          71
+        ],
+        "dtype": "float64"
+      }
+    }
+  },
+  "actual_process_result": {
+    "started_utc": "2026-10-22T12:20:01.3923200Z",
+    "ended_utc": "2026-10-22T12:20:27.0054009Z",
+    "duration_seconds": 25.6130809,
+    "actual_exit_code": 0,
+    "invocation_count": 1
+  },
+  "doc_reality_divergences": [],
+  "nonfatal_stderr": "Torch jit.script FutureWarning; PowerShell 5.1 records native stderr as NativeCommandError but actual Python exit is 0",
+  "scientific_scope": "Untrained unconditional 262D diffusion wiring and real simulation feedback/rejection/replay only; two accepted one-frame proxies are held-initialization references, not learned motion or dataset truth."
+}

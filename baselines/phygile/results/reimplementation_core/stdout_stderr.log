@@ -1,0 +1,48 @@
+PASS TP-MoE mixes parameters before nonlinear activation; balance matches formula
+PASS Padding payload cannot affect valid frames or routing balance
+PASS Finite nonzero gradients for each expert weight/bias tensor and all gate tensors in the reduced model
+PASS Standard and negative-prompt CFG match Eqs. 13–14
+PASS Chosen inpainting sampler preserves exact clean prefix and suffix
+PASS Known boundary is re-noised and injected into every denoiser step, beyond final overwrite
+PASS 262D block normalization preserves rotation/contact channels and round trips
+PASS ASFO frequency, median and sample maxima match Eqs. 10–11
+PASS Literal ASFO zero-count semantics tested; noninteger and boolean caps rejected
+PASS Multi-token TP-MoE gives matching results for token chunks of one and three
+PASS Actual denoiser CFG and full condition dropout preserve the documented validity-mask semantics
+PASS Full stated architecture constructs and completes a finite CPU forward pass without pretrained weights
+{
+  "status": "PASSED_NUMERICAL_CHECKS",
+  "tests": [
+    "TP-MoE mixes parameters before nonlinear activation; balance matches formula",
+    "Padding payload cannot affect valid frames or routing balance",
+    "Finite nonzero gradients for each expert weight/bias tensor and all gate tensors in the reduced model",
+    "Standard and negative-prompt CFG match Eqs. 13\u201314",
+    "Chosen inpainting sampler preserves exact clean prefix and suffix",
+    "Known boundary is re-noised and injected into every denoiser step, beyond final overwrite",
+    "262D block normalization preserves rotation/contact channels and round trips",
+    "ASFO frequency, median and sample maxima match Eqs. 10\u201311",
+    "Literal ASFO zero-count semantics tested; noninteger and boolean caps rejected",
+    "Multi-token TP-MoE gives matching results for token chunks of one and three",
+    "Actual denoiser CFG and full condition dropout preserve the documented validity-mask semantics",
+    "Full stated architecture constructs and completes a finite CPU forward pass without pretrained weights"
+  ],
+  "torch_version": "2.5.1+cu118",
+  "seed": 73,
+  "elapsed_seconds": 1.069102581590414,
+  "full_architecture_parameters": 146169702,
+  "trained_model": false,
+  "text_encoder_loaded": false,
+  "dataset_used": false,
+  "physics_simulation_tested": false,
+  "source_sha256": {
+    "test_text_encoder.py": "80ce12e90c2abafb63cadc5d687ad3a105141a6f6ee500a6ee54f9d1512fd004",
+    "test_core.py": "c12732d27dac9bdee04f6de4353972e94c271a6e08bc7b58608757d68dea402b",
+    "text.py": "22a04171f7e1218ff9b9ed768d6739ebed24c4072c683b78d60fde595b7fcf70",
+    "diffusion.py": "930a2cdb1967119dd51813c6838f58c062fc7d46447239b20cc15f4b638efc4c",
+    "model.py": "76eb8baa876950a34d4b23b6fa92627515bf38072c9cadf35fbf8789a13e70ab",
+    "features.py": "dee9e489f91b13217faa95a71bc5bc2f9122a1cc404639a3df9838edb6c7f9ac",
+    "fetch_text_encoder.py": "8fbcfff77780bd14af1f29937eef8a514b4edeaead0ece680e6c029eda33b162",
+    "test_training_entrypoint.py": "bd0dd2e0b5ea127c183825ddc3ba977b619f16b3d9ec3fae91b9b33afb5c55e4",
+    "train.py": "47031d106376a1ddc4d2d3a46d1842101b4f028742aa79f77490bce86cc61baf"
+  }
+}

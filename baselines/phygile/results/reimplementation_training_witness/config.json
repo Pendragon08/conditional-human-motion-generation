@@ -1,0 +1,39 @@
+{
+  "purpose": "unit_test",
+  "dataset_manifest": "manifest.json",
+  "text_encoder_path": "../../cache/text/distilbert-base-uncased",
+  "seed": 29,
+  "batch_size": 2,
+  "max_updates": 2,
+  "save_every": 2,
+  "max_sequence_frames": 8,
+  "model": {
+    "width": 16,
+    "hidden": 24,
+    "layers": 2,
+    "heads": 4,
+    "experts": 3,
+    "dropout": 0.0
+  },
+  "schedule": {
+    "type": "linear",
+    "start": 0.0001,
+    "end": 0.02,
+    "steps": 8
+  },
+  "learning_rate": 0.0001,
+  "adam_betas": [
+    0.9,
+    0.999
+  ],
+  "weight_decay": 0.0,
+  "gradient_clip": 1.0,
+  "condition_dropout": 0.1,
+  "balance_weight": 0.01,
+  "asfo": {
+    "enabled": false,
+    "rho_max": 4,
+    "count_policy": "keep_at_least_one",
+    "mirroring": false
+  }
+}

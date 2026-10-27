@@ -1,0 +1,141 @@
+"""Auditable HumanML3D pairing helpers; thresholds and codec are reconstructions."""
+import hashlib
+from pathlib import Path
+import numpy as np
+from codec262 import derivative, matrix_quat, matrix_rotvec, quat_matrix
+
+
+def sha(path):
+    h = hashlib.sha256()
+    with Path(path).open('rb') as f:
+        for block in iter(lambda: f.read(4194304), b''):
+            h.update(block)
+    return h.hexdigest()
+
+
+def strings(values):
+    return [v.decode() if isinstance(v, bytes) else str(v) for v in values]
+
+
+def verify_timeline(reference, target):
+    """Prove frame identity using measured markers, without trusting export fps."""
+    hlabels, xlabels = strings(reference['marker_labels']), strings(target['labels'])
+    if len(set(hlabels)) != len(hlabels) or len(set(xlabels)) != len(xlabels):
+        raise ValueError('Duplicate marker names')
+    common = [n for n in hlabels if n in xlabels]
+    if len(common) < 30 or len(reference['trans']) != len(target['trans']):
+        raise ValueError('Insufficient marker/frame correspondence')
+    a = reference['marker_data'][:, [hlabels.index(n) for n in common]]
+    b = target['markers'][:, [xlabels.index(n) for n in common]]
+    # AMASS exports encode absent markers as zero triplets or NaNs. Normalize
+    # only these explicit missing observations; never compare fitted joints.
+    valid_a = np.isfinite(a).all(-1) & np.any(a != 0, axis=-1)
+    valid_b = np.isfinite(b).all(-1) & np.any(b != 0, axis=-1)
+    if (a.shape != b.shape or not np.array_equal(valid_a, valid_b)
+            or valid_a.mean() < .5 or valid_a.sum(-1).min() < 10):
+        raise ValueError('Marker visibility/shape correspondence failed')
+    error = np.abs(a[valid_a] - b[valid_a])
+    if error.max() > 1e-7:
+        raise ValueError('Exports are not frame-identical measured marker trajectories')
+    fps = float(reference['mocap_framerate'])
+    if not np.isfinite(fps) or fps < 20:
+        raise ValueError('Invalid HumanML reference fps')
+    return {'status': 'FRAME_IDENTITY_VERIFIED_BY_MEASURED_MARKERS',
+            'reference_frames': len(a), 'reference_fps': fps,
+            'smplx_header_fps': float(target['mocap_frame_rate']),
+            'common_marker_names': common, 'finite_coordinate_count': int(valid_a.sum()) * 3,
+            'minimum_visible_markers_per_frame': int(valid_a.sum(-1).min()),
+            'missing_marker_convention': 'NaN or all-zero XYZ triplet is absent',
+            'marker_max_abs_m': float(error.max()),
+            'reference_stride': int(fps / 20), 'nominal_output_fps': 20,
+            'time_convention': 'Exact HumanML floor-stride samples, nominal 20Hz; no linspace resampling'}
+
+
+def native_from_qpos(codec, qpos, fps):
+    pos, quat, joints = qpos[:, :3], qpos[:, 3:7], qpos[:, 7:]
+    rotations = quat_matrix(quat)
+    angular = matrix_rotvec(rotations[1:] @ rotations[:-1].transpose(0, 2, 1)) * fps
+    angular = np.concatenate([angular, angular[-1:]])
+    return np.concatenate([pos, quat, derivative(pos, fps), angular,
+                           joints, derivative(joints, fps)], axis=-1)
+
+
+def other_side(name):
+    if name.startswith('left_'):
+        return 'right_' + name[5:]
+    if name.startswith('right_'):
+        return 'left_' + name[6:]
+    return name
+
+
+def mirror_native(codec, native, fps):
+    """Reflect the robot across global XZ, swap joints, derive axis signs from URDF."""
+    reflect = np.diag([1., -1., 1.])
+    positions = native[:, :3] @ reflect
+    rotations = reflect @ quat_matrix(native[:, 3:7]) @ reflect
+    q = np.empty_like(native[:, 13:42])
+    for j, name in enumerate(codec.joint_names):
+        partner = other_side(name)
+        axis = np.asarray(codec.movable[name]['axis'], float)
+        partner_axis = np.asarray(codec.movable[partner]['axis'], float)
+        sign = float(axis @ (-reflect @ partner_axis))
+        if abs(abs(sign) - 1) > 1e-8:
+            raise ValueError('URDF axis reflection is not a signed permutation')
+        q[:, j] = sign * native[:, 13 + codec.joint_names.index(partner)]
+    return native_from_qpos(codec, np.c_[positions, matrix_quat(rotations), q], fps)
+
+
+def mirror_fk_witness(codec, seed=42):
+    rng = np.random.default_rng(seed)
+    n = 16
+    q = rng.uniform(codec.low, codec.high, (n, 29))
+    from codec262 import rotvec_matrix
+    native = native_from_qpos(codec, np.c_[rng.normal(size=(n, 3)),
+        matrix_quat(rotvec_matrix(rng.normal(size=(n, 3)))), q], 20)
+    mirrored = mirror_native(codec, native, 20)
+    original_p, original_r = codec.fk(native[:, :3], native[:, 3:7], native[:, 13:42])
+    mirrored_p, mirrored_r = codec.fk(mirrored[:, :3], mirrored[:, 3:7], mirrored[:, 13:42])
+    s = np.diag([1., -1., 1.])
+    p_error = max(float(np.abs(mirrored_p[name] - original_p[other_side(name)] @ s).max())
+                  for name in codec.body_names)
+    r_error = max(float(np.abs(mirrored_r[name] - s @ original_r[other_side(name)] @ s).max())
+                  for name in codec.body_names)
+    twice = mirror_native(codec, mirrored, 20)
+    twice_error = float(np.abs(twice[:, 13:42] - native[:, 13:42]).max())
+    # Left/right URDF offsets have small decimal asymmetries; expose the actual
+    # residual rather than claiming an exactly symmetric physical robot.
+    if p_error > 2e-5 or max(r_error, twice_error) > 1e-6:
+        raise ValueError(('Robot mirror does not preserve reflected FK', p_error, r_error, twice_error))
+    return {'seed': seed, 'poses': n, 'body_position_max_abs_m': p_error,
+            'body_rotation_max_abs': r_error, 'double_mirror_joint_max_abs': twice_error,
+            'position_tolerance_m': 2e-5,
+            'status': 'ROBOT_FK_REFLECTION_WITHIN_DECLARED_TOLERANCE'}
+
+
+def quality(codec, native, fps, thresholds):
+    reasons = []
+    if len(native) < thresholds['min_frames']:
+        reasons.append('too_few_frames')
+    if not np.isfinite(native).all():
+        return {'passed': False, 'reasons': ['nonfinite'], 'dynamics_validated': False}
+    q = native[:, 13:42]
+    excess = float(np.maximum(np.maximum(codec.low - q, q - codec.high), 0).max())
+    max_step = float(np.max(np.abs(np.diff(q, axis=0))))
+    lin = float(np.linalg.norm(derivative(native[:, :3], fps), axis=-1).max())
+    omega = float(np.linalg.norm(native[:, 10:13], axis=-1).max())
+    bodies, _ = codec.fk(native[:, :3], native[:, 3:7], q)
+    minimum_z = min(float(bodies[name][:, 2].min()) for name in codec.body_names)
+    metrics = {'joint_limit_excess_rad': excess, 'joint_step_max_rad': max_step,
+               'root_speed_max_m_s': lin, 'root_angular_speed_max_rad_s': omega,
+               'body_origin_min_z_m': minimum_z, 'frames': len(native)}
+    for metric, limit in [('joint_limit_excess_rad', 'joint_limit_tolerance_rad'),
+                          ('joint_step_max_rad', 'joint_step_max_rad'),
+                          ('root_speed_max_m_s', 'root_speed_max_m_s'),
+                          ('root_angular_speed_max_rad_s', 'root_angular_speed_max_rad_s')]:
+        if metrics[metric] > thresholds[limit]:
+            reasons.append(metric)
+    if minimum_z < -thresholds['body_origin_penetration_max_m']:
+        reasons.append('body_origin_below_floor')
+    return {'passed': not reasons, 'reasons': reasons, **metrics,
+            'dynamics_validated': False, 'mesh_collision_validated': False,
+            'scope': 'kinematic screening; body origins are not collision geometry'}

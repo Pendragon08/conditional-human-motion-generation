@@ -1,0 +1,150 @@
+# G1 MoE Phase B: Dynamic Expert Addition for Unlabeled Motion
+# 继承 Phase A 的 checkpoint，引入无标注数据并按需新增 expert。
+# 用法：--g1_training_cfg <此文件路径> --load_run <phase_a_log_dir>
+#
+# Phase B 训练流程：
+#   1. 加载 Phase A 训练好的 {Enc, Router, Experts} 权重
+#   2. Router 切换到 adaptive 模式（不再受课程 mask 约束）
+#   3. Critic 末层重置 + warmup 期只训 critic（防 value loss 爆炸）
+#   4. 旧数据按比例混入（锚定 router + critic），新数据渐进增大
+#   5. 旧文件保留伪标签 level，adaptive CE loss 保持 router 不漂移
+#   6. Per-file 困难度追踪 → 新增 expert 或 LR boost
+#   7. 新 expert 冷启动约束：前 N 步限制最大权重，旧 experts 低学习率
+
+runner:
+  num_steps_per_env: 24
+  max_iterations: 300000
+  save_interval: 1000
+  experiment_name: "g1_flat_moe_phase_b"
+  empirical_normalization: true
+  upload_models_to_wandb: false
+
+policy:
+  class_name: "MoEActorCritic"
+  init_noise_std: 1.0
+  # actor_hidden_dims 在 MoE 模式下仅用于 critic head（expert 有自己的 dims）
+  actor_hidden_dims: [2048, 1024, 512]
+  critic_hidden_dims: [2048, 1024, 512]
+  activation: "elu"
+  encoder_hidden_dims: null          # 无独立 Encoder MLP，processed_obs 直接进 expert
+  share_encoder: null
+  future_command_encoder:
+    per_frame_dim: 65              # 自动计算（= 2*num_actions + 7）
+    immediate_steps: 2
+    conv_steps: 5
+    conv_channels: [256, 128]
+    kernel_size: 3
+    pooling: "avg"
+    dropout: 0.0
+    latent_dim: 128
+    share_across_actor_critic: true
+    apply_to_actor: true
+    apply_to_critic: true
+
+  # ========== MoE Soft Top-K 配置 (Phase B) ==========
+  moe_config:
+    num_experts: 12                  # 初始 expert 数（从 Phase A 继承）
+    expert_hidden_dims: [512, 256]
+    gate_hidden_dims: [256]
+    top_k: 3
+    routing_loss_coef: 0.1
+    load_balance_loss_coef: 0.01
+    supervised_hard_ratio: 0.0
+    new_level_hard_ratio: 0.0        # 不分level，全soft
+    expert_warm_start: false          # Phase B 不需要 warm start
+
+    # ---- Soft Top-K 路由参数（同 Phase A）----
+    candidate_update_interval: 10
+    temperature: 0.5
+    logits_ema_alpha: 0.8
+    use_zt_for_gate: true
+
+    # ---- Phase B 稳定性 ----
+    adaptive_ce_coef: 0.05           # 对有标签数据的 CE loss 系数（保持 router 不漂移）
+    max_value_err: 10.0              # clamp 预测误差幅度（平方前），梯度上限=20，loss上限=100
+    critic_warmup_iters: 4000        # 前 N 步只训 critic，不更新 policy
+    surrogate_ramp_iters: 5000       # warmup 后 surrogate loss 从 0 线性 ramp 到 1 的步数
+
+    # ---- Phase B 动态新增 Expert ----
+    phase_b_enabled: true
+    new_expert_weight_cap: 0.3       # 冷启动最大权重
+    new_expert_warmup_steps: 5000    # 冷启动持续步数
+    max_total_experts: 16            # 最多可扩展到 16 个 expert
+
+    # ---- Phase B 学习率策略 ----
+    new_expert_lr_scale: 3.0         # 新 expert 学习率 = base_lr * 3
+    old_expert_lr_scale: 0.1         # 旧 experts 学习率 = base_lr * 0.1
+
+    # ---- Phase B Per-File 触发条件（三选二）----
+    difficulty_err_threshold: 0.14
+    difficulty_entropy_threshold: 0.8
+    difficulty_gap_threshold: 0.15
+    difficulty_sustained_windows: 30
+    difficulty_trigger_ratio: 0.1
+    difficulty_check_interval: 500
+
+    # ---- Phase B 满容量 LR Boost ----
+    boost_lr_scale: 2.0
+    boost_lr_duration_iters: 3000
+
+commands:
+  motion:
+    preload_device: "cuda:1"
+    future_steps: 2
+    max_files_per_iter: 200
+    encoder_future_steps: 5
+    encoder_future_stride: 20
+    enable_multi_file_bin_sampling: true
+    random_static_prob: 0.1
+
+    # ========== 等级内采样参数 ==========
+    file_error_alpha: 0.25
+    file_error_norm: 0.3
+    file_uniform_mixture: 0.20
+    sampling_temperature: 1.05
+    file_success_beta: 0.4
+    file_success_weight: 0.15
+    file_success_warmup_iters: 6000
+
+    # ========== Freeze 机制 ==========
+    file_freeze_error_threshold: 0.1
+    file_freeze_success_threshold: 0.15
+    file_freeze_min_attempts: 150000
+    file_freeze_iters: 5000
+    file_drop_enabled: true
+    file_drop_after_freezes: 3
+    file_freeze_check_interval: 1000
+
+    # ========== 课程学习配置 ==========
+    curriculum_enabled: false
+    # Phase A 的 CSV（用于伪标签，保持已标注数据的路由监督）
+    phase_b_pseudo_level_csv: "/ssd/bjc/bm_mlp/source/whole_body_tracking/whole_body_tracking/utils/filtered_texts_211.csv"
+
+    # ========== Phase B 新旧数据混合 ==========
+    phase_b_old_data_ratio: 0.8      # 初始 80% Phase A 旧数据
+    phase_b_old_data_ratio_min: 0.3  # 最终降到 30%
+    phase_b_ratio_anneal_iters: 30000  # 在 3 万步内线性退火
+
+    # ========== MoE 专用配置 ==========
+    moe_supervised_until_level: 0    # Phase B 不用 supervised routing
+
+algorithm:
+  value_loss_coef: 0.5              # 原 1.0，降低 value loss 梯度防止 critic 爆炸
+  use_clipped_value_loss: true
+  clip_param: 0.15                  # 原 0.2，收紧 PPO clip 限制每次更新幅度
+  entropy_coef: 0.005
+  num_learning_epochs: 5
+  num_mini_batches: 8
+  learning_rate: 0.0005             # 原 0.001，降低 LR 给 critic 更平滑的适应过程
+  schedule: "adaptive"
+  gamma: 0.99
+  lam: 0.95
+  desired_kl: 0.01
+  max_grad_norm: 1.0
+  normalize_advantage_per_mini_batch: true   # 原 false，防止 advantage 极端值
+
+rewards:
+  motion_global_anchor_pos:
+    weight: 0.8
+    params:
+      std: 0.2

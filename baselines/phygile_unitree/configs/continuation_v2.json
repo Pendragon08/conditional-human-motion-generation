@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-22",
+  "environment_spec": "environment_plan_v2.json",
+  "dependency_changes": false,
+  "headless_authorization": "headless_authorization_20261022.json",
+  "algorithm": "original PhyGile MoEPPO, one active expert",
+  "smoke": {"num_envs": 64, "ppo_iterations": 2, "seed": 2026},
+  "continuation_budget": {"num_envs": 128, "ppo_iterations": 500, "seed": 2026, "save_only_final": true},
+  "device": "cuda:1",
+  "cpu_affinity": "16-19",
+  "cpu_threads": 4,
+  "torch_memory_fraction": 0.2,
+  "tracking_data": "Original 20 training clips; four prior short test clips are now explicitly development diagnostics",
+  "preservation": "Fresh source/run directories; never overwrite or delete original data, weights, or records; ReactiveBFM untouched",
+  "validation": "Finite gradients/Adam state, exact optimizer restoration, literal optimizer-step counting, before/after transfer and persistent closed-loop execution"
+}

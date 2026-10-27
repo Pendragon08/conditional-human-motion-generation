@@ -1,0 +1,17 @@
+{
+  "started_utc": "2026-10-17T14:52:22.284110+00:00",
+  "argv": [
+    "C:/Windows/System32/OpenSSH/ssh.exe",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "-p",
+    "22",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "ouyanghao@10.147.17.32",
+    "cd /data/code/ouyanghao/oyh/phygile-reproduction-20261017 && python3 -c 'from pathlib import Path\nimport hashlib,json\nroot=Path('\"'\"'.'\"'\"')\nbase=root/'\"'\"'results/completion_v1/closure_recovery'\"'\"'\nrecords=[]\nfor p in sorted(base.rglob('\"'\"'*'\"'\"')):\n if p.is_file():\n  records.append({'\"'\"'path'\"'\"':str(p),'\"'\"'bytes'\"'\"':p.stat().st_size,'\"'\"'sha256'\"'\"':hashlib.sha256(p.read_bytes()).hexdigest()})\nextras={}\nfor s in ['\"'\"'docs/terminal_recovery_invocation.md'\"'\"','\"'\"'docs/environment.md'\"'\"','\"'\"'configs/env-spec.json'\"'\"','\"'\"'configs/nominal_standing_reference.json'\"'\"','\"'\"'scripts/run_isaac.sh'\"'\"','\"'\"'scripts/validate_terminal_boundary.py'\"'\"','\"'\"'scripts/run_generated_closed_loop.py'\"'\"','\"'\"'scripts/replay_physics_worker.py'\"'\"','\"'\"'reimplementation/replay_prefix_adapter.py'\"'\"']:\n p=root/s\n extras[s]={'\"'\"'sha256'\"'\"':hashlib.sha256(p.read_bytes()).hexdigest(),'\"'\"'text'\"'\"':p.read_text()}\nprint(json.dumps({'\"'\"'remote_cwd'\"'\"':str(root.resolve()),'\"'\"'files'\"'\"':records,'\"'\"'inputs'\"'\"':extras},indent=2))\n'"
+  ],
+  "remote_command": "cd /data/code/ouyanghao/oyh/phygile-reproduction-20261017 && python3 -c 'from pathlib import Path\nimport hashlib,json\nroot=Path('\"'\"'.'\"'\"')\nbase=root/'\"'\"'results/completion_v1/closure_recovery'\"'\"'\nrecords=[]\nfor p in sorted(base.rglob('\"'\"'*'\"'\"')):\n if p.is_file():\n  records.append({'\"'\"'path'\"'\"':str(p),'\"'\"'bytes'\"'\"':p.stat().st_size,'\"'\"'sha256'\"'\"':hashlib.sha256(p.read_bytes()).hexdigest()})\nextras={}\nfor s in ['\"'\"'docs/terminal_recovery_invocation.md'\"'\"','\"'\"'docs/environment.md'\"'\"','\"'\"'configs/env-spec.json'\"'\"','\"'\"'configs/nominal_standing_reference.json'\"'\"','\"'\"'scripts/run_isaac.sh'\"'\"','\"'\"'scripts/validate_terminal_boundary.py'\"'\"','\"'\"'scripts/run_generated_closed_loop.py'\"'\"','\"'\"'scripts/replay_physics_worker.py'\"'\"','\"'\"'reimplementation/replay_prefix_adapter.py'\"'\"']:\n p=root/s\n extras[s]={'\"'\"'sha256'\"'\"':hashlib.sha256(p.read_bytes()).hexdigest(),'\"'\"'text'\"'\"':p.read_text()}\nprint(json.dumps({'\"'\"'remote_cwd'\"'\"':str(root.resolve()),'\"'\"'files'\"'\"':records,'\"'\"'inputs'\"'\"':extras},indent=2))\n'"
+}

@@ -1,0 +1,63 @@
+{
+  "status": "CURRENT_EXPORT_AND_PRODUCTION_LOADER_BITWISE_PARITY",
+  "export_exit_code": 0,
+  "command": [
+    "D:\\phygile_unitree_env_20261022\\Scripts\\python.exe",
+    "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\phygile_unitree\\scripts\\export_active_policy.py",
+    "--checkpoint",
+    "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\private_assets_contact_v3\\parent_checkpoint.pt",
+    "--contract",
+    "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\private_assets_contact_v3\\contract.json",
+    "--encoder-source",
+    "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\private_assets_contact_v3\\encoder_actor_critic.py",
+    "--output",
+    "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\production_active_validation_v3\\export"
+  ],
+  "production_loader": "frozen_policy.FrozenPhyGile -> active_policy_artifact.load_active",
+  "batch_checks": [
+    {
+      "batch": 1,
+      "same_batch_full_vs_compact_bitwise_equal": true,
+      "max_abs_action_delta": 0.0,
+      "cross_batch_fixture_delta": 2.384185791015625e-06,
+      "cross_batch_fixture_tolerance": 1e-05
+    },
+    {
+      "batch": 7,
+      "same_batch_full_vs_compact_bitwise_equal": true,
+      "max_abs_action_delta": 0.0,
+      "cross_batch_fixture_delta": 2.384185791015625e-06,
+      "cross_batch_fixture_tolerance": 1e-05
+    },
+    {
+      "batch": 128,
+      "same_batch_full_vs_compact_bitwise_equal": true,
+      "max_abs_action_delta": 0.0,
+      "cross_batch_fixture_delta": 2.86102294921875e-06,
+      "cross_batch_fixture_tolerance": 1e-05
+    },
+    {
+      "batch": 1024,
+      "same_batch_full_vs_compact_bitwise_equal": true,
+      "max_abs_action_delta": 0.0,
+      "cross_batch_fixture_delta": 0.0,
+      "cross_batch_fixture_tolerance": 1e-05
+    }
+  ],
+  "artifact_sha256": "07b15d7f83e00afe1900ec6547b9ddc65ffb4ee8e1d6cf7b936bfa61189771ba",
+  "source_checkpoint_sha256": "bb067f364de74e2da7cf1879e6f26bb961a71eb9ff64cbfbe84dd858bfae2336",
+  "dropped_branches_guarded": true,
+  "optimizer_or_physics_updates": 0,
+  "source_files_sha256": {
+    "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\phygile_unitree\\scripts\\export_active_policy.py": "15a007cd29bf390df25b35d3d9d5ea0c4ad90d02289507e88290b9259eff5ffa",
+    "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\phygile_unitree\\scripts\\frozen_policy.py": "843c3742977e643b7c78ab89b02bfff6c32b1c2edf48caf8420037b33470b83b",
+    "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\phygile_unitree\\scripts\\active_policy_artifact.py": "434883e87f0ac459093a338538cd06901e05aeff9b62df5d599f4434f86d6af9",
+    "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_unitree_20261022\\validate_production_active_v3.py": "4bb1c8461fbd7013cc33fc14ac705c9745d7ade907d8f119d676f5140245f184",
+    "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\private_assets_contact_v3\\encoder_actor_critic.py": "8d5dd4a93efcb7b2c573da1eee931a99bb8b9ea06be5eb4da9b5f1aacfc986fa",
+    "D:\\\u5177\u8eab\u667a\u80fd\\PhyGile\u590d\u73b0\\Unitree\u6846\u67b6\u9002\u914d_20261022\\private_assets_contact_v3\\contract.json": "3a56775da4451fe35202e619e1546acb2dee15c6bc7965dc1d9a0f03208fd987"
+  },
+  "executed_sources_unchanged": true,
+  "source_snapshot_archived_before_execution": true,
+  "evaluation_type": "synthetic_proxy",
+  "scope": "Same-input FP32 inference parity only; not motion quality or training resume from compact artifact"
+}

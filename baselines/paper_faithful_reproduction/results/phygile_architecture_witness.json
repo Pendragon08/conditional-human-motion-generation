@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "seed": 42,
+  "scope": "synthetic CPU shape and gradient witness only; zero PPO updates",
+  "source_sha256": "8d5dd4a93efcb7b2c573da1eee931a99bb8b9ea06be5eb4da9b5f1aacfc986fa",
+  "config_sha256": "924730a361bc85779254b170775024831c6502b38f2910c319ddfda0e80bc950",
+  "expert_linear_shapes": [
+    [
+      419,
+      2048
+    ],
+    [
+      2048,
+      1024
+    ],
+    [
+      1024,
+      512
+    ],
+    [
+      512,
+      29
+    ]
+  ],
+  "parameters": 45931398,
+  "cases": [
+    {
+      "active_experts": 1,
+      "actions_shape": [
+        2,
+        29
+      ],
+      "loss": 0.012397365644574165,
+      "finite_gradients": true
+    },
+    {
+      "active_experts": 10,
+      "actions_shape": [
+        2,
+        29
+      ],
+      "loss": 0.0036094021052122116,
+      "finite_gradients": true
+    }
+  ]
+}

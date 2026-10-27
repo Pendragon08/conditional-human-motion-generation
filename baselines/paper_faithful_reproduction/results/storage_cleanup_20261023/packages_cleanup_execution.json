@@ -1,0 +1,303 @@
+{
+  "utc_before": "2026-10-23T03:52:13.743034+00:00",
+  "health_before": [
+    {
+      "utc": "2026-10-23T03:52:06.388196+00:00",
+      "rank": 0,
+      "status": "TRAINING",
+      "loop_step": 11023,
+      "initial_optimizer_updates": 10041,
+      "optimizer_updates": 11024,
+      "resumed_updates": 983,
+      "optimizer_step_calls": 11024,
+      "validated_optimizer_updates": 11024,
+      "attempts_since_resume": 983,
+      "skipped_attempts": 0,
+      "consecutive_skips": 0,
+      "step_applied": true,
+      "step_validated": true,
+      "ema_validated": true,
+      "reason": "OPTIMIZER_STEP_APPLIED",
+      "grad_norm_pre_clip_fp64": 0.6404286305299087,
+      "grad_norm_post_clip_fp64": 0.6404286305299087,
+      "param_norm_fp64": 206.88688108693734,
+      "offending_parameters": [],
+      "elapsed_seconds": 18185.04888382554,
+      "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "full_training_completed": false
+    },
+    {
+      "utc": "2026-10-23T03:52:06.388215+00:00",
+      "rank": 1,
+      "status": "TRAINING",
+      "loop_step": 11023,
+      "initial_optimizer_updates": 10041,
+      "optimizer_updates": 11024,
+      "resumed_updates": 983,
+      "optimizer_step_calls": 11024,
+      "validated_optimizer_updates": 11024,
+      "attempts_since_resume": 983,
+      "skipped_attempts": 0,
+      "consecutive_skips": 0,
+      "step_applied": true,
+      "step_validated": true,
+      "ema_validated": true,
+      "reason": "OPTIMIZER_STEP_APPLIED",
+      "grad_norm_pre_clip_fp64": 0.6404286305299087,
+      "grad_norm_post_clip_fp64": 0.6404286305299087,
+      "param_norm_fp64": 206.88688108693734,
+      "offending_parameters": [],
+      "elapsed_seconds": 18185.048877419904,
+      "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "full_training_completed": false
+    }
+  ],
+  "commands": [
+    {
+      "mode": "dry_run",
+      "command": [
+        "python3",
+        "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1/cleanup_backed_unused_v2.py",
+        "--plan",
+        "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1/packages_verified_plan.json",
+        "--receipt",
+        "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1/packages_dry_run_receipt.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"DRY_RUN_PASSED\", \"files\": 0, \"allocated_bytes\": 773378048, \"free_after\": 4840329216}\n",
+      "stderr": ""
+    },
+    {
+      "mode": "execute",
+      "command": [
+        "python3",
+        "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1/cleanup_backed_unused_v2.py",
+        "--plan",
+        "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1/packages_verified_plan.json",
+        "--receipt",
+        "/data/code/ouyanghao/oyh/paper-faithful-reproduction-20261022/storage_cleanup_20261023_v1/packages_execute_receipt.json",
+        "--execute"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"BACKED_UP_UNUSED_FILES_REMOVED\", \"files\": 2, \"allocated_bytes\": 773378048, \"free_after\": 5615214592}\n",
+      "stderr": ""
+    }
+  ],
+  "dry_run": {
+    "utc": "2026-10-23T03:52:15.841021+00:00",
+    "mode": "DRY_RUN",
+    "plan_sha256": "3f1fde3eea1eac0b5f0efa86af21361ce271d27c64d09121c3842088971c6104",
+    "authorized_root": "/data/code/ouyanghao/oyh",
+    "verified_files": 2,
+    "allocated_bytes": 773378048,
+    "disk_before": {
+      "total": 1967847137280,
+      "used": 1862970081280,
+      "free": 4840333312
+    },
+    "removed": [],
+    "known_os_helpers": [
+      {
+        "pid": 2310665,
+        "comm": "(sd-pam)",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3018937,
+        "comm": "ssh-agent",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3018942,
+        "comm": "gpg-agent",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3025131,
+        "comm": "gnome-keyring-d",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3188715,
+        "comm": "sshd",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3189030,
+        "comm": "sshd",
+        "reason": "OS protected session/key helper"
+      }
+    ],
+    "backup_verification": {
+      "mode": "direct_file_assets",
+      "all_local_copies_verified": true,
+      "assets": [
+        {
+          "source_path": "/data/code/ouyanghao/oyh/world-model-risk-planning/upstream_sync.tar.gz",
+          "bytes": 480148785,
+          "digest": "sha256:fb785f8ea9083ec4e5023b5a4f3acf68b7f1e8b1fc618a4c582ecfd5231c9328",
+          "url": "https://github.com/Pendragon08/conditional-human-motion-generation/releases/download/server-unused-cache-backup-20261023/upstream_sync.tar.gz",
+          "local_path": "D:\\具身智能\\world-model-risk-planning\\upstream_sync.tar.gz"
+        },
+        {
+          "source_path": "/data/code/ouyanghao/oyh/world-model-risk-planning/wheelhouse_sync.tar",
+          "bytes": 293221376,
+          "digest": "sha256:9e16d4afa8931ec4f0f5b9479e1ebfe5c423870193a4299797faa622718d37aa",
+          "url": "https://github.com/Pendragon08/conditional-human-motion-generation/releases/download/server-unused-cache-backup-20261023/wheelhouse_sync.tar",
+          "local_path": "D:\\具身智能\\world-model-risk-planning\\wheelhouse_sync.tar"
+        }
+      ],
+      "utc": "2026-10-23T03:51:39.939536+00:00"
+    },
+    "dataset_checkpoint_record_deletion_allowed": false,
+    "status": "DRY_RUN_PASSED",
+    "disk_after": {
+      "total": 1967847137280,
+      "used": 1862970085376,
+      "free": 4840329216
+    }
+  },
+  "execute": {
+    "utc": "2026-10-23T03:52:17.584686+00:00",
+    "mode": "EXECUTE",
+    "plan_sha256": "3f1fde3eea1eac0b5f0efa86af21361ce271d27c64d09121c3842088971c6104",
+    "authorized_root": "/data/code/ouyanghao/oyh",
+    "verified_files": 2,
+    "allocated_bytes": 773378048,
+    "disk_before": {
+      "total": 1967847137280,
+      "used": 1862970093568,
+      "free": 4840321024
+    },
+    "removed": [
+      {
+        "path": "/data/code/ouyanghao/oyh/world-model-risk-planning/upstream_sync.tar.gz",
+        "bytes": 480148785,
+        "sha256": "fb785f8ea9083ec4e5023b5a4f3acf68b7f1e8b1fc618a4c582ecfd5231c9328",
+        "kind": "unused_transfer_package"
+      },
+      {
+        "path": "/data/code/ouyanghao/oyh/world-model-risk-planning/wheelhouse_sync.tar",
+        "bytes": 293221376,
+        "sha256": "9e16d4afa8931ec4f0f5b9479e1ebfe5c423870193a4299797faa622718d37aa",
+        "kind": "unused_transfer_package"
+      }
+    ],
+    "known_os_helpers": [
+      {
+        "pid": 2310665,
+        "comm": "(sd-pam)",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3018937,
+        "comm": "ssh-agent",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3018942,
+        "comm": "gpg-agent",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3025131,
+        "comm": "gnome-keyring-d",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3188715,
+        "comm": "sshd",
+        "reason": "OS protected session/key helper"
+      },
+      {
+        "pid": 3189030,
+        "comm": "sshd",
+        "reason": "OS protected session/key helper"
+      }
+    ],
+    "backup_verification": {
+      "mode": "direct_file_assets",
+      "all_local_copies_verified": true,
+      "assets": [
+        {
+          "source_path": "/data/code/ouyanghao/oyh/world-model-risk-planning/upstream_sync.tar.gz",
+          "bytes": 480148785,
+          "digest": "sha256:fb785f8ea9083ec4e5023b5a4f3acf68b7f1e8b1fc618a4c582ecfd5231c9328",
+          "url": "https://github.com/Pendragon08/conditional-human-motion-generation/releases/download/server-unused-cache-backup-20261023/upstream_sync.tar.gz",
+          "local_path": "D:\\具身智能\\world-model-risk-planning\\upstream_sync.tar.gz"
+        },
+        {
+          "source_path": "/data/code/ouyanghao/oyh/world-model-risk-planning/wheelhouse_sync.tar",
+          "bytes": 293221376,
+          "digest": "sha256:9e16d4afa8931ec4f0f5b9479e1ebfe5c423870193a4299797faa622718d37aa",
+          "url": "https://github.com/Pendragon08/conditional-human-motion-generation/releases/download/server-unused-cache-backup-20261023/wheelhouse_sync.tar",
+          "local_path": "D:\\具身智能\\world-model-risk-planning\\wheelhouse_sync.tar"
+        }
+      ],
+      "utc": "2026-10-23T03:51:39.939536+00:00"
+    },
+    "dataset_checkpoint_record_deletion_allowed": false,
+    "status": "BACKED_UP_UNUSED_FILES_REMOVED",
+    "disk_after": {
+      "total": 1967847137280,
+      "used": 1862195200000,
+      "free": 5615214592
+    }
+  },
+  "utc_after": "2026-10-23T03:52:17.780637+00:00",
+  "protected_existing_files": 42033,
+  "protected_paths_sha256": "a2f4f972691e0e29293458701c35dd54619bea33e22d620093f79415a328e002",
+  "protected_files_missing": [],
+  "health_after": [
+    {
+      "utc": "2026-10-23T03:52:06.388196+00:00",
+      "rank": 0,
+      "status": "TRAINING",
+      "loop_step": 11023,
+      "initial_optimizer_updates": 10041,
+      "optimizer_updates": 11024,
+      "resumed_updates": 983,
+      "optimizer_step_calls": 11024,
+      "validated_optimizer_updates": 11024,
+      "attempts_since_resume": 983,
+      "skipped_attempts": 0,
+      "consecutive_skips": 0,
+      "step_applied": true,
+      "step_validated": true,
+      "ema_validated": true,
+      "reason": "OPTIMIZER_STEP_APPLIED",
+      "grad_norm_pre_clip_fp64": 0.6404286305299087,
+      "grad_norm_post_clip_fp64": 0.6404286305299087,
+      "param_norm_fp64": 206.88688108693734,
+      "offending_parameters": [],
+      "elapsed_seconds": 18185.04888382554,
+      "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "full_training_completed": false
+    },
+    {
+      "utc": "2026-10-23T03:52:06.388215+00:00",
+      "rank": 1,
+      "status": "TRAINING",
+      "loop_step": 11023,
+      "initial_optimizer_updates": 10041,
+      "optimizer_updates": 11024,
+      "resumed_updates": 983,
+      "optimizer_step_calls": 11024,
+      "validated_optimizer_updates": 11024,
+      "attempts_since_resume": 983,
+      "skipped_attempts": 0,
+      "consecutive_skips": 0,
+      "step_applied": true,
+      "step_validated": true,
+      "ema_validated": true,
+      "reason": "OPTIMIZER_STEP_APPLIED",
+      "grad_norm_pre_clip_fp64": 0.6404286305299087,
+      "grad_norm_post_clip_fp64": 0.6404286305299087,
+      "param_norm_fp64": 206.88688108693734,
+      "offending_parameters": [],
+      "elapsed_seconds": 18185.048877419904,
+      "guard_sha256": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "full_training_completed": false
+    }
+  ]
+}

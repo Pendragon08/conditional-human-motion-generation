@@ -1,0 +1,153 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "reason_code": "bounded_data_preparation_consistency_only",
+  "reason_codes": [
+    "PROXY_TARGET_CLASSIFICATION_REQUIRED",
+    "PHYSICAL_TIMEBASE_AMBIGUOUS_13_OF_30",
+    "FULL_262_SEMANTIC_AUDIT_INCOMPLETE",
+    "MIRROR_ARTIFACT_AUDIT_INCOMPLETE",
+    "MANIFEST_CHECKER_UNDERCONSTRAINED",
+    "SUBJECT_OVERLAP_ACROSS_TRAIN_TEST",
+    "TEST_SCOPE_TWO_CANONICAL_RECORDINGS",
+    "RETARGET_HEIGHT_HEURISTIC_NOT_RECEIPTED",
+    "LOADER_CLAIM_OVERSTATED",
+    "IMMUTABLE_FAILURE_RECEIPT_MISSING",
+    "HISTORICAL_DOCUMENT_MUTATION_CLOSED_BY_FROZEN_R2"
+  ],
+  "summary": "The first SSM batch passes the frozen deterministic consistency command, but claims must remain bounded to data preparation because robot targets are algorithmic proxies, thirteen physical timebases are ambiguous, semantic audit coverage is incomplete, and the effective test scope is two recordings.",
+  "scope": "first_ssm_batch_only",
+  "trace_path": ".aris/traces/experiment-audit/2026-10-21_run01/",
+  "agent_id": "/root/humanml_ssm_integrity_audit/fresh_integrity_reviewer",
+  "verdict_id": "/root/humanml_ssm_integrity_audit/fresh_integrity_reviewer",
+  "executor_model": "codex",
+  "executor_family": "openai",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "generated_at": "2026-10-21T21:27:26.8099045+08:00",
+  "date": "2026-10-21",
+  "auditor": "gpt-5.6-sol-ultra",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "evaluation_classification": {
+    "type": "other:mixed_real_source_algorithmic_retarget_proxy",
+    "audit_type": "data_preparation_consistency",
+    "claim_ceiling": "Provenance, integrity, nominal HumanML alignment, recording-level split isolation, train-only normalization, and limited codec/FK consistency."
+  },
+  "frozen_document": {
+    "path": "docs/humanml_g1_processing_20261021.md",
+    "sha256_expected": "52bbcc956ee87eeccbea9abf1b7b48dfa1cf6230bdffe50d7a74cace4c5db093",
+    "sha256_before": "52bbcc956ee87eeccbea9abf1b7b48dfa1cf6230bdffe50d7a74cace4c5db093",
+    "sha256_after": "52bbcc956ee87eeccbea9abf1b7b48dfa1cf6230bdffe50d7a74cace4c5db093",
+    "unchanged_during_execution": true,
+    "historical_pre_run_sha256": "e74f899662a03162c641a633b275c0553a4f5d12b6ed7ffc69fc7045d286163c",
+    "historical_post_run_sha256": "d42ce8a23b1d1607106fb44abd5f26bae80161e0445b2b2b4fca2f1b0e904ee2",
+    "historical_mutation_closed_by_r2": true
+  },
+  "audit_execution": {
+    "output_absent_before": true,
+    "command_sha256_utf8_no_newline": "195e69578199e504361b9903ffab9fa40f0f402be81d784d15651006fead9935",
+    "started_utc": "2026-10-21T13:19:05.1173119Z",
+    "ended_utc": "2026-10-21T13:19:15.6717765Z",
+    "exit_code": 0,
+    "stdout_bytes": 843,
+    "stdout_sha256": "c280ae29ca419bd6b1c15a112ee78008695f6ec30465fe225c75a1574f55c6a8",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "receipt_path": "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass/humanml_pairing_20261021/ssm_dataset_audit_document_r2.json",
+    "receipt_bytes": 883,
+    "receipt_sha256": "b60eca940139cd79fe878612f47346b36c12a9a588d21a0a637dee150eb3109c",
+    "execution_divergence": false
+  },
+  "audited_input_hashes": {
+    "environment_ledger": "sha256:4dfcb5d66afd5c9ce353aedf37027685d8a410b17e840b534bb242e06c418f96",
+    "processing_document": "sha256:52bbcc956ee87eeccbea9abf1b7b48dfa1cf6230bdffe50d7a74cace4c5db093",
+    "claims_report": "sha256:9addfe1ec5f4d3b9a22760904bddec73e0b96b0b89b8dd2734ea0f089fd66d91",
+    "audit_source": "sha256:c18a0412893bf392da77da5722825ac645623f4797846cb586d384d3328c63e4",
+    "process_source": "sha256:73fa180339c3fd3f43ee13f7e6708170b183a793d52fe1894f078c13af89da6e",
+    "pairing_source": "sha256:4f6db72b641665eb82425d13a0e0e0b28339fc0bf2fcf6eab3edcb9706ccb158",
+    "codec_source": "sha256:e95cc8f8f782cc0577819e862328e814a4d8e8b17bea5bee0efa46b6a194606e",
+    "planning_source": "sha256:2e08917e2dead829efa8632a4b475067c5054f2e6277b3fe6cbc5bae7b131369",
+    "pairing_config": "sha256:7256ca9a084e783d83ff6765df4e22ad7a9b90f97dede47a00ec8f5b91691cc9",
+    "skeleton_config": "sha256:d2627ab9be14d9dd46fc483b754128e6c8f2515db5b1a274ba1b2b97d9aac6e7",
+    "source_archive": "sha256:f3746e0d6f44354ae08d075208d47f5b5564934667429d56c6f2d21fcd376929",
+    "public_provenance": "sha256:0ccba68da6bb7c663d2f2d73581fc3bc07a028968b71ed075125a8948ab49c8e",
+    "dataset_summary": "sha256:d1c5f4859255989c71784df4bd54eddf2abecd6d0ed41eaebcf5de5e5a918e9a",
+    "accepted": "sha256:ed0e76f98646bdd15d0934041d486bb57183cc59bb6ebbcfc7401d4f7b96793a",
+    "rejected": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "manifest_official": "sha256:2df00eab7f9a26f0e8494bf412f679886eaf831bbf2d887c8a4ead86dfc318c1",
+    "manifest_source_disjoint": "sha256:35aa58fe79b726322a7c3a12bf562cd820e35693bbdf0de389078753cdaad193",
+    "normalization_train_only": "sha256:b507e63a6981f15013f2b272a7bcf6a50ceeecbd6a234c209120ed9fd77c2793",
+    "payload_manifest": "sha256:15ff4c1ccc2285b6618f3845fddadba21fc39b9c105ce506748d80c10a6b10ad",
+    "d_drive_verification": "sha256:f5506e76e115291a4df40bc68060ca2a1f74b69552ead6e2a5d2539222bcce71",
+    "timebase_summary": "sha256:81e7353a36c93fbbe5414aa5f35c850b4b2f44b61240c6a707a100728c022662",
+    "local_batch_summary": "sha256:0c771ee52c88e501b4b20cac0a39ec10e68bb1aede809614e9d0098ebe0429db"
+  },
+  "checks": {
+    "gt_provenance": {
+      "status": "warn",
+      "details": "Real human-source and caption provenance is verified; G1 targets are algorithmic retargeting proxies, per-source height scaling is heuristic, and the documented audit does not rerun GMR."
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "No model-score normalization exists; selected channels are standardized from the verified 60-entry training bucket only."
+    },
+    "result_existence": {
+      "status": "warn",
+      "details": "All current first-batch files and hashes agree, but the checker overstates hash coverage and has no structured immutable failure receipt."
+    },
+    "dead_code": {
+      "status": "warn",
+      "details": "Core consistency checks are reached; full DataLoader construction, generation-time mirror/quality checks, and all-channel semantic recomputation are not reached."
+    },
+    "scope": {
+      "status": "warn",
+      "details": "Thirty recordings and 66 entries are present, but validation is empty and test evidence is two recordings with subject overlap."
+    },
+    "eval_type": "other:mixed_real_source_algorithmic_retarget_proxy"
+  },
+  "counts": {
+    "canonical_recordings": 30,
+    "canonical_motion_ids": 30,
+    "motion_ids_including_mirror": 60,
+    "sequence_entries": 66,
+    "sequence_frame_visits": 5904,
+    "unique_canonical_raw_frames": 2852,
+    "caption_lines": 182,
+    "train_entries": 60,
+    "validation_entries": 0,
+    "test_entries": 6,
+    "test_canonical_recordings": 2,
+    "test_unique_canonical_raw_frames": 87,
+    "subjects_or_sessions": 3,
+    "test_subjects_overlapping_train": 2
+  },
+  "must_fix": [
+    "Qualify or resolve the thirteen-source physical-timebase ambiguity.",
+    "Strengthen manifest verification against accepted.json and official split labels.",
+    "Audit all 262 channels semantically and threshold RIC redundancy.",
+    "Add artifact-level base/M anatomical mirror verification.",
+    "Receipt the retarget height heuristic and bind complete GMR solver provenance.",
+    "Correct the DataLoader claim to manifest loading and input validation.",
+    "Create atomic success and failure audit records with document, command, stream, source, and dataset hashes.",
+    "Report effective test, subject-overlap, unique-frame, and sequence-visit scope with downstream results.",
+    "Apply the report-specific wording, exact-value, companion-file, proxy, timebase, scope, and test-log corrections in EXPERIMENT_AUDIT.md."
+  ],
+  "claims": [
+    {"id": "C1", "claim": "official_source_and_caption_provenance", "impact": "supported"},
+    {"id": "C2", "claim": "counts_30_66_5904_182", "impact": "needs_qualifier", "qualifier": "5904 is sequence-frame visits including mirrors and repeated caption segments"},
+    {"id": "C3", "claim": "physical_20hz_for_all_sources", "impact": "unsupported"},
+    {"id": "C4", "claim": "recording_disjoint_split", "impact": "supported"},
+    {"id": "C5", "claim": "subject_disjoint_split", "impact": "unsupported"},
+    {"id": "C6", "claim": "train_only_normalization", "impact": "supported"},
+    {"id": "C7", "claim": "anatomical_mirroring_of_stored_artifacts", "impact": "needs_qualifier"},
+    {"id": "C8", "claim": "full_262_channel_semantic_equivalence", "impact": "needs_qualifier"},
+    {"id": "C9", "claim": "real_robot_ground_truth_or_tracking_performance", "impact": "unsupported"},
+    {"id": "C10", "claim": "generator_training_or_model_performance", "impact": "unsupported"},
+    {"id": "C11", "claim": "complete_humanml_or_phygile_reproduction", "impact": "unsupported"},
+    {"id": "C12", "claim": "final_frozen_document_execution_binding", "impact": "supported"}
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "status": "COMPLETED",
+  "purpose": "bounded engineering validation; not full reproduction",
+  "stages": [
+    {
+      "name": "prepare",
+      "command": [
+        "python3",
+        "scripts/prepare_guarded_upstream.py",
+        "--destination",
+        "cache/guarded_upstream"
+      ],
+      "status": "COMPLETED",
+      "exit_code": 0
+    },
+    {
+      "name": "regression",
+      "command": [
+        "bash",
+        "scripts/run_isaac.sh",
+        "reimplementation/test_prefix_and_curriculum.py",
+        "--output",
+        "results/prefix_integrity/document_run/regression/verification.json"
+      ],
+      "status": "COMPLETED",
+      "exit_code": 0
+    },
+    {
+      "name": "one_ppo",
+      "command": [
+        "bash",
+        "scripts/run_isaac.sh",
+        "scripts/guarded_bootstrap.py",
+        "--task",
+        "Tracking-Flat-G1-Wo-State-Estimation-v0",
+        "--headless",
+        "--device",
+        "cuda:0",
+        "--num_envs",
+        "32",
+        "--seed",
+        "42",
+        "--max_iterations",
+        "1",
+        "--run_name",
+        "prefix_guard_diagnostic",
+        "--logger",
+        "tensorboard",
+        "--g1_training_cfg",
+        "configs/moe_pilot.yaml",
+        "--motion_file",
+        "data/train/sample_000_actor0.npz",
+        "--no_wandb_model_upload"
+      ],
+      "status": "COMPLETED",
+      "exit_code": 0
+    },
+    {
+      "name": "feedback_capture",
+      "command": [
+        "bash",
+        "scripts/run_isaac.sh",
+        "scripts/evaluate_prefix_feedback.py",
+        "--checkpoint",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/logs/rsl_rl/phygile_moe_pilot/2026-10-17_11-25-01_extended2000_seed42/model_1999.pt",
+        "--motion_file",
+        "data/train/sample_000_actor0.npz",
+        "--output",
+        "results/prefix_integrity/document_run/capture",
+        "--num_envs",
+        "32",
+        "--seed",
+        "2026",
+        "--headless",
+        "--device",
+        "cuda:0"
+      ],
+      "status": "COMPLETED",
+      "exit_code": 0
+    },
+    {
+      "name": "feedback_gate",
+      "command": [
+        "bash",
+        "scripts/run_isaac.sh",
+        "scripts/diagnose_prefix_feedback.py",
+        "--capture",
+        "results/prefix_integrity/document_run/capture",
+        "--output",
+        "results/prefix_integrity/document_run/feedback_gate/verification.json"
+      ],
+      "status": "COMPLETED",
+      "exit_code": 0
+    }
+  ],
+  "started_unix": 1792242797.4637046,
+  "finished_unix": 1792242841.3680985
+}
