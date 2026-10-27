@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 90,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "95902af108396115193c5845fa47151bfa8517460ff9d7c9cd5afd01a9f1e966",
+  "client_pid": 62704,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "[{\"pid\": 226444, \"exists\": false}, {\"pid\": 2310665, \"uid\": 1013, \"name\": \"(sd-pam)\", \"executable_basename\": \"(sd-pam)\", \"mentions_installer\": false}, {\"pid\": 3018937, \"uid\": 1013, \"name\": \"ssh-agent\", \"executable_basename\": \"ssh-agent\", \"mentions_installer\": false}, {\"pid\": 3018942, \"uid\": 1013, \"name\": \"gpg-agent\", \"executable_basename\": \"gpg-agent\", \"mentions_installer\": false}, {\"pid\": 3025131, \"uid\": 1013, \"name\": \"gnome-keyring-d\", \"executable_basename\": \"gnome-keyring-daemon\", \"mentions_installer\": false}]\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\storage_user_cleanup_20261028\\source_fd_limit_classification_client.stdout.txt",
+    "stderr": "work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\storage_user_cleanup_20261028\\source_fd_limit_classification_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}
