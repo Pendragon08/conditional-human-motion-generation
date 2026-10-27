@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 75,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "3b1bd4d0cbe6e4348599c23f3f602509733db583b028686eb34ed3c2763eefeb",
+  "client_pid": 52088,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"status\": \"STABLE_FILTERED15000_CHECKPOINT_BYTES_VERIFIED\", \"run\": \"filtered15000_vae200k_train_v1\", \"manager_step\": 50000, \"source\": {\"path\": \"/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/vae_state_50000.pth\", \"bytes\": 513526701, \"sha256\": \"a2f9e9611c83d69ff5cd27ff842fc4db5cbe538c42f0ef08eab742a6e7287321\", \"manager_step\": 50000, \"actual_optimizer_updates\": 50000}, \"source_fingerprint\": {\"device\": 66306, \"inode\": 28451493, \"bytes\": 513526701, \"mtime_ns\": 1793141358717066161, \"ctime_ns\": 1793141358937072889, \"owner_uid\": 1013, \"nlink\": 1, \"mode\": 436}, \"source_sha256\": \"a2f9e9611c83d69ff5cd27ff842fc4db5cbe538c42f0ef08eab742a6e7287321\", \"spec_sha256\": \"b7eb6e95b082fd3902099ea718ec07bd42b3418c49c179f88f5438e5c5d2c6fa\", \"runtime_binding_sha256\": \"87a2f61683d930bf5fe69a9113713c90137c43318766627975c6d11accc20c1c\", \"producer_receipt_sha256\": \"a6caaf46145eee8dbc80fd2c95befbbd1702b52c2254bc2c45b5fbccfffdac47\", \"producer_observed_primitive_attempts\": 51000, \"producer_exact_reload_reported\": {\"model_restored_exactly\": true, \"optimizer_restored_exactly\": true, \"ema_restored_exactly\": true, \"rng_and_generator_restored_exactly\": true, \"clock_restored_exactly\": true, \"pending_evaluation_fields_restored\": true, \"checkpoint_boundary\": \"completed_four_primitive_batch; no cached batch/history\"}, \"checkpoint_payload_deserialized\": false, \"new_model_loads\": 0, \"new_gpu_contexts\": 0, \"new_sdk_tasks\": 0, \"signals_sent\": false, \"source_modified\": false, \"observed_unix\": 1793141750.676548, \"source_hash_seconds\": 1.000894596800208}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\filtered15000_vae_checkpoint_backups_20261028\\step_50000\\source_before_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\filtered15000_vae_checkpoint_backups_20261028\\step_50000\\source_before_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

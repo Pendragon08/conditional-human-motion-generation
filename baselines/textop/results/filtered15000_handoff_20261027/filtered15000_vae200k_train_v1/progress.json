@@ -1,15 +1,15 @@
 {
   "kind": "vae",
   "run": "filtered15000_vae200k_train_v1",
-  "observed_unix": 1793138234.5656598,
+  "observed_unix": 1793141589.136236,
   "files": {
     "receipt": {
       "status": "RUNNING_FILTERED15000_VAE_TRAINING",
       "mode": "train",
       "quality_label": "DIRECT_STRICT15000_FILTERED_PAPER_SCHEDULE",
       "full_paper_training": false,
-      "optimizer_updates": 41400,
-      "completed_primitive_attempts": 41400,
+      "optimizer_updates": 50600,
+      "completed_primitive_attempts": 50600,
       "skipped_updates": 0,
       "output_writers_closed": false,
       "source_sha256": "7ca7f4d9dd36ca5bfa1e07261d5ccaf1e652e7c989e8d71f62d5751de70df7a0",
@@ -18,7 +18,7 @@
       "data_acceptance_sha256": "0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c",
       "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
       "runtime_binding_sha256": "87a2f61683d930bf5fe69a9113713c90137c43318766627975c6d11accc20c1c",
-      "elapsed_seconds": 15198.263795960695,
+      "elapsed_seconds": 18573.350473815575,
       "initial_storage_check": {
         "destination": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints",
         "filesystem": "ext4",
@@ -50,38 +50,38 @@
       },
       "last_train_batch": [
         {
-          "manager_step": 41397,
-          "loss": 0.008201051503419876,
-          "reconstruction_huber": 0.007832678966224194,
+          "manager_step": 50597,
+          "loss": 0.005461148452013731,
+          "reconstruction_huber": 0.005097994580864906,
           "gradients_finite": true,
-          "actual_optimizer_updates": 41397,
+          "actual_optimizer_updates": 50597,
           "skipped_updates": 0,
           "is_evaluation": false
         },
         {
-          "manager_step": 41398,
-          "loss": 0.006993209943175316,
-          "reconstruction_huber": 0.006625935900956392,
+          "manager_step": 50598,
+          "loss": 0.00567128648981452,
+          "reconstruction_huber": 0.005306724924594164,
           "gradients_finite": true,
-          "actual_optimizer_updates": 41398,
+          "actual_optimizer_updates": 50598,
           "skipped_updates": 0,
           "is_evaluation": false
         },
         {
-          "manager_step": 41399,
-          "loss": 0.007996277883648872,
-          "reconstruction_huber": 0.007627412211149931,
+          "manager_step": 50599,
+          "loss": 0.0058209700509905815,
+          "reconstruction_huber": 0.005455480422824621,
           "gradients_finite": true,
-          "actual_optimizer_updates": 41399,
+          "actual_optimizer_updates": 50599,
           "skipped_updates": 0,
           "is_evaluation": false
         },
         {
-          "manager_step": 41400,
-          "loss": 0.009304076433181763,
-          "reconstruction_huber": 0.008931318297982216,
+          "manager_step": 50600,
+          "loss": 0.005541801452636719,
+          "reconstruction_huber": 0.005177336744964123,
           "gradients_finite": true,
-          "actual_optimizer_updates": 41400,
+          "actual_optimizer_updates": 50600,
           "skipped_updates": 0,
           "is_evaluation": false
         }
@@ -90,13 +90,31 @@
         "destination": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints",
         "filesystem": "ext4",
         "owner_uid": 1013,
-        "free_bytes": 5571670016,
-        "required_bytes": 5452595200,
-        "remaining_saves": 5,
+        "free_bytes": 5057941504,
+        "required_bytes": 4898947072,
+        "remaining_saves": 4,
         "checkpoint_upper_bound_bytes": 553648128,
         "reserve_bytes": 2147483648,
         "log_allowance_bytes": 536870912,
         "persistent_owned_writable": true
+      },
+      "checkpoints": [
+        {
+          "path": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/vae_state_50000.pth",
+          "bytes": 513526701,
+          "sha256": "a2f9e9611c83d69ff5cd27ff842fc4db5cbe538c42f0ef08eab742a6e7287321",
+          "manager_step": 50000,
+          "actual_optimizer_updates": 50000
+        }
+      ],
+      "latest_file_resume_verification": {
+        "model_restored_exactly": true,
+        "optimizer_restored_exactly": true,
+        "ema_restored_exactly": true,
+        "rng_and_generator_restored_exactly": true,
+        "clock_restored_exactly": true,
+        "pending_evaluation_fields_restored": true,
+        "checkpoint_boundary": "completed_four_primitive_batch; no cached batch/history"
       }
     },
     "driver": {
@@ -116,7 +134,7 @@
     }
   },
   "sha256": {
-    "receipt": "1c2c0e3658fa021d3630e2fcc78819db63321750a8319a9d9ef1850db72a5521",
+    "receipt": "f471aa5751a1339206004d55cabd3dee7a47a0228813eb0c7afb0131bb02f570",
     "driver": "e1db97e53fbedfd277ef9ab6ca680e3f6be241654dd082008336b52322d8020c"
   },
   "workers": [
@@ -152,7 +170,7 @@
   "closed_execution_verified": false,
   "arrays_read": 0,
   "model_loads": 0,
-  ".log_tail": "\": 38000, \"updates\": 38000, \"skips\": 0, \"loss\": 0.007896900177001953}\n{\"step\": 38100, \"updates\": 38100, \"skips\": 0, \"loss\": 0.0074984547682106495}\n{\"step\": 38200, \"updates\": 38200, \"skips\": 0, \"loss\": 0.006101861130446196}\n{\"step\": 38300, \"updates\": 38300, \"skips\": 0, \"loss\": 0.0067543270997703075}\n{\"step\": 38400, \"updates\": 38400, \"skips\": 0, \"loss\": 0.007276843301951885}\n{\"step\": 38500, \"updates\": 38500, \"skips\": 0, \"loss\": 0.007591863162815571}\n{\"step\": 38600, \"updates\": 38600, \"skips\": 0, \"loss\": 0.006419920828193426}\n{\"step\": 38700, \"updates\": 38700, \"skips\": 0, \"loss\": 0.0070354570634663105}\n{\"step\": 38800, \"updates\": 38800, \"skips\": 0, \"loss\": 0.007291140966117382}\n{\"step\": 38900, \"updates\": 38900, \"skips\": 0, \"loss\": 0.007685703691095114}\n{\"step\": 39000, \"updates\": 39000, \"skips\": 0, \"loss\": 0.005965679883956909}\n{\"step\": 39100, \"updates\": 39100, \"skips\": 0, \"loss\": 0.007470680400729179}\n{\"step\": 39200, \"updates\": 39200, \"skips\": 0, \"loss\": 0.007251695264130831}\n{\"step\": 39300, \"updates\": 39300, \"skips\": 0, \"loss\": 0.007642789278179407}\n{\"step\": 39400, \"updates\": 39400, \"skips\": 0, \"loss\": 0.0064362515695393085}\n{\"step\": 39500, \"updates\": 39500, \"skips\": 0, \"loss\": 0.006719373166561127}\n{\"step\": 39600, \"updates\": 39600, \"skips\": 0, \"loss\": 0.006589961238205433}\n{\"step\": 39700, \"updates\": 39700, \"skips\": 0, \"loss\": 0.007622230798006058}\n{\"step\": 39800, \"updates\": 39800, \"skips\": 0, \"loss\": 0.005941731855273247}\n{\"step\": 39900, \"updates\": 39900, \"skips\": 0, \"loss\": 0.007250210270285606}\nEval finished at step 40000 with loss * 10: {'rec': tensor(0.0630), 'kl': tensor(38.1841), 'body_trans': tensor(0.0001), 'body_rot': tensor(0.0003), 'dof_pos': tensor(0.0009), 'dof_vel': tensor(0.7892), 'foot_contact': tensor(0.0002), 'total': tensor(0.0668)}\nEval extras * 10: {'drift_xy': tensor(4.7945e-05), 'drift_yaw': tensor(0.0003)}\n{\"step\": 40000, \"updates\": 40000, \"skips\": 0, \"loss\": 0.00670367106795311}\n{\"step\": 40100, \"updates\": 40100, \"skips\": 0, \"loss\": 0.006943556480109692}\n{\"step\": 40200, \"updates\": 40200, \"skips\": 0, \"loss\": 0.006265881005674601}\n{\"step\": 40300, \"updates\": 40300, \"skips\": 0, \"loss\": 0.005783522501587868}\n{\"step\": 40400, \"updates\": 40400, \"skips\": 0, \"loss\": 0.007107295095920563}\n{\"step\": 40500, \"updates\": 40500, \"skips\": 0, \"loss\": 0.0065655577927827835}\n{\"step\": 40600, \"updates\": 40600, \"skips\": 0, \"loss\": 0.006930245086550713}\n{\"step\": 40700, \"updates\": 40700, \"skips\": 0, \"loss\": 0.0067483107559382915}\n{\"step\": 40800, \"updates\": 40800, \"skips\": 0, \"loss\": 0.007110211532562971}\n{\"step\": 40900, \"updates\": 40900, \"skips\": 0, \"loss\": 0.006630132906138897}\n{\"step\": 41000, \"updates\": 41000, \"skips\": 0, \"loss\": 0.007023857440799475}\n{\"step\": 41100, \"updates\": 41100, \"skips\": 0, \"loss\": 0.005725680384784937}\n{\"step\": 41200, \"updates\": 41200, \"skips\": 0, \"loss\": 0.0063874488696455956}\n{\"step\": 41300, \"updates\": 41300, \"skips\": 0, \"loss\": 0.007676385808736086}\n{\"step\": 41400, \"updates\": 41400, \"skips\": 0, \"loss\": 0.009304076433181763}\n",
+  ".log_tail": "\": 0, \"loss\": 0.005660768132656813}\n{\"step\": 47700, \"updates\": 47700, \"skips\": 0, \"loss\": 0.006037237122654915}\n{\"step\": 47800, \"updates\": 47800, \"skips\": 0, \"loss\": 0.004789568483829498}\n{\"step\": 47900, \"updates\": 47900, \"skips\": 0, \"loss\": 0.005815833806991577}\nEval finished at step 48000 with loss * 10: {'rec': tensor(0.0447), 'kl': tensor(37.8161), 'body_trans': tensor(7.8594e-05), 'body_rot': tensor(0.0002), 'dof_pos': tensor(0.0008), 'dof_vel': tensor(0.6449), 'foot_contact': tensor(0.0001), 'total': tensor(0.0485)}\nEval extras * 10: {'drift_xy': tensor(2.6739e-05), 'drift_yaw': tensor(0.0001)}\n{\"step\": 48000, \"updates\": 48000, \"skips\": 0, \"loss\": 0.005599756259471178}\n{\"step\": 48100, \"updates\": 48100, \"skips\": 0, \"loss\": 0.0062811048701405525}\n{\"step\": 48200, \"updates\": 48200, \"skips\": 0, \"loss\": 0.0057878945954144}\n{\"step\": 48300, \"updates\": 48300, \"skips\": 0, \"loss\": 0.006336584687232971}\n{\"step\": 48400, \"updates\": 48400, \"skips\": 0, \"loss\": 0.006220315117388964}\n{\"step\": 48500, \"updates\": 48500, \"skips\": 0, \"loss\": 0.006521419622004032}\n{\"step\": 48600, \"updates\": 48600, \"skips\": 0, \"loss\": 0.005749726668000221}\n{\"step\": 48700, \"updates\": 48700, \"skips\": 0, \"loss\": 0.0061951600946486}\n{\"step\": 48800, \"updates\": 48800, \"skips\": 0, \"loss\": 0.005816885735839605}\n{\"step\": 48900, \"updates\": 48900, \"skips\": 0, \"loss\": 0.005661253351718187}\n{\"step\": 49000, \"updates\": 49000, \"skips\": 0, \"loss\": 0.0056349001824855804}\n{\"step\": 49100, \"updates\": 49100, \"skips\": 0, \"loss\": 0.005804257933050394}\n{\"step\": 49200, \"updates\": 49200, \"skips\": 0, \"loss\": 0.00593114597722888}\n{\"step\": 49300, \"updates\": 49300, \"skips\": 0, \"loss\": 0.00607521366328001}\n{\"step\": 49400, \"updates\": 49400, \"skips\": 0, \"loss\": 0.005948052275925875}\n{\"step\": 49500, \"updates\": 49500, \"skips\": 0, \"loss\": 0.005568895023316145}\n{\"step\": 49600, \"updates\": 49600, \"skips\": 0, \"loss\": 0.005020321346819401}\n{\"step\": 49700, \"updates\": 49700, \"skips\": 0, \"loss\": 0.005386521574109793}\n{\"step\": 49800, \"updates\": 49800, \"skips\": 0, \"loss\": 0.006259209010750055}\n{\"step\": 49900, \"updates\": 49900, \"skips\": 0, \"loss\": 0.005517958197742701}\nEval finished at step 50000 with loss * 10: {'rec': tensor(0.0437), 'kl': tensor(38.0596), 'body_trans': tensor(8.1958e-05), 'body_rot': tensor(0.0002), 'dof_pos': tensor(0.0007), 'dof_vel': tensor(0.6018), 'foot_contact': tensor(0.0001), 'total': tensor(0.0475)}\nEval extras * 10: {'drift_xy': tensor(2.5209e-05), 'drift_yaw': tensor(0.0002)}\n{\"step\": 50000, \"updates\": 50000, \"skips\": 0, \"loss\": 0.005747159011662006}\n{\"step\": 50100, \"updates\": 50100, \"skips\": 0, \"loss\": 0.006732345558702946}\n{\"step\": 50200, \"updates\": 50200, \"skips\": 0, \"loss\": 0.006345975678414106}\n{\"step\": 50300, \"updates\": 50300, \"skips\": 0, \"loss\": 0.005733679048717022}\n{\"step\": 50400, \"updates\": 50400, \"skips\": 0, \"loss\": 0.005705325398594141}\n{\"step\": 50500, \"updates\": 50500, \"skips\": 0, \"loss\": 0.005017448682337999}\n{\"step\": 50600, \"updates\": 50600, \"skips\": 0, \"loss\": 0.005541801452636719}\n",
   "_outer.log_tail": "",
   "common_lock_free": false
 }

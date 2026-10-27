@@ -1,7 +1,7 @@
 # CURRENT: fresh filtered VAE200k is formally running
 
 <!--remote-observation-current-start-->
-最新远程观测已恢复（2026-10-28T05:57:14.565660+08:00）：原run filtered15000_vae200k_train_v1实际41400尝试/41400Adam/0skip，原supervisor/worker的argv及startticks一致，尚无exit，共同GPU锁仍由此VAE占用。41.4k是实际进度，不是保存检查点；首个完整状态节点50k尚未到达。之前SSH超时和最后20.5k记录保留在access_status_before_recovery_20261028_0557.json及原客户端证据；期间运行连续性不据外推作保证。未更改网络、训练源码/spec，未重启、恢复、发信号或新增GPU/SDK。服务器是否在线的旧询问已不再阻塞观测与自动接续。
+最新实际采样（2026-10-28T06:53:09.136236+08:00）：唯一原run filtered15000_vae200k_train_v1已50600尝试/50600Adam/0skip，原supervisor/worker身份一致，RUNNING、无exit，共同锁仍被VAE持有。首个真实50000完整状态已稳定保存，513526701字节/SHA a2f9e9611c83d69ff5cd27ff842fc4db5cbe538c42f0ef08eab742a6e7287321，生产进程报告精确model/Adam/all RNG/clock/pending-eval重载通过后继续训练；新工具只读绑定来源并核验前后稳定inode/字节/SHA，D私有完整状态复制已真实exit0及字节/SHA/所有权验证，D仍保留2GiB。此次复制没有独立加载张量或新梯度验收，也没有新GPU/SDK、重启或停机信号。旧远程失败与恢复证据完整保留。
 <!--remote-observation-current-end-->
 
 
