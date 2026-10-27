@@ -1,0 +1,26 @@
+{
+  "command": [
+    "git",
+    "-C",
+    "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation",
+    "show",
+    "2ea1c63b096253a6f29899f3f8aa592dc9894d7d:baselines/textop/provider_tools/probe_idle_installer_20261028.py"
+  ],
+  "timeout_seconds": 30,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "client_pid": 72676,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "\"\"\"Read-only installer proof; distinguish OS credential daemons from trainers.\"\"\"\nimport json,pathlib\nfrom backup_filter_recovery_checkpoint import recorded_remote\nB=pathlib.Path(__file__).resolve().parents[1];E=B/'results/storage_user_cleanup_20261028'\nCODE=r'''\nimport hashlib,json,os,pathlib,stat,time,shutil\nassert os.getuid()==1013\nos.sched_setaffinity(0,{0,1,2,3})\np=pathlib.Path('/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/downloads/IsaacGym_Preview_4.tar.gz')\nassert p.resolve()==p and p.stat().st_uid==1013 and p.stat().st_size==201141673 and p.stat().st_nlink==1\nfor q in [p,p.parent,p.parent.parent,p.parent.parent.parent]:assert not q.is_symlink() and q.stat().st_uid==1013\nfinger=lambda s:dict(inode=s.st_ino,device=s.st_dev,bytes=s.st_size,mtime_ns=s.st_mtime_ns,ctime_ns=s.st_ctime_ns,owner_uid=s.st_uid)\nbefore=finger(p.stat());h=hashlib.sha256()\nwith p.open('rb') as f:\n for b in iter(lambda:f.read(8*1024**2),b''):h.update(b)\nassert finger(p.stat())==before\nreferences=[];daemon_limits=[];readable=[]\nfor proc in pathlib.Path('/proc').iterdir():\n if not proc.name.isdigit():continue\n try:\n  if proc.stat().st_uid!=1013:continue\n  cmd=(proc/'cmdline').read_bytes();assert str(p).encode() not in cmd,'An installer command is active'\n  try:fds=list((proc/'fd').iterdir())\n  except PermissionError:\n   name=(proc/'comm').read_text().strip()\n   assert name in ['(sd-pam)','ssh-agent','gpg-agent','gnome-keyring-d','sshd'],(proc.name,name)\n   daemon_limits.append(dict(pid=int(proc.name),name=name,fd_access=False));continue\n  readable.append(int(proc.name))\n  for fd in fds:\n   try:\n    if os.readlink(fd)==str(p):references.append(dict(pid=int(proc.name),fd=fd.name))\n   except (FileNotFoundError,ProcessLookupError):pass\n except (FileNotFoundError,ProcessLookupError):pass\nassert not references and 165381 in readable and 165374 in readable\nr=pathlib.Path('/data/code/ouyanghao/oyh/textop-reproduction-20261024')\nassert hashlib.sha256((r/'configs/filtered15000-vae-spec.json').read_bytes()).hexdigest()=='b7eb6e95b082fd3902099ea718ec07bd42b3418c49c179f88f5438e5c5d2c6fa'\nfor pid,start in [(165374,'1432055921'),(165381,'1432055933')]:\n proc=pathlib.Path('/proc')/str(pid);fields=(proc/'stat').read_text().split(') ',1)[1].split();assert fields[19]==start\n assert b'filtered15000_vae200k_train_v1' in (proc/'cmdline').read_bytes()\nsdk=pathlib.Path('/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacgym');assert sdk.is_dir()\nprint(json.dumps(dict(status='IDLE_SDK_INSTALLER_SOURCE_VERIFIED',path=str(p),source_fingerprint=before,sha256=h.hexdigest(),\n readable_owned_processes_count=len(readable),installer_references=references,non_training_daemon_fd_limitations=daemon_limits,\n all_trainer_fds_readable=True,global_fd_visibility_complete=not bool(daemon_limits),extracted_sdk_directory_retained=str(sdk),\n source_file_deleted=False,training_source_modified=False,new_gpu_contexts=0,new_model_loads=0,observed_unix=time.time(),data_free_bytes=shutil.disk_usage(p).free)))\n'''\nif __name__=='__main__':\n j=json.loads(recorded_remote(CODE,E/'server_installer_verify_v2_client.json',timeout=90))\n with (E/'server_installer_source_verified.json').open('x',encoding='utf-8') as f:json.dump(j,f,indent=2)\n print(json.dumps(j))\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\storage_user_cleanup_20261028\\server_v1_git_probe_idle_installer_20261028.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\storage_user_cleanup_20261028\\server_v1_git_probe_idle_installer_20261028.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

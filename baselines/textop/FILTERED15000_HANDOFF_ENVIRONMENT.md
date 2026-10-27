@@ -1,7 +1,7 @@
 # CURRENT: fresh filtered VAE200k is formally running
 
 <!--remote-observation-current-start-->
-最新实际采样（2026-10-28T06:53:09.136236+08:00）：唯一原run filtered15000_vae200k_train_v1已50600尝试/50600Adam/0skip，原supervisor/worker身份一致，RUNNING、无exit，共同锁仍被VAE持有。首个真实50000完整状态已稳定保存，513526701字节/SHA a2f9e9611c83d69ff5cd27ff842fc4db5cbe538c42f0ef08eab742a6e7287321，生产进程报告精确model/Adam/all RNG/clock/pending-eval重载通过后继续训练；新工具只读绑定来源并核验前后稳定inode/字节/SHA，D私有完整状态复制已真实exit0及字节/SHA/所有权验证，D仍保留2GiB。此次复制没有独立加载张量或新梯度验收，也没有新GPU/SDK、重启或停机信号。旧远程失败与恢复证据完整保留。
+用户已授权“你帮我清理”，新指定清理已完成并真实退出0：只删除D盘四个与保留完整包逐字节相同的运输分片，回收1925545992字节；闲置IsaacGym安装包201141673字节先私有备份D并核SHA/完整gzip CRC后从server移除，其已解压SDK不变。D净增约1.61GiB，data回收约191.8MiB；复查data空闲4377014272B（导出+LDM预算4320133120B），D空闲3933577216B（余三份VAE预算3808428032B），当前均通过。此为实际样本而非预留，200k后仍要最终容量/退出/质量/导出/作者fresh验收。原先额外空间问题已由本次清理解决，无需等待用户提供目录或重复催问。数据、所有checkpoint、完整归档及失败保留；0新GPU/SDK/停机信号。2026-10-28T07:29:58.871419+08:00原VAE实核56600尝试/56600Adam/0skip，原worker身份和锁占用一致。50k完整状态及其D私有备份继续保留，不重复复制。
 <!--remote-observation-current-end-->
 
 

@@ -13,6 +13,7 @@ names+=['sources/filtered15000_handoff_maintenance_20261027/'+pathlib.Path(__fil
 names+=['results/storage_user_cleanup_20261028/'+x.name for x in S.glob('*.json')]
 names+=['reports/user_authorized_storage_cleanup_20261028.md']
 if a.phase=='post':
+ names+=['sources/filtered15000_handoff_maintenance_20261027/finalize_user_cleanup_20261028.py','sources/filtered15000_handoff_maintenance_20261027/check_cleanup_capacity_20261028.py']
  names+=['CONTINUATION.md','README.md','FILTERED15000_HANDOFF_ENVIRONMENT.md','results/teacher15000_direct_strict_20261027/current.json','reports/teacher15000_direct_strict_20261027.md','reports/filter_first_restored_20261027.md','configs/teacher15000-direct-strict-priority-20261027.json']
  P='results/filtered15000_handoff_20261027/filtered15000_vae200k_train_v1/'
  names+=[P+'progress.json',P+'user_cleanup_post_20261028.json',P+'user_cleanup_post_20261028_client.json',P+'user_cleanup_post_20261028_client_intent.json']
