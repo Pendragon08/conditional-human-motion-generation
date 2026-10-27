@@ -1,3 +1,9 @@
+## Current — 10,000轮真实筛选对照已完成（2026-10-27）
+
+同一64条动作：5k策略42自然完成/22失败，10k策略46自然完成/18失败；5条改善、1条回退、41条共同完成。共同41条末帧位置与关节误差均值下降，朝向误差均值略升。完整记录与10k检查点已私有备份，原训练受控暂停。
+
+下一步优先扩大10k诊断覆盖，实测已冻结的44条wave+right词形候选（27train/17val），再依据质量决定更多teacher训练。该词形候选尚未物理验收，动作语义和全库筛选仍未通过。见[真实对照报告](reports/teacher10000_actual_20261027.md)及[最新接续](CONTINUATION.md)。原40k/VAE200k/LDM300k与最终WBC/增强/在线质量仍是后续完整复现目标。
+
 ## Latest user direction: evaluate at10k and improve semantics
 
 User2026-10-26 requests physical filtering assessment at10,000 teacher rounds

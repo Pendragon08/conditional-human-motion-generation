@@ -1,3 +1,24 @@
+## Current 2026-10-27: 10k paired physical evaluation and warm CPU analysis
+
+Resumed teacher is user-paused after verified10kbackup/handoff; original final
+receipt11400/outer1 is retained, notanactiveworker or40kcompletion. See current
+CONTINUATION and TEACHER10000_PILOT_ENVIRONMENT.md. Same b7a3bf0c trackerSDK,
+no environment rebuild/packagechanges; new10k schema onlychangesprovenance.
+Author/freshsmoke both8/8actual; fixed64actual46natural18fail closedexit0.
+AllSDK/backupworkersended; use actual lock/resource checks for nextjob.
+
+The paired64_v1 comparison has a separate documented CPU invocation in
+TEACHER10000_COMPARISON_ENVIRONMENT.md, existing ROOT/env/bin/python+NumPy,
+CUDAhidden/CPU0-3/singleBLASthread/noTorch. No environment or dependencies changed.
+Spec10bf2854df741534a1c31b63fb54f33068b6e14dff00bdbd513b20bba694024d binds
+existing endpointkernel; authoractualexit0. Freshdoc recomputation actualexit0
+matchesall64 and remote summaryec1b4c9ae8767351208f97d87a07135918450b262d50a018a5581c8cdba64924.
+It recomputesnew10kendpoints and reusesSHA-bound independentlyaudited5kmetrics,
+notnewphysics. Originalexecution/source/specbytesnevermodified. Thisledgerentry
+was addedafterfreshreview notedmissingcomparison-specific pointer; runtimeand
+verbatim documentedinvocation unchanged. Countcomparison42->46 is notfullcorpus
+orsemanticacceptance; mixedendpointquality remains. No need rerunwitnessforpointer.
+
 ## Current online and full continuation runtime (2026-10-26)
 Read QUICK_ONLINE_ENVIRONMENT.md and FULL_TEACHER_RESUME_ENVIRONMENT.md first.
 Onlinev11+freshdoc real257timedcalls each passed0deadline/underflow/physicalfailure.

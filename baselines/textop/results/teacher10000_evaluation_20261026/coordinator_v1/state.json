@@ -1,28 +1,43 @@
 {
-  "status": "WAITING_VERIFIED_10000_CHECKPOINT",
+  "status": "USER_AUTHORIZED_TEACHER10000_EVALUATION_HANDOFF",
   "pid": 63636,
   "evaluation_checkpoint": 10000,
   "signals_sent_by_coordinator": 0,
   "sdk_dispatches": 0,
-  "sample_unix": 1793032041.5238473,
+  "sample_unix": 1793066251.5378063,
   "observation": {
-    "status": "WAITING_VERIFIED_10000_CHECKPOINT",
+    "status": "TEACHER10000_CHECKPOINT_READY",
     "run": "filter_policy_paper69_resume5000_to40000_20261026_v1",
     "evaluation_checkpoint": 10000,
-    "observed_completed": 5900,
-    "optimizer_updates": 118000,
-    "target_checkpoint_ready": false,
-    "checkpoint": null,
+    "observed_completed": 11400,
+    "optimizer_updates": 228000,
+    "target_checkpoint_ready": true,
+    "checkpoint": {
+      "name": "completed_10000.pt",
+      "bytes": 90799682,
+      "sha256": "6f949e4edc50d9a763a3634d716162cb5ddecb079bd1142d3720f907f5efab45",
+      "completed_learning_iterations": 10000,
+      "actual_optimizer_updates": 200000
+    },
     "gate": {
-      "ready": false,
-      "status": "PENDING_NO_NEW_CHECKPOINT",
-      "observed_completed": 5900,
+      "ready": true,
+      "status": "RESUMED_CHECKPOINT_READY_FOR_CPU_AUDIT",
+      "observed_completed": 11400,
+      "metadata": {
+        "name": "completed_10000.pt",
+        "bytes": 90799682,
+        "sha256": "6f949e4edc50d9a763a3634d716162cb5ddecb079bd1142d3720f907f5efab45",
+        "completed_learning_iterations": 10000,
+        "actual_optimizer_updates": 200000
+      },
       "run": "filter_policy_paper69_resume5000_to40000_20261026_v1",
       "requested_completed": 10000,
-      "training_receipt_sha256": "578b28203c32e672bad320d70a2cf14d6151a893d265fd8c4895de2cd645e958",
+      "training_receipt_sha256": "2fd2bed185a1f7f126b55ddc3d21f6fdb3e8a80287062aee4640f48fbd059fd2",
       "sdk_dispatches": 0,
       "checkpoint_loads": 0,
-      "export_files_created": 0
+      "export_files_created": 0,
+      "checkpoint": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume5000_to40000_20261026_v1/completed_10000.pt",
+      "file_age_seconds": 8834.622987985611
     },
     "trainer_pid": 4104159,
     "trainer_start_ticks": 1422364669,
@@ -31,6 +46,149 @@
     "signals_sent": [],
     "sdk_runs": 0,
     "control_spec_sha256": "931812877f098add85b86141cb99eb7763d8d80193f904d9ff4d654528690af6",
-    "sample_unix": 1793032041.9308252
+    "sample_unix": 1793066157.0797887
+  },
+  "backup": {
+    "sha256": "3a5a70321b8189fce7fa10dc6259d40e9160c0ce3a8fc57003d4f5b9402924b2"
+  },
+  "handoff": {
+    "status": "USER_AUTHORIZED_TEACHER10000_EVALUATION_HANDOFF",
+    "run": "filter_policy_paper69_resume5000_to40000_20261026_v1",
+    "evaluation_checkpoint": 10000,
+    "observed_completed": 11400,
+    "optimizer_updates": 228000,
+    "target_checkpoint_ready": true,
+    "checkpoint": {
+      "name": "completed_10000.pt",
+      "bytes": 90799682,
+      "sha256": "6f949e4edc50d9a763a3634d716162cb5ddecb079bd1142d3720f907f5efab45",
+      "completed_learning_iterations": 10000,
+      "actual_optimizer_updates": 200000
+    },
+    "gate": {
+      "ready": true,
+      "status": "RESUMED_CHECKPOINT_READY_FOR_CPU_AUDIT",
+      "observed_completed": 11400,
+      "metadata": {
+        "name": "completed_10000.pt",
+        "bytes": 90799682,
+        "sha256": "6f949e4edc50d9a763a3634d716162cb5ddecb079bd1142d3720f907f5efab45",
+        "completed_learning_iterations": 10000,
+        "actual_optimizer_updates": 200000
+      },
+      "run": "filter_policy_paper69_resume5000_to40000_20261026_v1",
+      "requested_completed": 10000,
+      "training_receipt_sha256": "2fd2bed185a1f7f126b55ddc3d21f6fdb3e8a80287062aee4640f48fbd059fd2",
+      "sdk_dispatches": 0,
+      "checkpoint_loads": 0,
+      "export_files_created": 0,
+      "checkpoint": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume5000_to40000_20261026_v1/completed_10000.pt",
+      "file_age_seconds": 8927.890769720078
+    },
+    "trainer_pid": 4104159,
+    "trainer_start_ticks": 1422364669,
+    "owned_group": 4104152,
+    "enabled": true,
+    "signals_sent": [
+      {
+        "pid": 4104159,
+        "signal": "SIGINT",
+        "timestamp_unix": 1793066250.343316
+      }
+    ],
+    "sdk_runs": 0,
+    "control_spec_sha256": "931812877f098add85b86141cb99eb7763d8d80193f904d9ff4d654528690af6",
+    "sample_unix": 1793066250.3420343,
+    "action": "user_authorized_pause_for_10000_physics_evaluation",
+    "backup_receipt_sha256": "3a5a70321b8189fce7fa10dc6259d40e9160c0ce3a8fc57003d4f5b9402924b2",
+    "signal_identity": "pidfd_original_process",
+    "user_request": "2026-10-26: evaluate physical filtering at10000 iterations first; improve motion semantics; notify when paper-level complete reproduction is achieved.",
+    "runtime_modified": false,
+    "original_exits": {
+      "process": {
+        "command": [
+          "bash",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_filter_policy.py",
+          "--spec",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json",
+          "--plan",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filter-training-plan.json",
+          "--output",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume5000_to40000_20261026_v1",
+          "--mode",
+          "formal",
+          "--resume",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_solid_floor_20261026_v1/completed_5000.pt",
+          "--device",
+          "cuda:1",
+          "--headless"
+        ],
+        "supervisor_pid": 4104140,
+        "child_pid": 4104152,
+        "child_exit_code": 0,
+        "child_reaped": true,
+        "timed_out": false,
+        "supervisor_error": null,
+        "shutdown_actions": [],
+        "samples_written": 671,
+        "sample_errors": [],
+        "elapsed_seconds": 40159.834131099284,
+        "supervision_passed": true
+      },
+      "supervisor": {
+        "command": [
+          "bash",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_filter_policy.py",
+          "--spec",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json",
+          "--plan",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filter-training-plan.json",
+          "--output",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume5000_to40000_20261026_v1",
+          "--mode",
+          "formal",
+          "--resume",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_solid_floor_20261026_v1/completed_5000.pt",
+          "--device",
+          "cuda:1",
+          "--headless"
+        ],
+        "supervisor_pid": 4104140,
+        "child_pid": 4104152,
+        "child_exit_code": 0,
+        "child_reaped": true,
+        "timed_out": false,
+        "supervisor_error": null,
+        "shutdown_actions": [],
+        "samples_written": 671,
+        "sample_errors": [],
+        "elapsed_seconds": 40159.834131099284,
+        "supervision_passed": true,
+        "run": "filter_policy_paper69_resume5000_to40000_20261026_v1",
+        "spec_sha256": "a5bc7b0b8693dbd6f4acecc65d783a80d198edc3707ce3ed7919338007823be4",
+        "receipt_sha256": "2fd2bed185a1f7f126b55ddc3d21f6fdb3e8a80287062aee4640f48fbd059fd2",
+        "completed": 11400,
+        "updates": 228000,
+        "full_generator_training_started": false
+      },
+      "outer": {
+        "actual_returncode": 1
+      }
+    },
+    "original_exit_sha256": {
+      "process": "d15a481da1f493e4eac0370b44768712c5604d02f64335245d731734226c25ce",
+      "supervisor": "5681665553a0a3b95119cf79d15cd85942107fccd9e0743bab9a1be00777c223",
+      "outer": "857a96c9474624cec4418bb86e755613a5fb3430bf5b3478354415d1030ec7b2"
+    },
+    "final_training_receipt_sha256": "2fd2bed185a1f7f126b55ddc3d21f6fdb3e8a80287062aee4640f48fbd059fd2",
+    "common_sdk_lock_released": true,
+    "paper_40000_completed": false,
+    "physical_filter_completed": false,
+    "recoverable_completed": 10000,
+    "recoverable_optimizer_updates": 200000,
+    "transient_updates_after_checkpoint_not_guaranteed": true,
+    "timestamp_unix": 1793066252.0334628
   }
 }

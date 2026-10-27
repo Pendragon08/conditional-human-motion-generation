@@ -60,5 +60,7 @@ def main():
         marker=old.find('</style>')
         old=old[:marker+8]+banner+old[marker+8:] if marker>=0 else banner+old
         target.write_text(old,encoding='utf-8')
+    from collect_teacher10000_report import main as collect_teacher10000
+    collect_teacher10000()
     print(json.dumps({'bounded_online_functional_accepted':True,'full_teacher_running':bool(running),'full_generator_training_started':False,'semantic_quality_accepted':False}))
 if __name__=='__main__':main()

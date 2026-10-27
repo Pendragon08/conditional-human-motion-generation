@@ -1,3 +1,79 @@
+## CURRENT — 2026-10-27 actual10k fixed64 evaluation completed
+
+Read TEACHER10000_PILOT_ENVIRONMENT.md, TEACHER10000_COMPARISON_ENVIRONMENT.md,
+reports/teacher10000_actual_20261027.md and results/teacher10000_actual_20261027.
+Earlier CURRENT blocks below are history and must NOT restart ended workers.
+
+Real10k fullcheckpoint90799682B SHA6f949e4edc50d9a763a3634d716162cb5ddecb079bd1142d3720f907f5efab45
+is privately server+D backed up; public inference was GitHub digest-verified.
+Coordinator_v1 completed handoff after exactlyone originalpidfdSIGINT.
+Original lastreceipt11400/228000 and native11444 are RAM observations, not stable
+newcheckpoints. Process/supervisor exit0, outerexit1; originalRUNNING receipt
+preserved under user-authorized pause, not40kcompletion. No restart/stop/backup.
+20 originalruntime/controlbindings remain unchanged. Check actualworkers/lock
+before newjob; old5k/10kcoordinators,backup and resumedtrainer are ended.
+
+Separate10k evaluator: schema textop.teacher10000_pilot.v1, qualitylabel
+TEACHER10000_DIAGNOSTIC_NOT_PAPER_COMPLETE; never spoof5k/40k gates.
+18 actualhandoff CPUchecks passed; initialstatuslabel byte-equivalence assertion
+failure beforedeployment retained. Replay core/seed/old8and64selection/thresholds/
+solidfloor/trace are unchanged. Both flags true onlyafterrealwitnesses.
+Frozen pilot specSHA70efd971908d2d8303819dd92c9503031a65a5f3c027c81e0a9989c29f88a8d8.
+Author teacher10000_smoke_author_v1 and fresh teacher10000_smoke_document_v1
+both8/8natural,0failed,63controls/252physics,child+outer0; same8sources, not16.
+Freshdocument47groupspassed;2CPUverifier assumptions corrected with failures
+preserved (30exportbodies vs14recorded; distinctstop/render teardown stackleaves).
+Nativeclosefalse/fallbacktrue: actualnativeapp.close reached not proven.
+Both privatearchives server+D verified. Allsmokeagents/workersended; no reruns.
+
+teacher10000_sample64_v1 actualcomplete:64closed,46natural/18failed,5341vector
+controls/21364physics,0optimization,child+outer0,writersclosed. Nativefallback
+retained. ReceiptSHAbfcf9c99e221ad12677f2c693ea7420cad2aaeb53b367e0be32234c8cfd2cee2,
+exitSHAb01a8f6071ea8584df393f369c3023c485e3398104b6c3f5efb98ab8cf0cacc4.
+Privatearchive33172848B SHAacf3b0676a68989fd0bca1760fb3acf022b12bda415b136a381ca5aa50e6a407
+alreadyserver+D/datasets/teacher10000_execution_private_20261027 verified.
+Do not repeat physicalevaluation, archive, collector or video diagnostics.
+
+CPU paired64_v1 actualexit0, matches exact64source/ref/trial/binNPZ/resource/exit.
+Old5k42/22 vs10k46/18; bothcomplete41, newonly5, oldonly1,bothfail17.
+Paired41 endpointworldrootmean .161130684 -> .129849544m; jointRMSEmean
+.175965406 -> .165905339rad; rootorientationmean .068205372 -> .072168812rad
+slightlyworse. Rootp95 .537126 -> .554367m also notimproved. Failure/noendpoints
+notextrapolated; newall46 means are separate, not an identicaldenominator.
+Privatepaired191443B SHA4f58188a403d955105661f52ebd4f8d66189709785ec985269dc7c71bd74be69,
+server+D/datasets/teacher10000_comparison_private_20261027 verified2files197535B.
+Original5kendpointanalysis/receipts unchanged; no oldSDK rerun. FreshCPUcomparison
+agent teacher10000_comparison_document_v1 finished: exactonce invocationexit0,
+all64match,18aggregate/provenancechecks; noexecutiondivergence. Localpublic
+summaryCRLF normalization matchesremoteSHA; ledgerpointeraddedafterreview, no
+runtimechange. REPORT/SUMMARY plusallsmallproofD/diagnosticsverified; no reruns. No semantic/fullcorpus
+acceptance, contact-conditioned footslip unavailable, singlefixedsample notpaperbenchmark.
+
+Next decision: keep10k paused snapshot, expand diagnostic coverage before deciding
+moreteacher training. No automatic40k restart solely from modestcompletion gain.
+New metadata-only semantic_physics_plan_v1 actualexit0 freezes44wave+right lexical
+sources27TRAIN/17VAL, 0overlap with evaluated64;125..9396frames,74330total.
+selectionSHA b9362dc55b7a2638bfac6c3bd4fe931f3c6c2f31ed72e6aaa32bfcc6ffd505ec
+server+D/datasets/semantic_diagnostics_private_20261027 verified2files14846B.
+Broaderwavepool208. Existingpoolaudit notrerun; no model/physics/newoptimizer.
+Newscope launchfalse/executor pending: implement independent bounded44/semantic
+schema+full-lengthscheduler, source/receipts and resource/tracebudget, actualwarm
+validation thenfreshdocument pass. Longest9396frames exceeds old8192control cap;
+set explicit full-lengthbudget, never silentlytruncate/exclude longclip.
+Preserveheldoutsplit, allfailures/untried, no bestretry. Lexicaltags notsemantictruth.
+Use real10k checkpoint/contact; do not forge original64selection identity.
+Thenexpand completeavailable filtering andcontrolleddifferenttext/unconditional,
+fixednoise/history,multiseed/heldoutsemantic measures retainingCFG5 baseline.
+No newgeneratedquality improvement thisturn; noquickcorpus expansion/retrain yet.
+
+Full8278two-roundfilter/final69Dsourceisolation/TRAINnorm/CLIP/restore/persistent
+capacity stillgate fullVAE200k/LDM300k, then requiredfinalWBC/augmentation/online
+semantic+physicalquality/video. Userrequiresnotificationwhenactualpaperquality
+complete; currentmodest10kevaluation is notthat. Freeze originalresults, preserve
+private licensing/allcheckpoints/failures. OnlypersonalGPU1/CPU0-3/Torch.65;
+sharedGPUallowed, oneSDK/commonlock. Old57D/PhyGile/ReactiveBFM remainpaused.
+.venv-pbhc-training protected; no repeatedcleanup or deletion.
+
 ## CURRENT — 2026-10-27 retained5k endpoint baseline independently verified
 
 Active teacher latest coordinator observation5800/116000, waiting real10000,

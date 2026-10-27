@@ -1,0 +1,207 @@
+{
+  "status": "TEACHER10000_FIXED64_PAIRED_COMPARISON_RECORDED",
+  "sample_run": "teacher10000_sample64_v1",
+  "baseline_run": "quick_pilot_sample64_v1",
+  "spec_sha256": "10bf2854df741534a1c31b63fb54f33068b6e14dff00bdbd513b20bba694024d",
+  "source_sha256": "a7123517d1e343df2be1669a8faa9ba52bbf6b67214eeaeabeaafd7a54b72154",
+  "new_receipt_sha256": "bfcf9c99e221ad12677f2c693ea7420cad2aaeb53b367e0be32234c8cfd2cee2",
+  "new_exit_sha256": "b01a8f6071ea8584df393f369c3023c485e3398104b6c3f5efb98ab8cf0cacc4",
+  "new_outer_exit_sha256": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0",
+  "new_checkpoint_sha256": "6f949e4edc50d9a763a3634d716162cb5ddecb079bd1142d3720f907f5efab45",
+  "baseline_receipt_sha256": "6802615b355c7372fdda6c0a595207636ae04a266f3b1d18c019b9aaa18b8dad",
+  "baseline_endpoint_private_sha256": "d403d95c0d040fe756154363dc52a4ba1f5ad7d4180aff323de11754197ef35e",
+  "source_count": 64,
+  "baseline_complete": 42,
+  "baseline_failed": 22,
+  "new_complete": 46,
+  "new_failed": 18,
+  "outcome_pairs": {
+    "both_complete": 41,
+    "new_only_complete": 5,
+    "old_only_complete": 1,
+    "both_failed": 17
+  },
+  "paired_terminal_metrics": {
+    "terminal_world_root_position_error_m": {
+      "old_paired": {
+        "n": 41,
+        "mean": 0.16113068367166597,
+        "median": 0.09031471908113736,
+        "p95": 0.5371258471453056,
+        "max": 1.3575811750669249
+      },
+      "new_paired": {
+        "n": 41,
+        "mean": 0.12984954439485594,
+        "median": 0.07197579793223735,
+        "p95": 0.554367246709645,
+        "max": 1.1430624089315355
+      },
+      "paired_change_new_minus_old": {
+        "n": 41,
+        "mean": -0.03128113927681006,
+        "median": -0.00785791638961298,
+        "p95": 0.021600255420861636,
+        "max": 0.026931323857570966
+      },
+      "new_all_completions": {
+        "n": 46,
+        "mean": 0.15515038579636214,
+        "median": 0.08140060839539093,
+        "p95": 0.5889455751426351,
+        "max": 1.4001210054238786
+      }
+    },
+    "terminal_root_orientation_geodesic_rad": {
+      "old_paired": {
+        "n": 41,
+        "mean": 0.06820537222097772,
+        "median": 0.045810347178052636,
+        "p95": 0.16463792238953084,
+        "max": 0.2976329565871667
+      },
+      "new_paired": {
+        "n": 41,
+        "mean": 0.07216881227508615,
+        "median": 0.06317281666325301,
+        "p95": 0.1466161471371534,
+        "max": 0.186987975084662
+      },
+      "paired_change_new_minus_old": {
+        "n": 41,
+        "mean": 0.003963440054108417,
+        "median": -0.0014992878905826512,
+        "p95": 0.08676081151744977,
+        "max": 0.12453927519578466
+      },
+      "new_all_completions": {
+        "n": 46,
+        "mean": 0.07633838378428476,
+        "median": 0.06392496365550068,
+        "p95": 0.15289076342186977,
+        "max": 0.2589201450841796
+      }
+    },
+    "terminal_joint_rmse_rad": {
+      "old_paired": {
+        "n": 41,
+        "mean": 0.1759654057783308,
+        "median": 0.14631536707783827,
+        "p95": 0.3087213344996429,
+        "max": 0.8846519877132757
+      },
+      "new_paired": {
+        "n": 41,
+        "mean": 0.16590533910359,
+        "median": 0.13215207371029614,
+        "p95": 0.3153740310461324,
+        "max": 0.8774002374538484
+      },
+      "paired_change_new_minus_old": {
+        "n": 41,
+        "mean": -0.0100600666747408,
+        "median": -0.005893393472256647,
+        "p95": 0.030776240136994454,
+        "max": 0.04955980338635811
+      },
+      "new_all_completions": {
+        "n": 46,
+        "mean": 0.1792639124088462,
+        "median": 0.13488731906524262,
+        "p95": 0.5131637624695697,
+        "max": 0.8774002374538484
+      }
+    }
+  },
+  "strata": {
+    "split:val": {
+      "count": 17,
+      "old_complete": 11,
+      "new_complete": 12
+    },
+    "dataset:CMU": {
+      "count": 7,
+      "old_complete": 5,
+      "new_complete": 5
+    },
+    "duration:short_50_250": {
+      "count": 22,
+      "old_complete": 17,
+      "new_complete": 18
+    },
+    "split:train": {
+      "count": 47,
+      "old_complete": 31,
+      "new_complete": 34
+    },
+    "dataset:DFaust": {
+      "count": 4,
+      "old_complete": 3,
+      "new_complete": 4
+    },
+    "dataset:ACCAD": {
+      "count": 9,
+      "old_complete": 7,
+      "new_complete": 7
+    },
+    "dataset:BMLmovi": {
+      "count": 9,
+      "old_complete": 6,
+      "new_complete": 6
+    },
+    "dataset:EKUT": {
+      "count": 4,
+      "old_complete": 3,
+      "new_complete": 3
+    },
+    "dataset:BMLrub": {
+      "count": 9,
+      "old_complete": 9,
+      "new_complete": 9
+    },
+    "duration:medium_251_750": {
+      "count": 23,
+      "old_complete": 13,
+      "new_complete": 15
+    },
+    "duration:long_751_2000": {
+      "count": 19,
+      "old_complete": 12,
+      "new_complete": 13
+    },
+    "dataset:SFU": {
+      "count": 6,
+      "old_complete": 1,
+      "new_complete": 1
+    },
+    "dataset:HDM05": {
+      "count": 6,
+      "old_complete": 1,
+      "new_complete": 4
+    },
+    "dataset:KIT": {
+      "count": 6,
+      "old_complete": 5,
+      "new_complete": 5
+    },
+    "dataset:EyesJapanDataset": {
+      "count": 4,
+      "old_complete": 2,
+      "new_complete": 2
+    }
+  },
+  "private_paired_sha256": "4f58188a403d955105661f52ebd4f8d66189709785ec985269dc7c71bd74be69",
+  "unattempted_original_sources": 8214,
+  "whole_library_accepted": false,
+  "semantic_quality_accepted": false,
+  "new_sdk_runs": 0,
+  "new_optimizer_updates": 0,
+  "original_runs_modified": false,
+  "definition": "Fixed64 paired nominal-duration outcomes; independent terminal errors over paired natural completions; no extrapolation and no new acceptance thresholds.",
+  "limitations": [
+    "Single fixed sample/checkpoint comparison, not full corpus or paper score.",
+    "Terminal comparison excludes earlier failures without extrapolation; paired denominator is explicit.",
+    "No foot contact force stream was recorded; no contact-conditioned slip acceptance claimed.",
+    "Weak-teacher failure does not prove motion infeasibility."
+  ]
+}
