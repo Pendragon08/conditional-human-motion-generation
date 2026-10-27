@@ -1,0 +1,84 @@
+{
+  "schema": "textop.generator8278_priority.v1",
+  "authorization_date": "2026-10-27",
+  "user_selected": "8278 preprocessed sources before complete physics filtering, to expand semantic coverage",
+  "priority": "generator before furtherteacher or44semanticSDKreplays",
+  "source_profile": "public available8278 + existing mirrored variants; reference+BABEL, not recordedexecution",
+  "paper_filtered_dataset_accepted": false,
+  "whole_library_physics_accepted": false,
+  "full_paper_reproduction_complete": false,
+  "vae": {
+    "steps": 200000,
+    "stages": [
+      100000,
+      50000,
+      50000
+    ],
+    "batch": 512,
+    "lr": 0.0001,
+    "history": 2,
+    "future": 8,
+    "primitives": 4,
+    "feature_dim": 69,
+    "dof": 29,
+    "hidden": 512,
+    "ff": 1024,
+    "layers": 9,
+    "heads": 4,
+    "latent": 128,
+    "optimizer": "Adam",
+    "ema": false,
+    "checkpoint_steps": [
+      50000,
+      100000,
+      150000,
+      200000
+    ]
+  },
+  "ldm": {
+    "steps": 300000,
+    "stages": [
+      100000,
+      100000,
+      100000
+    ],
+    "batch": 512,
+    "lr": 0.0001,
+    "hidden": 512,
+    "ff": 1024,
+    "layers": 8,
+    "heads": 4,
+    "noise_dim": 128,
+    "optimizer": "AdamW",
+    "diffusion_steps": 5,
+    "schedule": "cosine",
+    "prediction": "x0",
+    "guidance": 5,
+    "text_mask_probability": 0.1,
+    "use_full_sample": true,
+    "full_sample_stage_rule": "OfficialDARManager returns true only afterstage0; validate separate full-runtime implementation beforeLDM launch",
+    "max_rollout_probability": 0.8,
+    "freeze_real_trained_vae": true,
+    "ema": false,
+    "runtime_verified": false
+  },
+  "storage": {
+    "vae_checkpoint_upper_bound_bytes": 553648128,
+    "vae_normal_slots": 4,
+    "vae_emergency_slots": 1,
+    "server_reserve_per_disk_bytes": 2147483648,
+    "server_log_allowance_bytes": 536870912,
+    "vae_required_start_bytes": 5452595200,
+    "D_backup_policy": "Prioritize final stage fullstates; intermediates remain serverpersistent and copied only with2GiB Dreserve. Complete localbackup ofallintermediate checkpoints needs addedcapacity. No versionsdeleted.",
+    "derived_corpus": "1.51GB reconstructable RAMcache;32.15MB exactnormCLIP+metadata backedupD and toserverpersistent; originalassets alreadyprivatepersistentbackedup."
+  },
+  "differences": [
+    "No fullcorpus physics filter yet; explicituserselection",
+    "2TRAINfamilies quarantined for exactposeoverlapwithVAL;原始资产保留",
+    "VAEcheckpointcadence50k instead ofreleased20k, loggzip/displaytqdm disabled; optimizationmath unchanged",
+    "Authorprivate403clips and13selectedCMUassets unavailable",
+    "69Dadapter uses declared GMR38frame geometry; fixedfullsample and variance differences documented",
+    "Releasedglobal23DoF actionstatistics retained with explicit scope, notclaimedfull69DTRAINfrequencies"
+  ],
+  "completion_notify": "Only when actualpaperfull reproductioneffectverified, with semantic/physicsmetrics, finalWBC/augmentation/onlineexecution/videos and reports; generatorlaunch notcompletion"
+}

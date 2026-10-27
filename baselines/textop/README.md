@@ -1,3 +1,11 @@
+## Actual running — 2026-10-27
+
+New69D VAE generator8278_vae200k_train_v1 is RUNNING: verified100/200000attempts,100Adamupdates/0skip. User chose8278preprocessed sources beforefullphysicsfilter; actual8276families after2TRAINleakagequarantine,93632annotationpairs. See [current report](reports/generator8278_current_20261027.md). Active sources/spec frozen; LDM300k follows actualnewVAE and separatefullsample runtimeacceptance. This is notpaper-filtered orsemanticqualityacceptance.
+
+## Current priority — 2026-10-27 generator first
+
+User selected8278preprocessed sources before fullphysicsfilter. See [new generator report](reports/generator8278_training_20261027.md), [corpus](GENERATOR8278_CORPUS_ENVIRONMENT.md), [VAE200k](GENERATOR8278_VAE_ENVIRONMENT.md), and latest CONTINUATION/progress. This explicitly pre-filter experiment is not fullpaperdataacceptance. 10kteacher remains paused; no44SDK/40kresume while generator workhaspriority.
+
 ## Current — 10,000轮真实筛选对照已完成（2026-10-27）
 
 同一64条动作：5k策略42自然完成/22失败，10k策略46自然完成/18失败；5条改善、1条回退、41条共同完成。共同41条末帧位置与关节误差均值下降，朝向误差均值略升。完整记录与10k检查点已私有备份，原训练受控暂停。

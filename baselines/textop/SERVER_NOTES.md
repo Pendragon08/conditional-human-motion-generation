@@ -1,3 +1,20 @@
+## Actual VAE200k launch2026-10-27
+Warm934d8221 unchanged. New3source/spec frozen, actualRUNNING100/200k/100Adam/0skip, noexit. Newcorpusfresh69 andneuralfresh62pre/65postpassed, allwitnessagentsended. Spec ec16b1468543e7a5347595d94ecc915502bb775fe885f97318ff53454ebe3fdc; commonlock held. ReadcurrentCONTINUATION, neverlaunchanotherGPU/SDK orrepeat oldwitness. LDMfullsampleTrue pathwaypending, originalquickfalse preserved.
+
+## Current generator8278 pre-filter runtime — 2026-10-27
+
+Warm paper69@934d8221 reused unchanged, no packages/sharededits. User explicitly
+selected8278preprocessed sources beforefullfilter. Separatecorpus author/fresh
+actualexit0, fresh69checks pass, same3real512×4loaderchecks; source+exactpose
+crosssplit0 after2TRAINfamily quarantine, originalassetsretained. See
+GENERATOR8278_CORPUS_ENVIRONMENT.md. NewcorpusRAMcache recoverablefrom6SHA-bound
+manifests/privatepreparedbackups; normCLIP/recoverymetadata privateD+server.
+NewseparateVAE200k schedule/spec documented GENERATOR8278_VAE_ENVIRONMENT.md,
+originalquickruntime unchanged. Actualauthorgradient witness underway, fresh
+requirednextbeforeactivation. VAEpersistentbudget5452595200B checked; Dintermediate
+backupcapacity limited, finalstagepriority. OriginalSDK/teacher10kpaused; no
+44semanticsSDK or40kresume whilegeneratorworkownslock.
+
 ## Current 2026-10-27: 10k paired physical evaluation and warm CPU analysis
 
 Resumed teacher is user-paused after verified10kbackup/handoff; original final

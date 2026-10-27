@@ -1,3 +1,90 @@
+## CURRENT — 2026-10-27 generator8278 VAE200k is actually training
+
+User explicitly chose all8278preprocessed sources before all-libraryphysical
+filtering. New generator8278_vae200k_train_v1 has real RUNNING receipt100/200000
+primitiveattempts/100Adamupdates/0skip, allreportedgradientsfinite, noexit.
+Historicaldriver4166116/supervisor4166117/worker4166124 onlyhints; verifycommands.
+Active3VAEsource/spec FROZEN; active specSHAec16b1468543e7a5347595d94ecc915502bb775fe885f97318ff53454ebe3fdc.
+Do notrepeatactivation/launcher/witnesses, editactivefiles, start44SDK orresume
+teacher. Commonlock heldbyVAE; onlyreadcollect_generator8278.py --run
+generator8278_vae200k_train_v1. Readreport withcollect_generator8278_report.py;
+oldcollectors cannotoverwritecurrentgeneratorpriority.
+
+Separate dataacceptancea8ebf892d229570829c51909884204241ba4bc9faee389f5ac5b1f75cf5e4f88
+has prefilter_training_data_acceptedtrue / paper_filtered_dataset_acceptedfalse.
+Corpusauthoractual113.4s/fresh55.69s exits0; fresh69checks/source+exactpose
+crosssplit0,3actual512×4loaderspass. Input8278 ->8276families after2TRAINfamily
+exactVALduplicationquarantine, originalsretained;16552variants/93632annotation
+pairs/7623CLIPstrings/7014270TRAINfeatures. Derivedjoblib1.51GBRAMrecoverable,
+32.15MBexactnormCLIP+recoverymetadata privatelyDandserverbackedup; no original
+NPZbackuprepetition. Author+fresh VAE4realAdam/0skip each, fullmodel/Adam/ALLRNG/
+nextbatch/pendingVALrestorepass, no retaineddiagnosticcheckpoint. Fresh62pre+
+65postchecks; localPython docomission and2parenthelper newlineSyntaxErrors before
+GPUdispatch preserved; no modelmath/configchange. Allfreshagents/witnessesended.
+
+Productionmatches200kstage100k/50k/50k fullLR/curriculum, newmodel/noquickresume.
+VAE50k/100k/150k/200k fullstates +1emergency,528MiBcap vsactualprevious513.5MB;
+2GiBreserve+512MiBlogs, startup5452595200B requirement actual5755MB, every100/
+savecheck. Gzipallmetrics/tqdmoff, no optimizerchange. Saving50k vsrelease20k
+explicitcapacitydifference. Allservercheckpointsretained; D~3.4GB cannotpromise
+allintermediatesbackups, prioritizefinalstageprivate fullstates andbudgeteachcopy.
+No deletion. Firstnormalcheckpoint50000; don'trepeatedlylookforold1kcheckpoints.
+
+LDM300k stillNOTstarted/newruntimepending. FixedofficialUSAGE overridesdefault
+YAML: stages100k×3,use_rolloutTrue,use_full_sampleTrue(stage>0). Quickfalse is
+preserveddifference, do notsimplyextendquick3kcode. PreparefullLDMduringVAE
+withoutoverlappingGPU, thenrealnewVAE200kfreeze/quality/resource/newruntime
+witness andfreshdoc beforeautomaticLDMlaunch. Paper5cosine/x0/CFG5,69D/history2/
+future8,fullTRAINstats/CLIP; finalsemanticqualitynotaccepted. Geometryvariance/
+privateauthorunavailabledifferences retained. Fullfilterlatercomparison,
+finalWBC/augmentation/actualonlinequality/video stillrequiredforpapercompletion.
+
+Read GENERATOR8278_CORPUS_ENVIRONMENT.md/GENERATOR8278_VAE_ENVIRONMENT.md,
+reports/generator8278_training_20261027.md andlatestprogress. Useraskednotifyon
+actualpapercomplete; currentneuralstart is notthat. Old10k/5k/VAE2k/LDM3k/pilot/
+allpreprocessing/backup/render/onlineproof untouched. OnlyownGPU1shared/CPU0-3/
+Torch.65; old57D/PhyGile/ReactiveBFMpaused. Protectallassets/checkpoints/failures/
+.venv-pbhc-training; norepeatedcleanup. Healthytraining/backgroundpreparationquiet.
+
+## CURRENT — 2026-10-27 user prioritizes full-source pre-filter generator
+
+User explicitly requested generatorfirst, and chose all8278preprocessed sources
+rather than the46completed10kpilot subset. This overrides earlier44semanticSDK/
+fullfilter-first sequencing for this separate experimental generator run. Keep10k
+teacher paused, do notstart44SDK orresume40k. Paper-filtered/fullpaperacceptance
+remainfalse; later filtered-data comparison and finalWBC/augmentation/semantic/
+physicalonlinequality/video stillrequired. No repeatedconfirmation.
+
+Read GENERATOR8278_CORPUS_ENVIRONMENT.md, GENERATOR8278_VAE_ENVIRONMENT.md,
+configs/generator8278-priority-plan.json and reports/generator8278_training_20261027.md.
+Newcorpus author corpus8278_author_v1 actualexit0, all8278 scanned,2TRAINfamilies
+quarantinedfor exactfloat32poseoverlapVAL (originalsretained),8276keptfamilies/
+16552variants,12402train4150val,93632pairs/7623CLIPstrings,7014270TRAINfeatures.
+Real3loaderchecks finite/overlap0/missingtext0; freshcorpusdocument currentlyowns
+verification, checkactualagent/run/exit beforeanynewGPUdispatch. Do notrerunbuild.
+Derived1.51GBjoblibcache in /dev/shm/ouyanghao_textop_20261025/generator8278_prefilter_v1;
+32.15MBnorm/CLIP/metadata alreadyDprivatelySHAbackedup; originalNPZbackupunchanged.
+Never turn olddataset_acceptedfalse into paperpass; newprefilteracceptanceseparate.
+
+SeparateVAE200kfiles prepared, currentlydisableduntilactualcorpusacceptance and
+newauthor/freshgradient/resume witnesses. Fullstages100k/50k/50k, same69D/history2/
+future8/batch512/Adam1e-4; noquickstatewarmstart. NewLDMplan300k stages100k×3,
+IMPORTANT fixedofficialUSAGE use_full_sample=True(stage>0), unlike quickfalse;
+LDMnewruntime notyetimplemented/validated, cannotblindlyreusequicklauncher.
+ExistingVAE2k/LDM3kallclosed/backedup/unchanged.
+
+VAEpersistentcheckpointplan4normal50kinterval+1emergency,528MiBbound,
+2GiBreserve+512MiBlogs; required5452595200B, latestdata5787574272B marginal.
+Allsavedversionsretained; gzipallmetrics/disabletqdm, no mathchange. D~3.4GB,
+onlyfinalstagebackupsprioritized; capacityforallintermediatesDnotguaranteed.
+Do notdeleteanythingorclaimallfuturestorage solved. Newactualprogressreceipts
+must override thisprelaunchstate; no duplicatewitness/train/backup.
+
+OnlyGPU1shared/CPU0-3/Torch.65/commonlock; nooverlappingSDK/GPU. Old57D/PhyGile/
+ReactiveBFMpaused; oldcoordinators/trainersended. Protectallauthority/weights/
+uniquehistories/.venv-pbhc-training. Existingcleanupfinished, norepeat.
+Fullactualcompletepaperqualitymustbenotified; backgroundhealthyquiet.
+
 ## CURRENT — 2026-10-27 actual10k fixed64 evaluation completed
 
 Read TEACHER10000_PILOT_ENVIRONMENT.md, TEACHER10000_COMPARISON_ENVIRONMENT.md,
