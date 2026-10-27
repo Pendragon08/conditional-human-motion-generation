@@ -1,0 +1,1980 @@
+{
+  "result": "PASS",
+  "checked_utc": "2026-10-22T07:46:29.2851137Z",
+  "invocation_count": 1,
+  "ssh_exit_code": 0,
+  "supervisor_exit_code": 0,
+  "total_checks": 321,
+  "passed_checks": 321,
+  "failed_checks": 0,
+  "ranks": [
+    {
+      "rank": 0,
+      "status": "PROBE_COMPLETED",
+      "initial": 10021,
+      "updates": 10029,
+      "resumed": 8,
+      "attempts": 8,
+      "skipped": 0,
+      "optimizer_step_calls": 10029,
+      "validated_optimizer_updates": 10029,
+      "ema_validated": true,
+      "trace_rows": 8,
+      "process_running": false,
+      "pre_clip_norm": 1.8784774920903131,
+      "post_clip_norm": 0.9999994389585694,
+      "parameter_norm": 205.91820761800216,
+      "elapsed_seconds": 69.9234001096338
+    },
+    {
+      "rank": 1,
+      "status": "PROBE_COMPLETED",
+      "initial": 10021,
+      "updates": 10029,
+      "resumed": 8,
+      "attempts": 8,
+      "skipped": 0,
+      "optimizer_step_calls": 10029,
+      "validated_optimizer_updates": 10029,
+      "ema_validated": true,
+      "trace_rows": 8,
+      "process_running": false,
+      "pre_clip_norm": 1.8784774920903131,
+      "post_clip_norm": 0.9999994389585694,
+      "parameter_norm": 205.91820761800216,
+      "elapsed_seconds": 69.80092221684754
+    }
+  ],
+  "discrepancies": [],
+  "checks": [
+    {
+      "name": "saved command matches documented invocation verbatim",
+      "passed": true,
+      "actual": "ssh -o BatchMode=yes -o ConnectTimeout=15 -i C:/Users/Pende/.ssh/id_ed25519 ouyanghao@10.147.17.32 \"/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/env/bin/python /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/code_v3/scripts/launch_recovery.py --config /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/code_v3/configs/recovery_fp32_v3.json --output /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/document_witness_v3 --probe-updates 8\"",
+      "expected": "ssh -o BatchMode=yes -o ConnectTimeout=15 -i C:/Users/Pende/.ssh/id_ed25519 ouyanghao@10.147.17.32 \"/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/env/bin/python /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/code_v3/scripts/launch_recovery.py --config /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/code_v3/configs/recovery_fp32_v3.json --output /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/document_witness_v3 --probe-updates 8\""
+    },
+    {
+      "name": "documented invocation executed exactly once",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "SSH invocation exit",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "supervisor exit",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "stdout model loading",
+      "passed": true,
+      "actual": "loading model from checkpoint:",
+      "expected": "loading model from checkpoint:"
+    },
+    {
+      "name": "stdout model and model_avg loading",
+      "passed": true,
+      "actual": [
+        "loading both model and model_avg",
+        "loading both model and model_avg"
+      ],
+      "expected": "loading both model and model_avg"
+    },
+    {
+      "name": "stdout optimizer loading",
+      "passed": true,
+      "actual": "loading optimizer state from checkpoint:",
+      "expected": "loading optimizer state from checkpoint:"
+    },
+    {
+      "name": "checkpoint CPU inspection",
+      "passed": true,
+      "actual": "CHECKPOINT_CPU_INSPECTION_PASSED",
+      "expected": "CHECKPOINT_CPU_INSPECTION_PASSED"
+    },
+    {
+      "name": "inspected initial optimizer updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "inspected model tensor count",
+      "passed": true,
+      "actual": 388,
+      "expected": 388
+    },
+    {
+      "name": "inspected EMA tensor count",
+      "passed": true,
+      "actual": 388,
+      "expected": 388
+    },
+    {
+      "name": "inspected model finite",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "inspected EMA finite",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "inspected optimizer state count",
+      "passed": true,
+      "actual": 365,
+      "expected": 365
+    },
+    {
+      "name": "inspected optimizer finite",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "inspected optimizer step value count",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "inspected optimizer step value",
+      "passed": true,
+      "actual": 10021.0,
+      "expected": 10021
+    },
+    {
+      "name": "source entrypoint pin count",
+      "passed": true,
+      "actual": 6,
+      "expected": 6
+    },
+    {
+      "name": "upstream Python tree is nonempty",
+      "passed": true,
+      "actual": 117,
+      "expected": "positive file count"
+    },
+    {
+      "name": "rank0 status rank",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 status status",
+      "passed": true,
+      "actual": "PROBE_COMPLETED",
+      "expected": "PROBE_COMPLETED"
+    },
+    {
+      "name": "rank0 status optimizer_updates",
+      "passed": true,
+      "actual": 10029,
+      "expected": 10029
+    },
+    {
+      "name": "rank0 status official_step_at_start",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank0 status probe_updates",
+      "passed": true,
+      "actual": 8,
+      "expected": 8
+    },
+    {
+      "name": "rank0 status exit_code",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 status full_training_completed",
+      "passed": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "rank0 status physics_evaluated",
+      "passed": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "rank0 health rank",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 health status",
+      "passed": true,
+      "actual": "PROBE_COMPLETED",
+      "expected": "PROBE_COMPLETED"
+    },
+    {
+      "name": "rank0 health optimizer_updates",
+      "passed": true,
+      "actual": 10029,
+      "expected": 10029
+    },
+    {
+      "name": "rank0 health initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank0 health resumed_updates",
+      "passed": true,
+      "actual": 8,
+      "expected": 8
+    },
+    {
+      "name": "rank0 health attempts_since_resume",
+      "passed": true,
+      "actual": 8,
+      "expected": 8
+    },
+    {
+      "name": "rank0 health skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 health optimizer_step_calls",
+      "passed": true,
+      "actual": 10029,
+      "expected": 10029
+    },
+    {
+      "name": "rank0 health validated_optimizer_updates",
+      "passed": true,
+      "actual": 10029,
+      "expected": 10029
+    },
+    {
+      "name": "rank0 health ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 health step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 health process_status",
+      "passed": true,
+      "actual": "PROBE_COMPLETED",
+      "expected": "PROBE_COMPLETED"
+    },
+    {
+      "name": "rank0 health supervisor_exit_code",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 health process_running",
+      "passed": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "rank0 health full_training_completed",
+      "passed": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "rank0 final grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 1.8784774920903131,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 final grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999994389585694,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 final param_norm_fp64",
+      "passed": true,
+      "actual": 205.91820761800216,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 per-attempt trace row count",
+      "passed": true,
+      "actual": 8,
+      "expected": 8
+    },
+    {
+      "name": "rank0 attempt1 rank",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt1 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank0 attempt1 optimizer_updates",
+      "passed": true,
+      "actual": 10022,
+      "expected": 10022
+    },
+    {
+      "name": "rank0 attempt1 optimizer_step_calls",
+      "passed": true,
+      "actual": 10022,
+      "expected": 10022
+    },
+    {
+      "name": "rank0 attempt1 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10022,
+      "expected": 10022
+    },
+    {
+      "name": "rank0 attempt1 attempts_since_resume",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "rank0 attempt1 resumed_updates",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "rank0 attempt1 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt1 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt1 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt1 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt1 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 1.5046522302571737,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt1 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999993377647833,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt1 param_norm_fp64",
+      "passed": true,
+      "actual": 205.93222529809208,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt2 rank",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt2 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank0 attempt2 optimizer_updates",
+      "passed": true,
+      "actual": 10023,
+      "expected": 10023
+    },
+    {
+      "name": "rank0 attempt2 optimizer_step_calls",
+      "passed": true,
+      "actual": 10023,
+      "expected": 10023
+    },
+    {
+      "name": "rank0 attempt2 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10023,
+      "expected": 10023
+    },
+    {
+      "name": "rank0 attempt2 attempts_since_resume",
+      "passed": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "name": "rank0 attempt2 resumed_updates",
+      "passed": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "name": "rank0 attempt2 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt2 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt2 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt2 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt2 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 1.6858531605727736,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt2 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999994081044907,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt2 param_norm_fp64",
+      "passed": true,
+      "actual": 205.92986043757492,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt3 rank",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt3 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank0 attempt3 optimizer_updates",
+      "passed": true,
+      "actual": 10024,
+      "expected": 10024
+    },
+    {
+      "name": "rank0 attempt3 optimizer_step_calls",
+      "passed": true,
+      "actual": 10024,
+      "expected": 10024
+    },
+    {
+      "name": "rank0 attempt3 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10024,
+      "expected": 10024
+    },
+    {
+      "name": "rank0 attempt3 attempts_since_resume",
+      "passed": true,
+      "actual": 3,
+      "expected": 3
+    },
+    {
+      "name": "rank0 attempt3 resumed_updates",
+      "passed": true,
+      "actual": 3,
+      "expected": 3
+    },
+    {
+      "name": "rank0 attempt3 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt3 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt3 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt3 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt3 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 3.132657893692409,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt3 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999996974819603,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt3 param_norm_fp64",
+      "passed": true,
+      "actual": 205.92702723230494,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt4 rank",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt4 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank0 attempt4 optimizer_updates",
+      "passed": true,
+      "actual": 10025,
+      "expected": 10025
+    },
+    {
+      "name": "rank0 attempt4 optimizer_step_calls",
+      "passed": true,
+      "actual": 10025,
+      "expected": 10025
+    },
+    {
+      "name": "rank0 attempt4 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10025,
+      "expected": 10025
+    },
+    {
+      "name": "rank0 attempt4 attempts_since_resume",
+      "passed": true,
+      "actual": 4,
+      "expected": 4
+    },
+    {
+      "name": "rank0 attempt4 resumed_updates",
+      "passed": true,
+      "actual": 4,
+      "expected": 4
+    },
+    {
+      "name": "rank0 attempt4 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt4 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt4 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt4 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt4 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 1.55074355368861,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt4 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999993142380175,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt4 param_norm_fp64",
+      "passed": true,
+      "actual": 205.92353990985632,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt5 rank",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt5 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank0 attempt5 optimizer_updates",
+      "passed": true,
+      "actual": 10026,
+      "expected": 10026
+    },
+    {
+      "name": "rank0 attempt5 optimizer_step_calls",
+      "passed": true,
+      "actual": 10026,
+      "expected": 10026
+    },
+    {
+      "name": "rank0 attempt5 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10026,
+      "expected": 10026
+    },
+    {
+      "name": "rank0 attempt5 attempts_since_resume",
+      "passed": true,
+      "actual": 5,
+      "expected": 5
+    },
+    {
+      "name": "rank0 attempt5 resumed_updates",
+      "passed": true,
+      "actual": 5,
+      "expected": 5
+    },
+    {
+      "name": "rank0 attempt5 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt5 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt5 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt5 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt5 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 2.3739176033211313,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt5 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999995968545837,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt5 param_norm_fp64",
+      "passed": true,
+      "actual": 205.92152859299668,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt6 rank",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt6 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank0 attempt6 optimizer_updates",
+      "passed": true,
+      "actual": 10027,
+      "expected": 10027
+    },
+    {
+      "name": "rank0 attempt6 optimizer_step_calls",
+      "passed": true,
+      "actual": 10027,
+      "expected": 10027
+    },
+    {
+      "name": "rank0 attempt6 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10027,
+      "expected": 10027
+    },
+    {
+      "name": "rank0 attempt6 attempts_since_resume",
+      "passed": true,
+      "actual": 6,
+      "expected": 6
+    },
+    {
+      "name": "rank0 attempt6 resumed_updates",
+      "passed": true,
+      "actual": 6,
+      "expected": 6
+    },
+    {
+      "name": "rank0 attempt6 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt6 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt6 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt6 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt6 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 1.706736363998471,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt6 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999994342298778,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt6 param_norm_fp64",
+      "passed": true,
+      "actual": 205.91977624249816,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt7 rank",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt7 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank0 attempt7 optimizer_updates",
+      "passed": true,
+      "actual": 10028,
+      "expected": 10028
+    },
+    {
+      "name": "rank0 attempt7 optimizer_step_calls",
+      "passed": true,
+      "actual": 10028,
+      "expected": 10028
+    },
+    {
+      "name": "rank0 attempt7 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10028,
+      "expected": 10028
+    },
+    {
+      "name": "rank0 attempt7 attempts_since_resume",
+      "passed": true,
+      "actual": 7,
+      "expected": 7
+    },
+    {
+      "name": "rank0 attempt7 resumed_updates",
+      "passed": true,
+      "actual": 7,
+      "expected": 7
+    },
+    {
+      "name": "rank0 attempt7 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt7 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt7 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt7 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt7 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 1.4823636078105957,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt7 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999993176218335,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt7 param_norm_fp64",
+      "passed": true,
+      "actual": 205.91827160896875,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt8 rank",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt8 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank0 attempt8 optimizer_updates",
+      "passed": true,
+      "actual": 10029,
+      "expected": 10029
+    },
+    {
+      "name": "rank0 attempt8 optimizer_step_calls",
+      "passed": true,
+      "actual": 10029,
+      "expected": 10029
+    },
+    {
+      "name": "rank0 attempt8 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10029,
+      "expected": 10029
+    },
+    {
+      "name": "rank0 attempt8 attempts_since_resume",
+      "passed": true,
+      "actual": 8,
+      "expected": 8
+    },
+    {
+      "name": "rank0 attempt8 resumed_updates",
+      "passed": true,
+      "actual": 8,
+      "expected": 8
+    },
+    {
+      "name": "rank0 attempt8 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank0 attempt8 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt8 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt8 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank0 attempt8 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 1.8784774920903131,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt8 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999994389585694,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 attempt8 param_norm_fp64",
+      "passed": true,
+      "actual": 205.91820761800216,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank0 source pin scripts/train_full.py",
+      "passed": true,
+      "actual": "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de",
+      "expected": "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de"
+    },
+    {
+      "name": "rank0 source pin scripts/train_repaired.py",
+      "passed": true,
+      "actual": "8e45ebaa60e8568f59cd63dd21f2bbd7b1576e0d3101ddde4154c1a04919acd4",
+      "expected": "8e45ebaa60e8568f59cd63dd21f2bbd7b1576e0d3101ddde4154c1a04919acd4"
+    },
+    {
+      "name": "rank0 source pin scripts/numerical_guard.py",
+      "passed": true,
+      "actual": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "expected": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8"
+    },
+    {
+      "name": "rank0 source pin scripts/launch_recovery.py",
+      "passed": true,
+      "actual": "a43e4d622928cdffc1569f35bb7b62ef77861b33f3893910c27f2dde3a48db7d",
+      "expected": "a43e4d622928cdffc1569f35bb7b62ef77861b33f3893910c27f2dde3a48db7d"
+    },
+    {
+      "name": "rank0 source pin scripts/inspect_checkpoint.py",
+      "passed": true,
+      "actual": "6ad4d4cf15fc6e2b3eae8c94b9b1d625fe9f7bcd72a8acaa755326621018b862",
+      "expected": "6ad4d4cf15fc6e2b3eae8c94b9b1d625fe9f7bcd72a8acaa755326621018b862"
+    },
+    {
+      "name": "rank0 source pin scripts/prepare_verified_resume.py",
+      "passed": true,
+      "actual": "b5db0707c3a16310d01141a7d30c22aa2e2c4a258ad98eec56c662cfce651a23",
+      "expected": "b5db0707c3a16310d01141a7d30c22aa2e2c4a258ad98eec56c662cfce651a23"
+    },
+    {
+      "name": "rank0 upstream tree pin",
+      "passed": true,
+      "actual": "cc0d1e8bbdd605962a29437dbdda6c9d73275bb18e239b6cdf93ea1f96485e3f",
+      "expected": "cc0d1e8bbdd605962a29437dbdda6c9d73275bb18e239b6cdf93ea1f96485e3f"
+    },
+    {
+      "name": "rank0 train entrypoint pin",
+      "passed": true,
+      "actual": "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de",
+      "expected": "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de"
+    },
+    {
+      "name": "rank0 health guard pin",
+      "passed": true,
+      "actual": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "expected": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8"
+    },
+    {
+      "name": "rank0 shared GPU fraction configuration",
+      "passed": true,
+      "actual": 0.65,
+      "expected": 0.65
+    },
+    {
+      "name": "rank0 CPU threads configuration",
+      "passed": true,
+      "actual": 4,
+      "expected": 4
+    },
+    {
+      "name": "rank0 FP32 configuration",
+      "passed": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "rank1 status rank",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "rank1 status status",
+      "passed": true,
+      "actual": "PROBE_COMPLETED",
+      "expected": "PROBE_COMPLETED"
+    },
+    {
+      "name": "rank1 status optimizer_updates",
+      "passed": true,
+      "actual": 10029,
+      "expected": 10029
+    },
+    {
+      "name": "rank1 status official_step_at_start",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank1 status probe_updates",
+      "passed": true,
+      "actual": 8,
+      "expected": 8
+    },
+    {
+      "name": "rank1 status exit_code",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank1 status full_training_completed",
+      "passed": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "rank1 status physics_evaluated",
+      "passed": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "rank1 health rank",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "rank1 health status",
+      "passed": true,
+      "actual": "PROBE_COMPLETED",
+      "expected": "PROBE_COMPLETED"
+    },
+    {
+      "name": "rank1 health optimizer_updates",
+      "passed": true,
+      "actual": 10029,
+      "expected": 10029
+    },
+    {
+      "name": "rank1 health initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank1 health resumed_updates",
+      "passed": true,
+      "actual": 8,
+      "expected": 8
+    },
+    {
+      "name": "rank1 health attempts_since_resume",
+      "passed": true,
+      "actual": 8,
+      "expected": 8
+    },
+    {
+      "name": "rank1 health skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank1 health optimizer_step_calls",
+      "passed": true,
+      "actual": 10029,
+      "expected": 10029
+    },
+    {
+      "name": "rank1 health validated_optimizer_updates",
+      "passed": true,
+      "actual": 10029,
+      "expected": 10029
+    },
+    {
+      "name": "rank1 health ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 health step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 health process_status",
+      "passed": true,
+      "actual": "PROBE_COMPLETED",
+      "expected": "PROBE_COMPLETED"
+    },
+    {
+      "name": "rank1 health supervisor_exit_code",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank1 health process_running",
+      "passed": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "rank1 health full_training_completed",
+      "passed": true,
+      "actual": false,
+      "expected": false
+    },
+    {
+      "name": "rank1 final grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 1.8784774920903131,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 final grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999994389585694,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 final param_norm_fp64",
+      "passed": true,
+      "actual": 205.91820761800216,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 per-attempt trace row count",
+      "passed": true,
+      "actual": 8,
+      "expected": 8
+    },
+    {
+      "name": "rank1 attempt1 rank",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "rank1 attempt1 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank1 attempt1 optimizer_updates",
+      "passed": true,
+      "actual": 10022,
+      "expected": 10022
+    },
+    {
+      "name": "rank1 attempt1 optimizer_step_calls",
+      "passed": true,
+      "actual": 10022,
+      "expected": 10022
+    },
+    {
+      "name": "rank1 attempt1 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10022,
+      "expected": 10022
+    },
+    {
+      "name": "rank1 attempt1 attempts_since_resume",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "rank1 attempt1 resumed_updates",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "rank1 attempt1 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank1 attempt1 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt1 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt1 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt1 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 1.5046522302571737,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt1 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999993377647833,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt1 param_norm_fp64",
+      "passed": true,
+      "actual": 205.93222529809208,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt2 rank",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "rank1 attempt2 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank1 attempt2 optimizer_updates",
+      "passed": true,
+      "actual": 10023,
+      "expected": 10023
+    },
+    {
+      "name": "rank1 attempt2 optimizer_step_calls",
+      "passed": true,
+      "actual": 10023,
+      "expected": 10023
+    },
+    {
+      "name": "rank1 attempt2 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10023,
+      "expected": 10023
+    },
+    {
+      "name": "rank1 attempt2 attempts_since_resume",
+      "passed": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "name": "rank1 attempt2 resumed_updates",
+      "passed": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "name": "rank1 attempt2 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank1 attempt2 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt2 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt2 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt2 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 1.6858531605727736,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt2 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999994081044907,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt2 param_norm_fp64",
+      "passed": true,
+      "actual": 205.92986043757492,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt3 rank",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "rank1 attempt3 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank1 attempt3 optimizer_updates",
+      "passed": true,
+      "actual": 10024,
+      "expected": 10024
+    },
+    {
+      "name": "rank1 attempt3 optimizer_step_calls",
+      "passed": true,
+      "actual": 10024,
+      "expected": 10024
+    },
+    {
+      "name": "rank1 attempt3 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10024,
+      "expected": 10024
+    },
+    {
+      "name": "rank1 attempt3 attempts_since_resume",
+      "passed": true,
+      "actual": 3,
+      "expected": 3
+    },
+    {
+      "name": "rank1 attempt3 resumed_updates",
+      "passed": true,
+      "actual": 3,
+      "expected": 3
+    },
+    {
+      "name": "rank1 attempt3 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank1 attempt3 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt3 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt3 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt3 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 3.132657893692409,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt3 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999996974819603,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt3 param_norm_fp64",
+      "passed": true,
+      "actual": 205.92702723230494,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt4 rank",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "rank1 attempt4 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank1 attempt4 optimizer_updates",
+      "passed": true,
+      "actual": 10025,
+      "expected": 10025
+    },
+    {
+      "name": "rank1 attempt4 optimizer_step_calls",
+      "passed": true,
+      "actual": 10025,
+      "expected": 10025
+    },
+    {
+      "name": "rank1 attempt4 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10025,
+      "expected": 10025
+    },
+    {
+      "name": "rank1 attempt4 attempts_since_resume",
+      "passed": true,
+      "actual": 4,
+      "expected": 4
+    },
+    {
+      "name": "rank1 attempt4 resumed_updates",
+      "passed": true,
+      "actual": 4,
+      "expected": 4
+    },
+    {
+      "name": "rank1 attempt4 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank1 attempt4 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt4 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt4 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt4 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 1.55074355368861,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt4 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999993142380175,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt4 param_norm_fp64",
+      "passed": true,
+      "actual": 205.92353990985632,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt5 rank",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "rank1 attempt5 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank1 attempt5 optimizer_updates",
+      "passed": true,
+      "actual": 10026,
+      "expected": 10026
+    },
+    {
+      "name": "rank1 attempt5 optimizer_step_calls",
+      "passed": true,
+      "actual": 10026,
+      "expected": 10026
+    },
+    {
+      "name": "rank1 attempt5 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10026,
+      "expected": 10026
+    },
+    {
+      "name": "rank1 attempt5 attempts_since_resume",
+      "passed": true,
+      "actual": 5,
+      "expected": 5
+    },
+    {
+      "name": "rank1 attempt5 resumed_updates",
+      "passed": true,
+      "actual": 5,
+      "expected": 5
+    },
+    {
+      "name": "rank1 attempt5 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank1 attempt5 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt5 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt5 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt5 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 2.3739176033211313,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt5 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999995968545837,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt5 param_norm_fp64",
+      "passed": true,
+      "actual": 205.92152859299668,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt6 rank",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "rank1 attempt6 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank1 attempt6 optimizer_updates",
+      "passed": true,
+      "actual": 10027,
+      "expected": 10027
+    },
+    {
+      "name": "rank1 attempt6 optimizer_step_calls",
+      "passed": true,
+      "actual": 10027,
+      "expected": 10027
+    },
+    {
+      "name": "rank1 attempt6 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10027,
+      "expected": 10027
+    },
+    {
+      "name": "rank1 attempt6 attempts_since_resume",
+      "passed": true,
+      "actual": 6,
+      "expected": 6
+    },
+    {
+      "name": "rank1 attempt6 resumed_updates",
+      "passed": true,
+      "actual": 6,
+      "expected": 6
+    },
+    {
+      "name": "rank1 attempt6 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank1 attempt6 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt6 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt6 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt6 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 1.706736363998471,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt6 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999994342298778,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt6 param_norm_fp64",
+      "passed": true,
+      "actual": 205.91977624249816,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt7 rank",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "rank1 attempt7 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank1 attempt7 optimizer_updates",
+      "passed": true,
+      "actual": 10028,
+      "expected": 10028
+    },
+    {
+      "name": "rank1 attempt7 optimizer_step_calls",
+      "passed": true,
+      "actual": 10028,
+      "expected": 10028
+    },
+    {
+      "name": "rank1 attempt7 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10028,
+      "expected": 10028
+    },
+    {
+      "name": "rank1 attempt7 attempts_since_resume",
+      "passed": true,
+      "actual": 7,
+      "expected": 7
+    },
+    {
+      "name": "rank1 attempt7 resumed_updates",
+      "passed": true,
+      "actual": 7,
+      "expected": 7
+    },
+    {
+      "name": "rank1 attempt7 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank1 attempt7 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt7 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt7 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt7 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 1.4823636078105957,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt7 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999993176218335,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt7 param_norm_fp64",
+      "passed": true,
+      "actual": 205.91827160896875,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt8 rank",
+      "passed": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "name": "rank1 attempt8 initial_optimizer_updates",
+      "passed": true,
+      "actual": 10021,
+      "expected": 10021
+    },
+    {
+      "name": "rank1 attempt8 optimizer_updates",
+      "passed": true,
+      "actual": 10029,
+      "expected": 10029
+    },
+    {
+      "name": "rank1 attempt8 optimizer_step_calls",
+      "passed": true,
+      "actual": 10029,
+      "expected": 10029
+    },
+    {
+      "name": "rank1 attempt8 validated_optimizer_updates",
+      "passed": true,
+      "actual": 10029,
+      "expected": 10029
+    },
+    {
+      "name": "rank1 attempt8 attempts_since_resume",
+      "passed": true,
+      "actual": 8,
+      "expected": 8
+    },
+    {
+      "name": "rank1 attempt8 resumed_updates",
+      "passed": true,
+      "actual": 8,
+      "expected": 8
+    },
+    {
+      "name": "rank1 attempt8 skipped_attempts",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "rank1 attempt8 step_applied",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt8 step_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt8 ema_validated",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "rank1 attempt8 grad_norm_pre_clip_fp64",
+      "passed": true,
+      "actual": 1.8784774920903131,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt8 grad_norm_post_clip_fp64",
+      "passed": true,
+      "actual": 0.9999994389585694,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 attempt8 param_norm_fp64",
+      "passed": true,
+      "actual": 205.91820761800216,
+      "expected": "finite numeric value"
+    },
+    {
+      "name": "rank1 source pin scripts/train_full.py",
+      "passed": true,
+      "actual": "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de",
+      "expected": "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de"
+    },
+    {
+      "name": "rank1 source pin scripts/train_repaired.py",
+      "passed": true,
+      "actual": "8e45ebaa60e8568f59cd63dd21f2bbd7b1576e0d3101ddde4154c1a04919acd4",
+      "expected": "8e45ebaa60e8568f59cd63dd21f2bbd7b1576e0d3101ddde4154c1a04919acd4"
+    },
+    {
+      "name": "rank1 source pin scripts/numerical_guard.py",
+      "passed": true,
+      "actual": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "expected": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8"
+    },
+    {
+      "name": "rank1 source pin scripts/launch_recovery.py",
+      "passed": true,
+      "actual": "a43e4d622928cdffc1569f35bb7b62ef77861b33f3893910c27f2dde3a48db7d",
+      "expected": "a43e4d622928cdffc1569f35bb7b62ef77861b33f3893910c27f2dde3a48db7d"
+    },
+    {
+      "name": "rank1 source pin scripts/inspect_checkpoint.py",
+      "passed": true,
+      "actual": "6ad4d4cf15fc6e2b3eae8c94b9b1d625fe9f7bcd72a8acaa755326621018b862",
+      "expected": "6ad4d4cf15fc6e2b3eae8c94b9b1d625fe9f7bcd72a8acaa755326621018b862"
+    },
+    {
+      "name": "rank1 source pin scripts/prepare_verified_resume.py",
+      "passed": true,
+      "actual": "b5db0707c3a16310d01141a7d30c22aa2e2c4a258ad98eec56c662cfce651a23",
+      "expected": "b5db0707c3a16310d01141a7d30c22aa2e2c4a258ad98eec56c662cfce651a23"
+    },
+    {
+      "name": "rank1 upstream tree pin",
+      "passed": true,
+      "actual": "cc0d1e8bbdd605962a29437dbdda6c9d73275bb18e239b6cdf93ea1f96485e3f",
+      "expected": "cc0d1e8bbdd605962a29437dbdda6c9d73275bb18e239b6cdf93ea1f96485e3f"
+    },
+    {
+      "name": "rank1 train entrypoint pin",
+      "passed": true,
+      "actual": "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de",
+      "expected": "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de"
+    },
+    {
+      "name": "rank1 health guard pin",
+      "passed": true,
+      "actual": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8",
+      "expected": "39b375a1a4687de56b9f34cd20f95c06ddc4a683051777559a3df5d78bb0cbd8"
+    },
+    {
+      "name": "rank1 shared GPU fraction configuration",
+      "passed": true,
+      "actual": 0.65,
+      "expected": 0.65
+    },
+    {
+      "name": "rank1 CPU threads configuration",
+      "passed": true,
+      "actual": 4,
+      "expected": 4
+    },
+    {
+      "name": "rank1 FP32 configuration",
+      "passed": true,
+      "actual": false,
+      "expected": false
+    }
+  ]
+}

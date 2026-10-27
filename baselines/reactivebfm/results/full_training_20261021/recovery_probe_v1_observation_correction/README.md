@@ -1,0 +1,1 @@
+The original_incorrect_observation.json is an erroneous author observation, NOT an experiment outcome. Read correction.json and the raw recovery_probe_v1 statuses. It is retained to preserve the correction history.

@@ -1,0 +1,171 @@
+{
+  "audit_skill": "experiment-audit",
+  "verdict": "WARN",
+  "reason_code": "incomplete_scope_and_checkpoint_recoverability_gaps",
+  "summary": "All reported point-in-time numbers match primary artifacts and no fake ground truth or prediction-normalized score was found. Full training and paper evaluation remain incomplete, while checkpoint publication/resume and backup state validation have material unexercised gaps.",
+  "audited_commit": "104393d48be438e923a30f3e42c466b861fb8639",
+  "audit_freeze_note": "This initial verdict excludes working-tree revisions after the audited commit; those require a separate follow-up review.",
+  "audited_input_hashes": {
+    "baselines/reactivebfm/scripts/train_full.py": "sha256:ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de",
+    "baselines/reactivebfm/scripts/run_closed_loop.py": "sha256:a05ba7892aa29749cf76caa9fe754357601de7f1b3a0d47aaff8135403f63c16",
+    "baselines/reactivebfm/scripts/torch_bfm_agent.py": "sha256:50514f84d6d418c7293e5c95e3a9461f2f3ed47f8899d87982e55f83aa4e32c5",
+    "baselines/reactivebfm/scripts/check_tracker_hold.py": "sha256:f0233aae78647ca4354c19fc2c00ff975c12db76316b979a6db9763ea1095987",
+    "baselines/reactivebfm/scripts/check_recomputation.py": "sha256:407b332fbbc57f194c1f001329a00aa29e0b7d98da2331633532a034397ec7be",
+    "baselines/reactivebfm/scripts/verify_feedback.py": "sha256:a3e00324f9d96a6b744d0efa9ebae26a62d1fafd9dd020d389ba176aee5d3258",
+    "baselines/reactivebfm/scripts/backup_full_run.py": "sha256:4486aae1747e8f26ad85aa5f3f187d84023fe15cd25650cb6131534aa246df97",
+    "baselines/reactivebfm/scripts/test_backup_full_run.py": "sha256:ef47d33fca8ef2c3ddc586dad7fca73072177b9cbf3eb03503a9debc8c53af5d",
+    "baselines/reactivebfm/scripts/full_runtime_witness.py": "sha256:79dfe8825436c5ff50f9b46c3fb59caff8417b5b77b17aefb2b00ca2be060464",
+    "baselines/reactivebfm/configs/full_training_v1.json": "sha256:89428ed9fcd241c71da5d4f4d4674dda47e569c92d7eeccb129059624adcb53a",
+    "baselines/reactivebfm/configs/full_backup_worker_v1.json": "sha256:5b4ed365fb017625aaf7ffee80de055eeb661b843b2841e500a26c79d0c503c8",
+    "baselines/reactivebfm/configs/env_spec.json": "sha256:baa6b78e7359c88e6a1d5fb45f7728e4af0a84e6cd4f0f9037c429ef569dbf1d",
+    "baselines/reactivebfm/docs/full_runtime.md": "sha256:95666fa08cf449dacc2754132f302f5e1f09fb09406cf7106944ed7562ce2bec",
+    "baselines/reactivebfm/results/EXPERIMENT_TRACKER.json": "sha256:97a1b673a355735e9b0aa2013c6650e0ec32478448e708d0b917dba15fa3e232",
+    "baselines/reactivebfm/reports/ReactiveBFM完整训练与闭环进展报告_20261022.md": "sha256:8a486538e917959e154c248e274019fcdfed98f8df8912b6c10255267f610482",
+    "baselines/reactivebfm/README.md": "sha256:65bb00bae2a312c72d0a88320b6c436af13b647dba6f6afe4d1dfd017d705438",
+    "baselines/reactivebfm/upstream/reactivebfm/train/scheduled_forcing_loop.py": "sha256:f26fd82c43657bd034f391405741dbc1fe9190fc98722602e675823a729cc990",
+    "baselines/reactivebfm/upstream/reactivebfm/utils/runtime/distributed.py": "sha256:5ecf1f623cee03646a5ae3ba1eb66919c2ac514c9918e9dbd364d8ede8ab4bfc",
+    "baselines/reactivebfm/upstream/deploy/run_online_generation.py": "sha256:a64c4ab6540404da0fc614e2170e176bb374098601850a414d09bc42f2f58193",
+    "baselines/reactivebfm/upstream/deploy/scalebridge/agent/bfm_agent.py": "sha256:7ad9622e338375a6edd0b3b387837355c93d433e1e2eb2a0d0cbb82c3f8fc8cf",
+    "baselines/reactivebfm/results/full_training_20261021/live_snapshot_20261022_0036/server_snapshot.json": "sha256:68e54bdd2cdd189b54da1745380ba3e815c3c238ff7c9c4623d4f157a1d291de",
+    "baselines/reactivebfm/results/full_training_20261021/closed_loop_simclock_v1/receipt.json": "sha256:282459de830ec64886dbc8c84c641d11af8b04e81b4e431f2c281a5aa36ee1ac",
+    "baselines/reactivebfm/results/full_training_20261021/closed_loop_simclock_v1/feedback_verification.json": "sha256:fb6cc86f19ff4f7b15066f0e2ebcec1bcc8ab65d9ccdf866ea65e87dce81c5a9",
+    "baselines/reactivebfm/results/data_audit_v1.json": "sha256:8eea7d3b26aac4fd85677f5df24c485eac8492cdb6d2d54ed68034bf29f7e4c4",
+    "baselines/reactivebfm/results/acquisition_v1/acquisition.json": "sha256:ee80518075ea4f0c891646045559b80cdff533b3a3d2fd452177917d2e429447",
+    ".aris/compute/reactivebfm-20261021.md": "sha256:d7ad5cbf6e6afccbded283b8c3ad1e67e06f48256946b324ed3cc13566d739b7",
+    "D:/具身智能/ReactiveBFM复现_20261021/full_training_20261022/closed_loop_simclock_v1.tar.gz": "sha256:ef14b3138b063766f124c5793243bcea90a77f0e18b823a3d8244cd7854c59b2"
+  },
+  "trace_path": ".aris/traces/experiment-audit/2026-10-22_full_run01/",
+  "agent_id": "/root/reactivebfm_full_integrity_audit_20261022",
+  "verdict_id": "/root/reactivebfm_full_integrity_audit_20261022",
+  "executor_model": "codex",
+  "executor_family": "openai",
+  "reviewer_model": "gpt-5.6-sol",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "generated_at": "2026-10-21T16:59:08Z",
+  "date": "2026-10-22",
+  "auditor": "gpt-5.6-sol-ultra",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "checks": {
+    "gt_provenance": {
+      "status": "pass",
+      "details": "Training targets come from released dataset motion. Static reference, recomputation parity, and simulator-feedback checks are explicitly labelled proxies/diagnostics; no prediction-derived value is presented as dataset ground truth."
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "Losses divide by valid target entries, not prediction statistics. Near-zero values are deterministic parity/wiring checks and are not presented as performance."
+    },
+    "result_existence": {
+      "status": "warn",
+      "details": "All reported numeric values match preserved artifacts, but no full-run checkpoint or milestone evaluation exists, the compute ledger is stale, several operational/environment claims are only partially evidenced, and remote release state was not queried."
+    },
+    "dead_code": {
+      "status": "pass",
+      "details": "Current claimed metrics are called and recorded through primary code paths. The future milestone evaluator has no output because no eligible checkpoint exists and no result from it is claimed."
+    },
+    "scope": {
+      "status": "warn",
+      "details": "The full schedule is incomplete; closed-loop evidence is one prompt/seed on an old 101-update pilot; normalization/runtime differ from an unpublished premerged/eight-rank setup; official benchmarks and real-robot/human evaluation are absent."
+    },
+    "eval_type": {
+      "status": "pass",
+      "classifications": [
+        "real_gt",
+        "synthetic_proxy",
+        "self_supervised_proxy",
+        "simulation_only"
+      ],
+      "human_eval": false
+    }
+  },
+  "operational_integrity": {
+    "status": "warn",
+    "findings": [
+      "Checkpoint model/optimizer files are written to final names before an atomic ready manifest; resume selects the highest model filename without manifest/hash validation and can proceed without optimizer state.",
+      "Existing local evaluation receipt, feedback, and archive files are trusted on retries when no expected hash is supplied.",
+      "Deletion-critical guards use assert and disappear under optimized Python, although the observed worker did not use -O.",
+      "Completion does not require the exact fresh rank set; process matching is generic and there is no stale/hang detector.",
+      "FAILED/process-absent paths stop without automatic verified resume, and some abrupt failures are not published as failure assets.",
+      "Release asset discovery is not paginated.",
+      "No real full-training checkpoint has exercised publication, cleanup, or resume."
+    ]
+  },
+  "evaluation_types": {
+    "released_motion_training_targets": "real_gt",
+    "static_a_pose_hold": [
+      "synthetic_proxy",
+      "simulation_only"
+    ],
+    "recomputation_gradient_parity": "self_supervised_proxy",
+    "state_prefix_feedback_check": [
+      "self_supervised_proxy",
+      "simulation_only"
+    ],
+    "generated_mujoco_closed_loop": "simulation_only",
+    "human_eval": "absent"
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Official public files were acquired and the three-component full schedule was launched.",
+      "impact": "supported_with_qualifiers"
+    },
+    {
+      "id": "C2",
+      "claim": "The full 1M schedule or paper performance has been reproduced.",
+      "impact": "unsupported_and_explicitly_disclaimed"
+    },
+    {
+      "id": "C3",
+      "claim": "Both ranks had completed 270 updates at the frozen snapshot.",
+      "impact": "supported_point_in_time"
+    },
+    {
+      "id": "C4",
+      "claim": "Four-update DDP execution and one-batch recomputation parity passed.",
+      "impact": "supported_implementation_scope_only"
+    },
+    {
+      "id": "C5",
+      "claim": "Static A-pose tracking remained upright for eight simulated seconds.",
+      "impact": "supported_simulation_proxy_only"
+    },
+    {
+      "id": "C6",
+      "claim": "The old 101-update model executed a real-feedback MuJoCo loop.",
+      "impact": "supported_but_model_fell"
+    },
+    {
+      "id": "C7",
+      "claim": "Recorded simulator state was fed back consistently into planner prefixes.",
+      "impact": "supported_self_consistency_only"
+    },
+    {
+      "id": "C8",
+      "claim": "Future checkpoint backup, cleanup, and recovery are fully robust.",
+      "impact": "not_demonstrated_needs_qualification"
+    },
+    {
+      "id": "C9",
+      "claim": "Preserved GitHub release assets remain available now.",
+      "impact": "not_independently_verified"
+    }
+  ],
+  "independent_observations": {
+    "archive_bytes": 194241,
+    "archive_sha256": "ef14b3138b063766f124c5793243bcea90a77f0e18b823a3d8244cd7854c59b2",
+    "archive_safe_members": 9,
+    "json_files_parsed": 59,
+    "jsonl_files_parsed": 2,
+    "later_local_observation": {
+      "timestamp": "2026-10-22T00:52:50+08:00",
+      "rank0_updates": 530,
+      "rank1_updates": 530,
+      "checkpoint_manifests": 0
+    },
+    "external_services_queried": false
+  }
+}

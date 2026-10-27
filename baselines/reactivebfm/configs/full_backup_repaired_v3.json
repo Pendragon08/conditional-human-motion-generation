@@ -1,0 +1,22 @@
+{
+  "ssh_host": "ouyanghao@10.147.17.32",
+  "ssh_key": "C:/Users/Pende/.ssh/id_ed25519",
+  "ssh_executable": "C:\\Windows\\System32\\OpenSSH\\ssh.EXE",
+  "scp_executable": "C:\\Windows\\System32\\OpenSSH\\scp.EXE",
+  "python": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/env/bin/python",
+  "runtime_root": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021",
+  "server_output": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3",
+  "evaluation_root": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/evaluation_v3_verified",
+  "local_output": "D:/具身智能/ReactiveBFM复现_20261021/repair_20261022/full_training_v3_verified",
+  "github_repo": "Pendragon08/conditional-human-motion-generation",
+  "release_tag": "reactivebfm-recovery-fp32-v3-20261022",
+  "poll_seconds": 300,
+  "training_script": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/code_v3/scripts/train_repaired.py",
+  "evaluation_updates": [
+    10041,
+    1000000
+  ],
+  "training_description": "配置：双 RTX A6000，512×2，全局batch1024，400k教师强制warmup，EMA、FP32、激活重算、FP64范数与裁剪；从10,021更新完整检查点恢复；前后优化器与EMA有限性检查、失败即停；未完成论文性能复现。",
+  "capture_recovery_trace": true,
+  "bind_evaluation_model_sha256": true
+}

@@ -1,0 +1,54 @@
+{
+  "status": "REAL_CHECKPOINT_GPU_RESTORE_AND_FOUR_UPDATES_PASSED",
+  "main_training_interrupted": false,
+  "checkpoint_official_step": 999,
+  "checkpoint_optimizer_updates": 1000,
+  "global_batch": 1024,
+  "runs": [
+    {
+      "run": "recovery_probe_v1",
+      "rank_results": [
+        {
+          "rank": 0,
+          "status": "PROBE_COMPLETED",
+          "start_optimizer_updates": 1000,
+          "end_optimizer_updates": 1004,
+          "exit_code": 0,
+          "elapsed_seconds": 44.105016158893704
+        },
+        {
+          "rank": 1,
+          "status": "PROBE_COMPLETED",
+          "start_optimizer_updates": 1000,
+          "end_optimizer_updates": 1004,
+          "exit_code": 0,
+          "elapsed_seconds": 44.1109175644815
+        }
+      ],
+      "independent_replicate": false
+    },
+    {
+      "run": "recovery_probe_v2",
+      "rank_results": [
+        {
+          "rank": 0,
+          "status": "PROBE_COMPLETED",
+          "start_optimizer_updates": 1000,
+          "end_optimizer_updates": 1004,
+          "exit_code": 0,
+          "elapsed_seconds": 45.8040469866246
+        },
+        {
+          "rank": 1,
+          "status": "PROBE_COMPLETED",
+          "start_optimizer_updates": 1000,
+          "end_optimizer_updates": 1004,
+          "exit_code": 0,
+          "elapsed_seconds": 45.79072683118284
+        }
+      ],
+      "independent_replicate": false
+    }
+  ],
+  "scope": "Direct original train_full.py restore into independent new directories; does not accept execute-plan helper, exact RNG replay, full completion, scientific replication or extra main-run updates. v2 was accidental duplicate; correction and original raw evidence retained."
+}

@@ -1,0 +1,17 @@
+........E..
+======================================================================
+ERROR: test_release_asset_enumeration_is_paginated (__main__.CleanupProtocol.test_release_asset_enumeration_is_paginated)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Pende\Documents\ChatGPT\机器人格斗动作捕捉数据生成\work\reactivebfm_reproduction_20261021\repository\baselines\reactivebfm\scripts\test_backup_full_run.py", line 122, in test_release_asset_enumeration_is_paginated
+    assets=self.worker.assets();self.assertEqual(len(assets),101);self.assertEqual(len(calls),3)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pende\Documents\ChatGPT\机器人格斗动作捕捉数据生成\work\reactivebfm_reproduction_20261021\repository\baselines\reactivebfm\scripts\backup_full_run.py", line 107, in assets
+    if item['name'] in result:raise RuntimeError('Duplicate Release asset name; refusing ambiguous backup state')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Duplicate Release asset name; refusing ambiguous backup state
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.158s
+
+FAILED (errors=1)

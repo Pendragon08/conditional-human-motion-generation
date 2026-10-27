@@ -1,0 +1,23 @@
+{
+  "utc": "2026-10-22T07:47:03.179585+00:00",
+  "command": [
+    "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/env/bin/python",
+    "-u",
+    "-m",
+    "torch.distributed.run",
+    "--standalone",
+    "--nnodes=1",
+    "--nproc_per_node=2",
+    "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/code_v3/scripts/train_repaired.py",
+    "--config",
+    "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/code_v3/configs/recovery_fp32_v3.json",
+    "--output",
+    "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/repair_20261022/training_fp32_v3",
+    "--resume",
+    "/home/ouyanghao/reactivebfm-full-20261021/repaired_fp32_v2/checkpoints/model000010020.pt"
+  ],
+  "configuration_sha256": "33e45608c5361fa22b80f16317b81f912c8b6ced4252be37b745fc7824f443ea",
+  "resume": "/home/ouyanghao/reactivebfm-full-20261021/repaired_fp32_v2/checkpoints/model000010020.pt",
+  "probe_updates": 0,
+  "scope": "Model, EMA and AdamW continuation; random state and data order are not exact replay."
+}

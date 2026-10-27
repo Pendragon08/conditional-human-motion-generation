@@ -1,0 +1,19 @@
+{
+  "executable": "C:/Windows/System32/OpenSSH/ssh.exe",
+  "arguments": [
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=20",
+    "ouyanghao@10.147.17.32",
+    "if test -f '/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/witness_document_v1.json'; then sha256sum '/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/witness_document_v1.json'; else printf '%s\\n' 'RECEIPT_MISSING'; exit 74; fi"
+  ],
+  "utc_start": "2026-10-21T14:47:41.9354378Z",
+  "utc_end": "2026-10-21T14:47:42.8412523Z",
+  "exit_code": 0,
+  "stdout_file": "receipt.remote_sha256.stdout.txt",
+  "stderr_file": "receipt.remote_sha256.stderr.txt",
+  "output_encoding": "UTF-8 without BOM; decoded process stdout/stderr; newline content preserved"
+}

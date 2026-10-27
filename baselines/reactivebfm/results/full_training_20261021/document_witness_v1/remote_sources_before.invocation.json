@@ -1,0 +1,15 @@
+{
+  "label": "remote_sources_before",
+  "remote_command": "cd /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/code && find configs scripts upstream -type f ! -path '*/__pycache__/*' ! -path '*/.git/*' ! -name '*.pyc' ! -name '*.pyo' -print0 | LC_ALL=C sort -z | xargs -0 sha256sum",
+  "ssh_options": [
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15"
+  ],
+  "start_utc": "2026-10-21T16:06:28.7471844Z",
+  "end_utc": "2026-10-21T16:06:30.5074638Z",
+  "exit_code": 0,
+  "stdout_file": "remote_sources_before.stdout.txt",
+  "stderr_file": "remote_sources_before.stderr.txt"
+}

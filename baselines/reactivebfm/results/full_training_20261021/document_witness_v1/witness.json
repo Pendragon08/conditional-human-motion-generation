@@ -1,0 +1,379 @@
+{
+  "status": "DOCUMENT_WITNESS_PASSED",
+  "scope": "One exact documented runtime invocation; execution check only, not full training or paper-performance reproduction.",
+  "setup_sources": [
+    "baselines/reactivebfm/docs/full_runtime.md",
+    "baselines/reactivebfm/configs/full_training_v1.json",
+    "baselines/reactivebfm/configs/env_spec.json",
+    ".aris/compute/reactivebfm-20261021.md"
+  ],
+  "invocation_count": 1,
+  "invocation": {
+    "label": "documented_run",
+    "remote_command": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/env/bin/python /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/code/scripts/full_runtime_witness.py --runtime-root /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021 --output /home/ouyanghao/reactivebfm-full-20261021/full_witness_document_v1",
+    "ssh_options": [
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=15"
+    ],
+    "start_utc": "2026-10-21T16:06:31.4924182Z",
+    "end_utc": "2026-10-21T16:07:22.2877778Z",
+    "exit_code": 0,
+    "stdout_file": "documented_run.stdout.txt",
+    "stderr_file": "documented_run.stderr.txt"
+  },
+  "preflight": "output_absent.invocation.json / output_absent.stdout.txt; absent immediately before launch",
+  "source_sets": [
+    {
+      "location": "local",
+      "set": "compute_ledger",
+      "file_count": 1,
+      "before_sha256": "bf460c1ccf65e1a831151c76cd670a17db3975c1cec6e0286df8245887f198e7",
+      "after_sha256": "bf460c1ccf65e1a831151c76cd670a17db3975c1cec6e0286df8245887f198e7"
+    },
+    {
+      "location": "local",
+      "set": "configuration",
+      "file_count": 3,
+      "before_sha256": "39f64409f04c4c4ad338356e2901f88b4fab0123ea7cc7ceff7c0ddd5ddef5b3",
+      "after_sha256": "39f64409f04c4c4ad338356e2901f88b4fab0123ea7cc7ceff7c0ddd5ddef5b3"
+    },
+    {
+      "location": "local",
+      "set": "documentation",
+      "file_count": 2,
+      "before_sha256": "580aee5bf5cc565e4bc15e15f1d39a79ed5f76a82ad598620503d7e1066fb8b2",
+      "after_sha256": "580aee5bf5cc565e4bc15e15f1d39a79ed5f76a82ad598620503d7e1066fb8b2"
+    },
+    {
+      "location": "local",
+      "set": "official_vendor_source",
+      "file_count": 226,
+      "before_sha256": "cd9035ae1b1d1082e2278a815f0e1513565d679cf612c5b0a8c3df89d8797e18",
+      "after_sha256": "cd9035ae1b1d1082e2278a815f0e1513565d679cf612c5b0a8c3df89d8797e18"
+    },
+    {
+      "location": "local",
+      "set": "supplementary_source",
+      "file_count": 13,
+      "before_sha256": "88a811712bcd2cb60d9fcb98e4d75795d4f593ddc40afb2940f01cd9caaba368",
+      "after_sha256": "88a811712bcd2cb60d9fcb98e4d75795d4f593ddc40afb2940f01cd9caaba368"
+    },
+    {
+      "location": "remote",
+      "set": "scripts",
+      "file_count": 10,
+      "before_sha256": "ca41c5545a06bad4f0affc7d198aa34942e4722e010a2cf30ac9bc6aedb0da78",
+      "after_sha256": "ca41c5545a06bad4f0affc7d198aa34942e4722e010a2cf30ac9bc6aedb0da78"
+    },
+    {
+      "location": "remote",
+      "set": "upstream",
+      "file_count": 226,
+      "before_sha256": "8ffe26738857b9e1ad0320835bb5ddec0f81f30be89270d374eeab607e06eaec",
+      "after_sha256": "8ffe26738857b9e1ad0320835bb5ddec0f81f30be89270d374eeab607e06eaec"
+    },
+    {
+      "location": "remote",
+      "set": "configs",
+      "file_count": 3,
+      "before_sha256": "b7bc8ae8823f473687e1d35e9c63a37ce4f771f4b0a98de78f1fcf7836d9e7a9",
+      "after_sha256": "b7bc8ae8823f473687e1d35e9c63a37ce4f771f4b0a98de78f1fcf7836d9e7a9"
+    }
+  ],
+  "source_changes": {
+    "local_helpers_not_deployed": [
+      "scripts/audit_official_data.py",
+      "scripts/build_overlay.py",
+      "scripts/verify_github_backup.py"
+    ],
+    "cross_host_hash_mismatches": [],
+    "local": [],
+    "remote": []
+  },
+  "checks": [
+    {
+      "name": "exit_code",
+      "expected": 0,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "name": "receipt_status",
+      "expected": "FULL_RUNTIME_WITNESS_PASSED",
+      "actual": "FULL_RUNTIME_WITNESS_PASSED",
+      "passed": true
+    },
+    {
+      "name": "rank0_status",
+      "expected": "PROBE_COMPLETED with exit0",
+      "actual": [
+        "PROBE_COMPLETED",
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "rank0_optimizer_updates",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "name": "rank0_global_batch",
+      "expected": 1024,
+      "actual": 1024,
+      "passed": true
+    },
+    {
+      "name": "rank0_frozen_configuration",
+      "expected": "equal to full_training_v1.json",
+      "actual": {
+        "official_commit": "5a79d03cab824eb5917271ba720294e8a1b9d374",
+        "dataset": "amass_g1_36dim,100style_g1_36dim,kungfu_g1_36dim",
+        "num_steps": 1000000,
+        "num_warmup_steps": 400000,
+        "batch_size_local": 512,
+        "world_size": 2,
+        "batch_size_global": 1024,
+        "seed": 42,
+        "learning_rate": 0.0001,
+        "cross_prob": 0.0,
+        "use_ema": true,
+        "use_bf16": true,
+        "activation_checkpointing": true,
+        "memory_fraction_per_gpu": 0.55,
+        "cpu_threads_per_rank": 4,
+        "num_workers": 0,
+        "save_interval": 10000,
+        "first_checkpoint_updates": 1000,
+        "log_interval": 100,
+        "minimum_free_output_bytes": 2147483648,
+        "estimated_checkpoint_pair_bytes": 1800000000,
+        "runtime_root": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021",
+        "run_output": "/home/ouyanghao/reactivebfm-full-20261021/training_v1",
+        "environment_spec": "configs/env_spec.json",
+        "notes": "From scratch. Same global batch and full step/warmup schedule; two shared A6000 ranks replace eight ranks. BF16 is an official option. Supplementary block activation recomputation changes memory/runtime, not the intended objective. No paper-performance claim until evaluated. Uses the official comma-separated composite path, retaining each released component normalizer; the default premerged alias has no merged folder in the three public downloads."
+      },
+      "passed": true
+    },
+    {
+      "name": "rank0_three_dataset_components",
+      "expected": [
+        "100style_g1_36dim",
+        "amass_g1_36dim",
+        "kungfu_g1_36dim"
+      ],
+      "actual": {
+        "amass_g1_36dim": 1403,
+        "100style_g1_36dim": 6268,
+        "kungfu_g1_36dim": 687
+      },
+      "passed": true
+    },
+    {
+      "name": "rank1_status",
+      "expected": "PROBE_COMPLETED with exit0",
+      "actual": [
+        "PROBE_COMPLETED",
+        0
+      ],
+      "passed": true
+    },
+    {
+      "name": "rank1_optimizer_updates",
+      "expected": 4,
+      "actual": 4,
+      "passed": true
+    },
+    {
+      "name": "rank1_global_batch",
+      "expected": 1024,
+      "actual": 1024,
+      "passed": true
+    },
+    {
+      "name": "rank1_frozen_configuration",
+      "expected": "equal to full_training_v1.json",
+      "actual": {
+        "official_commit": "5a79d03cab824eb5917271ba720294e8a1b9d374",
+        "dataset": "amass_g1_36dim,100style_g1_36dim,kungfu_g1_36dim",
+        "num_steps": 1000000,
+        "num_warmup_steps": 400000,
+        "batch_size_local": 512,
+        "world_size": 2,
+        "batch_size_global": 1024,
+        "seed": 42,
+        "learning_rate": 0.0001,
+        "cross_prob": 0.0,
+        "use_ema": true,
+        "use_bf16": true,
+        "activation_checkpointing": true,
+        "memory_fraction_per_gpu": 0.55,
+        "cpu_threads_per_rank": 4,
+        "num_workers": 0,
+        "save_interval": 10000,
+        "first_checkpoint_updates": 1000,
+        "log_interval": 100,
+        "minimum_free_output_bytes": 2147483648,
+        "estimated_checkpoint_pair_bytes": 1800000000,
+        "runtime_root": "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021",
+        "run_output": "/home/ouyanghao/reactivebfm-full-20261021/training_v1",
+        "environment_spec": "configs/env_spec.json",
+        "notes": "From scratch. Same global batch and full step/warmup schedule; two shared A6000 ranks replace eight ranks. BF16 is an official option. Supplementary block activation recomputation changes memory/runtime, not the intended objective. No paper-performance claim until evaluated. Uses the official comma-separated composite path, retaining each released component normalizer; the default premerged alias has no merged folder in the three public downloads."
+      },
+      "passed": true
+    },
+    {
+      "name": "rank1_three_dataset_components",
+      "expected": [
+        "100style_g1_36dim",
+        "amass_g1_36dim",
+        "kungfu_g1_36dim"
+      ],
+      "actual": {
+        "amass_g1_36dim": 1403,
+        "100style_g1_36dim": 6268,
+        "kungfu_g1_36dim": 687
+      },
+      "passed": true
+    },
+    {
+      "name": "gradient_parity",
+      "expected": "FP32 parity pass, atol1e-6/rtol1e-5, >=200 nonzero tensors",
+      "actual": {
+        "status": "RECOMPUTATION_GRADIENT_PARITY_PASSED",
+        "seed": 42,
+        "reference_loss": 1.079074740409851,
+        "recomputed_loss": 1.079074740409851,
+        "gradient_tensors_compared": 365,
+        "maximum_absolute_gradient_error": 0.0,
+        "atol": 1E-06,
+        "rtol": 1E-05,
+        "nonzero_gradient_tensors": 365,
+        "zero_initialized_parameters_perturbed": 37,
+        "scope": "One real-data FP32 batch with deterministic nonzero gate/output perturbations; confirms recomputation hook parity, not BF16/whole-training equivalence."
+      },
+      "passed": true
+    },
+    {
+      "name": "static_hold",
+      "expected": "8 simulated seconds, finite/upright",
+      "actual": {
+        "status": "STATIC_REFERENCE_PHYSICS_EXECUTED",
+        "control_steps": 400,
+        "simulation_seconds": 7.999999999999852,
+        "elapsed_seconds": 5.15945647098124,
+        "finite": true,
+        "minimum_root_height_m": 0.7880381941795349,
+        "final_root_height_m": 0.7897491455078125,
+        "upright_entire_rollout_height_proxy": true,
+        "root_position_rmse_m": 0.003288541454821825,
+        "dof_rmse_rad": 0.05980569124221802,
+        "reference_forcing": false,
+        "planner_used": false,
+        "scope": "Static A-pose native tracker diagnostic, not a generative-planning or paper metric."
+      },
+      "passed": true
+    },
+    {
+      "name": "closed_loop_control",
+      "expected": "100 actual policy calls",
+      "actual": 100,
+      "passed": true
+    },
+    {
+      "name": "closed_loop_integrations",
+      "expected": "400 actual MuJoCo integrations / 2 simulated seconds",
+      "actual": [
+        400,
+        1.9999999999999793
+      ],
+      "passed": true
+    },
+    {
+      "name": "closed_loop_planner_calls",
+      "expected": ">=2",
+      "actual": 12,
+      "passed": true
+    },
+    {
+      "name": "closed_loop_feedback",
+      "expected": "real state prefixes, no reference forcing, stop at max policy steps",
+      "actual": [
+        "real",
+        false,
+        "max_policy_steps_reached"
+      ],
+      "passed": true
+    },
+    {
+      "name": "local_source_config_doc_ledger_unchanged",
+      "expected": "no added/removed/changed files",
+      "actual": [],
+      "passed": true
+    },
+    {
+      "name": "remote_supplementary_and_vendor_source_unchanged",
+      "expected": "no added/removed/changed files",
+      "actual": [],
+      "passed": true
+    },
+    {
+      "name": "deployed_source_bytes_match_local",
+      "expected": "all 239 deployed files match local",
+      "actual": [],
+      "passed": true
+    },
+    {
+      "name": "rank_source_receipts_match_manifest",
+      "expected": "train_full.py receipt source hash matches frozen remote source",
+      "actual": [
+        "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de",
+        "ce21ec77b958132c136eff2e44ebff1940f41eb1f2d6694681ccb864b89d57de"
+      ],
+      "passed": true
+    },
+    {
+      "name": "loop_source_receipt_matches_manifest",
+      "expected": "run_closed_loop.py receipt source hash matches frozen remote source",
+      "actual": "39af23dfc5f60fd0df818692fbe12816377e10efcc2b84a9abdb8181eee430d0",
+      "passed": true
+    },
+    {
+      "name": "text_evidence_only",
+      "expected": "21 JSON/text files, no checkpoint/pose binaries copied",
+      "actual": [
+        21,
+        0
+      ],
+      "passed": true
+    }
+  ],
+  "receipt_sha256": "055984e0d1c1f8fcca4d4d79adf2ef39f226701ca5d579f64d1f8b0a2a1bdb29",
+  "evidence_copy": {
+    "inventory": "generated_inventory.stdout.txt",
+    "hash_manifest": "copied_evidence.json",
+    "files": 21,
+    "excluded_binary_files": [
+      "hold/simulated_states.npz",
+      "loop/session/online_motion_20261021_160723/motion_buffers.npz"
+    ]
+  },
+  "limits": [
+    "Four optimizer updates per rank do not complete the configured 1,000,000-update schedule or 400,000-step warmup.",
+    "FP32 parity uses one real-data batch and 37 deterministic gate/output parameter perturbations; it does not establish BF16 or whole-training equivalence.",
+    "The 101-update pilot model falls: closed-loop minimum root height 0.1476634592m; upright proxy is false.",
+    "Closed-loop planner calls take roughly 0.36-0.56s with frame-overrun warnings; no real-time or motion-quality claim.",
+    "Static uprightness is a root-height proxy; the hold receipt reports 400 controls/8 simulated seconds but no separate integration counter.",
+    "Only generated JSON/text evidence was copied; checkpoint and pose binaries remain remote.",
+    "No processes were signalled, stopped or restarted; continuity of unrelated jobs was not independently audited with PID snapshots.",
+    "The overlay package versions were not re-audited during this run; the frozen environment specification was used without setup changes."
+  ],
+  "evidence_notes": [
+    "The controller UTC interval and remote receipt UTC values use different clocks. Preflight remote 16:06:33Z occurred inside controller interval 16:06:30.5126009Z..16:06:31.4817076Z; preserve both without treating their cross-clock order as runtime order.",
+    "capture_summary.json contains two serialized void-return placeholders in its run array; documented_run.invocation.json is the authoritative exact invocation/timestamp/exit record. No runtime retry was made."
+  ],
+  "completed_utc": "2026-10-21T16:11:10.4278519Z"
+}

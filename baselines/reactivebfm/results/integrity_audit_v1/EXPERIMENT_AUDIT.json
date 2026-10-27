@@ -1,0 +1,569 @@
+{
+  "schema_version": "1.0",
+  "audit_id": "reactivebfm_integrity_audit_v1",
+  "generated_at": "2026-10-21T23:18:58.7101456+08:00",
+  "audit_root": "C:/Users/Pende/Documents/ChatGPT/机器人格斗动作捕捉数据生成/work/reactivebfm_reproduction_20261021/repository/baselines/reactivebfm",
+  "overall_verdict": "WARN",
+  "verdict": "WARN",
+  "integrity_status": "SUPPORTED_WITH_SCOPE_WARNINGS",
+  "acceptance_status": "provisional",
+  "review_independence": "same-family",
+  "reviewer": {
+    "role": "fresh adversarial read-only experiment-integrity reviewer",
+    "agent_id": "/root/reactivebfm_integrity_audit_v1",
+    "runtime_family": "GPT-6 Codex",
+    "exact_deployment_identifier": "not exposed to reviewer",
+    "reasoning_effort": "not exposed to reviewer",
+    "independence_basis": "fresh task; primary artifacts and relevant official code read directly; no author verdict adopted",
+    "audit_skill": "experiment-audit"
+  },
+  "constraints_observed": {
+    "gpu_jobs_run": false,
+    "experiment_code_modified": false,
+    "reports_modified": false,
+    "credentials_accessed": false,
+    "files_deleted": false,
+    "writes_outside_audit_output_directory": false
+  },
+  "summary": "Local evidence supports a real-data, one-seed, 101-update compatibility run and usable checkpoints. It does not support a paper benchmark, motion-quality result, physical-control result, or long-horizon result. Warnings are caused by deterministic test-subset selection, absent held-out sample IDs, narrow scope, and unavailable independent remote-copy or publisher-signed-hash verification.",
+  "checks": [
+    {
+      "id": "A",
+      "name": "ground_truth_provenance",
+      "status": "PASS",
+      "evidence_types": [
+        "real_gt"
+      ],
+      "finding": "The held-out diagnostic uses dataset-provided Kungfu test motion as x_start and an analytic noise-minus-motion flow target. No model output supplies the reference.",
+      "evidence": [
+        {
+          "location": "scripts/run_bounded_pilot.py:64-75",
+          "observation": "Real motion prefix and future frames are passed to the official training loss; the eight losses are averaged."
+        },
+        {
+          "location": "scripts/run_bounded_pilot.py:78-82",
+          "observation": "The loader explicitly selects the Kungfu test split, deterministic access, no shuffle, and four batches of two."
+        },
+        {
+          "location": "upstream/reactivebfm/data/datasets/motion_text.py:89-109",
+          "observation": "The loader reads full_train.pkl and filters records through the requested split file."
+        },
+        {
+          "location": "upstream/reactivebfm/model/motion_planner/objectives/flow/flow_matching_smooth.py:162-174",
+          "observation": "The target is noise - x_start; x0_pred is computed only after the model-output comparison."
+        },
+        {
+          "location": "results/acquisition_v1/acquisition.json:130-138",
+          "observation": "The Kungfu full_train artifact has a public-source URL, recorded size, and recorded SHA256 that match the local file."
+        },
+        {
+          "location": "results/data_audit_v1.json:184-211",
+          "observation": "Kungfu contains 893 finite 36D records and has zero exact key/array intersections across the official splits."
+        }
+      ],
+      "caveat": "No publisher-signed checksum was available; public provenance is a listing URL plus independently reproduced local sizes and hashes."
+    },
+    {
+      "id": "B",
+      "name": "score_normalization",
+      "status": "PASS",
+      "evidence_types": [
+        "real_gt"
+      ],
+      "finding": "The score denominator is determined by the mask and tensor dimensions, not by prediction values. The reported held-out result is an arithmetic mean of eight per-sample losses.",
+      "evidence": [
+        {
+          "location": "upstream/reactivebfm/data/datasets/motion_text.py:254-260",
+          "observation": "Motion is normalized with stored dataset mean and standard deviation."
+        },
+        {
+          "location": "upstream/reactivebfm/data/datasets/motion_text.py:376-387",
+          "observation": "Mean.npy and Std.npy are loaded from the dataset directory."
+        },
+        {
+          "location": "upstream/reactivebfm/utils/training/losses.py:17-31",
+          "observation": "masked_l2 divides summed squared error by mask count multiplied by fixed entry count."
+        },
+        {
+          "location": "upstream/reactivebfm/model/motion_planner/objectives/flow/flow_matching_smooth.py:162-172",
+          "observation": "flow_mse compares target_velocity and model_output without a prediction-derived denominator."
+        },
+        {
+          "location": "scripts/run_bounded_pilot.py:71-75",
+          "observation": "The wrapper detaches each sample loss and applies numpy mean."
+        }
+      ],
+      "prediction_derived_denominator": false
+    },
+    {
+      "id": "C",
+      "name": "claims_files_tracker_consistency",
+      "status": "WARN",
+      "evidence_types": [
+        "real_gt",
+        "execution-only"
+      ],
+      "finding": "All locally available scientific numbers, settings, logs, metric rows, checkpoint hashes, reload results, and tracker states are mutually consistent. Exact diagnostic sample IDs are not retained, and remote equality claims could not be independently rechecked.",
+      "evidence": [
+        {
+          "location": "results/pilot_v1/run_receipt.json:2-12",
+          "observation": "The receipt records 101 updates and explicitly marks paper benchmarks, physics, and full training false."
+        },
+        {
+          "location": "results/pilot_v1/run_receipt.json:13-87",
+          "observation": "CLI settings, parameters, before/after values, hashes, timing, and memory are internally coherent."
+        },
+        {
+          "location": "results/pilot_v1/training_metrics.jsonl:1-101",
+          "observation": "All 101 rows parsed; official_step spans 0-100, optimizer_updates_seen spans 1-101, and recorded losses are finite."
+        },
+        {
+          "location": "results/pilot_v1/pilot_v1.stdout.txt:2855-2861",
+          "observation": "The terminal record reaches step 100, saves, and emits the same final receipt."
+        },
+        {
+          "location": "results/pilot_v1/checkpoint_manifest.json:3-14",
+          "observation": "Local model and optimizer sizes/hashes match independent rehashes."
+        },
+        {
+          "location": "results/checkpoint_reload_v1/receipt.json:2-20",
+          "observation": "Reloaded parameter hash matches, 365 optimizer states report step 101, and a finite [1,36,1,50] output is produced."
+        },
+        {
+          "location": "results/EXPERIMENT_TRACKER.json:3-15",
+          "observation": "Bounded evidence tasks are DONE; full training, MuJoCo, and paper benchmarks remain TODO."
+        },
+        {
+          "location": "upstream/reactivebfm/data/datasets/dataset.py:100-126",
+          "observation": "return_keys defaults false."
+        },
+        {
+          "location": "scripts/run_bounded_pilot.py:78-80",
+          "observation": "The diagnostic loader does not override return_keys, so sample identities are absent from the receipt."
+        },
+        {
+          "location": "reports/ReactiveBFM复现实验报告.md:101-110",
+          "observation": "The report includes server-copy and published-LFS equality statements that this local-only audit could not independently re-establish."
+        }
+      ],
+      "phantom_scientific_results_found": false,
+      "unavailable_verification": [
+        "server-side checkpoint byte equality",
+        "remote published-LFS object equality",
+        "publisher-signed dataset checksum"
+      ]
+    },
+    {
+      "id": "D",
+      "name": "metric_dead_code_and_called_paths",
+      "status": "PASS",
+      "evidence_types": [
+        "real_gt"
+      ],
+      "finding": "The reported flow objective and auxiliary MSE metrics are on the executed training path and occur in the stored metric stream. No claimed result depends on dead code.",
+      "evidence": [
+        {
+          "location": "upstream/reactivebfm/train/train_planner_scheduled_forcing.py:38-52",
+          "observation": "The entrypoint builds the model/objective and calls ScheduledForcingLoop.run_loop."
+        },
+        {
+          "location": "upstream/reactivebfm/model/motion_planner/factory.py:18-28",
+          "observation": "model_type flow selects the flow-matching process."
+        },
+        {
+          "location": "upstream/reactivebfm/train/scheduled_forcing_loop.py:547-605",
+          "observation": "training_losses is called, loss is backpropagated, model output is retained for rollout, and metric terms are accumulated."
+        },
+        {
+          "location": "upstream/reactivebfm/train/scheduled_forcing_loop.py:637-658",
+          "observation": "Accumulated metrics are reported to the configured platform."
+        },
+        {
+          "location": "upstream/reactivebfm/model/motion_planner/objectives/flow/flow_matching_smooth.py:225-240",
+          "observation": "The objective composes loss and invokes masked_motion_metrics."
+        },
+        {
+          "location": "upstream/reactivebfm/utils/training/losses.py:38-115",
+          "observation": "The auxiliary motion MSE metrics are implemented on this path."
+        },
+        {
+          "location": "results/pilot_v1/training_metrics.jsonl:1-101",
+          "observation": "The metric keys are present in every stored row."
+        }
+      ],
+      "unclaimed_dead_helper": "upstream/reactivebfm/utils/training/losses.py:9-12 defines angle_l2, which is unused but supports no audited claim."
+    },
+    {
+      "id": "E",
+      "name": "scope_adequacy",
+      "status": "WARN",
+      "evidence_types": [
+        "real_gt",
+        "execution-only"
+      ],
+      "finding": "The scope is adequate for a bounded compatibility milestone and inadequate for efficacy, paper-performance, motion-quality, or physical-control conclusions.",
+      "evidence": [
+        {
+          "location": "results/pilot_v1/args.json:8-16",
+          "observation": "The run uses batch size two and only Kungfu."
+        },
+        {
+          "location": "results/pilot_v1/args.json:53-60",
+          "observation": "The run uses three primitives, 101 steps, and warmup 25."
+        },
+        {
+          "location": "results/pilot_v1/args.json:75-84",
+          "observation": "The run uses one seed and no EMA."
+        },
+        {
+          "location": "upstream/reactivebfm/data/datasets/motion_text.py:141-159",
+          "observation": "Eligible samples are ordered by length before sequential access."
+        },
+        {
+          "location": "upstream/reactivebfm/data/datasets/motion_text.py:207-218",
+          "observation": "Deterministic mode takes the first caption."
+        },
+        {
+          "location": "upstream/reactivebfm/data/datasets/motion_text.py:247-260",
+          "observation": "Deterministic mode uses a center crop and normalizes with fixed statistics."
+        },
+        {
+          "location": "scripts/run_bounded_pilot.py:78-85",
+          "observation": "The first four unshuffled test batches are evaluated before and after training."
+        },
+        {
+          "location": "README.md:60-68",
+          "observation": "The README accurately excludes FID, alignment, control, full-test, full-training, and real-robot claims."
+        },
+        {
+          "location": "reports/ReactiveBFM复现实验报告.md:127-135",
+          "observation": "The report lists full training, reaching, TensorRT, MuJoCo, and the complete evaluation protocol as outstanding."
+        }
+      ],
+      "limitations": [
+        "one seed",
+        "one trained dataset",
+        "101 optimizer updates",
+        "eight deterministic length-ordered eligible test clips",
+        "test subset viewed before and after training",
+        "exact sample IDs not logged",
+        "no uncertainty estimate",
+        "no baseline comparator",
+        "no complete test-set aggregation",
+        "no generated-rollout quality metric",
+        "no long-horizon evaluation",
+        "no physics or real-robot evaluation"
+      ]
+    },
+    {
+      "id": "F",
+      "name": "evaluation_type",
+      "status": "PASS",
+      "evidence_types": [
+        "real_gt",
+        "execution-only"
+      ],
+      "finding": "The held-out number is a real-data diagnostic loss. Runtime, reload, and tracker probes are execution-only. No paper benchmark, simulation-only result, synthetic proxy, self-supervised proxy, or human evaluation is present.",
+      "evidence": [
+        {
+          "location": "results/pilot_v1/run_receipt.json:48-78",
+          "observation": "The receipt labels both values as teacher-forced official flow objectives and explicitly says they are not motion-quality scores."
+        },
+        {
+          "location": "results/document_witness_v1/witness_document_v1.json:21-34",
+          "observation": "The witness records finite loss/gradients but zero optimizer updates and no motion-quality or physics evaluation."
+        },
+        {
+          "location": "results/checkpoint_reload_v1/receipt.json:18-20",
+          "observation": "The reload receipt limits scope to checkpoint usability."
+        },
+        {
+          "location": "results/tracker_cpu_v1/receipt.json:4-6",
+          "observation": "The tracker receipt limits scope to CPU checkpoint reconstruction and qpos-policy forward."
+        }
+      ]
+    }
+  ],
+  "evaluation_classification": [
+    {
+      "artifact": "numeric dataset audit",
+      "evidence_type": "real_gt",
+      "evaluation_type": "data_integrity_only",
+      "paper_benchmark": false
+    },
+    {
+      "artifact": "held-out flow objective before/after",
+      "evidence_type": "real_gt",
+      "evaluation_type": "diagnostic_loss",
+      "paper_benchmark": false,
+      "note": "Real dataset motion plus analytic sampled noise; teacher-forced; eight deterministic examples."
+    },
+    {
+      "artifact": "per-step training losses and auxiliary MSE metrics",
+      "evidence_type": "real_gt",
+      "evaluation_type": "training_diagnostics",
+      "paper_benchmark": false
+    },
+    {
+      "artifact": "runtime witness",
+      "evidence_type": "execution-only",
+      "evaluation_type": "forward_backward_smoke_check",
+      "paper_benchmark": false
+    },
+    {
+      "artifact": "checkpoint reload receipt",
+      "evidence_type": "execution-only",
+      "evaluation_type": "serialization_and_forward_check",
+      "paper_benchmark": false
+    },
+    {
+      "artifact": "tracker CPU receipt",
+      "evidence_type": "execution-only",
+      "evaluation_type": "checkpoint_reconstruction_and_policy_forward",
+      "paper_benchmark": false
+    },
+    {
+      "artifact": "paper FID/MM-Dist/R@3, control, perturbation, tracking, and physical metrics",
+      "evidence_type": "unavailable",
+      "evaluation_type": "not_run",
+      "paper_benchmark": true
+    }
+  ],
+  "claim_impacts": {
+    "supported": [
+      "Official Kungfu data reached the full planner and official loss path.",
+      "The run executed 101 recorded AdamW updates and changed trainable parameters.",
+      "Scheduled prefix replacement and RTC-related training paths executed under the saved pilot settings.",
+      "Local model and optimizer checkpoints match their recorded sizes and SHA256 values.",
+      "The retained CPU reload receipt supports checkpoint usability and step-101 optimizer state.",
+      "All 226 files named by upstream_manifest.json match their recorded hashes."
+    ],
+    "qualified": [
+      "The held-out flow objective decreased from 1.7152809352 to 1.3540775850 only under the fixed eight-example teacher-forced diagnostic.",
+      "The data audit establishes exact-array and exact-key checks, not subject/source-clip independence or absence of near duplicates.",
+      "The test subset was not used for backpropagation, but it was viewed before and after training and is not untouched for future final evaluation."
+    ],
+    "unsupported": [
+      "paper-level FID, MM-Dist, or R@3",
+      "semantic alignment or perceptual motion quality",
+      "full-test or multi-seed generalization",
+      "long-horizon stability",
+      "tracking error, control success, perturbation robustness, or survival",
+      "MuJoCo closed-loop behavior",
+      "TensorRT engine execution",
+      "real-robot performance",
+      "full 1M-step mixed-data reproduction"
+    ],
+    "unavailable": [
+      "independent server/local checkpoint equality check",
+      "independent remote published-LFS equality check",
+      "publisher-signed checksum verification",
+      "official complete evaluation implementation"
+    ]
+  },
+  "technical_harness_pitfalls": [
+    {
+      "severity": "WARN",
+      "issue": "Diagnostic sample keys are not retained.",
+      "evidence": [
+        "upstream/reactivebfm/data/datasets/dataset.py:112",
+        "scripts/run_bounded_pilot.py:78-80",
+        "results/pilot_v1/run_receipt.json:48-78"
+      ]
+    },
+    {
+      "severity": "WARN",
+      "issue": "The eight test samples are a deterministic sequential subset after length ordering rather than a random or complete test set.",
+      "evidence": [
+        "upstream/reactivebfm/data/datasets/motion_text.py:141-159",
+        "scripts/run_bounded_pilot.py:78-82"
+      ]
+    },
+    {
+      "severity": "WARN",
+      "issue": "The test subset was inspected before and after training, so it should not be treated as untouched in a later final benchmark.",
+      "evidence": [
+        "scripts/run_bounded_pilot.py:82-85"
+      ]
+    },
+    {
+      "severity": "WARN",
+      "issue": "normalization_preserved_from_official_release is hard-coded true rather than computed by the audit script.",
+      "evidence": [
+        "scripts/audit_official_data.py:47-55"
+      ]
+    },
+    {
+      "severity": "INFO",
+      "issue": "The exact-overlap audit does not test near duplicates, common source clips, or subject leakage.",
+      "evidence": [
+        "scripts/audit_official_data.py:24-49",
+        "reports/ReactiveBFM复现实验报告.md:49-54"
+      ]
+    }
+  ],
+  "missing_or_unavailable_inputs": [
+    {
+      "requested_path": "upstream/reactivebfm/data/datasets.py",
+      "status": "missing",
+      "handling": "Audited the discovered loader package files: upstream/reactivebfm/data/datasets/__init__.py, registry.py, dataset.py, motion_text.py, and batch.py."
+    },
+    {
+      "requested_or_claimed_input": "server-side checkpoints under /data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/",
+      "status": "unavailable",
+      "handling": "No independent remote equality conclusion was inferred."
+    },
+    {
+      "requested_or_claimed_input": "publisher-signed dataset checksums",
+      "status": "unavailable",
+      "handling": "Used the official listing URLs plus independent local size/hash verification and retained the provenance limitation."
+    },
+    {
+      "requested_or_claimed_input": "upstream/evaluation implementation",
+      "status": "unavailable",
+      "handling": "No paper benchmark was inferred; upstream/README.md:90-92 describes evaluation as planned for later release."
+    }
+  ],
+  "deterministic_verifications": {
+    "upstream_manifest": {
+      "manifest_path": "upstream_manifest.json",
+      "manifest_sha256": "a5b29ac3ec9d35d992dbb7ac590f6f1c44b5aedea8c462f7ca143820c8f9dc9c",
+      "files_checked": 226,
+      "mismatches": 0
+    },
+    "official_dataset_files": {
+      "files_checked": 24,
+      "total_bytes": 870700765,
+      "size_mismatches": 0,
+      "sha256_mismatches": 0
+    },
+    "training_metrics": {
+      "rows_checked": 101,
+      "json_parse_failures": 0,
+      "official_step_min": 0,
+      "official_step_max": 100,
+      "optimizer_updates_seen_min": 1,
+      "optimizer_updates_seen_max": 101,
+      "nonfinite_recorded_losses": 0
+    },
+    "primary_checkpoints": {
+      "files_checked": 3,
+      "size_mismatches": 0,
+      "sha256_mismatches": 0
+    },
+    "script_receipt_hashes": {
+      "run_bounded_pilot_match": true,
+      "witness_runtime_match": true,
+      "verify_checkpoint_match": true
+    }
+  },
+  "document_finalization": {
+    "documents_changed_during_audit": false,
+    "README.md": {
+      "observed_sha256_values": [
+        "4b4d03ec2cbe596f5c01ebcc0df7b50373c856e7105f6bf4aca8f43fd9ae8765"
+      ],
+      "final_sha256": "4b4d03ec2cbe596f5c01ebcc0df7b50373c856e7105f6bf4aca8f43fd9ae8765",
+      "bytes": 4035,
+      "last_write_utc": "2026-10-21T15:04:25.3504750Z"
+    },
+    "reports/ReactiveBFM复现实验报告.md": {
+      "observed_sha256_values": [
+        "42e72441b2abb2cba4deb852935f830f4703f22a4febc0524a351ec2046eb374"
+      ],
+      "final_sha256": "42e72441b2abb2cba4deb852935f830f4703f22a4febc0524a351ec2046eb374",
+      "bytes": 10772,
+      "last_write_utc": "2026-10-21T15:04:25.3514680Z"
+    },
+    "results/EXPERIMENT_TRACKER.json": {
+      "changed_during_audit": true,
+      "scientific_task_states_changed": false,
+      "initial_sha256": "fcc377061aaa6f163fcde3b1dbe7873e46a83f8f920d47c4a60eee80a0048a5f",
+      "initial_bytes": 503,
+      "initial_github_backup_status": "IN_PROGRESS",
+      "final_sha256": "a7d8ffc4ba2a4fa373ae14615dd840a907dcaf5011607face9cd87640f0868e2",
+      "final_bytes": 496,
+      "final_github_backup_status": "DONE",
+      "final_last_write_utc": "2026-10-21T15:18:24.7432641Z",
+      "verdict_impact": "none; repository-hosting metadata is outside the scientific evidence verdict"
+    }
+  },
+  "hash_algorithm": "SHA-256",
+  "input_hashes": [
+    {"path": "scripts/run_bounded_pilot.py", "sha256": "8e88a7d773dbd54aae405d0c670d6e31fe43a74d9603cf94eca57b02721aed1b", "bytes": 7340},
+    {"path": "scripts/audit_official_data.py", "sha256": "9307a96a9f8d95ab7add09bd3dbd3d495f22b23a4ca4e5f2a4bc63a49e59335c", "bytes": 4181},
+    {"path": "scripts/acquire_official_data.py", "sha256": "1c90ad25b41400401cb21e20a4081c18d81cc6784a842a5340bb7af0e3e58220", "bytes": 4653},
+    {"path": "scripts/witness_runtime.py", "sha256": "43a01fd0dea2ac11ad03f017806adb99f3a63f6070a59528e7ae9b760303445e", "bytes": 4583},
+    {"path": "scripts/verify_checkpoint.py", "sha256": "836eca1c686c5f87e6138bc3009b81c82ed125eb3941a70dbfdbd34c5e8e49b6", "bytes": 2861},
+    {"path": "upstream/reactivebfm/train/scheduled_forcing_loop.py", "sha256": "f26fd82c43657bd034f391405741dbc1fe9190fc98722602e675823a729cc990", "bytes": 39986},
+    {"path": "upstream/reactivebfm/model/motion_planner/objectives/flow/flow_matching_smooth.py", "sha256": "fc1fd5b0906b6b1404e377098ee5d53e628a38597e4ff30c9287f71b98da292b", "bytes": 12637},
+    {"path": "upstream/reactivebfm/train/train_planner_scheduled_forcing.py", "sha256": "a03e3afd69c433f1f46931ecedd1dcf32040d51d1b356ecd7c98abd4732bacc6", "bytes": 2160},
+    {"path": "upstream/reactivebfm/train/run_utils.py", "sha256": "2cc4588805db08922228c8fda517a7394f2063ffe18872b09c1720024fca7cfc", "bytes": 4531},
+    {"path": "upstream/reactivebfm/data/datasets/__init__.py", "sha256": "30b214b96e5f32d5d3305b6610b1df2268de7569c57d2c41d09df7db1c221a19", "bytes": 1973},
+    {"path": "upstream/reactivebfm/data/datasets/registry.py", "sha256": "8c84d99bc6dbb0969fd0909b84cf8b1f4da4fe7ee8f71cd7af083037bc9e620e", "bytes": 5718},
+    {"path": "upstream/reactivebfm/data/datasets/dataset.py", "sha256": "3d3171abef85e03f416c105b644b172f5d2758fc69de61f9c24b408c25de0bda", "bytes": 7895},
+    {"path": "upstream/reactivebfm/data/datasets/motion_text.py", "sha256": "a6946e12c0423c1f1cf0778c49913c32d3740f48de03664039c567af34cb7a8b", "bytes": 15045},
+    {"path": "upstream/reactivebfm/data/datasets/batch.py", "sha256": "723bdd034bbabf6fafbc205c1d96a98cfb10f81e2d55bd34049d60bb6ebd1948", "bytes": 7338},
+    {"path": "upstream/reactivebfm/utils/training/losses.py", "sha256": "f247211f7f48e19763d0c82d4cc0858d619003fa3df9379e7b033e749ed15228", "bytes": 5222},
+    {"path": "upstream/reactivebfm/data/motion.py", "sha256": "0c3b739b1610b1019457aaa20b3c9f8b3fcba6033500311e8997a35cbd95eee4", "bytes": 4533},
+    {"path": "upstream/reactivebfm/utils/training/models.py", "sha256": "0724401aefa94fc7565e4f1eec41e447f67b4f86cb6c5eb579eee3cd16528ebc", "bytes": 1678},
+    {"path": "upstream/reactivebfm/model/motion_planner/factory.py", "sha256": "722900d926fe56a72476035e7938c3c2cc9e5a22bd7215aaa116684d89fbb20e", "bytes": 6476},
+    {"path": "upstream/reactivebfm/utils/runtime/arguments.py", "sha256": "28b4a3d1e23a7a30aa9037adfb249dba47ee26b215176e2cd7929c7573cbdbaa", "bytes": 15068},
+    {"path": "upstream/reactivebfm/utils/runtime/defaults.py", "sha256": "299cadaad03787b3b7dc833d930472aec1b30fbf0f141f635b6a2c5d4fab9750", "bytes": 1704},
+    {"path": "upstream/reactivebfm/model/motion_planner/objectives/diffusion/fp16_util.py", "sha256": "874e80432d5bdf235ac470f6151329aa2dc27a08f3c60d53a61ff52426b7f7f9", "bytes": 9671},
+    {"path": "upstream/README.md", "sha256": "168290421e86bc12e792ca66f2dc9e43e3b553c46ad6969de745fd566a900d44", "bytes": 8278},
+    {"path": "upstream/reactivebfm/data/README.md", "sha256": "29b0d168ae49db9e831c5f37585e038f0ffdd2c903e31d9518d68af45d9241bf", "bytes": 2680},
+    {"path": "upstream_manifest.json", "sha256": "a5b29ac3ec9d35d992dbb7ac590f6f1c44b5aedea8c462f7ca143820c8f9dc9c", "bytes": 44457},
+    {"path": "results/pilot_v1/run_receipt.json", "sha256": "c5f67fff442f4c64f7a10822f5963d11a77976e9cea1f8610d9f20bf5ca53bdb", "bytes": 2757},
+    {"path": "results/pilot_v1/training_metrics.jsonl", "sha256": "4d202c24854c4e922c841d2bf7552b9be20c28eb85e0dd19e2a5796ea83a3604", "bytes": 95763},
+    {"path": "results/pilot_v1/args.json", "sha256": "bc53adbb3b7c9c23c1b1642a814034a3d5a1a6ca1471712b624354441dbbb066", "bytes": 2524},
+    {"path": "results/pilot_v1/pilot_v1.stdout.txt", "sha256": "591bed3aaf65a6a1d9611e5ef23326757dfeff0529df9096a47d564adf2ec2a4", "bytes": 132856},
+    {"path": "results/pilot_v1/pilot_v1.stderr.txt", "sha256": "da46b3783afa138b0a9ac2b25a19746ea808e1dae6d899e57b2c295d7b5d5161", "bytes": 5417},
+    {"path": "results/pilot_v1/checkpoint_manifest.json", "sha256": "38b156ccd20dfc20f314d8dad19197ac8e258fc003b80387a59f61d4e202334d", "bytes": 801},
+    {"path": "results/data_audit_v1.json", "sha256": "8eea7d3b26aac4fd85677f5df24c485eac8492cdb6d2d54ed68034bf29f7e4c4", "bytes": 17154},
+    {"path": "results/acquisition_v1/acquisition.json", "sha256": "ee80518075ea4f0c891646045559b80cdff533b3a3d2fd452177917d2e429447", "bytes": 14053},
+    {"path": "results/checkpoint_reload_v1/receipt.json", "sha256": "0b3c892eaa93d8b56be27b79a4f02b0f044f4e1d362070b99c23ed375c710d62", "bytes": 601},
+    {"path": "results/checkpoint_reload_v1/stdout.txt", "sha256": "c00145d3f148d658b140316383da2f8530b341bea3c070d0f8df77e1d26816fd", "bytes": 1007},
+    {"path": "results/tracker_cpu_v1/receipt.json", "sha256": "96a7978ee7d1f48628667a258dd49908560f73768a6811a49eb84d8a3813f17e", "bytes": 289},
+    {"path": "results/tracker_cpu_v1/stdout.txt", "sha256": "ba7bf47b4d9a7306a9b6501da7c2bd58d58e2a0101443e14ecb52688e0c75597", "bytes": 373},
+    {"path": "results/tracker_cpu_v1/command.txt", "sha256": "1e2a745a7f879ea510b9d48d8256054fa2b826825b056749a8376058af7b0b32", "bytes": 381},
+    {"path": "results/tracker_acquisition_v1.json", "sha256": "4a4f8b7e705ddedf5f49544d9377442497025e7213e733b86a142a1d87e1b5ed", "bytes": 500},
+    {"path": "results/document_witness_v1/witness.json", "sha256": "907d2c2d46f945f9ecc32abc84631ea649c7bf4c3fbb2902599b185e3fca57a2", "bytes": 6461},
+    {"path": "results/document_witness_v1/witness_document_v1.json", "sha256": "9d94fa996d5b2cb8fe6c880494304c8fc3fcdc76ad9818d391108b63107f273f", "bytes": 1199},
+    {"path": "results/witness_author_v1.json", "sha256": "537e00567ef85ddd7193aef4f625aba30d9b8184db739436b515c2bc143ba8e1", "bytes": 2266},
+    {"path": "configs/env_spec.json", "sha256": "baa6b78e7359c88e6a1d5fb45f7728e4af0a84e6cd4f0f9037c429ef569dbf1d", "bytes": 2020},
+    {"path": "configs/official_data_files.json", "sha256": "6388d85bf7c7c6e217e2664d31b64992d7619f9d2b938dd4bfe768735b5b5e70", "bytes": 7981},
+    {"path": "README.md", "sha256": "4b4d03ec2cbe596f5c01ebcc0df7b50373c856e7105f6bf4aca8f43fd9ae8765", "bytes": 4035},
+    {"path": "reports/ReactiveBFM复现实验报告.md", "sha256": "42e72441b2abb2cba4deb852935f830f4703f22a4febc0524a351ec2046eb374", "bytes": 10772},
+    {"path": "results/EXPERIMENT_TRACKER.json", "sha256": "a7d8ffc4ba2a4fa373ae14615dd840a907dcaf5011607face9cd87640f0868e2", "bytes": 496}
+  ],
+  "external_primary_artifacts": [
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/kungfu_g1_36dim/full_train.pkl", "sha256": "2fddadcd7361d3333f18cdcc556bcb0fc2d1ee30cc2fe047e191e23382a25eb5", "bytes": 79689025},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/kungfu_g1_36dim/Mean.npy", "sha256": "883559f6ca1b5fcf6d221800fcf777caac5ca873eecec3eacf9891a653b13a3c", "bytes": 272},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/kungfu_g1_36dim/split_summary.json", "sha256": "6649b58bac397132a0e675f6cda57cf8bd7ee5523351fe8e84526e66b61c2eee", "bytes": 9423},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/kungfu_g1_36dim/Std.npy", "sha256": "0e251c4262f78694905a1adadc91ac90af99a53258e58f8ed355c53e1810fb92", "bytes": 272},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/kungfu_g1_36dim/test.txt", "sha256": "c57d8222ccfc0deb46bdb2969b0a7345fcd34b5fe78132cb1f7cb3e9fb0c8739", "bytes": 2100},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/kungfu_g1_36dim/texts.csv", "sha256": "83aac4458766ca1066f6dc5b6561fb554387b64d19230bc78f6b347a4f96dc8f", "bytes": 282435},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/kungfu_g1_36dim/train.txt", "sha256": "2068712a62054748908bec98914833b3637b396232f8205a869ec1cab3090dc0", "bytes": 38256},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/kungfu_g1_36dim/val.txt", "sha256": "a7a871ec0abac86e7234b7067ab1795cb35458ff0b1aed5301dbfce5b80688fd", "bytes": 2133},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/amass_g1_36dim/full_train.pkl", "sha256": "53a3fff8c2928d3e36b06b1b8bce1148675854ff3c5ef5bad0e56f295abe302d", "bytes": 175516192},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/amass_g1_36dim/Mean.npy", "sha256": "a9c2ae4d4aff35ae9b7eaba2ee6a37bcf5c3de6798372c06f5800d6c646ab3a9", "bytes": 272},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/amass_g1_36dim/split_summary.json", "sha256": "a0fc65f19898450f314fd9083a562fa734b82fec805ae61e51396120fb480a3b", "bytes": 411},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/amass_g1_36dim/Std.npy", "sha256": "af5f1b6349f28b8871c2855cc8a810aa2baa068179a44cf9c2887870604ddd60", "bytes": 272},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/amass_g1_36dim/test.txt", "sha256": "4a5d1e7616697c0de8a4e74c40030b842fa8e52ed444ce1113c2fa60565e70bf", "bytes": 3997},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/amass_g1_36dim/texts.csv", "sha256": "23dcba7748daddefd07f89a0e69622cce0a32423964543f4f051f270d64dcd34", "bytes": 2714449},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/amass_g1_36dim/train.txt", "sha256": "cc470a24e9f78131a573c068dd9912de4b1dd41f2f9ca24ddf0a32c0f1cd3dde", "bytes": 71974},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/amass_g1_36dim/val.txt", "sha256": "56edf3fbe71ed1fc6cf1d20e425c6ed6cba1120f7d24ab6f2803736f98ee4dc9", "bytes": 3997},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/100style_g1_36dim/full_train.pkl", "sha256": "8bda241844af48fe3733c40394cc0eaa6f31db384777e52a2d08a308ebd80a0e", "bytes": 603586265},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/100style_g1_36dim/Mean.npy", "sha256": "0d2329c5f61a7832b8b26e5f23c3820161830e3233a014d6440ed01a5f294030", "bytes": 272},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/100style_g1_36dim/split_summary.json", "sha256": "4f875e658aa45abfa561c63b47786d91ce29b9d4f20efca87c3ca5f1646a2c89", "bytes": 2158},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/100style_g1_36dim/Std.npy", "sha256": "fa492bc8885ff130320385c500b36fe20890e28107381ec05661901b2ed8407f", "bytes": 272},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/100style_g1_36dim/test.txt", "sha256": "20c9525d11beb9200462a0203bd5fe301d4fe1952eac4ebc53c51cb9faf24097", "bytes": 6790},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/100style_g1_36dim/texts.csv", "sha256": "32fa9e9344ee207c4f49bc6ad8604e6b3f5ba285334acb192c019a431e232dc4", "bytes": 8647953},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/100style_g1_36dim/train.txt", "sha256": "11c4a5bcedca4c4ab76107f5e25598d305c8318a2ad695e8a5a40a01d1bfe8db", "bytes": 115005},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/data/100style_g1_36dim/val.txt", "sha256": "cfe5d6047643de530d8da031f188c8cd63bde76f793c1f1ee78f6bfcb658e7d7", "bytes": 6570},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/results/pilot_v1/model000000100.pt", "sha256": "0800452b89d765569d8d1457a5f49a8042d9d8a2c12f7c65145ccea411f291d2", "bytes": 428870124},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/results/pilot_v1/opt000000100.pt", "sha256": "91fee6849637282cb490bb20d370930934473e9d9729f3ccf747a1728ec211ac", "bytes": 852468483},
+    {"path": "D:/具身智能/ReactiveBFM复现_20261021/weights/ScaleBFM_m_model_22200.pt", "sha256": "88d5a79946c03ed25503f48b2af71d16290844ef066ca9b6c8fa8dc3837422e3", "bytes": 72856655}
+  ]
+}
