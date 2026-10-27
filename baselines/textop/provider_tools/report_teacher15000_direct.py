@@ -9,7 +9,34 @@ assert r['stage']=='full' and r['policy_checkpoint_completed_iterations']==15000
 done=r.get('finished_trials',0);passed=r.get('complete_trials',0);failed=r.get('failed_trials',0)
 assert done==passed+failed and 0<=done<=8278
 pending=8278-done
-sample=datetime.datetime.fromtimestamp(j['observed_unix'],datetime.timezone(datetime.timedelta(hours=8))).isoformat()
+audit_path=B/'results/filtered15000_handoff_20261027/full_result_audit_v1/progress.json'
+audit_verified=False;audit_sha=None
+if audit_path.exists():
+ aj=json.loads(audit_path.read_text(encoding='utf-8'));ar=aj.get('files',{}).get('receipt',{})
+ if aj.get('closed_execution_verified'):
+  assert ar['strict_result_accepted'] and ar['source_count']==ar['attempted']==8278 and ar['unattempted']==0
+  assert ar['complete_passes']==passed and ar['failed']==failed and done==8278
+  assert ar['raw_execution_receipt_sha256']==j['sha256']['receipt'] and j['full_execution_closed']
+  audit_verified=True;audit_sha=aj['sha256']['receipt']
+handoff_stage='WAITING_FULL_REPLAY' if not audit_verified else 'FILTERED_CORPUS_ACCEPTANCE_PENDING'
+generator_started=False;corpus_accepted=False;generator_attempts=0;handoff_workers=[]
+handoff_lock_free=j['common_lock_free'];handoff_observed=j['observed_unix'];generator_spec_sha=None
+if audit_verified:
+ for next_run in ['filtered15000_corpus_author_v1','filtered15000_corpus_document_v1','filtered15000_recovery_v1','filtered15000_acceptance_v1','filtered15000_vae_author_v1','filtered15000_vae_document_v1','filtered15000_vae200k_train_v1']:
+  cp=B/'results/filtered15000_handoff_20261027'/next_run/'progress.json'
+  if cp.exists():
+   cj=json.loads(cp.read_text(encoding='utf-8'));cr=cj.get('files',{}).get('receipt',{})
+   handoff_stage=cr.get('status','POST_FILTER_JOB_DISPATCHED_NOT_YET_VERIFIED');handoff_workers=cj.get('workers',[])
+   handoff_lock_free=cj.get('common_lock_free',False);handoff_observed=max(handoff_observed,cj['observed_unix'])
+   if next_run=='filtered15000_vae200k_train_v1':
+    generator_attempts=cr.get('completed_primitive_attempts',0);generator_spec_sha=cr.get('spec_sha256')
+    generator_started=generator_attempts>0 and cr.get('status') in ['RUNNING_FILTERED15000_VAE_TRAINING','FILTERED15000_VAE_200000_TRAINING_FINISHED']
+ readiness_path=B/'results/filtered15000_handoff_tools_20261027/vae_train_activation.json'
+ if readiness_path.exists():
+  ready=json.loads(readiness_path.read_text(encoding='utf-8')).get('readiness',{})
+  corpus_accepted=ready.get('filtered_corpus_accepted') is True and ready.get('formal_training_ready') is True
+closure_note='全库结果已由独立有界CPU作业核验，原回放与核验作业均真实退出；训练语料和新生成器仍需接续验收。' if audit_verified else '进行中统计不是最终筛选结论。未测试动作没有被过滤。'
+sample=datetime.datetime.fromtimestamp(handoff_observed,datetime.timezone(datetime.timedelta(hours=8))).isoformat()
 spec=B/'configs/teacher15000-direct-strict-spec.json';h=hashlib.sha256(spec.read_bytes()).hexdigest()
 current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['status'],sample_beijing=sample,
  teacher_stopped=True,frozen_checkpoint_completed=15000,checkpoint_sha256=r['policy_checkpoint_sha256'],
@@ -17,14 +44,19 @@ current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['st
  actual_controls=r.get('actual_vectorized_control_calls',0),actual_physics_steps=r.get('actual_scene_physics_steps',0),
  historical_ema_candidates=0,historical_ema_attempted=8278,historical_ema_above_threshold=8278,historical_ema_unattempted=0,
  direct_replay_bypasses_ema_candidate_gate=True,physical_thresholds_changed=False,optimizer_updates=0,
- completed_execution_verified=j['completed_execution_verified'],filtered_corpus_accepted=False,generator_started=False,
- active_spec_sha256=h,worker_pids=[x['pid'] for x in j['workers']],common_lock_free=j['common_lock_free'],
+ completed_execution_verified=audit_verified,raw_light_collector_trace_acceptance=j['completed_execution_verified'],
+ strict_physics_accepted=audit_verified,strict_audit_receipt_sha256=audit_sha,handoff_stage=handoff_stage,
+ actual_unattempted_sources=0 if audit_verified else None,filtered_corpus_accepted=corpus_accepted,generator_started=generator_started,
+ generator_primitive_attempts=generator_attempts,handoff_workers=handoff_workers,active_generator_spec_sha256=generator_spec_sha,
+ active_spec_sha256=h,worker_pids=[x['pid'] for x in j['workers']],common_lock_free=handoff_lock_free,
+ physical_replay_lock_released=j['common_lock_free'],
  runtime_receipt_count_note='replayed_original_sources and unattempted_original_sources describe planned selected/outside scope until execution ends; live pending is8278-finished_trials',
  source_progress_sha256=hashlib.sha256((O/run/'progress.json').read_bytes()).hexdigest())
 (O/'current.json').write_text(json.dumps(current,indent=2),encoding='utf-8')
 priority=B/'configs/teacher15000-direct-strict-priority-20261027.json';p=json.loads(priority.read_text(encoding='utf-8'))
-p.update(status=r['status'],runtime_launch_enabled=True,teacher_stopped_verified=True,active_full_run=run,
- active_spec_sha256=h,actual_full_started=r.get('physical_tracking_executed',False),strict_physics_accepted=False,
+p.update(status=r['status'],runtime_launch_enabled=not audit_verified,teacher_stopped_verified=True,active_full_run=run,
+ active_spec_sha256=h,actual_full_started=r.get('physical_tracking_executed',False),strict_physics_accepted=audit_verified,
+ strict_audit_receipt_sha256=audit_sha,handoff_stage=handoff_stage,
  user_asked_to_relax_threshold=True,relaxed_scope='All originals admitted; no numerical physical termination threshold change',
  historical_ema_candidates_are_not_physical_replay_failures=True)
 priority.write_text(json.dumps(p,ensure_ascii=False,indent=2),encoding='utf-8')
@@ -40,7 +72,8 @@ text=f'''# TextOp：停止跟踪器，直接全库物理筛查
 | 触发物理终止而失败 | {failed} |
 | 尚未结束（含未测试与执行中） | {pending} |
 
-状态：{r['status']}。进行中统计不是最终筛选结论。未测试动作没有被过滤。
+状态：{r['status']}。{closure_note}
+后续阶段：{handoff_stage}。新生成器正式开训标志：{generator_started}；实际primitive尝试：{generator_attempts}。
 此前两次入口核验测试的是同一组8个短动作，两次都是8/8完整通过；不能当作全库通过率，也不能相加为16个不同动作。
 
 15000轮历史EMA统计另行保留：8278个来源全部有尝试，EMA失败率≤5%候选0个，超过门槛8278个，未尝试0个。这不是标准物理回放的失败数量。

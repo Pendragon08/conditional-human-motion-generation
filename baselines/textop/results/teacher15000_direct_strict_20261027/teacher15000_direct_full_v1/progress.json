@@ -1,18 +1,18 @@
 {
   "run": "teacher15000_direct_full_v1",
-  "observed_unix": 1793116753.9754755,
+  "observed_unix": 1793121792.0448987,
   "files": {
     "receipt": {
-      "status": "RUNNING_TEACHER15000_STRICT",
+      "status": "TEXTOP_TEACHER15000_DIRECT_STRICT_EXECUTION_COMPLETED",
       "mode": "teacher15000_strict",
       "stage": "full",
       "quality_label": "USER_DIRECT_STRICT_15000_NOT_PAPER_TWO_STAGE_FILTER",
       "optimizer_updates": 0,
-      "physical_filter_executed": false,
+      "physical_filter_executed": true,
       "dataset_accepted": false,
       "whole_library_filtered": false,
       "full_generator_training_started": false,
-      "output_writers_closed": false,
+      "output_writers_closed": true,
       "actual_execution_video_created": false,
       "source_sha256": "d19e7574ac9899b25cb611bc80b44bb27bb32e5338f1b86ef4414f2f87c7c25a",
       "evaluation_protocol_sha256": "9996786f840e5272bf7a6808df243ec8ce551d091bd0bbac218b76369d4dba74",
@@ -43,7 +43,7 @@
         2,
         3
       ],
-      "elapsed_seconds": 7766.981915742159,
+      "elapsed_seconds": 12780.928682830185,
       "reference_fingerprint": "0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7",
       "planned_maximum_control_calls": 313378,
       "strict_rollouts_per_motion": 1,
@@ -83,11 +83,32 @@
       "num_envs": 16,
       "quick_pilot_executed": false,
       "physical_tracking_executed": true,
-      "finished_trials": 7568,
-      "complete_trials": 6612,
-      "failed_trials": 956,
-      "actual_vectorized_control_calls": 189000,
-      "actual_scene_physics_steps": 756000
+      "finished_trials": 8278,
+      "complete_trials": 7137,
+      "failed_trials": 1141,
+      "actual_vectorized_control_calls": 313066,
+      "actual_scene_physics_steps": 1252264,
+      "private_trial_journal_sha256": "85390618482cb0d3f8fdf4ef55d50e98db38db5ad31fd72f0ab6affcb5532796",
+      "private_strict_log_sha256": "bd9e3cd076bff1b94219bb34d179902a235c442dc6bbc17c4b602df2d015eadd",
+      "private_executed_trace_index_sha256": "a15240d89b3f7003b0093221242a7ffaa0eff2c240199b18da2879b51fe76cd1",
+      "private_trace_bytes": 608026032,
+      "terminal_execution_state_captured_before_autoreset": true,
+      "termination_term_event_counts": {
+        "anchor_pos": 493,
+        "anchor_ori": 116,
+        "ee_body_pos": 553,
+        "motion_complete": 7137
+      },
+      "reference_timing": "initial0; consumed current targets0..control_steps-1; command advances after termination/reset",
+      "final_reference_endpoint_comparison_performed": false,
+      "completion_branch_exercised": true,
+      "peak_torch_allocated_bytes": 8993305088,
+      "limitation": "Frozen15000, one deterministic strict complete replay per original. Direct user route bypasses historical EMA selection. Final reference endpoint and semantic/paper quality are not established. Corpus acceptance is separate.",
+      "native_close_returned": false,
+      "teardown_fallback_used": true,
+      "shutdown_grace_seconds": 20,
+      "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+      "shutdown_completion_verified": true
     },
     "driver": {
       "run": "teacher15000_direct_full_v1",
@@ -103,74 +124,96 @@
         "teacher15000_direct_full_v1"
       ],
       "status": "DURABLE_SUPERVISOR_DISPATCHED_NOT_YET_PASSED"
+    },
+    "process": {
+      "command": [
+        "bash",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/evaluate_teacher15000_strict.py",
+        "--pilot-spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/teacher15000-direct-strict-spec.json",
+        "--stage",
+        "full",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/teacher15000_direct_full_v1",
+        "--device",
+        "cuda:1",
+        "--headless"
+      ],
+      "supervisor_pid": 112823,
+      "child_pid": 112830,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 849,
+      "sample_errors": [],
+      "elapsed_seconds": 12782.152141021565,
+      "supervision_passed": true
+    },
+    "exit": {
+      "command": [
+        "bash",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/evaluate_teacher15000_strict.py",
+        "--pilot-spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/teacher15000-direct-strict-spec.json",
+        "--stage",
+        "full",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/teacher15000_direct_full_v1",
+        "--device",
+        "cuda:1",
+        "--headless"
+      ],
+      "supervisor_pid": 112823,
+      "child_pid": 112830,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 849,
+      "sample_errors": [],
+      "elapsed_seconds": 12782.152141021565,
+      "supervision_passed": true,
+      "run": "teacher15000_direct_full_v1",
+      "requested_stage": "full",
+      "numerical_status": "TEXTOP_TEACHER15000_DIRECT_STRICT_EXECUTION_COMPLETED",
+      "mode": "teacher15000_strict",
+      "quality_label": "USER_DIRECT_STRICT_15000_NOT_PAPER_TWO_STAGE_FILTER",
+      "evaluation_receipt_sha256": "18a4bae10538971ac93efcfd98d6080d61be0ee95d44cf59b5323943cbdb249d",
+      "resources_sha256": "c3618c9051f112cb0d5b9eb397a448853b598b3192091c641bd6cb41e0c12ec9",
+      "process_exit_sha256": "9e399ef6197ea1d80dc586d6ba820db9770ca32f8af907fac7f9d34e18714fa4",
+      "dataset_accepted": false,
+      "physical_filter_executed": true,
+      "full_generator_training_started": false
+    },
+    "outer": {
+      "actual_returncode": 0
     }
   },
   "sha256": {
-    "receipt": "fd70b387665ba49fe59d39a3f8f5eab557cd9cba0ef1efdc278be631e654e5ee",
-    "driver": "1b61c138f59430e3f30c133474800a9c3f20e898d95ca1c04b8a53b9a9c1a495"
+    "receipt": "18a4bae10538971ac93efcfd98d6080d61be0ee95d44cf59b5323943cbdb249d",
+    "driver": "1b61c138f59430e3f30c133474800a9c3f20e898d95ca1c04b8a53b9a9c1a495",
+    "process": "9e399ef6197ea1d80dc586d6ba820db9770ca32f8af907fac7f9d34e18714fa4",
+    "exit": "30d1b456d1db66101701ff9fec0e71b33674c2b9bab185efd579fac07ded9f02",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
   },
-  "workers": [
-    {
-      "pid": 112823,
-      "start_ticks": "1430654081",
-      "state": "S",
-      "argv": [
-        "python3",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_teacher15000_strict.py",
-        "--stage",
-        "full",
-        "--run",
-        "teacher15000_direct_full_v1",
-        ""
-      ]
-    },
-    {
-      "pid": 112830,
-      "start_ticks": "1430654116",
-      "state": "S",
-      "argv": [
-        "/bin/bash",
-        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/python.sh",
-        "-u",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/evaluate_teacher15000_strict.py",
-        "--pilot-spec",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/teacher15000-direct-strict-spec.json",
-        "--stage",
-        "full",
-        "--output",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/teacher15000_direct_full_v1",
-        "--device",
-        "cuda:1",
-        "--headless",
-        ""
-      ]
-    },
-    {
-      "pid": 112837,
-      "start_ticks": "1430654117",
-      "state": "R",
-      "argv": [
-        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/kit/python/bin/python3",
-        "-u",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/evaluate_teacher15000_strict.py",
-        "--pilot-spec",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/teacher15000-direct-strict-spec.json",
-        "--stage",
-        "full",
-        "--output",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/teacher15000_direct_full_v1",
-        "--device",
-        "cuda:1",
-        "--headless",
-        ""
-      ]
-    }
-  ],
-  ".log_tail": "------------+------------+\n+-----------------------------------------------------------+\n| Active Observation Terms in Group: 'critic' (shape: (557,)) |\n+-----------+----------------------------------+------------+\n|   Index   | Name                             |   Shape    |\n+-----------+----------------------------------+------------+\n|     0     | command                          |   (290,)   |\n|     1     | motion_anchor_pos_b              |   (15,)    |\n|     2     | motion_anchor_ori_b              |   (30,)    |\n|     3     | body_pos                         |   (42,)    |\n|     4     | body_ori                         |   (84,)    |\n|     5     | base_lin_vel                     |    (3,)    |\n|     6     | base_ang_vel                     |    (3,)    |\n|     7     | joint_pos                        |   (29,)    |\n|     8     | joint_vel                        |   (29,)    |\n|     9     | actions                          |   (29,)    |\n|     10    | projected_gravity                |    (3,)    |\n+-----------+----------------------------------+------------+\n\n[INFO] Termination Manager:  <TerminationManager> contains 4 active terms.\n+------------------------------------+\n|      Active Termination Terms      |\n+-------+-----------------+----------+\n| Index | Name            | Time Out |\n+-------+-----------------+----------+\n|   0   | anchor_pos      |  False   |\n|   1   | anchor_ori      |  False   |\n|   2   | ee_body_pos     |  False   |\n|   3   | motion_complete |   True   |\n+-------+-----------------+----------+\n\n[INFO] Reward Manager:  <RewardManager> contains 14 active terms.\n+--------------------------------------------+\n|            Active Reward Terms             |\n+-------+--------------------------+---------+\n| Index | Name                     |  Weight |\n+-------+--------------------------+---------+\n|   0   | motion_global_anchor_pos |     0.5 |\n|   1   | motion_global_anchor_ori |     0.5 |\n|   2   | motion_body_pos          |     1.0 |\n|   3   | motion_body_ori          |     1.0 |\n|   4   | motion_body_lin_vel      |     1.0 |\n|   5   | motion_body_ang_vel      |     1.0 |\n|   6   | action_rate_l2           |    -0.1 |\n|   7   | joint_limit              |   -10.0 |\n|   8   | undesired_contacts       |    -0.1 |\n|   9   | feet_force               |    -0.0 |\n|   10  | feet_slide               |    -0.3 |\n|   11  | soft_landing             | -0.0003 |\n|   12  | overspeed                |    -1.0 |\n|   13  | overeffort               |    -1.0 |\n+-------+--------------------------+---------+\n\n[INFO] Curriculum Manager:  <CurriculumManager> contains 0 active terms.\n+----------------------+\n| Active Curriculum Terms |\n+-----------+----------+\n|   Index   | Name     |\n+-----------+----------+\n+-----------+----------+\n\n[INFO]: Completed setting up the environment...\nActor MLP: Sequential(\n  (0): Linear(in_features=557, out_features=2048, bias=True)\n  (1): ELU(alpha=1.0)\n  (2): Linear(in_features=2048, out_features=1024, bias=True)\n  (3): ELU(alpha=1.0)\n  (4): Linear(in_features=1024, out_features=512, bias=True)\n  (5): ELU(alpha=1.0)\n  (6): Linear(in_features=512, out_features=29, bias=True)\n)\nCritic MLP: Sequential(\n  (0): Linear(in_features=557, out_features=2048, bias=True)\n  (1): ELU(alpha=1.0)\n  (2): Linear(in_features=2048, out_features=1024, bias=True)\n  (3): ELU(alpha=1.0)\n  (4): Linear(in_features=1024, out_features=512, bias=True)\n  (5): ELU(alpha=1.0)\n  (6): Linear(in_features=512, out_features=1, bias=True)\n)\n",
-  "_outer.log_tail": "",
-  "common_lock_free": false,
+  "workers": [],
+  ".log_tail": "---------------------------------+\n| Active Observation Terms in Group: 'critic' (shape: (557,)) |\n+-----------+----------------------------------+------------+\n|   Index   | Name                             |   Shape    |\n+-----------+----------------------------------+------------+\n|     0     | command                          |   (290,)   |\n|     1     | motion_anchor_pos_b              |   (15,)    |\n|     2     | motion_anchor_ori_b              |   (30,)    |\n|     3     | body_pos                         |   (42,)    |\n|     4     | body_ori                         |   (84,)    |\n|     5     | base_lin_vel                     |    (3,)    |\n|     6     | base_ang_vel                     |    (3,)    |\n|     7     | joint_pos                        |   (29,)    |\n|     8     | joint_vel                        |   (29,)    |\n|     9     | actions                          |   (29,)    |\n|     10    | projected_gravity                |    (3,)    |\n+-----------+----------------------------------+------------+\n\n[INFO] Termination Manager:  <TerminationManager> contains 4 active terms.\n+------------------------------------+\n|      Active Termination Terms      |\n+-------+-----------------+----------+\n| Index | Name            | Time Out |\n+-------+-----------------+----------+\n|   0   | anchor_pos      |  False   |\n|   1   | anchor_ori      |  False   |\n|   2   | ee_body_pos     |  False   |\n|   3   | motion_complete |   True   |\n+-------+-----------------+----------+\n\n[INFO] Reward Manager:  <RewardManager> contains 14 active terms.\n+--------------------------------------------+\n|            Active Reward Terms             |\n+-------+--------------------------+---------+\n| Index | Name                     |  Weight |\n+-------+--------------------------+---------+\n|   0   | motion_global_anchor_pos |     0.5 |\n|   1   | motion_global_anchor_ori |     0.5 |\n|   2   | motion_body_pos          |     1.0 |\n|   3   | motion_body_ori          |     1.0 |\n|   4   | motion_body_lin_vel      |     1.0 |\n|   5   | motion_body_ang_vel      |     1.0 |\n|   6   | action_rate_l2           |    -0.1 |\n|   7   | joint_limit              |   -10.0 |\n|   8   | undesired_contacts       |    -0.1 |\n|   9   | feet_force               |    -0.0 |\n|   10  | feet_slide               |    -0.3 |\n|   11  | soft_landing             | -0.0003 |\n|   12  | overspeed                |    -1.0 |\n|   13  | overeffort               |    -1.0 |\n+-------+--------------------------+---------+\n\n[INFO] Curriculum Manager:  <CurriculumManager> contains 0 active terms.\n+----------------------+\n| Active Curriculum Terms |\n+-----------+----------+\n|   Index   | Name     |\n+-----------+----------+\n+-----------+----------+\n\n[INFO]: Completed setting up the environment...\nActor MLP: Sequential(\n  (0): Linear(in_features=557, out_features=2048, bias=True)\n  (1): ELU(alpha=1.0)\n  (2): Linear(in_features=2048, out_features=1024, bias=True)\n  (3): ELU(alpha=1.0)\n  (4): Linear(in_features=1024, out_features=512, bias=True)\n  (5): ELU(alpha=1.0)\n  (6): Linear(in_features=512, out_features=29, bias=True)\n)\nCritic MLP: Sequential(\n  (0): Linear(in_features=557, out_features=2048, bias=True)\n  (1): ELU(alpha=1.0)\n  (2): Linear(in_features=2048, out_features=1024, bias=True)\n  (3): ELU(alpha=1.0)\n  (4): Linear(in_features=1024, out_features=512, bias=True)\n  (5): ELU(alpha=1.0)\n  (6): Linear(in_features=512, out_features=1, bias=True)\n)\nTEXTOP_TEACHER15000_DIRECT_STRICT_EXECUTION_COMPLETED\n",
+  "_outer.log_tail": "{\"command\": [\"bash\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/evaluate_teacher15000_strict.py\", \"--pilot-spec\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/teacher15000-direct-strict-spec.json\", \"--stage\", \"full\", \"--output\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/teacher15000_direct_full_v1\", \"--device\", \"cuda:1\", \"--headless\"], \"supervisor_pid\": 112823, \"child_pid\": 112830, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 849, \"sample_errors\": [], \"elapsed_seconds\": 12782.152141021565, \"supervision_passed\": true, \"run\": \"teacher15000_direct_full_v1\", \"requested_stage\": \"full\", \"numerical_status\": \"TEXTOP_TEACHER15000_DIRECT_STRICT_EXECUTION_COMPLETED\", \"mode\": \"teacher15000_strict\", \"quality_label\": \"USER_DIRECT_STRICT_15000_NOT_PAPER_TWO_STAGE_FILTER\", \"evaluation_receipt_sha256\": \"18a4bae10538971ac93efcfd98d6080d61be0ee95d44cf59b5323943cbdb249d\", \"resources_sha256\": \"c3618c9051f112cb0d5b9eb397a448853b598b3192091c641bd6cb41e0c12ec9\", \"process_exit_sha256\": \"9e399ef6197ea1d80dc586d6ba820db9770ca32f8af907fac7f9d34e18714fa4\", \"dataset_accepted\": false, \"physical_filter_executed\": true, \"full_generator_training_started\": false}\n",
+  "common_lock_free": true,
   "completed_execution_verified": false,
-  "full_execution_closed": false,
-  "closed_trace_cpu_audit_required": false,
-  "private_trace_files_read": 0
+  "full_execution_closed": true,
+  "closed_trace_cpu_audit_required": true,
+  "private_trace_files_read": 0,
+  "closed_evidence_metadata": {
+    "receipt": "18a4bae10538971ac93efcfd98d6080d61be0ee95d44cf59b5323943cbdb249d",
+    "process": "9e399ef6197ea1d80dc586d6ba820db9770ca32f8af907fac7f9d34e18714fa4",
+    "exit": "30d1b456d1db66101701ff9fec0e71b33674c2b9bab185efd579fac07ded9f02",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+  },
+  "next_action": "Use the new durable CPU audit before accepting physical decisions or constructing generator data"
 }

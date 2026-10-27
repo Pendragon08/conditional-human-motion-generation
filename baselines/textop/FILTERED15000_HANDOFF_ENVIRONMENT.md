@@ -1,3 +1,39 @@
+# CURRENT: fresh filtered VAE200k is formally running
+
+Both real VAE author and fresh document gradient/restore witnesses closed0;
+formal spec b7eb6e95b082fd3902099ea718ec07bd42b3418c49c179f88f5438e5c5d2c6fa
+is train_authorized=true. The unique formal run filtered15000_vae200k_train_v1
+has actually reached100attempts/100Adam/0skip from fresh initialization. Do not
+rerun any earlier audit/corpus/recovery/witness/activation/dispatch. Common lock
+is held by this VAE; no overlapping SDK/GPU task. First real saved full state is
+50k, not100. Historical stage-specific invocation instructions remain below for
+provenance. Use collect --kind vae --run filtered15000_vae200k_train_v1 --evidence
+new_unique_id for light actual progress. After real200k and all exits, proceed
+to the documented CPU export and actual LDM witnesses/300k, never old quick state.
+
+# CURRENT: real full result/corpus/recovery accepted; VAE witnesses enabled
+
+2026-10-28 actual stage: full8278 physical replay/CPU audit closed0 (7137pass,
+1141fail,0unattempted); actual corpus author and fresh document jobs closed0;
+private small recovery server+D verified; actual CPU data/capacity acceptance
+closed0. No teacher or SDK may restart. The following initial staging statements
+are historical and are superseded by actual current specs and receipts.
+Current VAE specSHA a396fc9526f04361b30b4cc4d5ef0503261446cebf4b438955859bca5b8a3f31:
+witness_authorized=true,train_authorized=false. Its data acceptanceSHA is
+0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c.
+Real author filtered15000_vae_author_v1 just completed4finite optimizer steps,
+exact model/Adam/RNG/next-batch/pending-validation restore,0skip; actual child/
+supervisor/outer0, no workers and common lock released. Its numeric bindingSHA
+87a2f61683d930bf5fe69a9113713c90137c43318766627975c6d11accc20c1c.
+Next fresh document job is filtered15000_vae_document_v1, one --stage vae_witness
+invocation, then collect --kind vae and a real independent SUMMARY as below.
+It must use the accepted actual-pass corpus and fresh initialization. Do not
+reuse diagnostic weights for formal200k. Formal training is not enabled yet.
+Owned /home checkpoint capacity has really been accepted, with all5 bounded
+slots+2GiB reserve+512MiB logs. Old57D PID3237858 stateT deliberately retains
+GPU memory; leave it paused. Shared GPU1 free>20GiB is authorized; no empty-card
+requirement and no signals. No other GPU/SDK job may overlap the fresh witness.
+
 # Actual strict-pass generator handoff: staged, not yet accepted
 
 The user has authorized immediate post-filter generator training without asking

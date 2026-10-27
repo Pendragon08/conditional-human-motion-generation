@@ -1,12 +1,25 @@
 {
   "schema": "textop.filtered15000_data_recovery.v1",
   "root": "/data/code/ouyanghao/oyh/textop-reproduction-20261024",
-  "prepare_authorized": false,
-  "acceptance_authorized": false,
-  "corpus_spec_sha256": null,
-  "corpus_witnesses": [],
-  "fresh_document_summary_sha256": null,
-  "vae_spec_sha256": null,
+  "prepare_authorized": true,
+  "acceptance_authorized": true,
+  "corpus_spec_sha256": "b99bb6472ce4340e3e692597a7dc26838e3efb857ca00267fd5e1a5226116174",
+  "corpus_witnesses": [
+    {
+      "run": "filtered15000_corpus_author_v1",
+      "mode": "build",
+      "receipt_sha256": "faa071db5cc6f9197b3628077cc11d130b7bc208787f36778632fdbdc79184e4",
+      "exit_sha256": "b51f44948ca72486bc18902b1cc5d0124144242601699ee16e299d1ecbc57a3e"
+    },
+    {
+      "run": "filtered15000_corpus_document_v1",
+      "mode": "verify",
+      "receipt_sha256": "12094b24afce4de86f4723c05462e904a5fa3ae37717a690ba4667a842757efa",
+      "exit_sha256": "2487f4cc1184da7dcb02c46259d80543cd8999378d027784116375a211e32132"
+    }
+  ],
+  "fresh_document_summary_sha256": "309993337842c8f15f3b97c8f368a4feb9a8ef37ef659cad3464af8fd982e3e8",
+  "vae_spec_sha256": "82b0ca50479c69c9496af7ecacf725a8965c11eb1002fc3e79d4ac9c5fa17890",
   "recovery_run": "filtered15000_recovery_v1",
   "minimum_ram_free_bytes": 17179869184,
   "minimum_disk_free_bytes": 3221225472,

@@ -1,6 +1,6 @@
 {
-  "data_acceptance_sha256": null,
-  "corpus_receipt_sha256": null,
+  "data_acceptance_sha256": "0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c",
+  "corpus_receipt_sha256": "fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427",
   "bound_sources": {
     "scripts/paper69_runtime.py": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
     "scripts/paper69_data_runtime.py": "cf5c1e3f27665e7fc4d4aa1ede6bcd1931e3563409ad766ff67a576cc0c7b60d",
@@ -10,12 +10,23 @@
     "scripts/filtered15000_inputs.py": "d2eb66565132c73eaa501c5f56f2b8097b60152802398f6551208566dc24c24a"
   },
   "schema": "textop.filtered15000_vae.v1",
-  "witness_authorized": false,
-  "train_authorized": false,
-  "witnesses": [],
+  "witness_authorized": true,
+  "train_authorized": true,
+  "witnesses": [
+    {
+      "run": "filtered15000_vae_author_v1",
+      "receipt_sha256": "a43bba50b5f1616be6c7f2c85477eaf71a48a626acaf3d1e3480a73227d95181",
+      "exit_sha256": "ede083cbd42500eb27d87dfa0da46a1e4bdb8e50ddcf7e0046c012315fbefa33"
+    },
+    {
+      "run": "filtered15000_vae_document_v1",
+      "receipt_sha256": "94fa4c202956280e6947a90fe4b4a2d72cbe606a637ff4a92a7b0072840e5449",
+      "exit_sha256": "750a80d7cb98cea860b8796e8e19545b6bf4b4a315fca8962b52755acf7c9bdf"
+    }
+  ],
   "seed": 20261027,
   "corpus_dir": "/dev/shm/ouyanghao_textop_20261025/filtered15000_actual_pass_v1",
-  "checkpoint_dir": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/vae/checkpoints",
+  "checkpoint_dir": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints",
   "checkpoint_policy": {
     "reserve_bytes": 2147483648,
     "log_allowance_bytes": 536870912,
@@ -53,6 +64,7 @@
     200000
   ],
   "checkpoint_backup_scope": "All real versions retained; select actual persistent owned capacity before enabling any witness/train. No data/checkpoint deletion.",
-  "strict_audit_receipt_sha256": null,
-  "checkpoint_allowed_root": "/data/code/ouyanghao/oyh/textop-reproduction-20261024"
+  "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
+  "checkpoint_allowed_root": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027",
+  "independent_document_summary_sha256": "83fa05856daaff4ac1ef5d1d4b3c70c5a953a1041781130711921319cde1bddf"
 }

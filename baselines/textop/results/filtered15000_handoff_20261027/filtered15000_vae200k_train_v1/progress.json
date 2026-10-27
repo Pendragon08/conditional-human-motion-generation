@@ -1,0 +1,158 @@
+{
+  "kind": "vae",
+  "run": "filtered15000_vae200k_train_v1",
+  "observed_unix": 1793123105.364065,
+  "files": {
+    "receipt": {
+      "status": "RUNNING_FILTERED15000_VAE_TRAINING",
+      "mode": "train",
+      "quality_label": "DIRECT_STRICT15000_FILTERED_PAPER_SCHEDULE",
+      "full_paper_training": false,
+      "optimizer_updates": 100,
+      "completed_primitive_attempts": 100,
+      "skipped_updates": 0,
+      "output_writers_closed": false,
+      "source_sha256": "7ca7f4d9dd36ca5bfa1e07261d5ccaf1e652e7c989e8d71f62d5751de70df7a0",
+      "spec_sha256": "b7eb6e95b082fd3902099ea718ec07bd42b3418c49c179f88f5438e5c5d2c6fa",
+      "corpus_receipt_sha256": "fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427",
+      "data_acceptance_sha256": "0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c",
+      "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
+      "runtime_binding_sha256": "87a2f61683d930bf5fe69a9113713c90137c43318766627975c6d11accc20c1c",
+      "elapsed_seconds": 75.79853485524654,
+      "initial_storage_check": {
+        "destination": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints",
+        "filesystem": "ext4",
+        "owner_uid": 1013,
+        "free_bytes": 5572505600,
+        "required_bytes": 5452595200,
+        "remaining_saves": 5,
+        "checkpoint_upper_bound_bytes": 553648128,
+        "reserve_bytes": 2147483648,
+        "log_allowance_bytes": 536870912,
+        "persistent_owned_writable": true
+      },
+      "fixed_validation_batch_sha256": "9c3833eb9fc0e294d2fd8514b996f188323b868ca27551bf78b09058293a9de3",
+      "quality_baseline_manager_step": 0,
+      "quality_batch_preserves_training_rng": true,
+      "initial_quality": {
+        "teacher_forced": {
+          "normalized_reconstruction_huber": 0.4631298705935478,
+          "four_primitives": true,
+          "always_previous_prediction_history": false,
+          "final_physical_endpoint_or_text_generation_evaluated": false
+        },
+        "self_rollout": {
+          "normalized_reconstruction_huber": 0.46162528544664383,
+          "four_primitives": true,
+          "always_previous_prediction_history": true,
+          "final_physical_endpoint_or_text_generation_evaluated": false
+        }
+      },
+      "last_train_batch": [
+        {
+          "manager_step": 97,
+          "loss": 0.14120924472808838,
+          "reconstruction_huber": 0.14064998924732208,
+          "gradients_finite": true,
+          "actual_optimizer_updates": 97,
+          "skipped_updates": 0,
+          "is_evaluation": false
+        },
+        {
+          "manager_step": 98,
+          "loss": 0.14268185198307037,
+          "reconstruction_huber": 0.14213503897190094,
+          "gradients_finite": true,
+          "actual_optimizer_updates": 98,
+          "skipped_updates": 0,
+          "is_evaluation": false
+        },
+        {
+          "manager_step": 99,
+          "loss": 0.14431777596473694,
+          "reconstruction_huber": 0.14375925064086914,
+          "gradients_finite": true,
+          "actual_optimizer_updates": 99,
+          "skipped_updates": 0,
+          "is_evaluation": false
+        },
+        {
+          "manager_step": 100,
+          "loss": 0.1439519077539444,
+          "reconstruction_huber": 0.14340180158615112,
+          "gradients_finite": true,
+          "actual_optimizer_updates": 100,
+          "skipped_updates": 0,
+          "is_evaluation": false
+        }
+      ],
+      "last_storage_check": {
+        "destination": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints",
+        "filesystem": "ext4",
+        "owner_uid": 1013,
+        "free_bytes": 5572501504,
+        "required_bytes": 5452595200,
+        "remaining_saves": 5,
+        "checkpoint_upper_bound_bytes": 553648128,
+        "reserve_bytes": 2147483648,
+        "log_allowance_bytes": 536870912,
+        "persistent_owned_writable": true
+      }
+    },
+    "driver": {
+      "status": "DURABLE_POST_FILTER_JOB_DISPATCHED_NOT_YET_ACCEPTED",
+      "run": "filtered15000_vae200k_train_v1",
+      "stage": "vae_train",
+      "driver_pid": 165373,
+      "spec_sha256": "b7eb6e95b082fd3902099ea718ec07bd42b3418c49c179f88f5438e5c5d2c6fa",
+      "command": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_filtered15000_vae.py",
+        "--mode",
+        "train",
+        "--run",
+        "filtered15000_vae200k_train_v1"
+      ]
+    }
+  },
+  "sha256": {
+    "receipt": "d691554edcc1d4ac197d0b6171a015eebdccfe563420c25066604aa8955f5507",
+    "driver": "e1db97e53fbedfd277ef9ab6ca680e3f6be241654dd082008336b52322d8020c"
+  },
+  "workers": [
+    {
+      "pid": 165374,
+      "start_ticks": "1432055921",
+      "state": "S",
+      "argv": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_filtered15000_vae.py",
+        "--mode",
+        "train",
+        "--run",
+        "filtered15000_vae200k_train_v1",
+        ""
+      ]
+    },
+    {
+      "pid": 165381,
+      "start_ticks": "1432055933",
+      "state": "R",
+      "argv": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_filtered15000_vae.py",
+        "--mode",
+        "train",
+        "--run",
+        "filtered15000_vae200k_train_v1",
+        ""
+      ]
+    }
+  ],
+  "closed_execution_verified": false,
+  "arrays_read": 0,
+  "model_loads": 0,
+  ".log_tail": "2026-10-27 17:43:29.272 | INFO     | robotmdar.dataloader.data:_load_data:95 -  Loading train data...\n2026-10-27 17:43:31.821 | INFO     | robotmdar.dataloader.data:_cal_sample_weight:127 -  ====================Use Weighted Sample====================\nbabel sum:  335.6629608030876\nsamp percent:  0.0\n2026-10-27 17:44:01.640 | INFO     | robotmdar.dataloader.data:_load_data:120 -  Found 10722 valid samples out of 10722\n2026-10-27 17:44:01.640 | INFO     | robotmdar.dataloader.data:_load_text_embeddings:225 -  Loading cached text embeddings...\n2026-10-27 17:44:02.003 | INFO     | robotmdar.dataloader.data:_load_meanstd:267 -  Loading cached mean/std from /dev/shm/ouyanghao_textop_20261025/filtered15000_actual_pass_v1/meanstd.pkl...\n2026-10-27 17:44:02.888 | INFO     | robotmdar.dataloader.data:_load_data:95 -  Loading val data...\n2026-10-27 17:44:03.922 | INFO     | robotmdar.dataloader.data:_load_data:120 -  Found 3548 valid samples out of 3548\n2026-10-27 17:44:03.922 | INFO     | robotmdar.dataloader.data:_load_text_embeddings:225 -  Loading cached text embeddings...\n2026-10-27 17:44:04.218 | INFO     | robotmdar.dataloader.data:_load_meanstd:267 -  Loading cached mean/std from /dev/shm/ouyanghao_textop_20261025/filtered15000_actual_pass_v1/meanstd.pkl...\n2026-10-27 17:44:04.751 | INFO     | robotmdar.train.manager:hold_model:580 - MVAEManager: Holding VAE model and optimizer\n{\"step\": 100, \"updates\": 100, \"skips\": 0, \"loss\": 0.1439519077539444}\n",
+  "_outer.log_tail": "",
+  "common_lock_free": false
+}

@@ -1,4 +1,66 @@
-## CURRENT — teacher STOPPED; direct all8278 strict replay RUNNING
+## CURRENT — actual filtered VAE200k TRAINING; all8278 physical filter accepted
+
+2026-10-28 01:45 actual formal observation: filtered15000_vae200k_train_v1,
+100primitive attempts /100Adam updates /0skip, RUNNING_FILTERED15000_VAE_TRAINING,
+no exit. This is fresh full200k initialization, not prefilter8100 or the two
+four-step memory witnesses. Read results/filtered15000_handoff_20261027/
+filtered15000_vae200k_train_v1/progress.json for newer actual receipts.
+Formal VAE specSHA b7eb6e95b082fd3902099ea718ec07bd42b3418c49c179f88f5438e5c5d2c6fa;
+numeric binding87a2f61683d930bf5fe69a9113713c90137c43318766627975c6d11accc20c1c.
+Entry7ca7f4d9dd36ca5bfa1e07261d5ccaf1e652e7c989e8d71f62d5751de70df7a0,
+source/runtime/spec frozen during training. Historical driver165373/sup165374/
+child165381 are clues only; verify real argv/starttime. VAE owns common lock;
+no overlapping SDK/GPU work. GPU1/shared CPU0-3/.65/headless; protected57D stays
+paused. First real full checkpoint is50k, not the observed100 progress receipt.
+
+All8278 originals physically replayed:7137complete pass/1141fail/0unattempted,
+CPU full audit actual0 accepted608026032pose bytes and all original evidence.
+No teacher/replay restart. This is frozen15k and one strict trial each, bypassing
+historical EMA by user instruction; not paper40k/two-stage, <=5% probability,
+semantic or final endpoint acceptance. Nativeclosefalse/fallbacktrue retained.
+Actual-pass REFERENCE+BABEL corpus author and independent fresh verify closed0;
+2TRAIN duplicate families quarantined without deleting originals,7135 families/
+14270mirror variants,10722/3548split,6309realCLIP texts/TRAIN-only69D/loader checks.
+Private small recovery18627628B server+D SHAverified; actual owned HOME five-slot
+capacity+2GiBreserve/512MiBlogs accepted. Both distinct real gradient/Adam/allRNG/
+nextbatch/pending-validation witnesses closed0, findings[]; their weights unused.
+
+Checkpoint root /home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints.
+Keep every real50k/100k/150k/200k and emergency state; do not delete data or
+checkpoints. New LDM/export sources are staged but actualVAE200k/export/LDM
+witnesses/capacity still pending. After real VAE200k closure/lock release follow
+FILTERED15000_HANDOFF_ENVIRONMENT.md to CPUexport and freshLDM300k automatically.
+No extra user confirmation. Full semantic/TMR/WBC/online quality still pending.
+The final physical7137/1141/0 result and formal start are being reported in this
+heartbeat; future healthy training is quiet and hourly. Older CURRENT/staging
+paragraphs below are historical and must not restart old jobs.
+
+## Earlier full-result handoff receipt (superseded by CURRENT above)
+
+2026-10-28 actual result:8278 attempted,7137 complete passes,1141 failed,0 unattempted.
+Frozen15000, one deterministic full replay each; user bypassed historical EMA,
+not paper40k/two-stage or failure-probability<=5% acceptance. All original assets
+and failures retained. Original SDK/process/supervisor/outer exited0, no workers,
+lock released. Native close false/fallback true remains disclosed.
+Independent bounded CPU full_result_audit_v1 actually exited0/outer0 and closed:
+608026032 finite pose bytes /4222403 pose samples; every source,trial,journal,
+pose/quaternion/hash checked. AuditSHA71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d.
+Read results/filtered15000_handoff_20261027/full_result_audit_v1/progress.json.
+Actual-pass corpus author build is also closed0:7137 selected,2 TRAIN exact
+pose-leak families quarantined with originals retained,14270 mirror variants,
+TRAIN-only69D refit,6309 realCLIP texts and three loader checks passed. Fresh
+corpus document agent actually verified with exit0/findings[]; recovery bundle
+server+D and CPU data/HOME5-slot capacity accepted. VAE author real4-gradient/
+Adam/allRNG restore witness has closed0. The new fresh VAE document agent is
+now running; do not duplicate its witness job. Wait for its actual SUMMARY.
+Corpus spec now enabledSHA b99bb6472ce4340e3e692597a7dc26838e3efb857ca00267fd5e1a5226116174.
+The earlier all-specs-disabled/running-full statements below are historical.
+VAE witness is enabled; formal VAE/LDM training remains disabled until the
+second real gradient/restore witness accepts the same data/numeric signature;
+no fresh formal generator optimization yet. User already authorized automatic start.
+Never restart teacher, old full replay, prefilter8100 or quickLDM.
+
+## Historical initial direct replay and staging
 
 <!--filtered15000-tools-current-start-->
 Post-filter handoff sources are now staged DISABLED. Read

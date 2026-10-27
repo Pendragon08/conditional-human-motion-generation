@@ -1,0 +1,242 @@
+{
+  "kind": "corpus",
+  "run": "filtered15000_corpus_author_v1",
+  "observed_unix": 1793122046.021186,
+  "files": {
+    "receipt": {
+      "status": "FILTERED15000_CORPUS_LOADER_WITNESS_PASSED",
+      "optimizer_updates": 0,
+      "dataset_accepted": false,
+      "physical_filter_executed": false,
+      "full_generator_training_started": false,
+      "candidate_view_only": false,
+      "input_sources_strict_filtered": true,
+      "source_sha256": "a59326b8b2c0ed826e9f5b31b32cb3153389d6f43692251f24beacc2c5ec80bc",
+      "spec_sha256": "b99bb6472ce4340e3e692597a7dc26838e3efb857ca00267fd5e1a5226116174",
+      "adapter": {
+        "valid_index_mapping_fixed": true,
+        "last_legal_start_included": true,
+        "exact35_pose_frames_supported": true,
+        "official_primitive_extraction_preserved": true,
+        "upstream_files_modified": false
+      },
+      "sampler_source_sha256": "cf5c1e3f27665e7fc4d4aa1ede6bcd1931e3563409ad766ff67a576cc0c7b60d",
+      "cpu_affinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "elapsed_seconds": 91.7687049806118,
+      "processed_sources": 7137,
+      "exact_cross_split_pose_groups": 4,
+      "quarantined_train_source_families": 2,
+      "quarantined_train_variants": 4,
+      "validation_variants_removed": 0,
+      "source_sequences": 7137,
+      "motion_variants": 14270,
+      "annotation_pairs": 75514,
+      "split_motion_variants": {
+        "train": 10722,
+        "val": 3548
+      },
+      "train_stat_feature_frames": 5671330,
+      "train_only_normalization": true,
+      "std_floor": 1e-06,
+      "std_floored_feature_indices": [],
+      "source_splits_disjoint": true,
+      "exact_pose_splits_disjoint": true,
+      "prepared_manifest_hashes": {
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025/available143_v1/prepared_manifest.private.jsonl": "4d0d1ceaa2cf2d9a27d4f4bac06ada9aa3bf2665a93bf3c449801ad46bd1cb6a",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025/available500_v1/prepared_manifest.private.jsonl": "a1dd6c643f545c05ac1967fceaf4608fd5ab7c25a5a6aa26213436ee48f0687a",
+        "/dev/shm/ouyanghao_textop_20261025/local1653_v1/prepared1653_v1/prepared_manifest.private.jsonl": "58685fa7bcf557b58384674c513914919e9f20fd5837e6e75ef05b44f2cb5057",
+        "/dev/shm/ouyanghao_textop_20261025/cmu1330_v1/prepared1330_v1/prepared_manifest.private.jsonl": "335dc9f73356d213ae661edf44c99d76865f66c3101d2e04fdd46d32d206e087",
+        "/dev/shm/ouyanghao_textop_20261025/bmlrub_indexed_v1/prepared_v1/prepared_manifest.private.jsonl": "ffbab5ce1e7975281a64b00f02e9c41638afe6c70c6c862f030ad4e31a516643",
+        "/dev/shm/ouyanghao_textop_20261025/kit_indexed_v1/prepared_v1/prepared_manifest.private.jsonl": "39b875b7edc25edafb2d20f3beb66af34fa6ee41ba7648dc0171010bbf23b81c"
+      },
+      "view_receipt_sha256": "fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427",
+      "loader_checks": [
+        {
+          "split": "train",
+          "weighted": false,
+          "raw_sequences": 10722,
+          "valid_sequences": 10722,
+          "batch_shape": [
+            4,
+            512,
+            10,
+            69
+          ],
+          "text_shape": [
+            512,
+            512
+          ],
+          "missing_text_embeddings": 0,
+          "history_overlap_error": 0.0,
+          "normalization_finite": true
+        },
+        {
+          "split": "val",
+          "weighted": false,
+          "raw_sequences": 3548,
+          "valid_sequences": 3548,
+          "batch_shape": [
+            4,
+            512,
+            10,
+            69
+          ],
+          "text_shape": [
+            512,
+            512
+          ],
+          "missing_text_embeddings": 0,
+          "history_overlap_error": 0.0,
+          "normalization_finite": true
+        },
+        {
+          "split": "train",
+          "weighted": true,
+          "raw_sequences": 10722,
+          "valid_sequences": 10722,
+          "batch_shape": [
+            4,
+            512,
+            10,
+            69
+          ],
+          "text_shape": [
+            512,
+            512
+          ],
+          "missing_text_embeddings": 0,
+          "history_overlap_error": 0.0,
+          "normalization_finite": true
+        }
+      ],
+      "exact35_frame_regression_passed": true,
+      "normalization_cross_source_boundaries_excluded": true,
+      "invalid_weighted_index_regression_passed": true,
+      "clip_unique_texts": 6309,
+      "train_only_statistics": true,
+      "peak_torch_allocated_bytes": 442733568,
+      "output_writers_closed": true,
+      "limitation": "Actual standard strict passes at15000; original references plus BABEL. User route skipped historical EMA. No optimizer/semantic or paper two-stage acceptance.",
+      "actual_strict_input_corpus_loader_verified": true,
+      "paper_filtered_dataset_accepted": false,
+      "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
+      "input_library_sources": 8278,
+      "spec_scope": "Actual direct strict15000 pass corpus; generation auto-authorized by user2026-10-27"
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=4",
+        "MKL_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONIOENCODING=utf-8",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/build_filtered15000_corpus.py",
+        "--spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filtered15000-corpus-spec.json",
+        "--base-spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/paper69-env-spec.json",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/corpus_runs/filtered15000_corpus_author_v1",
+        "--build"
+      ],
+      "supervisor_pid": 158832,
+      "child_pid": 158839,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 9,
+      "sample_errors": [],
+      "elapsed_seconds": 93.71146720647812,
+      "supervision_passed": true,
+      "spec_sha256": "b99bb6472ce4340e3e692597a7dc26838e3efb857ca00267fd5e1a5226116174",
+      "source_sha256": "950e3355bbe6dad4724bf11124e19c9a5680535955159436d75057290e4827b7",
+      "run": "filtered15000_corpus_author_v1",
+      "mode": "build",
+      "receipt_sha256": "faa071db5cc6f9197b3628077cc11d130b7bc208787f36778632fdbdc79184e4",
+      "resource_sha256": "fb28b33ec918a552161f711e2b98ae9ee9d2c959f3ef8a83a0792c43fbeaa280",
+      "process_exit_sha256": "46b726b287adce1d3899c72f27d4dea4f32cad721bfb3d351126afd5fbfc6e3f",
+      "status": "FILTERED15000_CORPUS_LOADER_WITNESS_PASSED",
+      "optimizer_updates": 0,
+      "new_sdk_runs": 0
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=4",
+        "MKL_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONIOENCODING=utf-8",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/build_filtered15000_corpus.py",
+        "--spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filtered15000-corpus-spec.json",
+        "--base-spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/paper69-env-spec.json",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/corpus_runs/filtered15000_corpus_author_v1",
+        "--build"
+      ],
+      "supervisor_pid": 158832,
+      "child_pid": 158839,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 9,
+      "sample_errors": [],
+      "elapsed_seconds": 93.71146720647812,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    },
+    "driver": {
+      "status": "DURABLE_POST_FILTER_JOB_DISPATCHED_NOT_YET_ACCEPTED",
+      "run": "filtered15000_corpus_author_v1",
+      "stage": "build",
+      "driver_pid": 158831,
+      "spec_sha256": "b99bb6472ce4340e3e692597a7dc26838e3efb857ca00267fd5e1a5226116174",
+      "command": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_filtered15000_corpus.py",
+        "--mode",
+        "build",
+        "--run",
+        "filtered15000_corpus_author_v1"
+      ]
+    }
+  },
+  "sha256": {
+    "receipt": "faa071db5cc6f9197b3628077cc11d130b7bc208787f36778632fdbdc79184e4",
+    "exit": "b51f44948ca72486bc18902b1cc5d0124144242601699ee16e299d1ecbc57a3e",
+    "process": "46b726b287adce1d3899c72f27d4dea4f32cad721bfb3d351126afd5fbfc6e3f",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0",
+    "driver": "95c442aa9bb773378d0758bbae93d4e8baec8beb836b94de6619afe608d95973"
+  },
+  "workers": [],
+  "closed_execution_verified": true,
+  "arrays_read": 0,
+  "model_loads": 0,
+  ".log_tail": "2026-10-27 17:26:01.286 | INFO     | robotmdar.dataloader.data:_load_data:95 -  Loading train data...\n2026-10-27 17:26:03.866 | INFO     | robotmdar.dataloader.data:_load_data:120 -  Found 10722 valid samples out of 10722\n2026-10-27 17:26:03.867 | INFO     | robotmdar.dataloader.data:_load_text_embeddings:225 -  Loading cached text embeddings...\n2026-10-27 17:26:04.186 | INFO     | robotmdar.dataloader.data:_load_meanstd:267 -  Loading cached mean/std from /dev/shm/ouyanghao_textop_20261025/filtered15000_actual_pass_v1/meanstd.pkl...\n2026-10-27 17:26:04.320 | INFO     | robotmdar.dataloader.data:_load_data:95 -  Loading val data...\n2026-10-27 17:26:05.335 | INFO     | robotmdar.dataloader.data:_load_data:120 -  Found 3548 valid samples out of 3548\n2026-10-27 17:26:05.335 | INFO     | robotmdar.dataloader.data:_load_text_embeddings:225 -  Loading cached text embeddings...\n2026-10-27 17:26:05.618 | INFO     | robotmdar.dataloader.data:_load_meanstd:267 -  Loading cached mean/std from /dev/shm/ouyanghao_textop_20261025/filtered15000_actual_pass_v1/meanstd.pkl...\n2026-10-27 17:26:05.709 | INFO     | robotmdar.dataloader.data:_load_data:95 -  Loading train data...\n2026-10-27 17:26:08.107 | INFO     | robotmdar.dataloader.data:_cal_sample_weight:127 -  ====================Use Weighted Sample====================\nbabel sum:  335.6629608030876\nsamp percent:  0.0\n2026-10-27 17:26:37.773 | INFO     | robotmdar.dataloader.data:_load_data:120 -  Found 10722 valid samples out of 10722\n2026-10-27 17:26:37.773 | INFO     | robotmdar.dataloader.data:_load_text_embeddings:225 -  Loading cached text embeddings...\n2026-10-27 17:26:38.575 | INFO     | robotmdar.dataloader.data:_load_meanstd:267 -  Loading cached mean/std from /dev/shm/ouyanghao_textop_20261025/filtered15000_actual_pass_v1/meanstd.pkl...\nFILTERED15000_CORPUS_LOADER_WITNESS_PASSED\n",
+  "_outer.log_tail": "{\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"CUDA_VISIBLE_DEVICES=1\", \"OMP_NUM_THREADS=4\", \"MKL_NUM_THREADS=4\", \"OPENBLAS_NUM_THREADS=4\", \"PYTHONUNBUFFERED=1\", \"PYTHONIOENCODING=utf-8\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/build_filtered15000_corpus.py\", \"--spec\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filtered15000-corpus-spec.json\", \"--base-spec\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/paper69-env-spec.json\", \"--output\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/corpus_runs/filtered15000_corpus_author_v1\", \"--build\"], \"supervisor_pid\": 158832, \"child_pid\": 158839, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 9, \"sample_errors\": [], \"elapsed_seconds\": 93.71146720647812, \"supervision_passed\": true, \"spec_sha256\": \"b99bb6472ce4340e3e692597a7dc26838e3efb857ca00267fd5e1a5226116174\", \"source_sha256\": \"950e3355bbe6dad4724bf11124e19c9a5680535955159436d75057290e4827b7\", \"run\": \"filtered15000_corpus_author_v1\", \"mode\": \"build\", \"receipt_sha256\": \"faa071db5cc6f9197b3628077cc11d130b7bc208787f36778632fdbdc79184e4\", \"resource_sha256\": \"fb28b33ec918a552161f711e2b98ae9ee9d2c959f3ef8a83a0792c43fbeaa280\", \"process_exit_sha256\": \"46b726b287adce1d3899c72f27d4dea4f32cad721bfb3d351126afd5fbfc6e3f\", \"status\": \"FILTERED15000_CORPUS_LOADER_WITNESS_PASSED\", \"optimizer_updates\": 0, \"new_sdk_runs\": 0}\n",
+  "common_lock_free": true
+}

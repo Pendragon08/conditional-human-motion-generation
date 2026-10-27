@@ -43,11 +43,19 @@ if handoff.exists():
  h=json.loads(handoff.read_text(encoding='utf-8'))
  assert h['target_checkpoint_completed_iterations']==15000 and h['relaxed_failure_rate_maximum']==.05
  extra+=' 用户明确要求：报告实际筛选数量，直接全库严格回放及非空运动—文本语料、CLIP、恢复与容量验收通过后自动启动新的筛选语料VAE200k→LDM300k，无需再次确认。'
+physical_complete=False
+current_path=BASE/'results/teacher15000_direct_strict_20261027/current.json'
+if current_path.exists():
+ actual=json.loads(current_path.read_text(encoding='utf-8'))
+ physical_complete=actual.get('strict_physics_accepted') is True
+ if physical_complete:
+  assert actual['finished']==actual['source_count']==8278 and actual['actual_unattempted_sources']==0
+  extra+=f" 最新全库最终物理结果已由独立CPU完整性核验接受：8278个全部实测，{actual['passed_complete']}个完整通过，{actual['failed']}个失败，0个未尝试。原SDK及CPU核验作业均退出。后续阶段{actual['handoff_stage']}，新生成器正式开训标志{actual['generator_started']}。固定15k、每源一次、跳过历史EMA候选的限制保留；单次通过不等于失败概率≤5%。"
 text=f'''# TextOp：恢复先筛选、后训练的论文顺序
 
 用户2026-10-27明确调整：安全保存并暂停未筛选数据生成器，先完成全库物理筛选。先前推荐的“未筛选全源先训练”属于额外对照，并非论文主线；现在已取消其自动接续，不能把这条路线说成论文训练数据已合格。
 
-当前生成器已在完整批次边界保存并退出：{r['completed_attempts']}次primitive尝试、{r['optimizer_updates']}次实际Adam更新、{r['skips']}次跳过。完整模型、优化器、训练时钟和随机状态保留，CPU模型/Adam重载一致，CPU随机状态恢复通过；CUDA随机状态完整保存并检查结构，本轮未执行GPU恢复训练。检查点{r['bytes']}字节，SHA `{r['sha256']}`，服务器与D盘私有副本已核验。原始训练输出的非零退出和旧RUNNING收据均保留，独立暂停收据解释为用户授权的完整批次保存退出，不是200k训练完成。
+此前未筛选对照生成器已在完整批次边界保存并退出：{r['completed_attempts']}次primitive尝试、{r['optimizer_updates']}次实际Adam更新、{r['skips']}次跳过。完整模型、优化器、训练时钟和随机状态保留，CPU模型/Adam重载一致，CPU随机状态恢复通过；CUDA随机状态完整保存并检查结构，本轮未执行GPU恢复训练。检查点{r['bytes']}字节，SHA `{r['sha256']}`，服务器与D盘私有副本已核验。原始训练输出的非零退出和旧RUNNING收据均保留，独立暂停收据解释为用户授权的完整批次保存退出，不是200k训练完成。
 
 暂停没有向真实训练进程发信号，也没有修改训练源码/参数。独立验证后的临时记录路径标记触发原程序已有紧急保存逻辑；真实检查点落盘、原进程退出、记录解压完整和共同GPU/SDK锁释放均有证据。先前信号方案的独立审查阻断与全部失败记录保留，未用于真实训练。
 
@@ -67,6 +75,9 @@ if main.exists():
  old=main.read_text(encoding='utf-8');old=re.sub(r'<!--generator8278-current-start-->.*?<!--generator8278-current-end-->','',old,flags=re.S);old=re.sub(r'<!--filter-first-current-start-->.*?<!--filter-first-current-end-->','',old,flags=re.S)
  headline='15000轮筛选统计已核验，生成器等待合格语料' if verified15 else '生成器已保存暂停，恢复先筛选后训练'
  current=f"15000轮：{c15['eligible_for_strict']}/8278条达到EMA失败率≤5%候选门槛，严格筛选和合格语料仍未完成。" if verified15 else str(r['completed_attempts'])+'步完整状态已在服务器与D盘核验。全库物理筛选尚未完成；未筛选实验不自动接续。'
+ if physical_complete:
+  headline='全库物理筛查已核验，自动接续筛后生成器'
+  current=f"8278个全部实测：完整通过{actual['passed_complete']}，失败{actual['failed']}，未尝试0。当前{actual['handoff_stage']}；生成器正式开训标志{actual['generator_started']}。"
  section='<!--filter-first-current-start--><section style="padding:24px;background:#edf6ee;color:#153a24;font:17px/1.8 system-ui"><h2>最新：'+headline+'</h2><p>'+current+'</p><a href="'+name+'">查看检查点、筛选统计及接续说明</a></section><!--filter-first-current-end-->'
  match=re.search(r'<body[^>]*>',old,re.I);old=old[:match.end()]+section+old[match.end():] if match else section+old;main.write_text(old,encoding='utf-8')
 print(json.dumps({'status':r['status'],'steps':r['completed_attempts'],'report':str(D/name)},ensure_ascii=False))

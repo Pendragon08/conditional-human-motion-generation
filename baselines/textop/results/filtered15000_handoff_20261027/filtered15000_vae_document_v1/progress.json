@@ -1,0 +1,236 @@
+{
+  "kind": "vae",
+  "run": "filtered15000_vae_document_v1",
+  "observed_unix": 1793122908.4844778,
+  "files": {
+    "receipt": {
+      "status": "FILTERED15000_VAE_WITNESS_PASSED",
+      "mode": "witness",
+      "quality_label": "DIRECT_STRICT15000_FILTERED_PAPER_SCHEDULE",
+      "full_paper_training": false,
+      "optimizer_updates": 4,
+      "completed_primitive_attempts": 4,
+      "skipped_updates": 0,
+      "output_writers_closed": true,
+      "source_sha256": "7ca7f4d9dd36ca5bfa1e07261d5ccaf1e652e7c989e8d71f62d5751de70df7a0",
+      "spec_sha256": "a396fc9526f04361b30b4cc4d5ef0503261446cebf4b438955859bca5b8a3f31",
+      "corpus_receipt_sha256": "fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427",
+      "data_acceptance_sha256": "0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c",
+      "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
+      "runtime_binding_sha256": "87a2f61683d930bf5fe69a9113713c90137c43318766627975c6d11accc20c1c",
+      "elapsed_seconds": 43.79060195572674,
+      "initial_storage_check": {
+        "destination": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints",
+        "filesystem": "ext4",
+        "owner_uid": 1013,
+        "free_bytes": 5572517888,
+        "required_bytes": 3238002688,
+        "remaining_saves": 1,
+        "checkpoint_upper_bound_bytes": 553648128,
+        "reserve_bytes": 2147483648,
+        "log_allowance_bytes": 536870912,
+        "persistent_owned_writable": true
+      },
+      "memory_witness": {
+        "status": "GENERATOR8278_VAE_REAL_GRADIENT_MEMORY_RESUME_WITNESS_PASSED",
+        "actual_optimizer_updates": 4,
+        "primitive_attempts": 4,
+        "all_four_training_gradients_finite": true,
+        "validation_optimizer_updates": 0,
+        "model_and_adam_roundtrip_exact": true,
+        "next_batch_and_rng_restored": true,
+        "pending_evaluation_completed_without_updates": true,
+        "ema_enabled": false,
+        "memory_serialized_bytes": 513522877,
+        "memory_serialized_sha256": "3029490ede457925ed345700caf82cff873819b902a6328424e32b261d1b4dff",
+        "persistent_checkpoint_created": false,
+        "weights_reused_for_training": false,
+        "train_records": [
+          {
+            "manager_step": 1,
+            "loss": 0.45508450269699097,
+            "reconstruction_huber": 0.4506881535053253,
+            "gradients_finite": true,
+            "actual_optimizer_updates": 1,
+            "skipped_updates": 0,
+            "is_evaluation": false
+          },
+          {
+            "manager_step": 2,
+            "loss": 0.43410927057266235,
+            "reconstruction_huber": 0.43006476759910583,
+            "gradients_finite": true,
+            "actual_optimizer_updates": 2,
+            "skipped_updates": 0,
+            "is_evaluation": false
+          },
+          {
+            "manager_step": 3,
+            "loss": 0.37151509523391724,
+            "reconstruction_huber": 0.3678399920463562,
+            "gradients_finite": true,
+            "actual_optimizer_updates": 3,
+            "skipped_updates": 0,
+            "is_evaluation": false
+          },
+          {
+            "manager_step": 4,
+            "loss": 0.3397381603717804,
+            "reconstruction_huber": 0.33623531460762024,
+            "gradients_finite": true,
+            "actual_optimizer_updates": 4,
+            "skipped_updates": 0,
+            "is_evaluation": false
+          }
+        ],
+        "validation_records": [
+          {
+            "manager_step": 4,
+            "loss": 0.35719001293182373,
+            "reconstruction_huber": 0.3545733392238617,
+            "gradients_finite": true,
+            "actual_optimizer_updates": 4,
+            "skipped_updates": 0,
+            "is_evaluation": true
+          },
+          {
+            "manager_step": 4,
+            "loss": 0.36508214473724365,
+            "reconstruction_huber": 0.36239922046661377,
+            "gradients_finite": true,
+            "actual_optimizer_updates": 4,
+            "skipped_updates": 0,
+            "is_evaluation": true
+          },
+          {
+            "manager_step": 4,
+            "loss": 0.3629051446914673,
+            "reconstruction_huber": 0.36021143198013306,
+            "gradients_finite": true,
+            "actual_optimizer_updates": 4,
+            "skipped_updates": 0,
+            "is_evaluation": true
+          },
+          {
+            "manager_step": 4,
+            "loss": 0.354899525642395,
+            "reconstruction_huber": 0.35219302773475647,
+            "gradients_finite": true,
+            "actual_optimizer_updates": 4,
+            "skipped_updates": 0,
+            "is_evaluation": true
+          }
+        ],
+        "all_rng_recursive_equal": true,
+        "file_resume_scope": "Unchanged file protocol; every real50k checkpoint reloaded and recursively checked"
+      },
+      "memory_only_diagnostic": true,
+      "all_rng_recursive_verified": true,
+      "training_checkpoint_created": false,
+      "weights_used_for_formal_training": false,
+      "peak_torch_allocated_bytes": 3930611712
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=4",
+        "MKL_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "WANDB_MODE=disabled",
+        "PYTHONUNBUFFERED=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_filtered15000_vae.py",
+        "--mode",
+        "witness",
+        "--run",
+        "filtered15000_vae_document_v1"
+      ],
+      "supervisor_pid": 164388,
+      "child_pid": 164395,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 6,
+      "sample_errors": [],
+      "elapsed_seconds": 47.990355882793665,
+      "supervision_passed": true,
+      "run": "filtered15000_vae_document_v1",
+      "mode": "witness",
+      "numerical_status": "FILTERED15000_VAE_WITNESS_PASSED",
+      "evaluation_receipt_sha256": "94fa4c202956280e6947a90fe4b4a2d72cbe606a637ff4a92a7b0072840e5449",
+      "process_exit_sha256": "b71f8af50348466535f83ece62990639b9ace10fd6638337a79072a229b410da",
+      "resources_sha256": "0123defa67f28fec665d5dd8daaf99a3e0631b7c46c064ccf3e914c9116d01b5",
+      "new_sdk_runs": 0,
+      "new_physics_steps": 0
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=4",
+        "MKL_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "WANDB_MODE=disabled",
+        "PYTHONUNBUFFERED=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_filtered15000_vae.py",
+        "--mode",
+        "witness",
+        "--run",
+        "filtered15000_vae_document_v1"
+      ],
+      "supervisor_pid": 164388,
+      "child_pid": 164395,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 6,
+      "sample_errors": [],
+      "elapsed_seconds": 47.990355882793665,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    },
+    "driver": {
+      "status": "DURABLE_POST_FILTER_JOB_DISPATCHED_NOT_YET_ACCEPTED",
+      "run": "filtered15000_vae_document_v1",
+      "stage": "vae_witness",
+      "driver_pid": 164387,
+      "spec_sha256": "a396fc9526f04361b30b4cc4d5ef0503261446cebf4b438955859bca5b8a3f31",
+      "command": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_filtered15000_vae.py",
+        "--mode",
+        "witness",
+        "--run",
+        "filtered15000_vae_document_v1"
+      ]
+    }
+  },
+  "sha256": {
+    "receipt": "94fa4c202956280e6947a90fe4b4a2d72cbe606a637ff4a92a7b0072840e5449",
+    "exit": "750a80d7cb98cea860b8796e8e19545b6bf4b4a315fca8962b52755acf7c9bdf",
+    "process": "b71f8af50348466535f83ece62990639b9ace10fd6638337a79072a229b410da",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0",
+    "driver": "64866a3718209da45baf0e461249f84d81fd019e8aec7b16766f1e5e4b04e699"
+  },
+  "workers": [],
+  "closed_execution_verified": true,
+  "arrays_read": 0,
+  "model_loads": 0,
+  ".log_tail": "3713c90137c43318766627975c6d11accc20c1c\", \"elapsed_seconds\": 43.79060195572674, \"initial_storage_check\": {\"destination\": \"/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints\", \"filesystem\": \"ext4\", \"owner_uid\": 1013, \"free_bytes\": 5572517888, \"required_bytes\": 3238002688, \"remaining_saves\": 1, \"checkpoint_upper_bound_bytes\": 553648128, \"reserve_bytes\": 2147483648, \"log_allowance_bytes\": 536870912, \"persistent_owned_writable\": true}, \"memory_witness\": {\"status\": \"GENERATOR8278_VAE_REAL_GRADIENT_MEMORY_RESUME_WITNESS_PASSED\", \"actual_optimizer_updates\": 4, \"primitive_attempts\": 4, \"all_four_training_gradients_finite\": true, \"validation_optimizer_updates\": 0, \"model_and_adam_roundtrip_exact\": true, \"next_batch_and_rng_restored\": true, \"pending_evaluation_completed_without_updates\": true, \"ema_enabled\": false, \"memory_serialized_bytes\": 513522877, \"memory_serialized_sha256\": \"3029490ede457925ed345700caf82cff873819b902a6328424e32b261d1b4dff\", \"persistent_checkpoint_created\": false, \"weights_reused_for_training\": false, \"train_records\": [{\"manager_step\": 1, \"loss\": 0.45508450269699097, \"reconstruction_huber\": 0.4506881535053253, \"gradients_finite\": true, \"actual_optimizer_updates\": 1, \"skipped_updates\": 0, \"is_evaluation\": false}, {\"manager_step\": 2, \"loss\": 0.43410927057266235, \"reconstruction_huber\": 0.43006476759910583, \"gradients_finite\": true, \"actual_optimizer_updates\": 2, \"skipped_updates\": 0, \"is_evaluation\": false}, {\"manager_step\": 3, \"loss\": 0.37151509523391724, \"reconstruction_huber\": 0.3678399920463562, \"gradients_finite\": true, \"actual_optimizer_updates\": 3, \"skipped_updates\": 0, \"is_evaluation\": false}, {\"manager_step\": 4, \"loss\": 0.3397381603717804, \"reconstruction_huber\": 0.33623531460762024, \"gradients_finite\": true, \"actual_optimizer_updates\": 4, \"skipped_updates\": 0, \"is_evaluation\": false}], \"validation_records\": [{\"manager_step\": 4, \"loss\": 0.35719001293182373, \"reconstruction_huber\": 0.3545733392238617, \"gradients_finite\": true, \"actual_optimizer_updates\": 4, \"skipped_updates\": 0, \"is_evaluation\": true}, {\"manager_step\": 4, \"loss\": 0.36508214473724365, \"reconstruction_huber\": 0.36239922046661377, \"gradients_finite\": true, \"actual_optimizer_updates\": 4, \"skipped_updates\": 0, \"is_evaluation\": true}, {\"manager_step\": 4, \"loss\": 0.3629051446914673, \"reconstruction_huber\": 0.36021143198013306, \"gradients_finite\": true, \"actual_optimizer_updates\": 4, \"skipped_updates\": 0, \"is_evaluation\": true}, {\"manager_step\": 4, \"loss\": 0.354899525642395, \"reconstruction_huber\": 0.35219302773475647, \"gradients_finite\": true, \"actual_optimizer_updates\": 4, \"skipped_updates\": 0, \"is_evaluation\": true}], \"all_rng_recursive_equal\": true, \"file_resume_scope\": \"Unchanged file protocol; every real50k checkpoint reloaded and recursively checked\"}, \"memory_only_diagnostic\": true, \"all_rng_recursive_verified\": true, \"training_checkpoint_created\": false, \"weights_used_for_formal_training\": false, \"peak_torch_allocated_bytes\": 3930611712}\n",
+  "_outer.log_tail": "{\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"CUDA_VISIBLE_DEVICES=1\", \"OMP_NUM_THREADS=4\", \"MKL_NUM_THREADS=4\", \"OPENBLAS_NUM_THREADS=4\", \"WANDB_MODE=disabled\", \"PYTHONUNBUFFERED=1\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_filtered15000_vae.py\", \"--mode\", \"witness\", \"--run\", \"filtered15000_vae_document_v1\"], \"supervisor_pid\": 164388, \"child_pid\": 164395, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 6, \"sample_errors\": [], \"elapsed_seconds\": 47.990355882793665, \"supervision_passed\": true, \"run\": \"filtered15000_vae_document_v1\", \"mode\": \"witness\", \"numerical_status\": \"FILTERED15000_VAE_WITNESS_PASSED\", \"evaluation_receipt_sha256\": \"94fa4c202956280e6947a90fe4b4a2d72cbe606a637ff4a92a7b0072840e5449\", \"process_exit_sha256\": \"b71f8af50348466535f83ece62990639b9ace10fd6638337a79072a229b410da\", \"resources_sha256\": \"0123defa67f28fec665d5dd8daaf99a3e0631b7c46c064ccf3e914c9116d01b5\", \"new_sdk_runs\": 0, \"new_physics_steps\": 0}\n",
+  "common_lock_free": true
+}

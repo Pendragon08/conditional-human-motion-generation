@@ -1,0 +1,325 @@
+{
+  "kind": "recovery",
+  "run": "filtered15000_recovery_v1",
+  "observed_unix": 1793122475.3546908,
+  "files": {
+    "receipt": {
+      "status": "FILTERED15000_CORPUS_RECOVERY_PREPARED",
+      "optimizer_updates": 0,
+      "new_model_loads": 0,
+      "new_gpu_contexts": 0,
+      "new_sdk_runs": 0,
+      "dataset_accepted": false,
+      "generator_started": false,
+      "output_writers_closed": true,
+      "elapsed_seconds": 3.2687967512756586,
+      "corpus_receipt_sha256": "fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427",
+      "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
+      "corpus_spec_sha256": "b99bb6472ce4340e3e692597a7dc26838e3efb857ca00267fd5e1a5226116174",
+      "source_sequences": 7137,
+      "source_sequences_in_view": 7135,
+      "motion_variants": 14270,
+      "input_library_sources": 8278,
+      "witnesses": [
+        {
+          "run": "filtered15000_corpus_author_v1",
+          "mode": "build",
+          "receipt_sha256": "faa071db5cc6f9197b3628077cc11d130b7bc208787f36778632fdbdc79184e4",
+          "exit_sha256": "b51f44948ca72486bc18902b1cc5d0124144242601699ee16e299d1ecbc57a3e",
+          "actual_exit_code": 0,
+          "source_sequences": 7137,
+          "loader_checks": [
+            {
+              "split": "train",
+              "weighted": false,
+              "raw_sequences": 10722,
+              "valid_sequences": 10722,
+              "batch_shape": [
+                4,
+                512,
+                10,
+                69
+              ],
+              "text_shape": [
+                512,
+                512
+              ],
+              "missing_text_embeddings": 0,
+              "history_overlap_error": 0.0,
+              "normalization_finite": true
+            },
+            {
+              "split": "val",
+              "weighted": false,
+              "raw_sequences": 3548,
+              "valid_sequences": 3548,
+              "batch_shape": [
+                4,
+                512,
+                10,
+                69
+              ],
+              "text_shape": [
+                512,
+                512
+              ],
+              "missing_text_embeddings": 0,
+              "history_overlap_error": 0.0,
+              "normalization_finite": true
+            },
+            {
+              "split": "train",
+              "weighted": true,
+              "raw_sequences": 10722,
+              "valid_sequences": 10722,
+              "batch_shape": [
+                4,
+                512,
+                10,
+                69
+              ],
+              "text_shape": [
+                512,
+                512
+              ],
+              "missing_text_embeddings": 0,
+              "history_overlap_error": 0.0,
+              "normalization_finite": true
+            }
+          ]
+        },
+        {
+          "run": "filtered15000_corpus_document_v1",
+          "mode": "verify",
+          "receipt_sha256": "12094b24afce4de86f4723c05462e904a5fa3ae37717a690ba4667a842757efa",
+          "exit_sha256": "2487f4cc1184da7dcb02c46259d80543cd8999378d027784116375a211e32132",
+          "actual_exit_code": 0,
+          "source_sequences": 7137,
+          "loader_checks": [
+            {
+              "split": "train",
+              "weighted": false,
+              "raw_sequences": 10722,
+              "valid_sequences": 10722,
+              "batch_shape": [
+                4,
+                512,
+                10,
+                69
+              ],
+              "text_shape": [
+                512,
+                512
+              ],
+              "missing_text_embeddings": 0,
+              "history_overlap_error": 0.0,
+              "normalization_finite": true
+            },
+            {
+              "split": "val",
+              "weighted": false,
+              "raw_sequences": 3548,
+              "valid_sequences": 3548,
+              "batch_shape": [
+                4,
+                512,
+                10,
+                69
+              ],
+              "text_shape": [
+                512,
+                512
+              ],
+              "missing_text_embeddings": 0,
+              "history_overlap_error": 0.0,
+              "normalization_finite": true
+            },
+            {
+              "split": "train",
+              "weighted": true,
+              "raw_sequences": 10722,
+              "valid_sequences": 10722,
+              "batch_shape": [
+                4,
+                512,
+                10,
+                69
+              ],
+              "text_shape": [
+                512,
+                512
+              ],
+              "missing_text_embeddings": 0,
+              "history_overlap_error": 0.0,
+              "normalization_finite": true
+            }
+          ]
+        }
+      ],
+      "source_sha256": "cb6a4ff60e03a1069a4113112916b1421e5b335704ee0464adbb2b3cb0647fb0",
+      "spec_sha256": "98bd844804ca4fd98e8f8f36972224a8e6535fe9b711d98ea3756ef9a892f08c",
+      "private_archive": {
+        "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/data_runs/filtered15000_recovery_v1/corpus_recovery.private.tar.gz",
+        "bytes": 18627628,
+        "sha256": "df8836ef2a50f006ab2ec78ab8509435d010266f2c8bf0b801893ac92c485e46"
+      },
+      "private_recovery_file_count": 10,
+      "small_private_recovery_files": {
+        "cross_split_quarantine.private.json": {
+          "bytes": 966,
+          "sha256": "6be214541cd619e1b0f672286812c63e84c60e3e503026dba7ccd37e1a4382ff"
+        },
+        "action_statistics.json": {
+          "bytes": 30248,
+          "sha256": "036a432ff3d8d3d790eaaa4f2e65ed0fa05cdb3f7b5fafaf749bb98383438bfc"
+        },
+        "all_decisions.private.json": {
+          "bytes": 5607394,
+          "sha256": "b2a7c5875e2a7a452161089cd606288c964f352289536284554a4d7bcb95fa7a"
+        },
+        "accepted_sources.private.json": {
+          "bytes": 4837604,
+          "sha256": "0ec2f088cef76d900755dfaba052e051d37892aca005f928ad522b7a1fac2e0e"
+        },
+        "train_text_embed.pkl": {
+          "bytes": 13419215,
+          "sha256": "54f46fc46a65e40fc2d944f6559a1ec5fc9ed7b1ff761343f76735b08ad71d30"
+        },
+        "meanstd.pkl": {
+          "bytes": 1511,
+          "sha256": "4a4b8838736a7541d5c2de7b944da78870fcf8fa1e55359599f815c371da1bb4"
+        },
+        "rebuild.private.json": {
+          "bytes": 2160,
+          "sha256": "7f1ff64d4f0ee9de34ccb982524dd10c6987388fdfac4a96009168fc4e347771"
+        },
+        "val_text_embed.pkl": {
+          "bytes": 13162499,
+          "sha256": "3862dc4e69088210836beec62069db8b151c7b1d25dafe3152e14ef2e36d6c21"
+        },
+        "statistics.yaml": {
+          "bytes": 82,
+          "sha256": "efacaa827afe1ce1e7700657b358126bf4963dd673a6e7c939fdb4cb87275c64"
+        },
+        "view_receipt.json": {
+          "bytes": 3356,
+          "sha256": "fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427"
+        }
+      },
+      "checkpoint_candidate": {
+        "home": "/home/ouyanghao",
+        "proposed_allowed_root": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027",
+        "proposed_checkpoint_dir": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints",
+        "filesystem": "ext4",
+        "free_bytes": 5572571136,
+        "required_bytes": 5452595200,
+        "accepted": false
+      },
+      "corpus_loader_and_small_recovery_verified": true,
+      "private_D_backup_verified": false,
+      "formal_gradient_witnesses_accepted": false,
+      "formal_training_ready": false
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONUNBUFFERED=1",
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_filtered15000_recovery.py",
+        "--spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filtered15000-recovery-spec.json",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/data_runs/filtered15000_recovery_v1"
+      ],
+      "supervisor_pid": 161942,
+      "child_pid": 161947,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 3.4952746126800776,
+      "supervision_passed": true,
+      "run": "filtered15000_recovery_v1",
+      "status": "FILTERED15000_CORPUS_RECOVERY_PREPARED",
+      "receipt_sha256": "0c0589a8798b618de5bfa5367c23c208871a5bc30d5853c4a95d8df43c2dedbe",
+      "spec_sha256": "98bd844804ca4fd98e8f8f36972224a8e6535fe9b711d98ea3756ef9a892f08c",
+      "source_sha256": "82ece8d63dc25f3f6caa3a773f97c70213bd6c85027e83d6ce6f87dbe623b19d",
+      "resource_sha256": "6be05c892b9607410c7e85263c5519cabeeb771bfeee7b2aa301f952f430dcac",
+      "process_exit_sha256": "9cf20c94d840a80d1c125872688c73ddd030ae204863af4e587366f2f9b12cf8",
+      "new_gpu_contexts": 0,
+      "new_model_loads": 0,
+      "new_sdk_runs": 0,
+      "optimizer_updates": 0
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONUNBUFFERED=1",
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_filtered15000_recovery.py",
+        "--spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filtered15000-recovery-spec.json",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/data_runs/filtered15000_recovery_v1"
+      ],
+      "supervisor_pid": 161942,
+      "child_pid": 161947,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 3.4952746126800776,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    },
+    "driver": {
+      "status": "DURABLE_POST_FILTER_JOB_DISPATCHED_NOT_YET_ACCEPTED",
+      "run": "filtered15000_recovery_v1",
+      "stage": "recovery",
+      "driver_pid": 161941,
+      "spec_sha256": "98bd844804ca4fd98e8f8f36972224a8e6535fe9b711d98ea3756ef9a892f08c",
+      "command": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_filtered15000_recovery.py",
+        "--run",
+        "filtered15000_recovery_v1"
+      ]
+    }
+  },
+  "sha256": {
+    "receipt": "0c0589a8798b618de5bfa5367c23c208871a5bc30d5853c4a95d8df43c2dedbe",
+    "exit": "5426fea54af805de99db75f3ee5fbbf073685e9354f050ba6e821653e1d0626b",
+    "process": "9cf20c94d840a80d1c125872688c73ddd030ae204863af4e587366f2f9b12cf8",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0",
+    "driver": "d7e8172a20891ade15514b1f13f9069fbb256e7b46dbcf003db56e2a5464135c"
+  },
+  "workers": [],
+  "closed_execution_verified": true,
+  "arrays_read": 0,
+  "model_loads": 0,
+  ".log_tail": "exit_code\": 0, \"source_sequences\": 7137, \"loader_checks\": [{\"split\": \"train\", \"weighted\": false, \"raw_sequences\": 10722, \"valid_sequences\": 10722, \"batch_shape\": [4, 512, 10, 69], \"text_shape\": [512, 512], \"missing_text_embeddings\": 0, \"history_overlap_error\": 0.0, \"normalization_finite\": true}, {\"split\": \"val\", \"weighted\": false, \"raw_sequences\": 3548, \"valid_sequences\": 3548, \"batch_shape\": [4, 512, 10, 69], \"text_shape\": [512, 512], \"missing_text_embeddings\": 0, \"history_overlap_error\": 0.0, \"normalization_finite\": true}, {\"split\": \"train\", \"weighted\": true, \"raw_sequences\": 10722, \"valid_sequences\": 10722, \"batch_shape\": [4, 512, 10, 69], \"text_shape\": [512, 512], \"missing_text_embeddings\": 0, \"history_overlap_error\": 0.0, \"normalization_finite\": true}]}], \"source_sha256\": \"cb6a4ff60e03a1069a4113112916b1421e5b335704ee0464adbb2b3cb0647fb0\", \"spec_sha256\": \"98bd844804ca4fd98e8f8f36972224a8e6535fe9b711d98ea3756ef9a892f08c\", \"private_archive\": {\"path\": \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/data_runs/filtered15000_recovery_v1/corpus_recovery.private.tar.gz\", \"bytes\": 18627628, \"sha256\": \"df8836ef2a50f006ab2ec78ab8509435d010266f2c8bf0b801893ac92c485e46\"}, \"private_recovery_file_count\": 10, \"small_private_recovery_files\": {\"cross_split_quarantine.private.json\": {\"bytes\": 966, \"sha256\": \"6be214541cd619e1b0f672286812c63e84c60e3e503026dba7ccd37e1a4382ff\"}, \"action_statistics.json\": {\"bytes\": 30248, \"sha256\": \"036a432ff3d8d3d790eaaa4f2e65ed0fa05cdb3f7b5fafaf749bb98383438bfc\"}, \"all_decisions.private.json\": {\"bytes\": 5607394, \"sha256\": \"b2a7c5875e2a7a452161089cd606288c964f352289536284554a4d7bcb95fa7a\"}, \"accepted_sources.private.json\": {\"bytes\": 4837604, \"sha256\": \"0ec2f088cef76d900755dfaba052e051d37892aca005f928ad522b7a1fac2e0e\"}, \"train_text_embed.pkl\": {\"bytes\": 13419215, \"sha256\": \"54f46fc46a65e40fc2d944f6559a1ec5fc9ed7b1ff761343f76735b08ad71d30\"}, \"meanstd.pkl\": {\"bytes\": 1511, \"sha256\": \"4a4b8838736a7541d5c2de7b944da78870fcf8fa1e55359599f815c371da1bb4\"}, \"rebuild.private.json\": {\"bytes\": 2160, \"sha256\": \"7f1ff64d4f0ee9de34ccb982524dd10c6987388fdfac4a96009168fc4e347771\"}, \"val_text_embed.pkl\": {\"bytes\": 13162499, \"sha256\": \"3862dc4e69088210836beec62069db8b151c7b1d25dafe3152e14ef2e36d6c21\"}, \"statistics.yaml\": {\"bytes\": 82, \"sha256\": \"efacaa827afe1ce1e7700657b358126bf4963dd673a6e7c939fdb4cb87275c64\"}, \"view_receipt.json\": {\"bytes\": 3356, \"sha256\": \"fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427\"}}, \"checkpoint_candidate\": {\"home\": \"/home/ouyanghao\", \"proposed_allowed_root\": \"/home/ouyanghao/textop-filtered15000-checkpoints-20261027\", \"proposed_checkpoint_dir\": \"/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints\", \"filesystem\": \"ext4\", \"free_bytes\": 5572571136, \"required_bytes\": 5452595200, \"accepted\": false}, \"corpus_loader_and_small_recovery_verified\": true, \"private_D_backup_verified\": false, \"formal_gradient_witnesses_accepted\": false, \"formal_training_ready\": false}\n",
+  "_outer.log_tail": "{\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"CUDA_VISIBLE_DEVICES=\", \"OMP_NUM_THREADS=4\", \"OPENBLAS_NUM_THREADS=4\", \"PYTHONIOENCODING=utf-8\", \"PYTHONUNBUFFERED=1\", \"python3\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_filtered15000_recovery.py\", \"--spec\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filtered15000-recovery-spec.json\", \"--output\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/data_runs/filtered15000_recovery_v1\"], \"supervisor_pid\": 161942, \"child_pid\": 161947, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 3, \"sample_errors\": [], \"elapsed_seconds\": 3.4952746126800776, \"supervision_passed\": true, \"run\": \"filtered15000_recovery_v1\", \"status\": \"FILTERED15000_CORPUS_RECOVERY_PREPARED\", \"receipt_sha256\": \"0c0589a8798b618de5bfa5367c23c208871a5bc30d5853c4a95d8df43c2dedbe\", \"spec_sha256\": \"98bd844804ca4fd98e8f8f36972224a8e6535fe9b711d98ea3756ef9a892f08c\", \"source_sha256\": \"82ece8d63dc25f3f6caa3a773f97c70213bd6c85027e83d6ce6f87dbe623b19d\", \"resource_sha256\": \"6be05c892b9607410c7e85263c5519cabeeb771bfeee7b2aa301f952f430dcac\", \"process_exit_sha256\": \"9cf20c94d840a80d1c125872688c73ddd030ae204863af4e587366f2f9b12cf8\", \"new_gpu_contexts\": 0, \"new_model_loads\": 0, \"new_sdk_runs\": 0, \"optimizer_updates\": 0}\n",
+  "common_lock_free": true
+}
