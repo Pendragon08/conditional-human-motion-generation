@@ -73,12 +73,18 @@
     "scripts/full_ldm_history.py": "67ab6fd8a105b7bdaf9d38409636879b8669edfa5e060ca6b693c8c816e9e7e8",
     "configs/filtered15000-ldm-plan.json": "376b80136c5b51254b9a4a6ef15efb5ce5e51fbde65f98dec8be6eaf5631ede2"
   },
-  "next_implementation": "Complete full LDM entry/supervisor/real VAE200k inference export gates; execute post-filter acceptance only when full real inputs close",
+  "next_implementation": "Execute actual full-result audit, filtered corpus and restore/capacity acceptance after closure; then fresh VAE200k and real CPU export/LDM witnesses. All sources staged disabled, no actual acceptance yet.",
   "post_corpus_recovery_and_vae_enable_bridge_implemented": true,
   "actual_private_recovery_prepared": false,
   "actual_VAE_witnesses_enabled": false,
   "recovery_spec": "configs/filtered15000-recovery-spec.json",
   "recovery_run": "filtered15000_recovery_v1",
   "data_acceptance_run": "filtered15000_acceptance_v1",
-  "full_fresh_data_witnesses_and_actual_source_acceptance_pending": true
+  "full_fresh_data_witnesses_and_actual_source_acceptance_pending": true,
+  "full_ldm_entry_source_implemented": true,
+  "full_ldm_export_activation_bridge_implemented": true,
+  "actual_full_ldm_entry_acceptance_completed": false,
+  "actual_filtered_vae200000_completed": false,
+  "actual_vae200000_cpu_exports": 0,
+  "full_ldm_source_manifest": "results/filtered15000_handoff_tools_20261027/ldm_entry_export_current_v2.json"
 }

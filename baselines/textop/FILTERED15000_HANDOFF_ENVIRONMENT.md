@@ -217,3 +217,79 @@ denoiser's frozen VAE cache; the original complete VAE states stay preserved.
 All of that remains subject to actual source/state/capacity acceptance.
 Neither staged code nor a small witness establishes generation semantics,
 final endpoints, WBC or online physical quality.
+
+
+## Actual VAE200k to full LDM300k: sources staged, actual gates pending
+
+The full LDM entry, supervisor, CPU VAE completion/export validator, and local
+export/witness/formal-enable bridges are now implemented and staged DISABLED.
+See results/filtered15000_handoff_tools_20261027/ldm_entry_export_current_v2.json.
+No actual VAE200k input has been consumed, no CPU model has been loaded, and no
+LDM model, helper probe, gradient or training job has run. All new launch flags
+remain false with real-input hashes null. This replaces the earlier source-TODO
+statements above; actual acceptance is still pending.
+
+The separate CPU exporter requires a real closed fresh filtered VAE200k run,
+original process/supervisor/outer0 and resources, unchanged data/source/numeric
+binding, complete checkpoint provenance, and the recorded reconstruction gate.
+It checks the private full state's finite tensors/Adam steps and exact CPU model
+load, writes only the VAE inference state, reloads it into a second CPU model,
+and verifies the original full-state SHA is unchanged. It does not restore CUDA
+RNG or publish anything. The old full VAE states remain retained. The new export
+supervisor uses no visible CUDA devices,16GiB RAM/3GiB disk and900s child bound.
+
+Only after collect --kind vae on filtered15000_vae200k_train_v1 actually shows
+closed_execution_verified and released lock, use these workspace commands:
+
+```powershell
+$env:PYTHONIOENCODING='utf-8'
+& 'C:/Users/Pende/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' 'work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/textop/provider_tools/activate_filtered15000_ldm.py' --stage export
+& 'C:/Users/Pende/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' 'work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/textop/provider_tools/launch_filtered15000_handoff.py' --stage vae_export --run filtered15000_vae200k_export_v1
+```
+
+Run the second line only after actual activation0. Collect --kind vae_export
+--run filtered15000_vae200k_export_v1 --evidence a new unique identifier. After
+real closed CPU/outer0 and free lock, activate_filtered15000_ldm.py --stage
+witnesses verifies the actual export and selects sufficient new owned persistent
+capacity on ROOT or /home/ouyanghao. It reserves a conservative budget for three
+100k full-state saves plus one emergency slot, one inference cache,2GiB reserve
+and512MiB logs. No target or old states are removed. Native same-filesystem
+hard linking may save cache bytes; the preflight still budgets a full copy.
+Insufficient capacity is a real blocked stage, never permission to delete data.
+
+Then run --stage ldm_witness --run filtered15000_ldm_author_v1. After its actual
+closed exit and lock release, a fresh agent must follow these activated source
+and document instructions for --stage ldm_witness --run
+filtered15000_ldm_document_v1, collect --kind ldm and inspect the actual results.
+The fresh SUMMARY.json must state FILTERED15000_LDM_FRESH_DOCUMENT_VERIFIED,
+run filtered15000_ldm_document_v1, actual_exit_code0, findings[], and the actual
+runtime_binding_sha256. It must not invent a summary from prepared code.
+
+Each actual witness performs four real finite gradient/Adam updates, exact
+model/optimizer/RNG/next-batch and pending-validation restoration, frozen-VAE
+verification, a real batch12 five-step DDPM helper probe and a CFG5 generation
+probe. The helper temporarily tests a later-stage gate and restores model/RNG/
+clock; it explicitly does not claim50k optimization. The formal run records
+actual later-stage full-history generation and selected rollout-history counts,
+with resume restoring auxiliary counters. Four diagnostic updates never seed it.
+
+With both actual closed witnesses and the real fresh SUMMARY path, run
+provider_tools/enable_filtered15000_ldm_train.py --document-summary that path,
+then launch_filtered15000_handoff.py --stage ldm_train --run
+filtered15000_ldm300k_train_v1 only on actual enable0. It starts a new denoiser,
+keeps the native full300k clock, and preserves all checkpoint/failure versions.
+A dispatch is not proof that optimization has started. New training is serial
+with every SDK/GPU job. Semantic/TMR/endpoints/online quality remain separate.
+
+New source/rendered-code parse checks and an isolated metadata fixture rejected
+11 closure corruption cases. The fixture reads no production data, replaces
+only POSIX ownership for Windows, and does not establish actual server ownership,
+model loading or training acceptance. No old diagnostic suite was repeated.
+
+Source review also checked the unchanged VAE validation boundary: its native10
+validation primitives are drained through complete batches of4, so the closed
+saved pending counter can be-2. The CPU exporter now accepts a nonpositive
+pending counter, records its actual signed value and the10/4 rule, and preserves
+the checkpoint bytes. It never invents zero or changes the VAE numerical
+runtime. The earlier inactive exporter/spec bytes remain server+local; no actual
+export failed or model was loaded during this source correction.

@@ -1,0 +1,15 @@
+# 完整LDM与真实VAE200k导出入口准备
+
+本轮新增完整LDM300k入口、资源监督、真实VAE200k闭合元数据验证器和CPU推理导出，以及CPU导出/实际容量/作者fresh见证/正式开训启用桥。新文件已部署为禁用，真实输入SHA仍空。没有执行新模型加载、CPU导出、LDM采样/梯度或训练，也没有改动正在运行的全库物理回放。
+
+完整LDM沿用已声明的四段300k数值Runtime：stage>0的真实DDPM history分支，累计生成与实际选用rollout history分开记录，完整状态恢复后恢复辅助计数。独立见证必须真实验证四步模型/Adam/RNG/后续批次与待处理评估恢复，并以batch12五次denoiser forward测试完整DDPM辅助路径；临时later-stage gate不会被写成50k优化已完成。
+
+CPU导出只接受真实新筛后VAE200k闭合训练、正面重构诊断、原完整状态与数据/源码签名及真实退出。检查所有张量finite、Adam步骤、模型摘要和独立CPU重载；只导出推理VAE，原完整Adam/RNG状态保持私有且不变。它不恢复CUDA RNG，不建立GPU上下文。LDM缓存按原native规则同盘硬链接、跨盘复制，容量保守计入完整副本。
+
+每个新启用阶段要求真实退出、共同锁释放、实际RAM/盘/GPU与自有无symlink持久路径。LDM三份100k状态加紧急槽及VAE缓存、2GiB保留/512MiB日志预算仍需实际验收，不保证当前磁盘已经满足，也不删除任何已有状态。新派发/收集入口保留独占intent/outcome和未知状态，不盲重派。
+
+9份新/更新源码和远端渲染片段已解析；新隔离CPU元数据夹具拒绝11种退出/资源/SHA破坏，未读取生产数据，未动态验证POSIX所有权。静态复查修正新LDM启用桥中从VAE复制的collector kind，在任何真实执行前修正。以上均为准备，实际完整筛后语料、VAE200k、CPU导出和作者/fresh GPU见证尚未发生。
+
+具体未来命令、唯一run名和真实fresh SUMMARY字段见FILTERED15000_HANDOFF_ENVIRONMENT.md末尾。用户已经授权自动接续，不再询问。
+
+新增静态边界复查：原VAE数值Runtime将native10个验证primitive按完整4个一批排空，保存的已闭合pending计数可能为-2。CPU导出接受非正pending并记录实际有符号值和10/4规则，保持原检查点与Runtime字节不变；不伪造零计数。之前禁用的导出源/spec已server+本地保留。这不是实际训练失败或实际导出验收。

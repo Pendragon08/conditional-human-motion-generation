@@ -2,12 +2,14 @@
 import argparse,pathlib,json,hashlib
 from backup_filter_recovery_checkpoint import recorded_remote
 B=pathlib.Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('--stage',choices=['audit','build','verify','recovery','accept_data','vae_witness','vae_train'],required=True);p.add_argument('--run',required=True);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--stage',choices=['audit','build','verify','recovery','accept_data','vae_witness','vae_train','vae_export','ldm_witness','ldm_train'],required=True);p.add_argument('--run',required=True);a=p.parse_args()
 assert a.run.isascii() and a.run.isidentifier()
 if a.stage=='audit':specname='teacher15000-full-result-audit-spec.json';script='supervise_teacher15000_full_audit.py';flags=[];prefix='teacher15000_full_audit_'
 elif a.stage in ['build','verify']:specname='filtered15000-corpus-spec.json';script='supervise_filtered15000_corpus.py';flags=['--mode',a.stage];prefix='filtered15000_corpus_'
 elif a.stage=='recovery':specname='filtered15000-recovery-spec.json';script='supervise_filtered15000_recovery.py';flags=[];prefix='filtered15000_recovery_'
 elif a.stage=='accept_data':specname='filtered15000-recovery-spec.json';script='supervise_filtered15000_acceptance.py';flags=[];prefix='filtered15000_acceptance_'
+elif a.stage=='vae_export':specname='filtered15000-vae-export-spec.json';script='supervise_filtered15000_vae_export.py';flags=[];prefix='filtered15000_vae_export_'
+elif a.stage in ['ldm_witness','ldm_train']:specname='filtered15000-ldm-spec.json';script='supervise_filtered15000_ldm.py';flags=['--mode','witness' if a.stage=='ldm_witness' else 'train'];prefix='filtered15000_ldm_'
 else:specname='filtered15000-vae-spec.json';script='supervise_filtered15000_vae.py';flags=['--mode','witness' if a.stage=='vae_witness' else 'train'];prefix='filtered15000_vae_'
 expected=hashlib.sha256((B/'configs'/specname).read_bytes()).hexdigest()
 code=r'''
@@ -31,6 +33,15 @@ elif stage=='recovery':
 elif stage=='accept_data':
  assert s['prepare_authorized'] and s['acceptance_authorized']
  assert (r/'receipts/filtered15000_corpus_recovery_private_backup.json').is_file()
+elif stage=='vae_export':
+ assert s['export_authorized'] and s['vae_training'] and s['export_dir']
+ from filtered15000_vae_completion import completed_vae
+ completed_vae(s['vae_training'])
+elif stage in ['ldm_witness','ldm_train']:
+ assert s['witness_authorized'] and (stage=='ldm_witness' or s['train_authorized'])
+ assert s['vae_export'] and s['vae_inference'] and s['data_acceptance_sha256']
+ from filtered15000_vae_completion import completed_vae
+ completed_vae(s['vae_training'])
 else:
  assert s['witness_authorized'] and (stage=='vae_witness' or s['train_authorized'])
  assert s['data_acceptance_sha256'] and s['corpus_receipt_sha256'] and s['strict_audit_receipt_sha256']
