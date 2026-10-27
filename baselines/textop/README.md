@@ -1,3 +1,5 @@
+Repository synchronization and private data recovery scope: [SYNC_SCOPE_AND_DATA_RECOVERY.md](SYNC_SCOPE_AND_DATA_RECOVERY.md). This index separates public code/evidence/releases from licensed private data and full recovery states; a GitHub sync is not a physical or semantic acceptance result.
+
 ## CURRENT — explicit15k result notification and accepted-corpus generator autostart
 
 User2026-10-27: at actual15000 checkpoint, automatically check filtering and

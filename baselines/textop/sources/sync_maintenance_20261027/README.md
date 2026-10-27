@@ -1,0 +1,1 @@
+Original location: work/textop_reproduction_20261024. These maintenance source snapshots record the public-only incremental inventory and publisher used on2026-10-27. They are not experiment commands and should not be rerun from this archived directory. No training/data deletion/large-release upload is performed.
