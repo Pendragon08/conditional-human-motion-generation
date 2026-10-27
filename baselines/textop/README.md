@@ -1,3 +1,23 @@
+## CURRENT — explicit15k result notification and accepted-corpus generator autostart
+
+User2026-10-27: at actual15000 checkpoint, automatically check filtering and
+report how many motions meet the threshold, then start generator. Read
+configs/teacher15000-user-handoff-plan-20261027.json and
+reports/teacher15000_user_handoff_20261027.md. Notify actual8278 saved relaxed
+counts after checkpoint/backup verification EVEN IF ZERO. Keep <=5% and distinguish
+relaxed candidates from actual strict replay and final corpus acceptance.
+After strict complete replay and nonempty motion-text/data/CLIP/restore/storage
+acceptance, safely hand off teacher/commonlock and automatically start NEW
+filtered VAE200k thenLDM300k; no repeat confirmation. Do not resume prefilter8100
+or train empty/unfiltered data. Zero candidates or failures require honest result
+notification and evidence-based next steps, not threshold changes. Do not replace
+missed15000 provenance with another iteration silently.
+Existing textop heartbeat temporarily every15minutes; healthy pending staysquiet.
+Restorehourly after15000 notification and handoff arrangements. No newworker,
+training signal or change to22 activeproduction/backup bindings by this update.
+Actual15000/newfilteredcorpus/generatorlaunch still PENDING; prior observedprogress
+below is historical and only current realreceipts establish newer progress.
+
 ## CURRENT — recovery checkpoint tooling prepared; real15k still pending (2026-10-27)
 
 User's FILTER-FIRST order remains highest priority. Prefilter VAE8100 is saved,

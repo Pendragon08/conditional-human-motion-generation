@@ -1,0 +1,53 @@
+{
+  "schema": "textop.teacher15000_user_handoff.v1",
+  "user_request": "到15000轮后自动检查筛选结果，告诉我有多少动作达到门槛。然后开始启动生成器训练。",
+  "teacher_run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+  "target_checkpoint_completed_iterations": 15000,
+  "expected_optimizer_updates": 300000,
+  "status": "WAITING_REAL_15000_CHECKPOINT",
+  "notify_actual_relaxed_counts_even_if_zero": true,
+  "source_count_expected": 8278,
+  "relaxed_failure_rate_maximum": 0.05,
+  "checkpoint_backup_spec": "configs/filter-recovery-backup-spec.json",
+  "checkpoint_backup_spec_sha256": "6be686cf78d60498b88eedcd71d1a22bc7d9f117ae459cc2275a16a36f1d0e68",
+  "notification_counts": [
+    "total_sources",
+    "attempted_sources",
+    "eligible_for_strict",
+    "above_relaxed_threshold",
+    "unattempted",
+    "invalid_statistics"
+  ],
+  "generator_autostart_after_acceptance_authorized": true,
+  "generator_launch_enabled": false,
+  "acceptance_required": [
+    "actual_15000_checkpoint_provenance_and_private_backup",
+    "strict_complete_physical_replay_for_all_relaxed_candidates",
+    "accepted_nonempty_motion_text_corpus",
+    "source_family_and_pose_split_isolation",
+    "TRAIN_only_69D_statistics",
+    "complete_real_CLIP_cache",
+    "actual_loader_gradient_and_restore_validation",
+    "persistent_storage_capacity",
+    "teacher_safe_handoff_and_shared_lock_released"
+  ],
+  "no_candidates_action": "Notify verified zero count and continue evidence-based teacher improvement; do not loosen thresholds or train empty/unfiltered corpus.",
+  "backup_failure_action": "Preserve exact stage and worker state; notify actionable failure; no blind retry or provenance relaxation.",
+  "requested_checkpoint_missed_action": "Report actual checkpoint state; do not substitute another iteration as 15000.",
+  "paper_generator_budget": {
+    "vae": 200000,
+    "ldm": 300000
+  },
+  "prefilter_generator_resume_authorized": false,
+  "prefilter_ldm_autostart_authorized": false,
+  "original_teacher_source_and_spec_unchanged": true,
+  "no_new_worker_started": true,
+  "physical_filter_completed": false,
+  "filtered_corpus_accepted": false,
+  "heartbeat": {
+    "automation_id": "textop",
+    "temporary_minutes": 15,
+    "restore_hourly_after_15000_result_and_handoff_arrangements": true,
+    "healthy_progress_notifications": false
+  }
+}

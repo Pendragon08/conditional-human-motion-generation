@@ -7,7 +7,7 @@ loose=BASE/'results/teacher10000_full_filter_20261027/relaxed_scope_v1/summary.j
 l=json.loads(loose.read_text(encoding='utf-8')) if loose.exists() else None
 extra='全库筛选尚未完成；下一步读取10k教师的全8278来源宽松阶段统计，再对通过第一阶段的动作做严格完整回放。'
 if l:
- c=l['counts'];extra=f"已读取全部{l['source_count']}来源真实宽松训练统计：{c['eligible_for_strict']}条达到严格回放候选门槛，{c['rejected_relaxed_rate']}条宽松历史失败率超过5%，{c['unattempted']}条无有效尝试；严格回放与最终训练语料验收尚未完成。"
+ c=l['counts'];extra=f"最近已核验的是10000轮检查点的全部{l['source_count']}来源真实宽松训练统计：{c['eligible_for_strict']}条达到严格回放候选门槛，{c['rejected_relaxed_rate']}条宽松历史失败率超过5%，{c['unattempted']}条无有效尝试；这不是15000轮结果，严格回放与最终训练语料验收尚未完成。"
  if c['eligible_for_strict']==0:extra+=' 当前为空候选，不能建立合格语料，也不能据此宣称全部动作不可行。EMA最低18.66%、中位24.65%；原始累计失败率最低13.33%。发布版本统计有初始化与学习历史影响，不据此断言唯一根因。保持5%阈值并改进教师，在新15k检查点复查，不强制等40k才检查。'
 recovery=BASE/'results/teacher10000_full_filter_20261027/progress.json'
 if recovery.exists():
@@ -16,6 +16,11 @@ checkpoint_tools=BASE/'results/filter_recovery_checkpoint_tools_20261027/activat
 if checkpoint_tools.exists():
  t=json.loads(checkpoint_tools.read_text(encoding='utf-8'))
  extra+=' 新运行的15k及后续检查点已准备独立备份和全源宽松统计入口，元数据/计数检查及独立文档核查已完成；实际新检查点加载、备份和统计仍等待真实保存，尚未进行严格筛选。工具不停止训练，不复用旧5k/10k来源，不公开完整优化器或逐动作记录。'
+handoff=BASE/'configs/teacher15000-user-handoff-plan-20261027.json'
+if handoff.exists():
+ h=json.loads(handoff.read_text(encoding='utf-8'))
+ assert h['target_checkpoint_completed_iterations']==15000 and h['relaxed_failure_rate_maximum']==.05
+ extra+=' 用户新增明确要求：15000轮真实检查点及备份核验后，自动通知达到5%门槛的动作数量，即使为0也通知；候选严格回放和非空运动—文本语料、CLIP、恢复及容量验收通过后直接启动筛选语料VAE200k→LDM300k，不再问确认。现有自动检查临时每15分钟，未达节点的健康进度保持安静；没有新增协调器或修改活动训练。'
 text=f'''# TextOp：恢复先筛选、后训练的论文顺序
 
 用户2026-10-27明确调整：安全保存并暂停未筛选数据生成器，先完成全库物理筛选。先前推荐的“未筛选全源先训练”属于额外对照，并非论文主线；现在已取消其自动接续，不能把这条路线说成论文训练数据已合格。
