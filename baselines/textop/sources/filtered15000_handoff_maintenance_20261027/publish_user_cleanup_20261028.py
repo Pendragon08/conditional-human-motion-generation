@@ -3,8 +3,9 @@ import argparse,datetime,hashlib,json,msvcrt,os,pathlib,shutil,subprocess,sys
 T=pathlib.Path(__file__).resolve().parent;R=T.parent/'phygile_reproduction_20261017/conditional-human-motion-generation';B=R/'baselines/textop'
 D=pathlib.Path('D:/具身智能/TextOp复现_20261024');S=B/'results/storage_user_cleanup_20261028'
 sys.path.insert(0,str(B/'provider_tools'));from backup_filter_recovery_checkpoint import recorded_client
-p=argparse.ArgumentParser();p.add_argument('--phase',choices=['pre','post'],required=True);a=p.parse_args()
-E=T/('user_cleanup_publish_'+a.phase+'_v1');E.mkdir(exist_ok=False)
+p=argparse.ArgumentParser();p.add_argument('--phase',choices=['pre','post'],required=True);p.add_argument('--attempt',default='v1');a=p.parse_args()
+assert a.attempt.isascii() and a.attempt.isalnum()
+E=T/('user_cleanup_publish_'+a.phase+'_'+a.attempt);E.mkdir(exist_ok=False)
 M=B/'sources/filtered15000_handoff_maintenance_20261027';shutil.copy2(__file__,M/pathlib.Path(__file__).name)
 names=['provider_tools/'+n for n in ['verify_cleanup_candidates_20261028.py','probe_idle_installer_20261028.py','restore_contact_transport_part_20261028.py','execute_user_cleanup_20261028.py','remove_verified_transport_parts_20261028.ps1']]
 names+=['sources/filtered15000_handoff_maintenance_20261027/'+pathlib.Path(__file__).name]

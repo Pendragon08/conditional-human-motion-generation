@@ -9,16 +9,17 @@ sha=lambda p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
 def new(path,value):
  with pathlib.Path(path).open('x',encoding='utf-8') as f:json.dump(value,f,indent=2);f.flush();os.fsync(f.fileno())
 def main():
- p=argparse.ArgumentParser();p.add_argument('--stage',choices=['D','copy-sdk','server'],required=True);p.add_argument('--commit',required=True);a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--stage',choices=['D','copy-sdk','server'],required=True);p.add_argument('--commit',required=True);p.add_argument('--attempt',default='v1');a=p.parse_args()
+ assert a.attempt.isascii() and a.attempt.isalnum();prefix=a.stage+'_'+a.attempt
  assert len(a.commit)==40 and all(c in '0123456789abcdef' for c in a.commit)
  for n in ['provider_tools/remove_verified_transport_parts_20261028.ps1','provider_tools/execute_user_cleanup_20261028.py',
   'provider_tools/restore_contact_transport_part_20261028.py','provider_tools/probe_idle_installer_20261028.py',
   'results/storage_user_cleanup_20261028/D_recovery_verified.json','results/storage_user_cleanup_20261028/server_installer_source_verified.json']:
-  v=recorded_client('',E/(a.stage+'_git_'+pathlib.Path(n).stem+'.json'),timeout=30,
+  v=recorded_client('',E/(prefix+'_git_'+pathlib.Path(n).stem+'.json'),timeout=30,
    command=['git','-C',str(R),'show',a.commit+':baselines/textop/'+n])
-  assert v['actual_client_exit_code']==0 and hashlib.sha256(v['stdout'].encode('utf-8')).hexdigest()==sha(B/n),'Published code/proof bytes must match'
+  assert v['actual_client_exit_code']==0 and sha(v['direct_stream_files']['stdout'])==sha(B/n),'Published raw code/proof bytes must match'
  env=os.environ.copy();env.update(HTTP_PROXY='http://127.0.0.1:7897',HTTPS_PROXY='http://127.0.0.1:7897',GIT_TERMINAL_PROMPT='0')
- v=recorded_client('',E/(a.stage+'_remote_commit_client.json'),timeout=90,
+ v=recorded_client('',E/(prefix+'_remote_commit_client.json'),timeout=90,
   command=['git','-C',str(R),'ls-remote','origin','refs/heads/codex/textop-reproduction-20261024'],env=env)
  assert v['actual_client_exit_code']==0 and v['stdout'].split()[0]==a.commit
  source=json.loads((E/'server_installer_source_verified.json').read_text(encoding='utf-8'))
