@@ -1,5 +1,10 @@
 ## CURRENT — actual filtered VAE200k TRAINING; all8278 physical filter accepted
 
+<!--remote-observation-current-start-->
+最新远程观测限制（2026-10-28T04:55:58.453305+08:00）：SSH连接仍超时。本机ZeroTier服务运行且目标网段路由存在，但组网ONLINE状态因本地CLI权限未核验，不能据此证明服务器端在线。最后成功实核为2026-10-28T03:49:30.533382+08:00，VAE20500尝试/20500Adam/0skip。此后训练当前状态未确认，不宣称停止/失败，也不重启、恢复或发信号。已向用户请求确认服务器及服务器端组网在线。见results/filtered15000_handoff_20261027/filtered15000_vae200k_train_v1/access_status.json；新成功样本时间超过本次失败后，聚合报告自动采用新证据，不永久锁定此未知状态。
+<!--remote-observation-current-end-->
+
+
 2026-10-28 01:45 actual formal observation: filtered15000_vae200k_train_v1,
 100primitive attempts /100Adam updates /0skip, RUNNING_FILTERED15000_VAE_TRAINING,
 no exit. This is fresh full200k initialization, not prefilter8100 or the two

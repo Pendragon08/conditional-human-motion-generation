@@ -35,7 +35,17 @@ if audit_verified:
  if readiness_path.exists():
   ready=json.loads(readiness_path.read_text(encoding='utf-8')).get('readiness',{})
   corpus_accepted=ready.get('filtered_corpus_accepted') is True and ready.get('formal_training_ready') is True
-closure_note='全库结果已由独立有界CPU作业核验，原回放与核验作业均真实退出；训练语料和新生成器仍需接续验收。' if audit_verified else '进行中统计不是最终筛选结论。未测试动作没有被过滤。'
+last_verified_handoff_stage=handoff_stage;access_unavailable=False;access_attempt=None
+access_path=B/'results/filtered15000_handoff_20261027/filtered15000_vae200k_train_v1/access_status.json'
+if access_path.exists():
+ access=json.loads(access_path.read_text(encoding='utf-8'))
+ access_unavailable=access.get('status')=='REMOTE_SSH_UNAVAILABLE_TRAINING_CURRENT_STATE_UNKNOWN' and access['attempt_unix']>handoff_observed
+ if access_unavailable:
+  access_attempt=datetime.datetime.fromtimestamp(access['attempt_unix'],datetime.timezone(datetime.timedelta(hours=8))).isoformat()
+  handoff_stage='REMOTE_SSH_UNAVAILABLE_CURRENT_TRAINING_UNKNOWN'
+access_note='最近远程查询连接超时；下列训练步数为最后已核验值，不能当作当前实时状态。未观察到服务器训练退出，未停止或重启训练。' if access_unavailable else '训练状态以此采样时刻的真实收据为准。'
+phase_label='远程暂不可达，当前训练状态未确认' if access_unavailable else '新筛后VAE正式训练中' if handoff_stage=='RUNNING_FILTERED15000_VAE_TRAINING' else handoff_stage
+closure_note='全库结果已由独立有界CPU作业核验，原回放与核验作业均真实退出；生成器后续状态见下方真实收据阶段。' if audit_verified else '进行中统计不是最终筛选结论。未测试动作没有被过滤。'
 sample=datetime.datetime.fromtimestamp(handoff_observed,datetime.timezone(datetime.timedelta(hours=8))).isoformat()
 spec=B/'configs/teacher15000-direct-strict-spec.json';h=hashlib.sha256(spec.read_bytes()).hexdigest()
 current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['status'],sample_beijing=sample,
@@ -45,9 +55,10 @@ current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['st
  historical_ema_candidates=0,historical_ema_attempted=8278,historical_ema_above_threshold=8278,historical_ema_unattempted=0,
  direct_replay_bypasses_ema_candidate_gate=True,physical_thresholds_changed=False,optimizer_updates=0,
  completed_execution_verified=audit_verified,raw_light_collector_trace_acceptance=j['completed_execution_verified'],
- strict_physics_accepted=audit_verified,strict_audit_receipt_sha256=audit_sha,handoff_stage=handoff_stage,
+ strict_physics_accepted=audit_verified,strict_audit_receipt_sha256=audit_sha,handoff_stage=handoff_stage,handoff_stage_label=phase_label,
  actual_unattempted_sources=0 if audit_verified else None,filtered_corpus_accepted=corpus_accepted,generator_started=generator_started,
  generator_primitive_attempts=generator_attempts,handoff_workers=handoff_workers,active_generator_spec_sha256=generator_spec_sha,
+ remote_observation_available=not access_unavailable,last_access_attempt_beijing=access_attempt,last_verified_handoff_stage=last_verified_handoff_stage,
  active_spec_sha256=h,worker_pids=[x['pid'] for x in j['workers']],common_lock_free=handoff_lock_free,
  physical_replay_lock_released=j['common_lock_free'],
  runtime_receipt_count_note='replayed_original_sources and unattempted_original_sources describe planned selected/outside scope until execution ends; live pending is8278-finished_trials',
@@ -73,7 +84,8 @@ text=f'''# TextOp：停止跟踪器，直接全库物理筛查
 | 尚未结束（含未测试与执行中） | {pending} |
 
 状态：{r['status']}。{closure_note}
-后续阶段：{handoff_stage}。新生成器正式开训标志：{generator_started}；实际primitive尝试：{generator_attempts}。
+后续阶段：{phase_label}。新生成器此前已正式开训：{generator_started}；最后已核验primitive尝试：{generator_attempts}。
+{access_note}
 此前两次入口核验测试的是同一组8个短动作，两次都是8/8完整通过；不能当作全库通过率，也不能相加为16个不同动作。
 
 15000轮历史EMA统计另行保留：8278个来源全部有尝试，EMA失败率≤5%候选0个，超过门槛8278个，未尝试0个。这不是标准物理回放的失败数量。

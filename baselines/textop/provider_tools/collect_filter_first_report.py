@@ -50,7 +50,7 @@ if current_path.exists():
  physical_complete=actual.get('strict_physics_accepted') is True
  if physical_complete:
   assert actual['finished']==actual['source_count']==8278 and actual['actual_unattempted_sources']==0
-  extra+=f" 最新全库最终物理结果已由独立CPU完整性核验接受：8278个全部实测，{actual['passed_complete']}个完整通过，{actual['failed']}个失败，0个未尝试。原SDK及CPU核验作业均退出。后续阶段{actual['handoff_stage']}，新生成器正式开训标志{actual['generator_started']}。固定15k、每源一次、跳过历史EMA候选的限制保留；单次通过不等于失败概率≤5%。"
+  extra+=f" 最新全库最终物理结果已由独立CPU完整性核验接受：8278个全部实测，{actual['passed_complete']}个完整通过，{actual['failed']}个失败，0个未尝试。原SDK及CPU核验作业均退出。后续阶段{actual.get('handoff_stage_label',actual['handoff_stage'])}，新生成器正式开训标志{actual['generator_started']}。固定15k、每源一次、跳过历史EMA候选的限制保留；单次通过不等于失败概率≤5%。"
 text=f'''# TextOp：恢复先筛选、后训练的论文顺序
 
 用户2026-10-27明确调整：安全保存并暂停未筛选数据生成器，先完成全库物理筛选。先前推荐的“未筛选全源先训练”属于额外对照，并非论文主线；现在已取消其自动接续，不能把这条路线说成论文训练数据已合格。
@@ -77,7 +77,7 @@ if main.exists():
  current=f"15000轮：{c15['eligible_for_strict']}/8278条达到EMA失败率≤5%候选门槛，严格筛选和合格语料仍未完成。" if verified15 else str(r['completed_attempts'])+'步完整状态已在服务器与D盘核验。全库物理筛选尚未完成；未筛选实验不自动接续。'
  if physical_complete:
   headline='全库物理筛查已核验，自动接续筛后生成器'
-  current=f"8278个全部实测：完整通过{actual['passed_complete']}，失败{actual['failed']}，未尝试0。当前{actual['handoff_stage']}；生成器正式开训标志{actual['generator_started']}。"
+  current=f"8278个全部实测：完整通过{actual['passed_complete']}，失败{actual['failed']}，未尝试0。当前{actual.get('handoff_stage_label',actual['handoff_stage'])}；生成器正式开训标志{actual['generator_started']}。"
  section='<!--filter-first-current-start--><section style="padding:24px;background:#edf6ee;color:#153a24;font:17px/1.8 system-ui"><h2>最新：'+headline+'</h2><p>'+current+'</p><a href="'+name+'">查看检查点、筛选统计及接续说明</a></section><!--filter-first-current-end-->'
  match=re.search(r'<body[^>]*>',old,re.I);old=old[:match.end()]+section+old[match.end():] if match else section+old;main.write_text(old,encoding='utf-8')
 print(json.dumps({'status':r['status'],'steps':r['completed_attempts'],'report':str(D/name)},ensure_ascii=False))

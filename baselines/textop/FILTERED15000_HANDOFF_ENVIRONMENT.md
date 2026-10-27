@@ -1,5 +1,10 @@
 # CURRENT: fresh filtered VAE200k is formally running
 
+<!--remote-observation-current-start-->
+最新远程观测限制（2026-10-28T04:55:58.453305+08:00）：SSH连接仍超时。本机ZeroTier服务运行且目标网段路由存在，但组网ONLINE状态因本地CLI权限未核验，不能据此证明服务器端在线。最后成功实核为2026-10-28T03:49:30.533382+08:00，VAE20500尝试/20500Adam/0skip。此后训练当前状态未确认，不宣称停止/失败，也不重启、恢复或发信号。已向用户请求确认服务器及服务器端组网在线。见results/filtered15000_handoff_20261027/filtered15000_vae200k_train_v1/access_status.json；新成功样本时间超过本次失败后，聚合报告自动采用新证据，不永久锁定此未知状态。
+<!--remote-observation-current-end-->
+
+
 Both real VAE author and fresh document gradient/restore witnesses closed0;
 formal spec b7eb6e95b082fd3902099ea718ec07bd42b3418c49c179f88f5438e5c5d2c6fa
 is train_authorized=true. The unique formal run filtered15000_vae200k_train_v1
