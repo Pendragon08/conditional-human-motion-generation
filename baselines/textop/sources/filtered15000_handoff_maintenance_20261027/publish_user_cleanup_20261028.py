@@ -8,6 +8,7 @@ assert a.attempt.isascii() and a.attempt.isalnum()
 E=T/('user_cleanup_publish_'+a.phase+'_'+a.attempt);E.mkdir(exist_ok=False)
 M=B/'sources/filtered15000_handoff_maintenance_20261027';shutil.copy2(__file__,M/pathlib.Path(__file__).name)
 names=['provider_tools/'+n for n in ['verify_cleanup_candidates_20261028.py','probe_idle_installer_20261028.py','restore_contact_transport_part_20261028.py','execute_user_cleanup_20261028.py','remove_verified_transport_parts_20261028.ps1']]
+names+=['.gitattributes']
 names+=['sources/filtered15000_handoff_maintenance_20261027/'+pathlib.Path(__file__).name]
 names+=['results/storage_user_cleanup_20261028/'+x.name for x in S.glob('*.json')]
 names+=['reports/user_authorized_storage_cleanup_20261028.md']
@@ -25,11 +26,12 @@ def git(*args,stdin=''):
 branch='codex/textop-reproduction-20261024';assert git('branch','--show-current')==branch and not git('diff','--cached','--name-only')
 base=git('rev-parse','HEAD');assert git('ls-remote','origin','refs/heads/'+branch).split()[0]==base
 allow={'baselines/textop/'+n for n in names};git('--literal-pathspecs','add','-f','--pathspec-from-file=-','--pathspec-file-nul',stdin='\0'.join(sorted(allow))+'\0')
+git('--literal-pathspecs','add','--renormalize','--pathspec-from-file=-','--pathspec-file-nul',stdin='\0'.join(sorted(allow))+'\0')
 assert set(git('diff','--cached','--name-only').splitlines())<=allow;git('diff','--cached','--check')
 print(git('commit','-m',('Preserve recovery proofs before user-authorized exact-copy cleanup' if a.phase=='pre' else 'Verify user-authorized space recovery without changing VAE training')).splitlines()[0],flush=True)
 head=git('rev-parse','HEAD');pack=subprocess.run(['git','-C',str(R),'pack-objects','--stdout','--revs'],input=(head+'\n^'+base+'\n').encode(),capture_output=True,check=True,timeout=60)
 assert len(pack.stdout)<5*1024**2
-for n in ['configs/filtered15000-vae-spec.json','scripts/run_filtered15000_vae.py','scripts/supervise_filtered15000_vae.py','scripts/generator8278_vae_runtime.py']:
+for n in ['configs/filtered15000-vae-spec.json','scripts/run_filtered15000_vae.py','scripts/supervise_filtered15000_vae.py','scripts/generator8278_vae_runtime.py','provider_tools/remove_verified_transport_parts_20261028.ps1','provider_tools/execute_user_cleanup_20261028.py','provider_tools/restore_contact_transport_part_20261028.py','provider_tools/probe_idle_installer_20261028.py','results/storage_user_cleanup_20261028/D_recovery_verified.json','results/storage_user_cleanup_20261028/server_installer_source_verified.json']:
  blob=subprocess.run(['git','-C',str(R),'show',head+':baselines/textop/'+n],capture_output=True,check=True,timeout=30).stdout;assert hashlib.sha256(blob).digest()==hashlib.sha256((B/n).read_bytes()).digest()
 git('push','--porcelain','origin',branch);remote=git('ls-remote','origin','refs/heads/'+branch).split()[0];assert remote==head
 receipt=dict(branch=branch,commit=head,verified_remote_head=remote,url='https://github.com/Pendragon08/conditional-human-motion-generation/tree/'+branch+'/baselines/textop')
