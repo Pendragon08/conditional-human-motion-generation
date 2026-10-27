@@ -1,0 +1,249 @@
+{
+  "status": "USER_PAUSED_GENERATOR_CHECKPOINT_PRIVATE_BACKUP_PENDING",
+  "reason": "User2026-10-27: safely save and pause this prefilter generator; complete full-library physical filtering before filtered generator training",
+  "run": "generator8278_vae200k_train_v1",
+  "spec_sha256": "7ed1fb7e06b426635e4c789c23e91c22d31d621bd32da70112580ce5ad9f867f",
+  "source_files_changed": false,
+  "training_signals": 0,
+  "training_completed": false,
+  "prefilter_data": true,
+  "preflight_budget": {
+    "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/generator8278_20261027/vae/checkpoints",
+    "filesystem": "ext4",
+    "owner_uid": 1013,
+    "free_bytes": 5753344000,
+    "required_bytes": 3238002688,
+    "remaining_saves": 1,
+    "checkpoint_upper_bound_bytes": 553648128,
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 536870912,
+    "persistent_owned_writable": true
+  },
+  "control": {
+    "status": "WORKER_EXITED_TEMP_MARKER_REMOVED_CHECKPOINT_AUDIT_REQUIRED",
+    "training_signals": 0,
+    "source_edits": 0,
+    "worker": {
+      "pid": 4166124,
+      "start_ticks": 1426871168,
+      "ppid": 4166117,
+      "session": 4166124,
+      "state": "R",
+      "uid": 1013,
+      "argv": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_generator8278_vae.py",
+        "--mode",
+        "train",
+        "--run",
+        "generator8278_vae200k_train_v1"
+      ],
+      "exe": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python3.8"
+    },
+    "marker_inode": 5921008,
+    "marker_device": 2048,
+    "marker_path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/generator8278_20261027/vae_runs/generator8278_vae200k_train_v1/receipt.partial",
+    "created_at": 1793074190.0295613,
+    "actual_worker_exited": true,
+    "marker_removed": true
+  },
+  "checkpoint": {
+    "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/generator8278_20261027/vae/checkpoints/emergency_8100.pth",
+    "bytes": 513526637,
+    "sha256": "2b958a5e4efbd74ddfe6bb99b8a5eb8174cec143bb782689b1f6af8934a6c2fe",
+    "manager_step": 8100,
+    "actual_optimizer_updates": null
+  },
+  "original_receipt": {
+    "status": "RUNNING_GENERATOR8278_VAE_TRAINING",
+    "mode": "train",
+    "quality_label": "PREFILTER8278_PAPER_SCHEDULE_NOT_FILTERED_PAPER_REPRODUCTION",
+    "full_paper_training": false,
+    "optimizer_updates": 8000,
+    "completed_primitive_attempts": 8000,
+    "skipped_updates": 0,
+    "output_writers_closed": false,
+    "source_sha256": "7e4ff4b7c427a884deb9708ab77c8fb4a62304ec505fb5329dd83758f650fe45",
+    "spec_sha256": "ec16b1468543e7a5347595d94ecc915502bb775fe885f97318ff53454ebe3fdc",
+    "corpus_receipt_sha256": "bf66fac213d6b9a1812d0c1d578fe09599346e4a2211e70233b968743cd60113",
+    "data_acceptance_sha256": "a8ebf892d229570829c51909884204241ba4bc9faee389f5ac5b1f75cf5e4f88",
+    "elapsed_seconds": 2998.2058681156486,
+    "initial_storage_check": {
+      "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/generator8278_20261027/vae/checkpoints",
+      "filesystem": "ext4",
+      "owner_uid": 1013,
+      "free_bytes": 5755072512,
+      "required_bytes": 5452595200,
+      "remaining_saves": 5,
+      "checkpoint_upper_bound_bytes": 553648128,
+      "reserve_bytes": 2147483648,
+      "log_allowance_bytes": 536870912,
+      "persistent_owned_writable": true
+    },
+    "fixed_validation_batch_sha256": "b649db0e68a36e556db0d294a8272cd56a4656804cab6ee389e169400e37bb15",
+    "quality_baseline_manager_step": 0,
+    "quality_batch_preserves_training_rng": true,
+    "initial_quality": {
+      "teacher_forced": {
+        "normalized_reconstruction_huber": 0.437720462679863,
+        "four_primitives": true,
+        "always_previous_prediction_history": false,
+        "final_physical_endpoint_or_text_generation_evaluated": false
+      },
+      "self_rollout": {
+        "normalized_reconstruction_huber": 0.43645960837602615,
+        "four_primitives": true,
+        "always_previous_prediction_history": true,
+        "final_physical_endpoint_or_text_generation_evaluated": false
+      }
+    },
+    "last_train_batch": [
+      {
+        "manager_step": 7997,
+        "loss": 0.02435140684247017,
+        "reconstruction_huber": 0.02394779585301876,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 7997,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      },
+      {
+        "manager_step": 7998,
+        "loss": 0.02486734837293625,
+        "reconstruction_huber": 0.02445261739194393,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 7998,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      },
+      {
+        "manager_step": 7999,
+        "loss": 0.02335250750184059,
+        "reconstruction_huber": 0.022946352139115334,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 7999,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      },
+      {
+        "manager_step": 8000,
+        "loss": 0.02364354021847248,
+        "reconstruction_huber": 0.02323823794722557,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 8000,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      }
+    ],
+    "last_storage_check": {
+      "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/generator8278_20261027/vae/checkpoints",
+      "filesystem": "ext4",
+      "owner_uid": 1013,
+      "free_bytes": 5753380864,
+      "required_bytes": 5452595200,
+      "remaining_saves": 5,
+      "checkpoint_upper_bound_bytes": 553648128,
+      "reserve_bytes": 2147483648,
+      "log_allowance_bytes": 536870912,
+      "persistent_owned_writable": true
+    }
+  },
+  "original_receipt_stale_running_retained": true,
+  "original_exits": {
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=4",
+        "MKL_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "WANDB_MODE=disabled",
+        "PYTHONUNBUFFERED=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_generator8278_vae.py",
+        "--mode",
+        "train",
+        "--run",
+        "generator8278_vae200k_train_v1"
+      ],
+      "supervisor_pid": 4166117,
+      "child_pid": 4166124,
+      "child_exit_code": 1,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 204,
+      "sample_errors": [],
+      "elapsed_seconds": 3047.3145924862474,
+      "supervision_passed": false,
+      "run": "generator8278_vae200k_train_v1",
+      "mode": "train",
+      "numerical_status": "RUNNING_GENERATOR8278_VAE_TRAINING",
+      "evaluation_receipt_sha256": "2b0b4781edaafab22b01c650e8a6eb0d2cc7909a2f21058332e65557c0c9b077",
+      "process_exit_sha256": "4349b776035772bfae7f99abdc352287822b57af916bc8be86450e2195268d3e",
+      "resources_sha256": "ccace773f09a08d014ddf21a42f3db6114f610dfff79b362a8ecbdc388767c6b",
+      "new_sdk_runs": 0,
+      "new_physics_steps": 0
+    },
+    "process_exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=4",
+        "MKL_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "WANDB_MODE=disabled",
+        "PYTHONUNBUFFERED=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_generator8278_vae.py",
+        "--mode",
+        "train",
+        "--run",
+        "generator8278_vae200k_train_v1"
+      ],
+      "supervisor_pid": 4166117,
+      "child_pid": 4166124,
+      "child_exit_code": 1,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 204,
+      "sample_errors": [],
+      "elapsed_seconds": 3047.3145924862474,
+      "supervision_passed": false
+    },
+    "outer_exit": {
+      "returncode": 1,
+      "command": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_generator8278_vae.py",
+        "--mode",
+        "train",
+        "--run",
+        "generator8278_vae200k_train_v1"
+      ],
+      "elapsed_seconds": 3047.6528613567352
+    }
+  },
+  "exit_hashes": {
+    "exit": "7f3b7a8bac4e9b46f77f86da8ca86e3a8f0c26f79942ef1539d78f0ef326fa47",
+    "process_exit": "4349b776035772bfae7f99abdc352287822b57af916bc8be86450e2195268d3e",
+    "outer_exit": "2e79516942cf38615941ea8342c990b8ba217663495c69f4d9d32c693e0c17df"
+  },
+  "log_sha256": "febdb92ec3a882418eaf96cd98ce0db978298dd5e4f5dbd3cb8a76e0ec150b4b",
+  "controlled_exception": "IsADirectoryError at normal closed-boundary receipt write; existing emergency save completed",
+  "gpu_common_lock_released": true,
+  "metrics_gzip_fully_decoded": true,
+  "metric_records": 105340,
+  "actual_worker_exited": true,
+  "private_backup_completed": false,
+  "checkpoint_cpu_restore_audit_completed": false
+}

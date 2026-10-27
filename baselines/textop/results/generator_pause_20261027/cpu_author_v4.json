@@ -1,0 +1,42 @@
+{
+  "result": {
+    "status": "CPU_BOUNDARY_INTERRUPT_FIXTURE_PASSED",
+    "actual_fixture_exit": 41,
+    "checks": [
+      "start_tick_mismatch_rejected",
+      "actual_owned_fixture_exit_observed",
+      "interruption_caught_only_at_closed_boundary",
+      "exactly_one_sigint_to_original_fixture_pidfd",
+      "no_forced_termination",
+      "signals_only_fixture_and_its_one_findmnt_child"
+    ],
+    "fixture_saved": {
+      "boundary": true,
+      "step": 116,
+      "fs": "ext4",
+      "simulation_only": true
+    },
+    "control_result": {
+      "status": "BOUNDARY_SIGINT_SENT_TRAINER_EXITED",
+      "training_signal_sequences": 1,
+      "source_edits": 0,
+      "forced_trainer_kills": 0,
+      "checkpoint_acceptance": "Requires independent actual file/receipt/exit verification"
+    },
+    "gpu_runs": 0,
+    "training_signals": 0,
+    "real_training_checkpoints_created": 0,
+    "source_sha256": {
+      "closed_boundary_interrupt.py": "15bb7ecb9601ce01ec78d627520cd19d95468db3c1470b8f689972183997a318",
+      "validate_closed_boundary_interrupt.py": "294f4a0ec2538ff74eedbfe4f7d36c2cb3526c48bb72ae8df2249985e48884da",
+      "quick_pidfd.py": "df180bffb3e35dd77c8bb4f8ca9b143879a4184f6f8aab98188e1139de6538f2"
+    }
+  },
+  "active_bindings_unchanged": {
+    "scripts/run_generator8278_vae.py": "7e4ff4b7c427a884deb9708ab77c8fb4a62304ec505fb5329dd83758f650fe45",
+    "scripts/generator8278_vae_runtime.py": "59e6c101073e1cc8df4ebff195b49bb76f5d63ee73f2b288c8d4d4597a833e8b",
+    "scripts/supervise_generator8278_vae.py": "c7cc495453d532da2ba0736905f4b27380117be3d17c60a4a023212707b23718",
+    "configs/generator8278-vae-spec.json": "ec16b1468543e7a5347595d94ecc915502bb775fe885f97318ff53454ebe3fdc"
+  },
+  "stderr": ""
+}

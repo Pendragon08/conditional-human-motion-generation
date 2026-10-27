@@ -397,3 +397,68 @@ video or physical filtering claim. Same mediaSHA b082dfd55601956dc22f2684f2edf0d
 Two witness hashes are bound while actual_rendering_enabled remainsfalse. No
 16-file training/quick-control changes; current teacher and5000 coordinator keep
 running. This profile does not replace Isaac tracking with MuJoCo control.
+
+
+## CURRENT — 2026-10-27 user restored FILTER FIRST; prefilter VAE safely paused
+
+User explicitly chose safely save/pause prefilter generator and finish all-library
+physical filtering before generator. This supersedes every historical generator-
+first/LDM auto-start instruction below. Do not resume prefilter VAE/LDM.
+Read GENERATOR_PAUSE_MARKER_ENVIRONMENT.md, TEACHER10000_FILTER_RECOVERY_ENVIRONMENT.md,
+reports/filter_first_restored_20261027.md and configs/filter-first-priority-plan-20261027.json.
+
+generator8278_vae200k_train_v1 actually saved emergency_8100.pth,8100 attempts/
+8100Adam/0skip,513526637B,SHA2b958a5e4efbd74ddfe6bb99b8a5eb8174cec143bb782689b1f6af8934a6c2fe.
+CPU audit actualexit0/1004finite tensors/model+Adam exact reload/CPU RNG restored;
+CUDA RNG stored+structurally checked, no actualGPUrestore performed. Server+Dprivate
+fullstate SHA verified, source retained; original log/metrics/resources/exits Dprivate.
+Worker/supervisor/outer exited1, staleRUNNING8000 receipt deliberately preserved.
+New receipt ROOT/receipts/generator8278_user_pause_verified_20261027_v1.json
+SHAfba3cef55cfb4afd1cc837d73bb926f3d47838fd4162538d143939ef48d64472 explainsuserstop.
+No actual signals, no training source changes. Empty owned receipt.partial marker
+at known completebatch boundary triggered original fsynced emergency save; original
+firsttraceback/exit/gzipclosure/commonlockrelease passed. Marker removedafterexit.
+Earlier SIGINT/findmnt approach independently BLOCKED(B1cleanupjournal/B2emergency-
+guardambiguity),neverused ontrainer; allv1-v4 failures/review preserved. Marker
+author/fresh each CPU0/fixture1/6checks, fresh14additionalchecks passed. Do NOT
+restart any pause controller, fixture, backup or oldtraining job.
+
+NEW actual all-source relaxed_scope_v1 CPUexit0: all8278 sources have real attempts,
+15887307total;0 satisfy saved EMA failure<=.05. Min.1866086/median.2465156;
+raw cumulative min.1333333, also0below.05. No strictcandidate/acceptedcorpus exists.
+Private4.7MB decisions SHA0dbe24ed5055e56ce0b5284bad797cdd5440c855780c4a0f391839c047f401b8
+server+D verified. Do not repeat export/load ordelete/reject alloriginalassets as
+absolutely infeasible. Pinned EMA startsfailed/success1,alpha.001,stablecount;
+history/initialization effects exist, no sole-cause claim. Keep original5% gate.
+
+Separate teacher recovery from exact10k checkpoint prepared; new productionrun
+filter_policy_paper69_resume10000_filter_recovery_20261027_v1. Check latestactual
+results/teacher10000_full_filter_20261027/progress.json and freshdocument before
+any operation. Original20sources/8192/PPO/solidfloor unchanged; new supervisor/spec
+bind10k, verifiedgeneratorpause, emptyfullscope statistics andactualresources.
+Paper40k upper target retained; inspect next real15000 checkpoint first, do not
+require40k before nextreview. Do not duplicate dispatch or reuse oldrun-bound
+backup/coordinator. Newactualcheckpoint needsnewrun-bound backup/statistics;
+preserve allversions. Generator remains paused until realtwo-round filtering,
+final motion/text corpus/norm/CLIP/loader/resume/capacity acceptance.
+
+collect_filter_first_report.py takes priority; collect_generator8278_report.py
+now defers to savedpause acceptance so oldRUNNING cannot restoreoldroute. Current
+generator assets are comparisononly. Fullpaper quality/semantic/WBC/enhancement/
+onlineexecution/videos remain incomplete. Allprotection/privacy/resource limits
+and finalcomplete notification requirements remain; no repeatedoldcleanup/tests.
+
+
+## CURRENT UPDATE — actual teacher recovery is running
+
+Fresh teacher10000_filter_recovery_document_v1 dispatched exactly once after
+read-only checks. Newrun filter_policy_paper69_resume10000_filter_recovery_20261027_v1
+is RUNNING_FORMAL_FILTER_TRAINING/resume_exact_state_verified=true. Actual native
+log sampled10007completed; receipt still0 until10100 per original100roundflush,
+not trainingfromzero. Noexit. Historicaldriver4190430/supervisor4190431/bash4190443/
+SDK4190451 onlyhints; inspect actualargv/starttime. Shared GPU1 withSDK auxiliary
+GPU0 context; original20bindings unchanged. Newly active supervisor/spec frozen.
+Use collect_teacher_filter_recovery.py only; do not relaunch or signal. Inspect
+next stable15000checkpoint with newrun-bound backup/statistics; don't reuse old
+hardcoded5k/10ktools. Generator remainspaused with verified8100privatebackup.
+

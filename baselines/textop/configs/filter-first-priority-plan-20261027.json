@@ -1,0 +1,27 @@
+{
+  "schema": "textop.filter_first_priority.v1",
+  "user_request": "安全保存并暂停当前生成器，先完成全库筛选",
+  "prefilter_generator_paused": true,
+  "prefilter_generator_resume_authorized": false,
+  "prefilter_ldm_autostart_authorized": false,
+  "filter_teacher_checkpoint_completed": 10000,
+  "whole_library_relaxed_source_count": 8278,
+  "current_saved_ema_eligible": 0,
+  "strict_replay_completed": false,
+  "filtered_corpus_accepted": false,
+  "generator_resume_acceptance_required": [
+    "actual_relaxed_strict_filtering",
+    "motion_text_source_isolation",
+    "TRAIN_only_statistics",
+    "complete_real_CLIP_cache",
+    "loader_gradient_resume",
+    "persistent_storage_capacity"
+  ],
+  "new_teacher_statistics_review_at": 15000,
+  "paper_teacher_reference_target": 40000,
+  "require_40000_before_next_review": false,
+  "paper_generator_vae_attempts": 200000,
+  "paper_generator_ldm_attempts": 300000,
+  "retain_all_original_assets_and_checkpoints": true,
+  "complete_paper_effect_notification_required": true
+}

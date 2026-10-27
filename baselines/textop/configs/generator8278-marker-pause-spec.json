@@ -1,0 +1,50 @@
+{
+  "schema": "textop.generator8278_owned_marker_pause.v1",
+  "user_request": "User2026-10-27: safely save and pause this prefilter generator; complete full-library physical filtering before filtered generator training",
+  "run": "generator8278_vae200k_train_v1",
+  "handoff_name": "generator8278_to_filtered_order_v1",
+  "pause_authorized": true,
+  "process_identity": {
+    "pid": 4166124,
+    "start_ticks": 1426871168,
+    "ppid": 4166117,
+    "session": 4166124,
+    "state": "R",
+    "uid": 1013,
+    "argv": [
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_generator8278_vae.py",
+      "--mode",
+      "train",
+      "--run",
+      "generator8278_vae200k_train_v1"
+    ],
+    "exe": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python3.8"
+  },
+  "frozen_sources": {
+    "scripts/run_generator8278_vae.py": "7e4ff4b7c427a884deb9708ab77c8fb4a62304ec505fb5329dd83758f650fe45",
+    "scripts/generator8278_vae_runtime.py": "59e6c101073e1cc8df4ebff195b49bb76f5d63ee73f2b288c8d4d4597a833e8b",
+    "scripts/supervise_generator8278_vae.py": "c7cc495453d532da2ba0736905f4b27380117be3d17c60a4a023212707b23718",
+    "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e",
+    "scripts/checkpoint_storage_guard.py": "bff54d2b4fb7f29fdc18f6cc46d86626ca14b299faba49161c1c10897897788c",
+    "configs/generator8278-vae-spec.json": "ec16b1468543e7a5347595d94ecc915502bb775fe885f97318ff53454ebe3fdc",
+    "scripts/closed_boundary_interrupt.py": "15bb7ecb9601ce01ec78d627520cd19d95468db3c1470b8f689972183997a318",
+    "scripts/quick_pidfd.py": "df180bffb3e35dd77c8bb4f8ca9b143879a4184f6f8aab98188e1139de6538f2",
+    "scripts/closed_boundary_marker.py": "0b4b0a2150d0a341ba896ae89b6bba1373b99c45ba76cf3ba733729fb017f0d2",
+    "scripts/validate_closed_boundary_marker.py": "373b0a3ef84233b17bf27d12141466aeacfe13dfd94aadcf10235feff9a9e138",
+    "scripts/audit_generator8278_pause_cpu.py": "0de5ef65ea6856b13fb7922a00a5cd6440a0d82a2b457beff509725f8d1d4f95"
+  },
+  "entrypoint_sha256": "22add8e2f7018cb3214249e0eb7649f0a6a33e331a1d42ec2acb9d0154cd8d95",
+  "normal_boundary_save_lineno": 70,
+  "cpu_witnesses": [
+    {
+      "run": "marker_author_v1",
+      "sha256": "b8ed424b92b57b6b6b03fa2d364469e0474d68a70a94b1648ad63e28ef3ed661"
+    },
+    {
+      "run": "marker_document_v1",
+      "sha256": "565a45cd7eaa69c843e8fcbb4975bbfa095b7918b336bb3daa62f0101a9e37e9"
+    }
+  ],
+  "independent_review_sha256": "324c15a10ffbb68b4f08ec7b749fad7ea33febd8cb82df2c4bf99a8d91c4fcfa"
+}

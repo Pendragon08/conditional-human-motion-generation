@@ -1,6 +1,10 @@
 """Publish aggregate generator8278 report without rewriting older evidence."""
 import html,json,pathlib,re
 BASE=pathlib.Path(__file__).resolve().parents[1];D=pathlib.Path('D:/具身智能/TextOp复现_20261024')
+if (BASE/'results/generator_pause_20261027/private_backup_verified.json').exists():
+ import runpy
+ runpy.run_path(str(BASE/'provider_tools/collect_filter_first_report.py'),run_name='__main__')
+ raise SystemExit(0)
 plan=json.loads((BASE/'configs/generator8278-priority-plan.json').read_text(encoding='utf-8'))
 p=BASE/'results/generator8278_20261027/generator8278_vae200k_train_v1/progress.json'
 progress=json.loads(p.read_text(encoding='utf-8')) if p.exists() else {};r=progress.get('receipt') or {}
