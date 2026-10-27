@@ -1,5 +1,7 @@
 ## CURRENT — teacher STOPPED; direct all8278 strict replay RUNNING
 
+最新接续授权（2026-10-27）：用户要求全部物理筛查结束后，直接用真实通过动作启动生成器，不再询问。见configs/teacher15000-full-to-generator-autostart-20261027.json；所有数据/加载/梯度/恢复和持久容量验收由系统自动推进。未筛选8100步状态不恢复。当前每15分钟检查完成与衔接，生成器开训后恢复每小时，健康状态静默。估计只指物理回放结束，后续语料验收和启动仍需执行时间。
+
 Latest user: "直接进行下一步物理筛选，不要再训练跟踪器了。" Teacher is
 actually stopped: one original-process pidfd SIGINT after verified15000 backup,
 child reaped0, outer1 retained (old40k not completed), common lock released.
