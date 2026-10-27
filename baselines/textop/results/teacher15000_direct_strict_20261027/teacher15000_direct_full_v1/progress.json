@@ -1,6 +1,6 @@
 {
   "run": "teacher15000_direct_full_v1",
-  "observed_unix": 1793109745.9624233,
+  "observed_unix": 1793111792.6278732,
   "files": {
     "receipt": {
       "status": "RUNNING_TEACHER15000_STRICT",
@@ -43,7 +43,7 @@
         2,
         3
       ],
-      "elapsed_seconds": 758.7408444955945,
+      "elapsed_seconds": 2804.1496802996844,
       "reference_fingerprint": "0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7",
       "planned_maximum_control_calls": 313378,
       "strict_rollouts_per_motion": 1,
@@ -83,11 +83,11 @@
       "num_envs": 16,
       "quick_pilot_executed": false,
       "physical_tracking_executed": true,
-      "finished_trials": 1856,
-      "complete_trials": 1621,
-      "failed_trials": 235,
-      "actual_vectorized_control_calls": 16430,
-      "actual_scene_physics_steps": 65720
+      "finished_trials": 5009,
+      "complete_trials": 4385,
+      "failed_trials": 624,
+      "actual_vectorized_control_calls": 66950,
+      "actual_scene_physics_steps": 267800
     },
     "driver": {
       "run": "teacher15000_direct_full_v1",
@@ -106,7 +106,7 @@
     }
   },
   "sha256": {
-    "receipt": "ab448b1c40533d8e1e02ae1638b7348470ab8d51e9e75abf3d5407a76c5c4404",
+    "receipt": "9670aac7d399dfe350835ca62bf52be0811ab5b6d2f6e62be5f3e0a30b854add",
     "driver": "1b61c138f59430e3f30c133474800a9c3f20e898d95ca1c04b8a53b9a9c1a495"
   },
   "workers": [
@@ -169,5 +169,8 @@
   ".log_tail": "------------+------------+\n+-----------------------------------------------------------+\n| Active Observation Terms in Group: 'critic' (shape: (557,)) |\n+-----------+----------------------------------+------------+\n|   Index   | Name                             |   Shape    |\n+-----------+----------------------------------+------------+\n|     0     | command                          |   (290,)   |\n|     1     | motion_anchor_pos_b              |   (15,)    |\n|     2     | motion_anchor_ori_b              |   (30,)    |\n|     3     | body_pos                         |   (42,)    |\n|     4     | body_ori                         |   (84,)    |\n|     5     | base_lin_vel                     |    (3,)    |\n|     6     | base_ang_vel                     |    (3,)    |\n|     7     | joint_pos                        |   (29,)    |\n|     8     | joint_vel                        |   (29,)    |\n|     9     | actions                          |   (29,)    |\n|     10    | projected_gravity                |    (3,)    |\n+-----------+----------------------------------+------------+\n\n[INFO] Termination Manager:  <TerminationManager> contains 4 active terms.\n+------------------------------------+\n|      Active Termination Terms      |\n+-------+-----------------+----------+\n| Index | Name            | Time Out |\n+-------+-----------------+----------+\n|   0   | anchor_pos      |  False   |\n|   1   | anchor_ori      |  False   |\n|   2   | ee_body_pos     |  False   |\n|   3   | motion_complete |   True   |\n+-------+-----------------+----------+\n\n[INFO] Reward Manager:  <RewardManager> contains 14 active terms.\n+--------------------------------------------+\n|            Active Reward Terms             |\n+-------+--------------------------+---------+\n| Index | Name                     |  Weight |\n+-------+--------------------------+---------+\n|   0   | motion_global_anchor_pos |     0.5 |\n|   1   | motion_global_anchor_ori |     0.5 |\n|   2   | motion_body_pos          |     1.0 |\n|   3   | motion_body_ori          |     1.0 |\n|   4   | motion_body_lin_vel      |     1.0 |\n|   5   | motion_body_ang_vel      |     1.0 |\n|   6   | action_rate_l2           |    -0.1 |\n|   7   | joint_limit              |   -10.0 |\n|   8   | undesired_contacts       |    -0.1 |\n|   9   | feet_force               |    -0.0 |\n|   10  | feet_slide               |    -0.3 |\n|   11  | soft_landing             | -0.0003 |\n|   12  | overspeed                |    -1.0 |\n|   13  | overeffort               |    -1.0 |\n+-------+--------------------------+---------+\n\n[INFO] Curriculum Manager:  <CurriculumManager> contains 0 active terms.\n+----------------------+\n| Active Curriculum Terms |\n+-----------+----------+\n|   Index   | Name     |\n+-----------+----------+\n+-----------+----------+\n\n[INFO]: Completed setting up the environment...\nActor MLP: Sequential(\n  (0): Linear(in_features=557, out_features=2048, bias=True)\n  (1): ELU(alpha=1.0)\n  (2): Linear(in_features=2048, out_features=1024, bias=True)\n  (3): ELU(alpha=1.0)\n  (4): Linear(in_features=1024, out_features=512, bias=True)\n  (5): ELU(alpha=1.0)\n  (6): Linear(in_features=512, out_features=29, bias=True)\n)\nCritic MLP: Sequential(\n  (0): Linear(in_features=557, out_features=2048, bias=True)\n  (1): ELU(alpha=1.0)\n  (2): Linear(in_features=2048, out_features=1024, bias=True)\n  (3): ELU(alpha=1.0)\n  (4): Linear(in_features=1024, out_features=512, bias=True)\n  (5): ELU(alpha=1.0)\n  (6): Linear(in_features=512, out_features=1, bias=True)\n)\n",
   "_outer.log_tail": "",
   "common_lock_free": false,
-  "completed_execution_verified": false
+  "completed_execution_verified": false,
+  "full_execution_closed": false,
+  "closed_trace_cpu_audit_required": false,
+  "private_trace_files_read": 0
 }

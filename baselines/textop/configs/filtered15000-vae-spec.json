@@ -1,0 +1,58 @@
+{
+  "data_acceptance_sha256": null,
+  "corpus_receipt_sha256": null,
+  "bound_sources": {
+    "scripts/paper69_runtime.py": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
+    "scripts/paper69_data_runtime.py": "cf5c1e3f27665e7fc4d4aa1ede6bcd1931e3563409ad766ff67a576cc0c7b60d",
+    "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e",
+    "scripts/checkpoint_storage_guard.py": "bff54d2b4fb7f29fdc18f6cc46d86626ca14b299faba49161c1c10897897788c",
+    "scripts/generator8278_vae_runtime.py": "59e6c101073e1cc8df4ebff195b49bb76f5d63ee73f2b288c8d4d4597a833e8b",
+    "scripts/filtered15000_inputs.py": "d2eb66565132c73eaa501c5f56f2b8097b60152802398f6551208566dc24c24a"
+  },
+  "schema": "textop.filtered15000_vae.v1",
+  "witness_authorized": false,
+  "train_authorized": false,
+  "witnesses": [],
+  "seed": 20261027,
+  "corpus_dir": "/dev/shm/ouyanghao_textop_20261025/filtered15000_actual_pass_v1",
+  "checkpoint_dir": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/vae/checkpoints",
+  "checkpoint_policy": {
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 536870912,
+    "checkpoint_upper_bound_bytes": 553648128
+  },
+  "vae": {
+    "stages": [
+      100000,
+      50000,
+      50000
+    ],
+    "batch_size": 512,
+    "learning_rate": 0.0001,
+    "latent_shape": [
+      1,
+      128
+    ],
+    "hidden": 512,
+    "ff": 1024,
+    "layers": 9,
+    "heads": 4,
+    "feature_dim": 69,
+    "history": 2,
+    "future": 8,
+    "primitives": 4,
+    "ema": false
+  },
+  "entrypoint_sha256": "7ca7f4d9dd36ca5bfa1e07261d5ccaf1e652e7c989e8d71f62d5751de70df7a0",
+  "supervisor_sha256": "b0ebde8b30e143c1403b9c7e3955051d97b23b686a112eea0d30af87655acfe7",
+  "scope": "New actual-strict-pass corpus only; fresh VAE200k initialization and full state. User bypassed historical EMA/40k selection. No prefilter8100 resume.",
+  "checkpoint_steps": [
+    50000,
+    100000,
+    150000,
+    200000
+  ],
+  "checkpoint_backup_scope": "All real versions retained; select actual persistent owned capacity before enabling any witness/train. No data/checkpoint deletion.",
+  "strict_audit_receipt_sha256": null,
+  "checkpoint_allowed_root": "/data/code/ouyanghao/oyh/textop-reproduction-20261024"
+}

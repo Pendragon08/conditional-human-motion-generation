@@ -36,11 +36,30 @@
   "actual_full_filter_complete": false,
   "filtered_corpus_accepted": false,
   "generator_started": false,
-  "current_stage": "FULL_STRICT_RUNNING_HANDOFF_PREPARATION",
+  "current_stage": "FULL_STRICT_RUNNING_NEW_HANDOFF_SOURCES_STAGED_DISABLED",
   "preparation_findings": [
-    "Existing generator8278 corpus and VAE entry are explicitly PREFILTER-only and must not be reused unchanged or relabeled",
-    "Reuse unchanged numerical VAE runtime only through a new actual-pass corpus/provenance entry and new acceptance witnesses",
-    "Full LDM entry and persistent future capacity are still pending actual implementation/acceptance; these are automatic work, not user approval requests"
+    "New closed-result CPU audit, actual-pass corpus and fresh VAE entries are implemented and staged with all launch flags false",
+    "Syntax/CPU byte-selection primitives passed; actual full-result audit, filtered corpus, GPU gradient and fresh-agent witnesses have not run",
+    "New light progress collector avoids unbounded full trace reads; actual closed trace validation belongs to the new durable CPU supervisor",
+    "ROOT/data currently cannot satisfy five VAE checkpoint slots plus reserve; owned persistent /home candidate measured but not reserved or accepted",
+    "Full LDM300k entry and actual acceptance remain pending"
   ],
-  "latest_eta_evidence": "results/teacher15000_direct_strict_20261027/eta_user_request_20261027.json"
+  "latest_eta_evidence": "results/teacher15000_direct_strict_20261027/eta_user_request_20261027.json",
+  "strict_audit_run": "full_result_audit_v1",
+  "handoff_environment_document": "FILTERED15000_HANDOFF_ENVIRONMENT.md",
+  "staged_files_sha256": {
+    "scripts/audit_teacher15000_full_result.py": "73b22fe04abd4def0674d652bacf2baafe96a69148ea447d124b74b0c579412a",
+    "scripts/supervise_teacher15000_full_audit.py": "e01f92845bb400457db4e0de9b84db1d6078571b5644c97f3d655a57815ba97f",
+    "scripts/filtered15000_inputs.py": "d2eb66565132c73eaa501c5f56f2b8097b60152802398f6551208566dc24c24a",
+    "scripts/build_filtered15000_corpus.py": "a59326b8b2c0ed826e9f5b31b32cb3153389d6f43692251f24beacc2c5ec80bc",
+    "scripts/supervise_filtered15000_corpus.py": "950e3355bbe6dad4724bf11124e19c9a5680535955159436d75057290e4827b7",
+    "scripts/run_filtered15000_vae.py": "7ca7f4d9dd36ca5bfa1e07261d5ccaf1e652e7c989e8d71f62d5751de70df7a0",
+    "scripts/supervise_filtered15000_vae.py": "b0ebde8b30e143c1403b9c7e3955051d97b23b686a112eea0d30af87655acfe7",
+    "configs/teacher15000-full-result-audit-spec.json": "cf7e7c07cd1d88caa13529f1da66ddbfcb5e422d05ca8069b05e6cc7e7e3eceb",
+    "configs/filtered15000-corpus-spec.json": "a4ce7e7a9835fce0d9375d79c6eb763df58a7aa61d0a898ddb7057f5bc713893",
+    "configs/filtered15000-vae-spec.json": "82b0ca50479c69c9496af7ecacf725a8965c11eb1002fc3e79d4ac9c5fa17890"
+  },
+  "actual_handoff_model_loads": 0,
+  "actual_handoff_gpu_runs": 0,
+  "actual_handoff_cpu_audits": 0
 }

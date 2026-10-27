@@ -1,5 +1,32 @@
 ## CURRENT — teacher STOPPED; direct all8278 strict replay RUNNING
 
+<!--filtered15000-tools-current-start-->
+Post-filter handoff sources are now staged DISABLED. Read
+FILTERED15000_HANDOFF_ENVIRONMENT.md and results/filtered15000_handoff_tools_20261027/deploy_v1.json.
+Use collect_teacher15000_strict_light.py for routine active/full-closed metadata;
+do not repeat the older collector's heavy all-trace loop as a production audit.
+New light collector actually exited0 with0 private trace reads;22:36 observation
+5009finished/4385complete/624failed/3269pending, no new exits, sameSDK/lock.
+After real full closure and lock release, enable_filtered15000_audit.py then
+launch_filtered15000_handoff.py --stage audit --run full_result_audit_v1.
+The source checks actual closed8278 inputs before enabling; do NOT run while
+pending or repeat activation/dispatch on unknown outcomes. New CPU audit has
+16GiB RAM/3GiB disk guard,900s supervised child and private pass/decision files.
+Syntax and new byte/selection CPU checks passed;0 actual result audits,
+0 filtered corpus jobs/gradient witnesses/new generator jobs/SDK/model loads.
+All three new specs stay false/null until real input and positive witnesses.
+New filtered corpus selects actual complete passes, source/mirror family split,
+TRAIN69D refit/fullrealCLIP/loader checks; old prefilter corpus stays distinct.
+New VAE entry reuses only unchanged numerical runtime and binds actual audit,
+corpus, data, source, seed/model and checkpoint signature for both fresh witnesses.
+Formal200k starts new state, not the four diagnostic updates or prefilter8100.
+Metadata-only storage sample: data4772315136B/home5581582336B, ownedext4.
+VAE five bounded slots+reserve+logs require5452595200B; home is merely a
+candidate, not capacity acceptance. Choose fresh owned task destination and
+bind allowed root after actual resource checks. Preserve all checkpoints/data.
+No actual filtered acceptance or training yet. Full LDM entry remains pending.
+<!--filtered15000-tools-current-end-->
+
 最新接续授权（2026-10-27）：用户要求全部物理筛查结束后，直接用真实通过动作启动生成器，不再询问。见configs/teacher15000-full-to-generator-autostart-20261027.json；所有数据/加载/梯度/恢复和持久容量验收由系统自动推进。未筛选8100步状态不恢复。当前每15分钟检查完成与衔接，生成器开训后恢复每小时，健康状态静默。估计只指物理回放结束，后续语料验收和启动仍需执行时间。
 
 Latest user: "直接进行下一步物理筛选，不要再训练跟踪器了。" Teacher is

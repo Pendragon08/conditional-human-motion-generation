@@ -1,0 +1,50 @@
+{
+  "warm_base_canonical_hash": "934d8221",
+  "seed": 20261027,
+  "batch_size": 512,
+  "expected_sources": 8278,
+  "minimum_shm_free_gib": 16,
+  "candidate_view": "/dev/shm/ouyanghao_textop_20261025/filtered15000_actual_pass_v1",
+  "verified_source_index": "/dev/shm/ouyanghao_textop_20261025/generator_loader_inputs2296_v1/verified_index.private.json",
+  "verified_source_index_sha256": "2e293ec4966f3c489d11ea7774c141319c294e10bf701881ea0d6421a9bcb39c",
+  "prepared_manifests": [
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025/available143_v1/prepared_manifest.private.jsonl",
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025/available500_v1/prepared_manifest.private.jsonl",
+    "/dev/shm/ouyanghao_textop_20261025/local1653_v1/prepared1653_v1/prepared_manifest.private.jsonl",
+    "/dev/shm/ouyanghao_textop_20261025/cmu1330_v1/prepared1330_v1/prepared_manifest.private.jsonl",
+    "/dev/shm/ouyanghao_textop_20261025/bmlrub_indexed_v1/prepared_v1/prepared_manifest.private.jsonl",
+    "/dev/shm/ouyanghao_textop_20261025/kit_indexed_v1/prepared_v1/prepared_manifest.private.jsonl"
+  ],
+  "released_action_statistics": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps/action_statistics.json",
+  "scope": "Disabled until real full8278 closed strict audit. Actual passes only; original reference and BABEL; no historical EMA/paper two-stage claim.",
+  "statistics": "Refit float64 TRAIN-only69D stats after actual strict source selection and exact-pose family quarantine",
+  "clip": "frozen existing ViT-B/32 weight SHAverified; real original and mirrored labels, private cache",
+  "sampler_fixes": "valid-only weighted index mapping and inclusive laststart/exact35frame support; official primitive extraction unchanged",
+  "cross_split_pose_policy": "Quarantine entireTRAINsource family if any original/mirrored float32qpos overlaps validation; preserve validation and all authoritative source assets; record private exclusions; refit trainstats",
+  "schema": "textop.filtered15000_corpus.v1",
+  "root": "/data/code/ouyanghao/oyh/textop-reproduction-20261024",
+  "build_authorized": false,
+  "builder_sha256": "a59326b8b2c0ed826e9f5b31b32cb3153389d6f43692251f24beacc2c5ec80bc",
+  "prepared_manifest_sha256": {
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025/available143_v1/prepared_manifest.private.jsonl": "4d0d1ceaa2cf2d9a27d4f4bac06ada9aa3bf2665a93bf3c449801ad46bd1cb6a",
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025/available500_v1/prepared_manifest.private.jsonl": "a1dd6c643f545c05ac1967fceaf4608fd5ab7c25a5a6aa26213436ee48f0687a",
+    "/dev/shm/ouyanghao_textop_20261025/local1653_v1/prepared1653_v1/prepared_manifest.private.jsonl": "58685fa7bcf557b58384674c513914919e9f20fd5837e6e75ef05b44f2cb5057",
+    "/dev/shm/ouyanghao_textop_20261025/cmu1330_v1/prepared1330_v1/prepared_manifest.private.jsonl": "335dc9f73356d213ae661edf44c99d76865f66c3101d2e04fdd46d32d206e087",
+    "/dev/shm/ouyanghao_textop_20261025/bmlrub_indexed_v1/prepared_v1/prepared_manifest.private.jsonl": "ffbab5ce1e7975281a64b00f02e9c41638afe6c70c6c862f030ad4e31a516643",
+    "/dev/shm/ouyanghao_textop_20261025/kit_indexed_v1/prepared_v1/prepared_manifest.private.jsonl": "39b875b7edc25edafb2d20f3beb66af34fa6ee41ba7648dc0171010bbf23b81c"
+  },
+  "preprocessing_receipt": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/preprocessing_after_kit_v1.json",
+  "preprocessing_receipt_sha256": "8c742cdbeef4773bfc66fea828fb68d9c91d70f656e9d9385a70c31241fe307e",
+  "released_action_statistics_sha256": "036a432ff3d8d3d790eaaa4f2e65ed0fa05cdb3f7b5fafaf749bb98383438bfc",
+  "bound_sources": {
+    "scripts/paper69_runtime.py": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
+    "scripts/paper69_data_runtime.py": "cf5c1e3f27665e7fc4d4aa1ede6bcd1931e3563409ad766ff67a576cc0c7b60d",
+    "scripts/filtered15000_inputs.py": "d2eb66565132c73eaa501c5f56f2b8097b60152802398f6551208566dc24c24a"
+  },
+  "output_root": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/corpus_runs",
+  "timeout_seconds": 3600,
+  "strict_audit_receipt": null,
+  "strict_audit_receipt_sha256": null,
+  "strict_audit_supervisor_sha256": null,
+  "supervisor_sha256": "950e3355bbe6dad4724bf11124e19c9a5680535955159436d75057290e4827b7"
+}

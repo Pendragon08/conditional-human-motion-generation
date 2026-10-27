@@ -1,0 +1,1 @@
+Source archive from work/textop_reproduction_20261024 for audit/recovery. Do not rerun these maintenance snapshots: existing stages and evidence must be inspected. Runtime instructions are in FILTERED15000_HANDOFF_ENVIRONMENT.md. No actual filtered acceptance or generator training is represented by preparation.
