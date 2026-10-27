@@ -36,6 +36,22 @@ claim a later-stage optimizer clock from the future simulated-gate probe.
 Continue implementing post-corpus data acceptance/private recovery backup and
 persistent capacity/VAE activation bridge while real full replay is pending.
 Read reports/filtered15000_ldm_preparation_20261027.md. No old diagnostics repeated.
+Post-corpus recovery/data/VAE enable bridges now implemented and staged
+DISABLED; see reports/filtered15000_recovery_bridge_20261027.md and the updated
+FILTERED15000_HANDOFF_ENVIRONMENT.md. No actual recovery/archive/D-transfer/
+acceptance/gradient/model/GPU job has run. New CPU recovery requires two real
+corpus witnesses and fresh actual SUMMARY; bounded16GiB/3GiB/900s supervision.
+It preserves small norm/CLIP/private decisions plus derived-RAM rebuild recipe,
+not duplicate large arrays. D2GiB/owner/path/bytes/SHA required before a separate
+CPU acceptance job creates verified HOME capacity and enables only witnesses.
+Preparation CPU receipt binds the archived pre-acceptance spec; only the
+acceptance flag changes. Exact receipt bytes are returned separately by SHA.
+Build-only split fields are not invented for verify-mode receipts. Earlier
+inactive bytes/layout fixes remain preserved. Renderer/driver syntax checks are
+source preparation only. New formal VAE gate requires two distinct real
+gradient/Adam/RNG witnesses on the identical numeric/data/checkpoint signature;
+all flags stayfalse until actual evidence. Full LDM entry/export acceptance is
+still pending despite numerical runtime preparation. No user confirmation.
 <!--filtered15000-tools-current-end-->
 
 最新接续授权（2026-10-27）：用户要求全部物理筛查结束后，直接用真实通过动作启动生成器，不再询问。见configs/teacher15000-full-to-generator-autostart-20261027.json；所有数据/加载/梯度/恢复和持久容量验收由系统自动推进。未筛选8100步状态不恢复。当前每15分钟检查完成与衔接，生成器开训后恢复每小时，健康状态静默。估计只指物理回放结束，后续语料验收和启动仍需执行时间。

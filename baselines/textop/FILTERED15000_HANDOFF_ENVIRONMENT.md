@@ -87,6 +87,70 @@ is reserved for a fresh agent following the final activated spec/document.
 These are future commands, not runs already performed. Verify all current hashes
 and warm environment before the real author and fresh document witnesses.
 
+The fresh corpus agent must save SUMMARY.json with status
+FILTERED15000_CORPUS_FRESH_DOCUMENT_VERIFIED, run
+filtered15000_corpus_document_v1, actual_exit_code0, findings[] and the actual
+corpus_spec_sha256. These fields require a real closed verify job and independent
+inspection; never manufacture the summary from the desired future state.
+
+## Private recovery, real storage and witness activation
+
+The new recovery bridge is staged DISABLED in filtered15000-recovery-spec.json.
+It has not consumed real corpus inputs, created an archive, transferred data or
+accepted a training directory. Its CPU sources import no Torch or SDK. New
+source/rendered-driver syntax checks are not an actual recovery acceptance.
+
+After the two real corpus witnesses, parent can run the following exact steps
+with the actual fresh SUMMARY path in its owned workspace. Continue only on
+actual exit0; unique intent/outcome files prohibit blind retry after uncertainty.
+
+```powershell
+$env:PYTHONIOENCODING='utf-8'
+& 'C:/Users/Pende/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' 'work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/textop/provider_tools/activate_filtered15000_recovery.py' --document-summary 'work/textop_reproduction_20261024/filtered15000_corpus_document_v1/SUMMARY.json'
+& 'C:/Users/Pende/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' 'work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/textop/provider_tools/launch_filtered15000_handoff.py' --stage recovery --run filtered15000_recovery_v1
+```
+
+The CPU recovery job hashes the actual source-bound corpus artifacts and two
+real loader receipts/exits. Build mode supplies source/exact-pose disjointness;
+verify mode reloads the same SHA-bound artifacts and does not invent absent
+build-only receipt fields. It copies only normalization, full CLIP caches,
+metadata, private selected/failed decisions and a RAM-cache rebuild recipe.
+Large train.pkl/val.pkl and original pose arrays remain in their prior storage.
+The private bundle is bounded128MiB and written in a new owned persistent job
+directory. It samples resources every15s, requires16GiB RAM/3GiB disk reserve,
+and has a900s supervised child bound. No HOME checkpoint directory is created.
+
+Collect --kind recovery --run filtered15000_recovery_v1 with a new --evidence
+identifier. Require closed_execution_verified=true, actual child/outer0, no
+worker and released common lock. Then invoke backup_filtered15000_recovery.py
+once. It checks real Windows D ownership/paths and2GiB reserve, transfers the
+private small archive with retained SCP intent/streams/outcome, verifies bytes
+and SHA, and atomically adopts the private copy. It does not publish the bundle.
+
+After verified D copy, that helper records the server+D proof, archives the
+recovery preparation spec before the single acceptance flag change, and
+dispatches a separate durable --stage accept_data job named
+filtered15000_acceptance_v1. The CPU finalizer compares the real preparation
+receipt to that archived preparation-spec SHA and permits only the documented
+acceptance_authorized flag delta. It does not compare a previous receipt to a
+newly enabled spec or relax source provenance. Its own process/outer proof must
+close before any VAE job is dispatched.
+
+The finalizer rechecks the real source/data evidence, private backup and actual
+owned persistent capacity. Only then it creates the fresh task root
+/home/ouyanghao/textop-filtered15000-checkpoints-20261027 and its VAE directory.
+If capacity is insufficient or a target already exists, it preserves the state
+and fails; no checkpoint/data/software deletion occurs. On success it writes
+filtered15000_data_acceptance_v1.json and enables only VAE witnesses, not training.
+The exact data receipt bytes and new spec bytes are returned separately with
+SHA; local reconstruction does not rely on JSON serializer coincidence.
+
+Collect --kind accept_data --run filtered15000_acceptance_v1 with a new evidence
+identifier. After actual closed_execution_verified, run
+sync_filtered15000_witness_activation.py to adopt those exact local hashes.
+Loader/recovery acceptance is explicitly distinct from formal gradient and
+full training readiness. Private client/partial/failure evidence is retained.
+
 ## Start a fresh filtered VAE
 
 New files run_filtered15000_vae.py, supervise_filtered15000_vae.py and disabled
@@ -112,6 +176,17 @@ Then --stage vae_train --run filtered15000_vae200k_train_v1 starts from fresh
 initialization, batch512/69D/history2/future8/4primitives, native full200k clock.
 All checkpoints, emergency states, failures and skipped updates remain recorded.
 No additional user permission is required for these already authorized steps.
+
+The reserved witness names are filtered15000_vae_author_v1 and
+filtered15000_vae_document_v1. The fresh VAE agent's actual SUMMARY.json must
+state FILTERED15000_VAE_FRESH_DOCUMENT_VERIFIED, its exact run,
+actual_exit_code0, findings[] and the runtime_binding_sha256 returned by its
+real receipt. enable_filtered15000_vae_train.py --document-summary that actual
+path checks both distinct closed gradient/restore witnesses, actual data and
+capacity, writes a training-readiness receipt and enables the full training
+spec without dispatch. Then use the durable launch helper once for vae_train.
+Actual running/step evidence, not dispatch alone, establishes that formal
+training began; update the report and restore the hourly heartbeat only then.
 
 The full LDM numerical runtime is now prepared, but its actual entry/receipt,
 frozen VAE200k inference export, storage binding and GPU acceptance are pending.
