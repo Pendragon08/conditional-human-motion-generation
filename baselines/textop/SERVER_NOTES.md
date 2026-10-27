@@ -1,3 +1,38 @@
+## Current checkpoint preparation activation2026-10-27
+
+Future recovery CPU backup spec now enabled after freshv4 preparation pass:
+6be686cf78d60498b88eedcd71d1a22bc7d9f117ae459cc2275a16a36f1d0e68. This is a control-metadata change only;
+no package/runtime/training22source changes and no actual new checkpoint load.
+Same live teacher receipt10500, nativeobserved10574, noexit.
+V1-v3 review gaps and failed Windowsowner fixture retained. Final local client
+journals use direct retained stdout/stderr files; every D write uses current-user
+ownership/non-link guards. Four client cases and freshv4 pass; unreaped outcome
+branch static only. Positive15k audit/backup/strict screening remain pending.
+The environment guide records the exact disabled-spec review commands; current
+activation is separate in results/filter_recovery_checkpoint_tools_20261027.
+
+## Current 2026-10-27: filter-first teacher recovery and future checkpoint CPU tools
+
+The pre-filter VAE is safely paused with verified8100 fullstate/private backup;
+the only new production job is filter_policy_paper69_resume10000_filter_recovery_20261027_v1.
+Read CONTINUATION/current receipt, not the historical VAE-running entries below.
+No active22 teacher files or existing environments changed.
+
+FILTER_RECOVERY_CHECKPOINT_ENVIRONMENT.md describes independent future15k..40k
+backup/statistics tools. SystemPython3.8 metadata tests and existing env/bin/python
+Torch1.13.1 trusted CPU serializer are warm reuse, no package installation.
+Local/server metadata-only author fixtures47pass; freshv1 also47pass but blocked
+positive audits on destination/journal static gaps. Corrected v2 has real server
+filesystem10checks and local synthetic transport4cases passed; freshv2 pending.
+V2fresh found residual D ownership/partial/client evidence gaps. V3now uses
+native Windows owner/reparse checks (author_v4 ninechecks, originalfailed_v3
+retained) and complete client journaling (four updated synthetic cases). Freshv3
+completed with two residual findings (D metadata mirror, Windows timeout
+reader streams); v4 uses guarded mirror plus direct retained stream files.
+Updated four client fixtures passed; freshv4 pending. No positive real new-checkpoint
+audit has run. Positive new-checkpoint audit/backup and full
+strict physical screening remain unperformed. Never repeat old10k export/audit.
+
 ## Actual VAE200k launch2026-10-27
 Warm934d8221 unchanged. New3source/spec frozen, actualRUNNING100/200k/100Adam/0skip, noexit. Newcorpusfresh69 andneuralfresh62pre/65postpassed, allwitnessagentsended. Spec ec16b1468543e7a5347595d94ecc915502bb775fe885f97318ff53454ebe3fdc; commonlock held. ReadcurrentCONTINUATION, neverlaunchanotherGPU/SDK orrepeat oldwitness. LDMfullsampleTrue pathwaypending, originalquickfalse preserved.
 

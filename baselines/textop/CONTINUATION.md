@@ -1,3 +1,40 @@
+## CURRENT — recovery checkpoint tooling prepared; real15k still pending (2026-10-27)
+
+User's FILTER-FIRST order remains highest priority. Prefilter VAE8100 is saved,
+privately backed up and paused; never resume it or start prefilter LDM.
+The same teacher filter_policy_paper69_resume10000_filter_recovery_20261027_v1
+continues: actual receipt10500/40000, 210000 updates,
+RUNNING/resume_exact_state_verified=true/noexit; native log observed10574
+is a derived observation, not a new checkpoint. All22 production bindings unchanged.
+
+Read FILTER_RECOVERY_CHECKPOINT_ENVIRONMENT.md (frozen pre-activation review guide),
+reports/filter_recovery_checkpoint_tools_20261027.md and results/filter_recovery_checkpoint_tools_20261027/activation.json.
+New provider_tools/backup_filter_recovery_checkpoint.py --completed 15000 is now
+bound to THIS recovery run, not old5k/10k. SpecSHA6be686cf78d60498b88eedcd71d1a22bc7d9f117ae459cc2275a16a36f1d0e68;
+backup_enabled=true only enables FUTURE CPU audit/backup/statistics. Actual15k
+checkpoint/load/export/privatebackup/strictphysics remain absent. No new worker
+was started. Do not rerun pending preflights just for each heartbeat; first read
+actual latest checkpoint and existing backup workers. Do not use old hardcoded tools.
+
+Metadata fixtures47, server destination10, Windows owner/path9 and real synthetic
+client4 cases passed at their documented versions. Freshv4 actualtwo commands
+exit0, bindings22/8/4 match; no remaining review findings. v1-v3 findings/bytes,
+Windows first Get-Acl/PSModulePath failure and all corrected results retained.
+Unreaped-client branch and D metadata mirror reviewed statically, not dynamically
+forced. Native Windows helper uses its own builtin-module path only in that
+child; no package/user-wide environment change. Existing CPU serializer/supervisor
+reused unchanged; do not rerun old suites or followup ended review agents.
+
+At real stable15000 (or a newer actual allowed latest snapshot after an inspected
+missed interval), use the newrun-bound tool: actuallatest+>30s+SHA/source/contact/
+counts, CPU fullstate finite/Adam audit and inference export, original8278 ordered
+saved EMA statistics, private server+D fullstate/decisions, GitHub inference-only
+digest. Keep5% gate, all failures/unattempted and原assets. A candidate is not strict
+physical or corpus acceptance. New separate prerelease is not created yet.
+No training signals in this tool. All full checkpoints remain private and are
+never deleted. D2GiB reserve and server3GiB audit gate can stop backup safely;
+future complete VAE/LDM/WBC/media capacity is still unresolved.
+
 ## CURRENT UPDATE — actual teacher recovery is running
 
 Fresh teacher10000_filter_recovery_document_v1 dispatched exactly once after

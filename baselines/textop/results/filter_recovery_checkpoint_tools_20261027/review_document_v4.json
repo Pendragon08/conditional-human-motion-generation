@@ -1,0 +1,160 @@
+{
+  "status": "CURRENT_V4_PREPARATION_REVIEW_PASSED_REAL_CHECKPOINT_PENDING",
+  "report_utc": "2026-10-27T05:22:09.631928+00:00",
+  "documented_command_count": 2,
+  "documented_commands_executed_once_each": true,
+  "documented_commands_verbatim_verified": true,
+  "command_results": {
+    "local_transport": {
+      "exit_code": 0,
+      "started_utc": "2026-10-27T05:18:30.503385+00:00",
+      "finished_utc": "2026-10-27T05:18:31.628939+00:00",
+      "stdout_bytes": 514,
+      "stderr_bytes": 0,
+      "stdout_sha256": "de05b86c58f26a88d518b70f453a43fbff32406cda7e1af7074d1745cb4802ba",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command_sha256": "86c824ae2ade5c19b02a976aa3033712e3a97f2b7930132eed7b8bcf2458aa97"
+    },
+    "local_preflight": {
+      "exit_code": 0,
+      "started_utc": "2026-10-27T05:18:31.629948+00:00",
+      "finished_utc": "2026-10-27T05:18:36.111905+00:00",
+      "stdout_bytes": 439,
+      "stderr_bytes": 0,
+      "stdout_sha256": "5979ddeab402fd467bbcf8ffe03daf08e6df90bd55add5447044e4fcdf698587",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command_sha256": "cf2f797e0ce47f342a3c261a88efd81cdd3ca7dd870e44528cb2e65fe394e396"
+    }
+  },
+  "transport": {
+    "status": "RECOVERY_LOCAL_TRANSPORT_FIXTURES_PASSED",
+    "cases": 4,
+    "outcomes": {
+      "normal": {
+        "actual_client_exit_code": 0,
+        "client_reaped": true,
+        "timed_out": false
+      },
+      "nonzero": {
+        "actual_client_exit_code": 7,
+        "client_reaped": true,
+        "timed_out": false
+      },
+      "timeout": {
+        "actual_client_exit_code": 1,
+        "client_reaped": true,
+        "timed_out": true
+      },
+      "spawn_error": {
+        "actual_client_exit_code": null,
+        "client_reaped": false,
+        "timed_out": false
+      }
+    },
+    "ssh_calls": 0,
+    "real_checkpoint_loads": 0,
+    "sdk_runs": 0,
+    "training_signals": 0
+  },
+  "direct_transport_raw_streams_equal_receipts": true,
+  "first_timeout_stdout": "before timeout\n",
+  "raw_stream_files_preserved": true,
+  "unreaped_client_branch_static_review_passed": true,
+  "unreaped_client_branch_dynamically_exercised": false,
+  "real_preflight": {
+    "ready": false,
+    "status": "PENDING_NO_NEW_CHECKPOINT",
+    "observed_completed": 10500,
+    "run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+    "requested_completed": 15000,
+    "training_receipt_sha256": "b31ae0dd95547fae6c181c7755e9ed64aa64c9169ed0423be068fa048a7ae89f",
+    "launch_sha256": "a9ad5b7dd555fe567efee3ca0199f0bce2553b93434dad7da50b882afc04f1f9",
+    "sdk_dispatches": 0,
+    "checkpoint_loads": 0,
+    "export_files_created": 0
+  },
+  "provenance": {
+    "active_binding_count": 22,
+    "backup_bound_file_count": 8,
+    "local_bound_file_count": 4,
+    "all_local_server_bindings_match": true,
+    "unchanged_server_and_production_bindings_vs_v3": true,
+    "checked_source_spec_document_bytes_unchanged_at_report": true,
+    "backup_spec_bytes_sha256": "001869e422e5d8a71bbfdf093899de91503506eea356d0fc8eca0668173526f3",
+    "backup_spec_canonical_sha256": "ad4d36c8fdb2c9c041154683130502c1774dae7d1c5cd73db99458d9d475eb29",
+    "backup_spec_canonical_id": "ad4d36c8",
+    "local_bound_hashes": {
+      "provider_tools/backup_filter_recovery_checkpoint.py": "8c6f7bef912ba5b607db2cba17dae5f34bd43650c873b4e2f6518c5d9bfa4823",
+      "provider_tools/filter_recovery_windows_paths.py": "891180b43d17f642c1d39aecf606aa7c722df838e9504ff38dab934d6887e80c",
+      "provider_tools/validate_filter_recovery_transport.py": "5a51d0aad77bf1c02f03719771ecdf2489eb1cf67437aeb71553564ce21eaad4",
+      "provider_tools/validate_filter_recovery_windows_paths.py": "b4b27ab0f75bb06488544b19c109281027d86ed395f8a48443baac3473c1dd1d"
+    }
+  },
+  "runtime": {
+    "local_python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "server_metadata_python": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+    "server_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "server_cuda_hidden": true
+  },
+  "independent_state": {
+    "sample_utc": "2026-10-27T05:19:53.855640+00:00",
+    "actual_python_sdk_teacher_count": 1,
+    "same_teacher_pid_argv_start_as_v3": true,
+    "remote_audit_worker_count": 0,
+    "local_backup_or_fixture_worker_count": 0,
+    "observed_completed": 10500,
+    "observed_optimizer_updates": 210000,
+    "latest_checkpoint": null,
+    "server_round15000_checkpoint_or_audit_exists": false,
+    "server_cpu_audit_intent_journal_or_logs_exist": false,
+    "production_process_supervisor_outer_exits_exist": false,
+    "local_round15000_evidence_or_private_backup_exists": false
+  },
+  "reviewed_v3_findings_closed": [
+    "F1-v3-metadata-mirror",
+    "F2-v3-native-stream-capture"
+  ],
+  "previous_reviewed_gates_regressed": false,
+  "findings": [],
+  "command_result_doc_divergence": false,
+  "preparation_review_passed": true,
+  "backup_enabled": false,
+  "actual_checkpoint_ready": false,
+  "positive_checkpoint_audit_or_backup_validated": false,
+  "strict_physical_filter_completed": false,
+  "corpus_accepted": false,
+  "semantic_quality_accepted": false,
+  "safety": {
+    "checkpoint_loads": 0,
+    "checkpoint_file_bytes_read": 0,
+    "gpu_or_sdk_dispatches": 0,
+    "existing_process_signals": 0,
+    "new_optimizer_updates": 0,
+    "future_positive_backup_invoked": false,
+    "historical47_10_9_or_supervisor_suites_repeated": false,
+    "original10000_or5000_checkpoint_reaudited": false,
+    "production_source_or_config_changed": false,
+    "provider_source_fixes": false,
+    "package_installations": 0,
+    "releases_created": 0,
+    "uploads_performed": 0,
+    "files_deleted": 0,
+    "synthetic_new_timeout_child_terminated": true
+  },
+  "limitations": [
+    "This is only the final targeted preparation review, not a real15000 checkpoint audit/backup or physical filtering pass.",
+    "The guarded D mirror and unreaped-client outcome branch were inspected statically; no positive mirror, repeated-timeout or extra historical fixture was run.",
+    "Any future positive run still requires the stable latest real checkpoint and all unchanged CPU/private backup/public digest gates.",
+    "The reviewer did not enable backup or alter source/spec/documents."
+  ],
+  "public_copy_allowlist": [
+    "REPORT.md",
+    "SUMMARY.json"
+  ],
+  "evidence_scope": "Aggregate report/summary may be public; raw streams, exact process args, sources and operational evidence remain local."
+}

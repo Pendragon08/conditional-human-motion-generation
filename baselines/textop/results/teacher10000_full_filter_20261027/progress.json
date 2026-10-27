@@ -1,11 +1,11 @@
 {
   "run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
-  "sample_unix": 1793075118.3678133,
+  "sample_unix": 1793078644.5320385,
   "spec_sha256": "f39e2103ff6e9cceb3f7442f83a5c217328cb2cb18bce9cecfabb4fd774a64b4",
   "receipt": {
     "status": "RUNNING_FORMAL_FILTER_TRAINING",
-    "optimizer_updates": 0,
-    "completed_learning_iterations": 0,
+    "optimizer_updates": 210000,
+    "completed_learning_iterations": 10500,
     "formal_filter_training_started": true,
     "full_generator_training_started": false,
     "physical_filter_executed": false,
@@ -31,7 +31,7 @@
     "reference_sources": 8278,
     "num_envs": 8192,
     "corpus_scope": "BABEL-indexed available public profile; not a claim of reproducing all 12296 author tracking clips or private403 clips",
-    "elapsed_seconds": 137.97471808455884,
+    "elapsed_seconds": 3249.73212698102,
     "contact_profile": {
       "kind": "validated_static_solid_floor",
       "top_z": 0.0,
@@ -103,10 +103,17 @@
       }
     },
     "resume_exact_state_verified": true,
-    "resumed_physics_episodes_restarted_without_counting_reset": true
+    "resumed_physics_episodes_restarted_without_counting_reset": true,
+    "latest_losses": {
+      "value_function": 0.07010983303189278,
+      "surrogate": -0.00989245216769632,
+      "entropy": 15.159043264389037
+    },
+    "raw_completed_attempts": 16486459,
+    "peak_torch_allocated_bytes": 17248840192
   },
-  "latest_native_logged_iteration_zero_based": 10006,
-  "observed_completed_from_native_log": 10007,
+  "latest_native_logged_iteration_zero_based": 10573,
+  "observed_completed_from_native_log": 10574,
   "exact_source_resume_completed": 10000,
   "exact_source_resume_updates": 200000,
   "actual_workers": [
@@ -125,7 +132,7 @@
       ],
       "state": [
         "State:\tS (sleeping)",
-        "VmRSS:\t   15144 kB"
+        "VmRSS:\t   15216 kB"
       ]
     },
     {
@@ -190,7 +197,7 @@
       ],
       "state": [
         "State:\tR (running)",
-        "VmRSS:\t 9716792 kB"
+        "VmRSS:\t 9263172 kB"
       ]
     }
   ],
@@ -198,11 +205,11 @@
   "outer_exit": null,
   "latest_resource_sample": {
     "child_pid": 4190443,
-    "sampled_unix": 1793075112.254338,
+    "sampled_unix": 1793078598.3217483,
     "resources": {
-      "available_host_ram_bytes": 127573000192,
-      "data_free_bytes": 5206458368,
-      "all_device_usage_including_other_jobs": "0, 12741, 35811, 1\n1, 31546, 17004, 43",
+      "available_host_ram_bytes": 128020258816,
+      "data_free_bytes": 5203087360,
+      "all_device_usage_including_other_jobs": "0, 12741, 35811, 2\n1, 31550, 17000, 97",
       "owned_child_group": 4190443,
       "owned_group_processes": [
         {
@@ -224,7 +231,7 @@
           "group": 4190443,
           "state_and_rss": [
             "State:\tR (running)",
-            "VmRSS:\t 9716268 kB"
+            "VmRSS:\t 9262128 kB"
           ],
           "cpu_affinity": [
             0,
@@ -243,7 +250,7 @@
         {
           "pid": 4190451,
           "gpu_uuid": "GPU-0b41e662-b662-bb1c-954b-13ed89d7af18",
-          "used_gpu_memory_mib": "23660"
+          "used_gpu_memory_mib": "23664"
         }
       ]
     }

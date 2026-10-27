@@ -12,6 +12,10 @@ if l:
 recovery=BASE/'results/teacher10000_full_filter_20261027/progress.json'
 if recovery.exists():
  j=json.loads(recovery.read_text(encoding='utf-8'));tr=j.get('receipt') or {};extra+=f" 当前教师接续状态{tr.get('status')}，精确状态恢复核验{tr.get('resume_exact_state_verified')}，收据轮数{tr.get('completed_learning_iterations')}，原生日志最新完成轮数{j.get('observed_completed_from_native_log')}；每100轮刷新收据，初始0不代表从0重训。"
+checkpoint_tools=BASE/'results/filter_recovery_checkpoint_tools_20261027/activation.json'
+if checkpoint_tools.exists():
+ t=json.loads(checkpoint_tools.read_text(encoding='utf-8'))
+ extra+=' 新运行的15k及后续检查点已准备独立备份和全源宽松统计入口，元数据/计数检查及独立文档核查已完成；实际新检查点加载、备份和统计仍等待真实保存，尚未进行严格筛选。工具不停止训练，不复用旧5k/10k来源，不公开完整优化器或逐动作记录。'
 text=f'''# TextOp：恢复先筛选、后训练的论文顺序
 
 用户2026-10-27明确调整：安全保存并暂停未筛选数据生成器，先完成全库物理筛选。先前推荐的“未筛选全源先训练”属于额外对照，并非论文主线；现在已取消其自动接续，不能把这条路线说成论文训练数据已合格。
@@ -22,7 +26,7 @@ text=f'''# TextOp：恢复先筛选、后训练的论文顺序
 
 {extra}
 
-接续顺序：10k教师全源宽松统计与严格回放 → 保留可跟踪的原始参考动作并配对BABEL文本 → 源隔离、TRAIN-only统计、真实CLIP和加载/恢复/容量验收 → 筛选语料上的VAE200k与LDM300k。10k是用户允许的提前评估预算，与论文40k筛选教师保持区别；严格通过率和质量若不足，保留失败并据实际证据改进教师。未尝试/失败原资产不删除，早期教师失败不证明动作绝对不可行。
+接续顺序：新教师检查点复查全源宽松统计，对候选进行严格完整回放 → 保留可跟踪的原始参考动作并配对BABEL文本 → 源隔离、TRAIN-only统计、真实CLIP和加载/恢复/容量验收 → 筛选语料上的VAE200k与LDM300k。10k及下一15k是用户允许的提前评估节点，与论文40k筛选教师保持区别；严格通过率和质量若不足，保留失败并据实际证据改进教师。未尝试/失败原资产不删除，早期教师失败不证明动作绝对不可行。
 
 原8278来源预处理及私有备份已经完成。当前未筛选VAE只保留为独立对照，不自动恢复，也不自动启动其LDM。完整语义质量、最终WBC/生成增强、在线执行与论文完整效果仍未通过。
 

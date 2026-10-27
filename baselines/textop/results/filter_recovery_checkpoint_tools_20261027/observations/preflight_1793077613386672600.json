@@ -1,0 +1,26 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 90,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "a012fef3288874150100689da67d3cd6ade9b609ff4d0900026d7d23f6fc407d",
+  "client_pid": 64552,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"ready\": false, \"status\": \"PENDING_NO_NEW_CHECKPOINT\", \"observed_completed\": 10400, \"run\": \"filter_policy_paper69_resume10000_filter_recovery_20261027_v1\", \"requested_completed\": 15000, \"training_receipt_sha256\": \"b1dc2a9a6bc389f0995517f5aaf18b99125842607484d54fe4ade522d5d26e04\", \"launch_sha256\": \"a9ad5b7dd555fe567efee3ca0199f0bce2553b93434dad7da50b882afc04f1f9\", \"sdk_dispatches\": 0, \"checkpoint_loads\": 0, \"export_files_created\": 0}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF"
+}
