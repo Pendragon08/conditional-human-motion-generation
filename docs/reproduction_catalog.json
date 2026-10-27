@@ -1,0 +1,56 @@
+{
+  "updated": "2026-10-27",
+  "purpose": "Navigation of archived reproductions, not live job monitoring",
+  "legacy_main_before_integration": "9f9a12760c1b9ce2146a48fa387aabcafde8168e",
+  "methods": [
+    {
+      "method": "DreamControl",
+      "storage": "legacy_root",
+      "report": "reports/02_dreamcontrol_reproduction.md",
+      "results": "reports/03_dreamcontrol_multitask_baselines.md"
+    },
+    {
+      "method": "CLoSD",
+      "storage": "legacy_root",
+      "report": "results/closd_baseline_20261010/README.md",
+      "scope": "released-checkpoint and archived reproduction evidence"
+    },
+    {
+      "method": "PhyGile",
+      "storage": "paper_specific",
+      "index": "baselines/phygile/INDEX.md",
+      "code": "baselines/phygile/scripts/",
+      "results": "baselines/phygile/results/",
+      "reports": "baselines/phygile/reports/",
+      "extension": "baselines/phygile_unitree/",
+      "full_paper_benchmark_reproduced": false,
+      "pr": 1,
+      "source_head": "6f99c4242ff9e68acfa48ddb7f21b085a54ac933",
+      "merge_commit": "a2aeb2909a3cdd8c40eecadf5a8f8543a6d54679"
+    },
+    {
+      "method": "ReactiveBFM",
+      "storage": "paper_specific",
+      "index": "baselines/reactivebfm/INDEX.md",
+      "code": "baselines/reactivebfm/scripts/",
+      "results": "baselines/reactivebfm/results/",
+      "reports": "baselines/reactivebfm/reports/",
+      "full_paper_benchmark_reproduced": false,
+      "pr": 2,
+      "source_head": "308047cffc508326747bb7bea20a79ba70e84e73",
+      "merge_commit": "bc055bbad04dc3367be740659b7bed4a28b570ce"
+    }
+  ],
+  "shared_archive": "baselines/paper_faithful_reproduction/",
+  "last_archived_operational_state": {
+    "date": "2026-10-24",
+    "methods": [
+      "PhyGile",
+      "ReactiveBFM"
+    ],
+    "state": "paused",
+    "record": "baselines/paper_faithful_reproduction/reports/pause_cleanup_20261024.md"
+  },
+  "out_of_scope_branch": "codex/textop-reproduction-20261024",
+  "new_experiments_run_for_organization": false
+}
