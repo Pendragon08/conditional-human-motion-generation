@@ -1,0 +1,173 @@
+{
+  "run": "teacher15000_direct_full_v1",
+  "observed_unix": 1793109175.6356542,
+  "files": {
+    "receipt": {
+      "status": "RUNNING_TEACHER15000_STRICT",
+      "mode": "teacher15000_strict",
+      "stage": "full",
+      "quality_label": "USER_DIRECT_STRICT_15000_NOT_PAPER_TWO_STAGE_FILTER",
+      "optimizer_updates": 0,
+      "physical_filter_executed": false,
+      "dataset_accepted": false,
+      "whole_library_filtered": false,
+      "full_generator_training_started": false,
+      "output_writers_closed": false,
+      "actual_execution_video_created": false,
+      "source_sha256": "d19e7574ac9899b25cb611bc80b44bb27bb32e5338f1b86ef4414f2f87c7c25a",
+      "evaluation_protocol_sha256": "9996786f840e5272bf7a6808df243ec8ce551d091bd0bbac218b76369d4dba74",
+      "trace_source_sha256": "3a84aec7d257c8f41f837cf855d0d934512285b3e84079f802d0b3c03d1086f2",
+      "pilot_spec_sha256": "91184fff75f8a0579a759abb418d4a0186d3e42a9a48c176e3d33facc768a1cd",
+      "execution_settings_sha256": "4e91e529ebdd92b0098670fa083b22bf97f105eb40d4c9e22d127d1deb5a942b",
+      "teacher_artifact_sha256": {
+        "training": "162d6add5891b91b6d38e99a45a90ea3ce4aca443d1fef40e45e666e528fd23c",
+        "stop": "a86f67259b8c2d1178120ae73ef9f70eb1c02c61aebc0b358a5f916c6a1b70ef",
+        "backup": "b9623e277fa2e0d913b41359cd4e615d187c5c75407d8184caf2342f19388efe",
+        "control": "10c643b21e26927c55682ee2f501da846045f92f487d9cbede97159f086ae434",
+        "resume_spec": "f39e2103ff6e9cceb3f7442f83a5c217328cb2cb18bce9cecfabb4fd774a64b4",
+        "backup_spec": "6be686cf78d60498b88eedcd71d1a22bc7d9f117ae459cc2275a16a36f1d0e68",
+        "process": "e9e54b0340ad3032a131261568c6c65051cf5b839bf4ba31f4243f5b4dfde7df",
+        "supervisor": "23fe56778a72ac17668de7ac9589639104e8bbc78a3b2a7d0cfa1efffeffce48",
+        "outer": "b4080f390a2efe62544dc67dfd86cbfd6b27e5b8fe118c17e61a543aed444e88"
+      },
+      "policy_checkpoint_sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
+      "policy_checkpoint_completed_iterations": 15000,
+      "policy_checkpoint_optimizer_updates": 300000,
+      "reference_sources": 8278,
+      "replayed_original_sources": 8278,
+      "source_selection": "All8278 originals once; sorted by (duration, original index); direct strict replay without EMA selection",
+      "unattempted_original_sources": 0,
+      "cpu_affinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "elapsed_seconds": 188.79062395729125,
+      "reference_fingerprint": "0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7",
+      "planned_maximum_control_calls": 313378,
+      "strict_rollouts_per_motion": 1,
+      "direct_replay_bypasses_historical_ema_selection": true,
+      "contact_profile": {
+        "kind": "validated_static_solid_floor",
+        "top_z": 0.0,
+        "dimensions_m": [
+          4000,
+          4000,
+          0.2
+        ],
+        "static_friction": 1.0,
+        "dynamic_friction": 1.0,
+        "restitution": 0.0,
+        "combine_mode": "multiply",
+        "self_collisions": true,
+        "validation_witnesses": [
+          {
+            "run": "solid_floor_ppo_author_v1",
+            "receipt_sha256": "3e02a9fb9d312e8f36321ae9b4d0a5dc04e038dd569eb859c615d3e28ecd4339",
+            "actual_iterations": 10,
+            "actual_optimizer_updates": 200
+          },
+          {
+            "run": "solid_floor_ppo_document_v2",
+            "receipt_sha256": "597ddb5508264769bb7953a62697ad82120b0a84ad74291112467dd8952acf7d",
+            "actual_iterations": 10,
+            "actual_optimizer_updates": 200
+          }
+        ],
+        "author_exact_collision_geometry_available": false,
+        "long_run_convergence_established": false,
+        "data_or_reward_changes": false
+      },
+      "contact_profile_sha256": "0ebb5fcbbe2a5e93db71a6ba661077b617bb0462c6569a72608d6064ef966fb0",
+      "num_envs": 16,
+      "quick_pilot_executed": false,
+      "physical_tracking_executed": true,
+      "finished_trials": 400,
+      "complete_trials": 376,
+      "failed_trials": 24,
+      "actual_vectorized_control_calls": 2300,
+      "actual_scene_physics_steps": 9200
+    },
+    "driver": {
+      "run": "teacher15000_direct_full_v1",
+      "stage": "full",
+      "driver_pid": 112822,
+      "spec_sha256": "91184fff75f8a0579a759abb418d4a0186d3e42a9a48c176e3d33facc768a1cd",
+      "command": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_teacher15000_strict.py",
+        "--stage",
+        "full",
+        "--run",
+        "teacher15000_direct_full_v1"
+      ],
+      "status": "DURABLE_SUPERVISOR_DISPATCHED_NOT_YET_PASSED"
+    }
+  },
+  "sha256": {
+    "receipt": "50e7e8ad463211b9bce55e242e910c0dc50be97cd8968d5f594c20bc09373663",
+    "driver": "1b61c138f59430e3f30c133474800a9c3f20e898d95ca1c04b8a53b9a9c1a495"
+  },
+  "workers": [
+    {
+      "pid": 112823,
+      "start_ticks": "1430654081",
+      "state": "S",
+      "argv": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_teacher15000_strict.py",
+        "--stage",
+        "full",
+        "--run",
+        "teacher15000_direct_full_v1",
+        ""
+      ]
+    },
+    {
+      "pid": 112830,
+      "start_ticks": "1430654116",
+      "state": "S",
+      "argv": [
+        "/bin/bash",
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/python.sh",
+        "-u",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/evaluate_teacher15000_strict.py",
+        "--pilot-spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/teacher15000-direct-strict-spec.json",
+        "--stage",
+        "full",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/teacher15000_direct_full_v1",
+        "--device",
+        "cuda:1",
+        "--headless",
+        ""
+      ]
+    },
+    {
+      "pid": 112837,
+      "start_ticks": "1430654117",
+      "state": "R",
+      "argv": [
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/kit/python/bin/python3",
+        "-u",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/evaluate_teacher15000_strict.py",
+        "--pilot-spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/teacher15000-direct-strict-spec.json",
+        "--stage",
+        "full",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/teacher15000_direct_full_v1",
+        "--device",
+        "cuda:1",
+        "--headless",
+        ""
+      ]
+    }
+  ],
+  ".log_tail": "------------+------------+\n+-----------------------------------------------------------+\n| Active Observation Terms in Group: 'critic' (shape: (557,)) |\n+-----------+----------------------------------+------------+\n|   Index   | Name                             |   Shape    |\n+-----------+----------------------------------+------------+\n|     0     | command                          |   (290,)   |\n|     1     | motion_anchor_pos_b              |   (15,)    |\n|     2     | motion_anchor_ori_b              |   (30,)    |\n|     3     | body_pos                         |   (42,)    |\n|     4     | body_ori                         |   (84,)    |\n|     5     | base_lin_vel                     |    (3,)    |\n|     6     | base_ang_vel                     |    (3,)    |\n|     7     | joint_pos                        |   (29,)    |\n|     8     | joint_vel                        |   (29,)    |\n|     9     | actions                          |   (29,)    |\n|     10    | projected_gravity                |    (3,)    |\n+-----------+----------------------------------+------------+\n\n[INFO] Termination Manager:  <TerminationManager> contains 4 active terms.\n+------------------------------------+\n|      Active Termination Terms      |\n+-------+-----------------+----------+\n| Index | Name            | Time Out |\n+-------+-----------------+----------+\n|   0   | anchor_pos      |  False   |\n|   1   | anchor_ori      |  False   |\n|   2   | ee_body_pos     |  False   |\n|   3   | motion_complete |   True   |\n+-------+-----------------+----------+\n\n[INFO] Reward Manager:  <RewardManager> contains 14 active terms.\n+--------------------------------------------+\n|            Active Reward Terms             |\n+-------+--------------------------+---------+\n| Index | Name                     |  Weight |\n+-------+--------------------------+---------+\n|   0   | motion_global_anchor_pos |     0.5 |\n|   1   | motion_global_anchor_ori |     0.5 |\n|   2   | motion_body_pos          |     1.0 |\n|   3   | motion_body_ori          |     1.0 |\n|   4   | motion_body_lin_vel      |     1.0 |\n|   5   | motion_body_ang_vel      |     1.0 |\n|   6   | action_rate_l2           |    -0.1 |\n|   7   | joint_limit              |   -10.0 |\n|   8   | undesired_contacts       |    -0.1 |\n|   9   | feet_force               |    -0.0 |\n|   10  | feet_slide               |    -0.3 |\n|   11  | soft_landing             | -0.0003 |\n|   12  | overspeed                |    -1.0 |\n|   13  | overeffort               |    -1.0 |\n+-------+--------------------------+---------+\n\n[INFO] Curriculum Manager:  <CurriculumManager> contains 0 active terms.\n+----------------------+\n| Active Curriculum Terms |\n+-----------+----------+\n|   Index   | Name     |\n+-----------+----------+\n+-----------+----------+\n\n[INFO]: Completed setting up the environment...\nActor MLP: Sequential(\n  (0): Linear(in_features=557, out_features=2048, bias=True)\n  (1): ELU(alpha=1.0)\n  (2): Linear(in_features=2048, out_features=1024, bias=True)\n  (3): ELU(alpha=1.0)\n  (4): Linear(in_features=1024, out_features=512, bias=True)\n  (5): ELU(alpha=1.0)\n  (6): Linear(in_features=512, out_features=29, bias=True)\n)\nCritic MLP: Sequential(\n  (0): Linear(in_features=557, out_features=2048, bias=True)\n  (1): ELU(alpha=1.0)\n  (2): Linear(in_features=2048, out_features=1024, bias=True)\n  (3): ELU(alpha=1.0)\n  (4): Linear(in_features=1024, out_features=512, bias=True)\n  (5): ELU(alpha=1.0)\n  (6): Linear(in_features=512, out_features=1, bias=True)\n)\n",
+  "_outer.log_tail": "",
+  "common_lock_free": false,
+  "completed_execution_verified": false
+}

@@ -1,0 +1,11 @@
+# Preserve exact new deployment bytes for their recorded SHA bindings.
+scripts/teacher15000_evaluation_control.py -text
+scripts/evaluate_teacher15000_strict.py -text
+scripts/teacher15000_strict_protocol.py -text
+scripts/direct_strict_trace.py -text
+scripts/supervise_teacher15000_strict.py -text
+configs/teacher15000-direct-evaluation-spec.json -text
+configs/teacher15000-direct-strict-spec.json -text
+provider_tools/teacher15000_control.py -text
+provider_tools/launch_teacher15000_strict.py -text
+provider_tools/collect_teacher15000_strict.py -text

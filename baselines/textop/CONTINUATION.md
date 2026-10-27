@@ -1,3 +1,102 @@
+## CURRENT — teacher STOPPED; direct all8278 strict replay RUNNING
+
+Latest user: "直接进行下一步物理筛选，不要再训练跟踪器了。" Teacher is
+actually stopped: one original-process pidfd SIGINT after verified15000 backup,
+child reaped0, outer1 retained (old40k not completed), common lock released.
+No teacher restart/resume, no further stop/15kbackup/release/statistics repeats.
+Frozen15000 checkpoint90799682B SHA66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88
+and private decisions server+D verified; inference GitHub release digest verified.
+Historical EMA:8278total/8278attempted/0<=5%candidates/8278above/0unattempted.
+This is NOT8278 actual strict failures. User then asked to relax the gate;
+all8278 originals are admitted directly. No numerical physical threshold change.
+Paper difference disclosed:15k instead of40k and bypass historical EMA selection.
+
+Current unique fullrun teacher15000_direct_full_v1, active spec SHA
+91184fff75f8a0579a759abb418d4a0186d3e42a9a48c176e3d33facc768a1cd.
+Author and fresh document smoke both actually8/8 same sources/63controls/
+252physics/0updates/closed finite trace/SHA/exit0; do not rerun or count as16.
+Source d19e7574ac9899b25cb611bc80b44bb27bb32e5338f1b86ef4414f2f87c7c25a,
+protocol9996786f840e5272bf7a6808df243ec8ce551d091bd0bbac218b76369d4dba74,
+trace3a84aec7d257c8f41f837cf855d0d934512285b3e84079f802d0b3c03d1086f2,
+supervisor191cfb6554b886d90dc55375bb5686055aaf4bd6f59cbaf009a6744ded8c101c.
+Do not edit these active sources/spec or22 preserved training bindings.
+Driver112822/supervisor112823/bash112830/SDK112837 are historical identity clues;
+verify real argv/starttime. Commonlock held by strict replay, no overlapping SDK.
+16envs/GPU1/sharedCPU0-3/Torch.65/headless, GPU0aux context disclosed.
+All8278 originals sorted by duration/index, one deterministic full trajectory
+each; .25m pelvis/.5m ankle+wrist height/orientation rules unchanged.
+Full budget1GiB raw36D poses+.5GiB metadata/logs+2GiB reserve; preflight3.5GiB.
+Planned max313378controlcalls, safetycap2million/24h; actual end may be earlier.
+Every50calls/batchend progress, every15s resources. Incomplete is not success.
+
+Latest observation 2026-10-27T21:52:55.635654+08:00: finished400, passed376,
+failed24, pending/inprogress7878; see current.json
+for new observations. Raw receipt replayed_original_sources=8278 and
+unattempted_original_sources=0 describe selected scope, not live completions.
+Use8278-finished_trials for pending; never label untested motions failed.
+No final corpus/generator acceptance yet. All raw/failed assets preserved.
+
+Read TEACHER15000_DIRECT_STRICT_ENVIRONMENT.md, reports/teacher15000_direct_strict_20261027.md,
+results/teacher15000_direct_strict_20261027/current.json and this run/progress.json.
+Read-only collection: provider_tools/collect_teacher15000_strict.py --run
+teacher15000_direct_full_v1 --evidence UNIQUE_IDENTIFIER; retain client outcomes.
+Then report_teacher15000_direct.py and collect_filter_first_report.py aggregate
+the observed evidence. Never relaunch after unknown/pending client outcome.
+On actual completion verify all original exits, closed private trials/poses,
+source fingerprint/counts, commonlockrelease; final aggregate result notification.
+Then accepted nonempty REFERENCE+BABEL corpus, family split/exact leakage,
+TRAIN69D stats/fullCLIP/load-gradient-restore/persistent capacity acceptance,
+NEW filtered VAE200k→LDM300k automatically. Never resume prefilter8100 or train
+empty/unfiltered corpus. If no strict passes, report evidence; do NOT restart
+teacher without new human authorization. User has stopped teacher training.
+Full LDM entry/semantic TMR/multiseed controls/WBC/augmentation/online/video
+remain pending. Preserve current-target vs final-endpoint distinction,
+nativeclosefalse/fallbacktrue and exact author collision asset unavailable.
+This CURRENT overrides all historical running-teacher/15k-pending/20k instructions.
+
+## CURRENT — real15000 verified: ZERO relaxed candidates (2026-10-27)
+
+Read reports/teacher15000_filter_result_20261027.md and
+results/filter_recovery_checkpoints_20261027/round_15000/user_result.json.
+Actual15000/300000 checkpoint90799682B SHA66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88:
+CPUaudit actualexit0/80finite/Adam300000/25inference tensors exact;
+server+D privatefullstate/decisions and GitHub inference digest verified.
+8278total/8278attempted/0EMA<=5%candidates/8278above/0unattempted/0invalid.
+EMAmin11.7442%,median16.0868%; sourcepaired8083lower/195higher versus10k.
+New10k-to15k raw interval7645<=5% is DIAGNOSTIC ONLY, not candidates or strict
+acceptance; current policy was learning, not a fixed-policy reassessment.
+The user explicitly ordered STOP teacher and direct physical filtering.
+Teacher now actually stopped, original child reaped, common SDK lock released.
+Last receipt15300 is not a saved checkpoint; freeze actual15000 for replay.
+Direct strict all8278 originals bypasses historical EMA selection by explicit
+user choice; preserve EMA0 and disclose this departure from paper selection.
+Read TEACHER15000_DIRECT_STRICT_ENVIRONMENT.md and new direct-priority spec.
+Do not repeat15k audit/export/backups/comparison/release or old diagnostics.
+New strict runtime acceptance precedes full8278 launch and corpus acceptance;
+prefilter8100 remains paused, generator not yet started.
+Never train empty or unfiltered data or silently change5%/strict thresholds.
+One identity-bound SIGINT stopped the teacher after backup. Do not repeat
+stop/backup or resume teacher. Fullpaper still pending.
+This CURRENT overrides all historical pending15k/15minute status below.
+
+## CURRENT — user directs STOP teacher and direct full-library strict physics
+
+User2026-10-27: "直接进行下一步物理筛选，不要再训练跟踪器了。"
+Read configs/teacher15000-direct-strict-priority-20261027.json. This overrides
+all older continue-teacher-to20k/40k and EMA-zero-blocks-replay instructions.
+Safely stop this recovery teacher once its real15000 recovery state is secured;
+freeze15000 and directly evaluate all8278 original sources with standard strict
+complete replay. Preserve original EMA5% result0 and disclose the direct-route
+difference; do not claim the historical relaxed gate passed. Actual strict
+results, then accepted REFERENCE+BABEL corpus, precede new generator training.
+The same backup command is currently running once: CPU actualexit0/80finite/
+Adam300000/25inference tensors exact; D transfers/GitHub inference still pending.
+Inspect backup.json and workers; do not relaunch/overlap. No new stop issued yet.
+New control and strict schema must bind THIS run/15000; preserve22 training files.
+No prefilter8100 resume. No SDK until actual teacher exit/commonlock release and
+new author/fresh/resource acceptance. Do not execute the pending report finalizer
+until its obsolete continue-teacher text has been revised for this latest request.
+
 ## CURRENT — explicit15k result notification and accepted-corpus generator autostart
 
 User2026-10-27: at actual15000 checkpoint, automatically check filtering and

@@ -1,0 +1,260 @@
+{
+  "audit": {
+    "status": "FORMAL_CHECKPOINT_CPU_AUDITED_PUBLIC_INFERENCE_EXPORTED",
+    "run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+    "completed_learning_iterations": 15000,
+    "actual_optimizer_updates": 300000,
+    "optimizer_step_min": 300000,
+    "optimizer_step_max": 300000,
+    "all_finite_tensor_count": 80,
+    "exact_public_tensors_checked": 25,
+    "full_checkpoint": {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume10000_filter_recovery_20261027_v1/completed_15000.pt",
+      "bytes": 90799682,
+      "sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88"
+    },
+    "public_inference": {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/checkpoint_backups/round_15000/filter_recovery_author_v1/TextOp_FilterPolicy29D_round15000_inference.pt",
+      "bytes": 30208218,
+      "sha256": "04880c37a84ba0b2d515597a8d1814426f78c685fbb03dfef6c5b68b67ca1fcb"
+    },
+    "training_receipt_snapshot_sha256": "5a6603b11077af1533ab15bd9a9f7dcd1cceea248dd17dc6aab266df5df1eec1",
+    "reference_fingerprint": "0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7",
+    "plan_sha256": "153f8237a17928ffc3a28b7b00e366742a4ff0080e8fbb6bac87e57da8eb291d",
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "torch_cuda_initialized": false,
+    "torch_version": "1.13.1+cu117",
+    "checkpoint_read_mode": "trusted_sha_verified_cpu_legacy_loader",
+    "sdk_runs": 0,
+    "new_optimizer_updates": 0,
+    "data_deleted": false,
+    "public_contains_per_motion_statistics": false,
+    "public_contains_optimizer": false,
+    "full_resume_checkpoint_remains_private": true,
+    "physical_filter_executed": false,
+    "full_training_finished": false,
+    "tracking_convergence_claimed": false,
+    "source_sha256": "a05589ac41f7f1d9c97f74eae0ba8be47e8e58af6cf6d06dacf787ac91604279",
+    "sample_unix": 1793106604.504688
+  },
+  "execution": {
+    "command": [
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/inspect_filter_recovery_checkpoint.py",
+      "--completed",
+      "15000"
+    ],
+    "supervisor_pid": 102876,
+    "child_pid": 102882,
+    "child_exit_code": 0,
+    "child_reaped": true,
+    "timed_out": false,
+    "supervisor_error": null,
+    "shutdown_actions": [],
+    "samples_written": 3,
+    "sample_errors": [],
+    "elapsed_seconds": 3.740568123757839,
+    "supervision_passed": true
+  },
+  "adapter": {
+    "status": "FILTER_RECOVERY_CHECKPOINT_CPU_AUDIT_AND_RELAXED_EXPORT_COMPLETE",
+    "run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+    "completed": 15000,
+    "adapter_sha256": "3754c1163692c1d8a8d571dbceb04fea70859d482d33a0ab90668135c773220a",
+    "protocol_sha256": "03a1f3228b50c0727c8e8c358441011f2452085bcb171e969a83cee5080a46ec",
+    "spec_sha256": "6be686cf78d60498b88eedcd71d1a22bc7d9f117ae459cc2275a16a36f1d0e68",
+    "preflight": {
+      "ready": true,
+      "status": "FILTER_RECOVERY_CHECKPOINT_READY_FOR_CPU_AUDIT",
+      "observed_completed": 15100,
+      "metadata": {
+        "name": "completed_15000.pt",
+        "bytes": 90799682,
+        "sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
+        "completed_learning_iterations": 15000,
+        "actual_optimizer_updates": 300000
+      },
+      "run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+      "requested_completed": 15000,
+      "training_receipt_sha256": "5a6603b11077af1533ab15bd9a9f7dcd1cceea248dd17dc6aab266df5df1eec1",
+      "launch_sha256": "a9ad5b7dd555fe567efee3ca0199f0bce2553b93434dad7da50b882afc04f1f9",
+      "sdk_dispatches": 0,
+      "checkpoint_loads": 0,
+      "export_files_created": 0,
+      "checkpoint": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume10000_filter_recovery_20261027_v1/completed_15000.pt",
+      "file_age_seconds": 634.3838179111481
+    },
+    "audit_sha256": "bd33174ffdf23b679bf9dab8c20496d988e389220ae7ced313fd6c9d4c08b8e8",
+    "output_guard": {
+      "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/checkpoint_backups/round_15000/filter_recovery_author_v1",
+      "filesystem": "ext4",
+      "owner_uid": 1013,
+      "existing_owned_ancestors": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/checkpoint_backups"
+      ],
+      "new_output_required": true
+    },
+    "relaxed_summary_sha256": "37ed48750497c84e7e169d4d6c38378a3d950191717b786f47c159073b5c966a",
+    "sdk_runs": 0,
+    "new_optimizer_updates": 0,
+    "strict_physical_filter_completed": false,
+    "dataset_accepted": false
+  },
+  "new_run_provenance_verified": true,
+  "preflight": {
+    "ready": true,
+    "status": "FILTER_RECOVERY_CHECKPOINT_READY_FOR_CPU_AUDIT",
+    "observed_completed": 15100,
+    "metadata": {
+      "name": "completed_15000.pt",
+      "bytes": 90799682,
+      "sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
+      "completed_learning_iterations": 15000,
+      "actual_optimizer_updates": 300000
+    },
+    "run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+    "requested_completed": 15000,
+    "training_receipt_sha256": "5a6603b11077af1533ab15bd9a9f7dcd1cceea248dd17dc6aab266df5df1eec1",
+    "launch_sha256": "a9ad5b7dd555fe567efee3ca0199f0bce2553b93434dad7da50b882afc04f1f9",
+    "sdk_dispatches": 0,
+    "checkpoint_loads": 0,
+    "export_files_created": 0,
+    "checkpoint": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume10000_filter_recovery_20261027_v1/completed_15000.pt",
+    "file_age_seconds": 634.9578607082367
+  },
+  "relaxed_summary": {
+    "source_count": 8278,
+    "counts": {
+      "eligible_for_strict": 0,
+      "above_relaxed_threshold": 8278,
+      "unattempted": 0,
+      "invalid_denominator": 0
+    },
+    "by_split": {
+      "train": {
+        "eligible_for_strict": 0,
+        "above_relaxed_threshold": 6203,
+        "unattempted": 0,
+        "invalid_denominator": 0
+      },
+      "val": {
+        "eligible_for_strict": 0,
+        "above_relaxed_threshold": 2075,
+        "unattempted": 0,
+        "invalid_denominator": 0
+      }
+    },
+    "by_dataset": {
+      "ACCAD": {
+        "eligible_for_strict": 0,
+        "above_relaxed_threshold": 147,
+        "unattempted": 0,
+        "invalid_denominator": 0
+      },
+      "HDM05": {
+        "eligible_for_strict": 0,
+        "above_relaxed_threshold": 165,
+        "unattempted": 0,
+        "invalid_denominator": 0
+      },
+      "EKUT": {
+        "eligible_for_strict": 0,
+        "above_relaxed_threshold": 220,
+        "unattempted": 0,
+        "invalid_denominator": 0
+      },
+      "DFaust": {
+        "eligible_for_strict": 0,
+        "above_relaxed_threshold": 79,
+        "unattempted": 0,
+        "invalid_denominator": 0
+      },
+      "SFU": {
+        "eligible_for_strict": 0,
+        "above_relaxed_threshold": 32,
+        "unattempted": 0,
+        "invalid_denominator": 0
+      },
+      "BMLmovi": {
+        "eligible_for_strict": 0,
+        "above_relaxed_threshold": 1111,
+        "unattempted": 0,
+        "invalid_denominator": 0
+      },
+      "EyesJapanDataset": {
+        "eligible_for_strict": 0,
+        "above_relaxed_threshold": 542,
+        "unattempted": 0,
+        "invalid_denominator": 0
+      },
+      "CMU": {
+        "eligible_for_strict": 0,
+        "above_relaxed_threshold": 1330,
+        "unattempted": 0,
+        "invalid_denominator": 0
+      },
+      "BMLrub": {
+        "eligible_for_strict": 0,
+        "above_relaxed_threshold": 2139,
+        "unattempted": 0,
+        "invalid_denominator": 0
+      },
+      "KIT": {
+        "eligible_for_strict": 0,
+        "above_relaxed_threshold": 2513,
+        "unattempted": 0,
+        "invalid_denominator": 0
+      }
+    },
+    "relaxed_threshold": 0.05,
+    "relaxed_statistic": "saved failed_motion_count / (failed_motion_count + success_motion_count)",
+    "ema_failure_distribution": {
+      "minimum": 0.11744220691526133,
+      "median": 0.16086775720276286,
+      "p95": 0.49394636640885975,
+      "maximum": 0.9539681493874393,
+      "count": 8278
+    },
+    "raw_failure_distribution": {
+      "minimum": 0.10111358574610245,
+      "median": 0.16721574384016058,
+      "p95": 0.41996714288968584,
+      "maximum": 0.9784211963944277,
+      "count": 8278
+    },
+    "attempts_distribution": {
+      "minimum": 2217,
+      "median": 2491.0,
+      "p95": 3271.1499999999996,
+      "maximum": 3661,
+      "count": 8278
+    },
+    "raw_attempts_total": 21785568,
+    "eligible_original_frames": 0,
+    "strict_evaluation_completed": false,
+    "dataset_accepted": false,
+    "semantic_quality_accepted": false,
+    "original_assets_deleted": 0,
+    "new_physics_steps": 0,
+    "new_optimizer_updates": 0,
+    "status": "RECOVERY_ALL_SOURCE_RELAXED_STATISTICS_EXPORTED_STRICT_PENDING",
+    "run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+    "completed_learning_iterations": 15000,
+    "actual_optimizer_updates": 300000,
+    "paper_reference_rounds": 40000,
+    "checkpoint_sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
+    "reference_fingerprint": "0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7",
+    "private_decisions": {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/checkpoint_backups/round_15000/filter_recovery_author_v1/relaxed_source_decisions.private.json",
+      "bytes": 4000976,
+      "sha256": "aa992b9c490dfc5894de66651f7a1710e5a9c3a95277f726a7daf9981ad3d0c5"
+    },
+    "statistics_source_sha256": "104ab812795e425c1b6cfba4abbb4952f78d3e6ca55abe5c76460d3d77676362",
+    "limitation": "Historical saved relaxed EMA includes training history. Candidates require separate full-length strict physics. Not absolute infeasibility or corpus acceptance."
+  }
+}

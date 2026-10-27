@@ -1,0 +1,157 @@
+{
+  "schema": "textop.teacher15000_strict_document_witness.v1",
+  "status": "PASSED_ACTUAL_SMOKE_AND_CLOSED_TRACE_VALIDATION",
+  "run": "teacher15000_smoke_document_v1",
+  "generated_at_utc": "2026-10-27T13:49:02.971739+00:00",
+  "document_sha256": "8b98898f7660ef34798acd8dd85b0974451a350dc08238e347d3e5a66e421dcb",
+  "spec_sha256": "6c3c12ca245bdae70dc86d099c28de9b925931d7c4543779679a87bc87617e0d",
+  "warm_environment_canonical_hash": "b7a3bf0c",
+  "execution_settings_sha256": "4e91e529ebdd92b0098670fa083b22bf97f105eb40d4c9e22d127d1deb5a942b",
+  "source_sha256": {
+    "evaluate_teacher15000_strict.py": "d19e7574ac9899b25cb611bc80b44bb27bb32e5338f1b86ef4414f2f87c7c25a",
+    "teacher15000_strict_protocol.py": "9996786f840e5272bf7a6808df243ec8ce551d091bd0bbac218b76369d4dba74",
+    "direct_strict_trace.py": "3a84aec7d257c8f41f837cf855d0d934512285b3e84079f802d0b3c03d1086f2",
+    "supervise_teacher15000_strict.py": "191cfb6554b886d90dc55375bb5686055aaf4bd6f59cbaf009a6744ded8c101c",
+    "contact_process_supervision.py": "44d689a71dc0c04778a7e6e651bc61d234dd59d3435a80c543be9d8db55638b4",
+    "contact_filter_resources.py": "1003a7cba9d2f2e30a05a881020e51ed8907eba6d523e4ce8af6b1b5399f76e5",
+    "strict_tracking_coverage.py": "12490b88754af65f4b4129bc3289e9b1ca9785b0ae5b394e4e60e57ef261370d"
+  },
+  "local_provider_sha256": {
+    "launch_teacher15000_strict.py": "9a8d342a9c287040cdef5fce246b15919f8c10901f0b993c8185416a105e4dd4",
+    "collect_teacher15000_strict.py": "eb383b75ea85578281c94f7094433d434ba262b7896b387662583e04fd0330ba"
+  },
+  "author_precondition": {
+    "progress_sha256": "c3a1fc28ab60fc469162f3e78f0fab23b68c0649350b0fed03b846f95d9d86ba",
+    "completed_execution_verified": true,
+    "common_lock_free": true,
+    "worker_count": 0,
+    "actual_outer_exit_code": 0
+  },
+  "launch_count": 1,
+  "commands": [
+    {
+      "kind": "launch",
+      "command": "$env:PYTHONIOENCODING='utf-8'\n& 'C:/Users/Pende/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' 'work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/textop/provider_tools/launch_teacher15000_strict.py' --stage smoke --run teacher15000_smoke_document_v1",
+      "actual_local_exit_code": 0,
+      "ssh_evidence": "dispatch.json"
+    },
+    {
+      "kind": "collect",
+      "command": "$env:PYTHONIOENCODING='utf-8'\n& 'C:/Users/Pende/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' 'work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/textop/provider_tools/collect_teacher15000_strict.py' --run teacher15000_smoke_document_v1 --evidence document_v1",
+      "actual_local_exit_code": 0,
+      "ssh_evidence": "document_v1_client.json",
+      "observed_unix": 1793108698.794967,
+      "completed_execution_verified": false
+    },
+    {
+      "kind": "collect",
+      "command": "$env:PYTHONIOENCODING='utf-8'\n& 'C:/Users/Pende/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' 'work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/textop/provider_tools/collect_teacher15000_strict.py' --run teacher15000_smoke_document_v1 --evidence document_v2",
+      "actual_local_exit_code": 0,
+      "ssh_evidence": "document_v2_client.json",
+      "observed_unix": 1793108742.667733,
+      "completed_execution_verified": false
+    },
+    {
+      "kind": "collect",
+      "command": "$env:PYTHONIOENCODING='utf-8'\n& 'C:/Users/Pende/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' 'work/phygile_reproduction_20261017/conditional-human-motion-generation/baselines/textop/provider_tools/collect_teacher15000_strict.py' --run teacher15000_smoke_document_v1 --evidence document_v3",
+      "actual_local_exit_code": 0,
+      "ssh_evidence": "document_v3_client.json",
+      "observed_unix": 1793108786.6361904,
+      "completed_execution_verified": true
+    }
+  ],
+  "evidence_directory": "C:\\Users\\Pende\\Documents\\ChatGPT\\机器人格斗动作捕捉数据生成\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\teacher15000_direct_strict_20261027\\teacher15000_smoke_document_v1",
+  "local_evidence_sha256": {
+    "dispatch.json": "24eaa82aa311c0782234908d6cb49d0800782e7c1f426f6ea05c76ff0b5c6de2",
+    "dispatch.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "dispatch.stdout.txt": "7dde2f381d7eaa00f0a0deb5c5c7adb4f48ee97216820e43e8feb5bcc886f47c",
+    "dispatch_intent.json": "8c243ef4042db9a246f9c9d4450ee30d50ef99a0186fa66f99c89c8d0b69bdf3",
+    "document_v1.json": "c0e179ea4e1ee121ed77288befec37f88009bc7c237d9455d1ac716a0a71f3dc",
+    "document_v1_client.json": "b1f95948f9b1b3e80e006fad7e33411274bdd5f0992e5f7cb75ce662661352e2",
+    "document_v1_client.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "document_v1_client.stdout.txt": "d9952b80694c39795362ddea024d1bb76f7a619c42a766c418addb436cfb3490",
+    "document_v1_client_intent.json": "9edb5426c1cd4a5c0895ea8b33e01593cdf831b6ea48a31b6da4640b3d727ddf",
+    "document_v2.json": "541f8fc958bd5c5a6a9dc33231d92543e4ab50d439cd769bed815c3f95c57dbf",
+    "document_v2_client.json": "6953a78d34f0dc1f9883d668726b84f36a0cdd12833bce39ab9eb56c4cf4ff68",
+    "document_v2_client.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "document_v2_client.stdout.txt": "85a528267ff4484702abc42fb7c8f72f6850f68d4e9a200f4fa626bf98d0ac84",
+    "document_v2_client_intent.json": "9edb5426c1cd4a5c0895ea8b33e01593cdf831b6ea48a31b6da4640b3d727ddf",
+    "document_v3.json": "a308945fa5d342a017828d1a9cbdf74d132bec3dcc44db7a0d9f6e1cc5fcd5fa",
+    "document_v3_client.json": "035aea029fa20298a26167f284c7f84384c9b6717767bef391b2fa8082d8b992",
+    "document_v3_client.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "document_v3_client.stdout.txt": "d7f7bc613327d18222923b1c9bbc6edeb7abf71a66be8535c25265ace475b273",
+    "document_v3_client_intent.json": "9edb5426c1cd4a5c0895ea8b33e01593cdf831b6ea48a31b6da4640b3d727ddf",
+    "launch.json": "5226e6a0af3d1475c1d1bc0f81dc00469aef85ed7c46a42e223ec3260f203048",
+    "progress.json": "a308945fa5d342a017828d1a9cbdf74d132bec3dcc44db7a0d9f6e1cc5fcd5fa"
+  },
+  "remote_evidence_sha256": {
+    "receipt": "b5daf420a82f1989404fae75090aaccfca2ff711f5889505db99bda72c363193",
+    "driver": "87f77890cdec1230f29bc9362ec7b2b2d87233d5f06c585de8e55b5204f02a06",
+    "process": "d415c4465b07d3a37a3ce4cf55ab4dd8fe7c848d21f33a0ae710557bcb62edce",
+    "exit": "89ab328ebb1b739995dffcec2aab8b67b041610c78f544673be2ee2f47723aa1",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+  },
+  "remote_resources_sha256": "6a830407f2b366f118bc6c5adc554c58b15a1bccbd2a5d3398627ad332f3a72f",
+  "private_output_sha256": {
+    "private_trial_journal_sha256": "91724c7e7a211d88b2eb9306600e46cb1c79fadf99047f9d56da020e75825690",
+    "private_strict_log_sha256": "abf4e01a934ccc47d8bb0a113d48da1c0c52e1921e13e94df47f4a4d2f754e2d",
+    "private_executed_trace_index_sha256": "ee748c4e135f8e6bf54fc5ba667b06e51447433566a0c5cd6d6058f1429c15a0"
+  },
+  "policy_checkpoint_sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
+  "policy_checkpoint_completed_iterations": 15000,
+  "prior_checkpoint_optimizer_updates": 300000,
+  "replay": {
+    "complete_trials": 8,
+    "failed_trials": 0,
+    "finished_trials": 8,
+    "unattempted": 8270,
+    "optimizer_updates": 0,
+    "vectorized_control_calls": 63,
+    "scene_physics_steps": 252,
+    "closed_private_traces_verified": 8,
+    "finite_qpos_bytes": 65952,
+    "total_recorded_poses": 458,
+    "completion_branch_exercised": true,
+    "terminal_execution_state_captured_before_autoreset": true
+  },
+  "closure": {
+    "actual_child_exit_code": 0,
+    "actual_outer_exit_code": 0,
+    "child_reaped": true,
+    "supervision_passed": true,
+    "timed_out": false,
+    "common_lock_free": true,
+    "workers": [],
+    "shutdown_actions": [],
+    "native_close_returned": false,
+    "teardown_fallback_used": true,
+    "shutdown_completion_verified": true,
+    "supervised_elapsed_seconds": 117.26973501592875
+  },
+  "validation": {
+    "collector_checks_passed": true,
+    "finite_36d_qpos": true,
+    "normalized_root_quaternions": true,
+    "exact_sample_and_byte_counts": true,
+    "private_binary_hashes_verified": true,
+    "journal_matches_final_trials": true,
+    "unchanged_source_and_settings_hashes": true,
+    "author_and_document_strict_journal_hashes_equal": true
+  },
+  "runtime_sources_modified": false,
+  "spec_modified": false,
+  "full_launched": false,
+  "teacher_touched": false,
+  "external_notifications_sent": false,
+  "material_document_runtime_divergences": [],
+  "documentation_notes": [
+    "The document says 'three new Python sources' while its inventory names four; all four were inspected. No command or source repair was needed."
+  ],
+  "limits": [
+    "Only 8 selected shortest original motions were replayed; 8270 originals remain unattempted. This is not full-library filtering or corpus acceptance.",
+    "Historical EMA<=5% candidates remain 0; this user-directed strict route bypasses that selection and does not establish the paper two-stage filtering claim.",
+    "Current-target errors do not establish independent final-reference endpoint, semantic quality, or downstream generator readiness.",
+    "All 8 trials naturally completed; physical failure execution was not exercised by this smoke. Failure precedence was inspected in StrictCoverage; synthetic fixtures are not physical evidence.",
+    "Native SDK close did not return; the existing 20-second bounded completed-job fallback was used, with actual exit 0 and shutdown_completion_verified=true."
+  ]
+}

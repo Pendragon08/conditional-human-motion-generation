@@ -10,17 +10,39 @@ if l:
  c=l['counts'];extra=f"最近已核验的是10000轮检查点的全部{l['source_count']}来源真实宽松训练统计：{c['eligible_for_strict']}条达到严格回放候选门槛，{c['rejected_relaxed_rate']}条宽松历史失败率超过5%，{c['unattempted']}条无有效尝试；这不是15000轮结果，严格回放与最终训练语料验收尚未完成。"
  if c['eligible_for_strict']==0:extra+=' 当前为空候选，不能建立合格语料，也不能据此宣称全部动作不可行。EMA最低18.66%、中位24.65%；原始累计失败率最低13.33%。发布版本统计有初始化与学习历史影响，不据此断言唯一根因。保持5%阈值并改进教师，在新15k检查点复查，不强制等40k才检查。'
 recovery=BASE/'results/teacher10000_full_filter_20261027/progress.json'
-if recovery.exists():
+verified15=False
+stop_path=BASE/'results/teacher15000_direct_strict_20261027/control/user_stop_v1_result.json'
+stopped=stop_path.exists() and json.loads(stop_path.read_text(encoding='utf-8')).get('common_sdk_lock_released') is True
+checkpoint15=BASE/'results/filter_recovery_checkpoints_20261027/round_15000'
+if (checkpoint15/'backup.json').exists():
+ b15=json.loads((checkpoint15/'backup.json').read_text(encoding='utf-8'))
+ if b15.get('status')=='FORMAL_CHECKPOINT_PRIVATE_FULL_AND_GITHUB_INFERENCE_VERIFIED':
+  s15=json.loads((checkpoint15/'relaxed_summary.json').read_text(encoding='utf-8'))
+  assert b15['private_full_two_location_sha_verified'] and b15['private_relaxed_statistics_two_location_sha_verified']
+  assert s15['completed_learning_iterations']==15000 and s15['source_count']==8278
+  assert s15['checkpoint_sha256']==b15['audit']['full_checkpoint']['sha256']
+  c15=s15['counts']; dist=s15['ema_failure_distribution'];verified15=True
+  extra=f"15000轮真实检查点已完成CPU全状态核验及服务器、D盘私有SHA备份，累计300000次优化更新。全部8278条来源均有真实尝试：{8278-c15['unattempted']}条已尝试，{c15['eligible_for_strict']}条达到EMA失败率≤5%的宽松候选门槛，{c15['above_relaxed_threshold']}条超过门槛，{c15['unattempted']}条未尝试，{c15['invalid_denominator']}条统计分母无效。累计{ s15['raw_attempts_total']:,}次尝试；EMA失败率最低{dist['minimum']:.2%}、中位{dist['median']:.2%}。这只是保存的宽松训练历史统计，不是新的严格物理回放。"
+  if c15['eligible_for_strict']==0:
+   extra+=' 与10k的最低18.66%、中位24.65%相比有所下降。用户随后明确要求停止训练跟踪器、直接物理筛选：用冻结15000轮模型回放全部8278个原始动作，保留原EMA门槛结果，不把它改写成通过。这是用户指定的直接严格回放路线，与论文先按EMA选候选的步骤有区别。'
+if stopped:
+ extra+=' 跟踪器已实际受控退出，原进程已回收，共同GPU/SDK锁已释放；停止前日志收据15300轮，安全可恢复检查点为15000轮。不会再训练跟踪器。'
+ full_progress=BASE/'results/teacher15000_direct_strict_20261027/teacher15000_direct_full_v1/progress.json'
+ if full_progress.exists():
+  fp=json.loads(full_progress.read_text(encoding='utf-8'));fr=fp.get('files',{}).get('receipt',{})
+  extra+=f" 新全库严格回放状态：{fr.get('status')}；已结束{fr.get('finished_trials',0)}/8278，完整通过{fr.get('complete_trials',0)}，物理终止失败{fr.get('failed_trials',0)}。采样时间Unix {fp.get('observed_unix')}；进行中数量不是最终筛选结果。"
+ else:extra+=' 新完整回放入口正在接受实际运行核验，尚不能报告全库通过数量。'
+elif recovery.exists():
  j=json.loads(recovery.read_text(encoding='utf-8'));tr=j.get('receipt') or {};extra+=f" 当前教师接续状态{tr.get('status')}，精确状态恢复核验{tr.get('resume_exact_state_verified')}，收据轮数{tr.get('completed_learning_iterations')}，原生日志最新完成轮数{j.get('observed_completed_from_native_log')}；每100轮刷新收据，初始0不代表从0重训。"
 checkpoint_tools=BASE/'results/filter_recovery_checkpoint_tools_20261027/activation.json'
-if checkpoint_tools.exists():
+if checkpoint_tools.exists() and not verified15:
  t=json.loads(checkpoint_tools.read_text(encoding='utf-8'))
  extra+=' 新运行的15k及后续检查点已准备独立备份和全源宽松统计入口，元数据/计数检查及独立文档核查已完成；实际新检查点加载、备份和统计仍等待真实保存，尚未进行严格筛选。工具不停止训练，不复用旧5k/10k来源，不公开完整优化器或逐动作记录。'
 handoff=BASE/'configs/teacher15000-user-handoff-plan-20261027.json'
 if handoff.exists():
  h=json.loads(handoff.read_text(encoding='utf-8'))
  assert h['target_checkpoint_completed_iterations']==15000 and h['relaxed_failure_rate_maximum']==.05
- extra+=' 用户新增明确要求：15000轮真实检查点及备份核验后，自动通知达到5%门槛的动作数量，即使为0也通知；候选严格回放和非空运动—文本语料、CLIP、恢复及容量验收通过后直接启动筛选语料VAE200k→LDM300k，不再问确认。现有自动检查临时每15分钟，未达节点的健康进度保持安静；没有新增协调器或修改活动训练。'
+ extra+=' 用户明确要求：报告实际筛选数量，直接全库严格回放及非空运动—文本语料、CLIP、恢复与容量验收通过后自动启动新的筛选语料VAE200k→LDM300k，无需再次确认。'
 text=f'''# TextOp：恢复先筛选、后训练的论文顺序
 
 用户2026-10-27明确调整：安全保存并暂停未筛选数据生成器，先完成全库物理筛选。先前推荐的“未筛选全源先训练”属于额外对照，并非论文主线；现在已取消其自动接续，不能把这条路线说成论文训练数据已合格。
@@ -31,7 +53,7 @@ text=f'''# TextOp：恢复先筛选、后训练的论文顺序
 
 {extra}
 
-接续顺序：新教师检查点复查全源宽松统计，对候选进行严格完整回放 → 保留可跟踪的原始参考动作并配对BABEL文本 → 源隔离、TRAIN-only统计、真实CLIP和加载/恢复/容量验收 → 筛选语料上的VAE200k与LDM300k。10k及下一15k是用户允许的提前评估节点，与论文40k筛选教师保持区别；严格通过率和质量若不足，保留失败并据实际证据改进教师。未尝试/失败原资产不删除，早期教师失败不证明动作绝对不可行。
+最新接续顺序：停止跟踪器 → 冻结15000轮模型直接对全8278来源严格完整回放 → 保留可跟踪的原始参考动作并配对BABEL文本 → 源隔离、TRAIN-only统计、真实CLIP和加载/恢复/容量验收 → 新筛选语料上的VAE200k与LDM300k。直接回放不宣称历史EMA门槛已通过，也不自动恢复跟踪器训练。未尝试/失败原资产不删除，早期教师失败不证明动作绝对不可行。
 
 原8278来源预处理及私有备份已经完成。当前未筛选VAE只保留为独立对照，不自动恢复，也不自动启动其LDM。完整语义质量、最终WBC/生成增强、在线执行与论文完整效果仍未通过。
 
@@ -43,6 +65,8 @@ name='TextOp恢复论文筛选顺序_20261027.html';(D/name).write_text(body,enc
 main=D/'TextOp下载与训练报告.html'
 if main.exists():
  old=main.read_text(encoding='utf-8');old=re.sub(r'<!--generator8278-current-start-->.*?<!--generator8278-current-end-->','',old,flags=re.S);old=re.sub(r'<!--filter-first-current-start-->.*?<!--filter-first-current-end-->','',old,flags=re.S)
- section='<!--filter-first-current-start--><section style="padding:24px;background:#edf6ee;color:#153a24;font:17px/1.8 system-ui"><h2>最新：生成器已保存暂停，恢复先筛选后训练</h2><p>'+str(r['completed_attempts'])+'步完整状态已在服务器与D盘核验。全库物理筛选尚未完成；未筛选实验不自动接续。</p><a href="'+name+'">查看暂停、备份及论文顺序说明</a></section><!--filter-first-current-end-->'
+ headline='15000轮筛选统计已核验，生成器等待合格语料' if verified15 else '生成器已保存暂停，恢复先筛选后训练'
+ current=f"15000轮：{c15['eligible_for_strict']}/8278条达到EMA失败率≤5%候选门槛，严格筛选和合格语料仍未完成。" if verified15 else str(r['completed_attempts'])+'步完整状态已在服务器与D盘核验。全库物理筛选尚未完成；未筛选实验不自动接续。'
+ section='<!--filter-first-current-start--><section style="padding:24px;background:#edf6ee;color:#153a24;font:17px/1.8 system-ui"><h2>最新：'+headline+'</h2><p>'+current+'</p><a href="'+name+'">查看检查点、筛选统计及接续说明</a></section><!--filter-first-current-end-->'
  match=re.search(r'<body[^>]*>',old,re.I);old=old[:match.end()]+section+old[match.end():] if match else section+old;main.write_text(old,encoding='utf-8')
 print(json.dumps({'status':r['status'],'steps':r['completed_attempts'],'report':str(D/name)},ensure_ascii=False))
