@@ -25,6 +25,17 @@ VAE five bounded slots+reserve+logs require5452595200B; home is merely a
 candidate, not capacity acceptance. Choose fresh owned task destination and
 bind allowed root after actual resource checks. Preserve all checkpoints/data.
 No actual filtered acceptance or training yet. Full LDM entry remains pending.
+New staged follow-up: activate_filtered15000_corpus.py binds only positive
+closed CPU audit and actual private accepted sources; it has not run. Full LDM
+numerical source is prepared at filtered15000_ldm_runtime.py/full_ldm_history.py,
+disabled plan filtered15000-ldm-plan.json. Native4-stage300k/fullDDPM history code,
+paper rollout cap.8 vs native1 and disabled-static edge correction are explicit.
+Only10 new CPU probability/schedule checks; no real GPU model/sample/gradient.
+Full LDM entry/actual VAE200k export/author-fresh witness still pending. Do not
+claim a later-stage optimizer clock from the future simulated-gate probe.
+Continue implementing post-corpus data acceptance/private recovery backup and
+persistent capacity/VAE activation bridge while real full replay is pending.
+Read reports/filtered15000_ldm_preparation_20261027.md. No old diagnostics repeated.
 <!--filtered15000-tools-current-end-->
 
 最新接续授权（2026-10-27）：用户要求全部物理筛查结束后，直接用真实通过动作启动生成器，不再询问。见configs/teacher15000-full-to-generator-autostart-20261027.json；所有数据/加载/梯度/恢复和持久容量验收由系统自动推进。未筛选8100步状态不恢复。当前每15分钟检查完成与衔接，生成器开训后恢复每小时，健康状态静默。估计只指物理回放结束，后续语料验收和启动仍需执行时间。

@@ -64,6 +64,12 @@ audit, bind strict_audit_receipt, strict_audit_receipt_sha256 and the actual
 strict_audit_supervisor_sha256; verify the private selection and original closed
 CPU/outer proof through filtered15000_inputs.load_selection. Only then enable.
 This binding must not be invented from current partial counts.
+The provider bridge activate_filtered15000_corpus.py now implements this step:
+it requires local positive audit progress with all actual exits, rechecks the
+private selected sources and server CPU/outer proof, unchanged builder and
+dependencies, free common lock, GPU1>20GiB, RAM/disk/SHM reserve and a new view.
+It archives the disabled spec bytes and enables construction without dispatch.
+It has not been executed because the actual full result is still pending.
 
 The builder rereads the existing8278 prepared metadata and selects exactly the
 actual original-source strict passes. Original retained REFERENCE arrays are
@@ -107,6 +113,32 @@ initialization, batch512/69D/history2/future8/4primitives, native full200k clock
 All checkpoints, emergency states, failures and skipped updates remain recorded.
 No additional user permission is required for these already authorized steps.
 
-The full LDM300k entry is still pending implementation/actual acceptance;
-use_full_sample=True must work at stage>0. Neither this staged code nor a small
-witness establishes full generation, semantics, WBC or online physical quality.
+The full LDM numerical runtime is now prepared, but its actual entry/receipt,
+frozen VAE200k inference export, storage binding and GPU acceptance are pending.
+Read scripts/filtered15000_ldm_runtime.py, scripts/full_ldm_history.py and
+configs/filtered15000-ldm-plan.json. No LDM models were loaded or run.
+
+It uses the released four-stage clock [50000,50000,50000,150000], total300k,
+with full five-step DDPM history candidates actually in the stage>0 code path.
+Training uses native conditional sampling, without inference CFG. Generation
+diagnostics keep CFG5 and FIXED_LARGE; release default FIXED_SMALL stays recorded.
+The paper's maximum LDM rollout probability.8 is explicit, versus native cap1;
+the native static-pose stage>=2 edge case is disabled when static_pose=false.
+Those adjustments are recorded differences rather than attributed to upstream.
+
+A future real-model helper probe temporarily tests the later-stage gate and
+five denoiser calls at batch12, restores RNG/model/clock, and explicitly does
+not claim that50k training was reached. Formal stage>0 execution must record
+real full-history calls and selected rollout history. Source-only schedule
+checks currently passed10CPU cases; no gradients/sampling or GPU probe has run.
+Future resume must call restore_auxiliary_counters after load_manager so the
+saved full-history evidence counter continues. The actual train clock/state
+protocol is unchanged, and the formal denoiser must start fresh.
+
+Planned full-state saves100k/200k/300k plus an emergency slot preserve the full
+optimization clock while reducing persistent storage load. A separate future
+CPU-verified inference-only VAE200k export can avoid copying Adam state into the
+denoiser's frozen VAE cache; the original complete VAE states stay preserved.
+All of that remains subject to actual source/state/capacity acceptance.
+Neither staged code nor a small witness establishes generation semantics,
+final endpoints, WBC or online physical quality.
