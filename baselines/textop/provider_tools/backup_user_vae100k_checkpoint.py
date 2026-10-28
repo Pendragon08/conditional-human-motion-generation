@@ -11,11 +11,15 @@ def sha(p):
 def write(p,x):
  with pathlib.Path(p).open('x',encoding='utf-8') as f:json.dump(x,f,indent=2);f.flush();os.fsync(f.fileno())
 def main():
- j=json.loads((O/'user_vae100k_control_v1/progress.json').read_bytes())
- assert j['kind']=='control' and j['closed_execution_verified'] and j['common_lock_free'] and not j['workers']
- r=j['files']['receipt'];assert r['status']=='USER_VAE100000_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED'
- binding=dict(kind='USER_REQUESTED_VAE100000_PREFIX',selected_step=100000,control_run='user_vae100k_control_v1',
-  control_receipt_sha256=j['sha256']['receipt'],control_exit_sha256=j['sha256']['exit'])
+ rp=O/'user_vae100k_resume_train_v1/progress.json'
+ if rp.exists():
+  j=json.loads(rp.read_bytes());assert j['kind']=='resume' and j['closed_execution_verified'] and j['common_lock_free'] and not j['workers']
+  r=j['files']['receipt'];assert r['status']=='USER_VAE100000_RESUME_FINISHED'
+  binding=dict(kind='USER_VAE100000_RESUMED_FROM_CAPACITY_STOP',selected_step=100000,run='user_vae100k_resume_train_v1',receipt_sha256=j['sha256']['receipt'],exit_sha256=j['sha256']['exit'])
+ else:
+  j=json.loads((O/'user_vae100k_control_v1/progress.json').read_bytes());assert j['kind']=='control' and j['closed_execution_verified'] and j['common_lock_free'] and not j['workers']
+  r=j['files']['receipt'];assert r['status']=='USER_VAE100000_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED'
+  binding=dict(kind='USER_REQUESTED_VAE100000_PREFIX',selected_step=100000,control_run='user_vae100k_control_v1',control_receipt_sha256=j['sha256']['receipt'],control_exit_sha256=j['sha256']['exit'])
  ck=r['selected_checkpoint'];assert ck['manager_step']==100000
  dest=D/'checkpoints/private/filtered15000_vae200k_20261028/step_100000'
  guard_local(D,dest,directory=True,must_absent=True)

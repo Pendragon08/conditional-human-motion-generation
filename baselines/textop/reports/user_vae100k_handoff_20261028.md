@@ -1,12 +1,11 @@
-<!--user-vae100k-current-start-->
-## CURRENT — latest user goal VAE100000 → full LDM300000
+<!--latest100k-ldm-current-start-->
+## CURRENT — VAE100000 COMPLETE; fresh full LDM300000 RUNNING
 
-用户最新明确要求“训练到100000步就行了，然后训练LDM。”，覆盖后文所有旧200k等待与导出条件。已实际启用唯一CPU控制run user_vae100k_control_v1；2026-10-28T11:13:04.690242+08:00真实观测93100步，WAITING_FOR_REAL_VAE100000_SAVED_AND_RELOADED，已发生产信号0。这是进度，不是100k检查点。原VAE及CPU控制源码/spec保持冻结，不再次arm或发信号。
+2026-10-28T13:06:02.848268+08:00实际核验：VAE目标100000已完成，真实100000Adam/0skip，完整状态513526765B/SHA99017f1cbd13cf2904bc5f87904e5a488a5b3ee1f920da1882f90fdad04029ed；恢复与质量/CPU推理导出均实际0。完整LDM两份独立真实梯度/Adam/RNG/nextbatch/pending验证及五步historyhelper见证均已闭合0，fresh SUMMARY SHA1af9100a0520660d5ba2907255604198490c1acb99b057b016a77a1c2ae10c86，诊断权重没有种入正式训练。
 
-控制每秒等真实命名100k完整状态和生产精确重载收据，核SHA/身份后一次pidfd SIGINT。原程序KeyboardInterrupt/非零退出如实保留，另行真实闭合控制作业；只选择不可变100k状态，丢弃后续内存进度，不冒称200k完成。控制CPU作者和独立fresh文档见证都已真实退出0，生产信号尚未发出。后续100k质量/CPU导出/完整LDM入口已实际部署禁用，尚无100k质量或新LDM实际验收。
+唯一正式GPU run user_vae100k_ldm300k_train_v1：最新100尝试/100Adam/0skip，RUNNING，无exit，共同GPU锁占用。此为真实新denoiser初始化进度，不是保存检查点；首个LDM完整保存节点100000。active specSHA654332646f2aa4bb69fea4cc779edf88138735a0ca9f5e5906e783948868c770，entrySHAeb613778716602f83051e54a2c40d1fc8b6a2820aaf5bd8416a75b18f47b3b64，numeric/layout binding323349d38cef74e07215ab81c8919879512a2391552c9187151eb6a8a521b7ff。所有运行源/spec冻结，不停机、不重派、不与其他GPU/SDK模型任务重叠。
 
-按 [VAE100K_USER_HANDOFF_ENVIRONMENT.md](VAE100K_USER_HANDOFF_ENVIRONMENT.md) 完整命令自动接续：实际原退出及控制0/锁释放 → 真实100k私有D字节备份 → 原固定batch质量/完整状态恢复且0训练更新 → 独立CPU推理导出 → 新完整LDM作者与fresh实际梯度/恢复见证 → 新初始化LDM300k。不再等待200k、不恢复teacher/prefilter8100/quickLDM，不再询问开训。现有textop心跳已临时15分钟，新LDM健康后恢复每小时。所有数据、checkpoint、失败、旧收据及私有SDK冷恢复保留，2GiB空闲保留不降。
-<!--user-vae100k-current-end-->
+按 [USER_VAE100K_LDM_ENVIRONMENT.md](USER_VAE100K_LDM_ENVIRONMENT.md) 继续完整300k四阶段。双自有持久盘保留完整三份普通状态+紧急槽：HOME放LDM100k/300k及VAEcache，data放LDM200k/紧急槽及全局512MiB日志；每盘均2GiB保留，真实uid1013/ext4/无symlink/容量和低空间/同盘重复计数拒绝已核验。旧99700容量失败和旧控制0信号失败原件保留；未删数据/状态，也不把VAE100k说成论文200k或完整复现。
 
-
-实际CPU控制文档见证SUMMARY：work/textop_reproduction_20261024/vae100k_control_document_v1/SUMMARY.json，SHA d8faff2d94d66e8a6806dde51388bb015f44462b7c0738d58e8a3f187781bc93。首次3.8 pidfd接口不兼容与SSH banner失败已保留，未被用作正面验收；新路径实际GPU/质量/CPU导出/LDM见证仍为0。
+私有恢复：50k D副本已核验；99700首次SCP已实际超时并回收，32997376B partial保留；100k字节SFTP worker p100k_v1单独运行（6h/15s资源/全SHA及prefixSHA/Windows owner/2GiB保留），仍PENDING，不冒称全部D备份已完成。数值训练与不可变来源的独立字节复制可并行。完成100k后续传99700保留前缀，不重传旧字节、不删partial。新完整LDM状态和媒体的未来容量仍需真实验收。语义/TMR/在线物理效果及影片尚未完成，阶段完成不当暂停点。
+<!--latest100k-ldm-current-end-->

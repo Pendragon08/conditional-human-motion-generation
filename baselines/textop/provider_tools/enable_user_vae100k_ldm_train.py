@@ -7,7 +7,7 @@ dp=pathlib.Path(a.document_summary).resolve();doc=json.loads(dp.read_text(encodi
 assert doc['status']=='USER_VAE100K_LDM_FRESH_DOCUMENT_VERIFIED' and doc['run']=='user_vae100k_ldm_document_v1' and doc['actual_exit_code']==0 and doc['findings']==[]
 sp=B/'configs/user-vae100k-ldm-spec.json';old=sp.read_bytes();s=json.loads(old)
 assert s['witness_authorized'] and not s['train_authorized'] and s['witnesses']==[]
-keys=['ldm','seed','corpus_receipt_sha256','data_acceptance_sha256','strict_audit_receipt_sha256','vae_training','vae_export','vae_inference','bound_sources','entrypoint_sha256','checkpoint_dir','checkpoint_allowed_root','checkpoint_policy']
+keys=['ldm','seed','corpus_receipt_sha256','data_acceptance_sha256','strict_audit_receipt_sha256','vae_training','vae_export','vae_inference','bound_sources','entrypoint_sha256','checkpoint_dir','checkpoint_allowed_root','checkpoint_policy','checkpoint_layout']
 signature=hashlib.sha256(json.dumps({k:s[k] for k in keys},sort_keys=True,separators=(',',':')).encode()).hexdigest()
 assert doc['runtime_binding_sha256']==signature
 witnesses=[]
@@ -30,12 +30,12 @@ p=r/'configs/user-vae100k-ldm-spec.json';assert hashlib.sha256(p.read_bytes()).h
 data=base64.b64decode(__NEW_BYTES__);s=json.loads(data);sys.path.insert(0,str(r/'scripts'))
 from filtered15000_corpus_acceptance import read,sha
 from filtered15000_inputs import load_selection
-from checkpoint_storage_guard import check
+from user_vae100k_ldm_storage import check,contains_state_files
 from user_vae100k_completion import accepted_vae100k as completed_vae,closed_job
 load_selection(read(r/'configs/filtered15000-corpus-spec.json'));completed_vae(s['vae_training'])
 ap=r/'receipts/filtered15000_data_acceptance_v1.json';assert sha(ap)==s['data_acceptance_sha256'];acc=read(ap)
 assert acc['actual_strict_filtered_training_data_accepted'] and acc['private_server_D_backup_receipt_sha256'] and not acc['paper_two_stage_route_reproduced']
-keys=['ldm','seed','corpus_receipt_sha256','data_acceptance_sha256','strict_audit_receipt_sha256','vae_training','vae_export','vae_inference','bound_sources','entrypoint_sha256','checkpoint_dir','checkpoint_allowed_root','checkpoint_policy']
+keys=['ldm','seed','corpus_receipt_sha256','data_acceptance_sha256','strict_audit_receipt_sha256','vae_training','vae_export','vae_inference','bound_sources','entrypoint_sha256','checkpoint_dir','checkpoint_allowed_root','checkpoint_policy','checkpoint_layout']
 signature=hashlib.sha256(json.dumps({k:s[k] for k in keys},sort_keys=True,separators=(',',':')).encode()).hexdigest()
 assert signature==__NUMERIC_SIGNATURE__ and len({w['run'] for w in s['witnesses']})==2
 for name,h in s['bound_sources'].items():assert sha(r/name)==h,name
@@ -51,8 +51,8 @@ for w in s['witnesses']:
  h=rec['full_history_helper_witness'];assert h['actual_denoiser_forward_calls']==5 and h['rng_restored'] and h['model_and_frozen_vae_unchanged'] and not h['formal_later_stage_training_reached']
  assert rec['vae_inference_sha256']==s['vae_inference']['sha256']
 lock=(r/'receipts/full_library_capacity.lock').open('a+');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-dest=pathlib.Path(s['checkpoint_dir']);assert not list(dest.glob('ldm_state_*.pth')) and not list(dest.glob('emergency_*.pth')) and not list(dest.glob('*.partial'));assert sha(dest/'vae.pth')==s['vae_inference']['sha256']
-capacity=check(dest,pathlib.Path(s['checkpoint_allowed_root']),s['checkpoint_policy'],remaining_saves=4)
+dest=pathlib.Path(s['checkpoint_dir']);assert not contains_state_files(s);assert sha(dest/'vae.pth')==s['vae_inference']['sha256']
+capacity=check(s)
 free={int(x.split(',')[0]):int(x.split(',')[1]) for x in subprocess.check_output(['nvidia-smi','--query-gpu=index,memory.free','--format=csv,noheader,nounits'],text=True,timeout=15).splitlines()};assert free[1]>20480
 readiness=dict(status='ACTUAL_FILTERED_CORPUS_AND_TWO_GRADIENT_RESTORE_WITNESSES_ACCEPTED',filtered_corpus_accepted=True,
  formal_training_ready=True,generator_started=False,runtime_binding_sha256=signature,checkpoint_capacity=capacity,

@@ -1,18 +1,47 @@
 {
   "schema": "textop.user_vae100k_full_ldm.v1",
-  "witness_authorized": false,
-  "train_authorized": false,
-  "witnesses": [],
+  "witness_authorized": true,
+  "train_authorized": true,
+  "witnesses": [
+    {
+      "run": "user_vae100k_ldm_author_v1",
+      "receipt_sha256": "bd1612e1a7414d8d38aaa217216c6b5bb5e7e90bd7aa7bf84478f5eb94e8c6e8",
+      "exit_sha256": "f95a0b8e2e87bcb71888b3e056ce4781633d237cb6dd7c2e953465eb323e8524"
+    },
+    {
+      "run": "user_vae100k_ldm_document_v1",
+      "receipt_sha256": "195991ec88dc7c168c6a3b733352ad2341a6846dae3ae84c968dd40d1b827a0a",
+      "exit_sha256": "d84f90a0c1de75eaad4bcad1f441be2038529901cf81e613b1c027b5d5b48859"
+    }
+  ],
   "seed": 20261028,
-  "data_acceptance_sha256": null,
-  "corpus_receipt_sha256": null,
-  "strict_audit_receipt_sha256": null,
+  "data_acceptance_sha256": "0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c",
+  "corpus_receipt_sha256": "fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427",
+  "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
   "corpus_dir": "/dev/shm/ouyanghao_textop_20261025/filtered15000_actual_pass_v1",
-  "vae_training": null,
-  "vae_export": null,
-  "vae_inference": null,
-  "checkpoint_dir": null,
-  "checkpoint_allowed_root": null,
+  "vae_training": {
+    "kind": "USER_VAE100000_RESUMED_FROM_CAPACITY_STOP",
+    "selected_step": 100000,
+    "run": "user_vae100k_resume_train_v1",
+    "receipt_sha256": "9d50bab6cb13e5aada2a19933b62aa00346b493bc19a1f17446f64d3a80d51a3",
+    "exit_sha256": "8b5d5c9aa08b53087805ee6442d23db1ee0b4671c11f70063c3cc482f7ae1bfe",
+    "quality_run": "user_vae100k_quality_v1",
+    "quality_receipt_sha256": "3f7e4419358b7c7434d681670c050bf716b9dd54441eb7b891b852746da78873",
+    "quality_exit_sha256": "7bb9b0b74755f156c49c2ee3272940430fc7d5414f21662ec64ea70d0319b5bf"
+  },
+  "vae_export": {
+    "run": "user_vae100k_export_v1",
+    "receipt_path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/vae_export_runs/user_vae100k_export_v1/receipt.json",
+    "receipt_sha256": "ecf44840029ce6e947d1658f7c07b0b8977fd3cd05f86edc14704ac5e8a86efc",
+    "exit_sha256": "da300a076298eb2b434458510dae5bce803acdd0db31fd701e508f5abf758447"
+  },
+  "vae_inference": {
+    "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/user_vae100k_inference/vae100000_inference.private.pth",
+    "bytes": 171154895,
+    "sha256": "3f36bcbccdee10a8c1c2eb67b0614be63b32bd8a05cff92de23cc358087117f4"
+  },
+  "checkpoint_dir": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints",
+  "checkpoint_allowed_root": "/home/ouyanghao",
   "vae_cache_upper_bound_bytes": 188743680,
   "checkpoint_policy": {
     "reserve_bytes": 2147483648,
@@ -62,11 +91,13 @@
     "upstream/TextOpRobotMDAR/robotmdar/train/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "scripts/contact_filter_resources.py": "1003a7cba9d2f2e30a05a881020e51ed8907eba6d523e4ce8af6b1b5399f76e5",
     "scripts/contact_process_supervision.py": "44d689a71dc0c04778a7e6e651bc61d234dd59d3435a80c543be9d8db55638b4",
-    "scripts/user_vae100k_completion.py": "636b56ab20cd7e1b5f5de3d9c532b1acb6f605ecffc20f5cb6e792ed6c5c9372",
+    "scripts/user_vae100k_completion.py": "49df3321d21fd06a6d42127ab1ad21911427d3bba243d7918382f5fe610f4312",
     "scripts/vae100k_control_protocol.py": "1aa7936c461f6801cddb0a76378ecd49d9d696c543ed7534d976c3e03b4e8216",
-    "scripts/quick_pidfd.py": "df180bffb3e35dd77c8bb4f8ca9b143879a4184f6f8aab98188e1139de6538f2"
+    "scripts/quick_pidfd.py": "df180bffb3e35dd77c8bb4f8ca9b143879a4184f6f8aab98188e1139de6538f2",
+    "scripts/user_vae100k_resume_protocol.py": "73ee863b240469806b73eef41ef68f983d8349fa50643de1b039a0a912ab4ed1",
+    "scripts/user_vae100k_ldm_storage.py": "d160a2f4466cb45bf1b21516b67412873eaed82268aa27051aeaf5f674b57929"
   },
-  "entrypoint_sha256": "502f9b8e58191278305f7f59257608b89b665dffcd094d2b7a2140a9bf133194",
+  "entrypoint_sha256": "eb613778716602f83051e54a2c40d1fc8b6a2820aaf5bd8416a75b18f47b3b64",
   "supervisor_sha256": "62131c5cb93682c8b8cbc3cfea565fc3d76c797a1339dd67e2263c6ca73dab9c",
   "ldm": {
     "stages": [
@@ -102,5 +133,27 @@
     "posterior_variance": "FIXED_LARGE"
   },
   "scope": "User-shortened VAE100000 frozen prefix followed by fresh full LDM300000. Same strict corpus and native fullDDPM later-stage runtime. Actual gates pending.",
-  "vae_pretraining_attempts": 100000
+  "vae_pretraining_attempts": 100000,
+  "checkpoint_layout": {
+    "schema": "textop.user_vae100k_ldm_dual_storage.v1",
+    "volumes": {
+      "home": {
+        "allowed_root": "/home/ouyanghao",
+        "checkpoint_dir": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints",
+        "log_allowance_bytes": 0
+      },
+      "data": {
+        "allowed_root": "/data/code/ouyanghao/oyh/textop-reproduction-20261024",
+        "checkpoint_dir": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/user_vae100k_ldm_dual/checkpoints",
+        "log_allowance_bytes": 536870912
+      }
+    },
+    "slots": {
+      "100000": "home",
+      "200000": "data",
+      "300000": "home",
+      "emergency": "data"
+    }
+  },
+  "independent_document_summary_sha256": "1af9100a0520660d5ba2907255604198490c1acb99b057b016a77a1c2ae10c86"
 }

@@ -1,0 +1,129 @@
+{
+  "kind": "resume",
+  "run": "r100_author_v1",
+  "observed_unix": 1793160505.8088977,
+  "files": {
+    "receipt": {
+      "status": "USER_VAE100K_RESUME_WITNESS_PASSED",
+      "run": "r100_author_v1",
+      "mode": "witness",
+      "source_sha256": "762bf67251abd77f1302eb54e93e958828f99bc0241210e0a6d6db8ba9419a63",
+      "spec_sha256": "9e9df3fc36c4fe841eb9a86a22f004ac051c4a582a2c6380ff7c50c5994e389f",
+      "resume_checkpoint": {
+        "path": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/emergency_99700.pth",
+        "bytes": 513526701,
+        "sha256": "4ebfe7174678c54d23a1c5d4f71857d6a6a22cca08bd2c1cbf6d82dcce3f4c49",
+        "manager_step": 99700,
+        "actual_optimizer_updates": 99700
+      },
+      "output_writers_closed": true,
+      "new_optimizer_updates": 4,
+      "original200k_completion_claimed": false,
+      "initial_resume": {
+        "model_restored_exactly": true,
+        "optimizer_restored_exactly": true,
+        "ema_restored_exactly": true,
+        "rng_and_generator_restored_exactly": true,
+        "clock_restored_exactly": true,
+        "pending_evaluation_fields_restored": true,
+        "checkpoint_boundary": "completed_four_primitive_batch; no cached batch/history"
+      },
+      "finite_gradients": true,
+      "exact_model_adam_rng_nextbatch_restore": true,
+      "pending_validation_without_updates": true,
+      "diagnostic_state_reused_for_training": false,
+      "persistent_checkpoint_created": false
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=4",
+        "MKL_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "WANDB_MODE=disabled",
+        "PYTHONUNBUFFERED=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_user_vae100k_resume.py",
+        "--mode",
+        "witness",
+        "--run",
+        "r100_author_v1"
+      ],
+      "supervisor_pid": 289880,
+      "child_pid": 289938,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 6,
+      "sample_errors": [],
+      "elapsed_seconds": 51.22656595148146,
+      "supervision_passed": true,
+      "source_sha256": "5e2b39dd5f18b19f3cd397f994276417681cacbb2350e6fc1cc2e5365898b67f",
+      "receipt_sha256": "04fecb64a4f5c135ee51e0acb7f03277137c69622917060e7693dfef1fa6948d",
+      "process_exit_sha256": "48f8625fd9d53c33c8f1338aff25ea3f3deb4b9b03bcc7fed97d73fa20183de9",
+      "resource_sha256": "26140db805d96804f9d9a65b85a2b756cfc28c9d818a06c8ff06ec7a66f912b5",
+      "numerical_status": "USER_VAE100K_RESUME_WITNESS_PASSED"
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=4",
+        "MKL_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "WANDB_MODE=disabled",
+        "PYTHONUNBUFFERED=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_user_vae100k_resume.py",
+        "--mode",
+        "witness",
+        "--run",
+        "r100_author_v1"
+      ],
+      "supervisor_pid": 289880,
+      "child_pid": 289938,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 6,
+      "sample_errors": [],
+      "elapsed_seconds": 51.22656595148146,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    },
+    "driver": {
+      "status": "USER_VAE100K_RESUME_DISPATCHED_NOT_YET_ACCEPTED",
+      "mode": "witness",
+      "run": "r100_author_v1",
+      "driver_pid": 289866,
+      "spec_sha256": "9e9df3fc36c4fe841eb9a86a22f004ac051c4a582a2c6380ff7c50c5994e389f"
+    }
+  },
+  "sha256": {
+    "receipt": "04fecb64a4f5c135ee51e0acb7f03277137c69622917060e7693dfef1fa6948d",
+    "exit": "5141e304742d453ca272bfe3bc2ff9ed1688d516a2a01dc6f1e2b5abac4e2f43",
+    "process": "48f8625fd9d53c33c8f1338aff25ea3f3deb4b9b03bcc7fed97d73fa20183de9",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0",
+    "driver": "23cdc1744498407dd1ec05c152db04a96139b2e40f8a8d8dcaf377c064e7de2c"
+  },
+  "workers": [],
+  "closed_execution_verified": true,
+  "arrays_read": 0,
+  "model_loads": 0,
+  ".log_tail": "2026-10-28 04:06:45.462 | INFO     | robotmdar.dataloader.data:_load_data:95 -  Loading train data...\n2026-10-28 04:06:48.279 | INFO     | robotmdar.dataloader.data:_cal_sample_weight:127 -  ====================Use Weighted Sample====================\nbabel sum:  335.6629608030876\nsamp percent:  0.0\n2026-10-28 04:07:19.027 | INFO     | robotmdar.dataloader.data:_load_data:120 -  Found 10722 valid samples out of 10722\n2026-10-28 04:07:19.027 | INFO     | robotmdar.dataloader.data:_load_text_embeddings:225 -  Loading cached text embeddings...\n2026-10-28 04:07:19.362 | INFO     | robotmdar.dataloader.data:_load_meanstd:267 -  Loading cached mean/std from /dev/shm/ouyanghao_textop_20261025/filtered15000_actual_pass_v1/meanstd.pkl...\n2026-10-28 04:07:20.287 | INFO     | robotmdar.dataloader.data:_load_data:95 -  Loading val data...\n2026-10-28 04:07:21.350 | INFO     | robotmdar.dataloader.data:_load_data:120 -  Found 3548 valid samples out of 3548\n2026-10-28 04:07:21.350 | INFO     | robotmdar.dataloader.data:_load_text_embeddings:225 -  Loading cached text embeddings...\n2026-10-28 04:07:21.639 | INFO     | robotmdar.dataloader.data:_load_meanstd:267 -  Loading cached mean/std from /dev/shm/ouyanghao_textop_20261025/filtered15000_actual_pass_v1/meanstd.pkl...\n2026-10-28 04:07:22.194 | INFO     | robotmdar.train.manager:hold_model:580 - MVAEManager: Holding VAE model and optimizer\nEval finished at step 99704 with loss * 10: {'rec': tensor(0.0308), 'kl': tensor(22.4357), 'body_trans': tensor(4.6472e-05), 'body_rot': tensor(0.0001), 'dof_pos': tensor(0.0004), 'dof_vel': tensor(0.3266), 'foot_contact': tensor(6.9872e-05), 'total': tensor(0.0330)}\nEval extras * 10: {'drift_xy': tensor(1.2463e-05), 'drift_yaw': tensor(0.0001)}\n{\"status\": \"USER_VAE100K_RESUME_WITNESS_PASSED\", \"run\": \"r100_author_v1\", \"mode\": \"witness\", \"source_sha256\": \"762bf67251abd77f1302eb54e93e958828f99bc0241210e0a6d6db8ba9419a63\", \"spec_sha256\": \"9e9df3fc36c4fe841eb9a86a22f004ac051c4a582a2c6380ff7c50c5994e389f\", \"resume_checkpoint\": {\"path\": \"/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/emergency_99700.pth\", \"bytes\": 513526701, \"sha256\": \"4ebfe7174678c54d23a1c5d4f71857d6a6a22cca08bd2c1cbf6d82dcce3f4c49\", \"manager_step\": 99700, \"actual_optimizer_updates\": 99700}, \"output_writers_closed\": true, \"new_optimizer_updates\": 4, \"original200k_completion_claimed\": false, \"initial_resume\": {\"model_restored_exactly\": true, \"optimizer_restored_exactly\": true, \"ema_restored_exactly\": true, \"rng_and_generator_restored_exactly\": true, \"clock_restored_exactly\": true, \"pending_evaluation_fields_restored\": true, \"checkpoint_boundary\": \"completed_four_primitive_batch; no cached batch/history\"}, \"finite_gradients\": true, \"exact_model_adam_rng_nextbatch_restore\": true, \"pending_validation_without_updates\": true, \"diagnostic_state_reused_for_training\": false, \"persistent_checkpoint_created\": false}\n",
+  "_outer.log_tail": "{\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"CUDA_VISIBLE_DEVICES=1\", \"OMP_NUM_THREADS=4\", \"MKL_NUM_THREADS=4\", \"OPENBLAS_NUM_THREADS=4\", \"WANDB_MODE=disabled\", \"PYTHONUNBUFFERED=1\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_user_vae100k_resume.py\", \"--mode\", \"witness\", \"--run\", \"r100_author_v1\"], \"supervisor_pid\": 289880, \"child_pid\": 289938, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 6, \"sample_errors\": [], \"elapsed_seconds\": 51.22656595148146, \"supervision_passed\": true, \"source_sha256\": \"5e2b39dd5f18b19f3cd397f994276417681cacbb2350e6fc1cc2e5365898b67f\", \"receipt_sha256\": \"04fecb64a4f5c135ee51e0acb7f03277137c69622917060e7693dfef1fa6948d\", \"process_exit_sha256\": \"48f8625fd9d53c33c8f1338aff25ea3f3deb4b9b03bcc7fed97d73fa20183de9\", \"resource_sha256\": \"26140db805d96804f9d9a65b85a2b756cfc28c9d818a06c8ff06ec7a66f912b5\", \"numerical_status\": \"USER_VAE100K_RESUME_WITNESS_PASSED\"}\n",
+  "common_lock_free": true
+}

@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 120,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "26ed9a5d6ff2c1591dbf4ddbfec90133dc33ffafcaa0d98f2e60b0f041aba5d3",
+  "client_pid": 70484,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"status\": \"USER_VAE100K_SUCCESSOR_DISPATCHED_NOT_YET_ACCEPTED\", \"stage\": \"export\", \"run\": \"user_vae100k_export_v1\", \"driver_pid\": 295557, \"spec_sha256\": \"909b06d3ff3e9599ab1280849aef64e67af5555f9036231f3b6b2115c062ccdb\", \"command\": [\"python3\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_user_vae100k_export.py\", \"--run\", \"user_vae100k_export_v1\"]}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\filtered15000_handoff_20261027\\user_vae100k_export_v1\\dispatch.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\filtered15000_handoff_20261027\\user_vae100k_export_v1\\dispatch.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

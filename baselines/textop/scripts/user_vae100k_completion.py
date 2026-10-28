@@ -3,6 +3,9 @@ import json,pathlib
 from filtered15000_vae_completion import ROOT,sha,read,owned,closed_job
 
 def stopped_vae100k(binding):
+ if binding.get('kind')=='USER_VAE100000_RESUMED_FROM_CAPACITY_STOP':
+  from user_vae100k_resume_protocol import completed_resume
+  return completed_resume(binding)
  assert binding['kind']=='USER_REQUESTED_VAE100000_PREFIX' and binding['selected_step']==100000
  run=binding['control_run'];assert run=='user_vae100k_control_v1'
  cp=owned(ROOT/'vae100k_user_handoff_20261028'/run/'receipt.json')

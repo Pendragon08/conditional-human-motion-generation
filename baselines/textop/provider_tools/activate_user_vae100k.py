@@ -6,14 +6,26 @@ p=argparse.ArgumentParser();p.add_argument('--stage',choices=['quality','export'
 names={'quality':'user-vae100k-quality-spec.json','export':'user-vae100k-export-spec.json','witnesses':'user-vae100k-ldm-spec.json'}
 name=names[a.stage];sp=B/'configs'/name;old=sp.read_bytes();s=json.loads(old)
 assert not any(s.get(k,False) for k in ['quality_authorized','export_authorized','witness_authorized','train_authorized'])
-control=json.loads((O/'user_vae100k_control_v1/progress.json').read_bytes())
-assert control['closed_execution_verified'] and control['files']['receipt']['selected_checkpoint_attempts']==100000
-binding=dict(kind='USER_REQUESTED_VAE100000_PREFIX',selected_step=100000,control_run='user_vae100k_control_v1',control_receipt_sha256=control['sha256']['receipt'],control_exit_sha256=control['sha256']['exit'])
+resume_path=O/'user_vae100k_resume_train_v1/progress.json'
+if resume_path.exists():
+ control=json.loads(resume_path.read_bytes());assert control['closed_execution_verified'] and control['files']['receipt']['status']=='USER_VAE100000_RESUME_FINISHED'
+ binding=dict(kind='USER_VAE100000_RESUMED_FROM_CAPACITY_STOP',selected_step=100000,run='user_vae100k_resume_train_v1',receipt_sha256=control['sha256']['receipt'],exit_sha256=control['sha256']['exit'])
+else:
+ control=json.loads((O/'user_vae100k_control_v1/progress.json').read_bytes());assert control['closed_execution_verified'] and control['files']['receipt']['selected_checkpoint_attempts']==100000
+ binding=dict(kind='USER_REQUESTED_VAE100000_PREFIX',selected_step=100000,control_run='user_vae100k_control_v1',control_receipt_sha256=control['sha256']['receipt'],control_exit_sha256=control['sha256']['exit'])
 prior=control
 if a.stage=='quality':
- backup=json.loads((O/'checkpoint100000_backup/backup.json').read_bytes())
- assert backup['status']=='USER_VAE100000_PRIVATE_BYTE_BACKUP_VERIFIED' and backup['control_binding']==binding
- assert backup['checkpoint']==control['files']['receipt']['selected_checkpoint'] and backup['D_sha256']==backup['checkpoint']['sha256']
+ bp=O/'checkpoint100000_backup/backup.json'
+ if bp.exists():
+  backup=json.loads(bp.read_bytes());assert backup['status']=='USER_VAE100000_PRIVATE_BYTE_BACKUP_VERIFIED' and backup['control_binding']==binding
+  assert backup['checkpoint']==control['files']['receipt']['selected_checkpoint'] and backup['D_sha256']==backup['checkpoint']['sha256']
+  s['private_checkpoint_backup_status']='VERIFIED'
+ else:
+  assert binding['kind']=='USER_VAE100000_RESUMED_FROM_CAPACITY_STOP'
+  s['private_checkpoint_backup_status']='PENDING_PRIVATE_BYTE_COPY_NOT_ACCEPTED'
+  queue=dict(status='PRIVATE100K_COPY_QUEUED_SERVER_SOURCE_SEALED_NOT_YET_D_VERIFIED',checkpoint=control['files']['receipt']['selected_checkpoint'],source_binding=binding,original_source_preserved=True,model_loads=0)
+  with (O/'backup_queue100k.json').open('x',encoding='utf-8') as f:json.dump(queue,f,indent=2)
+
 else:
  quality=json.loads((O/'user_vae100k_quality_v1/progress.json').read_bytes());prior=quality
  assert quality['closed_execution_verified'] and quality['files']['receipt']['status']=='USER_VAE100K_QUALITY_VALIDATION_PASSED'
@@ -56,16 +68,16 @@ else:
  assert er['inference']==s['vae_inference'] and sha(er['inference']['path'])==er['inference']['sha256'] and er['trained_model_sha256']==v['receipt']['trained_model_sha256']
  assert sha(r/'scripts/run_user_vae100k_ldm.py')==s['entrypoint_sha256'] and sha(r/'scripts/supervise_user_vae100k_ldm.py')==s['supervisor_sha256']
  for k in ['corpus_receipt_sha256','data_acceptance_sha256','strict_audit_receipt_sha256']:assert s[k]==er[k]==v['spec'][k]
- needed=s['checkpoint_policy']['reserve_bytes']+s['checkpoint_policy']['log_allowance_bytes']+4*s['checkpoint_policy']['checkpoint_upper_bound_bytes']+s['vae_cache_upper_bound_bytes']
- candidates=[(pathlib.Path('/home/ouyanghao'),pathlib.Path('/home/ouyanghao/textop-user-vae100k-ldm-checkpoints-20261028')),(r,r/'filtered15000_20261027/user_vae100k_ldm')]
- selected=None;observed=[]
- for allowed,parent in candidates:
-  owned(allowed,allowed);free_bytes=shutil.disk_usage(allowed).free;observed.append(dict(root=str(allowed),free_bytes=free_bytes,required_bytes=needed))
-  if not parent.exists() and not parent.is_symlink() and free_bytes>=needed:selected=(allowed,parent);break
- assert selected,'Keep all states; no actual fullLDM capacity: '+json.dumps(observed)
- allowed,parent=selected;owned(parent.parent,allowed);parent.mkdir(mode=0o700);dest=parent/'checkpoints';dest.mkdir(mode=0o700)
- capacity=check(dest,allowed,s['checkpoint_policy'],remaining_saves=4);capacity.update(total_required_including_cache_bytes=needed,separate_vae_cache_upper_bound_bytes=s['vae_cache_upper_bound_bytes'])
- s.update(witness_authorized=True,train_authorized=False,witnesses=[],checkpoint_allowed_root=str(allowed),checkpoint_dir=str(dest))
+ from user_vae100k_ldm_storage import check as dual_check
+ policy=s['checkpoint_policy'];home=pathlib.Path('/home/ouyanghao');owned(home,home)
+ hp=home/'textop-user-vae100k-ldm-dual-20261028';dp=r/'filtered15000_20261027/user_vae100k_ldm_dual'
+ assert not any(x.exists() or x.is_symlink() for x in [hp,dp])
+ required_home=policy['reserve_bytes']+2*policy['checkpoint_upper_bound_bytes']+s['vae_cache_upper_bound_bytes']
+ required_data=policy['reserve_bytes']+policy['log_allowance_bytes']+2*policy['checkpoint_upper_bound_bytes']
+ assert shutil.disk_usage(home).free>=required_home and shutil.disk_usage(r).free>=required_data,dict(home_free=shutil.disk_usage(home).free,home_required=required_home,data_free=shutil.disk_usage(r).free,data_required=required_data)
+ for parent,allowed in [(hp,home),(dp,r)]:owned(parent.parent,allowed);parent.mkdir(mode=0o700);(parent/'checkpoints').mkdir(mode=0o700)
+ s.update(witness_authorized=True,train_authorized=False,witnesses=[],checkpoint_allowed_root=str(home),checkpoint_dir=str(hp/'checkpoints'),checkpoint_layout=dict(schema='textop.user_vae100k_ldm_dual_storage.v1',volumes=dict(home=dict(allowed_root=str(home),checkpoint_dir=str(hp/'checkpoints'),log_allowance_bytes=0),data=dict(allowed_root=str(r),checkpoint_dir=str(dp/'checkpoints'),log_allowance_bytes=policy['log_allowance_bytes'])),slots={'100000':'home','200000':'data','300000':'home','emergency':'data'}))
+ capacity=dual_check(s)
 if stage!='export':
  free={int(x.split(',')[0]):int(x.split(',')[1]) for x in subprocess.check_output(['nvidia-smi','--query-gpu=index,memory.free','--format=csv,noheader,nounits'],text=True,timeout=15).splitlines()};assert free[1]>20480
 archive=r/'receipts'/('user_vae100k_'+stage+'_spec_before_enable.json')

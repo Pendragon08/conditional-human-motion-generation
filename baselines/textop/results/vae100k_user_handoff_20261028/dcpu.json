@@ -1,0 +1,50 @@
+{
+  "status": "DUAL_STORAGE_CPU_RESOURCE_NEGATIVES_PASSED",
+  "actual_capacity": {
+    "layout_sha256": "b1edac05c98e2dd3298789f4b9aad35aea226b5ad348ff580a6ebcae7bb852d1",
+    "volumes": [
+      {
+        "volume": "home",
+        "destination": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints",
+        "filesystem": "ext4",
+        "device": 66306,
+        "owner_uid": 1013,
+        "free_bytes": 3111170048,
+        "required_bytes": 2776629248,
+        "remaining_slots": 2,
+        "cache_budget_bytes": 0,
+        "reserve_bytes": 2147483648,
+        "log_allowance_bytes": 0
+      },
+      {
+        "volume": "data",
+        "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/user_vae100k_ldm_dual/checkpoints",
+        "filesystem": "ext4",
+        "device": 2048,
+        "owner_uid": 1013,
+        "free_bytes": 3460431872,
+        "required_bytes": 3313500160,
+        "remaining_slots": 2,
+        "cache_budget_bytes": 0,
+        "reserve_bytes": 2147483648,
+        "log_allowance_bytes": 536870912
+      }
+    ],
+    "pending_steps": [
+      100000,
+      200000,
+      300000
+    ],
+    "reserve_emergency": true,
+    "global_log_budget_bytes": 536870912,
+    "reserve_on_each_filesystem_bytes": 2147483648
+  },
+  "cases": [
+    "low_home_rejected",
+    "low_data_rejected",
+    "same_filesystem_rejected"
+  ],
+  "new_model_loads": 0,
+  "new_gpu_contexts": 0,
+  "source_modified": false
+}

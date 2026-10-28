@@ -36,7 +36,7 @@
   "actual_full_filter_complete": true,
   "filtered_corpus_accepted": true,
   "generator_started": true,
-  "current_stage": "USER_VAE100K_CONTROL_ARMED_WAITING_REAL_CHECKPOINT",
+  "current_stage": "RUNNING_FILTERED15000_LDM_TRAINING",
   "preparation_findings": [
     "New closed-result CPU audit, actual-pass corpus and fresh VAE entries are implemented and staged with all launch flags false",
     "Syntax/CPU byte-selection primitives passed; actual full-result audit, filtered corpus, GPU gradient and fresh-agent witnesses have not run",
@@ -46,7 +46,7 @@
   ],
   "latest_eta_evidence": "results/teacher15000_direct_strict_20261027/eta_user_request_20261027.json",
   "strict_audit_run": "full_result_audit_v1",
-  "handoff_environment_document": "VAE100K_USER_HANDOFF_ENVIRONMENT.md",
+  "handoff_environment_document": "USER_VAE100K_LDM_ENVIRONMENT.md",
   "staged_files_sha256": {
     "scripts/audit_teacher15000_full_result.py": "73b22fe04abd4def0674d652bacf2baafe96a69148ea447d124b74b0c579412a",
     "scripts/supervise_teacher15000_full_audit.py": "e01f92845bb400457db4e0de9b84db1d6078571b5644c97f3d655a57815ba97f",
@@ -81,7 +81,7 @@
   "full_fresh_data_witnesses_and_actual_source_acceptance_pending": true,
   "full_ldm_entry_source_implemented": true,
   "full_ldm_export_activation_bridge_implemented": true,
-  "actual_full_ldm_entry_acceptance_completed": false,
+  "actual_full_ldm_entry_acceptance_completed": true,
   "actual_filtered_vae200000_completed": false,
   "actual_vae200000_cpu_exports": 0,
   "full_ldm_source_manifest": "results/filtered15000_handoff_tools_20261027/ldm_entry_export_current_v2.json",
@@ -114,6 +114,25 @@
   "original_200k_program_preserved": true,
   "user_100k_control_run": "user_vae100k_control_v1",
   "new_100k_control_spec_sha256": "d3526e1367c7257fab1187d5f2f106d6c24ca85ba1f11b2f3210627227d5326f",
-  "actual_filtered_vae100000_selected": false,
-  "original200k_completion_claimed": false
+  "actual_filtered_vae100000_selected": true,
+  "original200k_completion_claimed": false,
+  "old_control_terminated_without_signal": true,
+  "original_capacity_exit_checkpoint_attempts": 99700,
+  "original_capacity_exit_checkpoint_sha256": "4ebfe7174678c54d23a1c5d4f71857d6a6a22cca08bd2c1cbf6d82dcce3f4c49",
+  "old_failure_receipts_retained": true,
+  "actual_filtered_vae100000_completed": true,
+  "vae100k_checkpoint": {
+    "path": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/vae_state_100000.pth",
+    "bytes": 513526765,
+    "sha256": "99017f1cbd13cf2904bc5f87904e5a488a5b3ee1f920da1882f90fdad04029ed",
+    "manager_step": 100000,
+    "actual_optimizer_updates": 100000
+  },
+  "actual_100k_quality_passed": true,
+  "actual_100k_cpu_export_completed": true,
+  "actual_full_ldm_author_witness_passed": true,
+  "formal_ldm_started": true,
+  "active_ldm_run": "user_vae100k_ldm300k_train_v1",
+  "active_ldm_spec_sha256": "654332646f2aa4bb69fea4cc779edf88138735a0ca9f5e5906e783948868c770",
+  "actual_full_ldm_fresh_witness_passed": true
 }

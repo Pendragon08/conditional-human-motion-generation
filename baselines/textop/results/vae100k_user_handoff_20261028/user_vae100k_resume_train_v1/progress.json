@@ -1,0 +1,155 @@
+{
+  "kind": "resume",
+  "run": "user_vae100k_resume_train_v1",
+  "observed_unix": 1793161292.2007039,
+  "files": {
+    "receipt": {
+      "status": "USER_VAE100000_RESUME_FINISHED",
+      "run": "user_vae100k_resume_train_v1",
+      "mode": "train",
+      "source_sha256": "762bf67251abd77f1302eb54e93e958828f99bc0241210e0a6d6db8ba9419a63",
+      "spec_sha256": "f8f4e3b97714936390b34b9eb4b84a919c76fa5477ce4e8f66680e888cfab10a",
+      "resume_checkpoint": {
+        "path": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/emergency_99700.pth",
+        "bytes": 513526701,
+        "sha256": "4ebfe7174678c54d23a1c5d4f71857d6a6a22cca08bd2c1cbf6d82dcce3f4c49",
+        "manager_step": 99700,
+        "actual_optimizer_updates": 99700
+      },
+      "output_writers_closed": true,
+      "new_optimizer_updates": 300,
+      "original200k_completion_claimed": false,
+      "initial_resume": {
+        "model_restored_exactly": true,
+        "optimizer_restored_exactly": true,
+        "ema_restored_exactly": true,
+        "rng_and_generator_restored_exactly": true,
+        "clock_restored_exactly": true,
+        "pending_evaluation_fields_restored": true,
+        "checkpoint_boundary": "completed_four_primitive_batch; no cached batch/history"
+      },
+      "storage_before": {
+        "destination": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints",
+        "filesystem": "ext4",
+        "owner_uid": 1013,
+        "free_bytes": 3796824064,
+        "required_bytes": 3791650816,
+        "remaining_saves": 2,
+        "checkpoint_upper_bound_bytes": 553648128,
+        "reserve_bytes": 2147483648,
+        "log_allowance_bytes": 536870912,
+        "persistent_owned_writable": true
+      },
+      "completed_primitive_attempts": 100000,
+      "optimizer_updates": 100000,
+      "skipped_updates": 0,
+      "selected_checkpoint": {
+        "path": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/vae_state_100000.pth",
+        "bytes": 513526765,
+        "sha256": "99017f1cbd13cf2904bc5f87904e5a488a5b3ee1f920da1882f90fdad04029ed",
+        "manager_step": 100000,
+        "actual_optimizer_updates": 100000
+      },
+      "latest_file_resume_verification": {
+        "model_restored_exactly": true,
+        "optimizer_restored_exactly": true,
+        "ema_restored_exactly": true,
+        "rng_and_generator_restored_exactly": true,
+        "clock_restored_exactly": true,
+        "pending_evaluation_fields_restored": true,
+        "checkpoint_boundary": "completed_four_primitive_batch; no cached batch/history"
+      }
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=4",
+        "MKL_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "WANDB_MODE=disabled",
+        "PYTHONUNBUFFERED=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_user_vae100k_resume.py",
+        "--mode",
+        "train",
+        "--run",
+        "user_vae100k_resume_train_v1"
+      ],
+      "supervisor_pid": 292865,
+      "child_pid": 292872,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 13,
+      "sample_errors": [],
+      "elapsed_seconds": 165.38577742874622,
+      "supervision_passed": true,
+      "source_sha256": "5e2b39dd5f18b19f3cd397f994276417681cacbb2350e6fc1cc2e5365898b67f",
+      "receipt_sha256": "9d50bab6cb13e5aada2a19933b62aa00346b493bc19a1f17446f64d3a80d51a3",
+      "process_exit_sha256": "961ad6a2c875938c8bc29941b733bc3c28a49693a891ec3b0f63a02a871519ee",
+      "resource_sha256": "dca553da985547730fbb062dc7a898a33b9ab8d09c28d7e7b504251fadc699c5",
+      "numerical_status": "USER_VAE100000_RESUME_FINISHED"
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=4",
+        "MKL_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "WANDB_MODE=disabled",
+        "PYTHONUNBUFFERED=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_user_vae100k_resume.py",
+        "--mode",
+        "train",
+        "--run",
+        "user_vae100k_resume_train_v1"
+      ],
+      "supervisor_pid": 292865,
+      "child_pid": 292872,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 13,
+      "sample_errors": [],
+      "elapsed_seconds": 165.38577742874622,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    },
+    "driver": {
+      "status": "USER_VAE100K_RESUME_DISPATCHED_NOT_YET_ACCEPTED",
+      "mode": "train",
+      "run": "user_vae100k_resume_train_v1",
+      "driver_pid": 292864,
+      "spec_sha256": "f8f4e3b97714936390b34b9eb4b84a919c76fa5477ce4e8f66680e888cfab10a"
+    }
+  },
+  "sha256": {
+    "receipt": "9d50bab6cb13e5aada2a19933b62aa00346b493bc19a1f17446f64d3a80d51a3",
+    "exit": "8b5d5c9aa08b53087805ee6442d23db1ee0b4671c11f70063c3cc482f7ae1bfe",
+    "process": "961ad6a2c875938c8bc29941b733bc3c28a49693a891ec3b0f63a02a871519ee",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0",
+    "driver": "5da7454c12a36a1b7aa962d42efacd1aa1e0dd5141d34262942b1366815bddcc"
+  },
+  "workers": [],
+  "closed_execution_verified": true,
+  "arrays_read": 0,
+  "model_loads": 0,
+  ".log_tail": "data:95 -  Loading val data...\n2026-10-28 04:17:53.477 | INFO     | robotmdar.dataloader.data:_load_data:120 -  Found 3548 valid samples out of 3548\n2026-10-28 04:17:53.477 | INFO     | robotmdar.dataloader.data:_load_text_embeddings:225 -  Loading cached text embeddings...\n2026-10-28 04:17:53.778 | INFO     | robotmdar.dataloader.data:_load_meanstd:267 -  Loading cached mean/std from /dev/shm/ouyanghao_textop_20261025/filtered15000_actual_pass_v1/meanstd.pkl...\n2026-10-28 04:17:54.315 | INFO     | robotmdar.train.manager:hold_model:580 - MVAEManager: Holding VAE model and optimizer\nEval finished at step 100000 with loss * 10: {'rec': tensor(0.0431), 'kl': tensor(37.3542), 'body_trans': tensor(7.0647e-05), 'body_rot': tensor(0.0002), 'dof_pos': tensor(0.0006), 'dof_vel': tensor(0.5147), 'foot_contact': tensor(0.0001), 'total': tensor(0.0469)}\nEval extras * 10: {'drift_xy': tensor(2.6387e-05), 'drift_yaw': tensor(0.0002)}\n{\"status\": \"USER_VAE100000_RESUME_FINISHED\", \"run\": \"user_vae100k_resume_train_v1\", \"mode\": \"train\", \"source_sha256\": \"762bf67251abd77f1302eb54e93e958828f99bc0241210e0a6d6db8ba9419a63\", \"spec_sha256\": \"f8f4e3b97714936390b34b9eb4b84a919c76fa5477ce4e8f66680e888cfab10a\", \"resume_checkpoint\": {\"path\": \"/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/emergency_99700.pth\", \"bytes\": 513526701, \"sha256\": \"4ebfe7174678c54d23a1c5d4f71857d6a6a22cca08bd2c1cbf6d82dcce3f4c49\", \"manager_step\": 99700, \"actual_optimizer_updates\": 99700}, \"output_writers_closed\": true, \"new_optimizer_updates\": 300, \"original200k_completion_claimed\": false, \"initial_resume\": {\"model_restored_exactly\": true, \"optimizer_restored_exactly\": true, \"ema_restored_exactly\": true, \"rng_and_generator_restored_exactly\": true, \"clock_restored_exactly\": true, \"pending_evaluation_fields_restored\": true, \"checkpoint_boundary\": \"completed_four_primitive_batch; no cached batch/history\"}, \"storage_before\": {\"destination\": \"/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints\", \"filesystem\": \"ext4\", \"owner_uid\": 1013, \"free_bytes\": 3796824064, \"required_bytes\": 3791650816, \"remaining_saves\": 2, \"checkpoint_upper_bound_bytes\": 553648128, \"reserve_bytes\": 2147483648, \"log_allowance_bytes\": 536870912, \"persistent_owned_writable\": true}, \"completed_primitive_attempts\": 100000, \"optimizer_updates\": 100000, \"skipped_updates\": 0, \"selected_checkpoint\": {\"path\": \"/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/vae_state_100000.pth\", \"bytes\": 513526765, \"sha256\": \"99017f1cbd13cf2904bc5f87904e5a488a5b3ee1f920da1882f90fdad04029ed\", \"manager_step\": 100000, \"actual_optimizer_updates\": 100000}, \"latest_file_resume_verification\": {\"model_restored_exactly\": true, \"optimizer_restored_exactly\": true, \"ema_restored_exactly\": true, \"rng_and_generator_restored_exactly\": true, \"clock_restored_exactly\": true, \"pending_evaluation_fields_restored\": true, \"checkpoint_boundary\": \"completed_four_primitive_batch; no cached batch/history\"}}\n",
+  "_outer.log_tail": "{\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"CUDA_VISIBLE_DEVICES=1\", \"OMP_NUM_THREADS=4\", \"MKL_NUM_THREADS=4\", \"OPENBLAS_NUM_THREADS=4\", \"WANDB_MODE=disabled\", \"PYTHONUNBUFFERED=1\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_user_vae100k_resume.py\", \"--mode\", \"train\", \"--run\", \"user_vae100k_resume_train_v1\"], \"supervisor_pid\": 292865, \"child_pid\": 292872, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 13, \"sample_errors\": [], \"elapsed_seconds\": 165.38577742874622, \"supervision_passed\": true, \"source_sha256\": \"5e2b39dd5f18b19f3cd397f994276417681cacbb2350e6fc1cc2e5365898b67f\", \"receipt_sha256\": \"9d50bab6cb13e5aada2a19933b62aa00346b493bc19a1f17446f64d3a80d51a3\", \"process_exit_sha256\": \"961ad6a2c875938c8bc29941b733bc3c28a49693a891ec3b0f63a02a871519ee\", \"resource_sha256\": \"dca553da985547730fbb062dc7a898a33b9ab8d09c28d7e7b504251fadc699c5\", \"numerical_status\": \"USER_VAE100000_RESUME_FINISHED\"}\n",
+  "common_lock_free": true
+}

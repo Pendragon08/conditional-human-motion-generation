@@ -1,17 +1,123 @@
 {
-  "schema": "textop.user100k_handoff_progress.v1",
+  "schema": "textop.user100k_handoff_progress.v2",
   "latest_user_request": "训练到100000步就行了，然后训练LDM。",
   "target_vae_attempts": 100000,
   "target_ldm_attempts": 300000,
-  "control_run": "user_vae100k_control_v1",
-  "control_status": "WAITING_FOR_REAL_VAE100000_SAVED_AND_RELOADED",
-  "sample_beijing": "2026-10-28T11:13:04.690242+08:00",
-  "last_verified_vae_attempts": 93100,
-  "production_signals_sent": 0,
-  "original_training_source_unchanged": true,
-  "actual_100k_quality_jobs": 0,
-  "actual_100k_CPU_exports": 0,
-  "actual_new_ldm_jobs": 0,
-  "successor_deployment": "successor_deploy_v2.json",
-  "environment_document": "VAE100K_USER_HANDOFF_ENVIRONMENT.md"
+  "actual_vae_attempts": 100000,
+  "actual_vae_adam_updates": 100000,
+  "skipped_vae_updates": 0,
+  "vae_100k_full_state": {
+    "path": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/vae_state_100000.pth",
+    "bytes": 513526765,
+    "sha256": "99017f1cbd13cf2904bc5f87904e5a488a5b3ee1f920da1882f90fdad04029ed",
+    "manager_step": 100000,
+    "actual_optimizer_updates": 100000
+  },
+  "vae_full_state_closed": true,
+  "vae_quality_passed": true,
+  "vae_quality": {
+    "teacher_forced": {
+      "normalized_reconstruction_huber": 0.004793255706317723,
+      "four_primitives": true,
+      "always_previous_prediction_history": false,
+      "final_physical_endpoint_or_text_generation_evaluated": false
+    },
+    "self_rollout": {
+      "normalized_reconstruction_huber": 0.005952475592494011,
+      "four_primitives": true,
+      "always_previous_prediction_history": true,
+      "final_physical_endpoint_or_text_generation_evaluated": false
+    }
+  },
+  "cpu_inference_export": {
+    "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/user_vae100k_inference/vae100000_inference.private.pth",
+    "bytes": 171154895,
+    "sha256": "3f36bcbccdee10a8c1c2eb67b0614be63b32bd8a05cff92de23cc358087117f4"
+  },
+  "cpu_export_closed": true,
+  "ldm_author_witness_closed": true,
+  "formal_ldm_started": true,
+  "formal_ldm_attempts": 100,
+  "current_stage": "RUNNING_FILTERED15000_LDM_TRAINING",
+  "sample_beijing": "2026-10-28T13:06:02.848268+08:00",
+  "private_D_checkpoint_backups_complete": false,
+  "private_100k_copy_worker": "p100k_v1",
+  "private_99700_partial_retained_bytes": 32997376,
+  "original_99700_failure_retained": true,
+  "old_control_sent_signals": 0,
+  "ldm_storage_layout": {
+    "layout_sha256": "b1edac05c98e2dd3298789f4b9aad35aea226b5ad348ff580a6ebcae7bb852d1",
+    "volumes": [
+      {
+        "volume": "home",
+        "destination": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints",
+        "filesystem": "ext4",
+        "device": 66306,
+        "owner_uid": 1013,
+        "free_bytes": 3282509824,
+        "required_bytes": 2965372928,
+        "remaining_slots": 2,
+        "cache_budget_bytes": 188743680,
+        "reserve_bytes": 2147483648,
+        "log_allowance_bytes": 0
+      },
+      {
+        "volume": "data",
+        "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/user_vae100k_ldm_dual/checkpoints",
+        "filesystem": "ext4",
+        "device": 2048,
+        "owner_uid": 1013,
+        "free_bytes": 3460648960,
+        "required_bytes": 3313500160,
+        "remaining_slots": 2,
+        "cache_budget_bytes": 0,
+        "reserve_bytes": 2147483648,
+        "log_allowance_bytes": 536870912
+      }
+    ],
+    "pending_steps": [
+      100000,
+      200000,
+      300000
+    ],
+    "reserve_emergency": true,
+    "global_log_budget_bytes": 536870912,
+    "reserve_on_each_filesystem_bytes": 2147483648
+  },
+  "full_text_semantics_or_online_effect_accepted": false,
+  "formal_ldm_adam_updates": 100,
+  "formal_ldm_skips": 0,
+  "active_ldm_spec_sha256": "654332646f2aa4bb69fea4cc779edf88138735a0ca9f5e5906e783948868c770",
+  "runtime_binding_sha256": "323349d38cef74e07215ab81c8919879512a2391552c9187151eb6a8a521b7ff",
+  "formal_ldm_workers": [
+    {
+      "pid": 304265,
+      "start_ticks": "1436142089",
+      "state": "S",
+      "argv": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_user_vae100k_ldm.py",
+        "--mode",
+        "train",
+        "--run",
+        "user_vae100k_ldm300k_train_v1",
+        ""
+      ]
+    },
+    {
+      "pid": 304272,
+      "start_ticks": "1436142105",
+      "state": "R",
+      "argv": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_user_vae100k_ldm.py",
+        "--mode",
+        "train",
+        "--run",
+        "user_vae100k_ldm300k_train_v1",
+        ""
+      ]
+    }
+  ],
+  "common_lock_free": false
 }

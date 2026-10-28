@@ -30,7 +30,7 @@ assert er['inference']==spec['vae_inference'];inference=er['inference']
 assert sha(inference['path'])==inference['sha256'] and pathlib.Path(inference['path']).stat().st_size==inference['bytes']
 assert inference['bytes']<=spec['vae_cache_upper_bound_bytes'] and er['trained_model_sha256']==vr['trained_model_sha256']
 for k in ['corpus_receipt_sha256','data_acceptance_sha256','strict_audit_receipt_sha256']:assert spec[k]==er[k]==v['spec'][k]
-numerical_keys=['ldm','seed','corpus_receipt_sha256','data_acceptance_sha256','strict_audit_receipt_sha256','vae_training','vae_export','vae_inference','bound_sources','entrypoint_sha256','checkpoint_dir','checkpoint_allowed_root','checkpoint_policy']
+numerical_keys=['ldm','seed','corpus_receipt_sha256','data_acceptance_sha256','strict_audit_receipt_sha256','vae_training','vae_export','vae_inference','bound_sources','entrypoint_sha256','checkpoint_dir','checkpoint_allowed_root','checkpoint_policy','checkpoint_layout']
 runtime_binding_sha256=hashlib.sha256(json.dumps({k:spec[k] for k in numerical_keys},sort_keys=True,separators=(',',':')).encode()).hexdigest()
 assert spec['witness_authorized']
 if a.mode=='train':
@@ -57,12 +57,12 @@ try:
  import torch
  from filtered15000_ldm_runtime import Runtime
  from generator8278_vae_runtime import batch_sha,restore_rng
- from checkpoint_storage_guard import check
+ from user_vae100k_ldm_storage import check,directory,log_allowance,contains_state_files
  from generator_training_state import save_manager,load_manager,module_sha,equal,rng_state
  assert allowed.is_dir() and dest.is_dir() and dest.resolve()==dest
- budget=check(dest,allowed,policy,remaining_saves=4);cache=dest/'vae.pth'
+ budget=check(spec);cache=dest/'vae.pth'
  if cache.exists():assert sha(cache)==inference['sha256']
- else:assert shutil.disk_usage(dest).free>=budget['required_bytes']+spec['vae_cache_upper_bound_bytes']
+ else:assert any(x['volume']=='home' and x['cache_budget_bytes']==spec['vae_cache_upper_bound_bytes'] for x in budget['volumes'])
  ctx=Runtime(spec,base,out);assert sha(cache)==inference['sha256'] and cache.stat().st_size<=spec['vae_cache_upper_bound_bytes']
  assert ctx.frozen_vae_sha==vr['trained_model_sha256']
  r.update(status='RUNNING_FILTERED15000_LDM_WITNESS' if a.mode=='witness' else 'RUNNING_FILTERED15000_LDM_TRAINING',initial_storage_check=budget,vae_cache_bytes=cache.stat().st_size,vae_frozen_model_sha256=ctx.frozen_vae_sha)
@@ -74,8 +74,8 @@ try:
   binding={'stage':'ldm','feature_dim':69,'dof':29,'quick_training':False,'formal_training':True,'paper_schedule':True,'prefilter_data':False,'actual_strict_input':True,'paper_two_stage_route_reproduced':False,'quality_label':r['quality_label'],
    'numeric_sha256':runtime_binding_sha256,'corpus_receipt_sha256':spec['corpus_receipt_sha256'],'vae_checkpoint_sha256':ck['sha256'],'vae_inference_sha256':inference['sha256']}
   if a.resume:
-   path=pathlib.Path(a.resume);assert path.parent==dest and a.resume_sha;r['resume']=load_manager(ctx.manager,'denoiser',ctx.clock,ctx.generators,path,binding,a.resume_sha);ctx.restore_auxiliary_counters()
-  else:assert not list(dest.glob('ldm_state_*.pth')) and not list(dest.glob('emergency_*.pth')),'Explicit bound resume required'
+   path=pathlib.Path(a.resume);assert path.parent in [directory(spec,x)[0] for x in [100000,200000,300000]] and a.resume_sha;r['resume']=load_manager(ctx.manager,'denoiser',ctx.clock,ctx.generators,path,binding,a.resume_sha);ctx.restore_auxiliary_counters()
+  else:assert not contains_state_files(spec),'Explicit bound resume required'
   import random,numpy as np
   outer=rng_state(ctx.generators);quality_seed=spec['seed']+99;random.seed(quality_seed);np.random.seed(quality_seed);torch.manual_seed(quality_seed);torch.cuda.manual_seed_all(quality_seed);ctx.generators['val'].manual_seed(quality_seed)
   fixed_batch=ctx.batch('val');restore_rng(outer,ctx.generators);assert equal(rng_state(ctx.generators),outer)
@@ -88,10 +88,10 @@ try:
    at_closed_boundary=True;step=ctx.manager.step
    r.update(optimizer_updates=ctx.clock.updates,completed_primitive_attempts=ctx.clock.attempts,skipped_updates=ctx.clock.skipped,last_train_batch=records,full_sampling_history_calls=ctx.full_history_calls,selected_rollout_history_primitives=selected_rollouts,actual_native_stage=ctx.manager.stage_idx)
    if step%100==0:
-    r['last_storage_check']=check(dest,allowed,policy,remaining_saves=sum(x>=step for x in [100000,200000,300000])+1);save();print(json.dumps({'step':step,'updates':ctx.clock.updates,'skips':ctx.clock.skipped,'loss':records[-1]['loss'],'full_history_calls':ctx.full_history_calls}),flush=True)
+    r['last_storage_check']=check(spec,pending_steps=[x for x in [100000,200000,300000] if x>=step]);save();print(json.dumps({'step':step,'updates':ctx.clock.updates,'skips':ctx.clock.skipped,'loss':records[-1]['loss'],'full_history_calls':ctx.full_history_calls}),flush=True)
    if step in [100000,200000,300000]:
-    path=dest/('ldm_state_'+str(step)+'.pth');assert not path.exists();check(dest,allowed,policy,remaining_saves=sum(x>=step for x in [100000,200000,300000])+1)
-    item=save_manager(ctx.manager,'denoiser',ctx.clock,ctx.generators,path,binding,policy['reserve_bytes']+policy['log_allowance_bytes'],policy['checkpoint_upper_bound_bytes']);checkpoints.append(item);r['checkpoints']=checkpoints
+    save_dest,save_root=directory(spec,step);path=save_dest/('ldm_state_'+str(step)+'.pth');assert not path.exists();check(spec,pending_steps=[x for x in [100000,200000,300000] if x>=step])
+    item=save_manager(ctx.manager,'denoiser',ctx.clock,ctx.generators,path,binding,policy['reserve_bytes']+log_allowance(spec,step=step),policy['checkpoint_upper_bound_bytes']);checkpoints.append(item);r['checkpoints']=checkpoints
     assert item['bytes']<=policy['checkpoint_upper_bound_bytes'],'Retain oversized file, stop and re-budget'
     r['latest_file_resume_verification']=load_manager(ctx.manager,'denoiser',ctx.clock,ctx.generators,path,binding,item['sha256']);ctx.restore_auxiliary_counters()
     assert ctx.full_history_calls==ctx.manager.extra['full_sampling_history_calls'];save()
@@ -106,8 +106,8 @@ except BaseException as e:
  if ctx is not None:r.update(optimizer_updates=ctx.clock.updates,completed_primitive_attempts=ctx.clock.attempts,skipped_updates=ctx.clock.skipped)
  if a.mode=='train' and ctx is not None and binding is not None and at_closed_boundary and ctx.manager.step>0 and not(checkpoints and checkpoints[-1]['manager_step']==ctx.manager.step):
   try:
-   assert not list(dest.glob('emergency_*.pth'));check(dest,allowed,policy,remaining_saves=1)
-   r['emergency_checkpoint']=save_manager(ctx.manager,'denoiser',ctx.clock,ctx.generators,dest/('emergency_'+str(ctx.manager.step)+'.pth'),binding,policy['reserve_bytes']+policy['log_allowance_bytes'],policy['checkpoint_upper_bound_bytes']);assert r['emergency_checkpoint']['bytes']<=policy['checkpoint_upper_bound_bytes']
+   emergency_dest,emergency_root=directory(spec,emergency=True);assert not list(emergency_dest.glob('emergency_*.pth'));check(spec,pending_steps=[])
+   r['emergency_checkpoint']=save_manager(ctx.manager,'denoiser',ctx.clock,ctx.generators,emergency_dest/('emergency_'+str(ctx.manager.step)+'.pth'),binding,policy['reserve_bytes']+log_allowance(spec,emergency=True),policy['checkpoint_upper_bound_bytes']);assert r['emergency_checkpoint']['bytes']<=policy['checkpoint_upper_bound_bytes']
   except BaseException as err:r['emergency_save_refused_or_failed']=repr(err)
  else:r['emergency_save_scope']='Only a closed four-primitive and validation boundary; all prior checkpoints retained'
  save();raise

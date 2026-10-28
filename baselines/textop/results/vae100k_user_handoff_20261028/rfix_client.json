@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 120,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "90366f9566fb77ae3282b7bbfb92c936e1ae2065dd680190b60c22f13685ff67",
+  "client_pid": 6724,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"status\": \"DISABLED100K_SUCCESSORS_BOUND_EXPLICIT99700_RESUME_NO_NEW_MODEL\", \"files_sha256\": {\"scripts/user_vae100k_completion.py\": \"49df3321d21fd06a6d42127ab1ad21911427d3bba243d7918382f5fe610f4312\", \"configs/user-vae100k-quality-spec.json\": \"35592ddc16a69971f05173913b8039d72ea13e70bbffee32931a430b7580c796\", \"configs/user-vae100k-export-spec.json\": \"2f6190f8dc0511a94b13ca30a918493b20d28e1f5a6c794d44aadd908a555008\", \"configs/user-vae100k-ldm-spec.json\": \"a7aa4bb997dcd99b8765434a6cc310330d6d4eec9f97ab66af37fb9a11ace67b\"}, \"new_gpu_contexts\": 0, \"new_model_loads\": 0, \"signals_sent\": 0}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\rfix_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\rfix_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

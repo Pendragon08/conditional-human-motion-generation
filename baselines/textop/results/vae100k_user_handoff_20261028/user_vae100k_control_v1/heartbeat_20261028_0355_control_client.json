@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 90,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "28636c91b677163a3afd542dd8c3530e423c5f9f7bdfc2eb2b091a4bae43ff37",
+  "client_pid": 14260,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"kind\": \"control\", \"run\": \"user_vae100k_control_v1\", \"observed_unix\": 1793159723.6203682, \"files\": {\"receipt\": {\"status\": \"FAILED_VAE100K_CONTROL_RETAIN_ALL_EVIDENCE\", \"run\": \"user_vae100k_control_v1\", \"user_requested_target\": 100000, \"original_run\": \"filtered15000_vae200k_train_v1\", \"source_sha256\": \"1903ca5f9f442b815db162227f9a03b99d124ac21aa432f2e72a8bda669ed79b\", \"spec_sha256\": \"d3526e1367c7257fab1187d5f2f106d6c24ca85ba1f11b2f3210627227d5326f\", \"signals_sent\": 0, \"new_model_loads\": 0, \"new_gpu_contexts\": 0, \"new_sdk_tasks\": 0, \"original_training_source_modified\": false, \"last_observed_primitive_attempts\": 99700, \"error\": \"AssertionError('Producer is no longer running; inspect real exits, do not signal')\", \"traceback\": \"Traceback (most recent call last):\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/watch_vae100k_handoff.py\\\", line 33, in <module>\\n    assert r['status']=='RUNNING_FILTERED15000_VAE_TRAINING','Producer is no longer running; inspect real exits, do not signal'\\nAssertionError: Producer is no longer running; inspect real exits, do not signal\\n\"}, \"exit\": {\"command\": [\"taskset\", \"-c\", \"0-3\", \"python3\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/watch_vae100k_handoff.py\", \"--run\", \"user_vae100k_control_v1\"], \"supervisor_pid\": 266945, \"child_pid\": 266950, \"child_exit_code\": 1, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 255, \"sample_errors\": [], \"elapsed_seconds\": 3816.772632414475, \"supervision_passed\": false, \"run\": \"user_vae100k_control_v1\", \"source_sha256\": \"0b2e02996c06750b7d2493e1212011b46e76fe0e0bbdf01bb5b84aa5eabc4eb1\", \"receipt_sha256\": \"d42a721b5c4cd47ba4d26bcb8162bf1407091991d48286c877af888a22baf209\", \"process_exit_sha256\": \"89c445a4f25d1868b2e5255978a96148b15b456f51302495815bfc337fcfaaa7\", \"resource_sha256\": \"a4bb2e80e83e7a873c32f5551641babdf7debc5dbc3abb9620ab8e83ad1433c5\", \"numerical_status\": \"FAILED_VAE100K_CONTROL_RETAIN_ALL_EVIDENCE\", \"new_gpu_contexts\": 0}, \"process\": {\"command\": [\"taskset\", \"-c\", \"0-3\", \"python3\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/watch_vae100k_handoff.py\", \"--run\", \"user_vae100k_control_v1\"], \"supervisor_pid\": 266945, \"child_pid\": 266950, \"child_exit_code\": 1, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 255, \"sample_errors\": [], \"elapsed_seconds\": 3816.772632414475, \"supervision_passed\": false}, \"outer\": {\"actual_returncode\": 1}, \"driver\": {\"status\": \"DURABLE_VAE100K_OBSERVER_DISPATCHED_WAIT_FOR_REAL_STATUS\", \"run\": \"user_vae100k_control_v1\", \"driver_pid\": 266944, \"new_spec_sha256\": \"d3526e1367c7257fab1187d5f2f106d6c24ca85ba1f11b2f3210627227d5326f\", \"production_signal_sent_by_dispatch\": false, \"new_gpu_contexts\": 0, \"original_training_source_modified\": false, \"observed_unix\": 1793155792.5403554}}, \"sha256\": {\"receipt\": \"d42a721b5c4cd47ba4d26bcb8162bf1407091991d48286c877af888a22baf209\", \"exit\": \"39a24040e802f1f79062f8da259ee9fb1ef36ede1290f8224388043c312717ad\", \"process\": \"89c445a4f25d1868b2e5255978a96148b15b456f51302495815bfc337fcfaaa7\", \"outer\": \"857a96c9474624cec4418bb86e755613a5fb3430bf5b3478354415d1030ec7b2\", \"driver\": \"db7ead938d35d5c958319c021cdc42b0256f00f8e87d76ed03e1789b602283fe\"}, \"workers\": [], \"closed_execution_verified\": false, \"arrays_read\": 0, \"model_loads\": 0, \".log_tail\": \"Traceback (most recent call last):\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/watch_vae100k_handoff.py\\\", line 33, in <module>\\n    assert r['status']=='RUNNING_FILTERED15000_VAE_TRAINING','Producer is no longer running; inspect real exits, do not signal'\\nAssertionError: Producer is no longer running; inspect real exits, do not signal\\n\", \"_outer.log_tail\": \"Traceback (most recent call last):\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_vae100k_handoff.py\\\", line 22, in <module>\\n    assert proof['supervision_passed'] and r['status']=='USER_VAE100000_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED'\\nAssertionError\\n\", \"common_lock_free\": true}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\user_vae100k_control_v1\\heartbeat_20261028_0355_control_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\user_vae100k_control_v1\\heartbeat_20261028_0355_control_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

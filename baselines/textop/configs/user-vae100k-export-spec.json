@@ -1,7 +1,16 @@
 {
   "schema": "textop.user_vae100k_cpu_export.v1",
-  "export_authorized": false,
-  "vae_training": null,
+  "export_authorized": true,
+  "vae_training": {
+    "kind": "USER_VAE100000_RESUMED_FROM_CAPACITY_STOP",
+    "selected_step": 100000,
+    "run": "user_vae100k_resume_train_v1",
+    "receipt_sha256": "9d50bab6cb13e5aada2a19933b62aa00346b493bc19a1f17446f64d3a80d51a3",
+    "exit_sha256": "8b5d5c9aa08b53087805ee6442d23db1ee0b4671c11f70063c3cc482f7ae1bfe",
+    "quality_run": "user_vae100k_quality_v1",
+    "quality_receipt_sha256": "3f7e4419358b7c7434d681670c050bf716b9dd54441eb7b891b852746da78873",
+    "quality_exit_sha256": "7bb9b0b74755f156c49c2ee3272940430fc7d5414f21662ec64ea70d0319b5bf"
+  },
   "executor_sha256": "0cbeca88f295a1b8ca427c55d934dcdb1fa66691b7e0c37691e75f8a84080464",
   "supervisor_sha256": "fbdfe4ab6f30f6324da7d0d294037b0147508effbd2e1d9db20955c04502718b",
   "bound_sources": {
@@ -24,12 +33,13 @@
     "upstream/TextOpRobotMDAR/robotmdar/model/operator/position_encoding.py": "cd5e355917ac5af22c205aae084613f5e5f4296f86c3c83e0e35dd8ce0e672f7",
     "upstream/TextOpRobotMDAR/robotmdar/model/operator/position_encoding_layer.py": "0746a51aa9a6c166f78fe0301ff6f04662d2d460ed17f07488cec4a26da4780d",
     "upstream/TextOpRobotMDAR/robotmdar/model/operator/__init__.py": "8135bd9bb9b0f4ef12533d0a336396b84c374d201940d36bab86fc5ad17875e8",
-    "scripts/user_vae100k_completion.py": "636b56ab20cd7e1b5f5de3d9c532b1acb6f605ecffc20f5cb6e792ed6c5c9372",
+    "scripts/user_vae100k_completion.py": "49df3321d21fd06a6d42127ab1ad21911427d3bba243d7918382f5fe610f4312",
     "scripts/vae100k_control_protocol.py": "1aa7936c461f6801cddb0a76378ecd49d9d696c543ed7534d976c3e03b4e8216",
-    "scripts/quick_pidfd.py": "df180bffb3e35dd77c8bb4f8ca9b143879a4184f6f8aab98188e1139de6538f2"
+    "scripts/quick_pidfd.py": "df180bffb3e35dd77c8bb4f8ca9b143879a4184f6f8aab98188e1139de6538f2",
+    "scripts/user_vae100k_resume_protocol.py": "73ee863b240469806b73eef41ef68f983d8349fa50643de1b039a0a912ab4ed1"
   },
   "export_allowed_root": "/data/code/ouyanghao/oyh/textop-reproduction-20261024",
-  "export_dir": null,
+  "export_dir": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/user_vae100k_inference",
   "export_upper_bound_bytes": 188743680,
   "reserve_bytes": 2147483648,
   "log_allowance_bytes": 536870912,
