@@ -1,3 +1,8 @@
+<!--ldm100k-live-1809-start-->
+CURRENT实核：2026-10-28T18:09:02+08:00原LDM54200尝试/54200Adam/0skip，原supervisor304265/start1436142089及worker304272/start1436142105一致、RUNNING无exit、共同锁占用、native stage1，真实完整DDPM history生成4199次/选用114primitive。18:10:26唯一控制另采54400、WAITING/0信号；不是保存检查点。VAE100k私有D副本已通过，不重传；p997_v2原worker73588/SFTP15724创建身份实核仍匹配，48201728B partial、D6383742976B采样，仍PENDING。C写入救援已完成不重跑，C约0.50GB可用但仍轻量观察。
+新实际CPU scope-builder/签名激活/独占派发/有界监督/聚合收集已部署禁用，specSHA303d7261db46476aa539d2a524011bba1e9386f6e1bec2cc9aa24e4fed300c26，scope_build=false/verified_model=null/generation=false。新31隔离契约负例远端CPU0/reaped/final streams，原活动源/spec冻结未动，0实际scope/模型/数组/GPU/信号，不是实际接受。读LDM100K_HELDOUT_SCOPE_ENVIRONMENT.md，真100k停止→CPU导出→fresh实际CPU summary闭合后才一次启用/执行。现有12/16/18/26不重跑。实际模型生成entry/监督、兼容TMR及物理端点仍需继续实现和实际验收，不能以本阶段准备停工或称完整效果。
+<!--ldm100k-live-1809-end-->
+
 <!--ldm100k-live-1748-start-->
 CURRENT实核：2026-10-28T17:48:25+08:00原LDM51000尝试/51000Adam/0skip，同原supervisor304265/start1436142089及worker304272/start1436142105，RUNNING无exit/commonlock占用、实际stage1，真实DDPM history生成999次/选用2primitive；不是保存点。17:49:32唯一控制另采51200、WAITING/0信号，用户100k端点不变。VAE100k私有D备份p100k_v1真实SFTP0/worker0、完整513526765B/SHA通过，已释放备份锁，p997_v2唯一续原32997376B前缀，仍PENDING。
 本机C盘空闲0导致源码测试文件写入失败，已保留失败字节；经D私有完整恢复包/SHA/ZIP CRC/所有权及GitHub恢复代码+聚合证明实核后，只移除499702381B可恢复下载/编译缓存，0数据/checkpoint/环境/训练源删除或修改。C恢复可写但余量有限，后续只轻量观察，不重跑本次清理。见reports/c_space_rescue_and_ldm_progress_20261028.md和results/storage_c_space_rescue_20261028/final_summary.json。私有缓存/清单绝不公开。scope-builder/verified-input已有本地源码及12隔离元数据负例本地0，但没有监督/激活、未部署/无真实scope、生成或模型作业，非ready；继续完成实际入口，勿称实际验收。

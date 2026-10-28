@@ -1,7 +1,8 @@
 """Actual PRIVATE heldout metadata scope after closed100k CPU/fresh acceptance.
 
-Reads signed JSON metadata only, not npz/joblib/tensor/CLIP payloads. Source
-array hashes are bound here and must be rechecked by the later model executor.
+Deserializes signed JSON metadata only; upstream acceptance also checks immutable
+checkpoint/inference file SHA without loading models. Source array hashes are
+bound here and must be rechecked by the later model executor.
 """
 import argparse
 import json
@@ -12,6 +13,7 @@ import time
 import traceback
 from ldm100k_verified_input import ROOT, read, sha, owned, accepted_verified_input
 from ldm100k_heldout_protocol import make_segment_plan
+from ldm100k_scope_contract import RUN, validate_policy, validate_scope_receipt
 
 SHM = pathlib.Path('/dev/shm/ouyanghao_textop_20261025')
 
@@ -41,11 +43,11 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('--run', required=True)
     a = p.parse_args()
-    assert a.run == 'user_ldm100k_heldout_scope_v1' and os.getuid() == 1013
+    assert a.run == RUN and os.getuid() == 1013
     assert set(os.sched_getaffinity(0)) == {0, 1, 2, 3} and os.environ.get('CUDA_VISIBLE_DEVICES') == ''
-    sp = ROOT / 'configs/ldm100k-heldout-scope-spec.json'
+    sp = owned(ROOT / 'configs/ldm100k-heldout-scope-spec.json')
     s = read(sp)
-    assert s['schema'] == 'textop.ldm100k_heldout_scope_builder.v1' and s['scope_build_authorized']
+    validate_policy(s)
     assert sha(__file__) == s['executor_sha256']
     for n, h in s['bound_sources'].items():
         assert sha(ROOT / n) == h, n
@@ -79,8 +81,16 @@ def main():
     def save():
         rec['elapsed_seconds'] = time.monotonic() - started
         temp = out / 'receipt.partial'
-        temp.write_text(json.dumps(rec, indent=2, allow_nan=False))
+        with temp.open('w', encoding='utf-8') as handle:
+            json.dump(rec, handle, indent=2, allow_nan=False)
+            handle.flush()
+            os.fsync(handle.fileno())
         temp.replace(out / 'receipt.json')
+        fd = os.open(str(out), os.O_RDONLY)
+        try:
+            os.fsync(fd)
+        finally:
+            os.close(fd)
 
     save()
     try:
@@ -147,6 +157,7 @@ def main():
                    array_bytes_revalidated_here=False, source_array_hash_recheck_required_before_generation=True,
                    training_data_or_model_modified=False, generation_inputs_numerically_accepted=False,
                    private_metadata_only=True)
+        validate_scope_receipt(rec, s, sha(sp))
         save()
         print(json.dumps(rec), flush=True)
     except BaseException as error:
