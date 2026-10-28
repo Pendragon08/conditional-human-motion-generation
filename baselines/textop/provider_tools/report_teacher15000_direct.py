@@ -166,7 +166,8 @@ if np.exists():
  nj=json.loads(np.read_bytes())
  if nj.get('closed_execution_verified'):
   nr=nj['files']['receipt'];tmr_numeric_inputs=dict(receipt_sha256=nj['sha256']['receipt'],source_families=nr['original_train_sources'],source_feature_frames=nr['actual_unique_source_feature_frames'],verified_sample_windows=nr['actual_sample_windows_verified'],source_normalized_RAM_bytes=nr['full_normalized_feature_RAM_bytes'],formal_evaluator_training_updates=0,semantic_metrics_available=False)
-  new_effect_note+=' 机器人语义评价器的5361个原TRAIN来源与34068真实文本窗口已数值核验；原VAL未用于梯度，正式评价器尚未训练，文本模型正在单独导入。'
+  new_effect_note+=' 机器人语义评价器的5361个原TRAIN来源与34068真实文本窗口已数值核验，原VAL未用于梯度。'
+  if not tmr_evaluator_training:new_effect_note+=' 评价器正式训练尚未核验，不能以输入接受冒充已训练语义模型。'
 fp=B/'results/ldm100k_user_handoff_20261028/user_ldm100k_tracking_fidelity_v1/progress.json'
 if fp.exists():
  fj=json.loads(fp.read_bytes())
@@ -174,6 +175,19 @@ if fp.exists():
   fr=fj['files']['receipt'];tracking_fidelity=dict(aggregate=fr['aggregate'],processed_trials=fr['processed_trials'],receipt_sha256=fj['sha256']['receipt'],artifact_audit=fj['artifact_audit'])
   c=fr['aggregate']['conditional_cfg5']['tracked14'];u=fr['aggregate']['unconditional']['tracked14']
   new_effect_note+=f" 已从保存的真实执行姿态完成1880条跟踪误差核验；完整覆盖且最大逐帧根相对平均误差≤0.3m：条件{c['full_coverage_successes']}/940、无条件{u['full_coverage_successes']}/940；逐trial等权全局MPJPE {c['trial_equal_global_mpjpe_mm']:.2f}/{u['trial_equal_global_mpjpe_mm']:.2f}mm。此补充判据独立于原strict终止规则，无新物理回放或优化更新，正式TMR/在线仍待验收。"
+new_step34=None
+step34_path=B/'results/user_step34_20261029/user_augmentation5368_scope_v1/progress.json'
+if step34_path.exists():
+ sj=json.loads(step34_path.read_bytes());sr=sj.get('files',{}).get('receipt',{})
+ if sj.get('closed_execution_verified'):
+  cp=B/'results/user_step34_20261029/capacity_v1.json';capacity=json.loads(cp.read_bytes()) if cp.exists() else {}
+  new_step34=dict(status='ACTUAL_TRAIN_TEXT_SCOPE_ACCEPTED_GENERATION_AND_NEW_PPO_PENDING',
+    planned_clips=5368,planned_hours='31.48',actual_generated_clips=0,actual_new_PPO_updates=0,
+    scope_summary=sr['summary'],scope_receipt_sha256=sj['files']['exit']['receipt_sha256'],
+    actor_observation_dim=431,critic_observation_dim=557,method='one_stage_PPO',dagger_or_distillation=False,
+    actor_hidden=[2048,1024,512],future_reference_frames=5,policy_hz=50,storage=capacity,
+    active_TMR_job_not_restarted=True,old_privileged_teacher_not_resumed=True)
+  new_effect_note+=' 用户新授权Step3/4：5368条/31.48小时TRAIN文本流清单已实际核验并私有备份；这是计划，实际新增强动作0条、新431D Actor/557D Critic单阶段PPO更新0。等待新增持久空间并继续完成真实生成、混合引用与PPO恢复验收。旧15k特权教师仍停止；当前TMR训练不重启、不与新模型作业重叠。'
 sample=datetime.datetime.fromtimestamp(handoff_observed,datetime.timezone(datetime.timedelta(hours=8))).isoformat()
 spec=B/'configs/teacher15000-direct-strict-spec.json';h=hashlib.sha256(spec.read_bytes()).hexdigest()
 current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['status'],sample_beijing=sample,
@@ -187,7 +201,7 @@ current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['st
  actual_unattempted_sources=0 if audit_verified else None,filtered_corpus_accepted=corpus_accepted,generator_started=generator_started,
  generator_primitive_attempts=generator_attempts,vae_target_primitive_attempts=100000 if user_100k_target else 200000,vae_selected_checkpoint_attempts=vae_selected_step,ldm_primitive_attempts=ldm_attempts,ldm_target_primitive_attempts=ldm_target,user_ldm_endpoint_control_status=user_ldm_control_status,user_100k_control_status=user_control_status,handoff_workers=handoff_workers,active_generator_spec_sha256=generator_spec_sha,
  ldm_selected_checkpoint_sha256=ldm_selected_checkpoint_sha256,ldm_successor_run=ldm_successor_run,ldm_successor_dispatch_unconfirmed=ldm_dispatch_unconfirmed,
- ldm_diagnostic_summary=diagnostic_summary,generated_motion_physics=generated_physics,generated_motion_tracking_fidelity=tracking_fidelity,tmr_numeric_inputs=tmr_numeric_inputs,tmr_evaluator_training=tmr_evaluator_training,
+ ldm_diagnostic_summary=diagnostic_summary,generated_motion_physics=generated_physics,generated_motion_tracking_fidelity=tracking_fidelity,tmr_numeric_inputs=tmr_numeric_inputs,tmr_evaluator_training=tmr_evaluator_training,new_step34=new_step34,
  remote_observation_available=not access_unavailable,last_access_attempt_beijing=access_attempt,last_verified_handoff_stage=last_verified_handoff_stage,
  active_spec_sha256=h,worker_pids=[x['pid'] for x in handoff_workers],physical_replay_worker_pids=[x['pid'] for x in j['workers']],common_lock_free=handoff_lock_free,
  physical_replay_lock_released=j['common_lock_free'],
@@ -201,9 +215,10 @@ p.update(status=r['status'],runtime_launch_enabled=not audit_verified,teacher_st
  user_asked_to_relax_threshold=True,relaxed_scope='All originals admitted; no numerical physical termination threshold change',
  historical_ema_candidates_are_not_physical_replay_failures=True)
 priority.write_text(json.dumps(p,ensure_ascii=False,indent=2),encoding='utf-8')
-text=f'''# TextOp：停止跟踪器，直接全库物理筛查
+teacher_note=('旧15000轮特权筛选教师保持停止，仅作冻结推理。用户新授权Step4将训练独立431D策略，尚未执行新PPO更新。' if new_step34 else '固定使用已完整备份的15000轮模型，特权筛选教师保持停止。')
+text=f'''# TextOp：原教师筛选与当前后继进度
 
-采样时间：{sample}。跟踪器已安全停止；固定使用已完整备份的15000轮模型，不再训练跟踪器。
+采样时间：{sample}。{teacher_note}
 
 | 正式全库回放 | 数量 |
 |---|---:|
@@ -226,7 +241,7 @@ text=f'''# TextOp：停止跟踪器，直接全库物理筛查
 只有新严格动作结果、非空REFERENCE+BABEL语料、源/镜像隔离、TRAIN统计、真实CLIP及加载/梯度/恢复/持久容量验收通过后，才自动启动新筛选语料VAE{100000 if user_100k_target else 200000}步→LDM{ldm_target}步。未筛选8100步VAE继续作为暂停对照保留。
 
 真实15000检查点SHA：`{r['policy_checkpoint_sha256']}`。当前运行：`{run}`；配置SHA：`{h}`。
-原生SDK关闭未返回时仍使用已验证的有界退出机制；最终语义、端点质量、可部署WBC、在线质量和视频尚未完成，不能称论文完整效果。
+原生SDK关闭未返回时仍使用已验证的有界退出机制；已有9片真实执行姿态影片另有私有完成账本，最终语义、新可部署WBC与在线质量仍待验收，不能称论文完整效果。
 '''
 (B/'reports/teacher15000_direct_strict_20261027.md').write_text(text,encoding='utf-8')
 dst=D/'TextOp当前物理筛选进度_20261027.md';dst.write_text(text,encoding='utf-8')

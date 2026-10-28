@@ -1,3 +1,10 @@
+<!--user-step34-current-start-->
+CURRENT 2026-10-29T07:58:22.863501+08:00：用户新明确授权Step3生成式数据增强和Step4单阶段PPO：冻结已训练VAE/LDM各100000，随机组合TRAIN文本，目标5368条/31.48小时；新Actor431D/Critic557D、未来5帧参考、[2048,1024,512]ELU、50Hz/Isaac Lab/PPO，全新策略/Adam初始化，不采用DAgger/蒸馏、不恢复旧557D特权教师。当前唯一模型任务仍是原TMR500epoch作业，不能重启/额外信号/重叠模型或SDK。
+实际metadata run user_augmentation5368_scope_v1已process/sup/outer0/closed、1.66秒/无worker/独立metadata锁释放，0模型/数组/GPU/SDK/新动作/PPO更新；20个新隔离计数/来源/授权负例实际远程CPU0，仅契约检查，不是数值见证。私有文本流17889511B/SHAac49c12afeedc8703cf2c3b8c8e19df4c25fc691c2220df9d927d32d3552cbb4已真正server+D全SHA/owner/fsync/rename/SCP0/reaped接受。5361原TRAIN family/4043文本/34068annotation-chunk抽样，0原VAL；5368条中2208条1055间隔、3160条1056间隔，共5666400个50Hz有效间隔/5671768个真实目标姿态。初始两past features不计入时长，终末姿态必须真实生成，尾padding不计时长。原TRAIN切为5551条<40秒引用，共2835665间隔，尚未构建混合RL数值库。
+只部署禁用生成backend/配置和PPO工厂，完整数值生成/混合引用/PPO入口及恢复/独立SDK见证仍须完成，不能称ready。生成spec8fd992a5f098bedc15126f3fc119fc9353c2545b0e950cef9e32a4d68c49ce1c两授权false；PPO spececce7bd48585eb77b64538c8ef10bf1b152283075fa05b1a9304011a0290072c两授权false。当前实际新增强动作0条/0小时，新PPO更新0。
+真实容量不足：DATA2390249472B、HOME3004858368B、D复制后3212955648B，仅当时采样。新增canonical含头上界884096064B，生成body30/joint29引用10185795584B，候选3×128MiB策略槽402653184B，再保留2GiB+128MiB日志，至少13754246208B且未计额外原引用/增长；HOME还要容纳原TMR两个201326592B槽+80MiB推理。已向用户请求其有权限至少20GB空闲服务器持久目录及至少5GB本地备份空闲或新备份目录，尚无新输入，不得擅自删旧资产/降低保留线/用SHM冒充持久容量。当前TMR继续健康监测，来源/spec冻结，空间输入只阻塞新大输出。新正面收据覆盖下文旧CURRENT。详见USER_STEP34_ENVIRONMENT.md和reports/user_step34_augmentation_and_ppo_20261029.md。
+<!--user-step34-current-end-->
+
 ## CURRENT — teacher STOPPED; direct all8278 strict replay RUNNING
 
 Latest user: "直接进行下一步物理筛选，不要再训练跟踪器了。" Teacher is

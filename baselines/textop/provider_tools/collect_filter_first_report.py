@@ -51,6 +51,8 @@ if current_path.exists():
  if physical_complete:
   assert actual['finished']==actual['source_count']==8278 and actual['actual_unattempted_sources']==0
   extra+=f" 最新全库最终物理结果已由独立CPU完整性核验接受：8278个全部实测，{actual['passed_complete']}个完整通过，{actual['failed']}个失败，0个未尝试。原SDK及CPU核验作业均退出。后续阶段{actual.get('handoff_stage_label',actual['handoff_stage'])}，新生成器正式开训标志{actual['generator_started']}。固定15k、每源一次、跳过历史EMA候选的限制保留；单次通过不等于失败概率≤5%。"
+  if actual.get('new_step34'):
+   extra+=' 新授权Step3/4已实际构建5368条/31.48小时TRAIN文本流清单，实际增强生成0条、新431D策略单阶段PPO更新0；需要新增持久空间，旧教师不恢复。当前TMR作业继续占用模型锁，后继模型任务串行。'
 if physical_complete and actual.get('vae_target_primitive_attempts')==100000:
  extra+=f' 用户最新明确将VAE目标缩短为100000步，随后自动训练LDM{actual.get('ldm_target_primitive_attempts',300000)}步；旧200k描述仅为历史计划。新控制/质量/导出/LDM阶段以最新真实收据为准，保留原退出事实和100k完整状态。'
  if actual.get('ldm_diagnostic_summary'):
