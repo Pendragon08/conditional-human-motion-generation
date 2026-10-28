@@ -84,7 +84,7 @@ if ldm_target==100000 and endpoint_path.exists():
     if client.get('client_reaped') and client.get('actual_client_exit_code') not in [None,0]:
      handoff_stage='LDM100K_SUCCESSOR_DISPATCH_UNCONFIRMED';ldm_successor_run=successor_run;ldm_dispatch_unconfirmed=True
      handoff_workers=[];handoff_lock_free=None;handoff_observed=max(handoff_observed,dispatch.stat().st_mtime)
-for semantic_run in ['tmr_isolated_runtime_v1','tmr_text_models_v1','tmr69d_training_scope_v1','tmr69d_training_scope_v2','tmr69d_numeric_data_v1','tmr69d_core_contract_v1','tmr_text_models_import_verify_v1','tmr69d_real_witness_author_v1','tmr69d_real_witness_document_v1','tmr69d_evaluator500_train_v1','tmr69d_frozen_export_v1','tmr69d_frozen_verify_v1']:
+for semantic_run in ['tmr_isolated_runtime_v1','tmr_text_models_v1','tmr69d_training_scope_v1','tmr69d_training_scope_v2','tmr69d_numeric_data_v1','tmr69d_core_contract_v1','tmr_text_models_import_verify_v1','tmr69d_real_witness_author_v1','tmr69d_real_witness_document_v1','tmr69d_evaluator500_train_v1','tmr69d_frozen_export_v1','tmr69d_frozen_verify_v1','tmr69d_semantic_author_v1','tmr69d_semantic_document_v1','tmr69d_semantic32_v1']:
  semantic_path=B/'results/semantic_evaluator_20261029'/semantic_run/'progress.json'
  if semantic_path.exists():
   sj=json.loads(semantic_path.read_bytes());sr=sj.get('files',{}).get('receipt',{})
@@ -131,7 +131,12 @@ phase_label={'USER_LDM100K_RECORDED_TRACKING_FIDELITY_FINISHED':'真实执行姿
  'AUDITING_TRAINED_TMR69D_ON_CPU':'已训练语义评价器的CPU完整性与推理检查中',
  'TMR69D_TRAINED_FROZEN_CPU_EXPORTED':'语义评价器私有推理导出完成，接续独立CPU复核',
  'TMR69D_TRAINED_FROZEN_FRESH_CPU_VERIFIED':'语义评价器独立CPU复核通过，接续真实留出指标',
- 'FAILED_TMR69D_FROZEN_CPU_ALL_OUTPUTS_RETAINED':'语义评价器CPU检查退出，保留全部输出并处理'}.get(handoff_stage,phase_label)
+ 'FAILED_TMR69D_FROZEN_CPU_ALL_OUTPUTS_RETAINED':'语义评价器CPU检查退出，保留全部输出并处理',
+ 'PREPARING_TRAINED_ROBOT_TMR69D_SEMANTIC_INFERENCE':'正在准备真正冻结评价器的留出语义输入',
+ 'RUNNING_TRAINED_TMR69D_SEMANTIC_INFERENCE':'真正冻结评价器的留出语义诊断中',
+ 'TMR69D_REAL_SEMANTIC_EMBEDDING_WITNESS_FINISHED':'真实语义特征见证完成，接续独立核验与全部配对指标',
+ 'TMR69D_SEMANTIC_DIAGNOSTIC_FINISHED':'留出语义诊断已执行，标量与协议审计仍须真实闭合接受',
+ 'FAILED_TMR69D_SEMANTIC_ALL_OUTPUTS_RETAINED':'语义诊断退出，保留全部输出并处理'}.get(handoff_stage,phase_label)
 diagnostic_summary=None;generated_physics=None;new_effect_note=''
 sp=B/'results/ldm100k_user_handoff_20261028/user_ldm100k_diagnostic_summary_v2/progress.json'
 if sp.exists():

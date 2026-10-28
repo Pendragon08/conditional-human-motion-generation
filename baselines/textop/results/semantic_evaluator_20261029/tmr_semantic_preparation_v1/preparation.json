@@ -1,0 +1,175 @@
+{
+  "deployment": {
+    "status": "TMR_SEMANTIC_BACKEND_AND_POLICY_DEPLOYED_DISABLED",
+    "source_sha256": {
+      "scripts/tmr69d_semantic_math.py": "63b4d82174bfbf3062a5357c953bdfebb85b9dc995a749af1b061653f9a16529",
+      "scripts/tmr69d_semantic_inputs.py": "6d4537c20603343244ac3015166c7df1c26b2af8e5b9c8dd003da548bcac9809",
+      "scripts/run_tmr69d_semantic.py": "94bdfa9d6613ed0d587a9fcb5b00c6eeb89ae15f2007f48d3ba0b8c78c1e1ed3",
+      "scripts/supervise_tmr69d_semantic.py": "bd3b81888e020a0609b0c22bd56f37f44c85dad71990ae0b08c074997fad88e3",
+      "scripts/test_tmr69d_semantic_math.py": "4daf8ef83a023042d49cc34ddf9bee5c4186eddb735ae50244891eb957e07a59",
+      "scripts/test_tmr69d_semantic_policy.py": "69784b9428fab4a16190185b9c5e41d0376f83105c58a7bd82af0569819c85df",
+      "configs/tmr69d-semantic-spec.json": "b588fb67d0989ede76d459b8657e85208c6941d4e39819f89b86ba30ba4aa55a"
+    },
+    "active_training_source_hashes_unchanged": {
+      "configs/tmr69d-evaluator-train-spec.json": "2196a765dbaa61ba7265b9d798f99fe5c094a502fd34bd47869f0fe141360b13",
+      "scripts/train_tmr69d_evaluator.py": "04014d8f2e657e9c48827edd7fae817c3f01362d97dcdbd3a0e3dea092c604c2",
+      "scripts/supervise_tmr69d_evaluator_training.py": "f683af23c66df1c6669341626210cb4100f638ff2410e4ea8c9b7a0935cb14d7"
+    },
+    "actual_trained_latents_read": 0,
+    "actual_model_loads": 0,
+    "actual_metric_jobs": 0,
+    "new_gpu_contexts": 0,
+    "production_signals": 0
+  },
+  "actual_cpu_fixtures": {
+    "test_tmr69d_semantic_policy.py": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/test_tmr69d_semantic_policy.py"
+      ],
+      "supervisor_pid": 419855,
+      "child_pid": 419856,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 0.06609132699668407,
+      "supervision_passed": true,
+      "result": {
+        "status": "TMR69D_SEMANTIC_DISABLED_POLICY_CONTRACT_VERIFIED",
+        "new_negative_cases": [
+          "cosine_substitution",
+          "sampled_latent",
+          "L2_normalized_FID",
+          "drop_last28",
+          "biased_covariance",
+          "pooled_duplicate_reference",
+          "optimistic_tie",
+          "best_seed_only",
+          "missing_mode",
+          "reduced_reserve",
+          "premature_witness",
+          "premature_metric",
+          "placeholder_binding_in_disabled_policy"
+        ],
+        "authorization_only_signature_transition_verified": true,
+        "actual_arrays_read": 0,
+        "actual_models_loaded": 0,
+        "actual_gpu_contexts": 0,
+        "actual_metric_jobs": 0,
+        "actual_weights_or_policy_mutations": 0
+      }
+    },
+    "test_tmr69d_semantic_math.py": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/test_tmr69d_semantic_math.py"
+      ],
+      "supervisor_pid": 419855,
+      "child_pid": 419857,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 0.11700307205319405,
+      "supervision_passed": true,
+      "result": {
+        "status": "TMR69D_SEMANTIC_NUMERICAL_KERNEL_FIXTURES_VERIFIED",
+        "isolated_negative_cases": [
+          "duplicate_segment",
+          "too_few_candidates",
+          "nonfinite_input",
+          "non_float_input",
+          "not_a_matrix",
+          "feature_mismatch",
+          "paired_count_mismatch",
+          "fid_population_mismatch",
+          "fid_singleton"
+        ],
+        "analytic_fid_cases": 5,
+        "all188_queries_and_last28_preserved": true,
+        "reference_schedule_independent_of_input_order": true,
+        "actual_robot_latents_read": 0,
+        "actual_models_loaded": 0,
+        "actual_gpu_contexts": 0,
+        "actual_trained_semantic_scores": 0
+      }
+    }
+  },
+  "bridge_render_ast_checks": [
+    {
+      "action": "activate",
+      "stage": "witnesses",
+      "role": null,
+      "actual_python38_parse": true
+    },
+    {
+      "action": "activate",
+      "stage": "metrics",
+      "role": null,
+      "actual_python38_parse": true
+    },
+    {
+      "action": "launch",
+      "stage": null,
+      "role": "author",
+      "actual_python38_parse": true
+    },
+    {
+      "action": "launch",
+      "stage": null,
+      "role": "document",
+      "actual_python38_parse": true
+    },
+    {
+      "action": "launch",
+      "stage": null,
+      "role": "diagnostic",
+      "actual_python38_parse": true
+    },
+    {
+      "action": "collect",
+      "stage": null,
+      "role": "author",
+      "actual_python38_parse": true
+    },
+    {
+      "action": "collect",
+      "stage": null,
+      "role": "document",
+      "actual_python38_parse": true
+    },
+    {
+      "action": "collect",
+      "stage": null,
+      "role": "diagnostic",
+      "actual_python38_parse": true
+    }
+  ],
+  "original_semantic_scores_computed": 0,
+  "actual_model_jobs": 0,
+  "actual_policy_authorizations": 0,
+  "interpretation": "new isolated analytic/metadata proofs only; actual frozen encoder/witnesses/full metric acceptance still pending"
+}

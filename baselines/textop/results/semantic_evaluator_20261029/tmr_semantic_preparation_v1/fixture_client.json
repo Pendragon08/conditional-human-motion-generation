@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 180,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "b3c8c32776774834fac68b4d5845b81260225c8e2da0e201049c63950d95736d",
+  "client_pid": 57016,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"test_tmr69d_semantic_policy.py\": {\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"CUDA_VISIBLE_DEVICES=\", \"PYTHONDONTWRITEBYTECODE=1\", \"OPENBLAS_NUM_THREADS=4\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python\", \"-B\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/test_tmr69d_semantic_policy.py\"], \"supervisor_pid\": 419855, \"child_pid\": 419856, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 3, \"sample_errors\": [], \"elapsed_seconds\": 0.06609132699668407, \"supervision_passed\": true, \"result\": {\"status\": \"TMR69D_SEMANTIC_DISABLED_POLICY_CONTRACT_VERIFIED\", \"new_negative_cases\": [\"cosine_substitution\", \"sampled_latent\", \"L2_normalized_FID\", \"drop_last28\", \"biased_covariance\", \"pooled_duplicate_reference\", \"optimistic_tie\", \"best_seed_only\", \"missing_mode\", \"reduced_reserve\", \"premature_witness\", \"premature_metric\", \"placeholder_binding_in_disabled_policy\"], \"authorization_only_signature_transition_verified\": true, \"actual_arrays_read\": 0, \"actual_models_loaded\": 0, \"actual_gpu_contexts\": 0, \"actual_metric_jobs\": 0, \"actual_weights_or_policy_mutations\": 0}}, \"test_tmr69d_semantic_math.py\": {\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"CUDA_VISIBLE_DEVICES=\", \"PYTHONDONTWRITEBYTECODE=1\", \"OPENBLAS_NUM_THREADS=4\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python\", \"-B\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/test_tmr69d_semantic_math.py\"], \"supervisor_pid\": 419855, \"child_pid\": 419857, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 3, \"sample_errors\": [], \"elapsed_seconds\": 0.11700307205319405, \"supervision_passed\": true, \"result\": {\"status\": \"TMR69D_SEMANTIC_NUMERICAL_KERNEL_FIXTURES_VERIFIED\", \"isolated_negative_cases\": [\"duplicate_segment\", \"too_few_candidates\", \"nonfinite_input\", \"non_float_input\", \"not_a_matrix\", \"feature_mismatch\", \"paired_count_mismatch\", \"fid_population_mismatch\", \"fid_singleton\"], \"analytic_fid_cases\": 5, \"all188_queries_and_last28_preserved\": true, \"reference_schedule_independent_of_input_order\": true, \"actual_robot_latents_read\": 0, \"actual_models_loaded\": 0, \"actual_gpu_contexts\": 0, \"actual_trained_semantic_scores\": 0}}}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\semantic_evaluator_20261029\\tmr_semantic_preparation_v1\\fixture_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\semantic_evaluator_20261029\\tmr_semantic_preparation_v1\\fixture_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}
