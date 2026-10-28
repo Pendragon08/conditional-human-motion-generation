@@ -2,7 +2,7 @@
   "schema": "textop.direct_strict_user_progress.v1",
   "run": "teacher15000_direct_full_v1",
   "status": "TEXTOP_TEACHER15000_DIRECT_STRICT_EXECUTION_COMPLETED",
-  "sample_beijing": "2026-10-29T02:16:25.331912+08:00",
+  "sample_beijing": "2026-10-29T03:02:35.977441+08:00",
   "teacher_stopped": true,
   "frozen_checkpoint_completed": 15000,
   "checkpoint_sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
@@ -24,8 +24,8 @@
   "raw_light_collector_trace_acceptance": false,
   "strict_physics_accepted": true,
   "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
-  "handoff_stage": "USER_LDM100K_RECORDED_EXECUTION_VIDEOS_FINISHED",
-  "handoff_stage_label": "\u771f\u5b9e\u6267\u884c\u5f71\u7247\u5df2\u5236\u4f5c\uff0c\u63a5\u7eed\u5b8c\u6574\u8bed\u4e49/WBC/\u5728\u7ebf\u9a8c\u6536",
+  "handoff_stage": "FAILED_TMR_TEXT_MODEL_PREPARATION_ALL_PARTIALS_RETAINED",
+  "handoff_stage_label": "\u670d\u52a1\u5668\u6587\u672c\u6a21\u578b\u76f4\u8fde\u5931\u8d25\uff0c\u4fdd\u7559\u73b0\u573a\u5e76\u7ee7\u7eed\u672c\u5730\u7f13\u5b58\u6838\u9a8c\uff1b\u751f\u6210\u5668\u5df2\u5b8c\u6210\u5341\u4e07\u6b65",
   "actual_unattempted_sources": 0,
   "filtered_corpus_accepted": true,
   "generator_started": true,
@@ -39,7 +39,7 @@
   "handoff_workers": [],
   "active_generator_spec_sha256": "654332646f2aa4bb69fea4cc779edf88138735a0ca9f5e5906e783948868c770",
   "ldm_selected_checkpoint_sha256": "9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea",
-  "ldm_successor_run": "user_ldm100k_execution_videos_v1",
+  "ldm_successor_run": "tmr_text_models_v1",
   "ldm_successor_dispatch_unconfirmed": false,
   "ldm_diagnostic_summary": {
     "statistics": {
@@ -115,9 +115,66 @@
       "full_validation_or_online_quality_accepted": false
     }
   },
+  "generated_motion_tracking_fidelity": {
+    "aggregate": {
+      "conditional_cfg5": {
+        "tracked14": {
+          "trials": 940,
+          "full_coverage_successes": 933,
+          "full_coverage_success_rate": 0.9925531914893617,
+          "observed_prefix_only_within_threshold_count": 936,
+          "trial_equal_global_mpjpe_mm": 70.4141047114427,
+          "trial_equal_root_relative_mpjpe_mm": 35.0922392175949,
+          "observed_frame_weighted_global_mpjpe_mm": 87.20749226989753,
+          "observed_frame_weighted_root_relative_mpjpe_mm": 38.361214053981904
+        },
+        "all30": {
+          "trials": 940,
+          "full_coverage_successes": 933,
+          "full_coverage_success_rate": 0.9925531914893617,
+          "observed_prefix_only_within_threshold_count": 937,
+          "trial_equal_global_mpjpe_mm": 70.08745615826325,
+          "trial_equal_root_relative_mpjpe_mm": 33.66507798720627,
+          "observed_frame_weighted_global_mpjpe_mm": 86.74644669458215,
+          "observed_frame_weighted_root_relative_mpjpe_mm": 36.45719673363177
+        }
+      },
+      "unconditional": {
+        "tracked14": {
+          "trials": 940,
+          "full_coverage_successes": 939,
+          "full_coverage_success_rate": 0.9989361702127659,
+          "observed_prefix_only_within_threshold_count": 940,
+          "trial_equal_global_mpjpe_mm": 57.64041460525403,
+          "trial_equal_root_relative_mpjpe_mm": 30.71035051153616,
+          "observed_frame_weighted_global_mpjpe_mm": 64.10054154074469,
+          "observed_frame_weighted_root_relative_mpjpe_mm": 31.579321293630652
+        },
+        "all30": {
+          "trials": 940,
+          "full_coverage_successes": 939,
+          "full_coverage_success_rate": 0.9989361702127659,
+          "observed_prefix_only_within_threshold_count": 940,
+          "trial_equal_global_mpjpe_mm": 57.35769092075606,
+          "trial_equal_root_relative_mpjpe_mm": 29.466484759518124,
+          "observed_frame_weighted_global_mpjpe_mm": 63.64947474897254,
+          "observed_frame_weighted_root_relative_mpjpe_mm": 29.969029916315254
+        }
+      }
+    },
+    "processed_trials": 1880,
+    "receipt_sha256": "77ce67f28800ec4dd9f25cfb52fe12c89d99d1e7d7f1af2c9b34ab9f7ad8d167",
+    "artifact_audit": {
+      "all1880_private_scalar_rows_and_original_coverage_join_verified": true,
+      "threshold_and_aggregate_recomputed": true,
+      "source_physics_decisions_unchanged": true,
+      "new_model_loads": 0,
+      "new_gpu_contexts": 0
+    }
+  },
   "remote_observation_available": true,
   "last_access_attempt_beijing": null,
-  "last_verified_handoff_stage": "USER_LDM100K_RECORDED_EXECUTION_VIDEOS_FINISHED",
+  "last_verified_handoff_stage": "FAILED_TMR_TEXT_MODEL_PREPARATION_ALL_PARTIALS_RETAINED",
   "active_spec_sha256": "91184fff75f8a0579a759abb418d4a0186d3e42a9a48c176e3d33facc768a1cd",
   "worker_pids": [],
   "common_lock_free": true,

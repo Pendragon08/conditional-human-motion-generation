@@ -58,6 +58,9 @@ if physical_complete and actual.get('vae_target_primitive_attempts')==100000:
   extra+=f' VAE/LDM均已真实完成用户指定100000步，配对生成1880次已闭合。文本条件平均重构Huber {c:.6f}，无条件{u:.6f}，文本条件高{(c/u-1)*100:.2f}%；保留此负面重构结果，不作TMR/语义结论，也不追加训练。'
  if actual.get('generated_motion_physics'):
   v=actual['generated_motion_physics'];extra+=f" 新生成动作严格回放已结束{v['finished']}/1880，通过{v['passed']}、失败{v['failed']}，真实闭合{v['closed_execution_verified']}；进行中数量不是最终通过率。"
+ if actual.get('generated_motion_tracking_fidelity'):
+  v=actual['generated_motion_tracking_fidelity']['aggregate'];c=v['conditional_cfg5']['tracked14'];u=v['unconditional']['tracked14']
+  extra+=f" 保存执行姿态的补充跟踪判据（完整覆盖且根相对误差最大值≤0.3m）为条件{c['full_coverage_successes']}/940、无条件{u['full_coverage_successes']}/940；每动作等权全局位置误差{c['trial_equal_global_mpjpe_mm']:.2f}/{u['trial_equal_global_mpjpe_mm']:.2f}mm，0新动力学。原strict终止计数另保留，正式机器人语义与在线质量仍待验收。"
 text=f'''# TextOp：恢复先筛选、后训练的论文顺序
 
 用户2026-10-27明确调整：安全保存并暂停未筛选数据生成器，先完成全库物理筛选。先前推荐的“未筛选全源先训练”属于额外对照，并非论文主线；现在已取消其自动接续，不能把这条路线说成论文训练数据已合格。

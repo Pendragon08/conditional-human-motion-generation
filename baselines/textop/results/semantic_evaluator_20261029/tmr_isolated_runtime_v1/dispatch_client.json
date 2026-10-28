@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 180,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "270ff647c86d8f855d9c53cbcecf7ae1878be2ca84e2b6a4b6112644b49019b3",
+  "client_pid": 69320,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"status\": \"TMR_PRIVATE_RUNTIME_DISPATCHED_NOT_ACCEPTED\", \"run\": \"tmr_isolated_runtime_v1\", \"driver_pid\": 401296, \"request_sha256\": \"6c989831d46a4d083e19587b806aa568674876ed7efd84d6a25ce45ee776bb27\", \"preflight_resources\": {\"available_host_ram_bytes\": 133177389056, \"data_free_bytes\": 3221598208, \"all_device_usage_including_other_jobs\": \"0, 12223, 36328, 0\\n1, 7823, 40726, 0\", \"owned_child_group\": null, \"owned_group_processes\": [], \"owned_group_gpu_memory\": []}, \"gpu1_free_used_mib\": \"40726, 7823\", \"data_free_bytes\": 3221516288, \"pretrained_weight_downloads\": 0, \"evaluator_training_updates\": 0}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\semantic_evaluator_20261029\\tmr_isolated_runtime_v1\\dispatch_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\semantic_evaluator_20261029\\tmr_isolated_runtime_v1\\dispatch_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}
