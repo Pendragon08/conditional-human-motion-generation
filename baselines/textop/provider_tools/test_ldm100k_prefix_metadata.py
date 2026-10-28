@@ -7,7 +7,7 @@ import sys
 
 B = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(B / 'scripts'))
-from ldm100k_prefix_completion import validate_records, validate_state_metadata, expected_state_binding
+from ldm100k_prefix_completion import validate_records, validate_state_metadata, expected_state_binding, validate_interrupted_evidence
 from ldm100k_control_protocol import RESTORE_KEYS
 
 
@@ -82,6 +82,22 @@ def main():
             item = item[k]
         item[path[-1]] = value
         cases.append(lambda q=q: validate_state_metadata(q, ck, expected))
+    process = dict(child_reaped=True, child_exit_code=1, timed_out=False,
+                   supervisor_error=None, sample_errors=[], samples_written=2)
+    ex = dict(process, evaluation_receipt_sha256='a', process_exit_sha256='b', resources_sha256='c')
+    outer = dict(actual_returncode=1)
+    samples = [dict(phase='starting'), dict(phase='after_exit')]
+    validate_interrupted_evidence(ex, process, outer, 'a', 'b', 'c', samples)
+    for where, key, value in [('exit', 'evaluation_receipt_sha256', 'bad'),
+                               ('exit', 'process_exit_sha256', 'bad'),
+                               ('exit', 'resources_sha256', 'bad'),
+                               ('process', 'samples_written', 1),
+                               ('outer', 'actual_returncode', 0),
+                               ('last_sample', 'phase', 'running')]:
+        q = copy.deepcopy(dict(exit=ex, process=process, outer=outer, last_sample=samples[-1]))
+        q[where][key] = value
+        cases.append(lambda q=q: validate_interrupted_evidence(q['exit'], q['process'], q['outer'],
+                                                               'a', 'b', 'c', [samples[0], q['last_sample']]))
     for call in cases:
         try:
             call()

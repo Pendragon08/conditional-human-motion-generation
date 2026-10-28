@@ -87,6 +87,20 @@ def validate_state_metadata(state, selected, expected_binding):
                 saved_pending_evaluation_steps=fields['pending_evaluation_steps'])
 
 
+def validate_interrupted_evidence(ex, process, outer, receipt_sha, process_sha, resources_sha, samples):
+    """A nonzero interrupted producer still needs authentic closed resource evidence."""
+    assert outer['actual_returncode'] != 0
+    for record in [ex, process]:
+        assert record['child_reaped'] and record['child_exit_code'] in [-2, 1, 130]
+        assert not record['timed_out'] and record['supervisor_error'] is None
+        assert record['sample_errors'] == [] and not record.get('cleanup_error')
+    assert ex['evaluation_receipt_sha256'] == receipt_sha
+    assert ex['process_exit_sha256'] == process_sha
+    assert ex['resources_sha256'] == resources_sha
+    assert len(samples) == ex['samples_written'] == process['samples_written']
+    assert samples and samples[-1]['phase'] == 'after_exit'
+
+
 def stopped_ldm100k(binding):
     assert binding['kind'] == KIND and binding['selected_step'] == 100000
     run = binding['control_run']
@@ -123,11 +137,15 @@ def stopped_ldm100k(binding):
     assert read(owned(cp.parent / 'producer_final_snapshot.json')) == final
     selected = validate_records(control, policy, before, final)
     prefix = 'filtered15000_ldm_' + policy['original_run']
+    original_paths = {}
+    original_exits = {}
     for key, suffix in [('exit', '_exit.json'), ('process', '_process_exit.json'),
                         ('outer', '_outer_exit.json')]:
         path = owned(ROOT / 'receipts' / (prefix + suffix))
+        original_paths[key] = path
         assert sha(path) == control['original_exit_sha256'][key]
         actual = read(path)
+        original_exits[key] = actual
         assert actual == control['original_exit_records'][key]
         if key == 'outer':
             assert actual['actual_returncode'] != 0
@@ -135,6 +153,11 @@ def stopped_ldm100k(binding):
             assert actual['child_reaped'] and actual['child_exit_code'] in [-2, 1, 130]
             assert not actual['timed_out'] and actual['supervisor_error'] is None
             assert actual['sample_errors'] == [] and not actual.get('cleanup_error')
+    resources = owned(ROOT / 'logs' / (prefix + '_resources.jsonl'))
+    samples = [json.loads(line) for line in resources.read_text().splitlines()]
+    validate_interrupted_evidence(original_exits['exit'], original_exits['process'],
+                                  original_exits['outer'], sha(rp), sha(original_paths['process']),
+                                  sha(resources), samples)
     names = [str(ROOT / 'scripts' / n) for n in
              ['run_user_vae100k_ldm.py', 'supervise_user_vae100k_ldm.py',
               'watch_ldm100k_handoff.py', 'supervise_ldm100k_handoff.py']]

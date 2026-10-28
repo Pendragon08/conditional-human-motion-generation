@@ -9,14 +9,14 @@ New sources are `scripts/ldm100k_prefix_completion.py`,
 local activation/launch/collection providers. They implement a distinct100k
 provenance path, never the old300k-completion gate. Actual server deployment
 and isolated stdlib metadata fixture exit0/reaped/final streams are recorded in
-`results/ldm100k_user_handoff_20261028/prefix_export_preparation_v1.json`.
-Twenty corruption cases were rejected. This did not read production checkpoint
+`results/ldm100k_user_handoff_20261028/prefix_export_preparation_v2.json`.
+Twenty-six corruption cases were rejected. This did not read production checkpoint
 payloads, instantiate a model, create a GPU context or send a production signal.
 It is source preparation, not actual tensor/export/quality acceptance.
 
 Current spec `configs/ldm100k-prefix-export-spec.json` has
 `export_authorized=false`, `ldm_training=null`. SHA
-9caece9b5f030a0fa6fcb09ed47e93fc83c17fd221a09a660e177ba51560e56d.
+98a3d4a75423a5ed0bcb497032f53849900e528e023acaaab494caa993dafc0c.
 All active original/control hashes were unchanged before and after deployment.
 Do not rerun preparation or isolated fixtures merely because a heartbeat fired.
 
@@ -69,3 +69,5 @@ staged source or metadata fixture is a substitute. After the genuine endpoint,
 continue this work automatically, without asking whether to start or extending
 training beyond the user's100k endpoint. All private arrays/text/trajectory/
 full Adam/SDK stay server+D; only code and aggregate evidence go to public Git.
+
+Disabled revision2 additionally binds the interrupted original receipt/process/resource SHA, actual sample counts and final after_exit phase. Six new corrupt-resource/exit cases were added; server CPU26-case fixture exited0. Revision1 source/test/spec bytes remain in sources/ldm100k_prefix_export_disabled_v1 locally and receipts/ldm100k_prefix_export_disabled_v1 on the server. Neither revision was activated or used to load a production model.
