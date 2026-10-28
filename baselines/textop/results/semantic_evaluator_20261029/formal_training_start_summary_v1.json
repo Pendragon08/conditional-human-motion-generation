@@ -111,8 +111,9 @@
         "new_gpu_contexts": 0
       }
     },
-    "C_free_bytes": 3163172864,
-    "D_free_bytes": 3362668544,
+    "observed_beijing": "2026-10-29T05:06:09.253608+08:00",
+    "C_free_bytes": 3160657920,
+    "D_free_bytes": 3232219136,
     "ldm_fullstate_independently_accepted": {
       "status": "LDM100K_D_FULLSTATE_ACCEPTED_ALL_PRIVATE_CLIENTS_RECONCILED",
       "checkpoint": {
@@ -148,30 +149,91 @@
       "worker": {
         "pid": 69868,
         "expected_start_filetime": 134376946373530938,
-        "actual_start_filetime": 134376946373530938,
-        "native_exit_code": 259,
-        "status": "STILL_ACTIVE"
+        "status": "NOT_PRESENT"
       },
       "client": {
         "pid": 15748,
         "expected_start_filetime": 134376946533588306,
-        "actual_start_filetime": 134376946533588306,
-        "native_exit_code": 259,
-        "status": "STILL_ACTIVE"
+        "status": "NOT_PRESENT"
       },
       "prefix_bytes": 241467392,
       "prefix_sha256": "e5353248f56249ba9cf9f7c74d5bf43dfebcb74e8d2de55822ec7c0e05126342",
       "latest_resource": {
-        "unix": 1793221218.4930675,
-        "bytes": 370540544,
-        "free_bytes": 3375251456,
+        "unix": 1793221383.5800896,
+        "bytes": 510328832,
+        "free_bytes": 3235237888,
         "client_pid": 15748
       },
       "outcomes": {
-        "client_outcome.json": null,
-        "worker_exit.json": null,
-        "backup.json": null
+        "client_outcome.json": {
+          "actual_client_exit_code": 0,
+          "client_reaped": true,
+          "streams_final": true,
+          "transport": "SFTP reget",
+          "prefix_bytes_preserved": 241467392
+        },
+        "worker_exit.json": {
+          "status": "PRIVATE_BYTE_BACKUP_VERIFIED",
+          "actual_returncode": 0
+        },
+        "backup.json": {
+          "status": "REAL99700_EMERGENCY_PRIVATE_BACKUP_VERIFIED",
+          "checkpoint": {
+            "path": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/emergency_99700.pth",
+            "bytes": 513526701,
+            "sha256": "4ebfe7174678c54d23a1c5d4f71857d6a6a22cca08bd2c1cbf6d82dcce3f4c49",
+            "manager_step": 99700,
+            "actual_optimizer_updates": 99700
+          },
+          "control_binding": null,
+          "D_path": "D:\\\u5177\u8eab\u667a\u80fd\\TextOp\u590d\u73b0_20261024\\checkpoints\\private\\filtered15000_vae200k_20261028\\emergency_99700\\emergency_99700.pth",
+          "D_sha256": "4ebfe7174678c54d23a1c5d4f71857d6a6a22cca08bd2c1cbf6d82dcce3f4c49",
+          "D_free_bytes": 3232227328,
+          "source_fingerprint_stable": true,
+          "actual_sftp_exit_code": 0,
+          "resumed_prefix_bytes": 241467392,
+          "new_gpu_contexts": 0,
+          "new_model_loads": 0
+        }
       }
+    },
+    "legacy_99700_independently_accepted": {
+      "status": "VAE99700_PRIVATE_FULLSTATE_INDEPENDENT_D_ACCEPTED",
+      "checkpoint": {
+        "path": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/emergency_99700.pth",
+        "bytes": 513526701,
+        "sha256": "4ebfe7174678c54d23a1c5d4f71857d6a6a22cca08bd2c1cbf6d82dcce3f4c49",
+        "manager_step": 99700,
+        "actual_optimizer_updates": 99700
+      },
+      "D_sha256": "4ebfe7174678c54d23a1c5d4f71857d6a6a22cca08bd2c1cbf6d82dcce3f4c49",
+      "D_native_owner": {
+        "current_user_owned": true,
+        "reparse_points": false,
+        "existing_components_checked": 6,
+        "path": "D:\\\u5177\u8eab\u667a\u80fd\\TextOp\u590d\u73b0_20261024\\checkpoints\\private\\filtered15000_vae200k_20261028\\emergency_99700\\emergency_99700.pth"
+      },
+      "original_worker_and_client_closed": [
+        {
+          "pid": 69868,
+          "expected_start_filetime": 134376946373530938,
+          "status": "NOT_PRESENT"
+        },
+        {
+          "pid": 15748,
+          "expected_start_filetime": 134376946533588306,
+          "status": "NOT_PRESENT"
+        }
+      ],
+      "source_fingerprint_stable": true,
+      "actual_SFTP_exit_code": 0,
+      "actual_worker_exit_code": 0,
+      "actual_resumed_prefix_bytes": 241467392,
+      "actual_resumed_prefix_sha256": "e5353248f56249ba9cf9f7c74d5bf43dfebcb74e8d2de55822ec7c0e05126342",
+      "both_transport_locks_observed_free": true,
+      "D_free_bytes": 3232219136,
+      "checkpoint_model_deserializations": 0,
+      "new_gpu_contexts": 0
     }
   },
   "actual_generator_teacher_new_updates": 0,
