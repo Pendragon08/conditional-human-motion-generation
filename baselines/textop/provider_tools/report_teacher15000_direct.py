@@ -128,7 +128,7 @@ text=f'''# TextOp：停止跟踪器，直接全库物理筛查
 dst=D/'TextOp当前物理筛选进度_20261027.md';dst.write_text(text,encoding='utf-8')
 body='<!doctype html><meta charset="utf-8"><title>TextOp物理筛选进度</title><style>body{font:17px/1.8 system-ui;max-width:1000px;margin:32px auto;padding:24px;background:#101927;color:#edf2fa}</style>'+''.join('<p>'+html.escape(line)+'</p>' for line in text.splitlines() if line)
 (D/'TextOp当前物理筛选进度_20261027.html').write_text(body,encoding='utf-8')
-user_goal_note=(f'<p>按你的最新要求：VAE目标100,000步，最近已核验{generator_attempts:,}步；完成保存和验收后自动转入LDM300,000步。当前{html.escape(phase_label)}。</p>' if user_100k_target else '')
+user_goal_note=(f'<p>VAE已完成{generator_attempts:,}步；LDM已正式训练{ldm_attempts:,}/300,000步。当前{html.escape(phase_label)}。</p>' if user_100k_target and ldm_attempts>0 else f'<p>按你的最新要求：VAE目标100,000步，最近已核验{generator_attempts:,}步；保存和验收后自动转入LDM300,000步。当前{html.escape(phase_label)}。</p>' if user_100k_target else '')
 banner=f'<!--direct-strict-current-start--><section style="padding:24px;background:#edf6ee;color:#153a24;font:17px/1.8 system-ui"><h2>最新训练目标与物理筛选结果</h2>{user_goal_note}<p>采样{html.escape(sample)}：完整通过{passed}，失败{failed}，尚未结束{pending}。未测试不算失败。历史EMA候选0与本次物理结果分别记录。</p><a href="TextOp当前物理筛选进度_20261027.html">查看当前完整说明</a></section><!--direct-strict-current-end-->'
 for name in ['TextOp下载与训练报告.html','TextOp在线功能验收与完整训练接续_20261026.html']:
  q=D/name
