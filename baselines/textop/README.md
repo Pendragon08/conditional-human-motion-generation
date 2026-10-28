@@ -1,3 +1,8 @@
+<!--ldm100k-live-2231-start-->
+CURRENT 2026-10-28T22:32:04.302481+08:00 LDM94500尝试/94500Adam/0skip、原worker与supervisor身份一致、RUNNING无exit/commonlock占用；2026-10-28T22:32:25.874513+08:00唯一控制另采94500、WAITING/0信号。尚无100k保存，仍仅选择100000；15分钟静默检查，真实100k闭合后直接接续实际CPU导出/fresh复核/scope/生成诊断及物理验收，不再询问，不改活动source/spec/预算/控制器。
+私有99700备份p997_v2已真实SFTP1/reaped/final streams、worker1/无残留（Connection closed），全部partial和失败记录保留；并未成功备份。核实际旧client/锁释放后，已唯一派发p997_v3，对233537536B前缀双方SHA2ee3b99c3a007670c72c4f8b71be67adaef86f146b6b79ea44fc1d94c19282e1核验一致且源fullSHA/owner/fingerprint未变，原新worker15312/start134376716603044362与SFTP66488/start134376716875615128实核匹配/STILL_ACTIVE，仍PENDING。不得重新派发或从0重传；只在真正fullSHA/owner/exit通过后称备份完成。此字节传输无模型/GPU，不影响LDM，0训练源/spec修改或信号。见results/ldm100k_user_handoff_20261028/private99700_resume_h2231.json。D/C实际容量见该收据，不删数据或降低2GiB保留，不重跑旧清理。
+<!--ldm100k-live-2231-end-->
+
 <!--user-direct-next-20261028-start-->
 用户最新再次明确授权：“LDM训练完后直接下一步。”不要在100k端点完成后询问或停工，按已接受真实出口自动接续CPU完整性/推理导出→fresh实际CPU复核→真实heldout scope→作者/fresh实际生成见证→配对效果诊断，再继续真实物理验收/影片与兼容指标；所有真实验收和串行锁不省略。只选择100000，不延长到旧300k。
 最新人工核对u_next_l1 2026-10-28T22:14:23.959544+08:00原LDM91700尝试/91700Adam/0skip，RUNNING无exit，原supervisor304265/start1436142089、worker304272/start1436142105身份一致，共同GPU锁占用；u_next_c1 2026-10-28T22:14:59.544893+08:00唯一控制另采91800、WAITING/0信号、原observer身份一致。均非checkpoint，无真实100k/export/scope/生成完成。当前临近端点，将现有textop临时改为每15分钟轻量检查与自动接续，不创建第二自动化/observer；正式诊断健康运行后可恢复每小时，阶段通知不是停止点。源码/spec/预算冻结，不重派/额外信号。后续新实际收据覆盖此采样。

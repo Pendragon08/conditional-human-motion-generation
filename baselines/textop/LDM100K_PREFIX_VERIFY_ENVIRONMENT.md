@@ -1,3 +1,8 @@
+<!--ldm100k-live-2231-start-->
+CURRENT 2026-10-28T22:32:04.302481+08:00 LDM94500尝试/94500Adam/0skip、原worker与supervisor身份一致、RUNNING无exit/commonlock占用；2026-10-28T22:32:25.874513+08:00唯一控制另采94500、WAITING/0信号。尚无100k保存，仍仅选择100000；15分钟静默检查，真实100k闭合后直接接续实际CPU导出/fresh复核/scope/生成诊断及物理验收，不再询问，不改活动source/spec/预算/控制器。
+私有99700备份p997_v2已真实SFTP1/reaped/final streams、worker1/无残留（Connection closed），全部partial和失败记录保留；并未成功备份。核实际旧client/锁释放后，已唯一派发p997_v3，对233537536B前缀双方SHA2ee3b99c3a007670c72c4f8b71be67adaef86f146b6b79ea44fc1d94c19282e1核验一致且源fullSHA/owner/fingerprint未变，原新worker15312/start134376716603044362与SFTP66488/start134376716875615128实核匹配/STILL_ACTIVE，仍PENDING。不得重新派发或从0重传；只在真正fullSHA/owner/exit通过后称备份完成。此字节传输无模型/GPU，不影响LDM，0训练源/spec修改或信号。见results/ldm100k_user_handoff_20261028/private99700_resume_h2231.json。D/C实际容量见该收据，不删数据或降低2GiB保留，不重跑旧清理。
+<!--ldm100k-live-2231-end-->
+
 <!--ldm100k-live-2118-start-->
 CURRENT最新轻量实核：2026-10-28T21:18:48.530554+08:00原LDM82900尝试/82900Adam/0skip，原supervisor304265/start1436142089和worker304272/start1436142105一致、RUNNING无exit/commonlock占用，native stage1，完整DDPM history实际生成32899次/选用8101primitive。2026-10-28T21:19:47.792691+08:00唯一控制另采83100、WAITING/0信号，原observer身份一致；两份时刻不同，不是checkpoint，仍只选择真实100000端点。代码/禁用见证链不代表已经运行；原source/spec/预算/课程/唯一控制器冻结，按LDM100K_GENERATION_HANDOFF_ENVIRONMENT.md在真正100k停止闭合、CPU导出/fresh复核/scope后自动接续。20:04向用户给出的约23:10端点与初次生成评估时间仅历史速度估计，不能承诺。
 p997_v2在2026-10-28T21:19:55.393616+08:00原worker/SFTP创建身份匹配且STILL_ACTIVE，partial212893696B，尚无outcome/worker_exit/backup，继续PENDING不重派/不删前缀。C空闲3657875456B、D空闲6033895424B仅采样，0本轮清理。VAE50k/100k副本已接受不重传，无新模型/GPU/SDK/信号/实际生成；健康保持静默，无需用户操作。
