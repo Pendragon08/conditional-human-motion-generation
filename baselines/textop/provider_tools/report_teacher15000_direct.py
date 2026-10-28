@@ -84,7 +84,7 @@ if ldm_target==100000 and endpoint_path.exists():
     if client.get('client_reaped') and client.get('actual_client_exit_code') not in [None,0]:
      handoff_stage='LDM100K_SUCCESSOR_DISPATCH_UNCONFIRMED';ldm_successor_run=successor_run;ldm_dispatch_unconfirmed=True
      handoff_workers=[];handoff_lock_free=None;handoff_observed=max(handoff_observed,dispatch.stat().st_mtime)
-for semantic_run in ['tmr_isolated_runtime_v1','tmr_text_models_v1','tmr69d_training_scope_v1','tmr69d_training_scope_v2','tmr69d_numeric_data_v1','tmr69d_core_contract_v1','tmr_text_models_import_verify_v1','tmr69d_real_witness_author_v1','tmr69d_real_witness_document_v1','tmr69d_evaluator500_train_v1']:
+for semantic_run in ['tmr_isolated_runtime_v1','tmr_text_models_v1','tmr69d_training_scope_v1','tmr69d_training_scope_v2','tmr69d_numeric_data_v1','tmr69d_core_contract_v1','tmr_text_models_import_verify_v1','tmr69d_real_witness_author_v1','tmr69d_real_witness_document_v1','tmr69d_evaluator500_train_v1','tmr69d_frozen_export_v1','tmr69d_frozen_verify_v1']:
  semantic_path=B/'results/semantic_evaluator_20261029'/semantic_run/'progress.json'
  if semantic_path.exists():
   sj=json.loads(semantic_path.read_bytes());sr=sj.get('files',{}).get('receipt',{})
@@ -127,7 +127,11 @@ phase_label={'USER_LDM100K_RECORDED_TRACKING_FIDELITY_FINISHED':'真实执行姿
  'PREPARING_FRESH_TMR69D_FORMAL_EVALUATOR':'正在准备独立语义评价器；生成器保持十万步',
  'RUNNING_FRESH_TMR69D_EVALUATOR_TRAINING':'独立语义评价器训练中；VAE与LDM均保持十万步',
  'TMR69D_FORMAL_EVALUATOR_500_EPOCHS_FINISHED':'语义评价器训练已结束，接续冻结推理与真正留出指标',
- 'FAILED_TMR69D_FORMAL_EVALUATOR_ALL_STATES_RETAINED':'语义评价器训练退出，保留全部状态并处理；生成器未追加训练'}.get(handoff_stage,phase_label)
+ 'FAILED_TMR69D_FORMAL_EVALUATOR_ALL_STATES_RETAINED':'语义评价器训练退出，保留全部状态并处理；生成器未追加训练',
+ 'AUDITING_TRAINED_TMR69D_ON_CPU':'已训练语义评价器的CPU完整性与推理检查中',
+ 'TMR69D_TRAINED_FROZEN_CPU_EXPORTED':'语义评价器私有推理导出完成，接续独立CPU复核',
+ 'TMR69D_TRAINED_FROZEN_FRESH_CPU_VERIFIED':'语义评价器独立CPU复核通过，接续真实留出指标',
+ 'FAILED_TMR69D_FROZEN_CPU_ALL_OUTPUTS_RETAINED':'语义评价器CPU检查退出，保留全部输出并处理'}.get(handoff_stage,phase_label)
 diagnostic_summary=None;generated_physics=None;new_effect_note=''
 sp=B/'results/ldm100k_user_handoff_20261028/user_ldm100k_diagnostic_summary_v2/progress.json'
 if sp.exists():
@@ -180,7 +184,7 @@ current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['st
  ldm_selected_checkpoint_sha256=ldm_selected_checkpoint_sha256,ldm_successor_run=ldm_successor_run,ldm_successor_dispatch_unconfirmed=ldm_dispatch_unconfirmed,
  ldm_diagnostic_summary=diagnostic_summary,generated_motion_physics=generated_physics,generated_motion_tracking_fidelity=tracking_fidelity,tmr_numeric_inputs=tmr_numeric_inputs,tmr_evaluator_training=tmr_evaluator_training,
  remote_observation_available=not access_unavailable,last_access_attempt_beijing=access_attempt,last_verified_handoff_stage=last_verified_handoff_stage,
- active_spec_sha256=h,worker_pids=[x['pid'] for x in j['workers']],common_lock_free=handoff_lock_free,
+ active_spec_sha256=h,worker_pids=[x['pid'] for x in handoff_workers],physical_replay_worker_pids=[x['pid'] for x in j['workers']],common_lock_free=handoff_lock_free,
  physical_replay_lock_released=j['common_lock_free'],
  runtime_receipt_count_note='replayed_original_sources and unattempted_original_sources describe planned selected/outside scope until execution ends; live pending is8278-finished_trials',
  source_progress_sha256=hashlib.sha256((O/run/'progress.json').read_bytes()).hexdigest())

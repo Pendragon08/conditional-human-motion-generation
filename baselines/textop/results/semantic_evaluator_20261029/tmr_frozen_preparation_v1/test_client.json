@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 120,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "bc03733dc4b9d8f464af0b939943e4a9e72053c7e59438ab6239ac980a81d984",
+  "client_pid": 21660,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"CUDA_VISIBLE_DEVICES=\", \"PYTHONDONTWRITEBYTECODE=1\", \"python3\", \"-B\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/test_tmr69d_trained_acceptance.py\"], \"supervisor_pid\": 418416, \"child_pid\": 418417, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 3, \"sample_errors\": [], \"elapsed_seconds\": 0.06668607518076897, \"supervision_passed\": true, \"result\": {\"status\": \"TMR_TRAINED_EXPORT_METADATA_CONTRACT_VERIFIED\", \"isolated_negative_cases\": 23, \"rejected\": [\"still_running\", \"writers_open\", \"only_100_epochs\", \"one_update_missing\", \"skip\", \"teacher_update\", \"original_val_gradient\", \"internal_val_updated\", \"source_changed\", \"diagnostic_seed_weights\", \"no_production_restore\", \"emergency_selected\", \"pending_validation_receipt\", \"bad_fullstate_path\", \"too_large_state\", \"unbound_inputs\", \"old_runtime\", \"post_target_update\", \"pending_internal_validation\", \"next_epoch_already_consumed\", \"short_sampler\", \"no_cuda_rng_record\", \"bad_next_batch_digest\"], \"actual_production_checkpoints_read\": 0, \"actual_model_loads\": 0, \"actual_gpu_contexts\": 0, \"actual_exports\": 0, \"actual_training_updates\": 0}}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\semantic_evaluator_20261029\\tmr_frozen_preparation_v1\\test_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\semantic_evaluator_20261029\\tmr_frozen_preparation_v1\\test_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}
