@@ -1,3 +1,8 @@
+<!--ldm100k-live-1748-start-->
+CURRENT实核：2026-10-28T17:48:25+08:00原LDM51000尝试/51000Adam/0skip，同原supervisor304265/start1436142089及worker304272/start1436142105，RUNNING无exit/commonlock占用、实际stage1，真实DDPM history生成999次/选用2primitive；不是保存点。17:49:32唯一控制另采51200、WAITING/0信号，用户100k端点不变。VAE100k私有D备份p100k_v1真实SFTP0/worker0、完整513526765B/SHA通过，已释放备份锁，p997_v2唯一续原32997376B前缀，仍PENDING。
+本机C盘空闲0导致源码测试文件写入失败，已保留失败字节；经D私有完整恢复包/SHA/ZIP CRC/所有权及GitHub恢复代码+聚合证明实核后，只移除499702381B可恢复下载/编译缓存，0数据/checkpoint/环境/训练源删除或修改。C恢复可写但余量有限，后续只轻量观察，不重跑本次清理。见reports/c_space_rescue_and_ldm_progress_20261028.md和results/storage_c_space_rescue_20261028/final_summary.json。私有缓存/清单绝不公开。scope-builder/verified-input已有本地源码及12隔离元数据负例本地0，但没有监督/激活、未部署/无真实scope、生成或模型作业，非ready；继续完成实际入口，勿称实际验收。
+<!--ldm100k-live-1748-end-->
+
 # CURRENT — independent CPU verification sources deployed DISABLED, no real input yet
 
 VAE100k is complete; the original LDM still trains toward the user100k endpoint.
