@@ -1,3 +1,9 @@
+<!--ldm100k-live-2017-start-->
+CURRENT实核：2026-10-28T20:17:07.477800+08:00原LDM73500尝试/73500Adam/0skip，原supervisor304265/start1436142089和worker304272/start1436142105一致、RUNNING无exit/commonlock占用，native stage1、真实DDPM history生成23499次/选用4174primitive。2026-10-28T20:21:07.370393+08:00控制另采74100，WAITING/0信号。进度不是保存点，用户目标100000不变；20:04向用户报告71600与约23:10到达仅估计，开评23:30—次日00:30有条件，不当保证。
+新本地生成见证/诊断激活、独占派发、收集与独立LDM100k私有字节备份入口已实现；新server stdlib输出审计/备份契约helper已部署。新14NPY破坏+11错误LDM状态/端点隔离例真实远端CPU0/reaped/final streams，0真实模型/生产数组/生成pair/GPU/SDK/备份派发/生产信号。原backend spec f2e1185d...仍全false/null且未改，不是实际验收；读LDM100K_GENERATION_HANDOFF_ENVIRONMENT.md按完整文档自动接续，旧fixtures不重跑，禁止pending启用/手改flag或把准备当ready。真100k停止→CPU导出→freshCPU复核→scope真实0闭合后才作者/fresh真实GPUpair见证→诊断启用；闭合收集独立审计真实NPZ，实际生成/语义/物理均尚未通过。新的LDM备份只绑定真实100kCPU导出，全部证据写D，p997仍pending不得抢派，慢字节传输不停止模型。
+p997_v2原worker/SFTP创建身份20:46实核匹配、185630720B partial、无exit/backup，仍PENDING；C实测约3.86GB、D约6.09GB，本轮0清理/删除，变化只作采样不当预留，不重跑旧清理。所有活动source/spec/预算及唯一端点控制器冻结，保护旧暂停任务/私有状态。
+<!--ldm100k-live-2017-end-->
+
 <!--ldm100k-live-1908-start-->
 CURRENT实核：2026-10-28T19:08:04+08:00原LDM63100尝试/63100Adam/0skip，原supervisor304265/start1436142089及worker304272/start1436142105一致、RUNNING无exit/commonlock占用，native stage1，真实DDPM history生成13099次/选用1301primitive；19:08:49控制另采63200、WAITING/0信号，不是保存点。p997_v2原worker/SFTP创建身份19:27实核仍匹配，122519552B partial、无退出/backup，仍PENDING；C约0.48GB、D约6.23GB仅采样，不重跑清理。
 新真实模型生成backend/runtime/entry/有界监督/实际scope与见证接受源码已部署禁用，specSHAf2e1185d32aa599b71d1c2dca68d41ef6503bbbbff8d3b51fe1b73b9fb45e229，witness/generation flags false、scope/witness bindings及实际预算null。新22隔离seed/window/预算负例远端CPU0/reaped/final streams，0模型/数组/实际pair/GPU/SDK/信号，非数值运行验收。读LDM100K_GENERATION_BACKEND_ENVIRONMENT.md；本地激活/独占派发/轻量收集与真实见证启用桥尚需完成，禁止手改flag或提前pending运行。100k停止/CPU导出/freshCPU复核/真实scope未闭合，不得执行新GPU模型；原活动source/spec/预算/控制器冻结。下一轮优先完成真实桥和LDM私有备份入口，不能停在本次禁用部署或冒称语义/物理效果。
