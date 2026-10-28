@@ -1,3 +1,8 @@
+<!--user-direct-next-20261028-start-->
+用户最新再次明确授权：“LDM训练完后直接下一步。”不要在100k端点完成后询问或停工，按已接受真实出口自动接续CPU完整性/推理导出→fresh实际CPU复核→真实heldout scope→作者/fresh实际生成见证→配对效果诊断，再继续真实物理验收/影片与兼容指标；所有真实验收和串行锁不省略。只选择100000，不延长到旧300k。
+最新人工核对u_next_l1 2026-10-28T22:14:23.959544+08:00原LDM91700尝试/91700Adam/0skip，RUNNING无exit，原supervisor304265/start1436142089、worker304272/start1436142105身份一致，共同GPU锁占用；u_next_c1 2026-10-28T22:14:59.544893+08:00唯一控制另采91800、WAITING/0信号、原observer身份一致。均非checkpoint，无真实100k/export/scope/生成完成。当前临近端点，将现有textop临时改为每15分钟轻量检查与自动接续，不创建第二自动化/observer；正式诊断健康运行后可恢复每小时，阶段通知不是停止点。源码/spec/预算冻结，不重派/额外信号。后续新实际收据覆盖此采样。
+<!--user-direct-next-20261028-end-->
+
 <!--ldm100k-live-2118-start-->
 CURRENT最新轻量实核：2026-10-28T21:18:48.530554+08:00原LDM82900尝试/82900Adam/0skip，原supervisor304265/start1436142089和worker304272/start1436142105一致、RUNNING无exit/commonlock占用，native stage1，完整DDPM history实际生成32899次/选用8101primitive。2026-10-28T21:19:47.792691+08:00唯一控制另采83100、WAITING/0信号，原observer身份一致；两份时刻不同，不是checkpoint，仍只选择真实100000端点。代码/禁用见证链不代表已经运行；原source/spec/预算/课程/唯一控制器冻结，按LDM100K_GENERATION_HANDOFF_ENVIRONMENT.md在真正100k停止闭合、CPU导出/fresh复核/scope后自动接续。20:04向用户给出的约23:10端点与初次生成评估时间仅历史速度估计，不能承诺。
 p997_v2在2026-10-28T21:19:55.393616+08:00原worker/SFTP创建身份匹配且STILL_ACTIVE，partial212893696B，尚无outcome/worker_exit/backup，继续PENDING不重派/不删前缀。C空闲3657875456B、D空闲6033895424B仅采样，0本轮清理。VAE50k/100k副本已接受不重传，无新模型/GPU/SDK/信号/实际生成；健康保持静默，无需用户操作。
