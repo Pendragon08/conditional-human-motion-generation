@@ -1,3 +1,7 @@
+<!--ldm100k-live-1507-start-->
+CURRENT轻量观测：2026-10-28T15:08:16.204413+08:00原LDM22200真实尝试/22200Adam/0skip，原supervisor304265/start1436142089和worker304272/start1436142105身份一致，RUNNING、无exit、GPU锁占用；2026-10-28T15:09:20.023340+08:00唯一端点控制另采样22400、WAITING/0信号，身份一致。两份收据时间不同，均不是100k完整保存。当前新独立CPU复核源码/监督与本地启用/派发/收集桥已部署禁用，verify_authorized=false/export_binding=null，18个新隔离元数据破坏负例真实CPU0/reaped/streams_final，0模型/生产checkpoint/GPU/实际复核作业；不是实际验收，不重跑准备/旧26例。真100k停止与CPU导出闭合后，按[LDM100K_PREFIX_VERIFY_ENVIRONMENT.md](LDM100K_PREFIX_VERIFY_ENVIRONMENT.md)启用，再由fresh文档agent唯一实际运行user_ldm100k_prefix_document_v1，不覆盖原导出。当前所有模型入口仍未派发；现有VAE私有SFTP仍在传、创建身份实核，396394496B partial不是最终备份。健康保持安静，不改变用户100k目标或正在运行的源/spec。
+<!--ldm100k-live-1507-end-->
+
 <!--ldm100k-prefix-preparation-start-->
 CURRENT新增：真正100k专用CPU完整性/推理导出源码与本地启用/派发/轻量收集桥已实现；服务器已部署禁用，export_authorized=false/ldm_training=null。26个独立元数据破坏负例实际CPU0/reaped/streams_final通过，0生产checkpoint读取/模型/GPU/信号/真实导出；不是实际验收。读[LDM100K_PREFIX_EXPORT_ENVIRONMENT.md](LDM100K_PREFIX_EXPORT_ENVIRONMENT.md)和prefix_export_preparation_v2.json。不要重跑准备或提前pending激活。原训练11800尝试/11800Adam/0skip（2026-10-28T14:10:41.709363+08:00），原监督与worker身份未变；唯一100k控制另采样11900，仍等待真实保存和精确恢复，0生产信号。源/spec/共同锁均保持。私有100k字节备份现有worker/client创建身份实核仍在传，partial不是已完成备份。
 <!--ldm100k-prefix-preparation-end-->
@@ -31,10 +35,11 @@ fixture-owned CPU sleep received SIGINT and exited-2. Production signals0,
 production checkpoint reads0,newGPU0. It also proves zero history/semantic
 quality counters do not authorize training past the user's endpoint.
 
-The new observer is NOT yet armed until the actual fresh document pass below.
+The disabled-deployment notes above and fixture invocation below are historical.
+The unique observer is already armed; do not repeat the fixture or arm operation.
 Old VAE observers are dead and must never be rearmed or signaled again.
 
-## Fresh CPU document invocation
+## Historical fresh CPU document invocation — completed, do not rerun
 
 Use local bundled Python, PYTHONIOENCODING=utf-8 and BASE scripts. No package
 installation or source/spec edits. Run exactly once:
@@ -68,7 +73,7 @@ current_source_spec_sha256: actual result.current_source_spec_sha256
 remote_fixture_summary_sha256: actual result.remote_fixture_summary_sha256
 ```
 
-Only after the real author and fresh CPU successes, parent invokes:
+Historical completed author/fresh and one-shot arm sequence (do not repeat):
 
 ```
 provider_tools/arm_ldm100k_control.py --document-summary ACTUAL_ABSOLUTE_SUMMARY

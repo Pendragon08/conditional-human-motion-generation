@@ -71,3 +71,5 @@ training beyond the user's100k endpoint. All private arrays/text/trajectory/
 full Adam/SDK stay server+D; only code and aggregate evidence go to public Git.
 
 Disabled revision2 additionally binds the interrupted original receipt/process/resource SHA, actual sample counts and final after_exit phase. Six new corrupt-resource/exit cases were added; server CPU26-case fixture exited0. Revision1 source/test/spec bytes remain in sources/ldm100k_prefix_export_disabled_v1 locally and receipts/ldm100k_prefix_export_disabled_v1 on the server. Neither revision was activated or used to load a production model.
+
+New independent read-only CPU verifier sources and activation/dispatch/collect bridge are now deployed disabled; see LDM100K_PREFIX_VERIFY_ENVIRONMENT.md. This supersedes the earlier source-entry-to-be-implemented note only. There is still no real100k checkpoint/export/CPUverification input, no model load and no numerical acceptance. Actual heldout semantic/physical evaluation remains pending.

@@ -1,3 +1,7 @@
+<!--ldm100k-live-1507-start-->
+CURRENT轻量观测：2026-10-28T15:08:16.204413+08:00原LDM22200真实尝试/22200Adam/0skip，原supervisor304265/start1436142089和worker304272/start1436142105身份一致，RUNNING、无exit、GPU锁占用；2026-10-28T15:09:20.023340+08:00唯一端点控制另采样22400、WAITING/0信号，身份一致。两份收据时间不同，均不是100k完整保存。当前新独立CPU复核源码/监督与本地启用/派发/收集桥已部署禁用，verify_authorized=false/export_binding=null，18个新隔离元数据破坏负例真实CPU0/reaped/streams_final，0模型/生产checkpoint/GPU/实际复核作业；不是实际验收，不重跑准备/旧26例。真100k停止与CPU导出闭合后，按[LDM100K_PREFIX_VERIFY_ENVIRONMENT.md](LDM100K_PREFIX_VERIFY_ENVIRONMENT.md)启用，再由fresh文档agent唯一实际运行user_ldm100k_prefix_document_v1，不覆盖原导出。当前所有模型入口仍未派发；现有VAE私有SFTP仍在传、创建身份实核，396394496B partial不是最终备份。健康保持安静，不改变用户100k目标或正在运行的源/spec。
+<!--ldm100k-live-1507-end-->
+
 <!--ldm100k-endpoint-current-start-->
 ## CURRENT — VAE100000 complete; LDM endpoint100000 ARMED
 
