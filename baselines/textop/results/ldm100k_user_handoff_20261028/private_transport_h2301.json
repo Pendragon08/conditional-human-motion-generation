@@ -1,0 +1,43 @@
+{
+  "observed_unix": 1793200027.3633513,
+  "run": "p997_v3",
+  "identities": [
+    {
+      "role": "worker",
+      "pid": 15312,
+      "identity_matches": false
+    },
+    {
+      "role": "client",
+      "pid": 66488,
+      "identity_matches": false
+    }
+  ],
+  "outcomes": {
+    "client_outcome.json": {
+      "actual_client_exit_code": 255,
+      "client_reaped": true,
+      "streams_final": true,
+      "transport": "SFTP reget",
+      "prefix_bytes_preserved": 233537536
+    },
+    "worker_exit.json": {
+      "status": "PRIVATE_COPY_FAILED_PARTIAL_RETAINED",
+      "actual_returncode": 1,
+      "error": "AssertionError()",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\provider_tools\\resume_private_vae_copy.py\", line 95, in <module>\n    write(E/'client_outcome.json',outcome);assert client.returncode==0\n                                                  ^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+      "client_reaped": true
+    },
+    "backup.json": null
+  },
+  "latest_resource": {
+    "unix": 1793199303.3202374,
+    "bytes": 241467392,
+    "free_bytes": 5953482752,
+    "client_pid": 66488
+  },
+  "C_free_bytes": 3539161088,
+  "D_free_bytes": 5953372160,
+  "new_transfer_dispatched": false,
+  "new_gpu_contexts": 0
+}

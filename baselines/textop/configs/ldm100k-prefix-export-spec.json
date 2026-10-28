@@ -1,7 +1,14 @@
 {
   "schema": "textop.ldm100k_prefix_cpu_export.v1",
-  "export_authorized": false,
-  "ldm_training": null,
+  "export_authorized": true,
+  "ldm_training": {
+    "kind": "USER_REQUESTED_LDM100000_PREFIX",
+    "selected_step": 100000,
+    "control_run": "user_ldm100k_control_v1",
+    "control_receipt_sha256": "a25cb453a89ce30e061d473c88dc1185dff9dde02ac13da220a1594d4e939057",
+    "control_exit_sha256": "c6613696371a93d96a6e1d93b5f471ff8a132fceec71b63fe8267fd27b60a339",
+    "control_spec_sha256": "0c30cd479854f9a4a8498be245cd945398e20fc66fe3950537620a8d679a5f23"
+  },
   "executor_sha256": "40c86cfe34ddf36fb67eb8327d5e61796abbbc17b577f50dcb6bc548608dcdfb",
   "supervisor_sha256": "3807b91608f04543998d9b187e0479871b164e6c64c8a56a581fc39274583d88",
   "bound_sources": {
@@ -64,11 +71,12 @@
   "minimum_ram_free_bytes": 17179869184,
   "minimum_disk_free_bytes": 3221225472,
   "timeout_seconds": 900,
-  "actual_endpoint_accepted": false,
+  "actual_endpoint_accepted": true,
   "semantic_quality_accepted": false,
   "selected_user_endpoint": 100000,
   "original_native_schedule": 300000,
   "training_optimizer_updates_authorized": 0,
   "new_gpu_contexts_authorized": 0,
-  "preparation_revision": 2
+  "preparation_revision": 2,
+  "actual_tensor_export_accepted": false
 }

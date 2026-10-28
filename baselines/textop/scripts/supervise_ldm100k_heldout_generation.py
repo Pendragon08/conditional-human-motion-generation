@@ -8,13 +8,14 @@ from contact_process_supervision import run_supervised
 from contact_filter_resources import sample_resources
 from ldm100k_verified_input import ROOT, read, sha, owned
 from ldm100k_scope_acceptance import accepted_scope
+from ldm100k_generation_acceptance import RUNS
 
 p = argparse.ArgumentParser()
 p.add_argument('--run', required=True)
 p.add_argument('--mode', choices=['witness', 'diagnostic'], required=True)
 a = p.parse_args()
 assert os.getuid() == 1013
-assert a.run in {'witness': ['user_ldm100k_generation_author_v1', 'user_ldm100k_generation_document_v1'],
+assert a.run in {'witness': RUNS,
                  'diagnostic': ['user_ldm100k_diagnostic32_v1']}[a.mode]
 sp = owned(ROOT / 'configs/ldm100k-generation-spec.json')
 s = read(sp)

@@ -60,6 +60,7 @@ if user_100k_target:
      if jn.get('closed_execution_verified'):vae_selected_step=rn['selected_checkpoint']['manager_step']
     if stage_run=='user_vae100k_ldm300k_train_v1':ldm_attempts=rn.get('completed_primitive_attempts',0);generator_spec_sha=rn.get('spec_sha256')
  generator_started=True
+ldm_successor_run=None;ldm_selected_checkpoint_sha256=None;ldm_dispatch_unconfirmed=False;ldm_latest_confirmed_stage=None
 endpoint_path=B/'results/ldm100k_user_handoff_20261028/user_ldm100k_control_v1/progress.json'
 if ldm_target==100000 and endpoint_path.exists():
  endpoint=json.loads(endpoint_path.read_bytes());en=endpoint.get('files',{}).get('receipt',{});user_ldm_control_status=en.get('status')
@@ -67,7 +68,23 @@ if ldm_target==100000 and endpoint_path.exists():
  if endpoint.get('closed_execution_verified'):
   assert user_ldm_control_status=='USER_LDM100000_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED' and en['selected_checkpoint_attempts']==100000
   handoff_stage=user_ldm_control_status;ldm_attempts=100000;handoff_workers=[];handoff_lock_free=endpoint['common_lock_free'];handoff_observed=max(handoff_observed,endpoint['observed_unix'])
-last_verified_handoff_stage=handoff_stage;access_unavailable=False;access_attempt=None
+  ldm_selected_checkpoint_sha256=en['selected_checkpoint']['sha256']
+  ldm_latest_confirmed_stage=handoff_stage
+  for successor_run in ['user_ldm100k_prefix_export_v1','user_ldm100k_prefix_document_v1','user_ldm100k_heldout_scope_v1','user_ldm100k_generation_author_v1','user_ldm100k_generation_author_v2','user_ldm100k_generation_author_v3','user_ldm100k_generation_document_v3','user_ldm100k_diagnostic32_v1']:
+   successor_path=B/'results/ldm100k_user_handoff_20261028'/successor_run/'progress.json'
+   successor=json.loads(successor_path.read_bytes()) if successor_path.exists() else {}
+   successor_receipt=successor.get('files',{}).get('receipt',{})
+   if successor_receipt.get('status') and successor['observed_unix']>=handoff_observed:
+    handoff_stage=successor_receipt['status'];ldm_successor_run=successor_run
+    handoff_workers=successor['workers'];handoff_lock_free=successor['common_lock_free'];handoff_observed=successor['observed_unix']
+    ldm_latest_confirmed_stage=handoff_stage;ldm_dispatch_unconfirmed=False
+   dispatch=successor_path.with_name('dispatch.json')
+   if not successor_receipt and dispatch.exists() and not successor_path.with_name('launch.json').exists():
+    client=json.loads(dispatch.read_bytes())
+    if client.get('client_reaped') and client.get('actual_client_exit_code') not in [None,0]:
+     handoff_stage='LDM100K_SUCCESSOR_DISPATCH_UNCONFIRMED';ldm_successor_run=successor_run;ldm_dispatch_unconfirmed=True
+     handoff_workers=[];handoff_lock_free=None;handoff_observed=max(handoff_observed,dispatch.stat().st_mtime)
+last_verified_handoff_stage=ldm_latest_confirmed_stage if ldm_dispatch_unconfirmed else handoff_stage;access_unavailable=False;access_attempt=None
 access_path=B/'results/filtered15000_handoff_20261027/filtered15000_vae200k_train_v1/access_status.json'
 if access_path.exists():
  access=json.loads(access_path.read_text(encoding='utf-8'))
@@ -79,7 +96,9 @@ access_note='最近远程查询连接超时；下列训练步数为最后已核�
 phase_label='远程暂不可达，当前训练状态未确认' if access_unavailable else '新筛后VAE正式训练中' if handoff_stage=='RUNNING_FILTERED15000_VAE_TRAINING' else handoff_stage
 if user_100k_target:
  phase_label={'LDM100K_SAVED_WAITING_ORIGINAL_EXIT':'LDM十万步已完整保存，正在核验退出','USER_LDM100000_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED':'LDM十万步按用户目标完成，接续效果验收','FULL_LDM_AUTHOR_PASSED_FRESH_PENDING':'LDM首轮启动检查通过，正在独立复查','FULL_LDM_TWO_WITNESSES_PASSED_FORMAL_PENDING':'LDM独立启动检查通过，准备正式开训','STARTING_USER_VAE100K_QUALITY':'VAE十万步质量和恢复检查中','STARTING_FILTERED15000_VAE_CPU_EXPORT':'VAE十万步推理导出检查中','STARTING_FILTERED15000_LDM':'LDM启动检查中','FAILED_VAE100K_CONTROL_RETAIN_ALL_EVIDENCE':'原VAE在99,700步存储保护退出，已保存紧急检查点','STARTING_USER_VAE100K_RESUME':'99,700步检查点恢复与验收中','USER_VAE100K_RESUME_WITNESS_PASSED':'99,700步恢复验收通过，接续补齐300步','RUNNING_USER_VAE100K_RESUME':'从99,700步补齐至100,000步训练中','USER_VAE100000_RESUME_FINISHED':'10万步已完整保存，接续质量验收与LDM','WAITING_FOR_REAL_VAE100000_SAVED_AND_RELOADED':'按用户新目标训练至10万步，等待完整检查点','BOUND_SIGINT_SENT_WAITING_ORIGINAL_EXITS':'10万步已保存，等待原VAE退出核验','USER_VAE100000_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED':'用户指定10万步已选定，接续质量验收与LDM','USER_VAE100K_QUALITY_VALIDATION_PASSED':'10万步质量验收通过，接续CPU导出','USER_VAE100000_CPU_EXPORT_PASSED':'10万步推理导出完成，接续完整LDM验收','RUNNING_FILTERED15000_LDM_WITNESS':'完整LDM实际验收中','FILTERED15000_LDM_WITNESS_PASSED':'完整LDM验收已完成，接续正式训练','RUNNING_FILTERED15000_LDM_TRAINING':f'LDM正式训练中（目标{ldm_target:,}步）'}.get(handoff_stage,handoff_stage)
+phase_label={'STARTING_LDM100K_PREFIX_CPU_EXPORT':'LDM十万步已保存，CPU完整性与推理导出检查中','USER_LDM100000_PREFIX_CPU_EXPORT_PASSED':'LDM十万步CPU导出通过，接续独立复核','FAILED_LDM100K_PREFIX_CPU_EXPORT':'LDM十万步CPU导出失败，保留现场并处理','STARTING_LDM100K_FRESH_CPU_VERIFICATION':'LDM十万步独立CPU复核中','USER_LDM100K_PREFIX_FRESH_CPU_VERIFIED':'LDM十万步独立CPU复核通过，接续留出评估','FAILED_LDM100K_PREFIX_FRESH_CPU_VERIFICATION':'LDM十万步独立CPU复核失败，保留现场并处理','STARTING_LDM100K_HELDOUT_SCOPE':'留出评估范围与来源核验中','USER_LDM100K_HELDOUT_METADATA_SCOPE_BUILT':'留出评估范围核验完成，接续真实生成检查','FAILED_LDM100K_HELDOUT_SCOPE':'留出评估范围构建失败，保留现场并处理','STARTING_LDM100K_HELDOUT_GENERATION':'十万步模型的配对生成效果检查中','USER_LDM100K_GENERATION_WITNESS_FINISHED':'配对生成检查已执行，接续独立复核与诊断','USER_LDM100K_DIAGNOSTIC32_GENERATION_FINISHED':'32组留出动作配对诊断已结束，质量结论仍待汇总','FAILED_LDM100K_HELDOUT_GENERATION':'配对生成检查失败，保留全部输出并处理'}.get(handoff_stage,phase_label)
 closure_note='全库结果已由独立有界CPU作业核验，原回放与核验作业均真实退出；生成器后续状态见下方真实收据阶段。' if audit_verified else '进行中统计不是最终筛选结论。未测试动作没有被过滤。'
+if ldm_dispatch_unconfirmed:phase_label='LDM十万步已完成，后续评估派发结果待联网核实'
 sample=datetime.datetime.fromtimestamp(handoff_observed,datetime.timezone(datetime.timedelta(hours=8))).isoformat()
 spec=B/'configs/teacher15000-direct-strict-spec.json';h=hashlib.sha256(spec.read_bytes()).hexdigest()
 current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['status'],sample_beijing=sample,
@@ -92,6 +111,7 @@ current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['st
  strict_physics_accepted=audit_verified,strict_audit_receipt_sha256=audit_sha,handoff_stage=handoff_stage,handoff_stage_label=phase_label,
  actual_unattempted_sources=0 if audit_verified else None,filtered_corpus_accepted=corpus_accepted,generator_started=generator_started,
  generator_primitive_attempts=generator_attempts,vae_target_primitive_attempts=100000 if user_100k_target else 200000,vae_selected_checkpoint_attempts=vae_selected_step,ldm_primitive_attempts=ldm_attempts,ldm_target_primitive_attempts=ldm_target,user_ldm_endpoint_control_status=user_ldm_control_status,user_100k_control_status=user_control_status,handoff_workers=handoff_workers,active_generator_spec_sha256=generator_spec_sha,
+ ldm_selected_checkpoint_sha256=ldm_selected_checkpoint_sha256,ldm_successor_run=ldm_successor_run,ldm_successor_dispatch_unconfirmed=ldm_dispatch_unconfirmed,
  remote_observation_available=not access_unavailable,last_access_attempt_beijing=access_attempt,last_verified_handoff_stage=last_verified_handoff_stage,
  active_spec_sha256=h,worker_pids=[x['pid'] for x in j['workers']],common_lock_free=handoff_lock_free,
  physical_replay_lock_released=j['common_lock_free'],

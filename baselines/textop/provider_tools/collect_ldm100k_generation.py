@@ -10,7 +10,7 @@ p = argparse.ArgumentParser()
 p.add_argument('--run', required=True)
 p.add_argument('--evidence', required=True)
 a = p.parse_args()
-assert a.run in ['user_ldm100k_generation_author_v1', 'user_ldm100k_generation_document_v1', 'user_ldm100k_diagnostic32_v1']
+assert a.run in ['user_ldm100k_generation_author_v1', 'user_ldm100k_generation_document_v1', 'user_ldm100k_generation_author_v2', 'user_ldm100k_generation_document_v2', 'user_ldm100k_generation_author_v3', 'user_ldm100k_generation_document_v3', 'user_ldm100k_diagnostic32_v1']
 assert a.evidence.isascii() and a.evidence.isidentifier()
 code = r'''
 import fcntl,hashlib,json,os,pathlib,time,sys

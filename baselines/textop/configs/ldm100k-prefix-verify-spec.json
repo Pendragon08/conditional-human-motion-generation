@@ -1,7 +1,17 @@
 {
   "schema": "textop.ldm100k_prefix_cpu_verification.v1",
-  "verify_authorized": false,
-  "export_binding": null,
+  "verify_authorized": true,
+  "export_binding": {
+    "run": "user_ldm100k_prefix_export_v1",
+    "receipt_sha256": "2ff0b614fe3b4f1ecbeeb370ec968d99f3005b7e8bed6b50517c3eb066630b89",
+    "exit_sha256": "3de6f7f4dbd65050db2701396ecc7f13455aed8180b0db1b7e3e91f2be19dd62",
+    "spec_sha256": "b52021e20a8dd5463b5e2075deb35eb5fdb538f3bcbf18bd889dd8708b038ac8",
+    "inference": {
+      "path": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/inference/ldm100000_inference.private.pth",
+      "bytes": 81391655,
+      "sha256": "5faca9293e76cb3ec04dd4c49aeee3de85d6897dcfcf25027d88d5e96c81aab5"
+    }
+  },
   "executor_sha256": "adec8c7784e61959930bc13d467e31d3f25e33b21ce765e3813078a8d57b0220",
   "supervisor_sha256": "a18999a654400a40a60bddc2f786bdddbe98ecc01f063bf11fef419d2f497a67",
   "bound_sources": {

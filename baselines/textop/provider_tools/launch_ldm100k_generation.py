@@ -4,14 +4,17 @@ import ast
 import hashlib
 import json
 import pathlib
+import sys
 from backup_filter_recovery_checkpoint import recorded_remote
 
 B = pathlib.Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(B / 'scripts'))
+from ldm100k_generation_acceptance import RUNS
 p = argparse.ArgumentParser()
 p.add_argument('--run', required=True)
 p.add_argument('--mode', choices=['witness', 'diagnostic'], required=True)
 a = p.parse_args()
-assert a.run in {'witness': ['user_ldm100k_generation_author_v1', 'user_ldm100k_generation_document_v1'],
+assert a.run in {'witness': RUNS,
                  'diagnostic': ['user_ldm100k_diagnostic32_v1']}[a.mode]
 sp = B / 'configs/ldm100k-generation-spec.json'
 s = json.loads(sp.read_bytes())

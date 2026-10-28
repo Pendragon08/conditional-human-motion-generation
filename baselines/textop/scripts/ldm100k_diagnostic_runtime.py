@@ -59,7 +59,7 @@ class Runtime:
         assert vp['schema'] == 'textop.filtered15000_vae_inference.v1'
         assert lp['completed_primitive_attempts'] == vp['completed_primitive_attempts'] == 100000
         assert lp['source_full_state_sha256'] == accepted['export']['stopped']['checkpoint']['sha256']
-        assert vp['source_full_state_sha256'] == self.source['vae_checkpoint_sha256']
+        assert vp['source_full_state_sha256'] == accepted['export']['stopped']['policy']['vae_checkpoint_sha256']
         assert lp['architecture'] == self.source['ldm']
         assert lp['source_numeric_binding_sha256'] == accepted['export']['stopped']['policy']['original_runtime_binding_sha256']
         assert lp['vae_inference_sha256'] == vae['sha256']

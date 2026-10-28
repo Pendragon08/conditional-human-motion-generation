@@ -1,3 +1,8 @@
+<!--ldm100k-diagnostic-sample-latest-start-->
+CURRENT采样2026-10-29T00:08:37.161947+08:00：真实100k LDM/VAE已完成且CPU导出、fresh CPU文档、scope、两轮revision3真实配对见证均接受。唯一GPU user_ldm100k_diagnostic32_v1完成344/940pair、688/1880trial、失败0pair、未尝试596pair，仍运行/同原worker/共同锁占用。不是已完成质量验收，运行sources/spec b09b6f83...冻结，不重派、不加训、不启动重叠SDK或模型。既有textop恢复每小时健康轻量检查，真终端后继续完整效果/物理/视频，不问确认。
+LDM私有conservative pld100_v3唯一原worker/client的创建身份和最新资源须按D/transfers证据核；目前双方已验证3768320B前缀SHAf1cff40b9a5557f6a0a70880404d821f32fbe254ffc84424ab12ee2fcee91d1b，仍无完整D接受。VAE99700的241467392B失败前缀保留，待当前LDM副本真正闭合并释放双锁后才新唯一VAE专用续接；不能把pending当完成或重复旧大资产。真实骨架/语义/TMR/物理/WBC效果仍待后续，所有原件/失败/partial保留。
+<!--ldm100k-diagnostic-sample-latest-end-->
+
 <!--ldm100k-live-2017-start-->
 CURRENT实核：2026-10-28T20:17:07.477800+08:00原LDM73500尝试/73500Adam/0skip，原supervisor304265/start1436142089和worker304272/start1436142105一致、RUNNING无exit/commonlock占用，native stage1、真实DDPM history生成23499次/选用4174primitive。2026-10-28T20:21:07.370393+08:00控制另采74100，WAITING/0信号。进度不是保存点，用户目标100000不变；20:04向用户报告71600与约23:10到达仅估计，开评23:30—次日00:30有条件，不当保证。
 新本地生成见证/诊断激活、独占派发、收集与独立LDM100k私有字节备份入口已实现；新server stdlib输出审计/备份契约helper已部署。新14NPY破坏+11错误LDM状态/端点隔离例真实远端CPU0/reaped/final streams，0真实模型/生产数组/生成pair/GPU/SDK/备份派发/生产信号。原backend spec f2e1185d...仍全false/null且未改，不是实际验收；读LDM100K_GENERATION_HANDOFF_ENVIRONMENT.md按完整文档自动接续，旧fixtures不重跑，禁止pending启用/手改flag或把准备当ready。真100k停止→CPU导出→freshCPU复核→scope真实0闭合后才作者/fresh真实GPUpair见证→诊断启用；闭合收集独立审计真实NPZ，实际生成/语义/物理均尚未通过。新的LDM备份只绑定真实100kCPU导出，全部证据写D，p997仍pending不得抢派，慢字节传输不停止模型。

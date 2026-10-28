@@ -1,11 +1,46 @@
 {
   "schema": "textop.ldm100k_heldout_generation.v1",
   "witnesses_authorized": false,
-  "generation_authorized": false,
-  "scope_binding": null,
-  "witness_bindings": null,
-  "executor_sha256": "b96f4dcaf93eb98bae423707a9c7378a02913e8add48136fe620a93d91f8ac3e",
-  "supervisor_sha256": "10ce41feb5ad404bcc6a30cccba7e2c42c7972b46e7a52a183cdec74ca2927dd",
+  "generation_authorized": true,
+  "scope_binding": {
+    "run": "user_ldm100k_heldout_scope_v1",
+    "receipt_sha256": "00c0d3cd77a83e49e63318259f7de1fab87b1a49ec573159b4ae3090daa530cf",
+    "exit_sha256": "febe22ff6c28b13e304c3b27b9727cac428e6a62f107d0754f2239a942bf50c4",
+    "spec_sha256": "8ca7d37dc806a281c67be76380f223c9a55607ddf10e777078b8c9f640897ff9",
+    "closure": {
+      "exit_sha256": "febe22ff6c28b13e304c3b27b9727cac428e6a62f107d0754f2239a942bf50c4",
+      "process_sha256": "e3e0ceb9569f5dc98174580be1c0151dea2940d67599003120b521e919c3c8a8",
+      "outer_sha256": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+    }
+  },
+  "witness_bindings": {
+    "witness_spec_sha256": "7e7c4e0847a39e42817ac867620b0f4f0354118b0bffdaf7841c5066ae7078ff",
+    "runs": {
+      "user_ldm100k_generation_author_v3": {
+        "receipt_sha256": "d3286d7d675a1c623a58067f81c241aaa6a9ee6654762d50b66da00c67212728",
+        "exit_sha256": "350c13cf8306bdce8c2ffc072ac43a294b3f5feddbcbcb73f859a89390d8c225",
+        "closure": {
+          "exit_sha256": "350c13cf8306bdce8c2ffc072ac43a294b3f5feddbcbcb73f859a89390d8c225",
+          "process_sha256": "5f92a721e9beebd10aa7c88c7f07cab4cf4730e625b4ed7fb1e09d55460c7cec",
+          "outer_sha256": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+        }
+      },
+      "user_ldm100k_generation_document_v3": {
+        "receipt_sha256": "2afe01296f2727ad053415f574d1230ad857defb665c50cda0fefeb76c9cc7a6",
+        "exit_sha256": "66d135440914afc8313ae97a658c8a2300f7e47e0e80773784dfa37a21da3ebb",
+        "closure": {
+          "exit_sha256": "66d135440914afc8313ae97a658c8a2300f7e47e0e80773784dfa37a21da3ebb",
+          "process_sha256": "61f9043c45c731905ae4ec0ff4b379177716682ea59b7b68dc859d3d19e7b62a",
+          "outer_sha256": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+        }
+      }
+    },
+    "runtime_binding_sha256": "2c5df58c45462b71148721fa85b7c9ec42bbf4e79d07b7274c4e197159755fe4",
+    "document_path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_generation_fresh_document_verified.json",
+    "document_sha256": "ffcc0a61e914e64fa6b84480343e528e8dbaf4062c206c5484d751415072dc45"
+  },
+  "executor_sha256": "2a3a297e812da87e4d0bebe9c823026c58dff386dc80db729887d6e848a52d08",
+  "supervisor_sha256": "329f1d1ce6e7200410ec345ce115737fa2a0d7391409887f44691fb8f70dae34",
   "bound_sources": {
     "configs/ldm100k-heldout-plan.json": "fc30daa332971b6e56a35347d9463e5dee3772e0a78e0c7d0cc293b0fd074247",
     "configs/ldm100k-user-control-spec.json": "0c30cd479854f9a4a8498be245cd945398e20fc66fe3950537620a8d679a5f23",
@@ -23,9 +58,9 @@
     "scripts/generator8278_vae_runtime.py": "59e6c101073e1cc8df4ebff195b49bb76f5d63ee73f2b288c8d4d4597a833e8b",
     "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e",
     "scripts/ldm100k_control_protocol.py": "25bd11e99dc87a01317922f8c800aed4bfd5c2acbed9b06c0d9c5ed180c64864",
-    "scripts/ldm100k_diagnostic_runtime.py": "e96c2ab2124c74fcabe19976d26c5a3d47bec1620d2b7c6225fa2c9e739868e7",
+    "scripts/ldm100k_diagnostic_runtime.py": "f94c50ec493b5928e270d1bfc27651f0e9f7c8b7f086c40f0f0106741b41b9a6",
     "scripts/ldm100k_export_acceptance.py": "ee2503c3e72c4db08d8570e7e18f0a6b33f1897c2a5bc36e792347e9c8264564",
-    "scripts/ldm100k_generation_acceptance.py": "b1a606e6bf6e0da035b80f2fd4359fdd9c1ee6b3e2915dc1c58a763bb67f344f",
+    "scripts/ldm100k_generation_acceptance.py": "4d2ce599379fb9a766936a583b2112561de49c33e99bd976254db9d554f4f0a2",
     "scripts/ldm100k_generation_protocol.py": "445d8e52e4552e3aec75b1e55dc4f16fbab743dc93fc214aa560503197c1ca50",
     "scripts/ldm100k_heldout_protocol.py": "b0b95d2bb8bc6261a2c4be058c972690a822907d46cc5cebb09c80d40fd85212",
     "scripts/ldm100k_prefix_completion.py": "e38aa0cf06d7435b816dffc6d5663d3a3f86e792f395dfd55b9136edc55055b8",
@@ -71,9 +106,13 @@
     "upstream/TextOpRobotMDAR/robotmdar/train/manager.py": "c6df6a0b3ca504d96e9e8893fa4a29ab98f60dc1cd6dc54e47a434ad5d722fae",
     "upstream/TextOpRobotMDAR/robotmdar/train/train_dar.py": "9ff744389950265ccf20560404fdff4085d2bc32847a14219fda26248037e117",
     "upstream/TextOpRobotMDAR/robotmdar/train/train_mvae.py": "e62d31c88d6f9c15bdf1d2d4f00bf6d282e464ea27b56f40b00d723c1686cbbc",
-    "upstream/TextOpRobotMDAR/robotmdar/train/train_platforms.py": "56a190d4ca5490cbe64c42239c1bdb629c1a36c7014047c4707d0bcd0cfece29"
+    "upstream/TextOpRobotMDAR/robotmdar/train/train_platforms.py": "56a190d4ca5490cbe64c42239c1bdb629c1a36c7014047c4707d0bcd0cfece29",
+    "scripts/ldm100k_generation_artifacts.py": "48236e3a4e22373e6008bdcbd9019ce4a0f6b7790b80d4ae7bf0cc6a735acf5e"
   },
-  "accepted_output_upper_bytes": null,
+  "accepted_output_upper_bytes": {
+    "witness": 207432,
+    "diagnostic": 209360720
+  },
   "minimum_ram_free_bytes": 17179869184,
   "minimum_disk_free_bytes": 2281701376,
   "reserve_bytes": 2147483648,
@@ -102,5 +141,6 @@
   "actual_generation_accepted": false,
   "semantic_metrics_accepted": false,
   "physical_quality_accepted": false,
-  "training_optimizer_updates_authorized": 0
+  "training_optimizer_updates_authorized": 0,
+  "inference_contract_revision": 3
 }

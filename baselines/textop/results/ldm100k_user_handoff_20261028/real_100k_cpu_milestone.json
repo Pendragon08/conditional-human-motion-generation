@@ -1,0 +1,122 @@
+{
+  "status": "REAL_USER_LDM100000_SELECTED_CPU_EXPORT_AND_INDEPENDENT_CPU_EXECUTION_PASSED_DOCUMENT_PENDING",
+  "selected_checkpoint": {
+    "path": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints/ldm_state_100000.pth",
+    "bytes": 223731415,
+    "sha256": "9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea",
+    "manager_step": 100000,
+    "actual_optimizer_updates": 100000
+  },
+  "control_receipt_sha256": "a25cb453a89ce30e061d473c88dc1185dff9dde02ac13da220a1594d4e939057",
+  "control_exit_sha256": "c6613696371a93d96a6e1d93b5f471ff8a132fceec71b63fe8267fd27b60a339",
+  "control_signals_sent": 1,
+  "original_nonzero_exits_retained": {
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=4",
+        "MKL_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "WANDB_MODE=disabled",
+        "PYTHONUNBUFFERED=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_user_vae100k_ldm.py",
+        "--mode",
+        "train",
+        "--run",
+        "user_vae100k_ldm300k_train_v1"
+      ],
+      "supervisor_pid": 304265,
+      "child_pid": 304272,
+      "child_exit_code": -2,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 2397,
+      "sample_errors": [],
+      "elapsed_seconds": 36149.55423219502,
+      "supervision_passed": false,
+      "run": "user_vae100k_ldm300k_train_v1",
+      "mode": "train",
+      "numerical_status": "FAILED_FILTERED15000_LDM",
+      "evaluation_receipt_sha256": "266b4c038bd8ef278ae54520c86a5f3f790c50818c2a5ffe56a213ba2c8006f1",
+      "process_exit_sha256": "a37179bf9e7c319420c3fc07fdb7b8ce3b5cd7cc535ea909752c1ab94545f5ca",
+      "resources_sha256": "b39423dacb2c4f3acdd5fb59750305dfdb8aa0a2032a2ff69ebabd7becdc9d49",
+      "new_sdk_runs": 0,
+      "new_physics_steps": 0
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=4",
+        "MKL_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "WANDB_MODE=disabled",
+        "PYTHONUNBUFFERED=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_user_vae100k_ldm.py",
+        "--mode",
+        "train",
+        "--run",
+        "user_vae100k_ldm300k_train_v1"
+      ],
+      "supervisor_pid": 304265,
+      "child_pid": 304272,
+      "child_exit_code": -2,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 2397,
+      "sample_errors": [],
+      "elapsed_seconds": 36149.55423219502,
+      "supervision_passed": false
+    },
+    "outer": {
+      "actual_returncode": 1
+    }
+  },
+  "original_memory_attempts": 100001,
+  "post_target_memory_not_selected": 1,
+  "cpu_export_receipt_sha256": "2ff0b614fe3b4f1ecbeeb370ec968d99f3005b7e8bed6b50517c3eb066630b89",
+  "cpu_export_exit_sha256": "3de6f7f4dbd65050db2701396ecc7f13455aed8180b0db1b7e3e91f2be19dd62",
+  "finite_export_tensors": 438,
+  "inference": {
+    "path": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/inference/ldm100000_inference.private.pth",
+    "bytes": 81391655,
+    "sha256": "5faca9293e76cb3ec04dd4c49aeee3de85d6897dcfcf25027d88d5e96c81aab5"
+  },
+  "metadata_audit": {
+    "primitive_clock": {
+      "actual_optimizer_updates": 100000,
+      "completed_primitive_attempts": 100000,
+      "skipped_updates": 0,
+      "last_observed_updates": 100000
+    },
+    "actual_checkpoint_history_counters": {
+      "full_sampling_history_calls": 49999,
+      "selected_rollout_history_primitives": 17883
+    },
+    "history_findings": [],
+    "saved_native_stage": 1,
+    "saved_pending_evaluation_steps": 0
+  },
+  "cpu_fresh_execution_status": "USER_LDM100K_PREFIX_FRESH_CPU_VERIFIED",
+  "cpu_fresh_receipt_sha256": "4f9ae8d5e92071ca2653f4eb364e068073a072ef84279fd11dfd2f3ececc4907",
+  "cpu_fresh_exit_sha256": "2875edbf42c2039486a700119f5d3cd2fb8a1104dfafe93e2baf63bce6d6b903",
+  "independent_document_summary_pending": false,
+  "actual_scope_built": false,
+  "actual_generated_pairs": 0,
+  "semantic_quality_accepted": false,
+  "physical_quality_accepted": false,
+  "full_paper_training": false
+}

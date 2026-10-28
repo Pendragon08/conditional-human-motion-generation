@@ -1,0 +1,176 @@
+{
+  "kind": "ldm100k_prefix_verify",
+  "run": "user_ldm100k_prefix_document_v1",
+  "observed_unix": 1793201054.9263792,
+  "files": {
+    "receipt": {
+      "status": "USER_LDM100K_PREFIX_FRESH_CPU_VERIFIED",
+      "run": "user_ldm100k_prefix_document_v1",
+      "source_sha256": "adec8c7784e61959930bc13d467e31d3f25e33b21ce765e3813078a8d57b0220",
+      "spec_sha256": "9b62a0cdbb02bf00d01a96f7bdf56c5676b02937635625f3e2052ec17cc6a384",
+      "output_writers_closed": true,
+      "export_receipt_sha256": "2ff0b614fe3b4f1ecbeeb370ec968d99f3005b7e8bed6b50517c3eb066630b89",
+      "selected_checkpoint": {
+        "path": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints/ldm_state_100000.pth",
+        "bytes": 223731415,
+        "sha256": "9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea",
+        "manager_step": 100000,
+        "actual_optimizer_updates": 100000
+      },
+      "inference": {
+        "path": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/inference/ldm100000_inference.private.pth",
+        "bytes": 81391655,
+        "sha256": "5faca9293e76cb3ec04dd4c49aeee3de85d6897dcfcf25027d88d5e96c81aab5"
+      },
+      "new_gpu_contexts": 0,
+      "new_sdk_tasks": 0,
+      "training_optimizer_updates_performed": 0,
+      "original300k_completion_claimed": false,
+      "semantic_quality_accepted": false,
+      "inference_or_fullstate_modified": false,
+      "elapsed_seconds": 3.4353694077581167,
+      "finite_cpu_tensors": 548,
+      "fullstate_and_exported_denoiser_exact": true,
+      "cpu_adam_restore_exact": true,
+      "adam_step_min": 100000,
+      "adam_step_max": 100000,
+      "primitive_clock": {
+        "actual_optimizer_updates": 100000,
+        "completed_primitive_attempts": 100000,
+        "skipped_updates": 0,
+        "last_observed_updates": 100000
+      },
+      "metadata_audit": {
+        "primitive_clock": {
+          "actual_optimizer_updates": 100000,
+          "completed_primitive_attempts": 100000,
+          "skipped_updates": 0,
+          "last_observed_updates": 100000
+        },
+        "actual_checkpoint_history_counters": {
+          "full_sampling_history_calls": 49999,
+          "selected_rollout_history_primitives": 17883
+        },
+        "history_findings": [],
+        "saved_native_stage": 1,
+        "saved_pending_evaluation_steps": 0
+      },
+      "trained_denoiser_sha256": "e23d2e8c975d96e42beec373746b3c2ac8134f6d50b3854915e6133ed478254e",
+      "synthetic_cpu_forward_calls": 4,
+      "synthetic_cpu_forward_exact": true,
+      "no_heldout_semantics_claimed": true,
+      "cuda_rng_restored": false,
+      "actual_full_state_loads": 1,
+      "actual_inference_loads": 1,
+      "source_and_inference_fingerprints_unchanged": true
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONUNBUFFERED=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/verify_ldm100k_prefix_export.py",
+        "--run",
+        "user_ldm100k_prefix_document_v1"
+      ],
+      "supervisor_pid": 383471,
+      "child_pid": 383476,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 4.594801796600223,
+      "supervision_passed": true,
+      "run": "user_ldm100k_prefix_document_v1",
+      "status": "USER_LDM100K_PREFIX_FRESH_CPU_VERIFIED",
+      "receipt_sha256": "4f9ae8d5e92071ca2653f4eb364e068073a072ef84279fd11dfd2f3ececc4907",
+      "spec_sha256": "9b62a0cdbb02bf00d01a96f7bdf56c5676b02937635625f3e2052ec17cc6a384",
+      "source_sha256": "a18999a654400a40a60bddc2f786bdddbe98ecc01f063bf11fef419d2f497a67",
+      "resource_sha256": "0fae6a0ef59d7bb9b67b611c3f43e52ad8777338bfd10e27a2cdf872f9b5121a",
+      "process_exit_sha256": "68655d314e5e7a3d8d5f83a33a35e106eb1e88c73be593ce87da73c078bd5ed7",
+      "new_gpu_contexts": 0,
+      "new_sdk_tasks": 0,
+      "training_optimizer_updates_performed": 0
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONUNBUFFERED=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/verify_ldm100k_prefix_export.py",
+        "--run",
+        "user_ldm100k_prefix_document_v1"
+      ],
+      "supervisor_pid": 383471,
+      "child_pid": 383476,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 4.594801796600223,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    },
+    "driver": {
+      "status": "LDM100K_PREFIX_CPU_VERIFY_DISPATCHED_NOT_YET_ACCEPTED",
+      "run": "user_ldm100k_prefix_document_v1",
+      "driver_pid": 383470,
+      "spec_sha256": "9b62a0cdbb02bf00d01a96f7bdf56c5676b02937635625f3e2052ec17cc6a384",
+      "command": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_ldm100k_prefix_verify.py",
+        "--run",
+        "user_ldm100k_prefix_document_v1"
+      ],
+      "preflight_resources": {
+        "available_host_ram_bytes": 133130768384,
+        "data_free_bytes": 3405565952,
+        "all_device_usage_including_other_jobs": "0, 12223, 36328, 0\n1, 7823, 40726, 0",
+        "owned_child_group": null,
+        "owned_group_processes": [],
+        "owned_group_gpu_memory": []
+      }
+    }
+  },
+  "sha256": {
+    "receipt": "4f9ae8d5e92071ca2653f4eb364e068073a072ef84279fd11dfd2f3ececc4907",
+    "exit": "2875edbf42c2039486a700119f5d3cd2fb8a1104dfafe93e2baf63bce6d6b903",
+    "process": "68655d314e5e7a3d8d5f83a33a35e106eb1e88c73be593ce87da73c078bd5ed7",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0",
+    "driver": "55a5dd131c9d5a45a79d398ddb5f5e341b8d65728e0cce9a85b5376bcf3d7a39"
+  },
+  "workers": [],
+  "closed_execution_verified": true,
+  "arrays_read": 0,
+  "model_loads": 0,
+  ".log_tail": "TRANS_ENC init\nTRANS_ENC init\n{\"status\": \"USER_LDM100K_PREFIX_FRESH_CPU_VERIFIED\", \"run\": \"user_ldm100k_prefix_document_v1\", \"source_sha256\": \"adec8c7784e61959930bc13d467e31d3f25e33b21ce765e3813078a8d57b0220\", \"spec_sha256\": \"9b62a0cdbb02bf00d01a96f7bdf56c5676b02937635625f3e2052ec17cc6a384\", \"output_writers_closed\": true, \"export_receipt_sha256\": \"2ff0b614fe3b4f1ecbeeb370ec968d99f3005b7e8bed6b50517c3eb066630b89\", \"selected_checkpoint\": {\"path\": \"/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints/ldm_state_100000.pth\", \"bytes\": 223731415, \"sha256\": \"9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea\", \"manager_step\": 100000, \"actual_optimizer_updates\": 100000}, \"inference\": {\"path\": \"/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/inference/ldm100000_inference.private.pth\", \"bytes\": 81391655, \"sha256\": \"5faca9293e76cb3ec04dd4c49aeee3de85d6897dcfcf25027d88d5e96c81aab5\"}, \"new_gpu_contexts\": 0, \"new_sdk_tasks\": 0, \"training_optimizer_updates_performed\": 0, \"original300k_completion_claimed\": false, \"semantic_quality_accepted\": false, \"inference_or_fullstate_modified\": false, \"elapsed_seconds\": 3.4353694077581167, \"finite_cpu_tensors\": 548, \"fullstate_and_exported_denoiser_exact\": true, \"cpu_adam_restore_exact\": true, \"adam_step_min\": 100000, \"adam_step_max\": 100000, \"primitive_clock\": {\"actual_optimizer_updates\": 100000, \"completed_primitive_attempts\": 100000, \"skipped_updates\": 0, \"last_observed_updates\": 100000}, \"metadata_audit\": {\"primitive_clock\": {\"actual_optimizer_updates\": 100000, \"completed_primitive_attempts\": 100000, \"skipped_updates\": 0, \"last_observed_updates\": 100000}, \"actual_checkpoint_history_counters\": {\"full_sampling_history_calls\": 49999, \"selected_rollout_history_primitives\": 17883}, \"history_findings\": [], \"saved_native_stage\": 1, \"saved_pending_evaluation_steps\": 0}, \"trained_denoiser_sha256\": \"e23d2e8c975d96e42beec373746b3c2ac8134f6d50b3854915e6133ed478254e\", \"synthetic_cpu_forward_calls\": 4, \"synthetic_cpu_forward_exact\": true, \"no_heldout_semantics_claimed\": true, \"cuda_rng_restored\": false, \"actual_full_state_loads\": 1, \"actual_inference_loads\": 1, \"source_and_inference_fingerprints_unchanged\": true}\n",
+  "_outer.log_tail": "{\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"CUDA_VISIBLE_DEVICES=\", \"OMP_NUM_THREADS=4\", \"OPENBLAS_NUM_THREADS=4\", \"PYTHONIOENCODING=utf-8\", \"PYTHONUNBUFFERED=1\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/verify_ldm100k_prefix_export.py\", \"--run\", \"user_ldm100k_prefix_document_v1\"], \"supervisor_pid\": 383471, \"child_pid\": 383476, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 3, \"sample_errors\": [], \"elapsed_seconds\": 4.594801796600223, \"supervision_passed\": true, \"run\": \"user_ldm100k_prefix_document_v1\", \"status\": \"USER_LDM100K_PREFIX_FRESH_CPU_VERIFIED\", \"receipt_sha256\": \"4f9ae8d5e92071ca2653f4eb364e068073a072ef84279fd11dfd2f3ececc4907\", \"spec_sha256\": \"9b62a0cdbb02bf00d01a96f7bdf56c5676b02937635625f3e2052ec17cc6a384\", \"source_sha256\": \"a18999a654400a40a60bddc2f786bdddbe98ecc01f063bf11fef419d2f497a67\", \"resource_sha256\": \"0fae6a0ef59d7bb9b67b611c3f43e52ad8777338bfd10e27a2cdf872f9b5121a\", \"process_exit_sha256\": \"68655d314e5e7a3d8d5f83a33a35e106eb1e88c73be593ce87da73c078bd5ed7\", \"new_gpu_contexts\": 0, \"new_sdk_tasks\": 0, \"training_optimizer_updates_performed\": 0}\n",
+  "common_lock_free": true,
+  "closure": {
+    "exit_sha256": "2875edbf42c2039486a700119f5d3cd2fb8a1104dfafe93e2baf63bce6d6b903",
+    "process_sha256": "68655d314e5e7a3d8d5f83a33a35e106eb1e88c73be593ce87da73c078bd5ed7",
+    "outer_sha256": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+  }
+}

@@ -22,6 +22,7 @@ from ldm100k_backup_contract import validate_descriptor
 p = argparse.ArgumentParser()
 p.add_argument('--run', required=True)
 p.add_argument('--worker', action='store_true')
+p.add_argument('--transfer-profile', choices=['default', 'conservative'], default='default')
 a = p.parse_args()
 assert a.run.isascii() and a.run.isidentifier()
 E = P / 'transfers' / a.run
@@ -106,12 +107,14 @@ if not a.worker:
     guard_local(D, P, directory=True)
     E.mkdir(parents=True, exist_ok=False)
     write(E / 'source_binding.json', descriptor)
-    cmd = [sys.executable, '-B', str(pathlib.Path(__file__).resolve()), '--run', a.run, '--worker']
+    cmd = [sys.executable, '-B', str(pathlib.Path(__file__).resolve()), '--run', a.run,
+           '--transfer-profile', a.transfer_profile, '--worker']
     with (E / 'worker.log').open('xb') as log:
         q = subprocess.Popen(cmd, stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT,
                              creationflags=subprocess.CREATE_NO_WINDOW | subprocess.DETACHED_PROCESS)
     result = dict(status='PRIVATE_LDM100K_COPY_DISPATCHED_NOT_VERIFIED', worker_pid=q.pid,
-                  worker_start_filetime=birth(q), command=cmd, D_evidence_dir=str(E), started_unix=time.time())
+                   worker_start_filetime=birth(q), command=cmd, D_evidence_dir=str(E),
+                   transfer_profile=a.transfer_profile, started_unix=time.time())
     write(E / 'dispatch.json', result)
     local = O / a.run
     local.mkdir(exist_ok=False)
@@ -161,13 +164,20 @@ print(json.dumps(dict(fingerprint=fingerprint,prefix_sha256=h.hexdigest())))
     before = json.loads(recorded_remote(code, E / 'before_client.json', timeout=180))
     assert before['prefix_sha256'] == prefix_sha
     write(E / 'intent.json', dict(checkpoint=ck, export_binding=binding, prefix_bytes=count,
-          prefix_sha256=prefix_sha, source_fingerprint=before['fingerprint'], new_model_loads=0, new_gpu_contexts=0))
-    cmd = ['sftp', '-b', '-', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=15', '-o', 'ServerAliveInterval=30',
+          prefix_sha256=prefix_sha, source_fingerprint=before['fingerprint'],
+          transfer_profile=a.transfer_profile, new_model_loads=0, new_gpu_contexts=0))
+    conservative = a.transfer_profile == 'conservative'
+    cmd = ['sftp', '-b', '-', '-o', 'BatchMode=yes', '-o',
+           'ConnectTimeout=' + ('30' if conservative else '15'), '-o',
+           'ServerAliveInterval=' + ('10' if conservative else '30'),
            '-i', 'C:/Users/Pende/.ssh/id_ed25519', 'ouyanghao@10.147.17.32']
+    if conservative:
+        cmd[1:1] = ['-R', '1', '-B', '16384', '-o', 'ServerAliveCountMax=12']
     with (E / 'transfer.stdout.txt').open('xb') as out, (E / 'transfer.stderr.txt').open('xb') as err, (E / 'resources.jsonl').open('x', encoding='utf-8') as resources:
         client = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=out, stderr=err, cwd=dest)
         write(E / 'client_intent.json', dict(command=cmd, pid=client.pid, start_filetime=birth(client),
-              timeout_seconds=21600, started_unix=time.time(), prefix_bytes=count))
+              timeout_seconds=21600, started_unix=time.time(), prefix_bytes=count,
+              transfer_profile=a.transfer_profile))
         client.stdin.write(('reget ' + ck['path'] + ' ldm_state.pth.partial\n').encode())
         client.stdin.close()
         started = time.monotonic()

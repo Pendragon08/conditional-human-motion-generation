@@ -3,7 +3,7 @@ import hashlib
 import json
 from ldm100k_verified_input import ROOT, read, sha, owned, closed_job
 
-RUNS = ['user_ldm100k_generation_author_v1', 'user_ldm100k_generation_document_v1']
+RUNS = ['user_ldm100k_generation_author_v3', 'user_ldm100k_generation_document_v3']
 
 
 def runtime_signature(spec):

@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 90,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "ed57c019d059868e98ba037c7642f80989cef170f199f8954697f63a23cfd64a",
+  "client_pid": 68440,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"status\": \"ORIGINAL_EXPORT_DISPATCH_PROVEN_ABSENT_AFTER_CLIENT255\", \"observed_unix\": 1793200485.1936095, \"paths\": {\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_prefix_export_user_ldm100k_prefix_export_v1_driver.py\": false, \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_prefix_export_user_ldm100k_prefix_export_v1_driver.json\": false, \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_prefix_export_user_ldm100k_prefix_export_v1_exit.json\": false, \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_prefix_export_user_ldm100k_prefix_export_v1_outer_exit.json\": false, \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_prefix_export_user_ldm100k_prefix_export_v1_process_exit.json\": false, \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/ldm100k_user_handoff_20261028/user_ldm100k_prefix_export_v1\": false, \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/logs/ldm100k_prefix_export_user_ldm100k_prefix_export_v1.log\": false, \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/logs/ldm100k_prefix_export_user_ldm100k_prefix_export_v1_outer.log\": false, \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/logs/ldm100k_prefix_export_user_ldm100k_prefix_export_v1_resources.jsonl\": false}, \"workers\": [], \"other_owned_python_stdin_workers\": [], \"common_lock_free\": true, \"spec_sha256\": \"b52021e20a8dd5463b5e2075deb35eb5fdb538f3bcbf18bd889dd8708b038ac8\", \"new_model_loads\": 0, \"new_gpu_contexts\": 0}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\ldm100k_user_handoff_20261028\\user_ldm100k_prefix_export_v1\\absence_after_timeout_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\ldm100k_user_handoff_20261028\\user_ldm100k_prefix_export_v1\\absence_after_timeout_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}
