@@ -57,9 +57,13 @@ else:
  assert sha(r/'scripts/run_user_vae100k_ldm.py')==s['entrypoint_sha256'] and sha(r/'scripts/supervise_user_vae100k_ldm.py')==s['supervisor_sha256']
  for k in ['corpus_receipt_sha256','data_acceptance_sha256','strict_audit_receipt_sha256']:assert s[k]==er[k]==v['spec'][k]
  needed=s['checkpoint_policy']['reserve_bytes']+s['checkpoint_policy']['log_allowance_bytes']+4*s['checkpoint_policy']['checkpoint_upper_bound_bytes']+s['vae_cache_upper_bound_bytes']
- allowed=pathlib.Path('/home/ouyanghao');owned(allowed,allowed);parent=allowed/'textop-user-vae100k-ldm-checkpoints-20261028'
- assert not parent.exists() and not parent.is_symlink();assert shutil.disk_usage(allowed).free>=needed,dict(free=shutil.disk_usage(allowed).free,required=needed)
- parent.mkdir(mode=0o700);dest=parent/'checkpoints';dest.mkdir(mode=0o700)
+ candidates=[(pathlib.Path('/home/ouyanghao'),pathlib.Path('/home/ouyanghao/textop-user-vae100k-ldm-checkpoints-20261028')),(r,r/'filtered15000_20261027/user_vae100k_ldm')]
+ selected=None;observed=[]
+ for allowed,parent in candidates:
+  owned(allowed,allowed);free_bytes=shutil.disk_usage(allowed).free;observed.append(dict(root=str(allowed),free_bytes=free_bytes,required_bytes=needed))
+  if not parent.exists() and not parent.is_symlink() and free_bytes>=needed:selected=(allowed,parent);break
+ assert selected,'Keep all states; no actual fullLDM capacity: '+json.dumps(observed)
+ allowed,parent=selected;owned(parent.parent,allowed);parent.mkdir(mode=0o700);dest=parent/'checkpoints';dest.mkdir(mode=0o700)
  capacity=check(dest,allowed,s['checkpoint_policy'],remaining_saves=4);capacity.update(total_required_including_cache_bytes=needed,separate_vae_cache_upper_bound_bytes=s['vae_cache_upper_bound_bytes'])
  s.update(witness_authorized=True,train_authorized=False,witnesses=[],checkpoint_allowed_root=str(allowed),checkpoint_dir=str(dest))
 if stage!='export':

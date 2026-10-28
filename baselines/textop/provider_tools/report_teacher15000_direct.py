@@ -52,7 +52,7 @@ if user_100k_target:
    if path.exists():
     jn=json.loads(path.read_bytes());rn=jn.get('files',{}).get('receipt',{})
     handoff_stage=rn.get('status','USER_VAE100K_SUCCESSOR_DISPATCHED');handoff_workers=jn['workers'];handoff_lock_free=jn['common_lock_free'];handoff_observed=max(handoff_observed,jn['observed_unix'])
-    if stage_run=='user_vae100k_ldm300k_train_v1':ldm_attempts=rn.get('completed_primitive_attempts',0)
+    if stage_run=='user_vae100k_ldm300k_train_v1':ldm_attempts=rn.get('completed_primitive_attempts',0);generator_spec_sha=rn.get('spec_sha256')
  generator_started=True
 last_verified_handoff_stage=handoff_stage;access_unavailable=False;access_attempt=None
 access_path=B/'results/filtered15000_handoff_20261027/filtered15000_vae200k_train_v1/access_status.json'

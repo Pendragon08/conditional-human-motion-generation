@@ -91,8 +91,12 @@ provider_tools/launch_user_vae100k_handoff.py --stage ldm_witness --run user_vae
 provider_tools/collect_user_vae100k_handoff.py --kind ldm --run user_vae100k_ldm_author_v1 --evidence NEW_UNIQUE_ID
 ```
 
-The witnesses activation creates only a new owned persistent HOME directory
-/home/ouyanghao/textop-user-vae100k-ldm-checkpoints-20261028/checkpoints after real
+The witnesses activation prefers a new owned persistent HOME directory
+/home/ouyanghao/textop-user-vae100k-ldm-checkpoints-20261028/checkpoints; if its
+actual free space is insufficient, it checks a separate new owned data-task
+directory filtered15000_20261027/user_vae100k_ldm/checkpoints. This permits
+retaining an optional post-target emergency state without deleting it. Only an
+actually sufficient destination may be created, after real
 uid1013/no-symlink/filesystem/free/RAM/sharedGPU acceptance. Conservative budget
 is four full LDM slots plus180MiB cache,2GiB reserve and512MiB logs. No source,
 data, fullstate or failed partial may be deleted. Actual available capacity is
