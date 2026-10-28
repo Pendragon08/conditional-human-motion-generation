@@ -1,3 +1,7 @@
+<!--ldm100k-prefix-preparation-start-->
+CURRENT新增：真正100k专用CPU完整性/推理导出源码与本地启用/派发/轻量收集桥已实现；服务器已部署禁用，export_authorized=false/ldm_training=null。20个独立元数据破坏负例实际CPU0/reaped/streams_final通过，0生产checkpoint读取/模型/GPU/信号/真实导出；不是实际验收。读[LDM100K_PREFIX_EXPORT_ENVIRONMENT.md](LDM100K_PREFIX_EXPORT_ENVIRONMENT.md)和prefix_export_preparation_v1.json。不要重跑准备或提前pending激活。原训练11800尝试/11800Adam/0skip（2026-10-28T14:10:41.709363+08:00），原监督与worker身份未变；唯一100k控制另采样11900，仍等待真实保存和精确恢复，0生产信号。源/spec/共同锁均保持。私有100k字节备份现有worker/client创建身份实核仍在传，partial不是已完成备份。
+<!--ldm100k-prefix-preparation-end-->
+
 # CURRENT — user requests LDM100000 endpoint, original300k math frozen
 
 Latest human: “LDM也训练100000步吧，不需要300000步。” This overrides all older

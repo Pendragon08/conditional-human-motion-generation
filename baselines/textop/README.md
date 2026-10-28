@@ -10,6 +10,11 @@
 VAE真实100k已保存/精确恢复/重构/CPU推理导出通过；物理8278全测7137通过1141失败0未试，语料7135family/14270镜像/完整CLIP/TRAIN统计已接受。所有旧状态/失败/partial/SDK冷副本保留。当前双盘原完整槽保守预算与每盘2GiB底线不改，私有字节备份p100k_v1独立继续仍PENDING。健康每小时静默，仅实质变化/失败/必要输入/完整效果通知。以下旧300k目标和旧CURRENT全部历史，以本段及最新真实收据为准。
 <!--ldm100k-endpoint-current-end-->
 
+<!--ldm100k-prefix-preparation-start-->
+CURRENT新增：真正100k专用CPU完整性/推理导出源码与本地启用/派发/轻量收集桥已实现；服务器已部署禁用，export_authorized=false/ldm_training=null。20个独立元数据破坏负例实际CPU0/reaped/streams_final通过，0生产checkpoint读取/模型/GPU/信号/真实导出；不是实际验收。读[LDM100K_PREFIX_EXPORT_ENVIRONMENT.md](LDM100K_PREFIX_EXPORT_ENVIRONMENT.md)和prefix_export_preparation_v1.json。不要重跑准备或提前pending激活。原训练11800尝试/11800Adam/0skip（2026-10-28T14:10:41.709363+08:00），原监督与worker身份未变；唯一100k控制另采样11900，仍等待真实保存和精确恢复，0生产信号。源/spec/共同锁均保持。私有100k字节备份现有worker/client创建身份实核仍在传，partial不是已完成备份。
+<!--ldm100k-prefix-preparation-end-->
+
+
 <!--latest100k-ldm-current-start-->
 ## CURRENT — VAE100000 COMPLETE; fresh full LDM300000 RUNNING
 
