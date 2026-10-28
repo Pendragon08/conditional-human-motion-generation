@@ -1,6 +1,6 @@
 {
   "run": "tmr69d_evaluator500_train_v1",
-  "observed_unix": 1793220514.481551,
+  "observed_unix": 1793221138.2870271,
   "files": {
     "receipt": {
       "status": "RUNNING_FRESH_TMR69D_EVALUATOR_TRAINING",
@@ -8,19 +8,19 @@
       "source_sha256": "04014d8f2e657e9c48827edd7fae817c3f01362d97dcdbd3a0e3dea092c604c2",
       "request_sha256": "2196a765dbaa61ba7265b9d798f99fe5c094a502fd34bd47869f0fe141360b13",
       "output_writers_closed": false,
-      "formal_optimizer_updates": 600,
-      "attempted_optimizer_updates": 600,
+      "formal_optimizer_updates": 4100,
+      "attempted_optimizer_updates": 4100,
       "skipped_updates": 0,
-      "completed_epochs": 0,
+      "completed_epochs": 4,
       "target_epochs": 500,
       "expected_optimizer_updates": 507500,
       "generator_or_teacher_training_updates": 0,
       "original_validation_sources_used_for_gradient": 0,
       "semantic_metrics_computed": false,
       "checkpoints": [],
-      "elapsed_seconds": 153.69932883232832,
-      "home_free_bytes": 3005812736,
-      "data_free_bytes": 2408472576,
+      "elapsed_seconds": 773.7856787052006,
+      "home_free_bytes": 3005784064,
+      "data_free_bytes": 2408431616,
       "input_preparation": {
         "phase": "building_real_frozen_text_RAM",
         "modality": 1,
@@ -114,18 +114,26 @@
         "weight_decay": 0.01
       },
       "last_train_loss": {
-        "recons": 0.27220308780670166,
-        "kl": 7.267045497894287,
-        "latent": 1.1519863605499268,
-        "contrastive": 2.649758815765381,
-        "loss": 0.5372631549835205
+        "recons": 0.21255329251289368,
+        "kl": 31.15856170654297,
+        "latent": 0.9833288788795471,
+        "contrastive": 1.5246554613113403,
+        "loss": 0.3653402626514435
       },
-      "sampler_epoch": 0,
-      "sampler_cursor": 19200
+      "sampler_epoch": 4,
+      "sampler_cursor": 1280,
+      "last_internal_validation_loss": {
+        "recons": 0.24696064262580159,
+        "kl": 25.85665215175149,
+        "latent": 1.023362246575124,
+        "contrastive": 1.8974631037539889,
+        "loss": 0.4369757612088549
+      },
+      "internal_validation_optimizer_updates": 0
     }
   },
   "sha256": {
-    "receipt": "68b185426fdca082116dcfebd6e4cddf00d555b98730bee23f823e3ca01fa6f6"
+    "receipt": "4997b08f575631ac725949060cf51f3608c55343bfea05b195012b388daadcb0"
   },
   "workers": [
     {
@@ -162,9 +170,9 @@
     "tmr69d_evaluator500_train_v1_outer.log": ""
   },
   "last_resource": {
-    "available_host_ram_bytes": 129649704960,
-    "data_free_bytes": 2408472576,
-    "all_device_usage_including_other_jobs": "0, 12223, 36328, 0\n1, 12653, 35897, 82",
+    "available_host_ram_bytes": 129630744576,
+    "data_free_bytes": 2408431616,
+    "all_device_usage_including_other_jobs": "0, 12223, 36328, 0\n1, 12655, 35895, 75",
     "owned_child_group": 416293,
     "owned_group_processes": [
       {
@@ -186,13 +194,13 @@
       {
         "pid": 416293,
         "gpu_uuid": "GPU-0b41e662-b662-bb1c-954b-13ed89d7af18",
-        "used_gpu_memory_mib": "4824"
+        "used_gpu_memory_mib": "4826"
       }
     ],
-    "home_free_bytes": 3005812736,
+    "home_free_bytes": 3005779968,
     "phase": "running",
-    "elapsed_seconds": 151.16551479324698
+    "elapsed_seconds": 770.1861026026309
   },
-  "data_free_bytes": 2408472576,
-  "home_free_bytes": 3005812736
+  "data_free_bytes": 2408431616,
+  "home_free_bytes": 3005784064
 }

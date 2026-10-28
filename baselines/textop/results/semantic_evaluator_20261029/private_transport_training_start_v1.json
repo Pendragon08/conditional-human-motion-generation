@@ -2,28 +2,120 @@
   "worker": {
     "pid": 28224,
     "expected_start_filetime": 134376825497156526,
-    "actual_start_filetime": 134376825497156526,
-    "native_exit_code": 259,
-    "status": "STILL_ACTIVE"
+    "status": "NOT_PRESENT"
   },
   "client": {
     "pid": 42964,
     "expected_start_filetime": 134376825706061975,
-    "actual_start_filetime": 134376825706061975,
-    "native_exit_code": 259,
-    "status": "STILL_ACTIVE"
+    "status": "NOT_PRESENT"
   },
   "latest_resource": {
-    "unix": 1793220811.928565,
-    "bytes": 220282880,
-    "D_free_bytes": 3508543488,
+    "unix": 1793220931.9760633,
+    "bytes": 223444992,
+    "D_free_bytes": 3505377280,
     "client_pid": 42964
   },
   "outcomes": {
-    "client_outcome.json": null,
-    "worker_exit.json": null,
-    "backup.json": null
+    "client_outcome.json": {
+      "actual_client_exit_code": 0,
+      "client_reaped": true,
+      "streams_final": true,
+      "prefix_bytes_preserved": 5701632
+    },
+    "worker_exit.json": {
+      "status": "PRIVATE_LDM100K_BACKUP_VERIFIED",
+      "actual_returncode": 0
+    },
+    "backup.json": {
+      "status": "USER_LDM100000_PRIVATE_FULLSTATE_BYTE_BACKUP_VERIFIED",
+      "checkpoint": {
+        "path": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints/ldm_state_100000.pth",
+        "bytes": 223731415,
+        "sha256": "9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea",
+        "manager_step": 100000,
+        "actual_optimizer_updates": 100000
+      },
+      "export_binding": {
+        "run": "user_ldm100k_prefix_export_v1",
+        "spec_sha256": "b52021e20a8dd5463b5e2075deb35eb5fdb538f3bcbf18bd889dd8708b038ac8",
+        "receipt_sha256": "2ff0b614fe3b4f1ecbeeb370ec968d99f3005b7e8bed6b50517c3eb066630b89",
+        "exit_sha256": "3de6f7f4dbd65050db2701396ecc7f13455aed8180b0db1b7e3e91f2be19dd62",
+        "inference": {
+          "path": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/inference/ldm100000_inference.private.pth",
+          "bytes": 81391655,
+          "sha256": "5faca9293e76cb3ec04dd4c49aeee3de85d6897dcfcf25027d88d5e96c81aab5"
+        }
+      },
+      "D_path": "D:\\\u5177\u8eab\u667a\u80fd\\TextOp\u590d\u73b0_20261024\\checkpoints\\private\\ldm100k_endpoint_20261028\\step_100000\\ldm_state_100000.pth",
+      "D_sha256": "9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea",
+      "source_fingerprint_stable": true,
+      "D_free_bytes": 3505098752,
+      "actual_sftp_exit_code": 0,
+      "resumed_prefix_bytes": 5701632,
+      "new_model_loads": 0,
+      "new_gpu_contexts": 0
+    }
   },
-  "C_free_bytes": 3217670144,
-  "D_free_bytes": 3508281344
+  "C_free_bytes": 3163172864,
+  "D_free_bytes": 3362668544,
+  "ldm_fullstate_independently_accepted": {
+    "status": "LDM100K_D_FULLSTATE_ACCEPTED_ALL_PRIVATE_CLIENTS_RECONCILED",
+    "checkpoint": {
+      "path": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints/ldm_state_100000.pth",
+      "bytes": 223731415,
+      "sha256": "9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea",
+      "manager_step": 100000,
+      "actual_optimizer_updates": 100000
+    },
+    "D_sha256": "9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea",
+    "native_own_source_sha_verified": true,
+    "original_ldm_copy_identities": [
+      {
+        "pid": 28224,
+        "expected_start_filetime": 134376825497156526,
+        "status": "NOT_PRESENT"
+      },
+      {
+        "pid": 42964,
+        "expected_start_filetime": 134376825706061975,
+        "status": "NOT_PRESENT"
+      }
+    ],
+    "all_private_copy_clients_reconciled": true,
+    "both_transport_locks_observed_free": true,
+    "D_free_bytes": 3504324608,
+    "source_bytes_reloaded_as_model": false,
+    "new_gpu_contexts": 0,
+    "requested_next_private_run": "p997_v4"
+  },
+  "legacy_99700_resume": {
+    "run": "p997_v4",
+    "worker": {
+      "pid": 69868,
+      "expected_start_filetime": 134376946373530938,
+      "actual_start_filetime": 134376946373530938,
+      "native_exit_code": 259,
+      "status": "STILL_ACTIVE"
+    },
+    "client": {
+      "pid": 15748,
+      "expected_start_filetime": 134376946533588306,
+      "actual_start_filetime": 134376946533588306,
+      "native_exit_code": 259,
+      "status": "STILL_ACTIVE"
+    },
+    "prefix_bytes": 241467392,
+    "prefix_sha256": "e5353248f56249ba9cf9f7c74d5bf43dfebcb74e8d2de55822ec7c0e05126342",
+    "latest_resource": {
+      "unix": 1793221218.4930675,
+      "bytes": 370540544,
+      "free_bytes": 3375251456,
+      "client_pid": 15748
+    },
+    "outcomes": {
+      "client_outcome.json": null,
+      "worker_exit.json": null,
+      "backup.json": null
+    }
+  }
 }
