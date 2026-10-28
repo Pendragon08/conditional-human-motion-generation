@@ -1,3 +1,8 @@
+<!--ldm100k-live-1908-start-->
+CURRENT实核：2026-10-28T19:08:04+08:00原LDM63100尝试/63100Adam/0skip，原supervisor304265/start1436142089及worker304272/start1436142105一致、RUNNING无exit/commonlock占用，native stage1，真实DDPM history生成13099次/选用1301primitive；19:08:49控制另采63200、WAITING/0信号，不是保存点。p997_v2原worker/SFTP创建身份19:27实核仍匹配，122519552B partial、无退出/backup，仍PENDING；C约0.48GB、D约6.23GB仅采样，不重跑清理。
+新真实模型生成backend/runtime/entry/有界监督/实际scope与见证接受源码已部署禁用，specSHAf2e1185d32aa599b71d1c2dca68d41ef6503bbbbff8d3b51fe1b73b9fb45e229，witness/generation flags false、scope/witness bindings及实际预算null。新22隔离seed/window/预算负例远端CPU0/reaped/final streams，0模型/数组/实际pair/GPU/SDK/信号，非数值运行验收。读LDM100K_GENERATION_BACKEND_ENVIRONMENT.md；本地激活/独占派发/轻量收集与真实见证启用桥尚需完成，禁止手改flag或提前pending运行。100k停止/CPU导出/freshCPU复核/真实scope未闭合，不得执行新GPU模型；原活动source/spec/预算/控制器冻结。下一轮优先完成真实桥和LDM私有备份入口，不能停在本次禁用部署或冒称语义/物理效果。
+<!--ldm100k-live-1908-end-->
+
 <!--ldm100k-live-1809-start-->
 CURRENT实核：2026-10-28T18:09:02+08:00原LDM54200尝试/54200Adam/0skip，原supervisor304265/start1436142089及worker304272/start1436142105一致、RUNNING无exit、共同锁占用、native stage1，真实完整DDPM history生成4199次/选用114primitive。18:10:26唯一控制另采54400、WAITING/0信号；不是保存检查点。VAE100k私有D副本已通过，不重传；p997_v2原worker73588/SFTP15724创建身份实核仍匹配，48201728B partial、D6383742976B采样，仍PENDING。C写入救援已完成不重跑，C约0.50GB可用但仍轻量观察。
 新实际CPU scope-builder/签名激活/独占派发/有界监督/聚合收集已部署禁用，specSHA303d7261db46476aa539d2a524011bba1e9386f6e1bec2cc9aa24e4fed300c26，scope_build=false/verified_model=null/generation=false。新31隔离契约负例远端CPU0/reaped/final streams，原活动源/spec冻结未动，0实际scope/模型/数组/GPU/信号，不是实际接受。读LDM100K_HELDOUT_SCOPE_ENVIRONMENT.md，真100k停止→CPU导出→fresh实际CPU summary闭合后才一次启用/执行。现有12/16/18/26不重跑。实际模型生成entry/监督、兼容TMR及物理端点仍需继续实现和实际验收，不能以本阶段准备停工或称完整效果。
