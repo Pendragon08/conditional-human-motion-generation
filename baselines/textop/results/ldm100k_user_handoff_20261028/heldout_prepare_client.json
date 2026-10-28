@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 90,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "be1042a3ce3583cdc12e0dfc93c1aae57e91d4efc5000cab707f0129119e704f",
+  "client_pid": 26632,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"status\": \"HELDOUT_SCOPE_HELPER_DEPLOYED_DISABLED_NOT_ACTUAL_SCOPE\", \"files_sha256\": {\"scripts/ldm100k_heldout_protocol.py\": \"b0b95d2bb8bc6261a2c4be058c972690a822907d46cc5cebb09c80d40fd85212\", \"provider_tools/test_ldm100k_heldout_scope.py\": \"bf5edbf3778e12afe358b7be43b51d5e7292e5652487e3fa303f42762150c412\", \"configs/ldm100k-heldout-plan.json\": \"fc30daa332971b6e56a35347d9463e5dee3772e0a78e0c7d0cc293b0fd074247\"}, \"frozen_sources_sha256\": {\"configs/user-vae100k-ldm-spec.json\": \"654332646f2aa4bb69fea4cc779edf88138735a0ca9f5e5906e783948868c770\", \"scripts/run_user_vae100k_ldm.py\": \"eb613778716602f83051e54a2c40d1fc8b6a2820aaf5bd8416a75b18f47b3b64\", \"scripts/filtered15000_ldm_runtime.py\": \"37f3b314980ee8417ac31cd5c63a41f630296e9e96d4feb5c3f541e189a832e9\", \"configs/ldm100k-user-control-spec.json\": \"0c30cd479854f9a4a8498be245cd945398e20fc66fe3950537620a8d679a5f23\", \"scripts/watch_ldm100k_handoff.py\": \"55c29f7a886e0838a6b37bcc9d241ecf044b5a69574cea1a34198d57e68db7c7\", \"configs/ldm100k-prefix-export-spec.json\": \"98a3d4a75423a5ed0bcb497032f53849900e528e023acaaab494caa993dafc0c\", \"configs/ldm100k-prefix-verify-spec.json\": \"82c0f2ac228362f8484af7ac9df3f383476562944068bdef9a5087f79a2100bf\"}, \"fixture\": {\"status\": \"LDM100K_HELDOUT_SCOPE_ISOLATED_FIXTURES_PASSED\", \"rejected_cases\": 16, \"chunk_boundary_and_T_minus_1_verified\": true, \"no_future_features_in_initial_history\": true, \"overlap_preserved_without_transition_claim\": true, \"deterministic_subset_and_input_order\": true, \"actual_original_arrays_read\": 0, \"actual_original_text_read\": 0, \"actual_models_loaded\": 0, \"actual_gpu_contexts\": 0, \"actual_generation_runs\": 0, \"actual_semantic_metrics\": 0}, \"actual_fixture_exit_code\": 0, \"actual_fixture_reaped\": true, \"actual_fixture_streams_final\": true, \"actual_model_loads\": 0, \"actual_original_arrays_read\": 0, \"actual_generation_runs\": 0, \"actual_semantic_metrics\": 0, \"actual_production_signals\": 0, \"actual_gpu_contexts\": 0}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\ldm100k_user_handoff_20261028\\heldout_prepare_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\ldm100k_user_handoff_20261028\\heldout_prepare_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}
