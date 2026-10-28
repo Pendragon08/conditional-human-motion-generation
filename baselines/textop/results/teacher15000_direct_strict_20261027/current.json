@@ -2,7 +2,7 @@
   "schema": "textop.direct_strict_user_progress.v1",
   "run": "teacher15000_direct_full_v1",
   "status": "TEXTOP_TEACHER15000_DIRECT_STRICT_EXECUTION_COMPLETED",
-  "sample_beijing": "2026-10-29T03:48:15.907591+08:00",
+  "sample_beijing": "2026-10-29T04:48:34.481551+08:00",
   "teacher_stopped": true,
   "frozen_checkpoint_completed": 15000,
   "checkpoint_sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
@@ -24,8 +24,8 @@
   "raw_light_collector_trace_acceptance": false,
   "strict_physics_accepted": true,
   "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
-  "handoff_stage": "TMR69D_SYNTHETIC_CPU_CORE_CONTRACT_VERIFIED",
-  "handoff_stage_label": "\u539fTMR\u65b9\u6cd5\u7684CPU\u6062\u590d\u5951\u7ea6\u901a\u8fc7\uff0c\u7ee7\u7eed\u6587\u672c\u6a21\u578b\u4e0a\u4f20\u4e0e\u771f\u5b9e\u6570\u636e\u68af\u5ea6\u9a8c\u6536",
+  "handoff_stage": "RUNNING_FRESH_TMR69D_EVALUATOR_TRAINING",
+  "handoff_stage_label": "\u72ec\u7acb\u8bed\u4e49\u8bc4\u4ef7\u5668\u8bad\u7ec3\u4e2d\uff1bVAE\u4e0eLDM\u5747\u4fdd\u6301\u5341\u4e07\u6b65",
   "actual_unattempted_sources": 0,
   "filtered_corpus_accepted": true,
   "generator_started": true,
@@ -36,10 +36,36 @@
   "ldm_target_primitive_attempts": 100000,
   "user_ldm_endpoint_control_status": "USER_LDM100000_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED",
   "user_100k_control_status": "FAILED_VAE100K_CONTROL_RETAIN_ALL_EVIDENCE",
-  "handoff_workers": [],
+  "handoff_workers": [
+    {
+      "pid": 416285,
+      "start_ticks": "1441791429",
+      "state": "S",
+      "argv": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_tmr69d_evaluator_training.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tmr69d-evaluator-train-spec.json",
+        ""
+      ]
+    },
+    {
+      "pid": 416293,
+      "start_ticks": "1441791443",
+      "state": "R",
+      "argv": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_tmr69d_evaluator.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tmr69d-evaluator-train-spec.json",
+        ""
+      ]
+    }
+  ],
   "active_generator_spec_sha256": "654332646f2aa4bb69fea4cc779edf88138735a0ca9f5e5906e783948868c770",
   "ldm_selected_checkpoint_sha256": "9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea",
-  "ldm_successor_run": "tmr69d_core_contract_v1",
+  "ldm_successor_run": "tmr69d_evaluator500_train_v1",
   "ldm_successor_dispatch_unconfirmed": false,
   "ldm_diagnostic_summary": {
     "statistics": {
@@ -181,12 +207,22 @@
     "formal_evaluator_training_updates": 0,
     "semantic_metrics_available": false
   },
+  "tmr_evaluator_training": {
+    "status": "RUNNING_FRESH_TMR69D_EVALUATOR_TRAINING",
+    "optimizer_updates": 600,
+    "completed_epochs": 0,
+    "target_epochs": 500,
+    "expected_optimizer_updates": 507500,
+    "closed_execution_verified": false,
+    "generator_teacher_additional_updates": 0,
+    "semantic_metrics_computed": false
+  },
   "remote_observation_available": true,
   "last_access_attempt_beijing": null,
-  "last_verified_handoff_stage": "TMR69D_SYNTHETIC_CPU_CORE_CONTRACT_VERIFIED",
+  "last_verified_handoff_stage": "RUNNING_FRESH_TMR69D_EVALUATOR_TRAINING",
   "active_spec_sha256": "91184fff75f8a0579a759abb418d4a0186d3e42a9a48c176e3d33facc768a1cd",
   "worker_pids": [],
-  "common_lock_free": true,
+  "common_lock_free": false,
   "physical_replay_lock_released": true,
   "runtime_receipt_count_note": "replayed_original_sources and unattempted_original_sources describe planned selected/outside scope until execution ends; live pending is8278-finished_trials",
   "source_progress_sha256": "a61eb9cf62b95145bfb19f79dbf2967f381e40eff06633cc62aa3aa41979c689"

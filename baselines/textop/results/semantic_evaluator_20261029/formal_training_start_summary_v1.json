@@ -1,0 +1,88 @@
+{
+  "observed_beijing": "2026-10-29T04:48:34.481551+08:00",
+  "run": "tmr69d_evaluator500_train_v1",
+  "status": "RUNNING_FRESH_TMR69D_EVALUATOR_TRAINING",
+  "formal_optimizer_updates": 600,
+  "completed_epochs": 0,
+  "target_epochs": 500,
+  "source_sha256": "04014d8f2e657e9c48827edd7fae817c3f01362d97dcdbd3a0e3dea092c604c2",
+  "spec_sha256": "2196a765dbaa61ba7265b9d798f99fe5c094a502fd34bd47869f0fe141360b13",
+  "runtime_binding_sha256": "c89a006b8730db6f767e0e3542506a3b9be928aaa12679f2ae6a1b0e8c4b7030",
+  "workers": [
+    {
+      "pid": 416285,
+      "start_ticks": "1441791429",
+      "state": "S",
+      "argv": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_tmr69d_evaluator_training.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tmr69d-evaluator-train-spec.json",
+        ""
+      ]
+    },
+    {
+      "pid": 416293,
+      "start_ticks": "1441791443",
+      "state": "R",
+      "argv": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_tmr69d_evaluator.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tmr69d-evaluator-train-spec.json",
+        ""
+      ]
+    }
+  ],
+  "common_lock_free": false,
+  "author_receipt_sha256": "8b090395b3f4e086b3966850824b73fe89f76809d78619340f2c762779d055cb",
+  "document_receipt_sha256": "28eea3698f6c8a6f3f28c47571e9614248948b2ae8c382164ea734e20dd7ce7a",
+  "text_cpu_receipt_sha256": "c27611b8e2918234f16ee60e183e28bcf3191cd7c5014ee5bb625820979e8872",
+  "actual_input_signature_sha256": "512a138a8319ca97ac240b51e33e855a6c7e70ec76e6b9a1247816bd524d5402",
+  "storage_acceptance": {
+    "path": "/home/ouyanghao/textop-tmr69d-evaluator-20261029/checkpoints",
+    "uid": 1013,
+    "filesystem": "ext4",
+    "symlinks": false,
+    "writable_fsync_probe_sha256": "853e37d8ca864e240b299052f258f5065d65a1d7c495ca5a897a54b8d34b8ca5",
+    "free_bytes": 3005812736,
+    "required_bytes": 2885681152,
+    "slots": 3,
+    "per_slot_upper_bytes": 201326592,
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 134217728
+  },
+  "private_transport": {
+    "worker": {
+      "pid": 28224,
+      "expected_start_filetime": 134376825497156526,
+      "actual_start_filetime": 134376825497156526,
+      "native_exit_code": 259,
+      "status": "STILL_ACTIVE"
+    },
+    "client": {
+      "pid": 42964,
+      "expected_start_filetime": 134376825706061975,
+      "actual_start_filetime": 134376825706061975,
+      "native_exit_code": 259,
+      "status": "STILL_ACTIVE"
+    },
+    "latest_resource": {
+      "unix": 1793220811.928565,
+      "bytes": 220282880,
+      "D_free_bytes": 3508543488,
+      "client_pid": 42964
+    },
+    "outcomes": {
+      "client_outcome.json": null,
+      "worker_exit.json": null,
+      "backup.json": null
+    },
+    "C_free_bytes": 3217670144,
+    "D_free_bytes": 3508281344
+  },
+  "actual_generator_teacher_new_updates": 0,
+  "actual_semantic_metrics_available": false,
+  "actual_cleanup_deletions": 0
+}
