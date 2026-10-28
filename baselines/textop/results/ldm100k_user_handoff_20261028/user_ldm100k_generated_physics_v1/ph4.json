@@ -1,0 +1,234 @@
+{
+  "run": "user_ldm100k_generated_physics_v1",
+  "observed_unix": 1793210497.8047702,
+  "files": {
+    "receipt": {
+      "status": "USER_LDM100K_GENERATED_STRICT_PHYSICS_FINISHED",
+      "run": "user_ldm100k_generated_physics_v1",
+      "mode": "generated_ldm100k_strict",
+      "stage": "full",
+      "quality_label": "GENERATED_LDM100K_32FAMILY_FIVESEED_FROZEN_TEACHER15000_STRICT",
+      "source_sha256": "3adc615e2b1e7c54d2d4501362f7ba1d0d660a547c9b4bf75939efd2a033bc42",
+      "request_sha256": "deeefd742d1f5d37ba7b35be2b34ced8c9b044e8d306eedd41836909ddba89db",
+      "input_fk_receipt_sha256": "e2bb1ccd5c2cb795ee54aeb21dcaf2a11d83d022da68ea2ad56f71a05085a768",
+      "input_manifest_sha256": "f277d4df6888f7253235c9a5bf32ddf1a960be3a6b6c48a58e0333449dfb0453",
+      "declared_trials": 1880,
+      "reference_sources": 1880,
+      "replayed_generated_trials": 1880,
+      "source_selection": "all1880 actual generated seed/mode futures; duration order independent of outcomes",
+      "policy_checkpoint_sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
+      "policy_checkpoint_completed_iterations": 15000,
+      "policy_checkpoint_optimizer_updates": 300000,
+      "policy_original_reference_fingerprint": "0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7",
+      "optimizer_updates": 0,
+      "physical_filter_executed": true,
+      "dataset_accepted": false,
+      "whole_library_filtered": false,
+      "full_generator_training_started": false,
+      "output_writers_closed": true,
+      "actual_execution_video_created": false,
+      "cpu_affinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "final_endpoint_changes_strict_decision": false,
+      "elapsed_seconds": 517.9812170937657,
+      "generated_reference_fingerprint": "f2ec3f7f685071003c349c04dff8930df328bf988c28d0f46236be70121ecb1d",
+      "reference_fingerprint": "f2ec3f7f685071003c349c04dff8930df328bf988c28d0f46236be70121ecb1d",
+      "planned_maximum_control_calls": 12291,
+      "strict_rollouts_per_motion": 1,
+      "direct_replay_bypasses_historical_ema_selection": true,
+      "contact_profile": {
+        "kind": "validated_static_solid_floor",
+        "top_z": 0.0,
+        "dimensions_m": [
+          4000,
+          4000,
+          0.2
+        ],
+        "static_friction": 1.0,
+        "dynamic_friction": 1.0,
+        "restitution": 0.0,
+        "combine_mode": "multiply",
+        "self_collisions": true,
+        "validation_witnesses": [
+          {
+            "run": "solid_floor_ppo_author_v1",
+            "receipt_sha256": "3e02a9fb9d312e8f36321ae9b4d0a5dc04e038dd569eb859c615d3e28ecd4339",
+            "actual_iterations": 10,
+            "actual_optimizer_updates": 200
+          },
+          {
+            "run": "solid_floor_ppo_document_v2",
+            "receipt_sha256": "597ddb5508264769bb7953a62697ad82120b0a84ad74291112467dd8952acf7d",
+            "actual_iterations": 10,
+            "actual_optimizer_updates": 200
+          }
+        ],
+        "author_exact_collision_geometry_available": false,
+        "long_run_convergence_established": false,
+        "data_or_reward_changes": false
+      },
+      "contact_profile_sha256": "0ebb5fcbbe2a5e93db71a6ba661077b617bb0462c6569a72608d6064ef966fb0",
+      "num_envs": 16,
+      "quick_pilot_executed": false,
+      "physical_tracking_executed": true,
+      "finished_trials": 1880,
+      "complete_trials": 1873,
+      "failed_trials": 7,
+      "actual_vectorized_control_calls": 12291,
+      "actual_scene_physics_steps": 49164,
+      "private_trial_journal_sha256": "a43d5e418fb75b2df8e4617ab81f9b6522e0cdf2ce45d8704182a1e1563a0c63",
+      "private_strict_log_sha256": "3c6beb89450b690c45523d1e9b2956a2cda19c247efa298cdb9998419c642066",
+      "private_executed_trace_index_sha256": "95a4d4d3fdb73266d51623c39b0c65e571fd86ba5479a4b7b5a0ef350188311e",
+      "private_trace_bytes": 28095120,
+      "terminal_execution_state_captured_before_autoreset": true,
+      "termination_term_event_counts": {
+        "anchor_pos": 0,
+        "anchor_ori": 5,
+        "ee_body_pos": 2,
+        "motion_complete": 1873
+      },
+      "reference_timing": "initial0; consumed current targets0..control_steps-1; command advances after termination/reset",
+      "final_reference_endpoint_comparison_performed": true,
+      "completion_branch_exercised": true,
+      "peak_torch_allocated_bytes": 488176128,
+      "limitation": "Frozen15000 policy; one strict T-1 replay per actual generated trial. Independent final-reference position distance is descriptive and does not alter strict pass rules. Not semantic, full-val, WBC/online or paper-complete acceptance.",
+      "native_close_returned": false,
+      "teardown_fallback_used": true,
+      "shutdown_grace_seconds": 20,
+      "shutdown_reason": "SDK close did not return after the completed headless job and closed output writers; process exit releases its private resources",
+      "shutdown_completion_verified": true
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "PYTHONIOENCODING=utf-8",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "bash",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/evaluate_ldm100k_generated_physics.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_generated_physics_user_ldm100k_generated_physics_v1_request.json",
+        "--device",
+        "cuda:1",
+        "--headless"
+      ],
+      "supervisor_pid": 394251,
+      "child_pid": 394256,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 37,
+      "sample_errors": [],
+      "elapsed_seconds": 520.387723274529,
+      "supervision_passed": true,
+      "run": "user_ldm100k_generated_physics_v1",
+      "status": "USER_LDM100K_GENERATED_STRICT_PHYSICS_FINISHED",
+      "source_sha256": "d8739a6f6951c6eb44ce1937f4fa7242e44b0d46e8050aa55cc63fb9b61b590c",
+      "request_sha256": "deeefd742d1f5d37ba7b35be2b34ced8c9b044e8d306eedd41836909ddba89db",
+      "receipt_sha256": "b110c1cd51babe40a6cfab758525fc451a54e366e01706a355ed132d00d017b8",
+      "resource_sha256": "f0d7f7d5a475e3cba4660a4c1de495eba00a29e05384f4b3cbf83d5e12b03edc",
+      "process_exit_sha256": "74587c4f3dd0fbab5c073152619e5ba5d428e7f038178a0f4b5c3e3bdc59bd32",
+      "supervision_dir": "/home/ouyanghao/textop-user100k-evaluation-20261029/user_ldm100k_generated_physics_v1_supervision"
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "PYTHONIOENCODING=utf-8",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "bash",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/evaluate_ldm100k_generated_physics.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_generated_physics_user_ldm100k_generated_physics_v1_request.json",
+        "--device",
+        "cuda:1",
+        "--headless"
+      ],
+      "supervisor_pid": 394251,
+      "child_pid": 394256,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 37,
+      "sample_errors": [],
+      "elapsed_seconds": 520.387723274529,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    }
+  },
+  "sha256": {
+    "receipt": "b110c1cd51babe40a6cfab758525fc451a54e366e01706a355ed132d00d017b8",
+    "exit": "ba414864533ae30eacd3c6c2ce34f6c33c6000c098c900f60c8451d6f98e0b69",
+    "process": "74587c4f3dd0fbab5c073152619e5ba5d428e7f038178a0f4b5c3e3bdc59bd32",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+  },
+  "workers": [],
+  "common_lock_free": true,
+  "closed_execution_verified": true,
+  "artifact_audit": {
+    "all1880_strict_trials_and_terminal_poses_verified": true,
+    "private_journal_and_all_pose_bytes_sha_verified": true,
+    "source_fk_bytes_unchanged": true,
+    "finite_pose_samples": 195105,
+    "private_pose_bytes": 28095120,
+    "mode_statistics": {
+      "conditional_cfg5": {
+        "trials": 940,
+        "complete": 934,
+        "failed": 6,
+        "actual_control_steps": 96472,
+        "strict_complete_fraction": 0.9936170212765958,
+        "final_reference_mean_14_body_distance_all_trials_m": 0.09760584926648819,
+        "final_reference_mean_14_body_distance_complete_trials_m": 0.09464039014078023
+      },
+      "unconditional": {
+        "trials": 940,
+        "complete": 939,
+        "failed": 1,
+        "actual_control_steps": 96753,
+        "strict_complete_fraction": 0.9989361702127659,
+        "final_reference_mean_14_body_distance_all_trials_m": 0.07306134022891204,
+        "final_reference_mean_14_body_distance_complete_trials_m": 0.07293077942114859
+      }
+    },
+    "paired_strict_contingency": {
+      "both_complete": 934,
+      "conditional_only_complete": 0,
+      "unconditional_only_complete": 5,
+      "neither_complete": 1
+    },
+    "original_strict_thresholds_unchanged": true,
+    "final_endpoint_is_separate_descriptive_distance": true,
+    "training_updates": 0,
+    "new_model_loads": 0,
+    "new_gpu_contexts": 0,
+    "semantic_metrics_computed": false,
+    "full_validation_or_online_quality_accepted": false
+  },
+  "logs": {
+    "child.log": "---------------------+------------+\n\n[INFO] Termination Manager:  <TerminationManager> contains 4 active terms.\n+------------------------------------+\n|      Active Termination Terms      |\n+-------+-----------------+----------+\n| Index | Name            | Time Out |\n+-------+-----------------+----------+\n|   0   | anchor_pos      |  False   |\n|   1   | anchor_ori      |  False   |\n|   2   | ee_body_pos     |  False   |\n|   3   | motion_complete |   True   |\n+-------+-----------------+----------+\n\n[INFO] Reward Manager:  <RewardManager> contains 14 active terms.\n+--------------------------------------------+\n|            Active Reward Terms             |\n+-------+--------------------------+---------+\n| Index | Name                     |  Weight |\n+-------+--------------------------+---------+\n|   0   | motion_global_anchor_pos |     0.5 |\n|   1   | motion_global_anchor_ori |     0.5 |\n|   2   | motion_body_pos          |     1.0 |\n|   3   | motion_body_ori          |     1.0 |\n|   4   | motion_body_lin_vel      |     1.0 |\n|   5   | motion_body_ang_vel      |     1.0 |\n|   6   | action_rate_l2           |    -0.1 |\n|   7   | joint_limit              |   -10.0 |\n|   8   | undesired_contacts       |    -0.1 |\n|   9   | feet_force               |    -0.0 |\n|   10  | feet_slide               |    -0.3 |\n|   11  | soft_landing             | -0.0003 |\n|   12  | overspeed                |    -1.0 |\n|   13  | overeffort               |    -1.0 |\n+-------+--------------------------+---------+\n\n[INFO] Curriculum Manager:  <CurriculumManager> contains 0 active terms.\n+----------------------+\n| Active Curriculum Terms |\n+-----------+----------+\n|   Index   | Name     |\n+-----------+----------+\n+-----------+----------+\n\n[INFO]: Completed setting up the environment...\nActor MLP: Sequential(\n  (0): Linear(in_features=557, out_features=2048, bias=True)\n  (1): ELU(alpha=1.0)\n  (2): Linear(in_features=2048, out_features=1024, bias=True)\n  (3): ELU(alpha=1.0)\n  (4): Linear(in_features=1024, out_features=512, bias=True)\n  (5): ELU(alpha=1.0)\n  (6): Linear(in_features=512, out_features=29, bias=True)\n)\nCritic MLP: Sequential(\n  (0): Linear(in_features=557, out_features=2048, bias=True)\n  (1): ELU(alpha=1.0)\n  (2): Linear(in_features=2048, out_features=1024, bias=True)\n  (3): ELU(alpha=1.0)\n  (4): Linear(in_features=1024, out_features=512, bias=True)\n  (5): ELU(alpha=1.0)\n  (6): Linear(in_features=512, out_features=1, bias=True)\n)\nUSER_LDM100K_GENERATED_STRICT_PHYSICS_FINISHED\n",
+    "user_ldm100k_generated_physics_v1_outer.log": "{\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"PYTHONIOENCODING=utf-8\", \"OMP_NUM_THREADS=4\", \"OPENBLAS_NUM_THREADS=4\", \"bash\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/evaluate_ldm100k_generated_physics.py\", \"--request\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_generated_physics_user_ldm100k_generated_physics_v1_request.json\", \"--device\", \"cuda:1\", \"--headless\"], \"supervisor_pid\": 394251, \"child_pid\": 394256, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 37, \"sample_errors\": [], \"elapsed_seconds\": 520.387723274529, \"supervision_passed\": true, \"run\": \"user_ldm100k_generated_physics_v1\", \"status\": \"USER_LDM100K_GENERATED_STRICT_PHYSICS_FINISHED\", \"source_sha256\": \"d8739a6f6951c6eb44ce1937f4fa7242e44b0d46e8050aa55cc63fb9b61b590c\", \"request_sha256\": \"deeefd742d1f5d37ba7b35be2b34ced8c9b044e8d306eedd41836909ddba89db\", \"receipt_sha256\": \"b110c1cd51babe40a6cfab758525fc451a54e366e01706a355ed132d00d017b8\", \"resource_sha256\": \"f0d7f7d5a475e3cba4660a4c1de495eba00a29e05384f4b3cbf83d5e12b03edc\", \"process_exit_sha256\": \"74587c4f3dd0fbab5c073152619e5ba5d428e7f038178a0f4b5c3e3bdc59bd32\", \"supervision_dir\": \"/home/ouyanghao/textop-user100k-evaluation-20261029/user_ldm100k_generated_physics_v1_supervision\"}\n"
+  },
+  "disks": {
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 3221700608,
+    "/home/ouyanghao/textop-user100k-evaluation-20261029": 3010441216
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 180,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "504645f62a6c9ec909d319fa8938f04d625236c4b306c0d282f1fd5d7798687a",
+  "client_pid": 70224,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"status\": \"GENERATED_PHYSICS_DISPATCHED_NOT_ACCEPTED\", \"run\": \"user_ldm100k_generated_physics_v1\", \"driver_pid\": 394250, \"request\": {\"run\": \"user_ldm100k_generated_physics_v1\", \"fk_receipt\": \"/home/ouyanghao/textop-user100k-evaluation-20261029/user_ldm100k_generated_fk_v2/receipt.json\", \"fk_receipt_sha256\": \"e2bb1ccd5c2cb795ee54aeb21dcaf2a11d83d022da68ea2ad56f71a05085a768\", \"fk_closure\": {\"/home/ouyanghao/textop-user100k-evaluation-20261029/user_ldm100k_generated_fk_v2_supervision/process_exit.json\": \"433cbfe64e2de7e15139b8618f4dae55066691ce75fe6f1f2c4fc9979b995729\", \"/home/ouyanghao/textop-user100k-evaluation-20261029/user_ldm100k_generated_fk_v2_supervision/exit.json\": \"088123a2442a38f2f51f1b76294b679b3924e0cbdc74556802378de0f6d426bd\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_generated_fk_user_ldm100k_generated_fk_v2_outer_exit.json\": \"4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0\"}, \"executor_sha256\": \"3adc615e2b1e7c54d2d4501362f7ba1d0d660a547c9b4bf75939efd2a033bc42\", \"supervisor_sha256\": \"d8739a6f6951c6eb44ce1937f4fa7242e44b0d46e8050aa55cc63fb9b61b590c\", \"bound_sources\": {\"scripts/evaluate_teacher15000_strict.py\": \"d19e7574ac9899b25cb611bc80b44bb27bb32e5338f1b86ef4414f2f87c7c25a\", \"scripts/teacher15000_strict_protocol.py\": \"9996786f840e5272bf7a6808df243ec8ce551d091bd0bbac218b76369d4dba74\", \"scripts/direct_strict_trace.py\": \"3a84aec7d257c8f41f837cf855d0d934512285b3e84079f802d0b3c03d1086f2\", \"scripts/strict_tracking_coverage.py\": \"12490b88754af65f4b4129bc3289e9b1ca9785b0ae5b394e4e60e57ef261370d\", \"scripts/paper_filter_config.py\": \"e6b59d8fde8574d2c953279301dfc2df0c44ff88ac90683be995b7b97f0ff0d9\", \"scripts/filter_training_runtime.py\": \"ad3bb92f5836e5213450420e8f33deffd43443da7d451796adef3d6193ef6962\", \"scripts/validated_contact_profile.py\": \"1b7f056335b4642021e5eeb76466012a1283748acd661d8e31e00f7408d3333b\", \"scripts/bounded_headless_close.py\": \"f42904e6aa8517156c64505155ff1cabd62ebeaf2bda10ed3ff67c803ed317c9\", \"scripts/run_tracker.sh\": \"7f23b192d3c6a5ff29a96282f90a14af2bd77ead4334e112e5a76ae333eb3bf8\", \"configs/tracker-env-spec.json\": \"57992eea2e2f6aa879493409a7bc2b4d320451e3f24090ed731f1d580a058a93\", \"configs/teacher15000-direct-strict-spec.json\": \"91184fff75f8a0579a759abb418d4a0186d3e42a9a48c176e3d33facc768a1cd\", \"configs/filter-training-plan.json\": \"153f8237a17928ffc3a28b7b00e366742a4ff0080e8fbb6bac87e57da8eb291d\"}, \"policy_checkpoint_sha256\": \"66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88\", \"output_root\": \"/home/ouyanghao/textop-user100k-evaluation-20261029\", \"reserve_bytes\": 2147483648, \"log_allowance_bytes\": 536870912, \"output_upper_bytes\": 128826816, \"training_updates_authorized\": 0}, \"request_sha256\": \"deeefd742d1f5d37ba7b35be2b34ced8c9b044e8d306eedd41836909ddba89db\", \"preflight_resources\": {\"available_host_ram_bytes\": 133138239488, \"data_free_bytes\": 3221766144, \"all_device_usage_including_other_jobs\": \"0, 12223, 36328, 0\\n1, 7823, 40726, 0\", \"owned_child_group\": null, \"owned_group_processes\": [], \"owned_group_gpu_memory\": []}, \"gpu1_free_bytes\": 42704306176, \"home_free_bytes\": 3090878464}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\ldm100k_user_handoff_20261028\\user_ldm100k_generated_physics_v1\\dispatch_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\ldm100k_user_handoff_20261028\\user_ldm100k_generated_physics_v1\\dispatch_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

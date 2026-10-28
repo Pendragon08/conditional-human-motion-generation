@@ -2,7 +2,7 @@
   "schema": "textop.direct_strict_user_progress.v1",
   "run": "teacher15000_direct_full_v1",
   "status": "TEXTOP_TEACHER15000_DIRECT_STRICT_EXECUTION_COMPLETED",
-  "sample_beijing": "2026-10-29T00:08:37.161947+08:00",
+  "sample_beijing": "2026-10-29T02:08:45.184955+08:00",
   "teacher_stopped": true,
   "frozen_checkpoint_completed": 15000,
   "checkpoint_sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
@@ -24,8 +24,8 @@
   "raw_light_collector_trace_acceptance": false,
   "strict_physics_accepted": true,
   "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
-  "handoff_stage": "STARTING_LDM100K_HELDOUT_GENERATION",
-  "handoff_stage_label": "\u5341\u4e07\u6b65\u6a21\u578b\u7684\u914d\u5bf9\u751f\u6210\u6548\u679c\u68c0\u67e5\u4e2d",
+  "handoff_stage": "RUNNING_LDM100K_RECORDED_POSE_VIDEOS",
+  "handoff_stage_label": "\u771f\u5b9e\u6267\u884c\u59ff\u6001\u5f71\u7247\u5236\u4f5c\u4e2d\uff08CPU/Mesa\uff0c0\u65b0\u52a8\u529b\u5b66\uff09",
   "actual_unattempted_sources": 0,
   "filtered_corpus_accepted": true,
   "generator_started": true,
@@ -38,41 +38,119 @@
   "user_100k_control_status": "FAILED_VAE100K_CONTROL_RETAIN_ALL_EVIDENCE",
   "handoff_workers": [
     {
-      "pid": 388509,
-      "start_ticks": "1440072231",
+      "pid": 395610,
+      "start_ticks": "1440818762",
       "state": "S",
       "argv": [
         "python3",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_ldm100k_heldout_generation.py",
-        "--run",
-        "user_ldm100k_diagnostic32_v1",
-        "--mode",
-        "diagnostic",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_ldm100k_execution_videos.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_execution_videos_user_ldm100k_execution_videos_v1_request.json",
         ""
       ]
     },
     {
-      "pid": 388514,
-      "start_ticks": "1440072309",
+      "pid": 396579,
+      "start_ticks": "1440844965",
       "state": "R",
       "argv": [
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_ldm100k_heldout_generation.py",
-        "--run",
-        "user_ldm100k_diagnostic32_v1",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/render_ldm100k_execution_video.py",
+        "--spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_execution_videos_user_ldm100k_execution_videos_v1_request.json",
         "--mode",
-        "diagnostic",
+        "actual",
+        "--run",
+        "ldm100k_trial_1648",
+        "--pilot-run",
+        "user_ldm100k_generated_physics_v1",
+        "--trial",
+        "1648",
         ""
       ]
     }
   ],
   "active_generator_spec_sha256": "654332646f2aa4bb69fea4cc779edf88138735a0ca9f5e5906e783948868c770",
   "ldm_selected_checkpoint_sha256": "9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea",
-  "ldm_successor_run": "user_ldm100k_diagnostic32_v1",
+  "ldm_successor_run": "user_ldm100k_execution_videos_v1",
   "ldm_successor_dispatch_unconfirmed": false,
+  "ldm_diagnostic_summary": {
+    "statistics": {
+      "pairs": 940,
+      "families": 32,
+      "normalized_huber": {
+        "conditional_cfg5": {
+          "trial_mean": 0.29119396925371294,
+          "frame_weighted_mean": 0.3488401134954881,
+          "family_equal_mean": 0.32954294819252006
+        },
+        "unconditional": {
+          "trial_mean": 0.2191847179612549,
+          "frame_weighted_mean": 0.24721528718425612,
+          "family_equal_mean": 0.25621181073726246
+        }
+      },
+      "conditional_minus_unconditional_pair_mean": 0.07200925129245798,
+      "conditional_lower_count": 313,
+      "conditional_higher_count": 627,
+      "exact_tie_count": 0
+    },
+    "actual_pairs": 940,
+    "actual_trials": 1880,
+    "receipt_sha256": "6da99482e8f46c45f6c4755758080178e9eb18a74dbb8b470426026b75bed806",
+    "semantic_metrics_computed": false
+  },
+  "generated_motion_physics": {
+    "status": "USER_LDM100K_GENERATED_STRICT_PHYSICS_FINISHED",
+    "finished": 1880,
+    "passed": 1873,
+    "failed": 7,
+    "declared": 1880,
+    "closed_execution_verified": true,
+    "artifact_audit": {
+      "all1880_strict_trials_and_terminal_poses_verified": true,
+      "private_journal_and_all_pose_bytes_sha_verified": true,
+      "source_fk_bytes_unchanged": true,
+      "finite_pose_samples": 195105,
+      "private_pose_bytes": 28095120,
+      "mode_statistics": {
+        "conditional_cfg5": {
+          "trials": 940,
+          "complete": 934,
+          "failed": 6,
+          "actual_control_steps": 96472,
+          "strict_complete_fraction": 0.9936170212765958,
+          "final_reference_mean_14_body_distance_all_trials_m": 0.09760584926648819,
+          "final_reference_mean_14_body_distance_complete_trials_m": 0.09464039014078023
+        },
+        "unconditional": {
+          "trials": 940,
+          "complete": 939,
+          "failed": 1,
+          "actual_control_steps": 96753,
+          "strict_complete_fraction": 0.9989361702127659,
+          "final_reference_mean_14_body_distance_all_trials_m": 0.07306134022891204,
+          "final_reference_mean_14_body_distance_complete_trials_m": 0.07293077942114859
+        }
+      },
+      "paired_strict_contingency": {
+        "both_complete": 934,
+        "conditional_only_complete": 0,
+        "unconditional_only_complete": 5,
+        "neither_complete": 1
+      },
+      "original_strict_thresholds_unchanged": true,
+      "final_endpoint_is_separate_descriptive_distance": true,
+      "training_updates": 0,
+      "new_model_loads": 0,
+      "new_gpu_contexts": 0,
+      "semantic_metrics_computed": false,
+      "full_validation_or_online_quality_accepted": false
+    }
+  },
   "remote_observation_available": true,
   "last_access_attempt_beijing": null,
-  "last_verified_handoff_stage": "STARTING_LDM100K_HELDOUT_GENERATION",
+  "last_verified_handoff_stage": "RUNNING_LDM100K_RECORDED_POSE_VIDEOS",
   "active_spec_sha256": "91184fff75f8a0579a759abb418d4a0186d3e42a9a48c176e3d33facc768a1cd",
   "worker_pids": [],
   "common_lock_free": false,

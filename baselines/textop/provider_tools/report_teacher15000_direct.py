@@ -70,7 +70,7 @@ if ldm_target==100000 and endpoint_path.exists():
   handoff_stage=user_ldm_control_status;ldm_attempts=100000;handoff_workers=[];handoff_lock_free=endpoint['common_lock_free'];handoff_observed=max(handoff_observed,endpoint['observed_unix'])
   ldm_selected_checkpoint_sha256=en['selected_checkpoint']['sha256']
   ldm_latest_confirmed_stage=handoff_stage
-  for successor_run in ['user_ldm100k_prefix_export_v1','user_ldm100k_prefix_document_v1','user_ldm100k_heldout_scope_v1','user_ldm100k_generation_author_v1','user_ldm100k_generation_author_v2','user_ldm100k_generation_author_v3','user_ldm100k_generation_document_v3','user_ldm100k_diagnostic32_v1']:
+  for successor_run in ['user_ldm100k_prefix_export_v1','user_ldm100k_prefix_document_v1','user_ldm100k_heldout_scope_v1','user_ldm100k_generation_author_v1','user_ldm100k_generation_author_v2','user_ldm100k_generation_author_v3','user_ldm100k_generation_document_v3','user_ldm100k_diagnostic32_v1','user_ldm100k_diagnostic_summary_v2','user_ldm100k_generated_fk_v1','user_ldm100k_generated_fk_v2','user_ldm100k_generated_physics_v1','user_ldm100k_execution_videos_v1']:
    successor_path=B/'results/ldm100k_user_handoff_20261028'/successor_run/'progress.json'
    successor=json.loads(successor_path.read_bytes()) if successor_path.exists() else {}
    successor_receipt=successor.get('files',{}).get('receipt',{})
@@ -99,6 +99,29 @@ if user_100k_target:
 phase_label={'STARTING_LDM100K_PREFIX_CPU_EXPORT':'LDM十万步已保存，CPU完整性与推理导出检查中','USER_LDM100000_PREFIX_CPU_EXPORT_PASSED':'LDM十万步CPU导出通过，接续独立复核','FAILED_LDM100K_PREFIX_CPU_EXPORT':'LDM十万步CPU导出失败，保留现场并处理','STARTING_LDM100K_FRESH_CPU_VERIFICATION':'LDM十万步独立CPU复核中','USER_LDM100K_PREFIX_FRESH_CPU_VERIFIED':'LDM十万步独立CPU复核通过，接续留出评估','FAILED_LDM100K_PREFIX_FRESH_CPU_VERIFICATION':'LDM十万步独立CPU复核失败，保留现场并处理','STARTING_LDM100K_HELDOUT_SCOPE':'留出评估范围与来源核验中','USER_LDM100K_HELDOUT_METADATA_SCOPE_BUILT':'留出评估范围核验完成，接续真实生成检查','FAILED_LDM100K_HELDOUT_SCOPE':'留出评估范围构建失败，保留现场并处理','STARTING_LDM100K_HELDOUT_GENERATION':'十万步模型的配对生成效果检查中','USER_LDM100K_GENERATION_WITNESS_FINISHED':'配对生成检查已执行，接续独立复核与诊断','USER_LDM100K_DIAGNOSTIC32_GENERATION_FINISHED':'32组留出动作配对诊断已结束，质量结论仍待汇总','FAILED_LDM100K_HELDOUT_GENERATION':'配对生成检查失败，保留全部输出并处理'}.get(handoff_stage,phase_label)
 closure_note='全库结果已由独立有界CPU作业核验，原回放与核验作业均真实退出；生成器后续状态见下方真实收据阶段。' if audit_verified else '进行中统计不是最终筛选结论。未测试动作没有被过滤。'
 if ldm_dispatch_unconfirmed:phase_label='LDM十万步已完成，后续评估派发结果待联网核实'
+phase_label={'USER_LDM100K_DIAGNOSTIC32_CPU_SUMMARY_FINISHED':'全部配对结果已独立汇总，接续真实物理回放',
+ 'STARTING_USER_LDM100K_GENERATED_FK':'生成轨迹的机器人正运动学转换中',
+ 'USER_LDM100K_GENERATED_ISAAC_FK_FINISHED':'全部生成轨迹正运动学转换完成，接续严格物理回放',
+ 'USER_LDM100K_GENERATED_FK_FAILED_PARTIAL_RETAINED':'生成轨迹转换失败，保留现场并处理',
+ 'RUNNING_LDM100K_RECORDED_POSE_VIDEOS':'真实执行姿态影片制作中（CPU/Mesa，0新动力学）',
+ 'USER_LDM100K_RECORDED_EXECUTION_VIDEOS_FINISHED':'真实执行影片已制作，接续完整语义/WBC/在线验收',
+ 'USER_LDM100K_GENERATED_STRICT_PHYSICS_FINISHED':'全部生成动作严格物理回放已结束，接续视频与完整效果验收'}.get(handoff_stage,phase_label)
+if ldm_successor_run=='user_ldm100k_generated_physics_v1' and handoff_stage=='RUNNING_TEACHER15000_STRICT':phase_label='十万步模型生成动作的严格物理回放中（冻结15k策略，0训练）'
+diagnostic_summary=None;generated_physics=None;new_effect_note=''
+sp=B/'results/ldm100k_user_handoff_20261028/user_ldm100k_diagnostic_summary_v2/progress.json'
+if sp.exists():
+ sj=json.loads(sp.read_bytes())
+ if sj.get('closed_execution_verified'):
+  sr=sj['files']['receipt'];diagnostic_summary=dict(statistics=sr['statistics'],actual_pairs=sr['actual_pairs'],actual_trials=sr['actual_trials'],receipt_sha256=sj['sha256']['receipt'],semantic_metrics_computed=False)
+  c=sr['statistics']['normalized_huber']['conditional_cfg5']['trial_mean'];u=sr['statistics']['normalized_huber']['unconditional']['trial_mean']
+  new_effect_note=f'32个留出来源、188个独立段、5个固定seed的940组配对/1880次生成全部完成，0生成失败；9400数组已独立复核。文本条件平均归一化Huber {c:.6f}，无条件{u:.6f}；文本条件高{(c/u-1)*100:.2f}%，这是重构诊断的负面结果，不能当作TMR或语义结论。'
+pp=B/'results/ldm100k_user_handoff_20261028/user_ldm100k_generated_physics_v1/progress.json'
+if pp.exists():
+ pj=json.loads(pp.read_bytes());pr=pj.get('files',{}).get('receipt',{})
+ if pr:
+  generated_physics=dict(status=pr['status'],finished=pr.get('finished_trials',0),passed=pr.get('complete_trials',0),failed=pr.get('failed_trials',0),declared=1880,closed_execution_verified=pj.get('closed_execution_verified',False),artifact_audit=pj.get('artifact_audit'))
+  new_effect_note+=f" 新生成动作严格回放已结束{generated_physics['finished']}/1880，通过{generated_physics['passed']}，失败{generated_physics['failed']}；闭合核验{generated_physics['closed_execution_verified']}。这与原8278动作筛选分别计数。"
+  if not generated_physics['closed_execution_verified']:new_effect_note+=' 进行中按时长排序，当前通过数不能当最终通过率。'
 sample=datetime.datetime.fromtimestamp(handoff_observed,datetime.timezone(datetime.timedelta(hours=8))).isoformat()
 spec=B/'configs/teacher15000-direct-strict-spec.json';h=hashlib.sha256(spec.read_bytes()).hexdigest()
 current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['status'],sample_beijing=sample,
@@ -112,6 +135,7 @@ current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['st
  actual_unattempted_sources=0 if audit_verified else None,filtered_corpus_accepted=corpus_accepted,generator_started=generator_started,
  generator_primitive_attempts=generator_attempts,vae_target_primitive_attempts=100000 if user_100k_target else 200000,vae_selected_checkpoint_attempts=vae_selected_step,ldm_primitive_attempts=ldm_attempts,ldm_target_primitive_attempts=ldm_target,user_ldm_endpoint_control_status=user_ldm_control_status,user_100k_control_status=user_control_status,handoff_workers=handoff_workers,active_generator_spec_sha256=generator_spec_sha,
  ldm_selected_checkpoint_sha256=ldm_selected_checkpoint_sha256,ldm_successor_run=ldm_successor_run,ldm_successor_dispatch_unconfirmed=ldm_dispatch_unconfirmed,
+ ldm_diagnostic_summary=diagnostic_summary,generated_motion_physics=generated_physics,
  remote_observation_available=not access_unavailable,last_access_attempt_beijing=access_attempt,last_verified_handoff_stage=last_verified_handoff_stage,
  active_spec_sha256=h,worker_pids=[x['pid'] for x in j['workers']],common_lock_free=handoff_lock_free,
  physical_replay_lock_released=j['common_lock_free'],
@@ -140,6 +164,7 @@ text=f'''# TextOp：停止跟踪器，直接全库物理筛查
 状态：{r['status']}。{closure_note}
 后续阶段：{phase_label}。新生成器此前已正式开训：{generator_started}；VAE目标{100000 if user_100k_target else 200000}步，最后已核验VAE步数{generator_attempts}，已选择检查点{vae_selected_step}，正式LDM步数{ldm_attempts}。
 {access_note}
+{new_effect_note}
 此前两次入口核验测试的是同一组8个短动作，两次都是8/8完整通过；不能当作全库通过率，也不能相加为16个不同动作。
 
 15000轮历史EMA统计另行保留：8278个来源全部有尝试，EMA失败率≤5%候选0个，超过门槛8278个，未尝试0个。这不是标准物理回放的失败数量。
@@ -156,6 +181,7 @@ dst=D/'TextOp当前物理筛选进度_20261027.md';dst.write_text(text,encoding=
 body='<!doctype html><meta charset="utf-8"><title>TextOp物理筛选进度</title><style>body{font:17px/1.8 system-ui;max-width:1000px;margin:32px auto;padding:24px;background:#101927;color:#edf2fa}</style>'+''.join('<p>'+html.escape(line)+'</p>' for line in text.splitlines() if line)
 (D/'TextOp当前物理筛选进度_20261027.html').write_text(body,encoding='utf-8')
 user_goal_note=(f'<p>VAE已完成{generator_attempts:,}步；LDM已正式训练{ldm_attempts:,}/{ldm_target:,}步。当前{html.escape(phase_label)}。</p>' if user_100k_target and ldm_attempts>0 else f'<p>按你的最新要求：VAE目标100,000步，最近已核验{generator_attempts:,}步；保存和验收后自动转入LDM{ldm_target:,}步。当前{html.escape(phase_label)}。</p>' if user_100k_target else '')
+if new_effect_note:user_goal_note+='<p>'+html.escape(new_effect_note)+'</p>'
 banner=f'<!--direct-strict-current-start--><section style="padding:24px;background:#edf6ee;color:#153a24;font:17px/1.8 system-ui"><h2>最新训练目标与物理筛选结果</h2>{user_goal_note}<p>采样{html.escape(sample)}：完整通过{passed}，失败{failed}，尚未结束{pending}。未测试不算失败。历史EMA候选0与本次物理结果分别记录。</p><a href="TextOp当前物理筛选进度_20261027.html">查看当前完整说明</a></section><!--direct-strict-current-end-->'
 for name in ['TextOp下载与训练报告.html','TextOp在线功能验收与完整训练接续_20261026.html']:
  q=D/name

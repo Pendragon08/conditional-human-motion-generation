@@ -1,3 +1,9 @@
+<!--ldm100k-effects-current-start-->
+CURRENT 2026-10-29T02:01:37.804770+08:00：VAE100000/LDM100000均已真实完成；32个留出来源/188个独立段×5seed×2mode的940pair/1880trial生成已0失败/0未试、process-supervisor-outer0闭合。CPU独立复核9400数组/142692160B，全部SHA/CRC/shape/finite及配对噪声通过；平均Huber条件0.291194、无条件0.219185，条件高32.85%，5seed方向一致，为负面重构诊断，不当TMR或语义结论、不追加训练。
+真实Isaac FK已1880trial/195580frame闭合0，424260880B私有FK NPZ全SHA核验。当前新生成物理run user_ldm100k_generated_physics_v1，status=USER_LDM100K_GENERATED_STRICT_PHYSICS_FINISHED，结束1880/1880、通过1873、失败7；closed=True、commonlock_free=True。进行中按时长排序，不能把早期通过数当最终比例。全部动作/seed/失败保留，只冻结15k策略推理、0训练；后继视频/WBC/语义与独立验收继续，不问用户。
+轻量用provider_tools/collect_ldm100k_generated_physics.py --evidence新唯一短ASCII。运行源request与锁冻结，不重派、不与GPU/模型/SDK重叠，HOME输出=/home/ouyanghao/textop-user100k-evaluation-20261029。读LDM100K_GENERATED_EFFECTS_ENVIRONMENT.md及reports/user100k_generated_effects_20261029.md。原generation/CPU/fresh/scope/FK/旧夹具不重跑。旧CURRENT全部历史。
+<!--ldm100k-effects-current-end-->
+
 <!--ldm100k-diagnostic-sample-latest-start-->
 CURRENT采样2026-10-29T00:08:37.161947+08:00：真实100k LDM/VAE已完成且CPU导出、fresh CPU文档、scope、两轮revision3真实配对见证均接受。唯一GPU user_ldm100k_diagnostic32_v1完成344/940pair、688/1880trial、失败0pair、未尝试596pair，仍运行/同原worker/共同锁占用。不是已完成质量验收，运行sources/spec b09b6f83...冻结，不重派、不加训、不启动重叠SDK或模型。既有textop恢复每小时健康轻量检查，真终端后继续完整效果/物理/视频，不问确认。
 LDM私有conservative pld100_v3唯一原worker/client的创建身份和最新资源须按D/transfers证据核；目前双方已验证3768320B前缀SHAf1cff40b9a5557f6a0a70880404d821f32fbe254ffc84424ab12ee2fcee91d1b，仍无完整D接受。VAE99700的241467392B失败前缀保留，待当前LDM副本真正闭合并释放双锁后才新唯一VAE专用续接；不能把pending当完成或重复旧大资产。真实骨架/语义/TMR/物理/WBC效果仍待后续，所有原件/失败/partial保留。

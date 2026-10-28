@@ -53,6 +53,11 @@ if current_path.exists():
   extra+=f" 最新全库最终物理结果已由独立CPU完整性核验接受：8278个全部实测，{actual['passed_complete']}个完整通过，{actual['failed']}个失败，0个未尝试。原SDK及CPU核验作业均退出。后续阶段{actual.get('handoff_stage_label',actual['handoff_stage'])}，新生成器正式开训标志{actual['generator_started']}。固定15k、每源一次、跳过历史EMA候选的限制保留；单次通过不等于失败概率≤5%。"
 if physical_complete and actual.get('vae_target_primitive_attempts')==100000:
  extra+=f' 用户最新明确将VAE目标缩短为100000步，随后自动训练LDM{actual.get('ldm_target_primitive_attempts',300000)}步；旧200k描述仅为历史计划。新控制/质量/导出/LDM阶段以最新真实收据为准，保留原退出事实和100k完整状态。'
+ if actual.get('ldm_diagnostic_summary'):
+  v=actual['ldm_diagnostic_summary']['statistics']['normalized_huber'];c=v['conditional_cfg5']['trial_mean'];u=v['unconditional']['trial_mean']
+  extra+=f' VAE/LDM均已真实完成用户指定100000步，配对生成1880次已闭合。文本条件平均重构Huber {c:.6f}，无条件{u:.6f}，文本条件高{(c/u-1)*100:.2f}%；保留此负面重构结果，不作TMR/语义结论，也不追加训练。'
+ if actual.get('generated_motion_physics'):
+  v=actual['generated_motion_physics'];extra+=f" 新生成动作严格回放已结束{v['finished']}/1880，通过{v['passed']}、失败{v['failed']}，真实闭合{v['closed_execution_verified']}；进行中数量不是最终通过率。"
 text=f'''# TextOp：恢复先筛选、后训练的论文顺序
 
 用户2026-10-27明确调整：安全保存并暂停未筛选数据生成器，先完成全库物理筛选。先前推荐的“未筛选全源先训练”属于额外对照，并非论文主线；现在已取消其自动接续，不能把这条路线说成论文训练数据已合格。
