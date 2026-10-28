@@ -1,0 +1,104 @@
+{
+  "run": "tmr69d_training_scope_v1",
+  "observed_unix": 1793215934.3855808,
+  "files": {
+    "receipt": {
+      "status": "FAILED_TMR69D_TRAINING_METADATA_SCOPE_ALL_OUTPUTS_RETAINED",
+      "run": "tmr69d_training_scope_v1",
+      "source_sha256": "2578a12a30a3eb26dc283c1abf298860985cdd40c76fdca3733ce0ae725ff001",
+      "request_sha256": "41922b20c5c924e1b4ed31eb9770c192c4509afe389a7c3d707d4f7334699a29",
+      "output_writers_closed": false,
+      "actual_model_loads": 0,
+      "actual_array_deserializations": 0,
+      "optimizer_updates": 0,
+      "training_authorized": false,
+      "original_validation_families_used_for_training": false,
+      "elapsed_seconds": 0.814001090824604,
+      "error": "AssertionError()",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/build_tmr69d_training_scope.py\", line 90, in <module>\n    assert len(quarantine) == 2 and all(x['reason'] == 'exact_float32_pose_overlap_with_validation' for x in quarantine)\nAssertionError\n"
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/build_tmr69d_training_scope.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_training_scope_tmr69d_training_scope_v1_request.json"
+      ],
+      "supervisor_pid": 403248,
+      "child_pid": 403253,
+      "child_exit_code": 1,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 1.3991726022213697,
+      "supervision_passed": false,
+      "run": "tmr69d_training_scope_v1",
+      "source_sha256": "347fd4bcdf485f9e46c67c0fe1ff09f5806c5917449d4c9444ea7cecfa954c0a",
+      "request_sha256": "41922b20c5c924e1b4ed31eb9770c192c4509afe389a7c3d707d4f7334699a29",
+      "receipt_sha256": "9d72fcc58b4f783b6dc3b74f9899673f6f30a4553f5937c3dc2d2f969db53b63",
+      "resource_sha256": "0f73dfbaf300cc13175c63e52cc94bac2cf886fc8774875cd158a506c8347ca0",
+      "process_exit_sha256": "26c9a7e5e73b389463a7fdf7f4f4ff2567c1f8f7dd9dee4173649b5a97275841"
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/build_tmr69d_training_scope.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_training_scope_tmr69d_training_scope_v1_request.json"
+      ],
+      "supervisor_pid": 403248,
+      "child_pid": 403253,
+      "child_exit_code": 1,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 1.3991726022213697,
+      "supervision_passed": false
+    },
+    "outer": {
+      "actual_returncode": 1
+    }
+  },
+  "sha256": {
+    "receipt": "9d72fcc58b4f783b6dc3b74f9899673f6f30a4553f5937c3dc2d2f969db53b63",
+    "exit": "3e9e6e91b8e85a2638595415667b0be1d0187a0787049b9ee3adc57ab7a36bf4",
+    "process": "26c9a7e5e73b389463a7fdf7f4f4ff2567c1f8f7dd9dee4173649b5a97275841",
+    "outer": "857a96c9474624cec4418bb86e755613a5fb3430bf5b3478354415d1030ec7b2"
+  },
+  "workers": [],
+  "common_lock_free": true,
+  "closed_execution_verified": false,
+  "artifact_audit": null,
+  "logs": {
+    "child.log": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/build_tmr69d_training_scope.py\", line 90, in <module>\n    assert len(quarantine) == 2 and all(x['reason'] == 'exact_float32_pose_overlap_with_validation' for x in quarantine)\nAssertionError\n",
+    "tmr69d_training_scope_v1_outer.log": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_tmr69d_training_scope.py\", line 64, in <module>\n    assert proof['supervision_passed'] and r['status'] == 'TMR69D_TRAINING_METADATA_SCOPE_BUILT'\nAssertionError\n"
+  },
+  "data_free_bytes": 3085492224,
+  "home_free_bytes": 2975318016
+}

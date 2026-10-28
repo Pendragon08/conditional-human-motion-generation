@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 180,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "de9ff9cf589fa46280cc892216b90693663a25007ac7fb36a5b45c5eaa7d992e",
+  "client_pid": 66092,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"status\": \"TMR_SYNTHETIC_CORE_CONTRACT_DISPATCHED_NOT_ACCEPTED\", \"run\": \"tmr69d_core_contract_v1\", \"driver_pid\": 407126, \"request_sha256\": \"4a749171a31dd45e94ae40a7de21187320adbd5d3b7637c50ef3eaa3b23705a3\", \"preflight_resources\": {\"available_host_ram_bytes\": 133184172032, \"data_free_bytes\": 2891542528, \"all_device_usage_including_other_jobs\": \"0, 12223, 36328, 0\\n1, 7823, 40726, 0\", \"owned_child_group\": null, \"owned_group_processes\": [], \"owned_group_gpu_memory\": []}, \"gpu1_free_used_mib\": \"40726, 7823\", \"data_free_bytes\": 2891411456, \"real_data_or_pretrained_model_loads_authorized\": false, \"diagnostic_cpu_optimizer_calls_authorized\": 4, \"evaluator_training_updates\": 0}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\semantic_evaluator_20261029\\tmr69d_core_contract_v1\\dispatch_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\semantic_evaluator_20261029\\tmr69d_core_contract_v1\\dispatch_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

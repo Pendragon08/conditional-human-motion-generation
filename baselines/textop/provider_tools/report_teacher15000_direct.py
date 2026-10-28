@@ -84,7 +84,7 @@ if ldm_target==100000 and endpoint_path.exists():
     if client.get('client_reaped') and client.get('actual_client_exit_code') not in [None,0]:
      handoff_stage='LDM100K_SUCCESSOR_DISPATCH_UNCONFIRMED';ldm_successor_run=successor_run;ldm_dispatch_unconfirmed=True
      handoff_workers=[];handoff_lock_free=None;handoff_observed=max(handoff_observed,dispatch.stat().st_mtime)
-for semantic_run in ['tmr_isolated_runtime_v1','tmr_text_models_v1']:
+for semantic_run in ['tmr_isolated_runtime_v1','tmr_text_models_v1','tmr69d_training_scope_v1','tmr69d_training_scope_v2','tmr69d_numeric_data_v1','tmr69d_core_contract_v1','tmr_text_models_import_verify_v1']:
  semantic_path=B/'results/semantic_evaluator_20261029'/semantic_run/'progress.json'
  if semantic_path.exists():
   sj=json.loads(semantic_path.read_bytes());sr=sj.get('files',{}).get('receipt',{})
@@ -117,7 +117,12 @@ phase_label={'USER_LDM100K_RECORDED_TRACKING_FIDELITY_FINISHED':'真实执行姿
  'TMR_ISOLATED_RUNTIME_BOOTSTRAP_FINISHED':'机器人语义评价器的独立CPU环境已检查，尚未训练评价器',
  'STARTING_PINNED_TMR_TEXT_MODEL_PREPARATION':'正在准备语义评价所需的固定版本文本模型',
  'PINNED_TMR_TEXT_MODELS_CPU_VERIFIED':'文本模型冻结CPU检查通过，接续真实TRAIN语料与评价器验收',
- 'FAILED_TMR_TEXT_MODEL_PREPARATION_ALL_PARTIALS_RETAINED':'服务器文本模型直连失败，保留现场并继续本地缓存核验；生成器已完成十万步'}.get(handoff_stage,phase_label)
+ 'FAILED_TMR_TEXT_MODEL_PREPARATION_ALL_PARTIALS_RETAINED':'服务器文本模型直连失败，保留现场并继续本地缓存核验；生成器已完成十万步',
+ 'TMR69D_TRAINING_METADATA_SCOPE_BUILT':'评价器的TRAIN范围已核验，接续真实数值输入与文本模型检查',
+ 'TMR69D_NUMERIC_TRAIN_INPUTS_ACCEPTED':'评价器全部原TRAIN数值输入已实际核验，等待文本模型与真实梯度检查',
+ 'TMR69D_SYNTHETIC_CPU_CORE_CONTRACT_VERIFIED':'原TMR方法的CPU恢复契约通过，继续文本模型上传与真实数据梯度验收',
+ 'STARTING_IMPORTED_TMR_TEXT_MODELS_CPU_VERIFICATION':'已导入文本模型的冻结CPU检查中',
+ 'IMPORTED_TMR_TEXT_MODELS_CPU_VERIFIED':'文本模型已冻结CPU核验，接续真实数据梯度与独立恢复验收'}.get(handoff_stage,phase_label)
 diagnostic_summary=None;generated_physics=None;new_effect_note=''
 sp=B/'results/ldm100k_user_handoff_20261028/user_ldm100k_diagnostic_summary_v2/progress.json'
 if sp.exists():
@@ -134,6 +139,13 @@ if pp.exists():
   new_effect_note+=f" 新生成动作严格回放已结束{generated_physics['finished']}/1880，通过{generated_physics['passed']}，失败{generated_physics['failed']}；闭合核验{generated_physics['closed_execution_verified']}。这与原8278动作筛选分别计数。"
   if not generated_physics['closed_execution_verified']:new_effect_note+=' 进行中按时长排序，当前通过数不能当最终通过率。'
 tracking_fidelity=None
+tmr_numeric_inputs=None
+np=B/'results/semantic_evaluator_20261029/tmr69d_numeric_data_v1/progress.json'
+if np.exists():
+ nj=json.loads(np.read_bytes())
+ if nj.get('closed_execution_verified'):
+  nr=nj['files']['receipt'];tmr_numeric_inputs=dict(receipt_sha256=nj['sha256']['receipt'],source_families=nr['original_train_sources'],source_feature_frames=nr['actual_unique_source_feature_frames'],verified_sample_windows=nr['actual_sample_windows_verified'],source_normalized_RAM_bytes=nr['full_normalized_feature_RAM_bytes'],formal_evaluator_training_updates=0,semantic_metrics_available=False)
+  new_effect_note+=' 机器人语义评价器的5361个原TRAIN来源与34068真实文本窗口已数值核验；原VAL未用于梯度，正式评价器尚未训练，文本模型正在单独导入。'
 fp=B/'results/ldm100k_user_handoff_20261028/user_ldm100k_tracking_fidelity_v1/progress.json'
 if fp.exists():
  fj=json.loads(fp.read_bytes())
@@ -154,7 +166,7 @@ current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['st
  actual_unattempted_sources=0 if audit_verified else None,filtered_corpus_accepted=corpus_accepted,generator_started=generator_started,
  generator_primitive_attempts=generator_attempts,vae_target_primitive_attempts=100000 if user_100k_target else 200000,vae_selected_checkpoint_attempts=vae_selected_step,ldm_primitive_attempts=ldm_attempts,ldm_target_primitive_attempts=ldm_target,user_ldm_endpoint_control_status=user_ldm_control_status,user_100k_control_status=user_control_status,handoff_workers=handoff_workers,active_generator_spec_sha256=generator_spec_sha,
  ldm_selected_checkpoint_sha256=ldm_selected_checkpoint_sha256,ldm_successor_run=ldm_successor_run,ldm_successor_dispatch_unconfirmed=ldm_dispatch_unconfirmed,
- ldm_diagnostic_summary=diagnostic_summary,generated_motion_physics=generated_physics,generated_motion_tracking_fidelity=tracking_fidelity,
+ ldm_diagnostic_summary=diagnostic_summary,generated_motion_physics=generated_physics,generated_motion_tracking_fidelity=tracking_fidelity,tmr_numeric_inputs=tmr_numeric_inputs,
  remote_observation_available=not access_unavailable,last_access_attempt_beijing=access_attempt,last_verified_handoff_stage=last_verified_handoff_stage,
  active_spec_sha256=h,worker_pids=[x['pid'] for x in j['workers']],common_lock_free=handoff_lock_free,
  physical_replay_lock_released=j['common_lock_free'],
