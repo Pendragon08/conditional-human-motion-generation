@@ -1,0 +1,88 @@
+{
+  "status": "VAE100K_CONTROL_FRESH_DOCUMENT_VERIFIED",
+  "actual_exit_code": 0,
+  "findings": [],
+  "fresh_document_fixture": {
+    "status": "VAE100K_CONTROL_NEW_CPU_FIXTURES_PASSED",
+    "metadata_negative_cases": 8,
+    "wrong_pid_identity_rejected": true,
+    "duplicate_signal_rejected": true,
+    "actual_owned_CPU_child_signal": "SIGINT",
+    "actual_owned_CPU_child_exit": -2,
+    "production_process_signals": 0,
+    "production_checkpoint_reads": 0,
+    "new_gpu_contexts": 0
+  },
+  "actual_fixture_child_pid": 266394,
+  "actual_fixture_child_reaped": true,
+  "actual_fixture_child_streams_final": true,
+  "server_python_version": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+  "documented_command_executed": [
+    "python3",
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/provider_tools/test_vae100k_control_cpu.py",
+    "--output",
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/vae100k_user_handoff_20261028/control_fixture_document_v1"
+  ],
+  "local_remote_source_spec_bytes_match": true,
+  "remote_source_spec_bytes_unchanged_during_fixture": true,
+  "current_source_spec_sha256": {
+    "scripts/vae100k_control_protocol.py": "1aa7936c461f6801cddb0a76378ecd49d9d696c543ed7534d976c3e03b4e8216",
+    "scripts/watch_vae100k_handoff.py": "1903ca5f9f442b815db162227f9a03b99d124ac21aa432f2e72a8bda669ed79b",
+    "scripts/supervise_vae100k_handoff.py": "0b2e02996c06750b7d2493e1212011b46e76fe0e0bbdf01bb5b84aa5eabc4eb1",
+    "provider_tools/test_vae100k_control_cpu.py": "6192edee8044263df6b482f34f4c872c5226506740a414205b7aae1e119182eb",
+    "configs/vae100k-user-control-spec.json": "4e54691630dba75d737d266ba2e83eb755ee0d154254871d705ccdb7b1f21cc7",
+    "scripts/quick_pidfd.py": "df180bffb3e35dd77c8bb4f8ca9b143879a4184f6f8aab98188e1139de6538f2",
+    "scripts/contact_process_supervision.py": "44d689a71dc0c04778a7e6e651bc61d234dd59d3435a80c543be9d8db55638b4",
+    "scripts/contact_filter_resources.py": "1003a7cba9d2f2e30a05a881020e51ed8907eba6d523e4ce8af6b1b5399f76e5",
+    "configs/filtered15000-vae-spec.json": "b7eb6e95b082fd3902099ea718ec07bd42b3418c49c179f88f5438e5c5d2c6fa",
+    "scripts/run_filtered15000_vae.py": "7ca7f4d9dd36ca5bfa1e07261d5ccaf1e652e7c989e8d71f62d5751de70df7a0",
+    "scripts/supervise_filtered15000_vae.py": "b0ebde8b30e143c1403b9c7e3955051d97b23b686a112eea0d30af87655acfe7",
+    "scripts/generator8278_vae_runtime.py": "59e6c101073e1cc8df4ebff195b49bb76f5d63ee73f2b288c8d4d4597a833e8b",
+    "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e"
+  },
+  "remote_fixture_summary_path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/vae100k_user_handoff_20261028/control_fixture_document_v1/SUMMARY.json",
+  "remote_fixture_summary_sha256": "5b6ed78f463e075ce8ad07d95494f0bd98ccef421767024291edc696400c9246",
+  "remote_execution_proof_path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/vae100k_user_handoff_20261028/control_fixture_document_v1_execution.json",
+  "remote_execution_proof_sha256": "5f7e9de7591817c229a59c9f7bb9135cfbe61778b958f5e942b9e942ec4ab84c",
+  "remote_stdout": {
+    "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/vae100k_user_handoff_20261028/control_fixture_document_v1.stdout.txt",
+    "sha256": "90f03295e34c9bdba0f5923ab1f3a4ed0966d54a66605abed591cae3df40337b"
+  },
+  "remote_stderr": {
+    "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/vae100k_user_handoff_20261028/control_fixture_document_v1.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "local_execution_proof": {
+    "path": "C:\\Users\\Pende\\Documents\\ChatGPT\\机器人格斗动作捕捉数据生成\\work\\textop_reproduction_20261024\\vae100k_control_document_v1\\fixture_execution.json",
+    "sha256": "cc56929da094f0e684632ad7db0eecd33bd94f788ce2057b2e390cdbbc43e7e6"
+  },
+  "client": {
+    "path": "C:\\Users\\Pende\\Documents\\ChatGPT\\机器人格斗动作捕捉数据生成\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\control_fixture_document_v1_client.json",
+    "sha256": "e7ebfca03c450db48cc739eeca92b1faaa18aebc709b0dad5f7d5b79c30b5aeb",
+    "actual_client_exit_code": 0,
+    "client_reaped": true,
+    "streams_final": true,
+    "timed_out": false,
+    "direct_stream_files": {
+      "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\机器人格斗动作捕捉数据生成\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\control_fixture_document_v1_client.stdout.txt",
+      "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\机器人格斗动作捕捉数据生成\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\control_fixture_document_v1_client.stderr.txt"
+    }
+  },
+  "independent_static_review": {
+    "target_saved_before_receipt": "Frozen save_manager requires completed four-primitive boundary, fsyncs payload, atomically replaces the named checkpoint, fsyncs its directory, and returns its complete SHA.",
+    "producer_exact_reload_before_receipt": "Frozen producer appends the named checkpoint, calls load_manager on that path and SHA, checks exact model/Adam/EMA/RNG/clock/pending-evaluation state, then atomically publishes its receipt.",
+    "target_gate": "checkpoint_ready requires one exact manager_step100000 path, matching frozen source/spec/runtime/data hashes, closed primitive accounting and all six exact reload fields; watcher verifies bytes/owner/no symlinks/one link/full SHA and rereads the still-running receipt before signaling.",
+    "one_original_process_signal": "PID/starttime/uid/full argv are checked before and after pidfd open and before one SIGINT. Exclusive fsynced intent is written first; existing output/intent prevents restart or duplicate dispatch, including unknown outcomes.",
+    "original_nonzero_retained": "Watcher reads original exit/process/outer records, requires reaped non-timeout child exits in -2/1/130 and nonzero outer exit, retains original FAILED plus KeyboardInterrupt, and makes no 200k completion claim.",
+    "observer_timeout_scope": "CPU supervisor creates only a new observer session/group. Generic timeout cleanup targets that newly owned child group; original trainer and its supervisor are outside it.",
+    "gpu_serialization": "Watcher launches no model, GPU or SDK jobs; after signaling it waits for original producer and supervisor disappearance and original exit records, then probes release of the original common GPU/SDK lock. Future model work remains gated separately.",
+    "new_cpu_fixture_only": "Only the newly documented fixture invocation executed. Its pidfd signals are confined to its own freshly spawned CPU sleep process; no production controller was executed."
+  },
+  "production_control_authorized_during_witness": false,
+  "production_watcher_activated_or_executed": false,
+  "production_signals_sent_by_witness": 0,
+  "production_model_or_checkpoint_payloads_read_by_witness": 0,
+  "gpu_or_sdk_jobs_started_by_witness": 0,
+  "frozen_training_sources_or_specs_modified_by_witness": false,
+  "scope": "Fresh CPU/document verification only. Real100000 production stop, final process/worker/resource acceptance, VAE100k export/quality and LDM training were not performed by this witness."
+}

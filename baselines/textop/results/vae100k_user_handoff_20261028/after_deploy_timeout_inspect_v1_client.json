@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 90,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "eed12f75b07fd4c4d5749d3bcaa9008a4c6b737392bf2093df864cd31ed7671c",
+  "client_pid": 41012,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"observed_unix\": 1793156960.462053, \"exists\": {\"scripts/user_vae100k_completion.py\": false, \"scripts/validate_user_vae100k.py\": false, \"scripts/supervise_user_vae100k_quality.py\": false, \"scripts/export_user_vae100k.py\": false, \"scripts/supervise_user_vae100k_export.py\": false, \"scripts/run_user_vae100k_ldm.py\": false, \"scripts/supervise_user_vae100k_ldm.py\": false, \"configs/user-vae100k-quality-spec.json\": false, \"configs/user-vae100k-export-spec.json\": false, \"configs/user-vae100k-ldm-spec.json\": false}, \"control\": {\"status\": \"WAITING_FOR_REAL_VAE100000_SAVED_AND_RELOADED\", \"run\": \"user_vae100k_control_v1\", \"user_requested_target\": 100000, \"original_run\": \"filtered15000_vae200k_train_v1\", \"source_sha256\": \"1903ca5f9f442b815db162227f9a03b99d124ac21aa432f2e72a8bda669ed79b\", \"spec_sha256\": \"d3526e1367c7257fab1187d5f2f106d6c24ca85ba1f11b2f3210627227d5326f\", \"signals_sent\": 0, \"new_model_loads\": 0, \"new_gpu_contexts\": 0, \"new_sdk_tasks\": 0, \"original_training_source_modified\": false, \"last_observed_primitive_attempts\": 92500}}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\after_deploy_timeout_inspect_v1_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\after_deploy_timeout_inspect_v1_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

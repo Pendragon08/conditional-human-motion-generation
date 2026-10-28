@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 90,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "f32c47122fbb690931c44545e285678743e26c3930324e3c2c84598a892ef198",
+  "client_pid": 66480,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"status\": \"DISABLED_CONTROL_PY38_PIDFD_COMPATIBLE_BYTES_DEPLOYED\", \"new_spec_sha256\": \"4e54691630dba75d737d266ba2e83eb755ee0d154254871d705ccdb7b1f21cc7\", \"production_signals_sent\": 0, \"new_gpu_contexts\": 0}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\control_py38_fix_v2_client.stdout.txt",
+    "stderr": "work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\control_py38_fix_v2_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

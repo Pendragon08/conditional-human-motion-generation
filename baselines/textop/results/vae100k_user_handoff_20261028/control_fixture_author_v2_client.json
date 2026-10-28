@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 90,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "5ea58147d3aa364ad22a8af0b2bc80201d3319c789fff310f44ee102fbb04661",
+  "client_pid": 64304,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"actual_exit_code\": 0, \"log_sha256\": \"90f03295e34c9bdba0f5923ab1f3a4ed0966d54a66605abed591cae3df40337b\", \"log_tail\": \"{\\\"status\\\": \\\"VAE100K_CONTROL_NEW_CPU_FIXTURES_PASSED\\\", \\\"metadata_negative_cases\\\": 8, \\\"wrong_pid_identity_rejected\\\": true, \\\"duplicate_signal_rejected\\\": true, \\\"actual_owned_CPU_child_signal\\\": \\\"SIGINT\\\", \\\"actual_owned_CPU_child_exit\\\": -2, \\\"production_process_signals\\\": 0, \\\"production_checkpoint_reads\\\": 0, \\\"new_gpu_contexts\\\": 0}\\n\", \"fixture\": {\"status\": \"VAE100K_CONTROL_NEW_CPU_FIXTURES_PASSED\", \"metadata_negative_cases\": 8, \"wrong_pid_identity_rejected\": true, \"duplicate_signal_rejected\": true, \"actual_owned_CPU_child_signal\": \"SIGINT\", \"actual_owned_CPU_child_exit\": -2, \"production_process_signals\": 0, \"production_checkpoint_reads\": 0, \"new_gpu_contexts\": 0}}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\control_fixture_author_v2_client.stdout.txt",
+    "stderr": "work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\control_fixture_author_v2_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

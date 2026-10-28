@@ -1,6 +1,6 @@
 {
   "schema": "textop.direct_strict_to_generator_autostart.v1",
-  "latest_user_request": "还要多久能完成全部物理筛选？筛完后直接用通过的动作启动生成器训练，不用再问我。",
+  "latest_user_request": "训练到100000步就行了，然后训练LDM。",
   "autostart_authorized": true,
   "additional_user_confirmation_required": false,
   "strict_run": "teacher15000_direct_full_v1",
@@ -26,7 +26,7 @@
     "Persistent checkpoint/log budget and free disk/RAM/GPU/commonlock acceptance"
   ],
   "training": {
-    "fresh_filtered_vae_primitive_steps": 200000,
+    "fresh_filtered_vae_primitive_steps": 100000,
     "then_fresh_filtered_ldm_primitive_steps": 300000,
     "history": 2,
     "future": 8,
@@ -36,7 +36,7 @@
   "actual_full_filter_complete": true,
   "filtered_corpus_accepted": true,
   "generator_started": true,
-  "current_stage": "ACTUAL_FILTERED_VAE200K_RUNNING_FRESH_INITIALIZATION",
+  "current_stage": "USER_VAE100K_CONTROL_ARMED_WAITING_REAL_CHECKPOINT",
   "preparation_findings": [
     "New closed-result CPU audit, actual-pass corpus and fresh VAE entries are implemented and staged with all launch flags false",
     "Syntax/CPU byte-selection primitives passed; actual full-result audit, filtered corpus, GPU gradient and fresh-agent witnesses have not run",
@@ -46,7 +46,7 @@
   ],
   "latest_eta_evidence": "results/teacher15000_direct_strict_20261027/eta_user_request_20261027.json",
   "strict_audit_run": "full_result_audit_v1",
-  "handoff_environment_document": "FILTERED15000_HANDOFF_ENVIRONMENT.md",
+  "handoff_environment_document": "VAE100K_USER_HANDOFF_ENVIRONMENT.md",
   "staged_files_sha256": {
     "scripts/audit_teacher15000_full_result.py": "73b22fe04abd4def0674d652bacf2baafe96a69148ea447d124b74b0c579412a",
     "scripts/supervise_teacher15000_full_audit.py": "e01f92845bb400457db4e0de9b84db1d6078571b5644c97f3d655a57815ba97f",
@@ -71,7 +71,7 @@
     "scripts/full_ldm_history.py": "67ab6fd8a105b7bdaf9d38409636879b8669edfa5e060ca6b693c8c816e9e7e8",
     "configs/filtered15000-ldm-plan.json": "376b80136c5b51254b9a4a6ef15efb5ce5e51fbde65f98dec8be6eaf5631ede2"
   },
-  "next_implementation": "Execute actual full-result audit, filtered corpus and restore/capacity acceptance after closure; then fresh VAE200k and real CPU export/LDM witnesses. All sources staged disabled, no actual acceptance yet.",
+  "next_implementation": "Use exact100k controller closure, private backup, actual100k quality and CPU export; then actual new fullLDM author/fresh witnesses and freshLDM300k. No200k prerequisite.",
   "post_corpus_recovery_and_vae_enable_bridge_implemented": true,
   "actual_private_recovery_prepared": false,
   "actual_VAE_witnesses_enabled": false,
@@ -109,5 +109,11 @@
   "actual_vae_formal_training_processes": 1,
   "diagnostic_weights_used_for_formal_training": false,
   "actual_filtered_corpus_receipt_sha256": "fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427",
-  "actual_data_acceptance_sha256": "0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c"
+  "actual_data_acceptance_sha256": "0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c",
+  "previous_user_request_before_100k": "还要多久能完成全部物理筛选？筛完后直接用通过的动作启动生成器训练，不用再问我。",
+  "original_200k_program_preserved": true,
+  "user_100k_control_run": "user_vae100k_control_v1",
+  "new_100k_control_spec_sha256": "d3526e1367c7257fab1187d5f2f106d6c24ca85ba1f11b2f3210627227d5326f",
+  "actual_filtered_vae100000_selected": false,
+  "original200k_completion_claimed": false
 }
