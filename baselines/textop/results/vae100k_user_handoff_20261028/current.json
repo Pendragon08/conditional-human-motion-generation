@@ -2,7 +2,7 @@
   "schema": "textop.user100k_handoff_progress.v2",
   "latest_user_request": "训练到100000步就行了，然后训练LDM。",
   "target_vae_attempts": 100000,
-  "target_ldm_attempts": 300000,
+  "target_ldm_attempts": 100000,
   "actual_vae_attempts": 100000,
   "actual_vae_adam_updates": 100000,
   "skipped_vae_updates": 0,
@@ -119,5 +119,6 @@
       ]
     }
   ],
-  "common_lock_free": false
+  "common_lock_free": false,
+  "ldm_user_endpoint_control": "user_ldm100k_control_v1"
 }

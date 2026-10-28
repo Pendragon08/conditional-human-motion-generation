@@ -52,7 +52,7 @@ if current_path.exists():
   assert actual['finished']==actual['source_count']==8278 and actual['actual_unattempted_sources']==0
   extra+=f" 最新全库最终物理结果已由独立CPU完整性核验接受：8278个全部实测，{actual['passed_complete']}个完整通过，{actual['failed']}个失败，0个未尝试。原SDK及CPU核验作业均退出。后续阶段{actual.get('handoff_stage_label',actual['handoff_stage'])}，新生成器正式开训标志{actual['generator_started']}。固定15k、每源一次、跳过历史EMA候选的限制保留；单次通过不等于失败概率≤5%。"
 if physical_complete and actual.get('vae_target_primitive_attempts')==100000:
- extra+=' 用户最新明确将VAE目标缩短为100000步，随后自动训练LDM300000步；旧200k描述仅为历史计划。新控制/质量/导出/LDM阶段以最新真实收据为准，保留原退出事实和100k完整状态。'
+ extra+=f' 用户最新明确将VAE目标缩短为100000步，随后自动训练LDM{actual.get('ldm_target_primitive_attempts',300000)}步；旧200k描述仅为历史计划。新控制/质量/导出/LDM阶段以最新真实收据为准，保留原退出事实和100k完整状态。'
 text=f'''# TextOp：恢复先筛选、后训练的论文顺序
 
 用户2026-10-27明确调整：安全保存并暂停未筛选数据生成器，先完成全库物理筛选。先前推荐的“未筛选全源先训练”属于额外对照，并非论文主线；现在已取消其自动接续，不能把这条路线说成论文训练数据已合格。
@@ -63,7 +63,7 @@ text=f'''# TextOp：恢复先筛选、后训练的论文顺序
 
 {extra}
 
-最新接续顺序：停止跟踪器 → 冻结15000轮模型直接对全8278来源严格完整回放 → 保留可跟踪的原始参考动作并配对BABEL文本 → 源隔离、TRAIN-only统计、真实CLIP和加载/恢复/容量验收 → 新筛选语料上的VAE{actual.get("vae_target_primitive_attempts",200000) if physical_complete else 200000}步与LDM300000步。直接回放不宣称历史EMA门槛已通过，也不自动恢复跟踪器训练。未尝试/失败原资产不删除，早期教师失败不证明动作绝对不可行。
+最新接续顺序：停止跟踪器 → 冻结15000轮模型直接对全8278来源严格完整回放 → 保留可跟踪的原始参考动作并配对BABEL文本 → 源隔离、TRAIN-only统计、真实CLIP和加载/恢复/容量验收 → 新筛选语料上的VAE{actual.get("vae_target_primitive_attempts",200000) if physical_complete else 200000}步与LDM{actual.get("ldm_target_primitive_attempts",300000) if physical_complete else 300000}步。直接回放不宣称历史EMA门槛已通过，也不自动恢复跟踪器训练。未尝试/失败原资产不删除，早期教师失败不证明动作绝对不可行。
 
 原8278来源预处理及私有备份已经完成。当前未筛选VAE只保留为独立对照，不自动恢复，也不自动启动其LDM。完整语义质量、最终WBC/生成增强、在线执行与论文完整效果仍未通过。
 

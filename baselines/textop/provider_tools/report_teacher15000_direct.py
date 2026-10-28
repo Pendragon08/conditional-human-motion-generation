@@ -35,10 +35,10 @@ if audit_verified:
  if readiness_path.exists():
   ready=json.loads(readiness_path.read_text(encoding='utf-8')).get('readiness',{})
   corpus_accepted=ready.get('filtered_corpus_accepted') is True and ready.get('formal_training_ready') is True
-user_100k_target=False;user_control_status=None;vae_selected_step=None;ldm_attempts=0
+user_100k_target=False;user_control_status=None;user_ldm_control_status=None;vae_selected_step=None;ldm_attempts=0;ldm_target=300000
 policy_path=B/'configs/teacher15000-full-to-generator-autostart-20261027.json'
 if policy_path.exists():
- user_100k_target=json.loads(policy_path.read_bytes()).get('training',{}).get('fresh_filtered_vae_primitive_steps')==100000
+ pol=json.loads(policy_path.read_bytes());user_100k_target=pol.get('training',{}).get('fresh_filtered_vae_primitive_steps')==100000;ldm_target=pol.get('training',{}).get('then_fresh_filtered_ldm_primitive_steps',300000)
 if user_100k_target:
  cc=B/'results/vae100k_user_handoff_20261028/user_vae100k_control_v1/progress.json'
  if cc.exists():
@@ -60,6 +60,13 @@ if user_100k_target:
      if jn.get('closed_execution_verified'):vae_selected_step=rn['selected_checkpoint']['manager_step']
     if stage_run=='user_vae100k_ldm300k_train_v1':ldm_attempts=rn.get('completed_primitive_attempts',0);generator_spec_sha=rn.get('spec_sha256')
  generator_started=True
+endpoint_path=B/'results/ldm100k_user_handoff_20261028/user_ldm100k_control_v1/progress.json'
+if ldm_target==100000 and endpoint_path.exists():
+ endpoint=json.loads(endpoint_path.read_bytes());en=endpoint.get('files',{}).get('receipt',{});user_ldm_control_status=en.get('status')
+ if user_ldm_control_status=='BOUND_SIGINT_SENT_WAITING_ORIGINAL_EXITS':handoff_stage='LDM100K_SAVED_WAITING_ORIGINAL_EXIT'
+ if endpoint.get('closed_execution_verified'):
+  assert user_ldm_control_status=='USER_LDM100000_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED' and en['selected_checkpoint_attempts']==100000
+  handoff_stage=user_ldm_control_status;ldm_attempts=100000;handoff_workers=[];handoff_lock_free=endpoint['common_lock_free'];handoff_observed=max(handoff_observed,endpoint['observed_unix'])
 last_verified_handoff_stage=handoff_stage;access_unavailable=False;access_attempt=None
 access_path=B/'results/filtered15000_handoff_20261027/filtered15000_vae200k_train_v1/access_status.json'
 if access_path.exists():
@@ -71,7 +78,7 @@ if access_path.exists():
 access_note='最近远程查询连接超时；下列训练步数为最后已核验值，不能当作当前实时状态。未观察到服务器训练退出，未停止或重启训练。' if access_unavailable else '训练状态以此采样时刻的真实收据为准。'
 phase_label='远程暂不可达，当前训练状态未确认' if access_unavailable else '新筛后VAE正式训练中' if handoff_stage=='RUNNING_FILTERED15000_VAE_TRAINING' else handoff_stage
 if user_100k_target:
- phase_label={'FULL_LDM_AUTHOR_PASSED_FRESH_PENDING':'LDM首轮启动检查通过，正在独立复查','FULL_LDM_TWO_WITNESSES_PASSED_FORMAL_PENDING':'LDM独立启动检查通过，准备正式开训','STARTING_USER_VAE100K_QUALITY':'VAE十万步质量和恢复检查中','STARTING_FILTERED15000_VAE_CPU_EXPORT':'VAE十万步推理导出检查中','STARTING_FILTERED15000_LDM':'LDM启动检查中','FAILED_VAE100K_CONTROL_RETAIN_ALL_EVIDENCE':'原VAE在99,700步存储保护退出，已保存紧急检查点','STARTING_USER_VAE100K_RESUME':'99,700步检查点恢复与验收中','USER_VAE100K_RESUME_WITNESS_PASSED':'99,700步恢复验收通过，接续补齐300步','RUNNING_USER_VAE100K_RESUME':'从99,700步补齐至100,000步训练中','USER_VAE100000_RESUME_FINISHED':'10万步已完整保存，接续质量验收与LDM','WAITING_FOR_REAL_VAE100000_SAVED_AND_RELOADED':'按用户新目标训练至10万步，等待完整检查点','BOUND_SIGINT_SENT_WAITING_ORIGINAL_EXITS':'10万步已保存，等待原VAE退出核验','USER_VAE100000_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED':'用户指定10万步已选定，接续质量验收与LDM','USER_VAE100K_QUALITY_VALIDATION_PASSED':'10万步质量验收通过，接续CPU导出','USER_VAE100000_CPU_EXPORT_PASSED':'10万步推理导出完成，接续完整LDM验收','RUNNING_FILTERED15000_LDM_WITNESS':'完整LDM实际验收中','FILTERED15000_LDM_WITNESS_PASSED':'完整LDM验收已完成，接续正式训练','RUNNING_FILTERED15000_LDM_TRAINING':'完整LDM正式训练中'}.get(handoff_stage,handoff_stage)
+ phase_label={'LDM100K_SAVED_WAITING_ORIGINAL_EXIT':'LDM十万步已完整保存，正在核验退出','USER_LDM100000_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED':'LDM十万步按用户目标完成，接续效果验收','FULL_LDM_AUTHOR_PASSED_FRESH_PENDING':'LDM首轮启动检查通过，正在独立复查','FULL_LDM_TWO_WITNESSES_PASSED_FORMAL_PENDING':'LDM独立启动检查通过，准备正式开训','STARTING_USER_VAE100K_QUALITY':'VAE十万步质量和恢复检查中','STARTING_FILTERED15000_VAE_CPU_EXPORT':'VAE十万步推理导出检查中','STARTING_FILTERED15000_LDM':'LDM启动检查中','FAILED_VAE100K_CONTROL_RETAIN_ALL_EVIDENCE':'原VAE在99,700步存储保护退出，已保存紧急检查点','STARTING_USER_VAE100K_RESUME':'99,700步检查点恢复与验收中','USER_VAE100K_RESUME_WITNESS_PASSED':'99,700步恢复验收通过，接续补齐300步','RUNNING_USER_VAE100K_RESUME':'从99,700步补齐至100,000步训练中','USER_VAE100000_RESUME_FINISHED':'10万步已完整保存，接续质量验收与LDM','WAITING_FOR_REAL_VAE100000_SAVED_AND_RELOADED':'按用户新目标训练至10万步，等待完整检查点','BOUND_SIGINT_SENT_WAITING_ORIGINAL_EXITS':'10万步已保存，等待原VAE退出核验','USER_VAE100000_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED':'用户指定10万步已选定，接续质量验收与LDM','USER_VAE100K_QUALITY_VALIDATION_PASSED':'10万步质量验收通过，接续CPU导出','USER_VAE100000_CPU_EXPORT_PASSED':'10万步推理导出完成，接续完整LDM验收','RUNNING_FILTERED15000_LDM_WITNESS':'完整LDM实际验收中','FILTERED15000_LDM_WITNESS_PASSED':'完整LDM验收已完成，接续正式训练','RUNNING_FILTERED15000_LDM_TRAINING':f'LDM正式训练中（目标{ldm_target:,}步）'}.get(handoff_stage,handoff_stage)
 closure_note='全库结果已由独立有界CPU作业核验，原回放与核验作业均真实退出；生成器后续状态见下方真实收据阶段。' if audit_verified else '进行中统计不是最终筛选结论。未测试动作没有被过滤。'
 sample=datetime.datetime.fromtimestamp(handoff_observed,datetime.timezone(datetime.timedelta(hours=8))).isoformat()
 spec=B/'configs/teacher15000-direct-strict-spec.json';h=hashlib.sha256(spec.read_bytes()).hexdigest()
@@ -84,7 +91,7 @@ current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['st
  completed_execution_verified=audit_verified,raw_light_collector_trace_acceptance=j['completed_execution_verified'],
  strict_physics_accepted=audit_verified,strict_audit_receipt_sha256=audit_sha,handoff_stage=handoff_stage,handoff_stage_label=phase_label,
  actual_unattempted_sources=0 if audit_verified else None,filtered_corpus_accepted=corpus_accepted,generator_started=generator_started,
- generator_primitive_attempts=generator_attempts,vae_target_primitive_attempts=100000 if user_100k_target else 200000,vae_selected_checkpoint_attempts=vae_selected_step,ldm_primitive_attempts=ldm_attempts,user_100k_control_status=user_control_status,handoff_workers=handoff_workers,active_generator_spec_sha256=generator_spec_sha,
+ generator_primitive_attempts=generator_attempts,vae_target_primitive_attempts=100000 if user_100k_target else 200000,vae_selected_checkpoint_attempts=vae_selected_step,ldm_primitive_attempts=ldm_attempts,ldm_target_primitive_attempts=ldm_target,user_ldm_endpoint_control_status=user_ldm_control_status,user_100k_control_status=user_control_status,handoff_workers=handoff_workers,active_generator_spec_sha256=generator_spec_sha,
  remote_observation_available=not access_unavailable,last_access_attempt_beijing=access_attempt,last_verified_handoff_stage=last_verified_handoff_stage,
  active_spec_sha256=h,worker_pids=[x['pid'] for x in j['workers']],common_lock_free=handoff_lock_free,
  physical_replay_lock_released=j['common_lock_free'],
@@ -119,7 +126,7 @@ text=f'''# TextOp：停止跟踪器，直接全库物理筛查
 按用户要求，当前放开历史EMA入选限制，全部8278个原始动作均进入固定策略的标准严格完整回放。物理终止阈值没有数值放宽。每个动作一次完整回放，记录通过/失败，不能把单次通过解释成已证明失败概率≤5%。这个直接路线与论文原两阶段候选筛选有差异。
 
 实际回放使用16个环境，GPU1、CPU0–3共4核、Torch显存比例0.65；原SDK辅助GPU0上下文属于历史回放，已随回放作业退出。每次控制对应4次物理步进，保存真实执行姿态与全部失败。当前优化更新为0。
-只有新严格动作结果、非空REFERENCE+BABEL语料、源/镜像隔离、TRAIN统计、真实CLIP及加载/梯度/恢复/持久容量验收通过后，才自动启动新筛选语料VAE{100000 if user_100k_target else 200000}步→LDM300000步。未筛选8100步VAE继续作为暂停对照保留。
+只有新严格动作结果、非空REFERENCE+BABEL语料、源/镜像隔离、TRAIN统计、真实CLIP及加载/梯度/恢复/持久容量验收通过后，才自动启动新筛选语料VAE{100000 if user_100k_target else 200000}步→LDM{ldm_target}步。未筛选8100步VAE继续作为暂停对照保留。
 
 真实15000检查点SHA：`{r['policy_checkpoint_sha256']}`。当前运行：`{run}`；配置SHA：`{h}`。
 原生SDK关闭未返回时仍使用已验证的有界退出机制；最终语义、端点质量、可部署WBC、在线质量和视频尚未完成，不能称论文完整效果。
@@ -128,7 +135,7 @@ text=f'''# TextOp：停止跟踪器，直接全库物理筛查
 dst=D/'TextOp当前物理筛选进度_20261027.md';dst.write_text(text,encoding='utf-8')
 body='<!doctype html><meta charset="utf-8"><title>TextOp物理筛选进度</title><style>body{font:17px/1.8 system-ui;max-width:1000px;margin:32px auto;padding:24px;background:#101927;color:#edf2fa}</style>'+''.join('<p>'+html.escape(line)+'</p>' for line in text.splitlines() if line)
 (D/'TextOp当前物理筛选进度_20261027.html').write_text(body,encoding='utf-8')
-user_goal_note=(f'<p>VAE已完成{generator_attempts:,}步；LDM已正式训练{ldm_attempts:,}/300,000步。当前{html.escape(phase_label)}。</p>' if user_100k_target and ldm_attempts>0 else f'<p>按你的最新要求：VAE目标100,000步，最近已核验{generator_attempts:,}步；保存和验收后自动转入LDM300,000步。当前{html.escape(phase_label)}。</p>' if user_100k_target else '')
+user_goal_note=(f'<p>VAE已完成{generator_attempts:,}步；LDM已正式训练{ldm_attempts:,}/{ldm_target:,}步。当前{html.escape(phase_label)}。</p>' if user_100k_target and ldm_attempts>0 else f'<p>按你的最新要求：VAE目标100,000步，最近已核验{generator_attempts:,}步；保存和验收后自动转入LDM{ldm_target:,}步。当前{html.escape(phase_label)}。</p>' if user_100k_target else '')
 banner=f'<!--direct-strict-current-start--><section style="padding:24px;background:#edf6ee;color:#153a24;font:17px/1.8 system-ui"><h2>最新训练目标与物理筛选结果</h2>{user_goal_note}<p>采样{html.escape(sample)}：完整通过{passed}，失败{failed}，尚未结束{pending}。未测试不算失败。历史EMA候选0与本次物理结果分别记录。</p><a href="TextOp当前物理筛选进度_20261027.html">查看当前完整说明</a></section><!--direct-strict-current-end-->'
 for name in ['TextOp下载与训练报告.html','TextOp在线功能验收与完整训练接续_20261026.html']:
  q=D/name

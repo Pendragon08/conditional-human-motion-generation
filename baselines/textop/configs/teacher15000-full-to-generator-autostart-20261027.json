@@ -1,6 +1,6 @@
 {
   "schema": "textop.direct_strict_to_generator_autostart.v1",
-  "latest_user_request": "训练到100000步就行了，然后训练LDM。",
+  "latest_user_request": "LDM也训练100000步吧，不需要300000步。",
   "autostart_authorized": true,
   "additional_user_confirmation_required": false,
   "strict_run": "teacher15000_direct_full_v1",
@@ -27,7 +27,7 @@
   ],
   "training": {
     "fresh_filtered_vae_primitive_steps": 100000,
-    "then_fresh_filtered_ldm_primitive_steps": 300000,
+    "then_fresh_filtered_ldm_primitive_steps": 100000,
     "history": 2,
     "future": 8,
     "primitives": 4
@@ -134,5 +134,12 @@
   "formal_ldm_started": true,
   "active_ldm_run": "user_vae100k_ldm300k_train_v1",
   "active_ldm_spec_sha256": "654332646f2aa4bb69fea4cc779edf88138735a0ca9f5e5906e783948868c770",
-  "actual_full_ldm_fresh_witness_passed": true
+  "actual_full_ldm_fresh_witness_passed": true,
+  "previous_user_request_before_ldm100k": "训练到100000步就行了，然后训练LDM。",
+  "ldm_user_endpoint": 100000,
+  "original_ldm_native_schedule_steps": 300000,
+  "ldm_endpoint_control_run": "user_ldm100k_control_v1",
+  "ldm_endpoint_control_stage": "ACTUAL_CPU_OBSERVER_ARMED_WAITING100K",
+  "ldm_endpoint_environment": "LDM100K_USER_ENDPOINT_ENVIRONMENT.md",
+  "ldm_endpoint_control_spec_sha256": "0c30cd479854f9a4a8498be245cd945398e20fc66fe3950537620a8d679a5f23"
 }
