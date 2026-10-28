@@ -1,3 +1,6 @@
+<!--ldm100k-media-final-current-->
+CURRENT最终覆盖：9/9真实执行影片已全部CPU/Mesa完成，batch/全部clip监督/outer真实0、无worker/commonlock释放；全部7失败与固定首配对完整保留。9片共3496454B，现已全部D媒体/PNG完整SHA及Windows当前owner核验，D/media/user100k_effects_20261029；D/TextOp十万步实际效果_20261029.html可直接查看条件/无条件与全部失败实录。原数组/逐源文本/fullAdam未下载到公开位置，MP4本轮只D私有展示，未发公开Git。停止对generation/summary/FK/physics/影片的重复运行或已完成审计，后继继续真实兼容语义/TMR/WBC/在线质量；不因本次物理99.6%而宣称论文完整复现、不追加生成器/teacher训练。现无活动模型/SDK/影片job，只有独立私有LDM字节副本pld100_v4仍待实际核。
+
 <!--ldm100k-effects-current-start-->
 CURRENT 2026-10-29T02:01:37.804770+08:00：VAE100000/LDM100000均已真实完成；32个留出来源/188个独立段×5seed×2mode的940pair/1880trial生成已0失败/0未试、process-supervisor-outer0闭合。CPU独立复核9400数组/142692160B，全部SHA/CRC/shape/finite及配对噪声通过；平均Huber条件0.291194、无条件0.219185，条件高32.85%，5seed方向一致，为负面重构诊断，不当TMR或语义结论、不追加训练。
 真实Isaac FK已1880trial/195580frame闭合0，424260880B私有FK NPZ全SHA核验。当前新生成物理run user_ldm100k_generated_physics_v1，status=USER_LDM100K_GENERATED_STRICT_PHYSICS_FINISHED，结束1880/1880、通过1873、失败7；closed=True、commonlock_free=True。进行中按时长排序，不能把早期通过数当最终比例。全部动作/seed/失败保留，只冻结15k策略推理、0训练；后继视频/WBC/语义与独立验收继续，不问用户。
