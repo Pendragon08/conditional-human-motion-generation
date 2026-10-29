@@ -1,6 +1,6 @@
 {
   "run": "tmr69d_evaluator500_train_v1",
-  "observed_unix": 1793233307.5429022,
+  "observed_unix": 1793234220.4779494,
   "files": {
     "receipt": {
       "status": "RUNNING_FRESH_TMR69D_EVALUATOR_TRAINING",
@@ -8,19 +8,19 @@
       "source_sha256": "04014d8f2e657e9c48827edd7fae817c3f01362d97dcdbd3a0e3dea092c604c2",
       "request_sha256": "2196a765dbaa61ba7265b9d798f99fe5c094a502fd34bd47869f0fe141360b13",
       "output_writers_closed": false,
-      "formal_optimizer_updates": 73200,
-      "attempted_optimizer_updates": 73200,
+      "formal_optimizer_updates": 78400,
+      "attempted_optimizer_updates": 78400,
       "skipped_updates": 0,
-      "completed_epochs": 72,
+      "completed_epochs": 77,
       "target_epochs": 500,
       "expected_optimizer_updates": 507500,
       "generator_or_teacher_training_updates": 0,
       "original_validation_sources_used_for_gradient": 0,
       "semantic_metrics_computed": false,
       "checkpoints": [],
-      "elapsed_seconds": 12931.435460245237,
-      "home_free_bytes": 3005874176,
-      "data_free_bytes": 2385154048,
+      "elapsed_seconds": 13845.335738640279,
+      "home_free_bytes": 3005861888,
+      "data_free_bytes": 2385072128,
       "input_preparation": {
         "phase": "building_real_frozen_text_RAM",
         "modality": 1,
@@ -114,26 +114,26 @@
         "weight_decay": 0.01
       },
       "last_train_loss": {
-        "recons": 0.20753851532936096,
-        "kl": 18.5831356048584,
-        "latent": 0.5946789979934692,
-        "contrastive": 0.04679732397198677,
-        "loss": 0.21241003274917603
+        "recons": 0.21862566471099854,
+        "kl": 21.427318572998047,
+        "latent": 0.6402609348297119,
+        "contrastive": 0.07707172632217407,
+        "loss": 0.2265535295009613
       },
-      "sampler_epoch": 72,
-      "sampler_cursor": 3840,
+      "sampler_epoch": 77,
+      "sampler_cursor": 7840,
       "last_internal_validation_loss": {
-        "recons": 0.22271152508733874,
-        "kl": 40.440002213379515,
-        "latent": 0.8924752003229125,
-        "contrastive": 2.2421469801241254,
-        "loss": 0.4473395564896084
+        "recons": 0.22089446218194878,
+        "kl": 41.341126628414926,
+        "latent": 0.8993214665730003,
+        "contrastive": 2.263628902649078,
+        "loss": 0.4476797579420014
       },
       "internal_validation_optimizer_updates": 0
     }
   },
   "sha256": {
-    "receipt": "53b2b43cca58888d9a6d69bc710a1797a4ec2e90f927322eb62a342e56bffd3c"
+    "receipt": "7950ee0e251e96d5dfaa918ff30ee895e2f3b5fb9418d8a174592992340b2bda"
   },
   "workers": [
     {
@@ -151,7 +151,7 @@
     {
       "pid": 416293,
       "start_ticks": "1441791443",
-      "state": "S",
+      "state": "R",
       "argv": [
         "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
         "-B",
@@ -170,9 +170,9 @@
     "tmr69d_evaluator500_train_v1_outer.log": ""
   },
   "last_resource": {
-    "available_host_ram_bytes": 129604177920,
-    "data_free_bytes": 2385154048,
-    "all_device_usage_including_other_jobs": "0, 12223, 36328, 0\n1, 12661, 35889, 44",
+    "available_host_ram_bytes": 129578389504,
+    "data_free_bytes": 2385072128,
+    "all_device_usage_including_other_jobs": "0, 12223, 36328, 0\n1, 12661, 35889, 53",
     "owned_child_group": 416293,
     "owned_group_processes": [
       {
@@ -197,10 +197,10 @@
         "used_gpu_memory_mib": "4832"
       }
     ],
-    "home_free_bytes": 3005874176,
+    "home_free_bytes": 3005861888,
     "phase": "running",
-    "elapsed_seconds": 12939.074361409992
+    "elapsed_seconds": 13860.036397753283
   },
-  "data_free_bytes": 2385154048,
-  "home_free_bytes": 3005874176
+  "data_free_bytes": 2385072128,
+  "home_free_bytes": 3005857792
 }
