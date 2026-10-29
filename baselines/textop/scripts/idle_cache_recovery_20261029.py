@@ -46,7 +46,7 @@ def persist(path, value):
         os.fsync(stream.fileno())
 
 
-def idle():
+def idle(roots):
     refs, limits = [], []
     for proc in pathlib.Path('/proc').iterdir():
         if not proc.name.isdigit() or int(proc.name) == os.getpid():
@@ -56,7 +56,7 @@ def idle():
                 continue
             argv = (proc / 'cmdline').read_bytes()
             name = pathlib.Path(argv.split(b'\0')[0].decode(errors='replace')).name
-            for root in ROOTS:
+            for root in roots:
                 if str(root).encode() in argv:
                     refs.append([proc.name, 'argv'])
             try:
@@ -68,13 +68,13 @@ def idle():
                                 'gnome-keyring-daemon', 'ssh-agent', '(sd-pam)'], (proc.name, name)
                 limits.append(dict(pid=int(proc.name), service=name))
                 continue
-            for root in ROOTS:
+            for root in roots:
                 if str(root).encode() in maps:
                     refs.append([proc.name, 'maps'])
             for fd in (proc / 'fd').iterdir():
                 try:
                     target = os.readlink(fd)
-                    for root in ROOTS:
+                    for root in roots:
                         if target == str(root) or target.startswith(str(root) + '/'):
                             refs.append([proc.name, 'fd'])
                 except (FileNotFoundError, PermissionError, OSError):
@@ -107,6 +107,11 @@ def verified_manifest(path):
 
 def reclaim(manifest, confirmation, out):
     rows = verified_manifest(manifest)
+    # A separate project began writing its cache after archiving. Preserve its
+    # entire root, including unchanged files. Reclaim only independent tarballs.
+    rows = [x for x in rows if x['path'] == str(ROOTS[1]) or ROOTS[1] in pathlib.Path(x['path']).parents]
+    assert len(rows) == 3 and sum(x['kind'] == 'file' for x in rows) == 2
+    assert {pathlib.Path(x['path']).name for x in rows if x['kind'] == 'file'} == {'unitree_description.tar.gz', 'gmr_sources_g1.tar.gz'}
     backup = json.loads(confirmation.read_bytes())
     assert backup['status'] == 'NEW_CACHE_RECOVERY_PRIVATE_D_ALL_FILES_VERIFIED'
     assert backup['archive']['sha256'] == ARCHIVE_SHA and backup['manifest']['sha256'] == MANIFEST_SHA
@@ -115,7 +120,7 @@ def reclaim(manifest, confirmation, out):
         assert backup[key] is True
     assert backup['transport_exit_code'] == 0 and backup['verified_files'] == 549
     actual = set()
-    for root in ROOTS:
+    for root in [ROOTS[1]]:
         safe_parents(root)
         assert root.stat().st_uid == 1013
         for directory, dirs, files in os.walk(root, followlinks=False):
@@ -138,10 +143,10 @@ def reclaim(manifest, confirmation, out):
             assert stat.S_ISLNK(s.st_mode) and os.readlink(p) == row['target']
         if row['kind'] == 'file':
             assert stat.S_ISREG(s.st_mode) and s.st_nlink == 1 and sha(p) == row['sha256']
-    limits = idle()
+    limits = idle([ROOTS[1]])
     before = shutil.disk_usage(ROOTS[0]).free
     persist(out / 'intent.private.json', dict(backup_receipt_sha256=sha(confirmation),
-        manifest_sha256=sha(manifest), source_entries_verified=len(rows), source_files_verified=549,
+        manifest_sha256=sha(manifest), source_entries_verified=len(rows), source_files_verified=2,
         data_free_before=before, readable_processes_no_references=True, service_visibility_limits=limits))
     removed = allocated = 0
     with (out / 'unlink_journal.private.jsonl').open('x') as journal:
@@ -170,12 +175,12 @@ def reclaim(manifest, confirmation, out):
                 assert p.stat().st_uid == 1013
                 if not list(p.iterdir()):
                     p.rmdir()
-    assert removed == 549
+    assert removed == 2
     links = [x for x in rows if x['kind'] == 'symlink']
     for row in links:
         assert os.readlink(row['path']) == row['target']
     remaining_files = []
-    for root in ROOTS:
+    for root in [ROOTS[1]]:
         for directory, dirs, files in os.walk(root, followlinks=False):
             for name in files:
                 q = pathlib.Path(directory) / name
@@ -190,6 +195,7 @@ def reclaim(manifest, confirmation, out):
         data_checkpoint_environment_or_primary_source_files_removed=0,
         production_signals=0, new_model_or_GPU_jobs=0, roots_retained=True,
         known_external_cache_symlink_and_target_retained=True,
+        separately_active_project_cache_root_entirely_retained=True,
         global_fd_visibility_complete=not bool(limits), service_visibility_limit_count=len(limits))
     persist(out / 'receipt.json', result)
     return result
