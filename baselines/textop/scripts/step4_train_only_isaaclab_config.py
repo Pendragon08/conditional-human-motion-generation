@@ -17,6 +17,8 @@ def make(policy,environment,mixed_receipt,motion_files,output,num_envs=None):
     assert mixed_receipt['original_VAL_motions_in_training']==0 and mixed_receipt['numerical_failures_unaccepted']==0
     assert len(motion_files)==5551
     assert all(pathlib.Path(name).is_file() for name in motion_files)
+    output=pathlib.Path(output)
+    output.mkdir(mode=0o700,parents=True,exist_ok=False)
     from textop_tracker.tasks.tracking.config.g1.flat_env_cfg import G1FlatProjGravObsEnvCfg
     from textop_tracker.tasks.tracking.config.g1.agents.rsl_rl_ppo_cfg import G1FlatPPORunnerCfg
     from textop_tracker.tasks.tracking.mdp.commands_multi import MotionCommand
