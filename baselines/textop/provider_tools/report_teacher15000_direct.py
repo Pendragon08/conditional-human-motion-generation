@@ -279,6 +279,10 @@ if direct_policy.exists():
   training_data_mode='original_train_only',actual_generated_clips=0,actual_new_PPO_updates=0,
   actor_observation_dim=431,critic_observation_dim=557,method='one_stage_PPO',dagger_or_distillation=False,
   actor_hidden=[2048,1024,512],future_reference_frames=5,policy_hz=50)
+ chosen_target=B/'configs/step4-original-train-only-ppo10000-spec.json'
+ if chosen_target.exists():
+  chosen=json.loads(chosen_target.read_bytes());assert chosen['human_selected_target_iterations']==chosen['target_RL_iterations']==10000
+  new_step34.update(human_selected_PPO_iterations=10000,target_finite_Adam_calls=200000)
  capacity=B/'results/user_step34_20261029/capacity_resolution_v2.json'
  if capacity.exists():new_step34['storage']=json.loads(capacity.read_bytes())
  for name in ['author_progress.json','document_progress.json','library_progress.json','ppo_author_progress.json','ppo_document_progress.json','ppo_train_progress.json']:
@@ -292,11 +296,20 @@ if direct_policy.exists():
     new_step34.update(status=handoff_stage,actual_new_PPO_updates=vr.get('formal_optimizer_updates',0),
      formal_completed_iterations=vr.get('formal_completed_iterations',0),reference_exported_clips=vr.get('exported_clips'),
      active_run=value['run'],closed_execution_verified=value.get('closed_execution_verified',False))
+ # Never reuse a historical free lock while a newer model dispatch awaits its
+ # first real collector sample. Dispatch is distinct from successful startup.
+ for dispatch in (B/'results/step4_train_only_20261029').glob('*/dispatch.json'):
+  if dispatch.stat().st_mtime>handoff_observed:
+   pending_dispatch=json.loads(dispatch.read_bytes())
+   if str(pending_dispatch.get('run','')).startswith('user_step4_train_only_ppo'):
+    last_verified_handoff_stage=handoff_stage;handoff_stage='STAGE4_PPO_DISPATCH_AWAITING_FIRST_ACTUAL_SAMPLE'
+    handoff_lock_free=None;handoff_workers=[];ldm_dispatch_unconfirmed=True
+    new_step34.update(status=handoff_stage,dispatch_run=pending_dispatch['run'],current_model_lock_unconfirmed=True)
  phase_label=('Step4新PPO训练中（原TRAIN动作）' if handoff_stage=='RUNNING_STAGE4_FRESH_ORIGINAL_TRAIN_PPO' else
   'Step4新PPO实际恢复检查中' if 'PPO' in handoff_stage else 'Step4原TRAIN跟踪参考转换与核验')
  new_effect_note=new_effect_note.replace('等待新增持久空间并继续完成真实生成、混合引用与PPO恢复验收。','服务器空间已释放，最新用户已暂缓Stage3；直接进行原TRAIN-only的新PPO数值与恢复验收。')
  new_effect_note+=' 最新用户安排：Stage3暂缓，不生成5368条增强动作；直接用5361原TRAIN家族的5551条切片推进Step4新431D/557D单阶段PPO。原VAL只评估，旧教师与生成器冻结。当前正式PPO更新按真实新收据计数。'
- last_verified_handoff_stage=handoff_stage
+ if not new_step34.get('current_model_lock_unconfirmed'):last_verified_handoff_stage=handoff_stage
  new_step34['local_disk_free_bytes']={drive:shutil.disk_usage(drive+':/').free for drive in ['C','D']}
  new_step34['storage_candidate_samples_are_not_reservations']=True
 sample=datetime.datetime.fromtimestamp(handoff_observed,datetime.timezone(datetime.timedelta(hours=8))).isoformat()
@@ -326,7 +339,7 @@ p.update(status=r['status'],runtime_launch_enabled=not audit_verified,teacher_st
  user_asked_to_relax_threshold=True,relaxed_scope='All originals admitted; no numerical physical termination threshold change',
  historical_ema_candidates_are_not_physical_replay_failures=True)
 priority.write_text(json.dumps(p,ensure_ascii=False,indent=2),encoding='utf-8')
-teacher_note=('旧15000轮特权筛选教师保持停止，仅作冻结推理。用户新授权Step4将训练独立431D策略，尚未执行新PPO更新。' if new_step34 else '固定使用已完整备份的15000轮模型，特权筛选教师保持停止。')
+teacher_note=(f"旧15000轮特权筛选教师保持冻结。Step4使用原TRAIN训练独立431D策略，已核验{new_step34.get('formal_completed_iterations',0)}/10000迭代、{new_step34.get('actual_new_PPO_updates',0)}次正式Adam更新；Stage3暂缓。" if new_step34 else '固定使用已完整备份的15000轮模型，特权筛选教师保持停止。')
 text=f'''# TextOp：原教师筛选与当前后继进度
 
 采样时间：{sample}。{teacher_note}

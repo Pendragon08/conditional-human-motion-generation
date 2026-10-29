@@ -1,0 +1,127 @@
+{
+  "schema": "textop.stage4_original_train_only.v1",
+  "method": "one_stage_PPO",
+  "dagger_or_distillation": false,
+  "actor_terms": [
+    [
+      "reference_joint_pos_vel",
+      290
+    ],
+    [
+      "reference_pelvis_position",
+      15
+    ],
+    [
+      "reference_pelvis_orientation_6D",
+      30
+    ],
+    [
+      "projected_gravity",
+      3
+    ],
+    [
+      "base_lin_ang_velocity",
+      6
+    ],
+    [
+      "joint_pos_vel",
+      58
+    ],
+    [
+      "last_action",
+      29
+    ]
+  ],
+  "critic_terms": [
+    [
+      "reference_joint_pos_vel",
+      290
+    ],
+    [
+      "reference_pelvis_position",
+      15
+    ],
+    [
+      "reference_pelvis_orientation_6D",
+      30
+    ],
+    [
+      "projected_gravity",
+      3
+    ],
+    [
+      "key_body_position",
+      42
+    ],
+    [
+      "key_body_orientation_6D",
+      84
+    ],
+    [
+      "base_lin_ang_velocity",
+      6
+    ],
+    [
+      "joint_pos_vel",
+      58
+    ],
+    [
+      "last_action",
+      29
+    ]
+  ],
+  "actor_observation_dim": 431,
+  "critic_observation_dim": 557,
+  "future_reference_frames": 5,
+  "dof": 29,
+  "action_dim": 29,
+  "actor_hidden": [
+    2048,
+    1024,
+    512
+  ],
+  "critic_hidden": [
+    2048,
+    1024,
+    512
+  ],
+  "activation": "elu",
+  "simulation_hz": 200,
+  "policy_hz": 50,
+  "rollout_steps_per_env": 24,
+  "num_envs": 8192,
+  "learning_rate": 0.001,
+  "minibatches": 4,
+  "ppo_epochs": 5,
+  "clip_param": 0.2,
+  "seed": 20261103,
+  "target_RL_iterations": 10000,
+  "target_iterations_note": "Explicit human choice2026-10-29: first10000 PPO learning iterations, not10000 Adam calls; provisional ~30h from initial short8192env timing",
+  "fresh_actor_critic_and_Adam_initialization": true,
+  "old_privileged_teacher_training_resumed": false,
+  "witnesses_authorized": false,
+  "training_authorized": false,
+  "real_RL_witnesses_accepted": false,
+  "new_RL_training_updates": 0,
+  "pfail_conditional_regularization": false,
+  "domain_randomization": true,
+  "source_commit": "ef6555fb174c9b5c44945a62c7ffc77b5ddbbf22",
+  "simulator": "Warm existing Isaac Lab2.1 / Isaac Sim4.5; no installation or shared-source edits",
+  "bound_sources": {
+    "scripts/step4_train_only_protocol.py": "ac83226f50b73700354c82ac4faf9e6b8f9203d451671be38ac752d5aa5b5509",
+    "scripts/step4_train_only_isaaclab_config.py": "d5fd4f7a49e0182b80965b84c522ef45bee403b1e9753ffad0fd7afbda2efad7"
+  },
+  "env_spec_sha256": "57992eea2e2f6aa879493409a7bc2b4d320451e3f24090ed731f1d580a058a93",
+  "blocked_until": [
+    "actual original TRAIN-only reference library accepted",
+    "new431D/557D real PPO author and fresh-document recovery witnesses accepted",
+    "actual fullstate size, resource budget and throughput measured"
+  ],
+  "training_data_mode": "original_train_only",
+  "stage3_status": "POSTPONED_BY_USER",
+  "generated_training_clips": 0,
+  "original_VAL_motions_in_training": 0,
+  "accepted_original_train_library": null,
+  "observation_order_note": "Matches pinned ProjGravObservationsCfg: critic key-body terms precede base velocities/joints/actions",
+  "human_selected_target_iterations": 10000
+}
