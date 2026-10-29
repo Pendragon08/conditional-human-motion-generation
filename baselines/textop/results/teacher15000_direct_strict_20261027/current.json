@@ -2,7 +2,7 @@
   "schema": "textop.direct_strict_user_progress.v1",
   "run": "teacher15000_direct_full_v1",
   "status": "TEXTOP_TEACHER15000_DIRECT_STRICT_EXECUTION_COMPLETED",
-  "sample_beijing": "2026-10-29T09:34:18.929122+08:00",
+  "sample_beijing": "2026-10-29T11:00:15.640148+08:00",
   "teacher_stopped": true,
   "frozen_checkpoint_completed": 15000,
   "checkpoint_sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
@@ -24,8 +24,8 @@
   "raw_light_collector_trace_acceptance": false,
   "strict_physics_accepted": true,
   "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
-  "handoff_stage": "TMR100_CAPACITY_EMERGENCY_CPU_METADATA_FINITE_VERIFIED",
-  "handoff_stage_label": "\u5bb9\u91cf\u4fdd\u62a4\u540e\u7d27\u6025\u72b6\u6001CPU\u6838\u9a8c\u901a\u8fc7\uff0c\u63a5\u7eed\u72ec\u7acb\u5b8c\u6574\u6062\u590d\u81f3100\u8f6e",
+  "handoff_stage": "RUNNING_TMR100_CAPACITY_RESUMED_TRAINING",
+  "handoff_stage_label": "\u8bed\u4e49\u8bc4\u4ef7\u5668\u5df2\u4ece\u5b89\u516883703\u66f4\u65b0\u6062\u590d\uff0c\u7ee7\u7eed\u81f3\u7528\u6237100\u8f6e",
   "actual_unattempted_sources": 0,
   "filtered_corpus_accepted": true,
   "generator_started": true,
@@ -36,10 +36,40 @@
   "ldm_target_primitive_attempts": 100000,
   "user_ldm_endpoint_control_status": "USER_LDM100000_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED",
   "user_100k_control_status": "FAILED_VAE100K_CONTROL_RETAIN_ALL_EVIDENCE",
-  "handoff_workers": [],
+  "handoff_workers": [
+    {
+      "pid": 446023,
+      "start_ticks": "1443847372",
+      "state": "S",
+      "argv": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_tmr100_capacity_resume.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr100_capacity_resume_train_spec.json",
+        "--role",
+        "train",
+        ""
+      ]
+    },
+    {
+      "pid": 446031,
+      "start_ticks": "1443847424",
+      "state": "R",
+      "argv": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tmr100_capacity_resume.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr100_capacity_resume_train_spec.json",
+        "--role",
+        "train",
+        ""
+      ]
+    }
+  ],
   "active_generator_spec_sha256": "654332646f2aa4bb69fea4cc779edf88138735a0ca9f5e5906e783948868c770",
   "ldm_selected_checkpoint_sha256": "9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea",
-  "ldm_successor_run": "tmr100_capacity_emergency_audit_v2",
+  "ldm_successor_run": "tmr100_capacity_resume_train_v1",
   "ldm_successor_dispatch_unconfirmed": false,
   "ldm_diagnostic_summary": {
     "statistics": {
@@ -182,10 +212,10 @@
     "semantic_metrics_available": false
   },
   "tmr_evaluator_training": {
-    "status": "FAILED_TMR69D_FORMAL_EVALUATOR_ALL_STATES_RETAINED",
+    "status": "RUNNING_TMR100_CAPACITY_RESUMED_TRAINING",
     "original_program_status": "FAILED_TMR69D_FORMAL_EVALUATOR_ALL_STATES_RETAINED",
-    "optimizer_updates": 83703,
-    "completed_epochs": 82,
+    "optimizer_updates": 93500,
+    "completed_epochs": 92,
     "target_epochs": 100,
     "expected_optimizer_updates": 101500,
     "original_program_target_epochs": 500,
@@ -202,7 +232,10 @@
       "actual_new_optimizer_updates": 0,
       "production_restore_still_required": true
     },
-    "formal_resume_started": false
+    "formal_resume_started": true,
+    "resumed_from_safe_updates": 83703,
+    "actual_new_formal_updates": 9797,
+    "original_failed_attempts_retained": 83704
   },
   "user_tmr100_endpoint": {
     "status": "FAILED_TMR100_CONTROL_CAPACITY_PROTECTION_ORIGINAL_EXITS_RETAINED",
@@ -336,11 +369,14 @@
   },
   "remote_observation_available": true,
   "last_access_attempt_beijing": null,
-  "last_verified_handoff_stage": "TMR100_CAPACITY_EMERGENCY_CPU_METADATA_FINITE_VERIFIED",
+  "last_verified_handoff_stage": "RUNNING_TMR100_CAPACITY_RESUMED_TRAINING",
   "active_spec_sha256": "91184fff75f8a0579a759abb418d4a0186d3e42a9a48c176e3d33facc768a1cd",
-  "worker_pids": [],
+  "worker_pids": [
+    446023,
+    446031
+  ],
   "physical_replay_worker_pids": [],
-  "common_lock_free": true,
+  "common_lock_free": false,
   "physical_replay_lock_released": true,
   "runtime_receipt_count_note": "replayed_original_sources and unattempted_original_sources describe planned selected/outside scope until execution ends; live pending is8278-finished_trials",
   "source_progress_sha256": "a61eb9cf62b95145bfb19f79dbf2967f381e40eff06633cc62aa3aa41979c689"

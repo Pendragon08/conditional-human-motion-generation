@@ -1,3 +1,5 @@
+CURRENT 2026-10-29T11:00:15.640148+08:00：TMR独立恢复作者/fresh GPU均真实0且逐位一致；fresh原过时header finding已保留并独立解决，真实SUMMARY09ea8c...。新唯一tmr100_capacity_resume_train_v1已RUNNING，92/100轮/93500AdamW，新增9797、0skip，原supervisor446023/start1443847372、worker446031/start1443847424仅线索，核实际身份。共模型锁占用，原83k/82轮失败全保留，禁止再launch author/document/旧原训练或控制器。活动恢复源/spec冻结，不手动信号；只补17797到101500。后继100CPU/语义resumed来源路由已部署禁用，实际出口/正式语义0。Step3/PPO大容量仍未解决，不重跑任何清理/大目录盘点。详见TMR100_CAPACITY_RESUME_ENVIRONMENT.md与reports/tmr100_capacity_resume_actual_20261029.md。以下旧状态仅历史。
+
 CURRENT 2026-10-29 本轮新清理完成：仅两份闲置下载包实际回收79089664B，DATA约2.398GB；D完整私有恢复包/SHA/CRC/owner/复制0已实核。另一个正在使用的项目cache全部保留。原TMR容量保护停在82轮/83703安全更新，CPU1044张量与AdamW/RNG/sampler核验通过（audit_v2真实0闭合）；正式续训尚未启动，下一步新独立完整恢复见证后只补17797到100轮/101500。旧训练/控制器已失败退出，0控制生产信号，不重启/rearm。Step3/PPO仍缺约20GB持久容量，不能以79MB回收冒称已解除。详见reports/storage_cleanup_and_tmr_capacity_20261029.md。以下旧健康/全cache候选信息只为历史。
 
 CURRENT 2026-10-29：用户新授权清理正在完整D私有恢复包核验；尚未删除。原TMR已因DATA容量保护在82轮/83703安全更新退出，attempt83704脏内存不选；旧100控制也退出且0生产信号。原失败全部保留，禁止重启/rearm。只在空间恢复和独立完整恢复接受后补齐用户100轮。详见reports/storage_cleanup_and_tmr_capacity_20261029.md。以下旧健康/WAITING样本只为历史。

@@ -1,3 +1,5 @@
+CURRENT resumed来源准备已更新：三份100轮CPU/语义spec仍false/null。tmr100_trained_acceptance的显式resumed分支只接受tmr100_capacity_resume_train_v1真正100/101500/17797新更新/child-sup-outer0/closed/生产精确重载与新witness/document闭合；原控制失败不改成功。新helper tmr100_capacity_resumed_acceptance.py、原helper/CPU入口新字节及原禁用spec旧字节已完整归档。当前恢复训练仍在运行，不能提前activate/pending。数值协议、门槛与CPU900s/16GiB/无CUDA/共锁未改；以下原100 CPU/fresh/语义调用顺序仍有效，来源由新分支接受。
+
 # 100轮评价器的实际出口与后继
 
 用户目标是100完整epoch/101500次AdamW，原模型/AdamW/RNG/常数LR不变。只选HOME/textop-tmr69d-evaluator-20261029/checkpoints/tmr_epoch_100.pth。原500轮作业受控SIGINT后的非零与emergency保留，不能改成500轮成功。先读TMR100_USER_ENDPOINT_ENVIRONMENT.md、最新progress和CONTINUATION顶部；不要重派已有控制/夹具。

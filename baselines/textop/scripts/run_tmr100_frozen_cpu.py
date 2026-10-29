@@ -113,6 +113,8 @@ def main():
         for group in optimizer.param_groups:
             assert group['lr'] == .0001 and group['weight_decay'] == .01
         selected_model_sha256 = module_sha(model)
+        if train['binding']['kind'] == 'USER_TMR100_CAPACITY_RESUME_ORIGINAL_FAILURE_RETAINED':
+            assert selected_model_sha256 == train['receipt']['final_model_sha256']
         model.eval().requires_grad_(False)
 
         def probe(module):

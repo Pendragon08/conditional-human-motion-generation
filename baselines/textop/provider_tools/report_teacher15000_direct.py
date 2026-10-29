@@ -90,6 +90,12 @@ for semantic_run in ['tmr_isolated_runtime_v1','tmr_text_models_v1','tmr69d_trai
   sj=json.loads(semantic_path.read_bytes());sr=sj.get('files',{}).get('receipt',{})
   if sr.get('status') and sj['observed_unix']>=handoff_observed:
    handoff_stage=sr['status'];ldm_successor_run=semantic_run;handoff_workers=sj['workers'];handoff_lock_free=sj['common_lock_free'];handoff_observed=sj['observed_unix'];ldm_latest_confirmed_stage=handoff_stage;ldm_dispatch_unconfirmed=False
+for resumed_run in ['tmr100_capacity_resume_author_v1','tmr100_capacity_resume_document_v1','tmr100_capacity_resume_train_v1']:
+ resumed_path=B/'results/semantic_evaluator_20261029'/resumed_run/'progress.json'
+ if resumed_path.exists():
+  sj=json.loads(resumed_path.read_bytes());sr=sj.get('files',{}).get('receipt',{})
+  if sr.get('status') and sj['observed_unix']>=handoff_observed:
+   handoff_stage=sr['status'];ldm_successor_run=resumed_run;handoff_workers=sj['workers'];handoff_lock_free=sj['common_lock_free'];handoff_observed=sj['observed_unix'];ldm_latest_confirmed_stage=handoff_stage;ldm_dispatch_unconfirmed=False
 tmr100_endpoint=None
 tep=B/'results/semantic_evaluator_20261029/user_tmr100_control_v1/progress.json'
 if tep.exists():
@@ -151,6 +157,10 @@ phase_label={'USER_LDM100K_RECORDED_TRACKING_FIDELITY_FINISHED':'真实执行姿
  'TMR69D_FORMAL_EVALUATOR_500_EPOCHS_FINISHED':'语义评价器训练已结束，接续冻结推理与真正留出指标',
  'FAILED_TMR69D_FORMAL_EVALUATOR_ALL_STATES_RETAINED':'语义评价器训练退出，保留全部状态并处理；生成器未追加训练',
  'TMR100_CAPACITY_EMERGENCY_CPU_METADATA_FINITE_VERIFIED':'容量保护后紧急状态CPU核验通过，接续独立完整恢复至100轮',
+ 'PREPARING_TMR100_CAPACITY_RESUME':'正在从容量保护的安全状态完整恢复语义评价器',
+ 'TMR100_CAPACITY_RESUME_REAL_GPU_WITNESS_VERIFIED':'语义评价器的真实GPU完整恢复与重放见证通过',
+ 'RUNNING_TMR100_CAPACITY_RESUMED_TRAINING':'语义评价器已从安全83703更新恢复，继续至用户100轮',
+ 'TMR100_CAPACITY_RESUMED_100_EPOCHS_FINISHED':'语义评价器已完成100轮恢复训练，接续冻结与语义验收',
  'AUDITING_TRAINED_TMR69D_ON_CPU':'已训练语义评价器的CPU完整性与推理检查中',
  'TMR69D_TRAINED_FROZEN_CPU_EXPORTED':'语义评价器私有推理导出完成，接续独立CPU复核',
  'TMR69D_TRAINED_FROZEN_FRESH_CPU_VERIFIED':'语义评价器独立CPU复核通过，接续真实留出指标',
@@ -199,6 +209,15 @@ if ep.exists():
   if capacity_audit:
    tmr_evaluator_training['capacity_emergency_cpu_audit']=capacity_audit
    tmr_evaluator_training['formal_resume_started']=False
+  resumed_path=B/'results/semantic_evaluator_20261029/tmr100_capacity_resume_train_v1/progress.json'
+  if resumed_path.exists():
+   rj=json.loads(resumed_path.read_bytes());rr=rj.get('files',{}).get('receipt',{})
+   if rr:
+    tmr_evaluator_training.update(status=rr['status'],optimizer_updates=rr['formal_optimizer_updates'],
+      completed_epochs=rr['completed_epochs'],target_epochs=100,expected_optimizer_updates=101500,
+      formal_resume_started=rr.get('status')!='PREPARING_TMR100_CAPACITY_RESUME',
+      resumed_from_safe_updates=83703,actual_new_formal_updates=rr['actual_new_formal_optimizer_updates'],
+      original_failed_attempts_retained=83704,closed_execution_verified=rj['closed_execution_verified'])
   new_effect_note+=f" 用户已将独立语义评价器改为{target}轮；当前{tmr_evaluator_training['completed_epochs']}/{target}轮、{tmr_evaluator_training['optimizer_updates']}次已核验更新，目标{updates}次。原500轮run名仅来源，所选100轮状态不把原受控中断改写成500轮成功。正式语义指标仍待冻结验收。"
 np=B/'results/semantic_evaluator_20261029/tmr69d_numeric_data_v1/progress.json'
 if np.exists():

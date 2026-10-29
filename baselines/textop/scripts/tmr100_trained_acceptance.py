@@ -27,6 +27,10 @@ def validate_fullstate_metadata(state,spec):
     digest(state['next_batch_sha256'])
     assert isinstance(state['model'],dict) and state['model']
     assert isinstance(state['optimizer'],dict) and state['optimizer']['state']
+    if 'capacity_resume' in state:
+        from tmr100_capacity_resumed_acceptance import accepted_resume,validate_resume_provenance
+        resumed=accepted_resume()
+        validate_resume_provenance(state,resumed['binding']['spec_sha256'],resumed['binding']['runtime_binding_sha256'])
     return dict(completed_epochs=100,optimizer_updates=101500,sampler_epoch=99,sampler_cursor=32462,
         pending_validation=False,saved_cuda_rng_devices=1,cuda_rng_restored=False,actual_new_optimizer_updates=0,
         selected_user_prefix=True,original500_epoch_success_claimed=False)
@@ -55,6 +59,9 @@ def closed_evaluator_job(run,receipt_path,receipt_sha,supervisor_sha,request_sha
 
 
 def accepted_training(binding=None):
+    if (binding is not None and binding.get('kind')=='USER_TMR100_CAPACITY_RESUME_ORIGINAL_FAILURE_RETAINED') or (binding is None and (PARENT/'tmr100_capacity_resume_train_v1/receipt.json').exists()):
+        from tmr100_capacity_resumed_acceptance import accepted_resume
+        return accepted_resume(binding)
     sp=owned(TRAIN_SPEC);assert sha(sp)==TRAIN_SPEC_SHA;spec=read(sp)
     assert sha(ROOT/'scripts/train_tmr69d_evaluator.py')==spec['executor_sha256']==TRAIN_ENTRY_SHA
     assert sha(ROOT/'scripts/supervise_tmr69d_evaluator_training.py')==spec['supervisor_sha256']
