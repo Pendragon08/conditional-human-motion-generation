@@ -1,3 +1,5 @@
+CURRENT 2026-10-29：用户新授权清理正在完整D私有恢复包核验；尚未删除。原TMR已因DATA容量保护在82轮/83703安全更新退出，attempt83704脏内存不选；旧100控制也退出且0生产信号。原失败全部保留，禁止重启/rearm。只在空间恢复和独立完整恢复接受后补齐用户100轮。详见reports/storage_cleanup_and_tmr_capacity_20261029.md。以下旧健康/WAITING样本只为历史。
+
 <!--storage-user-check-current-start-->
 CURRENT新增实际存储检查：用户回复“你检查下”后，已只读核全部已挂载持久fs/本人已知路径与本机全部逻辑盘。服务器仅系统ext4（HOME）3.0059GB和/data ext4 2.3851GB；/mnt/media/srv/tmp仍同一系统fs，无另一个有20GB空闲的持久挂载。本机只C/D两逻辑盘，约3.19/3.20GB，无≥5GB空闲盘。未目录树扫描/触碰他人/删除/移动/分区/挂载。原始路径证据只D私有保留，公开storage_inspection_summary_v1.json。新目录不能增加同fs可用容量，需要真正扩容或新持久挂载；不重复要求用户提供同盘新路径。此只阻塞新增强数据/PPO大输出，现有TMR100/CPU冻结/语义继续。当前新轻量训练样本77/100epoch、78400AdamW/0skip，控制77/78400 WAITING/0生产信号，原训练与observer身份均相符/commonlock占用，非保存点。后续新实核收据覆盖。
 <!--storage-user-check-current-end-->
