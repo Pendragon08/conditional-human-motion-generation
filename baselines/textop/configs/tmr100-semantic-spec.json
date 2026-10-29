@@ -1,0 +1,68 @@
+{
+  "schema": "textop.trained_robot_tmr69d_semantic.v1",
+  "witnesses_authorized": false,
+  "metrics_authorized": false,
+  "frozen_model_binding": null,
+  "witness_bindings": null,
+  "metric_protocol": {
+    "encoding_sample_mean": true,
+    "latent_dimensions": 256,
+    "per_sample_L2_normalization": false,
+    "distance": "raw_latent_Euclidean_float64",
+    "candidate_count": 32,
+    "candidate_schedule": "sha256_segment_order_disjoint_blocks_with_fixed_tail_distractors_v1",
+    "tied_rank": "zero_based_average_of_exact_distance_ties",
+    "positive": "exact_paired_annotation_segment_only",
+    "all188_queries_scored": true,
+    "covariance_ddof": 1,
+    "fid_population_per_seed": 188,
+    "pooled_repeated_reference_across_seeds": false,
+    "seed_aggregation": "equal_mean_all_five_seeds_no_selection",
+    "scored_frames": "only_declared_future_no_history_no_padding_tail",
+    "continuous_transitions_or_full_validation": false,
+    "author_exact_protocol_claimed": false
+  },
+  "diagnostic_binding": {
+    "generation_spec_sha256": "b09b6f83b427f39267594b332331f2bf06109ce9993f9bba4d3670c2b2764871",
+    "generation_receipt_sha256": "b0aaa7642ad9d2573dcb434f7445389dfc2fdd20d539d9f27c11d049b7a6853f",
+    "generation_closure": {
+      "exit_sha256": "cc2c1ab0b7be280546e1a275d26375390e4ee9b2f67ca8ab764f25be8c0c3346",
+      "process_sha256": "df218dc5b3d2f716b310f3e068bada8cdf66d08d8ea82ad36a2fe4be7ed884c5",
+      "outer_sha256": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+    },
+    "private_journal_sha256": "dc868d2876233795a554ddce32e33e8d10ce494ed20a530e287a52ed1bc748c1"
+  },
+  "normalization_sha256": "4a4b8838736a7541d5c2de7b944da78870fcf8fa1e55359599f815c371da1bb4",
+  "executor_sha256": "72c87b1f59b0ac9228bad65957c17980efbf94300ae9c25fc113780160cc25e6",
+  "supervisor_sha256": "69051a6e348014135c6681c7137bd52e05dcff191de1a75a13371a6cddf61828",
+  "bound_sources": {
+    "scripts/tmr69d_semantic_math.py": "63b4d82174bfbf3062a5357c953bdfebb85b9dc995a749af1b061653f9a16529",
+    "scripts/tmr100_semantic_inputs.py": "038fd97e4bbe7a03bbdec7ae1b668e50e17bc34171544350dfc6b79f0c68f481",
+    "scripts/tmr100_trained_acceptance.py": "a8767540c4238dae6ef3d8f3c600f19afa995438f806536a5b2472bae765ea18",
+    "scripts/tmr69d_core.py": "a1c7a752252211866215e946050cf843ccc08343fa17b8844c7bb56884557f68",
+    "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e",
+    "scripts/contact_process_supervision.py": "44d689a71dc0c04778a7e6e651bc61d234dd59d3435a80c543be9d8db55638b4",
+    "scripts/contact_filter_resources.py": "1003a7cba9d2f2e30a05a881020e51ed8907eba6d523e4ce8af6b1b5399f76e5",
+    "scripts/tmr100_endpoint_protocol.py": "920395d0dd31a3dd94ea1773537e8f7b39cb39d9c94ac649498259f1f1e1286f",
+    "scripts/vae100k_control_protocol.py": "1aa7936c461f6801cddb0a76378ecd49d9d696c543ed7534d976c3e03b4e8216",
+    "scripts/quick_pidfd.py": "df180bffb3e35dd77c8bb4f8ca9b143879a4184f6f8aab98188e1139de6538f2"
+  },
+  "reserve_bytes": 2147483648,
+  "log_allowance_bytes": 134217728,
+  "output_upper_bytes": 8388608,
+  "seeds": [
+    20261028,
+    20261029,
+    20261030,
+    20261031,
+    20261101
+  ],
+  "modes": [
+    "conditional_cfg5",
+    "unconditional"
+  ],
+  "author_exact_evaluation_protocol_claimed": false,
+  "actual_semantic_metrics_accepted": false,
+  "evaluator_training_epochs": 100,
+  "evaluator_optimizer_updates": 101500
+}

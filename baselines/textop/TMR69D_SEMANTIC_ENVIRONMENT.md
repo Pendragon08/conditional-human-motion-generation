@@ -1,3 +1,11 @@
+<!--tmr100-user-current-start-->
+CURRENT 2026-10-29T08:22:19.012365+08:00：最新人类命令覆盖旧500轮：“500轮训练要太久了，改为100轮吧，不要500轮了。”现只选TMR第100轮/101500 AdamW完整状态，后续直接冻结评估与Step3/4，不再等500或507500。原run名tmr69d_evaluator500_train_v1和运行spec/source仍为原来源，冻结不编辑、不重启、不压缩数值/常数LR/RNG。VAE/LDM仍各100000，旧教师停止。
+新唯一CPU端点user_tmr100_control_v1已实际派发并ARMED：采样Unix1793233316.210879为72轮/73300AdamW，WAITING_FOR_REAL_TMR_EPOCH100_SAVED_AND_RELOADED/0生产信号。原supervisor416285/start1441791429与worker416293/start1441791443保持原作业；新observer431950/start1443022390、supervisor431945/start1443022380仅身份线索，核真实argv/starttime。active control specSHA2f0498031e7fa9d5630848320dfed944c66c2c36ef45fa6cacbfe1989a02bba8，watcher4856467bd730b1f826a44e96b84faecbde57185f5e1ece20038b1d66d7379a24。控制每秒等真正100轮atomic fsync/rename、model/AdamW/allRNG/sampler/nextbatch生产精确重载及pending=false，再独立全SHA/owner/no-symlink/fingerprint后一次pidfdSIGINT，0模型/真实checkpoint载荷反序列化/GPU；独立metadata锁，不占GPU锁。严禁rearm/第二observer/额外信号。CPU/1GiB/2GiBdata/15秒资源/7天边界不降。
+作者v2和fresh user_tmr100_control_document_v2 CPUfixture均实际0/reaped/final，14+4负例/重复intent拒绝，只有各自sleep进程收到1次SIGINT，生产信号/真实checkpoint/model/GPU均0。fresh真实SUMMARY SHA1a380fbc6971654a416f8c0937a498a6f947e31964b996a2e78fad79ec91d38a。prepare本地换行签名拒绝与author_v1测试argv子串错误失败1均保留；无控制/训练信号后已核空，归档精确旧字节才修复新禁用夹具，不改原训练，旧失败不改成功，不重跑已完成夹具。
+只有USER_TMR100_EPOCH_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED+控制自身process/sup/outer0+原无worker/模型锁释放才接受端点。原RuntimeError('Owned TMR evaluator interrupted with signal 2')及原训练非零退出保留，post100内存/emergency不选，不重标500轮成功；原100轮immutable state唯一选用。
+新100轮CPU导出/独立复核/语义桥已另名部署禁用，详见TMR100_FROZEN_AND_SEMANTIC_ENVIRONMENT.md。12个新prefix计数/RNG/sampler负例远端CPU0、14实际桥渲染Python3.8通过，仅准备；实际100轮出口/导出/语义均尚未接受，不提前pending启用。旧500轮源码/spec全保留但不再用于本目标。请用provider_tools/tmr100_endpoint.py collect --evidence新短ASCII轻量查唯一控制；正式模型live仍原collect_tmr69d_evaluator_training.py。阶段不是停工点，完成后直接新100CPU/fresh/语义→Step3增强与新one-stagePPO。Step3/4新增持久空间仍待用户输入，不能用本次减少epoch假装解决空间。
+<!--tmr100-user-current-end-->
+
 # 真正训练冻结后的机器人语义诊断入口
 
 CURRENT 2026-10-29：新的数值后端、900/7200秒监督和activate/launch/collect桥已部署禁用。`configs/tmr69d-semantic-spec.json`的`witnesses_authorized=false`、`metrics_authorized=false`、`frozen_model_binding=null`、`witness_bindings=null`。真实模型见证/语义诊断均0。新13个策略破坏负例和9个数值错误输入、5个解析FID案例在两份独立远端CPU进程真实退出0，仅用合成数字/元数据；不读真实latent、模型、数组，不构造CUDA。8种桥实际渲染通过Python3.8解析。不能把这些准备、合成Rprecision或解析FID当本任务效果。

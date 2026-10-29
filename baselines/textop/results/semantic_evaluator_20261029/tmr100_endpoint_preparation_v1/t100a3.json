@@ -1,0 +1,53 @@
+{
+  "status": "TMR100_ENDPOINT_CPU_FIXTURE_CLOSED",
+  "run": "user_tmr100_control_author_v2",
+  "actual_exit_code": 0,
+  "fixture_receipt": {
+    "status": "TMR100_ENDPOINT_ISOLATED_CPU_FIXTURE_VERIFIED",
+    "metadata_negative_cases": 14,
+    "full_SHA_symlink_and_identity_negative_cases": 4,
+    "unknown_duplicate_intent_rejected": true,
+    "actual_fixture_signals": 1,
+    "actual_production_signals": 0,
+    "fixture_child_exit_code": -2,
+    "fixture_child_reaped": true,
+    "direct_streams_final": true,
+    "production_checkpoint_reads": 0,
+    "production_trainer_process_signalled": false,
+    "model_loads": 0,
+    "new_GPU_contexts": 0,
+    "new_optimizer_updates": 0
+  },
+  "fixture_receipt_sha256": "a62ae93e594bd2e545016656ce8d3b4dcdbe06ddf265850260040123dbab9b5f",
+  "process": {
+    "command": [
+      "taskset",
+      "-c",
+      "0-3",
+      "/usr/bin/env",
+      "CUDA_VISIBLE_DEVICES=",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "/usr/bin/python3",
+      "-B",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/test_tmr100_endpoint.py",
+      "--out",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/user_tmr100_control_author_v2"
+    ],
+    "supervisor_pid": 431576,
+    "child_pid": 431581,
+    "child_exit_code": 0,
+    "child_reaped": true,
+    "timed_out": false,
+    "supervisor_error": null,
+    "shutdown_actions": [],
+    "samples_written": 3,
+    "sample_errors": [],
+    "elapsed_seconds": 0.4033897127956152,
+    "supervision_passed": true
+  },
+  "process_exit_sha256": "276af3537f77cbf568febed704455473f8cc575652851e4d76493a17ab8ef8bb",
+  "resources_sha256": "b40c4e1015c5d5325c25f24f575dd8e20396a62f081fc29b11de0fafef06c2e0",
+  "protocol_sha256": "920395d0dd31a3dd94ea1773537e8f7b39cb39d9c94ac649498259f1f1e1286f",
+  "entrypoint_sha256": "4856467bd730b1f826a44e96b84faecbde57185f5e1ece20038b1d66d7379a24",
+  "spec_sha256": "6251bb644141fbf60f16099f1e0ae81c3b0c97efb6c09db07cf9ba9fd7e6be71"
+}

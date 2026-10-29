@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 180,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "3ce6cc08fd693e1429d5c41cddb8ff57fe0dc9db448d11eea46bf3b9dd2afd28",
+  "client_pid": 62480,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"status\": \"TMR100_PREFIX_FROZEN_AND_SEMANTIC_SUCCESSORS_DEPLOYED_DISABLED\", \"files\": {\"scripts/run_tmr100_frozen_cpu.py\": \"b06b91b19893970f568dc49415a984cc6a649119dea813dc80c5cb18e02defe5\", \"scripts/supervise_tmr100_frozen_cpu.py\": \"05262fadc9c0c19a65a3b05891f08b078455cd60d4f3651a5265b5c06f68f211\", \"scripts/tmr100_semantic_inputs.py\": \"038fd97e4bbe7a03bbdec7ae1b668e50e17bc34171544350dfc6b79f0c68f481\", \"scripts/run_tmr100_semantic.py\": \"72c87b1f59b0ac9228bad65957c17980efbf94300ae9c25fc113780160cc25e6\", \"scripts/supervise_tmr100_semantic.py\": \"69051a6e348014135c6681c7137bd52e05dcff191de1a75a13371a6cddf61828\", \"scripts/tmr100_trained_acceptance.py\": \"a8767540c4238dae6ef3d8f3c600f19afa995438f806536a5b2472bae765ea18\", \"scripts/test_tmr100_frozen_contract.py\": \"dba4f0cf4754cbdc34efca722470d20005931733a48e1b23ddcb6114ae6856e4\", \"configs/tmr100-frozen-export-spec.json\": \"f479c5da1593ca0dd6d79dafff62571f64dbadb821fe0f1d25b50b53cff56c90\", \"configs/tmr100-frozen-verify-spec.json\": \"666ef04f55d8c12fc29449d9d692fca55cf6078fd1fe9bf7b903c3160f88d276\", \"configs/tmr100-semantic-spec.json\": \"003df3988aa2dd7849de0fb35a7530437c9a4d4db7475affa8094c6f5eb5b166\"}, \"actual_fixture\": {\"status\": \"TMR100_FROZEN_PREFIX_METADATA_CONTRACT_VERIFIED\", \"isolated_negative_cases\": 12, \"actual_production_checkpoint_reads\": 0, \"actual_model_loads\": 0, \"actual_GPU_contexts\": 0, \"actual_exports\": 0, \"actual_optimizer_updates\": 0}, \"process\": {\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"CUDA_VISIBLE_DEVICES=\", \"PYTHONDONTWRITEBYTECODE=1\", \"/usr/bin/python3\", \"-B\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/test_tmr100_frozen_contract.py\"], \"supervisor_pid\": 432254, \"child_pid\": 432259, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 3, \"sample_errors\": [], \"elapsed_seconds\": 0.23790384270250797, \"supervision_passed\": true}, \"all_original500_sources_and_active_training_unchanged\": true, \"actual_model_loads\": 0, \"actual_checkpoint_reads\": 0, \"actual_exports\": 0, \"actual_semantic_metrics\": 0, \"production_signals_sent\": 0}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\semantic_evaluator_20261029\\tmr100_successor_preparation_v1\\deploy_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\semantic_evaluator_20261029\\tmr100_successor_preparation_v1\\deploy_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

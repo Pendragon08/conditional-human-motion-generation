@@ -2,7 +2,7 @@
   "schema": "textop.direct_strict_user_progress.v1",
   "run": "teacher15000_direct_full_v1",
   "status": "TEXTOP_TEACHER15000_DIRECT_STRICT_EXECUTION_COMPLETED",
-  "sample_beijing": "2026-10-29T07:23:41.125856+08:00",
+  "sample_beijing": "2026-10-29T08:21:47.542902+08:00",
   "teacher_stopped": true,
   "frozen_checkpoint_completed": 15000,
   "checkpoint_sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
@@ -52,7 +52,7 @@
     {
       "pid": 416293,
       "start_ticks": "1441791443",
-      "state": "R",
+      "state": "S",
       "argv": [
         "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
         "-B",
@@ -209,13 +209,54 @@
   },
   "tmr_evaluator_training": {
     "status": "RUNNING_FRESH_TMR69D_EVALUATOR_TRAINING",
-    "optimizer_updates": 53600,
-    "completed_epochs": 52,
-    "target_epochs": 500,
-    "expected_optimizer_updates": 507500,
+    "original_program_status": "RUNNING_FRESH_TMR69D_EVALUATOR_TRAINING",
+    "optimizer_updates": 73200,
+    "completed_epochs": 72,
+    "target_epochs": 100,
+    "expected_optimizer_updates": 101500,
+    "original_program_target_epochs": 500,
+    "original_program_target_optimizer_updates": 507500,
     "closed_execution_verified": false,
     "generator_teacher_additional_updates": 0,
     "semantic_metrics_computed": false
+  },
+  "user_tmr100_endpoint": {
+    "status": "WAITING_FOR_REAL_TMR_EPOCH100_SAVED_AND_RELOADED",
+    "target_epochs": 100,
+    "target_optimizer_updates": 101500,
+    "signals_sent": 0,
+    "closed_execution_verified": false,
+    "observer_workers": [
+      {
+        "pid": 431945,
+        "start_ticks": "1443022380",
+        "uid": 1013,
+        "argv": [
+          "/usr/bin/python3",
+          "-B",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_tmr100_endpoint.py",
+          "--run",
+          "user_tmr100_control_v1"
+        ],
+        "state": "S",
+        "pgid": 431944
+      },
+      {
+        "pid": 431950,
+        "start_ticks": "1443022390",
+        "uid": 1013,
+        "argv": [
+          "/usr/bin/python3",
+          "-B",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/watch_tmr100_endpoint.py",
+          "--run",
+          "user_tmr100_control_v1"
+        ],
+        "state": "S",
+        "pgid": 431950
+      }
+    ],
+    "original500_completion_claimed": false
   },
   "new_step34": {
     "status": "ACTUAL_TRAIN_TEXT_SCOPE_ACCEPTED_GENERATION_AND_NEW_PPO_PENDING",

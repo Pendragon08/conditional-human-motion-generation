@@ -84,12 +84,21 @@ if ldm_target==100000 and endpoint_path.exists():
     if client.get('client_reaped') and client.get('actual_client_exit_code') not in [None,0]:
      handoff_stage='LDM100K_SUCCESSOR_DISPATCH_UNCONFIRMED';ldm_successor_run=successor_run;ldm_dispatch_unconfirmed=True
      handoff_workers=[];handoff_lock_free=None;handoff_observed=max(handoff_observed,dispatch.stat().st_mtime)
-for semantic_run in ['tmr_isolated_runtime_v1','tmr_text_models_v1','tmr69d_training_scope_v1','tmr69d_training_scope_v2','tmr69d_numeric_data_v1','tmr69d_core_contract_v1','tmr_text_models_import_verify_v1','tmr69d_real_witness_author_v1','tmr69d_real_witness_document_v1','tmr69d_evaluator500_train_v1','tmr69d_frozen_export_v1','tmr69d_frozen_verify_v1','tmr69d_semantic_author_v1','tmr69d_semantic_document_v1','tmr69d_semantic32_v1']:
+for semantic_run in ['tmr_isolated_runtime_v1','tmr_text_models_v1','tmr69d_training_scope_v1','tmr69d_training_scope_v2','tmr69d_numeric_data_v1','tmr69d_core_contract_v1','tmr_text_models_import_verify_v1','tmr69d_real_witness_author_v1','tmr69d_real_witness_document_v1','tmr69d_evaluator500_train_v1','tmr69d_frozen_export_v1','tmr69d_frozen_verify_v1','tmr69d_semantic_author_v1','tmr69d_semantic_document_v1','tmr69d_semantic32_v1','tmr100_frozen_export_v1','tmr100_frozen_verify_v1','tmr100_semantic_author_v1','tmr100_semantic_document_v1','tmr100_semantic32_v1']:
  semantic_path=B/'results/semantic_evaluator_20261029'/semantic_run/'progress.json'
  if semantic_path.exists():
   sj=json.loads(semantic_path.read_bytes());sr=sj.get('files',{}).get('receipt',{})
   if sr.get('status') and sj['observed_unix']>=handoff_observed:
    handoff_stage=sr['status'];ldm_successor_run=semantic_run;handoff_workers=sj['workers'];handoff_lock_free=sj['common_lock_free'];handoff_observed=sj['observed_unix'];ldm_latest_confirmed_stage=handoff_stage;ldm_dispatch_unconfirmed=False
+tmr100_endpoint=None
+tep=B/'results/semantic_evaluator_20261029/user_tmr100_control_v1/progress.json'
+if tep.exists():
+ tj=json.loads(tep.read_bytes());tr=tj.get('files',{}).get('receipt',{})
+ tmr100_endpoint=dict(status=tr.get('status'),target_epochs=100,target_optimizer_updates=101500,
+    signals_sent=tr.get('signals_sent',0),closed_execution_verified=tj.get('closed_execution_verified',False),
+    observer_workers=tj.get('workers',[]),original500_completion_claimed=False)
+ if tj.get('closed_execution_verified') and tj['observed_unix']>=handoff_observed:
+  handoff_stage=tr['status'];handoff_workers=[];handoff_lock_free=tj['common_lock_free'];handoff_observed=tj['observed_unix'];ldm_latest_confirmed_stage=handoff_stage
 last_verified_handoff_stage=ldm_latest_confirmed_stage if ldm_dispatch_unconfirmed else handoff_stage;access_unavailable=False;access_attempt=None
 access_path=B/'results/filtered15000_handoff_20261027/filtered15000_vae200k_train_v1/access_status.json'
 if access_path.exists():
@@ -137,6 +146,13 @@ phase_label={'USER_LDM100K_RECORDED_TRACKING_FIDELITY_FINISHED':'真实执行姿
  'TMR69D_REAL_SEMANTIC_EMBEDDING_WITNESS_FINISHED':'真实语义特征见证完成，接续独立核验与全部配对指标',
  'TMR69D_SEMANTIC_DIAGNOSTIC_FINISHED':'留出语义诊断已执行，标量与协议审计仍须真实闭合接受',
  'FAILED_TMR69D_SEMANTIC_ALL_OUTPUTS_RETAINED':'语义诊断退出，保留全部输出并处理'}.get(handoff_stage,phase_label)
+phase_label={'USER_TMR100_EPOCH_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED':'语义评价器按用户100轮目标保存结束，接续冻结评估',
+ 'AUDITING_TMR100_PREFIX_ON_CPU':'100轮语义评价器的CPU完整性与推理检查中',
+ 'TMR100_TRAINED_FROZEN_CPU_EXPORTED':'100轮语义评价器已导出，接续独立复核',
+ 'TMR100_TRAINED_FROZEN_FRESH_CPU_VERIFIED':'100轮语义评价器独立复核通过，接续留出指标',
+ 'RUNNING_TRAINED_ROBOT_TMR100_SEMANTIC_INFERENCE':'100轮语义评价器的真实留出指标计算中',
+ 'TMR100_REAL_SEMANTIC_EMBEDDING_WITNESS_FINISHED':'100轮评价器特征见证完成，接续全配对指标',
+ 'TMR100_SEMANTIC_DIAGNOSTIC_FINISHED':'100轮评价器留出指标已执行，待终端实际审计'}.get(handoff_stage,phase_label)
 diagnostic_summary=None;generated_physics=None;new_effect_note=''
 sp=B/'results/ldm100k_user_handoff_20261028/user_ldm100k_diagnostic_summary_v2/progress.json'
 if sp.exists():
@@ -159,8 +175,14 @@ ep=B/'results/semantic_evaluator_20261029/tmr69d_evaluator500_train_v1/progress.
 if ep.exists():
  ej=json.loads(ep.read_bytes());er=ej.get('files',{}).get('receipt',{})
  if er:
-  tmr_evaluator_training=dict(status=er['status'],optimizer_updates=er.get('formal_optimizer_updates',0),completed_epochs=er.get('completed_epochs',0),target_epochs=500,expected_optimizer_updates=507500,closed_execution_verified=ej['closed_execution_verified'],generator_teacher_additional_updates=0,semantic_metrics_computed=False)
-  new_effect_note+=f" 独立机器人语义评价器当前{tmr_evaluator_training['completed_epochs']}/500轮、{tmr_evaluator_training['optimizer_updates']}次已核验更新；它与已结束的VAE/LDM十万步分别计数，正式语义指标仍待评价器训练和冻结验收。"
+  target=100 if tmr100_endpoint else 500;updates=101500 if target==100 else 507500
+  selected=bool(tmr100_endpoint and tmr100_endpoint['closed_execution_verified'])
+  tmr_evaluator_training=dict(status=tmr100_endpoint['status'] if selected else er['status'],
+    original_program_status=er['status'],optimizer_updates=101500 if selected else er.get('formal_optimizer_updates',0),
+    completed_epochs=100 if selected else er.get('completed_epochs',0),target_epochs=target,expected_optimizer_updates=updates,
+    original_program_target_epochs=500,original_program_target_optimizer_updates=507500,
+    closed_execution_verified=selected or ej['closed_execution_verified'],generator_teacher_additional_updates=0,semantic_metrics_computed=False)
+  new_effect_note+=f" 用户已将独立语义评价器改为{target}轮；当前{tmr_evaluator_training['completed_epochs']}/{target}轮、{tmr_evaluator_training['optimizer_updates']}次已核验更新，目标{updates}次。原500轮run名仅来源，所选100轮状态不把原受控中断改写成500轮成功。正式语义指标仍待冻结验收。"
 np=B/'results/semantic_evaluator_20261029/tmr69d_numeric_data_v1/progress.json'
 if np.exists():
  nj=json.loads(np.read_bytes())
@@ -201,7 +223,7 @@ current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['st
  actual_unattempted_sources=0 if audit_verified else None,filtered_corpus_accepted=corpus_accepted,generator_started=generator_started,
  generator_primitive_attempts=generator_attempts,vae_target_primitive_attempts=100000 if user_100k_target else 200000,vae_selected_checkpoint_attempts=vae_selected_step,ldm_primitive_attempts=ldm_attempts,ldm_target_primitive_attempts=ldm_target,user_ldm_endpoint_control_status=user_ldm_control_status,user_100k_control_status=user_control_status,handoff_workers=handoff_workers,active_generator_spec_sha256=generator_spec_sha,
  ldm_selected_checkpoint_sha256=ldm_selected_checkpoint_sha256,ldm_successor_run=ldm_successor_run,ldm_successor_dispatch_unconfirmed=ldm_dispatch_unconfirmed,
- ldm_diagnostic_summary=diagnostic_summary,generated_motion_physics=generated_physics,generated_motion_tracking_fidelity=tracking_fidelity,tmr_numeric_inputs=tmr_numeric_inputs,tmr_evaluator_training=tmr_evaluator_training,new_step34=new_step34,
+ ldm_diagnostic_summary=diagnostic_summary,generated_motion_physics=generated_physics,generated_motion_tracking_fidelity=tracking_fidelity,tmr_numeric_inputs=tmr_numeric_inputs,tmr_evaluator_training=tmr_evaluator_training,user_tmr100_endpoint=tmr100_endpoint,new_step34=new_step34,
  remote_observation_available=not access_unavailable,last_access_attempt_beijing=access_attempt,last_verified_handoff_stage=last_verified_handoff_stage,
  active_spec_sha256=h,worker_pids=[x['pid'] for x in handoff_workers],physical_replay_worker_pids=[x['pid'] for x in j['workers']],common_lock_free=handoff_lock_free,
  physical_replay_lock_released=j['common_lock_free'],
