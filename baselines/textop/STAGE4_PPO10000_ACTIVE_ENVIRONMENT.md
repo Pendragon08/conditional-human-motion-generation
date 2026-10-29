@@ -5,8 +5,8 @@ estimate. Stage3 remains POSTPONED_BY_USER; no augmentation or extra generator/
 old teacher training. Source/method policy remains original TRAIN-only.
 
 Unique active run: user_step4_train_only_ppo10000_train_v4.
-Sampling 1793264742.8807552: 102/10000 completed
-PPO iterations, 2040/200000 finite Adam calls.
+Sampling 1793271958.9692626: 1066/10000 completed
+PPO iterations, 21320/200000 finite Adam calls.
 Status RUNNING_STAGE4_FRESH_ORIGINAL_TRAIN_PPO, no exit, common model lock held.
 Supervisor478971/start1446078760; SDK child479092/start1446080144; driver478970/
 start1446078757. These identifiers must be rechecked, not trusted as liveness.
@@ -79,7 +79,7 @@ model or changing the active runtime. No Stage3 generation is needed.
 
 The current normal-loop scalar timing is recorded at
 results/step4_train_only_20261029/formal10000_timing.json. Initial sample≈11s
-suggested≈30h; latest30-loop sample≈15.37s suggests≈42h. These are conditional
+suggested≈30h; latest30-loop sample≈6.27s suggests≈15.6h. These are conditional
 training-only estimates; use actual remaining iteration count and wall/scalar
 measurements, not an hours-only native log display, and revise as load/policy
 changes. Do not treat this as a quality result or complete-evaluation ETA.
@@ -98,3 +98,13 @@ All ACS deletion is complete, cloud archive cancelled/incomplete; never resume,
 restore/delete/scan ACS. Other projects/environments/assets remain protected.
 Only code/aggregate proof goes to GitHub; weights/arrays/BABEL texts/trajectories/
 transfer raw/clinical data/keys/SDK/private inventory never public.
+
+## Subsequent disabled CPU source preparation
+
+See STAGE4_PPO10000_FROZEN_CPU_PREPARATION.md. New endpoint provenance and
+actor+RMS CPU core sources are local preparation only. The corresponding spec
+is authorized=false with no endpoint/export binding. No checkpoint or neural
+model was loaded; the live formal source/request/budget is unchanged. The
+bounded entry/supervisor and exclusive bridge still need implementation and
+real post-endpoint CPU/fresh acceptance. Do not invoke these prepared functions
+or old exporters during the active training, or call this stage READY.
