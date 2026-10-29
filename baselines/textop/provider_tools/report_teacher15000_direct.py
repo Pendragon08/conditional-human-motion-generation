@@ -283,6 +283,15 @@ if direct_policy.exists():
  if chosen_target.exists():
   chosen=json.loads(chosen_target.read_bytes());assert chosen['human_selected_target_iterations']==chosen['target_RL_iterations']==10000
   new_step34.update(human_selected_PPO_iterations=10000,target_finite_Adam_calls=200000)
+ # The later human-selected5000 controller supersedes the immutable original
+ # 10000 request; a live controller receipt is not a saved checkpoint.
+ control5000=B/'results/step4_train_only_20261029/ppo5000_endpoint/progress.json'
+ if control5000.exists():
+  ctl=json.loads(control5000.read_bytes());cr=ctl.get('files',{}).get('receipt',{})
+  if cr.get('run')=='user_ppo5000_control_v1' and cr.get('target_iterations')==5000 and cr.get('target_optimizer_updates')==100000:
+   new_step34.update(human_selected_PPO_iterations=5000,target_finite_Adam_calls=100000,
+    user_stop_controller_status=cr.get('status'),user_stop_signals_sent=cr.get('signals_sent'),
+    checkpoint_5000_payload_audited=cr.get('selected_checkpoint_payload_audited',False))
  capacity=B/'results/user_step34_20261029/capacity_resolution_v2.json'
  if capacity.exists():new_step34['storage']=json.loads(capacity.read_bytes())
  for name in ['author_progress.json','document_progress.json','library_progress.json','ppo_author_progress.json','ppo_document_progress.json','ppo_train_progress.json']:
@@ -339,7 +348,7 @@ p.update(status=r['status'],runtime_launch_enabled=not audit_verified,teacher_st
  user_asked_to_relax_threshold=True,relaxed_scope='All originals admitted; no numerical physical termination threshold change',
  historical_ema_candidates_are_not_physical_replay_failures=True)
 priority.write_text(json.dumps(p,ensure_ascii=False,indent=2),encoding='utf-8')
-teacher_note=(f"旧15000轮特权筛选教师保持冻结。Step4使用原TRAIN训练独立431D策略，已核验{new_step34.get('formal_completed_iterations',0)}/10000迭代、{new_step34.get('actual_new_PPO_updates',0)}次正式Adam更新；Stage3暂缓。" if new_step34 else '固定使用已完整备份的15000轮模型，特权筛选教师保持停止。')
+teacher_note=(f"旧15000轮特权筛选教师保持冻结。Step4使用原TRAIN训练独立431D策略，已核验{new_step34.get('formal_completed_iterations',0)}/{new_step34.get('human_selected_PPO_iterations',10000)}迭代、{new_step34.get('actual_new_PPO_updates',0)}次正式Adam更新；Stage3暂缓。" if new_step34 else '固定使用已完整备份的15000轮模型，特权筛选教师保持停止。')
 text=f'''# TextOp：原教师筛选与当前后继进度
 
 采样时间：{sample}。{teacher_note}

@@ -1,6 +1,6 @@
 {
   "schema": "textop.direct_stage4_original_train_only_public.v2",
-  "observed_unix": 1793271958.9692626,
+  "observed_unix": 1793276550.246929,
   "stage3_status": "POSTPONED_BY_USER",
   "training_data_mode": "original_train_only",
   "original_train_families": 5361,
@@ -8,10 +8,10 @@
   "original_train_intervals": 2835665,
   "original_VAL_motions_in_training": 0,
   "actual_generated_clips": 0,
-  "actual_new_PPO_updates": 21320,
-  "formal_completed_iterations": 1066,
-  "human_selected_target_iterations": 10000,
-  "target_Adam_calls": 200000,
+  "actual_new_PPO_updates": 35460,
+  "formal_completed_iterations": 1773,
+  "human_selected_target_iterations": 5000,
+  "target_Adam_calls": 100000,
   "reference_author_closed": true,
   "reference_document_closed": true,
   "reference_arrays_exact": true,
@@ -32,9 +32,9 @@
   "new_PPO": {
     "run": "user_step4_train_only_ppo10000_train_v4",
     "status": "RUNNING_STAGE4_FRESH_ORIGINAL_TRAIN_PPO",
-    "formal_completed_iterations": 1066,
-    "finite_Adam_calls": 21320,
-    "optimizer_attempts": 21320,
+    "formal_completed_iterations": 1773,
+    "finite_Adam_calls": 35460,
+    "optimizer_attempts": 35460,
     "initial_optimizer_state_entries": 0,
     "initial_model_sha256": "e6d85055c509d7552302522906c5d0ca6feaa6e35cac7a2e7f7f84ac2dcd1b20",
     "actor_observation_dim": 431,
@@ -58,7 +58,7 @@
     "full_checkpoint_saved": false,
     "common_model_lock_held": true,
     "actual_worker_count": 3,
-    "live_receipt_sha256": "1bca1f5cba7bb1327c83b73da61f7ba9b4ff474f249182a3c70d4259c1e75caf",
+    "live_receipt_sha256": "13d44c48e960ffd3f24fea954c64a2cd9f270998935abfa41c41ce401712bf0a",
     "immutable_request_sha256": "715feef32953cc79491781753587aa0041dd154db12bfdaa8576d3f57de4aa82",
     "source_sha256": "78d98f457e0a286263196ae523476895b71b56ae690a9c8ee889426805cf7bc8"
   },
@@ -101,12 +101,9 @@
   "saved_learning_state_and_production_reload_equality_required": true,
   "bit_exact_PhysX_cache_replay_claimed": false,
   "timing": {
-    "observed_unix": 1793271867.4371936,
-    "normal_loop_sample_count": 30,
-    "mean_seconds": 6.268682217597961,
-    "provisional_remaining_hours": 15.581157911962931,
-    "training_only": true,
-    "guaranteed": false
+    "status": "latest_5000_target_not_reestimated_in_this_snapshot",
+    "guaranteed": false,
+    "training_only": true
   },
   "earlier_failures_retained": [
     "v1 native sampling under global deterministic mode",
@@ -117,5 +114,25 @@
   "method": "one_stage_PPO",
   "dagger_or_distillation": false,
   "full_paper_reproduction_claimed": false,
-  "MoCap_only_without_Stage3_augmentation": true
+  "MoCap_only_without_Stage3_augmentation": true,
+  "user_selected_5000_controller": {
+    "status": "WAITING_FOR_COMPLETED_PPO5000_BOUNDARY",
+    "target_iterations": 5000,
+    "target_Adam_calls": 100000,
+    "signals_sent": 0,
+    "last_observed_iterations": 1700,
+    "checkpoint_payload_audited": false,
+    "fresh_AI_agent_review_completed": false,
+    "two_isolated_CPU_process_fixtures_passed": true
+  },
+  "frozen_5000_CPU_successor": {
+    "disabled_sources_deployed": true,
+    "authorized": false,
+    "live_predecessor_and_unsupervised_entry_rejected": true,
+    "real_checkpoint_reads": 0,
+    "real_model_imports": 0,
+    "cpu_fullstate_audit_complete": false,
+    "actor_export_complete": false,
+    "independent_process_verify_complete": false
+  }
 }
