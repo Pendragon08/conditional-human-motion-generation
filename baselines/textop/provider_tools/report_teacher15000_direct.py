@@ -246,6 +246,25 @@ if step34_path.exists():
     actor_hidden=[2048,1024,512],future_reference_frames=5,policy_hz=50,storage=capacity,
     active_TMR_job_not_restarted=True,old_privileged_teacher_not_resumed=True)
   new_effect_note+=' 用户新授权Step3/4：5368条/31.48小时TRAIN文本流清单已实际核验并私有备份；这是计划，实际新增强动作0条、新431D Actor/557D Critic单阶段PPO更新0。等待新增持久空间并继续完成真实生成、混合引用与PPO恢复验收。旧15k特权教师仍停止；当前TMR训练不重启、不与新模型作业重叠。'
+tmr_semantic_metrics=None
+semantic_metric_path=B/'results/semantic_evaluator_20261029/tmr100_semantic32_v1/progress.json'
+if semantic_metric_path.exists():
+ mj=json.loads(semantic_metric_path.read_bytes());mr=mj.get('files',{}).get('receipt',{})
+ if mj.get('closed_execution_verified') and mj.get('artifact_audit',{}).get('semantic_scalar_recomputation'):
+  assert mr['status']=='TMR100_SEMANTIC_DIAGNOSTIC_FINISHED' and mr['actual_completed_trials']==1880
+  assert mr['training_optimizer_updates']==mr['generator_teacher_new_updates']==0
+  tmr_semantic_metrics=dict(status=mr['status'],actual_trials=1880,segment_count=188,family_count=32,
+   evaluator_epochs=100,evaluator_updates=101500,equal_seed_summary=mr['equal_seed_summary'],
+   reference_motion_retrieval_baseline={k:mr['reference_motion_retrieval_baseline'][k] for k in ['Rprecision_top1','Rprecision_top2','Rprecision_top3','MMdist']},
+   receipt_sha256=mj['sha256']['receipt'],closed_execution_verified=True,
+   terminal_scalar_recomputation=True,raw_mean_latent_dimensions=256,per_sample_L2=False,
+   full_validation_or_paper_exact_protocol=False,all_seeds_and_failed_physics_inputs_retained=True)
+  if tmr_evaluator_training:tmr_evaluator_training['semantic_metrics_computed']=True
+  if tmr_numeric_inputs:tmr_numeric_inputs['semantic_metrics_available']=True
+  c=mr['equal_seed_summary']['conditional_cfg5'];u=mr['equal_seed_summary']['unconditional']
+  new_effect_note=new_effect_note.replace('正式语义指标仍待冻结验收。','100轮完整状态与推理已通过CPU及独立复核。').replace('正式TMR/在线仍待验收。','真实TMR诊断见后文，在线控制仍待验收。').replace('当前TMR训练不重启、不与新模型作业重叠。','当前TMR已完成100轮，后继模型作业仍严格串行。')
+  new_effect_note+=f" 真正冻结的机器人69D评价器已完成全部1880条语义诊断并独立重算：条件/无条件Top1 {100*c['Rprecision_top1']['equal_seed_mean']:.2f}%/{100*u['Rprecision_top1']['equal_seed_mean']:.2f}%，MMdist {c['MMdist']['equal_seed_mean']:.4f}/{u['MMdist']['equal_seed_mean']:.4f}，FID {c['FID']['equal_seed_mean']:.4f}/{u['FID']['equal_seed_mean']:.4f}。文本检索改善与FID变差同时保留；这是32个VAL家族188独立段、全部5seed的预先固定诊断适配，不是全VAL或论文完整复现。"
+  if handoff_stage=='TMR100_SEMANTIC_DIAGNOSTIC_FINISHED':phase_label='100轮语义评价及终端重算已完成；接续增强/PPO的容量与真实数值验收'
 sample=datetime.datetime.fromtimestamp(handoff_observed,datetime.timezone(datetime.timedelta(hours=8))).isoformat()
 spec=B/'configs/teacher15000-direct-strict-spec.json';h=hashlib.sha256(spec.read_bytes()).hexdigest()
 current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['status'],sample_beijing=sample,
@@ -259,7 +278,7 @@ current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['st
  actual_unattempted_sources=0 if audit_verified else None,filtered_corpus_accepted=corpus_accepted,generator_started=generator_started,
  generator_primitive_attempts=generator_attempts,vae_target_primitive_attempts=100000 if user_100k_target else 200000,vae_selected_checkpoint_attempts=vae_selected_step,ldm_primitive_attempts=ldm_attempts,ldm_target_primitive_attempts=ldm_target,user_ldm_endpoint_control_status=user_ldm_control_status,user_100k_control_status=user_control_status,handoff_workers=handoff_workers,active_generator_spec_sha256=generator_spec_sha,
  ldm_selected_checkpoint_sha256=ldm_selected_checkpoint_sha256,ldm_successor_run=ldm_successor_run,ldm_successor_dispatch_unconfirmed=ldm_dispatch_unconfirmed,
- ldm_diagnostic_summary=diagnostic_summary,generated_motion_physics=generated_physics,generated_motion_tracking_fidelity=tracking_fidelity,tmr_numeric_inputs=tmr_numeric_inputs,tmr_evaluator_training=tmr_evaluator_training,user_tmr100_endpoint=tmr100_endpoint,new_step34=new_step34,
+ ldm_diagnostic_summary=diagnostic_summary,generated_motion_physics=generated_physics,generated_motion_tracking_fidelity=tracking_fidelity,tmr_numeric_inputs=tmr_numeric_inputs,tmr_evaluator_training=tmr_evaluator_training,tmr_semantic_metrics=tmr_semantic_metrics,user_tmr100_endpoint=tmr100_endpoint,new_step34=new_step34,
  remote_observation_available=not access_unavailable,last_access_attempt_beijing=access_attempt,last_verified_handoff_stage=last_verified_handoff_stage,
  active_spec_sha256=h,worker_pids=[x['pid'] for x in handoff_workers],physical_replay_worker_pids=[x['pid'] for x in j['workers']],common_lock_free=handoff_lock_free,
  physical_replay_lock_released=j['common_lock_free'],

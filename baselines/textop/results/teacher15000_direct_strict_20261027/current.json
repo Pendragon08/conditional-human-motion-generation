@@ -2,7 +2,7 @@
   "schema": "textop.direct_strict_user_progress.v1",
   "run": "teacher15000_direct_full_v1",
   "status": "TEXTOP_TEACHER15000_DIRECT_STRICT_EXECUTION_COMPLETED",
-  "sample_beijing": "2026-10-29T11:00:15.640148+08:00",
+  "sample_beijing": "2026-10-29T13:49:10.024343+08:00",
   "teacher_stopped": true,
   "frozen_checkpoint_completed": 15000,
   "checkpoint_sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
@@ -24,8 +24,8 @@
   "raw_light_collector_trace_acceptance": false,
   "strict_physics_accepted": true,
   "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
-  "handoff_stage": "RUNNING_TMR100_CAPACITY_RESUMED_TRAINING",
-  "handoff_stage_label": "\u8bed\u4e49\u8bc4\u4ef7\u5668\u5df2\u4ece\u5b89\u516883703\u66f4\u65b0\u6062\u590d\uff0c\u7ee7\u7eed\u81f3\u7528\u6237100\u8f6e",
+  "handoff_stage": "TMR100_SEMANTIC_DIAGNOSTIC_FINISHED",
+  "handoff_stage_label": "100\u8f6e\u8bed\u4e49\u8bc4\u4ef7\u53ca\u7ec8\u7aef\u91cd\u7b97\u5df2\u5b8c\u6210\uff1b\u63a5\u7eed\u589e\u5f3a/PPO\u7684\u5bb9\u91cf\u4e0e\u771f\u5b9e\u6570\u503c\u9a8c\u6536",
   "actual_unattempted_sources": 0,
   "filtered_corpus_accepted": true,
   "generator_started": true,
@@ -36,40 +36,10 @@
   "ldm_target_primitive_attempts": 100000,
   "user_ldm_endpoint_control_status": "USER_LDM100000_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED",
   "user_100k_control_status": "FAILED_VAE100K_CONTROL_RETAIN_ALL_EVIDENCE",
-  "handoff_workers": [
-    {
-      "pid": 446023,
-      "start_ticks": "1443847372",
-      "state": "S",
-      "argv": [
-        "python3",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_tmr100_capacity_resume.py",
-        "--request",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr100_capacity_resume_train_spec.json",
-        "--role",
-        "train",
-        ""
-      ]
-    },
-    {
-      "pid": 446031,
-      "start_ticks": "1443847424",
-      "state": "R",
-      "argv": [
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
-        "-B",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tmr100_capacity_resume.py",
-        "--request",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr100_capacity_resume_train_spec.json",
-        "--role",
-        "train",
-        ""
-      ]
-    }
-  ],
+  "handoff_workers": [],
   "active_generator_spec_sha256": "654332646f2aa4bb69fea4cc779edf88138735a0ca9f5e5906e783948868c770",
   "ldm_selected_checkpoint_sha256": "9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea",
-  "ldm_successor_run": "tmr100_capacity_resume_train_v1",
+  "ldm_successor_run": "tmr100_semantic32_v1",
   "ldm_successor_dispatch_unconfirmed": false,
   "ldm_diagnostic_summary": {
     "statistics": {
@@ -209,20 +179,20 @@
     "verified_sample_windows": 34068,
     "source_normalized_RAM_bytes": 782643540,
     "formal_evaluator_training_updates": 0,
-    "semantic_metrics_available": false
+    "semantic_metrics_available": true
   },
   "tmr_evaluator_training": {
-    "status": "RUNNING_TMR100_CAPACITY_RESUMED_TRAINING",
+    "status": "TMR100_CAPACITY_RESUMED_100_EPOCHS_FINISHED",
     "original_program_status": "FAILED_TMR69D_FORMAL_EVALUATOR_ALL_STATES_RETAINED",
-    "optimizer_updates": 93500,
-    "completed_epochs": 92,
+    "optimizer_updates": 101500,
+    "completed_epochs": 100,
     "target_epochs": 100,
     "expected_optimizer_updates": 101500,
     "original_program_target_epochs": 500,
     "original_program_target_optimizer_updates": 507500,
-    "closed_execution_verified": false,
+    "closed_execution_verified": true,
     "generator_teacher_additional_updates": 0,
-    "semantic_metrics_computed": false,
+    "semantic_metrics_computed": true,
     "capacity_emergency_cpu_audit": {
       "status": "TMR100_CAPACITY_EMERGENCY_CPU_METADATA_FINITE_VERIFIED",
       "optimizer_updates": 83703,
@@ -234,8 +204,145 @@
     },
     "formal_resume_started": true,
     "resumed_from_safe_updates": 83703,
-    "actual_new_formal_updates": 9797,
+    "actual_new_formal_updates": 17797,
     "original_failed_attempts_retained": 83704
+  },
+  "tmr_semantic_metrics": {
+    "status": "TMR100_SEMANTIC_DIAGNOSTIC_FINISHED",
+    "actual_trials": 1880,
+    "segment_count": 188,
+    "family_count": 32,
+    "evaluator_epochs": 100,
+    "evaluator_updates": 101500,
+    "equal_seed_summary": {
+      "conditional_cfg5": {
+        "Rprecision_top1": {
+          "equal_seed_mean": 0.3361702127659575,
+          "descriptive_seed_population_std": 0.010848977688495286,
+          "all_five_seed_values": [
+            0.3404255319148936,
+            0.3404255319148936,
+            0.3191489361702128,
+            0.32978723404255317,
+            0.35106382978723405
+          ]
+        },
+        "Rprecision_top2": {
+          "equal_seed_mean": 0.49787234042553197,
+          "descriptive_seed_population_std": 0.009865551590952874,
+          "all_five_seed_values": [
+            0.5053191489361702,
+            0.48936170212765956,
+            0.48404255319148937,
+            0.5106382978723404,
+            0.5
+          ]
+        },
+        "Rprecision_top3": {
+          "equal_seed_mean": 0.6053191489361701,
+          "descriptive_seed_population_std": 0.020015838002368915,
+          "all_five_seed_values": [
+            0.6117021276595744,
+            0.5851063829787234,
+            0.6170212765957447,
+            0.6329787234042553,
+            0.5797872340425532
+          ]
+        },
+        "MMdist": {
+          "equal_seed_mean": 30.491711900113508,
+          "descriptive_seed_population_std": 0.11916691409476446,
+          "all_five_seed_values": [
+            30.60302141462636,
+            30.341086399384213,
+            30.596309555625563,
+            30.35217298346308,
+            30.56596914746832
+          ]
+        },
+        "FID": {
+          "equal_seed_mean": 146.26095444021183,
+          "descriptive_seed_population_std": 2.8589871702377776,
+          "all_five_seed_values": [
+            147.39010035359468,
+            142.86470913749116,
+            142.91431658319186,
+            149.81031133479587,
+            148.3253347919855
+          ]
+        }
+      },
+      "unconditional": {
+        "Rprecision_top1": {
+          "equal_seed_mean": 0.23085106382978723,
+          "descriptive_seed_population_std": 0.007215244662899222,
+          "all_five_seed_values": [
+            0.22872340425531915,
+            0.23404255319148937,
+            0.21808510638297873,
+            0.2393617021276596,
+            0.23404255319148937
+          ]
+        },
+        "Rprecision_top2": {
+          "equal_seed_mean": 0.3553191489361702,
+          "descriptive_seed_population_std": 0.01627346653274293,
+          "all_five_seed_values": [
+            0.324468085106383,
+            0.3617021276595745,
+            0.3617021276595745,
+            0.35638297872340424,
+            0.3723404255319149
+          ]
+        },
+        "Rprecision_top3": {
+          "equal_seed_mean": 0.44468085106382976,
+          "descriptive_seed_population_std": 0.014893617021276588,
+          "all_five_seed_values": [
+            0.4308510638297872,
+            0.4627659574468085,
+            0.43617021276595747,
+            0.4308510638297872,
+            0.4627659574468085
+          ]
+        },
+        "MMdist": {
+          "equal_seed_mean": 35.15665576456638,
+          "descriptive_seed_population_std": 0.4155794966362062,
+          "all_five_seed_values": [
+            35.869984722802386,
+            34.67326915053533,
+            35.28466095336802,
+            35.12012886936367,
+            34.8352351267625
+          ]
+        },
+        "FID": {
+          "equal_seed_mean": 132.7310756580549,
+          "descriptive_seed_population_std": 4.923213036210005,
+          "all_five_seed_values": [
+            136.07076298774913,
+            129.791685848962,
+            136.15326128723586,
+            137.23776076916846,
+            124.40190739715898
+          ]
+        }
+      }
+    },
+    "reference_motion_retrieval_baseline": {
+      "Rprecision_top1": 0.2872340425531915,
+      "Rprecision_top2": 0.44148936170212766,
+      "Rprecision_top3": 0.5106382978723404,
+      "MMdist": 31.386332326030715
+    },
+    "receipt_sha256": "c34b9ca92bac9b69115503c20399706e2783af3a266e779b97c75620f6948d5b",
+    "closed_execution_verified": true,
+    "terminal_scalar_recomputation": true,
+    "raw_mean_latent_dimensions": 256,
+    "per_sample_L2": false,
+    "full_validation_or_paper_exact_protocol": false,
+    "all_seeds_and_failed_physics_inputs_retained": true
   },
   "user_tmr100_endpoint": {
     "status": "FAILED_TMR100_CONTROL_CAPACITY_PROTECTION_ORIGINAL_EXITS_RETAINED",
@@ -369,14 +476,11 @@
   },
   "remote_observation_available": true,
   "last_access_attempt_beijing": null,
-  "last_verified_handoff_stage": "RUNNING_TMR100_CAPACITY_RESUMED_TRAINING",
+  "last_verified_handoff_stage": "TMR100_SEMANTIC_DIAGNOSTIC_FINISHED",
   "active_spec_sha256": "91184fff75f8a0579a759abb418d4a0186d3e42a9a48c176e3d33facc768a1cd",
-  "worker_pids": [
-    446023,
-    446031
-  ],
+  "worker_pids": [],
   "physical_replay_worker_pids": [],
-  "common_lock_free": false,
+  "common_lock_free": true,
   "physical_replay_lock_released": true,
   "runtime_receipt_count_note": "replayed_original_sources and unattempted_original_sources describe planned selected/outside scope until execution ends; live pending is8278-finished_trials",
   "source_progress_sha256": "a61eb9cf62b95145bfb19f79dbf2967f381e40eff06633cc62aa3aa41979c689"

@@ -1,28 +1,45 @@
 {
   "run": "tmr100_capacity_resume_train_v1",
-  "observed_unix": 1793242815.640148,
+  "observed_unix": 1793250987.858335,
   "files": {
     "receipt": {
-      "status": "RUNNING_TMR100_CAPACITY_RESUMED_TRAINING",
+      "status": "TMR100_CAPACITY_RESUMED_100_EPOCHS_FINISHED",
       "run": "tmr100_capacity_resume_train_v1",
       "role": "train",
       "source_sha256": "169ec89b760dd8cd8938c90bdd3f1c08685c7b4c76a9ccc44e1810153af2dc46",
       "request_sha256": "8f8e05539d838697f6c4efb325dfa96de5215feb76fc7bb71ef617d57e67d088",
       "runtime_binding_sha256": "3d673e538ac9792ab57888d86eeb57580bc15efa7bcf6eb161ea8e75ffb82244",
-      "output_writers_closed": false,
-      "formal_optimizer_updates": 93500,
-      "completed_epochs": 92,
-      "actual_new_formal_optimizer_updates": 9797,
-      "attempted_new_optimizer_updates": 9797,
+      "output_writers_closed": true,
+      "formal_optimizer_updates": 101500,
+      "completed_epochs": 100,
+      "actual_new_formal_optimizer_updates": 17797,
+      "attempted_new_optimizer_updates": 17797,
       "skipped_updates": 0,
       "target_epochs": 100,
       "expected_optimizer_updates": 101500,
       "original_failed_attempts_retained": 83704,
       "generator_or_teacher_training_updates": 0,
       "original_validation_sources_used_for_gradient": 0,
-      "checkpoints": [],
+      "checkpoints": [
+        {
+          "path": "/home/ouyanghao/textop-tmr69d-evaluator-20261029/resume_checkpoints_v1/tmr_epoch_100_resumed.pth",
+          "bytes": 192952453,
+          "sha256": "7bc1955dfcb31d1eeaa966c8f5b8e972e17d6d58da1205c70fd8029b85050fc8",
+          "epoch": 100,
+          "optimizer_updates": 101500,
+          "pending_validation": false,
+          "emergency": false,
+          "exact_fullstate_deserialization": true,
+          "production_model_adamw_rng_sampler_nextbatch_reloaded": true,
+          "capacity_before": {
+            "free_bytes": 2811604992,
+            "required_bytes": 2684354560,
+            "remaining_slots": 2
+          }
+        }
+      ],
       "semantic_metrics_computed": false,
-      "elapsed_seconds": 1888.7629603631794,
+      "elapsed_seconds": 3416.6923605427146,
       "input_preparation": {
         "phase": "building_real_frozen_text_RAM",
         "modality": 1,
@@ -121,97 +138,161 @@
       },
       "pending_validation": false,
       "last_train_loss": {
-        "recons": 0.21024642884731293,
-        "kl": 22.82929229736328,
-        "latent": 0.6446680426597595,
-        "contrastive": 0.1609497368335724,
-        "loss": 0.22657613456249237
+        "recons": 0.14856277406215668,
+        "kl": 20.805503845214844,
+        "latent": 0.5992676615715027,
+        "contrastive": 0.011919616721570492,
+        "loss": 0.14996877312660217
       },
-      "sampler_epoch": 92,
-      "sampler_cursor": 3840,
+      "sampler_epoch": 99,
+      "sampler_cursor": 32462,
       "last_internal_validation_loss": {
-        "recons": 0.219867810402831,
-        "kl": 44.46167986954134,
-        "latent": 0.9361547265818823,
-        "contrastive": 2.269681360475153,
-        "loss": 0.4472899275505973
+        "recons": 0.21739174831997266,
+        "kl": 44.92419330981719,
+        "latent": 0.9490987815120597,
+        "contrastive": 2.2727467007239164,
+        "loss": 0.4451251594839179
       },
-      "internal_validation_optimizer_updates": 0
-    }
-  },
-  "sha256": {
-    "receipt": "42fee2573c0929e0405af21e110e1e8881fc96e1624cccf7ec055abeba38ebd9"
-  },
-  "workers": [
-    {
-      "pid": 446023,
-      "start_ticks": "1443847372",
-      "state": "S",
-      "argv": [
-        "python3",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_tmr100_capacity_resume.py",
-        "--request",
-        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr100_capacity_resume_train_spec.json",
-        "--role",
-        "train",
-        ""
-      ]
+      "internal_validation_optimizer_updates": 0,
+      "selected_checkpoint": {
+        "path": "/home/ouyanghao/textop-tmr69d-evaluator-20261029/resume_checkpoints_v1/tmr_epoch_100_resumed.pth",
+        "bytes": 192952453,
+        "sha256": "7bc1955dfcb31d1eeaa966c8f5b8e972e17d6d58da1205c70fd8029b85050fc8",
+        "epoch": 100,
+        "optimizer_updates": 101500,
+        "pending_validation": false,
+        "emergency": false,
+        "exact_fullstate_deserialization": true,
+        "production_model_adamw_rng_sampler_nextbatch_reloaded": true,
+        "capacity_before": {
+          "free_bytes": 2811604992,
+          "required_bytes": 2684354560,
+          "remaining_slots": 2
+        }
+      },
+      "final_model_sha256": "8aec09f5bb47ba92f5ef4f16e680f8a0cac24fd97a0503cd054d104915aa2130",
+      "source_inputs_and_checkpoint_unchanged": true,
+      "exact_final_model_adamw_all_rng_sampler_nextbatch_disk_reload": true,
+      "original500_success_claimed": false
     },
-    {
-      "pid": 446031,
-      "start_ticks": "1443847424",
-      "state": "R",
-      "argv": [
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "CUBLAS_WORKSPACE_CONFIG=:4096:8",
+        "TOKENIZERS_PARALLELISM=false",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
         "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
         "-B",
         "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tmr100_capacity_resume.py",
         "--request",
         "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr100_capacity_resume_train_spec.json",
         "--role",
-        "train",
-        ""
-      ]
+        "train"
+      ],
+      "supervisor_pid": 446023,
+      "child_pid": 446031,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 229,
+      "sample_errors": [],
+      "elapsed_seconds": 3417.832832247019,
+      "supervision_passed": true,
+      "run": "tmr100_capacity_resume_train_v1",
+      "request_path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr100_capacity_resume_train_spec.json",
+      "request_sha256": "8f8e05539d838697f6c4efb325dfa96de5215feb76fc7bb71ef617d57e67d088",
+      "source_sha256": "d382388b527ed3571f794a84384e6d8650d3d8fc118f737529412b2dce5f001e",
+      "receipt_sha256": "c14bb6766a0c85838f67ed09f65474f2c853d8cea0951967438c04c4dd746f5d",
+      "resource_sha256": "b2a2a0cabe79d1ff07079550e6a88ddaa8361d795800fab79558650d1b3e1626",
+      "process_exit_sha256": "b6ce4dec388d8f497bf9cd3d7be8042645353901c3a989fd380a07ecb0eb605a"
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "CUBLAS_WORKSPACE_CONFIG=:4096:8",
+        "TOKENIZERS_PARALLELISM=false",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tmr100_capacity_resume.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr100_capacity_resume_train_spec.json",
+        "--role",
+        "train"
+      ],
+      "supervisor_pid": 446023,
+      "child_pid": 446031,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 229,
+      "sample_errors": [],
+      "elapsed_seconds": 3417.832832247019,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
     }
-  ],
-  "common_lock_free": false,
-  "closed_execution_verified": false,
-  "artifact_audit": null,
+  },
+  "sha256": {
+    "receipt": "c14bb6766a0c85838f67ed09f65474f2c853d8cea0951967438c04c4dd746f5d",
+    "exit": "11261a01d309234f4e0ce543769a78cdd9d47a7289e0705c54170b782827e1be",
+    "process": "b6ce4dec388d8f497bf9cd3d7be8042645353901c3a989fd380a07ecb0eb605a",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+  },
+  "workers": [],
+  "common_lock_free": true,
+  "closed_execution_verified": true,
+  "artifact_audit": {
+    "actual_resumed_100epochs_101500_exact_fullstate_verified": true,
+    "original_safe_source_83703": true,
+    "actual_new_formal_updates": 17797,
+    "original500_success_claimed": false,
+    "closure": {
+      "receipt": "c14bb6766a0c85838f67ed09f65474f2c853d8cea0951967438c04c4dd746f5d",
+      "exit": "11261a01d309234f4e0ce543769a78cdd9d47a7289e0705c54170b782827e1be",
+      "process": "b6ce4dec388d8f497bf9cd3d7be8042645353901c3a989fd380a07ecb0eb605a",
+      "resources": "b2a2a0cabe79d1ff07079550e6a88ddaa8361d795800fab79558650d1b3e1626",
+      "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+    }
+  },
   "last_resource": {
-    "available_host_ram_bytes": 128897314816,
-    "data_free_bytes": 2459922432,
-    "all_device_usage_including_other_jobs": "0, 12223, 36328, 0\n1, 12653, 35897, 48",
+    "available_host_ram_bytes": 132924096512,
+    "data_free_bytes": 2415153152,
+    "all_device_usage_including_other_jobs": "0, 12223, 36328, 0\n1, 7823, 40726, 3",
     "owned_child_group": 446031,
-    "owned_group_processes": [
-      {
-        "pid": 446031,
-        "group": 446031,
-        "state_and_rss": [
-          "State:\tR (running)",
-          "VmRSS:\t 3924024 kB"
-        ],
-        "cpu_affinity": [
-          0,
-          1,
-          2,
-          3
-        ]
-      }
-    ],
-    "owned_group_gpu_memory": [
-      {
-        "pid": 446031,
-        "gpu_uuid": "GPU-0b41e662-b662-bb1c-954b-13ed89d7af18",
-        "used_gpu_memory_mib": "4824"
-      }
-    ],
-    "home_free_bytes": 2811691008,
-    "phase": "running",
-    "elapsed_seconds": 1887.5146333537996
+    "owned_group_processes": [],
+    "owned_group_gpu_memory": [],
+    "home_free_bytes": 2618646528,
+    "phase": "after_exit",
+    "elapsed_seconds": 3417.8326658736914
   },
   "logs": {
-    "child.log": "Some weights of the model checkpoint at /data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/text_models_import_v1/text_model_0 were not used when initializing DistilBertModel: ['vocab_layer_norm.bias', 'vocab_projector.bias', 'vocab_transform.weight', 'vocab_layer_norm.weight', 'vocab_transform.bias']\n- This IS expected if you are initializing DistilBertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).\n- This IS NOT expected if you are initializing DistilBertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).\n",
+    "child.log": "Some weights of the model checkpoint at /data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/text_models_import_v1/text_model_0 were not used when initializing DistilBertModel: ['vocab_layer_norm.bias', 'vocab_projector.bias', 'vocab_transform.weight', 'vocab_layer_norm.weight', 'vocab_transform.bias']\n- This IS expected if you are initializing DistilBertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).\n- This IS NOT expected if you are initializing DistilBertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).\n/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/site-packages/torch/nn/modules/transformer.py:276: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. (Triggered internally at ../aten/src/ATen/NestedTensorImpl.cpp:175.)\n  output = torch._nested_tensor_from_mask(output, src_key_padding_mask.logical_not(), mask_check=False)\n",
     "tmr100_capacity_resume_train_v1_outer.log": ""
   },
-  "data_free_bytes": 2459922432,
-  "home_free_bytes": 2811691008
+  "data_free_bytes": 2415140864,
+  "home_free_bytes": 2609958912
 }
