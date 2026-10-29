@@ -97,7 +97,10 @@ def verified_manifest(path):
         p = pathlib.Path(row['path'])
         i = next(i for i, root in enumerate(ROOTS) if p == root or root in p.parents)
         assert '..' not in p.parts and row['member'] == 'root' + str(i) + '/' + str(p.relative_to(ROOTS[i]))
-        assert row['kind'] in ['file', 'directory'], 'No unexpected link or device is accepted'
+        assert row['kind'] in ['file', 'directory', 'symlink']
+        if row['kind'] == 'symlink':
+            assert row['member'] == 'root0/xdg/ov/texturecache'
+            assert row['target'] == '/dev/shm/ouyanghao_phygile_render_cache_20261029/texturecache'
         assert row['fingerprint'][5] == 1013
     return rows
 
@@ -119,14 +122,20 @@ def reclaim(manifest, confirmation, out):
             parent = pathlib.Path(directory)
             actual.add(str(parent))
             for name in dirs + files:
-                assert not (parent / name).is_symlink()
+                child = parent / name
+                if child.is_symlink():
+                    assert any(x['path'] == str(child) and x['kind'] == 'symlink' for x in rows)
+                    actual.add(str(child))
+            dirs[:] = [name for name in dirs if not (parent / name).is_symlink()]
             actual.update(str(parent / name) for name in files)
     assert actual == {x['path'] for x in rows}, 'Changed membership rejects the whole removal'
     for row in rows:
         p = pathlib.Path(row['path'])
-        safe_parents(p)
+        safe_parents(p.parent if row['kind'] == 'symlink' else p)
         s = p.lstat()
         assert fingerprint(s) == row['fingerprint'], str(p)
+        if row['kind'] == 'symlink':
+            assert stat.S_ISLNK(s.st_mode) and os.readlink(p) == row['target']
         if row['kind'] == 'file':
             assert stat.S_ISREG(s.st_mode) and s.st_nlink == 1 and sha(p) == row['sha256']
     limits = idle()
@@ -158,9 +167,21 @@ def reclaim(manifest, confirmation, out):
             p = pathlib.Path(row['path'])
             if row['kind'] == 'directory' and p not in ROOTS:
                 safe_parents(p)
-                assert p.stat().st_uid == 1013 and not list(p.iterdir())
-                p.rmdir()
-    assert removed == 549 and all(not list(root.iterdir()) for root in ROOTS)
+                assert p.stat().st_uid == 1013
+                if not list(p.iterdir()):
+                    p.rmdir()
+    assert removed == 549
+    links = [x for x in rows if x['kind'] == 'symlink']
+    for row in links:
+        assert os.readlink(row['path']) == row['target']
+    remaining_files = []
+    for root in ROOTS:
+        for directory, dirs, files in os.walk(root, followlinks=False):
+            for name in files:
+                q = pathlib.Path(directory) / name
+                if not q.is_symlink():
+                    remaining_files.append(str(q))
+    assert remaining_files == []
     result = dict(status='NEW_IDLE_CACHES_PRIVATE_RECOVERY_VERIFIED_AND_RECLAIMED',
         removed_cache_files=removed, removed_file_allocated_bytes=allocated,
         original_tree_allocated_bytes=sum(x['allocated_bytes'] for x in rows),
@@ -168,6 +189,7 @@ def reclaim(manifest, confirmation, out):
         private_archive_sha256=ARCHIVE_SHA, manifest_sha256=MANIFEST_SHA,
         data_checkpoint_environment_or_primary_source_files_removed=0,
         production_signals=0, new_model_or_GPU_jobs=0, roots_retained=True,
+        known_external_cache_symlink_and_target_retained=True,
         global_fd_visibility_complete=not bool(limits), service_visibility_limit_count=len(limits))
     persist(out / 'receipt.json', result)
     return result
@@ -189,7 +211,15 @@ def restore(archive, manifest, out):
             seen.add(key)
             row = lookup[key]
             p = pathlib.Path(row['path'])
-            safe_parents(p)
+            safe_parents(p.parent if row['kind'] == 'symlink' else p)
+            if row['kind'] == 'symlink':
+                assert member.issym() and member.linkname == row['target']
+                if p.is_symlink():
+                    assert os.readlink(p) == row['target'] and p.lstat().st_uid == 1013
+                else:
+                    assert not p.exists()
+                    p.symlink_to(row['target'])
+                continue
             if row['kind'] == 'directory':
                 assert member.isdir()
                 p.mkdir(mode=row['fingerprint'][6], exist_ok=True)
@@ -212,10 +242,18 @@ def restore(archive, manifest, out):
                 os.fsync(stream.fileno())
             assert h.hexdigest() == row['sha256'] and not p.exists()
             partial.rename(p)
+            fd = os.open(str(p.parent), os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+            try:
+                os.fsync(fd)
+            finally:
+                os.close(fd)
             count += 1
         assert len(seen) == len(rows)
     for row in sorted(rows, key=lambda x: len(pathlib.Path(x['path']).parts), reverse=True):
         p = pathlib.Path(row['path'])
+        if row['kind'] == 'symlink':
+            assert os.readlink(p) == row['target']
+            continue
         os.chmod(p, row['fingerprint'][6])
         os.utime(p, ns=(row['fingerprint'][3], row['fingerprint'][3]))
         if row['kind'] == 'file':
