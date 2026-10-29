@@ -202,10 +202,13 @@ def reclaim(manifest, confirmation, out):
 
 
 def restore(archive, manifest, out):
-    rows = verified_manifest(manifest)
+    all_rows = verified_manifest(manifest)
+    rows = [x for x in all_rows if x['path'] == str(ROOTS[1]) or ROOTS[1] in pathlib.Path(x['path']).parents]
+    assert len(rows) == 3
     assert sha(archive) == ARCHIVE_SHA
     lookup = {x['member'].rstrip('/.'): x for x in rows}
-    for root in ROOTS:
+    all_members = {x['member'].rstrip('/.') for x in all_rows}
+    for root in [ROOTS[1]]:
         safe_parents(root)
         assert root.stat().st_uid == 1013
     count = 0
@@ -213,8 +216,10 @@ def restore(archive, manifest, out):
         seen = set()
         for member in tar:
             key = member.name.rstrip('/.')
-            assert key in lookup and key not in seen
+            assert key in all_members and key not in seen
             seen.add(key)
+            if key not in lookup:
+                continue
             row = lookup[key]
             p = pathlib.Path(row['path'])
             safe_parents(p.parent if row['kind'] == 'symlink' else p)
@@ -254,7 +259,7 @@ def restore(archive, manifest, out):
             finally:
                 os.close(fd)
             count += 1
-        assert len(seen) == len(rows)
+        assert len(seen) == len(all_rows)
     for row in sorted(rows, key=lambda x: len(pathlib.Path(x['path']).parts), reverse=True):
         p = pathlib.Path(row['path'])
         if row['kind'] == 'symlink':
@@ -265,7 +270,7 @@ def restore(archive, manifest, out):
         if row['kind'] == 'file':
             assert sha(p) == row['sha256']
     result = dict(status='EXACT_IDLE_CACHE_RECOVERY_FINISHED', restored_files=count,
-                  verified_files=549, private_archive_sha256=ARCHIVE_SHA)
+                  verified_files=2, unrelated_project_cache_untouched=True, private_archive_sha256=ARCHIVE_SHA)
     persist(out / 'receipt.json', result)
     return result
 

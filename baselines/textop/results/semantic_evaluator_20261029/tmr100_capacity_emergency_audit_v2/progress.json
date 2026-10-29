@@ -1,0 +1,152 @@
+{
+  "observed_unix": 1793237658.9291224,
+  "files": {
+    "receipt": {
+      "status": "TMR100_CAPACITY_EMERGENCY_CPU_METADATA_FINITE_VERIFIED",
+      "run": "tmr100_capacity_emergency_audit_v2",
+      "source_sha256": "c856a421e2960a827d570e8a1ee4e38de8a0f2144e2f7d00b94cc05148446bc9",
+      "original_failure_receipt_sha256": "d5a43ad794f6aaa3014f302a425a56b33332692ee5c3b4d3d4618295bee3d361",
+      "selected_checkpoint": {
+        "path": "/home/ouyanghao/textop-tmr69d-evaluator-20261029/checkpoints/tmr_emergency.pth",
+        "bytes": 192951813,
+        "sha256": "8169a44260d0e238505e3a42c8cc859b214482e102d35241e054931d470f5d05",
+        "epoch": 82,
+        "optimizer_updates": 83703,
+        "pending_validation": false,
+        "emergency": true,
+        "exact_fullstate_deserialization": true,
+        "production_model_adamw_rng_sampler_nextbatch_reloaded": false,
+        "capacity_before": {
+          "free_bytes": 3005587456,
+          "required_bytes": 2483027968,
+          "missing_slots": 1
+        }
+      },
+      "optimizer_updates": 83703,
+      "completed_epochs": 82,
+      "pending_validation": false,
+      "sampler_epoch": 82,
+      "sampler_cursor": 15136,
+      "sampler_steps": 83703,
+      "finite_cpu_tensors": 1044,
+      "optimizer_step_min": 83703,
+      "optimizer_step_max": 83703,
+      "original_fullstate_unchanged": true,
+      "original_dirty_step83704_discarded": true,
+      "actual_optimizer_updates": 0,
+      "new_cuda_contexts": 0,
+      "model_constructions": 0,
+      "saved_cuda_rng_restored": false,
+      "actual_source_arrays_loaded": 0,
+      "saved_rng_bytes": {
+        "torch": 5056,
+        "cuda": [
+          816
+        ]
+      },
+      "full_production_restore_and_nextbatch_witness_still_required": true,
+      "output_writers_closed": true
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/audit_tmr100_capacity_emergency.py",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr100_capacity_emergency_audit_v2"
+      ],
+      "supervisor_pid": 443206,
+      "child_pid": 443211,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 2.1598858572542667,
+      "supervision_passed": true,
+      "receipt_sha256": "9c1188f26fba1355d39d9601246268865b7026d749cfd2e90de98c8c81d06d4d",
+      "resource_sha256": "1ba14b644346ac2cd8bda628ca3d70102a7e15910daf5cb6b0ea5534630345bc",
+      "source_sha256": "c856a421e2960a827d570e8a1ee4e38de8a0f2144e2f7d00b94cc05148446bc9"
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/audit_tmr100_capacity_emergency.py",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr100_capacity_emergency_audit_v2"
+      ],
+      "supervisor_pid": 443206,
+      "child_pid": 443211,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 2.1598858572542667,
+      "supervision_passed": true
+    }
+  },
+  "sha256": {
+    "receipt": "9c1188f26fba1355d39d9601246268865b7026d749cfd2e90de98c8c81d06d4d",
+    "exit": "9589a0abc77a2df12b37a16ec8c8834b4387fd4e044bb3bd627322659541707e",
+    "process": "9a996cf562f6abac7837b480a4fb5afe198cef1849c2989db918c4dec1a8e9ef",
+    "resources": "1ba14b644346ac2cd8bda628ca3d70102a7e15910daf5cb6b0ea5534630345bc"
+  },
+  "closed_execution_verified": true,
+  "workers": [],
+  "common_lock_free": true,
+  "last_resource": {
+    "available_host_ram_bytes": 132284837888,
+    "data_free_bytes": 2398109696,
+    "all_device_usage_including_other_jobs": "0, 12223, 36328, 0\n1, 7823, 40726, 0",
+    "owned_child_group": 443211,
+    "owned_group_processes": [],
+    "owned_group_gpu_memory": [],
+    "home_free_bytes": 2811944960,
+    "phase": "after_exit",
+    "elapsed_seconds": 2.1597452703863382
+  },
+  "cleanup": {
+    "status": "NEW_IDLE_CACHES_PRIVATE_RECOVERY_VERIFIED_AND_RECLAIMED",
+    "removed_cache_files": 2,
+    "removed_file_allocated_bytes": 79089664,
+    "original_tree_allocated_bytes": 79093760,
+    "data_free_before": 2319282176,
+    "data_free_after": 2398363648,
+    "private_archive_sha256": "8f6e28ff7d22fad625065c194ed99f6922599ee23a6711c4baad1f2b059e792d",
+    "manifest_sha256": "2ced1247a734ac2bc169b68eb92e5ba1d9eff5cafc5e61a58b46d9d3d4cc1aab",
+    "data_checkpoint_environment_or_primary_source_files_removed": 0,
+    "production_signals": 0,
+    "new_model_or_GPU_jobs": 0,
+    "roots_retained": true,
+    "known_external_cache_symlink_and_target_retained": true,
+    "separately_active_project_cache_root_entirely_retained": true,
+    "global_fd_visibility_complete": false,
+    "service_visibility_limit_count": 5
+  },
+  "data_free_bytes": 2397949952,
+  "home_free_bytes": 2811936768
+}

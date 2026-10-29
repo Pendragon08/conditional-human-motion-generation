@@ -1,3 +1,5 @@
+CURRENT 2026-10-29 本轮新清理完成：仅两份闲置下载包实际回收79089664B，DATA约2.398GB；D完整私有恢复包/SHA/CRC/owner/复制0已实核。另一个正在使用的项目cache全部保留。原TMR容量保护停在82轮/83703安全更新，CPU1044张量与AdamW/RNG/sampler核验通过（audit_v2真实0闭合）；正式续训尚未启动，下一步新独立完整恢复见证后只补17797到100轮/101500。旧训练/控制器已失败退出，0控制生产信号，不重启/rearm。Step3/PPO仍缺约20GB持久容量，不能以79MB回收冒称已解除。详见reports/storage_cleanup_and_tmr_capacity_20261029.md。以下旧健康/全cache候选信息只为历史。
+
 CURRENT 2026-10-29：用户新授权清理正在完整D私有恢复包核验；尚未删除。原TMR已因DATA容量保护在82轮/83703安全更新退出，attempt83704脏内存不选；旧100控制也退出且0生产信号。原失败全部保留，禁止重启/rearm。只在空间恢复和独立完整恢复接受后补齐用户100轮。详见reports/storage_cleanup_and_tmr_capacity_20261029.md。以下旧健康/WAITING样本只为历史。
 
 <!--storage-user-check-current-start-->

@@ -97,8 +97,21 @@ if tep.exists():
  tmr100_endpoint=dict(status=tr.get('status'),target_epochs=100,target_optimizer_updates=101500,
     signals_sent=tr.get('signals_sent',0),closed_execution_verified=tj.get('closed_execution_verified',False),
     observer_workers=tj.get('workers',[]),original500_completion_claimed=False)
+ if tj.get('files',{}).get('outer',{}).get('actual_returncode') not in [None,0]:
+  tmr100_endpoint['original_observer_receipt_status']=tr.get('status')
+  tmr100_endpoint['status']='FAILED_TMR100_CONTROL_CAPACITY_PROTECTION_ORIGINAL_EXITS_RETAINED'
  if tj.get('closed_execution_verified') and tj['observed_unix']>=handoff_observed:
   handoff_stage=tr['status'];handoff_workers=[];handoff_lock_free=tj['common_lock_free'];handoff_observed=tj['observed_unix'];ldm_latest_confirmed_stage=handoff_stage
+capacity_audit=None
+cap=B/'results/semantic_evaluator_20261029/tmr100_capacity_emergency_audit_v2/progress.json'
+if cap.exists():
+ cj=json.loads(cap.read_bytes());cr=cj.get('files',{}).get('receipt',{})
+ if cj.get('closed_execution_verified') and cr.get('status')=='TMR100_CAPACITY_EMERGENCY_CPU_METADATA_FINITE_VERIFIED':
+  capacity_audit=dict(status=cr['status'],optimizer_updates=cr['optimizer_updates'],completed_epochs=cr['completed_epochs'],
+     pending_validation=cr['pending_validation'],receipt_sha256=cj['sha256']['receipt'],
+     actual_new_optimizer_updates=0,production_restore_still_required=True)
+  if cj['observed_unix']>=handoff_observed:
+   handoff_stage=cr['status'];ldm_successor_run=cr['run'];handoff_workers=cj['workers'];handoff_lock_free=cj['common_lock_free'];handoff_observed=cj['observed_unix'];ldm_latest_confirmed_stage=handoff_stage;ldm_dispatch_unconfirmed=False
 last_verified_handoff_stage=ldm_latest_confirmed_stage if ldm_dispatch_unconfirmed else handoff_stage;access_unavailable=False;access_attempt=None
 access_path=B/'results/filtered15000_handoff_20261027/filtered15000_vae200k_train_v1/access_status.json'
 if access_path.exists():
@@ -137,6 +150,7 @@ phase_label={'USER_LDM100K_RECORDED_TRACKING_FIDELITY_FINISHED':'真实执行姿
  'RUNNING_FRESH_TMR69D_EVALUATOR_TRAINING':'独立语义评价器训练中；VAE与LDM均保持十万步',
  'TMR69D_FORMAL_EVALUATOR_500_EPOCHS_FINISHED':'语义评价器训练已结束，接续冻结推理与真正留出指标',
  'FAILED_TMR69D_FORMAL_EVALUATOR_ALL_STATES_RETAINED':'语义评价器训练退出，保留全部状态并处理；生成器未追加训练',
+ 'TMR100_CAPACITY_EMERGENCY_CPU_METADATA_FINITE_VERIFIED':'容量保护后紧急状态CPU核验通过，接续独立完整恢复至100轮',
  'AUDITING_TRAINED_TMR69D_ON_CPU':'已训练语义评价器的CPU完整性与推理检查中',
  'TMR69D_TRAINED_FROZEN_CPU_EXPORTED':'语义评价器私有推理导出完成，接续独立CPU复核',
  'TMR69D_TRAINED_FROZEN_FRESH_CPU_VERIFIED':'语义评价器独立CPU复核通过，接续真实留出指标',
@@ -182,6 +196,9 @@ if ep.exists():
     completed_epochs=100 if selected else er.get('completed_epochs',0),target_epochs=target,expected_optimizer_updates=updates,
     original_program_target_epochs=500,original_program_target_optimizer_updates=507500,
     closed_execution_verified=selected or ej['closed_execution_verified'],generator_teacher_additional_updates=0,semantic_metrics_computed=False)
+  if capacity_audit:
+   tmr_evaluator_training['capacity_emergency_cpu_audit']=capacity_audit
+   tmr_evaluator_training['formal_resume_started']=False
   new_effect_note+=f" 用户已将独立语义评价器改为{target}轮；当前{tmr_evaluator_training['completed_epochs']}/{target}轮、{tmr_evaluator_training['optimizer_updates']}次已核验更新，目标{updates}次。原500轮run名仅来源，所选100轮状态不把原受控中断改写成500轮成功。正式语义指标仍待冻结验收。"
 np=B/'results/semantic_evaluator_20261029/tmr69d_numeric_data_v1/progress.json'
 if np.exists():
