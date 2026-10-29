@@ -1224,3 +1224,33 @@ results/semantic_evaluator_20261029/tmr100_semantic32_v1/aggregate_public.json -
 results/semantic_evaluator_20261029/tmr100_semantic_schema_repair_v1/preparation.json -text
 
 results/semantic_evaluator_20261029/tmr100_private_backup_preparation_v1/preparation.json -text
+
+scripts/step4_train_only_protocol.py -text
+
+scripts/export_step4_train_only_references.py -text
+
+scripts/supervise_step4_train_only_references.py -text
+
+scripts/step4_train_only_isaaclab_config.py -text
+
+scripts/step4_train_only_ppo_runtime.py -text
+
+scripts/step4_train_only_ppo_inputs.py -text
+
+scripts/run_step4_train_only_ppo.py -text
+
+scripts/supervise_step4_train_only_ppo.py -text
+
+provider_tools/step4_train_only.py -text
+
+provider_tools/step4_train_only_ppo.py -text
+
+configs/step4-original-train-only-ppo-spec.json -text
+
+STAGE4_ORIGINAL_TRAIN_ONLY_ENVIRONMENT.md -text
+
+STAGE4_ORIGINAL_TRAIN_ONLY_PPO_ENVIRONMENT.md -text
+
+reports/stage4_original_train_only_20261029.md -text
+
+results/step4_train_only_20261029/aggregate_public.json -text

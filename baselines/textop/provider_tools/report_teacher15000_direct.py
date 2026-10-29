@@ -1,6 +1,10 @@
 """Aggregate already-collected evidence; do not operate training or physics."""
 import pathlib,json,hashlib,datetime,html,re,shutil
 B=pathlib.Path(__file__).resolve().parents[1];D=pathlib.Path('D:/具身智能/TextOp复现_20261024')
+if shutil.disk_usage(D).free < 2*1024**3+16*1024**2:
+ D=B.parents[3]/'textop_step34_private_20261029/current_reports'
+ D.mkdir(parents=True,exist_ok=True)
+ assert shutil.disk_usage(D).free>=2*1024**3+16*1024**2
 O=B/'results/teacher15000_direct_strict_20261027';run='teacher15000_direct_full_v1'
 j=json.loads((O/run/'progress.json').read_text(encoding='utf-8'));r=j['files'].get('receipt',{})
 stop=json.loads((O/'control/user_stop_v1_result.json').read_text(encoding='utf-8'))
@@ -265,6 +269,36 @@ if semantic_metric_path.exists():
   new_effect_note=new_effect_note.replace('正式语义指标仍待冻结验收。','100轮完整状态与推理已通过CPU及独立复核。').replace('正式TMR/在线仍待验收。','真实TMR诊断见后文，在线控制仍待验收。').replace('当前TMR训练不重启、不与新模型作业重叠。','当前TMR已完成100轮，后继模型作业仍严格串行。')
   new_effect_note+=f" 真正冻结的机器人69D评价器已完成全部1880条语义诊断并独立重算：条件/无条件Top1 {100*c['Rprecision_top1']['equal_seed_mean']:.2f}%/{100*u['Rprecision_top1']['equal_seed_mean']:.2f}%，MMdist {c['MMdist']['equal_seed_mean']:.4f}/{u['MMdist']['equal_seed_mean']:.4f}，FID {c['FID']['equal_seed_mean']:.4f}/{u['FID']['equal_seed_mean']:.4f}。文本检索改善与FID变差同时保留；这是32个VAL家族188独立段、全部5seed的预先固定诊断适配，不是全VAL或论文完整复现。"
   if handoff_stage=='TMR100_SEMANTIC_DIAGNOSTIC_FINISHED':phase_label='100轮语义评价及终端重算已完成；接续增强/PPO的容量与真实数值验收'
+# The latest human explicitly postponed augmentation and requested direct PPO.
+# New metadata/receipts, rather than an old completed-model lock, own the stage.
+direct_policy=B/'configs/step4-original-train-only-ppo-spec.json'
+if direct_policy.exists():
+ dp=json.loads(direct_policy.read_bytes())
+ assert dp['stage3_status']=='POSTPONED_BY_USER' and dp['training_data_mode']=='original_train_only'
+ new_step34=dict(status='STAGE3_POSTPONED_DIRECT_STAGE4_ORIGINAL_TRAIN_ONLY',stage3_status='POSTPONED_BY_USER',
+  training_data_mode='original_train_only',actual_generated_clips=0,actual_new_PPO_updates=0,
+  actor_observation_dim=431,critic_observation_dim=557,method='one_stage_PPO',dagger_or_distillation=False,
+  actor_hidden=[2048,1024,512],future_reference_frames=5,policy_hz=50)
+ capacity=B/'results/user_step34_20261029/capacity_resolution_v2.json'
+ if capacity.exists():new_step34['storage']=json.loads(capacity.read_bytes())
+ for name in ['author_progress.json','document_progress.json','library_progress.json','ppo_author_progress.json','ppo_document_progress.json','ppo_train_progress.json']:
+  path=B/'results/step4_train_only_20261029'/name
+  if path.exists():
+   value=json.loads(path.read_bytes());vr=value.get('files',{}).get('receipt',{})
+   if value.get('observed_unix',0)>=handoff_observed:
+    handoff_observed=value['observed_unix'];handoff_workers=value['workers'];handoff_lock_free=value['common_lock_free']
+    handoff_stage=vr.get('status','STAGE4_ACTUAL_PROGRESS_PENDING');ldm_successor_run=value['run']
+    ldm_latest_confirmed_stage=handoff_stage;ldm_dispatch_unconfirmed=False
+    new_step34.update(status=handoff_stage,actual_new_PPO_updates=vr.get('formal_optimizer_updates',0),
+     formal_completed_iterations=vr.get('formal_completed_iterations',0),reference_exported_clips=vr.get('exported_clips'),
+     active_run=value['run'],closed_execution_verified=value.get('closed_execution_verified',False))
+ phase_label=('Step4新PPO训练中（原TRAIN动作）' if handoff_stage=='RUNNING_STAGE4_FRESH_ORIGINAL_TRAIN_PPO' else
+  'Step4新PPO实际恢复检查中' if 'PPO' in handoff_stage else 'Step4原TRAIN跟踪参考转换与核验')
+ new_effect_note=new_effect_note.replace('等待新增持久空间并继续完成真实生成、混合引用与PPO恢复验收。','服务器空间已释放，最新用户已暂缓Stage3；直接进行原TRAIN-only的新PPO数值与恢复验收。')
+ new_effect_note+=' 最新用户安排：Stage3暂缓，不生成5368条增强动作；直接用5361原TRAIN家族的5551条切片推进Step4新431D/557D单阶段PPO。原VAL只评估，旧教师与生成器冻结。当前正式PPO更新按真实新收据计数。'
+ last_verified_handoff_stage=handoff_stage
+ new_step34['local_disk_free_bytes']={drive:shutil.disk_usage(drive+':/').free for drive in ['C','D']}
+ new_step34['storage_candidate_samples_are_not_reservations']=True
 sample=datetime.datetime.fromtimestamp(handoff_observed,datetime.timezone(datetime.timedelta(hours=8))).isoformat()
 spec=B/'configs/teacher15000-direct-strict-spec.json';h=hashlib.sha256(spec.read_bytes()).hexdigest()
 current=dict(schema='textop.direct_strict_user_progress.v1',run=run,status=r['status'],sample_beijing=sample,
