@@ -1,0 +1,79 @@
+{
+  "status": "TMR100_ENDPOINT_ENABLED_NOT_DISPATCHED",
+  "spec": {
+    "schema": "textop.user_tmr100_endpoint.v1",
+    "control_authorized": true,
+    "run": "user_tmr100_control_v1",
+    "target_epochs": 100,
+    "target_optimizer_updates": 101500,
+    "original_run": "tmr69d_evaluator500_train_v1",
+    "original_spec_sha256": "2196a765dbaa61ba7265b9d798f99fe5c094a502fd34bd47869f0fe141360b13",
+    "original_entry_sha256": "04014d8f2e657e9c48827edd7fae817c3f01362d97dcdbd3a0e3dea092c604c2",
+    "original_supervisor_sha256": "f683af23c66df1c6669341626210cb4100f638ff2410e4ea8c9b7a0935cb14d7",
+    "original_runtime_binding_sha256": "c89a006b8730db6f767e0e3542506a3b9be928aaa12679f2ae6a1b0e8c4b7030",
+    "accepted_input_signature_sha256": "512a138a8319ca97ac240b51e33e855a6c7e70ec76e6b9a1247816bd524d5402",
+    "checkpoint_allowed_root": "/home/ouyanghao",
+    "checkpoint_path": "/home/ouyanghao/textop-tmr69d-evaluator-20261029/checkpoints/tmr_epoch_100.pth",
+    "checkpoint_upper_bytes": 201326592,
+    "producer": {
+      "pid": 416293,
+      "start_ticks": "1441791443",
+      "uid": 1013,
+      "argv": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_tmr69d_evaluator.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tmr69d-evaluator-train-spec.json"
+      ],
+      "state": "R",
+      "pgid": 416293
+    },
+    "producer_supervisor": {
+      "pid": 416285,
+      "start_ticks": "1441791429",
+      "uid": 1013,
+      "argv": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_tmr69d_evaluator_training.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tmr69d-evaluator-train-spec.json"
+      ],
+      "state": "S",
+      "pgid": 416284
+    },
+    "entrypoint_sha256": "4856467bd730b1f826a44e96b84faecbde57185f5e1ece20038b1d66d7379a24",
+    "supervisor_sha256": "d7cfbc7796e8c823137a24eb9ba2dd29cdf1d55d40d77ef4d702bac2f7e44354",
+    "bound_sources": {
+      "scripts/tmr69d_core.py": "a1c7a752252211866215e946050cf843ccc08343fa17b8844c7bb56884557f68",
+      "scripts/paper69_runtime.py": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
+      "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e",
+      "scripts/tmr69d_training_inputs.py": "1a840c6d12ca0281d80ff0ebf607c5dd23ec1c00d009a6130e277ee5dbf33700",
+      "scripts/tmr100_endpoint_protocol.py": "920395d0dd31a3dd94ea1773537e8f7b39cb39d9c94ac649498259f1f1e1286f",
+      "scripts/watch_tmr100_endpoint.py": "4856467bd730b1f826a44e96b84faecbde57185f5e1ece20038b1d66d7379a24",
+      "scripts/supervise_tmr100_endpoint.py": "d7cfbc7796e8c823137a24eb9ba2dd29cdf1d55d40d77ef4d702bac2f7e44354",
+      "scripts/test_tmr100_endpoint.py": "ed85d80a15683466edf3700aa19ad8565d30350272511cc52cc4404787277139",
+      "scripts/vae100k_control_protocol.py": "1aa7936c461f6801cddb0a76378ecd49d9d696c543ed7534d976c3e03b4e8216",
+      "scripts/quick_pidfd.py": "df180bffb3e35dd77c8bb4f8ca9b143879a4184f6f8aab98188e1139de6538f2",
+      "scripts/contact_process_supervision.py": "44d689a71dc0c04778a7e6e651bc61d234dd59d3435a80c543be9d8db55638b4",
+      "scripts/contact_filter_resources.py": "1003a7cba9d2f2e30a05a881020e51ed8907eba6d523e4ce8af6b1b5399f76e5"
+    },
+    "author_fixture_binding": {
+      "run": "user_tmr100_control_author_v2",
+      "receipt_sha256": "a62ae93e594bd2e545016656ce8d3b4dcdbe06ddf265850260040123dbab9b5f",
+      "process_exit_sha256": "276af3537f77cbf568febed704455473f8cc575652851e4d76493a17ab8ef8bb",
+      "resources_sha256": "b40c4e1015c5d5325c25f24f575dd8e20396a62f081fc29b11de0fafef06c2e0"
+    },
+    "document_fixture_binding": {
+      "run": "user_tmr100_control_document_v2",
+      "receipt_sha256": "a62ae93e594bd2e545016656ce8d3b4dcdbe06ddf265850260040123dbab9b5f",
+      "process_exit_sha256": "f827694a4b01f8616ed2781a977d40c694f6d2f6c52c8ef3efc168620d3f0587",
+      "resources_sha256": "5f83bb51ece951a75bfd9b38d8cbcbe72f219398cc838290b69c3caba5537b41"
+    },
+    "document_summary_sha256": "1a380fbc6971654a416f8c0937a498a6f947e31964b996a2e78fad79ec91d38a",
+    "original_numerical_source_spec_and_LR_unchanged": true,
+    "signal_policy": "one bound pidfd SIGINT after real100 epoch checkpoint save and production exact reload"
+  },
+  "spec_sha256": "2f0498031e7fa9d5630848320dfed944c66c2c36ef45fa6cacbfe1989a02bba8",
+  "actual_production_signals": 0
+}

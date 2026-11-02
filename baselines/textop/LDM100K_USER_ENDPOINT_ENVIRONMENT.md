@@ -1,0 +1,175 @@
+<!--ldm100k-diagnostic-live-start-->
+CURRENT 2026-10-29T00:01:20.692652+08:00：VAE100000、LDM100000用户目标均已完成并选择真实稳定状态。LDM完整状态223731415B/SHA9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea，原非零中断/100001内存及最后1步未选事实保留；控制自身真实0闭合，不恢复原训练/控制器。CPU导出、fresh CPU文档、真实scope、author_v3和fresh document_v3配对数值见证均真正0/closed，fresh SUMMARY SHAffcc0a61e914e64fa6b84480343e528e8dbaf4062c206c5484d751415072dc45。
+唯一GPU作业已自动转为user_ldm100k_diagnostic32_v1，generation spec b09b6f83b427f39267594b332331f2bf06109ce9993f9bba4d3670c2b2764871、runtime签名2c5df58c45462b71148721fa85b7c9ec42bbf4e79d07b7274c4e197159755fe4冻结；supervisor388509/start1440072231、child388514/start1440072309仅线索，核真实身份。32val families/188segments×5seed×2mode共940pairs/1880trials；本次实核完成67pairs/134trials、0failed、873未尝试pair，仍运行/锁占用，不是全val或最终效果接受。此前两轮见证是同一个首segment首seed的独立复跑，不额外增加诊断覆盖数。
+保留实际v1构造KeyError（GPU上下文/CPU模型payload加载已发生，0pair）和v2监督入口标识遗漏导致的启动前outer1（无child/模型），先真实闭合/无worker/锁释放再归档原字节，分别修复来源字段读取与统一RUNS标识后才执行成功v3。所有源/spec签名、失败/partial/原始退出保留，不改模型权重/数据/norm/CFG/seed/阈值，不重跑原训练、旧夹具或已开始的diagnostic。模型完整性/单pair重构不等于TMR、语义、物理或WBC在线通过。继续真实效果汇总/物理验收和影片，不问确认，健康诊断恢复现有textop每小时。
+私有备份仍未完成：p997_v3 connection reset/255/worker1、241467392B partial保留；pld100_v1、v2均真实SFTP255/reaped/worker1，v2留下非零前缀。已核原worker/client身份不再活跃后，对独立LDM私有工具增可选conservative客户参数（实际本机sftp帮助支持-R/-B），仅减并发请求/缓冲并调整客户端连接保活，未改任何SHA/owner/2GiB/锁/6h/前缀保留门槛，不保证网络已修复。唯一新pld100_v3 --transfer-profile conservative已派发，worker40680/start134376769272556054仅线索，全部证据写D/checkpoints/private/ldm100k_endpoint_20261028/transfers/pld100_v3，先核实际client/worker/outcome；禁止重派或叫已备份。它不占GPU锁、不加载模型，可与诊断并行。LDM完整D接受后才用VAE专用工具新p997_v4续真实241467392B前缀；既有VAE50k/100k D已接受，不重传，不删旧状态/失败/唯一SDK，不碰其他用户或暂停任务。
+<!--ldm100k-diagnostic-live-end-->
+
+<!--ldm100k-real-endpoint-current-start-->
+CURRENT：用户指定LDM100000完整状态已真正选定，223731415B/SHA9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea；唯一既有控制器发1次身份绑定SIGINT，自身process/supervisor/outer0、原worker无残留/锁释放。原程序child-2/outer1/KeyboardInterrupt及100001内存事实保留，最后1步内存未选用，不重标旧300k成功。只用不可变100000模型，绝不加训。
+CPU导出user_ldm100k_prefix_export_v1已真实4.24秒/process-supervisor-outer0/closed：438有限CPU张量、Adam100000、history49999生成/17883选用、pending_eval0，独立CPU推理重载精确；推理81391655B/SHA5faca9293e76cb3ec04dd4c49aeee3de85d6897dcfcf25027d88d5e96c81aab5。已启用export spec b52021e2...及verify spec9b62a0cd...；fresh user_ldm100k_prefix_document_v1实际CPU执行也已真实0/closed/无worker/锁释放，正在独立后置审计、正式SUMMARY到达后才启用scope，不捏造正面。模型完整性不等于heldout语义或物理效果；实际scope/生成pair/TMR/物理验收尚未完成。按用户“训练完直接下一步”继续，不问确认、不停在阶段通知。
+SSH间歇超时：原export首次client255，但只读证明全部driver/output/log/worker及其他本人stdin进程均不存在后，以原renderer同SHA和新独占client证据完成实际唯一派发；旧失败和absence/reconciliation字节全部保留。fresh亦在独立核实未知意图后执行，未知不盲重派。所有模型/SDK串行commonlock，2GiB底线不降。
+私有字节备份：p997_v3实际connection reset/255/reaped/worker1，241467392B partial保留；新LDM pld100_v1真实source完整SHA/fingerprint/owner预检0后SFTP255/worker1，0B partial/失败保留，未D接受。仅原件server权威完整，VAE100k和50k D副本已验证不重传；新LDM与99700恢复仍需在已核实际旧client/锁后新唯一run验证前缀续接，不能当已备份。不会因慢字节备份暂停已接受模型。D证据在checkpoints/private/ldm100k_endpoint_20261028/transfers/pld100_v1；原VAE失败在对应local run。禁止重启原训练/控制器、删状态/partial、改已接受运行source/spec，后续真实容量每job新核。
+<!--ldm100k-real-endpoint-current-end-->
+
+<!--ldm100k-live-2231-start-->
+CURRENT 2026-10-28T22:32:04.302481+08:00 LDM94500尝试/94500Adam/0skip、原worker与supervisor身份一致、RUNNING无exit/commonlock占用；2026-10-28T22:32:25.874513+08:00唯一控制另采94500、WAITING/0信号。尚无100k保存，仍仅选择100000；15分钟静默检查，真实100k闭合后直接接续实际CPU导出/fresh复核/scope/生成诊断及物理验收，不再询问，不改活动source/spec/预算/控制器。
+私有99700备份p997_v2已真实SFTP1/reaped/final streams、worker1/无残留（Connection closed），全部partial和失败记录保留；并未成功备份。核实际旧client/锁释放后，已唯一派发p997_v3，对233537536B前缀双方SHA2ee3b99c3a007670c72c4f8b71be67adaef86f146b6b79ea44fc1d94c19282e1核验一致且源fullSHA/owner/fingerprint未变，原新worker15312/start134376716603044362与SFTP66488/start134376716875615128实核匹配/STILL_ACTIVE，仍PENDING。不得重新派发或从0重传；只在真正fullSHA/owner/exit通过后称备份完成。此字节传输无模型/GPU，不影响LDM，0训练源/spec修改或信号。见results/ldm100k_user_handoff_20261028/private99700_resume_h2231.json。D/C实际容量见该收据，不删数据或降低2GiB保留，不重跑旧清理。
+<!--ldm100k-live-2231-end-->
+
+<!--user-direct-next-20261028-start-->
+用户最新再次明确授权：“LDM训练完后直接下一步。”不要在100k端点完成后询问或停工，按已接受真实出口自动接续CPU完整性/推理导出→fresh实际CPU复核→真实heldout scope→作者/fresh实际生成见证→配对效果诊断，再继续真实物理验收/影片与兼容指标；所有真实验收和串行锁不省略。只选择100000，不延长到旧300k。
+最新人工核对u_next_l1 2026-10-28T22:14:23.959544+08:00原LDM91700尝试/91700Adam/0skip，RUNNING无exit，原supervisor304265/start1436142089、worker304272/start1436142105身份一致，共同GPU锁占用；u_next_c1 2026-10-28T22:14:59.544893+08:00唯一控制另采91800、WAITING/0信号、原observer身份一致。均非checkpoint，无真实100k/export/scope/生成完成。当前临近端点，将现有textop临时改为每15分钟轻量检查与自动接续，不创建第二自动化/observer；正式诊断健康运行后可恢复每小时，阶段通知不是停止点。源码/spec/预算冻结，不重派/额外信号。后续新实际收据覆盖此采样。
+<!--user-direct-next-20261028-end-->
+
+<!--ldm100k-live-2118-start-->
+CURRENT最新轻量实核：2026-10-28T21:18:48.530554+08:00原LDM82900尝试/82900Adam/0skip，原supervisor304265/start1436142089和worker304272/start1436142105一致、RUNNING无exit/commonlock占用，native stage1，完整DDPM history实际生成32899次/选用8101primitive。2026-10-28T21:19:47.792691+08:00唯一控制另采83100、WAITING/0信号，原observer身份一致；两份时刻不同，不是checkpoint，仍只选择真实100000端点。代码/禁用见证链不代表已经运行；原source/spec/预算/课程/唯一控制器冻结，按LDM100K_GENERATION_HANDOFF_ENVIRONMENT.md在真正100k停止闭合、CPU导出/fresh复核/scope后自动接续。20:04向用户给出的约23:10端点与初次生成评估时间仅历史速度估计，不能承诺。
+p997_v2在2026-10-28T21:19:55.393616+08:00原worker/SFTP创建身份匹配且STILL_ACTIVE，partial212893696B，尚无outcome/worker_exit/backup，继续PENDING不重派/不删前缀。C空闲3657875456B、D空闲6033895424B仅采样，0本轮清理。VAE50k/100k副本已接受不重传，无新模型/GPU/SDK/信号/实际生成；健康保持静默，无需用户操作。
+<!--ldm100k-live-2118-end-->
+
+<!--ldm100k-live-2017-start-->
+CURRENT实核：2026-10-28T20:17:07.477800+08:00原LDM73500尝试/73500Adam/0skip，原supervisor304265/start1436142089和worker304272/start1436142105一致、RUNNING无exit/commonlock占用，native stage1、真实DDPM history生成23499次/选用4174primitive。2026-10-28T20:21:07.370393+08:00控制另采74100，WAITING/0信号。进度不是保存点，用户目标100000不变；20:04向用户报告71600与约23:10到达仅估计，开评23:30—次日00:30有条件，不当保证。
+新本地生成见证/诊断激活、独占派发、收集与独立LDM100k私有字节备份入口已实现；新server stdlib输出审计/备份契约helper已部署。新14NPY破坏+11错误LDM状态/端点隔离例真实远端CPU0/reaped/final streams，0真实模型/生产数组/生成pair/GPU/SDK/备份派发/生产信号。原backend spec f2e1185d...仍全false/null且未改，不是实际验收；读LDM100K_GENERATION_HANDOFF_ENVIRONMENT.md按完整文档自动接续，旧fixtures不重跑，禁止pending启用/手改flag或把准备当ready。真100k停止→CPU导出→freshCPU复核→scope真实0闭合后才作者/fresh真实GPUpair见证→诊断启用；闭合收集独立审计真实NPZ，实际生成/语义/物理均尚未通过。新的LDM备份只绑定真实100kCPU导出，全部证据写D，p997仍pending不得抢派，慢字节传输不停止模型。
+p997_v2原worker/SFTP创建身份20:46实核匹配、185630720B partial、无exit/backup，仍PENDING；C实测约3.86GB、D约6.09GB，本轮0清理/删除，变化只作采样不当预留，不重跑旧清理。所有活动source/spec/预算及唯一端点控制器冻结，保护旧暂停任务/私有状态。
+<!--ldm100k-live-2017-end-->
+
+<!--ldm100k-live-1908-start-->
+CURRENT实核：2026-10-28T19:08:04+08:00原LDM63100尝试/63100Adam/0skip，原supervisor304265/start1436142089及worker304272/start1436142105一致、RUNNING无exit/commonlock占用，native stage1，真实DDPM history生成13099次/选用1301primitive；19:08:49控制另采63200、WAITING/0信号，不是保存点。p997_v2原worker/SFTP创建身份19:27实核仍匹配，122519552B partial、无退出/backup，仍PENDING；C约0.48GB、D约6.23GB仅采样，不重跑清理。
+新真实模型生成backend/runtime/entry/有界监督/实际scope与见证接受源码已部署禁用，specSHAf2e1185d32aa599b71d1c2dca68d41ef6503bbbbff8d3b51fe1b73b9fb45e229，witness/generation flags false、scope/witness bindings及实际预算null。新22隔离seed/window/预算负例远端CPU0/reaped/final streams，0模型/数组/实际pair/GPU/SDK/信号，非数值运行验收。读LDM100K_GENERATION_BACKEND_ENVIRONMENT.md；本地激活/独占派发/轻量收集与真实见证启用桥尚需完成，禁止手改flag或提前pending运行。100k停止/CPU导出/freshCPU复核/真实scope未闭合，不得执行新GPU模型；原活动source/spec/预算/控制器冻结。下一轮优先完成真实桥和LDM私有备份入口，不能停在本次禁用部署或冒称语义/物理效果。
+<!--ldm100k-live-1908-end-->
+
+<!--ldm100k-live-1809-start-->
+CURRENT实核：2026-10-28T18:09:02+08:00原LDM54200尝试/54200Adam/0skip，原supervisor304265/start1436142089及worker304272/start1436142105一致、RUNNING无exit、共同锁占用、native stage1，真实完整DDPM history生成4199次/选用114primitive。18:10:26唯一控制另采54400、WAITING/0信号；不是保存检查点。VAE100k私有D副本已通过，不重传；p997_v2原worker73588/SFTP15724创建身份实核仍匹配，48201728B partial、D6383742976B采样，仍PENDING。C写入救援已完成不重跑，C约0.50GB可用但仍轻量观察。
+新实际CPU scope-builder/签名激活/独占派发/有界监督/聚合收集已部署禁用，specSHA303d7261db46476aa539d2a524011bba1e9386f6e1bec2cc9aa24e4fed300c26，scope_build=false/verified_model=null/generation=false。新31隔离契约负例远端CPU0/reaped/final streams，原活动源/spec冻结未动，0实际scope/模型/数组/GPU/信号，不是实际接受。读LDM100K_HELDOUT_SCOPE_ENVIRONMENT.md，真100k停止→CPU导出→fresh实际CPU summary闭合后才一次启用/执行。现有12/16/18/26不重跑。实际模型生成entry/监督、兼容TMR及物理端点仍需继续实现和实际验收，不能以本阶段准备停工或称完整效果。
+<!--ldm100k-live-1809-end-->
+
+<!--ldm100k-live-1748-start-->
+CURRENT实核：2026-10-28T17:48:25+08:00原LDM51000尝试/51000Adam/0skip，同原supervisor304265/start1436142089及worker304272/start1436142105，RUNNING无exit/commonlock占用、实际stage1，真实DDPM history生成999次/选用2primitive；不是保存点。17:49:32唯一控制另采51200、WAITING/0信号，用户100k端点不变。VAE100k私有D备份p100k_v1真实SFTP0/worker0、完整513526765B/SHA通过，已释放备份锁，p997_v2唯一续原32997376B前缀，仍PENDING。
+本机C盘空闲0导致源码测试文件写入失败，已保留失败字节；经D私有完整恢复包/SHA/ZIP CRC/所有权及GitHub恢复代码+聚合证明实核后，只移除499702381B可恢复下载/编译缓存，0数据/checkpoint/环境/训练源删除或修改。C恢复可写但余量有限，后续只轻量观察，不重跑本次清理。见reports/c_space_rescue_and_ldm_progress_20261028.md和results/storage_c_space_rescue_20261028/final_summary.json。私有缓存/清单绝不公开。scope-builder/verified-input已有本地源码及12隔离元数据负例本地0，但没有监督/激活、未部署/无真实scope、生成或模型作业，非ready；继续完成实际入口，勿称实际验收。
+<!--ldm100k-live-1748-end-->
+
+<!--ldm100k-live-1612-start-->
+CURRENT实核：2026-10-28T16:12:30.479288+08:00原LDM33800尝试/33800Adam/0skip，原supervisor304265/start1436142089、worker304272/start1436142105一致，RUNNING无exit/commonlock占用；2026-10-28T16:13:04.798095+08:00唯一控制另采样33900、WAITING/0信号、原身份一致。健康静默，尚无100k保存。新heldout分段scope纯元数据helper已部署、16个新隔离边界/泄漏负例远程CPU0，但真实scope/生成/指标均0，plan的scope_build/generation flags false、model_bindings null，不是ready。读[LDM100K_HELDOUT_ENVIRONMENT.md](LDM100K_HELDOUT_ENVIRONMENT.md)继续实现实际scope-builder/生成监督与TMR兼容输入。已查论文与官方tree ef6555fb174c9b5c44945a62c7ffc77b5ddbbf22，TMR特征器尚未绑定；不以CLIP/Huber替代。旧26/18套件不重跑，运行源/spec均未修改。VAE私有SFTP原身份实核仍活跃，467927040B partial/D空闲7031324672B，仍PENDING，无新派发/删partial。
+<!--ldm100k-live-1612-end-->
+
+<!--ldm100k-live-1507-start-->
+CURRENT轻量观测：2026-10-28T15:08:16.204413+08:00原LDM22200真实尝试/22200Adam/0skip，原supervisor304265/start1436142089和worker304272/start1436142105身份一致，RUNNING、无exit、GPU锁占用；2026-10-28T15:09:20.023340+08:00唯一端点控制另采样22400、WAITING/0信号，身份一致。两份收据时间不同，均不是100k完整保存。当前新独立CPU复核源码/监督与本地启用/派发/收集桥已部署禁用，verify_authorized=false/export_binding=null，18个新隔离元数据破坏负例真实CPU0/reaped/streams_final，0模型/生产checkpoint/GPU/实际复核作业；不是实际验收，不重跑准备/旧26例。真100k停止与CPU导出闭合后，按[LDM100K_PREFIX_VERIFY_ENVIRONMENT.md](LDM100K_PREFIX_VERIFY_ENVIRONMENT.md)启用，再由fresh文档agent唯一实际运行user_ldm100k_prefix_document_v1，不覆盖原导出。当前所有模型入口仍未派发；现有VAE私有SFTP仍在传、创建身份实核，396394496B partial不是最终备份。健康保持安静，不改变用户100k目标或正在运行的源/spec。
+<!--ldm100k-live-1507-end-->
+
+<!--ldm100k-prefix-preparation-start-->
+CURRENT新增：真正100k专用CPU完整性/推理导出源码与本地启用/派发/轻量收集桥已实现；服务器已部署禁用，export_authorized=false/ldm_training=null。26个独立元数据破坏负例实际CPU0/reaped/streams_final通过，0生产checkpoint读取/模型/GPU/信号/真实导出；不是实际验收。读[LDM100K_PREFIX_EXPORT_ENVIRONMENT.md](LDM100K_PREFIX_EXPORT_ENVIRONMENT.md)和prefix_export_preparation_v2.json。不要重跑准备或提前pending激活。原训练11800尝试/11800Adam/0skip（2026-10-28T14:10:41.709363+08:00），原监督与worker身份未变；唯一100k控制另采样11900，仍等待真实保存和精确恢复，0生产信号。源/spec/共同锁均保持。私有100k字节备份现有worker/client创建身份实核仍在传，partial不是已完成备份。
+<!--ldm100k-prefix-preparation-end-->
+
+# CURRENT — user requests LDM100000 endpoint, original300k math frozen
+
+Latest human: “LDM也训练100000步吧，不需要300000步。” This overrides all older
+300k completion requirements. VAE100000 is already complete. Continue the same
+running LDM weights/Adam/RNG to the real100000 checkpoint, then stop the original
+program and proceed to actual integrity/generation/semantic/physical evaluation.
+No restart, course compression, optimizer change, or new user confirmation.
+The original300k run name/schedule/source remain historical provenance; a100k
+prefix is not a completed300k schedule or exact paper reproduction.
+
+Original run user_vae100k_ldm300k_train_v1. Original specSHA
+654332646f2aa4bb69fea4cc779edf88138735a0ca9f5e5906e783948868c770;
+entry eb613778716602f83051e54a2c40d1fc8b6a2820aaf5bd8416a75b18f47b3b64;
+numeric/layout binding323349d38cef74e07215ab81c8919879512a2391552c9187151eb6a8a521b7ff.
+At13:26 actual3900attempts/3900Adam/0skip, same worker304272/start1436142105
+and supervisor304265/start1436142089. PIDs are clues, verify argv/start identity.
+Original GPU1shared/.65/CPU0-3 and common GPU lock stay unchanged. No overlapping
+GPU/SDK/model jobs. Existing private byte worker is independent CPU transport.
+
+New scripts/ldm100k_control_protocol.py,watch_ldm100k_handoff.py,
+supervise_ldm100k_handoff.py and provider_tools/test_ldm100k_control_cpu.py were
+deployed and parsed by real server Python3.8. New disabled control specSHA
+1f5d9d2895c75905a2846d4cdbe55915f1c502aa18e07f45d17a55fb48c282a7.
+Author CPU fixture has actually exited0/reaped/final streams,10negative metadata
+cases plus wrong identity/unknown or duplicate intent rejection; exactly one
+fixture-owned CPU sleep received SIGINT and exited-2. Production signals0,
+production checkpoint reads0,newGPU0. It also proves zero history/semantic
+quality counters do not authorize training past the user's endpoint.
+
+The disabled-deployment notes above and fixture invocation below are historical.
+The unique observer is already armed; do not repeat the fixture or arm operation.
+Old VAE observers are dead and must never be rearmed or signaled again.
+
+## Historical fresh CPU document invocation — completed, do not rerun
+
+Use local bundled Python, PYTHONIOENCODING=utf-8 and BASE scripts. No package
+installation or source/spec edits. Run exactly once:
+
+```
+provider_tools/run_ldm100k_control_fixture.py --run document_v1
+```
+
+The helper dispatches the documented stdlib fixture only, not an observer or
+production signal. It records actual remote child PID/exit/reaping/streams,
+checks original and new source/spec hashes before/after, original LDM unchanged.
+Local result is results/ldm100k_user_handoff_20261028/
+control_fixture_document_v1.json; raw client outcome fix_document_v1_client.json.
+Remote SUMMARY lives at ROOT/ldm100k_user_handoff_20261028/
+control_fixture_document_v1/SUMMARY.json. Inspect actual hashes and client
+exit0/reaped/final streams, not just printed capability or source parsing.
+No GPU lock is taken by these CPU fixtures; all signaled PIDs must be created
+inside the fixture itself. Unknown intent/client means inspect, never rerun.
+
+Return a genuine local SUMMARY.json with fields:
+
+```
+status: LDM100K_CONTROL_FRESH_DOCUMENT_VERIFIED
+actual_exit_code: 0
+findings: []
+actual_fixture_child_reaped: true
+actual_fixture_child_streams_final: true
+fresh_document_fixture: actual result.fixture
+client: actual recorded client outcome
+current_source_spec_sha256: actual result.current_source_spec_sha256
+remote_fixture_summary_sha256: actual result.remote_fixture_summary_sha256
+```
+
+Historical completed author/fresh and one-shot arm sequence (do not repeat):
+
+```
+provider_tools/arm_ldm100k_control.py --document-summary ACTUAL_ABSOLUTE_SUMMARY
+provider_tools/collect_ldm100k_control.py --kind ldm_control --run user_ldm100k_control_v1 --evidence lc0
+```
+
+The arm operation is unique, archives the disabled spec, binds two real CPU
+proofs and verifies the original live pidfd identity. It starts a durable CPU
+observer with separate ldm100k_user_control.lock, not the occupied GPU lock.
+Do not arm again or send manual extra signals. The observer is bounded7days,
+CPU0-3,1GiB RAM/2GiBdata floor,15s resource logs. Its supervisor owns only its
+own observer group and never SIGKILLs the original producer.
+
+Every second the observer checks the immutable original source/spec binding,
+current process identity and receipt. Only a named real100000 full checkpoint
+after atomic fsync/rename, completed native validation, producer exact reload
+of model/Adam/EMA/RNG/clock/pending fields and restored history counters may be
+selected. It independently checks full bytes/SHA/owner/no symlink/stable inode,
+then fsyncs one exclusive signal intent and sends one pidfd-bound SIGINT. An
+unknown intent is not permission to resend. Semantic quality is evaluated AFTER
+the stop and must not keep the trainer running beyond100000.
+
+Original KeyboardInterrupt/nonzero process/supervisor/outer exits are retained.
+Post-target in-memory work can be interrupted and is discarded; never repair
+or relabel it as an accepted checkpoint. The selected immutable100k state is
+the only generator source. Require no original live workers, all actual exit
+records, closed observer process/supervisor/outer0 and released GPU lock before
+any new model/SDK/GPU evaluation. Positive control status:
+USER_LDM100000_STOP_ACCEPTED_ORIGINAL_EXITS_RETAINED. Its target history counters
+are recorded, not fabricated; zero/failed counters remain real quality findings.
+
+Continue with actual100k fullstate finite model/Adam/clock/history/aux-counter
+audit, inference reload and heldout multi-seed text/unconditional/TMR metrics,
+physical endpoints and films. These post100k steps are not yet accepted and
+must not use the old300k-completion gate or claim complete paper effects. All
+sources, failed trials and checkpoints remain private/retained. No training
+past the new100k endpoint, no teacher/prefilter8100/quick restarts. If the old
+program exits early due to capacity/errors, inspect real emergency/fullstate
+and actual exits; do not signal/rearm blindly or count unexecuted steps.
+
+Keep source/private transport and old57D/PhyGile/ReactiveBFM protections in
+USER_VAE100K_LDM_ENVIRONMENT.md. VAE100k D copy p100k_v1 is still independent;
+pending is not verified,2GiB floors remain, no partial deletion or raw public
+weights/text/trajectory/SDK upload. Health/pending stays quiet; only material
+result/failure/input/completion notifies. Existing textop monitor only.

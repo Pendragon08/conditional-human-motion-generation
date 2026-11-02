@@ -1,0 +1,156 @@
+{
+  "run": "tmr_text_models_import_verify_v1",
+  "observed_unix": 1793219469.0061007,
+  "files": {
+    "receipt": {
+      "status": "IMPORTED_TMR_TEXT_MODELS_CPU_VERIFIED",
+      "run": "tmr_text_models_import_verify_v1",
+      "source_sha256": "d11408701009bb3a7e045a0dac5ffd63ce9ba66211fd04d42f7276cfc6b70624",
+      "request_sha256": "0b2774cd9569337f797df935bbcdc5af087a1bb3eec107c5d1fc32e11797d91a",
+      "import_receipt_sha256": "aa32810715c65e0aaa2917e05848dc1fefc1adccd6f66fab8d72e681d2f354a3",
+      "output_writers_closed": true,
+      "robot_motion_or_babel_text_reads": 0,
+      "learned_tmr_weight_reads": 0,
+      "training_optimizer_updates": 0,
+      "evaluator_training_authorized": false,
+      "formal_tmr_metrics_available": false,
+      "elapsed_seconds": 5.917267333716154,
+      "capability_probe": {
+        "text_models": [
+          {
+            "model_type": "distilbert",
+            "parameters": 66362880,
+            "tokens": [
+              2,
+              7,
+              768
+            ],
+            "finite": true,
+            "frozen": true,
+            "all_model_state_tensors_finite": true,
+            "pooled_l2_norms": [
+              0.9999999403953552,
+              1.0
+            ]
+          },
+          {
+            "model_type": "mpnet",
+            "parameters": 109486464,
+            "tokens": [
+              2,
+              7,
+              768
+            ],
+            "finite": true,
+            "frozen": true,
+            "all_model_state_tensors_finite": true,
+            "pooled_l2_norms": [
+              0.9999999403953552,
+              0.9999998807907104
+            ]
+          }
+        ],
+        "cuda_initialized": false,
+        "actual_training_updates": 0,
+        "private_motion_or_babel_text_reads": 0,
+        "robot_semantic_encoder_trained": false,
+        "formal_tmr_metrics_available": false
+      },
+      "total_verified_public_file_bytes": 707323471,
+      "model_directories": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/text_models_import_v1/text_model_0",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/text_models_import_v1/text_model_1"
+      ],
+      "runtime_dependency_dir": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr_isolated_runtime_v1/dependencies",
+      "all_input_fingerprints_unchanged": true
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/verify_imported_tmr_text_models.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_imported_text_verify_tmr_text_models_import_verify_v1_request.json"
+      ],
+      "supervisor_pid": 415313,
+      "child_pid": 415318,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 6.202033272013068,
+      "supervision_passed": true,
+      "run": "tmr_text_models_import_verify_v1",
+      "source_sha256": "91c88494d4b8c044a29b2018f6f3ec24a0de95a0fed5f278c45273cf2f37d837",
+      "request_sha256": "0b2774cd9569337f797df935bbcdc5af087a1bb3eec107c5d1fc32e11797d91a",
+      "receipt_sha256": "c27611b8e2918234f16ee60e183e28bcf3191cd7c5014ee5bb625820979e8872",
+      "resource_sha256": "34871d8486f0d171bf9cb7f1963d029cd1590151181ddc7cf3dce571dec834c8",
+      "process_exit_sha256": "5b3c91c2a903b701f4f509a586da05b2de3337e746b9a088f9282ac25c0c8f47"
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/verify_imported_tmr_text_models.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_imported_text_verify_tmr_text_models_import_verify_v1_request.json"
+      ],
+      "supervisor_pid": 415313,
+      "child_pid": 415318,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 6.202033272013068,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    }
+  },
+  "sha256": {
+    "receipt": "c27611b8e2918234f16ee60e183e28bcf3191cd7c5014ee5bb625820979e8872",
+    "exit": "e747f88c3c9f7f28373a7b03693be5939b05828d4e1330ad998ee8bf1cf3284a",
+    "process": "5b3c91c2a903b701f4f509a586da05b2de3337e746b9a088f9282ac25c0c8f47",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+  },
+  "workers": [],
+  "common_lock_free": true,
+  "closed_execution_verified": true,
+  "artifact_audit": {
+    "all_pinned_public_text_model_bytes_and_hashes_verified": true,
+    "frozen_offline_variable_length_cpu_forward_verified": true,
+    "actual_evaluator_training_updates": 0,
+    "trained_semantic_metrics_available": false
+  },
+  "logs": {
+    "child.log": "",
+    "tmr_text_models_import_verify_v1_outer.log": ""
+  },
+  "data_free_bytes": 2408677376,
+  "home_free_bytes": 2975121408
+}

@@ -1,0 +1,121 @@
+{
+  "schema": "textop.filter_recovery_checkpoint_document_review.v1",
+  "status": "DOCUMENT_COMMANDS_PASSED_FUTURE_POSITIVE_AUDIT_BLOCKED",
+  "completed_utc": "2026-10-27T04:47:51.765631+00:00",
+  "documented_commands_executed_once_each": true,
+  "documented_commands_verbatim_verified": true,
+  "fixture": {
+    "actual_exit_code": 0,
+    "checks": 47,
+    "stderr_bytes": 0,
+    "fixtures_only": true,
+    "raw_stdout_sha256": "f146d52306c5ee894bf17e17c42ceab01b56c5f620c244dba6aa87583c452e9a",
+    "saved_server_fixture_sha256": "f2939d34a4e7be9b6a608b35c939b9420673d2db89d93b985cac02617cce9a27"
+  },
+  "real_preflight": {
+    "actual_exit_code": 0,
+    "stderr_bytes": 0,
+    "status": "PENDING_NO_NEW_CHECKPOINT",
+    "observed_completed": 10100,
+    "requested_completed": 15000,
+    "checkpoint_loads": 0,
+    "export_files_created": 0,
+    "sdk_dispatches": 0,
+    "raw_stdout_sha256": "1945fb0c957cc2013041dbd7e02f1eb7c8ce1974bd0e065ad4ef6cfd443d1d2e"
+  },
+  "runtime": {
+    "local_python": "3.12.14",
+    "server_metadata_python": "3.8.10",
+    "independent_server_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "independent_server_cuda_hidden": true
+  },
+  "provenance": {
+    "active_binding_count": 22,
+    "all_active_bindings_match_local_server": true,
+    "backup_bound_file_count": 6,
+    "all_backup_bound_files_match_local_server": true,
+    "backup_spec_bytes_sha256": "844c442c8ac07fd1a6f5afce7b16428937db4b00d717ef30382ac2e893f2547b",
+    "backup_spec_canonical_sha256": "826eabac505cbda47e1d9af94c0ff4328d9d2e1b73edb4bdd9c4afbbe8b62bed",
+    "backup_spec_canonical_id": "826eabac",
+    "environment_doc_sha256": "27789c1ba15b7d28f7141905a1ae7e0ed2aa0e4c7ad2672af674ae0c1bad84c4",
+    "provider_script_sha256": "ebe795afdd675cd4222b10340e2eab9367cf7831cbe61a784d24deefbc8d0a17",
+    "provider_helper_sha256": "a340b39c5432ae4764ecde1b0d66ea1a02939b94fbdab3263dae564c8bd26d8d",
+    "provider_script_local_only": true,
+    "provider_not_in_spec_bindings": true,
+    "checked_local_source_spec_bytes_unchanged_at_report": true
+  },
+  "independent_state": {
+    "actual_sdk_teacher_count": 1,
+    "actual_sdk_teacher_running": true,
+    "bash_launcher_count": 1,
+    "remote_audit_worker_count": 0,
+    "local_backup_worker_count": 0,
+    "server_round15000_output_exists": false,
+    "server_round15000_checkpoint_exists": false,
+    "server_round15000_execution_journal_exists": false,
+    "local_round15000_evidence_exists": false,
+    "d_round15000_statistics_exists": false
+  },
+  "safety": {
+    "checkpoint_loads": 0,
+    "checkpoint_file_bytes_read": 0,
+    "gpu_or_sdk_dispatches": 0,
+    "training_signals": 0,
+    "new_optimizer_updates": 0,
+    "future_backup_invoked": false,
+    "original_10000_or_5000_checkpoint_reaudited": false,
+    "production_source_or_config_changed": false,
+    "package_installations": 0,
+    "releases_created": 0,
+    "uploads_performed": 0,
+    "files_deleted": 0
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "high",
+      "blocks_future_positive_audit": true,
+      "title": "Destination ancestry is not checked before writes",
+      "evidence": [
+        "scripts/inspect_formal_filter_checkpoint_v2.py:58-62",
+        "scripts/inspect_filter_recovery_checkpoint.py:35-36",
+        "provider_tools/backup_filter_recovery_checkpoint.py:81-87,120-138"
+      ],
+      "detail": "ROOT and source checkpoint ownership/non-link checks do not validate checkpoint_backups or round_N. The core only checks destination.exists() and then mkdir(parents=True), so an existing linked or foreign-owned parent can redirect receipt/export/private-statistics writes. The provider and adapter add no destination ancestry checks. Local D destination parents likewise use mkdir(exist_ok=True) without reparse-point/ownership checks.",
+      "observed_state": "Current server checkpoint_backups is UID1013, resolved and non-link, mode0775; round15000 does not exist. This is a preventive code gap, not evidence of current redirection or disclosure.",
+      "requested_resolution": "Before a future positive audit, reject linked/reparse or wrongly owned destination ancestry, constrain resolved destinations to the intended private root, and create/verify new directories safely. Preserve current failures; do not modify production teacher files."
+    },
+    {
+      "id": "F2",
+      "severity": "medium",
+      "blocks_future_positive_audit": true,
+      "title": "Exact CPU failure journal is not guaranteed on all failure paths",
+      "evidence": [
+        "provider_tools/backup_filter_recovery_checkpoint.py:82-94,112,186-189",
+        "provider_tools/session.py:6-9"
+      ],
+      "detail": "The remote execution record is created only after Popen and communicate finish. Popen failure or a second TimeoutExpired after kill escapes before any execution record. An SSH/transport failure can prevent the caller receiving the child outcome. session.remote raises only the last6000 characters of each stream for nonzero exit and omits the actual return code; its timeout path has no durable execution journal. The local backup.json then records a traceback, not a complete per-stage stdout/stderr/exit receipt.",
+      "observed_state": "Ordinary CPU nonzero exit and a first timeout followed by successful reap do save child stdout/stderr/exit. Existing partial output directories and transfer .partial files are retained. No failure was injected and no CPU audit was launched in this pass.",
+      "requested_resolution": "Create an exclusive durable stage/start record before spawning; finalize it in all exception/reap paths and preserve exact stdout/stderr/real exit or explicitly unknown status. Preserve SSH outcome independently of JSON parsing and report uncertain remote continuation without relaunching."
+    }
+  ],
+  "future_positive_audit_ready": false,
+  "backup_enabled": false,
+  "positive_checkpoint_backup_validated": false,
+  "strict_physical_filter_completed": false,
+  "corpus_accepted": false,
+  "semantic_quality_accepted": false,
+  "public_copy_allowlist": [
+    "REPORT.md",
+    "SUMMARY.json"
+  ],
+  "evidence_scope": "Only these aggregate reports may be copied to the public repository. Raw streams, process arguments and operational evidence remain local.",
+  "command_result_doc_divergence": false,
+  "future_workflow_claims_have_static_gaps": true,
+  "environment_scope": "Warm metadata tooling only. No rebuilt environment and no fresh GPU kernel witness is claimed."
+}

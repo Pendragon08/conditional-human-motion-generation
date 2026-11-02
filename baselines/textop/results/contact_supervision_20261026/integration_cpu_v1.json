@@ -1,0 +1,224 @@
+{
+  "status": "CONTACT_SUPERVISION_INACTIVE_INTEGRATION_CPU_PASSED",
+  "test_exit_code": 0,
+  "test_receipt": {
+    "status": "CONTACT_FILTER_V3_SYNTHETIC_PROTOCOL_CHECKS_PASSED",
+    "checks": [
+      {
+        "name": "synthetic_consistency_only",
+        "synthetic_schema_consistent": true,
+        "real_motions_accepted": 0
+      },
+      {
+        "name": "running_policy_rejected",
+        "expected_rejection_observed": true,
+        "reason": "Actual40k training is incomplete"
+      },
+      {
+        "name": "unclosed_training_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "old_plane_profile_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "selfcollision_disabled_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "friction_changed_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "log_contact_hash_mismatch",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "failed_evaluator_exit",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "timeout_evaluator_exit",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "unclosed_evaluator_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "diagnostic_evaluator_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "evaluator_took_updates_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "wrong_executor_source",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "disabled_evaluation_spec",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "unvalidated_evaluation_spec",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "wrong_evaluated_policy",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "wrong_reference_order",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "wrong_trial_count",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "wrong_physics_step_count",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "missing_journal_trial",
+        "expected_rejection_observed": true,
+        "reason": "Expecting value: line 1 column 1 (char 0)"
+      },
+      {
+        "name": "duplicated_journal_trial",
+        "expected_rejection_observed": true,
+        "reason": "Lost or duplicated trial journal"
+      },
+      {
+        "name": "partial_trajectory_still_rejected",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "unattempted_source_still_rejected",
+        "expected_rejection_observed": true,
+        "reason": "Never-attempted motions cannot pass"
+      },
+      {
+        "name": "supervisor_failure_even_child_exit0",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "process_exit_disagrees_with_wrapper",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "sampling_error_retained",
+        "expected_rejection_observed": true,
+        "reason": ""
+      },
+      {
+        "name": "missing_after_exit_sample",
+        "expected_rejection_observed": true,
+        "reason": ""
+      }
+    ],
+    "checks_passed": 27,
+    "gpu_calls": 0,
+    "physics_calls": 0,
+    "optimizer_updates": 0,
+    "physical_filter_executed": false,
+    "dataset_accepted": false,
+    "synthetic_fixture_markers_retained": true,
+    "fixtures_removed": false,
+    "elapsed_end_unix": 1792973779.5981405
+  },
+  "test_stdout": "{\"status\": \"CONTACT_FILTER_V3_SYNTHETIC_PROTOCOL_CHECKS_PASSED\", \"checks_passed\": 27, \"gpu_calls\": 0, \"physics_calls\": 0, \"optimizer_updates\": 0, \"physical_filter_executed\": false, \"dataset_accepted\": false, \"synthetic_fixture_markers_retained\": true, \"fixtures_removed\": false, \"elapsed_end_unix\": 1792973779.5981405}\n",
+  "test_stderr": "",
+  "disabled_supervisor_exit_code": 1,
+  "disabled_supervisor_stderr": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_strict_contact_replay.py\", line 10, in <module>\n    assert spec['formal_evaluation_enabled'] is True,'Future exporter disabled; no SDK dispatched'\nAssertionError: Future exporter disabled; no SDK dispatched\n",
+  "read_only_resource_sample": {
+    "available_host_ram_bytes": 129345339392,
+    "data_free_bytes": 8442253312,
+    "all_device_usage_including_other_jobs": "0, 12741, 35811, 1\n1, 32006, 16544, 45",
+    "owned_child_group": null,
+    "owned_group_processes": [],
+    "owned_group_gpu_memory": []
+  },
+  "resource_reserve_rejection": "Evaluator resource reserve crossed: available_ram_bytes=129346605056, free_disk_bytes=8442253312, minimum_ram_bytes=2147483648, minimum_disk_bytes=1000000000000000000000000000000",
+  "deployed": {
+    "scripts/apply_tracking_filter_v3.py": "0fe06d3c972c9f47739ad7e75454300fb61e14979c6024543502733afd60f038",
+    "scripts/evaluate_strict_filter_contact.py": "2ab322e9fd3ee27176db15278642f42051e4425cf47bd71ac34264776fb95035",
+    "scripts/finalize_contact_filter.py": "a69eb3c7f55712f7138c51117403de25bfb06aae27a290c0f2391288a76192c5",
+    "scripts/supervise_strict_contact_replay.py": "3f5efc540dec1aabcc7c511533948bb4bd5e480e2741ef3247be16dd95548157",
+    "configs/strict-contact-replay-spec.json": "dbdcc25c00c669c0ebda140c3b1183aeafa83191c0aa34e3208af4542207c72c",
+    "tests/test_filter_contact_v3.py": "da5531f5459f4065d7137d8b60e72e7b2151d352271ef531258de02258053a24",
+    "scripts/contact_process_supervision.py": "44d689a71dc0c04778a7e6e651bc61d234dd59d3435a80c543be9d8db55638b4",
+    "tests/test_contact_process_supervision.py": "f3a3dca0d3a97ee5f41127422de028d84925f0f1a1225ab6ddb9138b2693094f",
+    "scripts/contact_filter_resources.py": "1003a7cba9d2f2e30a05a881020e51ed8907eba6d523e4ce8af6b1b5399f76e5"
+  },
+  "frozen_runtime_files_verified": 16,
+  "cpu_case_records": {
+    "sampler_failure_before_launch": {
+      "samples.jsonl": "{\"synthetic_resource_sample\": true, \"owned_child_pid\": null, \"phase\": \"after_exit\", \"elapsed_seconds\": 0.00017954222857952118}\n",
+      "stdout.log": "",
+      "proof.json": "{\n  \"command\": [\n    \"/usr/bin/python3\",\n    \"-u\",\n    \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/contact_supervision_cpu_author_v1/sampler_failure_before_launch/child.py\"\n  ],\n  \"supervisor_pid\": 3827594,\n  \"child_pid\": null,\n  \"child_exit_code\": null,\n  \"child_reaped\": false,\n  \"timed_out\": false,\n  \"supervisor_error\": \"RuntimeError('Synthetic sampler failure')\",\n  \"shutdown_actions\": [],\n  \"samples_written\": 1,\n  \"sample_errors\": [\n    {\n      \"phase\": \"before_launch\",\n      \"error\": \"RuntimeError('Synthetic sampler failure')\"\n    }\n  ],\n  \"supervisor_traceback\": \"Traceback (most recent call last):\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/contact_process_supervision.py\\\", line 73, in run_supervised\\n    sample('before_launch')\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/contact_process_supervision.py\\\", line 61, in sample\\n    row = sampler(child.pid if child is not None else None)\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/tests/test_contact_process_supervision.py\\\", line 37, in sample\\n    raise RuntimeError('Synthetic sampler failure')\\nRuntimeError: Synthetic sampler failure\\n\",\n  \"elapsed_seconds\": 0.00022167526185512543,\n  \"supervision_passed\": false\n}"
+    },
+    "timeout_term": {
+      "samples.jsonl": "{\"synthetic_resource_sample\": true, \"owned_child_pid\": null, \"phase\": \"before_launch\", \"elapsed_seconds\": 8.47354531288147e-05}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827598, \"phase\": \"after_launch\", \"elapsed_seconds\": 0.002243736758828163}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827598, \"phase\": \"running\", \"elapsed_seconds\": 0.052449414506554604}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827598, \"phase\": \"running\", \"elapsed_seconds\": 0.10265757702291012}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827598, \"phase\": \"running\", \"elapsed_seconds\": 0.1528444029390812}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827598, \"phase\": \"running\", \"elapsed_seconds\": 0.20301857590675354}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827598, \"phase\": \"running\", \"elapsed_seconds\": 0.25324586778879166}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827598, \"phase\": \"running\", \"elapsed_seconds\": 0.3034241069108248}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827598, \"phase\": \"running\", \"elapsed_seconds\": 0.353595107793808}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827598, \"phase\": \"after_exit\", \"elapsed_seconds\": 0.4013067651540041}\n",
+      "stdout.log": "",
+      "proof.json": "{\n  \"command\": [\n    \"/usr/bin/python3\",\n    \"-u\",\n    \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/contact_supervision_cpu_author_v1/timeout_term/child.py\"\n  ],\n  \"supervisor_pid\": 3827594,\n  \"child_pid\": 3827598,\n  \"child_exit_code\": -15,\n  \"child_reaped\": true,\n  \"timed_out\": true,\n  \"supervisor_error\": null,\n  \"shutdown_actions\": [\n    {\n      \"owned_group\": 3827598,\n      \"signal\": \"SIGTERM\"\n    }\n  ],\n  \"samples_written\": 10,\n  \"sample_errors\": [],\n  \"elapsed_seconds\": 0.40136678516864777,\n  \"supervision_passed\": false\n}"
+    },
+    "sampler_failure_running": {
+      "samples.jsonl": "{\"synthetic_resource_sample\": true, \"owned_child_pid\": null, \"phase\": \"before_launch\", \"elapsed_seconds\": 8.904002606868744e-05}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827600, \"phase\": \"after_launch\", \"elapsed_seconds\": 0.02251402474939823}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827600, \"phase\": \"after_exit\", \"elapsed_seconds\": 0.07456699572503567}\n",
+      "stdout.log": "",
+      "proof.json": "{\n  \"command\": [\n    \"/usr/bin/python3\",\n    \"-u\",\n    \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/contact_supervision_cpu_author_v1/sampler_failure_running/child.py\"\n  ],\n  \"supervisor_pid\": 3827594,\n  \"child_pid\": 3827600,\n  \"child_exit_code\": -15,\n  \"child_reaped\": true,\n  \"timed_out\": false,\n  \"supervisor_error\": \"RuntimeError('Synthetic sampler failure')\",\n  \"shutdown_actions\": [\n    {\n      \"owned_group\": 3827600,\n      \"signal\": \"SIGTERM\"\n    }\n  ],\n  \"samples_written\": 3,\n  \"sample_errors\": [\n    {\n      \"phase\": \"running\",\n      \"error\": \"RuntimeError('Synthetic sampler failure')\"\n    }\n  ],\n  \"supervisor_traceback\": \"Traceback (most recent call last):\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/contact_process_supervision.py\\\", line 86, in run_supervised\\n    sample('running')\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/contact_process_supervision.py\\\", line 61, in sample\\n    row = sampler(child.pid if child is not None else None)\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/tests/test_contact_process_supervision.py\\\", line 37, in sample\\n    raise RuntimeError('Synthetic sampler failure')\\nRuntimeError: Synthetic sampler failure\\n\",\n  \"elapsed_seconds\": 0.07462421804666519,\n  \"supervision_passed\": false\n}"
+    },
+    "natural_exit": {
+      "samples.jsonl": "{\"synthetic_resource_sample\": true, \"owned_child_pid\": null, \"phase\": \"before_launch\", \"elapsed_seconds\": 8.233636617660522e-05}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827596, \"phase\": \"after_launch\", \"elapsed_seconds\": 0.0015629958361387253}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827596, \"phase\": \"running\", \"elapsed_seconds\": 0.05174108222126961}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827596, \"phase\": \"running\", \"elapsed_seconds\": 0.10228258743882179}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827596, \"phase\": \"running\", \"elapsed_seconds\": 0.15243933349847794}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827596, \"phase\": \"running\", \"elapsed_seconds\": 0.202686607837677}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827596, \"phase\": \"running\", \"elapsed_seconds\": 0.2528761215507984}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827596, \"phase\": \"after_exit\", \"elapsed_seconds\": 0.28457978926599026}\n",
+      "stdout.log": "cpu-only complete\n",
+      "proof.json": "{\n  \"command\": [\n    \"/usr/bin/python3\",\n    \"-u\",\n    \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/contact_supervision_cpu_author_v1/natural_exit/child.py\"\n  ],\n  \"supervisor_pid\": 3827594,\n  \"child_pid\": 3827596,\n  \"child_exit_code\": 0,\n  \"child_reaped\": true,\n  \"timed_out\": false,\n  \"supervisor_error\": null,\n  \"shutdown_actions\": [],\n  \"samples_written\": 8,\n  \"sample_errors\": [],\n  \"elapsed_seconds\": 0.28466225787997246,\n  \"supervision_passed\": true\n}"
+    },
+    "nonzero_exit": {
+      "samples.jsonl": "{\"synthetic_resource_sample\": true, \"owned_child_pid\": null, \"phase\": \"before_launch\", \"elapsed_seconds\": 8.409842848777771e-05}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827597, \"phase\": \"after_launch\", \"elapsed_seconds\": 0.0013977773487567902}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827597, \"phase\": \"after_exit\", \"elapsed_seconds\": 0.01685750111937523}\n",
+      "stdout.log": "",
+      "proof.json": "{\n  \"command\": [\n    \"/usr/bin/python3\",\n    \"-u\",\n    \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/contact_supervision_cpu_author_v1/nonzero_exit/child.py\"\n  ],\n  \"supervisor_pid\": 3827594,\n  \"child_pid\": 3827597,\n  \"child_exit_code\": 7,\n  \"child_reaped\": true,\n  \"timed_out\": false,\n  \"supervisor_error\": null,\n  \"shutdown_actions\": [],\n  \"samples_written\": 3,\n  \"sample_errors\": [],\n  \"elapsed_seconds\": 0.016900960355997086,\n  \"supervision_passed\": false\n}"
+    },
+    "timeout_kill": {
+      "samples.jsonl": "{\"synthetic_resource_sample\": true, \"owned_child_pid\": null, \"phase\": \"before_launch\", \"elapsed_seconds\": 0.000222865492105484}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827599, \"phase\": \"after_launch\", \"elapsed_seconds\": 0.0033308081328868866}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827599, \"phase\": \"running\", \"elapsed_seconds\": 0.05359738878905773}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827599, \"phase\": \"running\", \"elapsed_seconds\": 0.10381432436406612}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827599, \"phase\": \"running\", \"elapsed_seconds\": 0.1539808325469494}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827599, \"phase\": \"running\", \"elapsed_seconds\": 0.20415503531694412}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827599, \"phase\": \"running\", \"elapsed_seconds\": 0.25434327498078346}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827599, \"phase\": \"running\", \"elapsed_seconds\": 0.3045621234923601}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827599, \"phase\": \"running\", \"elapsed_seconds\": 0.35475129820406437}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827599, \"phase\": \"running\", \"elapsed_seconds\": 0.4049334414303303}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827599, \"phase\": \"running\", \"elapsed_seconds\": 0.4551957882940769}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827599, \"phase\": \"running\", \"elapsed_seconds\": 0.5053903050720692}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827599, \"phase\": \"running\", \"elapsed_seconds\": 0.5555832833051682}\n{\"synthetic_resource_sample\": true, \"owned_child_pid\": 3827599, \"phase\": \"after_exit\", \"elapsed_seconds\": 0.8018840570002794}\n",
+      "stdout.log": "",
+      "proof.json": "{\n  \"command\": [\n    \"/usr/bin/python3\",\n    \"-u\",\n    \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/contact_supervision_cpu_author_v1/timeout_kill/child.py\"\n  ],\n  \"supervisor_pid\": 3827594,\n  \"child_pid\": 3827599,\n  \"child_exit_code\": -9,\n  \"child_reaped\": true,\n  \"timed_out\": true,\n  \"supervisor_error\": null,\n  \"shutdown_actions\": [\n    {\n      \"owned_group\": 3827599,\n      \"signal\": \"SIGTERM\"\n    },\n    {\n      \"owned_group\": 3827599,\n      \"signal\": \"SIGKILL\"\n    }\n  ],\n  \"samples_written\": 14,\n  \"sample_errors\": [],\n  \"elapsed_seconds\": 0.8019570093601942,\n  \"supervision_passed\": false\n}",
+      "partial_trials.jsonl": "retained failure fixture\n"
+    },
+    "supervisor_sigterm": {
+      "samples.jsonl": "{\"synthetic_resource_sample\": true, \"phase\": \"before_launch\", \"elapsed_seconds\": 9.772367775440216e-05}\n{\"synthetic_resource_sample\": true, \"phase\": \"after_launch\", \"elapsed_seconds\": 0.0014410261064767838}\n{\"synthetic_resource_sample\": true, \"phase\": \"after_exit\", \"elapsed_seconds\": 0.005157724022865295}\n",
+      "driver.log": "",
+      "proof.json": "{\n  \"command\": [\n    \"/usr/bin/python3\",\n    \"-c\",\n    \"import time;time.sleep(90)\"\n  ],\n  \"supervisor_pid\": 3827601,\n  \"child_pid\": 3827602,\n  \"child_exit_code\": -15,\n  \"child_reaped\": true,\n  \"timed_out\": false,\n  \"supervisor_error\": \"SupervisorSignal('Supervisor received signal 15')\",\n  \"shutdown_actions\": [\n    {\n      \"owned_group\": 3827602,\n      \"signal\": \"SIGTERM\"\n    }\n  ],\n  \"samples_written\": 3,\n  \"sample_errors\": [],\n  \"supervisor_traceback\": \"Traceback (most recent call last):\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/contact_process_supervision.py\\\", line 89, in run_supervised\\n    child.wait(timeout=max(0.01, min(0.5, next_sample - time.monotonic(),\\n  File \\\"/usr/lib/python3.8/subprocess.py\\\", line 1083, in wait\\n    return self._wait(timeout=timeout)\\n  File \\\"/usr/lib/python3.8/subprocess.py\\\", line 1800, in _wait\\n    time.sleep(delay)\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/contact_process_supervision.py\\\", line 37, in interrupted\\n    raise SupervisorSignal('Supervisor received signal {}'.format(signum))\\ncontact_process_supervision.SupervisorSignal: Supervisor received signal 15\\n\",\n  \"elapsed_seconds\": 0.005180826410651207,\n  \"supervision_passed\": false\n}",
+      "child.log": ""
+    }
+  },
+  "source_snapshot_preserved": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/contact_supervision_candidate_snapshot_v1",
+  "new_sdk_runs": 0,
+  "physical_filter_executed": false,
+  "dataset_accepted": false,
+  "time_unix": 1792973779.836703,
+  "transport_exit_code": 0,
+  "transport_stderr": ""
+}

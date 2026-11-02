@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/paper69_witness.py", line 132, in <module>
+    try:main(a)
+  File "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/paper69_witness.py", line 122, in main
+    sampled=diffusion.p_sample_loop(guided,(2,1,128),device=device,clip_denoised=False,model_kwargs={'y':conditions},progress=False)
+  File "/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/robotmdar/diffusion/gaussian_diffusion.py", line 641, in p_sample_loop
+    for i, sample in enumerate(
+  File "/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/robotmdar/diffusion/gaussian_diffusion.py", line 722, in p_sample_loop_progressive
+    out = sample_fn(
+  File "/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/robotmdar/diffusion/gaussian_diffusion.py", line 532, in p_sample
+    out = self.p_mean_variance(
+  File "/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/robotmdar/diffusion/gaussian_diffusion.py", line 382, in p_mean_variance
+    model_variance = _extract_into_tensor(model_variance, t, x.shape)
+  File "/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/robotmdar/diffusion/gaussian_diffusion.py", line 1456, in _extract_into_tensor
+    res = th.from_numpy(arr).to(device=timesteps.device)[timesteps].float()
+IndexError: tensors used as indices must be long, byte or bool tensors

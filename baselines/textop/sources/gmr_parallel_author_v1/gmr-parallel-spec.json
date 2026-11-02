@@ -1,0 +1,23 @@
+{
+  "schema": "textop.gmr_parallel.v1",
+  "purpose": "Disjoint complete motions in four CPU worker processes; unchanged SMPL-X/GMR/encoding algorithms",
+  "warm_base_canonical_hash": "87f577cc",
+  "baseline_source_sha256": "90db2afdb9baf3521356c7995c95d2cd48bdc56836ffc4539073c4c8e4b819dc",
+  "workers": 4,
+  "cpu_ids": [0, 1, 2, 3],
+  "torch_threads_per_worker": 1,
+  "blas_threads_per_worker": 1,
+  "cuda_visible_devices": "",
+  "minimum_ram_free_bytes": 8589934592,
+  "minimum_system_available_memory_bytes": 12884901888,
+  "minimum_data_free_bytes": 2147483648,
+  "poll_seconds": 2,
+  "motion_partition": "Greedy balance by declared frame count; each source belongs to exactly one worker; sequential frames within each motion",
+  "comparison": {"float_atol": 0.00001, "float_rtol": 0.000001, "contacts_exact": true, "timestamps_exact": true, "annotations_exact": true},
+  "diagnostic_sources": 8,
+  "diagnostic_quantiles": [0.15, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.85],
+  "timeout_seconds": 1800,
+  "physical_filter_executed": false,
+  "dataset_accepted": false,
+  "full_generator_training_started": false
+}

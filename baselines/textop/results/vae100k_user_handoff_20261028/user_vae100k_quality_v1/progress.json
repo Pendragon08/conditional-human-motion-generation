@@ -1,0 +1,165 @@
+{
+  "kind": "quality",
+  "run": "user_vae100k_quality_v1",
+  "observed_unix": 1793161453.0769663,
+  "files": {
+    "receipt": {
+      "status": "USER_VAE100K_QUALITY_VALIDATION_PASSED",
+      "run": "user_vae100k_quality_v1",
+      "source_sha256": "982a84c831c3184ef721cf88ef36cf9b6ffffd19f5de5b26f6ad340dc74d1995",
+      "spec_sha256": "858c2534b2c59d280c5c7f4b3ee3516a826a52aace5f7c84b343c9436a697ded",
+      "selected_checkpoint": {
+        "path": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/vae_state_100000.pth",
+        "bytes": 513526765,
+        "sha256": "99017f1cbd13cf2904bc5f87904e5a488a5b3ee1f920da1882f90fdad04029ed",
+        "manager_step": 100000,
+        "actual_optimizer_updates": 100000
+      },
+      "user_variant": "VAE100000_PREFIX_FROM_UNMODIFIED_200K_PROGRAM",
+      "paper200k_completed": false,
+      "training_optimizer_updates_performed": 0,
+      "output_writers_closed": true,
+      "full_state_restore": {
+        "model_restored_exactly": true,
+        "optimizer_restored_exactly": true,
+        "ema_restored_exactly": true,
+        "rng_and_generator_restored_exactly": true,
+        "clock_restored_exactly": true,
+        "pending_evaluation_fields_restored": true,
+        "checkpoint_boundary": "completed_four_primitive_batch; no cached batch/history"
+      },
+      "fixed_validation_batch_sha256": "9c3833eb9fc0e294d2fd8514b996f188323b868ca27551bf78b09058293a9de3",
+      "initial_quality": {
+        "teacher_forced": {
+          "normalized_reconstruction_huber": 0.4631298705935478,
+          "four_primitives": true,
+          "always_previous_prediction_history": false,
+          "final_physical_endpoint_or_text_generation_evaluated": false
+        },
+        "self_rollout": {
+          "normalized_reconstruction_huber": 0.46162528544664383,
+          "four_primitives": true,
+          "always_previous_prediction_history": true,
+          "final_physical_endpoint_or_text_generation_evaluated": false
+        }
+      },
+      "final_quality": {
+        "teacher_forced": {
+          "normalized_reconstruction_huber": 0.004793255706317723,
+          "four_primitives": true,
+          "always_previous_prediction_history": false,
+          "final_physical_endpoint_or_text_generation_evaluated": false
+        },
+        "self_rollout": {
+          "normalized_reconstruction_huber": 0.005952475592494011,
+          "four_primitives": true,
+          "always_previous_prediction_history": true,
+          "final_physical_endpoint_or_text_generation_evaluated": false
+        }
+      },
+      "vae_quality_gate_passed": true,
+      "completed_primitive_attempts": 100000,
+      "optimizer_updates": 100000,
+      "skipped_updates": 0,
+      "trained_model_sha256": "6b8c191742d24e75915441bfbfd4ad4fab8e05e0baa6538a5ad6ff0f116fb1d5",
+      "original_runtime_binding_sha256": "87a2f61683d930bf5fe69a9113713c90137c43318766627975c6d11accc20c1c",
+      "corpus_receipt_sha256": "fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427",
+      "data_acceptance_sha256": "0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c",
+      "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
+      "original200k_completion_claimed": false
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=4",
+        "MKL_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "WANDB_MODE=disabled",
+        "PYTHONUNBUFFERED=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/validate_user_vae100k.py",
+        "--run",
+        "user_vae100k_quality_v1"
+      ],
+      "supervisor_pid": 294666,
+      "child_pid": 294673,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 6,
+      "sample_errors": [],
+      "elapsed_seconds": 46.35933842509985,
+      "supervision_passed": true,
+      "source_sha256": "bdbbb95fd375fef2b0ee11d01c865467599822a2e25c95bebce85f200f5fb2ee",
+      "receipt_sha256": "3f7e4419358b7c7434d681670c050bf716b9dd54441eb7b891b852746da78873",
+      "process_exit_sha256": "1b3410482b5c82f81e0bbae9ab2fb4bd085732840a9938fb9e2cc8ee373ec6ef",
+      "resource_sha256": "c22ccc57d535f02e15edd5937447bbaaead2a3323627b3611dca707e90537d48",
+      "numerical_status": "USER_VAE100K_QUALITY_VALIDATION_PASSED"
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=4",
+        "MKL_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "WANDB_MODE=disabled",
+        "PYTHONUNBUFFERED=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/validate_user_vae100k.py",
+        "--run",
+        "user_vae100k_quality_v1"
+      ],
+      "supervisor_pid": 294666,
+      "child_pid": 294673,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 6,
+      "sample_errors": [],
+      "elapsed_seconds": 46.35933842509985,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    },
+    "driver": {
+      "status": "USER_VAE100K_SUCCESSOR_DISPATCHED_NOT_YET_ACCEPTED",
+      "stage": "quality",
+      "run": "user_vae100k_quality_v1",
+      "driver_pid": 294664,
+      "spec_sha256": "858c2534b2c59d280c5c7f4b3ee3516a826a52aace5f7c84b343c9436a697ded",
+      "command": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_user_vae100k_quality.py",
+        "--run",
+        "user_vae100k_quality_v1"
+      ]
+    }
+  },
+  "sha256": {
+    "receipt": "3f7e4419358b7c7434d681670c050bf716b9dd54441eb7b891b852746da78873",
+    "exit": "7bb9b0b74755f156c49c2ee3272940430fc7d5414f21662ec64ea70d0319b5bf",
+    "process": "1b3410482b5c82f81e0bbae9ab2fb4bd085732840a9938fb9e2cc8ee373ec6ef",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0",
+    "driver": "08a6258e6e3a7f29770425494f844db9a29b2365121c0bd9bc26d683d0b325d5"
+  },
+  "workers": [],
+  "closed_execution_verified": true,
+  "arrays_read": 0,
+  "model_loads": 0,
+  ".log_tail": "ng cached text embeddings...\n2026-10-28 04:24:00.522 | INFO     | robotmdar.dataloader.data:_load_meanstd:267 -  Loading cached mean/std from /dev/shm/ouyanghao_textop_20261025/filtered15000_actual_pass_v1/meanstd.pkl...\n2026-10-28 04:24:01.085 | INFO     | robotmdar.train.manager:hold_model:580 - MVAEManager: Holding VAE model and optimizer\n{\"status\": \"USER_VAE100K_QUALITY_VALIDATION_PASSED\", \"run\": \"user_vae100k_quality_v1\", \"source_sha256\": \"982a84c831c3184ef721cf88ef36cf9b6ffffd19f5de5b26f6ad340dc74d1995\", \"spec_sha256\": \"858c2534b2c59d280c5c7f4b3ee3516a826a52aace5f7c84b343c9436a697ded\", \"selected_checkpoint\": {\"path\": \"/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/vae_state_100000.pth\", \"bytes\": 513526765, \"sha256\": \"99017f1cbd13cf2904bc5f87904e5a488a5b3ee1f920da1882f90fdad04029ed\", \"manager_step\": 100000, \"actual_optimizer_updates\": 100000}, \"user_variant\": \"VAE100000_PREFIX_FROM_UNMODIFIED_200K_PROGRAM\", \"paper200k_completed\": false, \"training_optimizer_updates_performed\": 0, \"output_writers_closed\": true, \"full_state_restore\": {\"model_restored_exactly\": true, \"optimizer_restored_exactly\": true, \"ema_restored_exactly\": true, \"rng_and_generator_restored_exactly\": true, \"clock_restored_exactly\": true, \"pending_evaluation_fields_restored\": true, \"checkpoint_boundary\": \"completed_four_primitive_batch; no cached batch/history\"}, \"fixed_validation_batch_sha256\": \"9c3833eb9fc0e294d2fd8514b996f188323b868ca27551bf78b09058293a9de3\", \"initial_quality\": {\"teacher_forced\": {\"normalized_reconstruction_huber\": 0.4631298705935478, \"four_primitives\": true, \"always_previous_prediction_history\": false, \"final_physical_endpoint_or_text_generation_evaluated\": false}, \"self_rollout\": {\"normalized_reconstruction_huber\": 0.46162528544664383, \"four_primitives\": true, \"always_previous_prediction_history\": true, \"final_physical_endpoint_or_text_generation_evaluated\": false}}, \"final_quality\": {\"teacher_forced\": {\"normalized_reconstruction_huber\": 0.004793255706317723, \"four_primitives\": true, \"always_previous_prediction_history\": false, \"final_physical_endpoint_or_text_generation_evaluated\": false}, \"self_rollout\": {\"normalized_reconstruction_huber\": 0.005952475592494011, \"four_primitives\": true, \"always_previous_prediction_history\": true, \"final_physical_endpoint_or_text_generation_evaluated\": false}}, \"vae_quality_gate_passed\": true, \"completed_primitive_attempts\": 100000, \"optimizer_updates\": 100000, \"skipped_updates\": 0, \"trained_model_sha256\": \"6b8c191742d24e75915441bfbfd4ad4fab8e05e0baa6538a5ad6ff0f116fb1d5\", \"original_runtime_binding_sha256\": \"87a2f61683d930bf5fe69a9113713c90137c43318766627975c6d11accc20c1c\", \"corpus_receipt_sha256\": \"fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427\", \"data_acceptance_sha256\": \"0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c\", \"strict_audit_receipt_sha256\": \"71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d\", \"original200k_completion_claimed\": false}\n",
+  "_outer.log_tail": "{\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"CUDA_VISIBLE_DEVICES=1\", \"OMP_NUM_THREADS=4\", \"MKL_NUM_THREADS=4\", \"OPENBLAS_NUM_THREADS=4\", \"WANDB_MODE=disabled\", \"PYTHONUNBUFFERED=1\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/validate_user_vae100k.py\", \"--run\", \"user_vae100k_quality_v1\"], \"supervisor_pid\": 294666, \"child_pid\": 294673, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 6, \"sample_errors\": [], \"elapsed_seconds\": 46.35933842509985, \"supervision_passed\": true, \"source_sha256\": \"bdbbb95fd375fef2b0ee11d01c865467599822a2e25c95bebce85f200f5fb2ee\", \"receipt_sha256\": \"3f7e4419358b7c7434d681670c050bf716b9dd54441eb7b891b852746da78873\", \"process_exit_sha256\": \"1b3410482b5c82f81e0bbae9ab2fb4bd085732840a9938fb9e2cc8ee373ec6ef\", \"resource_sha256\": \"c22ccc57d535f02e15edd5937447bbaaead2a3323627b3611dca707e90537d48\", \"numerical_status\": \"USER_VAE100K_QUALITY_VALIDATION_PASSED\"}\n",
+  "common_lock_free": true
+}

@@ -1,0 +1,11 @@
+# TextOp新筛后VAE首次真实完整状态与私有备份
+
+最新实际采样（2026-10-28T06:53:09.136236+08:00）：唯一原run filtered15000_vae200k_train_v1已50600尝试/50600Adam/0skip，原supervisor/worker身份一致，RUNNING、无exit，共同锁仍被VAE持有。首个真实50000完整状态已稳定保存，513526701字节/SHA a2f9e9611c83d69ff5cd27ff842fc4db5cbe538c42f0ef08eab742a6e7287321，生产进程报告精确model/Adam/all RNG/clock/pending-eval重载通过后继续训练；新工具只读绑定来源并核验前后稳定inode/字节/SHA，D私有完整状态复制已真实exit0及字节/SHA/所有权验证，D仍保留2GiB。此次复制没有独立加载张量或新梯度验收，也没有新GPU/SDK、重启或停机信号。旧远程失败与恢复证据完整保留。
+
+私有目标：D:\具身智能\TextOp复现_20261024\checkpoints\private\filtered15000_vae200k_20261028\step_50000\vae_state_50000.pth。源码工具：provider_tools/backup_filtered15000_vae_checkpoint.py；它只接受同一实际筛后run、冻结spec/数值/语料/接受绑定及真实checkpoint收据。所有SSH/SCP都保留唯一intent/outcome/直接streams，失败partial不删除或覆盖。每个真实步数只运行一次，已有intent/partial或未知客户端须先查现场，不能盲重派。此50k工具实际验证前后原文件同一指纹、大小/SHA，SCP真实exit0，D完整文件SHA/字节和原生Windows所有权，复制后2GiB保留线仍满足。新元数据12个负例拒绝检查只算来源协议检查，实际复制才形成字节备份。
+
+原50k文件仍在HOME保留，D副本私有，不发布完整Adam或数组。此次无Torch/模型/原数组反序列化、新GPU/SDK/训练或信号，也不改变任何活动生产source/spec。生产进程自身精确重载证明和本工具独立字节证明区分保留。
+
+后续容量尚未接受：D复制后当时空闲2209484800字节，再保守容纳其余三份553648128字节完整状态并维持2GiB保留需3808428032字节，缺1598943232字节。先前服务器data在VAE导出+完整LDM预算下差141750272字节。新只读软件候选细查cache约1503232字节、sources159744字节、upstream18685952字节；即使加14MB归档总量也不足以填补data缺口，且未证明可清理，当前依赖与数据不动，0删除。
+
+已一次异步请求用户为data增加至少1GiB、D增加至少2GiB，或提供可用私有存储目录。这是存储输入需求，不是重新确认开训。当前VAE的现有五槽预算正常，继续运行；之后真实200k闭合/质量、CPU导出、容量和作者fresh见证通过即自动LDM300k，不恢复teacher/prefilter8100。存储未满足时不降低保留线或删状态。

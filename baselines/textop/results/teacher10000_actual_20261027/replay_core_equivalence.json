@@ -1,0 +1,20 @@
+{
+  "physical_replay_core_equal_except_receipt_status_label": true,
+  "core_diff": [
+    "--- \n",
+    "+++ \n",
+    "@@ -52,7 +52,7 @@\n",
+    "  strict_rows={i:{'motion_id':hashlib.sha256(rows[i]['canonical_source'].encode()).hexdigest(),'trials':[]} for i in eligible}",
+    "  trace_index=[];control_calls=0;completed_trials=0;failed_trials=0;capture['samples']=0",
+    "  termination_counts={name:0 for name in raw.termination_manager.active_terms}",
+    "- receipt.update(status='RUNNING_QUICK_PILOT',num_envs=env_count,quick_pilot_executed=True,physical_tracking_executed=True)",
+    "+ receipt.update(status='RUNNING_TEACHER10000_PILOT',num_envs=env_count,quick_pilot_executed=True,physical_tracking_executed=True)",
+    "  save()",
+    "  with torch.inference_mode():",
+    "   for start in range(0,len(eligible),env_count):"
+  ],
+  "baseline_executor_sha256": "a1db771b4e7be8bc2f856c01bea28269eb0b08311d48233858862f0fea3be091",
+  "new_executor_sha256": "aa269bf063eba86a6beeda2c61db8e8f427ce0d54daf18ff0a7579426590f135",
+  "numerical_settings_changed": false,
+  "actual_10k_sdk_runs": 0
+}

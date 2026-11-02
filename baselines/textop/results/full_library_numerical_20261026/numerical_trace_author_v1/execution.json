@@ -1,0 +1,21 @@
+{
+  "start_utc": "2026-10-25T21:07:04.932139+00:00",
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 /data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_full_library_numerical.py --run numerical_trace_author_v1"
+  ],
+  "run": "numerical_trace_author_v1",
+  "exit_code": 0,
+  "elapsed_seconds": 196.5779999999795,
+  "stdout": "{\"run\": \"numerical_trace_author_v1\", \"child_pid\": 3780966, \"child_exit_code\": 0, \"timed_out\": false, \"elapsed_seconds\": 195.59924594126642, \"numerical_status\": \"TEXTOP_FULL_LIBRARY_NUMERICAL_TRACE_COMPLETED\", \"command\": [\"bash\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/full_library_numerical_probe.py\", \"--spec\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json\", \"--capacity-spec\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/full-library-capacity-spec.json\", \"--diagnostic-spec\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/full-library-numerical-spec.json\", \"--output\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/numerical_trace_author_v1\", \"--device\", \"cuda:1\", \"--headless\"], \"numerical_trace_completed\": true, \"full_corpus_stability_accepted\": false, \"formal_filter_training_started\": false, \"full_generator_training_started\": false}\n",
+  "stderr": ""
+}

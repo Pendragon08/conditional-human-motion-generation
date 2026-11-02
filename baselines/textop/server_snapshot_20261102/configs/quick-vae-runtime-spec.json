@@ -1,0 +1,59 @@
+{
+  "data_acceptance_sha256": "5f4f58c2fd9e98f36a23fb44de90d7a24aa0a7ab2fbf63207ea35eacae7cadc6",
+  "corpus_receipt_sha256": "d0a44b975c8f390f25dc5e95c414b3b8354dacacc19d5673d7a86e6d21c9c8f1",
+  "bound_sources": {
+    "scripts/paper69_runtime.py": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
+    "scripts/paper69_data_runtime.py": "cf5c1e3f27665e7fc4d4aa1ede6bcd1931e3563409ad766ff67a576cc0c7b60d",
+    "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e",
+    "scripts/checkpoint_storage_guard.py": "bff54d2b4fb7f29fdc18f6cc46d86626ca14b299faba49161c1c10897897788c",
+    "scripts/quick_vae_runtime.py": "a92cbd866ebd3b805bee62546f10f145c80f0080f8282b8fc6aae9da34de6001"
+  },
+  "schema": "textop.quick_vae_runtime.v1",
+  "witness_authorized": true,
+  "train_authorized": true,
+  "witnesses": [
+    {
+      "run": "vae_kernel_author_v2",
+      "receipt_sha256": "5c80967b4547598d7d2b8845823c355dd87b17f404b2fbc04606e7ad5af82ceb",
+      "exit_sha256": "7f3839e49750b10283a7906d3f5c898969c527ea298e0dd73e4466da8c44a3ef"
+    },
+    {
+      "run": "vae_kernel_document_v2",
+      "receipt_sha256": "4e4c63b3ca1ef6ca5b541b70116339da7d9ea49c3ca4e492c918bc1dc3a18acb",
+      "exit_sha256": "4f3972850f5213befa94c465ab5759173a46a793bb3f74517c2cd5d4def1e1bb"
+    }
+  ],
+  "seed": 20261026,
+  "corpus_dir": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/corpus_v1",
+  "checkpoint_dir": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/vae/checkpoints",
+  "checkpoint_policy": {
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 536870912,
+    "checkpoint_upper_bound_bytes": 629145600
+  },
+  "vae": {
+    "stages": [
+      1000,
+      500,
+      500
+    ],
+    "batch_size": 512,
+    "learning_rate": 0.0001,
+    "latent_shape": [
+      1,
+      128
+    ],
+    "hidden": 512,
+    "ff": 1024,
+    "layers": 9,
+    "heads": 4,
+    "feature_dim": 69,
+    "history": 2,
+    "future": 8,
+    "primitives": 4,
+    "ema": false
+  },
+  "entrypoint_sha256": "660aaec92ca3e7a6b97716739b9af981fc615deb2781ad074ee242bf59ecda72",
+  "supervisor_sha256": "6054735fa4c45f8d62e141b20768ed3de0c13e65eec80a10f07a0c50b3a655eb",
+  "scope": "Quick2000 manager attempts, not paper200k; witness4 optimizer updates discarded, memory-only state test and prior unchanged file protocol; realfile reload at1000/2000"
+}

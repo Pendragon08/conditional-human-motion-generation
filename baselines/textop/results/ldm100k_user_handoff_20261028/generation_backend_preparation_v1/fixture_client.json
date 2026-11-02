@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 100,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "caf7b0e7d317f71fb932dc80b4cd3620c1ae2b541acd93228b1f20c12b68129c",
+  "client_pid": 17780,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"command\": [\"python3\", \"-B\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/provider_tools/test_ldm100k_generation_protocol.py\"], \"child_pid\": 367591, \"actual_child_exit_code\": 0, \"child_reaped\": true, \"streams_final\": true, \"stdout\": \"{\\\"status\\\": \\\"LDM100K_GENERATION_NEW_ISOLATED_PROTOCOL_PASSED\\\", \\\"negative_cases\\\": 22, \\\"actual_arrays_read\\\": 0, \\\"models_loaded\\\": 0, \\\"gpu_jobs\\\": 0, \\\"actual_pair_generation\\\": 0, \\\"actual_sampler_or_model_acceptance\\\": false}\\n\", \"stderr\": \"\", \"fixture\": {\"status\": \"LDM100K_GENERATION_NEW_ISOLATED_PROTOCOL_PASSED\", \"negative_cases\": 22, \"actual_arrays_read\": 0, \"models_loaded\": 0, \"gpu_jobs\": 0, \"actual_pair_generation\": 0, \"actual_sampler_or_model_acceptance\": false}, \"sources_unchanged\": true, \"actual_runtime_sampler_or_model_acceptance\": false}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\ldm100k_user_handoff_20261028\\generation_backend_preparation_v1\\fixture_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\ldm100k_user_handoff_20261028\\generation_backend_preparation_v1\\fixture_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

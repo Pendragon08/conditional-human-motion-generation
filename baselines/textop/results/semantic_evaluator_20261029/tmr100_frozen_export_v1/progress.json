@@ -1,0 +1,306 @@
+{
+  "run": "tmr100_frozen_export_v1",
+  "observed_unix": 1793251516.1933947,
+  "files": {
+    "receipt": {
+      "run": "tmr100_frozen_export_v1",
+      "role": "export",
+      "status": "TMR100_TRAINED_FROZEN_CPU_EXPORTED",
+      "source_sha256": "78643b7d21489ac2162b22a810315005d801d1f7adfe8e6f31e2841674882d1f",
+      "spec_sha256": "a31566497c93f0bdb5b3c6709aab4800dead7ecbba08f7cb6592e40dce96d7e5",
+      "output_writers_closed": true,
+      "training_binding": {
+        "kind": "USER_TMR100_CAPACITY_RESUME_ORIGINAL_FAILURE_RETAINED",
+        "run": "tmr100_capacity_resume_train_v1",
+        "selected_epochs": 100,
+        "selected_optimizer_updates": 101500,
+        "selected_checkpoint": {
+          "path": "/home/ouyanghao/textop-tmr69d-evaluator-20261029/resume_checkpoints_v1/tmr_epoch_100_resumed.pth",
+          "bytes": 192952453,
+          "sha256": "7bc1955dfcb31d1eeaa966c8f5b8e972e17d6d58da1205c70fd8029b85050fc8",
+          "epoch": 100,
+          "optimizer_updates": 101500,
+          "pending_validation": false,
+          "emergency": false,
+          "exact_fullstate_deserialization": true,
+          "production_model_adamw_rng_sampler_nextbatch_reloaded": true,
+          "capacity_before": {
+            "free_bytes": 2811604992,
+            "required_bytes": 2684354560,
+            "remaining_slots": 2
+          }
+        },
+        "spec_sha256": "8f8e05539d838697f6c4efb325dfa96de5215feb76fc7bb71ef617d57e67d088",
+        "runtime_binding_sha256": "3d673e538ac9792ab57888d86eeb57580bc15efa7bcf6eb161ea8e75ffb82244",
+        "source_emergency_sha256": "8169a44260d0e238505e3a42c8cc859b214482e102d35241e054931d470f5d05",
+        "source_safe_updates": 83703,
+        "actual_new_formal_updates": 17797,
+        "original_spec_sha256": "2196a765dbaa61ba7265b9d798f99fe5c094a502fd34bd47869f0fe141360b13",
+        "original_failure_files": {
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr69d_evaluator500_train_v1/receipt.json": "d5a43ad794f6aaa3014f302a425a56b33332692ee5c3b4d3d4618295bee3d361",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr69d_evaluator500_train_v1_supervision/exit.json": "e910b986576b582fa3f7470077d4be522a4621669169ecce0f7892c7196ccbc9",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr69d_evaluator500_train_v1_supervision/process_exit.json": "3b8404cfd9c2bc5eb2f61d675579b48dffdf2b7492a1ae95b32c2888c450c6b5",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_evaluator_train_tmr69d_evaluator500_train_v1_outer_exit.json": "857a96c9474624cec4418bb86e755613a5fb3430bf5b3478354415d1030ec7b2",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr69d_evaluator500_train_v1_supervision/resources.jsonl": "a0f9a5f9b2a2010f07fc56e1284e934beeba4500613095e8ec261239aaa46cbf",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/user_tmr100_control_v1/receipt.json": "1fefba12959a06754425100a97144800db834a48af6cbc7a151424e14f605796",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr100_control_user_tmr100_control_v1_exit.json": "1baa99172c6fc4f6d69bcb123e9f8497a31e1622dc1202796cb826227306d544",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr100_control_user_tmr100_control_v1_process_exit.json": "a5e374c3390a3a0c0e9ed0b1c7a2cee427f20d898fe5690735211e0aaed2c8fd",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr100_control_user_tmr100_control_v1_outer_exit.json": "857a96c9474624cec4418bb86e755613a5fb3430bf5b3478354415d1030ec7b2",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr100_capacity_emergency_audit_v2/receipt.json": "9c1188f26fba1355d39d9601246268865b7026d749cfd2e90de98c8c81d06d4d",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr100_capacity_emergency_audit_v2_supervision/exit.json": "9589a0abc77a2df12b37a16ec8c8834b4387fd4e044bb3bd627322659541707e",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr100_capacity_emergency_audit_v2_supervision/process_exit.json": "9a996cf562f6abac7837b480a4fb5afe198cef1849c2989db918c4dec1a8e9ef",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr100_capacity_emergency_audit_v2_supervision/resources.jsonl": "1ba14b644346ac2cd8bda628ca3d70102a7e15910daf5cb6b0ea5534630345bc"
+        },
+        "resume_receipt_sha256": "c14bb6766a0c85838f67ed09f65474f2c853d8cea0951967438c04c4dd746f5d",
+        "closure": {
+          "receipt": "c14bb6766a0c85838f67ed09f65474f2c853d8cea0951967438c04c4dd746f5d",
+          "exit": "11261a01d309234f4e0ce543769a78cdd9d47a7289e0705c54170b782827e1be",
+          "process": "b6ce4dec388d8f497bf9cd3d7be8042645353901c3a989fd380a07ecb0eb605a",
+          "resources": "b2a2a0cabe79d1ff07079550e6a88ddaa8361d795800fab79558650d1b3e1626",
+          "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+        },
+        "witness_bindings": {
+          "author": {
+            "receipt": "c680dcbdd78da59c90ec626ebefa95710c26baa72dc8a5cd5fe7c85dea8fcbd3",
+            "exit": "1c46a2fe21d7e82451d4297f3533a3656e1eb9477c0b3d48f088b48c52e61336",
+            "process": "4a1e48b8f0c619cf0cbb567c6d3da44569293eb7c66548202ce87969ff34de9d",
+            "resources": "8ea8e89e2c98b5572dbd40046d3b7d3ae21710e4cb670261f8052296fb775e43",
+            "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+          },
+          "document": {
+            "receipt": "8d997c215df3cf1f9ff93e9deaede9b5ccfc1070a23d0f60be29b1f6f2d3acc5",
+            "exit": "8f252032472521980102527c8a16d11a9351b97ec904cc42d3dc4cf3dd7f6b3d",
+            "process": "75472ade4c5274e604ad83b7d3d63194f1c6e6633f52ea8df7849a443c24bd38",
+            "resources": "2254462fd8da4756c7f91bd02e3a862c5537f61d979ab1a99c0b1324847ee8fa",
+            "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+          },
+          "runtime_binding_sha256": "3d673e538ac9792ab57888d86eeb57580bc15efa7bcf6eb161ea8e75ffb82244"
+        },
+        "fresh_document_sha256": "09ea8c77987871af417bfc720553e2d6f6ed18b347ac7353a0b055505a6eeb0d",
+        "input_signature": {
+          "scope_receipt_sha256": "f355de1c947487d750cbe3d59c51d78c8853a36315c659a3b08b4876df7273d2",
+          "numeric_receipt_sha256": "c3c8d16d62b713b00adaf87eb3ebe340dbda5b8c582cecdc7911b9f724198b96",
+          "text_receipt_sha256": "c27611b8e2918234f16ee60e183e28bcf3191cd7c5014ee5bb625820979e8872",
+          "original_train_sources": 5361,
+          "gradient_samples": 32462,
+          "internal_samples": 1606,
+          "unique_texts": 4043,
+          "motion_RAM_bytes": 782643540,
+          "token_RAM_bytes": 73015296,
+          "sentence_RAM_bytes": 12420096,
+          "token_cache_sha256": "642e441eb863c4abb45376fab4161fe4333085e009ee7d633c74aa67e6a58e4e",
+          "sentence_cache_sha256": "d8a3d7d20ab2c32a4befdca74b9fd41b438a6e702875d159e81ca2a47b760cad",
+          "maximum_actual_text_tokens": 22,
+          "token_truncation_performed": false,
+          "mirror_augmentation": false,
+          "actual_original_validation_sources_read": 0,
+          "feature_transform_sha256": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
+          "normalization_sha256": "4a4b8838736a7541d5c2de7b944da78870fcf8fa1e55359599f815c371da1bb4"
+        },
+        "input_signature_sha256": "512a138a8319ca97ac240b51e33e855a6c7e70ec76e6b9a1247816bd524d5402"
+      },
+      "training_optimizer_updates_performed": 0,
+      "new_cuda_contexts": 0,
+      "cuda_rng_restored": false,
+      "semantic_metrics_accepted": false,
+      "elapsed_seconds": 4.976124797016382,
+      "inference": {
+        "path": "/home/ouyanghao/textop-tmr69d-evaluator-20261029/inference_epoch100_v1/tmr69d_epoch100_inference.private.pth",
+        "bytes": 64234041,
+        "sha256": "6ed04cb040419f714962522ce37590437740896a6fb230533e3c81c599b9b357"
+      },
+      "full_model_and_cpu_adamw_restored_exact": true,
+      "independent_inference_reload_exact": true,
+      "synthetic_mean_forward_exact": true,
+      "original_fullstate_unchanged": true,
+      "selected_checkpoint_fingerprint_before_and_after": {
+        "path": "/home/ouyanghao/textop-tmr69d-evaluator-20261029/resume_checkpoints_v1/tmr_epoch_100_resumed.pth",
+        "bytes": 192952453,
+        "sha256": "7bc1955dfcb31d1eeaa966c8f5b8e972e17d6d58da1205c70fd8029b85050fc8",
+        "uid": 1013,
+        "device": 66306,
+        "inode": 28706397,
+        "mtime_ns": 1793244335240186798
+      },
+      "finite_cpu_tensors": 1044,
+      "fullstate_metadata_audit": {
+        "completed_epochs": 100,
+        "optimizer_updates": 101500,
+        "sampler_epoch": 99,
+        "sampler_cursor": 32462,
+        "pending_validation": false,
+        "saved_cuda_rng_devices": 1,
+        "cuda_rng_restored": false,
+        "actual_new_optimizer_updates": 0,
+        "selected_user_prefix": true,
+        "original500_epoch_success_claimed": false
+      },
+      "original_class_AST_audit": {
+        "actor": {
+          "original_source_sha256": "8d8b1a2e270e6f9df680e0af0fbdcabe05522f44cb544ad8b1d9413baeb62fb7",
+          "original_class_AST_sha256": {
+            "PositionalEncoding": "b42e51b1c47265ce3dba72f12520f7b752a3f5b7b07e43108d2fad0dcd32fa16",
+            "ACTORStyleEncoder": "89beb1af94c392869f515aade7dec697b982b99461cded46b210018a020b1d70",
+            "ACTORStyleDecoder": "3389b398f66f4adf4a73d95aed6263bf63524da15a43902fccbfec9683274d77"
+          },
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": []
+        },
+        "losses": {
+          "original_source_sha256": "1088b89ec3785224b45a565d606650ddc0ec61b57f27d0f8c9613328f75329d1",
+          "original_class_AST_sha256": {
+            "KLLoss": "cce3b61ed94e0b5fc0c97fa354b16b2c5229da03748500c7a3bb9c8f482b4439",
+            "InfoNCE_with_filtering": "94c06794d4c3fa8c6ab71fe39407cc5b7ad76efef648539fd1e768435eab5562"
+          },
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": []
+        },
+        "metrics": {
+          "original_source_sha256": "84d823420fa5db522b7576e2dcc8dec270a1d82bf563414a7268330d51312053",
+          "original_class_AST_sha256": {},
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": []
+        },
+        "temos": {
+          "original_source_sha256": "bcf783fbf73209b99959d144fa40307b67b2b442d7f49ba56c6e0d181b3280ec",
+          "original_class_AST_sha256": {
+            "TEMOS": "8c44e3a8c266a08e35b175ee23d7dc7b47cee2230033849d60f4e774e9163bff"
+          },
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": [
+            "Lightning lifecycle import replaced by local torch.nn.Module base",
+            "Loss import resolved within signed private package"
+          ]
+        },
+        "tmr": {
+          "original_source_sha256": "cf8106c0cafc0aeacbaee56e8618397da2f41f358cf078c75cec903a3ea93404",
+          "original_class_AST_sha256": {
+            "TMR": "2b1060c080105a050b1cb1905314d75fa5fe59de6684d4d16730982a4c02f988"
+          },
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": []
+        }
+      },
+      "trained_model_sha256": "8aec09f5bb47ba92f5ef4f16e680f8a0cac24fd97a0503cd054d104915aa2130",
+      "optimizer_step_min": 101500,
+      "optimizer_step_max": 101500,
+      "synthetic_probe": {
+        "motion_lengths": [
+          3,
+          9
+        ],
+        "text_lengths": [
+          3,
+          7
+        ],
+        "latent_dimensions": 256,
+        "sample_mean": true,
+        "raw_features": true,
+        "exact": true,
+        "heldout_semantic_quality": false
+      },
+      "export_binding": null
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tmr100_frozen_cpu.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tmr100-frozen-export-spec.json"
+      ],
+      "supervisor_pid": 448948,
+      "child_pid": 448953,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 7.399492410942912,
+      "supervision_passed": true,
+      "run": "tmr100_frozen_export_v1",
+      "source_sha256": "05262fadc9c0c19a65a3b05891f08b078455cd60d4f3651a5265b5c06f68f211",
+      "request_sha256": "a31566497c93f0bdb5b3c6709aab4800dead7ecbba08f7cb6592e40dce96d7e5",
+      "receipt_sha256": "26d0c4889f5f78a7518424c5b01636c7618a7671982b3e2b46c541a391525493",
+      "resource_sha256": "c17eb0b1c2c19a20ed24929781c58ad8e027d13068abc5caaa203348a0f6c692",
+      "process_exit_sha256": "1973d09a1a8875c6cd85e217dfc9acc0991469dbf248dfa32be6d41a24e052ed"
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tmr100_frozen_cpu.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tmr100-frozen-export-spec.json"
+      ],
+      "supervisor_pid": 448948,
+      "child_pid": 448953,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 7.399492410942912,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    }
+  },
+  "sha256": {
+    "receipt": "26d0c4889f5f78a7518424c5b01636c7618a7671982b3e2b46c541a391525493",
+    "exit": "48e82c054cea0114234773fb4402041b47169f0b72c8ceb216dc7fe5be9c85e9",
+    "process": "1973d09a1a8875c6cd85e217dfc9acc0991469dbf248dfa32be6d41a24e052ed",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+  },
+  "workers": [],
+  "common_lock_free": true,
+  "closed_execution_verified": true,
+  "artifact_audit": {
+    "export_binding": {
+      "run": "tmr100_frozen_export_v1",
+      "spec_sha256": "a31566497c93f0bdb5b3c6709aab4800dead7ecbba08f7cb6592e40dce96d7e5",
+      "receipt_sha256": "26d0c4889f5f78a7518424c5b01636c7618a7671982b3e2b46c541a391525493",
+      "closure": {
+        "exit_sha256": "48e82c054cea0114234773fb4402041b47169f0b72c8ceb216dc7fe5be9c85e9",
+        "process_sha256": "1973d09a1a8875c6cd85e217dfc9acc0991469dbf248dfa32be6d41a24e052ed",
+        "resources_sha256": "c17eb0b1c2c19a20ed24929781c58ad8e027d13068abc5caaa203348a0f6c692",
+        "outer_sha256": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+      },
+      "inference": {
+        "path": "/home/ouyanghao/textop-tmr69d-evaluator-20261029/inference_epoch100_v1/tmr69d_epoch100_inference.private.pth",
+        "bytes": 64234041,
+        "sha256": "6ed04cb040419f714962522ce37590437740896a6fb230533e3c81c599b9b357"
+      }
+    },
+    "trained_fullstate_and_cpu_inference_verified": true,
+    "model_loads_by_collector": 0,
+    "semantic_metrics_pending": true
+  },
+  "logs": {
+    "child.log": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/site-packages/torch/nn/modules/transformer.py:276: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. (Triggered internally at ../aten/src/ATen/NestedTensorImpl.cpp:175.)\n  output = torch._nested_tensor_from_mask(output, src_key_padding_mask.logical_not(), mask_check=False)\n",
+    "tmr100_frozen_export_v1_outer.log": ""
+  }
+}

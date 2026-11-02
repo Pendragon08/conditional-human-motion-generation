@@ -1,0 +1,48 @@
+{
+  "schema": "textop.generator_pause_document_review.v1",
+  "status": "CPU_NORMAL_PATH_PASSED_PRODUCTION_REVIEW_BLOCKED",
+  "run": "boundary_document_v1",
+  "documented_invocations": 1,
+  "command_exit": 0,
+  "fixture_exit": 41,
+  "receipt_checks_passed": 6,
+  "simulated_boundary": true,
+  "simulated_step": 128,
+  "fixture_pid": 4179306,
+  "findmnt_pid": 4179338,
+  "exactly_one_fixture_sigint": true,
+  "fixture_and_findmnt_gone_postflight": true,
+  "source_hashes_unchanged_pre_post": true,
+  "training_signals": 0,
+  "gpu_runs": 0,
+  "sdk_runs": 0,
+  "real_neural_checkpoints_created_or_changed": 0,
+  "source_fixes": 0,
+  "production_wrapper_executed": false,
+  "production_pause_accepted": false,
+  "receipt_sha256": "32293de2f12783b2620202ea4f85a323df51f5b960f29d9219fbcb359ac82502",
+  "journal_sha256": "55d7d10ad90363704ac1eb2556c9b6bf73c971c3f3c14e97f9dadaac67dc9be0",
+  "reviewed_control_sha256": "15bb7ecb9601ce01ec78d627520cd19d95468db3c1470b8f689972183997a318",
+  "reviewed_production_wrapper_sha256": "39a3084d8854192a3af0f3f4725372cf40fc11cb442a6d0aed339f8cb7d881b7",
+  "frozen_trainer_sha256": "7e4ff4b7c427a884deb9708ab77c8fb4a62304ec505fb5329dd83758f650fe45",
+  "blockers": [
+    {
+      "id": "B1",
+      "source": "scripts/closed_boundary_interrupt.py",
+      "lines": [74, 79, 80, 113, 119, 143, 147, 152],
+      "reason": "Post-SIGSTOP journal failures precede stopped-flag assignment; cleanup itself depends on fallible journaling and remains interruptible. A handled error can leave a bound process stopped.",
+      "observed_in_fixture": false,
+      "basis": "static exact-source control-flow review"
+    },
+    {
+      "id": "B2",
+      "source": "scripts/run_generator8278_vae.py",
+      "lines": [84, 89, 93, 95],
+      "reason": "The emergency-save handler emits the same exact findmnt child as the regular closed boundary while the persisted receipt may still say RUNNING. SIGINT captured there is caught as emergency_save_refused_or_failed and can prevent a checkpoint.",
+      "observed_in_fixture": false,
+      "basis": "static exact-source call-site ambiguity review"
+    }
+  ],
+  "artifact_directory": "work/textop_reproduction_20261024/generator_pause_document_v1",
+  "retention": "Keep v1 sources, fixture proof and blocked assessment unchanged; a changed control environment requires new evidence."
+}

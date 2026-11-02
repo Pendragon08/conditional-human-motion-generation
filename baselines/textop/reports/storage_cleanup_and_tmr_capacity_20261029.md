@@ -1,0 +1,13 @@
+# 本轮新授权空间回收与评价器状态（2026-10-29）
+
+用户要求“只能清理下磁盘空间了”。实际只逐个unlink两份独立、无可读本人进程引用的下载tarball，实际文件占用79089664B；DATA空闲2319282176→2398363648B（其他同时写入会使df变化与文件占用略不同）。原下载根保留。数据、全部checkpoint、主源码、环境、SDK冷备份、失败和partial均0删除。
+
+D私有恢复包394339453B/SHA8f6e28ff7d22fad625065c194ed99f6922599ee23a6711c4baad1f2b059e792d，manifest533602B/SHA2ced1247a734ac2bc169b68eb92e5ba1d9eff5cafc5e61a58b46d9d3d4cc1aab。SFTP0/reaped/final和worker0；全部549文件SHA、1000entries、完整gzip至EOF的CRC、本机当前owner/无reparse/fsync/rename实核。原文件逐SHA/fingerprint/nlink1、当前membership及进程引用通过后才删除；原始清单/私人路径/复制流只D，不公开。5个本机用户服务fd/maps无权限读，服务身份已核，限制如实保留，不提权。
+
+最初整个cache目录粗估约0.9GB、精确候选占用522096640B，不能当实际回收。第一次执行因一个外链而在任何删除前拒绝；第二次因另一个项目新增cache文件而在任何删除前拒绝。该项目整个cache首根和外链及SHM目标全部排除，没停止其进程。一次本地renderer错误引用不存在的下一run，在任何部署/删除前退出1。原件和真实失败均保留。最终只两份独立下载包删除，其他缓存不动。恢复器仅恢复实际删除的两包，拒绝覆盖不同既有文件。
+
+清理前DATA突降到1982050304B，原TMR监督器容量保护SIGTERM：82完成epoch、83703安全更新、attempt83704。原child/supervisor/outer1与控制器child-15/outer1均保留；控制0生产信号，禁止rearm或重启旧作业。紧急完整状态192951813B/SHA8169a44260d0e238505e3a42c8cc859b214482e102d35241e054931d470f5d05保留。
+
+新tmr100_capacity_emergency_audit_v2真实CPU2.16秒/监督0/closed/无worker/锁释放，1044张量finite、所有AdamW步83703、sampler epoch82/cursor15136/steps83703、pending=false、原源与文件SHA不变。CPU不恢复CUDA RNG，保存816B CUDA状态与5056B CPU状态；首次CPU检查误要求所有RNG>1000B而失败1，原记录保留；修正为既有冻结CPU协议的非空uint8一维结构后通过，0模型构造/梯度/新CUDA/源数组读取。不是正式生产恢复验收：还需独立GPU完整modelAdamW/allRNG/sampler/nextbatch精确恢复与重放见证，之后新有界入口只补17797更新至用户100epoch/101500。不能选83704脏内存，不能复用只接受原100正常SIGINT出口的旧接受器去冒称82已完成。
+
+当前新增强0条/PPO0更新，约79MB回收仍不能提供Step3完整5368条/31.48h与新431D单阶段PPO所需约20GB服务器持久空间。不能降低2GiB保护线或删旧资产凑空间。全部旧VAE/LDM私有备份与9片影片不重跑。

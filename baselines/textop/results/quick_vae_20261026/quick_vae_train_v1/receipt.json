@@ -1,0 +1,137 @@
+{
+  "status": "QUICK_VAE_2000_TRAINING_FINISHED",
+  "mode": "train",
+  "quality_label": "QUICK_REPRODUCTION_NOT_PAPER_COMPLETE",
+  "full_paper_training": false,
+  "optimizer_updates": 2000,
+  "completed_primitive_attempts": 2000,
+  "skipped_updates": 0,
+  "output_writers_closed": true,
+  "source_sha256": "660aaec92ca3e7a6b97716739b9af981fc615deb2781ad074ee242bf59ecda72",
+  "spec_sha256": "d9d2c92ea9a0c1d290e8a31772d65afb007861f4d204bcc15f8285817acc7f3e",
+  "corpus_receipt_sha256": "d0a44b975c8f390f25dc5e95c414b3b8354dacacc19d5673d7a86e6d21c9c8f1",
+  "data_acceptance_sha256": "5f4f58c2fd9e98f36a23fb44de90d7a24aa0a7ab2fbf63207ea35eacae7cadc6",
+  "elapsed_seconds": 751.2369883786887,
+  "initial_storage_check": {
+    "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/vae/checkpoints",
+    "filesystem": "ext4",
+    "owner_uid": 1013,
+    "free_bytes": 7994404864,
+    "required_bytes": 4571791360,
+    "remaining_saves": 3,
+    "checkpoint_upper_bound_bytes": 629145600,
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 536870912,
+    "persistent_owned_writable": true
+  },
+  "fixed_validation_batch_sha256": "c59c7abadaa38258d36e39fd2fb0df076bbf37fa1aac499d5bc375032e7d0ffb",
+  "quality_baseline_manager_step": 0,
+  "quality_batch_preserves_training_rng": true,
+  "initial_quality": {
+    "teacher_forced": {
+      "normalized_reconstruction_huber": 0.48106082528829575,
+      "four_primitives": true,
+      "always_previous_prediction_history": false,
+      "final_physical_endpoint_or_text_generation_evaluated": false
+    },
+    "self_rollout": {
+      "normalized_reconstruction_huber": 0.4805838242173195,
+      "four_primitives": true,
+      "always_previous_prediction_history": true,
+      "final_physical_endpoint_or_text_generation_evaluated": false
+    }
+  },
+  "last_train_batch": [
+    {
+      "manager_step": 1997,
+      "loss": 0.029250988736748695,
+      "reconstruction_huber": 0.028929825872182846,
+      "gradients_finite": true,
+      "actual_optimizer_updates": 1997,
+      "skipped_updates": 0,
+      "is_evaluation": false
+    },
+    {
+      "manager_step": 1998,
+      "loss": 0.03286847472190857,
+      "reconstruction_huber": 0.03253845497965813,
+      "gradients_finite": true,
+      "actual_optimizer_updates": 1998,
+      "skipped_updates": 0,
+      "is_evaluation": false
+    },
+    {
+      "manager_step": 1999,
+      "loss": 0.03270266577601433,
+      "reconstruction_huber": 0.032369595021009445,
+      "gradients_finite": true,
+      "actual_optimizer_updates": 1999,
+      "skipped_updates": 0,
+      "is_evaluation": false
+    },
+    {
+      "manager_step": 2000,
+      "loss": 0.031499482691287994,
+      "reconstruction_huber": 0.03116871789097786,
+      "gradients_finite": true,
+      "actual_optimizer_updates": 2000,
+      "skipped_updates": 0,
+      "is_evaluation": false
+    }
+  ],
+  "last_storage_check": {
+    "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/vae/checkpoints",
+    "filesystem": "ext4",
+    "owner_uid": 1013,
+    "free_bytes": 7477989376,
+    "required_bytes": 3942645760,
+    "remaining_saves": 2,
+    "checkpoint_upper_bound_bytes": 629145600,
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 536870912,
+    "persistent_owned_writable": true
+  },
+  "checkpoints": [
+    {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/vae/checkpoints/vae_state_1000.pth",
+      "bytes": 513523773,
+      "sha256": "cbe07e8671726d2c355faf9e457976e2f09d49cf62af1cf8da5bc9774309b3a6",
+      "manager_step": 1000,
+      "actual_optimizer_updates": 1000
+    },
+    {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/quick_generator_20261026/vae/checkpoints/vae_state_2000.pth",
+      "bytes": 513523901,
+      "sha256": "5109f593309349504d52677997bcdd21de3d27e045b9154be8c06278182b1219",
+      "manager_step": 2000,
+      "actual_optimizer_updates": 2000
+    }
+  ],
+  "latest_file_resume_verification": {
+    "model_restored_exactly": true,
+    "optimizer_restored_exactly": true,
+    "ema_restored_exactly": true,
+    "rng_and_generator_restored_exactly": true,
+    "clock_restored_exactly": true,
+    "pending_evaluation_fields_restored": true,
+    "checkpoint_boundary": "completed_four_primitive_batch; no cached batch/history"
+  },
+  "final_quality": {
+    "teacher_forced": {
+      "normalized_reconstruction_huber": 0.11699475161731243,
+      "four_primitives": true,
+      "always_previous_prediction_history": false,
+      "final_physical_endpoint_or_text_generation_evaluated": false
+    },
+    "self_rollout": {
+      "normalized_reconstruction_huber": 0.14969711750745773,
+      "four_primitives": true,
+      "always_previous_prediction_history": true,
+      "final_physical_endpoint_or_text_generation_evaluated": false
+    }
+  },
+  "vae_quality_gate_passed": true,
+  "trained_model_sha256": "044521e6d8c3cedf7cfe14a544a501de97fe5effac8eac387523c24ff89a6112",
+  "next_stage": "Validate and train separate LDM3000 only if VAE quality gate and its own runtime witnesses pass",
+  "peak_torch_allocated_bytes": 3936509952
+}

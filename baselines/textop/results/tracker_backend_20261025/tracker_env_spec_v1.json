@@ -1,0 +1,66 @@
+{
+  "base": "Warm read-only reuse of existing Isaac Sim4.5.0 and Isaac Lab2.1.0; no pip installation or shared-source edits",
+  "root": "/data/code/ouyanghao/oyh/textop-reproduction-20261024",
+  "isaac_sim_root": "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0",
+  "isaac_lab_root": "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/IsaacLab",
+  "required_versions": {
+    "torch": "2.5.1+cu118",
+    "rsl-rl-lib": "2.3.1",
+    "numpy": "1.26.0",
+    "gymnasium": "0.29.1"
+  },
+  "python_major_minor": "3.10",
+  "pinned_textop_commit": "ef6555fb174c9b5c44945a62c7ffc77b5ddbbf22",
+  "robot_urdf": "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/whole_body_tracking/source/whole_body_tracking/whole_body_tracking/assets/unitree_description/urdf/g1/main.urdf",
+  "robot_urdf_sha256": "dbc8471004e9b0b85c27a4ebc1f0d90a727c1cf7ca9ef507b805596f2004d64b",
+  "robot_asset_source": "BeyondMimic documented Unitree description; exact author TextOp asset hash not released, equivalence must not be assumed",
+  "resources": {
+    "gpu": 1,
+    "cpu_threads": 4,
+    "torch_memory_fraction": 0.65,
+    "headless_authorized": true,
+    "shared_gpu_authorized": true
+  },
+  "runtime_smoke": {
+    "num_envs": 8,
+    "control_steps": 8,
+    "optimizer_updates": 0,
+    "purpose": "actual seeded dynamics dispatch plus FK export; not physical filtering or tracking success"
+  },
+  "paper_filter_training": {
+    "num_envs": 8192,
+    "iterations": 40000,
+    "actor_hidden_dims": [
+      2048,
+      1024,
+      512
+    ],
+    "critic_hidden_dims": [
+      2048,
+      1024,
+      512
+    ],
+    "activation": "elu",
+    "steps_per_env": 24,
+    "learning_rate": 0.001,
+    "minibatches": 4,
+    "epochs": 5,
+    "clip_param": 0.2,
+    "simulation_hz": 200,
+    "policy_hz": 50,
+    "privileged_actor_and_critic": true,
+    "domain_randomization": false,
+    "relaxed_terminations_during_training": true
+  },
+  "source_differences_to_resolve": [
+    "Add projected gravity to privileged observations to match557D TableVII instead of released554D",
+    "Anchor pelvis and restore strict end-effector threshold0.5m per paper rather than released0.25m",
+    "Override default network and regularization weights using TableVIII/XI",
+    "Record EMA/repeat/window choices not specified in paper"
+  ],
+  "training_launch_enabled": false,
+  "validation": "pending actual dynamics kernel and fresh verbatim documentation execution",
+  "python_exact": "3.10.15",
+  "isaaclab_distribution_version": "0.36.21",
+  "isaaclab_project_version": "2.1.0"
+}

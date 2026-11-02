@@ -1,0 +1,82 @@
+{
+  "kind": "ldm",
+  "run": "user_vae100k_ldm_document_v1",
+  "observed_unix": 1793163519.0613883,
+  "files": {
+    "receipt": {
+      "status": "STARTING_FILTERED15000_LDM",
+      "mode": "witness",
+      "quality_label": "USER_VAE100K_DIRECT_STRICT15000_FULL_LDM300K",
+      "vae_pretraining_attempts": 100000,
+      "full_paper_training": false,
+      "optimizer_updates": 0,
+      "completed_primitive_attempts": 0,
+      "skipped_updates": 0,
+      "output_writers_closed": false,
+      "source_sha256": "eb613778716602f83051e54a2c40d1fc8b6a2820aaf5bd8416a75b18f47b3b64",
+      "spec_sha256": "db08522dace45f60d5a7c0aef6d8cb1bd85d0f2796972877a4c49a41c1ec16de",
+      "corpus_receipt_sha256": "fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427",
+      "data_acceptance_sha256": "0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c",
+      "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
+      "runtime_binding_sha256": "323349d38cef74e07215ab81c8919879512a2391552c9187151eb6a8a521b7ff",
+      "vae_checkpoint_sha256": "99017f1cbd13cf2904bc5f87904e5a488a5b3ee1f920da1882f90fdad04029ed",
+      "vae_inference_sha256": "3f36bcbccdee10a8c1c2eb67b0614be63b32bd8a05cff92de23cc358087117f4",
+      "elapsed_seconds": 0.00014842674136161804
+    },
+    "driver": {
+      "status": "USER_VAE100K_SUCCESSOR_DISPATCHED_NOT_YET_ACCEPTED",
+      "stage": "ldm_witness",
+      "run": "user_vae100k_ldm_document_v1",
+      "driver_pid": 301953,
+      "spec_sha256": "db08522dace45f60d5a7c0aef6d8cb1bd85d0f2796972877a4c49a41c1ec16de",
+      "command": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_user_vae100k_ldm.py",
+        "--mode",
+        "witness",
+        "--run",
+        "user_vae100k_ldm_document_v1"
+      ]
+    }
+  },
+  "sha256": {
+    "receipt": "6528b125db4daac8b12168a28b4f036f663e4dbce265b1a2694bc6efab3b17d2",
+    "driver": "af01c374cdcea240045bc2339a00a75893e2498068f32d7f2898ab21f65b6ce6"
+  },
+  "workers": [
+    {
+      "pid": 301954,
+      "start_ticks": "1436105442",
+      "state": "S",
+      "argv": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_user_vae100k_ldm.py",
+        "--mode",
+        "witness",
+        "--run",
+        "user_vae100k_ldm_document_v1",
+        ""
+      ]
+    },
+    {
+      "pid": 301961,
+      "start_ticks": "1436105458",
+      "state": "R",
+      "argv": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_user_vae100k_ldm.py",
+        "--mode",
+        "witness",
+        "--run",
+        "user_vae100k_ldm_document_v1",
+        ""
+      ]
+    }
+  ],
+  "closed_execution_verified": false,
+  "arrays_read": 0,
+  "model_loads": 0,
+  ".log_tail": "2026-10-28 04:58:27.133 | INFO     | robotmdar.dataloader.data:_load_data:95 -  Loading train data...\n2026-10-28 04:58:29.871 | INFO     | robotmdar.dataloader.data:_cal_sample_weight:127 -  ====================Use Weighted Sample====================\n",
+  "_outer.log_tail": "",
+  "common_lock_free": false
+}

@@ -1,0 +1,161 @@
+{
+  "kind": "audit",
+  "run": "full_result_audit_v1",
+  "observed_unix": 1793121875.1026332,
+  "files": {
+    "receipt": {
+      "schema": "textop.closed_direct_strict15000_audit.v1",
+      "status": "CLOSED_FULL_STRICT_RESULT_CPU_AUDIT_PASSED",
+      "source_count": 8278,
+      "attempted": 8278,
+      "complete_passes": 7137,
+      "failed": 1141,
+      "unattempted": 0,
+      "reference_fingerprint": "0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7",
+      "checkpoint_sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
+      "strict_spec_sha256": "91184fff75f8a0579a759abb418d4a0186d3e42a9a48c176e3d33facc768a1cd",
+      "raw_execution_receipt_sha256": "18a4bae10538971ac93efcfd98d6080d61be0ee95d44cf59b5323943cbdb249d",
+      "input_evidence_sha256": {
+        "receipt": "18a4bae10538971ac93efcfd98d6080d61be0ee95d44cf59b5323943cbdb249d",
+        "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0",
+        "exit": "30d1b456d1db66101701ff9fec0e71b33674c2b9bab185efd579fac07ded9f02",
+        "process": "9e399ef6197ea1d80dc586d6ba820db9770ca32f8af907fac7f9d34e18714fa4",
+        "resources": "c3618c9051f112cb0d5b9eb397a448853b598b3192091c641bd6cb41e0c12ec9"
+      },
+      "private_artifacts": {
+        "all_decisions.private.json": {
+          "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/full_result_audit_v1/all_decisions.private.json",
+          "bytes": 5607394,
+          "sha256": "b2a7c5875e2a7a452161089cd606288c964f352289536284554a4d7bcb95fa7a"
+        },
+        "accepted_sources.private.json": {
+          "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/full_result_audit_v1/accepted_sources.private.json",
+          "bytes": 4837604,
+          "sha256": "0ec2f088cef76d900755dfaba052e051d37892aca005f928ad522b7a1fac2e0e"
+        }
+      },
+      "prepared_reference_manifest_sha256": {
+        "/dev/shm/ouyanghao_textop_20261025/tracker_references/export643_v1/manifest.private.jsonl": "5601a109e150f9ef991f4dda0b1f618b743c278db3b64c509642d36f2eca6158",
+        "/dev/shm/ouyanghao_textop_20261025/tracker_references/export1653_v1/manifest.private.jsonl": "26432869c2f21ce5f0b946f1e9c0fb7097cb65207df33894ec4b64bf272c94c3",
+        "/dev/shm/ouyanghao_textop_20261025/tracker_references/export1330_v1/manifest.private.jsonl": "64700f41c47c08b03013e25df6665c2626f2c7e4a003e2225b9a4acd317c5527",
+        "/dev/shm/ouyanghao_textop_20261025/tracker_references/export_bmlrub_v1/manifest.private.jsonl": "9fcacd09033fad46d2ba7837d79c5600bd43c63420e78818f0f15e1c663477da",
+        "/dev/shm/ouyanghao_textop_20261025/tracker_references/export_kit_v1/manifest.private.jsonl": "cab886704980c315f41393fbd1ab200084ff8516d2dc2b24af3c999fb69703dc"
+      },
+      "trace_bytes_finite_verified": 608026032,
+      "pose_samples_verified": 4222403,
+      "original_processes_exited": true,
+      "strict_result_accepted": true,
+      "filtered_corpus_accepted": false,
+      "generator_started": false,
+      "historical_ema_candidates": 0,
+      "ema_gate_bypassed_by_user": true,
+      "paper_two_stage_route_reproduced": false,
+      "strict_repetitions_per_source": 1,
+      "final_reference_endpoint_comparison_performed": false,
+      "semantic_quality_accepted": false,
+      "new_model_loads": 0,
+      "new_gpu_contexts": 0,
+      "new_sdk_runs": 0,
+      "new_physics_steps": 0,
+      "optimizer_updates": 0,
+      "output_writers_closed": true,
+      "source_sha256": "73b22fe04abd4def0674d652bacf2baafe96a69148ea447d124b74b0c579412a",
+      "elapsed_seconds": 35.347588907927275
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONIOENCODING=utf-8",
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/audit_teacher15000_full_result.py",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/full_result_audit_v1"
+      ],
+      "supervisor_pid": 158315,
+      "child_pid": 158320,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 5,
+      "sample_errors": [],
+      "elapsed_seconds": 35.61593891121447,
+      "supervision_passed": true,
+      "schema": "textop.closed_direct_strict15000_audit_supervision.v1",
+      "run": "full_result_audit_v1",
+      "spec_sha256": "c73b09b57da467492f2fa71c974fe7232a8991bfc94cdb9214b21790d3188c38",
+      "audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
+      "process_exit_sha256": "060ef7e22a430b027da4d86831e13d6e9f045aca778e5e3645e957a686417e07",
+      "resources_sha256": "6c50bec5e1d72e152a9c4cb18a53b5c5f3b2fc268ca53e123fe3c62e141c3a41",
+      "numerical_status": "CLOSED_FULL_STRICT_RESULT_CPU_AUDIT_PASSED",
+      "new_gpu_contexts": 0,
+      "new_sdk_runs": 0,
+      "new_physics_steps": 0,
+      "optimizer_updates": 0
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "PYTHONUNBUFFERED=1",
+        "PYTHONIOENCODING=utf-8",
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/audit_teacher15000_full_result.py",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/full_result_audit_v1"
+      ],
+      "supervisor_pid": 158315,
+      "child_pid": 158320,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 5,
+      "sample_errors": [],
+      "elapsed_seconds": 35.61593891121447,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    },
+    "driver": {
+      "status": "DURABLE_POST_FILTER_JOB_DISPATCHED_NOT_YET_ACCEPTED",
+      "run": "full_result_audit_v1",
+      "stage": "audit",
+      "driver_pid": 158314,
+      "spec_sha256": "c73b09b57da467492f2fa71c974fe7232a8991bfc94cdb9214b21790d3188c38",
+      "command": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_teacher15000_full_audit.py",
+        "--run",
+        "full_result_audit_v1"
+      ]
+    }
+  },
+  "sha256": {
+    "receipt": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
+    "exit": "f2e13fa2842a5fcfe869cfb3cc8551cde31ae111155dba02eae3909b82e616cc",
+    "process": "060ef7e22a430b027da4d86831e13d6e9f045aca778e5e3645e957a686417e07",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0",
+    "driver": "0e25b352730f508ae6e7511bf3e1b9e2cb446b9313b9d6d308a9d2f9fe0f1496"
+  },
+  "workers": [],
+  "closed_execution_verified": true,
+  "arrays_read": 0,
+  "model_loads": 0,
+  ".log_tail": "nt\": 8278, \"attempted\": 8278, \"complete_passes\": 7137, \"failed\": 1141, \"unattempted\": 0, \"reference_fingerprint\": \"0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7\", \"checkpoint_sha256\": \"66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88\", \"strict_spec_sha256\": \"91184fff75f8a0579a759abb418d4a0186d3e42a9a48c176e3d33facc768a1cd\", \"raw_execution_receipt_sha256\": \"18a4bae10538971ac93efcfd98d6080d61be0ee95d44cf59b5323943cbdb249d\", \"input_evidence_sha256\": {\"receipt\": \"18a4bae10538971ac93efcfd98d6080d61be0ee95d44cf59b5323943cbdb249d\", \"outer\": \"4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0\", \"exit\": \"30d1b456d1db66101701ff9fec0e71b33674c2b9bab185efd579fac07ded9f02\", \"process\": \"9e399ef6197ea1d80dc586d6ba820db9770ca32f8af907fac7f9d34e18714fa4\", \"resources\": \"c3618c9051f112cb0d5b9eb397a448853b598b3192091c641bd6cb41e0c12ec9\"}, \"private_artifacts\": {\"all_decisions.private.json\": {\"path\": \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/full_result_audit_v1/all_decisions.private.json\", \"bytes\": 5607394, \"sha256\": \"b2a7c5875e2a7a452161089cd606288c964f352289536284554a4d7bcb95fa7a\"}, \"accepted_sources.private.json\": {\"path\": \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/full_result_audit_v1/accepted_sources.private.json\", \"bytes\": 4837604, \"sha256\": \"0ec2f088cef76d900755dfaba052e051d37892aca005f928ad522b7a1fac2e0e\"}}, \"prepared_reference_manifest_sha256\": {\"/dev/shm/ouyanghao_textop_20261025/tracker_references/export643_v1/manifest.private.jsonl\": \"5601a109e150f9ef991f4dda0b1f618b743c278db3b64c509642d36f2eca6158\", \"/dev/shm/ouyanghao_textop_20261025/tracker_references/export1653_v1/manifest.private.jsonl\": \"26432869c2f21ce5f0b946f1e9c0fb7097cb65207df33894ec4b64bf272c94c3\", \"/dev/shm/ouyanghao_textop_20261025/tracker_references/export1330_v1/manifest.private.jsonl\": \"64700f41c47c08b03013e25df6665c2626f2c7e4a003e2225b9a4acd317c5527\", \"/dev/shm/ouyanghao_textop_20261025/tracker_references/export_bmlrub_v1/manifest.private.jsonl\": \"9fcacd09033fad46d2ba7837d79c5600bd43c63420e78818f0f15e1c663477da\", \"/dev/shm/ouyanghao_textop_20261025/tracker_references/export_kit_v1/manifest.private.jsonl\": \"cab886704980c315f41393fbd1ab200084ff8516d2dc2b24af3c999fb69703dc\"}, \"trace_bytes_finite_verified\": 608026032, \"pose_samples_verified\": 4222403, \"original_processes_exited\": true, \"strict_result_accepted\": true, \"filtered_corpus_accepted\": false, \"generator_started\": false, \"historical_ema_candidates\": 0, \"ema_gate_bypassed_by_user\": true, \"paper_two_stage_route_reproduced\": false, \"strict_repetitions_per_source\": 1, \"final_reference_endpoint_comparison_performed\": false, \"semantic_quality_accepted\": false, \"new_model_loads\": 0, \"new_gpu_contexts\": 0, \"new_sdk_runs\": 0, \"new_physics_steps\": 0, \"optimizer_updates\": 0, \"output_writers_closed\": true, \"source_sha256\": \"73b22fe04abd4def0674d652bacf2baafe96a69148ea447d124b74b0c579412a\", \"elapsed_seconds\": 35.347588907927275}\n",
+  "_outer.log_tail": "{\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"OMP_NUM_THREADS=4\", \"OPENBLAS_NUM_THREADS=4\", \"PYTHONUNBUFFERED=1\", \"PYTHONIOENCODING=utf-8\", \"python3\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/audit_teacher15000_full_result.py\", \"--output\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/full_result_audit_v1\"], \"supervisor_pid\": 158315, \"child_pid\": 158320, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 5, \"sample_errors\": [], \"elapsed_seconds\": 35.61593891121447, \"supervision_passed\": true, \"schema\": \"textop.closed_direct_strict15000_audit_supervision.v1\", \"run\": \"full_result_audit_v1\", \"spec_sha256\": \"c73b09b57da467492f2fa71c974fe7232a8991bfc94cdb9214b21790d3188c38\", \"audit_receipt_sha256\": \"71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d\", \"process_exit_sha256\": \"060ef7e22a430b027da4d86831e13d6e9f045aca778e5e3645e957a686417e07\", \"resources_sha256\": \"6c50bec5e1d72e152a9c4cb18a53b5c5f3b2fc268ca53e123fe3c62e141c3a41\", \"numerical_status\": \"CLOSED_FULL_STRICT_RESULT_CPU_AUDIT_PASSED\", \"new_gpu_contexts\": 0, \"new_sdk_runs\": 0, \"new_physics_steps\": 0, \"optimizer_updates\": 0}\n",
+  "common_lock_free": true
+}

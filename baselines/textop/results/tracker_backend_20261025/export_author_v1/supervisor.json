@@ -1,0 +1,28 @@
+{
+  "run": "export_author_v1",
+  "job": "export_witness",
+  "command": [
+    "bash",
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh",
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/export_tracker_references.py",
+    "--spec",
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json",
+    "--output",
+    "/dev/shm/ouyanghao_textop_20261025/tracker_references/export_author_v1",
+    "--device",
+    "cuda:1",
+    "--headless",
+    "--manifest",
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025/available143_v1/prepared_manifest.private.jsonl",
+    "--limit",
+    "2"
+  ],
+  "child_pid": 3434261,
+  "child_exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 32.885446863248944,
+  "numerical_status": "TEXTOP_TRACKER_REFERENCE_EXPORT_PASSED",
+  "full_training_started": false,
+  "dataset_accepted": false,
+  "scope": "finite reference export or bounded PPO diagnostic"
+}

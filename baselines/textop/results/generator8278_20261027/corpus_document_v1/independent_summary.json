@@ -1,0 +1,223 @@
+{
+  "status": "GENERATOR8278_CORPUS_LOADER_WITNESS_PASSED",
+  "actual_ssh_exit_code": 0,
+  "actual_outer_exit_code": 0,
+  "actual_child_exit_code": 0,
+  "elapsed_outer_seconds": 55.6892727650702,
+  "checks_passed": 69,
+  "checks_total": 69,
+  "checks": {
+    "preflight/new_three_files_equal_local_LF_bytes": true,
+    "preflight/base_canonical_hash_934d8221": true,
+    "preflight/author_child_exit_zero": true,
+    "preflight/author_supervision_passed": true,
+    "preflight/author_status_passed": true,
+    "preflight/view_receipt_matches_document": true,
+    "preflight/gpu1_free_over20GiB": true,
+    "preflight/ram_over16GiB": true,
+    "preflight/data_free_over2GiB": true,
+    "preflight/common_lock_free": true,
+    "preflight/no_active_sdk_or_trainer": true,
+    "preflight/no_prior_run": true,
+    "independent_cpu/original_index_sha_matches": true,
+    "independent_cpu/all_six_manifest_sha_match": true,
+    "independent_cpu/8278_manifest_sources_unique": true,
+    "independent_cpu/all_manifest_splits_match_original_index": true,
+    "independent_cpu/every_actual_artifact_sha_and_size_match": true,
+    "independent_cpu/two_train_families_four_variants_quarantined": true,
+    "independent_cpu/train_source_index_and_manifest_match": true,
+    "independent_cpu/train_pose_fingerprints_recomputed": true,
+    "independent_cpu/train_source_frame_lengths_match_manifest": true,
+    "independent_cpu/train_families_each_have_original_and_mirror": true,
+    "independent_cpu/train_complete_exact_text_cache": true,
+    "independent_cpu/train_all_text_embeddings_finite512": true,
+    "independent_cpu/val_source_index_and_manifest_match": true,
+    "independent_cpu/val_pose_fingerprints_recomputed": true,
+    "independent_cpu/val_source_frame_lengths_match_manifest": true,
+    "independent_cpu/val_families_each_have_original_and_mirror": true,
+    "independent_cpu/val_complete_exact_text_cache": true,
+    "independent_cpu/val_all_text_embeddings_finite512": true,
+    "independent_cpu/source_family_splits_disjoint": true,
+    "independent_cpu/recomputed_exact_pose_splits_disjoint": true,
+    "independent_cpu/all8278_sources_accounted_view_plus_quarantine": true,
+    "independent_cpu/original_validation_all2075_families_retained": true,
+    "independent_cpu/quarantined_families_each_have_original_and_mirror": true,
+    "independent_cpu/each_quarantined_family_has_actual_val_pose_overlap": true,
+    "independent_cpu/train_only_normalization_frame_count": true,
+    "independent_cpu/normalization_shapes_finite_positive_floor": true,
+    "independent_cpu/annotation_and_unique_text_counts_match_doc": true,
+    "independent_cpu/all_view_variants_accounted": true,
+    "independent_cpu/sources_and_spec_unchanged_in_audit": true,
+    "independent_cpu/no_cuda_visible": true,
+    "independent_cpu/cpu_affinity0to3": true,
+    "documented_command_executed_verbatim_once": true,
+    "actual_ssh_exit_zero": true,
+    "actual_outer_exit_zero": true,
+    "actual_child_exit_zero": true,
+    "no_timeouts": true,
+    "child_reaped_and_supervision_passed": true,
+    "no_shutdown_actions_or_sampling_errors": true,
+    "status_passed": true,
+    "writers_closed": true,
+    "three_real_loader_modes": true,
+    "all_three_shapes": true,
+    "all_three_no_missing_text_zero_history_overlap_finite_norm": true,
+    "loader_source_counts": true,
+    "exact35_and_weighted_valid_index_checks": true,
+    "train_norm_boundary_receipts": true,
+    "all_new_source_spec_hashes_unchanged": true,
+    "base_environment_file_unchanged": true,
+    "exact_receipt_sha_binding": true,
+    "exact_process_resource_sha_bindings": true,
+    "view_receipt_unchanged": true,
+    "zero_optimizer_sdk_physics_training": true,
+    "paper_filter_not_claimed": true,
+    "all_run_processes_gone_common_lock_free": true,
+    "independent_cpu_actual_exit_zero": true,
+    "sampled_cpu_affinity_stayed0to3": true,
+    "all_independent_checks_passed": true
+  },
+  "doc_runtime_divergences": [],
+  "blockers": [],
+  "counts": {
+    "preprocessed_input_sources": 8278,
+    "quarantined_train_families": 2,
+    "quarantined_train_variants": 4,
+    "view_source_families": 8276,
+    "view_variants": 16552,
+    "train_variants": 12402,
+    "validation_variants": 4150,
+    "annotation_pairs": 93632,
+    "unique_clip_texts": 7623,
+    "train_feature_frames": 7014270
+  },
+  "loader_checks": [
+    {
+      "split": "train",
+      "weighted": false,
+      "raw_sequences": 12402,
+      "valid_sequences": 12402,
+      "batch_shape": [
+        4,
+        512,
+        10,
+        69
+      ],
+      "text_shape": [
+        512,
+        512
+      ],
+      "missing_text_embeddings": 0,
+      "history_overlap_error": 0.0,
+      "normalization_finite": true
+    },
+    {
+      "split": "val",
+      "weighted": false,
+      "raw_sequences": 4150,
+      "valid_sequences": 4150,
+      "batch_shape": [
+        4,
+        512,
+        10,
+        69
+      ],
+      "text_shape": [
+        512,
+        512
+      ],
+      "missing_text_embeddings": 0,
+      "history_overlap_error": 0.0,
+      "normalization_finite": true
+    },
+    {
+      "split": "train",
+      "weighted": true,
+      "raw_sequences": 12402,
+      "valid_sequences": 12402,
+      "batch_shape": [
+        4,
+        512,
+        10,
+        69
+      ],
+      "text_shape": [
+        512,
+        512
+      ],
+      "missing_text_embeddings": 0,
+      "history_overlap_error": 0.0,
+      "normalization_finite": true
+    }
+  ],
+  "source_family_overlap": 0,
+  "independently_recomputed_exact_pose_overlap": 0,
+  "normalization_audit_scope": "TRAIN-only provenance/code/eligible-frame accounting and bound actual meanstd SHA, finite shape/floor; statistics were not refitted or numerically recomputed",
+  "actual_artifact_hashes": {
+    "val_text_embed.pkl": {
+      "bytes": 15902700,
+      "sha256": "7aba5533a1e69326acdb0d67b8210809bc79fc3ee092ea798c9dfa68a07d82f0"
+    },
+    "train_text_embed.pkl": {
+      "bytes": 16218722,
+      "sha256": "4370287bd405f1ac667ac53ccb484beae0a6d6a22a61103628625c4f64f2c938"
+    },
+    "val.pkl": {
+      "bytes": 401510941,
+      "sha256": "751ffd4ddbabb5f567ded32efc2a5e6120707305c49cc6bbb4eebc3558a52dd6"
+    },
+    "train.pkl": {
+      "bytes": 1076475810,
+      "sha256": "be4ab839a36e10c67ba1680a83df0828cfec6347aca17ffc70976732eb348bfc"
+    },
+    "action_statistics.json": {
+      "bytes": 30248,
+      "sha256": "036a432ff3d8d3d790eaaa4f2e65ed0fa05cdb3f7b5fafaf749bb98383438bfc"
+    },
+    "statistics.yaml": {
+      "bytes": 48,
+      "sha256": "e064bff4269b7a53d5ffb4ca14550e75764ea9ccf1e820aeee1ba40944872eb2"
+    },
+    "meanstd.pkl": {
+      "bytes": 1511,
+      "sha256": "8f82a340636245733beb3e74f2119c3ae1e57c319264803e1af2c91ba7616ff1"
+    },
+    "cross_split_quarantine.private.json": {
+      "bytes": 966,
+      "sha256": "6be214541cd619e1b0f672286812c63e84c60e3e503026dba7ccd37e1a4382ff"
+    }
+  },
+  "source_spec_sha256": {
+    "scripts/build_generator8278_corpus.py": "4e32d6d9a29b1e2614141f909cd435b62ca2d64a5ece849f0fce5c9cbd6b74e6",
+    "scripts/supervise_generator8278_corpus.py": "6d2beed8cb6e8754e7b7cc1e1128ddb5e4ad5a538191d73e392d12871a943b8e",
+    "configs/generator8278-corpus-spec.json": "4fb1ab422e41e0861520064c84e143015a337853a8530d074c79b39ef3eb3424"
+  },
+  "view_receipt_sha256": "bf66fac213d6b9a1812d0c1d578fe09599346e4a2211e70233b968743cd60113",
+  "document_receipt_sha256": "fa4a31d666ea085a541186814d2c1adc2b24e50801bc06a94627a1118e8e82fa",
+  "document_exit_sha256": "ce8a280b1a196277cb10f1957887d675659379898dfee196f5e2a72831e4fbb1",
+  "resources": {
+    "sample_count": 6,
+    "min_available_host_ram_bytes": 134585376768,
+    "min_data_free_bytes": 5787455488,
+    "sampled_peak_child_rss_bytes": 2371649536,
+    "sampled_peak_owned_gpu_memory_mib": 260,
+    "peak_torch_allocated_bytes": 0,
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "gpu": 1,
+    "torch_fraction": 0.65
+  },
+  "output_writers_closed": true,
+  "workers_exited_lock_released": true,
+  "optimizer_updates": 0,
+  "new_sdk_runs": 0,
+  "cache_builds_this_review": 0,
+  "paper_filtered_dataset_accepted": false,
+  "full_generator_training_started": false,
+  "private_evidence_directory": "D:\\具身智能\\TextOp复现_20261024\\diagnostics\\generator8278_corpus_document_v1",
+  "documented_invocation": "python3 /data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_generator8278_corpus.py --mode verify --run corpus8278_document_v1"
+}

@@ -1,0 +1,86 @@
+{
+  "schema": "textop.filter_recovery_backup.v1",
+  "run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+  "resume_spec_sha256": "f39e2103ff6e9cceb3f7442f83a5c217328cb2cb18bce9cecfabb4fd774a64b4",
+  "resumed_checkpoint": {
+    "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume5000_to40000_20261026_v1/completed_10000.pt",
+    "bytes": 90799682,
+    "sha256": "6f949e4edc50d9a763a3634d716162cb5ddecb079bd1142d3720f907f5efab45",
+    "completed": 10000,
+    "updates": 200000
+  },
+  "training_receipt_bindings": {
+    "plan_sha256": "153f8237a17928ffc3a28b7b00e366742a4ff0080e8fbb6bac87e57da8eb291d",
+    "source_sha256": "1efb5bce11da60d087c0867f2cc69f4b0689ec17995c2137b363bfa70a1aa88b",
+    "runtime_sha256": "ad3bb92f5836e5213450420e8f33deffd43443da7d451796adef3d6193ef6962",
+    "reference_fingerprint": "0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7"
+  },
+  "contact_profile": {
+    "kind": "validated_static_solid_floor",
+    "top_z": 0.0,
+    "dimensions_m": [
+      4000,
+      4000,
+      0.2
+    ],
+    "static_friction": 1.0,
+    "dynamic_friction": 1.0,
+    "restitution": 0.0,
+    "combine_mode": "multiply",
+    "self_collisions": true,
+    "validation_witnesses": [
+      {
+        "run": "solid_floor_ppo_author_v1",
+        "receipt_sha256": "3e02a9fb9d312e8f36321ae9b4d0a5dc04e038dd569eb859c615d3e28ecd4339",
+        "actual_iterations": 10,
+        "actual_optimizer_updates": 200
+      },
+      {
+        "run": "solid_floor_ppo_document_v2",
+        "receipt_sha256": "597ddb5508264769bb7953a62697ad82120b0a84ad74291112467dd8952acf7d",
+        "actual_iterations": 10,
+        "actual_optimizer_updates": 200
+      }
+    ],
+    "author_exact_collision_geometry_available": false,
+    "long_run_convergence_established": false,
+    "data_or_reward_changes": false
+  },
+  "bound_backup_files": {
+    "scripts/filter_recovery_backup_protocol.py": "03a1f3228b50c0727c8e8c358441011f2452085bcb171e969a83cee5080a46ec",
+    "scripts/filter_recovery_statistics.py": "104ab812795e425c1b6cfba4abbb4952f78d3e6ca55abe5c76460d3d77676362",
+    "scripts/inspect_filter_recovery_checkpoint.py": "3754c1163692c1d8a8d571dbceb04fea70859d482d33a0ab90668135c773220a",
+    "scripts/validate_filter_recovery_backup.py": "34a183f6194f2212815cf4b0776f28384b1dfd631d47e02db4d8c639318b1272",
+    "scripts/inspect_formal_filter_checkpoint_v2.py": "a05589ac41f7f1d9c97f74eae0ba8be47e8e58af6cf6d06dacf787ac91604279",
+    "upstream/TextOpTracker/source/textop_tracker/textop_tracker/tasks/tracking/mdp/commands_multi.py": "b838ea5d5aa985b7635e11d2d3de85ba5714c57f5cdd3e50dbf925937460a9eb",
+    "scripts/filter_recovery_destination.py": "4cd7faf0c5424376de9f932549307eeb5f66f262bcb5793d992e183a7da2b554",
+    "scripts/validate_filter_recovery_destination.py": "5f1ff907b9103f69d54f379fc35c63f9590c2144b4551e7c7119bc56f1038930"
+  },
+  "audit_run": "filter_recovery_author_v1",
+  "backup_enabled": true,
+  "positive_recovery_checkpoint_audit_completed": false,
+  "strict_physical_filter_completed": false,
+  "next_review_completed": 15000,
+  "metadata_validation_only_until_real_checkpoint": true,
+  "validation_scope": "New run-bound metadata and saved-counter logic; unchanged trusted CPU serializer. Actual new snapshot load/export/backup requires stable latest receipt and remains pending.",
+  "local_private_reserve_bytes": 2147483648,
+  "review_corrections": [
+    "Output ownership/non-link/persistent same-volume ancestry guard before/after audit",
+    "Existing validated CPU child supervisor plus durable pre-dispatch journal and full local SSH-client outcome preservation",
+    "Native Windows current-user SID and no-reparse ownership checks for all existing D ancestors and final/partial paths before/after transfer",
+    "Every SSH/SCP/GitHub client uses immutable full client intent/outcome journals; both timeout stream snapshots retained",
+    "D metadata mirror uses the same native ownership/nonlink guard on every persist",
+    "Client stdout/stderr redirected directly to exclusive retained files, avoiding Windows reader-thread buffer loss; unreaped files explicitly nonfinal"
+  ],
+  "bound_local_files": {
+    "provider_tools/backup_filter_recovery_checkpoint.py": "8c6f7bef912ba5b607db2cba17dae5f34bd43650c873b4e2f6518c5d9bfa4823",
+    "provider_tools/filter_recovery_windows_paths.py": "891180b43d17f642c1d39aecf606aa7c722df838e9504ff38dab934d6887e80c",
+    "provider_tools/validate_filter_recovery_transport.py": "5a51d0aad77bf1c02f03719771ecdf2489eb1cf67437aeb71553564ce21eaad4",
+    "provider_tools/validate_filter_recovery_windows_paths.py": "b4b27ab0f75bb06488544b19c109281027d86ed395f8a48443baac3473c1dd1d"
+  },
+  "preparation_document_witness": {
+    "path": "receipts/filter_recovery_checkpoint_document_v4.json",
+    "sha256": "86ac405789c3a4733a3657b11c6cf23c3b8659980f3f5d4296bb54549eec26df",
+    "scope": "Metadata, filesystem/client failure protection and static preparation review only; actual new checkpoint pending"
+  }
+}

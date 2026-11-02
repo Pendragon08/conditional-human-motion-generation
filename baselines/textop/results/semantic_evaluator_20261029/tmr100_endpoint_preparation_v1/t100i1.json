@@ -1,0 +1,33 @@
+{
+  "status": "TMR100_FIXTURE_READ_ONLY_RECONCILIATION",
+  "run": "user_tmr100_control_author_v1",
+  "files": {
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/usr/bin/python3",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/test_tmr100_endpoint.py",
+        "--out",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/user_tmr100_control_author_v1"
+      ],
+      "supervisor_pid": 431193,
+      "child_pid": 431198,
+      "child_exit_code": 1,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 0.33608345314860344,
+      "supervision_passed": false
+    }
+  },
+  "child_log_tail": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/test_tmr100_endpoint.py\", line 84, in <module>\n    p=argparse.ArgumentParser();p.add_argument('--out',required=True);a=p.parse_args();print(json.dumps(run(a.out)))\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/test_tmr100_endpoint.py\", line 56, in run\n    expected=identity(child.pid);assert 'time.sleep(60)' in expected['argv']\nAssertionError\n"
+}

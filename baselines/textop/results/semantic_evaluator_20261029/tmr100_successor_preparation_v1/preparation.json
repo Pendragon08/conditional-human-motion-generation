@@ -1,0 +1,98 @@
+{
+  "status": "TMR100_PREFIX_FROZEN_AND_SEMANTIC_SUCCESSORS_DEPLOYED_DISABLED",
+  "files": {
+    "scripts/run_tmr100_frozen_cpu.py": "b06b91b19893970f568dc49415a984cc6a649119dea813dc80c5cb18e02defe5",
+    "scripts/supervise_tmr100_frozen_cpu.py": "05262fadc9c0c19a65a3b05891f08b078455cd60d4f3651a5265b5c06f68f211",
+    "scripts/tmr100_semantic_inputs.py": "038fd97e4bbe7a03bbdec7ae1b668e50e17bc34171544350dfc6b79f0c68f481",
+    "scripts/run_tmr100_semantic.py": "72c87b1f59b0ac9228bad65957c17980efbf94300ae9c25fc113780160cc25e6",
+    "scripts/supervise_tmr100_semantic.py": "69051a6e348014135c6681c7137bd52e05dcff191de1a75a13371a6cddf61828",
+    "scripts/tmr100_trained_acceptance.py": "a8767540c4238dae6ef3d8f3c600f19afa995438f806536a5b2472bae765ea18",
+    "scripts/test_tmr100_frozen_contract.py": "dba4f0cf4754cbdc34efca722470d20005931733a48e1b23ddcb6114ae6856e4",
+    "configs/tmr100-frozen-export-spec.json": "f479c5da1593ca0dd6d79dafff62571f64dbadb821fe0f1d25b50b53cff56c90",
+    "configs/tmr100-frozen-verify-spec.json": "666ef04f55d8c12fc29449d9d692fca55cf6078fd1fe9bf7b903c3160f88d276",
+    "configs/tmr100-semantic-spec.json": "003df3988aa2dd7849de0fb35a7530437c9a4d4db7475affa8094c6f5eb5b166"
+  },
+  "actual_fixture": {
+    "status": "TMR100_FROZEN_PREFIX_METADATA_CONTRACT_VERIFIED",
+    "isolated_negative_cases": 12,
+    "actual_production_checkpoint_reads": 0,
+    "actual_model_loads": 0,
+    "actual_GPU_contexts": 0,
+    "actual_exports": 0,
+    "actual_optimizer_updates": 0
+  },
+  "process": {
+    "command": [
+      "taskset",
+      "-c",
+      "0-3",
+      "/usr/bin/env",
+      "CUDA_VISIBLE_DEVICES=",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "/usr/bin/python3",
+      "-B",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/test_tmr100_frozen_contract.py"
+    ],
+    "supervisor_pid": 432254,
+    "child_pid": 432259,
+    "child_exit_code": 0,
+    "child_reaped": true,
+    "timed_out": false,
+    "supervisor_error": null,
+    "shutdown_actions": [],
+    "samples_written": 3,
+    "sample_errors": [],
+    "elapsed_seconds": 0.23790384270250797,
+    "supervision_passed": true
+  },
+  "all_original500_sources_and_active_training_unchanged": true,
+  "actual_model_loads": 0,
+  "actual_checkpoint_reads": 0,
+  "actual_exports": 0,
+  "actual_semantic_metrics": 0,
+  "production_signals_sent": 0,
+  "source_migration": [
+    {
+      "original_path": "scripts/run_tmr69d_frozen_cpu.py",
+      "original_sha256": "ff882621754c5e1263f2c2aadff224ebaf598c2e2832d8826e7f5e55bf5cb493",
+      "new_path": "scripts/run_tmr100_frozen_cpu.py",
+      "new_sha256": "b06b91b19893970f568dc49415a984cc6a649119dea813dc80c5cb18e02defe5"
+    },
+    {
+      "original_path": "scripts/supervise_tmr69d_frozen_cpu.py",
+      "original_sha256": "4fac6f380cf4d22e8f9bfaf04fdf61033384ab0cefaf3bb90737ac302fb94233",
+      "new_path": "scripts/supervise_tmr100_frozen_cpu.py",
+      "new_sha256": "05262fadc9c0c19a65a3b05891f08b078455cd60d4f3651a5265b5c06f68f211"
+    },
+    {
+      "original_path": "provider_tools/tmr69d_frozen_cpu.py",
+      "original_sha256": "3ae70c691b692709207e4446f4c0447c0210103f1163e0545d379514587f770c",
+      "new_path": "provider_tools/tmr100_frozen_cpu.py",
+      "new_sha256": "292607188ac8e2e6162fdc69ee3e19ac78a3ebf3339a69a99c486b10bce6cd0b"
+    },
+    {
+      "original_path": "scripts/tmr69d_semantic_inputs.py",
+      "original_sha256": "6d4537c20603343244ac3015166c7df1c26b2af8e5b9c8dd003da548bcac9809",
+      "new_path": "scripts/tmr100_semantic_inputs.py",
+      "new_sha256": "038fd97e4bbe7a03bbdec7ae1b668e50e17bc34171544350dfc6b79f0c68f481"
+    },
+    {
+      "original_path": "scripts/run_tmr69d_semantic.py",
+      "original_sha256": "94bdfa9d6613ed0d587a9fcb5b00c6eeb89ae15f2007f48d3ba0b8c78c1e1ed3",
+      "new_path": "scripts/run_tmr100_semantic.py",
+      "new_sha256": "72c87b1f59b0ac9228bad65957c17980efbf94300ae9c25fc113780160cc25e6"
+    },
+    {
+      "original_path": "scripts/supervise_tmr69d_semantic.py",
+      "original_sha256": "bd3b81888e020a0609b0c22bd56f37f44c85dad71990ae0b08c074997fad88e3",
+      "new_path": "scripts/supervise_tmr100_semantic.py",
+      "new_sha256": "69051a6e348014135c6681c7137bd52e05dcff191de1a75a13371a6cddf61828"
+    },
+    {
+      "original_path": "provider_tools/tmr69d_semantic.py",
+      "original_sha256": "76cda5845ccfdf6de870310e6d2570ecfd93dd194997e8dc14c6276d8268fd49",
+      "new_path": "provider_tools/tmr100_semantic.py",
+      "new_sha256": "41008f72b122e5aca1b6d0eb1a60c436221131d7303141048957f85e0e835f9a"
+    }
+  ]
+}

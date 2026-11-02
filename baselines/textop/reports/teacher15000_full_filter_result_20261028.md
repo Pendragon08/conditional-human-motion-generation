@@ -1,0 +1,15 @@
+# TextOp全库物理筛查最终结果与自动生成器交接
+
+全部8278个原始动作已经完成真实物理回放：完整通过7137，失败1141，未尝试0，通过比例86.22%。固定使用15000轮检查点，每个来源一次完整T−1轨迹，没有优化更新。全部原始动作、失败、真实执行轨迹和原始退出记录保留。
+
+本次采用用户指定的直接全库路线：跳过历史EMA候选步骤，使用15k而非论文40k教师。物理终止阈值没有数值放宽；单次通过不等于重复试验失败率≤5%。最终参考端点、语义、WBC与真实在线质量并未因此通过。
+
+原SDK/process/supervisor/outer均实际退出0，输出已关闭、原组无残留，原锁释放后才启动独立CPU完整性核验。原生SDK close仍未返回，已验证fallback退出如实保留。实际313066次vector control、1252264次physics；CPU核验全部8278来源、参考SHA/fingerprint、trial/journal和608026032字节有限36D姿态、4222403个pose样本及归一化四元数，实际35.35秒并以process/supervisor/outer0闭合。审计收据SHA：71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d。
+
+真实通过动作的原REFERENCE配对BABEL构成新语料。作者构建和fresh独立verify均实际闭合0、无发现；隔离2个TRAIN精确跨split重复family，原件保留。实际训练视图7135个来源family、14270个含镜像变体，train/val变体10722/3548；6309真实CLIP文本编码、TRAIN-only69D统计、三种loader有限值与连续性检查通过。物理通过数量仍是7137，语料隔离不改写物理决定。
+
+新私有恢复包18627628字节，SHA df8836ef2a50f006ab2ec78ab8509435d010266f2c8bf0b801893ac92c485e46，服务器与D盘独立字节/SHA/所有权核验通过。它包含逐源决定、归一化、CLIP及派生RAM缓存恢复说明；原数组和完整状态不公开。CPU数据接受实际闭合0，持久自有ext4容量按五个有界全状态保存槽、2GiB保留及512MiB日志核验。
+
+两份独立真实VAE梯度/恢复见证均实际闭合0、findings为空，完成四步finite模型/Adam/all RNG/后续批次/待处理评估恢复，不创建持久诊断检查点，不将诊断权重用于正式初始化。新筛后VAE已从头正式开训，实际采样100次primitive尝试、100次Adam更新、0跳过；目标完整200000步，首个真实全状态保存节点50000。之后按真实VAE200k闭合、CPU推理导出与完整LDM实际资源/作者fresh验收自动接续新LDM300k。
+
+正式run：filtered15000_vae200k_train_v1。VAE active spec SHA b7eb6e95b082fd3902099ea718ec07bd42b3418c49c179f88f5438e5c5d2c6fa，数据接受SHA 0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c。目标持久目录 /home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints；所有实际状态和失败保留。健康训练按每小时静默检查，只有实质结果、需处理失败、必要输入或完整效果通知。

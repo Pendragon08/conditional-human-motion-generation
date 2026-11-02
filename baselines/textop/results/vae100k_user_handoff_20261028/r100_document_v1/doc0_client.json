@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 90,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "a973d33c9553905ff70da384d47ed6447e851bf2ec6d759068bd4fb684fa1a4d",
+  "client_pid": 48572,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"kind\": \"resume\", \"run\": \"r100_document_v1\", \"observed_unix\": 1793160690.6211855, \"files\": {\"receipt\": {\"status\": \"STARTING_USER_VAE100K_RESUME\", \"run\": \"r100_document_v1\", \"mode\": \"witness\", \"source_sha256\": \"762bf67251abd77f1302eb54e93e958828f99bc0241210e0a6d6db8ba9419a63\", \"spec_sha256\": \"9e9df3fc36c4fe841eb9a86a22f004ac051c4a582a2c6380ff7c50c5994e389f\", \"resume_checkpoint\": {\"path\": \"/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/emergency_99700.pth\", \"bytes\": 513526701, \"sha256\": \"4ebfe7174678c54d23a1c5d4f71857d6a6a22cca08bd2c1cbf6d82dcce3f4c49\", \"manager_step\": 99700, \"actual_optimizer_updates\": 99700}, \"output_writers_closed\": false, \"new_optimizer_updates\": 0, \"original200k_completion_claimed\": false}, \"driver\": {\"status\": \"USER_VAE100K_RESUME_DISPATCHED_NOT_YET_ACCEPTED\", \"mode\": \"witness\", \"run\": \"r100_document_v1\", \"driver_pid\": 291366, \"spec_sha256\": \"9e9df3fc36c4fe841eb9a86a22f004ac051c4a582a2c6380ff7c50c5994e389f\"}}, \"sha256\": {\"receipt\": \"ee461666219f65e2f27d7c702d498d25d841b5790147fda1c66eef2a60e4f723\", \"driver\": \"6f855270e71944109fc0606b3d498a5f583a0113152a846e423eff39e2d676a2\"}, \"workers\": [{\"pid\": 291367, \"start_ticks\": \"1435821271\", \"state\": \"S\", \"argv\": [\"python3\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_user_vae100k_resume.py\", \"--mode\", \"witness\", \"--run\", \"r100_document_v1\", \"\"]}, {\"pid\": 291374, \"start_ticks\": \"1435821395\", \"state\": \"R\", \"argv\": [\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_user_vae100k_resume.py\", \"--mode\", \"witness\", \"--run\", \"r100_document_v1\", \"\"]}], \"closed_execution_verified\": false, \"arrays_read\": 0, \"model_loads\": 0, \".log_tail\": \"2026-10-28 04:11:02.530 | INFO     | robotmdar.dataloader.data:_load_data:95 -  Loading train data...\\n2026-10-28 04:11:05.308 | INFO     | robotmdar.dataloader.data:_cal_sample_weight:127 -  ====================Use Weighted Sample====================\\n\", \"_outer.log_tail\": \"\", \"common_lock_free\": false}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\r100_document_v1\\doc0_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\r100_document_v1\\doc0_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

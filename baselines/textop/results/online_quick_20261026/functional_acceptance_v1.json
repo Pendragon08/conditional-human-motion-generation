@@ -1,0 +1,113 @@
+{
+  "status": "QUICK_BOUNDED_FUNCTIONAL_CHAIN_ACCEPTED_QUALITY_RESEARCH_PENDING",
+  "functional_chain_accepted": true,
+  "quality_review_completed": true,
+  "semantic_quality_accepted": false,
+  "paper_quality_accepted": false,
+  "paper_complete": false,
+  "unbounded_hard_realtime_guarantee": false,
+  "final_reference_endpoint_verified": false,
+  "deployable_final_wbc_complete": false,
+  "online_runs": [
+    "online_author_v11",
+    "online_document_v1"
+  ],
+  "independent_audit_checks": 430,
+  "full_training_research_continuation_authorized": true,
+  "authorization": "User: continue completing quick overall validation, then start full training; previous automatic continuation authorization retained.",
+  "next_phase": "Resume unchanged 8192-environment paper teacher from verified5000/100000 to40000/800000; then full available-data filtering/corpus gate before paper VAE/LDM.",
+  "full_generator_training_started": false,
+  "quality_review": {
+    "status": "QUICK_MODEL_QUALITY_REVIEWED_NOT_PAPER_ACCEPTED",
+    "input_sha256": "987b374a505778a6a010ac5cf9cb943b1a45cb12a5b40b5ccb4a10c82c56a2ef",
+    "walk_phase_root_displacement_xyz_m": [
+      -0.023137779906392097,
+      0.07472793012857437,
+      0.0178682804107666
+    ],
+    "wave_phase_root_displacement_xyz_m": [
+      1.648537039756775,
+      -0.6996780037879944,
+      -0.050141870975494385
+    ],
+    "text_embedding_max_abs_difference": 0.874267578125,
+    "joint_dynamic_std_mean_rad": 0.1450977623462677,
+    "fixed_sampling_huber_before": 0.31026655808091164,
+    "fixed_sampling_huber_after": 0.6075362637639046,
+    "semantic_quality_accepted": false,
+    "paper_quality_accepted": false,
+    "conclusion": "The bounded functional pipeline is exercised, but quick motion/text quality is insufficiently established. Fixed sampled error worsened; the two command phases do not establish correct semantics. Preserve negative evidence. Full research training is the next quality-improvement experiment, not certification that quality already passed.",
+    "causal_undertraining_claimed": false,
+    "full_generator_data_gate_bypassed": false
+  },
+  "evidence": [
+    {
+      "path": "online_private/online_author_v11/pipeline.json",
+      "sha256": "32b5790194cc4493b2d2e3502feb4bbde8bda0f5185a95fb8c1d862396a0ed59"
+    },
+    {
+      "path": "online_private/online_author_v11/sdk/receipt.json",
+      "sha256": "d6ba894e9a3f35668dd9e7d70fc700ce2f4853878131b694231e6dd31f93ea35"
+    },
+    {
+      "path": "online_private/online_author_v11/generator_receipt.json",
+      "sha256": "c2a0d08e3c587f96a0caa313690957036f81fe1b630ff64c87f7e7593a30ad22"
+    },
+    {
+      "path": "receipts/online_online_author_v11_outer_exit.json",
+      "sha256": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+    },
+    {
+      "path": "online_private/online_document_v1/pipeline.json",
+      "sha256": "26710dfd521dad91b520ada18be93a358ae7c7b5288158c885e9855dd03a50bb"
+    },
+    {
+      "path": "online_private/online_document_v1/sdk/receipt.json",
+      "sha256": "03dfec6a0974f5252ba1146fe0538e3b051c415167bab93a56ed79d19504aacb"
+    },
+    {
+      "path": "online_private/online_document_v1/generator_receipt.json",
+      "sha256": "9fd92b75d27fb73e3a4c4884f2237f333c14feb267d2a308f82e4722faacf6c8"
+    },
+    {
+      "path": "receipts/online_online_document_v1_outer_exit.json",
+      "sha256": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+    },
+    {
+      "path": "quick_generator_20261026/vae_runs/quick_vae_train_v1/receipt.json",
+      "sha256": "abdd2bf422af2c0b1cf6215fdd2119707a7a5ff421e1358a97b1d55a7ecfb582"
+    },
+    {
+      "path": "receipts/quick_vae_quick_vae_train_v1_exit.json",
+      "sha256": "f1a0da1f70a314e8ec70a10693077b96f5d46a78d836b4c02ffabfb2b7d2ee99"
+    },
+    {
+      "path": "quick_generator_20261026/ldm_runs/quick_ldm_train_v1/receipt.json",
+      "sha256": "b74e84a4fb466c406f41d1285154ddc4cf00af6774771484b77d6b24eba63925"
+    },
+    {
+      "path": "receipts/quick_ldm_quick_ldm_train_v1_exit.json",
+      "sha256": "bb3189cc3aaf0d5ef53d9226b8bd382e240a99dcdd80209e306b4938b553fb29"
+    },
+    {
+      "path": "receipts/quick5000_controlled_stop.json",
+      "sha256": "7d0b04728d99bc52d0a7d8ca90b39303eba101ea31c84f4c45f120a8490e530c"
+    },
+    {
+      "path": "receipts/quick5000_backup_verified.json",
+      "sha256": "8d87643e377cb8c3086b761cc4382a7ead2859b06fb042100a9124850faf3991"
+    },
+    {
+      "path": "receipts/offline_chain_acceptance_20261026_v1.json",
+      "sha256": "e2bd8a14398a2391d122a5fda9c64505fe4ca86dfbaaaf3e402e5f6e84acc720"
+    },
+    {
+      "path": "receipts/online_independent_document_v1_summary.json",
+      "sha256": "c8a04af00ef58a8e214ac2ada23aad806ed4acdf8fbe1777998bf53a83a50596"
+    },
+    {
+      "path": "receipts/quick_model_quality_review_20261026_v1.json",
+      "sha256": "45b6a007038c8806e983d2ce52f8621cbdf2fe1846b217fb5b801212a5c63a89"
+    }
+  ]
+}

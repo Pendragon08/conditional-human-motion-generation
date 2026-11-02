@@ -1,0 +1,175 @@
+{
+  "spec": {
+    "schema": "textop.generator8278_owned_marker_pause.v1",
+    "user_request": "User2026-10-27: safely save and pause this prefilter generator; complete full-library physical filtering before filtered generator training",
+    "run": "generator8278_vae200k_train_v1",
+    "handoff_name": "generator8278_to_filtered_order_v1",
+    "pause_authorized": false,
+    "process_identity": {
+      "pid": 4166124,
+      "start_ticks": 1426871168,
+      "ppid": 4166117,
+      "session": 4166124,
+      "state": "R",
+      "uid": 1013,
+      "argv": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_generator8278_vae.py",
+        "--mode",
+        "train",
+        "--run",
+        "generator8278_vae200k_train_v1"
+      ],
+      "exe": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python3.8"
+    },
+    "frozen_sources": {
+      "scripts/run_generator8278_vae.py": "7e4ff4b7c427a884deb9708ab77c8fb4a62304ec505fb5329dd83758f650fe45",
+      "scripts/generator8278_vae_runtime.py": "59e6c101073e1cc8df4ebff195b49bb76f5d63ee73f2b288c8d4d4597a833e8b",
+      "scripts/supervise_generator8278_vae.py": "c7cc495453d532da2ba0736905f4b27380117be3d17c60a4a023212707b23718",
+      "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e",
+      "scripts/checkpoint_storage_guard.py": "bff54d2b4fb7f29fdc18f6cc46d86626ca14b299faba49161c1c10897897788c",
+      "configs/generator8278-vae-spec.json": "ec16b1468543e7a5347595d94ecc915502bb775fe885f97318ff53454ebe3fdc",
+      "scripts/closed_boundary_interrupt.py": "15bb7ecb9601ce01ec78d627520cd19d95468db3c1470b8f689972183997a318",
+      "scripts/quick_pidfd.py": "df180bffb3e35dd77c8bb4f8ca9b143879a4184f6f8aab98188e1139de6538f2",
+      "scripts/closed_boundary_marker.py": "0b4b0a2150d0a341ba896ae89b6bba1373b99c45ba76cf3ba733729fb017f0d2",
+      "scripts/validate_closed_boundary_marker.py": "373b0a3ef84233b17bf27d12141466aeacfe13dfd94aadcf10235feff9a9e138",
+      "scripts/audit_generator8278_pause_cpu.py": "0de5ef65ea6856b13fb7922a00a5cd6440a0d82a2b457beff509725f8d1d4f95"
+    },
+    "entrypoint_sha256": "22add8e2f7018cb3214249e0eb7649f0a6a33e331a1d42ec2acb9d0154cd8d95",
+    "normal_boundary_save_lineno": 70,
+    "cpu_witnesses": []
+  },
+  "preflight": {
+    "status": "MARKER_PAUSE_PREFLIGHT_ONLY",
+    "training_signals": 0,
+    "worker": {
+      "pid": 4166124,
+      "start_ticks": 1426871168,
+      "ppid": 4166117,
+      "session": 4166124,
+      "state": "R",
+      "uid": 1013,
+      "argv": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_generator8278_vae.py",
+        "--mode",
+        "train",
+        "--run",
+        "generator8278_vae200k_train_v1"
+      ],
+      "exe": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python3.8"
+    },
+    "budget": {
+      "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/generator8278_20261027/vae/checkpoints",
+      "filesystem": "ext4",
+      "owner_uid": 1013,
+      "free_bytes": 5753577472,
+      "required_bytes": 3238002688,
+      "remaining_saves": 1,
+      "checkpoint_upper_bound_bytes": 553648128,
+      "reserve_bytes": 2147483648,
+      "log_allowance_bytes": 536870912,
+      "persistent_owned_writable": true
+    }
+  },
+  "original_receipt": {
+    "status": "RUNNING_GENERATOR8278_VAE_TRAINING",
+    "mode": "train",
+    "quality_label": "PREFILTER8278_PAPER_SCHEDULE_NOT_FILTERED_PAPER_REPRODUCTION",
+    "full_paper_training": false,
+    "optimizer_updates": 7000,
+    "completed_primitive_attempts": 7000,
+    "skipped_updates": 0,
+    "output_writers_closed": false,
+    "source_sha256": "7e4ff4b7c427a884deb9708ab77c8fb4a62304ec505fb5329dd83758f650fe45",
+    "spec_sha256": "ec16b1468543e7a5347595d94ecc915502bb775fe885f97318ff53454ebe3fdc",
+    "corpus_receipt_sha256": "bf66fac213d6b9a1812d0c1d578fe09599346e4a2211e70233b968743cd60113",
+    "data_acceptance_sha256": "a8ebf892d229570829c51909884204241ba4bc9faee389f5ac5b1f75cf5e4f88",
+    "elapsed_seconds": 2625.831874711439,
+    "initial_storage_check": {
+      "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/generator8278_20261027/vae/checkpoints",
+      "filesystem": "ext4",
+      "owner_uid": 1013,
+      "free_bytes": 5755072512,
+      "required_bytes": 5452595200,
+      "remaining_saves": 5,
+      "checkpoint_upper_bound_bytes": 553648128,
+      "reserve_bytes": 2147483648,
+      "log_allowance_bytes": 536870912,
+      "persistent_owned_writable": true
+    },
+    "fixed_validation_batch_sha256": "b649db0e68a36e556db0d294a8272cd56a4656804cab6ee389e169400e37bb15",
+    "quality_baseline_manager_step": 0,
+    "quality_batch_preserves_training_rng": true,
+    "initial_quality": {
+      "teacher_forced": {
+        "normalized_reconstruction_huber": 0.437720462679863,
+        "four_primitives": true,
+        "always_previous_prediction_history": false,
+        "final_physical_endpoint_or_text_generation_evaluated": false
+      },
+      "self_rollout": {
+        "normalized_reconstruction_huber": 0.43645960837602615,
+        "four_primitives": true,
+        "always_previous_prediction_history": true,
+        "final_physical_endpoint_or_text_generation_evaluated": false
+      }
+    },
+    "last_train_batch": [
+      {
+        "manager_step": 6997,
+        "loss": 0.01935885101556778,
+        "reconstruction_huber": 0.018964819610118866,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 6997,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      },
+      {
+        "manager_step": 6998,
+        "loss": 0.020062614232301712,
+        "reconstruction_huber": 0.01965857297182083,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 6998,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      },
+      {
+        "manager_step": 6999,
+        "loss": 0.018882667645812035,
+        "reconstruction_huber": 0.018488680943846703,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 6999,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      },
+      {
+        "manager_step": 7000,
+        "loss": 0.020306454971432686,
+        "reconstruction_huber": 0.019915802404284477,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 7000,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      }
+    ],
+    "last_storage_check": {
+      "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/generator8278_20261027/vae/checkpoints",
+      "filesystem": "ext4",
+      "owner_uid": 1013,
+      "free_bytes": 5753597952,
+      "required_bytes": 5452595200,
+      "remaining_saves": 5,
+      "checkpoint_upper_bound_bytes": 553648128,
+      "reserve_bytes": 2147483648,
+      "log_allowance_bytes": 536870912,
+      "persistent_owned_writable": true
+    }
+  },
+  "free": {
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 5753577472,
+    "/home/ouyanghao": 5580464128
+  },
+  "gpu": "0, 36328 MiB\n1, 35931 MiB\n",
+  "memory": "MemTotal:       263629544 kB\nMemFree:         4454172 kB\nMemAvailable:   128622876 kB\nBuffers:         4356084 kB\nCached:         223786476 kB\nSwapCached:        29704 kB\nActive:         223969452 kB\nInactive:       26773312 kB\nActive(anon):   126735116 kB\nInactive(anon):  4176820 kB\nActive(file):   97234336 kB\nInactive(file): 22596492 kB\nUnevictable:       18536 kB\nMlocked:           18536 kB\nSwapTotal:       8388604 kB\nSwapFree:        7810812 kB\nDirty:               260 kB\nWriteback:             0 kB\nAnonPages:      22520196 kB\nMapped:          1203228 kB\nShmem:          108303580 kB\nKReclaimable:    6556360 kB\nSlab:            7266852 kB\nSReclaimable:    6556360 kB\nSUnreclaim:       710492 kB\nKernelStack:       12960 kB\nPageTables:        87628 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:    140203376 kB\nCommitted_AS:   149081328 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:      149528 kB\nVmallocChunk:          0 kB\nPercpu:           114720 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:    362496 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nCmaTotal:              0 kB\nCmaFree:               0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:    165833928 kB\nDirectMap2M:    99149824 kB\nDirectMap1G:     3145728 kB\n"
+}

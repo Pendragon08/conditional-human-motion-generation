@@ -1,0 +1,15 @@
+# Generator8278 pre-filter corpus environment
+
+User2026-10-27 explicitly selected all8278preprocessed sources before full physical filtering. This is a separate experiment, not paper-filtered acceptance. Existing licensed inputs have durable private backups. Derived joblib cache is in personal /dev/shm; its reconstruction recipe, exact manifest hashes, TRAIN statistics and CLIP cache must be backed up privately. No authoritative input is deleted or changed.
+
+Warm provider: SERVER_NOTES.md paper69@934d8221, Python3.8.20, Torch1.13.1+cu117. No install. ROOT=/data/code/ouyanghao/oyh/textop-reproduction-20261024. User permits sharedGPU1 with free>20GiB, CPU0-3 and Torch.65; no requirement that the GPU be empty. Common full_library_capacity.lock enforces serial personalGPU jobs. Old57D paused tasks remain.
+
+Author build corpus8278_author_v1 actually exited0 with113.4s supervision. Input8278, two TRAIN source families quarantined because exactfloat32poses duplicateVAL; their original assets remain. View8276sourcefamilies/16552variants, train12402/val4150,93632annotationpairs,7623uniqueCLIPstrings,7014270TRAINfeatures. Original+mirror samefamily/split. All3real512/fourprimitive loader checks finite, overlap0, missingtext0. Corpus view receipt bf66fac213d6b9a1812d0c1d578fe09599346e4a2211e70233b968743cd60113.
+
+Fresh independent invocation (run once; no re-build):
+```
+python3 /data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_generator8278_corpus.py --mode verify --run corpus8278_document_v1
+```
+Connect with the existing provider_tools/session.py SSH/remote helper. Use UTF8. First read-only check exact deployed new3files match local LFbytes, environment canonicalhash934d8221, authorreceipt+exit0, GPU/RAM/disk, no own activeSDK/trainer/commonlockfree. Never stop/modify old jobs. Invoke above verbatim through subprocess with durable log and actual outerexit; wait max3600s. This does not build/duplicatecache, optimize models or invoke SDK. Do not reinterpret old dataset_accepted=false as failure: separate pre-filter loader verification is intended. Required final status GENERATOR8278_CORPUS_LOADER_WITNESS_PASSED, child/outer0, writersclosed, all3loaderchecks, actualSHA artifact hashes, original indices source split/disjoint, TRAIN-only normalization and full cache. Inputs/spec stay unchanged. Do not rerun the author's build or older CPU fixtures.
+
+Inspect private view summary and read-only metadata for counts; do not expose source identities/text arrays or copy them into public repo. Recompute source-family and exact-pose split disjointness from private joblib if useful without producing a second full corpus. Return REPORT.md and independent_summary.json only (aggregates), preserving stderr/failures privately under D:/具身智能/TextOp复现_20261024/diagnostics/generator8278_corpus_document_v1. Report every doc/runtime divergence, never improvise a changed invocation. This is corpus/data-loader acceptance, not neuralgradient, physics, semanticquality or training completion.

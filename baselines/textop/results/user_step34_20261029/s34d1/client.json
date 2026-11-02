@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 180,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "589a2086a38cbf50482ee48845b3a49829acadb542da937f0947e04c69eedd77",
+  "client_pid": 59344,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"status\": \"USER_STEP34_METADATA_DISPATCHED_NOT_ACCEPTED\", \"run\": \"user_augmentation5368_scope_v1\", \"driver_pid\": 426741, \"request_sha256\": \"e0b5086ef7547d6bffc7161cf715f19b427640c63638599b7b83b65021d030ed\", \"contract_process\": {\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"CUDA_VISIBLE_DEVICES=\", \"PYTHONDONTWRITEBYTECODE=1\", \"/usr/bin/python3\", \"-B\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/test_user_step34_contract.py\"], \"supervisor_pid\": 426725, \"child_pid\": 426732, \"child_exit_code\": 0, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 3, \"sample_errors\": [], \"elapsed_seconds\": 2.4907763972878456, \"supervision_passed\": true}, \"contract_result\": {\"status\": \"USER_STEP34_ISOLATED_CONTRACT_VERIFIED\", \"negative_cases\": 20, \"balanced_duration_exact\": true, \"real_terminal_pose_required\": true, \"model_loads\": 0, \"motion_arrays_read\": 0, \"actual_generated_clips\": 0, \"actual_RL_updates\": 0, \"parameters\": {\"actor_parameters\": 3522589, \"critic_parameters\": 3766273, \"gaussian_std_parameters\": 29, \"total_parameters\": 7288891, \"float32_model_and_two_Adam_moments_payload_bytes\": 87466692, \"excludes_optimizer_metadata_normalizers_RNG_sampler_and_simulator_state\": true}}, \"model_lock_acquired\": false, \"actual_new_models\": 0, \"actual_generated_clips\": 0, \"actual_RL_updates\": 0}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\user_step34_20261029\\s34d1\\client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\user_step34_20261029\\s34d1\\client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "textop.user_vae100k_control.v1",
+  "control_authorized": false,
+  "latest_user_request": "训练到100000步就行了，然后训练LDM。",
+  "target_primitive_attempts": 100000,
+  "original_run": "filtered15000_vae200k_train_v1",
+  "original_spec_sha256": "b7eb6e95b082fd3902099ea718ec07bd42b3418c49c179f88f5438e5c5d2c6fa",
+  "original_entry_sha256": "7ca7f4d9dd36ca5bfa1e07261d5ccaf1e652e7c989e8d71f62d5751de70df7a0",
+  "original_runtime_binding_sha256": "87a2f61683d930bf5fe69a9113713c90137c43318766627975c6d11accc20c1c",
+  "checkpoint_path": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/vae_state_100000.pth",
+  "checkpoint_allowed_root": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027",
+  "checkpoint_upper_bound_bytes": 553648128,
+  "producer": {
+    "pid": 165381,
+    "start_ticks": "1432055933",
+    "uid": 1013,
+    "argv": [
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_filtered15000_vae.py",
+      "--mode",
+      "train",
+      "--run",
+      "filtered15000_vae200k_train_v1"
+    ]
+  },
+  "supervisor": {
+    "pid": 165374,
+    "start_ticks": "1432055921",
+    "uid": 1013,
+    "argv": [
+      "python3",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_filtered15000_vae.py",
+      "--mode",
+      "train",
+      "--run",
+      "filtered15000_vae200k_train_v1"
+    ]
+  },
+  "entrypoint_sha256": "1903ca5f9f442b815db162227f9a03b99d124ac21aa432f2e72a8bda669ed79b",
+  "supervisor_sha256": "0b2e02996c06750b7d2493e1212011b46e76fe0e0bbdf01bb5b84aa5eabc4eb1",
+  "bound_sources": {
+    "scripts/vae100k_control_protocol.py": "f8b59f99aadb80925385746fd32cb861cc552b7bab108c984e6cc25020901c35",
+    "scripts/contact_process_supervision.py": "44d689a71dc0c04778a7e6e651bc61d234dd59d3435a80c543be9d8db55638b4",
+    "scripts/contact_filter_resources.py": "1003a7cba9d2f2e30a05a881020e51ed8907eba6d523e4ce8af6b1b5399f76e5",
+    "configs/filtered15000-vae-spec.json": "b7eb6e95b082fd3902099ea718ec07bd42b3418c49c179f88f5438e5c5d2c6fa",
+    "scripts/run_filtered15000_vae.py": "7ca7f4d9dd36ca5bfa1e07261d5ccaf1e652e7c989e8d71f62d5751de70df7a0",
+    "scripts/supervise_filtered15000_vae.py": "b0ebde8b30e143c1403b9c7e3955051d97b23b686a112eea0d30af87655acfe7",
+    "scripts/generator8278_vae_runtime.py": "59e6c101073e1cc8df4ebff195b49bb76f5d63ee73f2b288c8d4d4597a833e8b",
+    "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e"
+  },
+  "one_signal_only": true,
+  "kill_signal_authorized": false,
+  "original_source_edit_authorized": false,
+  "require_before_signal": [
+    "real100000 named full state",
+    "producer exact reload receipt",
+    "matching frozen sources/data",
+    "live pidfd identity"
+  ],
+  "early_stop_is_user_variant_not_200k_completion": true,
+  "corpus_receipt_sha256": "fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427",
+  "data_acceptance_sha256": "0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c",
+  "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d"
+}

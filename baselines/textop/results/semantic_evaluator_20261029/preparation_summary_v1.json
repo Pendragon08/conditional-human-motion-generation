@@ -1,0 +1,58 @@
+{
+  "status": "TRACKING_FIDELITY_CLOSED_REAL_TMR_PREPARATION_IN_PROGRESS",
+  "tracking_receipt_sha256": "77ce67f28800ec4dd9f25cfb52fe12c89d99d1e7d7f1af2c9b34ab9f7ad8d167",
+  "actual_bootstrap_closed": true,
+  "actual_bootstrap_receipt_sha256": "005420576b016387017afd4a010687b243e6c50225d76d3e5186f7fd9bb9821a",
+  "exact_upstream_commit": "6d74688730d15d43b0a755ce2b0e1f2d76138fc1",
+  "actual_random_cpu_architecture_probe": {
+    "actual_cpu_random_architecture_constructions": 3,
+    "actual_parameter_count": 16031301,
+    "parameter_bytes": 64125204,
+    "conservative_adam_fullstate_upper_bytes": 201326592,
+    "variable_length_forward_finite": true,
+    "padded_decoder_output_exact_zero": true,
+    "torch_version": "1.13.1+cu117",
+    "transformers_version": "4.30.2",
+    "cuda_initialized": false,
+    "pretrained_weight_reads": 0,
+    "actual_motion_or_text_data_reads": 0,
+    "optimizer_updates": 0,
+    "formal_training_ready": false
+  },
+  "public_model_manifest_sha256": "4ea5cd5255a8d5953515a9d0a66858e8b6751b638904c165eee06f2a42d8325c",
+  "server_direct_text_model_run": {
+    "status": "FAILED_TMR_TEXT_MODEL_PREPARATION_ALL_PARTIALS_RETAINED",
+    "actual_outer_exit_code": 1,
+    "no_remaining_workers": true,
+    "actual_failure_receipt_sha256": "b18b94c97a257e2f720b17c92d98d92ae750c7369deb377a8ad003630c2fb448",
+    "known_reason": "Direct Hugging Face network route unreachable; 0 completed files; original failure retained"
+  },
+  "alternative_D_cache": {
+    "status": "DOWNLOADING_PINNED_PUBLIC_TMR_TEXT_FILES",
+    "completed_files": 1,
+    "completed_bytes": 483,
+    "output_writers_closed": false
+  },
+  "model_target_representation": "robot 69D / 50Hz / accepted BABEL TRAIN families only",
+  "formal_tmr_training_authorized": false,
+  "actual_evaluator_training_updates": 0,
+  "actual_Rprecision_MMdist_FID_available": false,
+  "generator_or_teacher_additional_training_updates": 0,
+  "public_motius_candidate": {
+    "accepted_for_this_protocol": false,
+    "public_weight_downloads": 0,
+    "reasons": [
+      "38D30Hz vs 69D50Hz",
+      "HYMotion vs BABEL TRAIN-family overlap unverified",
+      "per-sample normalized FID differs"
+    ]
+  },
+  "next_required": [
+    "verified public text files on server and frozen CPU checks",
+    "signed true TRAIN-only motion/text scope and normalization",
+    "actual evaluator gradient, fullstate recovery and independent acceptance",
+    "true compatible trained frozen encoder",
+    "heldout semantic metrics",
+    "WBC and online quality"
+  ]
+}

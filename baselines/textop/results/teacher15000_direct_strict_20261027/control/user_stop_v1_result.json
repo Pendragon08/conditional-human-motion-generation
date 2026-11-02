@@ -1,0 +1,149 @@
+{
+  "status": "USER_AUTHORIZED_TEACHER15000_EVALUATION_HANDOFF",
+  "run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+  "evaluation_checkpoint": 15000,
+  "observed_completed": 15300,
+  "optimizer_updates": 306000,
+  "target_checkpoint_ready": true,
+  "checkpoint": {
+    "name": "completed_15000.pt",
+    "bytes": 90799682,
+    "sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
+    "completed_learning_iterations": 15000,
+    "actual_optimizer_updates": 300000
+  },
+  "gate": {
+    "ready": true,
+    "status": "FILTER_RECOVERY_CHECKPOINT_READY_FOR_CPU_AUDIT",
+    "observed_completed": 15300,
+    "metadata": {
+      "name": "completed_15000.pt",
+      "bytes": 90799682,
+      "sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
+      "completed_learning_iterations": 15000,
+      "actual_optimizer_updates": 300000
+    },
+    "run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+    "requested_completed": 15000,
+    "training_receipt_sha256": "162d6add5891b91b6d38e99a45a90ea3ce4aca443d1fef40e45e666e528fd23c",
+    "launch_sha256": "a9ad5b7dd555fe567efee3ca0199f0bce2553b93434dad7da50b882afc04f1f9",
+    "sdk_dispatches": 0,
+    "checkpoint_loads": 0,
+    "export_files_created": 0,
+    "checkpoint": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume10000_filter_recovery_20261027_v1/completed_15000.pt",
+    "file_age_seconds": 1881.70472073555
+  },
+  "trainer_pid": 4190451,
+  "trainer_start_ticks": 1427248665,
+  "owned_group": 4190443,
+  "enabled": true,
+  "signals_sent": [
+    {
+      "pid": 4190451,
+      "signal": "SIGINT",
+      "timestamp_unix": 1793107853.3418403
+    }
+  ],
+  "sdk_runs": 0,
+  "control_spec_sha256": "10c643b21e26927c55682ee2f501da846045f92f487d9cbede97159f086ae434",
+  "sample_unix": 1793107853.3405821,
+  "action": "user_authorized_pause_for_15000_physics_evaluation",
+  "backup_receipt_sha256": "b9623e277fa2e0d913b41359cd4e615d187c5c75407d8184caf2342f19388efe",
+  "signal_identity": "pidfd_original_process",
+  "user_request": "\u76f4\u63a5\u8fdb\u884c\u4e0b\u4e00\u6b65\u7269\u7406\u7b5b\u9009\uff0c\u4e0d\u8981\u518d\u8bad\u7ec3\u8ddf\u8e2a\u5668\u4e86\u3002",
+  "runtime_modified": false,
+  "original_exits": {
+    "process": {
+      "command": [
+        "bash",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_filter_policy.py",
+        "--spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json",
+        "--plan",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filter-training-plan.json",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+        "--mode",
+        "formal",
+        "--resume",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume5000_to40000_20261026_v1/completed_10000.pt",
+        "--device",
+        "cuda:1",
+        "--headless"
+      ],
+      "supervisor_pid": 4190431,
+      "child_pid": 4190443,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 550,
+      "sample_errors": [],
+      "elapsed_seconds": 32922.87173782848,
+      "supervision_passed": true
+    },
+    "supervisor": {
+      "command": [
+        "bash",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_filter_policy.py",
+        "--spec",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json",
+        "--plan",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/filter-training-plan.json",
+        "--output",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+        "--mode",
+        "formal",
+        "--resume",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume5000_to40000_20261026_v1/completed_10000.pt",
+        "--device",
+        "cuda:1",
+        "--headless"
+      ],
+      "supervisor_pid": 4190431,
+      "child_pid": 4190443,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 550,
+      "sample_errors": [],
+      "elapsed_seconds": 32922.87173782848,
+      "supervision_passed": true,
+      "run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+      "spec_sha256": "f39e2103ff6e9cceb3f7442f83a5c217328cb2cb18bce9cecfabb4fd774a64b4",
+      "receipt_sha256": "162d6add5891b91b6d38e99a45a90ea3ce4aca443d1fef40e45e666e528fd23c",
+      "completed": 15300,
+      "updates": 306000,
+      "full_generator_training_started": false
+    },
+    "outer": {
+      "actual_returncode": 1,
+      "elapsed_seconds": 32923.598549366,
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_teacher10000_filter_recovery.py"
+      ]
+    }
+  },
+  "original_exit_sha256": {
+    "process": "e9e54b0340ad3032a131261568c6c65051cf5b839bf4ba31f4243f5b4dfde7df",
+    "supervisor": "23fe56778a72ac17668de7ac9589639104e8bbc78a3b2a7d0cfa1efffeffce48",
+    "outer": "b4080f390a2efe62544dc67dfd86cbfd6b27e5b8fe118c17e61a543aed444e88"
+  },
+  "final_training_receipt_sha256": "162d6add5891b91b6d38e99a45a90ea3ce4aca443d1fef40e45e666e528fd23c",
+  "common_sdk_lock_released": true,
+  "paper_40000_completed": false,
+  "physical_filter_completed": false,
+  "recoverable_completed": 15000,
+  "recoverable_optimizer_updates": 300000,
+  "transient_updates_after_checkpoint_not_guaranteed": true,
+  "timestamp_unix": 1793107855.0410016
+}

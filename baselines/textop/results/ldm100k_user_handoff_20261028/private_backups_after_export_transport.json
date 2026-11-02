@@ -1,0 +1,51 @@
+{
+  "status": "PRIVATE_BYTE_BACKUP_TRANSPORT_FAILED_SOURCE_RETAINED_RECOVERY_QUEUED",
+  "observed_unix": 1793201098.801124,
+  "ldm_copy_run": "pld100_v1",
+  "D_evidence_dir": "D:\\\u5177\u8eab\u667a\u80fd\\TextOp\u590d\u73b0_20261024\\checkpoints\\private\\ldm100k_endpoint_20261028\\transfers\\pld100_v1",
+  "ldm_checkpoint": {
+    "path": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints/ldm_state_100000.pth",
+    "bytes": 223731415,
+    "sha256": "9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea",
+    "manager_step": 100000,
+    "actual_optimizer_updates": 100000
+  },
+  "ldm_source_preflight_client_exit": 0,
+  "ldm_source_preflight_reaped": true,
+  "ldm_client_outcome": {
+    "actual_client_exit_code": 255,
+    "client_reaped": true,
+    "streams_final": true,
+    "prefix_bytes_preserved": 0
+  },
+  "ldm_worker_exit": {
+    "status": "PRIVATE_LDM_COPY_FAILED_PARTIAL_RETAINED",
+    "actual_returncode": 1,
+    "error": "AssertionError()",
+    "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\provider_tools\\resume_private_ldm100k_copy.py\", line 187, in <module>\n    assert client.returncode == 0\n           ^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+    "client_reaped": true
+  },
+  "ldm_copy_verified": false,
+  "vae99700_copy_run": "p997_v3",
+  "vae99700_client_outcome": {
+    "actual_client_exit_code": 255,
+    "client_reaped": true,
+    "streams_final": true,
+    "transport": "SFTP reget",
+    "prefix_bytes_preserved": 233537536
+  },
+  "vae99700_worker_exit": {
+    "status": "PRIVATE_COPY_FAILED_PARTIAL_RETAINED",
+    "actual_returncode": 1,
+    "error": "AssertionError()",
+    "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\provider_tools\\resume_private_vae_copy.py\", line 95, in <module>\n    write(E/'client_outcome.json',outcome);assert client.returncode==0\n                                                  ^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+    "client_reaped": true
+  },
+  "vae99700_partial_bytes": 241467392,
+  "original_checkpoints_preserved": true,
+  "private_full_states_published": false,
+  "new_gpu_contexts": 0,
+  "copy_retry_not_blindly_dispatched": true,
+  "C_free_bytes": 3557171200,
+  "D_free_bytes": 5950717952
+}

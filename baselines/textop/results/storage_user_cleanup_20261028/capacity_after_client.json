@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 90,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "2c154ea7aaced1153fd2ea6152e9aa8dbf7531c56aca71582e14bec504f680dd",
+  "client_pid": 63884,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"observed_unix\": 1793143798.872036, \"data\": {\"path\": \"/data/code/ouyanghao/oyh/textop-reproduction-20261024\", \"free_bytes\": 4377014272, \"filesystem\": \"ext4\", \"owner_uid\": 1013, \"writable\": true, \"symlink\": false}, \"home\": {\"path\": \"/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints\", \"free_bytes\": 5057847296, \"filesystem\": \"ext4\", \"owner_uid\": 1013, \"writable\": true, \"symlink\": false}, \"ldm_save_and_cache_required_bytes\": 4131389440, \"export_upper_bound_bytes\": 188743680, \"data_required_for_both_export_and_ldm_bytes\": 4320133120, \"both_export_and_ldm_budget_currently_sufficient\": true, \"vae_remaining_slot_budget_bytes\": 4898947072, \"vae_remaining_slot_budget_passed\": true, \"vae_actual_step\": 56600, \"vae_updates\": 56600, \"vae_skips\": 0, \"active_VAE_bound_sources_unchanged\": true, \"old57D_observed_state\": \"State:\\tT (stopped)\", \"formal_LDM_activation_executed\": false, \"capacity_reservation\": false, \"new_gpu_contexts\": 0, \"signals_sent\": false, \"files_deleted_by_this_probe\": 0}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\storage_user_cleanup_20261028\\capacity_after_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\storage_user_cleanup_20261028\\capacity_after_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

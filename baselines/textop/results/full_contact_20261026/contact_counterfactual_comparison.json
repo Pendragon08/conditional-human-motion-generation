@@ -1,0 +1,57 @@
+{
+  "rows": [
+    {
+      "run": "full_contact_baseline_v1",
+      "case": "baseline",
+      "first_step_joint_velocity_max": 3772.64501953125,
+      "peak_joint_velocity": 9.01604946435113e+16,
+      "peak_contact_force_component": 4.44135936649855e+17,
+      "selected_first_action_difference": 0.0,
+      "initial_root_difference": 0.0,
+      "initial_joint_difference": 0.0,
+      "optimizer_updates": 0
+    },
+    {
+      "run": "full_contact_no_self_v1",
+      "case": "no_self_collision",
+      "first_step_joint_velocity_max": 3714.5380859375,
+      "peak_joint_velocity": 3714.5380859375,
+      "peak_contact_force_component": 12444.61328125,
+      "selected_first_action_difference": 0.0,
+      "initial_root_difference": 0.0,
+      "initial_joint_difference": 0.0,
+      "optimizer_updates": 0
+    },
+    {
+      "run": "full_contact_no_floor_v1",
+      "case": "no_floor",
+      "first_step_joint_velocity_max": 37.000179290771484,
+      "peak_joint_velocity": 37.0975341796875,
+      "peak_contact_force_component": 21374.515625,
+      "selected_first_action_difference": 0.0,
+      "initial_root_difference": 0.0,
+      "initial_joint_difference": 0.0,
+      "optimizer_updates": 0
+    },
+    {
+      "run": "full_solid_floor_author_v1",
+      "case": "solid_floor",
+      "first_step_joint_velocity_max": 37.00375747680664,
+      "peak_joint_velocity": 52.548011779785156,
+      "peak_contact_force_component": 21067.83984375,
+      "selected_first_action_difference": 0.0,
+      "initial_root_difference": 0.0,
+      "initial_joint_difference": 0.0,
+      "optimizer_updates": 0
+    }
+  ],
+  "training_profile_changed": false,
+  "root_cause_confirmed": false,
+  "interpretation": "Floor contact participates in the original first-step trigger; solid-box flat floor retains selfcollision/top/material and suppresses the extreme dynamics. Two actual10-round/200-update PPO witnesses are complete with no diagnostic alerts/nonfinite aggregates; formal policy training has started. Exact underlying engine cause and long-run convergence are not established; no motions are physically accepted yet.",
+  "telemetry_metadata_correction": "Inherited numerical_trace.simulation_or_reward_changes is hardcoded false. For no_self_collision/no_floor it is incorrect; these are explicit simulation counterfactuals. Original receipts retained; use case/spec for true intervention. No thresholds or source data were changed.",
+  "metadata_corrections": [
+    "The inherited expected_optimizer_updates20 in solid-floor-diagnostic-spec is stale: explicit optimizer_updates0 and actual counter0 apply to full_solid_floor_author_v1. The separate solid-floor-ppo-spec declares200 actual updates.",
+    "The inherited paper_settings floor description in candidate receipts describes production baseline only; diagnostic_floor/intervention records the actual box.",
+    "The inherited limitation saying one real PPO iteration in zero-update contact receipts is misleading: one rollout/zero optimizer updates; no learning occurred. Original evidence remains immutable."
+  ]
+}

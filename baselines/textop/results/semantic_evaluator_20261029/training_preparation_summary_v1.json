@@ -1,0 +1,136 @@
+{
+  "observed_beijing": "2026-10-29T03:51:17.242287+08:00",
+  "scope": {
+    "original_train_families": 5361,
+    "gradient_train_families": 5093,
+    "internal_validation_families": 268,
+    "original_validation_families_excluded": 1774,
+    "quarantined_train_families_excluded": 2,
+    "sources_without_any_nonempty_annotation": 0,
+    "samples": 34068,
+    "gradient_train_samples": 32462,
+    "internal_validation_samples": 1606,
+    "unique_texts": 4043,
+    "feature_frames": 3092301,
+    "omissions": 17,
+    "fps": 50,
+    "feature_dim": 69,
+    "source_arrays_deserialized": 0,
+    "source_array_bytes_rehash_required_before_numeric_use": true,
+    "mirror_augmentation_used": false,
+    "mirror_note": "Original TRAIN sources only; generator mirror data retained unchanged",
+    "normalization_scope": "frozen accepted generator TRAIN-only transform, including original TRAIN families reserved for internal checks",
+    "internal_validation_use": "No generated-val tuning or early stopping authorized; fixed training policy still requires separate acceptance",
+    "feature_boundaries": "floor(start_s*50),ceil(end_s*50),0<=start<end<=T-1; chunks<=200",
+    "overlapping_annotations": "preserved independently, no invented transition order"
+  },
+  "scope_receipt_sha256": "f355de1c947487d750cbe3d59c51d78c8853a36315c659a3b08b4876df7273d2",
+  "numeric_data": {
+    "original_train_sources": 5361,
+    "actual_pose_frames": 2841026,
+    "actual_unique_source_feature_frames": 2835665,
+    "actual_source_npz_bytes": 2999354933,
+    "full_normalized_feature_RAM_bytes": 782643540,
+    "actual_sample_windows_verified": 34068,
+    "original_validation_sources_read": 0,
+    "encoder_weight_loads": 0,
+    "optimizer_updates": 0
+  },
+  "numeric_receipt_sha256": "c3c8d16d62b713b00adaf87eb3ebe340dbda5b8c582cecdc7911b9f724198b96",
+  "contract": {
+    "actual_diagnostic_optimizer_calls": 4,
+    "selected_logical_optimizer_steps": 3,
+    "memory_checkpoint_bytes": 192706502,
+    "persistent_checkpoint_writes": 0,
+    "exact_model_adamw_all_rng_sampler_nextbatch_loss_replay": true,
+    "optimizer": {
+      "type": "torch.optim.AdamW",
+      "lr": 0.0001,
+      "weight_decay": 0.01
+    },
+    "actual_formal_evaluator_updates": 0
+  },
+  "contract_receipt_sha256": "9c29acdb44e0b5b59e4c7729cbc06547c6eeb75e61a322a81463e853fe69a2f2",
+  "public_D_cache_bytes_verified": 707323471,
+  "public_upload_snapshot": {
+    "worker": {
+      "pid": 48260,
+      "expected_start_filetime": 134376891693874292,
+      "actual_start_filetime": 134376891693874292,
+      "native_exit_code": 259,
+      "status": "STILL_ACTIVE"
+    },
+    "client": {
+      "pid": 30776,
+      "expected_start_filetime": 134376891914290730,
+      "actual_start_filetime": 134376891914290730,
+      "native_exit_code": 259,
+      "status": "STILL_ACTIVE"
+    },
+    "latest_resource": {
+      "unix": 1793217065.297581,
+      "remote": {
+        "files": [
+          {
+            "relative": "text_model_0/config.json",
+            "bytes": 483
+          },
+          {
+            "relative": "text_model_0/model.safetensors",
+            "bytes": 267954768
+          },
+          {
+            "relative": "text_model_0/tokenizer.json",
+            "bytes": 466062
+          },
+          {
+            "relative": "text_model_0/tokenizer_config.json",
+            "bytes": 48
+          },
+          {
+            "relative": "text_model_0/vocab.txt",
+            "bytes": 32768
+          },
+          {
+            "relative": "text_model_1/config.json",
+            "bytes": 0
+          },
+          {
+            "relative": "text_model_1/model.safetensors",
+            "bytes": 0
+          },
+          {
+            "relative": "text_model_1/special_tokens_map.json",
+            "bytes": 0
+          },
+          {
+            "relative": "text_model_1/tokenizer.json",
+            "bytes": 0
+          },
+          {
+            "relative": "text_model_1/tokenizer_config.json",
+            "bytes": 0
+          },
+          {
+            "relative": "text_model_1/vocab.txt",
+            "bytes": 0
+          }
+        ],
+        "data_free_bytes": 2847637504,
+        "total_written_bytes": 268454129
+      },
+      "client_pid": 30776,
+      "D_free_bytes": 3580731392
+    },
+    "outcomes": {
+      "client_outcome.json": null,
+      "worker_exit.json": null,
+      "receipt.json": null,
+      "backup.json": null
+    }
+  },
+  "formal_evaluator_training_authorized": false,
+  "formal_semantic_metrics_available": false,
+  "generator_teacher_new_training_updates": 0,
+  "cleanup_deletions": 0
+}

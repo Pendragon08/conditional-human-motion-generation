@@ -1,0 +1,26 @@
+{
+  "command": [
+    "git",
+    "-C",
+    "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation",
+    "show",
+    "dc454c6e264f0b91dd55aa30dde7cf502119217e:baselines/textop/provider_tools/restore_contact_transport_part_20261028.py"
+  ],
+  "timeout_seconds": 30,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "client_pid": 47064,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "\"\"\"Restore an exact removed transport part from the retained complete archive.\"\"\"\nimport argparse,hashlib,json,os,pathlib,shutil\nfrom filter_recovery_windows_paths import guard_local\np=argparse.ArgumentParser();p.add_argument('--proof',required=True);p.add_argument('--part',required=True);p.add_argument('--output-directory',required=True);a=p.parse_args()\nj=json.loads(pathlib.Path(a.proof).read_text(encoding='utf-8'));row=next(x for x in j['targets'] if x['name']==a.part)\nroot=pathlib.Path('D:/\u5177\u8eab\u667a\u80fd');src=pathlib.Path(j['retained_archive']['path']);out=pathlib.Path(a.output_directory).absolute()\nguard_local(root,src);guard_local(root,out,directory=True)\nassert out.is_dir() and shutil.disk_usage(out).free>=2*1024**3+row['bytes']+8*1024**2\nfinal=out/row['name'];partial=out/(row['name']+'.restore.partial')\nguard_local(root,final,must_absent=True);guard_local(root,partial,must_absent=True)\nh=hashlib.sha256();left=row['bytes']\nwith src.open('rb') as f,partial.open('xb') as g:\n f.seek(row['offset'])\n while left:\n  block=f.read(min(left,8*1024**2));assert block\n  g.write(block);h.update(block);left-=len(block)\n g.flush();os.fsync(g.fileno())\nassert h.hexdigest()==row['sha256'];partial.rename(final)\nprint(json.dumps(dict(path=str(final),bytes=final.stat().st_size,sha256=h.hexdigest())))\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\storage_user_cleanup_20261028\\D_git_restore_contact_transport_part_20261028.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\storage_user_cleanup_20261028\\D_git_restore_contact_transport_part_20261028.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

@@ -1,0 +1,57 @@
+{
+  "status": "TEXTOP_QUICK_PILOT_EXECUTION_COMPLETED",
+  "stage": "sample",
+  "quality_label": "QUICK_REPRODUCTION_NOT_PAPER_COMPLETE",
+  "finished_trials": 64,
+  "complete_trials": 42,
+  "failed_trials": 22,
+  "actual_vectorized_control_calls": 4650,
+  "actual_scene_physics_steps": 18600,
+  "num_envs": 16,
+  "output_writers_closed": true,
+  "native_close_returned": false,
+  "teardown_fallback_used": true,
+  "final_reference_endpoint_comparison_performed": false,
+  "peak_torch_allocated_bytes": 8847906304,
+  "policy_checkpoint_sha256": "cfb443ab9ac80a615fdffdd881ede38b6e1997a0993752ff2a82a9f7c9939fae",
+  "policy_checkpoint_completed_iterations": 5000,
+  "policy_checkpoint_optimizer_updates": 100000,
+  "unattempted_original_sources": 8214,
+  "run": "quick_pilot_sample64_v1",
+  "child_exit_code": 0,
+  "supervision_passed": true,
+  "receipt_sha256": "6802615b355c7372fdda6c0a595207636ae04a266f3b1d18c019b9aaa18b8dad",
+  "exit_sha256": "25cccfacd7f05fd54c2aa7666ff266d56e41fc0d19f817e141f45e2f7f0ddca2",
+  "resource_samples": 23,
+  "private_archive_sha256": "8d0fc543a5260d49657871ffa2186958f29b6492aa01f97f4fc759ebf40e46ea",
+  "private_archive_bytes": 30157007,
+  "private_two_location_sha_verified": true,
+  "full_library_filtered": false,
+  "generator_trained": false,
+  "actual_execution_video_created": false,
+  "private_arrays_publicly_published": false,
+  "own_tracking_metrics": {
+    "all": {
+      "trials": 64,
+      "trial_control_steps": 23110,
+      "aligned_14_body_position_error_mean_m": 0.06256475071791497,
+      "aligned_14_body_position_error_max_m": 0.9763614535331726,
+      "joint_rmse_rad": 0.2391770557216767
+    },
+    "nominal_duration_completed": {
+      "trials": 42,
+      "trial_control_steps": 19818,
+      "aligned_14_body_position_error_mean_m": 0.056402073278331424,
+      "aligned_14_body_position_error_max_m": 0.539044976234436,
+      "joint_rmse_rad": 0.20360023142568212
+    },
+    "failed": {
+      "trials": 22,
+      "trial_control_steps": 3292,
+      "aligned_14_body_position_error_mean_m": 0.0996643684268052,
+      "aligned_14_body_position_error_max_m": 0.9763614535331726,
+      "joint_rmse_rad": 0.389919402287405
+    }
+  },
+  "metrics_definition": "Control-step-weighted errors against consumed current targets before autoreset; 29-joint RMSE and 14-body positions; not independently checked final endpoint or paper benchmark scores"
+}

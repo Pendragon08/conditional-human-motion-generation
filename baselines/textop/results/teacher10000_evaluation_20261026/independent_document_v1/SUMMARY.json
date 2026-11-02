@@ -1,0 +1,146 @@
+{
+  "status": "TEACHER10000_DOCUMENT_READ_ONLY_PASS_WITH_EXPLICIT_UNTESTED_POSITIVE_PATH",
+  "documented_invocation_count": 1,
+  "documented_invocation_actual_exit": 0,
+  "remote_control_actual_exit": 0,
+  "doc_reality_divergences": [],
+  "actionable_findings": [],
+  "source_review_findings_count": 0,
+  "observation": {
+    "status": "WAITING_VERIFIED_10000_CHECKPOINT",
+    "run": "filter_policy_paper69_resume5000_to40000_20261026_v1",
+    "evaluation_checkpoint": 10000,
+    "observed_completed": 5300,
+    "optimizer_updates": 106000,
+    "target_checkpoint_ready": false,
+    "checkpoint": null,
+    "gate": {
+      "ready": false,
+      "status": "PENDING_NO_NEW_CHECKPOINT",
+      "observed_completed": 5300,
+      "run": "filter_policy_paper69_resume5000_to40000_20261026_v1",
+      "requested_completed": 10000,
+      "training_receipt_sha256": "f4955f1e9f0082867e31cf77099c1b7d5f99071f917fe4dec6f055899786a57f",
+      "sdk_dispatches": 0,
+      "checkpoint_loads": 0,
+      "export_files_created": 0
+    },
+    "trainer_pid": 4104159,
+    "trainer_start_ticks": 1422364669,
+    "owned_group": 4104152,
+    "enabled": false,
+    "signals_sent": [],
+    "sdk_runs": 0,
+    "control_spec_sha256": "222c4aaed62c6cc357f7e903e593b5837b8fa38717ae4b54a52e239b196c300c",
+    "sample_unix": 1793028469.8107898
+  },
+  "read_only_audit_actual_exit": 0,
+  "verified_source_or_spec_hash_count": 28,
+  "checks": [
+    {
+      "name": "verbatim documented invocation exactly once",
+      "result": "PASS",
+      "basis": "documented_invocation.py; invocation_execution.json"
+    },
+    {
+      "name": "expected pending state with no signals/SDK/checkpoint load/export",
+      "result": "PASS",
+      "basis": "stdout.txt"
+    },
+    {
+      "name": "original process identity and CPU affinity",
+      "result": "PASS",
+      "basis": "supplemental_readonly_evidence.json"
+    },
+    {
+      "name": "28 frozen/control/backup source and spec digests match local and server",
+      "result": "PASS",
+      "basis": "source_manifest.json; supplemental_readonly_evidence.json"
+    },
+    {
+      "name": "control and evaluator disabled; no coordinator/backup processes",
+      "result": "PASS",
+      "basis": "supplemental_readonly_evidence.json; local_coordinator_processes.json"
+    },
+    {
+      "name": "no stop/backup/actual-exit receipts; production holds SDK lock",
+      "result": "PASS",
+      "basis": "supplemental_readonly_evidence.json"
+    },
+    {
+      "name": "backup before stop with exact 10000/200000 provenance",
+      "result": "PASS_STATIC",
+      "basis": "teacher_evaluation_control.py:20-29,88-99; teacher10000_coordinator.py:34-46"
+    },
+    {
+      "name": "latest-only snapshot provenance, stable file, source/spec/reference binding",
+      "result": "PASS_STATIC",
+      "basis": "full_teacher_backup_protocol.py:11-64"
+    },
+    {
+      "name": "CPU serializer adapter uses resumed run and unchanged original serializer",
+      "result": "PASS_STATIC",
+      "basis": "inspect_full_teacher_checkpoint.py:8-27"
+    },
+    {
+      "name": "private full backup and public inference-only serialization",
+      "result": "PASS_STATIC",
+      "basis": "backup_full_teacher_checkpoint.py:65-157; inspect_formal_filter_checkpoint_v2.py"
+    },
+    {
+      "name": "pending state never reenters signal loop",
+      "result": "PASS_STATIC",
+      "basis": "teacher_evaluation_control.py:64-68; teacher10000_coordinator.py:29-32"
+    },
+    {
+      "name": "signals bound to original process through pidfd and start ticks",
+      "result": "PASS_STATIC",
+      "basis": "teacher_evaluation_control.py:7-18,90-103; quick_pidfd.py:31-52"
+    },
+    {
+      "name": "handoff requires original exits, original trainer absent, SDK lock released",
+      "result": "PASS_STATIC",
+      "basis": "teacher_evaluation_control.py:48-62"
+    },
+    {
+      "name": "40000 baseline unchanged and no premature completion/quality claims",
+      "result": "PASS_STATIC_AND_HASH",
+      "basis": "full-teacher-resume-spec.json; teacher_evaluation_control.py:37-43,60-61"
+    },
+    {
+      "name": "failure preserves state and requires inspection instead of blind retries",
+      "result": "PASS_STATIC",
+      "basis": "teacher10000_coordinator.py:7-10,48-49; backup_full_teacher_checkpoint.py:74-79,105-114,158-161"
+    }
+  ],
+  "check_categories_count": 15,
+  "static_checks_are_not_executed_fixtures": true,
+  "existing_32_metadata_fixtures_rerun": false,
+  "pidfd_fixtures_rerun": false,
+  "checkpoint_loads": 0,
+  "sdk_runs": 0,
+  "signals_sent": [],
+  "coordinator_started": false,
+  "control_enabled": false,
+  "evaluation_enabled": false,
+  "sources_specs_training_modified": false,
+  "fixes_applied": false,
+  "production_training_left_running": true,
+  "original_trainer_pid": 4104159,
+  "original_trainer_start_ticks": 1422364669,
+  "positive_10000_checkpoint_audit_completed": false,
+  "physical_filter_completed": false,
+  "semantic_improvement_established": false,
+  "paper_complete": false,
+  "limitations": [
+    "No actual 10000 snapshot exists yet; CPU load/export, server-to-D transfer, GitHub inference verification and controlled exit remain unexecuted.",
+    "Pending-no-resignal means no new signal sequence on reentry. One initial finish invocation deliberately permits SIGINT then SIGTERM then SIGKILL through the same pidfd with 40/15/10-second waits.",
+    "Handoff is recoverable termination at a backed-up checkpoint, not in-memory SIGSTOP suspension; training beyond checkpoint is not guaranteed recoverable.",
+    "The metadata fixture source was read but its historical 32 checks were not rerun or independently recertified."
+  ],
+  "reviewer_notes": [
+    "One exploratory local rg query mentioned nonexistent supervise_formal_filter.py; actual spec-bound supervise_full_teacher_resume.py and contact_process_supervision.py were subsequently read. This was reviewer path selection, not a documented invocation failure.",
+    "The original verbatim invocation added only local PYTHONDONTWRITEBYTECODE=1 to avoid local cache writes; required PYTHONIOENCODING=utf-8 and exact snippet/interpreter/cwd were preserved."
+  ],
+  "completed_utc": "2026-10-26T15:32:33.413300+00:00"
+}

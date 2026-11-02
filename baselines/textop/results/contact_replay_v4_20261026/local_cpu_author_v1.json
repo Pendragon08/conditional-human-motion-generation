@@ -1,0 +1,73 @@
+{
+  "status": "CONTACT_REPLAY_MODE_CPU_CHECKS_PASSED",
+  "checks": [
+    {
+      "case": "formal_disabled",
+      "expected_rejection": true,
+      "reason": "Future exporter disabled; no SDK dispatched"
+    },
+    {
+      "case": "validation_disabled",
+      "expected_rejection": true,
+      "reason": "Future validation disabled; no SDK dispatched"
+    },
+    {
+      "case": "validation_flag_cannot_enable_formal",
+      "expected_rejection": true,
+      "reason": "Future exporter disabled; no SDK dispatched"
+    },
+    {
+      "case": "formal_without_real_sdk_witness",
+      "expected_rejection": true,
+      "reason": "Actual independent SDK validation still required"
+    },
+    {
+      "case": "validation_incomplete_teacher",
+      "expected_rejection": true,
+      "reason": "Actual40k training is incomplete"
+    },
+    {
+      "case": "validation_failed_teacher_exit",
+      "expected_rejection": true,
+      "reason": ""
+    },
+    {
+      "case": "validation_teacher_not_closed",
+      "expected_rejection": true,
+      "reason": ""
+    },
+    {
+      "case": "validation_teacher_timeout",
+      "expected_rejection": true,
+      "reason": ""
+    },
+    {
+      "case": "synthetic_validation_authorization_only",
+      "physical_acceptance": false
+    },
+    {
+      "case": "eight_whole_sources_deterministic_selection",
+      "input_arrays_modified": false
+    },
+    {
+      "case": "insufficient_complete_sources_rejected",
+      "expected_rejection": true
+    },
+    {
+      "case": "validation_has_separate_nonacceptance_status",
+      "passed": true
+    },
+    {
+      "case": "validation_receipt_cannot_become_formal_decisions",
+      "expected_rejection": true
+    }
+  ],
+  "checks_passed": 13,
+  "sdk_runs": 0,
+  "gpu_calls": 0,
+  "physics_steps": 0,
+  "optimizer_updates": 0,
+  "physical_filter_executed": false,
+  "dataset_accepted": false,
+  "full_training_simulated_only_in_test_fixture": true
+}

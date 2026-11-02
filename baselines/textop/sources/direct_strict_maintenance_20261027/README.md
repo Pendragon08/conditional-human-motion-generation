@@ -1,0 +1,1 @@
+Archived maintenance source from work/textop_reproduction_20261024, retained for recovery/audit. Do not execute these snapshots from this folder or repeat their completed stop, deploy, activation or fixture work. Active run instructions are in TEACHER15000_DIRECT_STRICT_ENVIRONMENT.md.

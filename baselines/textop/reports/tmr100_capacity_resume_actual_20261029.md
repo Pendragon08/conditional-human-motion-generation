@@ -1,0 +1,11 @@
+# TMR100 容量退出后的真实独立恢复（2026-10-29）
+
+原82轮/83703安全状态与原失败保留，实际作者GPU见证68.43秒、fresh document68.58秒均child/sup/outer0/closed/无worker/共锁释放。4诊断调用/logical3，各自在第三步精确重放loss/modelAdamW/allRNG/sampler/nextbatch后恢复原83703；0正式更新/0持久状态，不使用诊断权重种正式恢复。跨进程所有输入/恢复content/模型/nextbatch/重放content/loss/batchSHA精确相同。author receipt c680dcbdd78da59c90ec626ebefa95710c26baa72dc8a5cd5fe7c85dea8fcbd3；fresh receipt8d997c215df3cf1f9ff93e9deaede9b5ccfc1070a23d0f60be29b1f6f2d3acc5。fresh指出顶部CURRENT过时，原REVIEW与旧文档字节保留；只改动态状态说明后fresh只读独立复查，无模型重跑，resolved_findings保留原issue，真实SUMMARY SHA09ea8c77987871af417bfc720553e2d6f6ed18b347ac7353a0b055505a6eeb0d，未凭空填空发现。
+
+新run tmr100_capacity_resume_train_v1已实际唯一恢复，active spec8f8e05539d838697f6c4efb325dfa96de5215feb76fc7bb71ef617d57e67d088，runtime3d673e538ac9792ab57888d86eeb57580bc15efa7bcf6eb161ea8e75ffb82244。2026-10-29T11:00:15.640148+08:00只读采样92/100轮、93500 AdamW，实际新恢复更新9797、0skip，状态RUNNING_TMR100_CAPACITY_RESUMED_TRAINING，workers=[446023, 446031]，commonlock_free=False，尚无新100完整状态。目标只补17797至101500，不继续旧500；原500 source/spec/原82 emergency/原非零退出/旧控制0生产信号保留。
+
+新HOME两槽各201326592B+2GiB+128MiB日志，GPU1共享/.65/CPU0-3、16GiB RAM、DATA2GiB+128MiB、15秒资源监督/每100更新及保存再核；容量仅测量非预留。全部模型共锁严格串行，源/norm/HF与原模型数值/常数AdamW不变，内部验证0更新并恢复训练RNG。
+
+新resumed provenance路由及三个100轮CPU/语义禁用spec已部署并Python3.8解析，原source/spec字节server+D归档，活动NN源精确SHA未变。CPU出口只接受实际100恢复child/sup/outer0/closed/精确生产重载和真实新源binding，不会用原失败控制冒称100完成。当前actual exports/CPU模型验证/语义均0；准备不称ready。只真正100闭合后按TMR100_FROZEN_AND_SEMANTIC_ENVIRONMENT.md activate/launch/collect export→fresh verify→真实mean语义author/fresh→1880诊断，不调用500工具。
+
+新用户ACS条件清理在另一个项目做独立GitHub字节核验，仅回收已备份代码子集，不影响本训练，也未释放完整增强/PPO所需20GB；该项目私有清单/归档/原始复制证据仅D不公开。未改系统预留/配额/挂载，不删除其他数据/任何未备份checkpoint、失败、partial、环境或SDK冷备份。

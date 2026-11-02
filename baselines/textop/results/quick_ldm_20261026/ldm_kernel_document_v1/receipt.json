@@ -1,0 +1,145 @@
+{
+  "status": "QUICK_LDM_WITNESS_PASSED",
+  "mode": "witness",
+  "quality_label": "QUICK_REPRODUCTION_NOT_PAPER_COMPLETE",
+  "full_paper_training": false,
+  "optimizer_updates": 4,
+  "completed_primitive_attempts": 4,
+  "skipped_updates": 0,
+  "output_writers_closed": true,
+  "source_sha256": "68551ebd93f43353fc6c6b9eb45701f13f3c478de1c393750c9755df5dfc962a",
+  "spec_sha256": "0a2d838bfb9e5b87af300f59e1a1842cb2601ef25477719cc1f92f1b93c1137d",
+  "corpus_receipt_sha256": "d0a44b975c8f390f25dc5e95c414b3b8354dacacc19d5673d7a86e6d21c9c8f1",
+  "data_acceptance_sha256": "5f4f58c2fd9e98f36a23fb44de90d7a24aa0a7ab2fbf63207ea35eacae7cadc6",
+  "vae_checkpoint_sha256": "5109f593309349504d52677997bcdd21de3d27e045b9154be8c06278182b1219",
+  "elapsed_seconds": 11.944468667730689,
+  "initial_storage_check": {
+    "destination": "/home/ouyanghao/textop-quick69-checkpoints-20261026/ldm",
+    "filesystem": "ext4",
+    "owner_uid": 1013,
+    "free_bytes": 6094290944,
+    "required_bytes": 3942645760,
+    "remaining_saves": 4,
+    "checkpoint_upper_bound_bytes": 314572800,
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 536870912,
+    "persistent_owned_writable": true
+  },
+  "vae_cache_bytes": 513523901,
+  "vae_frozen_model_sha256": "044521e6d8c3cedf7cfe14a544a501de97fe5effac8eac387523c24ff89a6112",
+  "memory_witness": {
+    "status": "QUICK_LDM_REAL_GRADIENT_MEMORY_RESUME_WITNESS_PASSED",
+    "actual_optimizer_updates": 4,
+    "primitive_attempts": 4,
+    "all_four_training_gradients_finite": true,
+    "validation_optimizer_updates": 0,
+    "model_and_adam_roundtrip_exact": true,
+    "all_rngs_restored_exactly": true,
+    "next_batch_replayed_exactly": true,
+    "pending_evaluation_completed_without_updates": true,
+    "vae_frozen_and_unchanged": true,
+    "ema_enabled": false,
+    "memory_serialized_bytes": 223730007,
+    "memory_serialized_sha256": "e9fb0ad8b5776a3cf17d077c12f05ac2570568e8a9de45cf634821e208475d34",
+    "persistent_diagnostic_checkpoint_created": false,
+    "weights_reused_for_training": false,
+    "train_records": [
+      {
+        "manager_step": 1,
+        "loss": 0.8918305039405823,
+        "reconstruction_huber": 0.1390744000673294,
+        "latent_reconstruction_huber": 0.7525879144668579,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 1,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      },
+      {
+        "manager_step": 2,
+        "loss": 0.8067612648010254,
+        "reconstruction_huber": 0.12212976068258286,
+        "latent_reconstruction_huber": 0.6844937801361084,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 2,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      },
+      {
+        "manager_step": 3,
+        "loss": 0.7928245067596436,
+        "reconstruction_huber": 0.12579423189163208,
+        "latent_reconstruction_huber": 0.6668939590454102,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 3,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      },
+      {
+        "manager_step": 4,
+        "loss": 0.7906935214996338,
+        "reconstruction_huber": 0.1415891796350479,
+        "latent_reconstruction_huber": 0.6489584445953369,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 4,
+        "skipped_updates": 0,
+        "is_evaluation": false
+      }
+    ],
+    "validation_records": [
+      {
+        "manager_step": 4,
+        "loss": 0.8382547497749329,
+        "reconstruction_huber": 0.2118520587682724,
+        "latent_reconstruction_huber": 0.6258801221847534,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 4,
+        "skipped_updates": 0,
+        "is_evaluation": true
+      },
+      {
+        "manager_step": 4,
+        "loss": 0.8320102095603943,
+        "reconstruction_huber": 0.20740340650081635,
+        "latent_reconstruction_huber": 0.6240818500518799,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 4,
+        "skipped_updates": 0,
+        "is_evaluation": true
+      },
+      {
+        "manager_step": 4,
+        "loss": 0.835824191570282,
+        "reconstruction_huber": 0.20503124594688416,
+        "latent_reconstruction_huber": 0.6302764415740967,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 4,
+        "skipped_updates": 0,
+        "is_evaluation": true
+      },
+      {
+        "manager_step": 4,
+        "loss": 0.822780966758728,
+        "reconstruction_huber": 0.20171348750591278,
+        "latent_reconstruction_huber": 0.6205450296401978,
+        "gradients_finite": true,
+        "actual_optimizer_updates": 4,
+        "skipped_updates": 0,
+        "is_evaluation": true
+      }
+    ]
+  },
+  "five_step_cfg_sampling_witness": {
+    "normalized_full_sampling_huber": 0.3134639114141464,
+    "batch": 12,
+    "primitives": 4,
+    "diffusion_steps": 5,
+    "cfg": 5,
+    "posterior_future_not_used": true,
+    "generated_history_after_first_primitive": true,
+    "text_semantics_or_physical_execution_verified": false
+  },
+  "memory_only_diagnostic": true,
+  "training_checkpoint_created": false,
+  "weights_used_for_formal_training": false,
+  "peak_torch_allocated_bytes": 1887571968
+}

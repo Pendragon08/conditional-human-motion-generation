@@ -1,0 +1,195 @@
+{
+  "schema": "textop.filter_recovery_checkpoint_document_review.v2",
+  "status": "DOCUMENT_COMMANDS_PASSED_FUTURE_POSITIVE_AUDIT_BLOCKED",
+  "completed_utc": "2026-10-27T04:58:38.410944+00:00",
+  "documented_commands_executed_once_each": true,
+  "documented_commands_verbatim_verified": true,
+  "command_count": 3,
+  "command_results": {
+    "server_destination": {
+      "exit_code": 0,
+      "started_utc": "2026-10-27T04:54:53.250307+00:00",
+      "finished_utc": "2026-10-27T04:54:54.766727+00:00",
+      "stdout_bytes": 742,
+      "stderr_bytes": 0,
+      "stdout_sha256": "ed9b045ec2304537f64311fe8efc5c0688d672e0d485d18328ed2b5318095ed0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command_sha256": "2c0f074b3e755b8592043bb01bcb785b8540e34bc9eefe79dd304d6bb2d35a5f"
+    },
+    "local_transport": {
+      "exit_code": 0,
+      "started_utc": "2026-10-27T04:54:54.767723+00:00",
+      "finished_utc": "2026-10-27T04:54:55.744180+00:00",
+      "stdout_bytes": 514,
+      "stderr_bytes": 0,
+      "stdout_sha256": "de05b86c58f26a88d518b70f453a43fbff32406cda7e1af7074d1745cb4802ba",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command_sha256": "9c7fc48684acaa0befd71d15362fc55a234bacd322314346019ee950e3e4d677"
+    },
+    "local_preflight": {
+      "exit_code": 0,
+      "started_utc": "2026-10-27T04:54:55.745180+00:00",
+      "finished_utc": "2026-10-27T04:54:57.319157+00:00",
+      "stdout_bytes": 439,
+      "stderr_bytes": 0,
+      "stdout_sha256": "21ae91c78d5699d81314e0aa381befc177b13b365c0b39cff023034395ece54b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command_sha256": "cf2f797e0ce47f342a3c261a88efd81cdd3ca7dd870e44528cb2e65fe394e396"
+    }
+  },
+  "server_destination": {
+    "status": "RECOVERY_DESTINATION_CPU_FIXTURES_PASSED",
+    "checks": 10,
+    "fixtures_retained": true
+  },
+  "local_transport": {
+    "status": "RECOVERY_LOCAL_TRANSPORT_FIXTURES_PASSED",
+    "cases": 4,
+    "ssh_calls": 0,
+    "outcomes": {
+      "normal": {
+        "actual_client_exit_code": 0,
+        "client_reaped": true,
+        "timed_out": false
+      },
+      "nonzero": {
+        "actual_client_exit_code": 7,
+        "client_reaped": true,
+        "timed_out": false
+      },
+      "timeout": {
+        "actual_client_exit_code": 1,
+        "client_reaped": true,
+        "timed_out": true
+      },
+      "spawn_error": {
+        "actual_client_exit_code": null,
+        "client_reaped": false,
+        "timed_out": false
+      }
+    },
+    "all_intents_retained": true
+  },
+  "real_preflight": {
+    "ready": false,
+    "status": "PENDING_NO_NEW_CHECKPOINT",
+    "observed_completed": 10200,
+    "run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+    "requested_completed": 15000,
+    "training_receipt_sha256": "eff01ce5e8b5841449a2e4c8de9651a3331787de1753af61fbf5d61f52e23e44",
+    "launch_sha256": "a9ad5b7dd555fe567efee3ca0199f0bce2553b93434dad7da50b882afc04f1f9",
+    "sdk_dispatches": 0,
+    "checkpoint_loads": 0,
+    "export_files_created": 0
+  },
+  "runtime": {
+    "local_python": "3.12.14",
+    "server_metadata_python": "3.8.10",
+    "server_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "server_cuda_hidden": true
+  },
+  "provenance": {
+    "active_binding_count": 22,
+    "all_active_bindings_match_local_server": true,
+    "backup_bound_file_count": 8,
+    "all_backup_bound_files_match_local_server": true,
+    "backup_spec_bytes_sha256": "af8d20a80ad8f7ba00c7c43da2e9b80c7517813bec6318b597e2d5afad198716",
+    "backup_spec_canonical_sha256": "5e14b21d05d760120bbc1dc713bc1b8bf988576970fc17789e6deb1c2955725a",
+    "backup_spec_canonical_id": "5e14b21d",
+    "local_only_source_doc_hashes": {
+      "provider_tools/backup_filter_recovery_checkpoint.py": "c15cf40cdcb559dcffc51aa6166e87f514b12e24b318a9e2d41c808849882f45",
+      "provider_tools/validate_filter_recovery_transport.py": "f1b1cefd786910925e5c04b941a2b85eb4ca415f75db07b56ad6d5c052835344",
+      "provider_tools/session.py": "a340b39c5432ae4764ecde1b0d66ea1a02939b94fbdab3263dae564c8bd26d8d",
+      "FILTER_RECOVERY_CHECKPOINT_ENVIRONMENT.md": "538bb79cb9a940814b0b2cfd7b9e95f3a3d62d0f62b4a8acbbc6eaf5a0df9318",
+      "SERVER_NOTES.md": "7ae5a2d47b76678644645f76079e138806bc5d6e3f3f439cdcf6c987cd689b3a"
+    },
+    "checked_source_spec_bytes_unchanged_at_report": true,
+    "provider_tools_are_local_only_and_not_spec_bindings": true
+  },
+  "independent_state": {
+    "sample_utc": "2026-10-27T04:56:03.097879+00:00",
+    "actual_python_sdk_teacher_count": 1,
+    "same_teacher_pid_and_argv_as_v1": true,
+    "actual_teacher_state": "State:\tR (running)",
+    "remote_audit_worker_count": 0,
+    "local_backup_or_transport_fixture_worker_count": 0,
+    "observed_completed": 10300,
+    "observed_optimizer_updates": 206000,
+    "latest_checkpoint": null,
+    "server_round15000_checkpoint_exists": false,
+    "server_round15000_output_exists": false,
+    "server_round15000_execution_journal_or_intent_or_logs_exist": false,
+    "local_round15000_evidence_or_private_backup_exists": false
+  },
+  "safety": {
+    "checkpoint_loads": 0,
+    "checkpoint_file_bytes_read": 0,
+    "gpu_or_sdk_dispatches": 0,
+    "existing_process_signals": 0,
+    "new_optimizer_updates": 0,
+    "future_positive_backup_invoked": false,
+    "historical_metadata_47_suite_repeated": false,
+    "historical_supervisor_7_suite_repeated": false,
+    "original10000_or5000_checkpoint_reaudited": false,
+    "production_source_or_config_changed": false,
+    "package_installations": 0,
+    "releases_created": 0,
+    "uploads_performed": 0,
+    "files_deleted": 0,
+    "synthetic_new_timeout_child_terminated": true
+  },
+  "findings": [
+    {
+      "id": "F1-remaining",
+      "severity": "high",
+      "blocks_future_positive_audit": true,
+      "title": "Local private backup ownership and temporary destination are still unchecked",
+      "references": [
+        "provider_tools/backup_filter_recovery_checkpoint.py:169-193"
+      ],
+      "resolved_part": "Server guard rejects linked, aliased, outside-root, non-directory, foreign-owner and cross-device existing output ancestry; adapter invokes it before and after the unchanged serializer. The ten real server filesystem fixtures passed.",
+      "remaining_part": "The local D branch only checks resolve equality for D/dest/target. It never checks owner of D or existing/new task descendants. The actual SCP destination is target.name + .partial, which is only checked with exists(); a dangling link can pass that check and the temporary path has no resolve/reparse/owner validation. The ten server fixtures do not exercise Windows destinations.",
+      "observed_state": "Existing task-owned local ancestors are owned by the current user and have Directory attributes without ReparsePoint. D volume root is SYSTEM-owned, as recorded separately. No recovery round15000 destination exists; no misdirection or disclosure was observed.",
+      "requested_resolution": "Validate the task private root and each relevant local directory/file, including the exact .partial transfer destination, for expected ownership, containment and links/reparse points before writes; preserve any existing incomplete destination. Apply an explicit volume-root ownership policy rather than demanding the whole D volume be user-owned."
+    },
+    {
+      "id": "F2-remaining",
+      "severity": "medium",
+      "blocks_future_positive_audit": true,
+      "title": "Broad failure preservation still excludes some transport and reap paths",
+      "references": [
+        "provider_tools/backup_filter_recovery_checkpoint.py:56-71",
+        "provider_tools/backup_filter_recovery_checkpoint.py:96-99",
+        "provider_tools/backup_filter_recovery_checkpoint.py:188-190",
+        "provider_tools/backup_filter_recovery_checkpoint.py:222-225",
+        "provider_tools/session.py:6-9"
+      ],
+      "resolved_part": "CPU dispatch now has a durable exclusive intent before the existing frozen run_supervised call; that supervisor writes child log/resources and final exit/error/cleanup proof in its protected finally path. recorded_remote persists intent and full normal/nonzero/single-timeout/spawn-error synthetic client outcomes and keeps remote outcome unknown until independent server proof.",
+      "remaining_part": "Initial readiness and final source verification still call session.remote: nonzero exits are truncated to final6000 characters per stream with no actual return code; timeout raises before a durable per-call result. The SCP transfer journal is written only after subprocess.run returns, so spawn/timeout exceptions preserve only the outer traceback. In recorded_remote, a second communicate timeout records streams from the first TimeoutExpired rather than any later partial streams attached to cleanup_error. These branches were reviewed statically and were not injected in this pass.",
+      "observed_state": "All three documented commands exited0 and all stderr streams were empty. The four prescribed synthetic cases retained intent plus actual outcomes (normal0, nonzero7, timeout1/reaped, spawn no PID/no exit). No real CPU audit or transfer occurred.",
+      "requested_resolution": "Use durable pre-dispatch and final transport records for every SSH/SCP stage, preserve raw streams and actual code independently of parsing, and preserve the newest available partial streams plus explicit incomplete/reap/remote-unknown status on cleanup failure; do not relaunch uncertain remote work."
+    }
+  ],
+  "v1_findings_fully_closed": false,
+  "server_destination_part_resolved": true,
+  "remote_cpu_child_journal_part_resolved": true,
+  "command_result_doc_divergence": false,
+  "broad_future_workflow_claims_have_static_gaps": true,
+  "future_positive_audit_ready": false,
+  "backup_enabled": false,
+  "positive_checkpoint_backup_validated": false,
+  "strict_physical_filter_completed": false,
+  "corpus_accepted": false,
+  "semantic_quality_accepted": false,
+  "public_copy_allowlist": [
+    "REPORT.md",
+    "SUMMARY.json"
+  ],
+  "evidence_scope": "Only the aggregate report and summary are suitable for public copying. Raw streams, process arguments, local ACLs and operational evidence remain local.",
+  "environment_scope": "Warm metadata tools; no environment rebuild, model load, GPU kernel witness or physical screening claimed."
+}

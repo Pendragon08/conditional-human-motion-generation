@@ -1,0 +1,111 @@
+{
+  "status": "FORMAL_TRAINING_STORAGE_PLAN_REQUIRED",
+  "generated_utc": "2026-10-25T15:13:43.013399+00:00",
+  "server_observation": {
+    "utc": "2026-10-25T15:13:42.629082+00:00",
+    "filesystems": {
+      "/data": {
+        "total": 1967847137280,
+        "used": 1864921694208,
+        "free": 2888720384
+      },
+      "/home": {
+        "total": 502918963200,
+        "used": 470633095168,
+        "free": 6663757824
+      },
+      "/dev/shm": {
+        "total": 134978326528,
+        "used": 80412860416,
+        "free": 54565466112
+      }
+    },
+    "bmlrub": {
+      "status": "RUNNING",
+      "completed_sequences": 998,
+      "failed_sequences": 0,
+      "total_requested": 2139,
+      "parallel_workers": 4
+    },
+    "memory_available_kib": 157713884
+  },
+  "local_filesystems": {
+    "C:\\": {
+      "total": 322123591680,
+      "used": 319934382080,
+      "free": 2189209600
+    },
+    "D:\\": {
+      "total": 187598630912,
+      "used": 179200102400,
+      "free": 8398528512
+    }
+  },
+  "filter_policy": {
+    "iterations": 40000,
+    "checkpoint_steps": [
+      1000,
+      5000,
+      10000,
+      15000,
+      20000,
+      25000,
+      30000,
+      35000,
+      40000
+    ],
+    "observed_diagnostic_checkpoint_bytes": 90600818,
+    "scheduled_checkpoint_planning_bytes": 815407362,
+    "size_basis": "Two-source witness; full-library counters and logs add storage. Not an exact formal-run measurement."
+  },
+  "generator": {
+    "vae": {
+      "manager_steps": 200000,
+      "released_save_interval": 20000,
+      "scheduled_checkpoint_count": 10,
+      "observed_diagnostic_checkpoint_bytes": 684683326,
+      "scheduled_checkpoint_planning_bytes": 6846833260,
+      "size_basis": "Existing EMA-on diagnostic full-state checkpoint; formal EMA remains false. Planning proxy only."
+    },
+    "ldm": {
+      "manager_steps": 300000,
+      "released_save_interval": 20000,
+      "scheduled_checkpoint_count": 15,
+      "observed_diagnostic_checkpoint_bytes": 305124157,
+      "scheduled_checkpoint_planning_bytes": 4576862355,
+      "size_basis": "Existing EMA-on diagnostic full-state checkpoint; formal EMA remains false. Planning proxy only."
+    }
+  },
+  "scheduled_checkpoint_planning_bytes": 12239102977,
+  "minimum_free_reserve_bytes": 2147483648,
+  "planned_checkpoints_plus_reserve_bytes": 14386586625,
+  "data_volume_planning_shortfall_bytes": 11497866241,
+  "filter_only_proxy_fits_above_reserve": false,
+  "excluded_unmeasured_costs": [
+    "final accepted corpus and CLIP/statistics caches",
+    "remaining durable preprocessing/FK backups",
+    "logs, emergency/resume checkpoints",
+    "final WBC, generated augmentation and videos"
+  ],
+  "limitations": [
+    "Forecast only; no full-library capacity or physics acceptance.",
+    "EMA-on diagnostic sizes are conservative generator planning proxies, not exact formal sizes.",
+    "Separate mounts cannot be added and treated as one checkpoint destination.",
+    "Existing checkpoints and all datasets retained; no cleanup or relocation performed."
+  ],
+  "source_hashes": {
+    "configs/filter-training-plan.json": "10c9ef10b7408c0023414c503dc4eef6a03415a2afc680befaee9a00fdcd6338",
+    "configs/paper-step2.json": "e0466458fac00280d4ddb413622c4c71d9f62f4f07084026757b405ef7ddc1f4",
+    "results/generator_state_20261025/generator_state_author_v1/receipt.json": "38f76f3ab2726aaea60371b0ce25168c1e642e81573091ec3ebf6837a8d91332",
+    "results/generator_state_20261025/generator_state_document_v1/receipt.json": "835954cbff6dd8ab4138b8930219479d5341d8e5ae5f2190f0b6dfebc94e4b32",
+    "results/tracker_backend_20261025/filter_statistics_author_v2/receipt.json": "43610f9741e609f3887158a576f8274153afdf0685e06add28764de705d170a8",
+    "results/tracker_backend_20261025/filter_statistics_author_v4/receipt.json": "7b62b53a29297be9696127b86c1bbc0dae68f839fc6bfabfe8e2b5eb9b0ac7df",
+    "results/tracker_backend_20261025/filter_statistics_document_v1/receipt.json": "32a804b2e859c22e0700974d4dd40736af021c39a49c5ca1ec05c074f1ee9835",
+    "results/tracker_backend_20261025/filter_statistics_document_v2/receipt.json": "0602311dfeb8e90fd5d1ca7b0c2667d7d303a3cf51522b98772dc653a5f305aa",
+    "upstream/TextOpRobotMDAR/robotmdar/config/train/dar.yaml": "4283dc83c984e052e903020f767b7e53b3b38067b26351a7b3ac0159400d111c",
+    "upstream/TextOpRobotMDAR/robotmdar/config/train/mvae.yaml": "7ca61a334485815f4409fa6c2b0a6e2edef3a9d40548e0075b8944fc1bce7d6c"
+  },
+  "formal_training_started": false,
+  "physical_filter_executed": false,
+  "dataset_accepted": false
+}

@@ -1,0 +1,20 @@
+{
+  "purpose": "Bounded real PPO update and exact checkpoint restore; not physical filtering or full training",
+  "base_spec": "tracker-env-spec.json",
+  "warm_environment_canonical_hash": "b7a3bf0c",
+  "num_envs": 8,
+  "rollout_steps": 24,
+  "learning_iterations_before_resume": 1,
+  "learning_iterations_after_resume": 1,
+  "epochs": 5,
+  "minibatches": 4,
+  "expected_actual_optimizer_updates": 40,
+  "paper_network": [2048, 1024, 512],
+  "privileged_input_dim": 557,
+  "device": "cuda:1",
+  "cpu_threads": 4,
+  "torch_memory_fraction": 0.65,
+  "full_training_started": false,
+  "dataset_accepted": false,
+  "native_shutdown": "20s bounded process exit only after finished test, closed writers and verified checkpoint"
+}

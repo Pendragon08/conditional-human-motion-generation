@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 120,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "bdf89893f93ae66ff5dba7b8ddbdf4dd82a6643db58af57e4e19b32ac49adf1f",
+  "client_pid": 16220,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"run\": \"user_ldm100k_diagnostic_summary_v1\", \"observed_unix\": 1793209057.7453694, \"files\": {\"request\": {\"run\": \"user_ldm100k_diagnostic_summary_v1\", \"generation_receipt_sha256\": \"b0aaa7642ad9d2573dcb434f7445389dfc2fdd20d539d9f27c11d049b7a6853f\", \"generation_spec_sha256\": \"b09b6f83b427f39267594b332331f2bf06109ce9993f9bba4d3670c2b2764871\", \"executor_sha256\": \"e8a87bf333f18caa71cedb2f457c92b58ea47533f258a25b3ffcca1bd5103db2\", \"supervisor_sha256\": \"1dc1d8c3ac8de9b53868198ff20008b456c2d01f5850c26b63e4957fe9dea3b2\", \"disk_floor_bytes\": 3221225472, \"new_neural_model_loads_authorized\": 0, \"new_gpu_contexts_authorized\": 0}, \"process\": {\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"CUDA_VISIBLE_DEVICES=\", \"PYTHONIOENCODING=utf-8\", \"OPENBLAS_NUM_THREADS=4\", \"OMP_NUM_THREADS=4\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python\", \"-B\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/summarize_ldm100k_diagnostic.py\", \"--request\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_diagnostic_summary_user_ldm100k_diagnostic_summary_v1_request.json\"], \"supervisor_pid\": 392231, \"child_pid\": 392236, \"child_exit_code\": 1, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 3, \"sample_errors\": [], \"elapsed_seconds\": 0.3403267040848732, \"supervision_passed\": false}, \"exit\": {\"command\": [\"taskset\", \"-c\", \"0-3\", \"/usr/bin/env\", \"CUDA_VISIBLE_DEVICES=\", \"PYTHONIOENCODING=utf-8\", \"OPENBLAS_NUM_THREADS=4\", \"OMP_NUM_THREADS=4\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python\", \"-B\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/summarize_ldm100k_diagnostic.py\", \"--request\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_diagnostic_summary_user_ldm100k_diagnostic_summary_v1_request.json\"], \"supervisor_pid\": 392231, \"child_pid\": 392236, \"child_exit_code\": 1, \"child_reaped\": true, \"timed_out\": false, \"supervisor_error\": null, \"shutdown_actions\": [], \"samples_written\": 3, \"sample_errors\": [], \"elapsed_seconds\": 0.3403267040848732, \"supervision_passed\": false, \"run\": \"user_ldm100k_diagnostic_summary_v1\", \"source_sha256\": \"1dc1d8c3ac8de9b53868198ff20008b456c2d01f5850c26b63e4957fe9dea3b2\", \"request_sha256\": \"21aa279a17d850ca5bb907cc3d8e628eb13e897569f7c70c5aca16968011f737\", \"receipt_sha256\": null, \"resource_sha256\": \"877e0c2035a89ed2d710944a367cf08d4e31c6463edb43e4d614572da6a85c14\"}, \"outer\": {\"actual_returncode\": 1}}, \"sha256\": {\"request\": \"21aa279a17d850ca5bb907cc3d8e628eb13e897569f7c70c5aca16968011f737\", \"process\": \"8eddfebe4b5439c45d74fe1e647b3c624b952eea06bd170792f5b4933400423b\", \"exit\": \"577b38c005ff874edb895ebd694f792e7a1132794fc06a3efa8526258c72dddc\", \"outer\": \"857a96c9474624cec4418bb86e755613a5fb3430bf5b3478354415d1030ec7b2\"}, \"workers\": [], \"common_lock_free\": true, \"closed_execution_verified\": false, \"logs\": {\".log\": \"Traceback (most recent call last):\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/summarize_ldm100k_diagnostic.py\\\", line 214, in <module>\\n    main()\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/summarize_ldm100k_diagnostic.py\\\", line 90, in main\\n    mp = owned(manifest_name)\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/filtered15000_vae_completion.py\\\", line 28, in owned\\n    assert p.is_absolute() and p.resolve() == p and (p == root or root in p.parents)\\nAssertionError\\n\", \"_outer.log\": \"Traceback (most recent call last):\\n  File \\\"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_ldm100k_diagnostic_summary.py\\\", line 35, in <module>\\n    assert proof['supervision_passed']\\nAssertionError\\n\"}, \"disks\": {\"/data/code/ouyanghao/oyh/textop-reproduction-20261024\": 3221934080, \"/home/ouyanghao\": 3587584000}}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\ldm100k_user_handoff_20261028\\user_ldm100k_diagnostic_summary_v1\\s1_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\ldm100k_user_handoff_20261028\\user_ldm100k_diagnostic_summary_v1\\s1_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

@@ -1,0 +1,60 @@
+{
+  "run": "tmr_text_models_v1",
+  "observed_unix": 1793214031.5884495,
+  "files": {
+    "receipt": {
+      "status": "STARTING_PINNED_TMR_TEXT_MODEL_PREPARATION",
+      "run": "tmr_text_models_v1",
+      "source_sha256": "c5a668940aa4e6380df2021942b2e1e062c837d310375169f536ad3ba4356e5a",
+      "request_sha256": "4d80b12eef59cf3f48996a1cd0923c6a23ea672c17214697486918fd50155d84",
+      "completed_files": [],
+      "pretrained_text_model_downloads_authorized": true,
+      "robot_motion_or_babel_text_reads": 0,
+      "learned_tmr_weight_reads": 0,
+      "training_optimizer_updates": 0,
+      "evaluator_training_authorized": false,
+      "formal_tmr_metrics_available": false,
+      "output_writers_closed": false,
+      "elapsed_seconds": 90.2985965795815
+    }
+  },
+  "sha256": {
+    "receipt": "79a5b27e4f74db22ba501eb4014dfd82f7817ca4f3ed5df858ec9b97eaff3ceb"
+  },
+  "workers": [
+    {
+      "pid": 401580,
+      "start_ticks": "1441142138",
+      "state": "S",
+      "argv": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_tmr_text_models.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_text_models_tmr_text_models_v1_request.json",
+        ""
+      ]
+    },
+    {
+      "pid": 401585,
+      "start_ticks": "1441142148",
+      "state": "S",
+      "argv": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_tmr_text_models.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_text_models_tmr_text_models_v1_request.json",
+        ""
+      ]
+    }
+  ],
+  "common_lock_free": false,
+  "closed_execution_verified": false,
+  "artifact_audit": null,
+  "logs": {
+    "child.log": "",
+    "tmr_text_models_v1_outer.log": ""
+  },
+  "data_free_bytes": 3138039808,
+  "home_free_bytes": 2975350784
+}

@@ -1,0 +1,37 @@
+{
+  "status": "PROVISIONAL_STORAGE_LAYOUT_NOT_ACTIVATED",
+  "authorization": "Existing server/headless automatic training and personal-directory storage authorization; no data/physics gates bypassed",
+  "filter_and_vae_checkpoint_root": "/data/code/ouyanghao/oyh/textop-reproduction-20261024",
+  "ldm_checkpoint_root": "/home/ouyanghao/textop-paper69-checkpoints-20261026",
+  "current_data_and_old_checkpoints_relocated": false,
+  "formal_training_started": false,
+  "minimum_free_reserve_per_volume_bytes": 2147483648,
+  "logs_and_metadata_allowance_per_volume_bytes": 536870912,
+  "checkpoint_budget_bytes": {
+    "filter": 815407362,
+    "vae": 5186482810,
+    "ldm": 3389460165
+  },
+  "basis": "Same existing diagnostic states serialized to counting sink with formal EMA=false; CPU metadata and one-percent allowance, not exact full-run size. No new checkpoint written.",
+  "required_before_any_use": [
+    "real physics-filter and accepted-corpus gates appropriate to the stage",
+    "owned, persistent, writable destination checks",
+    "refresh actual free capacity immediately before stage launch and each checkpoint",
+    "full-library tracker and future checkpoint bytes may change; stop safely at guard",
+    "final WBC, generated augmentation, data caches, video storage still need separate budget"
+  ],
+  "latest_snapshot_free_bytes": {
+    "/data": 8783740928,
+    "/home": 6654562304
+  },
+  "stage_layout_snapshot": {
+    "/data": {
+      "checkpoint_budget_bytes": 6001890172,
+      "bytes_above_reserve_and_allowance": 97496196
+    },
+    "/home": {
+      "checkpoint_budget_bytes": 3389460165,
+      "bytes_above_reserve_and_allowance": 580747579
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "status": "NEW_ARTIFACT14_AND_BACKUP11_ISOLATED_CPU_FIXTURES_PASSED",
+  "rows": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/provider_tools/test_ldm100k_generation_artifacts.py"
+      ],
+      "child_pid": 371419,
+      "actual_child_exit_code": 0,
+      "child_reaped": true,
+      "streams_final": true,
+      "stdout": "{\"status\": \"LDM100K_ARTIFACT_NEW_ISOLATED_NPY_FIXTURES_PASSED\", \"negative_cases\": 14, \"production_array_payloads_read\": 0, \"actual_model_loads\": 0, \"actual_gpu_contexts\": 0, \"real_witnesses_accepted\": 0, \"dynamic_posix_ownership_tested\": false}\n",
+      "stderr": "",
+      "fixture": {
+        "status": "LDM100K_ARTIFACT_NEW_ISOLATED_NPY_FIXTURES_PASSED",
+        "negative_cases": 14,
+        "production_array_payloads_read": 0,
+        "actual_model_loads": 0,
+        "actual_gpu_contexts": 0,
+        "real_witnesses_accepted": 0,
+        "dynamic_posix_ownership_tested": false
+      }
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/provider_tools/test_ldm100k_backup_descriptor.py"
+      ],
+      "child_pid": 371421,
+      "actual_child_exit_code": 0,
+      "child_reaped": true,
+      "streams_final": true,
+      "stdout": "{\"status\": \"LDM100K_BACKUP_NEW_ISOLATED_DESCRIPTOR_PASSED\", \"negative_cases\": 11, \"actual_checkpoint_reads\": 0, \"actual_model_loads\": 0, \"actual_transfers\": 0, \"actual_backup_acceptance\": false, \"dynamic_ownership_or_network_tested\": false}\n",
+      "stderr": "",
+      "fixture": {
+        "status": "LDM100K_BACKUP_NEW_ISOLATED_DESCRIPTOR_PASSED",
+        "negative_cases": 11,
+        "actual_checkpoint_reads": 0,
+        "actual_model_loads": 0,
+        "actual_transfers": 0,
+        "actual_backup_acceptance": false,
+        "dynamic_ownership_or_network_tested": false
+      }
+    }
+  ],
+  "source_sha256_unchanged": true,
+  "new_gpu_contexts": 0,
+  "real_generation_or_backup_acceptance": false
+}

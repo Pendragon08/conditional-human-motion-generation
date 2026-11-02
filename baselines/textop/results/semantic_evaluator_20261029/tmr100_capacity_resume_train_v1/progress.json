@@ -1,0 +1,298 @@
+{
+  "run": "tmr100_capacity_resume_train_v1",
+  "observed_unix": 1793250987.858335,
+  "files": {
+    "receipt": {
+      "status": "TMR100_CAPACITY_RESUMED_100_EPOCHS_FINISHED",
+      "run": "tmr100_capacity_resume_train_v1",
+      "role": "train",
+      "source_sha256": "169ec89b760dd8cd8938c90bdd3f1c08685c7b4c76a9ccc44e1810153af2dc46",
+      "request_sha256": "8f8e05539d838697f6c4efb325dfa96de5215feb76fc7bb71ef617d57e67d088",
+      "runtime_binding_sha256": "3d673e538ac9792ab57888d86eeb57580bc15efa7bcf6eb161ea8e75ffb82244",
+      "output_writers_closed": true,
+      "formal_optimizer_updates": 101500,
+      "completed_epochs": 100,
+      "actual_new_formal_optimizer_updates": 17797,
+      "attempted_new_optimizer_updates": 17797,
+      "skipped_updates": 0,
+      "target_epochs": 100,
+      "expected_optimizer_updates": 101500,
+      "original_failed_attempts_retained": 83704,
+      "generator_or_teacher_training_updates": 0,
+      "original_validation_sources_used_for_gradient": 0,
+      "checkpoints": [
+        {
+          "path": "/home/ouyanghao/textop-tmr69d-evaluator-20261029/resume_checkpoints_v1/tmr_epoch_100_resumed.pth",
+          "bytes": 192952453,
+          "sha256": "7bc1955dfcb31d1eeaa966c8f5b8e972e17d6d58da1205c70fd8029b85050fc8",
+          "epoch": 100,
+          "optimizer_updates": 101500,
+          "pending_validation": false,
+          "emergency": false,
+          "exact_fullstate_deserialization": true,
+          "production_model_adamw_rng_sampler_nextbatch_reloaded": true,
+          "capacity_before": {
+            "free_bytes": 2811604992,
+            "required_bytes": 2684354560,
+            "remaining_slots": 2
+          }
+        }
+      ],
+      "semantic_metrics_computed": false,
+      "elapsed_seconds": 3416.6923605427146,
+      "input_preparation": {
+        "phase": "building_real_frozen_text_RAM",
+        "modality": 1,
+        "texts": 4043,
+        "token_RAM_bytes": 73015296,
+        "sentence_RAM_bytes": 12420096
+      },
+      "actual_input_signature_sha256": "512a138a8319ca97ac240b51e33e855a6c7e70ec76e6b9a1247816bd524d5402",
+      "actual_input_signature": {
+        "scope_receipt_sha256": "f355de1c947487d750cbe3d59c51d78c8853a36315c659a3b08b4876df7273d2",
+        "numeric_receipt_sha256": "c3c8d16d62b713b00adaf87eb3ebe340dbda5b8c582cecdc7911b9f724198b96",
+        "text_receipt_sha256": "c27611b8e2918234f16ee60e183e28bcf3191cd7c5014ee5bb625820979e8872",
+        "original_train_sources": 5361,
+        "gradient_samples": 32462,
+        "internal_samples": 1606,
+        "unique_texts": 4043,
+        "motion_RAM_bytes": 782643540,
+        "token_RAM_bytes": 73015296,
+        "sentence_RAM_bytes": 12420096,
+        "token_cache_sha256": "642e441eb863c4abb45376fab4161fe4333085e009ee7d633c74aa67e6a58e4e",
+        "sentence_cache_sha256": "d8a3d7d20ab2c32a4befdca74b9fd41b438a6e702875d159e81ca2a47b760cad",
+        "maximum_actual_text_tokens": 22,
+        "token_truncation_performed": false,
+        "mirror_augmentation": false,
+        "actual_original_validation_sources_read": 0,
+        "feature_transform_sha256": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
+        "normalization_sha256": "4a4b8838736a7541d5c2de7b944da78870fcf8fa1e55359599f815c371da1bb4"
+      },
+      "source_restored_content_sha256": "1d0bda882afa1b903b2ece154b6b1dbbc2866744df8da527fd215b142cdfe1de",
+      "source_restored_model_sha256": "86df01136ce6d9122c136fd10ea76ae67d80a09c80bb9e8a71600fae7c183ac1",
+      "initial_next_batch_sha256": "2b63eda99f415b56e8b4e1b2fa81c366dfa61ce333c8181c786cc3ec9083c09c",
+      "exact_source_model_adamw_rng_sampler_nextbatch_restored": true,
+      "restored_from_safe_optimizer_updates": 83703,
+      "initial_completed_epochs": 82,
+      "original_class_AST_audit": {
+        "actor": {
+          "original_source_sha256": "8d8b1a2e270e6f9df680e0af0fbdcabe05522f44cb544ad8b1d9413baeb62fb7",
+          "original_class_AST_sha256": {
+            "PositionalEncoding": "b42e51b1c47265ce3dba72f12520f7b752a3f5b7b07e43108d2fad0dcd32fa16",
+            "ACTORStyleEncoder": "89beb1af94c392869f515aade7dec697b982b99461cded46b210018a020b1d70",
+            "ACTORStyleDecoder": "3389b398f66f4adf4a73d95aed6263bf63524da15a43902fccbfec9683274d77"
+          },
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": []
+        },
+        "losses": {
+          "original_source_sha256": "1088b89ec3785224b45a565d606650ddc0ec61b57f27d0f8c9613328f75329d1",
+          "original_class_AST_sha256": {
+            "KLLoss": "cce3b61ed94e0b5fc0c97fa354b16b2c5229da03748500c7a3bb9c8f482b4439",
+            "InfoNCE_with_filtering": "94c06794d4c3fa8c6ab71fe39407cc5b7ad76efef648539fd1e768435eab5562"
+          },
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": []
+        },
+        "metrics": {
+          "original_source_sha256": "84d823420fa5db522b7576e2dcc8dec270a1d82bf563414a7268330d51312053",
+          "original_class_AST_sha256": {},
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": []
+        },
+        "temos": {
+          "original_source_sha256": "bcf783fbf73209b99959d144fa40307b67b2b442d7f49ba56c6e0d181b3280ec",
+          "original_class_AST_sha256": {
+            "TEMOS": "8c44e3a8c266a08e35b175ee23d7dc7b47cee2230033849d60f4e774e9163bff"
+          },
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": [
+            "Lightning lifecycle import replaced by local torch.nn.Module base",
+            "Loss import resolved within signed private package"
+          ]
+        },
+        "tmr": {
+          "original_source_sha256": "cf8106c0cafc0aeacbaee56e8618397da2f41f358cf078c75cec903a3ea93404",
+          "original_class_AST_sha256": {
+            "TMR": "2b1060c080105a050b1cb1905314d75fa5fe59de6684d4d16730982a4c02f988"
+          },
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": []
+        }
+      },
+      "selected_source_checkpoint": {
+        "path": "/home/ouyanghao/textop-tmr69d-evaluator-20261029/checkpoints/tmr_emergency.pth",
+        "bytes": 192951813,
+        "sha256": "8169a44260d0e238505e3a42c8cc859b214482e102d35241e054931d470f5d05",
+        "epoch": 82,
+        "optimizer_updates": 83703,
+        "pending_validation": false,
+        "emergency": true,
+        "exact_fullstate_deserialization": true,
+        "production_model_adamw_rng_sampler_nextbatch_reloaded": false,
+        "capacity_before": {
+          "free_bytes": 3005587456,
+          "required_bytes": 2483027968,
+          "missing_slots": 1
+        }
+      },
+      "pending_validation": false,
+      "last_train_loss": {
+        "recons": 0.14856277406215668,
+        "kl": 20.805503845214844,
+        "latent": 0.5992676615715027,
+        "contrastive": 0.011919616721570492,
+        "loss": 0.14996877312660217
+      },
+      "sampler_epoch": 99,
+      "sampler_cursor": 32462,
+      "last_internal_validation_loss": {
+        "recons": 0.21739174831997266,
+        "kl": 44.92419330981719,
+        "latent": 0.9490987815120597,
+        "contrastive": 2.2727467007239164,
+        "loss": 0.4451251594839179
+      },
+      "internal_validation_optimizer_updates": 0,
+      "selected_checkpoint": {
+        "path": "/home/ouyanghao/textop-tmr69d-evaluator-20261029/resume_checkpoints_v1/tmr_epoch_100_resumed.pth",
+        "bytes": 192952453,
+        "sha256": "7bc1955dfcb31d1eeaa966c8f5b8e972e17d6d58da1205c70fd8029b85050fc8",
+        "epoch": 100,
+        "optimizer_updates": 101500,
+        "pending_validation": false,
+        "emergency": false,
+        "exact_fullstate_deserialization": true,
+        "production_model_adamw_rng_sampler_nextbatch_reloaded": true,
+        "capacity_before": {
+          "free_bytes": 2811604992,
+          "required_bytes": 2684354560,
+          "remaining_slots": 2
+        }
+      },
+      "final_model_sha256": "8aec09f5bb47ba92f5ef4f16e680f8a0cac24fd97a0503cd054d104915aa2130",
+      "source_inputs_and_checkpoint_unchanged": true,
+      "exact_final_model_adamw_all_rng_sampler_nextbatch_disk_reload": true,
+      "original500_success_claimed": false
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "CUBLAS_WORKSPACE_CONFIG=:4096:8",
+        "TOKENIZERS_PARALLELISM=false",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tmr100_capacity_resume.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr100_capacity_resume_train_spec.json",
+        "--role",
+        "train"
+      ],
+      "supervisor_pid": 446023,
+      "child_pid": 446031,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 229,
+      "sample_errors": [],
+      "elapsed_seconds": 3417.832832247019,
+      "supervision_passed": true,
+      "run": "tmr100_capacity_resume_train_v1",
+      "request_path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr100_capacity_resume_train_spec.json",
+      "request_sha256": "8f8e05539d838697f6c4efb325dfa96de5215feb76fc7bb71ef617d57e67d088",
+      "source_sha256": "d382388b527ed3571f794a84384e6d8650d3d8fc118f737529412b2dce5f001e",
+      "receipt_sha256": "c14bb6766a0c85838f67ed09f65474f2c853d8cea0951967438c04c4dd746f5d",
+      "resource_sha256": "b2a2a0cabe79d1ff07079550e6a88ddaa8361d795800fab79558650d1b3e1626",
+      "process_exit_sha256": "b6ce4dec388d8f497bf9cd3d7be8042645353901c3a989fd380a07ecb0eb605a"
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "CUBLAS_WORKSPACE_CONFIG=:4096:8",
+        "TOKENIZERS_PARALLELISM=false",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tmr100_capacity_resume.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr100_capacity_resume_train_spec.json",
+        "--role",
+        "train"
+      ],
+      "supervisor_pid": 446023,
+      "child_pid": 446031,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 229,
+      "sample_errors": [],
+      "elapsed_seconds": 3417.832832247019,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    }
+  },
+  "sha256": {
+    "receipt": "c14bb6766a0c85838f67ed09f65474f2c853d8cea0951967438c04c4dd746f5d",
+    "exit": "11261a01d309234f4e0ce543769a78cdd9d47a7289e0705c54170b782827e1be",
+    "process": "b6ce4dec388d8f497bf9cd3d7be8042645353901c3a989fd380a07ecb0eb605a",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+  },
+  "workers": [],
+  "common_lock_free": true,
+  "closed_execution_verified": true,
+  "artifact_audit": {
+    "actual_resumed_100epochs_101500_exact_fullstate_verified": true,
+    "original_safe_source_83703": true,
+    "actual_new_formal_updates": 17797,
+    "original500_success_claimed": false,
+    "closure": {
+      "receipt": "c14bb6766a0c85838f67ed09f65474f2c853d8cea0951967438c04c4dd746f5d",
+      "exit": "11261a01d309234f4e0ce543769a78cdd9d47a7289e0705c54170b782827e1be",
+      "process": "b6ce4dec388d8f497bf9cd3d7be8042645353901c3a989fd380a07ecb0eb605a",
+      "resources": "b2a2a0cabe79d1ff07079550e6a88ddaa8361d795800fab79558650d1b3e1626",
+      "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+    }
+  },
+  "last_resource": {
+    "available_host_ram_bytes": 132924096512,
+    "data_free_bytes": 2415153152,
+    "all_device_usage_including_other_jobs": "0, 12223, 36328, 0\n1, 7823, 40726, 3",
+    "owned_child_group": 446031,
+    "owned_group_processes": [],
+    "owned_group_gpu_memory": [],
+    "home_free_bytes": 2618646528,
+    "phase": "after_exit",
+    "elapsed_seconds": 3417.8326658736914
+  },
+  "logs": {
+    "child.log": "Some weights of the model checkpoint at /data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/text_models_import_v1/text_model_0 were not used when initializing DistilBertModel: ['vocab_layer_norm.bias', 'vocab_projector.bias', 'vocab_transform.weight', 'vocab_layer_norm.weight', 'vocab_transform.bias']\n- This IS expected if you are initializing DistilBertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).\n- This IS NOT expected if you are initializing DistilBertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).\n/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/site-packages/torch/nn/modules/transformer.py:276: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. (Triggered internally at ../aten/src/ATen/NestedTensorImpl.cpp:175.)\n  output = torch._nested_tensor_from_mask(output, src_key_padding_mask.logical_not(), mask_check=False)\n",
+    "tmr100_capacity_resume_train_v1_outer.log": ""
+  },
+  "data_free_bytes": 2415140864,
+  "home_free_bytes": 2609958912
+}

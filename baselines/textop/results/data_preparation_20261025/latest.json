@@ -1,0 +1,1327 @@
+{
+  "receipts": {
+    "audit": {
+      "started_utc": "2026-10-24T16:39:02Z",
+      "scope": "released 23DoF / 57D dataset audit only; not physical tracking filtering",
+      "raw_stageii_unique": 1269,
+      "splits": {
+        "train": {
+          "sequences": 6213,
+          "motion_duration_s": 76803.64000000097,
+          "dof_counts": {
+            "23": 6213
+          },
+          "fps_counts": {
+            "50.0": 6213
+          },
+          "unique_motion_sha256": 6211,
+          "unique_sources": 6213,
+          "checks": {
+            "declared_length_differs_from_motion": 5731,
+            "segment_text_pairs": 36592,
+            "annotations_end_after_motion": 3710,
+            "missing_cached_embeddings": 0,
+            "valid_sequences": 6213,
+            "invalid_sequences": 0,
+            "invalid_annotation_time": 5,
+            "annotation_without_motion_overlap": 1
+          }
+        },
+        "val": {
+          "sequences": 2078,
+          "motion_duration_s": 28639.019999999764,
+          "dof_counts": {
+            "23": 2078
+          },
+          "fps_counts": {
+            "50.0": 2078
+          },
+          "unique_motion_sha256": 2078,
+          "unique_sources": 2078,
+          "checks": {
+            "segment_text_pairs": 13412,
+            "annotations_end_after_motion": 1278,
+            "missing_cached_embeddings": 0,
+            "valid_sequences": 2078,
+            "invalid_sequences": 0,
+            "declared_length_differs_from_motion": 1904
+          }
+        }
+      },
+      "unchanged_source_files": {
+        "train": {
+          "sha256": "33123a15905fb098b5fa6c083a1dc76441e7c2a90b190844534aeba1fc0dd331",
+          "bytes": 4905919425
+        },
+        "val": {
+          "sha256": "293b567e55169adee4ec84237c3e0ee221fbcf3563b4871c85043a79622b749d",
+          "bytes": 1829196298
+        }
+      },
+      "physical_filter_reexecuted": false,
+      "private_dataset_available": false,
+      "paper_target": {
+        "dof": 29,
+        "feature_dim": 69,
+        "contact_height_m": 0.2,
+        "contact_squared_displacement": 0.002,
+        "filter_training_iterations": 40000,
+        "relaxed_failure_threshold": 0.05,
+        "strict_filter": "remove any failing motion"
+      },
+      "train_val_overlap": {
+        "source_ids": 0,
+        "babel_ids": 0,
+        "exact_motion_fingerprints": 0
+      },
+      "source_dataset_counts": {
+        "BMLrub": 2139,
+        "ACCAD": 147,
+        "CMU": 1343,
+        "HDM05": 165,
+        "EyesJapanDataset": 542,
+        "KIT": 2513,
+        "EKUT": 220,
+        "DFaust": 79,
+        "SFU": 32,
+        "BMLmovi": 1111
+      },
+      "structure_errors": {},
+      "raw_pairable_sequences": 500,
+      "raw_pairable_splits": {
+        "train": 373,
+        "val": 127
+      },
+      "raw_missing_sequences": 7791,
+      "completed_utc": "2026-10-24T16:39:24Z"
+    },
+    "aligned_release": {
+      "scope": "aligned metadata view of the released23DoF data; not the paper69D dataset",
+      "source_arrays_modified": false,
+      "source_pkl_modified": false,
+      "physical_filter_reexecuted": false,
+      "counts": {
+        "retained_pairs": 49998,
+        "intervals_clipped": 4987,
+        "train_sequences": 6213,
+        "invalid_interval_removed": 5,
+        "no_overlap_removed": 1,
+        "val_sequences": 2078
+      }
+    },
+    "smoke1": {
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "completed_sequences": 0,
+      "mirrored_sequences": 0,
+      "failed_sequences": 6,
+      "total_requested": 6,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
+      "cpu_only": true,
+      "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+      "processed": 6,
+      "updated_utc": "2026-10-24T16:55:22Z",
+      "splits": {},
+      "paired_segments": 0
+    },
+    "smoke2": {
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "completed_sequences": 6,
+      "mirrored_sequences": 6,
+      "failed_sequences": 0,
+      "total_requested": 6,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
+      "cpu_only": true,
+      "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+      "processed": 6,
+      "updated_utc": "2026-10-24T17:00:45Z",
+      "splits": {
+        "train": 2,
+        "val": 4
+      },
+      "paired_segments": 18
+    },
+    "batch500": {
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "completed_sequences": 500,
+      "mirrored_sequences": 500,
+      "failed_sequences": 0,
+      "total_requested": 500,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
+      "cpu_only": true,
+      "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+      "processed": 500,
+      "updated_utc": "2026-10-24T19:36:50Z",
+      "splits": {
+        "train": 373,
+        "val": 127
+      },
+      "paired_segments": 9396
+    },
+    "batch143": {
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "completed_sequences": 143,
+      "mirrored_sequences": 143,
+      "failed_sequences": 0,
+      "total_requested": 143,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
+      "cpu_only": true,
+      "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+      "processed": 143,
+      "updated_utc": "2026-10-24T19:51:14Z",
+      "splits": {
+        "train": 112,
+        "val": 31
+      },
+      "paired_segments": 988
+    },
+    "batch1653": {
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "completed_sequences": 1653,
+      "mirrored_sequences": 1653,
+      "failed_sequences": 0,
+      "total_requested": 1653,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
+      "cpu_only": true,
+      "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+      "processed": 1653,
+      "updated_utc": "2026-10-25T07:04:36Z",
+      "splits": {
+        "train": 1236,
+        "val": 417
+      },
+      "paired_segments": 24158
+    },
+    "raw_reconciliation": {
+      "release_sequences": 8291,
+      "previous_exact_raw_matches": 500,
+      "additional_existing_raw_matches": 143,
+      "matched_by_group": {
+        "ACCAD": 147,
+        "HDM05": 165,
+        "EKUT": 220,
+        "DFaust": 79,
+        "SFU": 32
+      },
+      "still_unmatched_by_group": {
+        "BMLrub": 2139,
+        "CMU": 1343,
+        "EyesJapanDataset": 542,
+        "KIT": 2513,
+        "BMLmovi": 1111
+      },
+      "ambiguous_normalized_keys": 0,
+      "newly_retargeted_sequences": 0,
+      "physical_filter_executed": false,
+      "note": "Additional input availability is not completed retargeting or dynamic filtering"
+    },
+    "queue143": {
+      "pid": 3266979,
+      "wait_for": "available500_v1 completion",
+      "next": "143 additional raw inputs, CPU4; no training"
+    },
+    "witness_author": {
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "completed_sequences": 0,
+      "mirrored_sequences": 0,
+      "failed_sequences": 0,
+      "total_requested": 1,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "status": "TEXTOP_GMR_BODY_WITNESS_PASSED",
+      "cpu_only": true,
+      "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+      "witness_qpos_shape": [
+        36
+      ],
+      "witness_num_betas": 16,
+      "witness_frames_forwarded": 8,
+      "source_motion_sha256": "4d34adcec334ced939a96b6ed7e06c09217e42e5ade0ec0461520e6112ee296c",
+      "source_hashes": {
+        "general_motion_retargeting/motion_retarget.py": "7cd59ccce8b3903763c66c40d0433e871b978d3709e3fe793a87c583f658b5ff",
+        "general_motion_retargeting/utils/smpl.py": "96a72e57ce56a2b75ea7709ff9fd9e5c00bd010150d8accdcdd076da0bcbd4d9",
+        "general_motion_retargeting/ik_configs/smplx_to_g1.json": "e34e04804e19e54a34aae6de2bdc166b12a06dbbbcfd149cf687af56ad437797",
+        "assets/unitree_g1/g1_mocap_29dof.xml": "943eb0d5e24dad6cb029d3331daf85c139c8f5d8ce9c62e751e3ff69a0e44416"
+      },
+      "body_model_sha256": "44e57050d127538e20e10e27f8274ba9ca3dd09c992e954d3d2b5ae5e5bb8313"
+    },
+    "witness_document": {
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "completed_sequences": 0,
+      "mirrored_sequences": 0,
+      "failed_sequences": 0,
+      "total_requested": 1,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "status": "TEXTOP_GMR_BODY_WITNESS_PASSED",
+      "cpu_only": true,
+      "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+      "witness_qpos_shape": [
+        36
+      ],
+      "witness_num_betas": 16,
+      "witness_frames_forwarded": 8,
+      "source_motion_sha256": "4d34adcec334ced939a96b6ed7e06c09217e42e5ade0ec0461520e6112ee296c",
+      "source_hashes": {
+        "general_motion_retargeting/motion_retarget.py": "7cd59ccce8b3903763c66c40d0433e871b978d3709e3fe793a87c583f658b5ff",
+        "general_motion_retargeting/utils/smpl.py": "96a72e57ce56a2b75ea7709ff9fd9e5c00bd010150d8accdcdd076da0bcbd4d9",
+        "general_motion_retargeting/ik_configs/smplx_to_g1.json": "e34e04804e19e54a34aae6de2bdc166b12a06dbbbcfd149cf687af56ad437797",
+        "assets/unitree_g1/g1_mocap_29dof.xml": "943eb0d5e24dad6cb029d3331daf85c139c8f5d8ce9c62e751e3ff69a0e44416"
+      },
+      "body_model_sha256": "44e57050d127538e20e10e27f8274ba9ca3dd09c992e954d3d2b5ae5e5bb8313"
+    },
+    "env_validation": {
+      "canonical_spec_hash": "87f577cc",
+      "spec_file_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "independent_agent": "/root/textop_data_environment_witness",
+      "independent_witness_passed": true,
+      "meaning": "Hash conventions differ: canonical parsed JSON vs file bytes. Both are verified, not a spec mismatch.",
+      "scope": "CPU SMPL-X forward and GMR IK only; no physical filtering"
+    },
+    "pause": {
+      "time_utc": "2026-10-24T16:28:40Z",
+      "textop_training": {
+        "pid": 3237858,
+        "action": "SIGSTOP preserves live training state; prioritize dataset preparation",
+        "state": "State:\tT (stopped)"
+      },
+      "training_progress.json": {
+        "manager_step": 10200,
+        "optimizer_updates_this_process": 10039,
+        "skipped_updates_this_process": 161,
+        "loss": 0.01279846578836441,
+        "stage": 0,
+        "elapsed_s": 2323.060105085373,
+        "peak_allocated_bytes": 6959493632,
+        "data_free_bytes": 1881415680,
+        "save_dir": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/runs/RobotMDAR/TextOp_Public_Full_MVAE_20261024/train-mvae-20261024_154946"
+      },
+      "download_complete.json": {
+        "files": 100,
+        "bytes": 7653009670
+      },
+      "disk": {
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024": {
+          "total": 1967847137280,
+          "used": 1865929048064,
+          "free": 1881366528
+        },
+        "/home/ouyanghao": {
+          "total": 502918963200,
+          "used": 476185456640,
+          "free": 1111396352
+        }
+      },
+      "asset_candidates": [
+        "/data/code/ouyanghao/oyh/reactivebfm-reproduction-20261021/data/amass_g1_36dim",
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/cache/closd_hf/hub/models--guytevet--CLoSD/snapshots/de7106b947b6f70700b5320d1cd61fef4a9ebc9b/data/amass",
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/GMR",
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/CondMDI/data_loaders/amass",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass/remaining_20261021/SMPLX_lockedhead_20230207",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass/remaining_20261021/SMPLX_lockedhead_20230207/extracted/models_lockedhead/smplx",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass/remaining_20261021/SMPLX_lockedhead_20230207/extracted/models_lockedhead/smplx/SMPLX_FEMALE.npz",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass/remaining_20261021/SMPLX_lockedhead_20230207/extracted/models_lockedhead/smplx/SMPLX_NEUTRAL.npz",
+        "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/data/amass/remaining_20261021/SMPLX_lockedhead_20230207/extracted/models_lockedhead/smplx/SMPLX_MALE.npz",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/assets/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps"
+      ],
+      "raw_npz_groups": {
+        "phygile-reproduction-20261017/data/amass/humanml_pairing_20261021": 101,
+        "phygile-reproduction-20261017/data/amass/remaining_20261021_v4": 449,
+        "phygile-reproduction-20261017/data/amass/remaining_20261021": 862,
+        "phygile-reproduction-20261017/data/amass/recovery_20261021_v1": 442,
+        "phygile-reproduction-20261017/data/amass/humanml_reference_20261021": 30,
+        "phygile-reproduction-20261017/data/amass/remaining_20261021_v5": 219,
+        "phygile-reproduction-20261017/data/amass/ssm_20261021": 33
+      }
+    },
+    "batchCMU": {
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "completed_sequences": 1330,
+      "mirrored_sequences": 1330,
+      "failed_sequences": 0,
+      "total_requested": 1330,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
+      "cpu_only": true,
+      "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+      "processed": 1330,
+      "updated_utc": "2026-10-25T12:22:19Z",
+      "splits": {
+        "train": 953,
+        "val": 377
+      },
+      "paired_segments": 19692
+    },
+    "batch_bmlrub": {
+      "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "parallel_spec_sha256": "b797d14305c7459a926573033eedd355e506a9722e1db0dec6d6fa063198a657",
+      "source_sha256": "06539b1a7593ef45beda815d07252b4850f2c47237f2d0000c77bdcd60f101a5",
+      "orchestrator_sha256": "79d532acd48f9ff3db2ea9096a2b6f211666c9cb3b1581b1ea3d37f49d88ec47",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "total_requested": 2139,
+      "completed_sequences": 2139,
+      "mirrored_sequences": 2139,
+      "failed_sequences": 0,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "cpu_only": true,
+      "parallel_workers": 4,
+      "cpu_affinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "threads_per_worker": 4,
+      "implementation": "same GMR preparation kernel with disjoint-motion CPU processes",
+      "worker_pids": [
+        3654252,
+        3654253,
+        3654254,
+        3654255
+      ],
+      "processed": 2139,
+      "elapsed_seconds": 6948.203129719943,
+      "updated_utc": "2026-10-25T16:51:41Z",
+      "worker_exit_codes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "splits": {
+        "val": 512,
+        "train": 1627
+      },
+      "paired_segments": 18032
+    },
+    "batch_kit": {
+      "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
+      "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+      "parallel_spec_sha256": "b797d14305c7459a926573033eedd355e506a9722e1db0dec6d6fa063198a657",
+      "source_sha256": "06539b1a7593ef45beda815d07252b4850f2c47237f2d0000c77bdcd60f101a5",
+      "orchestrator_sha256": "79d532acd48f9ff3db2ea9096a2b6f211666c9cb3b1581b1ea3d37f49d88ec47",
+      "versions": {
+        "numpy": "1.26.4",
+        "torch": "2.5.1+cu121",
+        "scipy": "1.15.3",
+        "mujoco": "3.3.7",
+        "mink": "0.0.13",
+        "smplx": "0.1.28",
+        "qpsolvers": "4.8.1",
+        "daqp": "0.7.2",
+        "rich": "13.9.4",
+        "tqdm": "4.70.0"
+      },
+      "target_dof": 29,
+      "feature_dim": 69,
+      "output_fps": 50,
+      "total_requested": 2513,
+      "completed_sequences": 2513,
+      "mirrored_sequences": 2513,
+      "failed_sequences": 0,
+      "physical_filter_passed": false,
+      "ready_for_generator_training": false,
+      "cpu_only": true,
+      "parallel_workers": 4,
+      "cpu_affinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "threads_per_worker": 4,
+      "implementation": "same GMR preparation kernel with disjoint-motion CPU processes",
+      "worker_pids": [
+        3717694,
+        3717695,
+        3717696,
+        3717697
+      ],
+      "processed": 2513,
+      "elapsed_seconds": 6487.841942925006,
+      "updated_utc": "2026-10-25T19:14:21Z",
+      "worker_exit_codes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "splits": {
+        "train": 1902,
+        "val": 611
+      },
+      "paired_segments": 21384
+    },
+    "babel_acquisition": {
+      "time_beijing": "2026-10-25T11:07:01.452402+08:00",
+      "official_url": "https://babel.is.tue.mpg.de/media/upload/data/babel_v1-0_release.zip",
+      "download_page_observed_authenticated": true,
+      "independent_license_already_accepted": true,
+      "license_url": "https://babel.is.tue.mpg.de/license.html",
+      "status": "OFFICIAL_BABEL_V1_0_DOWNLOADED_ZIP_CRC_AND_JSON_VERIFIED",
+      "archive_bytes": 5553197,
+      "archive_sha256": "863d79b78f2d0225df74140b94cd61e06e04217726ae4ba1d2f50bad0d902428",
+      "zip_crc_verified": true,
+      "files": [
+        {
+          "file": "extra_val.json",
+          "bytes": 2588794,
+          "sha256": "a05637cc2f9ecf5b8f4e96eac3bd358ecd96dd00d7c933c40bc80cd9eccd03fc",
+          "sequence_records": 2636,
+          "sequence_labels": 4255,
+          "frame_labels": 689
+        },
+        {
+          "file": "test.json",
+          "bytes": 4140168,
+          "sha256": "f109dff2f3ccdef28c2610eea079e4fda4e60d8849cc87277e6fd3eef1683789",
+          "sequence_records": 2084,
+          "sequence_labels": 2134,
+          "frame_labels": 12297
+        },
+        {
+          "file": "train.json",
+          "bytes": 15101932,
+          "sha256": "5da8185d4374670682cd6e3391d8635e4297ecebf5fe19394d28c2ca08030c6d",
+          "sequence_records": 6615,
+          "sequence_labels": 7000,
+          "frame_labels": 36137
+        },
+        {
+          "file": "extra_train.json",
+          "bytes": 7302453,
+          "sha256": "1643abb3e8313f4828d706373563e82db4a713f44bba1103df80f28f7ecc5f30",
+          "sequence_records": 7921,
+          "sequence_labels": 12255,
+          "frame_labels": 897
+        },
+        {
+          "file": "val.json",
+          "bytes": 5423438,
+          "sha256": "50d1471db5221458ff959dea3a739e6695ce130fe70f75cc9a6446ee1a50b5ba",
+          "sequence_records": 2193,
+          "sequence_labels": 2411,
+          "frame_labels": 13333
+        }
+      ],
+      "raw_annotations_published": false,
+      "motion_alignment_validated": false
+    },
+    "babel_alignment": {
+      "time_beijing": "2026-10-25T11:12:01.085831+08:00",
+      "status": "ORIGINAL_BABEL_LABELS_VALIDATED_FOR_ALL_RELEASE_PAIRS",
+      "counts": {
+        "release_sequences": 8291,
+        "original_segment_labels_for_release_subset": 50004,
+        "validated_sequences": 8291
+      },
+      "split_counts": {
+        "train": {
+          "sequences": 6213,
+          "original_segment_labels": 36592,
+          "validated_sequences": 6213
+        },
+        "val": {
+          "sequences": 2078,
+          "original_segment_labels": 13412,
+          "validated_sequences": 2078
+        }
+      },
+      "mismatch_sequences": 0,
+      "time_tolerance_seconds": 1e-06,
+      "max_observed_time_error_seconds": 0.0,
+      "id_train_val_overlap": 0,
+      "release_index_sha256": "69c45bbb7171129b5c134d9c7eb00c73986601781f20e87c3bbfb02f976022be",
+      "original_file_sha256": {
+        "train": "5da8185d4374670682cd6e3391d8635e4297ecebf5fe19394d28c2ca08030c6d",
+        "val": "50d1471db5221458ff959dea3a739e6695ce130fe70f75cc9a6446ee1a50b5ba"
+      },
+      "pinned_official_commit": "ef6555fb174c9b5c44945a62c7ffc77b5ddbbf22",
+      "official_pack_dataset_sha256": "543338e15f0c8d4cc84b9e569c94dacb51c1264703704004668f53490af87df7",
+      "verified_pair_index_sha256": "2e293ec4966f3c489d11ea7774c141319c294e10bf701881ea0d6421a9bcb39c",
+      "source_matching": "official pack_dataset.process_babel_json drops first wrapper directory; then explicit aliases and literal space/underscore normalization; no fuzzy matching",
+      "initial_path_wrapper_mismatches_resolved": 244,
+      "raw_annotation_files_published": false,
+      "physical_filter_executed": false,
+      "smplx_motion_phase_alignment_independently_verified": false,
+      "generator_dataset_accepted": false
+    },
+    "babel_server_install": {
+      "status": "SERVER_PRIVATE_BABEL_INSTALLED_AND_SHA256_VERIFIED",
+      "files_verified": 7,
+      "bytes": 46879894,
+      "server_directory": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/data_preparation_20261025/babel_v1_0",
+      "data_free_bytes": 3786072064,
+      "raw_annotations_published": false,
+      "files": [
+        {
+          "file": "babel_v1-0_release.zip",
+          "bytes": 5553197,
+          "sha256": "863d79b78f2d0225df74140b94cd61e06e04217726ae4ba1d2f50bad0d902428"
+        },
+        {
+          "file": "train.json",
+          "bytes": 15101932,
+          "sha256": "5da8185d4374670682cd6e3391d8635e4297ecebf5fe19394d28c2ca08030c6d"
+        },
+        {
+          "file": "val.json",
+          "bytes": 5423438,
+          "sha256": "50d1471db5221458ff959dea3a739e6695ce130fe70f75cc9a6446ee1a50b5ba"
+        },
+        {
+          "file": "test.json",
+          "bytes": 4140168,
+          "sha256": "f109dff2f3ccdef28c2610eea079e4fda4e60d8849cc87277e6fd3eef1683789"
+        },
+        {
+          "file": "extra_train.json",
+          "bytes": 7302453,
+          "sha256": "1643abb3e8313f4828d706373563e82db4a713f44bba1103df80f28f7ecc5f30"
+        },
+        {
+          "file": "extra_val.json",
+          "bytes": 2588794,
+          "sha256": "a05637cc2f9ecf5b8f4e96eac3bd358ecd96dd00d7c933c40bc80cd9eccd03fc"
+        },
+        {
+          "file": "textop_original_verified_pairs.private.json",
+          "bytes": 6769912,
+          "sha256": "2e293ec4966f3c489d11ea7774c141319c294e10bf701881ea0d6421a9bcb39c"
+        }
+      ]
+    },
+    "cmu_resume": {
+      "time_beijing": "2026-10-25T11:36:38.234283+08:00",
+      "status": "LOCAL_ORIGINAL_ARCHIVE_VERIFIED",
+      "subset": "CMU",
+      "official_url": "https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/gender_specific/mosh_results/CMU.tar.bz2",
+      "expected_bytes": 11572134418,
+      "credentials_stored": false,
+      "old_D_partial_retained": true,
+      "raw_data_published": false,
+      "sha256": "8a276bd0ed23fa72202f80f1dcf8fd9a336eb053ad86233cd47a9a2f51210270",
+      "archive_bytes": 11572134418,
+      "unpacked_file_bytes": 27261391446,
+      "regular_files": 2080,
+      "npz_files": 2079,
+      "compressed_crc_and_tar_headers_verified": true,
+      "motion_arrays_validated": false,
+      "extracted": false,
+      "indexed_retargeting_executed": false,
+      "physical_filter_executed": false
+    },
+    "bmlrub_resume": {
+      "time_beijing": "2026-10-25T13:43:07.037005+08:00",
+      "status": "LOCAL_ORIGINAL_ARCHIVE_VERIFIED",
+      "subset": "BMLrub",
+      "official_url": "https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/gender_specific/mosh_results/BMLrub.tar.bz2",
+      "expected_bytes": 12919496284,
+      "credentials_stored": false,
+      "old_partial_retained_until_full_validation": true,
+      "raw_data_published": false,
+      "volume_reserve_bytes": 6442450944,
+      "sha256": "7b7dc34e81c0b55cf7ff692c319f84aae2f7782868babab2cb5ba8346abae1fa",
+      "archive_bytes": 12919496284,
+      "unpacked_file_bytes": 25442488121,
+      "regular_files": 3173,
+      "npz_files": 3172,
+      "compressed_crc_and_tar_headers_verified": true,
+      "motion_arrays_validated": false,
+      "extracted": false,
+      "indexed_retargeting_executed": false,
+      "physical_filter_executed": false
+    },
+    "kit_resume": {
+      "time_beijing": "2026-10-25T14:01:38.013217+08:00",
+      "status": "LOCAL_ORIGINAL_ARCHIVE_VERIFIED",
+      "subset": "KIT",
+      "official_url": "https://download.is.tue.mpg.de/download.php?domain=amass&resume=1&sfile=amass_per_dataset/smplx/gender_specific/mosh_results/KIT.tar.bz2",
+      "expected_bytes": 13182414052,
+      "credentials_stored": false,
+      "old_partial_retained_until_full_validation": true,
+      "raw_data_published": false,
+      "volume_reserve_bytes": 6442450944,
+      "sha256": "35bcd67629ee4c68b1e5d8ec9b406d623203547a7bc9f281d979653128504b4d",
+      "archive_bytes": 13182414052,
+      "unpacked_file_bytes": 28896715656,
+      "regular_files": 4288,
+      "npz_files": 4287,
+      "compressed_crc_and_tar_headers_verified": true,
+      "motion_arrays_validated": false,
+      "extracted": false,
+      "indexed_retargeting_executed": false,
+      "physical_filter_executed": false
+    },
+    "bmlrub_indexed_queue": {
+      "status": "PREPROCESSING_BACKED_UP_FILTER_PENDING",
+      "subset": "BMLrub",
+      "time_beijing": "2026-10-26T00:53:28.163213+08:00",
+      "physical_filter_executed": false,
+      "dataset_accepted": false,
+      "full_training_started": false,
+      "requested_indexed_sources": 2139,
+      "target": 2139,
+      "missing_from_selected_official_export": 0,
+      "raw_bytes": 18183418757,
+      "archive_sha256": "6e058321033c919f0fb3349d0a44058dbeca4605b927a807cbcd0665f0a40ccd",
+      "source_durable": "complete original archive on personal persistent volume; verified BABEL index on D",
+      "ram_working_copy": true,
+      "staged_files": 2100,
+      "staged_bytes": 17866597002,
+      "previous_error": "RuntimeError('Traceback (most recent call last):\\n  File \"<stdin>\", line 13, in <module>\\nAssertionError: Another GMR is active\\n\\n')",
+      "resume_kind": "reuse fully staged and hashed raw inputs; no duplicate transfer",
+      "launch": {
+        "pid": 3653970,
+        "command": [
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021/bin/python",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_paper_data.py",
+          "--spec",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/data-prep-env-spec.json",
+          "--pairs",
+          "/dev/shm/ouyanghao_textop_20261025/bmlrub_indexed_v1/pairs.private.json",
+          "--output",
+          "/dev/shm/ouyanghao_textop_20261025/bmlrub_indexed_v1/prepared_v1"
+        ],
+        "cpu_only": true,
+        "parallel_workers": 4,
+        "verified_raw": 2139,
+        "source_sha256": "06539b1a7593ef45beda815d07252b4850f2c47237f2d0000c77bdcd60f101a5",
+        "time_utc": "2026-10-25T14:55:14Z",
+        "resume_after_mutual_exclusion": true
+      },
+      "progress": {
+        "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
+        "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+        "parallel_spec_sha256": "b797d14305c7459a926573033eedd355e506a9722e1db0dec6d6fa063198a657",
+        "source_sha256": "06539b1a7593ef45beda815d07252b4850f2c47237f2d0000c77bdcd60f101a5",
+        "orchestrator_sha256": "79d532acd48f9ff3db2ea9096a2b6f211666c9cb3b1581b1ea3d37f49d88ec47",
+        "versions": {
+          "numpy": "1.26.4",
+          "torch": "2.5.1+cu121",
+          "scipy": "1.15.3",
+          "mujoco": "3.3.7",
+          "mink": "0.0.13",
+          "smplx": "0.1.28",
+          "qpsolvers": "4.8.1",
+          "daqp": "0.7.2",
+          "rich": "13.9.4",
+          "tqdm": "4.70.0"
+        },
+        "target_dof": 29,
+        "feature_dim": 69,
+        "output_fps": 50,
+        "total_requested": 2139,
+        "completed_sequences": 2139,
+        "mirrored_sequences": 2139,
+        "failed_sequences": 0,
+        "physical_filter_passed": false,
+        "ready_for_generator_training": false,
+        "cpu_only": true,
+        "parallel_workers": 4,
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "threads_per_worker": 4,
+        "implementation": "same GMR preparation kernel with disjoint-motion CPU processes",
+        "worker_pids": [
+          3654252,
+          3654253,
+          3654254,
+          3654255
+        ],
+        "processed": 2139,
+        "elapsed_seconds": 6948.203129719943,
+        "updated_utc": "2026-10-25T16:51:41Z",
+        "worker_exit_codes": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "splits": {
+          "val": 512,
+          "train": 1627
+        },
+        "paired_segments": 18032
+      },
+      "archive_bytes": 1188059483
+    },
+    "kit_indexed_queue": {
+      "status": "PREPROCESSING_BACKED_UP_FILTER_PENDING",
+      "subset": "KIT",
+      "time_beijing": "2026-10-26T03:16:33.896638+08:00",
+      "physical_filter_executed": false,
+      "dataset_accepted": false,
+      "full_training_started": false,
+      "previous_error": "RuntimeError('Predecessor failed; its data retained and no overlapping GMR launched')",
+      "requested_indexed_sources": 2513,
+      "target": 2513,
+      "missing_from_selected_official_export": 0,
+      "raw_bytes": 18751658690,
+      "archive_sha256": "5d0565bd7660133f69dec17980a8b91710c6c0d4302a314b3c75a12205aceb2b",
+      "source_durable": "complete original archive on personal persistent volume; verified BABEL index on D",
+      "ram_working_copy": true,
+      "staged_files": 2500,
+      "staged_bytes": 18714701876,
+      "launch": {
+        "pid": 3717218,
+        "command": [
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021/bin/python",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_paper_data.py",
+          "--spec",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/data-prep-env-spec.json",
+          "--pairs",
+          "/dev/shm/ouyanghao_textop_20261025/kit_indexed_v1/pairs.private.json",
+          "--output",
+          "/dev/shm/ouyanghao_textop_20261025/kit_indexed_v1/prepared_v1"
+        ],
+        "cpu_only": true,
+        "verified_raw": 2513,
+        "source_sha256": "06539b1a7593ef45beda815d07252b4850f2c47237f2d0000c77bdcd60f101a5"
+      },
+      "progress": {
+        "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
+        "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+        "parallel_spec_sha256": "b797d14305c7459a926573033eedd355e506a9722e1db0dec6d6fa063198a657",
+        "source_sha256": "06539b1a7593ef45beda815d07252b4850f2c47237f2d0000c77bdcd60f101a5",
+        "orchestrator_sha256": "79d532acd48f9ff3db2ea9096a2b6f211666c9cb3b1581b1ea3d37f49d88ec47",
+        "versions": {
+          "numpy": "1.26.4",
+          "torch": "2.5.1+cu121",
+          "scipy": "1.15.3",
+          "mujoco": "3.3.7",
+          "mink": "0.0.13",
+          "smplx": "0.1.28",
+          "qpsolvers": "4.8.1",
+          "daqp": "0.7.2",
+          "rich": "13.9.4",
+          "tqdm": "4.70.0"
+        },
+        "target_dof": 29,
+        "feature_dim": 69,
+        "output_fps": 50,
+        "total_requested": 2513,
+        "completed_sequences": 2513,
+        "mirrored_sequences": 2513,
+        "failed_sequences": 0,
+        "physical_filter_passed": false,
+        "ready_for_generator_training": false,
+        "cpu_only": true,
+        "parallel_workers": 4,
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "threads_per_worker": 4,
+        "implementation": "same GMR preparation kernel with disjoint-motion CPU processes",
+        "worker_pids": [
+          3717694,
+          3717695,
+          3717696,
+          3717697
+        ],
+        "processed": 2513,
+        "elapsed_seconds": 6487.841942925006,
+        "updated_utc": "2026-10-25T19:14:21Z",
+        "worker_exit_codes": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "splits": {
+          "train": 1902,
+          "val": 611
+        },
+        "paired_segments": 21384
+      },
+      "archive_bytes": 1105812860
+    },
+    "asset_authorization_and_storage": {
+      "recorded_beijing": "2026-10-26T03:16:34.031453+08:00",
+      "amass": {
+        "user_reported_login_complete": true,
+        "observed_main_download_table_accessible": true,
+        "file_host_session_verified_this_turn": true,
+        "existing_approved_subsets_remain_authorized": true,
+        "totalcapture_skipped": true
+      },
+      "babel": {
+        "user_explicit_license_authorization": true,
+        "license_url": "https://babel.is.tue.mpg.de/license.html",
+        "scope": "non-commercial research; personal reproduction storage; no redistribution",
+        "observed_download_redirect": null,
+        "download_completed": true,
+        "status": "OFFICIAL_BABEL_V1_0_DOWNLOADED_ZIP_CRC_AND_JSON_VERIFIED",
+        "user_reported_login_complete": true,
+        "observed_download_page": "https://babel.is.tue.mpg.de/download.php",
+        "archive_sha256": "863d79b78f2d0225df74140b94cd61e06e04217726ae4ba1d2f50bad0d902428",
+        "server_installed": true,
+        "original_alignment_checked": true
+      },
+      "storage": {
+        "C_free_bytes": 2217758720,
+        "D_free_bytes": 6100881408,
+        "remaining_archives": [
+          {
+            "subset": "BMLrub",
+            "expected_archive_bytes_from_prior_official_manifest": 12919496284,
+            "current_partial_bytes": 12919496284,
+            "remaining_bytes_estimate": 0
+          },
+          {
+            "subset": "CMU",
+            "expected_archive_bytes_from_prior_official_manifest": 11572134418,
+            "current_partial_bytes": 11572134418,
+            "remaining_bytes_estimate": 0
+          },
+          {
+            "subset": "KIT",
+            "expected_archive_bytes_from_prior_official_manifest": 13182414052,
+            "current_partial_bytes": 13182414052,
+            "remaining_bytes_estimate": 0
+          }
+        ],
+        "total_additional_archive_bytes_estimate": 0,
+        "status": "ASSETS_RESUMING_WITH_6GIB_PER_VOLUME_RESERVE",
+        "requested_free_capacity_gb": 50,
+        "download_states": {
+          "BMLrub": "LOCAL_ORIGINAL_ARCHIVE_VERIFIED",
+          "CMU": "LOCAL_ORIGINAL_ARCHIVE_VERIFIED",
+          "KIT": "LOCAL_ORIGINAL_ARCHIVE_VERIFIED"
+        }
+      },
+      "credentials_recorded": false,
+      "new_raw_assets_published": false
+    },
+    "local1653_queue": {
+      "status": "PREPROCESSING_BACKED_UP_FILTER_PENDING",
+      "target": 1653,
+      "ram_working_copy": true,
+      "source_durable": "D complete original archives and verified private recovery kit; RAM is working copy",
+      "physical_filter_executed": false,
+      "time_utc": "2026-10-25T07:07:13.469000+00:00",
+      "preflight": {
+        "mem": {
+          "MemTotal": 269956653056,
+          "MemAvailable": 247712681984
+        },
+        "raw_bytes": 18369027723,
+        "ram_root": "/dev/shm/ouyanghao_textop_20261025/local1653_v1"
+      },
+      "launch": {
+        "pid": 3319567,
+        "command": [
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021/bin/python",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_paper_data.py",
+          "--spec",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/data-prep-env-spec.json",
+          "--pairs",
+          "/dev/shm/ouyanghao_textop_20261025/local1653_v1/pairs.private.json",
+          "--output",
+          "/dev/shm/ouyanghao_textop_20261025/local1653_v1/prepared1653_v1"
+        ],
+        "verified_raw": 1653,
+        "source_sha256": "90db2afdb9baf3521356c7995c95d2cd48bdc56836ffc4539073c4c8e4b819dc",
+        "time_utc": "2026-10-25T00:45:18Z",
+        "durability": "raw originals in localC and archivesD; RAM is working copy; outputs must be backed up to localD"
+      },
+      "progress": {
+        "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+        "versions": {
+          "numpy": "1.26.4",
+          "torch": "2.5.1+cu121",
+          "scipy": "1.15.3",
+          "mujoco": "3.3.7",
+          "mink": "0.0.13",
+          "smplx": "0.1.28",
+          "qpsolvers": "4.8.1",
+          "daqp": "0.7.2",
+          "rich": "13.9.4",
+          "tqdm": "4.70.0"
+        },
+        "target_dof": 29,
+        "feature_dim": 69,
+        "output_fps": 50,
+        "completed_sequences": 1653,
+        "mirrored_sequences": 1653,
+        "failed_sequences": 0,
+        "total_requested": 1653,
+        "physical_filter_passed": false,
+        "ready_for_generator_training": false,
+        "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
+        "cpu_only": true,
+        "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+        "processed": 1653,
+        "updated_utc": "2026-10-25T07:04:36Z",
+        "splits": {
+          "train": 1236,
+          "val": 417
+        },
+        "paired_segments": 24158
+      },
+      "observer_recovered": true,
+      "prior_observer_error_saved_in": "local1653_queue_error_before_resume.json",
+      "archive_sha256": "ed60f1458ce1325fff85cbea07d651063f265423dda776ef349a37191f862d7a",
+      "archive_bytes": 1229573239,
+      "per_motion_backup_sha256_verified": 1653
+    },
+    "cmu_indexed_queue": {
+      "status": "PREPROCESSING_BACKED_UP_FILTER_PENDING",
+      "time_beijing": "2026-10-25T22:03:46.463551+08:00",
+      "target": 1330,
+      "requested_indexed_sources": 1343,
+      "missing_from_selected_official_export": 13,
+      "raw_bytes": 18804784599,
+      "archive_sha256": "a3681df57899f4771457301d94f664a6a46afcc7f8a1871f79ca27c0fb11e268",
+      "source_durable": "complete C-drive original archive; private original-BABEL-verified index on D",
+      "ram_working_copy": true,
+      "physical_filter_executed": false,
+      "staged_files": 1300,
+      "staged_bytes": 18347165831,
+      "verification": {
+        "files_sha256_verified": 1330,
+        "raw_bytes": 18804784599
+      },
+      "launch": {
+        "pid": 3483711,
+        "command": [
+          "/data/code/ouyanghao/oyh/phygile-reproduction-20261017/envs/gmr_amass_20261021/bin/python",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_paper_data.py",
+          "--spec",
+          "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/data-prep-env-spec.json",
+          "--pairs",
+          "/dev/shm/ouyanghao_textop_20261025/cmu1330_v1/pairs.private.json",
+          "--output",
+          "/dev/shm/ouyanghao_textop_20261025/cmu1330_v1/prepared1330_v1"
+        ],
+        "cpu_only": true,
+        "source_sha256": "90db2afdb9baf3521356c7995c95d2cd48bdc56836ffc4539073c4c8e4b819dc",
+        "target": 1330,
+        "time_utc": "2026-10-25T07:07:44Z"
+      },
+      "progress": {
+        "spec_sha256": "6e7f21352c2839d62498a068103cfedcd3949f5416b1ca075477f6bdbef94591",
+        "versions": {
+          "numpy": "1.26.4",
+          "torch": "2.5.1+cu121",
+          "scipy": "1.15.3",
+          "mujoco": "3.3.7",
+          "mink": "0.0.13",
+          "smplx": "0.1.28",
+          "qpsolvers": "4.8.1",
+          "daqp": "0.7.2",
+          "rich": "13.9.4",
+          "tqdm": "4.70.0"
+        },
+        "target_dof": 29,
+        "feature_dim": 69,
+        "output_fps": 50,
+        "completed_sequences": 1330,
+        "mirrored_sequences": 1330,
+        "failed_sequences": 0,
+        "total_requested": 1330,
+        "physical_filter_passed": false,
+        "ready_for_generator_training": false,
+        "status": "PREPROCESSING_FINISHED_FILTER_PENDING",
+        "cpu_only": true,
+        "implementation": "own paper-oriented preparation, GMR IK reused; not authors private final pipeline",
+        "processed": 1330,
+        "updated_utc": "2026-10-25T12:22:19Z",
+        "splits": {
+          "train": 953,
+          "val": 377
+        },
+        "paired_segments": 19692
+      },
+      "archive_bytes": 1048036153
+    },
+    "current_input_residency": {
+      "private_recovery_indexes_verified_on_D": true,
+      "files": [
+        {
+          "file": "ready.private.json",
+          "bytes": 2017675,
+          "sha256": "b4a912143d72b3cf7391eaafd5a5c22d06ce71184e31ab6f64d4a4849d08f95b"
+        },
+        {
+          "file": "raw_index.private.jsonl",
+          "bytes": 2017675,
+          "sha256": "75597e4e3c77912484ffd1ecdc786c1c69fd956f6490f6b00e17a455ef5ba00a"
+        },
+        {
+          "file": "restore_indexed_cache.py",
+          "bytes": 2918,
+          "sha256": "1c6f6d3d6b6233e2b4bc88337115d9d488ef829e7d219791a32ba181d6203183"
+        }
+      ],
+      "cache_files_present_on_C": 0,
+      "current_durable_inputs": "complete D-drive licensed archives plus private indexes on C and D",
+      "server_RAM_is_working_copy_only": true,
+      "unique_dataset_files_deleted": 0,
+      "private_indexes_published": false
+    },
+    "local_raw_expansion": {
+      "requested": 1653,
+      "completed": 1653,
+      "bytes": 18369027723,
+      "groups": {
+        "BMLmovi": {
+          "archive_bytes": 5295135910,
+          "archive_sha256": "b8c5fca189bdb52768cdef8b93a3892a9e0788100b4553aa1ec63eac1ddf66c0",
+          "matched": 1111,
+          "bytes": 6223276696
+        },
+        "EyesJapanDataset": {
+          "archive_bytes": 7628321177,
+          "archive_sha256": "85c83ca46fad11c71e4749042d3e4d0cabf21238966c3c41924016d9c53f25cf",
+          "matched": 542,
+          "bytes": 12145751027
+        }
+      },
+      "status": "LOCAL_EXTRACTION_COMPLETE",
+      "new_downloads": 0,
+      "physical_filter_executed": false,
+      "updated_utc": "2026-10-24T18:41:17Z",
+      "unmatched_requested": 0
+    }
+  },
+  "metrics": {
+    "smoke_v2": {
+      "sequences": 6,
+      "frames50": 539,
+      "paired_annotations_including_saved_mirrors": 18,
+      "rejected_annotations": 1,
+      "codec_max_error_m_or_rad": 1.0971931319048167e-07,
+      "joint_skeleton_mirror_max_error_m": 9.999622815837217e-06,
+      "splits": {
+        "train": 2,
+        "val": 4
+      }
+    },
+    "available500_v1": {
+      "sequences": 500,
+      "frames50": 429871,
+      "paired_annotations_including_saved_mirrors": 9396,
+      "rejected_annotations": 122,
+      "codec_max_error_m_or_rad": 3.981501353056416e-07,
+      "joint_skeleton_mirror_max_error_m": 9.99999971451615e-06,
+      "splits": {
+        "train": 373,
+        "val": 127
+      }
+    },
+    "available143_v1": {
+      "sequences": 143,
+      "frames50": 43479,
+      "paired_annotations_including_saved_mirrors": 988,
+      "rejected_annotations": 0,
+      "codec_max_error_m_or_rad": 3.737636323219995e-07,
+      "joint_skeleton_mirror_max_error_m": 9.99999601489221e-06,
+      "splits": {
+        "train": 112,
+        "val": 31
+      }
+    },
+    "prepared1653_v1": {
+      "sequences": 1653,
+      "frames50": 1171795,
+      "paired_annotations_including_saved_mirrors": 24158,
+      "rejected_annotations": 4,
+      "codec_max_error_m_or_rad": 2.2182229841849477e-07,
+      "joint_skeleton_mirror_max_error_m": 9.999999928053671e-06,
+      "splits": {
+        "train": 1236,
+        "val": 417
+      }
+    },
+    "preparedCMU": {
+      "sequences": 1330,
+      "frames50": 988619,
+      "paired_annotations_including_saved_mirrors": 19692,
+      "rejected_annotations": 1046,
+      "codec_max_error_m_or_rad": 5.696548057848583e-07,
+      "joint_skeleton_mirror_max_error_m": 9.999999969118045e-06,
+      "splits": {
+        "train": 953,
+        "val": 377
+      }
+    }
+  },
+  "space_bytes": {
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 8783122432,
+    "/home/ouyanghao": 6645477376
+  },
+  "missing_raw_by_dataset": {
+    "BMLrub": 2139,
+    "ACCAD": 143,
+    "CMU": 1343,
+    "EyesJapanDataset": 542,
+    "KIT": 2513,
+    "BMLmovi": 1111
+  },
+  "generator_process_state": "State:\tT (stopped)",
+  "paper_data_ready": false,
+  "physical_filter_executed": false,
+  "known_blockers": [
+    "Remaining available raw AMASS cohorts need serial GMR and reference export; selected CMU export lacks13 indexed sources",
+    "Paper privileged40k policy and relaxed/strict dynamic evaluations not executed",
+    "Authors private403 clips not available",
+    "Released23DoF dataset differs from paper29DoF dataset"
+  ]
+}

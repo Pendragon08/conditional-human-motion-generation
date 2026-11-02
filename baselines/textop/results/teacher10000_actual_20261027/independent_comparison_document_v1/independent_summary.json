@@ -1,0 +1,134 @@
+{
+  "status": "PAIRED64_DOCUMENT_INVOCATION_AND_AGGREGATE_REVIEW_PASSED",
+  "audited_utc": "2026-10-27T02:34:24.477927+00:00",
+  "local_actual_exit": 0,
+  "remote_actual_exit": 0,
+  "documented_invocations": 1,
+  "matched_sources": 64,
+  "stderr_empty": true,
+  "independent_local_checks_passed": 18,
+  "checks": [
+    {
+      "name": "document_snippet_verbatim",
+      "passed": true
+    },
+    {
+      "name": "documented_invocation_executed_once",
+      "passed": true
+    },
+    {
+      "name": "local_invocation_actual_exit_zero",
+      "passed": true
+    },
+    {
+      "name": "remote_verifier_actual_exit_zero",
+      "passed": true
+    },
+    {
+      "name": "local_and_remote_stderr_empty",
+      "passed": true
+    },
+    {
+      "name": "remote_recomputation_status",
+      "passed": true
+    },
+    {
+      "name": "remote_sources_matched_64",
+      "passed": true
+    },
+    {
+      "name": "reviewed_comparison_source_matches_doc_pin",
+      "passed": true
+    },
+    {
+      "name": "reviewed_comparison_spec_matches_doc_pin",
+      "passed": true
+    },
+    {
+      "name": "reviewed_endpoint_kernel_matches_spec",
+      "passed": true
+    },
+    {
+      "name": "local_public_summary_normalized_text_matches_remote_author_sha",
+      "passed": true
+    },
+    {
+      "name": "outcome_partition_exhausts_64",
+      "passed": true
+    },
+    {
+      "name": "baseline_outcome_margins",
+      "passed": true
+    },
+    {
+      "name": "new_outcome_margins",
+      "passed": true
+    },
+    {
+      "name": "endpoint_denominators_and_mean_differences",
+      "passed": true
+    },
+    {
+      "name": "each_strata_partition_has_correct_margins",
+      "passed": true
+    },
+    {
+      "name": "no_new_run_training_or_acceptance_claim",
+      "passed": true
+    },
+    {
+      "name": "new_checkpoint_bound_to_comparison_spec",
+      "passed": true
+    }
+  ],
+  "remote_summary_sha256": "ec1b4c9ae8767351208f97d87a07135918450b262d50a018a5581c8cdba64924",
+  "local_public_summary_raw_sha256": "70b1c293a6827028fc7d8e253d282d12d7ea8c7b36eea39c514f86c64c06afca",
+  "local_public_summary_transport_note": "Local CRLF differs at byte level; normalized LF UTF-8 and JSON serialization reproduce remote author summary SHA exactly.",
+  "source_sha256": "a7123517d1e343df2be1669a8faa9ba52bbf6b67214eeaeabeaafd7a54b72154",
+  "spec_sha256": "10bf2854df741534a1c31b63fb54f33068b6e14dff00bdbd513b20bba694024d",
+  "endpoint_kernel_sha256": "29195eba528ad4072c389f9b913ef3e0af38d43809bcf95dc30bf84e6c262149",
+  "outcomes": {
+    "baseline_complete": 42,
+    "baseline_failed": 22,
+    "new_complete": 46,
+    "new_failed": 18,
+    "pairs": {
+      "both_complete": 41,
+      "new_only_complete": 5,
+      "old_only_complete": 1,
+      "both_failed": 17
+    },
+    "completion_rate_change_percentage_points": 6.25
+  },
+  "endpoint_denominators": {
+    "paired_natural_completions": 41,
+    "new_all_completions": 46
+  },
+  "paired_mean_changes": {
+    "terminal_world_root_position_error_m": -0.03128113927681006,
+    "terminal_root_orientation_geodesic_rad": 0.003963440054108417,
+    "terminal_joint_rmse_rad": -0.0100600666747408
+  },
+  "doc_execution_divergences": [],
+  "documentation_observations": [
+    "SERVER_NOTES.md was inspected; no comparison-specific ledger entry was present at audit time. Existing warm tracker b7a3bf0c was documented. No ledger edit was made."
+  ],
+  "review_boundaries": [
+    "The verifier recomputes 10k endpoints and preserves the SHA-bound prior 5k endpoint audit; it does not independently reread 5k raw trajectories.",
+    "Successful recomputation reuses the pinned endpoint implementation; this is not a second independently implemented metric oracle.",
+    "Fixed64 single-checkpoint comparison only; 8214 original sources remain unattempted here.",
+    "Natural completion is not semantic acceptance, full-corpus acceptance, a paper score, or proof of intrinsic motion feasibility.",
+    "Root/joint mean errors improve, while root orientation mean worsens and root/joint p95 errors worsen.",
+    "No contact force stream or contact-conditioned slip acceptance."
+  ],
+  "new_sdk_runs": 0,
+  "new_optimizer_updates": 0,
+  "runtime_spec_output_modified": false,
+  "private_source_ids_or_arrays_exported": false,
+  "proof_files": [
+    "invocation.py",
+    "invocation.json",
+    "invocation.stdout.txt",
+    "invocation.stderr.txt"
+  ]
+}

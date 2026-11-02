@@ -1,0 +1,57 @@
+{
+  "status": "TEXTOP_TEACHER10000_PILOT_EXECUTION_COMPLETED",
+  "stage": "sample",
+  "quality_label": "TEACHER10000_DIAGNOSTIC_NOT_PAPER_COMPLETE",
+  "finished_trials": 64,
+  "complete_trials": 46,
+  "failed_trials": 18,
+  "actual_vectorized_control_calls": 5341,
+  "actual_scene_physics_steps": 21364,
+  "num_envs": 16,
+  "output_writers_closed": true,
+  "native_close_returned": false,
+  "teardown_fallback_used": true,
+  "final_reference_endpoint_comparison_performed": false,
+  "peak_torch_allocated_bytes": 8847906304,
+  "policy_checkpoint_sha256": "6f949e4edc50d9a763a3634d716162cb5ddecb079bd1142d3720f907f5efab45",
+  "policy_checkpoint_completed_iterations": 10000,
+  "policy_checkpoint_optimizer_updates": 200000,
+  "unattempted_original_sources": 8214,
+  "run": "teacher10000_sample64_v1",
+  "child_exit_code": 0,
+  "supervision_passed": true,
+  "receipt_sha256": "bfcf9c99e221ad12677f2c693ea7420cad2aaeb53b367e0be32234c8cfd2cee2",
+  "exit_sha256": "b01a8f6071ea8584df393f369c3023c485e3398104b6c3f5efb98ab8cf0cacc4",
+  "resource_samples": 25,
+  "private_archive_sha256": "acf3b0676a68989fd0bca1760fb3acf022b12bda415b136a381ca5aa50e6a407",
+  "private_archive_bytes": 33172848,
+  "private_two_location_sha_verified": true,
+  "full_library_filtered": false,
+  "generator_trained": false,
+  "actual_execution_video_created": false,
+  "private_arrays_publicly_published": false,
+  "own_tracking_metrics": {
+    "all": {
+      "trials": 64,
+      "trial_control_steps": 25454,
+      "aligned_14_body_position_error_mean_m": 0.058285300786084994,
+      "aligned_14_body_position_error_max_m": 0.7855026721954346,
+      "joint_rmse_rad": 0.24829628482195545
+    },
+    "nominal_duration_completed": {
+      "trials": 46,
+      "trial_control_steps": 22165,
+      "aligned_14_body_position_error_mean_m": 0.052983934793956605,
+      "aligned_14_body_position_error_max_m": 0.6340901255607605,
+      "joint_rmse_rad": 0.23851033140547717
+    },
+    "failed": {
+      "trials": 18,
+      "trial_control_steps": 3289,
+      "aligned_14_body_position_error_mean_m": 0.09401189768955895,
+      "aligned_14_body_position_error_max_m": 0.7855026721954346,
+      "joint_rmse_rad": 0.3061949791588689
+    }
+  },
+  "metrics_definition": "Control-step-weighted errors against consumed current targets before autoreset; 29-joint RMSE and 14-body positions; not independently checked final endpoint or paper benchmark scores"
+}

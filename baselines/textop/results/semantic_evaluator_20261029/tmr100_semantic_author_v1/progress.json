@@ -1,0 +1,197 @@
+{
+  "run": "tmr100_semantic_author_v1",
+  "observed_unix": 1793252285.9982915,
+  "files": {
+    "receipt": {
+      "run": "tmr100_semantic_author_v1",
+      "mode": "witness",
+      "role": "author",
+      "source_sha256": "72c87b1f59b0ac9228bad65957c17980efbf94300ae9c25fc113780160cc25e6",
+      "request_sha256": "79f767cb9a02b4537101b8bfa0b55bbf8d63a03105b28c259f748d67a712cf3b",
+      "policy_sha256": "c7f461f32781f30f746b6c269961ebb08a3ad2212476352ae68f0ad106767cef",
+      "runtime_binding_sha256": "de50c7a335be2afe22069cdbd22dab1bfcd91244811a04c3ef086758ebfd4fb6",
+      "status": "TMR100_REAL_SEMANTIC_EMBEDDING_WITNESS_FINISHED",
+      "output_writers_closed": true,
+      "actual_completed_trials": 2,
+      "training_optimizer_updates": 0,
+      "generator_teacher_new_updates": 0,
+      "formal_semantic_scores_computed": false,
+      "full_validation_claimed": false,
+      "continuous_transitions_claimed": false,
+      "elapsed_seconds": 10.130253100767732,
+      "actual_completed_segments": 1,
+      "per_seed_metrics": null,
+      "equal_seed_summary": null,
+      "reference_motion_retrieval_baseline": null,
+      "all_seed_mode_and_physics_failure_outputs_retained": true,
+      "raw_latent_dimensions": 256,
+      "sample_mean": true,
+      "per_sample_L2_normalization": false,
+      "new_model_loads": 2,
+      "new_gpu_contexts": 1,
+      "source_model_and_arrays_unchanged": true,
+      "maximum_actual_text_tokens": 6,
+      "text_truncation_performed": false,
+      "stochastic_sampling_or_dropout_used": false,
+      "inference_rng_unchanged": true,
+      "mean_latent_arrays": {
+        "text_mean_latents": {
+          "shape": [
+            1,
+            256
+          ],
+          "dtype": "float32",
+          "sha256": "ddc8efffdcd006cb353c79dcbf487fd454aaf84c3a73ccf0bd6bf7a588e8d099"
+        },
+        "reference_motion_mean_latents": {
+          "shape": [
+            1,
+            256
+          ],
+          "dtype": "float32",
+          "sha256": "817bb43bbb550067a1e0173c46de4a36ba9973eade799505f4d6d064c369717e"
+        },
+        "generated_motion_mean_latents": {
+          "shape": [
+            2,
+            1,
+            1,
+            256
+          ],
+          "dtype": "float32",
+          "sha256": "fa3286067ceaee6e5f0c4d1069e6d9d4c5af0bc34d6444513801d92462fb5776"
+        }
+      },
+      "private_artifacts": {
+        "raw_mean_latents.private.npz": {
+          "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr100_semantic_author_v1/raw_mean_latents.private.npz",
+          "bytes": 4964,
+          "sha256": "cedf228e507ca9c0bbc7042564735fe0aa88a3cc8f95082056c7ac8c8361fbb4"
+        },
+        "source_join.private.json": {
+          "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr100_semantic_author_v1/source_join.private.json",
+          "bytes": 860,
+          "sha256": "dd6825949a136495f6af930ec7717ad6edd1b4bd43e5fc1cc14cbad360402167"
+        }
+      },
+      "actual_segments": 1,
+      "actual_seeds": [
+        20261028
+      ],
+      "actual_modes": [
+        "conditional_cfg5",
+        "unconditional"
+      ],
+      "actual_original_generated_npz_bytes_checked": 161604,
+      "repeated_exact_text_segment_count": 0,
+      "independent_segment_protocol": true,
+      "reference_feature_tail_policy": "all and only original scored future frames, no seed/history frames",
+      "semantic_quality_or_paper_complete_claimed": false
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "CUBLAS_WORKSPACE_CONFIG=:4096:8",
+        "TOKENIZERS_PARALLELISM=false",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tmr100_semantic.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_semantic_tmr100_semantic_author_v1_request.json"
+      ],
+      "supervisor_pid": 450308,
+      "child_pid": 450315,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 12.517246613278985,
+      "supervision_passed": true,
+      "run": "tmr100_semantic_author_v1",
+      "source_sha256": "69051a6e348014135c6681c7137bd52e05dcff191de1a75a13371a6cddf61828",
+      "request_sha256": "79f767cb9a02b4537101b8bfa0b55bbf8d63a03105b28c259f748d67a712cf3b",
+      "receipt_sha256": "b6b5d45d83c8a2dfa26c2bb9ff2fc6aec64b22e48839267cca2cee1bf31da858",
+      "resource_sha256": "b5fefcd748a8b4081d900fda3fecddcef035192c3cdd8e7f24dc547ba98906d8",
+      "process_exit_sha256": "555087803b8a0ba40286151fe267d728b542339d95b704079cbf39c748856d1c"
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=1",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "CUBLAS_WORKSPACE_CONFIG=:4096:8",
+        "TOKENIZERS_PARALLELISM=false",
+        "HF_HUB_OFFLINE=1",
+        "TRANSFORMERS_OFFLINE=1",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tmr100_semantic.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_semantic_tmr100_semantic_author_v1_request.json"
+      ],
+      "supervisor_pid": 450308,
+      "child_pid": 450315,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 12.517246613278985,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    }
+  },
+  "sha256": {
+    "receipt": "b6b5d45d83c8a2dfa26c2bb9ff2fc6aec64b22e48839267cca2cee1bf31da858",
+    "exit": "faa8252d3d72fb312862226f8130aba2a6054ce8d324e75f455fc2184cecf665",
+    "process": "555087803b8a0ba40286151fe267d728b542339d95b704079cbf39c748856d1c",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+  },
+  "workers": [],
+  "common_lock_free": true,
+  "closed_execution_verified": true,
+  "closure": {
+    "receipt_sha256": "b6b5d45d83c8a2dfa26c2bb9ff2fc6aec64b22e48839267cca2cee1bf31da858",
+    "exit_sha256": "faa8252d3d72fb312862226f8130aba2a6054ce8d324e75f455fc2184cecf665",
+    "process_sha256": "555087803b8a0ba40286151fe267d728b542339d95b704079cbf39c748856d1c",
+    "resources_sha256": "b5fefcd748a8b4081d900fda3fecddcef035192c3cdd8e7f24dc547ba98906d8",
+    "outer_sha256": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+  },
+  "artifact_audit": {
+    "exact_mean_latent_artifacts_verified": true,
+    "actual_latent_arrays_checked": 3,
+    "actual_queries_preserved": 1,
+    "all_declared_seeds_modes_and_failed_physics_inputs_retained": true,
+    "semantic_scalar_recomputation": false,
+    "source_join_verified": true,
+    "model_loads_by_collector": 0,
+    "semantic_quality_or_paper_complete_claimed": false
+  },
+  "logs": {
+    "child.log": "Some weights of the model checkpoint at /data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/text_models_import_v1/text_model_0 were not used when initializing DistilBertModel: ['vocab_transform.bias', 'vocab_transform.weight', 'vocab_layer_norm.weight', 'vocab_layer_norm.bias', 'vocab_projector.bias']\n- This IS expected if you are initializing DistilBertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).\n- This IS NOT expected if you are initializing DistilBertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).\n/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/site-packages/torch/nn/modules/transformer.py:276: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. (Triggered internally at ../aten/src/ATen/NestedTensorImpl.cpp:175.)\n  output = torch._nested_tensor_from_mask(output, src_key_padding_mask.logical_not(), mask_check=False)\n",
+    "tmr100_semantic_author_v1_outer.log": ""
+  }
+}

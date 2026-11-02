@@ -1,0 +1,39 @@
+{
+  "status": "USER_REQUESTED_VAE_ETA_FROM_LAST_VERIFIED_PROGRESS_LIVE_SSH_UNAVAILABLE",
+  "run": "filtered15000_vae200k_train_v1",
+  "last_verified_step": 20500,
+  "target_steps": 200000,
+  "last_verified_optimizer_updates": 20500,
+  "skipped_updates": 0,
+  "last_verified_beijing": "2026-10-28T03:49:30.533382+08:00",
+  "progress_fraction": 0.1025,
+  "recent_steps_per_second": 2.734422003130346,
+  "recent_steps_per_hour": 9843.919211269245,
+  "remaining_seconds_at_last_verified_sample": 65644.58587391036,
+  "projected_vae_completion_beijing": "2026-10-28T22:03:35.119256+08:00",
+  "estimate_not_guarantee": true,
+  "later_curriculum_throughput_unmeasured": true,
+  "live_connection_attempts": [
+    {
+      "file": "user_vae_eta_20261028_v1_client.json",
+      "sha256": "aa2443a081df601bc72f9c56df147d6ecaf8d4f3433c89c6785cb1263ab10189",
+      "actual_exit_code": 255,
+      "client_reaped": true,
+      "stderr": "ssh: connect to host 10.147.17.32 port 22: Connection timed out\n"
+    },
+    {
+      "file": "user_vae_eta_20261028_v2_client.json",
+      "sha256": "90c8eb67c2f00ad34441beecac5fb1b2310e0403ed112eaaf2a0727de68977dd",
+      "actual_exit_code": 255,
+      "client_reaped": true,
+      "stderr": "ssh: connect to host 10.147.17.32 port 22: Connection timed out\n"
+    }
+  ],
+  "training_exit_observed": false,
+  "training_state_after_last_success": "UNKNOWN_NOT_DECLARED_FAILED_OR_STOPPED",
+  "generator_restarted": false,
+  "signals_sent": false,
+  "ldm_autostart_authorized": true,
+  "ldm_actual_capacity_acceptance_pending": true,
+  "ldm_start_requires": "Actual VAE200k save/quality/restore/all exits/lock release, CPU inference export, persistent capacity and two actual LDM gradient/helper witnesses"
+}

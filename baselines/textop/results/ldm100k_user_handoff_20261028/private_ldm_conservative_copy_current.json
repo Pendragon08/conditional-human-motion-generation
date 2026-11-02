@@ -1,0 +1,128 @@
+{
+  "dispatch.json": {
+    "status": "PRIVATE_LDM100K_COPY_DISPATCHED_NOT_VERIFIED",
+    "worker_pid": 40680,
+    "worker_start_filetime": 134376769272556054,
+    "command": [
+      "C:\\Users\\Pende\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-B",
+      "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\provider_tools\\resume_private_ldm100k_copy.py",
+      "--run",
+      "pld100_v3",
+      "--transfer-profile",
+      "conservative",
+      "--worker"
+    ],
+    "D_evidence_dir": "D:\\\u5177\u8eab\u667a\u80fd\\TextOp\u590d\u73b0_20261024\\checkpoints\\private\\ldm100k_endpoint_20261028\\transfers\\pld100_v3",
+    "transfer_profile": "conservative",
+    "started_unix": 1793203327.2777123
+  },
+  "before_client.json": {
+    "command": [
+      "ssh",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=15",
+      "-o",
+      "ServerAliveInterval=30",
+      "-i",
+      "C:/Users/Pende/.ssh/id_ed25519",
+      "ouyanghao@10.147.17.32",
+      "python3 -"
+    ],
+    "timeout_seconds": 180,
+    "stage": "SSH_CLIENT_DISPATCH_INTENT",
+    "script_sha256": "c8e68e4e5092928bb1c5d3c74b3a83e44eeaed36fc2309cb9ae450b384cf89c5",
+    "client_pid": 29940,
+    "actual_client_exit_code": 0,
+    "client_reaped": true,
+    "timed_out": false,
+    "stdout": "{\"fingerprint\": {\"path\": \"/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints/ldm_state_100000.pth\", \"bytes\": 223731415, \"sha256\": \"9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea\", \"device\": 66306, \"inode\": 28451396, \"mtime_ns\": 1793200012442798870, \"ctime_ns\": 1793200012538799518, \"owner_uid\": 1013, \"checkpoint_payload_deserialized\": false}, \"prefix_sha256\": \"f1cff40b9a5557f6a0a70880404d821f32fbe254ffc84424ab12ee2fcee91d1b\"}\n",
+    "stderr": "",
+    "error": null,
+    "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+    "direct_stream_files": {
+      "stdout": "D:\\\u5177\u8eab\u667a\u80fd\\TextOp\u590d\u73b0_20261024\\checkpoints\\private\\ldm100k_endpoint_20261028\\transfers\\pld100_v3\\before_client.stdout.txt",
+      "stderr": "D:\\\u5177\u8eab\u667a\u80fd\\TextOp\u590d\u73b0_20261024\\checkpoints\\private\\ldm100k_endpoint_20261028\\transfers\\pld100_v3\\before_client.stderr.txt"
+    },
+    "streams_final": true,
+    "output_may_grow": false
+  },
+  "intent.json": {
+    "checkpoint": {
+      "path": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints/ldm_state_100000.pth",
+      "bytes": 223731415,
+      "sha256": "9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea",
+      "manager_step": 100000,
+      "actual_optimizer_updates": 100000
+    },
+    "export_binding": {
+      "run": "user_ldm100k_prefix_export_v1",
+      "spec_sha256": "b52021e20a8dd5463b5e2075deb35eb5fdb538f3bcbf18bd889dd8708b038ac8",
+      "receipt_sha256": "2ff0b614fe3b4f1ecbeeb370ec968d99f3005b7e8bed6b50517c3eb066630b89",
+      "exit_sha256": "3de6f7f4dbd65050db2701396ecc7f13455aed8180b0db1b7e3e91f2be19dd62",
+      "inference": {
+        "path": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/inference/ldm100000_inference.private.pth",
+        "bytes": 81391655,
+        "sha256": "5faca9293e76cb3ec04dd4c49aeee3de85d6897dcfcf25027d88d5e96c81aab5"
+      }
+    },
+    "prefix_bytes": 3768320,
+    "prefix_sha256": "f1cff40b9a5557f6a0a70880404d821f32fbe254ffc84424ab12ee2fcee91d1b",
+    "source_fingerprint": {
+      "path": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints/ldm_state_100000.pth",
+      "bytes": 223731415,
+      "sha256": "9d2bf5db6898afa228d55352190cc4216b5cc3c61723529dd369d81a5a6545ea",
+      "device": 66306,
+      "inode": 28451396,
+      "mtime_ns": 1793200012442798870,
+      "ctime_ns": 1793200012538799518,
+      "owner_uid": 1013,
+      "checkpoint_payload_deserialized": false
+    },
+    "transfer_profile": "conservative",
+    "new_model_loads": 0,
+    "new_gpu_contexts": 0
+  },
+  "client_intent.json": {
+    "command": [
+      "sftp",
+      "-R",
+      "1",
+      "-B",
+      "16384",
+      "-o",
+      "ServerAliveCountMax=12",
+      "-b",
+      "-",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=30",
+      "-o",
+      "ServerAliveInterval=10",
+      "-i",
+      "C:/Users/Pende/.ssh/id_ed25519",
+      "ouyanghao@10.147.17.32"
+    ],
+    "pid": 58360,
+    "start_filetime": 134376769440599373,
+    "timeout_seconds": 21600,
+    "started_unix": 1793203344.0994048,
+    "prefix_bytes": 3768320,
+    "transfer_profile": "conservative"
+  },
+  "client_outcome.json": null,
+  "worker_exit.json": null,
+  "backup.json": null,
+  "latest_resource": {
+    "unix": 1793203704.2770483,
+    "bytes": 5685248,
+    "D_free_bytes": 5934514176,
+    "client_pid": 58360
+  },
+  "observed_unix": 1793203718.1849825,
+  "C_free_bytes": 3583397888,
+  "D_free_bytes": 5934448640
+}

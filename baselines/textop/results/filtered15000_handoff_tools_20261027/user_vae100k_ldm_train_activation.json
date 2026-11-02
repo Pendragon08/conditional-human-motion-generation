@@ -1,0 +1,73 @@
+{
+  "status": "NEW_FILTERED_LDM300K_ENABLED_NOT_DISPATCHED",
+  "new_spec_sha256": "654332646f2aa4bb69fea4cc779edf88138735a0ca9f5e5906e783948868c770",
+  "readiness": {
+    "status": "ACTUAL_FILTERED_CORPUS_AND_TWO_GRADIENT_RESTORE_WITNESSES_ACCEPTED",
+    "filtered_corpus_accepted": true,
+    "formal_training_ready": true,
+    "generator_started": false,
+    "runtime_binding_sha256": "323349d38cef74e07215ab81c8919879512a2391552c9187151eb6a8a521b7ff",
+    "checkpoint_capacity": {
+      "layout_sha256": "b1edac05c98e2dd3298789f4b9aad35aea226b5ad348ff580a6ebcae7bb852d1",
+      "volumes": [
+        {
+          "volume": "home",
+          "destination": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints",
+          "filesystem": "ext4",
+          "device": 66306,
+          "owner_uid": 1013,
+          "free_bytes": 3111071744,
+          "required_bytes": 2776629248,
+          "remaining_slots": 2,
+          "cache_budget_bytes": 0,
+          "reserve_bytes": 2147483648,
+          "log_allowance_bytes": 0
+        },
+        {
+          "volume": "data",
+          "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/user_vae100k_ldm_dual/checkpoints",
+          "filesystem": "ext4",
+          "device": 2048,
+          "owner_uid": 1013,
+          "free_bytes": 3460374528,
+          "required_bytes": 3313500160,
+          "remaining_slots": 2,
+          "cache_budget_bytes": 0,
+          "reserve_bytes": 2147483648,
+          "log_allowance_bytes": 536870912
+        }
+      ],
+      "pending_steps": [
+        100000,
+        200000,
+        300000
+      ],
+      "reserve_emergency": true,
+      "global_log_budget_bytes": 536870912,
+      "reserve_on_each_filesystem_bytes": 2147483648
+    },
+    "data_acceptance_sha256": "0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c",
+    "corpus_receipt_sha256": "fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427",
+    "witnesses": [
+      {
+        "run": "user_vae100k_ldm_author_v1",
+        "receipt_sha256": "bd1612e1a7414d8d38aaa217216c6b5bb5e7e90bd7aa7bf84478f5eb94e8c6e8",
+        "exit_sha256": "f95a0b8e2e87bcb71888b3e056ce4781633d237cb6dd7c2e953465eb323e8524"
+      },
+      {
+        "run": "user_vae100k_ldm_document_v1",
+        "receipt_sha256": "195991ec88dc7c168c6a3b733352ad2341a6846dae3ae84c968dd40d1b827a0a",
+        "exit_sha256": "d84f90a0c1de75eaad4bcad1f441be2038529901cf81e613b1c027b5d5b48859"
+      }
+    ],
+    "fresh_document_summary_sha256": "1af9100a0520660d5ba2907255604198490c1acb99b057b016a77a1c2ae10c86",
+    "vae_inference_sha256": "3f36bcbccdee10a8c1c2eb67b0614be63b32bd8a05cff92de23cc358087117f4",
+    "real_full_history_helper_forward_calls_per_witness": 5,
+    "formal_later_stage_training_reached": false,
+    "diagnostic_weights_reused": false,
+    "new_training_steps": 0,
+    "paper_two_stage_route_reproduced": false
+  },
+  "new_gpu_contexts": 0,
+  "new_model_loads": 0
+}

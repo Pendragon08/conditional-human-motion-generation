@@ -1,0 +1,173 @@
+{
+  "run": "user_augmentation5368_scope_v1",
+  "observed_unix": 1793231486.910235,
+  "files": {
+    "receipt": {
+      "status": "USER_STEP3_AUGMENTATION5368_METADATA_SCOPE_BUILT",
+      "run": "user_augmentation5368_scope_v1",
+      "source_sha256": "2964dd3a2f19980540da89694ff551ea6bf16fa196ffbc2ef968ab6c6654e25d",
+      "request_sha256": "e0b5086ef7547d6bffc7161cf715f19b427640c63638599b7b83b65021d030ed",
+      "train_scope_receipt_sha256": "f355de1c947487d750cbe3d59c51d78c8853a36315c659a3b08b4876df7273d2",
+      "private_artifact": {
+        "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/step34_20261029/user_augmentation5368_scope_v1/augmentation_scope.private.json",
+        "bytes": 17889511,
+        "sha256": "ac49c12afeedc8703cf2c3b8c8e19df4c25fc691c2220df9d927d32d3552cbb4"
+      },
+      "summary": {
+        "planned_clips": 5368,
+        "planned_control_intervals": 5666400,
+        "planned_pose_frames": 5671768,
+        "target_duration_hours": "31.48",
+        "duration_definition": "sum(T_minus_1)/50; seed history and padding tails excluded",
+        "per_clip_interval_counts": {
+          "1055": 2208,
+          "1056": 3160
+        },
+        "fps": 50,
+        "train_family_count": 5361,
+        "train_text_count": 4043,
+        "annotation_chunk_sampling_population": 34068,
+        "eligible_three_pose_initial_seed_families": 5361,
+        "original_RL_clip_count": 5551,
+        "original_RL_control_intervals": 2835665,
+        "original_maximum_clip_control_seconds": 39.98,
+        "original_VAL_families_used": 0,
+        "train_internal_holdout_is_still_original_TRAIN": true,
+        "fixed_seed": 20261029,
+        "minimum_command_native_calls": 12,
+        "maximum_command_native_calls": 50,
+        "labels_per_stream": [
+          3,
+          4,
+          5
+        ],
+        "text_sampling": "uniform accepted TRAIN annotation-chunk rows with unequal phrase frequencies retained",
+        "initial_seed_history": "two past reference features from three TRAIN seed poses, then only generated history",
+        "author_exact_text_schedule_or_duration_claimed": false,
+        "paper_reported_clips": 5368,
+        "paper_reported_hours": "31.48",
+        "paper_reported_text_stream_seconds": 20,
+        "paper_20s_times_count_hours": "29.82222222222222222222222222",
+        "user_target_duration_overrides_unresolved_paper20s_total_mismatch": true,
+        "canonical_qpos36_contact2_float32_payload_bytes": 862108736,
+        "optional_generated69D_float32_payload_bytes": 1565407968,
+        "derived_body30_joint29_float32_reference_payload_bytes": 10163808256,
+        "private_clip_container_header_allowance_bytes": 21987328,
+        "actual_generated_clips": 0,
+        "actual_generated_hours": 0,
+        "actual_RL_updates": 0
+      },
+      "actual_models_loaded": 0,
+      "actual_motion_arrays_read": 0,
+      "actual_GPU_contexts": 0,
+      "actual_generated_clips": 0,
+      "actual_PPO_updates": 0,
+      "actual_new_SDK_tasks": 0,
+      "output_writers_closed": true,
+      "elapsed_seconds": 1.2145528998225927
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/usr/bin/python3",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/build_augmentation5368_scope.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/user-augmentation5368-scope-spec.json"
+      ],
+      "supervisor_pid": 426742,
+      "child_pid": 426747,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 1.6638159863650799,
+      "supervision_passed": true,
+      "run": "user_augmentation5368_scope_v1",
+      "source_sha256": "d4a5454c531c17a0a5158fb71e19cc5f08b8ce6cd5487cf409d2327525871505",
+      "request_sha256": "e0b5086ef7547d6bffc7161cf715f19b427640c63638599b7b83b65021d030ed",
+      "receipt_sha256": "ca9f6d2c6f6dd15e8f2c46987b1e8094d0fd94e14977e393201a9aa454cce901",
+      "resources_sha256": "c34c590eb85311584c1b6a30035121649acf07063510386a9f186d2387bd1940",
+      "process_exit_sha256": "7f42b9e3375b2ae494e3a893c5b525410f5b0eb79bf5d098ed018443aa8d0ced",
+      "model_lock_acquired": false
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/usr/bin/python3",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/build_augmentation5368_scope.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/user-augmentation5368-scope-spec.json"
+      ],
+      "supervisor_pid": 426742,
+      "child_pid": 426747,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 1.6638159863650799,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    }
+  },
+  "closed_execution_verified": true,
+  "metadata_lock_released": true,
+  "common_model_lock_released": false,
+  "active_training_identity": {
+    "416285": {
+      "starttime": "1441791429",
+      "argv": "python3 /data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_tmr69d_evaluator_training.py --request /data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tmr69d-evaluator-train-spec.json "
+    },
+    "416293": {
+      "starttime": "1441791443",
+      "argv": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python -B /data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_tmr69d_evaluator.py --request /data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tmr69d-evaluator-train-spec.json "
+    }
+  },
+  "filesystem_capacity": {
+    "data": {
+      "free_bytes": 2390249472,
+      "total_bytes": 1967847137280,
+      "device_id": 2048,
+      "mount_info": "ext4   /data"
+    },
+    "home": {
+      "free_bytes": 3004858368,
+      "total_bytes": 502918963200,
+      "device_id": 66306,
+      "mount_info": "ext4   /"
+    },
+    "evaluation": {
+      "free_bytes": 3004858368,
+      "total_bytes": 502918963200,
+      "device_id": 66306,
+      "mount_info": "ext4   /"
+    }
+  },
+  "warm_read_only_paths_present": true,
+  "robot_urdf_sha256": "dbc8471004e9b0b85c27a4ebc1f0d90a727c1cf7ca9ef507b805596f2004d64b",
+  "new_SDK_or_model_kernel_executed": false,
+  "actual_new_models": 0,
+  "actual_new_RL_updates": 0,
+  "gpu1_snapshot": "35889, 12661"
+}

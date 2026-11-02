@@ -1,0 +1,146 @@
+{
+  "run": "user_ldm100k_generated_physics_v1",
+  "observed_unix": 1793210237.443726,
+  "files": {
+    "receipt": {
+      "status": "RUNNING_TEACHER15000_STRICT",
+      "run": "user_ldm100k_generated_physics_v1",
+      "mode": "generated_ldm100k_strict",
+      "stage": "full",
+      "quality_label": "GENERATED_LDM100K_32FAMILY_FIVESEED_FROZEN_TEACHER15000_STRICT",
+      "source_sha256": "3adc615e2b1e7c54d2d4501362f7ba1d0d660a547c9b4bf75939efd2a033bc42",
+      "request_sha256": "deeefd742d1f5d37ba7b35be2b34ced8c9b044e8d306eedd41836909ddba89db",
+      "input_fk_receipt_sha256": "e2bb1ccd5c2cb795ee54aeb21dcaf2a11d83d022da68ea2ad56f71a05085a768",
+      "input_manifest_sha256": "f277d4df6888f7253235c9a5bf32ddf1a960be3a6b6c48a58e0333449dfb0453",
+      "declared_trials": 1880,
+      "reference_sources": 1880,
+      "replayed_generated_trials": 1880,
+      "source_selection": "all1880 actual generated seed/mode futures; duration order independent of outcomes",
+      "policy_checkpoint_sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
+      "policy_checkpoint_completed_iterations": 15000,
+      "policy_checkpoint_optimizer_updates": 300000,
+      "policy_original_reference_fingerprint": "0b786ba08bf8f33aa92cb4e91ed72cd5b56159c4e251cedf88f429269141c1f7",
+      "optimizer_updates": 0,
+      "physical_filter_executed": false,
+      "dataset_accepted": false,
+      "whole_library_filtered": false,
+      "full_generator_training_started": false,
+      "output_writers_closed": false,
+      "actual_execution_video_created": false,
+      "cpu_affinity": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "final_endpoint_changes_strict_decision": false,
+      "elapsed_seconds": 374.0114301983267,
+      "generated_reference_fingerprint": "f2ec3f7f685071003c349c04dff8930df328bf988c28d0f46236be70121ecb1d",
+      "reference_fingerprint": "f2ec3f7f685071003c349c04dff8930df328bf988c28d0f46236be70121ecb1d",
+      "planned_maximum_control_calls": 12291,
+      "strict_rollouts_per_motion": 1,
+      "direct_replay_bypasses_historical_ema_selection": true,
+      "contact_profile": {
+        "kind": "validated_static_solid_floor",
+        "top_z": 0.0,
+        "dimensions_m": [
+          4000,
+          4000,
+          0.2
+        ],
+        "static_friction": 1.0,
+        "dynamic_friction": 1.0,
+        "restitution": 0.0,
+        "combine_mode": "multiply",
+        "self_collisions": true,
+        "validation_witnesses": [
+          {
+            "run": "solid_floor_ppo_author_v1",
+            "receipt_sha256": "3e02a9fb9d312e8f36321ae9b4d0a5dc04e038dd569eb859c615d3e28ecd4339",
+            "actual_iterations": 10,
+            "actual_optimizer_updates": 200
+          },
+          {
+            "run": "solid_floor_ppo_document_v2",
+            "receipt_sha256": "597ddb5508264769bb7953a62697ad82120b0a84ad74291112467dd8952acf7d",
+            "actual_iterations": 10,
+            "actual_optimizer_updates": 200
+          }
+        ],
+        "author_exact_collision_geometry_available": false,
+        "long_run_convergence_established": false,
+        "data_or_reward_changes": false
+      },
+      "contact_profile_sha256": "0ebb5fcbbe2a5e93db71a6ba661077b617bb0462c6569a72608d6064ef966fb0",
+      "num_envs": 16,
+      "quick_pilot_executed": false,
+      "physical_tracking_executed": true,
+      "finished_trials": 1616,
+      "complete_trials": 1612,
+      "failed_trials": 4,
+      "actual_vectorized_control_calls": 9050,
+      "actual_scene_physics_steps": 36200
+    }
+  },
+  "sha256": {
+    "receipt": "7e0a84b7e7ad3a5749fea1e163c0451493f7bf7a70e5a9044d8a224d111eb4c8"
+  },
+  "workers": [
+    {
+      "pid": 394251,
+      "start_ticks": "1440741521",
+      "state": "S",
+      "argv": [
+        "python3",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_ldm100k_generated_physics.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_generated_physics_user_ldm100k_generated_physics_v1_request.json",
+        ""
+      ]
+    },
+    {
+      "pid": 394256,
+      "start_ticks": "1440741531",
+      "state": "S",
+      "argv": [
+        "/bin/bash",
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/python.sh",
+        "-u",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/evaluate_ldm100k_generated_physics.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_generated_physics_user_ldm100k_generated_physics_v1_request.json",
+        "--device",
+        "cuda:1",
+        "--headless",
+        ""
+      ]
+    },
+    {
+      "pid": 394263,
+      "start_ticks": "1440741532",
+      "state": "R",
+      "argv": [
+        "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/kit/python/bin/python3",
+        "-u",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/evaluate_ldm100k_generated_physics.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/ldm100k_generated_physics_user_ldm100k_generated_physics_v1_request.json",
+        "--device",
+        "cuda:1",
+        "--headless",
+        ""
+      ]
+    }
+  ],
+  "common_lock_free": false,
+  "closed_execution_verified": false,
+  "artifact_audit": null,
+  "logs": {
+    "child.log": "      |    (3,)    |\n+-----------+----------------------------------+------------+\n\n[INFO] Termination Manager:  <TerminationManager> contains 4 active terms.\n+------------------------------------+\n|      Active Termination Terms      |\n+-------+-----------------+----------+\n| Index | Name            | Time Out |\n+-------+-----------------+----------+\n|   0   | anchor_pos      |  False   |\n|   1   | anchor_ori      |  False   |\n|   2   | ee_body_pos     |  False   |\n|   3   | motion_complete |   True   |\n+-------+-----------------+----------+\n\n[INFO] Reward Manager:  <RewardManager> contains 14 active terms.\n+--------------------------------------------+\n|            Active Reward Terms             |\n+-------+--------------------------+---------+\n| Index | Name                     |  Weight |\n+-------+--------------------------+---------+\n|   0   | motion_global_anchor_pos |     0.5 |\n|   1   | motion_global_anchor_ori |     0.5 |\n|   2   | motion_body_pos          |     1.0 |\n|   3   | motion_body_ori          |     1.0 |\n|   4   | motion_body_lin_vel      |     1.0 |\n|   5   | motion_body_ang_vel      |     1.0 |\n|   6   | action_rate_l2           |    -0.1 |\n|   7   | joint_limit              |   -10.0 |\n|   8   | undesired_contacts       |    -0.1 |\n|   9   | feet_force               |    -0.0 |\n|   10  | feet_slide               |    -0.3 |\n|   11  | soft_landing             | -0.0003 |\n|   12  | overspeed                |    -1.0 |\n|   13  | overeffort               |    -1.0 |\n+-------+--------------------------+---------+\n\n[INFO] Curriculum Manager:  <CurriculumManager> contains 0 active terms.\n+----------------------+\n| Active Curriculum Terms |\n+-----------+----------+\n|   Index   | Name     |\n+-----------+----------+\n+-----------+----------+\n\n[INFO]: Completed setting up the environment...\nActor MLP: Sequential(\n  (0): Linear(in_features=557, out_features=2048, bias=True)\n  (1): ELU(alpha=1.0)\n  (2): Linear(in_features=2048, out_features=1024, bias=True)\n  (3): ELU(alpha=1.0)\n  (4): Linear(in_features=1024, out_features=512, bias=True)\n  (5): ELU(alpha=1.0)\n  (6): Linear(in_features=512, out_features=29, bias=True)\n)\nCritic MLP: Sequential(\n  (0): Linear(in_features=557, out_features=2048, bias=True)\n  (1): ELU(alpha=1.0)\n  (2): Linear(in_features=2048, out_features=1024, bias=True)\n  (3): ELU(alpha=1.0)\n  (4): Linear(in_features=1024, out_features=512, bias=True)\n  (5): ELU(alpha=1.0)\n  (6): Linear(in_features=512, out_features=1, bias=True)\n)\n",
+    "user_ldm100k_generated_physics_v1_outer.log": ""
+  },
+  "disks": {
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 3221704704,
+    "/home/ouyanghao/textop-user100k-evaluation-20261029": 3023650816
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "schema": "textop.teacher15000_control_document.v1",
+  "status": "PASS_READ_ONLY_OBSERVE_AND_STATIC_PROVENANCE_REVIEW",
+  "created_utc": "2026-10-27T13:29:29.568893+00:00",
+  "documented_invocation_count": 1,
+  "actual_command_exit_code": 0,
+  "actual_ssh_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "remote_subprocess_exit_code": 0,
+  "remote_exit_basis": "The documented wrapper returns subprocess.run(...).returncode through SSH; captured actual SSH return code is zero.",
+  "guide_sha256": "5f000343c63ccd5970ff631081358ad91c5b220818c42914ddb7807b920045ee",
+  "control_spec_sha256": "10c643b21e26927c55682ee2f501da846045f92f487d9cbede97159f086ae434",
+  "control_source_sha256": "985f450826cf8140167b440b81a6f9c817b94ba35a909bdc155f8818e6a806a6",
+  "original_control_source_sha256": "12308bcaace6bee7b9f953d6d887ae706fd0486671a5bbc7baf772d1c0649181",
+  "observed": {
+    "status": "TEACHER15000_CHECKPOINT_READY",
+    "run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+    "evaluation_checkpoint": 15000,
+    "observed_completed": 15200,
+    "optimizer_updates": 304000,
+    "target_checkpoint_ready": true,
+    "checkpoint": {
+      "name": "completed_15000.pt",
+      "bytes": 90799682,
+      "sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
+      "completed_learning_iterations": 15000,
+      "actual_optimizer_updates": 300000
+    },
+    "gate": {
+      "ready": true,
+      "status": "FILTER_RECOVERY_CHECKPOINT_READY_FOR_CPU_AUDIT",
+      "observed_completed": 15200,
+      "metadata": {
+        "name": "completed_15000.pt",
+        "bytes": 90799682,
+        "sha256": "66e87c9471d2860f1b43a18a41e938c12647c93212f1fe44c8be1f1b27febc88",
+        "completed_learning_iterations": 15000,
+        "actual_optimizer_updates": 300000
+      },
+      "run": "filter_policy_paper69_resume10000_filter_recovery_20261027_v1",
+      "requested_completed": 15000,
+      "training_receipt_sha256": "38e9d1bca3423df7fa5cff32a06a89e62188057a214a73972da96ea244b7d900",
+      "launch_sha256": "a9ad5b7dd555fe567efee3ca0199f0bce2553b93434dad7da50b882afc04f1f9",
+      "sdk_dispatches": 0,
+      "checkpoint_loads": 0,
+      "export_files_created": 0,
+      "checkpoint": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/filter_policy_paper69_resume10000_filter_recovery_20261027_v1/completed_15000.pt",
+      "file_age_seconds": 1555.37388753891
+    },
+    "trainer_pid": 4190451,
+    "trainer_start_ticks": 1427248665,
+    "owned_group": 4190443,
+    "enabled": true,
+    "signals_sent": [],
+    "sdk_runs": 0,
+    "control_spec_sha256": "10c643b21e26927c55682ee2f501da846045f92f487d9cbede97159f086ae434",
+    "sample_unix": 1793107527.0037785
+  },
+  "checks": [
+    {
+      "name": "documented_observe_executed_exactly_once",
+      "passed": true
+    },
+    {
+      "name": "actual_command_and_ssh_client_exit_zero",
+      "passed": true
+    },
+    {
+      "name": "target_checkpoint_15000_updates_300000",
+      "passed": true
+    },
+    {
+      "name": "stable_checkpoint_sha_verified_by_observe",
+      "passed": true
+    },
+    {
+      "name": "exact_recovery_run_and_process_identity",
+      "passed": true
+    },
+    {
+      "name": "no_pending_or_done_stop_branch_at_observation",
+      "passed": true
+    },
+    {
+      "name": "one_matching_teacher_in_owned_group",
+      "passed": true,
+      "basis": "Successful validate_identity requires exactly one matching Python trainer in the bound group; no global host census claimed."
+    },
+    {
+      "name": "twenty_frozen_bindings_plus_recovery_supervisor_and_resume_spec_unchanged",
+      "passed": true
+    },
+    {
+      "name": "three_control_bindings_and_backup_spec_match",
+      "passed": true
+    },
+    {
+      "name": "original10k_control_matches_original_bound_digest",
+      "passed": true
+    },
+    {
+      "name": "static_diff_retains_signal_and_completion_logic",
+      "passed": true,
+      "basis": "Unified diff reviewed; only docstring, recovery protocol/spec/supervisor/prefix/receipt names, checkpoint and update substitutions."
+    },
+    {
+      "name": "pidfd_implementation_unchanged",
+      "passed": true
+    },
+    {
+      "name": "existing_cpu_audit_matches_observed_checkpoint",
+      "passed": true
+    },
+    {
+      "name": "observe_has_no_signal_sdk_model_load_or_export",
+      "passed": true
+    },
+    {
+      "name": "all8278_direct_route_preserves_ema_result_and_no_training_or_evaluation_launch",
+      "passed": true
+    }
+  ],
+  "checks_passed": 15,
+  "blocking_discrepancies": [],
+  "documentation_differences": [
+    {
+      "severity": "informational",
+      "detail": "Provider ledger current checkpoint-preparation text still says positive15k audit pending, while the existing CPU audit now records an actual successful15k audit. New15k guide and latest explicit user route supersede older continue-training ledger instructions. No document/source was edited by this reviewer."
+    }
+  ],
+  "backup_snapshot": {
+    "status": "PRIVATE_FULL_AND_PUBLIC_INFERENCE_LOCAL_VERIFIED",
+    "updated_unix": 1793107753.278385,
+    "sha256": "184c7dc0143048c179468967d42c2f08b6507aeb63ee3f4dca45bfe603848173",
+    "cpu_audit_passed": true,
+    "full_backup_complete_at_review": false
+  },
+  "remaining_prerequisites_for_parent_finish": [
+    "Completed private server+D and public inference GitHub verification, plus run-bound server teacher15000_backup_verified.json matching checkpoint/spec, remains required by finish. Existing backup job was not touched or relaunched.",
+    "Actual stop, three original exits and common-lock release must be proved by parent finish; this observe/static review does not certify them."
+  ],
+  "review_tooling_incident": {
+    "local_static_read_initial_exit": 1,
+    "reason": "Reviewer ad-hoc JSON read used platform GBK default and failed UnicodeDecodeError. Corrected only the read command to explicit UTF-8; local static read then exited0. Documented observe was not repeated and no source was changed."
+  },
+  "limitations": [
+    "One matching teacher was established within the bound owned group, not a fresh whole-host process census.",
+    "Finish, pending/no-resignal and exit branches were reviewed statically against the original controller, not exercised in fixtures or on the trainer.",
+    "CPU audit provenance was read from existing evidence; no model or checkpoint was loaded by this reviewer."
+  ],
+  "actions": {
+    "signals_sent": 0,
+    "sdk_runs": 0,
+    "model_loads": 0,
+    "new_optimizer_updates": 0,
+    "backup_launches": 0,
+    "old_fixture_runs": 0,
+    "source_changes": 0,
+    "stop_or_finish_invocations": 0
+  },
+  "actual_stop_certified": false,
+  "physical_filter_completed": false,
+  "paper_40000_completed": false
+}

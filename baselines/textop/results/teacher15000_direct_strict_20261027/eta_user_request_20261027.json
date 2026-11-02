@@ -1,0 +1,30 @@
+{
+  "schema": "textop.measured_strict_eta.v1",
+  "sample_beijing": "2026-10-27T22:02:25.962423+08:00",
+  "run": "teacher15000_direct_full_v1",
+  "source_progress_sha256": "8f7bb99798da49ce3c080121328c1fe486de21661744ba993cf4faea784b2c07",
+  "finished": 1856,
+  "passed": 1621,
+  "failed": 235,
+  "pending": 6422,
+  "recent_control_calls_per_second": [
+    24.74301459724171,
+    24.948830439657264
+  ],
+  "median_control_calls_per_second": 24.845922518449488,
+  "planned_maximum_control_calls": 313378,
+  "completed_control_calls": 16430,
+  "remaining_planned_calls_conservative": 296948,
+  "estimated_remaining_seconds": 11951.578766274406,
+  "estimated_finish_beijing": "2026-10-28T01:21:37.541190+08:00",
+  "rounded_window_beijing": [
+    "2026-10-28T01:02:25.962423+08:00",
+    "2026-10-28T01:32:25.962423+08:00"
+  ],
+  "assumptions": [
+    "Recent throughput continues on shared GPU",
+    "Longer motions follow shorter motions; action count is not a linear work measure",
+    "Remaining maximum planned vector calls overestimates work if all environments terminate early in a batch"
+  ],
+  "scope": "Full physical replay only; closed-result audit, accepted corpus and generator launch follow automatically"
+}

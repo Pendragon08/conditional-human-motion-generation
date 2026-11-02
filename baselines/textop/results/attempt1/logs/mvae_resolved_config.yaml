@@ -1,0 +1,1701 @@
+project_name: RobotMDAR
+expname: TextOp_Public_Full_MVAE_20261024
+task: train-mvae
+seed: 0
+device: cuda
+timestamp: '20261024_153320'
+base_dir: /data/code/ouyanghao/oyh/textop-reproduction-20261024/runs
+experiment_dir: /data/code/ouyanghao/oyh/textop-reproduction-20261024/runs/RobotMDAR/TextOp_Public_Full_MVAE_20261024/train-mvae-20261024_153320
+nfeats: 57
+foot_dof_indices:
+  left_foot: 5
+  right_foot: 11
+ckpt:
+  vae: null
+  dar: null
+  load_cfg: null
+data:
+  skeleton:
+    motion_lib_type: origin
+    asset:
+      assetRoot: /data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/description/robots/g1
+      assetFileName: g1_23dof_lock_wrist_fitmotionONLY.xml
+    humanoid_type: g1_23dof_lock_wrist
+    bias_offset: false
+    has_self_collision: true
+    has_mesh: false
+    has_jt_limit: false
+    has_dof_subset: true
+    has_upright_start: true
+    has_smpl_pd_offset: false
+    remove_toe: false
+    motion_sym_loss: false
+    sym_loss_coef: 1
+    big_ankle: true
+    has_shape_obs: false
+    has_shape_obs_disc: false
+    has_shape_variation: false
+    masterfoot: false
+    freeze_toe: false
+    freeze_hand: false
+    box_body: true
+    real_weight: true
+    real_weight_porpotion_capsules: true
+    real_weight_porpotion_boxes: true
+    body_names:
+    - pelvis
+    - left_hip_pitch_link
+    - left_hip_roll_link
+    - left_hip_yaw_link
+    - left_knee_link
+    - left_ankle_pitch_link
+    - left_ankle_roll_link
+    - right_hip_pitch_link
+    - right_hip_roll_link
+    - right_hip_yaw_link
+    - right_knee_link
+    - right_ankle_pitch_link
+    - right_ankle_roll_link
+    - waist_yaw_link
+    - waist_roll_link
+    - torso_link
+    - left_shoulder_pitch_link
+    - left_shoulder_roll_link
+    - left_shoulder_yaw_link
+    - left_elbow_link
+    - right_shoulder_pitch_link
+    - right_shoulder_roll_link
+    - right_shoulder_yaw_link
+    - right_elbow_link
+    limb_weight_group:
+    - - left_hip_pitch_link
+      - left_hip_roll_link
+      - left_hip_yaw_link
+      - left_knee_link
+      - left_ankle_pitch_link
+      - left_ankle_roll_link
+    - - right_hip_pitch_link
+      - right_hip_roll_link
+      - right_hip_yaw_link
+      - right_knee_link
+      - right_ankle_pitch_link
+      - right_ankle_roll_link
+    - - pelvis
+      - waist_yaw_link
+      - waist_roll_link
+      - torso_link
+    - - left_shoulder_pitch_link
+      - left_shoulder_roll_link
+      - left_shoulder_yaw_link
+      - left_elbow_link
+    - - right_shoulder_pitch_link
+      - right_shoulder_roll_link
+      - right_shoulder_yaw_link
+      - right_elbow_link
+    dof_names:
+    - left_hip_pitch_link
+    - left_hip_roll_link
+    - left_hip_yaw_link
+    - left_knee_link
+    - left_ankle_pitch_link
+    - left_ankle_roll_link
+    - right_hip_pitch_link
+    - right_hip_roll_link
+    - right_hip_yaw_link
+    - right_knee_link
+    - right_ankle_pitch_link
+    - right_ankle_roll_link
+    - waist_yaw_link
+    - waist_roll_link
+    - torso_link
+    - left_shoulder_pitch_link
+    - left_shoulder_roll_link
+    - left_shoulder_yaw_link
+    - left_elbow_link
+    - right_shoulder_pitch_link
+    - right_shoulder_roll_link
+    - right_shoulder_yaw_link
+    - right_elbow_link
+    foot_names:
+    - left_ankle_roll_link
+    - right_ankle_roll_link
+    nums_extend_bodies: 3
+    extend_config:
+    - joint_name: left_hand_link
+      parent_name: left_elbow_link
+      pos:
+      - 0.25
+      - 0.0
+      - 0.0
+      rot:
+      - 1.0
+      - 0.0
+      - 0.0
+      - 0.0
+    - joint_name: right_hand_link
+      parent_name: right_elbow_link
+      pos:
+      - 0.25
+      - 0.0
+      - 0.0
+      rot:
+      - 1.0
+      - 0.0
+      - 0.0
+      - 0.0
+    - joint_name: head_link
+      parent_name: torso_link
+      pos:
+      - 0.0
+      - 0.0
+      - 0.42
+      rot:
+      - 1.0
+      - 0.0
+      - 0.0
+      - 0.0
+    motion_tracking_link:
+    - left_hand_link
+    - right_hand_link
+    - head_link
+    lower_body_link:
+    - pelvis
+    - left_hip_pitch_link
+    - left_hip_roll_link
+    - left_hip_yaw_link
+    - left_knee_link
+    - left_ankle_pitch_link
+    - left_ankle_roll_link
+    - right_hip_pitch_link
+    - right_hip_roll_link
+    - right_hip_yaw_link
+    - right_knee_link
+    - right_ankle_pitch_link
+    - right_ankle_roll_link
+    - waist_yaw_link
+    - waist_roll_link
+    - torso_link
+    upper_body_link:
+    - left_shoulder_pitch_link
+    - left_shoulder_roll_link
+    - left_shoulder_yaw_link
+    - left_elbow_link
+    - right_shoulder_pitch_link
+    - right_shoulder_roll_link
+    - right_shoulder_yaw_link
+    - right_elbow_link
+    - left_hand_link
+    - right_hand_link
+    - head_link
+    pelvis_link: pelvis
+    base_link: torso_link
+    hips_link:
+    - left_hip_pitch_link
+    - left_hip_roll_link
+    - left_hip_yaw_link
+    - right_hip_pitch_link
+    - right_hip_roll_link
+    - right_hip_yaw_link
+    joint_matches:
+    - - pelvis
+      - Pelvis
+    - - left_hip_pitch_link
+      - L_Hip
+    - - left_knee_link
+      - L_Knee
+    - - left_ankle_roll_link
+      - L_Ankle
+    - - right_hip_pitch_link
+      - R_Hip
+    - - right_knee_link
+      - R_Knee
+    - - right_ankle_roll_link
+      - R_Ankle
+    - - left_shoulder_roll_link
+      - L_Shoulder
+    - - left_elbow_link
+      - L_Elbow
+    - - left_hand_link
+      - L_Hand
+    - - right_shoulder_roll_link
+      - R_Shoulder
+    - - right_elbow_link
+      - R_Elbow
+    - - right_hand_link
+      - R_Hand
+    - - head_link
+      - Head
+    smpl_pose_modifier:
+    - Pelvis: '[np.pi/2, 0, np.pi/2]'
+    - L_Shoulder: '[0, 0, -np.pi/2]'
+    - R_Shoulder: '[0, 0, np.pi/2]'
+    - L_Elbow: '[0, -np.pi/2, 0]'
+    - R_Elbow: '[0, np.pi/2, 0]'
+    visualization:
+      customize_color: true
+      marker_joint_colors:
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0.929
+        - 0.867
+        - 0.437
+      - - 0
+        - 0.351
+        - 0.613
+      - - 0
+        - 0.351
+        - 0.613
+      - - 0
+        - 0.351
+        - 0.613
+  nfeats: 57
+  history_len: 2
+  future_len: 8
+  num_primitive: 4
+  batch_size: 512
+  weighted_sample: true
+  frame_weight: false
+  use_weighted_meanstd: false
+  action_statistics_path: /data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps/action_statistics.json
+  datadir: /data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps
+  common:
+    _target_: robotmdar.dataloader.data.SkeletonPrimitiveDataset
+    datadir: /data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps
+    action_statistics_path: /data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps/action_statistics.json
+    robot_cfg:
+      motion_lib_type: origin
+      asset:
+        assetRoot: /data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/description/robots/g1
+        assetFileName: g1_23dof_lock_wrist_fitmotionONLY.xml
+      humanoid_type: g1_23dof_lock_wrist
+      bias_offset: false
+      has_self_collision: true
+      has_mesh: false
+      has_jt_limit: false
+      has_dof_subset: true
+      has_upright_start: true
+      has_smpl_pd_offset: false
+      remove_toe: false
+      motion_sym_loss: false
+      sym_loss_coef: 1
+      big_ankle: true
+      has_shape_obs: false
+      has_shape_obs_disc: false
+      has_shape_variation: false
+      masterfoot: false
+      freeze_toe: false
+      freeze_hand: false
+      box_body: true
+      real_weight: true
+      real_weight_porpotion_capsules: true
+      real_weight_porpotion_boxes: true
+      body_names:
+      - pelvis
+      - left_hip_pitch_link
+      - left_hip_roll_link
+      - left_hip_yaw_link
+      - left_knee_link
+      - left_ankle_pitch_link
+      - left_ankle_roll_link
+      - right_hip_pitch_link
+      - right_hip_roll_link
+      - right_hip_yaw_link
+      - right_knee_link
+      - right_ankle_pitch_link
+      - right_ankle_roll_link
+      - waist_yaw_link
+      - waist_roll_link
+      - torso_link
+      - left_shoulder_pitch_link
+      - left_shoulder_roll_link
+      - left_shoulder_yaw_link
+      - left_elbow_link
+      - right_shoulder_pitch_link
+      - right_shoulder_roll_link
+      - right_shoulder_yaw_link
+      - right_elbow_link
+      limb_weight_group:
+      - - left_hip_pitch_link
+        - left_hip_roll_link
+        - left_hip_yaw_link
+        - left_knee_link
+        - left_ankle_pitch_link
+        - left_ankle_roll_link
+      - - right_hip_pitch_link
+        - right_hip_roll_link
+        - right_hip_yaw_link
+        - right_knee_link
+        - right_ankle_pitch_link
+        - right_ankle_roll_link
+      - - pelvis
+        - waist_yaw_link
+        - waist_roll_link
+        - torso_link
+      - - left_shoulder_pitch_link
+        - left_shoulder_roll_link
+        - left_shoulder_yaw_link
+        - left_elbow_link
+      - - right_shoulder_pitch_link
+        - right_shoulder_roll_link
+        - right_shoulder_yaw_link
+        - right_elbow_link
+      dof_names:
+      - left_hip_pitch_link
+      - left_hip_roll_link
+      - left_hip_yaw_link
+      - left_knee_link
+      - left_ankle_pitch_link
+      - left_ankle_roll_link
+      - right_hip_pitch_link
+      - right_hip_roll_link
+      - right_hip_yaw_link
+      - right_knee_link
+      - right_ankle_pitch_link
+      - right_ankle_roll_link
+      - waist_yaw_link
+      - waist_roll_link
+      - torso_link
+      - left_shoulder_pitch_link
+      - left_shoulder_roll_link
+      - left_shoulder_yaw_link
+      - left_elbow_link
+      - right_shoulder_pitch_link
+      - right_shoulder_roll_link
+      - right_shoulder_yaw_link
+      - right_elbow_link
+      foot_names:
+      - left_ankle_roll_link
+      - right_ankle_roll_link
+      nums_extend_bodies: 3
+      extend_config:
+      - joint_name: left_hand_link
+        parent_name: left_elbow_link
+        pos:
+        - 0.25
+        - 0.0
+        - 0.0
+        rot:
+        - 1.0
+        - 0.0
+        - 0.0
+        - 0.0
+      - joint_name: right_hand_link
+        parent_name: right_elbow_link
+        pos:
+        - 0.25
+        - 0.0
+        - 0.0
+        rot:
+        - 1.0
+        - 0.0
+        - 0.0
+        - 0.0
+      - joint_name: head_link
+        parent_name: torso_link
+        pos:
+        - 0.0
+        - 0.0
+        - 0.42
+        rot:
+        - 1.0
+        - 0.0
+        - 0.0
+        - 0.0
+      motion_tracking_link:
+      - left_hand_link
+      - right_hand_link
+      - head_link
+      lower_body_link:
+      - pelvis
+      - left_hip_pitch_link
+      - left_hip_roll_link
+      - left_hip_yaw_link
+      - left_knee_link
+      - left_ankle_pitch_link
+      - left_ankle_roll_link
+      - right_hip_pitch_link
+      - right_hip_roll_link
+      - right_hip_yaw_link
+      - right_knee_link
+      - right_ankle_pitch_link
+      - right_ankle_roll_link
+      - waist_yaw_link
+      - waist_roll_link
+      - torso_link
+      upper_body_link:
+      - left_shoulder_pitch_link
+      - left_shoulder_roll_link
+      - left_shoulder_yaw_link
+      - left_elbow_link
+      - right_shoulder_pitch_link
+      - right_shoulder_roll_link
+      - right_shoulder_yaw_link
+      - right_elbow_link
+      - left_hand_link
+      - right_hand_link
+      - head_link
+      pelvis_link: pelvis
+      base_link: torso_link
+      hips_link:
+      - left_hip_pitch_link
+      - left_hip_roll_link
+      - left_hip_yaw_link
+      - right_hip_pitch_link
+      - right_hip_roll_link
+      - right_hip_yaw_link
+      joint_matches:
+      - - pelvis
+        - Pelvis
+      - - left_hip_pitch_link
+        - L_Hip
+      - - left_knee_link
+        - L_Knee
+      - - left_ankle_roll_link
+        - L_Ankle
+      - - right_hip_pitch_link
+        - R_Hip
+      - - right_knee_link
+        - R_Knee
+      - - right_ankle_roll_link
+        - R_Ankle
+      - - left_shoulder_roll_link
+        - L_Shoulder
+      - - left_elbow_link
+        - L_Elbow
+      - - left_hand_link
+        - L_Hand
+      - - right_shoulder_roll_link
+        - R_Shoulder
+      - - right_elbow_link
+        - R_Elbow
+      - - right_hand_link
+        - R_Hand
+      - - head_link
+        - Head
+      smpl_pose_modifier:
+      - Pelvis: '[np.pi/2, 0, np.pi/2]'
+      - L_Shoulder: '[0, 0, -np.pi/2]'
+      - R_Shoulder: '[0, 0, np.pi/2]'
+      - L_Elbow: '[0, -np.pi/2, 0]'
+      - R_Elbow: '[0, np.pi/2, 0]'
+      visualization:
+        customize_color: true
+        marker_joint_colors:
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0
+          - 0.351
+          - 0.613
+        - - 0
+          - 0.351
+          - 0.613
+        - - 0
+          - 0.351
+          - 0.613
+    device: cuda
+    nfeats: 57
+    history_len: 2
+    future_len: 8
+    num_primitive: 4
+    batch_size: 512
+    weighted_sample: true
+    frame_weight: false
+    use_weighted_meanstd: false
+  train:
+    _target_: robotmdar.dataloader.data.SkeletonPrimitiveDataset
+    datadir: /data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps
+    action_statistics_path: /data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps/action_statistics.json
+    robot_cfg:
+      motion_lib_type: origin
+      asset:
+        assetRoot: /data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/description/robots/g1
+        assetFileName: g1_23dof_lock_wrist_fitmotionONLY.xml
+      humanoid_type: g1_23dof_lock_wrist
+      bias_offset: false
+      has_self_collision: true
+      has_mesh: false
+      has_jt_limit: false
+      has_dof_subset: true
+      has_upright_start: true
+      has_smpl_pd_offset: false
+      remove_toe: false
+      motion_sym_loss: false
+      sym_loss_coef: 1
+      big_ankle: true
+      has_shape_obs: false
+      has_shape_obs_disc: false
+      has_shape_variation: false
+      masterfoot: false
+      freeze_toe: false
+      freeze_hand: false
+      box_body: true
+      real_weight: true
+      real_weight_porpotion_capsules: true
+      real_weight_porpotion_boxes: true
+      body_names:
+      - pelvis
+      - left_hip_pitch_link
+      - left_hip_roll_link
+      - left_hip_yaw_link
+      - left_knee_link
+      - left_ankle_pitch_link
+      - left_ankle_roll_link
+      - right_hip_pitch_link
+      - right_hip_roll_link
+      - right_hip_yaw_link
+      - right_knee_link
+      - right_ankle_pitch_link
+      - right_ankle_roll_link
+      - waist_yaw_link
+      - waist_roll_link
+      - torso_link
+      - left_shoulder_pitch_link
+      - left_shoulder_roll_link
+      - left_shoulder_yaw_link
+      - left_elbow_link
+      - right_shoulder_pitch_link
+      - right_shoulder_roll_link
+      - right_shoulder_yaw_link
+      - right_elbow_link
+      limb_weight_group:
+      - - left_hip_pitch_link
+        - left_hip_roll_link
+        - left_hip_yaw_link
+        - left_knee_link
+        - left_ankle_pitch_link
+        - left_ankle_roll_link
+      - - right_hip_pitch_link
+        - right_hip_roll_link
+        - right_hip_yaw_link
+        - right_knee_link
+        - right_ankle_pitch_link
+        - right_ankle_roll_link
+      - - pelvis
+        - waist_yaw_link
+        - waist_roll_link
+        - torso_link
+      - - left_shoulder_pitch_link
+        - left_shoulder_roll_link
+        - left_shoulder_yaw_link
+        - left_elbow_link
+      - - right_shoulder_pitch_link
+        - right_shoulder_roll_link
+        - right_shoulder_yaw_link
+        - right_elbow_link
+      dof_names:
+      - left_hip_pitch_link
+      - left_hip_roll_link
+      - left_hip_yaw_link
+      - left_knee_link
+      - left_ankle_pitch_link
+      - left_ankle_roll_link
+      - right_hip_pitch_link
+      - right_hip_roll_link
+      - right_hip_yaw_link
+      - right_knee_link
+      - right_ankle_pitch_link
+      - right_ankle_roll_link
+      - waist_yaw_link
+      - waist_roll_link
+      - torso_link
+      - left_shoulder_pitch_link
+      - left_shoulder_roll_link
+      - left_shoulder_yaw_link
+      - left_elbow_link
+      - right_shoulder_pitch_link
+      - right_shoulder_roll_link
+      - right_shoulder_yaw_link
+      - right_elbow_link
+      foot_names:
+      - left_ankle_roll_link
+      - right_ankle_roll_link
+      nums_extend_bodies: 3
+      extend_config:
+      - joint_name: left_hand_link
+        parent_name: left_elbow_link
+        pos:
+        - 0.25
+        - 0.0
+        - 0.0
+        rot:
+        - 1.0
+        - 0.0
+        - 0.0
+        - 0.0
+      - joint_name: right_hand_link
+        parent_name: right_elbow_link
+        pos:
+        - 0.25
+        - 0.0
+        - 0.0
+        rot:
+        - 1.0
+        - 0.0
+        - 0.0
+        - 0.0
+      - joint_name: head_link
+        parent_name: torso_link
+        pos:
+        - 0.0
+        - 0.0
+        - 0.42
+        rot:
+        - 1.0
+        - 0.0
+        - 0.0
+        - 0.0
+      motion_tracking_link:
+      - left_hand_link
+      - right_hand_link
+      - head_link
+      lower_body_link:
+      - pelvis
+      - left_hip_pitch_link
+      - left_hip_roll_link
+      - left_hip_yaw_link
+      - left_knee_link
+      - left_ankle_pitch_link
+      - left_ankle_roll_link
+      - right_hip_pitch_link
+      - right_hip_roll_link
+      - right_hip_yaw_link
+      - right_knee_link
+      - right_ankle_pitch_link
+      - right_ankle_roll_link
+      - waist_yaw_link
+      - waist_roll_link
+      - torso_link
+      upper_body_link:
+      - left_shoulder_pitch_link
+      - left_shoulder_roll_link
+      - left_shoulder_yaw_link
+      - left_elbow_link
+      - right_shoulder_pitch_link
+      - right_shoulder_roll_link
+      - right_shoulder_yaw_link
+      - right_elbow_link
+      - left_hand_link
+      - right_hand_link
+      - head_link
+      pelvis_link: pelvis
+      base_link: torso_link
+      hips_link:
+      - left_hip_pitch_link
+      - left_hip_roll_link
+      - left_hip_yaw_link
+      - right_hip_pitch_link
+      - right_hip_roll_link
+      - right_hip_yaw_link
+      joint_matches:
+      - - pelvis
+        - Pelvis
+      - - left_hip_pitch_link
+        - L_Hip
+      - - left_knee_link
+        - L_Knee
+      - - left_ankle_roll_link
+        - L_Ankle
+      - - right_hip_pitch_link
+        - R_Hip
+      - - right_knee_link
+        - R_Knee
+      - - right_ankle_roll_link
+        - R_Ankle
+      - - left_shoulder_roll_link
+        - L_Shoulder
+      - - left_elbow_link
+        - L_Elbow
+      - - left_hand_link
+        - L_Hand
+      - - right_shoulder_roll_link
+        - R_Shoulder
+      - - right_elbow_link
+        - R_Elbow
+      - - right_hand_link
+        - R_Hand
+      - - head_link
+        - Head
+      smpl_pose_modifier:
+      - Pelvis: '[np.pi/2, 0, np.pi/2]'
+      - L_Shoulder: '[0, 0, -np.pi/2]'
+      - R_Shoulder: '[0, 0, np.pi/2]'
+      - L_Elbow: '[0, -np.pi/2, 0]'
+      - R_Elbow: '[0, np.pi/2, 0]'
+      visualization:
+        customize_color: true
+        marker_joint_colors:
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0
+          - 0.351
+          - 0.613
+        - - 0
+          - 0.351
+          - 0.613
+        - - 0
+          - 0.351
+          - 0.613
+    device: cuda
+    nfeats: 57
+    history_len: 2
+    future_len: 8
+    num_primitive: 4
+    batch_size: 512
+    weighted_sample: true
+    frame_weight: false
+    use_weighted_meanstd: false
+    split: train
+  val:
+    _target_: robotmdar.dataloader.data.SkeletonPrimitiveDataset
+    datadir: /data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps
+    action_statistics_path: /data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/dataset/BABEL-AMASS-ROBOT-23dof-FULL-50fps/action_statistics.json
+    robot_cfg:
+      motion_lib_type: origin
+      asset:
+        assetRoot: /data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/description/robots/g1
+        assetFileName: g1_23dof_lock_wrist_fitmotionONLY.xml
+      humanoid_type: g1_23dof_lock_wrist
+      bias_offset: false
+      has_self_collision: true
+      has_mesh: false
+      has_jt_limit: false
+      has_dof_subset: true
+      has_upright_start: true
+      has_smpl_pd_offset: false
+      remove_toe: false
+      motion_sym_loss: false
+      sym_loss_coef: 1
+      big_ankle: true
+      has_shape_obs: false
+      has_shape_obs_disc: false
+      has_shape_variation: false
+      masterfoot: false
+      freeze_toe: false
+      freeze_hand: false
+      box_body: true
+      real_weight: true
+      real_weight_porpotion_capsules: true
+      real_weight_porpotion_boxes: true
+      body_names:
+      - pelvis
+      - left_hip_pitch_link
+      - left_hip_roll_link
+      - left_hip_yaw_link
+      - left_knee_link
+      - left_ankle_pitch_link
+      - left_ankle_roll_link
+      - right_hip_pitch_link
+      - right_hip_roll_link
+      - right_hip_yaw_link
+      - right_knee_link
+      - right_ankle_pitch_link
+      - right_ankle_roll_link
+      - waist_yaw_link
+      - waist_roll_link
+      - torso_link
+      - left_shoulder_pitch_link
+      - left_shoulder_roll_link
+      - left_shoulder_yaw_link
+      - left_elbow_link
+      - right_shoulder_pitch_link
+      - right_shoulder_roll_link
+      - right_shoulder_yaw_link
+      - right_elbow_link
+      limb_weight_group:
+      - - left_hip_pitch_link
+        - left_hip_roll_link
+        - left_hip_yaw_link
+        - left_knee_link
+        - left_ankle_pitch_link
+        - left_ankle_roll_link
+      - - right_hip_pitch_link
+        - right_hip_roll_link
+        - right_hip_yaw_link
+        - right_knee_link
+        - right_ankle_pitch_link
+        - right_ankle_roll_link
+      - - pelvis
+        - waist_yaw_link
+        - waist_roll_link
+        - torso_link
+      - - left_shoulder_pitch_link
+        - left_shoulder_roll_link
+        - left_shoulder_yaw_link
+        - left_elbow_link
+      - - right_shoulder_pitch_link
+        - right_shoulder_roll_link
+        - right_shoulder_yaw_link
+        - right_elbow_link
+      dof_names:
+      - left_hip_pitch_link
+      - left_hip_roll_link
+      - left_hip_yaw_link
+      - left_knee_link
+      - left_ankle_pitch_link
+      - left_ankle_roll_link
+      - right_hip_pitch_link
+      - right_hip_roll_link
+      - right_hip_yaw_link
+      - right_knee_link
+      - right_ankle_pitch_link
+      - right_ankle_roll_link
+      - waist_yaw_link
+      - waist_roll_link
+      - torso_link
+      - left_shoulder_pitch_link
+      - left_shoulder_roll_link
+      - left_shoulder_yaw_link
+      - left_elbow_link
+      - right_shoulder_pitch_link
+      - right_shoulder_roll_link
+      - right_shoulder_yaw_link
+      - right_elbow_link
+      foot_names:
+      - left_ankle_roll_link
+      - right_ankle_roll_link
+      nums_extend_bodies: 3
+      extend_config:
+      - joint_name: left_hand_link
+        parent_name: left_elbow_link
+        pos:
+        - 0.25
+        - 0.0
+        - 0.0
+        rot:
+        - 1.0
+        - 0.0
+        - 0.0
+        - 0.0
+      - joint_name: right_hand_link
+        parent_name: right_elbow_link
+        pos:
+        - 0.25
+        - 0.0
+        - 0.0
+        rot:
+        - 1.0
+        - 0.0
+        - 0.0
+        - 0.0
+      - joint_name: head_link
+        parent_name: torso_link
+        pos:
+        - 0.0
+        - 0.0
+        - 0.42
+        rot:
+        - 1.0
+        - 0.0
+        - 0.0
+        - 0.0
+      motion_tracking_link:
+      - left_hand_link
+      - right_hand_link
+      - head_link
+      lower_body_link:
+      - pelvis
+      - left_hip_pitch_link
+      - left_hip_roll_link
+      - left_hip_yaw_link
+      - left_knee_link
+      - left_ankle_pitch_link
+      - left_ankle_roll_link
+      - right_hip_pitch_link
+      - right_hip_roll_link
+      - right_hip_yaw_link
+      - right_knee_link
+      - right_ankle_pitch_link
+      - right_ankle_roll_link
+      - waist_yaw_link
+      - waist_roll_link
+      - torso_link
+      upper_body_link:
+      - left_shoulder_pitch_link
+      - left_shoulder_roll_link
+      - left_shoulder_yaw_link
+      - left_elbow_link
+      - right_shoulder_pitch_link
+      - right_shoulder_roll_link
+      - right_shoulder_yaw_link
+      - right_elbow_link
+      - left_hand_link
+      - right_hand_link
+      - head_link
+      pelvis_link: pelvis
+      base_link: torso_link
+      hips_link:
+      - left_hip_pitch_link
+      - left_hip_roll_link
+      - left_hip_yaw_link
+      - right_hip_pitch_link
+      - right_hip_roll_link
+      - right_hip_yaw_link
+      joint_matches:
+      - - pelvis
+        - Pelvis
+      - - left_hip_pitch_link
+        - L_Hip
+      - - left_knee_link
+        - L_Knee
+      - - left_ankle_roll_link
+        - L_Ankle
+      - - right_hip_pitch_link
+        - R_Hip
+      - - right_knee_link
+        - R_Knee
+      - - right_ankle_roll_link
+        - R_Ankle
+      - - left_shoulder_roll_link
+        - L_Shoulder
+      - - left_elbow_link
+        - L_Elbow
+      - - left_hand_link
+        - L_Hand
+      - - right_shoulder_roll_link
+        - R_Shoulder
+      - - right_elbow_link
+        - R_Elbow
+      - - right_hand_link
+        - R_Hand
+      - - head_link
+        - Head
+      smpl_pose_modifier:
+      - Pelvis: '[np.pi/2, 0, np.pi/2]'
+      - L_Shoulder: '[0, 0, -np.pi/2]'
+      - R_Shoulder: '[0, 0, np.pi/2]'
+      - L_Elbow: '[0, -np.pi/2, 0]'
+      - R_Elbow: '[0, np.pi/2, 0]'
+      visualization:
+        customize_color: true
+        marker_joint_colors:
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0.929
+          - 0.867
+          - 0.437
+        - - 0
+          - 0.351
+          - 0.613
+        - - 0
+          - 0.351
+          - 0.613
+        - - 0
+          - 0.351
+          - 0.613
+    device: cuda
+    nfeats: 57
+    history_len: 2
+    future_len: 8
+    num_primitive: 4
+    batch_size: 512
+    weighted_sample: true
+    frame_weight: false
+    use_weighted_meanstd: false
+    split: val
+vae:
+  _target_: robotmdar.model.mld_vae.AutoMldVae
+  nfeats: 57
+  latent_dim:
+  - 1
+  - 128
+  h_dim: 512
+  ff_size: 1024
+  num_layers: 9
+  num_heads: 4
+  dropout: 0.1
+  arch: all_encoder
+  normalize_before: false
+  activation: gelu
+  position_embedding: learned
+denoiser:
+  _target_: robotmdar.model.mld_denoiser.DenoiserTransformer
+  h_dim: 512
+  ff_size: 1024
+  num_layers: 8
+  num_heads: 4
+  dropout: 0.1
+  activation: gelu
+  clip_dim: 512
+  history_shape:
+  - 2
+  - 57
+  noise_shape:
+  - 1
+  - 128
+  cond_mask_prob: 0.1
+diffusion:
+  num_timesteps: 5
+  model:
+    _target_: robotmdar.diffusion.respace.SpacedDiffusion
+    use_timesteps:
+      _target_: robotmdar.diffusion.respace.space_timesteps
+      num_timesteps: 5
+      section_counts:
+      - 5
+    betas:
+      _target_: robotmdar.diffusion.gaussian_diffusion.get_named_beta_schedule
+      schedule_name: cosine
+      num_diffusion_timesteps: 5
+    model_mean_type:
+      _target_: robotmdar.dtype.enum.make_enum
+      enum_path: robotmdar.diffusion.gaussian_diffusion.ModelMeanType
+      name: START_X
+    model_var_type:
+      _target_: robotmdar.dtype.enum.make_enum
+      enum_path: robotmdar.diffusion.gaussian_diffusion.ModelVarType
+      name: FIXED_SMALL
+    loss_type:
+      _target_: robotmdar.dtype.enum.make_enum
+      enum_path: robotmdar.diffusion.gaussian_diffusion.LossType
+      name: MSE
+    rescale_timesteps: false
+  schedule_sampler:
+    _target_: robotmdar.diffusion.resample.create_named_schedule_sampler
+    name: uniform
+    diffusion:
+      _target_: robotmdar.diffusion.respace.SpacedDiffusion
+      use_timesteps:
+        _target_: robotmdar.diffusion.respace.space_timesteps
+        num_timesteps: 5
+        section_counts:
+        - 5
+      betas:
+        _target_: robotmdar.diffusion.gaussian_diffusion.get_named_beta_schedule
+        schedule_name: cosine
+        num_diffusion_timesteps: 5
+      model_mean_type:
+        _target_: robotmdar.dtype.enum.make_enum
+        enum_path: robotmdar.diffusion.gaussian_diffusion.ModelMeanType
+        name: START_X
+      model_var_type:
+        _target_: robotmdar.dtype.enum.make_enum
+        enum_path: robotmdar.diffusion.gaussian_diffusion.ModelVarType
+        name: FIXED_SMALL
+      loss_type:
+        _target_: robotmdar.dtype.enum.make_enum
+        enum_path: robotmdar.diffusion.gaussian_diffusion.LossType
+        name: MSE
+      rescale_timesteps: false
+train:
+  opt:
+    lr: 0.0001
+  manager:
+    _target_: robotmdar.train.manager.MVAEManager
+    stages:
+    - 100000
+    - 50000
+    - 50000
+    use_rollout: true
+    use_static_pose: true
+    static_prob: 0.001
+    static_perturbation_scale: 0.0
+    save_every: 20000
+    eval_every: 2000
+    eval_steps: 10
+    device: cuda
+    save_dir: /data/code/ouyanghao/oyh/textop-reproduction-20261024/runs/RobotMDAR/TextOp_Public_Full_MVAE_20261024/train-mvae-20261024_153320
+    learning_rate: 0.0001
+    anneal_lr: true
+    max_grad_norm: 1.0
+    use_ema: false
+    ema_decay: 0.999
+    loss_weight:
+      rec: 1.0
+      kl: 0.0001
+      body_trans: 0.05
+      body_rot: 0.01
+      dof_pos: 0.03
+      dof_vel: 1.0e-05
+      foot_contact: 0.01
+      fk_joints_rec: 1.0
+      joints_consistency: 1.0
+      joints_delta: 1.0
+      trans_delta: 1.0
+      orient_delta: 1.0
+      dof_delta: 1.0
+      smooth: 0.0
+      quantize_rot: 0.0
+      quantize_trans: 0.0
+      drift_yaw: 0.0
+      drift_xy: 0.0
+    ckpt:
+      vae: null
+      dar: null
+      load_cfg: null
+    platform:
+      _target_: robotmdar.train.train_platforms.TensorboardPlatform
+      save_dir: /data/code/ouyanghao/oyh/textop-reproduction-20261024/runs/RobotMDAR/TextOp_Public_Full_MVAE_20261024/train-mvae-20261024_153320
+skeleton:
+  motion_lib_type: origin
+  asset:
+    assetRoot: /data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/description/robots/g1
+    assetFileName: g1_23dof_lock_wrist_fitmotionONLY.xml
+  humanoid_type: g1_23dof_lock_wrist
+  bias_offset: false
+  has_self_collision: true
+  has_mesh: false
+  has_jt_limit: false
+  has_dof_subset: true
+  has_upright_start: true
+  has_smpl_pd_offset: false
+  remove_toe: false
+  motion_sym_loss: false
+  sym_loss_coef: 1
+  big_ankle: true
+  has_shape_obs: false
+  has_shape_obs_disc: false
+  has_shape_variation: false
+  masterfoot: false
+  freeze_toe: false
+  freeze_hand: false
+  box_body: true
+  real_weight: true
+  real_weight_porpotion_capsules: true
+  real_weight_porpotion_boxes: true
+  body_names:
+  - pelvis
+  - left_hip_pitch_link
+  - left_hip_roll_link
+  - left_hip_yaw_link
+  - left_knee_link
+  - left_ankle_pitch_link
+  - left_ankle_roll_link
+  - right_hip_pitch_link
+  - right_hip_roll_link
+  - right_hip_yaw_link
+  - right_knee_link
+  - right_ankle_pitch_link
+  - right_ankle_roll_link
+  - waist_yaw_link
+  - waist_roll_link
+  - torso_link
+  - left_shoulder_pitch_link
+  - left_shoulder_roll_link
+  - left_shoulder_yaw_link
+  - left_elbow_link
+  - right_shoulder_pitch_link
+  - right_shoulder_roll_link
+  - right_shoulder_yaw_link
+  - right_elbow_link
+  limb_weight_group:
+  - - left_hip_pitch_link
+    - left_hip_roll_link
+    - left_hip_yaw_link
+    - left_knee_link
+    - left_ankle_pitch_link
+    - left_ankle_roll_link
+  - - right_hip_pitch_link
+    - right_hip_roll_link
+    - right_hip_yaw_link
+    - right_knee_link
+    - right_ankle_pitch_link
+    - right_ankle_roll_link
+  - - pelvis
+    - waist_yaw_link
+    - waist_roll_link
+    - torso_link
+  - - left_shoulder_pitch_link
+    - left_shoulder_roll_link
+    - left_shoulder_yaw_link
+    - left_elbow_link
+  - - right_shoulder_pitch_link
+    - right_shoulder_roll_link
+    - right_shoulder_yaw_link
+    - right_elbow_link
+  dof_names:
+  - left_hip_pitch_link
+  - left_hip_roll_link
+  - left_hip_yaw_link
+  - left_knee_link
+  - left_ankle_pitch_link
+  - left_ankle_roll_link
+  - right_hip_pitch_link
+  - right_hip_roll_link
+  - right_hip_yaw_link
+  - right_knee_link
+  - right_ankle_pitch_link
+  - right_ankle_roll_link
+  - waist_yaw_link
+  - waist_roll_link
+  - torso_link
+  - left_shoulder_pitch_link
+  - left_shoulder_roll_link
+  - left_shoulder_yaw_link
+  - left_elbow_link
+  - right_shoulder_pitch_link
+  - right_shoulder_roll_link
+  - right_shoulder_yaw_link
+  - right_elbow_link
+  foot_names:
+  - left_ankle_roll_link
+  - right_ankle_roll_link
+  nums_extend_bodies: 3
+  extend_config:
+  - joint_name: left_hand_link
+    parent_name: left_elbow_link
+    pos:
+    - 0.25
+    - 0.0
+    - 0.0
+    rot:
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+  - joint_name: right_hand_link
+    parent_name: right_elbow_link
+    pos:
+    - 0.25
+    - 0.0
+    - 0.0
+    rot:
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+  - joint_name: head_link
+    parent_name: torso_link
+    pos:
+    - 0.0
+    - 0.0
+    - 0.42
+    rot:
+    - 1.0
+    - 0.0
+    - 0.0
+    - 0.0
+  motion_tracking_link:
+  - left_hand_link
+  - right_hand_link
+  - head_link
+  lower_body_link:
+  - pelvis
+  - left_hip_pitch_link
+  - left_hip_roll_link
+  - left_hip_yaw_link
+  - left_knee_link
+  - left_ankle_pitch_link
+  - left_ankle_roll_link
+  - right_hip_pitch_link
+  - right_hip_roll_link
+  - right_hip_yaw_link
+  - right_knee_link
+  - right_ankle_pitch_link
+  - right_ankle_roll_link
+  - waist_yaw_link
+  - waist_roll_link
+  - torso_link
+  upper_body_link:
+  - left_shoulder_pitch_link
+  - left_shoulder_roll_link
+  - left_shoulder_yaw_link
+  - left_elbow_link
+  - right_shoulder_pitch_link
+  - right_shoulder_roll_link
+  - right_shoulder_yaw_link
+  - right_elbow_link
+  - left_hand_link
+  - right_hand_link
+  - head_link
+  pelvis_link: pelvis
+  base_link: torso_link
+  hips_link:
+  - left_hip_pitch_link
+  - left_hip_roll_link
+  - left_hip_yaw_link
+  - right_hip_pitch_link
+  - right_hip_roll_link
+  - right_hip_yaw_link
+  joint_matches:
+  - - pelvis
+    - Pelvis
+  - - left_hip_pitch_link
+    - L_Hip
+  - - left_knee_link
+    - L_Knee
+  - - left_ankle_roll_link
+    - L_Ankle
+  - - right_hip_pitch_link
+    - R_Hip
+  - - right_knee_link
+    - R_Knee
+  - - right_ankle_roll_link
+    - R_Ankle
+  - - left_shoulder_roll_link
+    - L_Shoulder
+  - - left_elbow_link
+    - L_Elbow
+  - - left_hand_link
+    - L_Hand
+  - - right_shoulder_roll_link
+    - R_Shoulder
+  - - right_elbow_link
+    - R_Elbow
+  - - right_hand_link
+    - R_Hand
+  - - head_link
+    - Head
+  smpl_pose_modifier:
+  - Pelvis: '[np.pi/2, 0, np.pi/2]'
+  - L_Shoulder: '[0, 0, -np.pi/2]'
+  - R_Shoulder: '[0, 0, np.pi/2]'
+  - L_Elbow: '[0, -np.pi/2, 0]'
+  - R_Elbow: '[0, np.pi/2, 0]'
+  visualization:
+    customize_color: true
+    marker_joint_colors:
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0.929
+      - 0.867
+      - 0.437
+    - - 0
+      - 0.351
+      - 0.613
+    - - 0
+      - 0.351
+      - 0.613
+    - - 0
+      - 0.351
+      - 0.613

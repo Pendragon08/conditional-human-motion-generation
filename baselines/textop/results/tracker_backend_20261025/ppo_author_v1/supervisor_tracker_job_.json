@@ -1,0 +1,28 @@
+{
+  "run": "ppo_author_v1",
+  "job": "ppo_witness",
+  "command": [
+    "bash",
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh",
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/tracker_ppo_resume_witness.py",
+    "--spec",
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json",
+    "--output",
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/ppo_author_v1",
+    "--device",
+    "cuda:1",
+    "--headless",
+    "--diagnostic-spec",
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-ppo-diagnostic.json",
+    "--references",
+    "/dev/shm/ouyanghao_textop_20261025/tracker_references/export_author_v1"
+  ],
+  "child_pid": 3434701,
+  "child_exit_code": 1,
+  "timed_out": false,
+  "elapsed_seconds": 38.92812900058925,
+  "numerical_status": "FAILED",
+  "full_training_started": false,
+  "dataset_accepted": false,
+  "scope": "finite reference export or bounded PPO diagnostic"
+}

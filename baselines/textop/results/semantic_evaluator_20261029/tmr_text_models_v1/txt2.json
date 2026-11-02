@@ -1,0 +1,106 @@
+{
+  "run": "tmr_text_models_v1",
+  "observed_unix": 1793214155.9774408,
+  "files": {
+    "receipt": {
+      "status": "FAILED_TMR_TEXT_MODEL_PREPARATION_ALL_PARTIALS_RETAINED",
+      "run": "tmr_text_models_v1",
+      "source_sha256": "c5a668940aa4e6380df2021942b2e1e062c837d310375169f536ad3ba4356e5a",
+      "request_sha256": "4d80b12eef59cf3f48996a1cd0923c6a23ea672c17214697486918fd50155d84",
+      "completed_files": [],
+      "pretrained_text_model_downloads_authorized": true,
+      "robot_motion_or_babel_text_reads": 0,
+      "learned_tmr_weight_reads": 0,
+      "training_optimizer_updates": 0,
+      "evaluator_training_authorized": false,
+      "formal_tmr_metrics_available": false,
+      "output_writers_closed": false,
+      "elapsed_seconds": 270.7861741054803,
+      "error": "URLError(OSError(101, 'Network is unreachable'))",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/urllib/request.py\", line 1354, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/http/client.py\", line 1256, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/http/client.py\", line 1302, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/http/client.py\", line 1251, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/http/client.py\", line 1011, in _send_output\n    self.send(msg)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/http/client.py\", line 951, in send\n    self.connect()\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/http/client.py\", line 1418, in connect\n    super().connect()\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/http/client.py\", line 922, in connect\n    self.sock = self._create_connection(\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/socket.py\", line 820, in create_connection\n    raise err\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/socket.py\", line 808, in create_connection\n    sock.connect(sa)\nOSError: [Errno 101] Network is unreachable\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_tmr_text_models.py\", line 84, in <module>\n    with urllib.request.urlopen(request, timeout=90) as remote:\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/urllib/request.py\", line 222, in urlopen\n    return opener.open(url, data, timeout)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/urllib/request.py\", line 525, in open\n    response = self._open(req, data)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/urllib/request.py\", line 542, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/urllib/request.py\", line 502, in _call_chain\n    result = func(*args)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/urllib/request.py\", line 1397, in https_open\n    return self.do_open(http.client.HTTPSConnection, req,\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/urllib/request.py\", line 1357, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 101] Network is unreachable>\n"
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_tmr_text_models.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_text_models_tmr_text_models_v1_request.json"
+      ],
+      "supervisor_pid": 401580,
+      "child_pid": 401585,
+      "child_exit_code": 1,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 20,
+      "sample_errors": [],
+      "elapsed_seconds": 271.11426008306444,
+      "supervision_passed": false,
+      "run": "tmr_text_models_v1",
+      "source_sha256": "12fa8d0a36945e3d54be919c7d8ae5642678cbe23071443ee0c76acfe16a3fde",
+      "request_sha256": "4d80b12eef59cf3f48996a1cd0923c6a23ea672c17214697486918fd50155d84",
+      "receipt_sha256": "b18b94c97a257e2f720b17c92d98d92ae750c7369deb377a8ad003630c2fb448",
+      "resource_sha256": "d3d71196a31cb51673490b909dc3b5fde79ab3b851cb4a1b33b9007a1b0e171d",
+      "process_exit_sha256": "05f5b9cb5f2e62cdffc01154f8dd78303c26ea157e79ce41f040565a5b211ffd"
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_tmr_text_models.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_text_models_tmr_text_models_v1_request.json"
+      ],
+      "supervisor_pid": 401580,
+      "child_pid": 401585,
+      "child_exit_code": 1,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 20,
+      "sample_errors": [],
+      "elapsed_seconds": 271.11426008306444,
+      "supervision_passed": false
+    },
+    "outer": {
+      "actual_returncode": 1
+    }
+  },
+  "sha256": {
+    "receipt": "b18b94c97a257e2f720b17c92d98d92ae750c7369deb377a8ad003630c2fb448",
+    "exit": "70bf4bae9c392bc45df768b574e50765d1eba2938c47eabb303519f7fb08e35e",
+    "process": "05f5b9cb5f2e62cdffc01154f8dd78303c26ea157e79ce41f040565a5b211ffd",
+    "outer": "857a96c9474624cec4418bb86e755613a5fb3430bf5b3478354415d1030ec7b2"
+  },
+  "workers": [],
+  "common_lock_free": true,
+  "closed_execution_verified": false,
+  "artifact_audit": null,
+  "logs": {
+    "child.log": "ethod(), req.selector, req.data, headers,\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/http/client.py\", line 1256, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/http/client.py\", line 1302, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/http/client.py\", line 1251, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/http/client.py\", line 1011, in _send_output\n    self.send(msg)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/http/client.py\", line 951, in send\n    self.connect()\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/http/client.py\", line 1418, in connect\n    super().connect()\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/http/client.py\", line 922, in connect\n    self.sock = self._create_connection(\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/socket.py\", line 820, in create_connection\n    raise err\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/socket.py\", line 808, in create_connection\n    sock.connect(sa)\nOSError: [Errno 101] Network is unreachable\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/prepare_tmr_text_models.py\", line 84, in <module>\n    with urllib.request.urlopen(request, timeout=90) as remote:\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/urllib/request.py\", line 222, in urlopen\n    return opener.open(url, data, timeout)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/urllib/request.py\", line 525, in open\n    response = self._open(req, data)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/urllib/request.py\", line 542, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/urllib/request.py\", line 502, in _call_chain\n    result = func(*args)\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/urllib/request.py\", line 1397, in https_open\n    return self.do_open(http.client.HTTPSConnection, req,\n  File \"/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/urllib/request.py\", line 1357, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 101] Network is unreachable>\n",
+    "tmr_text_models_v1_outer.log": "Traceback (most recent call last):\n  File \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_tmr_text_models.py\", line 48, in <module>\n    assert proof['supervision_passed'] and r['status'] == 'PINNED_TMR_TEXT_MODELS_CPU_VERIFIED'\nAssertionError\n"
+  },
+  "data_free_bytes": 3138007040,
+  "home_free_bytes": 2975342592
+}

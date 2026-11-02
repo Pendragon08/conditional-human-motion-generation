@@ -1,0 +1,20 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 /data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_solid_floor.py --run full_solid_floor_author_v1 --case solid_floor"
+  ],
+  "start_utc": "2026-10-25T22:31:05.839395+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 193.07800000009593,
+  "stdout": "{\"run\": \"full_solid_floor_author_v1\", \"case\": \"solid_floor\", \"child_pid\": 3802194, \"child_exit_code\": 0, \"timed_out\": false, \"elapsed_seconds\": 192.16309531591833, \"numerical_status\": \"TEXTOP_FULL_CONTACT_DIAGNOSTIC_COMPLETED\", \"command\": [\"bash\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_tracker.sh\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/full_solid_floor_probe.py\", \"--spec\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/tracker-env-spec.json\", \"--capacity-spec\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/full-library-capacity-spec.json\", \"--diagnostic-spec\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/configs/solid-floor-diagnostic-spec.json\", \"--case\", \"solid_floor\", \"--output\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/tracker_validation/full_solid_floor_author_v1\", \"--device\", \"cuda:1\", \"--headless\"], \"contact_diagnostic_completed\": true, \"full_corpus_stability_accepted\": false, \"formal_filter_training_started\": false, \"full_generator_training_started\": false}\n",
+  "stderr": ""
+}

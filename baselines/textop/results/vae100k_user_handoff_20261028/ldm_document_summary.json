@@ -1,0 +1,82 @@
+{
+  "status": "USER_VAE100K_LDM_FRESH_DOCUMENT_VERIFIED",
+  "run": "user_vae100k_ldm_document_v1",
+  "actual_exit_code": 0,
+  "findings": [],
+  "runtime_binding_sha256": "323349d38cef74e07215ab81c8919879512a2391552c9187151eb6a8a521b7ff",
+  "spec_sha256": "db08522dace45f60d5a7c0aef6d8cb1bd85d0f2796972877a4c49a41c1ec16de",
+  "entrypoint_sha256": "eb613778716602f83051e54a2c40d1fc8b6a2820aaf5bd8416a75b18f47b3b64",
+  "supervisor_sha256": "62131c5cb93682c8b8cbc3cfea565fc3d76c797a1339dd67e2263c6ca73dab9c",
+  "document_sha256": "1fd8f8613c1ac0723ead43d6da4f1fe22b4bd2b4a38876cfb2759ecd7b5fcea4",
+  "source_and_spec_hashes_unchanged": true,
+  "checked_file_count": 46,
+  "actual_witness_elapsed_seconds": 53.88847624324262,
+  "actual_diagnostic_optimizer_updates": 4,
+  "formal_training_started": false,
+  "diagnostic_weights_reused": false,
+  "finite_gradients": true,
+  "model_adam_all_rng_nextbatch_restore_exact": true,
+  "pending_validation_optimizer_updates": 0,
+  "frozen_vae_unchanged": true,
+  "actual_ddpm_helper_forward_calls": 5,
+  "helper_state_restored": true,
+  "formal_later_stage_training_reached": false,
+  "actual_process_supervisor_outer_exit_codes": [
+    0,
+    0,
+    0
+  ],
+  "common_lock_released": true,
+  "workers": [],
+  "receipt_sha256": "195991ec88dc7c168c6a3b733352ad2341a6846dae3ae84c968dd40d1b827a0a",
+  "exit_sha256": "d84f90a0c1de75eaad4bcad1f441be2038529901cf81e613b1c027b5d5b48859",
+  "process_exit_sha256": "e5ef72f6be9632d4a73cf1dd2e0198ae03d6748d56b37d0dfb802adb0a908954",
+  "outer_exit_sha256": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0",
+  "vae_checkpoint_sha256": "99017f1cbd13cf2904bc5f87904e5a488a5b3ee1f920da1882f90fdad04029ed",
+  "vae_inference_sha256": "3f36bcbccdee10a8c1c2eb67b0614be63b32bd8a05cff92de23cc358087117f4",
+  "corpus_receipt_sha256": "fa059780a0034e4d9d6af7c54015e23764a139de54f2b803a1386112b84aa427",
+  "data_acceptance_sha256": "0220d37ba27c964858316e2e378330316050bf1c89dbc5453c631d20279fec0c",
+  "strict_audit_receipt_sha256": "71a5b31e92e5280ce726d4cd8680ec8a42e3db0f9588ff65d79172c421c8995d",
+  "two_filesystem_capacity_recheck": {
+    "layout_sha256": "b1edac05c98e2dd3298789f4b9aad35aea226b5ad348ff580a6ebcae7bb852d1",
+    "volumes": [
+      {
+        "volume": "home",
+        "destination": "/home/ouyanghao/textop-user-vae100k-ldm-dual-20261028/checkpoints",
+        "filesystem": "ext4",
+        "device": 66306,
+        "owner_uid": 1013,
+        "free_bytes": 3111112704,
+        "required_bytes": 2776629248,
+        "remaining_slots": 2,
+        "cache_budget_bytes": 0,
+        "reserve_bytes": 2147483648,
+        "log_allowance_bytes": 0
+      },
+      {
+        "volume": "data",
+        "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/filtered15000_20261027/user_vae100k_ldm_dual/checkpoints",
+        "filesystem": "ext4",
+        "device": 2048,
+        "owner_uid": 1013,
+        "free_bytes": 3460399104,
+        "required_bytes": 3313500160,
+        "remaining_slots": 2,
+        "cache_budget_bytes": 0,
+        "reserve_bytes": 2147483648,
+        "log_allowance_bytes": 536870912
+      }
+    ],
+    "pending_steps": [
+      100000,
+      200000,
+      300000
+    ],
+    "reserve_emergency": true,
+    "global_log_budget_bytes": 536870912,
+    "reserve_on_each_filesystem_bytes": 2147483648
+  },
+  "independent_source_recheck_sha256": "3b1854f0c94aa7cfa9383278470bd1f350aa5d5685be76c5aaddd06d31581148",
+  "backup_pending_not_accepted": true,
+  "semantic_or_online_quality_accepted": false
+}

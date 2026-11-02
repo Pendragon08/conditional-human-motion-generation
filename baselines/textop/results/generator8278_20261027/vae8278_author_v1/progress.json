@@ -1,0 +1,175 @@
+{
+  "run": "vae8278_author_v1",
+  "receipt": {
+    "status": "GENERATOR8278_VAE_WITNESS_PASSED",
+    "mode": "witness",
+    "quality_label": "PREFILTER8278_PAPER_SCHEDULE_NOT_FILTERED_PAPER_REPRODUCTION",
+    "full_paper_training": false,
+    "optimizer_updates": 4,
+    "completed_primitive_attempts": 4,
+    "skipped_updates": 0,
+    "output_writers_closed": true,
+    "source_sha256": "7e4ff4b7c427a884deb9708ab77c8fb4a62304ec505fb5329dd83758f650fe45",
+    "spec_sha256": "1a08e1a55f7dfff60994d22110cd36e487e2e237ab4af4d1560cb283ff22611d",
+    "corpus_receipt_sha256": "bf66fac213d6b9a1812d0c1d578fe09599346e4a2211e70233b968743cd60113",
+    "data_acceptance_sha256": "a8ebf892d229570829c51909884204241ba4bc9faee389f5ac5b1f75cf5e4f88",
+    "elapsed_seconds": 56.50466047041118,
+    "initial_storage_check": {
+      "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/generator8278_20261027/vae/checkpoints",
+      "filesystem": "ext4",
+      "owner_uid": 1013,
+      "free_bytes": 5755170816,
+      "required_bytes": 5452595200,
+      "remaining_saves": 5,
+      "checkpoint_upper_bound_bytes": 553648128,
+      "reserve_bytes": 2147483648,
+      "log_allowance_bytes": 536870912,
+      "persistent_owned_writable": true
+    },
+    "memory_witness": {
+      "status": "GENERATOR8278_VAE_REAL_GRADIENT_MEMORY_RESUME_WITNESS_PASSED",
+      "actual_optimizer_updates": 4,
+      "primitive_attempts": 4,
+      "all_four_training_gradients_finite": true,
+      "validation_optimizer_updates": 0,
+      "model_and_adam_roundtrip_exact": true,
+      "next_batch_and_rng_restored": true,
+      "pending_evaluation_completed_without_updates": true,
+      "ema_enabled": false,
+      "memory_serialized_bytes": 513522877,
+      "memory_serialized_sha256": "cf597fc6cb4a8c5023edaabeed5222786980c599aef2b0b1b0dd5cdd218bb70a",
+      "persistent_checkpoint_created": false,
+      "weights_reused_for_training": false,
+      "train_records": [
+        {
+          "manager_step": 1,
+          "loss": 0.44396576285362244,
+          "reconstruction_huber": 0.43892624974250793,
+          "gradients_finite": true,
+          "actual_optimizer_updates": 1,
+          "skipped_updates": 0,
+          "is_evaluation": false
+        },
+        {
+          "manager_step": 2,
+          "loss": 0.42132052779197693,
+          "reconstruction_huber": 0.41655632853507996,
+          "gradients_finite": true,
+          "actual_optimizer_updates": 2,
+          "skipped_updates": 0,
+          "is_evaluation": false
+        },
+        {
+          "manager_step": 3,
+          "loss": 0.3619481325149536,
+          "reconstruction_huber": 0.3577069938182831,
+          "gradients_finite": true,
+          "actual_optimizer_updates": 3,
+          "skipped_updates": 0,
+          "is_evaluation": false
+        },
+        {
+          "manager_step": 4,
+          "loss": 0.3357315957546234,
+          "reconstruction_huber": 0.33166736364364624,
+          "gradients_finite": true,
+          "actual_optimizer_updates": 4,
+          "skipped_updates": 0,
+          "is_evaluation": false
+        }
+      ],
+      "validation_records": [
+        {
+          "manager_step": 4,
+          "loss": 0.342129647731781,
+          "reconstruction_huber": 0.33888426423072815,
+          "gradients_finite": true,
+          "actual_optimizer_updates": 4,
+          "skipped_updates": 0,
+          "is_evaluation": true
+        },
+        {
+          "manager_step": 4,
+          "loss": 0.333440363407135,
+          "reconstruction_huber": 0.3302631676197052,
+          "gradients_finite": true,
+          "actual_optimizer_updates": 4,
+          "skipped_updates": 0,
+          "is_evaluation": true
+        },
+        {
+          "manager_step": 4,
+          "loss": 0.32839465141296387,
+          "reconstruction_huber": 0.3252548575401306,
+          "gradients_finite": true,
+          "actual_optimizer_updates": 4,
+          "skipped_updates": 0,
+          "is_evaluation": true
+        },
+        {
+          "manager_step": 4,
+          "loss": 0.3333567976951599,
+          "reconstruction_huber": 0.33026227355003357,
+          "gradients_finite": true,
+          "actual_optimizer_updates": 4,
+          "skipped_updates": 0,
+          "is_evaluation": true
+        }
+      ],
+      "all_rng_recursive_equal": true,
+      "file_resume_scope": "Unchanged file protocol; every real50k checkpoint reloaded and recursively checked"
+    },
+    "memory_only_diagnostic": true,
+    "all_rng_recursive_verified": true,
+    "training_checkpoint_created": false,
+    "weights_used_for_formal_training": false,
+    "peak_torch_allocated_bytes": 3930611712
+  },
+  "receipt_sha256": "8a3d8c20038d3c8abb0a47c4c90baea5c8a07de8e05fed5060a5c7b68aecfff5",
+  "exit": {
+    "command": [
+      "taskset",
+      "-c",
+      "0-3",
+      "/usr/bin/env",
+      "CUDA_VISIBLE_DEVICES=1",
+      "OMP_NUM_THREADS=4",
+      "MKL_NUM_THREADS=4",
+      "OPENBLAS_NUM_THREADS=4",
+      "WANDB_MODE=disabled",
+      "PYTHONUNBUFFERED=1",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_generator8278_vae.py",
+      "--mode",
+      "witness",
+      "--run",
+      "vae8278_author_v1"
+    ],
+    "supervisor_pid": 4163032,
+    "child_pid": 4163039,
+    "child_exit_code": 0,
+    "child_reaped": true,
+    "timed_out": false,
+    "supervisor_error": null,
+    "shutdown_actions": [],
+    "samples_written": 7,
+    "sample_errors": [],
+    "elapsed_seconds": 61.40986542031169,
+    "supervision_passed": true,
+    "run": "vae8278_author_v1",
+    "mode": "witness",
+    "numerical_status": "GENERATOR8278_VAE_WITNESS_PASSED",
+    "evaluation_receipt_sha256": "8a3d8c20038d3c8abb0a47c4c90baea5c8a07de8e05fed5060a5c7b68aecfff5",
+    "process_exit_sha256": "0d70dce0d4d9e818cd62d7353a1e852ab11c4e1d91151ba844f6a8494c6bc07e",
+    "resources_sha256": "2d0816d6c8218daa25a0479556741ea9470429df187e57e8be3b833a6b002fea",
+    "new_sdk_runs": 0,
+    "new_physics_steps": 0
+  },
+  "exit_sha256": "f7c8fc87d7242e683f5b079c13828d917d2b03b96bab82067ebcfdb947a28036",
+  "disk_free": {
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 5755133952,
+    "/home/ouyanghao": 5580754944
+  },
+  "gpu": "0, 12223 MiB, 36328 MiB\n1, 7823 MiB, 40726 MiB\n",
+  "workers": []
+}

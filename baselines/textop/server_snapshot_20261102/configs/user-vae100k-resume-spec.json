@@ -1,0 +1,61 @@
+{
+  "schema": "textop.user_vae100k_capacity_resume.v1",
+  "latest_user_request": "训练到100000步就行了，然后训练LDM。",
+  "original_spec_sha256": "b7eb6e95b082fd3902099ea718ec07bd42b3418c49c179f88f5438e5c5d2c6fa",
+  "original_receipt_sha256": "e9e0a27a8b4b51aff877c4389e0d72fe19f6402d82f0b1d612fc8d3fcce8df51",
+  "original_exit_sha256": {
+    "exit": "28ded66a901e41f24c071f6dc95335edb6f81a44c40cf5991dbf9ec510406cd8",
+    "process": "f404440f0c18fdfe9e3c8acea0cbcfbb7bf89051a52bb354c948376168540ab6",
+    "outer": "857a96c9474624cec4418bb86e755613a5fb3430bf5b3478354415d1030ec7b2"
+  },
+  "original_runtime_binding_sha256": "87a2f61683d930bf5fe69a9113713c90137c43318766627975c6d11accc20c1c",
+  "resume_checkpoint": {
+    "path": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/emergency_99700.pth",
+    "bytes": 513526701,
+    "sha256": "4ebfe7174678c54d23a1c5d4f71857d6a6a22cca08bd2c1cbf6d82dcce3f4c49",
+    "manager_step": 99700,
+    "actual_optimizer_updates": 99700
+  },
+  "target_checkpoint_path": "/home/ouyanghao/textop-filtered15000-checkpoints-20261027/vae/checkpoints/vae_state_100000.pth",
+  "entrypoint_sha256": "762bf67251abd77f1302eb54e93e958828f99bc0241210e0a6d6db8ba9419a63",
+  "supervisor_sha256": "5e2b39dd5f18b19f3cd397f994276417681cacbb2350e6fc1cc2e5365898b67f",
+  "bound_sources": {
+    "scripts/filtered15000_vae_completion.py": "0e06808b6d790eabe8b5cd0eed0a1b49ee4cc4782ee55fde8784364fd2b733a6",
+    "scripts/run_user_vae100k_resume.py": "762bf67251abd77f1302eb54e93e958828f99bc0241210e0a6d6db8ba9419a63",
+    "scripts/paper69_runtime.py": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
+    "scripts/paper69_data_runtime.py": "cf5c1e3f27665e7fc4d4aa1ede6bcd1931e3563409ad766ff67a576cc0c7b60d",
+    "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e",
+    "scripts/vae100k_control_protocol.py": "1aa7936c461f6801cddb0a76378ecd49d9d696c543ed7534d976c3e03b4e8216",
+    "scripts/contact_process_supervision.py": "44d689a71dc0c04778a7e6e651bc61d234dd59d3435a80c543be9d8db55638b4",
+    "scripts/contact_filter_resources.py": "1003a7cba9d2f2e30a05a881020e51ed8907eba6d523e4ce8af6b1b5399f76e5",
+    "scripts/quick_pidfd.py": "df180bffb3e35dd77c8bb4f8ca9b143879a4184f6f8aab98188e1139de6538f2",
+    "scripts/filtered15000_inputs.py": "d2eb66565132c73eaa501c5f56f2b8097b60152802398f6551208566dc24c24a",
+    "scripts/generator8278_vae_runtime.py": "59e6c101073e1cc8df4ebff195b49bb76f5d63ee73f2b288c8d4d4597a833e8b",
+    "scripts/user_vae100k_resume_protocol.py": "73ee863b240469806b73eef41ef68f983d8349fa50643de1b039a0a912ab4ed1",
+    "scripts/checkpoint_storage_guard.py": "bff54d2b4fb7f29fdc18f6cc46d86626ca14b299faba49161c1c10897897788c",
+    "scripts/supervise_user_vae100k_resume.py": "5e2b39dd5f18b19f3cd397f994276417681cacbb2350e6fc1cc2e5365898b67f"
+  },
+  "witness_authorized": true,
+  "train_authorized": true,
+  "witnesses": [
+    {
+      "run": "r100_author_v1",
+      "receipt_sha256": "04fecb64a4f5c135ee51e0acb7f03277137c69622917060e7693dfef1fa6948d",
+      "exit_sha256": "5141e304742d453ca272bfe3bc2ff9ed1688d516a2a01dc6f1e2b5abac4e2f43"
+    },
+    {
+      "run": "r100_document_v1",
+      "receipt_sha256": "f7ccb27b487f0021ca5697f7a446ede99a314d9120f61a65ef24ad07a403384c",
+      "exit_sha256": "53d75ab78d204893420b2f547866b8472273e32fa2dc128e55df9d4c7438f1ef"
+    }
+  ],
+  "new_formal_optimizer_updates": 300,
+  "original_max_steps_and_lr_denominator_preserved": 200000,
+  "actual_user_endpoint": 100000,
+  "checkpoint_slots_required_for_continuation": 2,
+  "old_failure_preserved": true,
+  "fresh_document_summary_sha256": "f7d26023e8381a52b9dc81868c222e228dc466f988f01c6d4e9f6a7cd694d8a6",
+  "private_backup_status": "PENDING_BYTE_COPY_NOT_ACCEPTED",
+  "private_backup_receipt_sha256": null,
+  "private_backup_intent_sha256": "9a041a6d2564a37e859ca3728aaaf02f0b81cc4944954bf83ca8aef2b98f2a25"
+}

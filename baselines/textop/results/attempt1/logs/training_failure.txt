@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_official.py", line 43, in <module>
+    main()
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/lib/python3.8/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/robotmdar/cli.py", line 53, in main
+    (run)(cfg)
+  File "/data/code/ouyanghao/oyh/textop-reproduction-20261024/upstream/TextOpRobotMDAR/robotmdar/train/train_mvae.py", line 109, in main
+    manager.post_step(is_eval=False,
+  File "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/train_official.py", line 28, in audited_post
+    raise RuntimeError('Nonfinite loss or official optimizer skipped an update; see numerical_failure.json')
+RuntimeError: Nonfinite loss or official optimizer skipped an update; see numerical_failure.json

@@ -1,0 +1,39 @@
+{
+  "status": "STEP4_FROZEN_CPU_SOURCE_CONTRACTS_PREPARED_NOT_READY",
+  "observed_unix": 1793271770.841134,
+  "source_sha256": {
+    "scripts/step4_ppo10000_frozen_protocol.py": "4dfc355cd0e340e6b24ec54f42a31865bb0764e98364504708d2163c5659631a",
+    "scripts/step4_ppo10000_cpu_core.py": "5c00befd1c59f1a9aa32234bbb7a53a21e76605de47c4bd70aa9fe5f95f6e125"
+  },
+  "spec_sha256": "294b0271bf4510000a3457df986f845e31eba840b0ea606153d052f35600c101",
+  "spec_authorized": false,
+  "synthetic_metadata_gate_checks": true,
+  "positive_metadata_examples": 1,
+  "negative_metadata_examples": 15,
+  "rejected_cases": [
+    "live_status",
+    "short_budget",
+    "wrong_Adam_units",
+    "skipped_Adam_attempt",
+    "boolean_counter",
+    "wrong_source",
+    "wrong_request",
+    "open_writers",
+    "source_change",
+    "VAL_leakage",
+    "generated_library",
+    "old_teacher_update",
+    "emergency_not_endpoint",
+    "empty_checkpoint",
+    "wrong_checkpoint_name"
+  ],
+  "real_training_endpoint_accepted": false,
+  "real_checkpoint_reads": 0,
+  "NN_or_SDK_imports": 0,
+  "optimizer_updates": 0,
+  "signals": 0,
+  "active_training_source_or_request_modified": false,
+  "original_source_copy_v1_failure_retained": "read-dependent atime included in stat equality",
+  "source_copy_v2_stable_identity_excludes_atime": true,
+  "local_command_quoting_failure_retained": true
+}

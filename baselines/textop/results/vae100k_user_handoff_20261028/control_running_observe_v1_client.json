@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 90,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "472f0c430ff993ff5b934eecf3d004a10ea34ff0298f5240b5b67ecaba1b18e5",
+  "client_pid": 71276,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"receipt\": {\"status\": \"WAITING_FOR_REAL_VAE100000_SAVED_AND_RELOADED\", \"run\": \"user_vae100k_control_v1\", \"user_requested_target\": 100000, \"original_run\": \"filtered15000_vae200k_train_v1\", \"source_sha256\": \"1903ca5f9f442b815db162227f9a03b99d124ac21aa432f2e72a8bda669ed79b\", \"spec_sha256\": \"d3526e1367c7257fab1187d5f2f106d6c24ca85ba1f11b2f3210627227d5326f\", \"signals_sent\": 0, \"new_model_loads\": 0, \"new_gpu_contexts\": 0, \"new_sdk_tasks\": 0, \"original_training_source_modified\": false, \"last_observed_primitive_attempts\": 89400}, \"workers\": [{\"pid\": 266944, \"argv\": [\"python3\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/vae100k_control_user_vae100k_control_v1_driver.py\"]}, {\"pid\": 266945, \"argv\": [\"python3\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_vae100k_handoff.py\", \"--run\", \"user_vae100k_control_v1\"]}, {\"pid\": 266950, \"argv\": [\"python3\", \"/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/watch_vae100k_handoff.py\", \"--run\", \"user_vae100k_control_v1\"]}], \"observed_unix\": 1793155826.1345358}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\control_running_observe_v1_client.stdout.txt",
+    "stderr": "work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\control_running_observe_v1_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

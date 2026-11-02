@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 90,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "396c1018c24ac01ea8e3c6382842a78e3eb0c7f000de000588fc15170701949e",
+  "client_pid": 49616,
+  "actual_client_exit_code": 1,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<stdin>\", line 4, in <module>\n  File \"/usr/lib/python3.8/subprocess.py\", line 516, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['python3', '/data/code/ouyanghao/oyh/textop-reproduction-20261024/provider_tools/test_vae100k_control_cpu.py', '--output', '/data/code/ouyanghao/oyh/textop-reproduction-20261024/vae100k_user_handoff_20261028/control_fixture_author_v1']' returned non-zero exit status 1.\n",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\control_fixture_author_v1_client.stdout.txt",
+    "stderr": "work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\control_fixture_author_v1_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

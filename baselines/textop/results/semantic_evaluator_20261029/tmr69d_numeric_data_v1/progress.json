@@ -1,0 +1,145 @@
+{
+  "run": "tmr69d_numeric_data_v1",
+  "observed_unix": 1793216460.9217916,
+  "files": {
+    "receipt": {
+      "status": "TMR69D_NUMERIC_TRAIN_INPUTS_ACCEPTED",
+      "run": "tmr69d_numeric_data_v1",
+      "source_sha256": "e28028c325c6e65ad9aef9fdf78b5f0c9ba8539273f711ab3e521733aaa114ed",
+      "request_sha256": "92d6a532625e36823246b5771e217f7e809900f82ae770ac3acf2b38f047cd46",
+      "output_writers_closed": true,
+      "processed_sources": 5361,
+      "encoder_weight_loads": 0,
+      "sdk_simulation_model_constructions": 0,
+      "physics_steps": 0,
+      "optimizer_updates": 0,
+      "evaluator_training_authorized": false,
+      "elapsed_seconds": 27.116674540564418,
+      "original_train_sources": 5361,
+      "original_validation_sources_read": 0,
+      "actual_pose_frames": 2841026,
+      "actual_unique_source_feature_frames": 2835665,
+      "actual_source_npz_bytes": 2999354933,
+      "full_normalized_feature_RAM_bytes": 782643540,
+      "normalized_features_persisted": false,
+      "actual_sample_windows_verified": 34068,
+      "maximum_source_RAM_pose_bytes": 1669720,
+      "variable_length_probe": {
+        "batch_shape": [
+          32,
+          200,
+          69
+        ],
+        "mask_shape": [
+          32,
+          200
+        ],
+        "finite": true,
+        "padded_exact_zero": true,
+        "source_slice_sha256": "3cf237f49d275999ec256ee164a76cdc4161f6d593e94e480d77101a3984889c"
+      },
+      "private_artifact": {
+        "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr69d_numeric_data_v1/numeric_sources.private.json",
+        "bytes": 3505523,
+        "sha256": "8bc26439a45e6b47737ecc03c16647632e901314a5518ea6117f8e0b50577a7c"
+      },
+      "scope_receipt_sha256": "f355de1c947487d750cbe3d59c51d78c8853a36315c659a3b08b4876df7273d2",
+      "scope_artifact_sha256": "c88f73125f16b959b84eb2f9d33f4c17b40287c3b8b9a058047035070df0450a",
+      "codec_sha256": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
+      "normalization_sha256": "4a4b8838736a7541d5c2de7b944da78870fcf8fa1e55359599f815c371da1bb4",
+      "cuda_initialized": false,
+      "mujoco_library_imported": true,
+      "complete_evaluator_training_ready": false
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/accept_tmr69d_numeric_data.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_numeric_data_tmr69d_numeric_data_v1_request.json"
+      ],
+      "supervisor_pid": 405316,
+      "child_pid": 405321,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 4,
+      "sample_errors": [],
+      "elapsed_seconds": 27.80671428516507,
+      "supervision_passed": true,
+      "run": "tmr69d_numeric_data_v1",
+      "source_sha256": "8929c2d12ecb834c23abf5637b1e01743346fdef5d4c20e3ad543f1ea33dc421",
+      "request_sha256": "92d6a532625e36823246b5771e217f7e809900f82ae770ac3acf2b38f047cd46",
+      "receipt_sha256": "c3c8d16d62b713b00adaf87eb3ebe340dbda5b8c582cecdc7911b9f724198b96",
+      "resource_sha256": "674b20fb5902b33ad0581972478ab51ce6b6c027b237649dcedf53138693fe40",
+      "process_exit_sha256": "057d5db43b45339007b925b69ea4ab81cc61c20f04a9e1ca767ec17aec189ca8"
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/accept_tmr69d_numeric_data.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_numeric_data_tmr69d_numeric_data_v1_request.json"
+      ],
+      "supervisor_pid": 405316,
+      "child_pid": 405321,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 4,
+      "sample_errors": [],
+      "elapsed_seconds": 27.80671428516507,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    }
+  },
+  "sha256": {
+    "receipt": "c3c8d16d62b713b00adaf87eb3ebe340dbda5b8c582cecdc7911b9f724198b96",
+    "exit": "1b5453fc88aba1b0443df6e53666debf9140b9423b6afcabe06f64b3d18aaace",
+    "process": "057d5db43b45339007b925b69ea4ab81cc61c20f04a9e1ca767ec17aec189ca8",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+  },
+  "workers": [],
+  "common_lock_free": true,
+  "closed_execution_verified": true,
+  "artifact_audit": {
+    "all5361_private_numeric_source_rows_and_exact_scope_join_verified": true,
+    "all_segment_and_feature_frame_counts_verified": true,
+    "actual_original_validation_sources_read": 0,
+    "actual_learned_encoder_loads": 0,
+    "actual_training_updates": 0,
+    "complete_evaluator_training_ready": false
+  },
+  "logs": {
+    "child.log": "",
+    "tmr69d_numeric_data_v1_outer.log": ""
+  },
+  "data_free_bytes": 2966974464,
+  "home_free_bytes": 2975264768
+}

@@ -1,0 +1,100 @@
+{
+  "schema": "textop.train_only_robot_tmr_evaluator.v1",
+  "run": "tmr69d_evaluator500_train_v1",
+  "formal_training_authorized": true,
+  "inputs": {
+    "scope_receipt": {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr69d_training_scope_v2/receipt.json",
+      "sha256": "f355de1c947487d750cbe3d59c51d78c8853a36315c659a3b08b4876df7273d2"
+    },
+    "numeric_receipt": {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr69d_numeric_data_v1/receipt.json",
+      "sha256": "c3c8d16d62b713b00adaf87eb3ebe340dbda5b8c582cecdc7911b9f724198b96"
+    },
+    "text_receipt": {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/tmr_text_models_import_verify_v1/receipt.json",
+      "sha256": "c27611b8e2918234f16ee60e183e28bcf3191cd7c5014ee5bb625820979e8872"
+    },
+    "import_receipt": {
+      "path": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/text_models_import_v1/receipt.json",
+      "sha256": "aa32810715c65e0aaa2917e05848dc1fefc1adccd6f66fab8d72e681d2f354a3"
+    },
+    "codec_sha256": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f"
+  },
+  "bound_sources": {
+    "scripts/tmr69d_core.py": "a1c7a752252211866215e946050cf843ccc08343fa17b8844c7bb56884557f68",
+    "scripts/paper69_runtime.py": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
+    "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e",
+    "scripts/tmr69d_training_inputs.py": "1a840c6d12ca0281d80ff0ebf607c5dd23ec1c00d009a6130e277ee5dbf33700"
+  },
+  "upstream_model_dir": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/evaluator_tmr_20261029/upstream_core_v1",
+  "upstream_model_sha256": {
+    "actor": "8d8b1a2e270e6f9df680e0af0fbdcabe05522f44cb544ad8b1d9413baeb62fb7",
+    "losses": "1088b89ec3785224b45a565d606650ddc0ec61b57f27d0f8c9613328f75329d1",
+    "metrics": "84d823420fa5db522b7576e2dcc8dec270a1d82bf563414a7268330d51312053",
+    "temos": "bcf783fbf73209b99959d144fa40307b67b2b442d7f49ba56c6e0d181b3280ec",
+    "tmr": "cf8106c0cafc0aeacbaee56e8618397da2f41f358cf078c75cec903a3ea93404"
+  },
+  "witness_bindings": [
+    {
+      "run": "tmr69d_real_witness_author_v1",
+      "sha256": {
+        "receipt": "8b090395b3f4e086b3966850824b73fe89f76809d78619340f2c762779d055cb",
+        "exit": "df2e3da39a052ccc298cc872cb01ed2eda7fe4228cc80ff1b1eba813344be34e",
+        "process": "2054e95e438b7950d326c21f641d6dd47555d459c2a18997207468a36302b5b0",
+        "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+      }
+    },
+    {
+      "run": "tmr69d_real_witness_document_v1",
+      "sha256": {
+        "receipt": "28eea3698f6c8a6f3f28c47571e9614248948b2ae8c382164ea734e20dd7ce7a",
+        "exit": "b3691863a371a88efd15f64f6c898fb3e12cf657f7474b8fafbdbd1c76b0c905",
+        "process": "e1649757bdb1c60480d68b02773f6dbb77cc1fc5397aeb96f32e36e7e221ac94",
+        "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+      }
+    }
+  ],
+  "accepted_input_signature_sha256": "512a138a8319ca97ac240b51e33e855a6c7e70ec76e6b9a1247816bd524d5402",
+  "diagnostic_initial_model_sha256": "7d78c1406a2030685c2d6700f95d53bc38bde124ecbc12ce2855d6686207f310",
+  "seed": 20261102,
+  "epochs": 500,
+  "batch_size": 32,
+  "gradient_samples": 32462,
+  "internal_validation_samples": 1606,
+  "expected_optimizer_updates": 507500,
+  "optimizer": {
+    "type": "torch.optim.AdamW",
+    "lr": 0.0001,
+    "weight_decay": 0.01
+  },
+  "lr_schedule": "constant upstream configure_optimizers",
+  "checkpoint_dir": "/home/ouyanghao/textop-tmr69d-evaluator-20261029/checkpoints",
+  "checkpoint_upper_bytes": 201326592,
+  "save_epochs": [
+    100,
+    500
+  ],
+  "immutable_emergency_slots": 1,
+  "reserve_bytes": 2147483648,
+  "home_log_allowance_bytes": 134217728,
+  "storage_acceptance": {
+    "path": "/home/ouyanghao/textop-tmr69d-evaluator-20261029/checkpoints",
+    "uid": 1013,
+    "filesystem": "ext4",
+    "symlinks": false,
+    "writable_fsync_probe_sha256": "853e37d8ca864e240b299052f258f5065d65a1d7c495ca5a897a54b8d34b8ca5",
+    "free_bytes": 3005812736,
+    "required_bytes": 2885681152,
+    "slots": 3,
+    "per_slot_upper_bytes": 201326592,
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 134217728
+  },
+  "early_stopping": false,
+  "original_validation_used_for_gradient": false,
+  "formal_weights_seeded_from_diagnostic": false,
+  "executor_sha256": "04014d8f2e657e9c48827edd7fae817c3f01362d97dcdbd3a0e3dea092c604c2",
+  "supervisor_sha256": "f683af23c66df1c6669341626210cb4100f638ff2410e4ea8c9b7a0935cb14d7",
+  "runtime_binding_sha256": "c89a006b8730db6f767e0e3542506a3b9be928aaa12679f2ae6a1b0e8c4b7030"
+}

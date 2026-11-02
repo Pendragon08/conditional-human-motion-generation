@@ -1,0 +1,79 @@
+{
+  "spec": {
+    "schema": "textop.generator8278_user_pause.v1",
+    "user_request": "User2026-10-27: safely save and pause this prefilter generator; complete full-library physical filtering before filtered generator training",
+    "run": "generator8278_vae200k_train_v1",
+    "handoff_name": "generator8278_to_filtered_order_v1",
+    "pause_authorized": false,
+    "process_identity": {
+      "pid": 4166124,
+      "start_ticks": 1426871168,
+      "ppid": 4166117,
+      "session": 4166124,
+      "state": "R",
+      "uid": 1013,
+      "argv": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_generator8278_vae.py",
+        "--mode",
+        "train",
+        "--run",
+        "generator8278_vae200k_train_v1"
+      ],
+      "exe": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python3.8"
+    },
+    "frozen_sources": {
+      "scripts/run_generator8278_vae.py": "7e4ff4b7c427a884deb9708ab77c8fb4a62304ec505fb5329dd83758f650fe45",
+      "scripts/generator8278_vae_runtime.py": "59e6c101073e1cc8df4ebff195b49bb76f5d63ee73f2b288c8d4d4597a833e8b",
+      "scripts/supervise_generator8278_vae.py": "c7cc495453d532da2ba0736905f4b27380117be3d17c60a4a023212707b23718",
+      "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e",
+      "scripts/checkpoint_storage_guard.py": "bff54d2b4fb7f29fdc18f6cc46d86626ca14b299faba49161c1c10897897788c",
+      "configs/generator8278-vae-spec.json": "ec16b1468543e7a5347595d94ecc915502bb775fe885f97318ff53454ebe3fdc",
+      "scripts/closed_boundary_interrupt.py": "15bb7ecb9601ce01ec78d627520cd19d95468db3c1470b8f689972183997a318",
+      "scripts/validate_closed_boundary_interrupt.py": "294f4a0ec2538ff74eedbfe4f7d36c2cb3526c48bb72ae8df2249985e48884da",
+      "scripts/quick_pidfd.py": "df180bffb3e35dd77c8bb4f8ca9b143879a4184f6f8aab98188e1139de6538f2"
+    },
+    "entrypoint_sha256": "39a3084d8854192a3af0f3f4725372cf40fc11cb442a6d0aed339f8cb7d881b7",
+    "findmnt_executable": "/usr/bin/findmnt",
+    "cpu_witnesses": []
+  },
+  "preflight": {
+    "status": "PRODUCTION_PAUSE_PREFLIGHT_ONLY",
+    "training_signals": 0,
+    "worker": {
+      "pid": 4166124,
+      "start_ticks": 1426871168,
+      "ppid": 4166117,
+      "session": 4166124,
+      "state": "R",
+      "uid": 1013,
+      "argv": [
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_generator8278_vae.py",
+        "--mode",
+        "train",
+        "--run",
+        "generator8278_vae200k_train_v1"
+      ],
+      "exe": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training/bin/python3.8"
+    },
+    "budget": {
+      "destination": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/generator8278_20261027/vae/checkpoints",
+      "filesystem": "ext4",
+      "owner_uid": 1013,
+      "free_bytes": 5754097664,
+      "required_bytes": 3238002688,
+      "remaining_saves": 1,
+      "checkpoint_upper_bound_bytes": 553648128,
+      "reserve_bytes": 2147483648,
+      "log_allowance_bytes": 536870912,
+      "persistent_owned_writable": true
+    }
+  },
+  "driver_source": "import pathlib,subprocess,json,time\nr=pathlib.Path('/data/code/ouyanghao/oyh/textop-reproduction-20261024');run='generator8278_vae200k_train_v1'\nstarted=time.time();cmd=['python3',str(r/'scripts/supervise_generator8278_vae.py'),'--mode','train','--run',run]\ncode=subprocess.call(cmd)\n(r/'generator8278_20261027/drivers'/(run+'_outer_exit.json')).write_text(json.dumps({'returncode':code,'command':cmd,'elapsed_seconds':time.time()-started},indent=2))\nraise SystemExit(code)\n",
+  "free": {
+    "/data/code/ouyanghao/oyh/textop-reproduction-20261024": 5754097664,
+    "/home/ouyanghao": 5580529664
+  },
+  "gpu": "0, 36328 MiB\n1, 35931 MiB\n"
+}

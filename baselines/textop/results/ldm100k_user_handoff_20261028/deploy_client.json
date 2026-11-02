@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 90,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "ccd9cdd9ac7ba524f17c03fabd180e6a4239aee194654ddce10b08363cda4f69",
+  "client_pid": 71460,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"status\": \"NEW_LDM100K_CONTROL_DEPLOYED_DISABLED\", \"files_sha256\": {\"scripts/ldm100k_control_protocol.py\": \"25bd11e99dc87a01317922f8c800aed4bfd5c2acbed9b06c0d9c5ed180c64864\", \"scripts/watch_ldm100k_handoff.py\": \"55c29f7a886e0838a6b37bcc9d241ecf044b5a69574cea1a34198d57e68db7c7\", \"scripts/supervise_ldm100k_handoff.py\": \"c2d058622e8ad534eb0bd157fe8c8432c5fa4815f9242a361f0e5ef9ad3196be\", \"provider_tools/test_ldm100k_control_cpu.py\": \"dc5b6886d4704c586d5811ebe29c1abb4f33231c41a9eb3321e10413a7523e27\", \"configs/ldm100k-user-control-spec.json\": \"1f5d9d2895c75905a2846d4cdbe55915f1c502aa18e07f45d17a55fb48c282a7\"}, \"original_ldm_source_modified\": false, \"production_signals_sent\": 0, \"new_gpu_contexts\": 0, \"new_model_loads\": 0}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\ldm100k_user_handoff_20261028\\deploy_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\ldm100k_user_handoff_20261028\\deploy_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

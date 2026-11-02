@@ -1,0 +1,204 @@
+{
+  "run": "tmr69d_core_contract_v1",
+  "observed_unix": 1793216895.9075913,
+  "files": {
+    "receipt": {
+      "status": "TMR69D_SYNTHETIC_CPU_CORE_CONTRACT_VERIFIED",
+      "run": "tmr69d_core_contract_v1",
+      "source_sha256": "31c05c0aeedf3df82c5d10c2fd365fea4c09d5d6147140caf655987faa79e855",
+      "request_sha256": "4a749171a31dd45e94ae40a7de21187320adbd5d3b7637c50ef3eaa3b23705a3",
+      "output_writers_closed": true,
+      "real_robot_or_babel_text_reads": 0,
+      "pretrained_weight_payload_reads": 0,
+      "actual_formal_evaluator_updates": 0,
+      "actual_diagnostic_optimizer_calls": 4,
+      "formal_training_authorized": false,
+      "semantic_metrics_computed": false,
+      "elapsed_seconds": 2.693388180807233,
+      "original_class_AST_audit": {
+        "actor": {
+          "original_source_sha256": "8d8b1a2e270e6f9df680e0af0fbdcabe05522f44cb544ad8b1d9413baeb62fb7",
+          "original_class_AST_sha256": {
+            "PositionalEncoding": "b42e51b1c47265ce3dba72f12520f7b752a3f5b7b07e43108d2fad0dcd32fa16",
+            "ACTORStyleEncoder": "89beb1af94c392869f515aade7dec697b982b99461cded46b210018a020b1d70",
+            "ACTORStyleDecoder": "3389b398f66f4adf4a73d95aed6263bf63524da15a43902fccbfec9683274d77"
+          },
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": []
+        },
+        "losses": {
+          "original_source_sha256": "1088b89ec3785224b45a565d606650ddc0ec61b57f27d0f8c9613328f75329d1",
+          "original_class_AST_sha256": {
+            "KLLoss": "cce3b61ed94e0b5fc0c97fa354b16b2c5229da03748500c7a3bb9c8f482b4439",
+            "InfoNCE_with_filtering": "94c06794d4c3fa8c6ab71fe39407cc5b7ad76efef648539fd1e768435eab5562"
+          },
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": []
+        },
+        "metrics": {
+          "original_source_sha256": "84d823420fa5db522b7576e2dcc8dec270a1d82bf563414a7268330d51312053",
+          "original_class_AST_sha256": {},
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": []
+        },
+        "temos": {
+          "original_source_sha256": "bcf783fbf73209b99959d144fa40307b67b2b442d7f49ba56c6e0d181b3280ec",
+          "original_class_AST_sha256": {
+            "TEMOS": "8c44e3a8c266a08e35b175ee23d7dc7b47cee2230033849d60f4e774e9163bff"
+          },
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": [
+            "Lightning lifecycle import replaced by local torch.nn.Module base",
+            "Loss import resolved within signed private package"
+          ]
+        },
+        "tmr": {
+          "original_source_sha256": "cf8106c0cafc0aeacbaee56e8618397da2f41f358cf078c75cec903a3ea93404",
+          "original_class_AST_sha256": {
+            "TMR": "2b1060c080105a050b1cb1905314d75fa5fe59de6684d4d16730982a4c02f988"
+          },
+          "original_class_AST_unchanged": true,
+          "lifecycle_import_adaptations": []
+        }
+      },
+      "actual_random_cpu_model_constructions": 1,
+      "selected_logical_optimizer_steps": 3,
+      "memory_checkpoint_bytes": 192706502,
+      "memory_checkpoint_sha256": "3afabfe180777e4020c77b0c16bd3637ea8a01255aa72bfed828735357af00f1",
+      "persistent_checkpoint_writes": 0,
+      "exact_model_adamw_all_rng_sampler_nextbatch_loss_replay": true,
+      "original_method_bodies_unchanged": true,
+      "optimizer": {
+        "type": "torch.optim.AdamW",
+        "lr": 0.0001,
+        "weight_decay": 0.01
+      },
+      "actual_losses": [
+        {
+          "recons": 0.8567144870758057,
+          "kl": 6.885064125061035,
+          "latent": 1.301453709602356,
+          "contrastive": 1.2812278270721436,
+          "loss": 0.9849191308021545
+        },
+        {
+          "recons": 0.7901291847229004,
+          "kl": 7.790666103363037,
+          "latent": 1.3712600469589233,
+          "contrastive": 1.3763964176177979,
+          "loss": 0.9278604388237
+        },
+        {
+          "recons": 0.8296080827713013,
+          "kl": 7.697999000549316,
+          "latent": 1.2237074375152588,
+          "contrastive": 0.9666879177093506,
+          "loss": 0.9263660907745361
+        },
+        {
+          "recons": 0.8296080827713013,
+          "kl": 7.697999000549316,
+          "latent": 1.2237074375152588,
+          "contrastive": 0.9666879177093506,
+          "loss": 0.9263660907745361
+        }
+      ],
+      "synthetic_nextbatch_sha256": "fcb8a7e40b7aebe952110ec2312a3d9cb1266b7e6d1e8029e7a19b6af260bee5",
+      "final_model_sha256": "2d772a7358a715b71171f771609f8bb710e45670b73cef990e126465c99f53fc",
+      "cuda_initialized": false,
+      "diagnostic_weights_discarded_not_formal_initialization": true,
+      "real_data_or_semantic_acceptance_claimed": false
+    },
+    "exit": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/probe_tmr69d_core_contract.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_core_contract_tmr69d_core_contract_v1_request.json"
+      ],
+      "supervisor_pid": 407127,
+      "child_pid": 407132,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 3.197230877354741,
+      "supervision_passed": true,
+      "run": "tmr69d_core_contract_v1",
+      "source_sha256": "cbf4643d058577b03b916d7c669934a771da260a072309fa1f8146decd139ae6",
+      "request_sha256": "4a749171a31dd45e94ae40a7de21187320adbd5d3b7637c50ef3eaa3b23705a3",
+      "receipt_sha256": "9c29acdb44e0b5b59e4c7729cbc06547c6eeb75e61a322a81463e853fe69a2f2",
+      "resource_sha256": "558f5823666c81ec636cc3da4acfd893818de895b2266eefc7dcdb502e50b95f",
+      "process_exit_sha256": "0cfd4599db8d19a2167b4cfa5566c758845272a91f6645850443aaec6fdd2d89"
+    },
+    "process": {
+      "command": [
+        "taskset",
+        "-c",
+        "0-3",
+        "/usr/bin/env",
+        "CUDA_VISIBLE_DEVICES=",
+        "PYTHONIOENCODING=utf-8",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "OMP_NUM_THREADS=4",
+        "OPENBLAS_NUM_THREADS=4",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/env/bin/python",
+        "-B",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/probe_tmr69d_core_contract.py",
+        "--request",
+        "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/tmr_core_contract_tmr69d_core_contract_v1_request.json"
+      ],
+      "supervisor_pid": 407127,
+      "child_pid": 407132,
+      "child_exit_code": 0,
+      "child_reaped": true,
+      "timed_out": false,
+      "supervisor_error": null,
+      "shutdown_actions": [],
+      "samples_written": 3,
+      "sample_errors": [],
+      "elapsed_seconds": 3.197230877354741,
+      "supervision_passed": true
+    },
+    "outer": {
+      "actual_returncode": 0
+    }
+  },
+  "sha256": {
+    "receipt": "9c29acdb44e0b5b59e4c7729cbc06547c6eeb75e61a322a81463e853fe69a2f2",
+    "exit": "6fe37af6878da3dbc9279dd84b4cabf8470f4bdea1e8f65d23fdf75bd2fe6e7f",
+    "process": "0cfd4599db8d19a2167b4cfa5566c758845272a91f6645850443aaec6fdd2d89",
+    "outer": "4ce907daf27d679864b769f47613c84e61f6e35e48a697680126aa3a388e2dc0"
+  },
+  "workers": [],
+  "common_lock_free": true,
+  "closed_execution_verified": true,
+  "artifact_audit": {
+    "actual_original_method_AST_and_cpu_full_recovery_contract_verified": true,
+    "actual_cpu_diagnostic_optimizer_calls": 4,
+    "selected_logical_optimizer_steps": 3,
+    "actual_formal_evaluator_updates": 0,
+    "actual_real_robot_or_text_reads": 0,
+    "actual_pretrained_model_reads": 0,
+    "real_data_training_or_semantic_ready": false
+  },
+  "logs": {
+    "child.log": "",
+    "tmr69d_core_contract_v1_outer.log": ""
+  },
+  "data_free_bytes": 2882756608,
+  "home_free_bytes": 2975240192
+}

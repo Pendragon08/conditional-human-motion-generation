@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 120,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "81f8ebcdff3f745aa397d8f1a46e308062f5072cb7056b8aa9776b97a7cc277d",
+  "client_pid": 3752,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"status\": \"DISABLED_LDM_ENTRY_SUPPORTS_TWO_FILESYSTEMS_CAPACITY_NOT_YET_ACCEPTED\", \"files_sha256\": {\"scripts/run_user_vae100k_ldm.py\": \"eb613778716602f83051e54a2c40d1fc8b6a2820aaf5bd8416a75b18f47b3b64\", \"configs/user-vae100k-ldm-spec.json\": \"ea028fef9bd517fd93f59f49ff6286f91141dc9c8dd42c3faabf8d7ee9043e32\", \"scripts/user_vae100k_ldm_storage.py\": \"d160a2f4466cb45bf1b21516b67412873eaed82268aa27051aeaf5f674b57929\"}, \"new_gpu_contexts\": 0, \"new_model_loads\": 0}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\dual_deploy_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\vae100k_user_handoff_20261028\\dual_deploy_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}

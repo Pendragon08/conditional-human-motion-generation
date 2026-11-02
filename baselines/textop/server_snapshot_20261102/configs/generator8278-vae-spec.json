@@ -1,0 +1,66 @@
+{
+  "data_acceptance_sha256": "a8ebf892d229570829c51909884204241ba4bc9faee389f5ac5b1f75cf5e4f88",
+  "corpus_receipt_sha256": "bf66fac213d6b9a1812d0c1d578fe09599346e4a2211e70233b968743cd60113",
+  "bound_sources": {
+    "scripts/paper69_runtime.py": "cb97b9a2dd603979ec512dddca07be88ca0c9144a82b1eb935fc28dab6a0486f",
+    "scripts/paper69_data_runtime.py": "cf5c1e3f27665e7fc4d4aa1ede6bcd1931e3563409ad766ff67a576cc0c7b60d",
+    "scripts/generator_training_state.py": "46ef2ade1e76ba90815d1afb6c380b049030afb87c6a74e2d0b70cd3db32b94e",
+    "scripts/checkpoint_storage_guard.py": "bff54d2b4fb7f29fdc18f6cc46d86626ca14b299faba49161c1c10897897788c",
+    "scripts/generator8278_vae_runtime.py": "59e6c101073e1cc8df4ebff195b49bb76f5d63ee73f2b288c8d4d4597a833e8b"
+  },
+  "schema": "textop.generator8278_vae.v1",
+  "witness_authorized": true,
+  "train_authorized": true,
+  "witnesses": [
+    {
+      "run": "vae8278_author_v1",
+      "receipt_sha256": "8a3d8c20038d3c8abb0a47c4c90baea5c8a07de8e05fed5060a5c7b68aecfff5",
+      "exit_sha256": "f7c8fc87d7242e683f5b079c13828d917d2b03b96bab82067ebcfdb947a28036"
+    },
+    {
+      "run": "vae8278_document_v1",
+      "receipt_sha256": "63dcfa78ed7c07931c5a441fc50ec87dafc450246c1291c19aaea012c59d921c",
+      "exit_sha256": "d7db0860882ca1316b4352f117beec4305ec89c7943883c8bb88cedafe21a53c"
+    }
+  ],
+  "seed": 20261027,
+  "corpus_dir": "/dev/shm/ouyanghao_textop_20261025/generator8278_prefilter_v1",
+  "checkpoint_dir": "/data/code/ouyanghao/oyh/textop-reproduction-20261024/generator8278_20261027/vae/checkpoints",
+  "checkpoint_policy": {
+    "reserve_bytes": 2147483648,
+    "log_allowance_bytes": 536870912,
+    "checkpoint_upper_bound_bytes": 553648128
+  },
+  "vae": {
+    "stages": [
+      100000,
+      50000,
+      50000
+    ],
+    "batch_size": 512,
+    "learning_rate": 0.0001,
+    "latent_shape": [
+      1,
+      128
+    ],
+    "hidden": 512,
+    "ff": 1024,
+    "layers": 9,
+    "heads": 4,
+    "feature_dim": 69,
+    "history": 2,
+    "future": 8,
+    "primitives": 4,
+    "ema": false
+  },
+  "entrypoint_sha256": "7e4ff4b7c427a884deb9708ab77c8fb4a62304ec505fb5329dd83758f650fe45",
+  "supervisor_sha256": "c7cc495453d532da2ba0736905f4b27380117be3d17c60a4a023212707b23718",
+  "scope": "User selected8278pre-filter data; same paper200k schedule/network. Not physicallyfiltered fullpaper reproduction. Checkpoint cadence50k rather than release20k; all saved versions retained.",
+  "checkpoint_steps": [
+    50000,
+    100000,
+    150000,
+    200000
+  ],
+  "checkpoint_backup_scope": "All checkpoints retained on persistent server. D final-stage backup priority; intermediate D copies only when actual2GiB reserve permits. Local capacity for every intermediate not yet available."
+}

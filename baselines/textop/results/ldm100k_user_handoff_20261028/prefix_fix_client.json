@@ -1,0 +1,32 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ServerAliveInterval=30",
+    "-i",
+    "C:/Users/Pende/.ssh/id_ed25519",
+    "ouyanghao@10.147.17.32",
+    "python3 -"
+  ],
+  "timeout_seconds": 90,
+  "stage": "SSH_CLIENT_DISPATCH_INTENT",
+  "script_sha256": "a5c500eac702c58cb7849872d8653491eedd3399bf4d8241791aa05b30d7bd76",
+  "client_pid": 10436,
+  "actual_client_exit_code": 0,
+  "client_reaped": true,
+  "timed_out": false,
+  "stdout": "{\"status\": \"DISABLED_PREFIX_EXPORT_INTERRUPTED_EVIDENCE_HASHES_STRENGTHENED\", \"previous_sources_preserved_sha256\": {\"scripts/ldm100k_prefix_completion.py\": \"b941ecab61965bbcb9d0fd328ec955c45ccac18b12c9170edbcd2f3536c1505e\", \"provider_tools/test_ldm100k_prefix_metadata.py\": \"46d1c9d9b83586dbd2862c808415a20d8be59a160b285c0e149fdac84c6c5d61\", \"configs/ldm100k-prefix-export-spec.json\": \"9caece9b5f030a0fa6fcb09ed47e93fc83c17fd221a09a660e177ba51560e56d\"}, \"files_sha256\": {\"scripts/ldm100k_prefix_completion.py\": \"e38aa0cf06d7435b816dffc6d5663d3a3f86e792f395dfd55b9136edc55055b8\", \"provider_tools/test_ldm100k_prefix_metadata.py\": \"ee0dab2d7e2daaafa6cd4a181477e5b3202f08c32d9191bf76bb106526d52ae9\", \"configs/ldm100k-prefix-export-spec.json\": \"98a3d4a75423a5ed0bcb497032f53849900e528e023acaaab494caa993dafc0c\"}, \"fixture\": {\"status\": \"LDM100K_PREFIX_ISOLATED_METADATA_FIXTURES_PASSED\", \"rejected_cases\": 26, \"post_target_memory_counters_not_selected\": true, \"zero_history_is_a_recorded_finding\": true, \"actual_production_checkpoint_reads\": 0, \"actual_models_loaded\": 0, \"actual_gpu_contexts\": 0, \"actual_production_signals\": 0, \"not_actual_endpoint_acceptance\": true}, \"actual_fixture_exit_code\": 0, \"actual_fixture_reaped\": true, \"actual_fixture_streams_final\": true, \"actual_production_checkpoint_reads\": 0, \"actual_model_loads\": 0, \"actual_exports\": 0, \"actual_gpu_contexts\": 0, \"active_training_and_control_source_modified\": false, \"export_authorized\": false}\n",
+  "stderr": "",
+  "error": null,
+  "remote_child_outcome": "UNKNOWN_UNTIL_SERVER_PROOF",
+  "direct_stream_files": {
+    "stdout": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\ldm100k_user_handoff_20261028\\prefix_fix_client.stdout.txt",
+    "stderr": "C:\\Users\\Pende\\Documents\\ChatGPT\\\u673a\u5668\u4eba\u683c\u6597\u52a8\u4f5c\u6355\u6349\u6570\u636e\u751f\u6210\\work\\phygile_reproduction_20261017\\conditional-human-motion-generation\\baselines\\textop\\results\\ldm100k_user_handoff_20261028\\prefix_fix_client.stderr.txt"
+  },
+  "streams_final": true,
+  "output_may_grow": false
+}
