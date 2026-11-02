@@ -85,3 +85,7 @@ These four archives contain historical validation outputs. The release remains a
 | textop_tracker_other_validations_part04_20261102.tar | 654 | 871526400 | `aba4735b5c9c53441489cc89647a24d3e813f6e51e4f674e65e7e85e44f8edb8` |
 
 Part 03: the original upload client timed out while awaiting the response. A subsequent read-only reconstruction from the current server files under the shared lock produced the same SHA-256 as the draft asset. The original timeout remains part of the record.
+
+### Generator validation evidence (draft asset)
+
+`textop_generator_validation_evidence_20261102.tar` contains 20 small evidence files (122880 bytes); SHA-256 `caf511c8266d09768250da363dc60936290304b1f8a085e261a44df0dffe501e`. The previously indexed author VAE and LDM model assets cover the generator-state models: document copies were independently checked to match the author copies, and each `ldm/vae.pth` is a hard link to its corresponding `vae/state_after4.pth`. Those six model paths are excluded from this evidence archive to avoid duplication.
