@@ -101,3 +101,7 @@ Part 03: the original upload client timed out while awaiting the response. A sub
 ### TMR evaluator checkpoint (draft asset)
 
 `textop_tmr_epoch100_inference.pth` is the 100-epoch inference export from the user-trained resumed checkpoint (64234041 bytes; SHA-256 `6ed04cb040419f714962522ce37590437740896a6fb230533e3c81c599b9b357`). The earlier interrupted training run remains part of the provenance; this checkpoint does not represent a 500-epoch run. The asset remains in the draft release pending the broader source and redistribution review.
+
+### TMR 100-epoch training evidence (draft asset)
+
+`textop_tmr_epoch100_training_evidence_20261102.tar` contains nine SHA-bound training and supervision records (727040 bytes; SHA-256 `aed68b46f45bae3870cdf7e17e720f5912334da8aabef2b032b9589058472219`; file manifest SHA-256 `c84b31f63ce019219ce915fe56606d30532637f8c5d8d9b583dc88fc5ef4e604`). They preserve the original interrupted run and the resumed run through epoch 100. Historical directory names do not mean a 500-epoch training run completed. The asset remains in the draft release pending disclosure and source review.
