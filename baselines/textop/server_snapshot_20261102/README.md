@@ -72,3 +72,16 @@ SuperMimic 15000、20000 和 latest 检查点已核对上传字节，但尚未�
 | Release 草稿附件 | 文件数 | 字节数 | SHA-256 |
 | --- | ---: | ---: | --- |
 | textop_tracker_teacher15000_validation_20261102.tar | 16569 | 681922560 | `63ee05e5a520e23819eb1b6eaca2b276b2edc8de2531f8e5ceb17e6adf628b0f` |
+
+### Additional historical tracker validations (draft assets)
+
+These four archives contain historical validation outputs. The release remains a draft; inclusion is not a license determination for bundled third-party models or software.
+
+| Asset | Files | Bytes | SHA-256 |
+| --- | ---: | ---: | --- |
+| textop_tracker_other_validations_part01_20261102.tar | 767 | 1346641920 | `f3ac723e7e3be69c2a50c5b5b56245f35d82acc8d3a2e26a4d2b4e8483127f8e` |
+| textop_tracker_other_validations_part02_20261102.tar | 72 | 1341317120 | `7e306c9c555fa173bf840a2d7d18e0d5d17adaf7614cb54643f3334fdae990b3` |
+| textop_tracker_other_validations_part03_20261102.tar | 279 | 1339228160 | `00fbe0758043130603b23ca2f206cbfc4e002cae58783c84c1127aa0619faa01` |
+| textop_tracker_other_validations_part04_20261102.tar | 654 | 871526400 | `aba4735b5c9c53441489cc89647a24d3e813f6e51e4f674e65e7e85e44f8edb8` |
+
+Part 03: the original upload client timed out while awaiting the response. A subsequent read-only reconstruction from the current server files under the shared lock produced the same SHA-256 as the draft asset. The original timeout remains part of the record.
