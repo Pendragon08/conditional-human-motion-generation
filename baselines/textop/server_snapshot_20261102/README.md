@@ -2,7 +2,7 @@
 
 本分支保存 2026-11-02 服务器端 TextOp 脚本、配置及文本报告的快照，共 517 个文件，逐项 SHA-256 见 [SNAPSHOT_MANIFEST.json](SNAPSHOT_MANIFEST.json)。该快照保留原有 GitHub 仓库历史。
 
-模型检查点、实验轨迹及完整 HTML 复现报告已分批上传至本仓库的 **GitHub Release 草稿**，尚未公开发布。草稿供仓库所有者在 Releases 页面检查；其中涉及第三方动作资料的归档仍待确认再分发授权。以下清单记录草稿当前内容，随着整理可能继续增加。
+模型检查点、实验轨迹及完整 HTML 复现报告已分批上传至本仓库的 **GitHub Release 草稿**，尚未公开发布。草稿供仓库所有者在 Releases 页面检查；用户已确认持有相关材料公开发布的授权；正在完成剩余资料的上传与核验。以下清单记录草稿当前内容，随着整理可能继续增加。
 
 绝大部分大型服务器文件直接从服务器上传至 GitHub，未通过用户电脑转发；HTML 报告从本地通过服务器上传。压缩包中的 ARCHIVE_MANIFEST.json 逐项记录文件校验值。
 
@@ -34,6 +34,8 @@ SuperMimic 15000、20000 和 latest 检查点已核对上传字节，但尚未�
 | textop_earlier_ppo_training_and_witnesses_20261102.tar | 1284618240 | `b2c7aa6f4bc3bb2ad46b45dd0cc36911e05f9eb063ab5d25698258be48d435e3` |
 
 | textop_additional_training_logs_and_results_20261102.tar | 1182894080 | `0c986fbe8a427335bd4439d0d858171f49f66f8f1452a513e38d7730a86a69cd` |
+
+| textop_snapmogen_retarget_and_evidence_20261102.tar | 300933120 | `80bd7739c10dd7348ff89d3ba95cd17007d25c49e9bba0dde8b16e67c74d0e40` |
 
 原始第三方动作数据、重定向数据及逐条文本的公开传播须遵守各自数据集许可。仓库此前的存储清理记录说明了相关限制；不能把源码或模型的公开授权推定为训练数据的再分发授权。
 
