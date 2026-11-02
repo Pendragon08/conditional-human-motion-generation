@@ -18,6 +18,12 @@
 3. **代码仓库中的小型配置、清单、报告与结构化结果**可从各目录阅读；大型模型、数据分片和轨迹包的名称及 SHA-256 见[服务器快照与附件索引](../baselines/textop/server_snapshot_20261102/README.md)。索引列出草稿并不使草稿公开可下载。
 4. **HTML 报告**是按对应日期冻结的版本。最新本地报告和草稿中已有版本可能不一致；以附件名称和摘要区分，不能假定最新版已公开。
 
+## TextOp 上游训练数据来源（历史记录）
+
+原训练资产的[固定版本清单](../baselines/textop/configs/asset_manifest.json)记录了上游 [Yochish/TextOp-Data 的 bb9604ce 版本](https://huggingface.co/datasets/Yochish/TextOp-Data/tree/bb9604ce36ad4c0a77b5cccde89ebbb7c3ca93c9)。其中 `BABEL-AMASS-ROBOT-23dof-FULL-50fps/train.pkl` 记录为 4,905,919,425 字节，来源清单的 LFS SHA-256 为 `33123a15905fb098b5fa6c083a1dc76441e7c2a90b190844534aeba1fc0dd331`。当时的[下载完成记录](../baselines/textop/results/download_complete.json)记载该文件的实际摘要与之匹配；这是历史下载证据，本次未重新读取整个文件，也不保证上游链接当前可用。
+
+该上游训练输入与本项目后来生成的 G1 参考库、策略轨迹及实验结果应分别追溯；来源清单不表示它们已合并成同一份数据，也不代表全部材料可自由再分发。
+
 ## 使用与许可
 
 - Git 大文件指针、Release 附件和第三方下载源是不同存储位置；使用前按方法索引确认文件是否实际可访问、是否完整，以及对应 SHA-256。
