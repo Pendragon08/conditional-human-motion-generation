@@ -93,3 +93,7 @@ Part 03: the original upload client timed out while awaiting the response. A sub
 ### Additional numerical experiment evidence (draft asset)
 
 `textop_numeric_remaining_evidence_20261102.tar` contains 109 files (144271360 bytes); SHA-256 `65ac1340084f72e23680fa99e4cf3b3e6a3753eb11b5b41b1d48e0e4abb84538`. This covers the remaining inventory-listed numerical experiment logs and witnesses. The previously archived PPO groups and original FK library are excluded to avoid duplication.
+
+### TMR evaluator checkpoint (draft asset)
+
+`textop_tmr_epoch100_fullstate.pth` is the user-trained, resumed 100-epoch full-state checkpoint (192952453 bytes; SHA-256 `7bc1955dfcb31d1eeaa966c8f5b8e972e17d6d58da1205c70fd8029b85050fc8`). The earlier interrupted training run remains part of the provenance; this checkpoint does not represent a 500-epoch run. The asset remains in the draft release pending the broader source and redistribution review.
