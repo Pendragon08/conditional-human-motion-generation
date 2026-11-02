@@ -37,6 +37,12 @@ SuperMimic 15000、20000 和 latest 检查点已核对上传字节，但尚未�
 
 | textop_snapmogen_retarget_and_evidence_20261102.tar | 300933120 | `80bd7739c10dd7348ff89d3ba95cd17007d25c49e9bba0dde8b16e67c74d0e40` |
 
+| textop_generated_fk_library_part01_20261102.tar | 1257318400 | `df863c69825d2bc1674ed0f9f5c240facaec706fad11f95182e2829243fc8a68` |
+| textop_generated_fk_library_part02_20261102.tar | 1257338880 | `c8746f3a78fb0b6fde958612f19609cc60d5b9c3d9630936efe41d06f4ebbb9c` |
+| textop_generated_fk_library_part03_20261102.tar | 1257359360 | `c1c68f6829d8fa6ab99dad7bd6859081039ba74159619b479ab64078067cb1e8` |
+| textop_generated_fk_library_part04_20261102.tar | 1257359360 | `5b012105bdfa38d1c1d3880d70e1f340ecdfe19fc235c5b8646f52d3c427270d` |
+| textop_generated_fk_library_part05_20261102.tar | 759111680 | `89feceffc55c1cae0eb133a147e65ae0e88e2ce8441f661e83ca84be11d80cec` |
+
 原始第三方动作数据、重定向数据及逐条文本的公开传播须遵守各自数据集许可。仓库此前的存储清理记录说明了相关限制；不能把源码或模型的公开授权推定为训练数据的再分发授权。
 
 这是归档进度索引，不代表所有历史文件或全部评估均已完成上传、审核或公开。
