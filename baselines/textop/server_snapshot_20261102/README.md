@@ -113,3 +113,8 @@ Part 03: the original upload client timed out while awaiting the response. A sub
 ### Reproduction report with SuperMimic example (draft asset)
 
 `TextOp_reproduction_report_supermimic_20261102.html` is the updated self-contained local report (31557573 bytes; SHA-256 `f97ae9932ae40854426da9ffd5c1ca84acf7940180c970a7ccda2454e52827ab`; draft asset 701660255). It includes a 15-frame, 0.30-second selected standing replay of the 4096-environment SuperMimic evaluation, with its short duration and selection limits stated in the report. This is a physical-trajectory pose replay, not a new physics simulation or a claim about all 564 trials. The asset remains in the draft release and is not publicly downloadable.
+
+
+## Five selected SuperMimic replays (draft report)
+
+`TextOp_reproduction_report_five_super_replays_20261102.html` is the newer self-contained local report (32,091,700 bytes; SHA-256 `bcc1e98f515af394ae5195723175ec32fc1f1a1bc7c37b28d8c3a9f69726a307`; draft asset 701712833). Its five selected 4096-environment SuperMimic execution-pose replays cover two text conditions and multiple seeds, with durations of 0.20 or 0.30 seconds. The report explains the 14-body selection diagnostic, short-duration limits and the distinction from the 30-body 0.3 m success criterion. This asset is in the draft release and is not publicly downloadable.
