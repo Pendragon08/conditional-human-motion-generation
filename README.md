@@ -4,7 +4,7 @@
 
 **条件动作先验、物理执行与全身人形机器人控制**
 
-[论文复现索引](baselines/README.md) · [实验结果](docs/results.md) · [报告导航](reports/README.md) · [文档导航](docs/README.md) · [分支与 PR](docs/branches_and_prs.md)
+[论文复现索引](baselines/README.md) · [数据与附件](docs/datasets_and_artifacts.md) · [实验结果](docs/results.md) · [报告导航](reports/README.md) · [文档导航](docs/README.md) · [分支与 PR](docs/branches_and_prs.md)
 
 </div>
 
@@ -18,6 +18,7 @@
 | CLoSD | 已发布权重评价、文本动作报告、训练尝试与失败分析 | [复现报告](results/closd_baseline_20261010/README.md) · [执行说明](docs/closd_baseline_20261010.md) |
 | PhyGile | 跟踪模块、生成组件独立实现、G1 适配与跨仿真诊断 | **[独立归档入口](baselines/phygile/INDEX.md)**；部分复现，完整论文性能未复现 |
 | ReactiveBFM | 有界训练、数值恢复、检查点核验及 MuJoCo 闭环诊断 | **[独立归档入口](baselines/reactivebfm/INDEX.md)**；部分复现，完整训练与论文基准未完成 |
+| TextOp / SuperMimic | 条件动作生成、机器人动作跟踪及训练对照 | **[复现与数据索引](baselines/textop/INDEX.md)**；部分实验和结果已归档，完整论文条件未复现 |
 
 PhyGile 与 ReactiveBFM 的代码、配置、结果和报告分别放在 `baselines/` 下各自的目录。以往 DreamControl / CLoSD 的 `scripts/`、`configs/`、`results/`、`reports/` 路径继续作为原归档入口。
 
@@ -58,6 +59,7 @@ git sparse-checkout set baselines/phygile baselines/phygile_unitree
 - **既往基线：** [DreamControl / CLoSD 原始评价汇总](docs/results.md)，保留原协议、数值和失败说明。
 - **PhyGile：** [独立结果入口](baselines/phygile/INDEX.md#实验结果与范围)，区分原跟踪实验与 Unitree 扩展。
 - **ReactiveBFM：** [独立结果入口](baselines/reactivebfm/INDEX.md#实验结果与范围)，区分早期失败、恢复检查点和单回合诊断。
+- **TextOp / SuperMimic：** [结果、代码与数据入口](baselines/textop/INDEX.md)，包含评测条件、已完成结果及未完成事项。
 - **候选方法：** [后续验证决策](docs/remaining_validation_decision_20261012.md)；现有证据不足以支持可靠的下游收益。
 
 本仓库没有自己的真实机器人部署结论。模拟人体角色、G1 动力学仿真和跨仿真器测试分别标注，不能相互替代。
@@ -69,6 +71,7 @@ baselines/
   phygile/                       PhyGile 代码、配置、结果与报告
   phygile_unitree/                PhyGile 的 G1 / Unitree 框架扩展
   reactivebfm/                    ReactiveBFM 代码、配置、结果与报告
+  textop/                         TextOp 与 SuperMimic 的代码、配置、结果与报告
   paper_faithful_reproduction/    两篇论文的联合核对、恢复和历史操作档案
 configs/  scripts/                既往基线的配置与运行工具
 results/  reports/                既往结果证据与可阅读报告
@@ -90,4 +93,4 @@ plans/  .aris/                    历史研究计划与执行记录
 
 感谢 [DreamControl](https://github.com/GenRobo/DreamControl)、[CLoSD](https://github.com/GuyTevet/CLoSD)、[PhyGile tracking](https://github.com/Baojch/phygile_tracking) 和 [ReactiveBFM](https://github.com/zjwzcx/ReactiveBFM) 的公开实现。固定版本、改动范围和引用要求见各方法目录。
 
-上游代码、数据、人体模型、机器人资产及检查点遵循各自许可。仓库没有统一的顶层许可证；公开归档不改变上游条款。受限原始数据与模型不通过本次整理公开发布。
+上游代码、数据、人体模型、机器人资产及检查点遵循各自许可。仓库没有统一的顶层许可证；公开归档不改变上游条款。数据与模型的具体可用性及许可见[数据与附件索引](docs/datasets_and_artifacts.md)；草稿附件尚未公开，公开源代码不代表全部数据或模型已公开。

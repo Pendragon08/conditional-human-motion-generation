@@ -1,6 +1,6 @@
 # 论文复现索引
 
-本页区分既往基线与本次纳入主分支的两篇论文。各方法采用自己的代码、数据、配置和评价协议。
+本页按方法区分归档与既往基线。各方法采用自己的代码、数据、配置和评价协议。
 
 ## 本次独立归档
 
@@ -8,6 +8,7 @@
 | --- | --- | --- | --- | --- |
 | PhyGile | [归档索引](phygile/INDEX.md) | [scripts](phygile/scripts/) · [configs](phygile/configs/) · [独立实现组件](phygile/reimplementation/) | [原跟踪结果](phygile/results/) · [Unitree 扩展结果](phygile_unitree/results/v3/) | [原复现报告](phygile/reports/) · [Unitree 最终报告](phygile_unitree/reports/PhyGile_Unitree续训500次与闭环迁移最终报告_20261022.md) |
 | ReactiveBFM | [归档索引](reactivebfm/INDEX.md) | [scripts](reactivebfm/scripts/) · [configs](reactivebfm/configs/) · [固定上游](reactivebfm/upstream/) | [训练与恢复结果](reactivebfm/results/) | [单篇报告](reactivebfm/reports/) · [后续 13,001 次检查点诊断](paper_faithful_reproduction/reports/heartbeat_20261023_2246.md) |
+| TextOp / SuperMimic | [复现索引](textop/INDEX.md) | [脚本](textop/scripts/) · [配置](textop/configs/) · [服务器源码快照](textop/server_snapshot_20261102/) | [结构化结果](textop/results/) · [快照与附件清单](textop/server_snapshot_20261102/README.md) | [报告目录](textop/reports/) |
 
 `phygile_unitree/` 是 PhyGile 的框架适配与跨仿真扩展，不另算一篇论文。`paper_faithful_reproduction/` 是这两篇论文后续联合核对、恢复和操作记录的历史档案，不替代各自的方法目录。
 
@@ -20,7 +21,7 @@
 | DreamControl | [复现说明](../reports/02_dreamcontrol_reproduction.md) · [环境配置](../configs/env-dreamcontrol-r3.json) | [11 项任务记录](../reports/03_dreamcontrol_multitask_baselines.md) |
 | CLoSD | [执行说明](../docs/closd_baseline_20261010.md) · [环境配置](../configs/env-closd-baseline-20261010.json) | [报告入口](../results/closd_baseline_20261010/README.md) · [官方权重评估](../reports/13_CLoSD_official_checkpoint_eval_20261001.md) |
 
-既往实现和证据继续放在仓库根目录的 `scripts/`、`configs/`、`results/`、`reports/`。新两篇的内容放在本目录各自子目录，避免混入旧实验。
+既往实现和证据继续放在仓库根目录的 `scripts/`、`configs/`、`results/`、`reports/`。新增方法的内容放在本目录各自子目录，避免混入旧实验。
 
 ## 阅读与复跑
 

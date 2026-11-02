@@ -1,8 +1,9 @@
 # 既往实验结果导航
 
-根目录 `results/` 保留既往基线和执行反馈诊断的指标、回执及审计。新两篇论文的结果入口为：
+根目录 `results/` 保留既往基线和执行反馈诊断的指标、回执及审计。各方法的结果入口为：
 
 - [PhyGile 原模块结果](../baselines/phygile/results/) · [Unitree 扩展结果](../baselines/phygile_unitree/results/v3/)
+- [TextOp / SuperMimic 结果与条件](../baselines/textop/INDEX.md) · [结构化结果目录](../baselines/textop/results/)
 - [ReactiveBFM 单篇结果](../baselines/reactivebfm/results/) · [后续论文对齐档案](../baselines/paper_faithful_reproduction/README.md)
 
 ## 既往结果

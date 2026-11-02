@@ -8,6 +8,7 @@
 | PhyGile 原模块复现 | `baselines/phygile/` 内的 `upstream/`、`scripts/`、`reimplementation/`、`configs/` | 同目录 `results/`、`reports/` |
 | PhyGile Unitree 扩展 | `baselines/phygile_unitree/scripts/`、`configs/` | 同目录 `results/`、`reports/` |
 | ReactiveBFM | `baselines/reactivebfm/upstream/`、`scripts/`、`configs/` | 同目录 `results/`、`reports/` |
+| TextOp / SuperMimic | `baselines/textop/scripts/`、`configs/`、`upstream/` 与 `server_snapshot_20261102/` | 同目录 `results/`、`reports/`；大文件见快照附件清单 |
 | 两篇论文后续联合核对与恢复档案 | `baselines/paper_faithful_reproduction/` | 同目录保留按日期组织的历史证据 |
 
 ## 阅读顺序
@@ -24,3 +25,5 @@
 - 受限原始数据与人体模型按许可另行获取，不能把代码公开归档解释为原始资产可以再分发。
 
 [原 README 固定快照](https://github.com/Pendragon08/conditional-human-motion-generation/blob/9f9a12760c1b9ce2146a48fa387aabcafde8168e/README.md) · [分支与 PR](branches_and_prs.md)
+
+数据来源、结果与大文件状态见 [数据与附件索引](datasets_and_artifacts.md)。

@@ -7,7 +7,7 @@
 - [仓库首页](../README.md) · [论文复现索引](../baselines/README.md)
 - [PhyGile 独立索引](../baselines/phygile/INDEX.md) · [ReactiveBFM 独立索引](../baselines/reactivebfm/INDEX.md)
 - [原基线结果汇总](results.md) · [分支与 PR 状态](branches_and_prs.md)
-- [目录与记录约定](repository_map.md)
+- [目录与记录约定](repository_map.md) · [数据集与附件索引](datasets_and_artifacts.md) · [TextOp 索引](../baselines/textop/INDEX.md)
 
 ## 既往基线与执行
 

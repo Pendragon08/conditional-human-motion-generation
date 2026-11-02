@@ -1,6 +1,6 @@
 # 既往报告导航
 
-根目录 `reports/` 保留既往 DreamControl、CLoSD 及执行反馈探索的报告。新归档的 [PhyGile](../baselines/phygile/INDEX.md) 和 [ReactiveBFM](../baselines/reactivebfm/INDEX.md) 使用各自目录，不混入这里的编号序列。
+根目录 `reports/` 保留既往 DreamControl、CLoSD 及执行反馈探索的报告。新归档的 [PhyGile](../baselines/phygile/INDEX.md) 和 [ReactiveBFM](../baselines/reactivebfm/INDEX.md) 以及 [TextOp / SuperMimic](../baselines/textop/INDEX.md) 使用各自目录，不混入这里的编号序列。
 
 | 主题 | 首选入口 |
 | --- | --- |
