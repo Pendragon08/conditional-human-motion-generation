@@ -94,11 +94,11 @@ Part 03: the original upload client timed out while awaiting the response. A sub
 
 `textop_numeric_remaining_evidence_20261102.tar` contains 109 files (144271360 bytes); SHA-256 `65ac1340084f72e23680fa99e4cf3b3e6a3753eb11b5b41b1d48e0e4abb84538`. This covers the remaining inventory-listed numerical experiment logs and witnesses. The previously archived PPO groups and original FK library are excluded to avoid duplication.
 
-### TMR evaluator checkpoint (draft asset)
+### TMR evaluator full-state checkpoint (draft asset)
 
 `textop_tmr_epoch100_fullstate.pth` is the user-trained, resumed 100-epoch full-state checkpoint (192952453 bytes; SHA-256 `7bc1955dfcb31d1eeaa966c8f5b8e972e17d6d58da1205c70fd8029b85050fc8`). The earlier interrupted training run remains part of the provenance; this checkpoint does not represent a 500-epoch run. The asset remains in the draft release pending the broader source and redistribution review.
 
-### TMR evaluator checkpoint (draft asset)
+### TMR evaluator inference checkpoint (draft asset)
 
 `textop_tmr_epoch100_inference.pth` is the 100-epoch inference export from the user-trained resumed checkpoint (64234041 bytes; SHA-256 `6ed04cb040419f714962522ce37590437740896a6fb230533e3c81c599b9b357`). The earlier interrupted training run remains part of the provenance; this checkpoint does not represent a 500-epoch run. The asset remains in the draft release pending the broader source and redistribution review.
 
@@ -109,3 +109,7 @@ Part 03: the original upload client timed out while awaiting the response. A sub
 ### TMR 100-epoch training metrics (draft asset)
 
 `textop_tmr_epoch100_training_metrics_20261102.tar` contains the interrupted and resumed training metrics (399360 bytes; SHA-256 `76f280d4f6c1f35247cecf0ee2942cf23bfc438ec4012378bf69ee435cf344e7`; file manifest SHA-256 `e1a5263e7696c1efbe5a97d332ee94407031ebb5975cd14a24887042f6cec6b6`). The resumed run reached epoch 100; a historical directory name does not establish 500 completed epochs. The asset remains in the draft release pending disclosure and source review.
+
+### Reproduction report with SuperMimic example (draft asset)
+
+`TextOp_reproduction_report_supermimic_20261102.html` is the updated self-contained local report (31557573 bytes; SHA-256 `f97ae9932ae40854426da9ffd5c1ca84acf7940180c970a7ccda2454e52827ab`; draft asset 701660255). It includes a 15-frame, 0.30-second selected standing replay of the 4096-environment SuperMimic evaluation, with its short duration and selection limits stated in the report. This is a physical-trajectory pose replay, not a new physics simulation or a claim about all 564 trials. The asset remains in the draft release and is not publicly downloadable.
