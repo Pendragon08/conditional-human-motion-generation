@@ -89,3 +89,7 @@ Part 03: the original upload client timed out while awaiting the response. A sub
 ### Generator validation evidence (draft asset)
 
 `textop_generator_validation_evidence_20261102.tar` contains 20 small evidence files (122880 bytes); SHA-256 `caf511c8266d09768250da363dc60936290304b1f8a085e261a44df0dffe501e`. The previously indexed author VAE and LDM model assets cover the generator-state models: document copies were independently checked to match the author copies, and each `ldm/vae.pth` is a hard link to its corresponding `vae/state_after4.pth`. Those six model paths are excluded from this evidence archive to avoid duplication.
+
+### Additional numerical experiment evidence (draft asset)
+
+`textop_numeric_remaining_evidence_20261102.tar` contains 109 files (144271360 bytes); SHA-256 `65ac1340084f72e23680fa99e4cf3b3e6a3753eb11b5b41b1d48e0e4abb84538`. This covers the remaining inventory-listed numerical experiment logs and witnesses. The previously archived PPO groups and original FK library are excluded to avoid duplication.
