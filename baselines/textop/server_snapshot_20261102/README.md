@@ -46,3 +46,17 @@ SuperMimic 15000、20000 和 latest 检查点已核对上传字节，但尚未�
 原始第三方动作数据、重定向数据及逐条文本的公开传播须遵守各自数据集许可。仓库此前的存储清理记录说明了相关限制；不能把源码或模型的公开授权推定为训练数据的再分发授权。
 
 这是归档进度索引，不代表所有历史文件或全部评估均已完成上传、审核或公开。
+
+### 原始训练参考与报告更新
+
+原始训练参考共 5,560 个文件，分成五个归档；每个归档包含逐文件校验清单。更新后的报告增加了同动作视频尚不符合展示条件的说明，旧版报告保留以便追溯。
+
+| Release 草稿附件 | 字节数 | SHA-256 |
+| --- | ---: | --- |
+| textop_original_fk_library_part01_20261102.tar | 1260410880 | `56a9ac9eb7412e5ade933c38e92071313df8fbd0576bfe238358c52812e532bb` |
+| textop_original_fk_library_part02_20261102.tar | 1258106880 | `d26e9abe9371fd008f5071cc2fdfd7cbfcbaab277477fd25ef0c9966550a3c07` |
+| textop_original_fk_library_part03_20261102.tar | 1259601920 | `6a257102aa21d2a5a9817cf973b9cc287eaac6e7ce2426bce17b684d3b77776e` |
+| textop_original_fk_library_part04_20261102.tar | 1258362880 | `1dce7f7f82502c669b778450a50c65d269f71de1a92806bc5eba1aa94e6bb6ee` |
+| textop_original_fk_library_part05_20261102.tar | 1137008640 | `405771bfcd757f36928430697f0e20b85c4b9fe6ea37b9517876270bc251b4f7` |
+| TextOp_reproduction_report_video_status_20261102.html | 31397035 | `2a29cf271eae7f8ee484f679f00d6e69d0f4d847bbdb90d38aaa1fcc04cbc914` |
+
