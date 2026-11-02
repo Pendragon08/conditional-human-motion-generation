@@ -66,3 +66,9 @@ SuperMimic 15000、20000 和 latest 检查点已核对上传字节，但尚未�
 | Release 草稿附件 | 文件数 | 字节数 | SHA-256 |
 | --- | ---: | ---: | --- |
 | textop_preparation_online_checkpoint_video_results_20261102.tar | 1970 | 1163274240 | `3ae81cbe294cf792b3d1441cc44a111dca3b37e12e663af09f5a43bfbc3443c5` |
+
+### 历史跟踪器验证
+
+| Release 草稿附件 | 文件数 | 字节数 | SHA-256 |
+| --- | ---: | ---: | --- |
+| textop_tracker_teacher15000_validation_20261102.tar | 16569 | 681922560 | `63ee05e5a520e23819eb1b6eaca2b276b2edc8de2531f8e5ceb17e6adf628b0f` |
