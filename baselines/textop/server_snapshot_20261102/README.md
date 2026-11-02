@@ -60,3 +60,9 @@ SuperMimic 15000、20000 和 latest 检查点已核对上传字节，但尚未�
 | textop_original_fk_library_part05_20261102.tar | 1137008640 | `405771bfcd757f36928430697f0e20b85c4b9fe6ea37b9517876270bc251b4f7` |
 | TextOp_reproduction_report_video_status_20261102.html | 31397035 | `2a29cf271eae7f8ee484f679f00d6e69d0f4d847bbdb90d38aaa1fcc04cbc914` |
 
+
+### 数据准备与在线验证记录
+
+| Release 草稿附件 | 文件数 | 字节数 | SHA-256 |
+| --- | ---: | ---: | --- |
+| textop_preparation_online_checkpoint_video_results_20261102.tar | 1970 | 1163274240 | `3ae81cbe294cf792b3d1441cc44a111dca3b37e12e663af09f5a43bfbc3443c5` |
