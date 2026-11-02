@@ -33,6 +33,8 @@ SuperMimic 15000、20000 和 latest 检查点已核对上传字节，但尚未�
 
 | textop_earlier_ppo_training_and_witnesses_20261102.tar | 1284618240 | `b2c7aa6f4bc3bb2ad46b45dd0cc36911e05f9eb063ab5d25698258be48d435e3` |
 
+| textop_additional_training_logs_and_results_20261102.tar | 1182894080 | `0c986fbe8a427335bd4439d0d858171f49f66f8f1452a513e38d7730a86a69cd` |
+
 原始第三方动作数据、重定向数据及逐条文本的公开传播须遵守各自数据集许可。仓库此前的存储清理记录说明了相关限制；不能把源码或模型的公开授权推定为训练数据的再分发授权。
 
 这是归档进度索引，不代表所有历史文件或全部评估均已完成上传、审核或公开。
