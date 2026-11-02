@@ -1,0 +1,57 @@
+{
+  "base": {
+    "python": "3.8.20",
+    "torch": "1.13.1+cu117",
+    "numpy": "1.24.4",
+    "read_only_base": "/data/code/ouyanghao/oyh/humanoid-combat-motion/.venv-pbhc-training",
+    "isolation": "venv --system-site-packages"
+  },
+  "pip_phases": [
+    [
+      "setuptools==68.2.2",
+      "wheel==0.42.0"
+    ],
+    [
+      "omegaconf==2.3.0",
+      "hydra-core==1.3.2",
+      "loguru==0.7.3",
+      "loralib==0.1.2",
+      "toolz==1.0.0",
+      "einops==0.8.1",
+      "tqdm==4.66.4",
+      "easydict==1.13",
+      "wandb==0.16.6",
+      "tensorboard<2.15",
+      "ftfy",
+      "regex"
+    ],
+    [
+      "clip @ git+https://github.com/openai/CLIP.git@a1d071733d7111c9c014f024669f959182114e33"
+    ],
+    [
+      "-e upstream/TextOpRobotMDAR --no-deps",
+      "-e upstream/deps/isaac_utils --no-deps"
+    ]
+  ],
+  "env": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4",
+    "WANDB_MODE": "disabled",
+    "PYTHONUNBUFFERED": "1"
+  },
+  "gpu_fraction": 0.65,
+  "smoke": {
+    "seed": 0,
+    "gpu_tests": [
+      {
+        "cmd": "env/bin/python scripts/kernel_witness.py",
+        "expect": "TEXTOP_KERNEL_WITNESS"
+      }
+    ]
+  },
+  "deferred_dependencies": {
+    "torch_tensorrt": "Only imported by TensorRT frequency evaluation, not MVAE/DAR training. Will build separate deployment environment."
+  }
+}

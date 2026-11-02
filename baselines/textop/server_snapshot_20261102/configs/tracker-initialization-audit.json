@@ -1,0 +1,15 @@
+{
+  "warm_environment_canonical_hash": "b7a3bf0c",
+  "device": "cuda:1",
+  "torch_memory_fraction": 0.65,
+  "torch_threads": 4,
+  "cpu_limit": 4,
+  "seed": 20261025,
+  "reference_run": "export643_v1",
+  "expected_trajectories": 1286,
+  "pd_control_steps": 20,
+  "supervisor_timeout_seconds": 600,
+  "diagnostic_only": true,
+  "changes_for_diagnosis_only": ["one environment per trajectory", "deterministic motion assignment", "no reset perturbations", "reference-position PD action instead of an RL policy"],
+  "prohibited_claims": ["motion acceptance", "trained tracking success", "full-corpus readiness", "paper-scale training completed"]
+}

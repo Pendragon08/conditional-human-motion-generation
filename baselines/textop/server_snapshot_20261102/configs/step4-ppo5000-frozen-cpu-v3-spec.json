@@ -1,0 +1,55 @@
+{
+  "schema": "textop.ppo5000_frozen_cpu_preparation.v1",
+  "authorized": false,
+  "training_binding": null,
+  "export_binding": null,
+  "run_export": "user_step4_ppo5000_frozen_export_v1",
+  "run_verify": "user_step4_ppo5000_frozen_verify_v1",
+  "expected_training_run": "user_step4_train_only_ppo10000_train_v4",
+  "expected_controller_run": "user_ppo5000_control_v1",
+  "expected_control_spec_sha256": "4d446d9d6b34e5518f9f85d11090e4ac1482008b948c8ee930d5123d7fcfcc52",
+  "expected_completed_iterations": 5000,
+  "expected_finite_Adam_updates": 100000,
+  "bound_sources": {
+    "scripts/step4_ppo5000_frozen_protocol_v2.py": "8de84fe222c8045aae460bcda10d8f92e25afc9e8b0c1351b0351004b39f2e40",
+    "scripts/step4_ppo5000_cpu_core_v2.py": "6d9e10e0fb0a7c02aeb7c1ba7d7d0f9004fc6dd12bcc3870303f92f4b06c9a3e",
+    "scripts/run_ppo5000_frozen_cpu_v2.py": "135c64943bd55bf3b87625ce2cf2da887282fe0be6b560e8f9c189e939a49d09",
+    "scripts/supervise_ppo5000_frozen_cpu_v2.py": "11fe87478a5615c8374932c77afc052a023166804b26ea97b6c322949eb8f962",
+    "scripts/step4_train_only_ppo_runtime_v4.py": "d6cec5d3c54bd30a8c2d9de98d855c759192b8e489056bf86c7068e62db8eecc",
+    "scripts/contact_filter_resources.py": "1003a7cba9d2f2e30a05a881020e51ed8907eba6d523e4ce8af6b1b5399f76e5",
+    "scripts/contact_process_supervision.py": "44d689a71dc0c04778a7e6e651bc61d234dd59d3435a80c543be9d8db55638b4",
+    "scripts/run_tracker.sh": "7f23b192d3c6a5ff29a96282f90a14af2bd77ead4334e112e5a76ae333eb3bf8"
+  },
+  "native_source_sha256": {
+    "modules/actor_critic.py": "51ce8c6504a7434f86e5188ccb11e9fc981e46f764c00e32be3e8febe7112ae2",
+    "modules/normalizer.py": "f52677617f729c21c7440fd52d69b7e570313836a9deb21519425b806043a311",
+    "runners/on_policy_runner.py": "2f00052c1088f8d13f1b106f25981dc95ff081b2a23841413cca3a7896e0b262"
+  },
+  "CUDA_visible_devices": "",
+  "CUDA_RNG_restore": false,
+  "CPU_cores": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "required_available_RAM_bytes": 17179869184,
+  "timeout_seconds": 900,
+  "resource_interval_seconds": 15,
+  "reserve_bytes": 2147483648,
+  "log_allowance_bytes": 134217728,
+  "inference_upper_bytes": 33554432,
+  "training_active_no_model_loads": true,
+  "prepared_only_not_runtime_ready": true,
+  "pending": [
+    "actual controller SIGINT and original nonzero exit closure",
+    "exact5000/100000 fullstate CPU audit",
+    "exclusive disabled deployment and activate/launch/collect bridge",
+    "private actor+RMS export and independent new process verification",
+    "new-policy heldout tracking and online effects"
+  ],
+  "executor_sha256": "135c64943bd55bf3b87625ce2cf2da887282fe0be6b560e8f9c189e939a49d09",
+  "supervisor_sha256": "11fe87478a5615c8374932c77afc052a023166804b26ea97b6c322949eb8f962",
+  "original_native_PPO_sha256": "ec0286fdbdd30360b21f2bea314f676058793f9241649d30545d656a961a22a2",
+  "CPU_Adam_restore_required": true
+}

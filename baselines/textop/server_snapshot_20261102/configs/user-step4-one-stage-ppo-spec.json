@@ -1,0 +1,123 @@
+{
+  "schema": "textop.user_step4_one_stage_ppo.v1",
+  "method": "one_stage_PPO",
+  "dagger_or_distillation": false,
+  "actor_terms": [
+    [
+      "reference_joint_pos_vel",
+      290
+    ],
+    [
+      "reference_pelvis_position",
+      15
+    ],
+    [
+      "reference_pelvis_orientation_6D",
+      30
+    ],
+    [
+      "projected_gravity",
+      3
+    ],
+    [
+      "base_lin_ang_velocity",
+      6
+    ],
+    [
+      "joint_pos_vel",
+      58
+    ],
+    [
+      "last_action",
+      29
+    ]
+  ],
+  "critic_terms": [
+    [
+      "reference_joint_pos_vel",
+      290
+    ],
+    [
+      "reference_pelvis_position",
+      15
+    ],
+    [
+      "reference_pelvis_orientation_6D",
+      30
+    ],
+    [
+      "projected_gravity",
+      3
+    ],
+    [
+      "base_lin_ang_velocity",
+      6
+    ],
+    [
+      "joint_pos_vel",
+      58
+    ],
+    [
+      "last_action",
+      29
+    ],
+    [
+      "key_body_position",
+      42
+    ],
+    [
+      "key_body_orientation_6D",
+      84
+    ]
+  ],
+  "actor_observation_dim": 431,
+  "critic_observation_dim": 557,
+  "future_reference_frames": 5,
+  "dof": 29,
+  "action_dim": 29,
+  "actor_hidden": [
+    2048,
+    1024,
+    512
+  ],
+  "critic_hidden": [
+    2048,
+    1024,
+    512
+  ],
+  "activation": "elu",
+  "simulation_hz": 200,
+  "policy_hz": 50,
+  "rollout_steps_per_env": 24,
+  "num_envs": 8192,
+  "learning_rate": 0.001,
+  "minibatches": 4,
+  "ppo_epochs": 5,
+  "clip_param": 0.2,
+  "seed": 20261103,
+  "target_RL_iterations": 150000,
+  "target_iterations_note": "Paper real-deployment budget; planned, no RL iterations executed",
+  "fresh_actor_critic_and_Adam_initialization": true,
+  "old_privileged_teacher_training_resumed": false,
+  "witnesses_authorized": false,
+  "training_authorized": false,
+  "accepted_mixed_dataset": null,
+  "real_RL_witnesses_accepted": false,
+  "new_RL_training_updates": 0,
+  "pfail_conditional_regularization": false,
+  "domain_randomization": true,
+  "source_commit": "ef6555fb174c9b5c44945a62c7ffc77b5ddbbf22",
+  "simulator": "Warm existing Isaac Lab2.1 / Isaac Sim4.5; no installation or shared-source edits",
+  "bound_sources": {
+    "scripts/user_step34_contract.py": "a8f6886ae0ee14897548a1b785932c0d0beb6d334ef9e8f3ab616063d724be6b",
+    "scripts/user_step4_isaaclab_config.py": "1c0ef8da3f993c5076831e1de23d7f280fe56293c76e6feec2a27d0207a408ed"
+  },
+  "env_spec_sha256": "57992eea2e2f6aa879493409a7bc2b4d320451e3f24090ed731f1d580a058a93",
+  "blocked_until": [
+    "actual5368 generated clips and5666400 control intervals accepted",
+    "real and generated references finite and joined by named joints",
+    "durable server and private D capacity accepted",
+    "TMR/semantic model tasks closed and common model lock free",
+    "real one-stage PPO author and independent document recovery witnesses accepted"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "textop.user_ppo5000_endpoint.v1",
+  "run": "user_ppo5000_control_v1",
+  "authorized": true,
+  "target_iterations": 5000,
+  "target_optimizer_updates": 100000,
+  "original_run": "user_step4_train_only_ppo10000_train_v4",
+  "original_request_sha256": "715feef32953cc79491781753587aa0041dd154db12bfdaa8576d3f57de4aa82",
+  "producer": {
+    "pid": 479092,
+    "start_ticks": "1446080144",
+    "uid": 1013,
+    "argv": [
+      "/data/code/ouyanghao/oyh/humanoid-combat-motion/third_party/isaacsim-4.5.0/kit/python/bin/python3",
+      "-u",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/run_step4_train_only_ppo_v4.py",
+      "--request",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/step4_train_only_user_step4_train_only_ppo10000_train_v4_request.json",
+      "--headless",
+      "--device",
+      "cuda:1"
+    ],
+    "state": "R",
+    "pgid": 479083
+  },
+  "producer_supervisor": {
+    "pid": 478971,
+    "start_ticks": "1446078760",
+    "uid": 1013,
+    "argv": [
+      "/usr/bin/python3",
+      "-B",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/scripts/supervise_step4_train_only_ppo_v4.py",
+      "--request",
+      "/data/code/ouyanghao/oyh/textop-reproduction-20261024/receipts/step4_train_only_user_step4_train_only_ppo10000_train_v4_request.json"
+    ],
+    "state": "S",
+    "pgid": 478970
+  },
+  "watcher_sha256": "8218f10715b019eb78784db1eb8c59b5a1c40ef4081d78c1eab2ccf77476e8ba",
+  "supervisor_sha256": "dc87b77ecebea51ee4e85fee6916f355d3737380ebd11e0eb5fc148bcb4d2b27",
+  "bound_sources": {
+    "scripts/ppo5000_endpoint_protocol.py": "497a208d5e8b3c4ae4b7ecb9d473017dd32e54a99f47c50b95da38572b33e2ad",
+    "scripts/watch_ppo5000_endpoint.py": "8218f10715b019eb78784db1eb8c59b5a1c40ef4081d78c1eab2ccf77476e8ba",
+    "scripts/supervise_ppo5000_endpoint.py": "dc87b77ecebea51ee4e85fee6916f355d3737380ebd11e0eb5fc148bcb4d2b27",
+    "scripts/test_ppo5000_endpoint.py": "01fa489be83c4e4750d9368ee22d853061ec78aeee299fc18633b54c2c8e8fc5",
+    "scripts/vae100k_control_protocol.py": "1aa7936c461f6801cddb0a76378ecd49d9d696c543ed7534d976c3e03b4e8216",
+    "scripts/quick_pidfd.py": "df180bffb3e35dd77c8bb4f8ca9b143879a4184f6f8aab98188e1139de6538f2",
+    "scripts/contact_process_supervision.py": "44d689a71dc0c04778a7e6e651bc61d234dd59d3435a80c543be9d8db55638b4",
+    "scripts/contact_filter_resources.py": "1003a7cba9d2f2e30a05a881020e51ed8907eba6d523e4ce8af6b1b5399f76e5",
+    "scripts/run_step4_train_only_ppo_v4.py": "78d98f457e0a286263196ae523476895b71b56ae690a9c8ee889426805cf7bc8",
+    "scripts/supervise_step4_train_only_ppo_v4.py": "a15cf3e6eda8600f1cf95f439b79f4b263e93f7be3af287916b41e186238beaa",
+    "scripts/step4_train_only_ppo_runtime_v4.py": "d6cec5d3c54bd30a8c2d9de98d855c759192b8e489056bf86c7068e62db8eecc"
+  },
+  "author_fixture_binding": {
+    "run": "ppo5000_control_author_fixture_v1",
+    "receipt_sha256": "175542780428a01254e34d568359ab9af51504e07a6c9071e806ba4a5835b10d",
+    "process_exit_sha256": "ae215c71f8360384c1ec8f7d40f674827d7280d7047e9f8604126bf9722df8c8"
+  },
+  "document_fixture_binding": {
+    "run": "ppo5000_control_document_fixture_v1",
+    "receipt_sha256": "175542780428a01254e34d568359ab9af51504e07a6c9071e806ba4a5835b10d",
+    "process_exit_sha256": "ee0116c39d770876911df6e1176c3d700efa046c3275e56d870d370292beaec8"
+  },
+  "document_summary_sha256": "c4257aca0bf98b7a0b982e68c07a7218f6062af421dc4c5a6699417e8d65dd89",
+  "note": "One pidfd SIGINT after persisted iteration5000 metadata; exact saved emergency state requires independent post-exit CPU audit"
+}
