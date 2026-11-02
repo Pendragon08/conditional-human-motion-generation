@@ -105,3 +105,7 @@ Part 03: the original upload client timed out while awaiting the response. A sub
 ### TMR 100-epoch training evidence (draft asset)
 
 `textop_tmr_epoch100_training_evidence_20261102.tar` contains nine SHA-bound training and supervision records (727040 bytes; SHA-256 `aed68b46f45bae3870cdf7e17e720f5912334da8aabef2b032b9589058472219`; file manifest SHA-256 `c84b31f63ce019219ce915fe56606d30532637f8c5d8d9b583dc88fc5ef4e604`). They preserve the original interrupted run and the resumed run through epoch 100. Historical directory names do not mean a 500-epoch training run completed. The asset remains in the draft release pending disclosure and source review.
+
+### TMR 100-epoch training metrics (draft asset)
+
+`textop_tmr_epoch100_training_metrics_20261102.tar` contains the interrupted and resumed training metrics (399360 bytes; SHA-256 `76f280d4f6c1f35247cecf0ee2942cf23bfc438ec4012378bf69ee435cf344e7`; file manifest SHA-256 `e1a5263e7696c1efbe5a97d332ee94407031ebb5975cd14a24887042f6cec6b6`). The resumed run reached epoch 100; a historical directory name does not establish 500 completed epochs. The asset remains in the draft release pending disclosure and source review.
