@@ -1,0 +1,90 @@
+{
+  "recorded_on": "2026-11-03",
+  "classification": [
+    "synthetic_proxy",
+    "simulation_only"
+  ],
+  "status": "full564_complete_primary_metric_independently_audited",
+  "asset_sha256": "943eb0d5e24dad6cb029d3331daf85c139c8f5d8ce9c62e751e3ff69a0e44416",
+  "audit_seconds": 3.8549700286239386,
+  "checkpoint_sha256": "6edbef0084013d791c9cbde32396e7a4ec220b0e925ced6551feacbd7e43a508",
+  "complete": 564,
+  "controlled_child_exit_sha256": "6f27866bd03c050a11767da0d1f932d379ada5a02b5c97a9a29a9aaa4b4b2ccf",
+  "entries_sha256": "a9c463e1763142233332b1b0374a723dd725a85c9575ac878eeaba4bb4072f07",
+  "evaluation_result_sha256": "8c91a485c1f409645e781d6a86c7eaabcedc03f2a93cdb0fd6e6a2b1c5ace815",
+  "expected_reference_frames": 58674,
+  "independent_outcomes_sha256": "cead7e95b0eb551952863c9ca810ee310585d3dc0db1db924472d1721e152e38",
+  "max_executed_fk_error_m": 2.484358416765531e-7,
+  "max_metric_error_m": 0,
+  "max_reference_fk_error_m": 0.000006952580981156586,
+  "mujoco_warning_trial_indices": [],
+  "numerical_failure_indices": [],
+  "outer_runner_exit_sha256": "00bf54d27304689a7a6104c9d7fcbcb55612a3cb4997cbb61f6144fe1abeb4a0",
+  "pass": true,
+  "per_seed": {
+    "20261028": {
+      "success": 64,
+      "trials": 188
+    },
+    "20261029": {
+      "success": 64,
+      "trials": 188
+    },
+    "20261030": {
+      "success": 66,
+      "trials": 188
+    }
+  },
+  "recorded_frames": 58674,
+  "reference_manifest_sha256": "bcb891dad551e7757890b471558dcf5dd6cd32308897bf60a9df5ff8add1765c",
+  "scope": "Every reference source SHA/CRC, trace SHA/CRC, all executed and reference30-body FK, and independent threshold formula recomputed. No policy inference or physical trajectory replay. Generated references and simulation-only tracking, not paper SnapMoGen or real robot quality.",
+  "success": 194,
+  "success_rate": 0.34397163120567376,
+  "trace_manifest_sha256": "eb22b243d6b9cf992ba892f1f58aa10d8dc73206d9c292ad7c7fa3725fcbeda8",
+  "trials": 564,
+  "two_frame_clips_preserved": 6,
+  "artifact_sha256": {
+    "evaluation_result": "8c91a485c1f409645e781d6a86c7eaabcedc03f2a93cdb0fd6e6a2b1c5ace815",
+    "audit_result": "9b6f45dbbb53c32cb764de0266cbe61c5ce6b2230b00d3ed716815bd5d1dcd12",
+    "worker": "f7944f9223245d02bd757e3b425228a93e4a79523a456f7970f372db9f195aeb",
+    "runner": "49f290161e7fddbf3c739e5330d96a000547188aff56d7c900d0fd4f05d9e92d",
+    "independent_auditor": "98b457975c7f6c66e36b762d802ef938222c2d5274f0e610426a0b8151d24234",
+    "independent_audit_runner": "9ffb4e696e455e0fad1e27ab311f4a4e7ad7deb04441557f41d0b186e87e7188"
+  },
+  "protocol": {
+    "plant": "GMR G1 29DoF",
+    "mujoco": "3.16.0",
+    "fps": 50,
+    "dt": 0.002,
+    "substeps": 10,
+    "initial_velocity": "zero",
+    "recording": "Exact initial state plus allN-1 post-control states",
+    "height_tilt_early_termination": false,
+    "inference": "CPU float32; autocast disabled",
+    "torch": "2.11.0+cu126",
+    "numpy": "2.5.1",
+    "native_policy_obs": 99,
+    "history": 10,
+    "goal": 730
+  },
+  "execution": {
+    "controlled_child_returncode": 0,
+    "controlled_child_reaped": true,
+    "outer_runner_returncode": 0,
+    "outer_runner_reaped": true,
+    "supervisor_external_wait_status_recorded": false,
+    "protected_original_processes": "unchanged",
+    "worker_seconds": 357.2907471358776,
+    "trajectory_count": 564,
+    "total_job_bytes": 65412295
+  },
+  "quality_claim_accepted": false,
+  "quality_claim_note": "Integrity and declared proxy metric supported, not real GT / real robot / paper-exact / superiority or efficiency claims.",
+  "historical_successes": {
+    "ppo5000": 202,
+    "super128": 176,
+    "super4096": 201
+  },
+  "new_minus_super4096_trials": -7,
+  "new_minus_ppo_trials": -8
+}

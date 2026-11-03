@@ -14,3 +14,5 @@
 | 执行反馈与世界模型探索 | [可行性记录](21_feedback_world_model_feasibility_20261006.md) · [暂停验证记录](28_execution_feedback_paused_validation_20261007.md) |
 
 以上均为按原日期保留的报告，不代表本次仓库整理新增了实验。
+
+2026-11-03 新增：[SuperMimic Vibed 全部 564 条外部评估与历史比较](../baselines/textop/experiments/supermimic_vibed_20261103/results/external_evaluation.md)，包含全部失败分母及结论限制。

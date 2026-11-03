@@ -1,0 +1,50 @@
+{
+  "reviewer_model": "gpt-6.1-sol",
+  "reviewer_reasoning": "ultra",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "verdict": "WARN",
+  "classification": [
+    "synthetic_proxy",
+    "simulation_only"
+  ],
+  "supported_claim": "The fixed4000-iteration policy completed all564 generated-reference MuJoCo trials and passed the declared full-trajectory30-body root-relative0.3m threshold on194 trials(34.397163%). Independent trace/source SHA/CRC, FK and primary-formula audit agrees.",
+  "checks": {
+    "reference_provenance": "PASS",
+    "fixed_denominator": "PASS",
+    "closed_execution": "PASS",
+    "primary_metric_called_saved_and_recomputed": "PASS",
+    "scope_seeds_comparison": "WARN",
+    "evaluation_classification": "PASS"
+  },
+  "historical_lineage": {
+    "ppo202_super128176": "Paired user_supermimic_common_compare_full_20261101_v1 result and bound worker5a3f946c use exactt0,zeroqvel,N-1transitions; independently audited1128traces/117348frames.",
+    "super4096_201": "paper03 executed-worker lineage preserves exactt0/zeroqvel/N-1 transitions; separately audited564/58674.",
+    "official195": "Earlier official-generated main has different initial stepping/recording timing and is not the pairedPPO202 row."
+  },
+  "qualifications": [
+    "Generated references are not real ground truth or paper SnapMoGen; no real robot testing.",
+    "Three groups are generation seeds, not independently trained policies.",
+    "Root-relative criterion excludes global root translation and does not establish balance, contacts or path accuracy.",
+    "Exact-file train/eval overlap0 does not prove subject/prompt/semantic independence.",
+    "Different training budgets, native engines and policy interfaces, and Torch/numpy/inference precision/hardware; no causal or equal-quality efficiency claim.",
+    "No independent policy inference or dynamic physics replay; only primary formula independently recomputed, not all auxiliary metrics.",
+    "Full-run witness_checks zeros are unpopulated placeholders; cite separate author/fresh measured witnesses instead.",
+    "Six two-frame clips preserved; allsix pass."
+  ],
+  "comparison": {
+    "vibed": 194,
+    "super4096": 201,
+    "ppo": 202,
+    "super128": 176,
+    "denominator": 564
+  },
+  "unsupported_claims": [
+    "superiority over201/202",
+    "statistical significance",
+    "training-seed robustness",
+    "matched-quality speedup",
+    "paper-exact reproduction",
+    "real-robot success"
+  ]
+}

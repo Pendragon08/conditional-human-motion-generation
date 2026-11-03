@@ -4,7 +4,7 @@
 
 ## 2026-11-03 新版适配
 
-[SuperMimic Vibed 独立实验目录](experiments/supermimic_vibed_20261103/README.md) 已整理训练源码、50 Hz NPZ 适配、固定依赖版本、参数与数值验证摘要。8077 条真实训练输入已核验；2048 环境 / 4000 优化迭代的主训练已完成，共 20,611,072 次交互，三个检查点与 160 行训练指标已独立审核；564 条最终质量评估尚未完成。它与旧版 128 / 4096 环境实验分开记录。公开导出只有三处机器人资产路径便携改动，原部署与导出摘要分别保存。
+[SuperMimic Vibed 独立实验目录](experiments/supermimic_vibed_20261103/README.md) 已整理训练源码、50 Hz NPZ 适配、固定依赖版本、参数与数值验证摘要。8077 条真实训练输入已核验；2048 环境 / 4000 优化迭代的主训练已完成，共 20,611,072 次交互，三个检查点与 160 行训练指标已独立审核；全部 564 条生成参考外部评估已完成并独立审核：194/564（34.40%），较旧 4096 环境少 7 条；详见[结果与比较边界](experiments/supermimic_vibed_20261103/results/external_evaluation.md)。它与旧版 128 / 4096 环境实验分开记录。公开导出只有三处机器人资产路径便携改动，原部署与导出摘要分别保存。
 
 [全仓库结果索引](../../docs/result_index.md) · [代码索引](../../docs/code_index.md) · [验证摘要](experiments/supermimic_vibed_20261103/results/validation_summary.json)
 

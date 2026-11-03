@@ -2,7 +2,7 @@
   "recorded_on": "2026-11-03",
   "kind": "sanitized_validation_summary",
   "full_training_complete": true,
-  "new_heldout_quality_evaluation_complete": false,
+  "new_heldout_quality_evaluation_complete": true,
   "data_adapter": {
     "training_sequences": 8077,
     "training_frames": 5510162,
@@ -62,7 +62,7 @@
     "policy_loss": -0.78477,
     "critic_loss": 0.0314115,
     "metrics_finite": true,
-    "status": "in_progress; frozen launch verification only",
+    "status": "frozen_launch_verification; superseded by completed main training and external evaluation records",
     "controlled_runner_sha256": "75e41aff5ba61f91971c0dc56d46dd1b49b0fe40a548c6fe93accedd0ea74954",
     "protected_original_process_identity_and_state_unchanged": true
   },
@@ -94,5 +94,18 @@
     },
     "cpu_audit_result_sha256": "b29cf915c7da2043af5f65c76727b078eaa19d1989ce1ef1de5d0e86a35ae8a6",
     "details": "main_training_integrity.json"
+  },
+  "external_evaluation": {
+    "record": "external_evaluation.json",
+    "audit": "external_audit.json",
+    "semantic_review": "semantic_review.json",
+    "success": 194,
+    "trials": 564,
+    "frames": 58674,
+    "two_frame_clips": 6,
+    "classification": [
+      "synthetic_proxy",
+      "simulation_only"
+    ]
   }
 }

@@ -19,3 +19,5 @@
 | 后续参考侧诊断 | [support_reference_probe_v63_20261012 审计](support_reference_probe_v63_20261012/POST_RUN_AUDIT.md) |
 
 具体指标应沿各结果目录回溯配置、检查点和完整回合。测量校验、合成夹具及工程连通性不等于动作质量或算法收益；失败和提前终止必须与误差一并阅读。
+
+2026-11-03：[新版 Vibed 结构化评估](../baselines/textop/experiments/supermimic_vibed_20261103/results/external_evaluation.json) · [主指标独立审核](../baselines/textop/experiments/supermimic_vibed_20261103/results/external_audit.json) · [可阅读比较](../baselines/textop/experiments/supermimic_vibed_20261103/results/external_evaluation.md)。

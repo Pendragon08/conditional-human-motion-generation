@@ -20,7 +20,7 @@
 | CLoSD | 已发布权重评价、文本动作报告、训练尝试与失败分析 | [复现报告](results/closd_baseline_20261010/README.md) · [执行说明](docs/closd_baseline_20261010.md) |
 | PhyGile | 跟踪模块、生成组件独立实现、G1 适配与跨仿真诊断 | **[独立归档入口](baselines/phygile/INDEX.md)**；部分复现，完整论文性能未复现 |
 | ReactiveBFM | 有界训练、数值恢复、检查点核验及 MuJoCo 闭环诊断 | **[独立归档入口](baselines/reactivebfm/INDEX.md)**；部分复现，完整训练与论文基准未完成 |
-| TextOp / SuperMimic | 条件动作生成、机器人动作跟踪及训练对照 | **[复现与数据索引](baselines/textop/INDEX.md)**；历史实验已归档；[新版 50 Hz 适配代码](baselines/textop/experiments/supermimic_vibed_20261103/README.md) 已整理，2026-11-03 主训练及独立检查点审核已完成，564 条留出质量评估待完成 |
+| TextOp / SuperMimic | 条件动作生成、机器人动作跟踪及训练对照 | **[复现与数据索引](baselines/textop/INDEX.md)**；历史实验已归档；[新版 50 Hz 适配代码](baselines/textop/experiments/supermimic_vibed_20261103/README.md) 已整理，2026-11-03 主训练及独立检查点审核已完成，全部 564 条生成参考外部评估与主指标审核已完成：[194/564（34.40%）及比较边界](baselines/textop/experiments/supermimic_vibed_20261103/results/external_evaluation.md) |
 
 PhyGile 与 ReactiveBFM 的代码、配置、结果和报告分别放在 `baselines/` 下各自的目录。以往 DreamControl / CLoSD 的 `scripts/`、`configs/`、`results/`、`reports/` 路径继续作为原归档入口。
 
