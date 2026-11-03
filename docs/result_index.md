@@ -50,3 +50,5 @@
 新引擎、机器人碰撞体、控制频率、初始速度和策略自身观测格式均可能改变结果。比较时分别给出这些条件及训练成本；未完成的评价不填入成功率表。所有失败、缺失和短片段继续保留各自分母。
 
 [总索引](project_index.md) · [报告导航](../reports/README.md) · [数据与附件](datasets_and_artifacts.md)
+
+本轮 Vibed 视频：[全程数值筛查及限制](../baselines/textop/experiments/supermimic_vibed_20261103/results/external_evaluation.md#本轮长动作视频核查)。本批最长仅约4秒；19条至少100帧的达标候选均有明显根高度偏离参考，目前没有可展示的成功长动作视频。此结论不改变194/564根相对主指标。
