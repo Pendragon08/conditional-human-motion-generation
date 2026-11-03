@@ -1,0 +1,86 @@
+{
+  "recorded_on": "2026-11-03",
+  "kind": "sanitized_validation_summary",
+  "full_training_complete": false,
+  "new_heldout_quality_evaluation_complete": false,
+  "data_adapter": {
+    "training_sequences": 8077,
+    "training_frames": 5510162,
+    "failed_sequences": 0,
+    "scope": "Every source SHA256/50Hz frame-preserving loader/finite/frame-count checks; not all-corpus FK or dynamics",
+    "receipt_sha256": "1981e7daf6e4246a99ecd49014b349119abe47eb2c5983217c585438df352004",
+    "train_manifest_sha256": "bd2c10feaa87a4120278c686ad429ac075e9352569d4ccf91bf990deed02f64d",
+    "heldout_manifest_sha256": "bcb891dad551e7757890b471558dcf5dd6cd32308897bf60a9df5ff8add1765c",
+    "real_motionlib_sample": {
+      "sequences": 9,
+      "frames": 3327,
+      "fk_sampled_frames_per_sequence": 3,
+      "max_position_error_m": 0.0000025113188258,
+      "future_goals_finite": true
+    }
+  },
+  "physics": {
+    "colliders": 29,
+    "collider_types": [
+      "sphere",
+      "capsule"
+    ],
+    "moving_bodies": 30,
+    "revolute_joints": 29,
+    "total_mass_kg": 33.341142,
+    "asset_sha256": "16ceb4d480cb9315219d2dfc4a203e0e8582966043caf4496bcd32d35ceef628",
+    "physics_variant": "PhysX standard USD read by Newton",
+    "fixed_attachment_mass_com_inertia_comparison_pass": true,
+    "native_single_env_control_steps": 20,
+    "native_single_env_fresh_document_pass": true,
+    "native_2048_env_control_steps": 2,
+    "native_2048_env_initial_fk_max_error_m": 5.264139417704428e-7,
+    "native_capacity_receipt_sha256": "6a6bdcae80bb068573e9dae308e64bc51d5957fc19014bd2f5472f7cce0c2043",
+    "scope": "Finite collision/PD/native scene checks; no claim of learned balance or broad task quality",
+    "recorded_warning": "Warp cast overflow warning occurred in startup; final checked states/metrics finite"
+  },
+  "optimizer_smoke": {
+    "iterations": 2,
+    "environments": 64,
+    "finite_tensors": 175,
+    "checked_tensor_elements": 54623725,
+    "wm_adam_step": 2,
+    "policy_adam_step": 2,
+    "critic_adam_step": 40,
+    "full_small_model_arrays_equal": true,
+    "checkpoint_audit_sha256": "97f621040eaf56b78f3abc06a061af80d88676f8efc20c32b36141e4ef1520de",
+    "full_checkpoint_sha256": "4c1f262fd713a13dcf7b66f3fc003a23336f6cb4a6428176b041c775f6ad00db",
+    "small_checkpoint_sha256": "5350b219142cf0f18eec32581d945bc5f35f50888ad7e2c2dbd33d7fe42640e1",
+    "torch_peak_allocated_bytes": 8905684480,
+    "torch_peak_reserved_bytes": 11211374592,
+    "scope": "Optimizer smoke and independent CPU content audit; not a quality result"
+  },
+  "main_launch_verified": {
+    "optimizer_iteration": 525,
+    "physical_interactions": 2818048,
+    "world_model_loss": 0.103805,
+    "policy_loss": -0.78477,
+    "critic_loss": 0.0314115,
+    "metrics_finite": true,
+    "status": "in_progress; frozen launch verification only",
+    "controlled_runner_sha256": "75e41aff5ba61f91971c0dc56d46dd1b49b0fe40a548c6fe93accedd0ea74954",
+    "protected_original_process_identity_and_state_unchanged": true
+  },
+  "historical_comparison": {
+    "primary_metric": "max_t(mean_30_bodies(norm((executed_body-root)-(reference_body-root)))) <=0.3 m, full reference, no height/tilt early termination",
+    "denominator": 564,
+    "reference_frames": 58674,
+    "two_frame_clips": 6,
+    "ppo_5000_success": 202,
+    "supermimic_128_success": 176,
+    "supermimic_4096_success": 201,
+    "super4096_independent_audit_sha256": "69b157439a2b3ad9ee1fe5ca519c87016916a136248781f01d193548dd82fc0a",
+    "super4096_audit_scope": "All saved trajectories/FK/scoring recomputed; policy actions and physics not replayed",
+    "limitations": [
+      "Different training and update budgets",
+      "Prior GPU versus later CPU inference",
+      "New native engine/colliders differ from historical GMR MuJoCo plant",
+      "Root-relative threshold is not a no-fall criterion"
+    ]
+  }
+}

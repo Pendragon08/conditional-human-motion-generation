@@ -27,3 +27,9 @@
 [原 README 固定快照](https://github.com/Pendragon08/conditional-human-motion-generation/blob/9f9a12760c1b9ce2146a48fa387aabcafde8168e/README.md) · [分支与 PR](branches_and_prs.md)
 
 数据来源、结果与大文件状态见 [数据与附件索引](datasets_and_artifacts.md)。
+
+## 2026-11-03 分类入口
+
+- [仓库总索引](project_index.md)、[代码](code_index.md)、[复现结果](result_index.md)、[公开附件清单](release_inventory.json) 分别承接导航、运行源码、已审核结论和下载元数据。
+- 新的 SuperMimic Vibed 导出位于 [独立实验目录](../baselines/textop/experiments/supermimic_vibed_20261103/README.md)，与 11 月 2 日冻结快照分别保存。导出清单明确便携路径改动，原始快照摘要继续有效。
+- 新导航与摘要不会使历史 Release 草稿公开，也不表示服务器所有文件或已删除权重都有完整备份。

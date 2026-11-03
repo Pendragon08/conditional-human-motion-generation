@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "50 Hz TextOp NPZ motion manifest",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "path",
+      "sha256",
+      "bytes",
+      "frames",
+      "joint_names",
+      "body_names"
+    ],
+    "properties": {
+      "path": {
+        "type": "string",
+        "minLength": 1
+      },
+      "sha256": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "bytes": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 16777216
+      },
+      "frames": {
+        "type": "integer",
+        "minimum": 2
+      },
+      "joint_names": {
+        "type": "array",
+        "minItems": 29,
+        "maxItems": 29,
+        "uniqueItems": true,
+        "items": {
+          "type": "string"
+        }
+      },
+      "body_names": {
+        "type": "array",
+        "minItems": 30,
+        "maxItems": 30,
+        "uniqueItems": true,
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "description": "File-level schema. Loader additionally checks NPZ fps=50, source hash and finite arrays, quaternion and name/frame compatibility."
+}

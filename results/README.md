@@ -1,5 +1,7 @@
 # 既往实验结果导航
 
+**[全仓库复现结果索引](../docs/result_index.md)** · [项目总索引](../docs/project_index.md)
+
 根目录 `results/` 保留既往基线和执行反馈诊断的指标、回执及审计。各方法的结果入口为：
 
 - [PhyGile 原模块结果](../baselines/phygile/results/) · [Unitree 扩展结果](../baselines/phygile_unitree/results/v3/)

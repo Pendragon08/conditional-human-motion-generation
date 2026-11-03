@@ -4,9 +4,11 @@
 
 **条件动作先验、物理执行与全身人形机器人控制**
 
-[论文复现索引](baselines/README.md) · [数据与附件](docs/datasets_and_artifacts.md) · [实验结果](docs/results.md) · [报告导航](reports/README.md) · [文档导航](docs/README.md) · [分支与 PR](docs/branches_and_prs.md)
+[仓库总索引](docs/project_index.md) · [代码](docs/code_index.md) · [复现结果](docs/result_index.md) · [论文复现索引](baselines/README.md) · [数据与附件](docs/datasets_and_artifacts.md) · [实验结果](docs/results.md) · [报告导航](reports/README.md) · [文档导航](docs/README.md) · [分支与 PR](docs/branches_and_prs.md)
 
 </div>
+
+**按文件用途进入：** [代码与环境](docs/code_index.md) · [数据来源与可用性](docs/datasets_and_artifacts.md) · [复现结果](docs/result_index.md) · [公开附件清单](docs/release_inventory.json)。
 
 本仓库保存全身人形机器人控制相关的基线复现、参考动作生成与精化、物理跟踪、执行反馈及跨仿真器诊断。这里是复现与研究记录，不是所列论文的官方实现；每项结果均需结合自己的配置、检查点和评价协议阅读。
 
@@ -18,7 +20,7 @@
 | CLoSD | 已发布权重评价、文本动作报告、训练尝试与失败分析 | [复现报告](results/closd_baseline_20261010/README.md) · [执行说明](docs/closd_baseline_20261010.md) |
 | PhyGile | 跟踪模块、生成组件独立实现、G1 适配与跨仿真诊断 | **[独立归档入口](baselines/phygile/INDEX.md)**；部分复现，完整论文性能未复现 |
 | ReactiveBFM | 有界训练、数值恢复、检查点核验及 MuJoCo 闭环诊断 | **[独立归档入口](baselines/reactivebfm/INDEX.md)**；部分复现，完整训练与论文基准未完成 |
-| TextOp / SuperMimic | 条件动作生成、机器人动作跟踪及训练对照 | **[复现与数据索引](baselines/textop/INDEX.md)**；部分实验和结果已归档，完整论文条件未复现 |
+| TextOp / SuperMimic | 条件动作生成、机器人动作跟踪及训练对照 | **[复现与数据索引](baselines/textop/INDEX.md)**；历史实验已归档；[新版 50 Hz 适配代码](baselines/textop/experiments/supermimic_vibed_20261103/README.md) 已整理，2026-11-03 正式训练进行中，最终评估待完成 |
 
 PhyGile 与 ReactiveBFM 的代码、配置、结果和报告分别放在 `baselines/` 下各自的目录。以往 DreamControl / CLoSD 的 `scripts/`、`configs/`、`results/`、`reports/` 路径继续作为原归档入口。
 
@@ -72,6 +74,7 @@ baselines/
   phygile_unitree/                PhyGile 的 G1 / Unitree 框架扩展
   reactivebfm/                    ReactiveBFM 代码、配置、结果与报告
   textop/                         TextOp 与 SuperMimic 的代码、配置、结果与报告
+    experiments/                  新版独立适配代码、参数和验证摘要
   paper_faithful_reproduction/    两篇论文的联合核对、恢复和历史操作档案
 configs/  scripts/                既往基线的配置与运行工具
 results/  reports/                既往结果证据与可阅读报告

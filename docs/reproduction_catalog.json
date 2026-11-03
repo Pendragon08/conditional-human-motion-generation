@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02",
+  "updated": "2026-11-03",
   "purpose": "Navigation of archived reproductions, not live job monitoring",
   "legacy_main_before_integration": "9f9a12760c1b9ce2146a48fa387aabcafde8168e",
   "methods": [
@@ -49,7 +49,24 @@
       "reports": "baselines/textop/reports/",
       "source_snapshot": "baselines/textop/server_snapshot_20261102/",
       "full_paper_benchmark_reproduced": false,
-      "large_assets_status": "draft; not publicly available"
+      "large_assets_status": "draft; not publicly available",
+      "latest_source_export": "baselines/textop/experiments/supermimic_vibed_20261103/README.md",
+      "latest_validation_summary": "baselines/textop/experiments/supermimic_vibed_20261103/results/validation_summary.json",
+      "latest_training_status": {
+        "recorded_on": "2026-11-03",
+        "status": "in_progress",
+        "main_training_complete": false,
+        "new_heldout_quality_evaluation_complete": false,
+        "num_envs": 2048,
+        "target_optimizer_iterations": 4000
+      },
+      "historical_primary_metric": {
+        "protocol": "full-sequence 30-body root-relative max mean distance <=0.3 m; no height/tilt early termination",
+        "trials": 564,
+        "ppo_5000": 202,
+        "super128": 176,
+        "super4096_5000": 201
+      }
     }
   ],
   "shared_archive": "baselines/paper_faithful_reproduction/",
@@ -63,5 +80,12 @@
     "record": "baselines/paper_faithful_reproduction/reports/pause_cleanup_20261024.md"
   },
   "new_experiments_run_for_organization": false,
-  "data_and_artifacts": "docs/datasets_and_artifacts.md"
+  "data_and_artifacts": "docs/datasets_and_artifacts.md",
+  "navigation": {
+    "overview": "docs/project_index.md",
+    "code": "docs/code_index.md",
+    "data": "docs/datasets_and_artifacts.md",
+    "results": "docs/result_index.md",
+    "release_inventory": "docs/release_inventory.json"
+  }
 }
