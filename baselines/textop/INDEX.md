@@ -30,3 +30,5 @@
 截至 2026-11-02，TextOp 大型检查点、轨迹库、实验结果和 HTML 报告已部分上传至 GitHub Release **草稿**；草稿对外不可见，不能视为完整公开备份。附件名、校验值与历史异常见[快照索引](server_snapshot_20261102/README.md)。各数据集、模型、人体模型、机器人资产和上游代码遵循各自的来源及许可，使用前核对具体条款。
 
 [返回论文复现索引](../README.md) · [返回仓库首页](../../README.md)
+
+2026-11-03 最终模型备份：[Vibed 4000 次优化小检查点记录](experiments/supermimic_vibed_20261103/results/checkpoint_backup.json)。约 71.8MB 已服务器直传至尚未发布的草稿并独立核 SHA，原件保留；与源码导出及其他尚未归档的大文件分开。
