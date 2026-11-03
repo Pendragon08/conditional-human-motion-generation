@@ -1,0 +1,85 @@
+{
+  "checkpoint_iteration": 10000,
+  "checkpoint_sha256": "ad6de467f1bdafc602a089bae5e0868e28ece46513f326d2d503a2c57f090c6d",
+  "classification": [
+    "synthetic_proxy",
+    "simulation_only"
+  ],
+  "difference_from_PPO5000": -0.010210618680603856,
+  "difference_from_super5000": 0.008016394431707569,
+  "entries_sha256": "6c05545eb055ce37f4fdf00d7912ab178503337c07360e0101fd27719ea3d787",
+  "expected_control_intervals": 58110,
+  "failure_counts": {
+    "reference_end": 57,
+    "root_height": 482,
+    "root_tilt": 25
+  },
+  "legacy_PPO5000_mean": 0.18911448782365922,
+  "legacy_super5000_mean": 0.1708874747113478,
+  "max_errors": {
+    "PD_control": 0,
+    "joint_target": 0,
+    "reference_FK_position": 0.000006919109303726856,
+    "reference_FK_rotation_matrix": 0.00000329026976109148,
+    "replay_qpos": 0,
+    "replay_qvel": 0,
+    "robot_angular_velocity": 1.4210854715202004e-14,
+    "robot_linear_velocity": 1.1546319456101628e-14,
+    "robot_position": 0,
+    "robot_quaternion": 0,
+    "score": 6.661338147750939e-16,
+    "term": 1.687538997430238e-14
+  },
+  "mean_common_return": 0.17890386914305537,
+  "mujoco_warning_count": 0,
+  "native_updates": 3984,
+  "observed_control_intervals": 8999,
+  "outcomes_sha256": "afcf507a5ef02ea30e76de7905d7bab97a315591688cb166438a07ff70862d66",
+  "pass": true,
+  "policy_or_Torch_loaded": false,
+  "producer_mean_abs_difference": 0,
+  "producer_original_child_absent_host_view": true,
+  "producer_result_sha256": "457cccf7e422083bbf74b706e191701acd398e427fa1892e714bb181178170f7",
+  "reached_PPO_baseline": false,
+  "recorded_physics_substeps_replayed": 89990,
+  "reference_count": 564,
+  "reference_frames": 58674,
+  "reference_frames_FK_checked": 58674,
+  "scope": "Independent SHA/CRC, fixed reference14body FK, all observed recorded actuator substeps physics replay, Jacobian body velocities, PD and action-target mapping, rotation-matrix six-term scoring with fixedN-1 and564 denominator. No policy output reinference. Reference velocity source checked by hash/CRC/finite and exact saved-array identity, not independently differentiated. Warm CPU environment differs from legacy; no significance, efficiency,30body0.3m, realGT or realrobot claim.",
+  "seconds": 28.879826709628105,
+  "status": "LEGACY_SUPER10000_564_COMMON_RETURN_INDEPENDENTLY_AUDITED",
+  "two_frame_clips_preserved": 6,
+  "versions": {
+    "mujoco": "3.16.0",
+    "numpy": "2.5.1"
+  },
+  "recorded_on": "2026-11-03",
+  "kind": "sanitized_legacy_super10000_common_return",
+  "evaluation_policy_inference": {
+    "torch": "2.11.0+cu126",
+    "numpy": "2.5.1",
+    "mujoco": "3.16.0",
+    "device": "CPU",
+    "historical_environment_changed": true,
+    "compatibility_scope": "22 saved5000 actions/targets and20 recorded actuator substeps checked; no global numerical equivalence claim"
+  },
+  "provenance": {
+    "producer_result_sha256": "457cccf7e422083bbf74b706e191701acd398e427fa1892e714bb181178170f7",
+    "producer_exit_sha256": "4b681ee60449c668881a24c79a581f5f164c72083a68ba2fc6373c5a6032c8ce",
+    "audit_result_sha256": "7d1029c009fbb3af0032c280ea95bcf2e1f7776d288031d8f870fd54235cc9b2",
+    "audit_exit_sha256": "b6ace3c6ae70765d67bf6808af340c987be3ced934fbad29335f3d5887f638da",
+    "postflight_review_sha256": "ac45a9f50b33b5614158d85570cf9cc9ddd0204e9871c427cb5067e8d3cfc566",
+    "audit_worker_sha256": "102bfb0c91a4d9fddbe4687db520a7287d106abd63bd8bddb236378279ded570",
+    "audit_runner_sha256": "82f538b19d93cc3c2019525ba2070af234b3e451af4c780cce01c660f4d7d42c",
+    "reference_manifest_sha256": "f277d4df6888f7253235c9a5bf32ddf1a960be3a6b6c48a58e0333449dfb0453",
+    "asset_sha256": "943eb0d5e24dad6cb029d3331daf85c139c8f5d8ce9c62e751e3ff69a0e44416"
+  },
+  "review": {
+    "status": "WARN_QUALIFIED",
+    "reviewer_model": "gpt-6.1-sol",
+    "reasoning": "ultra",
+    "review_independence": "same-family",
+    "acceptance_status": "provisional"
+  },
+  "retention": "Private source/reference files, trajectories and original checkpoints remain on server; this publication is sanitized scalar evidence only."
+}

@@ -97,3 +97,5 @@ plans/  .aris/                    历史研究计划与执行记录
 感谢 [DreamControl](https://github.com/GenRobo/DreamControl)、[CLoSD](https://github.com/GuyTevet/CLoSD)、[PhyGile tracking](https://github.com/Baojch/phygile_tracking) 和 [ReactiveBFM](https://github.com/zjwzcx/ReactiveBFM) 的公开实现。固定版本、改动范围和引用要求见各方法目录。
 
 上游代码、数据、人体模型、机器人资产及检查点遵循各自许可。仓库没有统一的顶层许可证；公开归档不改变上游条款。数据与模型的具体可用性及许可见[数据与附件索引](docs/datasets_and_artifacts.md)；草稿附件尚未公开，公开源代码不代表全部数据或模型已公开。
+
+旧版 SuperMimic 后继：[4096环境、第10000次采样迭代统一回报及独立物理审核](baselines/textop/reports/supermimic4096_step10000_common_return_20261103.md)已完成；0.178904，高于其5000次检查点，仍未达到PPO5000对照。此14身体回报与新版Vibed的30身体0.3米指标分开。
