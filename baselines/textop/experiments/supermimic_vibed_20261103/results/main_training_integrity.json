@@ -1,0 +1,82 @@
+{
+  "recorded_on": "2026-11-03",
+  "audit_result_sha256": "b29cf915c7da2043af5f65c76727b078eaa19d1989ce1ef1de5d0e86a35ae8a6",
+  "pass": true,
+  "main_child_reaped": true,
+  "main_child_returncode": 0,
+  "outer_detached_driver_exit_code_recorded": false,
+  "outer_driver_and_child_absent": true,
+  "iteration": 4000,
+  "sim_steps": 20611072,
+  "checkpoint_sha256": {
+    "last.pt": "937b922a01111f73fba53aa78a431cea7280fb28fe8c39ca3abbc4a774a20d9a",
+    "ckpt_002000.pt": "6c31340e6e27958df06e99a7f0f411251ab554553a39b37b6d03e51d45172ba9",
+    "ckpt_004000.pt": "6edbef0084013d791c9cbde32396e7a4ec220b0e925ced6551feacbd7e43a508"
+  },
+  "checkpoints": {
+    "last.pt": {
+      "bytes": 218547617,
+      "iteration": 4000,
+      "sim_steps": 20611072
+    },
+    "ckpt_002000.pt": {
+      "bytes": 71781529,
+      "iteration": 2000,
+      "sim_steps": 10371072
+    },
+    "ckpt_004000.pt": {
+      "bytes": 71781529,
+      "iteration": 4000,
+      "sim_steps": 20611072
+    }
+  },
+  "finite_content_counts": {
+    "tensors": 267,
+    "elements": 90506523
+  },
+  "optimizer_steps": {
+    "opt_wm": {
+      "states": 14,
+      "step": 40000
+    },
+    "opt_pi": {
+      "states": 20,
+      "step": 3500
+    },
+    "opt_v": {
+      "states": 6,
+      "step": 70000
+    }
+  },
+  "full_small_model_arrays_equal": true,
+  "finite_metric_rows": 160,
+  "last_metrics": {
+    "iteration": "4000",
+    "wall_h": "0.814434",
+    "sim_steps": "20611072",
+    "wm_loss": "0.0572142",
+    "wm_err8": "0.0942328",
+    "pi_loss": "-8.44195",
+    "v_loss": "0.00998294",
+    "imag_rew": "0.832949",
+    "pi_gradnorm": "1.51947",
+    "imag_survival": "0.997862",
+    "sim_rew": "0.801314",
+    "ep_len": "163.443",
+    "ep_ret_norm": "-0.35911",
+    "term_frac": "0.00831025",
+    "it_per_s": "1.41194",
+    "lr": "0.000199878"
+  },
+  "main_runtime": {
+    "cache_used_bytes": 491233280,
+    "checkpoint_rounded_write_bytes": 589176832,
+    "mode": "main",
+    "pass": true,
+    "torch_max_allocated_bytes": 18353528832,
+    "torch_max_reserved_bytes": 20715667456
+  },
+  "main_controlled_elapsed_seconds": 3098.3974838256836,
+  "protected_original_processes_after": "PASS",
+  "scope": "CPU checkpoint/optimizer/metric/FK-free integrity audit only; no new heldout quality result, physics replay or policy action recomputation"
+}

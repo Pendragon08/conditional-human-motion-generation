@@ -38,7 +38,7 @@
 | 16 条原验证集长舞蹈，4096 SuperMimic | 在带物理提前终止的辅助协议下 0 / 16 到末尾；与 564 生成留出分开 |
 | SnapMoGen | 重定向与帧边界有独立记录；完整策略测试成绩尚未完成 |
 | SuperMimic 10000 后继统一回报 | 尚无已审核结果 |
-| 新版 SuperMimic Vibed | 2026-11-03 正式训练进行中，已进入策略 / 价值网络更新；最终训练和 564 独立评估尚未完成 |
+| 新版 SuperMimic Vibed | 2026-11-03 主训练 4000 次优化 / 20,611,072 次交互完成，三个检查点与 160 行指标独立审核通过；564 条质量评估尚未完成 |
 
 [新版代码和验证范围](../baselines/textop/experiments/supermimic_vibed_20261103/README.md) · [TextOp 总入口](../baselines/textop/INDEX.md) · [历史附件及报告清单](../baselines/textop/server_snapshot_20261102/README.md)
 
