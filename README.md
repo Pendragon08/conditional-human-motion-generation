@@ -1,5 +1,14 @@
 # Whole-Body Humanoid Control with Conditional Motion Priors
 
+<!-- dreamcontrol-v2-20261105:start -->
+## DreamControl-v2 29DoF reproduction (2026-11-05)
+
+[Code, results and limitations](reproductions/dreamcontrol_v2_20261029/README.md) · [Source manifest](reproductions/dreamcontrol_v2_20261029/SOURCE_MANIFEST.json) · [Artifact coverage](reproductions/dreamcontrol_v2_20261029/publication/ARTIFACT_CATALOG.md)
+
+Four 500-reference task banks and one shared SuperMimic body tracker are complete. Object-task evaluations are 0/100 under the recorded protocols. Pick PPO (3,000 updates) and Pour PPO (5,000 updates) are complete and each scored 0/100; later skill PPO jobs were cancelled before formal training. Four audit repairs are being prepared and have not begun a new formal training run in this snapshot. The draft release has 137/275 checkpoints recoverable from complete verified groups; the other 138 archived checkpoints are not fully uploaded. This adapted baseline does not reproduce the paper performance.
+<!-- dreamcontrol-v2-20261105:end -->
+
+
 <div align="center">
 
 **条件动作先验、物理执行与全身人形机器人控制**

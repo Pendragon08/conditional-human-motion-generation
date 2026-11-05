@@ -1,0 +1,240 @@
+{
+  "status": "generated_reference_embedding_metrics_completed",
+  "manifest_sha256": "6d35b617780968b45ef9d05c2014df17708d6b45bb7158438a13ec6c49df36cf",
+  "ground_truth_manifest_sha256": "5fc1a0beb071e7a65b68e689a57ed0ba09b633a83d5ec5fd261b1620115bb1cb",
+  "assets": [
+    {
+      "member": "model.safetensors",
+      "size": 86766520,
+      "sha256": "569bbd5526cb4b5fdda48a08abf7dd0b5a1e9a39ea0be381730771ac18063981",
+      "source": "https://huggingface.co/ZeyuLing/motius-evaluator-humanml3d-official/resolve/d6f2735efeb5319ce015e1c2247b636685fe457a/model.safetensors"
+    },
+    {
+      "member": "stats/mean.npy",
+      "size": 2232,
+      "sha256": "0bdb5ba69a3a9e34d71990db15bc535ebc024c8d95ddb5574196f96058faa7d3",
+      "source": "https://huggingface.co/ZeyuLing/motius-evaluator-humanml3d-official/resolve/d6f2735efeb5319ce015e1c2247b636685fe457a/stats/mean.npy"
+    },
+    {
+      "member": "stats/std.npy",
+      "size": 2232,
+      "sha256": "6a5f7d60301c9465972fc225f8ad0ee8f957e7720431189123eb6d15873a9557",
+      "source": "https://huggingface.co/ZeyuLing/motius-evaluator-humanml3d-official/resolve/d6f2735efeb5319ce015e1c2247b636685fe457a/stats/std.npy"
+    },
+    {
+      "member": "glove/our_vab_data.npy",
+      "size": 10077728,
+      "sha256": "73ed9b73ee5bc5ab683661c132b9f98fe305672dffdf70ceeac1bc447543d668",
+      "source": "https://huggingface.co/ZeyuLing/motius-evaluator-humanml3d-official/resolve/d6f2735efeb5319ce015e1c2247b636685fe457a/glove/our_vab_data.npy"
+    },
+    {
+      "member": "glove/our_vab_idx.pkl",
+      "size": 79811,
+      "sha256": "d85dce83d2c27a92bb94bb51dc1f55a04fcaa328c359d23eccf648e296c16493",
+      "source": "https://huggingface.co/ZeyuLing/motius-evaluator-humanml3d-official/resolve/d6f2735efeb5319ce015e1c2247b636685fe457a/glove/our_vab_idx.pkl"
+    },
+    {
+      "member": "glove/our_vab_words.pkl",
+      "size": 67470,
+      "sha256": "fac88da1be6f00d36b72b88c9745c8ac35a94a7bd6ccf1fa3bab380faf8c2e0d",
+      "source": "https://huggingface.co/ZeyuLing/motius-evaluator-humanml3d-official/resolve/d6f2735efeb5319ce015e1c2247b636685fe457a/glove/our_vab_words.pkl"
+    }
+  ],
+  "wrapper_sha256": "7a3578bae99c75c11ab741d12d95b3048f3d7f768b2508a7a54d2f5f5288c330",
+  "metrics_sha256": "021108acce91e7a4e887ce9b8ff39a2628d9fbbfc54bbd765bee7e24218c1a77",
+  "seed": 20261105,
+  "ground_truth": {
+    "split": "test",
+    "clips": 586,
+    "source_groups": 323,
+    "dataset_sources": {
+      "OmniRetarget/OMOMO": 316,
+      "DexWeave/GRAB": 270
+    },
+    "scope": "shared, source-group-held-out GRAB+Omni robot-space reference distribution; task scores use the same pool",
+    "truncated": 61,
+    "diversity": {
+      "mean": 1.9940048456192017,
+      "sd_across_pair_draws": 0.1342501938343048
+    }
+  },
+  "encoding": {
+    "raw_diffusion": "original denormalized 263D generator output",
+    "final_reference": "stored 20Hz G1 FK 22 points to existing sign-continuous HumanML 263D encoder",
+    "ground_truth": "archived 20Hz G1 263D features",
+    "normalization": "published HumanML3D matching-network mean and std; max 196 frames"
+  },
+  "diversity": "public calculate_diversity with 32 sampled pairs, mean of 20 deterministic replicates",
+  "fid": "public activation statistics and Frechet distance using original unnormalized embeddings",
+  "tasks": {
+    "pick": {
+      "raw_diffusion": {
+        "clips": 500,
+        "fid_to_shared_heldout": 1.598811388015747,
+        "diversity": {
+          "mean": 1.08469557762146,
+          "sd_across_pair_draws": 0.06272482872009277
+        },
+        "truncated": 0,
+        "r_precision": {
+          "top_1": 0.0,
+          "top_2": 0.0,
+          "top_3": 0.0
+        }
+      },
+      "final_reference": {
+        "clips": 500,
+        "fid_to_shared_heldout": 3.786008596420288,
+        "diversity": {
+          "mean": 0.9148129224777222,
+          "sd_across_pair_draws": 0.09572707116603851
+        },
+        "truncated": 0,
+        "r_precision": {
+          "top_1": 0.0,
+          "top_2": 0.0,
+          "top_3": 0.0
+        }
+      }
+    },
+    "pour": {
+      "raw_diffusion": {
+        "clips": 500,
+        "fid_to_shared_heldout": 2.1265501976013184,
+        "diversity": {
+          "mean": 1.0018810033798218,
+          "sd_across_pair_draws": 0.05131381377577782
+        },
+        "truncated": 0,
+        "r_precision": {
+          "top_1": 0.0,
+          "top_2": 0.0,
+          "top_3": 0.0
+        }
+      },
+      "final_reference": {
+        "clips": 500,
+        "fid_to_shared_heldout": 6.464034557342529,
+        "diversity": {
+          "mean": 0.4707925319671631,
+          "sd_across_pair_draws": 0.03192459046840668
+        },
+        "truncated": 0,
+        "r_precision": {
+          "top_1": 0.0,
+          "top_2": 0.0,
+          "top_3": 0.0
+        }
+      }
+    },
+    "bimanual_box_lift": {
+      "raw_diffusion": {
+        "clips": 500,
+        "fid_to_shared_heldout": 0.7038290500640869,
+        "diversity": {
+          "mean": 1.1895983219146729,
+          "sd_across_pair_draws": 0.0633089542388916
+        },
+        "truncated": 0,
+        "r_precision": {
+          "top_1": 0.278,
+          "top_2": 0.654,
+          "top_3": 0.85
+        }
+      },
+      "final_reference": {
+        "clips": 500,
+        "fid_to_shared_heldout": 4.911951065063477,
+        "diversity": {
+          "mean": 0.41438403725624084,
+          "sd_across_pair_draws": 0.021606799215078354
+        },
+        "truncated": 0,
+        "r_precision": {
+          "top_1": 0.456,
+          "top_2": 0.852,
+          "top_3": 0.964
+        }
+      }
+    },
+    "box_push_pull": {
+      "raw_diffusion": {
+        "clips": 500,
+        "fid_to_shared_heldout": 2.466242790222168,
+        "diversity": {
+          "mean": 1.1669211387634277,
+          "sd_across_pair_draws": 0.06513853371143341
+        },
+        "truncated": 0,
+        "r_precision": {
+          "top_1": 0.798,
+          "top_2": 0.97,
+          "top_3": 0.998
+        }
+      },
+      "final_reference": {
+        "clips": 500,
+        "fid_to_shared_heldout": 5.443029403686523,
+        "diversity": {
+          "mean": 0.9701951146125793,
+          "sd_across_pair_draws": 0.043401941657066345
+        },
+        "truncated": 0,
+        "r_precision": {
+          "top_1": 0.354,
+          "top_2": 0.698,
+          "top_3": 0.878
+        }
+      }
+    },
+    "all": {
+      "raw_diffusion": {
+        "clips": 2000,
+        "fid_to_shared_heldout": 1.4175142049789429,
+        "diversity": {
+          "mean": 1.3324865102767944,
+          "sd_across_pair_draws": 0.07707216590642929
+        },
+        "truncated": 0,
+        "r_precision": {
+          "top_1": 0.269,
+          "top_2": 0.406,
+          "top_3": 0.46199999999999997
+        }
+      },
+      "final_reference": {
+        "clips": 2000,
+        "fid_to_shared_heldout": 4.370541095733643,
+        "diversity": {
+          "mean": 1.3767573833465576,
+          "sd_across_pair_draws": 0.11347581446170807
+        },
+        "truncated": 0,
+        "r_precision": {
+          "top_1": 0.2025,
+          "top_2": 0.38749999999999996,
+          "top_3": 0.4605
+        }
+      }
+    }
+  },
+  "retrieval": {
+    "protocol": "one conditioning prompt and 31 distinct held-out captions without replacement; same seeded candidates for raw and final for each clip",
+    "positives": [
+      "A person picks up a water bottle and pours out its contents.",
+      "Lift the largebox, move the largebox, and put down the largebox.",
+      "Pick up the object from the table.",
+      "Push the largebox, release the hands, then pull the largebox, and set it back down."
+    ],
+    "distractor_caption_count": 210,
+    "tokens_sha256": "f120687a4e5552d886cedeb6194fb704d13f44e2798b5b96aa5e45a2bb22822c",
+    "tokenizer": {
+      "spacy": "3.8.11",
+      "model": "3.8.0",
+      "preprocessing": "public HumanML3D RawTextDataset hyphen removal, alpha filter, noun/verb lemmatization except left"
+    },
+    "scope": "four repeated conditioning prompts, distinct weak-label test captions, not HumanML3D batch retrieval on this skill subset"
+  },
+  "motion_embeddings_sha256": "bb38b7470dfd4b9e8b6aea06ea60fe3db19efa579356c33f810be03cc1f889a8",
+  "motion_result_source": "/data/code/ouyanghao/oyh/dreamcontrol-v2-reproduction-20261029/generated_reference_evaluation_20261105/embeddings_motion_v1"
+}

@@ -1,0 +1,1333 @@
+{
+  "status": "frozen_policy_task_evaluation_completed",
+  "task": "pour",
+  "episode_count": 100,
+  "integration_only": false,
+  "success_count": 0,
+  "success_ratio": 0.0,
+  "control_error_m": 0.24806441366672516,
+  "control_error_episode_count": 100,
+  "interaction_events": {
+    "initial_interaction": {
+      "mean_error_m": 0.24806441366672516,
+      "measured_episodes": 100,
+      "actual_contact_at_measurement": 0
+    }
+  },
+  "episodes_with_required_hand_contact": 0,
+  "interaction_error_definition": "L2 from simulated wrist(s) to specified world target(s) at scheduled interaction step; average hands, then events, then episodes with all events observed",
+  "missing_error_definition": "Episodes terminating before a required measurement stay in success denominator; missing errors are null.",
+  "success_definition": "actual right hand contact, lift, tilt > 60 degrees, upright restore and place/release; bottle proxy without fluid",
+  "sampling": "seeded sample without replacement from 500 trained-reference scenes with paired randomized object XY",
+  "seed": 20261105,
+  "physics": "Isaac Sim 4.5 PhysX, dynamic objects, no object state writes after first-episode reset",
+  "body_controller": "frozen reference-conditioned SuperMimic, native observation/history/goal, native joint target scale and motor parameters",
+  "hands": "existing binary hand actuators execute reference open/close schedule",
+  "optimizer_updates": 0,
+  "checkpoint_sha256": "571b207875610946f1065bf25bdf1dac78cb8c37f1691fc001324b1da64776ee",
+  "library_sha256": "6d35b617780968b45ef9d05c2014df17708d6b45bb7158438a13ec6c49df36cf",
+  "policy_state_sha256": "f5afad7b08aefa3ad78993d47ad4b8fe220851c2ce95ed2490bf11c320f809e1",
+  "asset_sha256": "13b283a83a2b250a3846d9950e0b641c959e3ce80fcaf706ea060ce0d8fb7888",
+  "episodes": [
+    {
+      "candidate_id": 11000432,
+      "object_initial_xyz_m": [
+        0.36767884929200956,
+        -0.21276184616615654,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2672719657421112
+      }
+    },
+    {
+      "candidate_id": 11000174,
+      "object_initial_xyz_m": [
+        0.3360993558834985,
+        -0.19529094063364333,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2338634878396988
+      }
+    },
+    {
+      "candidate_id": 11000145,
+      "object_initial_xyz_m": [
+        0.3278243713539198,
+        -0.19790586076333552,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.22792749106884003
+      }
+    },
+    {
+      "candidate_id": 11000139,
+      "object_initial_xyz_m": [
+        0.334207428032159,
+        -0.20948343260027422,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2365555763244629
+      }
+    },
+    {
+      "candidate_id": 11000143,
+      "object_initial_xyz_m": [
+        0.37088694965889063,
+        -0.20588818601168624,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26650023460388184
+      }
+    },
+    {
+      "candidate_id": 11000393,
+      "object_initial_xyz_m": [
+        0.3514738717961364,
+        -0.2045207508629273,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.24903661012649536
+      }
+    },
+    {
+      "candidate_id": 11000492,
+      "object_initial_xyz_m": [
+        0.34330781083111517,
+        -0.2065467481653981,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2428586184978485
+      }
+    },
+    {
+      "candidate_id": 11000293,
+      "object_initial_xyz_m": [
+        0.3540305530326334,
+        -0.1975320931772741,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2503887116909027
+      }
+    },
+    {
+      "candidate_id": 11000357,
+      "object_initial_xyz_m": [
+        0.3479597846487142,
+        -0.18151167288994652,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.24346715211868286
+      }
+    },
+    {
+      "candidate_id": 11000386,
+      "object_initial_xyz_m": [
+        0.36770051684876875,
+        -0.20363937805503038,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2661503553390503
+      }
+    },
+    {
+      "candidate_id": 11000391,
+      "object_initial_xyz_m": [
+        0.349996994226324,
+        -0.1776653646234206,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.24386335909366608
+      }
+    },
+    {
+      "candidate_id": 11000291,
+      "object_initial_xyz_m": [
+        0.36363692004118753,
+        -0.2014808982338386,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2612541615962982
+      }
+    },
+    {
+      "candidate_id": 11000124,
+      "object_initial_xyz_m": [
+        0.36660157918146835,
+        -0.18774021617809236,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2603904604911804
+      }
+    },
+    {
+      "candidate_id": 11000483,
+      "object_initial_xyz_m": [
+        0.3690032397168902,
+        -0.17912204394312753,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2642333507537842
+      }
+    },
+    {
+      "candidate_id": 11000423,
+      "object_initial_xyz_m": [
+        0.36275007894711425,
+        -0.20564904037020873,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26019755005836487
+      }
+    },
+    {
+      "candidate_id": 11000281,
+      "object_initial_xyz_m": [
+        0.3380775820546573,
+        -0.21455809913180146,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.23741857707500458
+      }
+    },
+    {
+      "candidate_id": 11000418,
+      "object_initial_xyz_m": [
+        0.36434176163159787,
+        -0.2174692803759376,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2643180787563324
+      }
+    },
+    {
+      "candidate_id": 11000142,
+      "object_initial_xyz_m": [
+        0.3609007013413027,
+        -0.19892480751283317,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2577816843986511
+      }
+    },
+    {
+      "candidate_id": 11000469,
+      "object_initial_xyz_m": [
+        0.3277265179184957,
+        -0.21841738753183076,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2302754521369934
+      }
+    },
+    {
+      "candidate_id": 11000271,
+      "object_initial_xyz_m": [
+        0.32761646284641815,
+        -0.21676223852496643,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.22949345409870148
+      }
+    },
+    {
+      "candidate_id": 11000064,
+      "object_initial_xyz_m": [
+        0.34201961082292126,
+        -0.20799781884928364,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2413388192653656
+      }
+    },
+    {
+      "candidate_id": 11000201,
+      "object_initial_xyz_m": [
+        0.3741725005123412,
+        -0.19805136569955265,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2672732174396515
+      }
+    },
+    {
+      "candidate_id": 11000425,
+      "object_initial_xyz_m": [
+        0.32880164721145433,
+        -0.19496165805508586,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2277407944202423
+      }
+    },
+    {
+      "candidate_id": 11000225,
+      "object_initial_xyz_m": [
+        0.37291933922123,
+        -0.18118565470483425,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26729151606559753
+      }
+    },
+    {
+      "candidate_id": 11000178,
+      "object_initial_xyz_m": [
+        0.3376607295847892,
+        -0.18101329837792046,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.23404888808727264
+      }
+    },
+    {
+      "candidate_id": 11000170,
+      "object_initial_xyz_m": [
+        0.32984956480125516,
+        -0.18000444055066528,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.22740109264850616
+      }
+    },
+    {
+      "candidate_id": 11000022,
+      "object_initial_xyz_m": [
+        0.3722094913570145,
+        -0.22008577605598267,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2646573483943939
+      }
+    },
+    {
+      "candidate_id": 11000438,
+      "object_initial_xyz_m": [
+        0.3457089201279045,
+        -0.22064912378889454,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2478545755147934
+      }
+    },
+    {
+      "candidate_id": 11000133,
+      "object_initial_xyz_m": [
+        0.32870856386132424,
+        -0.21192473525633437,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.22822637856006622
+      }
+    },
+    {
+      "candidate_id": 11000167,
+      "object_initial_xyz_m": [
+        0.3499190944389122,
+        -0.1773086335213092,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.24531830847263336
+      }
+    },
+    {
+      "candidate_id": 11000238,
+      "object_initial_xyz_m": [
+        0.3371470370238022,
+        -0.22347348032886208,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.23839569091796875
+      }
+    },
+    {
+      "candidate_id": 11000265,
+      "object_initial_xyz_m": [
+        0.3498791966156872,
+        -0.20898899347231634,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.24847811460494995
+      }
+    },
+    {
+      "candidate_id": 11000307,
+      "object_initial_xyz_m": [
+        0.3377275644452423,
+        -0.20789574768042504,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2387293428182602
+      }
+    },
+    {
+      "candidate_id": 11000300,
+      "object_initial_xyz_m": [
+        0.365339306687415,
+        -0.1980951105278633,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26345765590667725
+      }
+    },
+    {
+      "candidate_id": 11000472,
+      "object_initial_xyz_m": [
+        0.35391391789339033,
+        -0.1967983573966992,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.25196459889411926
+      }
+    },
+    {
+      "candidate_id": 11000260,
+      "object_initial_xyz_m": [
+        0.3523375603226844,
+        -0.19454184218974865,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2499101758003235
+      }
+    },
+    {
+      "candidate_id": 11000072,
+      "object_initial_xyz_m": [
+        0.3508166697347642,
+        -0.2122524356322587,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.24860510230064392
+      }
+    },
+    {
+      "candidate_id": 11000298,
+      "object_initial_xyz_m": [
+        0.3512705492938899,
+        -0.21664021688456386,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2508200407028198
+      }
+    },
+    {
+      "candidate_id": 11000486,
+      "object_initial_xyz_m": [
+        0.37199784277379166,
+        -0.17519536708598465,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26688358187675476
+      }
+    },
+    {
+      "candidate_id": 11000268,
+      "object_initial_xyz_m": [
+        0.34289046349938296,
+        -0.21193245275048428,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.24182046949863434
+      }
+    },
+    {
+      "candidate_id": 11000029,
+      "object_initial_xyz_m": [
+        0.37196967554518645,
+        -0.1997560787321765,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26967841386795044
+      }
+    },
+    {
+      "candidate_id": 11000248,
+      "object_initial_xyz_m": [
+        0.36864703071280236,
+        -0.2101101999698198,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2675876021385193
+      }
+    },
+    {
+      "candidate_id": 11000135,
+      "object_initial_xyz_m": [
+        0.36591043252320604,
+        -0.21261496721139017,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26450976729393005
+      }
+    },
+    {
+      "candidate_id": 11000093,
+      "object_initial_xyz_m": [
+        0.3253721346406947,
+        -0.1999658322234796,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.225260391831398
+      }
+    },
+    {
+      "candidate_id": 11000351,
+      "object_initial_xyz_m": [
+        0.339269860747918,
+        -0.20422718277605903,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.23677405714988708
+      }
+    },
+    {
+      "candidate_id": 11000221,
+      "object_initial_xyz_m": [
+        0.3274568468282975,
+        -0.21556443493771796,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2290022075176239
+      }
+    },
+    {
+      "candidate_id": 11000023,
+      "object_initial_xyz_m": [
+        0.3533724273660746,
+        -0.19180895709771179,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.24977611005306244
+      }
+    },
+    {
+      "candidate_id": 11000251,
+      "object_initial_xyz_m": [
+        0.36922076038682416,
+        -0.20273256234500114,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2637908458709717
+      }
+    },
+    {
+      "candidate_id": 11000073,
+      "object_initial_xyz_m": [
+        0.327904294603507,
+        -0.22325492995767293,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.23045924305915833
+      }
+    },
+    {
+      "candidate_id": 11000484,
+      "object_initial_xyz_m": [
+        0.32528252807532054,
+        -0.2042519541684575,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2251829355955124
+      }
+    },
+    {
+      "candidate_id": 11000026,
+      "object_initial_xyz_m": [
+        0.3278018421379421,
+        -0.17783752360988495,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.22327138483524323
+      }
+    },
+    {
+      "candidate_id": 11000482,
+      "object_initial_xyz_m": [
+        0.3490798324464602,
+        -0.21452849121586737,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.24770785868167877
+      }
+    },
+    {
+      "candidate_id": 11000372,
+      "object_initial_xyz_m": [
+        0.3485861679724033,
+        -0.19519709389671241,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2447783499956131
+      }
+    },
+    {
+      "candidate_id": 11000295,
+      "object_initial_xyz_m": [
+        0.35511134410959244,
+        -0.20978527521855855,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.25397947430610657
+      }
+    },
+    {
+      "candidate_id": 11000067,
+      "object_initial_xyz_m": [
+        0.3555794809306517,
+        -0.20843771162055885,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.25421392917633057
+      }
+    },
+    {
+      "candidate_id": 11000373,
+      "object_initial_xyz_m": [
+        0.36581300417978435,
+        -0.22448050317323265,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26587867736816406
+      }
+    },
+    {
+      "candidate_id": 11000383,
+      "object_initial_xyz_m": [
+        0.36350404743933573,
+        -0.1790570112564588,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.258800208568573
+      }
+    },
+    {
+      "candidate_id": 11000459,
+      "object_initial_xyz_m": [
+        0.34170448809523607,
+        -0.1821591716239552,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2371128797531128
+      }
+    },
+    {
+      "candidate_id": 11000161,
+      "object_initial_xyz_m": [
+        0.3721359473490583,
+        -0.1957432912316952,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2639424800872803
+      }
+    },
+    {
+      "candidate_id": 11000027,
+      "object_initial_xyz_m": [
+        0.3461153408857937,
+        -0.1936792598760127,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.24368540942668915
+      }
+    },
+    {
+      "candidate_id": 11000282,
+      "object_initial_xyz_m": [
+        0.3559640322376688,
+        -0.21754422131455553,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.25486066937446594
+      }
+    },
+    {
+      "candidate_id": 11000003,
+      "object_initial_xyz_m": [
+        0.36801296341637874,
+        -0.22259286106368897,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26838919520378113
+      }
+    },
+    {
+      "candidate_id": 11000367,
+      "object_initial_xyz_m": [
+        0.33091875909477975,
+        -0.21264402415794578,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.23346078395843506
+      }
+    },
+    {
+      "candidate_id": 11000168,
+      "object_initial_xyz_m": [
+        0.32799724694566446,
+        -0.20996451747415534,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.22553817927837372
+      }
+    },
+    {
+      "candidate_id": 11000031,
+      "object_initial_xyz_m": [
+        0.35910395644711807,
+        -0.1998985847406408,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2561911940574646
+      }
+    },
+    {
+      "candidate_id": 11000040,
+      "object_initial_xyz_m": [
+        0.339155465269341,
+        -0.20172912293064515,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.23737457394599915
+      }
+    },
+    {
+      "candidate_id": 11000447,
+      "object_initial_xyz_m": [
+        0.36439744392555556,
+        -0.19166382599236248,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26136156916618347
+      }
+    },
+    {
+      "candidate_id": 11000358,
+      "object_initial_xyz_m": [
+        0.36207725571412086,
+        -0.20328187282426624,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.260636568069458
+      }
+    },
+    {
+      "candidate_id": 11000471,
+      "object_initial_xyz_m": [
+        0.3488942607308749,
+        -0.20710530634227237,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.24730855226516724
+      }
+    },
+    {
+      "candidate_id": 11000297,
+      "object_initial_xyz_m": [
+        0.3466238668401473,
+        -0.2163489211004412,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2460549920797348
+      }
+    },
+    {
+      "candidate_id": 11000147,
+      "object_initial_xyz_m": [
+        0.3416222769563065,
+        -0.18823945998733382,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2396223545074463
+      }
+    },
+    {
+      "candidate_id": 11000091,
+      "object_initial_xyz_m": [
+        0.331443411088787,
+        -0.21252060222243674,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.22999322414398193
+      }
+    },
+    {
+      "candidate_id": 11000363,
+      "object_initial_xyz_m": [
+        0.3494464843635073,
+        -0.2054271317671745,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.24719811975955963
+      }
+    },
+    {
+      "candidate_id": 11000343,
+      "object_initial_xyz_m": [
+        0.3593624736476107,
+        -0.18154109619798714,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2563890516757965
+      }
+    },
+    {
+      "candidate_id": 11000227,
+      "object_initial_xyz_m": [
+        0.3681448820823676,
+        -0.20279299663483086,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26514771580696106
+      }
+    },
+    {
+      "candidate_id": 11000290,
+      "object_initial_xyz_m": [
+        0.3251837904393314,
+        -0.20147371516257723,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2260386347770691
+      }
+    },
+    {
+      "candidate_id": 11000218,
+      "object_initial_xyz_m": [
+        0.37334511654196445,
+        -0.19924375428915705,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2710883319377899
+      }
+    },
+    {
+      "candidate_id": 11000480,
+      "object_initial_xyz_m": [
+        0.33378393558268227,
+        -0.21977469305639868,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.23611408472061157
+      }
+    },
+    {
+      "candidate_id": 11000095,
+      "object_initial_xyz_m": [
+        0.37108602919948436,
+        -0.19721718009345426,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26819488406181335
+      }
+    },
+    {
+      "candidate_id": 11000314,
+      "object_initial_xyz_m": [
+        0.34280789633294606,
+        -0.1905582981083397,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.24041089415550232
+      }
+    },
+    {
+      "candidate_id": 11000024,
+      "object_initial_xyz_m": [
+        0.35748911284265095,
+        -0.200215547657802,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2526283860206604
+      }
+    },
+    {
+      "candidate_id": 11000360,
+      "object_initial_xyz_m": [
+        0.37162855726066746,
+        -0.2122209006264004,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2653961181640625
+      }
+    },
+    {
+      "candidate_id": 11000149,
+      "object_initial_xyz_m": [
+        0.33035771894742244,
+        -0.22497475940183642,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.23193113505840302
+      }
+    },
+    {
+      "candidate_id": 11000011,
+      "object_initial_xyz_m": [
+        0.3730601468506172,
+        -0.19231548333955512,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26561829447746277
+      }
+    },
+    {
+      "candidate_id": 11000270,
+      "object_initial_xyz_m": [
+        0.36289076388536384,
+        -0.20708888989290491,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.260452002286911
+      }
+    },
+    {
+      "candidate_id": 11000444,
+      "object_initial_xyz_m": [
+        0.3364211114660303,
+        -0.18848464174688986,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.23312824964523315
+      }
+    },
+    {
+      "candidate_id": 11000327,
+      "object_initial_xyz_m": [
+        0.32972158033930926,
+        -0.19963561331543883,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.22770071029663086
+      }
+    },
+    {
+      "candidate_id": 11000240,
+      "object_initial_xyz_m": [
+        0.36031040664901054,
+        -0.22191237736573782,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2597493827342987
+      }
+    },
+    {
+      "candidate_id": 11000158,
+      "object_initial_xyz_m": [
+        0.34308377462503653,
+        -0.18526930916718293,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.23971839249134064
+      }
+    },
+    {
+      "candidate_id": 11000009,
+      "object_initial_xyz_m": [
+        0.357606255906629,
+        -0.18767386285905063,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2547174394130707
+      }
+    },
+    {
+      "candidate_id": 11000463,
+      "object_initial_xyz_m": [
+        0.32809557238600445,
+        -0.17685068933535467,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.22769924998283386
+      }
+    },
+    {
+      "candidate_id": 11000058,
+      "object_initial_xyz_m": [
+        0.3266906390053606,
+        -0.198074298902437,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2247728854417801
+      }
+    },
+    {
+      "candidate_id": 11000476,
+      "object_initial_xyz_m": [
+        0.36143028604997274,
+        -0.18478125960901165,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.25799304246902466
+      }
+    },
+    {
+      "candidate_id": 11000050,
+      "object_initial_xyz_m": [
+        0.3739149182739467,
+        -0.1821177194287692,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26935744285583496
+      }
+    },
+    {
+      "candidate_id": 11000204,
+      "object_initial_xyz_m": [
+        0.34250585563661096,
+        -0.21051361617456305,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.24259164929389954
+      }
+    },
+    {
+      "candidate_id": 11000254,
+      "object_initial_xyz_m": [
+        0.3322964903913056,
+        -0.20042358601897406,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2290094494819641
+      }
+    },
+    {
+      "candidate_id": 11000325,
+      "object_initial_xyz_m": [
+        0.37139479676087256,
+        -0.2040665420224607,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.26263293623924255
+      }
+    },
+    {
+      "candidate_id": 11000269,
+      "object_initial_xyz_m": [
+        0.3662476518839469,
+        -0.19377734152020923,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.2609155476093292
+      }
+    },
+    {
+      "candidate_id": 11000339,
+      "object_initial_xyz_m": [
+        0.3304989064129555,
+        -0.2193632717176904,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.23221276700496674
+      }
+    },
+    {
+      "candidate_id": 11000019,
+      "object_initial_xyz_m": [
+        0.33768867505589517,
+        -0.19898079658601436,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.23799069225788116
+      }
+    }
+  ]
+}

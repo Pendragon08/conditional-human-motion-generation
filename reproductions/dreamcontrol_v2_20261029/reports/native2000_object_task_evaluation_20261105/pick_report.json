@@ -1,0 +1,1333 @@
+{
+  "status": "frozen_policy_task_evaluation_completed",
+  "task": "pick",
+  "episode_count": 100,
+  "integration_only": false,
+  "success_count": 0,
+  "success_ratio": 0.0,
+  "control_error_m": 0.25371837615966797,
+  "control_error_episode_count": 100,
+  "interaction_events": {
+    "initial_interaction": {
+      "mean_error_m": 0.25371837615966797,
+      "measured_episodes": 100,
+      "actual_contact_at_measurement": 0
+    }
+  },
+  "episodes_with_required_hand_contact": 4,
+  "interaction_error_definition": "L2 from simulated wrist(s) to specified world target(s) at scheduled interaction step; average hands, then events, then episodes with all events observed",
+  "missing_error_definition": "Episodes terminating before a required measurement stay in success denominator; missing errors are null.",
+  "success_definition": "actual object center above 0.95 m at or after the grasp step (height criterion)",
+  "sampling": "seeded sample without replacement from 500 trained-reference scenes with paired randomized object XY",
+  "seed": 20261105,
+  "physics": "Isaac Sim 4.5 PhysX, dynamic objects, no object state writes after first-episode reset",
+  "body_controller": "frozen reference-conditioned SuperMimic, native observation/history/goal, native joint target scale and motor parameters",
+  "hands": "existing binary hand actuators execute reference open/close schedule",
+  "optimizer_updates": 0,
+  "checkpoint_sha256": "571b207875610946f1065bf25bdf1dac78cb8c37f1691fc001324b1da64776ee",
+  "library_sha256": "6d35b617780968b45ef9d05c2014df17708d6b45bb7158438a13ec6c49df36cf",
+  "policy_state_sha256": "f5afad7b08aefa3ad78993d47ad4b8fe220851c2ce95ed2490bf11c320f809e1",
+  "asset_sha256": "13b283a83a2b250a3846d9950e0b641c959e3ce80fcaf706ea060ce0d8fb7888",
+  "episodes": [
+    {
+      "candidate_id": 512,
+      "object_initial_xyz_m": [
+        0.3185533842780509,
+        -0.24638764445257438,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.22625990211963654
+      }
+    },
+    {
+      "candidate_id": 223,
+      "object_initial_xyz_m": [
+        0.31080924857607195,
+        -0.140159576913958,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.20626860857009888
+      }
+    },
+    {
+      "candidate_id": 179,
+      "object_initial_xyz_m": [
+        0.3944252001805412,
+        -0.22228394550378408,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2987108528614044
+      }
+    },
+    {
+      "candidate_id": 172,
+      "object_initial_xyz_m": [
+        0.3443524279770989,
+        -0.1873176375400506,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.24801695346832275
+      }
+    },
+    {
+      "candidate_id": 176,
+      "object_initial_xyz_m": [
+        0.3580909792237301,
+        -0.25076901316473293,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2632918655872345
+      }
+    },
+    {
+      "candidate_id": 471,
+      "object_initial_xyz_m": [
+        0.3306722797326678,
+        -0.15029375438446163,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.22893671691417694
+      }
+    },
+    {
+      "candidate_id": 585,
+      "object_initial_xyz_m": [
+        0.3720411734525984,
+        -0.21827393782220017,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2749827802181244
+      }
+    },
+    {
+      "candidate_id": 353,
+      "object_initial_xyz_m": [
+        0.30060760238451373,
+        -0.14534087888368535,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.19652815163135529
+      }
+    },
+    {
+      "candidate_id": 429,
+      "object_initial_xyz_m": [
+        0.3573815195490917,
+        -0.15410262801958402,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2661004960536957
+      }
+    },
+    {
+      "candidate_id": 462,
+      "object_initial_xyz_m": [
+        0.3309284378787809,
+        -0.18554408521302035,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.23219084739685059
+      }
+    },
+    {
+      "candidate_id": 469,
+      "object_initial_xyz_m": [
+        0.29911841944594014,
+        -0.14781867314499447,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.20946265757083893
+      }
+    },
+    {
+      "candidate_id": 351,
+      "object_initial_xyz_m": [
+        0.3297157839965331,
+        -0.21346840484355625,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2338077872991562
+      }
+    },
+    {
+      "candidate_id": 156,
+      "object_initial_xyz_m": [
+        0.34667039008599176,
+        -0.1890484947201811,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.24515990912914276
+      }
+    },
+    {
+      "candidate_id": 574,
+      "object_initial_xyz_m": [
+        0.39030680714146915,
+        -0.19045979975083188,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2894306182861328
+      }
+    },
+    {
+      "candidate_id": 503,
+      "object_initial_xyz_m": [
+        0.30008396890551564,
+        -0.1653782806355573,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2137058824300766
+      }
+    },
+    {
+      "candidate_id": 339,
+      "object_initial_xyz_m": [
+        0.3864704907033831,
+        -0.16663605197361248,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.28905951976776123
+      }
+    },
+    {
+      "candidate_id": 498,
+      "object_initial_xyz_m": [
+        0.32428478601008104,
+        -0.14052667536120475,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.22132520377635956
+      }
+    },
+    {
+      "candidate_id": 175,
+      "object_initial_xyz_m": [
+        0.3004735362733114,
+        -0.2583077633254892,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.21193571388721466
+      }
+    },
+    {
+      "candidate_id": 558,
+      "object_initial_xyz_m": [
+        0.30654654498413125,
+        -0.23150006893866865,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.21572278439998627
+      }
+    },
+    {
+      "candidate_id": 329,
+      "object_initial_xyz_m": [
+        0.3066012088711175,
+        -0.17082101562713137,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2118058204650879
+      }
+    },
+    {
+      "candidate_id": 79,
+      "object_initial_xyz_m": [
+        0.3550811857092141,
+        -0.18805285121166673,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2569442689418793
+      }
+    },
+    {
+      "candidate_id": 253,
+      "object_initial_xyz_m": [
+        0.38954879729145214,
+        -0.16792779367202362,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.29207688570022583
+      }
+    },
+    {
+      "candidate_id": 505,
+      "object_initial_xyz_m": [
+        0.3781513466806916,
+        -0.25472744973394734,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2831180989742279
+      }
+    },
+    {
+      "candidate_id": 278,
+      "object_initial_xyz_m": [
+        0.34059031563302683,
+        -0.24294684693197488,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2597857117652893
+      }
+    },
+    {
+      "candidate_id": 229,
+      "object_initial_xyz_m": [
+        0.3815525532389581,
+        -0.14207738147406376,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2871493697166443
+      }
+    },
+    {
+      "candidate_id": 215,
+      "object_initial_xyz_m": [
+        0.3158899350455459,
+        -0.16148460374342172,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.22701406478881836
+      }
+    },
+    {
+      "candidate_id": 29,
+      "object_initial_xyz_m": [
+        0.3833587073509471,
+        -0.16539297378729895,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2862369418144226
+      }
+    },
+    {
+      "candidate_id": 521,
+      "object_initial_xyz_m": [
+        0.30351042061028016,
+        -0.1773218668595879,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.20305202901363373
+      }
+    },
+    {
+      "candidate_id": 165,
+      "object_initial_xyz_m": [
+        0.29920040076166177,
+        -0.2272180517036924,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.20622846484184265
+      }
+    },
+    {
+      "candidate_id": 212,
+      "object_initial_xyz_m": [
+        0.38269630139822375,
+        -0.19653539261154107,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.28631508350372314
+      }
+    },
+    {
+      "candidate_id": 292,
+      "object_initial_xyz_m": [
+        0.3409009081395031,
+        -0.20225158434017043,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2442304939031601
+      }
+    },
+    {
+      "candidate_id": 323,
+      "object_initial_xyz_m": [
+        0.348592498523378,
+        -0.21093407847780704,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2504022419452667
+      }
+    },
+    {
+      "candidate_id": 368,
+      "object_initial_xyz_m": [
+        0.332620746945508,
+        -0.2310784306089931,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2376078963279724
+      }
+    },
+    {
+      "candidate_id": 361,
+      "object_initial_xyz_m": [
+        0.3107910788173984,
+        -0.22621957994108824,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.21877484023571014
+      }
+    },
+    {
+      "candidate_id": 561,
+      "object_initial_xyz_m": [
+        0.361957471982855,
+        -0.1887307644081871,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.26192528009414673
+      }
+    },
+    {
+      "candidate_id": 318,
+      "object_initial_xyz_m": [
+        0.34958401686696255,
+        -0.2376337005174099,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2529158890247345
+      }
+    },
+    {
+      "candidate_id": 87,
+      "object_initial_xyz_m": [
+        0.29313977115828577,
+        -0.239940317542631,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.20059165358543396
+      }
+    },
+    {
+      "candidate_id": 359,
+      "object_initial_xyz_m": [
+        0.33485825419556453,
+        -0.1531389402878096,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2403816431760788
+      }
+    },
+    {
+      "candidate_id": 578,
+      "object_initial_xyz_m": [
+        0.4084201203567639,
+        -0.15148233728849053,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.3093971610069275
+      }
+    },
+    {
+      "candidate_id": 326,
+      "object_initial_xyz_m": [
+        0.38113841386705255,
+        -0.1433397447038931,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2902398109436035
+      }
+    },
+    {
+      "candidate_id": 37,
+      "object_initial_xyz_m": [
+        0.4032883927033401,
+        -0.15253208282381475,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.30998972058296204
+      }
+    },
+    {
+      "candidate_id": 303,
+      "object_initial_xyz_m": [
+        0.3867558051355117,
+        -0.18846827511906594,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2752787172794342
+      }
+    },
+    {
+      "candidate_id": 167,
+      "object_initial_xyz_m": [
+        0.3796888584198235,
+        -0.15894117800562416,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2835369110107422
+      }
+    },
+    {
+      "candidate_id": 114,
+      "object_initial_xyz_m": [
+        0.37910340952298477,
+        -0.23362183748209292,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2814253270626068
+      }
+    },
+    {
+      "candidate_id": 423,
+      "object_initial_xyz_m": [
+        0.38428049535039976,
+        -0.23295510916270384,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.27462154626846313
+      }
+    },
+    {
+      "candidate_id": 273,
+      "object_initial_xyz_m": [
+        0.3004250053652584,
+        -0.19011689507629492,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.20387504994869232
+      }
+    },
+    {
+      "candidate_id": 30,
+      "object_initial_xyz_m": [
+        0.3176704502678426,
+        -0.1628592238553647,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.22882886230945587
+      }
+    },
+    {
+      "candidate_id": 306,
+      "object_initial_xyz_m": [
+        0.37544206909473227,
+        -0.21928101115188467,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2931358814239502
+      }
+    },
+    {
+      "candidate_id": 88,
+      "object_initial_xyz_m": [
+        0.38706773053736254,
+        -0.22326180513438948,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2873416841030121
+      }
+    },
+    {
+      "candidate_id": 575,
+      "object_initial_xyz_m": [
+        0.32518046580796034,
+        -0.22813958661360853,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2307535707950592
+      }
+    },
+    {
+      "candidate_id": 34,
+      "object_initial_xyz_m": [
+        0.29404786484065215,
+        -0.165361614741971,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.19118662178516388
+      }
+    },
+    {
+      "candidate_id": 573,
+      "object_initial_xyz_m": [
+        0.4026615514521133,
+        -0.2455303755243387,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.3034799098968506
+      }
+    },
+    {
+      "candidate_id": 445,
+      "object_initial_xyz_m": [
+        0.3863024922238125,
+        -0.1664832314574905,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.28749626874923706
+      }
+    },
+    {
+      "candidate_id": 356,
+      "object_initial_xyz_m": [
+        0.39358707986113034,
+        -0.226938192295001,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.28179797530174255
+      }
+    },
+    {
+      "candidate_id": 82,
+      "object_initial_xyz_m": [
+        0.36802970273303226,
+        -0.2067617019017966,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.26705092191696167
+      }
+    },
+    {
+      "candidate_id": 446,
+      "object_initial_xyz_m": [
+        0.3442295142258388,
+        -0.23055381871668165,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.24705766141414642
+      }
+    },
+    {
+      "candidate_id": 458,
+      "object_initial_xyz_m": [
+        0.31791045583452043,
+        -0.19109928116355265,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2214687019586563
+      }
+    },
+    {
+      "candidate_id": 548,
+      "object_initial_xyz_m": [
+        0.33813891945141195,
+        -0.2494957865221546,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2482483834028244
+      }
+    },
+    {
+      "candidate_id": 204,
+      "object_initial_xyz_m": [
+        0.33047014061735763,
+        -0.17941978800572017,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2314756214618683
+      }
+    },
+    {
+      "candidate_id": 35,
+      "object_initial_xyz_m": [
+        0.39962179644141266,
+        -0.17044027195844097,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.29274308681488037
+      }
+    },
+    {
+      "candidate_id": 340,
+      "object_initial_xyz_m": [
+        0.3905249802181795,
+        -0.23175140064193572,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2919415831565857
+      }
+    },
+    {
+      "candidate_id": 5,
+      "object_initial_xyz_m": [
+        0.32745048775493957,
+        -0.1686654213494332,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.22063110768795013
+      }
+    },
+    {
+      "candidate_id": 440,
+      "object_initial_xyz_m": [
+        0.39291009384570297,
+        -0.14049101187715213,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.30280429124832153
+      }
+    },
+    {
+      "candidate_id": 213,
+      "object_initial_xyz_m": [
+        0.32932277759060435,
+        -0.17492589771774636,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.23023706674575806
+      }
+    },
+    {
+      "candidate_id": 39,
+      "object_initial_xyz_m": [
+        0.3763175606803968,
+        -0.19244693469425264,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2804599106311798
+      }
+    },
+    {
+      "candidate_id": 49,
+      "object_initial_xyz_m": [
+        0.3972910968170817,
+        -0.1854703453186968,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2989674210548401
+      }
+    },
+    {
+      "candidate_id": 532,
+      "object_initial_xyz_m": [
+        0.33126192590431747,
+        -0.22676128832262665,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2405746877193451
+      }
+    },
+    {
+      "candidate_id": 430,
+      "object_initial_xyz_m": [
+        0.32482319608159027,
+        -0.16927257431872622,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.22946836054325104
+      }
+    },
+    {
+      "candidate_id": 560,
+      "object_initial_xyz_m": [
+        0.3220780720936961,
+        -0.15089871770175228,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2193848192691803
+      }
+    },
+    {
+      "candidate_id": 358,
+      "object_initial_xyz_m": [
+        0.3105838002956732,
+        -0.1449831347249197,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2100709080696106
+      }
+    },
+    {
+      "candidate_id": 181,
+      "object_initial_xyz_m": [
+        0.3655858879921731,
+        -0.20204452311213478,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.26749464869499207
+      }
+    },
+    {
+      "candidate_id": 112,
+      "object_initial_xyz_m": [
+        0.3544798312389835,
+        -0.2543493881679237,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.26517751812934875
+      }
+    },
+    {
+      "candidate_id": 435,
+      "object_initial_xyz_m": [
+        0.37413311160692786,
+        -0.17103487135941253,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2746013402938843
+      }
+    },
+    {
+      "candidate_id": 413,
+      "object_initial_xyz_m": [
+        0.3581334104280627,
+        -0.25155225318399577,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.26402533054351807
+      }
+    },
+    {
+      "candidate_id": 280,
+      "object_initial_xyz_m": [
+        0.3913198529730091,
+        -0.19043542181922182,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.29499658942222595
+      }
+    },
+    {
+      "candidate_id": 350,
+      "object_initial_xyz_m": [
+        0.30606656265343046,
+        -0.1851588863908537,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.20358970761299133
+      }
+    },
+    {
+      "candidate_id": 270,
+      "object_initial_xyz_m": [
+        0.3479741010381883,
+        -0.19789543641923468,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2498772293329239
+      }
+    },
+    {
+      "candidate_id": 571,
+      "object_initial_xyz_m": [
+        0.4070378527926171,
+        -0.15650719525849915,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2901236414909363
+      }
+    },
+    {
+      "candidate_id": 116,
+      "object_initial_xyz_m": [
+        0.295549132697997,
+        -0.2255518465041429,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.20442081987857819
+      }
+    },
+    {
+      "candidate_id": 379,
+      "object_initial_xyz_m": [
+        0.3167149278952765,
+        -0.17585356340324132,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.21670173108577728
+      }
+    },
+    {
+      "candidate_id": 31,
+      "object_initial_xyz_m": [
+        0.3338466302021889,
+        -0.24518690538065818,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2376720905303955
+      }
+    },
+    {
+      "candidate_id": 432,
+      "object_initial_xyz_m": [
+        0.39500579514458306,
+        -0.1826124902539048,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2903582453727722
+      }
+    },
+    {
+      "candidate_id": 183,
+      "object_initial_xyz_m": [
+        0.32095088513040876,
+        -0.24694620640993503,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.22939063608646393
+      }
+    },
+    {
+      "candidate_id": 15,
+      "object_initial_xyz_m": [
+        0.30095886870942506,
+        -0.22511436442405208,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.20629356801509857
+      }
+    },
+    {
+      "candidate_id": 328,
+      "object_initial_xyz_m": [
+        0.408628569211268,
+        -0.2566917674009612,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.3137223720550537
+      }
+    },
+    {
+      "candidate_id": 527,
+      "object_initial_xyz_m": [
+        0.39784383070458784,
+        -0.19404347532739177,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2960619032382965
+      }
+    },
+    {
+      "candidate_id": 395,
+      "object_initial_xyz_m": [
+        0.3987433315503449,
+        -0.2469550620516246,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.30302566289901733
+      }
+    },
+    {
+      "candidate_id": 294,
+      "object_initial_xyz_m": [
+        0.34528447407486607,
+        -0.22201800309020966,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.23898397386074066
+      }
+    },
+    {
+      "candidate_id": 201,
+      "object_initial_xyz_m": [
+        0.3733815383260989,
+        -0.2371192373352059,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2779492139816284
+      }
+    },
+    {
+      "candidate_id": 12,
+      "object_initial_xyz_m": [
+        0.3134670097002405,
+        -0.20980594230868121,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2150467038154602
+      }
+    },
+    {
+      "candidate_id": 552,
+      "object_initial_xyz_m": [
+        0.2958769626023868,
+        -0.2539650629085251,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.20705030858516693
+      }
+    },
+    {
+      "candidate_id": 71,
+      "object_initial_xyz_m": [
+        0.34113863798667776,
+        -0.17768162393770798,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2436964511871338
+      }
+    },
+    {
+      "candidate_id": 567,
+      "object_initial_xyz_m": [
+        0.34761750887922516,
+        -0.1819943708303192,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.24694637954235077
+      }
+    },
+    {
+      "candidate_id": 62,
+      "object_initial_xyz_m": [
+        0.29891733795576003,
+        -0.20851182283951258,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2026309221982956
+      }
+    },
+    {
+      "candidate_id": 256,
+      "object_initial_xyz_m": [
+        0.35275390357543573,
+        -0.15864050208928246,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2557680308818817
+      }
+    },
+    {
+      "candidate_id": 311,
+      "object_initial_xyz_m": [
+        0.31479950009600915,
+        -0.16912626677292913,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.21618665754795074
+      }
+    },
+    {
+      "candidate_id": 393,
+      "object_initial_xyz_m": [
+        0.3952703358220232,
+        -0.18900092215991485,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.2946280837059021
+      }
+    },
+    {
+      "candidate_id": 327,
+      "object_initial_xyz_m": [
+        0.40704114686142856,
+        -0.1906723972809581,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.31008824706077576
+      }
+    },
+    {
+      "candidate_id": 407,
+      "object_initial_xyz_m": [
+        0.40787794870064253,
+        -0.14537501233976258,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.3106842041015625
+      }
+    },
+    {
+      "candidate_id": 24,
+      "object_initial_xyz_m": [
+        0.3988810748614575,
+        -0.17887769948569704,
+        0.9
+      ],
+      "success": false,
+      "steps": 297,
+      "control_error_m": {
+        "initial_interaction": 0.30222246050834656
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+const f=require('fs'),p=__dirname+'/';let s=f.readFileSync(p+'history_stage3_pick500_postopt_follow_v3.py','utf8');
+function replace(a,b){if(!s.includes(a))throw Error('missing '+a);s=s.replace(a,b)}
+s=s.split('120').join('180');
+replace('class PickSolver:','class TaskSolver:');replace('solver=PickSolver()','solver=TaskSolver()');
+replace('from stage3_pick29_core import BODY_JOINTS, SCENE_SHA','from stage3_pick29_core import BODY_JOINTS\nfrom stage3_supported_task_conditions import TASKS');
+replace("wrist=robot.links.names.index('right_wrist_yaw_link')","wrist=jnp.array([robot.links.names.index(side+'_wrist_yaw_link') for side in ('left','right')])");
+let a=s.indexOf('        self.orientations=Slerp('),b=s.indexOf('        self.q0,self.root0=',a);if(a<0||b<0)throw Error('orientation block');s=s.slice(0,a)+s.slice(b);
+replace('def hand_cost(vals,q,r,position,orientation):','def hand_cost(vals,q,r,position,orientation,hand_mask):');
+replace("return jnp.concatenate([(pose.translation()-position)*100.,\n                (jaxlie.SO3(orientation).inverse()@pose.rotation()).log()*30.])", "return jnp.concatenate([((pose.translation()-position)*hand_mask[:,None]*100.).flatten(),\n                ((jaxlie.SO3(orientation).inverse()@pose.rotation()).log()*hand_mask[:,None]*30.).flatten()])");
+replace("self.wrist=self.all_links.index('right_wrist_yaw_link')","self.wrist=[self.all_links.index(side+'_wrist_yaw_link') for side in ('left','right')]");
+replace('def solve(self,target,goals,initial_q,initial_root):','def solve(self,target,goals,orientation,hand_mask,initial_q,initial_root):');
+replace('hand(q,r,goals,jnp.array(self.orientations))','hand(q,r,goals,orientation,hand_mask)');
+replace("decoded=z['canonical_points'][0];goal=z['target_points'];m=json.loads(z['metadata_utf8'].tobytes())", "decoded=z['canonical_points'][0];goal=z['target_points'];m=json.loads(z['metadata_utf8'].tobytes())\n            orientations=z['desired_wrist_quat_wxyz'].copy();closed=z['planned_hand_closed'].astype(np.float32);planned_object=z['desired_object_positions'].copy()");
+replace("and m['scene_sha256']==SCENE_SHA","and m['task'] in TASKS");
+replace("assert np.allclose(goals[40,21],obj+[0,0,.04],atol=2e-7)", "assert orientations.shape==(180,2,4) and closed.shape==(180,2)\n        assert m['task_conditions_source_sha256']==sha(Path(__file__).with_name('stage3_supported_task_conditions.py'))\n        hand_mask=np.ones((180,2),dtype=np.float32)\n        if m['task']=='pour':hand_mask[:,0]=0\n        if m['task']=='pour':assert np.allclose(goals[40,21],obj+[0,0,.04],atol=2e-7)");
+replace("jnp.array(goals[:,21],dtype=jnp.float32),\n                                  jnp.array(initial_q)", "jnp.array(goals[:,20:22],dtype=jnp.float32),\n                                  jnp.array(orientations,dtype=jnp.float32),jnp.array(hand_mask),jnp.array(initial_q)");
+replace("error=np.linalg.norm(points[:,self.wrist]-goals[:,21],axis=-1)\n        wrist_q=Rotation.from_matrix(rot[:,self.wrist]).as_quat()[:,[3,0,1,2]]\n        angle=(Rotation.from_quat(wrist_q[:,[1,2,3,0]]).inv()*Rotation.from_quat(self.orientations[:,[1,2,3,0]])).magnitude()", "errors=np.linalg.norm(points[:,self.wrist]-goals[:,20:22],axis=-1)\n        wrist_q=Rotation.from_matrix(rot[:,self.wrist].reshape(-1,3,3)).as_quat()[:,[3,0,1,2]].reshape(180,2,4)\n        angles=(Rotation.from_quat(wrist_q.reshape(-1,4)[:,[1,2,3,0]]).inv()*Rotation.from_quat(orientations.reshape(-1,4)[:,[1,2,3,0]])).magnitude().reshape(180,2)\n        error=errors[hand_mask.astype(bool)];angle=angles[hand_mask.astype(bool)]\n        grasp_error=float(errors[40][hand_mask[40].astype(bool)].max())");
+replace("'hand_target':bool(error.max()<.15)","'hand_target':bool(error.max()<.03)");replace("'wrist_orientation':bool(angle.max()<.35)","'wrist_orientation':bool(angle.max()<.20)");
+replace("closed=np.zeros((180,2),dtype=np.float32);closed[40:,1]=1.","assert np.isfinite(closed).all() and set(np.unique(closed)).issubset({0.,1.})");
+replace("right_wrist_quat=wrist_q.astype(np.float32),hand_closed=closed", "left_wrist_quat=wrist_q[:,0].astype(np.float32),right_wrist_quat=wrist_q[:,1].astype(np.float32),hand_closed=closed,\n            planned_object_positions=planned_object,desired_wrist_quat_wxyz=orientations");
+s=s.split("'scene_sha256':SCENE_SHA").join("'scene_sha256':m['scene_sha256'],'task':m['task']");
+replace("'hand_error_at_grasp_m':float(error[40])","'hand_error_at_grasp_m':grasp_error");
+replace("    p.add_argument('--initial-state',type=Path,required=True)\n",'');
+a=s.indexOf('    with np.load(a.initial_state,');b=s.indexOf('    results=[]',a);if(a<0||b<0)throw Error('initial block');
+s=s.slice(0,a)+"    initial_q=np.broadcast_to(solver.q0,(180,29)).copy();initial_root=np.broadcast_to(solver.root0,(180,7)).copy()\n    initial_sha=hashlib.sha256(initial_q.tobytes()+initial_root.tobytes()).hexdigest()\n"+s.slice(b);
+replace('initial_q,initial_root,sha(a.initial_state))','initial_q,initial_root,initial_sha)');
+replace('Reuse one compiled29DoF task solver across generated Pick references.','Fit two-wrist/rotating-wrist generated references with the compiled29DoF solver.');
+f.writeFileSync(p+'stage3_supported_task_postopt_v1.py',s,{flag:'wx'});

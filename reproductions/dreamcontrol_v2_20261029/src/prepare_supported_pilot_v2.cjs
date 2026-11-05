@@ -1,0 +1,3 @@
+const f=require('fs'),p=__dirname+'/';let s=f.readFileSync(p+'stage3_supported_pilot_queue.py','utf8');
+for(const [a,b] of [["W=B/'pilot_v1'","W=B/'pilot_v2'"],["assert not (W/'status.json').exists();prep=", "assert not W.exists();W.mkdir();(W/'condition_preparation_report.json').write_bytes((B/'pilot_v1/condition_preparation_report.json').read_bytes())\nassert not (W/'status.json').exists();prep="],["'CUDA_VISIBLE_DEVICES':'GPU-f3cc20c6-f613-73c1-b0f9-f54863f22602',",''],["cfg=json.loads((D/'config.json').read_text());state=","env.pop('CUDA_VISIBLE_DEVICES',None)\ncfg=json.loads((D/'config.json').read_text());state="]]){if(!s.includes(a))throw Error(a);s=s.replace(a,b)}
+f.writeFileSync(p+'stage3_supported_pilot_queue_v2.py',s,{flag:'wx'});

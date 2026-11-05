@@ -1,0 +1,358 @@
+{
+  "audit_skill": "experiment-audit",
+  "date": "2026-11-05",
+  "generated_at": "2026-11-05T11:09:59.345Z",
+  "overall_verdict": "warn",
+  "verdict": "WARN",
+  "integrity_status": "warn",
+  "reason_code": "scope_exceeds_evidence_and_condition_frame_mismatch",
+  "auditor": "Codex (GPT-6 family, fresh read-only reviewer)",
+  "reviewer_model": "Codex GPT-6 family (exact variant not exposed)",
+  "reviewer_family": "openai",
+  "reviewer_reasoning": "inherited; exact tier not exposed",
+  "executor_model": "Codex",
+  "executor_family": "openai",
+  "review_independence": "same-family",
+  "acceptance_status": "provisional",
+  "agent_id": "/root/diffusion_pipeline_audit_20261105",
+  "trace_path": "reports/diffusion_pipeline_audit_20261105/EXPERIMENT_AUDIT.md",
+  "upstream_commit": "ec28b508313d6837de52c68247fbc8cf81fe4935",
+  "limitations": [
+    "Private experiment SSH connection timed out in initial audit; local archive receipts and GitHub pinned source available.",
+    "No reruns, source changes or GPU work.",
+    "No causal experiment quantifies the effects of floor datum, sampling schedule, or training dataset separately."
+  ],
+  "summary": "Confirmed sampling height-datum mismatch in a deterministic FK probe, upstream guidance deviations, and paired FID distribution shift in postoptimization. Final reference metrics are project-specific.",
+  "audited_input_hashes": {
+    "reports/generated_reference_evaluation_20261105/geometry.json": "sha256:3e632cb02c19d408994206bef0eec1c423d7960ee02df3fc446e240b8700941f",
+    "reports/generated_reference_evaluation_20261105/embedding_metrics.json": "sha256:5bc0d7854d5b42ed99d4a7184a94ac20715b62ed044f389bbbf91f54cdb4cc85",
+    "reports/four_task2000_final_20261105/native_motion_manifest.json": "sha256:6d35b617780968b45ef9d05c2014df17708d6b45bb7158438a13ec6c49df36cf",
+    "D:/DreamControl_v2_upstream_pick_20261105/fid_roundtrip_256.json": "sha256:f3327db8b714d704e9a325ace74912d0b90cfc414ba5ee5ba3b573ed34aeda5f"
+  },
+  "training_budget": {
+    "author_v2_optimizer_updates": null,
+    "project_optimizer_updates": 10000,
+    "ddpm_timesteps": 1000,
+    "omnicontrol_paper_human_optimizer_iterations": 250000,
+    "omnicontrol_public_human_cli_num_steps": 400000,
+    "project_init_checkpoint": "model000475000.pt",
+    "project_final_checkpoint_sha256": "109fcfebf2a805831444ca8fb55d69674ef7cb19c61219e3e4ed18876d9527a9",
+    "train_count": 2091,
+    "val_count": 484,
+    "test_count": 586
+  },
+  "checks": {
+    "gt_provenance": {
+      "status": "pass",
+      "details": "FID uses source-group-held-out GRAB+Omni dataset features, 586 clips and 323 source IDs. Geometry targets are saved task conditions.",
+      "evidence": [
+        "src/evaluate_generated_reference_embeddings_20261105.py:101",
+        "src/evaluate_generated_reference_embeddings_20261105.py:123",
+        "src/evaluate_generated_reference_geometry_20261105.py:55"
+      ]
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "Fixed published HumanML3D stats for evaluation, train-only stats for diffusion. No score divided by model output statistics.",
+      "evidence": [
+        "src/evaluate_generated_reference_embeddings_20261105.py:52",
+        "src/evaluate_generated_reference_embeddings_20261105.py:84",
+        "src/prepare_grab_omni_mixed29_full_preview_20261103.py:98"
+      ]
+    },
+    "result_existence": {
+      "status": "pass",
+      "details": "Archived report hashes match; 2000 unique IDs, raw sample hashes, initial noise hashes, feature fingerprints, final state fingerprints."
+    },
+    "dead_code": {
+      "status": "pass",
+      "details": "All five metrics run in project. Original DreamControl eval_humanml.py matching/retrieval is placeholder and original FID wrapper overwrites the first FID."
+    },
+    "scope": {
+      "status": "warn",
+      "details": "One checkpoint, four fixed texts and scene recipes, four groups of 500 admitted pairs only, no same-protocol Full-Mix scores."
+    },
+    "eval_type": {
+      "status": "pass",
+      "classification": {
+        "fid": "real_gt",
+        "r_precision": "self_supervised_proxy",
+        "diversity": "self_supervised_proxy",
+        "control_l2": "self_supervised_proxy",
+        "skating_ratio": "self_supervised_proxy",
+        "object_success": "simulation_only"
+      }
+    }
+  },
+  "fk_floor_probe": {
+    "fixedRootZ": 0.84,
+    "min": 0.09707717480258388,
+    "horizontal": [
+      0,
+      0
+    ],
+    "values": [
+      {
+        "i": 0,
+        "name": "pelvis_contour_link",
+        "p": [
+          0,
+          0,
+          0.84
+        ]
+      },
+      {
+        "i": 1,
+        "name": "left_hip_pitch_link",
+        "p": [
+          0,
+          0.064452,
+          0.7373
+        ]
+      },
+      {
+        "i": 2,
+        "name": "right_hip_pitch_link",
+        "p": [
+          0,
+          -0.064452,
+          0.7373
+        ]
+      },
+      {
+        "i": 3,
+        "name": "imu_link",
+        "p": [
+          -0.0435535,
+          -0.00224,
+          1.03192
+        ]
+      },
+      {
+        "i": 4,
+        "name": "left_knee_link",
+        "p": [
+          0.06686897315246895,
+          0.1186009,
+          0.4074132906835746
+        ]
+      },
+      {
+        "i": 5,
+        "name": "right_knee_link",
+        "p": [
+          0.06686897315246895,
+          -0.1186009,
+          0.4074132906835746
+        ]
+      },
+      {
+        "i": 6,
+        "name": "torso_link",
+        "p": [
+          -0.0039635,
+          0,
+          0.894
+        ]
+      },
+      {
+        "i": 7,
+        "name": "left_ankle_pitch_link",
+        "p": [
+          0.0013979039319773345,
+          0.118506455,
+          0.11463429690989968
+        ]
+      },
+      {
+        "i": 8,
+        "name": "right_ankle_pitch_link",
+        "p": [
+          0.0013979039319773345,
+          -0.118506455,
+          0.11463429690989968
+        ]
+      },
+      {
+        "i": 9,
+        "name": "imu_link",
+        "p": [
+          -0.0435535,
+          -0.00224,
+          1.03192
+        ]
+      },
+      {
+        "i": 10,
+        "name": "left_ankle_roll_link",
+        "p": [
+          0.0015734810056586323,
+          0.118506455,
+          0.09707717480258388
+        ]
+      },
+      {
+        "i": 11,
+        "name": "right_ankle_roll_link",
+        "p": [
+          0.0015734810056586323,
+          -0.118506455,
+          0.09707717480258388
+        ]
+      },
+      {
+        "i": 12,
+        "name": "mid360_link",
+        "p": [
+          -0.00368,
+          0.00003,
+          1.3001800000000001
+        ]
+      },
+      {
+        "i": 13,
+        "name": "left_shoulder_yaw_link",
+        "p": [
+          -0.040133749632932855,
+          0.1612198548577417,
+          1.0348980245749122
+        ]
+      },
+      {
+        "i": 14,
+        "name": "right_shoulder_yaw_link",
+        "p": [
+          -0.040133749632932855,
+          -0.1612098548577417,
+          1.0348980245749122
+        ]
+      },
+      {
+        "i": 15,
+        "name": "d435_link",
+        "p": [
+          0.05366,
+          0.01753,
+          1.31387
+        ]
+      },
+      {
+        "i": 16,
+        "name": "left_shoulder_pitch_link",
+        "p": [
+          -0.000007199999999999741,
+          0.10022,
+          1.13178
+        ]
+      },
+      {
+        "i": 17,
+        "name": "right_shoulder_pitch_link",
+        "p": [
+          -0.000007199999999999741,
+          -0.10021,
+          1.13178
+        ]
+      },
+      {
+        "i": 18,
+        "name": "left_elbow_link",
+        "p": [
+          -0.052722906322823726,
+          0.17421079607389267,
+          0.9548667807188038
+        ]
+      },
+      {
+        "i": 19,
+        "name": "right_elbow_link",
+        "p": [
+          -0.052722906322823726,
+          -0.17420079607389266,
+          0.9548667807188038
+        ]
+      },
+      {
+        "i": 20,
+        "name": "left_wrist_yaw_link",
+        "p": [
+          0.0013949701579456398,
+          0.2075552274489246,
+          0.7818957757912262
+        ]
+      },
+      {
+        "i": 21,
+        "name": "right_wrist_yaw_link",
+        "p": [
+          0.0013949701579456398,
+          -0.2075452274489246,
+          0.7818957757912262
+        ]
+      }
+    ],
+    "canonicalMinHeight_m": 0,
+    "canonicalPelvisY_m": 0.742922825197416,
+    "samplerPelvisY_m": 0.84,
+    "datumDelta_m": 0.09707717480258388,
+    "urdf": "Training/HumanoidVerse/humanoidverse/data/robots/g1/g1_29dof.urdf",
+    "sampler_joint_angles_rad": {
+      "hip_pitch": -0.2,
+      "knee": 0.42,
+      "ankle_pitch": -0.23,
+      "elbow": 0.87,
+      "shoulder_pitch": 0.35,
+      "left_shoulder_roll": 0.16,
+      "right_shoulder_roll": -0.16,
+      "others": 0
+    },
+    "sampler_root_quat_xyzw": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "method": "Read-only FK on pinned URDF: compose parent pose, joint URDF origin xyz/RzRyRx, then axis-angle q. Compute minimum world z over the 22 fixed link origins. Use same static 22-point clip in analytical canonicalization. No models loaded.",
+    "evidence": [
+      "src/feature263.py:22",
+      "src/stage3_sample_pick29_batch.py:54",
+      "src/stage3_sample_pick29_batch.py:78",
+      "src/stage3_sample_supported29_batch.py:56",
+      "src/stage3_sample_supported29_batch.py:75"
+    ]
+  },
+  "matched_256_fid": {
+    "raw": 1.6703647375106812,
+    "raw_reencoded": 1.654325246810913,
+    "final_reference": 4.424297332763672,
+    "reference_count": 586,
+    "clip_count": 256
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "The paired postoptimization shifts motion away from the shared held-out embedding distribution.",
+      "impact": "supported"
+    },
+    {
+      "id": "C2",
+      "claim": "Initial stationary spatial hints are in the same canonical height convention as training.",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C3",
+      "claim": "Original DreamControl-v2 trained the robot prior for 10000 updates.",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C4",
+      "claim": "The 2000-clip project evaluation equals the DreamControl-v2 Full-Mix protocol.",
+      "impact": "unsupported"
+    },
+    {
+      "id": "C5",
+      "claim": "The confirmed height or guide deviations explain a measured fraction of the observed L2 error.",
+      "impact": "unmeasured"
+    }
+  ]
+}

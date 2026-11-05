@@ -1,0 +1,1438 @@
+{
+  "status": "frozen_policy_task_evaluation_completed",
+  "task": "box_push_pull",
+  "episode_count": 100,
+  "integration_only": false,
+  "success_count": 0,
+  "success_ratio": 0.0,
+  "control_error_m": 0.13831812143325806,
+  "control_error_episode_count": 100,
+  "interaction_events": {
+    "initial_interaction": {
+      "mean_error_m": 0.09065709263086319,
+      "measured_episodes": 100,
+      "actual_contact_at_measurement": 0
+    },
+    "pull_recontact": {
+      "mean_error_m": 0.18597915768623352,
+      "measured_episodes": 100,
+      "actual_contact_at_measurement": 0
+    }
+  },
+  "episodes_with_required_hand_contact": 0,
+  "interaction_error_definition": "L2 from simulated wrist(s) to specified world target(s) at scheduled interaction step; average hands, then events, then episodes with all events observed",
+  "missing_error_definition": "Episodes terminating before a required measurement stay in success denominator; missing errors are null.",
+  "success_definition": "actual push > 0.08 m, release, recontact and return within 0.025 m",
+  "sampling": "seeded sample without replacement from 500 trained-reference scenes with paired randomized object XY",
+  "seed": 20261105,
+  "physics": "Isaac Sim 4.5 PhysX, dynamic objects, no object state writes after first-episode reset",
+  "body_controller": "frozen reference-conditioned SuperMimic, native observation/history/goal, native joint target scale and motor parameters",
+  "hands": "existing binary hand actuators execute reference open/close schedule",
+  "optimizer_updates": 0,
+  "checkpoint_sha256": "571b207875610946f1065bf25bdf1dac78cb8c37f1691fc001324b1da64776ee",
+  "library_sha256": "6d35b617780968b45ef9d05c2014df17708d6b45bb7158438a13ec6c49df36cf",
+  "policy_state_sha256": "f5afad7b08aefa3ad78993d47ad4b8fe220851c2ce95ed2490bf11c320f809e1",
+  "asset_sha256": "13b283a83a2b250a3846d9950e0b641c959e3ce80fcaf706ea060ce0d8fb7888",
+  "episodes": [
+    {
+      "candidate_id": 13000456,
+      "object_initial_xyz_m": [
+        0.31689070235847894,
+        0.0034531275549986515,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08041046559810638,
+        "pull_recontact": 0.2263791859149933
+      }
+    },
+    {
+      "candidate_id": 13000186,
+      "object_initial_xyz_m": [
+        0.2956507559379191,
+        -0.02375817039188798,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08126720041036606,
+        "pull_recontact": 0.13443711400032043
+      }
+    },
+    {
+      "candidate_id": 13000150,
+      "object_initial_xyz_m": [
+        0.30343237213293145,
+        -0.023342276806131858,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08791709691286087,
+        "pull_recontact": 0.1418217569589615
+      }
+    },
+    {
+      "candidate_id": 13000144,
+      "object_initial_xyz_m": [
+        0.3162005069037729,
+        0.005712202659763171,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.07632805407047272,
+        "pull_recontact": 0.21347230672836304
+      }
+    },
+    {
+      "candidate_id": 13000148,
+      "object_initial_xyz_m": [
+        0.3434646194399546,
+        -0.023907210730710615,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.11203764379024506,
+        "pull_recontact": 0.17008118331432343
+      }
+    },
+    {
+      "candidate_id": 13000416,
+      "object_initial_xyz_m": [
+        0.3400142686618833,
+        0.01283392263719954,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09561727941036224,
+        "pull_recontact": 0.1766718327999115
+      }
+    },
+    {
+      "candidate_id": 13000521,
+      "object_initial_xyz_m": [
+        0.3092395933142241,
+        0.007280776213832468,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08342336118221283,
+        "pull_recontact": 0.20913739502429962
+      }
+    },
+    {
+      "candidate_id": 13000310,
+      "object_initial_xyz_m": [
+        0.32394729077990425,
+        -0.01662956758544345,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0930478647351265,
+        "pull_recontact": 0.2142399549484253
+      }
+    },
+    {
+      "candidate_id": 13000376,
+      "object_initial_xyz_m": [
+        0.30778477633773327,
+        0.020948656161339084,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.07407282292842865,
+        "pull_recontact": 0.21524487435817719
+      }
+    },
+    {
+      "candidate_id": 13000408,
+      "object_initial_xyz_m": [
+        0.33654429959979504,
+        -0.013105012972621038,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.10110064595937729,
+        "pull_recontact": 0.2440967559814453
+      }
+    },
+    {
+      "candidate_id": 13000414,
+      "object_initial_xyz_m": [
+        0.298407069729683,
+        0.013068674956534132,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.07775852084159851,
+        "pull_recontact": 0.13099172711372375
+      }
+    },
+    {
+      "candidate_id": 13000308,
+      "object_initial_xyz_m": [
+        0.30285008679044045,
+        -0.005728135053931178,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.07568186521530151,
+        "pull_recontact": 0.21802663803100586
+      }
+    },
+    {
+      "candidate_id": 13000128,
+      "object_initial_xyz_m": [
+        0.32564739213029337,
+        -0.02398511324636021,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09897080808877945,
+        "pull_recontact": 0.22250907123088837
+      }
+    },
+    {
+      "candidate_id": 13000511,
+      "object_initial_xyz_m": [
+        0.32348887510342805,
+        -0.0017955129923044252,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0867827832698822,
+        "pull_recontact": 0.22785884141921997
+      }
+    },
+    {
+      "candidate_id": 13000447,
+      "object_initial_xyz_m": [
+        0.3363330133629218,
+        0.001629767881860207,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0996411144733429,
+        "pull_recontact": 0.19904400408267975
+      }
+    },
+    {
+      "candidate_id": 13000298,
+      "object_initial_xyz_m": [
+        0.3443589825932958,
+        0.005669380468388753,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.10417310148477554,
+        "pull_recontact": 0.19007834792137146
+      }
+    },
+    {
+      "candidate_id": 13000442,
+      "object_initial_xyz_m": [
+        0.30473885037636605,
+        0.0226469555341023,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.06741876900196075,
+        "pull_recontact": 0.21442773938179016
+      }
+    },
+    {
+      "candidate_id": 13000147,
+      "object_initial_xyz_m": [
+        0.33629000924936353,
+        -0.016028944207882662,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.10530867427587509,
+        "pull_recontact": 0.24923282861709595
+      }
+    },
+    {
+      "candidate_id": 13000497,
+      "object_initial_xyz_m": [
+        0.2954557093314284,
+        -0.0120892704710242,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.061521805822849274,
+        "pull_recontact": 0.1379621922969818
+      }
+    },
+    {
+      "candidate_id": 13000285,
+      "object_initial_xyz_m": [
+        0.3121910736616704,
+        0.022499998207964972,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0782776027917862,
+        "pull_recontact": 0.1544598489999771
+      }
+    },
+    {
+      "candidate_id": 13000066,
+      "object_initial_xyz_m": [
+        0.30659151280487806,
+        0.013481270267216836,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0863545760512352,
+        "pull_recontact": 0.13823193311691284
+      }
+    },
+    {
+      "candidate_id": 13000214,
+      "object_initial_xyz_m": [
+        0.33594694477608594,
+        0.003621461420156076,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.10134962201118469,
+        "pull_recontact": 0.18619483709335327
+      }
+    },
+    {
+      "candidate_id": 13000449,
+      "object_initial_xyz_m": [
+        0.34413189458109816,
+        -0.0102077937347548,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.10332129895687103,
+        "pull_recontact": 0.17223739624023438
+      }
+    },
+    {
+      "candidate_id": 13000239,
+      "object_initial_xyz_m": [
+        0.33114555725419437,
+        0.0038733600510655435,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09658089280128479,
+        "pull_recontact": 0.21582651138305664
+      }
+    },
+    {
+      "candidate_id": 13000190,
+      "object_initial_xyz_m": [
+        0.32191147640644946,
+        -0.00549284879954836,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09063743054866791,
+        "pull_recontact": 0.21912068128585815
+      }
+    },
+    {
+      "candidate_id": 13000181,
+      "object_initial_xyz_m": [
+        0.32850747686215437,
+        0.002287699757083511,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09039512276649475,
+        "pull_recontact": 0.21517665684223175
+      }
+    },
+    {
+      "candidate_id": 13000023,
+      "object_initial_xyz_m": [
+        0.32847024551431464,
+        -0.015553619371499556,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09941801428794861,
+        "pull_recontact": 0.2231537401676178
+      }
+    },
+    {
+      "candidate_id": 13000462,
+      "object_initial_xyz_m": [
+        0.32208603272743047,
+        0.01609226443979305,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0797538012266159,
+        "pull_recontact": 0.16062086820602417
+      }
+    },
+    {
+      "candidate_id": 13000138,
+      "object_initial_xyz_m": [
+        0.31680620757113837,
+        -0.009560515137537024,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09105987846851349,
+        "pull_recontact": 0.19503796100616455
+      }
+    },
+    {
+      "candidate_id": 13000176,
+      "object_initial_xyz_m": [
+        0.3156980020250593,
+        0.010584385250078668,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.07858386635780334,
+        "pull_recontact": 0.21916770935058594
+      }
+    },
+    {
+      "candidate_id": 13000252,
+      "object_initial_xyz_m": [
+        0.3395844200656007,
+        -0.024532049722060592,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.11047396063804626,
+        "pull_recontact": 0.24741992354393005
+      }
+    },
+    {
+      "candidate_id": 13000279,
+      "object_initial_xyz_m": [
+        0.3352737858068393,
+        -0.001529008257941368,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0925416350364685,
+        "pull_recontact": 0.20280426740646362
+      }
+    },
+    {
+      "candidate_id": 13000325,
+      "object_initial_xyz_m": [
+        0.33617728399458036,
+        -0.0002021400755587363,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09598775953054428,
+        "pull_recontact": 0.1630796492099762
+      }
+    },
+    {
+      "candidate_id": 13000317,
+      "object_initial_xyz_m": [
+        0.30272675915939457,
+        -0.01702458948777022,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08189801871776581,
+        "pull_recontact": 0.14034125208854675
+      }
+    },
+    {
+      "candidate_id": 13000500,
+      "object_initial_xyz_m": [
+        0.3250274166322628,
+        -0.02342053074122938,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.10209821164608002,
+        "pull_recontact": 0.16352197527885437
+      }
+    },
+    {
+      "candidate_id": 13000274,
+      "object_initial_xyz_m": [
+        0.33189099991087034,
+        0.0014004663514064764,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09302450716495514,
+        "pull_recontact": 0.23360797762870789
+      }
+    },
+    {
+      "candidate_id": 13000074,
+      "object_initial_xyz_m": [
+        0.29977498989723816,
+        0.02432826429358728,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.06860464066267014,
+        "pull_recontact": 0.14139625430107117
+      }
+    },
+    {
+      "candidate_id": 13000315,
+      "object_initial_xyz_m": [
+        0.3129441355300055,
+        -0.013438137928548383,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08519521355628967,
+        "pull_recontact": 0.19035698473453522
+      }
+    },
+    {
+      "candidate_id": 13000514,
+      "object_initial_xyz_m": [
+        0.3020481004800239,
+        0.014267563899339607,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.06534375250339508,
+        "pull_recontact": 0.13901934027671814
+      }
+    },
+    {
+      "candidate_id": 13000282,
+      "object_initial_xyz_m": [
+        0.3049429009149345,
+        -0.012697886354915457,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0850323811173439,
+        "pull_recontact": 0.1369641125202179
+      }
+    },
+    {
+      "candidate_id": 13000030,
+      "object_initial_xyz_m": [
+        0.3043439000539509,
+        -0.008045482393053801,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0719180554151535,
+        "pull_recontact": 0.21164599061012268
+      }
+    },
+    {
+      "candidate_id": 13000262,
+      "object_initial_xyz_m": [
+        0.3383931116200097,
+        0.02481754660722439,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0927560031414032,
+        "pull_recontact": 0.179766446352005
+      }
+    },
+    {
+      "candidate_id": 13000140,
+      "object_initial_xyz_m": [
+        0.31138735388494143,
+        -0.003936933286318826,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08191867172718048,
+        "pull_recontact": 0.14515453577041626
+      }
+    },
+    {
+      "candidate_id": 13000096,
+      "object_initial_xyz_m": [
+        0.3176442249645774,
+        -0.018135085129843118,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09446701407432556,
+        "pull_recontact": 0.1591179072856903
+      }
+    },
+    {
+      "candidate_id": 13000370,
+      "object_initial_xyz_m": [
+        0.3204434156134667,
+        -0.014345498999063995,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09469874203205109,
+        "pull_recontact": 0.2193695604801178
+      }
+    },
+    {
+      "candidate_id": 13000234,
+      "object_initial_xyz_m": [
+        0.30666679956530474,
+        -0.006991816601687167,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.07617644965648651,
+        "pull_recontact": 0.1445857435464859
+      }
+    },
+    {
+      "candidate_id": 13000024,
+      "object_initial_xyz_m": [
+        0.3028771265363369,
+        0.012371302713970758,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.07397675514221191,
+        "pull_recontact": 0.14651541411876678
+      }
+    },
+    {
+      "candidate_id": 13000265,
+      "object_initial_xyz_m": [
+        0.3255677627955514,
+        0.01402307369986016,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08590732514858246,
+        "pull_recontact": 0.15487778186798096
+      }
+    },
+    {
+      "candidate_id": 13000075,
+      "object_initial_xyz_m": [
+        0.33766914357519906,
+        0.015806250342662607,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09594624489545822,
+        "pull_recontact": 0.1636458933353424
+      }
+    },
+    {
+      "candidate_id": 13000512,
+      "object_initial_xyz_m": [
+        0.3299050882153495,
+        -0.004775613001477164,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09515856206417084,
+        "pull_recontact": 0.23090802133083344
+      }
+    },
+    {
+      "candidate_id": 13000027,
+      "object_initial_xyz_m": [
+        0.3410139852979361,
+        -0.009807752365837502,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.10535009950399399,
+        "pull_recontact": 0.2441743165254593
+      }
+    },
+    {
+      "candidate_id": 13000510,
+      "object_initial_xyz_m": [
+        0.3258224070022949,
+        -0.009856146116313858,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09313954412937164,
+        "pull_recontact": 0.2359856367111206
+      }
+    },
+    {
+      "candidate_id": 13000394,
+      "object_initial_xyz_m": [
+        0.34295814046547746,
+        0.020994194210240312,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09537852555513382,
+        "pull_recontact": 0.17145076394081116
+      }
+    },
+    {
+      "candidate_id": 13000312,
+      "object_initial_xyz_m": [
+        0.3325658270036008,
+        -0.01962234792205297,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09992624074220657,
+        "pull_recontact": 0.22091332077980042
+      }
+    },
+    {
+      "candidate_id": 13000069,
+      "object_initial_xyz_m": [
+        0.3294872273543324,
+        -0.02314911819624095,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09961199760437012,
+        "pull_recontact": 0.23606815934181213
+      }
+    },
+    {
+      "candidate_id": 13000395,
+      "object_initial_xyz_m": [
+        0.3439575158011798,
+        -0.007158623512986628,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.10862040519714355,
+        "pull_recontact": 0.1762782484292984
+      }
+    },
+    {
+      "candidate_id": 13000405,
+      "object_initial_xyz_m": [
+        0.3043792261970678,
+        0.009055367978932777,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.06478746980428696,
+        "pull_recontact": 0.16215896606445312
+      }
+    },
+    {
+      "candidate_id": 13000486,
+      "object_initial_xyz_m": [
+        0.3100407535732407,
+        -0.019331445105762332,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08277612924575806,
+        "pull_recontact": 0.21018609404563904
+      }
+    },
+    {
+      "candidate_id": 13000169,
+      "object_initial_xyz_m": [
+        0.321980949819013,
+        -0.021008521590056586,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09513472020626068,
+        "pull_recontact": 0.15718331933021545
+      }
+    },
+    {
+      "candidate_id": 13000028,
+      "object_initial_xyz_m": [
+        0.3445819436826217,
+        -0.00032450275586032307,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.1236308217048645,
+        "pull_recontact": 0.17700311541557312
+      }
+    },
+    {
+      "candidate_id": 13000299,
+      "object_initial_xyz_m": [
+        0.34447973367951573,
+        0.013706364123881057,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09838736802339554,
+        "pull_recontact": 0.17519411444664001
+      }
+    },
+    {
+      "candidate_id": 13000003,
+      "object_initial_xyz_m": [
+        0.3114043254913525,
+        -0.011303404528021239,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08742177486419678,
+        "pull_recontact": 0.1462939977645874
+      }
+    },
+    {
+      "candidate_id": 13000389,
+      "object_initial_xyz_m": [
+        0.3333242601641508,
+        0.0017384566630394352,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.21990364789962769,
+        "pull_recontact": 0.16866011917591095
+      }
+    },
+    {
+      "candidate_id": 13000177,
+      "object_initial_xyz_m": [
+        0.3024473711837555,
+        0.00562465223626683,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.07430168241262436,
+        "pull_recontact": 0.13422267138957977
+      }
+    },
+    {
+      "candidate_id": 13000032,
+      "object_initial_xyz_m": [
+        0.33706641169113183,
+        -0.023626714733963744,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.10712151974439621,
+        "pull_recontact": 0.26128509640693665
+      }
+    },
+    {
+      "candidate_id": 13000041,
+      "object_initial_xyz_m": [
+        0.3155494692088142,
+        -0.010937735877538919,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09175068140029907,
+        "pull_recontact": 0.14868766069412231
+      }
+    },
+    {
+      "candidate_id": 13000473,
+      "object_initial_xyz_m": [
+        0.3159429570114223,
+        0.014819857070886712,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.07422281801700592,
+        "pull_recontact": 0.21651440858840942
+      }
+    },
+    {
+      "candidate_id": 13000378,
+      "object_initial_xyz_m": [
+        0.2981286673710599,
+        -0.017157875146515,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08238852024078369,
+        "pull_recontact": 0.13298960030078888
+      }
+    },
+    {
+      "candidate_id": 13000499,
+      "object_initial_xyz_m": [
+        0.34428387661997667,
+        -0.004545768639212966,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.10568884015083313,
+        "pull_recontact": 0.20093779265880585
+      }
+    },
+    {
+      "candidate_id": 13000314,
+      "object_initial_xyz_m": [
+        0.2994303687646483,
+        -0.003893884583539186,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.06991519033908844,
+        "pull_recontact": 0.13268770277500153
+      }
+    },
+    {
+      "candidate_id": 13000152,
+      "object_initial_xyz_m": [
+        0.3415602619126019,
+        0.01823492622668941,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09234234690666199,
+        "pull_recontact": 0.1745639145374298
+      }
+    },
+    {
+      "candidate_id": 13000094,
+      "object_initial_xyz_m": [
+        0.3413757960770331,
+        -0.02388570721203089,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.10861951112747192,
+        "pull_recontact": 0.21341949701309204
+      }
+    },
+    {
+      "candidate_id": 13000383,
+      "object_initial_xyz_m": [
+        0.3059265276241635,
+        -0.02415898525746933,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08708029985427856,
+        "pull_recontact": 0.1417352855205536
+      }
+    },
+    {
+      "candidate_id": 13000362,
+      "object_initial_xyz_m": [
+        0.3012114480856555,
+        -0.014781958406020486,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.07851307094097137,
+        "pull_recontact": 0.139495849609375
+      }
+    },
+    {
+      "candidate_id": 13000241,
+      "object_initial_xyz_m": [
+        0.32358173028190457,
+        0.0038298538813420283,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08387637138366699,
+        "pull_recontact": 0.15261688828468323
+      }
+    },
+    {
+      "candidate_id": 13000307,
+      "object_initial_xyz_m": [
+        0.3074794405669574,
+        0.011868958900926693,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.07098894566297531,
+        "pull_recontact": 0.20129448175430298
+      }
+    },
+    {
+      "candidate_id": 13000231,
+      "object_initial_xyz_m": [
+        0.3397400613082898,
+        -0.014985169601953159,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.1057092547416687,
+        "pull_recontact": 0.2353641390800476
+      }
+    },
+    {
+      "candidate_id": 13000508,
+      "object_initial_xyz_m": [
+        0.318784472382632,
+        -0.0013472868267818752,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08286541700363159,
+        "pull_recontact": 0.2171996533870697
+      }
+    },
+    {
+      "candidate_id": 13000098,
+      "object_initial_xyz_m": [
+        0.3221377854427537,
+        -0.024673997326209698,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09631440043449402,
+        "pull_recontact": 0.1899915635585785
+      }
+    },
+    {
+      "candidate_id": 13000332,
+      "object_initial_xyz_m": [
+        0.3008259033707183,
+        0.021484201978791993,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.07171496003866196,
+        "pull_recontact": 0.13107314705848694
+      }
+    },
+    {
+      "candidate_id": 13000025,
+      "object_initial_xyz_m": [
+        0.317659739094592,
+        -0.011725458761072055,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08468008041381836,
+        "pull_recontact": 0.2362484633922577
+      }
+    },
+    {
+      "candidate_id": 13000380,
+      "object_initial_xyz_m": [
+        0.3391391903311667,
+        0.019535779755526166,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09594719111919403,
+        "pull_recontact": 0.1929311752319336
+      }
+    },
+    {
+      "candidate_id": 13000154,
+      "object_initial_xyz_m": [
+        0.3135328191780948,
+        0.017277031492808244,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.07375605404376984,
+        "pull_recontact": 0.2412547469139099
+      }
+    },
+    {
+      "candidate_id": 13000012,
+      "object_initial_xyz_m": [
+        0.32606666469777096,
+        -0.024780559137953274,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.10100582987070084,
+        "pull_recontact": 0.16365577280521393
+      }
+    },
+    {
+      "candidate_id": 13000284,
+      "object_initial_xyz_m": [
+        0.3202090624606519,
+        0.004069678401978423,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0880211740732193,
+        "pull_recontact": 0.20495052635669708
+      }
+    },
+    {
+      "candidate_id": 13000468,
+      "object_initial_xyz_m": [
+        0.3235899763691552,
+        0.021431102588350397,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08319972455501556,
+        "pull_recontact": 0.20589204132556915
+      }
+    },
+    {
+      "candidate_id": 13000346,
+      "object_initial_xyz_m": [
+        0.2971128198186931,
+        0.01058533237505914,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.07377590984106064,
+        "pull_recontact": 0.1312556266784668
+      }
+    },
+    {
+      "candidate_id": 13000254,
+      "object_initial_xyz_m": [
+        0.3188600221635704,
+        0.010273963423145113,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08407481014728546,
+        "pull_recontact": 0.20802149176597595
+      }
+    },
+    {
+      "candidate_id": 13000166,
+      "object_initial_xyz_m": [
+        0.325984352059626,
+        -0.022231500852950517,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.10113133490085602,
+        "pull_recontact": 0.16406555473804474
+      }
+    },
+    {
+      "candidate_id": 13000010,
+      "object_initial_xyz_m": [
+        0.30003648961770546,
+        -0.013767338881401326,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08072325587272644,
+        "pull_recontact": 0.1382601261138916
+      }
+    },
+    {
+      "candidate_id": 13000490,
+      "object_initial_xyz_m": [
+        0.3082878820231061,
+        -0.022194535174866165,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0888843834400177,
+        "pull_recontact": 0.14448222517967224
+      }
+    },
+    {
+      "candidate_id": 13000060,
+      "object_initial_xyz_m": [
+        0.338711527202772,
+        -0.016701104457831673,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.10596078634262085,
+        "pull_recontact": 0.21901026368141174
+      }
+    },
+    {
+      "candidate_id": 13000504,
+      "object_initial_xyz_m": [
+        0.3390327162609426,
+        0.0024639711098487296,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0986076146364212,
+        "pull_recontact": 0.2300644814968109
+      }
+    },
+    {
+      "candidate_id": 13000051,
+      "object_initial_xyz_m": [
+        0.33296520538578284,
+        -0.012634900815782814,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09823833405971527,
+        "pull_recontact": 0.2477755844593048
+      }
+    },
+    {
+      "candidate_id": 13000217,
+      "object_initial_xyz_m": [
+        0.30894213811430105,
+        -0.014337155348064868,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09323401749134064,
+        "pull_recontact": 0.14508798718452454
+      }
+    },
+    {
+      "candidate_id": 13000268,
+      "object_initial_xyz_m": [
+        0.3155807368884981,
+        -0.017596264524882693,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0941016748547554,
+        "pull_recontact": 0.15347009897232056
+      }
+    },
+    {
+      "candidate_id": 13000344,
+      "object_initial_xyz_m": [
+        0.29969973871368,
+        -0.004851465746879356,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08652131259441376,
+        "pull_recontact": 0.13492217659950256
+      }
+    },
+    {
+      "candidate_id": 13000283,
+      "object_initial_xyz_m": [
+        0.3350236780482696,
+        -0.006408655592711417,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.09689855575561523,
+        "pull_recontact": 0.19396553933620453
+      }
+    },
+    {
+      "candidate_id": 13000358,
+      "object_initial_xyz_m": [
+        0.3329553528976142,
+        0.010633076532502561,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.0903078243136406,
+        "pull_recontact": 0.1972523331642151
+      }
+    },
+    {
+      "candidate_id": 13000020,
+      "object_initial_xyz_m": [
+        0.3281230069641152,
+        0.015122701699554854,
+        0.9
+      ],
+      "success": false,
+      "steps": 447,
+      "control_error_m": {
+        "initial_interaction": 0.08782070130109787,
+        "pull_recontact": 0.1906801164150238
+      }
+    }
+  ]
+}

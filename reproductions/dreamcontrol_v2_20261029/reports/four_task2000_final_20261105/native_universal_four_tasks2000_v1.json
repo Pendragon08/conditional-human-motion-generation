@@ -1,0 +1,172 @@
+{
+  "status": "native2000_training_and_body_tracking_evaluation_completed",
+  "manifest_sha256": "6d35b617780968b45ef9d05c2014df17708d6b45bb7158438a13ec6c49df36cf",
+  "real_environment_transitions": 641664000,
+  "training": {
+    "status": "native2000_training_budget_completed_evaluation_pending",
+    "pid": 1680552,
+    "phase": "main",
+    "formal_training_started": true,
+    "task_success_claimed": false,
+    "worker_sha256": "5402c15cc40aa3b04e76d026327550e1a337188405652228478dd68f84f946b2",
+    "budget": {
+      "num_envs": 8912,
+      "total_real_vector_steps": 72000,
+      "total_real_environment_transitions": 641664000,
+      "early_native_iteration": 600,
+      "last_native_iteration": 28748,
+      "early_real_vector_steps": 1565,
+      "warmup_steps_per_launch": 65,
+      "native_launches": 2,
+      "replay_rebuild_steps_counted": 65,
+      "world_model_only_native_iterations": 500,
+      "utd": 0.4,
+      "nominal_world_model_adam_updates": 287480,
+      "policy_update_attempts": 28248,
+      "nominal_critic_adam_updates": 564960,
+      "actual_policy_adam_updates": "read from optimizer; native skips nonfinite gradient steps",
+      "buffer_steps": 128,
+      "policy_batch": 2048,
+      "horizon": 32,
+      "differences_from_upstream_defaults": {
+        "num_envs": [
+          4096,
+          8912
+        ],
+        "buffer_steps": [
+          1000,
+          128
+        ],
+        "pi_batch": [
+          4096,
+          2048
+        ],
+        "warmup_steps": [
+          64,
+          65
+        ],
+        "native_iterations": [
+          320000,
+          28748
+        ],
+        "checkpoint_schedule": "early600 then resume to28748, native main interval2000"
+      },
+      "resume_scope": "models and optimizers only; replay rebuilt, RNG not restored",
+      "same_real_budget_single_launch_alternative": 28774,
+      "policy_attempts_reduced_by_replay_rebuild": 26,
+      "imagined_steps_in_real_budget": false
+    },
+    "elapsed_seconds": 18200.473623726517,
+    "environment_spec_hash": "32a40546",
+    "full_native_train_sha256": "b94569605bd3ff96a49d4903bb791bb54bc4695a03f1914c8447c0ec7dd1e6bd",
+    "manifest": "/data/code/ouyanghao/oyh/dreamcontrol-v2-reproduction-20261029/stage3_supported_references_20261104/mixed2000_final_v1/native_motion_manifest.json",
+    "manifest_sha256": "6d35b617780968b45ef9d05c2014df17708d6b45bb7158438a13ec6c49df36cf",
+    "completion_receipt_sha256": "90574d8e1c5469630d93b31dc0b33570bdf613ab2351f4421bdca1e9c4772126",
+    "command": [
+      "/data/code/ouyanghao/oyh/dreamcontrol-v2-reproduction-20261029/stage3_supermimic29_20261103/native_universal_20261104/source/supermimic/train.py",
+      "--visualizer",
+      "none",
+      "--device",
+      "cuda:0",
+      "--seed",
+      "20261104",
+      "--motion_dir",
+      "/data/code/ouyanghao/oyh/dreamcontrol-v2-reproduction-20261029/stage3_supported_references_20261104/mixed2000_final_v1/motion_csv20",
+      "--log_dir",
+      "/data/code/ouyanghao/oyh/dreamcontrol-v2-reproduction-20261029/stage3_supermimic29_20261103/native_universal_20261104/formal2000_sequence_v1/main_resume_v1/logs",
+      "--amp",
+      "bf16",
+      "--num_envs",
+      "8912",
+      "--iterations",
+      "28748",
+      "--utd",
+      ".4",
+      "--buffer_steps",
+      "128",
+      "--warmup_steps",
+      "65",
+      "--wm_only_iters",
+      "500",
+      "--wm_batches",
+      "10",
+      "--wm_batch",
+      "2048",
+      "--pi_batch",
+      "2048",
+      "--horizon",
+      "32",
+      "--log_every",
+      "50",
+      "--ckpt_every",
+      "2000",
+      "--resume",
+      "/data/code/ouyanghao/oyh/dreamcontrol-v2-reproduction-20261029/stage3_supermimic29_20261103/native_universal_20261104/formal2000_sequence_v1/early600_v1/logs/last.pt"
+    ],
+    "formal_process_started": true,
+    "torch_allocator_fraction": 0.2109146802230155,
+    "native_output_scope": "29 body reference tracking; hand/object execution not certified",
+    "num_envs": 8912,
+    "reference_clips": 2000,
+    "real_environment_transitions": 641664000,
+    "real_vector_steps": 72000,
+    "native_motion_frames": 821000,
+    "torch_peak_allocated_bytes": 7440609280,
+    "torch_peak_reserved_bytes": 8831107072,
+    "native_iteration": 28748,
+    "optimizer_updates": {
+      "opt_wm": 287480,
+      "opt_pi": 28248,
+      "opt_v": 564960
+    },
+    "policy_update_attempts": 28248,
+    "policy_attempts_without_adam_step": 0,
+    "generated_inductor_kernels": 970,
+    "checkpoint": {
+      "path": "/data/code/ouyanghao/oyh/dreamcontrol-v2-reproduction-20261029/stage3_supermimic29_20261103/native_universal_20261104/formal2000_sequence_v1/main_resume_v1/logs/last.pt",
+      "sha256": "571b207875610946f1065bf25bdf1dac78cb8c37f1691fc001324b1da64776ee",
+      "bytes": 218548321,
+      "model_and_optimizer_serialization_verified": true,
+      "replay_and_rng_saved": false
+    }
+  },
+  "evaluation_report": "/data/code/ouyanghao/oyh/dreamcontrol-v2-reproduction-20261029/stage3_supermimic29_20261103/native_universal_20261104/formal2000_sequence_v1/evaluation_all2000_v1/report.json",
+  "evaluation_report_sha256": "ef184738d810f05ea07439d309f3fe9290cb99f5e379c234c60f4e732e62d379",
+  "per_task": {
+    "pick": {
+      "references": 500,
+      "failed": 0,
+      "body_tracking_survival_rate": 1.0,
+      "mean_normalized_tracking_return": 0.995092199999998
+    },
+    "pour": {
+      "references": 500,
+      "failed": 0,
+      "body_tracking_survival_rate": 1.0,
+      "mean_normalized_tracking_return": 0.9966018000000012
+    },
+    "bimanual_box_lift": {
+      "references": 500,
+      "failed": 0,
+      "body_tracking_survival_rate": 1.0,
+      "mean_normalized_tracking_return": 0.994949599999999
+    },
+    "box_push_pull": {
+      "references": 500,
+      "failed": 0,
+      "body_tracking_survival_rate": 1.0,
+      "mean_normalized_tracking_return": 0.9937348000000015
+    }
+  },
+  "object_task_success_claimed": false,
+  "source_binding": "/data/code/ouyanghao/oyh/dreamcontrol-v2-reproduction-20261029/stage3_supermimic29_20261103/native_universal_20261104/formal2000_sequence_v1/source_binding.json",
+  "archive_recovery": {
+    "cause": "comparison output directory was missing",
+    "original_controller_status": "/data/code/ouyanghao/oyh/dreamcontrol-v2-reproduction-20261029/stage3_supermimic29_20261103/native_universal_20261104/formal2000_sequence_v1/status.json",
+    "original_controller_status_sha256": "54dfafa5c8c9380633ce77d5a3987cd51d94fa7f52e4168c06c56c92d983bd99",
+    "recovered_utc": "2026-11-05T05:47:24.618285+00:00",
+    "training_status_sha256": "b5205fc6aa7db0a6b3061b9dafbb87025218f42dd1f5489d5a5a0856d3be4584",
+    "per_clip_report_sha256": "0a3e2ca1a7475ecf091bd1f4ed67759adfbe3ffe343347543573f3ad38e35c78",
+    "checkpoint_hash_reverified": true
+  }
+}

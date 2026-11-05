@@ -1,0 +1,57 @@
+{
+  "status": "native2000_body_tracking_evaluation_completed",
+  "pid": 1739772,
+  "optimizer_updates": 0,
+  "object_task_success_measured": false,
+  "scope": "native29-body reference tracking only",
+  "elapsed_seconds": 32.37691402249038,
+  "manifest_sha256": "6d35b617780968b45ef9d05c2014df17708d6b45bb7158438a13ec6c49df36cf",
+  "checkpoint_sha256": "571b207875610946f1065bf25bdf1dac78cb8c37f1691fc001324b1da64776ee",
+  "command": [
+    "/data/code/ouyanghao/oyh/dreamcontrol-v2-reproduction-20261029/stage3_supermimic29_20261103/native_universal_20261104/source/supermimic/evaluate.py",
+    "--run_dir",
+    "/data/code/ouyanghao/oyh/dreamcontrol-v2-reproduction-20261029/stage3_supermimic29_20261103/native_universal_20261104/formal2000_sequence_v1/evaluation_all2000_v1/logs",
+    "--motion_dir",
+    "/data/code/ouyanghao/oyh/dreamcontrol-v2-reproduction-20261029/stage3_supported_references_20261104/mixed2000_final_v1/motion_csv20",
+    "--visualizer",
+    "none",
+    "--device",
+    "cuda:0"
+  ],
+  "reference_count": 2000,
+  "num_envs": 2000,
+  "per_task": {
+    "pick": {
+      "references": 500,
+      "failed": 0,
+      "body_tracking_survival_rate": 1.0,
+      "mean_normalized_tracking_return": 0.995092199999998
+    },
+    "pour": {
+      "references": 500,
+      "failed": 0,
+      "body_tracking_survival_rate": 1.0,
+      "mean_normalized_tracking_return": 0.9966018000000012
+    },
+    "bimanual_box_lift": {
+      "references": 500,
+      "failed": 0,
+      "body_tracking_survival_rate": 1.0,
+      "mean_normalized_tracking_return": 0.994949599999999
+    },
+    "box_push_pull": {
+      "references": 500,
+      "failed": 0,
+      "body_tracking_survival_rate": 1.0,
+      "mean_normalized_tracking_return": 0.9937348000000015
+    }
+  },
+  "n_failed": 0,
+  "body_tracking_survival_rate": 1.0,
+  "normalized_tracking_return": 0.9950935244560242,
+  "checkpoint_unchanged": true,
+  "per_clip_report": "/data/code/ouyanghao/oyh/dreamcontrol-v2-reproduction-20261029/stage3_supermimic29_20261103/native_universal_20261104/formal2000_sequence_v1/evaluation_all2000_v1/logs/ckpt_028748_eval.json",
+  "per_clip_report_sha256": "0a3e2ca1a7475ecf091bd1f4ed67759adfbe3ffe343347543573f3ad38e35c78",
+  "evaluation_distribution": "all training reference clips once from first frame; native friction1/no observation-action noise/no domain randomization",
+  "not_held_out_reference_generalization": true
+}
