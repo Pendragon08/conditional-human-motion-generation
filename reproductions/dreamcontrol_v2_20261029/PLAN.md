@@ -1,5 +1,36 @@
 # DreamControl-v2 仿真复现：执行计划
 
+## 2026-11-06 03:18 UTC｜论文协议 Pick 先导恢复通过，v8 接续 Pour 新采样
+
+- 既有新采样 20000004 的隔离初始化对照已通过运动学与独立原生120帧检查。S/paper_pick_seed_diagnostic_v2/result.json SHA d6e2668eed726c3f914ddb7e0549404b309b604a13f4ed1944db818541ccdcc2；状态 SHA31b7502f55a66ee0efff1169d7e197f264084af4d667cc05aa0ba1fd47c24340，原生证明1090b42a102e180712d57818dc7b3361abc0747c646c74f411b3801d4736b21d。最大腕误差38.692→8.439cm，腕点避障3.915cm；腕角0.3108rad、原始动作保真RMSE14.917cm、峰值37.251cm保留诊断，不能称质量已改善或抓持成功。
+- 独立CPU重新读取raw/状态/原生绑定并计算FK，和保存点最大差5.94e-8m。相对相位对齐旧440初值，最终最大关节改动0.1281rad、根位8.405cm，确认重新拟合了同一raw。S/paper_pipeline_v8_launch/independent_pick_readback.json SHA6e3b994e665ff10c69810953c4b2327fc916789e0ba14a1d66c7d3781a3891a5。旧姿态仅初值，未新增采样或把旧动作填入库。
+- 修复验证与生产初始化不一致：Pick按同一已核近邻/相位方法选初值；Pour按已通过v7原生验证的姿态作相位对齐初值；均完整重拟合各自新raw，不改条件、目标、损失和论文15cm/3cm及数值几何检查。新模块CPU复算重现Pick诊断初值，并确认Pour同相位输入恒等，S/paper_pipeline_v8_launch/initializer_cpu_witness.json SHA9f50527b85c269f3203a82d5491ab614a6417a0f1cff623d661a9a74a13cb8fe。后两任务沿用v7初始化，仍须先导验证。
+- v8已真实启动：生成1916624，质量等待1916625，SuperMimic等待1916626，视频源1916627。S/paper_pipeline_v8_launch/config.json SHAeb3c79702a08589d7eb73a40605e1f0d1515254420bdfbd20bfbf9de72d2a0c2，权威 S/new_references_paper_v8/{status,progress,pilot_receipt,resume_receipt}.json。保留Pick八条raw与原拒收证据，只将20000004引用新通过证明，已准入1/2000；03:18UTC Pour20100000真实采样worker1916637。四任务全过先导后再批量各500，每类8先导和1000总候选上限不变。旧v7及v5/v6失败不重启，绑定源不改。
+- 后续严格依次新库完整→S/evaluation_paper_v8五指标→S/supermimic_paper_v8训练/全部身体跟踪/四项各100动态回合。新等待器不是开训。原Viser视频源S/report_video_sources_paper_v8；Windows渲染59168，src/repair_prior29_v2_20261105/render_report_videos_paper_v8.cjs，输出D:/DreamControl_v2_paper_protocol_report_v8，日志reports/paper_video_renderer_v8.*。SSH临时超时已恢复；本机接续61484正常完成，reports/paper_v8_connection/remote_launch.json有服务器收据，勿重复启动。
+- /data 11,491,360,768字节，当前生成资源正常，正式训练仍须至少11GiB及实际剩余预算；未删文件或降低资源底线。最终模型/旧275权重和冷档已发布状态保持。本次v8代码与新证据仍待补GitHub增量发布；所有GitHub网络继续从服务器发起。
+
+
+## 2026-11-06 01:26 UTC｜v7 Pick 八条先导全拒，隔离初始化对照已接续
+
+- S/new_references_paper_v7/status.json 已 failed_preserved：Pick 8/8 拒收，后三类未进入先导，新协议0/2000，禁止重启v7或增加同配置先导。原raw、输出、报告均保留。
+- 条件诊断1914254已确认原生成退出后启动后优化worker1914522，S/paper_pick_seed_diagnostic_v2/status.json phase_running/postopt。只改已采20000004的求解初值为相位对齐旧440，重新拟合同一raw；没有修改目标、损失、15cm/3cm筛选或几何检查，没有新增采样。全部运动学过才自动独立原生探针；不自动把旧种子计入新库。
+
+
+## 2026-11-06 01:24 UTC｜新先导继续，最终权重 GitHub 读回完成
+
+- 新协议 Pick 前7条拒收，第8条20000007后优化进行中；新库仍0/2000，后三类尚未进入先导。候选20000004原始腕点最大误差12.748cm，Stage A原始动作拟合RMSE16.895cm，后优化最佳腕点38.692cm，说明至少该条误差在后优化中扩大。未改变论文筛选值，未计作合格。
+- 仅CPU对20000004比较同场景最近12条已验证旧姿态、按接触相位对齐；选旧440只作优化初值，腕目标最大6.102cm、相对新raw RMSE18.377cm，不是新参考。报告S/paper_pick_seed_diagnostic_v1/cpu_report.json SHA a409534c6a604189442cda8aef6eb4319ea73836d0699540962edb1a4f75d96f。v1等待器把pilots_in_progress误判为无需诊断，已退出，未做GPU；v2复用已核CPU证据修正状态分支，不重采。
+- 条件诊断控制器1914254，S/paper_pick_seed_diagnostic_v2/{launch,status}.json；脚本SHA95fcd1101979a979644dd5820868d5878927d494c9ac12150ef07e06e93ce3f6。只在Pick全部8次失败、原控制器退出后，同一20000004用旧440初始化重新拟合原raw；原条件、损失、论文15cm/3cm和几何检查全不变。若Pick先导通过则退出；通过运动学才独立原生探针。禁止并行重复启动或修改活跃源，不自动把诊断填入库。
+- 修复扩散最终10000权重已完整上传、整TAR和4成员SHA读回核验通过。asset715377849，503853568字节，TAR SHA b7d8fb3053e5723d87403f0c58becf6725869267c5e5fd5a2957328734aaef78；模型原SHA保持。远端R/publication_snapshot_20261105/repaired_final_v1/receipt.json SHA435940d48cf826ff24ce081edf16b061e8229de52685cb9153a292d0d58c9b23，本机reports/publication_inventory_20261105/repaired_final_v1_receipt.json逐SHA相同。无源释放，不重传。
+
+
+## 2026-11-06 00:46 UTC｜先导与发布实际状态
+
+- 新协议前两条 Pick（20000000/20000001）真实采样后均拒收；最佳最大腕位分别75.54/36.11 cm，且桌面数值穿透检查未过，不是因已移除的保真/关节窗拒收。当前第三条按原8次先导预算继续，新库准入仍0/2000。旧10100005仅验证通过，不计新库。先导如耗尽须保留失败并诊断，不重复启动同配置或追加预算。
+- 增量代码/证据 GitHub 提交 ffc1418f65ce178f23d4893979075ab2650f3ee0，80条目逐字节核验，其他仓库内容保持；收据 reports/publication_inventory_20261105/repair_code_20261106_receipt.json。修复扩散最终10000权重独立上传1904106，R/publication_snapshot_20261105/repaired_final_v1/{status,receipt}.json。当前上传/完整读回中，不删除源、不重复传；最终需 receipt published_readback_verified。
+- Windows原Viser渲染等待器63996真实运行，日志 reports/paper_video_renderer_v7.{log,err}，仅等待正确新输入；尚无新参考/仿真视频完成。
+
+
 ## 2026-11-06｜论文协议 v7 复验通过，真实新采样已开始
 
 - 已按用户最新授权移除论文未给出的原始保真、非腕位移、关节/根修正窗、腕角和帧间变化硬拒收；保留原动作拟合、平滑、脚稳定目标和完整诊断。公开腕目标误差 <15 cm 与腕点避障 >3 cm 分开，数值完整性/关节限位/独立 FK/穿透检查保留。历史“不得放宽旧门槛”不再适用于这些自行加入的限制。
