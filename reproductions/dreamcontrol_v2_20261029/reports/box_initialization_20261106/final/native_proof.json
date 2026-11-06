@@ -1,0 +1,51 @@
+{
+  "candidate_id": 20200000,
+  "task": "bimanual_box_lift",
+  "scene_sha256": "0ce82e8c650cebbe21eea78524cdaa4bb4f4106fa879b9b92ab7b825c5cd28fe",
+  "asset_sha256": "13b283a83a2b250a3846d9950e0b641c959e3ce80fcaf706ea060ce0d8fb7888",
+  "source_state_sha256": "2b9749e62dbaee45c7c2a865813efc4012ae5a1f43102bef0bfd1311a1923a64",
+  "kinematic_report_sha256": "251a2ef354dc02c5474282b4c386f01cdca167213ee90f58cee16bd98d761caf",
+  "native_replay_frames": 180,
+  "source_fps": 20,
+  "native_checks": {
+    "ground_no_penetration": true,
+    "actual_two_wrist_fk_consistency": true,
+    "actual_two_wrist_rotation_consistency": true,
+    "active_wrist_table_clearance_03m": true,
+    "planned_object_pose_binding": true,
+    "planned_object_table_no_penetration": true
+  },
+  "eligible_for_calibrated_scene_reference": true,
+  "minimum_native_foot_height_m": 0.00805323850363493,
+  "maximum_native_foot_height_m": 0.018333591520786285,
+  "max_non_hand_non_foot_force_N": 728.441162109375,
+  "wrist_fk_max_error_m": 1.5690859527239809e-06,
+  "wrist_rotation_max_error_rad": 1.9104561488347827e-06,
+  "minimum_active_wrist_table_clearance_m": 0.03579620271921158,
+  "planned_object_reset_error_m": 0.0,
+  "minimum_planned_object_table_clearance_m": -5.960464477539063e-08,
+  "largest_contact_bodies": [
+    {
+      "body": "torso_link",
+      "max_force_N": 728.441162109375
+    },
+    {
+      "body": "right_elbow_link",
+      "max_force_N": 0.0
+    },
+    {
+      "body": "right_shoulder_pitch_link",
+      "max_force_N": 0.0
+    },
+    {
+      "body": "right_shoulder_yaw_link",
+      "max_force_N": 0.0
+    },
+    {
+      "body": "left_hip_pitch_link",
+      "max_force_N": 0.0
+    }
+  ],
+  "object_motion_policy": "explicitly injected planned position/orientation; no contact-driven object motion claim",
+  "scope": "task-specific pose-injected geometry/contact applicability; one0.005s physics contact probe per20Hz reference state, not timed tracking or task success"
+}
